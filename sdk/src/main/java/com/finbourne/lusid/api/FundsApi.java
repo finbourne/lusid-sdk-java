@@ -227,7 +227,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided Accepts the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Accepted. (optional)
+         * @param navTypeCode When provided, accepts the Valuation Point of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIacceptEstimateValuationPointRequest
          */
         public APIacceptEstimateValuationPointRequest navTypeCode(String navTypeCode) {
@@ -495,7 +495,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, creates the Fee against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIcreateFeeRequest
          */
         public APIcreateFeeRequest navTypeCode(String navTypeCode) {
@@ -1248,7 +1248,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided, Deletes the Bookmark against the specified NAV Type. When not provided the Primary NAV Type will be Deleted. (optional)
+         * @param navTypeCode When provided, deletes the Bookmark against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIdeleteBookmarkRequest
          */
         public APIdeleteBookmarkRequest navTypeCode(String navTypeCode) {
@@ -1377,9 +1377,9 @@ public class FundsApi {
     /**
      * [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
      * Deletes the given Bookmark.
-     * @param scope The scope of the Fund for the Bookmark to be deleted. (required)
-     * @param code The code of the Fund containing the Bookmark to be deleted. Together with the scope this uniquely identifies the Fund. (required)
-     * @param bookmarkCode The bookmark code for the bookmark to be deleted (required)
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param bookmarkCode The bookmark code for the bookmark to be deleted. (required)
      * @return APIdeleteBookmarkRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1627,7 +1627,7 @@ public class FundsApi {
     /**
      * [EXPERIMENTAL] DeleteFee: Delete a Fee.
      * Delete the given Fee.
-     * @param scope The scope of the Fund (required)
+     * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param feeCode The code of the Fee to be deleted. (required)
      * @return APIdeleteFeeRequest
@@ -2004,7 +2004,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided, Deletes the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be Deleted. (optional)
+         * @param navTypeCode When provided, deletes the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIdeleteValuationPointRequest
          */
         public APIdeleteValuationPointRequest navTypeCode(String navTypeCode) {
@@ -2133,8 +2133,8 @@ public class FundsApi {
     /**
      * [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
      * Deletes the given Valuation Point.
-     * @param scope The scope of the Fund for the valuation point to be deleted. (required)
-     * @param code The code of the Fund containing the Valuation Point to be deleted. Together with the scope this uniquely identifies the Fund. (required)
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param diaryEntryCode The diary entry code for the valuation Point to be deleted. (required)
      * @return APIdeleteValuationPointRequest
      * @http.response.details
@@ -2272,7 +2272,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided Finalises the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Finalised. (optional)
+         * @param navTypeCode When provided, finalises the Valuation Point of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIfinaliseCandidateValuationPointRequest
          */
         public APIfinaliseCandidateValuationPointRequest navTypeCode(String navTypeCode) {
@@ -2399,11 +2399,11 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise Candidate.
+     * [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
      * Moves a &#39;Candidate&#39; status Valuation Point to status &#39;Final&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param valuationPointDataRequest The valuationPointDataRequest which contains the diary entry code to mark as final. (required)
+     * @param valuationPointDataRequest The details of the Valuation Point to mark as final. (required)
      * @return APIfinaliseCandidateValuationPointRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2695,7 +2695,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
-     * Retrieve a fee for a specified Fund
+     * Retrieve a fee for a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param feeCode The code of the Fee. (required)
@@ -2974,7 +2974,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFeeProperties: Get Fee properties
+     * [EXPERIMENTAL] GetFeeProperties: Get Fee properties.
      * Get all the properties of a single fee.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -3532,7 +3532,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFundProperties: Get Fund properties
+     * [EXPERIMENTAL] GetFundProperties: Get Fund properties.
      * Get all the properties of a single fund.
      * @param scope The scope of the Fund to list the properties for. (required)
      * @param code The code of the Fund to list the properties for. Together with the scope this uniquely identifies the Fund. (required)
@@ -3697,7 +3697,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetHoldingsForFundRequest
          */
         public APIgetHoldingsForFundRequest navTypeCode(String navTypeCode) {
@@ -3747,7 +3747,7 @@ public class FundsApi {
 
         /**
          * Set includeSettlementEventsAfterDays
-         * @param includeSettlementEventsAfterDays Number of days ahead to bring back settlements from, in relation to the specified effectiveAt (optional)
+         * @param includeSettlementEventsAfterDays Number of days ahead to bring back settlements from, in relation to the specified effectiveAt. (optional)
          * @return APIgetHoldingsForFundRequest
          */
         public APIgetHoldingsForFundRequest includeSettlementEventsAfterDays(Integer includeSettlementEventsAfterDays) {
@@ -3763,7 +3763,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3779,7 +3779,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3796,7 +3796,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3813,7 +3813,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3829,7 +3829,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3846,7 +3846,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3863,7 +3863,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3878,12 +3878,12 @@ public class FundsApi {
      * Get the holdings of transaction portfolios in a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param singleValuationPointQueryParameters The query parameters used for diary entry or effective date of Holdings (required)
+     * @param singleValuationPointQueryParameters The arguments to use for querying the holdings. (required)
      * @return APIgetHoldingsForFundRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The holdings of transaction portfolios for a Fund </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -4009,7 +4009,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationForFundRequest
          */
         public APIgetValuationForFundRequest navTypeCode(String navTypeCode) {
@@ -4019,7 +4019,7 @@ public class FundsApi {
 
         /**
          * Set fundValuationRequest
-         * @param fundValuationRequest The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics (optional)
+         * @param fundValuationRequest The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics. (optional)
          * @return APIgetValuationForFundRequest
          */
         public APIgetValuationForFundRequest fundValuationRequest(FundValuationRequest fundValuationRequest) {
@@ -4146,10 +4146,10 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund
+     * [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund.
      * Perform valuation on a specified Fund.
-     * @param scope The scope of the Fund (required)
-     * @param code The code of the Fund (required)
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIgetValuationForFundRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4301,7 +4301,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationPointDataRequest
          */
         public APIgetValuationPointDataRequest navTypeCode(String navTypeCode) {
@@ -4317,7 +4317,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4333,7 +4333,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4350,7 +4350,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4367,7 +4367,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4383,7 +4383,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4400,7 +4400,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4417,7 +4417,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4429,15 +4429,15 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
-     * Retrieves the Valuation Point data for a date or specified Diary Entry Id.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
+     * Retrieves the Valuation Point data between given dates or Valuation Point codes.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the Fund&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; ValuationPoint and EndDate will be as provided.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param valuationPointDataQueryParameters The arguments to use for querying the Valuation Point data (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the Valuation Point data. (required)
      * @return APIgetValuationPointDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Valuation Point data for the Fund. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -4599,7 +4599,7 @@ public class FundsApi {
 
         /**
          * Set generalLedgerProfileCode
-         * @param generalLedgerProfileCode The optional code of a general ledger profile used to decorate journal entry lines with levels. (optional)
+         * @param generalLedgerProfileCode The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest generalLedgerProfileCode(String generalLedgerProfileCode) {
@@ -4609,7 +4609,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve Journal Entry Lines. Defaults to returning the latest version if not specified. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest asAt(OffsetDateTime asAt) {
@@ -4639,7 +4639,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines. (optional)
+         * @param page The pagination token to use to continue listing Journal Entry Lines from a previous call to GetValuationPointJournalEntryLines. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest page(String page) {
@@ -4649,7 +4649,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the Journal Entry Lines. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest propertyKeys(List<String> propertyKeys) {
@@ -4659,7 +4659,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest navTypeCode(String navTypeCode) {
@@ -4675,7 +4675,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4691,7 +4691,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4708,7 +4708,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4725,7 +4725,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4741,7 +4741,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4758,7 +4758,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4775,7 +4775,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -4786,16 +4786,16 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
-     * Gets the Journal Entry lines for the given Valuation Point for a Fund     The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
+     * [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
+     * Gets the Journal Entry Lines for the given Valuation Point for a Fund.     The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. (required)
-     * @param valuationPointDataQueryParameters The arguments to use for querying the Journal Entry lines. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the Journal Entry Lines. (required)
      * @return APIgetValuationPointJournalEntryLinesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry Lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -4952,7 +4952,7 @@ public class FundsApi {
 
         /**
          * Set generalLedgerProfileCode
-         * @param generalLedgerProfileCode The optional code of a general ledger profile used to decorate journal entry lines with levels. (optional)
+         * @param generalLedgerProfileCode The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)
          * @return APIgetValuationPointPnlSummaryRequest
          */
         public APIgetValuationPointPnlSummaryRequest generalLedgerProfileCode(String generalLedgerProfileCode) {
@@ -4992,7 +4992,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+         * @param page The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)
          * @return APIgetValuationPointPnlSummaryRequest
          */
         public APIgetValuationPointPnlSummaryRequest page(String page) {
@@ -5002,7 +5002,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationPointPnlSummaryRequest
          */
         public APIgetValuationPointPnlSummaryRequest navTypeCode(String navTypeCode) {
@@ -5018,7 +5018,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5034,7 +5034,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5051,7 +5051,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5068,7 +5068,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5084,7 +5084,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5101,7 +5101,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5118,7 +5118,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5130,15 +5130,15 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
-     * Gets the PnL Summary lines from the journal entry lines produced when calculating the valuation point.
+     * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
-     * @param valuationPointDataQueryParameters The query parameters used in running the generation of the PnL summary (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for generating the PnL summary. (required)
      * @return APIgetValuationPointPnlSummaryRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested PnL summary for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -5146,11 +5146,11 @@ public class FundsApi {
     public APIgetValuationPointPnlSummaryRequest getValuationPointPnlSummary(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointPnlSummaryRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5201,6 +5201,14 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5227,7 +5235,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointTransactions(Async)");
@@ -5243,34 +5251,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointTransactions(Async)");
         }
 
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5286,6 +5294,8 @@ public class FundsApi {
         private String page;
         private List<String> propertyKeys;
         private String navTypeCode;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIgetValuationPointTransactionsRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -5335,7 +5345,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the transactions. (optional)
          * @return APIgetValuationPointTransactionsRequest
          */
         public APIgetValuationPointTransactionsRequest propertyKeys(List<String> propertyKeys) {
@@ -5345,11 +5355,31 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationPointTransactionsRequest
          */
         public APIgetValuationPointTransactionsRequest navTypeCode(String navTypeCode) {
             this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIgetValuationPointTransactionsRequest
+         */
+        public APIgetValuationPointTransactionsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIgetValuationPointTransactionsRequest
+         */
+        public APIgetValuationPointTransactionsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
             return this;
         }
 
@@ -5367,7 +5397,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5383,7 +5413,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -5400,7 +5430,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -5417,7 +5447,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo() throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode);
         }
 
         /**
@@ -5433,7 +5463,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -5450,7 +5480,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5467,15 +5497,15 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund.
-     * Gets the Transactions for the given Valuation Point for a Fund
+     * Gets the Transactions for the given Valuation Point for a Fund.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the transactions. (required)
      * @return APIgetValuationPointTransactionsRequest
      * @http.response.details
@@ -5643,7 +5673,7 @@ public class FundsApi {
 
         /**
          * Set generalLedgerProfileCode
-         * @param generalLedgerProfileCode The optional code of a general ledger profile used to decorate journal entry lines with levels. (optional)
+         * @param generalLedgerProfileCode The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest generalLedgerProfileCode(String generalLedgerProfileCode) {
@@ -5693,7 +5723,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the TrialBalance. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest propertyKeys(List<String> propertyKeys) {
@@ -5703,7 +5733,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest navTypeCode(String navTypeCode) {
@@ -5719,7 +5749,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5735,7 +5765,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5752,7 +5782,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5769,7 +5799,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5785,7 +5815,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5802,7 +5832,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5819,7 +5849,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -5834,12 +5864,12 @@ public class FundsApi {
      * Gets the Trial Balance for the given Valuation Point for a Fund.     The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param valuationPointDataQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for generating the Trial Balance. (required)
      * @return APIgetValuationPointTrialBalanceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Trial Balance for the specified Fund. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -6180,7 +6210,7 @@ public class FundsApi {
      * [EXPERIMENTAL] ListFees: List Fees for a specified Fund.
      * List all the Fees matching a particular criteria.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIlistFeesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6341,7 +6371,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Calendar Entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest page(String page) {
@@ -6361,7 +6391,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the DisplayName, specify \&quot;displayName eq &#39;VP 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest filter(String filter) {
@@ -6371,7 +6401,7 @@ public class FundsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest sortBy(List<String> sortBy) {
@@ -6397,7 +6427,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6413,7 +6443,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6430,7 +6460,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6447,7 +6477,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6463,7 +6493,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6480,7 +6510,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6497,7 +6527,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6510,13 +6540,13 @@ public class FundsApi {
     /**
      * [EXPERIMENTAL] ListFundCalendar: List Fund Calendar.
      * List all the Calendar Entries associated with the Fund.
-     * @param scope The Scope for the Fund. (required)
-     * @param code The Code for the Fund. (required)
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIlistFundCalendarRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Fund Calendars. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Fund Calendar Entries. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -6691,7 +6721,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Fund type, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest filter(String filter) {
@@ -6995,7 +7025,7 @@ public class FundsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Valuation Points. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest effectiveAt(String effectiveAt) {
@@ -7005,7 +7035,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the ValuationPoints. Defaults to returning the latest version of each ValuationPoint if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the Valuation Points. Defaults to returning the latest version of each Valuation Point if not specified. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest asAt(OffsetDateTime asAt) {
@@ -7015,7 +7045,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest page(String page) {
@@ -7055,7 +7085,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest navTypeCode(String navTypeCode) {
@@ -7071,7 +7101,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7087,7 +7117,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7104,7 +7134,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7121,7 +7151,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7137,7 +7167,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7154,7 +7184,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7171,7 +7201,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7183,14 +7213,14 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
-     * List all the Valuation Points that match the given criteria for a given Fund.
+     * List the overview of all the Valuation Points that match the given criteria for a given Fund.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIlistValuationPointOverviewRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The overviews of the requested Valuation Points. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -7838,7 +7868,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7854,7 +7884,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7871,7 +7901,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7888,7 +7918,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7904,7 +7934,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7921,7 +7951,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7938,7 +7968,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -7949,16 +7979,16 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a fund.
-     * Update the ShareClass Instruments on an existing fund with the set of instruments provided.
+     * [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
+     * Update the ShareClass Instruments on an existing Fund with the set of instruments provided.
      * @param scope The scope of the Fund. (required)
-     * @param code The code of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param setShareClassInstrumentsRequest The scopes and instrument identifiers for the instruments to be set. (required)
      * @return APIsetShareClassInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated fund. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Fund definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -8090,7 +8120,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided, Upserts the Valuation Point against the specified NAV Type. When not provided, the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIupsertBookmarkRequest
          */
         public APIupsertBookmarkRequest navTypeCode(String navTypeCode) {
@@ -8221,7 +8251,7 @@ public class FundsApi {
      * This method will update or upsert a Bookmark for the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param upsertFundBookmarkRequest The bookmark definition to Upsert (required)
+     * @param upsertFundBookmarkRequest The bookmark definition to upsert. (required)
      * @return APIupsertBookmarkRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -8358,7 +8388,7 @@ public class FundsApi {
 
         /**
          * Set navTypeCode
-         * @param navTypeCode When provided, Upserts the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be used. (optional)
+         * @param navTypeCode When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
          * @return APIupsertDiaryEntryTypeValuationPointRequest
          */
         public APIupsertDiaryEntryTypeValuationPointRequest navTypeCode(String navTypeCode) {
@@ -8485,11 +8515,11 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
+     * [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
      * Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
-     * @param upsertValuationPointRequest The Valuation Point Estimate definition to Upsert (required)
+     * @param upsertValuationPointRequest The Valuation Point Estimate definition to upsert. (required)
      * @return APIupsertDiaryEntryTypeValuationPointRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9009,8 +9039,8 @@ public class FundsApi {
     /**
      * [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
      * Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.     Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
-     * @param scope The scope of the Fund to update or insert the properties onto. (required)
-     * @param code The code of the Fund to update or insert the properties onto. Together with the scope this uniquely identifies the Fund. (required)
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIupsertFundPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
