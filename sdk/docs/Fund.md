@@ -10,11 +10,12 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Fund. | [optional] [default to String]
 **description** | **String** | A description for the Fund. | [optional] [default to String]
 **baseCurrency** | **String** | The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency. | [optional] [default to String]
+**investorStructure** | **String** | The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39;, &#39;Classes&#39; and &#39;Custom&#39;. | [default to String]
 **portfolioIds** | [**List&lt;PortfolioEntityIdWithDetails&gt;**](PortfolioEntityIdWithDetails.md) | A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency. | [optional] [default to List<PortfolioEntityIdWithDetails>]
 **fundConfigurationId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **aborId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. | [optional] [default to List<InstrumentResolutionDetail>]
-**type** | **String** | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; | [default to String]
+**type** | **String** | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; | [optional] [default to String]
 **inceptionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Inception date of the Fund | [default to OffsetDateTime]
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
 **yearEndDate** | [**DayMonth**](DayMonth.md) |  | [optional] [default to DayMonth]
@@ -35,11 +36,12 @@ ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 @jakarta.annotation.Nullable String BaseCurrency = "example BaseCurrency";
+String InvestorStructure = "example InvestorStructure";
 @jakarta.annotation.Nullable List<PortfolioEntityIdWithDetails> PortfolioIds = new List<PortfolioEntityIdWithDetails>();
 ResourceId FundConfigurationId = new ResourceId();
 ResourceId AborId = new ResourceId();
 @jakarta.annotation.Nullable List<InstrumentResolutionDetail> ShareClassInstruments = new List<InstrumentResolutionDetail>();
-String Type = "example Type";
+@jakarta.annotation.Nullable String Type = "example Type";
 OffsetDateTime InceptionDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer DecimalPlaces = new Integer("100.00");
 DayMonth YearEndDate = new DayMonth();
@@ -56,6 +58,7 @@ Fund fundInstance = new Fund()
     .DisplayName(DisplayName)
     .Description(Description)
     .BaseCurrency(BaseCurrency)
+    .InvestorStructure(InvestorStructure)
     .PortfolioIds(PortfolioIds)
     .FundConfigurationId(FundConfigurationId)
     .AborId(AborId)

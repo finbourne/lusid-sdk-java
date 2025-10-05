@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.SettlementInLieu;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -106,6 +107,10 @@ public class TransactionSettlementInstruction {
   public static final String SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE = "instructionToPortfolioRate";
   @SerializedName(SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE)
   private java.math.BigDecimal instructionToPortfolioRate;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_IN_LIEU = "settlementInLieu";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_IN_LIEU)
+  private SettlementInLieu settlementInLieu;
 
   public TransactionSettlementInstruction() {
   }
@@ -399,6 +404,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction settlementInLieu(SettlementInLieu settlementInLieu) {
+    
+    this.settlementInLieu = settlementInLieu;
+    return this;
+  }
+
+   /**
+   * Get settlementInLieu
+   * @return settlementInLieu
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementInLieu getSettlementInLieu() {
+    return settlementInLieu;
+  }
+
+
+  public void setSettlementInLieu(SettlementInLieu settlementInLieu) {
+    this.settlementInLieu = settlementInLieu;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -421,7 +447,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.custodianAccountOverride, transactionSettlementInstruction.custodianAccountOverride) &&
         Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers) &&
         Objects.equals(this.status, transactionSettlementInstruction.status) &&
-        (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0);
+        (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0) &&
+        Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -430,7 +457,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -457,6 +484,7 @@ public class TransactionSettlementInstruction {
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
+    sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -492,6 +520,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("status");
     openapiFields.add("instructionToPortfolioRate");
+    openapiFields.add("settlementInLieu");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -546,6 +575,10 @@ public class TransactionSettlementInstruction {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      // validate the optional field `settlementInLieu`
+      if (jsonObj.get("settlementInLieu") != null && !jsonObj.get("settlementInLieu").isJsonNull()) {
+        SettlementInLieu.validateJsonElement(jsonObj.get("settlementInLieu"));
       }
   }
 

@@ -84,6 +84,10 @@ public class Fund {
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
   private String baseCurrency;
 
+  public static final String SERIALIZED_NAME_INVESTOR_STRUCTURE = "investorStructure";
+  @SerializedName(SERIALIZED_NAME_INVESTOR_STRUCTURE)
+  private String investorStructure;
+
   public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
   private List<PortfolioEntityIdWithDetails> portfolioIds;
@@ -244,6 +248,27 @@ public class Fund {
   }
 
 
+  public Fund investorStructure(String investorStructure) {
+    
+    this.investorStructure = investorStructure;
+    return this;
+  }
+
+   /**
+   * The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39;, &#39;Classes&#39; and &#39;Custom&#39;.
+   * @return investorStructure
+  **/
+  @jakarta.annotation.Nonnull
+  public String getInvestorStructure() {
+    return investorStructure;
+  }
+
+
+  public void setInvestorStructure(String investorStructure) {
+    this.investorStructure = investorStructure;
+  }
+
+
   public Fund portfolioIds(List<PortfolioEntityIdWithDetails> portfolioIds) {
     
     this.portfolioIds = portfolioIds;
@@ -354,7 +379,7 @@ public class Fund {
    * The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
    * @return type
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getType() {
     return type;
   }
@@ -574,6 +599,7 @@ public class Fund {
         Objects.equals(this.displayName, fund.displayName) &&
         Objects.equals(this.description, fund.description) &&
         Objects.equals(this.baseCurrency, fund.baseCurrency) &&
+        Objects.equals(this.investorStructure, fund.investorStructure) &&
         Objects.equals(this.portfolioIds, fund.portfolioIds) &&
         Objects.equals(this.fundConfigurationId, fund.fundConfigurationId) &&
         Objects.equals(this.aborId, fund.aborId) &&
@@ -595,7 +621,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -614,6 +640,7 @@ public class Fund {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
+    sb.append("    investorStructure: ").append(toIndentedString(investorStructure)).append("\n");
     sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
     sb.append("    fundConfigurationId: ").append(toIndentedString(fundConfigurationId)).append("\n");
     sb.append("    aborId: ").append(toIndentedString(aborId)).append("\n");
@@ -654,6 +681,7 @@ public class Fund {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("baseCurrency");
+    openapiFields.add("investorStructure");
     openapiFields.add("portfolioIds");
     openapiFields.add("fundConfigurationId");
     openapiFields.add("aborId");
@@ -671,7 +699,7 @@ public class Fund {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("investorStructure");
     openapiRequiredFields.add("inceptionDate");
   }
 
@@ -709,6 +737,9 @@ public class Fund {
       if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
       }
+      if (!jsonObj.get("investorStructure").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `investorStructure` to be a primitive type in the JSON string but got `%s`", jsonObj.get("investorStructure").toString()));
+      }
       if (jsonObj.get("portfolioIds") != null && !jsonObj.get("portfolioIds").isJsonNull()) {
         JsonArray jsonArrayportfolioIds = jsonObj.getAsJsonArray("portfolioIds");
         if (jsonArrayportfolioIds != null) {
@@ -745,7 +776,7 @@ public class Fund {
           };
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `yearEndDate`

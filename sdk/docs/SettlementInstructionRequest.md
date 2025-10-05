@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **subHoldingKeyOverrides** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
 **custodianAccountOverride** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instructionToPortfolioRate** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
+**settlementInLieu** | [**SettlementInLieu**](SettlementInLieu.md) |  | [optional] [default to SettlementInLieu]
 
 ```java
 import com.finbourne.lusid.model.SettlementInstructionRequest;
@@ -33,6 +34,7 @@ java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> SubHoldingKeyOverrides = new Map<String, PerpetualProperty>();
 ResourceId CustodianAccountOverride = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal InstructionToPortfolioRate = new java.math.BigDecimal("100.00");
+SettlementInLieu SettlementInLieu = new SettlementInLieu();
 
 
 SettlementInstructionRequest settlementInstructionRequestInstance = new SettlementInstructionRequest()
@@ -46,7 +48,8 @@ SettlementInstructionRequest settlementInstructionRequestInstance = new Settleme
     .Units(Units)
     .SubHoldingKeyOverrides(SubHoldingKeyOverrides)
     .CustodianAccountOverride(CustodianAccountOverride)
-    .InstructionToPortfolioRate(InstructionToPortfolioRate);
+    .InstructionToPortfolioRate(InstructionToPortfolioRate)
+    .SettlementInLieu(SettlementInLieu);
 ```
 
 

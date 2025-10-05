@@ -40,6 +40,8 @@ Name | Type | Description | Notes
 **accountingDate** | [**OffsetDateTime**](OffsetDateTime.md) | The accounting date of the transaction. | [optional] [default to OffsetDateTime]
 **economics** | [**List&lt;Economics&gt;**](Economics.md) | Set of economic data related with the transaction impacts. | [optional] [default to List<Economics>]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
+**sequence** | **Integer** | The sequential position in which this transaction was processed. | [optional] [default to Integer]
+**sequencePriority** | **Integer** | The calculated priority level for this transaction. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -82,6 +84,8 @@ ResourceId AllocationId = new ResourceId();
 @jakarta.annotation.Nullable OffsetDateTime AccountingDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<Economics> Economics = new List<Economics>();
 DataModelMembership DataModelMembership = new DataModelMembership();
+@jakarta.annotation.Nullable Integer Sequence = new Integer("100.00");
+@jakarta.annotation.Nullable Integer SequencePriority = new Integer("100.00");
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -119,7 +123,9 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .AllocationId(AllocationId)
     .AccountingDate(AccountingDate)
     .Economics(Economics)
-    .DataModelMembership(DataModelMembership);
+    .DataModelMembership(DataModelMembership)
+    .Sequence(Sequence)
+    .SequencePriority(SequencePriority);
 ```
 
 

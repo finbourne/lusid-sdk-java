@@ -76,6 +76,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
   private String baseCurrency;
 
+  public static final String SERIALIZED_NAME_INVESTOR_STRUCTURE = "investorStructure";
+  @SerializedName(SERIALIZED_NAME_INVESTOR_STRUCTURE)
+  private String investorStructure;
+
   public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
   private List<PortfolioEntityId> portfolioIds = new ArrayList<>();
@@ -203,6 +207,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest investorStructure(String investorStructure) {
+    
+    this.investorStructure = investorStructure;
+    return this;
+  }
+
+   /**
+   * The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39;, &#39;Classes&#39; and &#39;Custom&#39;.
+   * @return investorStructure
+  **/
+  @jakarta.annotation.Nullable
+  public String getInvestorStructure() {
+    return investorStructure;
+  }
+
+
+  public void setInvestorStructure(String investorStructure) {
+    this.investorStructure = investorStructure;
+  }
+
+
   public FundDefinitionRequest portfolioIds(List<PortfolioEntityId> portfolioIds) {
     
     this.portfolioIds = portfolioIds;
@@ -321,7 +346,7 @@ public class FundDefinitionRequest {
    * The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
    * @return type
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getType() {
     return type;
   }
@@ -469,6 +494,7 @@ public class FundDefinitionRequest {
         Objects.equals(this.displayName, fundDefinitionRequest.displayName) &&
         Objects.equals(this.description, fundDefinitionRequest.description) &&
         Objects.equals(this.baseCurrency, fundDefinitionRequest.baseCurrency) &&
+        Objects.equals(this.investorStructure, fundDefinitionRequest.investorStructure) &&
         Objects.equals(this.portfolioIds, fundDefinitionRequest.portfolioIds) &&
         Objects.equals(this.fundConfigurationId, fundDefinitionRequest.fundConfigurationId) &&
         Objects.equals(this.shareClassInstrumentScopes, fundDefinitionRequest.shareClassInstrumentScopes) &&
@@ -487,7 +513,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, baseCurrency, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties);
+    return Objects.hash(code, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -505,6 +531,7 @@ public class FundDefinitionRequest {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
+    sb.append("    investorStructure: ").append(toIndentedString(investorStructure)).append("\n");
     sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
     sb.append("    fundConfigurationId: ").append(toIndentedString(fundConfigurationId)).append("\n");
     sb.append("    shareClassInstrumentScopes: ").append(toIndentedString(shareClassInstrumentScopes)).append("\n");
@@ -541,6 +568,7 @@ public class FundDefinitionRequest {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("baseCurrency");
+    openapiFields.add("investorStructure");
     openapiFields.add("portfolioIds");
     openapiFields.add("fundConfigurationId");
     openapiFields.add("shareClassInstrumentScopes");
@@ -559,7 +587,6 @@ public class FundDefinitionRequest {
     openapiRequiredFields.add("baseCurrency");
     openapiRequiredFields.add("portfolioIds");
     openapiRequiredFields.add("fundConfigurationId");
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("inceptionDate");
     openapiRequiredFields.add("primaryNavType");
   }
@@ -596,6 +623,9 @@ public class FundDefinitionRequest {
       if (!jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
       }
+      if ((jsonObj.get("investorStructure") != null && !jsonObj.get("investorStructure").isJsonNull()) && !jsonObj.get("investorStructure").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `investorStructure` to be a primitive type in the JSON string but got `%s`", jsonObj.get("investorStructure").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("portfolioIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `portfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioIds").toString()));
@@ -626,7 +656,7 @@ public class FundDefinitionRequest {
           };
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the required field `primaryNavType`

@@ -5519,11 +5519,11 @@ public class FundsApi {
     public APIgetValuationPointTransactionsRequest getValuationPointTransactions(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointTransactionsRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
-        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, final ApiCallback _callback) throws ApiException {
+        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5578,6 +5578,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
         }
 
+        if (excludeCleardownModule != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("excludeCleardownModule", excludeCleardownModule));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5604,7 +5608,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointTrialBalanceValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointTrialBalance(Async)");
@@ -5620,34 +5624,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointTrialBalance(Async)");
         }
 
-        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
+    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, Boolean excludeCleardownModule, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5664,6 +5668,7 @@ public class FundsApi {
         private String page;
         private List<String> propertyKeys;
         private String navTypeCode;
+        private Boolean excludeCleardownModule;
 
         private APIgetValuationPointTrialBalanceRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -5742,6 +5747,16 @@ public class FundsApi {
         }
 
         /**
+         * Set excludeCleardownModule
+         * @param excludeCleardownModule If this is set to true, no Cleardown Module will be applied to the Trial Balance. Defaults to false. (optional, default to false)
+         * @return APIgetValuationPointTrialBalanceRequest
+         */
+        public APIgetValuationPointTrialBalanceRequest excludeCleardownModule(Boolean excludeCleardownModule) {
+            this.excludeCleardownModule = excludeCleardownModule;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointTrialBalance
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -5755,7 +5770,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback);
         }
 
         /**
@@ -5771,7 +5786,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfTrialBalance execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
+            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule);
             return localVarResp.getData();
         }
 
@@ -5788,7 +5803,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfTrialBalance execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, opts);
             return localVarResp.getData();
         }
 
@@ -5805,7 +5820,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfTrialBalance> executeWithHttpInfo() throws ApiException {
-            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
+            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule);
         }
 
         /**
@@ -5821,7 +5836,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfTrialBalance> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, opts);
         }
 
         /**
@@ -5838,7 +5853,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
-            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback);
         }
 
         /**
@@ -5855,7 +5870,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, excludeCleardownModule, _callback, opts);
         }
     }
 

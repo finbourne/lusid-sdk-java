@@ -260,6 +260,14 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
 
+  public static final String SERIALIZED_NAME_SEQUENCE = "sequence";
+  @SerializedName(SERIALIZED_NAME_SEQUENCE)
+  private Integer sequence;
+
+  public static final String SERIALIZED_NAME_SEQUENCE_PRIORITY = "sequencePriority";
+  @SerializedName(SERIALIZED_NAME_SEQUENCE_PRIORITY)
+  private Integer sequencePriority;
+
   public OutputTransaction() {
   }
 
@@ -1038,6 +1046,48 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction sequence(Integer sequence) {
+    
+    this.sequence = sequence;
+    return this;
+  }
+
+   /**
+   * The sequential position in which this transaction was processed.
+   * @return sequence
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getSequence() {
+    return sequence;
+  }
+
+
+  public void setSequence(Integer sequence) {
+    this.sequence = sequence;
+  }
+
+
+  public OutputTransaction sequencePriority(Integer sequencePriority) {
+    
+    this.sequencePriority = sequencePriority;
+    return this;
+  }
+
+   /**
+   * The calculated priority level for this transaction.
+   * @return sequencePriority
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getSequencePriority() {
+    return sequencePriority;
+  }
+
+
+  public void setSequencePriority(Integer sequencePriority) {
+    this.sequencePriority = sequencePriority;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1082,7 +1132,9 @@ public class OutputTransaction {
         Objects.equals(this.allocationId, outputTransaction.allocationId) &&
         Objects.equals(this.accountingDate, outputTransaction.accountingDate) &&
         Objects.equals(this.economics, outputTransaction.economics) &&
-        Objects.equals(this.dataModelMembership, outputTransaction.dataModelMembership);
+        Objects.equals(this.dataModelMembership, outputTransaction.dataModelMembership) &&
+        Objects.equals(this.sequence, outputTransaction.sequence) &&
+        Objects.equals(this.sequencePriority, outputTransaction.sequencePriority);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1091,7 +1143,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1140,6 +1192,8 @@ public class OutputTransaction {
     sb.append("    accountingDate: ").append(toIndentedString(accountingDate)).append("\n");
     sb.append("    economics: ").append(toIndentedString(economics)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
+    sb.append("    sequence: ").append(toIndentedString(sequence)).append("\n");
+    sb.append("    sequencePriority: ").append(toIndentedString(sequencePriority)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1197,6 +1251,8 @@ public class OutputTransaction {
     openapiFields.add("accountingDate");
     openapiFields.add("economics");
     openapiFields.add("dataModelMembership");
+    openapiFields.add("sequence");
+    openapiFields.add("sequencePriority");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.SettlementInLieu;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -98,6 +99,10 @@ public class SettlementInstructionRequest {
   public static final String SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE = "instructionToPortfolioRate";
   @SerializedName(SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE)
   private java.math.BigDecimal instructionToPortfolioRate;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_IN_LIEU = "settlementInLieu";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_IN_LIEU)
+  private SettlementInLieu settlementInLieu;
 
   public SettlementInstructionRequest() {
   }
@@ -349,6 +354,27 @@ public class SettlementInstructionRequest {
   }
 
 
+  public SettlementInstructionRequest settlementInLieu(SettlementInLieu settlementInLieu) {
+    
+    this.settlementInLieu = settlementInLieu;
+    return this;
+  }
+
+   /**
+   * Get settlementInLieu
+   * @return settlementInLieu
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementInLieu getSettlementInLieu() {
+    return settlementInLieu;
+  }
+
+
+  public void setSettlementInLieu(SettlementInLieu settlementInLieu) {
+    this.settlementInLieu = settlementInLieu;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -369,7 +395,8 @@ public class SettlementInstructionRequest {
         (this.units.compareTo(settlementInstructionRequest.getUnits()) == 0) &&
         Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides) &&
         Objects.equals(this.custodianAccountOverride, settlementInstructionRequest.custodianAccountOverride) &&
-        (this.instructionToPortfolioRate.compareTo(settlementInstructionRequest.getInstructionToPortfolioRate()) == 0);
+        (this.instructionToPortfolioRate.compareTo(settlementInstructionRequest.getInstructionToPortfolioRate()) == 0) &&
+        Objects.equals(this.settlementInLieu, settlementInstructionRequest.settlementInLieu);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -378,7 +405,7 @@ public class SettlementInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride, instructionToPortfolioRate);
+    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride, instructionToPortfolioRate, settlementInLieu);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -403,6 +430,7 @@ public class SettlementInstructionRequest {
     sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
     sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
+    sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -436,6 +464,7 @@ public class SettlementInstructionRequest {
     openapiFields.add("subHoldingKeyOverrides");
     openapiFields.add("custodianAccountOverride");
     openapiFields.add("instructionToPortfolioRate");
+    openapiFields.add("settlementInLieu");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -482,6 +511,10 @@ public class SettlementInstructionRequest {
       // validate the optional field `custodianAccountOverride`
       if (jsonObj.get("custodianAccountOverride") != null && !jsonObj.get("custodianAccountOverride").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("custodianAccountOverride"));
+      }
+      // validate the optional field `settlementInLieu`
+      if (jsonObj.get("settlementInLieu") != null && !jsonObj.get("settlementInLieu").isJsonNull()) {
+        SettlementInLieu.validateJsonElement(jsonObj.get("settlementInLieu"));
       }
   }
 
