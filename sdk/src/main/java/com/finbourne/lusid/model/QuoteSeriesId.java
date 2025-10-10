@@ -214,7 +214,19 @@ public class QuoteSeriesId {
   @SerializedName(SERIALIZED_NAME_FIELD)
   private String field;
 
+  public static final String SERIALIZED_NAME_ENTITY_UNIQUE_ID = "entityUniqueId";
+  @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
+  private String entityUniqueId;
+
   public QuoteSeriesId() {
+  }
+
+  
+  public QuoteSeriesId(
+     String entityUniqueId
+  ) {
+    this();
+    this.entityUniqueId = entityUniqueId;
   }
 
   public QuoteSeriesId provider(String provider) {
@@ -343,6 +355,18 @@ public class QuoteSeriesId {
   }
 
 
+   /**
+   * The entity unique ID of the quote series. Together with the InstrumentId, EffectiveAt and AsAt this can uniquely identify a single quote. This field is readonly and cannot be provided on upsert.
+   * @return entityUniqueId
+  **/
+  @jakarta.annotation.Nullable
+  public String getEntityUniqueId() {
+    return entityUniqueId;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -358,7 +382,8 @@ public class QuoteSeriesId {
         Objects.equals(this.instrumentId, quoteSeriesId.instrumentId) &&
         Objects.equals(this.instrumentIdType, quoteSeriesId.instrumentIdType) &&
         Objects.equals(this.quoteType, quoteSeriesId.quoteType) &&
-        Objects.equals(this.field, quoteSeriesId.field);
+        Objects.equals(this.field, quoteSeriesId.field) &&
+        Objects.equals(this.entityUniqueId, quoteSeriesId.entityUniqueId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -367,7 +392,7 @@ public class QuoteSeriesId {
 
   @Override
   public int hashCode() {
-    return Objects.hash(provider, priceSource, instrumentId, instrumentIdType, quoteType, field);
+    return Objects.hash(provider, priceSource, instrumentId, instrumentIdType, quoteType, field, entityUniqueId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +412,7 @@ public class QuoteSeriesId {
     sb.append("    instrumentIdType: ").append(toIndentedString(instrumentIdType)).append("\n");
     sb.append("    quoteType: ").append(toIndentedString(quoteType)).append("\n");
     sb.append("    field: ").append(toIndentedString(field)).append("\n");
+    sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -415,6 +441,7 @@ public class QuoteSeriesId {
     openapiFields.add("instrumentIdType");
     openapiFields.add("quoteType");
     openapiFields.add("field");
+    openapiFields.add("entityUniqueId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -462,6 +489,9 @@ public class QuoteSeriesId {
       }
       if (!jsonObj.get("field").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `field` to be a primitive type in the JSON string but got `%s`", jsonObj.get("field").toString()));
+      }
+      if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
       }
   }
 
