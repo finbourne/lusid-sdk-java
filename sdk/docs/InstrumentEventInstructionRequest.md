@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **holdingId** | **Long** | For holding instructions, the id of the holding for which the instruction will apply | [optional] [default to Long]
 **entitlementDateInstructed** | [**OffsetDateTime**](OffsetDateTime.md) | The instructed entitlement date for the event (where none is set on the event itself) | [optional] [default to OffsetDateTime]
 **quantityInstructed** | [**QuantityInstructed**](QuantityInstructed.md) |  | [optional] [default to QuantityInstructed]
+**taxLotId** | **String** | For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.InstrumentEventInstructionRequest;
@@ -26,6 +27,7 @@ String InstructionType = "example InstructionType";
 @jakarta.annotation.Nullable Long HoldingId = new Long("100.00");
 @jakarta.annotation.Nullable OffsetDateTime EntitlementDateInstructed = OffsetDateTime.now();
 QuantityInstructed QuantityInstructed = new QuantityInstructed();
+@jakarta.annotation.Nullable String TaxLotId = "example TaxLotId";
 
 
 InstrumentEventInstructionRequest instrumentEventInstructionRequestInstance = new InstrumentEventInstructionRequest()
@@ -35,7 +37,8 @@ InstrumentEventInstructionRequest instrumentEventInstructionRequestInstance = ne
     .ElectionKey(ElectionKey)
     .HoldingId(HoldingId)
     .EntitlementDateInstructed(EntitlementDateInstructed)
-    .QuantityInstructed(QuantityInstructed);
+    .QuantityInstructed(QuantityInstructed)
+    .TaxLotId(TaxLotId);
 ```
 
 

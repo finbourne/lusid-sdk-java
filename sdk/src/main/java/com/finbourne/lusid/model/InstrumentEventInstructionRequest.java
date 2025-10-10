@@ -80,6 +80,10 @@ public class InstrumentEventInstructionRequest {
   @SerializedName(SERIALIZED_NAME_QUANTITY_INSTRUCTED)
   private QuantityInstructed quantityInstructed;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_ID = "taxLotId";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
+  private String taxLotId;
+
   public InstrumentEventInstructionRequest() {
   }
 
@@ -230,6 +234,27 @@ public class InstrumentEventInstructionRequest {
   }
 
 
+  public InstrumentEventInstructionRequest taxLotId(String taxLotId) {
+    
+    this.taxLotId = taxLotId;
+    return this;
+  }
+
+   /**
+   * For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply
+   * @return taxLotId
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotId() {
+    return taxLotId;
+  }
+
+
+  public void setTaxLotId(String taxLotId) {
+    this.taxLotId = taxLotId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -246,7 +271,8 @@ public class InstrumentEventInstructionRequest {
         Objects.equals(this.electionKey, instrumentEventInstructionRequest.electionKey) &&
         Objects.equals(this.holdingId, instrumentEventInstructionRequest.holdingId) &&
         Objects.equals(this.entitlementDateInstructed, instrumentEventInstructionRequest.entitlementDateInstructed) &&
-        Objects.equals(this.quantityInstructed, instrumentEventInstructionRequest.quantityInstructed);
+        Objects.equals(this.quantityInstructed, instrumentEventInstructionRequest.quantityInstructed) &&
+        Objects.equals(this.taxLotId, instrumentEventInstructionRequest.taxLotId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -255,7 +281,7 @@ public class InstrumentEventInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId, entitlementDateInstructed, quantityInstructed);
+    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId, entitlementDateInstructed, quantityInstructed, taxLotId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -276,6 +302,7 @@ public class InstrumentEventInstructionRequest {
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
     sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
+    sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -305,6 +332,7 @@ public class InstrumentEventInstructionRequest {
     openapiFields.add("holdingId");
     openapiFields.add("entitlementDateInstructed");
     openapiFields.add("quantityInstructed");
+    openapiFields.add("taxLotId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -348,6 +376,9 @@ public class InstrumentEventInstructionRequest {
       // validate the optional field `quantityInstructed`
       if (jsonObj.get("quantityInstructed") != null && !jsonObj.get("quantityInstructed").isJsonNull()) {
         QuantityInstructed.validateJsonElement(jsonObj.get("quantityInstructed"));
+      }
+      if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
       }
   }
 

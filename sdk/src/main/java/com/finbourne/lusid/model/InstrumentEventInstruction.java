@@ -98,6 +98,10 @@ public class InstrumentEventInstruction {
   @SerializedName(SERIALIZED_NAME_QUANTITY_INSTRUCTED)
   private QuantityInstructed quantityInstructed;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_ID = "taxLotId";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
+  private String taxLotId;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -315,6 +319,27 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction taxLotId(String taxLotId) {
+    
+    this.taxLotId = taxLotId;
+    return this;
+  }
+
+   /**
+   * For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply
+   * @return taxLotId
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotId() {
+    return taxLotId;
+  }
+
+
+  public void setTaxLotId(String taxLotId) {
+    this.taxLotId = taxLotId;
+  }
+
+
   public InstrumentEventInstruction links(List<Link> links) {
     
     this.links = links;
@@ -364,6 +389,7 @@ public class InstrumentEventInstruction {
         Objects.equals(this.href, instrumentEventInstruction.href) &&
         Objects.equals(this.entitlementDateInstructed, instrumentEventInstruction.entitlementDateInstructed) &&
         Objects.equals(this.quantityInstructed, instrumentEventInstruction.quantityInstructed) &&
+        Objects.equals(this.taxLotId, instrumentEventInstruction.taxLotId) &&
         Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
@@ -373,7 +399,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, links);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, taxLotId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -397,6 +423,7 @@ public class InstrumentEventInstruction {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
     sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
+    sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -430,6 +457,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("href");
     openapiFields.add("entitlementDateInstructed");
     openapiFields.add("quantityInstructed");
+    openapiFields.add("taxLotId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -475,6 +503,9 @@ public class InstrumentEventInstruction {
       // validate the optional field `quantityInstructed`
       if (jsonObj.get("quantityInstructed") != null && !jsonObj.get("quantityInstructed").isJsonNull()) {
         QuantityInstructed.validateJsonElement(jsonObj.get("quantityInstructed"));
+      }
+      if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

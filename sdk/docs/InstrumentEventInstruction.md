@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **href** | [**URI**](URI.md) | The uri for this version of this instruction | [optional] [default to URI]
 **entitlementDateInstructed** | [**OffsetDateTime**](OffsetDateTime.md) | The instructed entitlement date for the event (where none is set on the event itself) | [optional] [default to OffsetDateTime]
 **quantityInstructed** | [**QuantityInstructed**](QuantityInstructed.md) |  | [optional] [default to QuantityInstructed]
+**taxLotId** | **String** | For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -33,6 +34,7 @@ Version Version = new Version();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable OffsetDateTime EntitlementDateInstructed = OffsetDateTime.now();
 QuantityInstructed QuantityInstructed = new QuantityInstructed();
+@jakarta.annotation.Nullable String TaxLotId = "example TaxLotId";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -47,6 +49,7 @@ InstrumentEventInstruction instrumentEventInstructionInstance = new InstrumentEv
     .Href(Href)
     .EntitlementDateInstructed(EntitlementDateInstructed)
     .QuantityInstructed(QuantityInstructed)
+    .TaxLotId(TaxLotId)
     .Links(Links);
 ```
 
