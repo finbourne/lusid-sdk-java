@@ -1,11 +1,11 @@
 # com.finbourne.lusid.model.FlexibleRepoFullClosureEvent
-Event to trigger the full closure of a repurchase agreement booked as a FlexibleRepo.
+Event to trigger the full closure of a repurchase agreement booked as a FlexibleRepo.  Specific to a FlexibleRepo instrument.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entitlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the closure begins. | [optional] [default to OffsetDateTime]
+**entitlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the closure begins  This is a required field, unless otherwise supplied via \&quot;EventDateStamps\&quot; in  the instrument event upsert request. | [optional] [default to OffsetDateTime]
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which closure takes place, i.e., when all repurchase trades settle. | [optional] [default to OffsetDateTime]
 
 ```java

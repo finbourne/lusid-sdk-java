@@ -896,11 +896,11 @@ public class ComplexMarketDataApi {
     public APIlistComplexMarketDataRequest listComplexMarketData() {
         return new APIlistComplexMarketDataRequest();
     }
-    private okhttp3.Call upsertAppendComplexMarketDataCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertAppendComplexMarketDataCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertAppendComplexMarketDataCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAppendComplexMarketDataCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -925,10 +925,6 @@ public class ComplexMarketDataApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (effectiveAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
-        }
 
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
@@ -960,7 +956,7 @@ public class ComplexMarketDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAppendComplexMarketDataValidateBeforeCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAppendComplexMarketDataValidateBeforeCall(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertAppendComplexMarketData(Async)");
@@ -971,34 +967,34 @@ public class ComplexMarketDataApi {
             throw new ApiException("Missing the required parameter 'appendComplexMarketDataRequest' when calling upsertAppendComplexMarketData(Async)");
         }
 
-        return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback, opts);
+        return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<UpsertSingleStructuredDataResponse> upsertAppendComplexMarketDataWithHttpInfo(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, null, new ConfigurationOptions());
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertAppendComplexMarketDataWithHttpInfo(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<UpsertSingleStructuredDataResponse> upsertAppendComplexMarketDataWithHttpInfo(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, null, opts);
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertAppendComplexMarketDataWithHttpInfo(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, asAt, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertAppendComplexMarketDataAsync(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertAppendComplexMarketDataAsync(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertAppendComplexMarketDataAsync(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, String effectiveAt, OffsetDateTime asAt, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAppendComplexMarketDataAsync(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest, OffsetDateTime asAt, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback, opts);
+        okhttp3.Call localVarCall = upsertAppendComplexMarketDataValidateBeforeCall(scope, appendComplexMarketDataRequest, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1007,22 +1003,11 @@ public class ComplexMarketDataApi {
     public class APIupsertAppendComplexMarketDataRequest {
         private final String scope;
         private final AppendComplexMarketDataRequest appendComplexMarketDataRequest;
-        private String effectiveAt;
         private OffsetDateTime asAt;
 
         private APIupsertAppendComplexMarketDataRequest(String scope, AppendComplexMarketDataRequest appendComplexMarketDataRequest) {
             this.scope = scope;
             this.appendComplexMarketDataRequest = appendComplexMarketDataRequest;
-        }
-
-        /**
-         * Set effectiveAt
-         * @param effectiveAt The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the effectiveAt of the ComplexMarketDataId given in the request body. (optional)
-         * @return APIupsertAppendComplexMarketDataRequest
-         */
-        public APIupsertAppendComplexMarketDataRequest effectiveAt(String effectiveAt) {
-            this.effectiveAt = effectiveAt;
-            return this;
         }
 
         /**
@@ -1049,7 +1034,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback);
+            return upsertAppendComplexMarketDataCall(scope, appendComplexMarketDataRequest, asAt, _callback);
         }
 
         /**
@@ -1065,7 +1050,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public UpsertSingleStructuredDataResponse execute() throws ApiException {
-            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, effectiveAt, asAt);
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, asAt);
             return localVarResp.getData();
         }
 
@@ -1082,7 +1067,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, effectiveAt, asAt, opts);
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -1099,7 +1084,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
-            return upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, effectiveAt, asAt);
+            return upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, asAt);
         }
 
         /**
@@ -1115,7 +1100,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, effectiveAt, asAt, opts);
+            return upsertAppendComplexMarketDataWithHttpInfo(scope, appendComplexMarketDataRequest, asAt, opts);
         }
 
         /**
@@ -1132,7 +1117,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
-            return upsertAppendComplexMarketDataAsync(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback);
+            return upsertAppendComplexMarketDataAsync(scope, appendComplexMarketDataRequest, asAt, _callback);
         }
 
         /**
@@ -1149,7 +1134,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertAppendComplexMarketDataAsync(scope, appendComplexMarketDataRequest, effectiveAt, asAt, _callback, opts);
+            return upsertAppendComplexMarketDataAsync(scope, appendComplexMarketDataRequest, asAt, _callback, opts);
         }
     }
 

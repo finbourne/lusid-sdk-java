@@ -830,11 +830,11 @@ public class TransactionConfigurationApi {
     public APIdeleteTransactionTypeSourceRequest deleteTransactionTypeSource(String source) {
         return new APIdeleteTransactionTypeSourceRequest(source);
     }
-    private okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return getSideDefinitionCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getSideDefinitionCall(side, scope, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSideDefinitionCall(String side, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -868,18 +868,6 @@ public class TransactionConfigurationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -902,40 +890,40 @@ public class TransactionConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSideDefinitionValidateBeforeCall(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSideDefinitionValidateBeforeCall(String side, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'side' is set
         if (side == null) {
             throw new ApiException("Missing the required parameter 'side' when calling getSideDefinition(Async)");
         }
 
-        return getSideDefinitionCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return getSideDefinitionCall(side, scope, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<SideDefinition> getSideDefinitionWithHttpInfo(String side, String scope, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, null, opts);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<SideDefinition> _callback) throws ApiException {
+    private okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, final ApiCallback<SideDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<SideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSideDefinitionAsync(String side, String scope, OffsetDateTime asAt, final ApiCallback<SideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = getSideDefinitionValidateBeforeCall(side, scope, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<SideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -945,9 +933,6 @@ public class TransactionConfigurationApi {
         private final String side;
         private String scope;
         private OffsetDateTime asAt;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIgetSideDefinitionRequest(String side) {
             this.side = side;
@@ -974,36 +959,6 @@ public class TransactionConfigurationApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIgetSideDefinitionRequest
-         */
-        public APIgetSideDefinitionRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIgetSideDefinitionRequest
-         */
-        public APIgetSideDefinitionRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIgetSideDefinitionRequest
-         */
-        public APIgetSideDefinitionRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for getSideDefinition
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1017,7 +972,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getSideDefinitionCall(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getSideDefinitionCall(side, scope, asAt, _callback);
         }
 
         /**
@@ -1033,7 +988,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public SideDefinition execute() throws ApiException {
-            ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt);
             return localVarResp.getData();
         }
 
@@ -1050,7 +1005,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public SideDefinition execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<SideDefinition> localVarResp = getSideDefinitionWithHttpInfo(side, scope, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -1067,7 +1022,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<SideDefinition> executeWithHttpInfo() throws ApiException {
-            return getSideDefinitionWithHttpInfo(side, scope, asAt, timelineScope, timelineCode, closedPeriodId);
+            return getSideDefinitionWithHttpInfo(side, scope, asAt);
         }
 
         /**
@@ -1083,7 +1038,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<SideDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getSideDefinitionWithHttpInfo(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            return getSideDefinitionWithHttpInfo(side, scope, asAt, opts);
         }
 
         /**
@@ -1100,7 +1055,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<SideDefinition> _callback) throws ApiException {
-            return getSideDefinitionAsync(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getSideDefinitionAsync(side, scope, asAt, _callback);
         }
 
         /**
@@ -1117,7 +1072,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<SideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
-            return getSideDefinitionAsync(side, scope, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return getSideDefinitionAsync(side, scope, asAt, _callback, opts);
         }
     }
 
@@ -1137,11 +1092,11 @@ public class TransactionConfigurationApi {
     public APIgetSideDefinitionRequest getSideDefinition(String side) {
         return new APIgetSideDefinitionRequest(side);
     }
-    private okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return getTransactionTypeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+        return getTransactionTypeCall(source, type, asAt, scope,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionTypeCall(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1176,18 +1131,6 @@ public class TransactionConfigurationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1210,7 +1153,7 @@ public class TransactionConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionTypeValidateBeforeCall(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionTypeValidateBeforeCall(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'source' is set
         if (source == null) {
             throw new ApiException("Missing the required parameter 'source' when calling getTransactionType(Async)");
@@ -1221,34 +1164,34 @@ public class TransactionConfigurationApi {
             throw new ApiException("Missing the required parameter 'type' when calling getTransactionType(Async)");
         }
 
-        return getTransactionTypeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return getTransactionTypeCall(source, type, asAt, scope, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<TransactionType> getTransactionTypeWithHttpInfo(String source, String type, OffsetDateTime asAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<TransactionType> _callback) throws ApiException {
+    private okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback<TransactionType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<TransactionType> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionTypeAsync(String source, String type, OffsetDateTime asAt, String scope, final ApiCallback<TransactionType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = getTransactionTypeValidateBeforeCall(source, type, asAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1259,9 +1202,6 @@ public class TransactionConfigurationApi {
         private final String type;
         private OffsetDateTime asAt;
         private String scope;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIgetTransactionTypeRequest(String source, String type) {
             this.source = source;
@@ -1289,36 +1229,6 @@ public class TransactionConfigurationApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIgetTransactionTypeRequest
-         */
-        public APIgetTransactionTypeRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIgetTransactionTypeRequest
-         */
-        public APIgetTransactionTypeRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIgetTransactionTypeRequest
-         */
-        public APIgetTransactionTypeRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for getTransactionType
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1332,7 +1242,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionTypeCall(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getTransactionTypeCall(source, type, asAt, scope, _callback);
         }
 
         /**
@@ -1348,7 +1258,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public TransactionType execute() throws ApiException {
-            ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope);
             return localVarResp.getData();
         }
 
@@ -1365,7 +1275,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public TransactionType execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<TransactionType> localVarResp = getTransactionTypeWithHttpInfo(source, type, asAt, scope, opts);
             return localVarResp.getData();
         }
 
@@ -1382,7 +1292,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<TransactionType> executeWithHttpInfo() throws ApiException {
-            return getTransactionTypeWithHttpInfo(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            return getTransactionTypeWithHttpInfo(source, type, asAt, scope);
         }
 
         /**
@@ -1398,7 +1308,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<TransactionType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getTransactionTypeWithHttpInfo(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            return getTransactionTypeWithHttpInfo(source, type, asAt, scope, opts);
         }
 
         /**
@@ -1415,7 +1325,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionType> _callback) throws ApiException {
-            return getTransactionTypeAsync(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getTransactionTypeAsync(source, type, asAt, scope, _callback);
         }
 
         /**
@@ -1432,7 +1342,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionType> _callback, ConfigurationOptions opts) throws ApiException {
-            return getTransactionTypeAsync(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return getTransactionTypeAsync(source, type, asAt, scope, _callback, opts);
         }
     }
 
@@ -1453,11 +1363,11 @@ public class TransactionConfigurationApi {
     public APIgetTransactionTypeRequest getTransactionType(String source, String type) {
         return new APIgetTransactionTypeRequest(source, type);
     }
-    private okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return listSideDefinitionsCall(asAt, scope, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+        return listSideDefinitionsCall(asAt, scope,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listSideDefinitionsCall(OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1490,18 +1400,6 @@ public class TransactionConfigurationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1524,35 +1422,35 @@ public class TransactionConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSideDefinitionsValidateBeforeCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listSideDefinitionsCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+    private okhttp3.Call listSideDefinitionsValidateBeforeCall(OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listSideDefinitionsCall(asAt, scope, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
+        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<ResourceListOfSideDefinition> listSideDefinitionsWithHttpInfo(OffsetDateTime asAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
+    private okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfSideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listSideDefinitionsAsync(OffsetDateTime asAt, String scope, final ApiCallback<ResourceListOfSideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = listSideDefinitionsValidateBeforeCall(asAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfSideDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1561,9 +1459,6 @@ public class TransactionConfigurationApi {
     public class APIlistSideDefinitionsRequest {
         private OffsetDateTime asAt;
         private String scope;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIlistSideDefinitionsRequest() {
         }
@@ -1589,36 +1484,6 @@ public class TransactionConfigurationApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIlistSideDefinitionsRequest
-         */
-        public APIlistSideDefinitionsRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIlistSideDefinitionsRequest
-         */
-        public APIlistSideDefinitionsRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIlistSideDefinitionsRequest
-         */
-        public APIlistSideDefinitionsRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for listSideDefinitions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1632,7 +1497,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listSideDefinitionsCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listSideDefinitionsCall(asAt, scope, _callback);
         }
 
         /**
@@ -1648,7 +1513,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ResourceListOfSideDefinition execute() throws ApiException {
-            ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope);
             return localVarResp.getData();
         }
 
@@ -1665,7 +1530,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ResourceListOfSideDefinition execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<ResourceListOfSideDefinition> localVarResp = listSideDefinitionsWithHttpInfo(asAt, scope, opts);
             return localVarResp.getData();
         }
 
@@ -1682,7 +1547,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<ResourceListOfSideDefinition> executeWithHttpInfo() throws ApiException {
-            return listSideDefinitionsWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            return listSideDefinitionsWithHttpInfo(asAt, scope);
         }
 
         /**
@@ -1698,7 +1563,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<ResourceListOfSideDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listSideDefinitionsWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            return listSideDefinitionsWithHttpInfo(asAt, scope, opts);
         }
 
         /**
@@ -1715,7 +1580,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfSideDefinition> _callback) throws ApiException {
-            return listSideDefinitionsAsync(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listSideDefinitionsAsync(asAt, scope, _callback);
         }
 
         /**
@@ -1732,7 +1597,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfSideDefinition> _callback, ConfigurationOptions opts) throws ApiException {
-            return listSideDefinitionsAsync(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return listSideDefinitionsAsync(asAt, scope, _callback, opts);
         }
     }
 
@@ -1751,11 +1616,11 @@ public class TransactionConfigurationApi {
     public APIlistSideDefinitionsRequest listSideDefinitions() {
         return new APIlistSideDefinitionsRequest();
     }
-    private okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return listTransactionTypesCall(asAt, scope, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+        return listTransactionTypesCall(asAt, scope,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listTransactionTypesCall(OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1788,18 +1653,6 @@ public class TransactionConfigurationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1822,35 +1675,35 @@ public class TransactionConfigurationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTransactionTypesValidateBeforeCall(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listTransactionTypesCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+    private okhttp3.Call listTransactionTypesValidateBeforeCall(OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransactionTypesCall(asAt, scope, _callback, opts);
 
     }
 
 
-    private ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<Map<String, List<TransactionType>>> listTransactionTypesWithHttpInfo(OffsetDateTime asAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
+    private okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<Map<String, List<TransactionType>>> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listTransactionTypesAsync(OffsetDateTime asAt, String scope, final ApiCallback<Map<String, List<TransactionType>>> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = listTransactionTypesValidateBeforeCall(asAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<TransactionType>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1859,9 +1712,6 @@ public class TransactionConfigurationApi {
     public class APIlistTransactionTypesRequest {
         private OffsetDateTime asAt;
         private String scope;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIlistTransactionTypesRequest() {
         }
@@ -1887,36 +1737,6 @@ public class TransactionConfigurationApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIlistTransactionTypesRequest
-         */
-        public APIlistTransactionTypesRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIlistTransactionTypesRequest
-         */
-        public APIlistTransactionTypesRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIlistTransactionTypesRequest
-         */
-        public APIlistTransactionTypesRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for listTransactionTypes
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1930,7 +1750,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listTransactionTypesCall(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listTransactionTypesCall(asAt, scope, _callback);
         }
 
         /**
@@ -1946,7 +1766,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public Map<String, List<TransactionType>> execute() throws ApiException {
-            ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope);
             return localVarResp.getData();
         }
 
@@ -1963,7 +1783,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public Map<String, List<TransactionType>> execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<Map<String, List<TransactionType>>> localVarResp = listTransactionTypesWithHttpInfo(asAt, scope, opts);
             return localVarResp.getData();
         }
 
@@ -1980,7 +1800,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<Map<String, List<TransactionType>>> executeWithHttpInfo() throws ApiException {
-            return listTransactionTypesWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId);
+            return listTransactionTypesWithHttpInfo(asAt, scope);
         }
 
         /**
@@ -1996,7 +1816,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public ApiResponse<Map<String, List<TransactionType>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listTransactionTypesWithHttpInfo(asAt, scope, timelineScope, timelineCode, closedPeriodId, opts);
+            return listTransactionTypesWithHttpInfo(asAt, scope, opts);
         }
 
         /**
@@ -2013,7 +1833,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<TransactionType>>> _callback) throws ApiException {
-            return listTransactionTypesAsync(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listTransactionTypesAsync(asAt, scope, _callback);
         }
 
         /**
@@ -2030,7 +1850,7 @@ public class TransactionConfigurationApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<TransactionType>>> _callback, ConfigurationOptions opts) throws ApiException {
-            return listTransactionTypesAsync(asAt, scope, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return listTransactionTypesAsync(asAt, scope, _callback, opts);
         }
     }
 

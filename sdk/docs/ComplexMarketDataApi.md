@@ -303,7 +303,7 @@ public class ComplexMarketDataApiExample {
 
 ## upsertAppendComplexMarketData
 
-> UpsertSingleStructuredDataResponse upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt)
+> UpsertSingleStructuredDataResponse upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, asAt)
 
 [EARLY ACCESS] UpsertAppendComplexMarketData: Appends a new point to the end of a ComplexMarketData definition.
 
@@ -350,13 +350,12 @@ public class ComplexMarketDataApiExample {
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         String scope = "scope_example"; // String | The scope of the complex market data to append.
         AppendComplexMarketDataRequest appendComplexMarketDataRequest = new AppendComplexMarketDataRequest(); // AppendComplexMarketDataRequest | Request definition of the point to append.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the effectiveAt of the ComplexMarketDataId given in the request body.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt).execute(opts);
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, asAt).execute(opts);
 
-            UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt).execute();
+            UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplexMarketDataApi#upsertAppendComplexMarketData");
@@ -375,7 +374,6 @@ public class ComplexMarketDataApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the complex market data to append. | |
 | **appendComplexMarketDataRequest** | [**AppendComplexMarketDataRequest**](AppendComplexMarketDataRequest.md)| Request definition of the point to append. | |
-| **effectiveAt** | **String**| The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the effectiveAt of the ComplexMarketDataId given in the request body. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. | [optional] |
 
 ### Return type

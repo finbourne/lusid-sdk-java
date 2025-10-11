@@ -206,7 +206,7 @@ public class ConfigurationRecipeApiExample {
 
 ## getConfigurationRecipe
 
-> GetRecipeResponse getConfigurationRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId)
+> GetRecipeResponse getConfigurationRecipe(scope, code, asAt)
 
 GetConfigurationRecipe: Get Configuration Recipe
 
@@ -254,14 +254,11 @@ public class ConfigurationRecipeApiExample {
         String scope = "scope_example"; // String | The scope of the Configuration Recipe to retrieve.
         String code = "code_example"; // String | The name of the recipe to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt).execute(opts);
 
-            GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#getConfigurationRecipe");
@@ -281,9 +278,6 @@ public class ConfigurationRecipeApiExample {
 | **scope** | **String**| The scope of the Configuration Recipe to retrieve. | |
 | **code** | **String**| The name of the recipe to retrieve the data for. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -307,7 +301,7 @@ public class ConfigurationRecipeApiExample {
 
 ## getDerivedRecipe
 
-> GetRecipeResponse getDerivedRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId)
+> GetRecipeResponse getDerivedRecipe(scope, code, asAt)
 
 GetDerivedRecipe: Get Configuration Recipe either from the store or expanded from a Recipe Composer.
 
@@ -355,14 +349,11 @@ public class ConfigurationRecipeApiExample {
         String scope = "scope_example"; // String | The scope of the Configuration Recipe or Recipe Composer to return.
         String code = "code_example"; // String | The code of the Configuration Recipe or Recipe Composer to return.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt).execute(opts);
 
-            GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#getDerivedRecipe");
@@ -382,9 +373,6 @@ public class ConfigurationRecipeApiExample {
 | **scope** | **String**| The scope of the Configuration Recipe or Recipe Composer to return. | |
 | **code** | **String**| The code of the Configuration Recipe or Recipe Composer to return. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -408,7 +396,7 @@ public class ConfigurationRecipeApiExample {
 
 ## getRecipeComposer
 
-> GetRecipeComposerResponse getRecipeComposer(scope, code, asAt, timelineScope, timelineCode, closedPeriodId)
+> GetRecipeComposerResponse getRecipeComposer(scope, code, asAt)
 
 GetRecipeComposer: Get Recipe Composer
 
@@ -456,14 +444,11 @@ public class ConfigurationRecipeApiExample {
         String scope = "scope_example"; // String | The scope of the Recipe Composer to retrieve.
         String code = "code_example"; // String | The name of the Recipe Composer to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Recipe Composer. Defaults to return the latest version if not specified.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt).execute(opts);
 
-            GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#getRecipeComposer");
@@ -483,9 +468,6 @@ public class ConfigurationRecipeApiExample {
 | **scope** | **String**| The scope of the Recipe Composer to retrieve. | |
 | **code** | **String**| The name of the Recipe Composer to retrieve the data for. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Recipe Composer. Defaults to return the latest version if not specified. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -600,7 +582,7 @@ public class ConfigurationRecipeApiExample {
 
 ## listConfigurationRecipes
 
-> ResourceListOfGetRecipeResponse listConfigurationRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfGetRecipeResponse listConfigurationRecipes(asAt, filter)
 
 ListConfigurationRecipes: List the set of Configuration Recipes
 
@@ -647,14 +629,11 @@ public class ConfigurationRecipeApiExample {
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter).execute(opts);
 
-            ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#listConfigurationRecipes");
@@ -673,9 +652,6 @@ public class ConfigurationRecipeApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -699,7 +675,7 @@ public class ConfigurationRecipeApiExample {
 
 ## listDerivedRecipes
 
-> ResourceListOfGetRecipeResponse listDerivedRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfGetRecipeResponse listDerivedRecipes(asAt, filter)
 
 ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
 
@@ -746,14 +722,11 @@ public class ConfigurationRecipeApiExample {
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set, note this functionality is not yet enabled for this endpoint.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute(opts);
 
-            ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#listDerivedRecipes");
@@ -772,9 +745,6 @@ public class ConfigurationRecipeApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set, note this functionality is not yet enabled for this endpoint. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -798,7 +768,7 @@ public class ConfigurationRecipeApiExample {
 
 ## listRecipeComposers
 
-> ResourceListOfGetRecipeComposerResponse listRecipeComposers(asAt, filter, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfGetRecipeComposerResponse listRecipeComposers(asAt, filter)
 
 ListRecipeComposers: List the set of Recipe Composers
 
@@ -845,14 +815,11 @@ public class ConfigurationRecipeApiExample {
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Recipes Composers. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set, note this functionality is not yet enabled for this endpoint.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter).execute(opts);
 
-            ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#listRecipeComposers");
@@ -871,9 +838,6 @@ public class ConfigurationRecipeApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Recipes Composers. Defaults to latest if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set, note this functionality is not yet enabled for this endpoint. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 

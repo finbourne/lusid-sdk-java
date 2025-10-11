@@ -560,11 +560,11 @@ public class DataTypesApi {
     public APIdeleteDataTypeRequest deleteDataType(String scope, String code) {
         return new APIdeleteDataTypeRequest(scope, code);
     }
-    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return getDataTypeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getDataTypeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -595,18 +595,6 @@ public class DataTypesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -629,7 +617,7 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDataTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDataTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDataType(Async)");
@@ -640,34 +628,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDataType(Async)");
         }
 
-        return getDataTypeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return getDataTypeCall(scope, code, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<DataType> _callback) throws ApiException {
+    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -677,9 +665,6 @@ public class DataTypesApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIgetDataTypeRequest(String scope, String code) {
             this.scope = scope;
@@ -697,36 +682,6 @@ public class DataTypesApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIgetDataTypeRequest
-         */
-        public APIgetDataTypeRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIgetDataTypeRequest
-         */
-        public APIgetDataTypeRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIgetDataTypeRequest
-         */
-        public APIgetDataTypeRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for getDataType
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -740,7 +695,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getDataTypeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getDataTypeCall(scope, code, asAt, _callback);
         }
 
         /**
@@ -756,7 +711,7 @@ public class DataTypesApi {
          </table>
          */
         public DataType execute() throws ApiException {
-            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt);
             return localVarResp.getData();
         }
 
@@ -773,7 +728,7 @@ public class DataTypesApi {
          </table>
          */
         public DataType execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -790,7 +745,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
-            return getDataTypeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
+            return getDataTypeWithHttpInfo(scope, code, asAt);
         }
 
         /**
@@ -806,7 +761,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getDataTypeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            return getDataTypeWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -823,7 +778,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
-            return getDataTypeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getDataTypeAsync(scope, code, asAt, _callback);
         }
 
         /**
@@ -840,7 +795,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
-            return getDataTypeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return getDataTypeAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -861,11 +816,11 @@ public class DataTypesApi {
     public APIgetDataTypeRequest getDataType(String scope, String code) {
         return new APIgetDataTypeRequest(scope, code);
     }
-    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -904,18 +859,6 @@ public class DataTypesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -938,7 +881,7 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUnitsFromDataTypeValidateBeforeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeValidateBeforeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getUnitsFromDataType(Async)");
@@ -949,34 +892,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getUnitsFromDataType(Async)");
         }
 
-        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -988,9 +931,6 @@ public class DataTypesApi {
         private List<String> units;
         private String filter;
         private OffsetDateTime asAt;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIgetUnitsFromDataTypeRequest(String scope, String code) {
             this.scope = scope;
@@ -1028,36 +968,6 @@ public class DataTypesApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIgetUnitsFromDataTypeRequest
-         */
-        public APIgetUnitsFromDataTypeRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIgetUnitsFromDataTypeRequest
-         */
-        public APIgetUnitsFromDataTypeRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIgetUnitsFromDataTypeRequest
-         */
-        public APIgetUnitsFromDataTypeRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for getUnitsFromDataType
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1071,7 +981,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, _callback);
         }
 
         /**
@@ -1087,7 +997,7 @@ public class DataTypesApi {
          </table>
          */
         public ResourceListOfIUnitDefinitionDto execute() throws ApiException {
-            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
             return localVarResp.getData();
         }
 
@@ -1104,7 +1014,7 @@ public class DataTypesApi {
          </table>
          */
         public ResourceListOfIUnitDefinitionDto execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -1121,7 +1031,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<ResourceListOfIUnitDefinitionDto> executeWithHttpInfo() throws ApiException {
-            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId);
+            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
         }
 
         /**
@@ -1137,7 +1047,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<ResourceListOfIUnitDefinitionDto> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, opts);
         }
 
         /**
@@ -1154,7 +1064,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
-            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, _callback);
         }
 
         /**
@@ -1171,7 +1081,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback, ConfigurationOptions opts) throws ApiException {
-            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, _callback, opts);
         }
     }
 
@@ -1192,11 +1102,11 @@ public class DataTypesApi {
     public APIgetUnitsFromDataTypeRequest getUnitsFromDataType(String scope, String code) {
         return new APIgetUnitsFromDataTypeRequest(scope, code);
     }
-    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1241,18 +1151,6 @@ public class DataTypesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1275,35 +1173,35 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1315,9 +1213,6 @@ public class DataTypesApi {
         private Integer limit;
         private String filter;
         private List<String> sortBy;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIlistDataTypeSummariesRequest() {
         }
@@ -1373,36 +1268,6 @@ public class DataTypesApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIlistDataTypeSummariesRequest
-         */
-        public APIlistDataTypeSummariesRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIlistDataTypeSummariesRequest
-         */
-        public APIlistDataTypeSummariesRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIlistDataTypeSummariesRequest
-         */
-        public APIlistDataTypeSummariesRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for listDataTypeSummaries
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1416,7 +1281,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -1432,7 +1297,7 @@ public class DataTypesApi {
          </table>
          */
         public PagedResourceListOfDataTypeSummary execute() throws ApiException {
-            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy);
             return localVarResp.getData();
         }
 
@@ -1449,7 +1314,7 @@ public class DataTypesApi {
          </table>
          */
         public PagedResourceListOfDataTypeSummary execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
             return localVarResp.getData();
         }
 
@@ -1466,7 +1331,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo() throws ApiException {
-            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
+            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy);
         }
 
         /**
@@ -1482,7 +1347,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
+            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -1499,7 +1364,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
-            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, _callback);
         }
 
         /**
@@ -1516,7 +1381,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback, ConfigurationOptions opts) throws ApiException {
-            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -1535,11 +1400,11 @@ public class DataTypesApi {
     public APIlistDataTypeSummariesRequest listDataTypeSummaries() {
         return new APIlistDataTypeSummariesRequest();
     }
-    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1585,18 +1450,6 @@ public class DataTypesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
-        if (timelineScope != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
-        }
-
-        if (timelineCode != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
-        }
-
-        if (closedPeriodId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1619,40 +1472,40 @@ public class DataTypesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listDataTypes(Async)");
         }
 
-        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
+    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfDataType> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1665,9 +1518,6 @@ public class DataTypesApi {
         private List<String> sortBy;
         private Integer limit;
         private String filter;
-        private String timelineScope;
-        private String timelineCode;
-        private String closedPeriodId;
 
         private APIlistDataTypesRequest(String scope) {
             this.scope = scope;
@@ -1724,36 +1574,6 @@ public class DataTypesApi {
         }
 
         /**
-         * Set timelineScope
-         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
-         * @return APIlistDataTypesRequest
-         */
-        public APIlistDataTypesRequest timelineScope(String timelineScope) {
-            this.timelineScope = timelineScope;
-            return this;
-        }
-
-        /**
-         * Set timelineCode
-         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
-         * @return APIlistDataTypesRequest
-         */
-        public APIlistDataTypesRequest timelineCode(String timelineCode) {
-            this.timelineCode = timelineCode;
-            return this;
-        }
-
-        /**
-         * Set closedPeriodId
-         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
-         * @return APIlistDataTypesRequest
-         */
-        public APIlistDataTypesRequest closedPeriodId(String closedPeriodId) {
-            this.closedPeriodId = closedPeriodId;
-            return this;
-        }
-
-        /**
          * Build call for listDataTypes
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1767,7 +1587,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
         }
 
         /**
@@ -1783,7 +1603,7 @@ public class DataTypesApi {
          </table>
          */
         public ResourceListOfDataType execute() throws ApiException {
-            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter);
             return localVarResp.getData();
         }
 
@@ -1800,7 +1620,7 @@ public class DataTypesApi {
          </table>
          */
         public ResourceListOfDataType execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, opts);
             return localVarResp.getData();
         }
 
@@ -1817,7 +1637,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<ResourceListOfDataType> executeWithHttpInfo() throws ApiException {
-            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId);
+            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter);
         }
 
         /**
@@ -1833,7 +1653,7 @@ public class DataTypesApi {
          </table>
          */
         public ApiResponse<ResourceListOfDataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, opts);
+            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, opts);
         }
 
         /**
@@ -1850,7 +1670,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
-            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback);
+            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
         }
 
         /**
@@ -1867,7 +1687,7 @@ public class DataTypesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback, ConfigurationOptions opts) throws ApiException {
-            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
         }
     }
 

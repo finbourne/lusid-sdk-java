@@ -202,7 +202,7 @@ public class DataTypesApiExample {
 
 ## getDataType
 
-> DataType getDataType(scope, code, asAt, timelineScope, timelineCode, closedPeriodId)
+> DataType getDataType(scope, code, asAt)
 
 GetDataType: Get data type definition
 
@@ -250,14 +250,11 @@ public class DataTypesApiExample {
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the data type definition. Defaults to   return the latest version of the instrument definition if not specified.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // DataType result = apiInstance.getDataType(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // DataType result = apiInstance.getDataType(scope, code, asAt).execute(opts);
 
-            DataType result = apiInstance.getDataType(scope, code, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            DataType result = apiInstance.getDataType(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling DataTypesApi#getDataType");
@@ -277,9 +274,6 @@ public class DataTypesApiExample {
 | **scope** | **String**| The scope of the data type | |
 | **code** | **String**| The code of the data type | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the data type definition. Defaults to   return the latest version of the instrument definition if not specified. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -303,7 +297,7 @@ public class DataTypesApiExample {
 
 ## getUnitsFromDataType
 
-> ResourceListOfIUnitDefinitionDto getUnitsFromDataType(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfIUnitDefinitionDto getUnitsFromDataType(scope, code, units, filter, asAt)
 
 [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
 
@@ -353,14 +347,11 @@ public class DataTypesApiExample {
         List<String> units = Arrays.asList(); // List<String> | One or more unit identifiers for which the definition is being requested
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Schema, use \"schema eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The as at of the requested data type
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt).execute(opts);
 
-            ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling DataTypesApi#getUnitsFromDataType");
@@ -382,9 +373,6 @@ public class DataTypesApiExample {
 | **units** | [**List&lt;String&gt;**](String.md)| One or more unit identifiers for which the definition is being requested | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set.    For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **asAt** | **OffsetDateTime**| Optional. The as at of the requested data type | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -408,7 +396,7 @@ public class DataTypesApiExample {
 
 ## listDataTypeSummaries
 
-> PagedResourceListOfDataTypeSummary listDataTypeSummaries(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId)
+> PagedResourceListOfDataTypeSummary listDataTypeSummaries(asAt, page, limit, filter, sortBy)
 
 [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
 
@@ -458,14 +446,11 @@ public class DataTypesApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Scope, use \"id.scope eq 'myscope'\", to filter on Schema, use \"schema eq 'string'\",   to filter on AcceptableValues use \"acceptableValues any (~ eq 'value')\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy).execute(opts);
 
-            PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute();
+            PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling DataTypesApi#listDataTypeSummaries");
@@ -487,9 +472,6 @@ public class DataTypesApiExample {
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set.    For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,   to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -513,7 +495,7 @@ public class DataTypesApiExample {
 
 ## listDataTypes
 
-> ResourceListOfDataType listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfDataType listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter)
 
 ListDataTypes: List data types
 
@@ -564,14 +546,11 @@ public class DataTypesApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \"displayName eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter).execute(opts);
 
-            ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling DataTypesApi#listDataTypes");
@@ -594,9 +573,6 @@ public class DataTypesApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 

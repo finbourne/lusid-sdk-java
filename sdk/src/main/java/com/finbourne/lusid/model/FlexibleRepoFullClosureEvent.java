@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Event to trigger the full closure of a repurchase agreement booked as a FlexibleRepo.
+ * Event to trigger the full closure of a repurchase agreement booked as a FlexibleRepo.  Specific to a FlexibleRepo instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlexibleRepoFullClosureEvent extends InstrumentEvent {
@@ -70,7 +70,7 @@ public class FlexibleRepoFullClosureEvent extends InstrumentEvent {
   }
 
    /**
-   * Date on which the closure begins.
+   * Date on which the closure begins  This is a required field, unless otherwise supplied via \&quot;EventDateStamps\&quot; in  the instrument event upsert request.
    * @return entitlementDate
   **/
   @jakarta.annotation.Nullable

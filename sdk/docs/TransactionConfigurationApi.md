@@ -301,7 +301,7 @@ public class TransactionConfigurationApiExample {
 
 ## getSideDefinition
 
-> SideDefinition getSideDefinition(side, scope, asAt, timelineScope, timelineCode, closedPeriodId)
+> SideDefinition getSideDefinition(side, scope, asAt)
 
 GetSideDefinition: Get the side definition for a given side name( or label)
 
@@ -349,14 +349,11 @@ public class TransactionConfigurationApiExample {
         String side = "side_example"; // String | The label to uniquely identify the side.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute(opts);
 
-            SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#getSideDefinition");
@@ -376,9 +373,6 @@ public class TransactionConfigurationApiExample {
 | **side** | **String**| The label to uniquely identify the side. | |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. | [optional] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -402,7 +396,7 @@ public class TransactionConfigurationApiExample {
 
 ## getTransactionType
 
-> TransactionType getTransactionType(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId)
+> TransactionType getTransactionType(source, type, asAt, scope)
 
 GetTransactionType: Get a single transaction configuration type
 
@@ -451,14 +445,11 @@ public class TransactionConfigurationApiExample {
         String type = "type_example"; // String | One of the type's aliases
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute(opts);
 
-            TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope, timelineScope, timelineCode, closedPeriodId).execute();
+            TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#getTransactionType");
@@ -479,9 +470,6 @@ public class TransactionConfigurationApiExample {
 | **type** | **String**| One of the type&#39;s aliases | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
 | **scope** | **String**| The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -505,7 +493,7 @@ public class TransactionConfigurationApiExample {
 
 ## listSideDefinitions
 
-> ResourceListOfSideDefinition listSideDefinitions(asAt, scope, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfSideDefinition listSideDefinitions(asAt, scope)
 
 ListSideDefinitions: List the side definitions
 
@@ -552,14 +540,11 @@ public class TransactionConfigurationApiExample {
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute(opts);
 
-            ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#listSideDefinitions");
@@ -578,9 +563,6 @@ public class TransactionConfigurationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
@@ -604,7 +586,7 @@ public class TransactionConfigurationApiExample {
 
 ## listTransactionTypes
 
-> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes(asAt, scope, timelineScope, timelineCode, closedPeriodId)
+> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes(asAt, scope)
 
 ListTransactionTypes: List transaction types
 
@@ -651,14 +633,11 @@ public class TransactionConfigurationApiExample {
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
-        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided.
-        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute(opts);
 
-            Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope, timelineScope, timelineCode, closedPeriodId).execute();
+            Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#listTransactionTypes");
@@ -677,9 +656,6 @@ public class TransactionConfigurationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt. If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt. If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
-| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt. If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
