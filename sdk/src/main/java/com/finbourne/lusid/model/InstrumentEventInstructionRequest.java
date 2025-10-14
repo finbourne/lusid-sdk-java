@@ -136,7 +136,7 @@ public class InstrumentEventInstructionRequest {
   }
 
    /**
-   * The type of instruction (Ignore, ElectForPortfolio, ElectForHolding)
+   * The type of instruction (Ignore, ElectForPortfolio, ElectForHolding, ElectForLoanFacilityHolding)
    * @return instructionType
   **/
   @jakarta.annotation.Nonnull

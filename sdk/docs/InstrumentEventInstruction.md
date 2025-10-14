@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **instrumentEventInstructionId** | **String** | The unique identifier for this instruction | [optional] [default to String]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instrumentEventId** | **String** | The identifier of the instrument event being instructed | [optional] [default to String]
-**instructionType** | **String** | The type of instruction (Ignore, ElectForPortfolio, ElectForHolding) | [optional] [default to String]
+**instructionType** | **String** | The type of instruction (Ignore, ElectForPortfolio, ElectForHolding, ElectForLoanFacilityHolding) | [optional] [default to String]
 **electionKey** | **String** | For elected instructions, the key to be chosen | [optional] [default to String]
 **holdingId** | **Long** | For holding instructions, the id of the holding for which the instruction will apply | [optional] [default to Long]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
