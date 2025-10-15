@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createPropertyDefinition**](PropertyDefinitionsApi.md#createPropertyDefinition) | **POST** /api/propertydefinitions | CreatePropertyDefinition: Create property definition |
 | [**deletePropertyDefinition**](PropertyDefinitionsApi.md#deletePropertyDefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | DeletePropertyDefinition: Delete property definition |
 | [**deletePropertyDefinitionProperties**](PropertyDefinitionsApi.md#deletePropertyDefinitionProperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties/$delete | [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties |
+| [**getDerivedFormulaExplanation**](PropertyDefinitionsApi.md#getDerivedFormulaExplanation) | **GET** /api/propertydefinitions/derived/$formulaExplanation | [INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula |
 | [**getMultiplePropertyDefinitions**](PropertyDefinitionsApi.md#getMultiplePropertyDefinitions) | **GET** /api/propertydefinitions | GetMultiplePropertyDefinitions: Get multiple property definitions |
 | [**getPropertyDefinition**](PropertyDefinitionsApi.md#getPropertyDefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | GetPropertyDefinition: Get property definition |
 | [**getPropertyDefinitionPropertyTimeSeries**](PropertyDefinitionsApi.md#getPropertyDefinitionPropertyTimeSeries) | **GET** /api/propertydefinitions/{domain}/{scope}/{code}/properties/time-series | [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series |
@@ -388,6 +389,101 @@ public class PropertyDefinitionsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the properties were deleted from the specified definition |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getDerivedFormulaExplanation
+
+> DerivedPropertyComponent getDerivedFormulaExplanation(derivationFormulaExplainRequest, asAt, effectiveAt)
+
+[INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula
+
+Produces a manifest that shows the nested hierarchy of any source properties and the actions taken upon them to create the derived property.  This can either be done against an existing entity, which will produce a manifest that includes the values of the source properties  at the specified effective date time, or it can be done without providing an entity which will produce a manifest without values.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PropertyDefinitionsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
+        PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
+        DerivationFormulaExplainRequest derivationFormulaExplainRequest = new DerivationFormulaExplainRequest(); // DerivationFormulaExplainRequest | Information about the derivation formula to explain, and optionally, the entity to resolve the formula against.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to resolve the entity. Defaults to returning the latest asAt in LUSID   if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to resolve the entity. Defaults to the current LUSID   system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DerivedPropertyComponent result = apiInstance.getDerivedFormulaExplanation(derivationFormulaExplainRequest, asAt, effectiveAt).execute(opts);
+
+            DerivedPropertyComponent result = apiInstance.getDerivedFormulaExplanation(derivationFormulaExplainRequest, asAt, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PropertyDefinitionsApi#getDerivedFormulaExplanation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **derivationFormulaExplainRequest** | [**DerivationFormulaExplainRequest**](DerivationFormulaExplainRequest.md)| Information about the derivation formula to explain, and optionally, the entity to resolve the formula against. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to resolve the entity. Defaults to returning the latest asAt in LUSID   if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to resolve the entity. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+
+### Return type
+
+[**DerivedPropertyComponent**](DerivedPropertyComponent.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested derived property formula components. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

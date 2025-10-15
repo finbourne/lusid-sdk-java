@@ -29,6 +29,8 @@ import com.finbourne.lusid.model.BatchUpsertPropertyDefinitionPropertiesResponse
 import com.finbourne.lusid.model.CreateDerivedPropertyDefinitionRequest;
 import com.finbourne.lusid.model.CreatePropertyDefinitionRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.DerivationFormulaExplainRequest;
+import com.finbourne.lusid.model.DerivedPropertyComponent;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
@@ -1079,6 +1081,271 @@ public class PropertyDefinitionsApi {
      */
     public APIdeletePropertyDefinitionPropertiesRequest deletePropertyDefinitionProperties(String domain, String scope, String code, List<String> requestBody) {
         return new APIdeletePropertyDefinitionPropertiesRequest(domain, scope, code, requestBody);
+    }
+    private okhttp3.Call getDerivedFormulaExplanationCall(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return getDerivedFormulaExplanationCall(derivationFormulaExplainRequest, asAt, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDerivedFormulaExplanationCall(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = derivationFormulaExplainRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/propertydefinitions/derived/$formulaExplanation";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDerivedFormulaExplanationValidateBeforeCall(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'derivationFormulaExplainRequest' is set
+        if (derivationFormulaExplainRequest == null) {
+            throw new ApiException("Missing the required parameter 'derivationFormulaExplainRequest' when calling getDerivedFormulaExplanation(Async)");
+        }
+
+        return getDerivedFormulaExplanationCall(derivationFormulaExplainRequest, asAt, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DerivedPropertyComponent> getDerivedFormulaExplanationWithHttpInfo(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = getDerivedFormulaExplanationValidateBeforeCall(derivationFormulaExplainRequest, asAt, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DerivedPropertyComponent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DerivedPropertyComponent> getDerivedFormulaExplanationWithHttpInfo(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDerivedFormulaExplanationValidateBeforeCall(derivationFormulaExplainRequest, asAt, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<DerivedPropertyComponent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getDerivedFormulaExplanationAsync(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, final ApiCallback<DerivedPropertyComponent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDerivedFormulaExplanationValidateBeforeCall(derivationFormulaExplainRequest, asAt, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DerivedPropertyComponent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDerivedFormulaExplanationAsync(DerivationFormulaExplainRequest derivationFormulaExplainRequest, OffsetDateTime asAt, String effectiveAt, final ApiCallback<DerivedPropertyComponent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDerivedFormulaExplanationValidateBeforeCall(derivationFormulaExplainRequest, asAt, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<DerivedPropertyComponent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetDerivedFormulaExplanationRequest {
+        private final DerivationFormulaExplainRequest derivationFormulaExplainRequest;
+        private OffsetDateTime asAt;
+        private String effectiveAt;
+
+        private APIgetDerivedFormulaExplanationRequest(DerivationFormulaExplainRequest derivationFormulaExplainRequest) {
+            this.derivationFormulaExplainRequest = derivationFormulaExplainRequest;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to resolve the entity. Defaults to returning the latest asAt in LUSID   if not specified. (optional)
+         * @return APIgetDerivedFormulaExplanationRequest
+         */
+        public APIgetDerivedFormulaExplanationRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to resolve the entity. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIgetDerivedFormulaExplanationRequest
+         */
+        public APIgetDerivedFormulaExplanationRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for getDerivedFormulaExplanation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getDerivedFormulaExplanationCall(derivationFormulaExplainRequest, asAt, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request
+         * @return DerivedPropertyComponent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DerivedPropertyComponent execute() throws ApiException {
+            ApiResponse<DerivedPropertyComponent> localVarResp = getDerivedFormulaExplanationWithHttpInfo(derivationFormulaExplainRequest, asAt, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DerivedPropertyComponent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DerivedPropertyComponent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DerivedPropertyComponent> localVarResp = getDerivedFormulaExplanationWithHttpInfo(derivationFormulaExplainRequest, asAt, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request with HTTP info returned
+         * @return ApiResponse&lt;DerivedPropertyComponent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DerivedPropertyComponent> executeWithHttpInfo() throws ApiException {
+            return getDerivedFormulaExplanationWithHttpInfo(derivationFormulaExplainRequest, asAt, effectiveAt);
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DerivedPropertyComponent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DerivedPropertyComponent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDerivedFormulaExplanationWithHttpInfo(derivationFormulaExplainRequest, asAt, effectiveAt, opts);
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DerivedPropertyComponent> _callback) throws ApiException {
+            return getDerivedFormulaExplanationAsync(derivationFormulaExplainRequest, asAt, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute getDerivedFormulaExplanation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DerivedPropertyComponent> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDerivedFormulaExplanationAsync(derivationFormulaExplainRequest, asAt, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula
+     * Produces a manifest that shows the nested hierarchy of any source properties and the actions taken upon them to create the derived property.  This can either be done against an existing entity, which will produce a manifest that includes the values of the source properties  at the specified effective date time, or it can be done without providing an entity which will produce a manifest without values.
+     * @param derivationFormulaExplainRequest Information about the derivation formula to explain, and optionally, the entity to resolve the formula against. (required)
+     * @return APIgetDerivedFormulaExplanationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested derived property formula components. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetDerivedFormulaExplanationRequest getDerivedFormulaExplanation(DerivationFormulaExplainRequest derivationFormulaExplainRequest) {
+        return new APIgetDerivedFormulaExplanationRequest(derivationFormulaExplainRequest);
     }
     private okhttp3.Call getMultiplePropertyDefinitionsCall(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback _callback) throws ApiException {
         return getMultiplePropertyDefinitionsCall(propertyKeys, asAt, filter, effectiveAt,  _callback, new ConfigurationOptions());

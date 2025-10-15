@@ -466,6 +466,7 @@ Class | Method | HTTP request | Description
 *PropertyDefinitionsApi* | [**createPropertyDefinition**](docs/PropertyDefinitionsApi.md#createpropertydefinition) | **POST** /api/propertydefinitions | CreatePropertyDefinition: Create property definition
 *PropertyDefinitionsApi* | [**deletePropertyDefinition**](docs/PropertyDefinitionsApi.md#deletepropertydefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | DeletePropertyDefinition: Delete property definition
 *PropertyDefinitionsApi* | [**deletePropertyDefinitionProperties**](docs/PropertyDefinitionsApi.md#deletepropertydefinitionproperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties/$delete | [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties
+*PropertyDefinitionsApi* | [**getDerivedFormulaExplanation**](docs/PropertyDefinitionsApi.md#getderivedformulaexplanation) | **GET** /api/propertydefinitions/derived/$formulaExplanation | [INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula
 *PropertyDefinitionsApi* | [**getMultiplePropertyDefinitions**](docs/PropertyDefinitionsApi.md#getmultiplepropertydefinitions) | **GET** /api/propertydefinitions | GetMultiplePropertyDefinitions: Get multiple property definitions
 *PropertyDefinitionsApi* | [**getPropertyDefinition**](docs/PropertyDefinitionsApi.md#getpropertydefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | GetPropertyDefinition: Get property definition
 *PropertyDefinitionsApi* | [**getPropertyDefinitionPropertyTimeSeries**](docs/PropertyDefinitionsApi.md#getpropertydefinitionpropertytimeseries) | **GET** /api/propertydefinitions/{domain}/{scope}/{code}/properties/time-series | [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series
@@ -1004,6 +1005,8 @@ Class | Method | HTTP request | Description
  - [DependencySourceFilter](docs/DependencySourceFilter.md)
  - [DepositCloseEvent](docs/DepositCloseEvent.md)
  - [DepositInterestPaymentEvent](docs/DepositInterestPaymentEvent.md)
+ - [DerivationFormulaExplainRequest](docs/DerivationFormulaExplainRequest.md)
+ - [DerivedPropertyComponent](docs/DerivedPropertyComponent.md)
  - [DescribedAddressKey](docs/DescribedAddressKey.md)
  - [Dialect](docs/Dialect.md)
  - [DialectId](docs/DialectId.md)
