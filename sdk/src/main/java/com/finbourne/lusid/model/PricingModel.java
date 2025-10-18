@@ -67,7 +67,9 @@ public enum PricingModel {
   
   LOANFACILITYPRICER("LoanFacilityPricer"),
   
-  OVERRIDEONLYPRICER("OverrideOnlyPricer");
+  OVERRIDEONLYPRICER("OverrideOnlyPricer"),
+  
+  FLEXIBLEREPOSIMPLEPRICER("FlexibleRepoSimplePricer");
 
   private String value;
 

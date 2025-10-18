@@ -35,6 +35,7 @@ PricingModel method = PricingModel.FLEXIBLELOANPRICER;
 PricingModel method = PricingModel.CDSLOOKUPPRICER;
 PricingModel method = PricingModel.LOANFACILITYPRICER;
 PricingModel method = PricingModel.OVERRIDEONLYPRICER;
+PricingModel method = PricingModel.FLEXIBLEREPOSIMPLEPRICER;
 ```
 
 
