@@ -8,7 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createPropertyDefinition**](PropertyDefinitionsApi.md#createPropertyDefinition) | **POST** /api/propertydefinitions | CreatePropertyDefinition: Create property definition |
 | [**deletePropertyDefinition**](PropertyDefinitionsApi.md#deletePropertyDefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | DeletePropertyDefinition: Delete property definition |
 | [**deletePropertyDefinitionProperties**](PropertyDefinitionsApi.md#deletePropertyDefinitionProperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties/$delete | [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties |
-| [**getDerivedFormulaExplanation**](PropertyDefinitionsApi.md#getDerivedFormulaExplanation) | **POST** /api/propertydefinitions/derived/$formulaExplanation | [INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula |
+| [**getDerivedFormulaExplanation**](PropertyDefinitionsApi.md#getDerivedFormulaExplanation) | **POST** /api/propertydefinitions/derived/$formulaExplanation | GetDerivedFormulaExplanation: Get explanation of a derived property formula |
 | [**getMultiplePropertyDefinitions**](PropertyDefinitionsApi.md#getMultiplePropertyDefinitions) | **GET** /api/propertydefinitions | GetMultiplePropertyDefinitions: Get multiple property definitions |
 | [**getPropertyDefinition**](PropertyDefinitionsApi.md#getPropertyDefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | GetPropertyDefinition: Get property definition |
 | [**getPropertyDefinitionPropertyTimeSeries**](PropertyDefinitionsApi.md#getPropertyDefinitionPropertyTimeSeries) | **GET** /api/propertydefinitions/{domain}/{scope}/{code}/properties/time-series | [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series |
@@ -399,7 +399,7 @@ public class PropertyDefinitionsApiExample {
 
 > DerivedPropertyComponent getDerivedFormulaExplanation(derivationFormulaExplainRequest, asAt, effectiveAt)
 
-[INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula
+GetDerivedFormulaExplanation: Get explanation of a derived property formula
 
 Produces a manifest that shows the nested hierarchy of any source properties and the actions taken upon them to create the derived property.  This can either be done against an existing entity, which will produce a manifest that includes the values of the source properties  at the specified effective date time, or it can be done without providing an entity which will produce a manifest without values.
 

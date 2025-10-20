@@ -1332,7 +1332,7 @@ public class PropertyDefinitionsApi {
     }
 
     /**
-     * [INTERNAL] GetDerivedFormulaExplanation: Get explanation of a derived property formula
+     * GetDerivedFormulaExplanation: Get explanation of a derived property formula
      * Produces a manifest that shows the nested hierarchy of any source properties and the actions taken upon them to create the derived property.  This can either be done against an existing entity, which will produce a manifest that includes the values of the source properties  at the specified effective date time, or it can be done without providing an entity which will produce a manifest without values.
      * @param derivationFormulaExplainRequest Information about the derivation formula to explain, and optionally, the entity to resolve the formula against. (required)
      * @return APIgetDerivedFormulaExplanationRequest
