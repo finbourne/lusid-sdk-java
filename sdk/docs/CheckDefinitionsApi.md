@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteCheckDefinition**](CheckDefinitionsApi.md#deleteCheckDefinition) | **DELETE** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] DeleteCheckDefinition: Deletes a particular Check Definition |
 | [**getCheckDefinition**](CheckDefinitionsApi.md#getCheckDefinition) | **GET** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] GetCheckDefinition: Get a single Check Definition by scope and code. |
 | [**listCheckDefinitions**](CheckDefinitionsApi.md#listCheckDefinitions) | **GET** /api/dataquality/checkdefinitions | [EXPERIMENTAL] ListCheckDefinitions: List Check Definitions |
+| [**runCheckDefinition**](CheckDefinitionsApi.md#runCheckDefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset. |
 | [**updateCheckDefinition**](CheckDefinitionsApi.md#updateCheckDefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateCheckDefinition: Update Check Definition defined by scope and code |
 
 
@@ -392,6 +393,101 @@ public class CheckDefinitionsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Check Definitions. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## runCheckDefinition
+
+> RunCheckResponse runCheckDefinition(scope, code, runCheckRequest)
+
+[EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset.
+
+Runs a Check Definition against given dataset.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CheckDefinitionsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CheckDefinitionsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CheckDefinitionsApi apiInstance = apiFactory.build(CheckDefinitionsApi.class);
+
+        CheckDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CheckDefinitionsApi.class);
+        String scope = "scope_example"; // String | Scope of the CheckDefinition to run.
+        String code = "code_example"; // String | Code of the CheckDefinition to run.
+        RunCheckRequest runCheckRequest = new RunCheckRequest(); // RunCheckRequest | Run request defining what dataset to run against.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RunCheckResponse result = apiInstance.runCheckDefinition(scope, code, runCheckRequest).execute(opts);
+
+            RunCheckResponse result = apiInstance.runCheckDefinition(scope, code, runCheckRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CheckDefinitionsApi#runCheckDefinition");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the CheckDefinition to run. | |
+| **code** | **String**| Code of the CheckDefinition to run. | |
+| **runCheckRequest** | [**RunCheckRequest**](RunCheckRequest.md)| Run request defining what dataset to run against. | [optional] |
+
+### Return type
+
+[**RunCheckResponse**](RunCheckResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

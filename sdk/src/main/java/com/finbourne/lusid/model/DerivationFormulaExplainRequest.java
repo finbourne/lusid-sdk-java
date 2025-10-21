@@ -60,6 +60,10 @@ public class DerivationFormulaExplainRequest {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
 
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
   private Map<String, String> identifier;
@@ -103,7 +107,7 @@ public class DerivationFormulaExplainRequest {
   }
 
    /**
-   * The scope that entity exists in. If no scope is provided, the default scope for the entity type will be used.
+   * (Optional) The scope that entity exists in. If no scope is provided, the default scope for the entity type will be used.
    * @return scope
   **/
   @jakarta.annotation.Nullable
@@ -114,6 +118,27 @@ public class DerivationFormulaExplainRequest {
 
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+
+  public DerivationFormulaExplainRequest code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * (Optional) The code of the entity, to be provided for entities that support scope/code retrieval. If no code or identifier is provided, the logical evaluation tree without resolved values is returned.
+   * @return code
+  **/
+  @jakarta.annotation.Nullable
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
 
@@ -132,7 +157,7 @@ public class DerivationFormulaExplainRequest {
   }
 
    /**
-   * An identifier key/value pair that uniquely identifies the entity to explain the derived property for. This can be either an instrument identifier, an identifier property, or a scope/code identifier which take the format {entityType}/default/code : {identifier}. If no identifiers are provided, the logical evaluation tree without resolved values is returned.
+   * (Optional). An identifier key/value pair that uniquely identifies the entity to explain the derived property for. This can be either an instrument identifier, or an identifier property. If no code or identifier is provided, the logical evaluation tree without resolved values is returned.
    * @return identifier
   **/
   @jakarta.annotation.Nullable
@@ -153,7 +178,7 @@ public class DerivationFormulaExplainRequest {
   }
 
    /**
-   * The key of the derived property to explain. This takes the format {domain}/{scope}/{code}.
+   * (Optional) The key of the derived property to get an explanation for. This takes the format {domain}/{scope}/{code}. One of either property key or partial formula must be provided.
    * @return propertyKey
   **/
   @jakarta.annotation.Nullable
@@ -174,7 +199,7 @@ public class DerivationFormulaExplainRequest {
   }
 
    /**
-   * A partial derivation formula to explain. Can be provided in lieu of a property key.
+   * (Optional) A partial derivation formula to get an explanation for. Can be provided in lieu of a property key. One of either property key or partial formula must be provided.
    * @return partialFormula
   **/
   @jakarta.annotation.Nullable
@@ -200,6 +225,7 @@ public class DerivationFormulaExplainRequest {
     DerivationFormulaExplainRequest derivationFormulaExplainRequest = (DerivationFormulaExplainRequest) o;
     return Objects.equals(this.entityType, derivationFormulaExplainRequest.entityType) &&
         Objects.equals(this.scope, derivationFormulaExplainRequest.scope) &&
+        Objects.equals(this.code, derivationFormulaExplainRequest.code) &&
         Objects.equals(this.identifier, derivationFormulaExplainRequest.identifier) &&
         Objects.equals(this.propertyKey, derivationFormulaExplainRequest.propertyKey) &&
         Objects.equals(this.partialFormula, derivationFormulaExplainRequest.partialFormula);
@@ -211,7 +237,7 @@ public class DerivationFormulaExplainRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, scope, identifier, propertyKey, partialFormula);
+    return Objects.hash(entityType, scope, code, identifier, propertyKey, partialFormula);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,6 +253,7 @@ public class DerivationFormulaExplainRequest {
     sb.append("class DerivationFormulaExplainRequest {\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    propertyKey: ").append(toIndentedString(propertyKey)).append("\n");
     sb.append("    partialFormula: ").append(toIndentedString(partialFormula)).append("\n");
@@ -254,6 +281,7 @@ public class DerivationFormulaExplainRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("entityType");
     openapiFields.add("scope");
+    openapiFields.add("code");
     openapiFields.add("identifier");
     openapiFields.add("propertyKey");
     openapiFields.add("partialFormula");
@@ -288,6 +316,9 @@ public class DerivationFormulaExplainRequest {
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("propertyKey") != null && !jsonObj.get("propertyKey").isJsonNull()) && !jsonObj.get("propertyKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("propertyKey").toString()));

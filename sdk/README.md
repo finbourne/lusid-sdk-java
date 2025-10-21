@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *CheckDefinitionsApi* | [**deleteCheckDefinition**](docs/CheckDefinitionsApi.md#deletecheckdefinition) | **DELETE** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] DeleteCheckDefinition: Deletes a particular Check Definition
 *CheckDefinitionsApi* | [**getCheckDefinition**](docs/CheckDefinitionsApi.md#getcheckdefinition) | **GET** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] GetCheckDefinition: Get a single Check Definition by scope and code.
 *CheckDefinitionsApi* | [**listCheckDefinitions**](docs/CheckDefinitionsApi.md#listcheckdefinitions) | **GET** /api/dataquality/checkdefinitions | [EXPERIMENTAL] ListCheckDefinitions: List Check Definitions
+*CheckDefinitionsApi* | [**runCheckDefinition**](docs/CheckDefinitionsApi.md#runcheckdefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset.
 *CheckDefinitionsApi* | [**updateCheckDefinition**](docs/CheckDefinitionsApi.md#updatecheckdefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateCheckDefinition: Update Check Definition defined by scope and code
 *ComplexMarketDataApi* | [**deleteComplexMarketData**](docs/ComplexMarketDataApi.md#deletecomplexmarketdata) | **POST** /api/complexmarketdata/{scope}/$delete | DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
 *ComplexMarketDataApi* | [**getComplexMarketData**](docs/ComplexMarketDataApi.md#getcomplexmarketdata) | **POST** /api/complexmarketdata/{scope}/$get | GetComplexMarketData: Get complex market data
@@ -976,6 +977,7 @@ Class | Method | HTTP request | Description
  - [DataMapping](docs/DataMapping.md)
  - [DataModelMembership](docs/DataModelMembership.md)
  - [DataModelSummary](docs/DataModelSummary.md)
+ - [DataQualityCheckResult](docs/DataQualityCheckResult.md)
  - [DataScope](docs/DataScope.md)
  - [DataType](docs/DataType.md)
  - [DataTypeEntity](docs/DataTypeEntity.md)
@@ -1278,6 +1280,8 @@ Class | Method | HTTP request | Description
  - [LoanPeriod](docs/LoanPeriod.md)
  - [LoanPrincipalRepaymentEvent](docs/LoanPrincipalRepaymentEvent.md)
  - [LockPeriodDiaryEntryRequest](docs/LockPeriodDiaryEntryRequest.md)
+ - [LusidEntityDataset](docs/LusidEntityDataset.md)
+ - [LusidEntityResult](docs/LusidEntityResult.md)
  - [LusidInstrument](docs/LusidInstrument.md)
  - [LusidProblemDetails](docs/LusidProblemDetails.md)
  - [LusidTradeTicket](docs/LusidTradeTicket.md)
@@ -1691,6 +1695,8 @@ Class | Method | HTTP request | Description
  - [RoundingConfigurationComponent](docs/RoundingConfigurationComponent.md)
  - [RoundingConvention](docs/RoundingConvention.md)
  - [RulesInterval](docs/RulesInterval.md)
+ - [RunCheckRequest](docs/RunCheckRequest.md)
+ - [RunCheckResponse](docs/RunCheckResponse.md)
  - [ScalingMethodology](docs/ScalingMethodology.md)
  - [Schedule](docs/Schedule.md)
  - [ScheduleType](docs/ScheduleType.md)
