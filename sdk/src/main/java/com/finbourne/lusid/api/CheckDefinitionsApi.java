@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.CheckDefinition;
 import com.finbourne.lusid.model.CreateCheckDefinitionRequest;
+import com.finbourne.lusid.model.DeleteDataQualityRule;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -35,6 +36,7 @@ import com.finbourne.lusid.model.PagedResourceListOfCheckDefinition;
 import com.finbourne.lusid.model.RunCheckRequest;
 import com.finbourne.lusid.model.RunCheckResponse;
 import com.finbourne.lusid.model.UpdateCheckDefinitionRequest;
+import com.finbourne.lusid.model.UpsertDataQualityRule;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -557,6 +559,262 @@ public class CheckDefinitionsApi {
      */
     public APIdeleteCheckDefinitionRequest deleteCheckDefinition(String scope, String code) {
         return new APIdeleteCheckDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call deleteRulesCall(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, final ApiCallback _callback) throws ApiException {
+        return deleteRulesCall(scope, code, deleteDataQualityRule,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteRulesCall(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = deleteDataQualityRule;
+
+        // create path and map variables
+        String localVarPath = "/api/dataquality/checkdefinitions/{scope}/{code}/$deleteRules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteRulesValidateBeforeCall(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteRules(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteRules(Async)");
+        }
+
+        return deleteRulesCall(scope, code, deleteDataQualityRule, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CheckDefinition> deleteRulesWithHttpInfo(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule) throws ApiException {
+        okhttp3.Call localVarCall = deleteRulesValidateBeforeCall(scope, code, deleteDataQualityRule, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CheckDefinition> deleteRulesWithHttpInfo(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteRulesValidateBeforeCall(scope, code, deleteDataQualityRule, null, opts);
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteRulesAsync(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, final ApiCallback<CheckDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRulesValidateBeforeCall(scope, code, deleteDataQualityRule, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteRulesAsync(String scope, String code, List<DeleteDataQualityRule> deleteDataQualityRule, final ApiCallback<CheckDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRulesValidateBeforeCall(scope, code, deleteDataQualityRule, _callback, opts);
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteRulesRequest {
+        private final String scope;
+        private final String code;
+        private List<DeleteDataQualityRule> deleteDataQualityRule;
+
+        private APIdeleteRulesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set deleteDataQualityRule
+         * @param deleteDataQualityRule The request containing the rules to be deleted (optional)
+         * @return APIdeleteRulesRequest
+         */
+        public APIdeleteRulesRequest deleteDataQualityRule(List<DeleteDataQualityRule> deleteDataQualityRule) {
+            this.deleteDataQualityRule = deleteDataQualityRule;
+            return this;
+        }
+
+        /**
+         * Build call for deleteRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteRulesCall(scope, code, deleteDataQualityRule, _callback);
+        }
+
+        /**
+         * Execute deleteRules request
+         * @return CheckDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CheckDefinition execute() throws ApiException {
+            ApiResponse<CheckDefinition> localVarResp = deleteRulesWithHttpInfo(scope, code, deleteDataQualityRule);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CheckDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CheckDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CheckDefinition> localVarResp = deleteRulesWithHttpInfo(scope, code, deleteDataQualityRule, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteRules request with HTTP info returned
+         * @return ApiResponse&lt;CheckDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CheckDefinition> executeWithHttpInfo() throws ApiException {
+            return deleteRulesWithHttpInfo(scope, code, deleteDataQualityRule);
+        }
+
+        /**
+         * Execute deleteRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CheckDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CheckDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteRulesWithHttpInfo(scope, code, deleteDataQualityRule, opts);
+        }
+
+        /**
+         * Execute deleteRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CheckDefinition> _callback) throws ApiException {
+            return deleteRulesAsync(scope, code, deleteDataQualityRule, _callback);
+        }
+
+        /**
+         * Execute deleteRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CheckDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteRulesAsync(scope, code, deleteDataQualityRule, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteRules: Delete rules on a particular Check Definition
+     * Delete rules for a given check definition. This will not affect any other rules that are not included in the request.
+     * @param scope The scope of the specified Check Definition. (required)
+     * @param code The code of the specified Check Definition. Together with the domain and scope this uniquely   identifies the Check Definition. (required)
+     * @return APIdeleteRulesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteRulesRequest deleteRules(String scope, String code) {
+        return new APIdeleteRulesRequest(scope, code);
     }
     private okhttp3.Call getCheckDefinitionCall(String scope, String code, OffsetDateTime asAt, String effectiveAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return getCheckDefinitionCall(scope, code, asAt, effectiveAt, propertyKeys,  _callback, new ConfigurationOptions());
@@ -1683,5 +1941,261 @@ public class CheckDefinitionsApi {
      */
     public APIupdateCheckDefinitionRequest updateCheckDefinition(String scope, String code) {
         return new APIupdateCheckDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call upsertRulesCall(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, final ApiCallback _callback) throws ApiException {
+        return upsertRulesCall(scope, code, upsertDataQualityRule,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertRulesCall(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = upsertDataQualityRule;
+
+        // create path and map variables
+        String localVarPath = "/api/dataquality/checkdefinitions/{scope}/{code}/$upsertRules"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertRulesValidateBeforeCall(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertRules(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertRules(Async)");
+        }
+
+        return upsertRulesCall(scope, code, upsertDataQualityRule, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CheckDefinition> upsertRulesWithHttpInfo(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule) throws ApiException {
+        okhttp3.Call localVarCall = upsertRulesValidateBeforeCall(scope, code, upsertDataQualityRule, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CheckDefinition> upsertRulesWithHttpInfo(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertRulesValidateBeforeCall(scope, code, upsertDataQualityRule, null, opts);
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertRulesAsync(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, final ApiCallback<CheckDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertRulesValidateBeforeCall(scope, code, upsertDataQualityRule, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertRulesAsync(String scope, String code, List<UpsertDataQualityRule> upsertDataQualityRule, final ApiCallback<CheckDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertRulesValidateBeforeCall(scope, code, upsertDataQualityRule, _callback, opts);
+        Type localVarReturnType = new TypeToken<CheckDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertRulesRequest {
+        private final String scope;
+        private final String code;
+        private List<UpsertDataQualityRule> upsertDataQualityRule;
+
+        private APIupsertRulesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set upsertDataQualityRule
+         * @param upsertDataQualityRule The request containing the rules to be upserted (optional)
+         * @return APIupsertRulesRequest
+         */
+        public APIupsertRulesRequest upsertDataQualityRule(List<UpsertDataQualityRule> upsertDataQualityRule) {
+            this.upsertDataQualityRule = upsertDataQualityRule;
+            return this;
+        }
+
+        /**
+         * Build call for upsertRules
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertRulesCall(scope, code, upsertDataQualityRule, _callback);
+        }
+
+        /**
+         * Execute upsertRules request
+         * @return CheckDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CheckDefinition execute() throws ApiException {
+            ApiResponse<CheckDefinition> localVarResp = upsertRulesWithHttpInfo(scope, code, upsertDataQualityRule);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CheckDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CheckDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CheckDefinition> localVarResp = upsertRulesWithHttpInfo(scope, code, upsertDataQualityRule, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertRules request with HTTP info returned
+         * @return ApiResponse&lt;CheckDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CheckDefinition> executeWithHttpInfo() throws ApiException {
+            return upsertRulesWithHttpInfo(scope, code, upsertDataQualityRule);
+        }
+
+        /**
+         * Execute upsertRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CheckDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CheckDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertRulesWithHttpInfo(scope, code, upsertDataQualityRule, opts);
+        }
+
+        /**
+         * Execute upsertRules request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CheckDefinition> _callback) throws ApiException {
+            return upsertRulesAsync(scope, code, upsertDataQualityRule, _callback);
+        }
+
+        /**
+         * Execute upsertRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CheckDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertRulesAsync(scope, code, upsertDataQualityRule, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertRules: Upsert rules to a particular Check Definition
+     * Upsert rules for a given check definition. This will not affect any other rules that are not included in the request.
+     * @param scope The scope of the specified Check Definition. (required)
+     * @param code The code of the specified Check Definition. Together with the domain and scope this uniquely   identifies the Check Definition. (required)
+     * @return APIupsertRulesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated check definition </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertRulesRequest upsertRules(String scope, String code) {
+        return new APIupsertRulesRequest(scope, code);
     }
 }
