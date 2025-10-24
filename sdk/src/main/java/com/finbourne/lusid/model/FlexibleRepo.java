@@ -118,6 +118,10 @@ public class FlexibleRepo extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
   private TradingConventions tradingConventions;
 
+  public static final String SERIALIZED_NAME_IS_COLLATERAL_TRANSFER_ACTIVATED = "isCollateralTransferActivated";
+  @SerializedName(SERIALIZED_NAME_IS_COLLATERAL_TRANSFER_ACTIVATED)
+  private Boolean isCollateralTransferActivated;
+
   public FlexibleRepo() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -445,6 +449,27 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
 
+  public FlexibleRepo isCollateralTransferActivated(Boolean isCollateralTransferActivated) {
+    
+    this.isCollateralTransferActivated = isCollateralTransferActivated;
+    return this;
+  }
+
+   /**
+   * Indicates whether the FlexibleRepoCollateralTransfer event is activated.  Determines the behavior of manufactured coupons and related boolean parameters.  Defaults to false.  When true:  - Generates the FlexibleRepoCollateralTransfer event  - Processes collateral transfer transactions into holding changes  - Generates manufactured payments when due to be paid     When false:  - Does not generate the event  - Generates manufactured payments when due to be received
+   * @return isCollateralTransferActivated
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsCollateralTransferActivated() {
+    return isCollateralTransferActivated;
+  }
+
+
+  public void setIsCollateralTransferActivated(Boolean isCollateralTransferActivated) {
+    this.isCollateralTransferActivated = isCollateralTransferActivated;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -470,6 +495,7 @@ public class FlexibleRepo extends LusidInstrument {
         (this.repurchasePrice.compareTo(flexibleRepo.getRepurchasePrice()) == 0) &&
         Objects.equals(this.timeZoneConventions, flexibleRepo.timeZoneConventions) &&
         Objects.equals(this.tradingConventions, flexibleRepo.tradingConventions) &&
+        Objects.equals(this.isCollateralTransferActivated, flexibleRepo.isCollateralTransferActivated) &&
         super.equals(o);
   }
 
@@ -479,7 +505,7 @@ public class FlexibleRepo extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, buyerOrSeller, repoCcy, repoType, accrualBasis, collateral, haircut, margin, openRepoRollingPeriod, purchasePrice, repoRateSchedules, repurchasePrice, timeZoneConventions, tradingConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, buyerOrSeller, repoCcy, repoType, accrualBasis, collateral, haircut, margin, openRepoRollingPeriod, purchasePrice, repoRateSchedules, repurchasePrice, timeZoneConventions, tradingConventions, isCollateralTransferActivated, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -509,6 +535,7 @@ public class FlexibleRepo extends LusidInstrument {
     sb.append("    repurchasePrice: ").append(toIndentedString(repurchasePrice)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
+    sb.append("    isCollateralTransferActivated: ").append(toIndentedString(isCollateralTransferActivated)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -547,6 +574,7 @@ public class FlexibleRepo extends LusidInstrument {
     openapiFields.add("repurchasePrice");
     openapiFields.add("timeZoneConventions");
     openapiFields.add("tradingConventions");
+    openapiFields.add("isCollateralTransferActivated");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

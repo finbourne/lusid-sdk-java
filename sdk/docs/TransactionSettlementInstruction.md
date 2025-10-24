@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **status** | **String** | The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;. | [optional] [default to String]
 **instructionToPortfolioRate** | **java.math.BigDecimal** | The exchange rate between the Settlement Instruction and Portfolio. | [optional] [default to java.math.BigDecimal]
 **settlementInLieu** | [**SettlementInLieu**](SettlementInLieu.md) |  | [optional] [default to SettlementInLieu]
+**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The properties which have been requested to be decorated onto the settlement instruction. These will be from the &#39;SettlementInstruction&#39;, &#39;Portfolio&#39;, or &#39;Instrument&#39; domains. | [optional] [default to Map<String, PerpetualProperty>]
 
 ```java
 import com.finbourne.lusid.model.TransactionSettlementInstruction;
@@ -39,6 +40,7 @@ Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 @jakarta.annotation.Nullable String Status = "example Status";
 @jakarta.annotation.Nullable java.math.BigDecimal InstructionToPortfolioRate = new java.math.BigDecimal("100.00");
 SettlementInLieu SettlementInLieu = new SettlementInLieu();
+@jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 
 
 TransactionSettlementInstruction transactionSettlementInstructionInstance = new TransactionSettlementInstruction()
@@ -55,7 +57,8 @@ TransactionSettlementInstruction transactionSettlementInstructionInstance = new 
     .InstrumentIdentifiers(InstrumentIdentifiers)
     .Status(Status)
     .InstructionToPortfolioRate(InstructionToPortfolioRate)
-    .SettlementInLieu(SettlementInLieu);
+    .SettlementInLieu(SettlementInLieu)
+    .Properties(Properties);
 ```
 
 

@@ -112,6 +112,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_IN_LIEU)
   private SettlementInLieu settlementInLieu;
 
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, PerpetualProperty> properties;
+
   public TransactionSettlementInstruction() {
   }
 
@@ -425,6 +429,35 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction properties(Map<String, PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public TransactionSettlementInstruction putPropertiesItem(String key, PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The properties which have been requested to be decorated onto the settlement instruction. These will be from the &#39;SettlementInstruction&#39;, &#39;Portfolio&#39;, or &#39;Instrument&#39; domains.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -448,7 +481,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers) &&
         Objects.equals(this.status, transactionSettlementInstruction.status) &&
         (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0) &&
-        Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu);
+        Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu) &&
+        Objects.equals(this.properties, transactionSettlementInstruction.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -457,7 +491,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -485,6 +519,7 @@ public class TransactionSettlementInstruction {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
     sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -521,6 +556,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("status");
     openapiFields.add("instructionToPortfolioRate");
     openapiFields.add("settlementInLieu");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

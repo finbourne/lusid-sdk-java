@@ -21,8 +21,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -103,6 +105,10 @@ public class SettlementInstructionRequest {
   public static final String SERIALIZED_NAME_SETTLEMENT_IN_LIEU = "settlementInLieu";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_IN_LIEU)
   private SettlementInLieu settlementInLieu;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private List<PerpetualProperty> properties;
 
   public SettlementInstructionRequest() {
   }
@@ -375,6 +381,35 @@ public class SettlementInstructionRequest {
   }
 
 
+  public SettlementInstructionRequest properties(List<PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public SettlementInstructionRequest addPropertiesItem(PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new ArrayList<>();
+    }
+    this.properties.add(propertiesItem);
+    return this;
+  }
+
+   /**
+   * Get properties
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public List<PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(List<PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -396,7 +431,8 @@ public class SettlementInstructionRequest {
         Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides) &&
         Objects.equals(this.custodianAccountOverride, settlementInstructionRequest.custodianAccountOverride) &&
         (this.instructionToPortfolioRate.compareTo(settlementInstructionRequest.getInstructionToPortfolioRate()) == 0) &&
-        Objects.equals(this.settlementInLieu, settlementInstructionRequest.settlementInLieu);
+        Objects.equals(this.settlementInLieu, settlementInstructionRequest.settlementInLieu) &&
+        Objects.equals(this.properties, settlementInstructionRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -405,7 +441,7 @@ public class SettlementInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride, instructionToPortfolioRate, settlementInLieu);
+    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride, instructionToPortfolioRate, settlementInLieu, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -431,6 +467,7 @@ public class SettlementInstructionRequest {
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
     sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
     sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -465,6 +502,7 @@ public class SettlementInstructionRequest {
     openapiFields.add("custodianAccountOverride");
     openapiFields.add("instructionToPortfolioRate");
     openapiFields.add("settlementInLieu");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -515,6 +553,20 @@ public class SettlementInstructionRequest {
       // validate the optional field `settlementInLieu`
       if (jsonObj.get("settlementInLieu") != null && !jsonObj.get("settlementInLieu").isJsonNull()) {
         SettlementInLieu.validateJsonElement(jsonObj.get("settlementInLieu"));
+      }
+      if (jsonObj.get("properties") != null && !jsonObj.get("properties").isJsonNull()) {
+        JsonArray jsonArrayproperties = jsonObj.getAsJsonArray("properties");
+        if (jsonArrayproperties != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("properties").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `properties` to be an array in the JSON string but got `%s`", jsonObj.get("properties").toString()));
+          }
+
+          // validate the optional field `properties` (array)
+          for (int i = 0; i < jsonArrayproperties.size(); i++) {
+            PerpetualProperty.validateJsonElement(jsonArrayproperties.get(i));
+          };
+        }
       }
   }
 

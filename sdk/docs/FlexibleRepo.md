@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **repurchasePrice** | **java.math.BigDecimal** | The repurchase price of the repo, if known.  Only one of RepurchasePrice and RepoRateSchedules should be provided.  In the case of an OpenRepo, RepurchasePrice should not be provided,  and RepoRateSchedules should be provided instead in order to calculate the RepoRate. | [optional] [default to java.math.BigDecimal]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
+**isCollateralTransferActivated** | **Boolean** | Indicates whether the FlexibleRepoCollateralTransfer event is activated.  Determines the behavior of manufactured coupons and related boolean parameters.  Defaults to false.  When true:  - Generates the FlexibleRepoCollateralTransfer event  - Processes collateral transfer transactions into holding changes  - Generates manufactured payments when due to be paid     When false:  - Does not generate the event  - Generates manufactured payments when due to be received | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.FlexibleRepo;
@@ -42,6 +43,7 @@ Collateral Collateral = new Collateral();
 @jakarta.annotation.Nullable java.math.BigDecimal RepurchasePrice = new java.math.BigDecimal("100.00");
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 TradingConventions TradingConventions = new TradingConventions();
+Boolean IsCollateralTransferActivated = true;
 
 
 FlexibleRepo flexibleRepoInstance = new FlexibleRepo()
@@ -59,7 +61,8 @@ FlexibleRepo flexibleRepoInstance = new FlexibleRepo()
     .RepoRateSchedules(RepoRateSchedules)
     .RepurchasePrice(RepurchasePrice)
     .TimeZoneConventions(TimeZoneConventions)
-    .TradingConventions(TradingConventions);
+    .TradingConventions(TradingConventions)
+    .IsCollateralTransferActivated(IsCollateralTransferActivated);
 ```
 
 

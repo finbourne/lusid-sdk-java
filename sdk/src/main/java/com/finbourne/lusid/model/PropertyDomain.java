@@ -187,7 +187,9 @@ public enum PropertyDomain {
   
   STAGINGRULESET("StagingRuleSet"),
   
-  IDENTIFIERDEFINITION("IdentifierDefinition");
+  IDENTIFIERDEFINITION("IdentifierDefinition"),
+  
+  SETTLEMENTINSTRUCTION("SettlementInstruction");
 
   private String value;
 
