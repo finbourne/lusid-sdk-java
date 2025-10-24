@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | Election for controlling whether the Principal is paid automatically or not.  Exactly one election must be provided. | [optional] [default to List<LapseElection>]
 **fraction** | **java.math.BigDecimal** | Fraction of the outstanding settled principal balance to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set. Ignored if the field Amount is set to a value different than zero. | [optional] [default to java.math.BigDecimal]
 **amount** | **java.math.BigDecimal** | Amount to be repaid (independent of the fraction).  This field is not used at all if not set or set to 0, in this case the fraction field will be used instead.  Otherwise, the fraction field is ignored. | [optional] [default to java.math.BigDecimal]
+**withInterest** | **Boolean** | If set to true, then active contracts whose balance is reduced by the repayment will have  their accrued interest repaid proportionally to the balance reduction. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.LoanPrincipalRepaymentEvent;
@@ -22,6 +23,7 @@ String Currency = "example Currency";
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
 @jakarta.annotation.Nullable java.math.BigDecimal Fraction = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
+Boolean WithInterest = true;
 
 
 LoanPrincipalRepaymentEvent loanPrincipalRepaymentEventInstance = new LoanPrincipalRepaymentEvent()
@@ -29,7 +31,8 @@ LoanPrincipalRepaymentEvent loanPrincipalRepaymentEventInstance = new LoanPrinci
     .Currency(Currency)
     .LapseElections(LapseElections)
     .Fraction(Fraction)
-    .Amount(Amount);
+    .Amount(Amount)
+    .WithInterest(WithInterest);
 ```
 
 

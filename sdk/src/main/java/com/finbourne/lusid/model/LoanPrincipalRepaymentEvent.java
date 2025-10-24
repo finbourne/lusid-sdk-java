@@ -75,6 +75,10 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private java.math.BigDecimal amount;
 
+  public static final String SERIALIZED_NAME_WITH_INTEREST = "withInterest";
+  @SerializedName(SERIALIZED_NAME_WITH_INTEREST)
+  private Boolean withInterest;
+
   public LoanPrincipalRepaymentEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -192,6 +196,27 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
   }
 
 
+  public LoanPrincipalRepaymentEvent withInterest(Boolean withInterest) {
+    
+    this.withInterest = withInterest;
+    return this;
+  }
+
+   /**
+   * If set to true, then active contracts whose balance is reduced by the repayment will have  their accrued interest repaid proportionally to the balance reduction.
+   * @return withInterest
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getWithInterest() {
+    return withInterest;
+  }
+
+
+  public void setWithInterest(Boolean withInterest) {
+    this.withInterest = withInterest;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -207,6 +232,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
         Objects.equals(this.lapseElections, loanPrincipalRepaymentEvent.lapseElections) &&
         (this.fraction.compareTo(loanPrincipalRepaymentEvent.getFraction()) == 0) &&
         (this.amount.compareTo(loanPrincipalRepaymentEvent.getAmount()) == 0) &&
+        Objects.equals(this.withInterest, loanPrincipalRepaymentEvent.withInterest) &&
         super.equals(o);
   }
 
@@ -216,7 +242,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, currency, lapseElections, fraction, amount, super.hashCode());
+    return Objects.hash(paymentDate, currency, lapseElections, fraction, amount, withInterest, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -236,6 +262,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
     sb.append("    fraction: ").append(toIndentedString(fraction)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    withInterest: ").append(toIndentedString(withInterest)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -264,6 +291,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
     openapiFields.add("lapseElections");
     openapiFields.add("fraction");
     openapiFields.add("amount");
+    openapiFields.add("withInterest");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
