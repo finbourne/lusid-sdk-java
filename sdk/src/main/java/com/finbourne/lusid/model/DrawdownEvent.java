@@ -96,7 +96,7 @@ public class DrawdownEvent extends InstrumentEvent {
   }
 
    /**
-   * Initialisation date of the contract.
+   * Date of the drawdown
    * @return date
   **/
   @jakarta.annotation.Nullable
