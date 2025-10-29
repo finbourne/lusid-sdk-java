@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **compounding** | [**Compounding**](Compounding.md) |  | [optional] [default to Compounding]
 **resetConvention** | **String** | Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].  Defaults to \&quot;InAdvance\&quot; if not set. | [optional] [default to String]
 **useAnnualisedDirectRates** | **Boolean** | Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false. | [optional] [default to Boolean]
+**capRate** | **java.math.BigDecimal** | The maximum floating rate which a cashflow can accrue. | [optional] [default to java.math.BigDecimal]
+**floorRate** | **java.math.BigDecimal** | The minimum floating rate which a cashflow can accrue. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.FloatSchedule;
@@ -42,6 +44,8 @@ ExDividendConfiguration ExDividendConfiguration = new ExDividendConfiguration();
 Compounding Compounding = new Compounding();
 @jakarta.annotation.Nullable String ResetConvention = "example ResetConvention";
 Boolean UseAnnualisedDirectRates = true;
+@jakarta.annotation.Nullable java.math.BigDecimal CapRate = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal FloorRate = new java.math.BigDecimal("100.00");
 
 
 FloatSchedule floatScheduleInstance = new FloatSchedule()
@@ -59,7 +63,9 @@ FloatSchedule floatScheduleInstance = new FloatSchedule()
     .ExDividendConfiguration(ExDividendConfiguration)
     .Compounding(Compounding)
     .ResetConvention(ResetConvention)
-    .UseAnnualisedDirectRates(UseAnnualisedDirectRates);
+    .UseAnnualisedDirectRates(UseAnnualisedDirectRates)
+    .CapRate(CapRate)
+    .FloorRate(FloorRate);
 ```
 
 

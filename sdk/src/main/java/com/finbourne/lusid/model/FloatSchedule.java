@@ -117,6 +117,14 @@ public class FloatSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_USE_ANNUALISED_DIRECT_RATES)
   private Boolean useAnnualisedDirectRates;
 
+  public static final String SERIALIZED_NAME_CAP_RATE = "capRate";
+  @SerializedName(SERIALIZED_NAME_CAP_RATE)
+  private java.math.BigDecimal capRate;
+
+  public static final String SERIALIZED_NAME_FLOOR_RATE = "floorRate";
+  @SerializedName(SERIALIZED_NAME_FLOOR_RATE)
+  private java.math.BigDecimal floorRate;
+
   public FloatSchedule() {
     // this.scheduleType = this.getClass().getSimpleName();
   }
@@ -436,6 +444,48 @@ public class FloatSchedule extends Schedule {
   }
 
 
+  public FloatSchedule capRate(java.math.BigDecimal capRate) {
+    
+    this.capRate = capRate;
+    return this;
+  }
+
+   /**
+   * The maximum floating rate which a cashflow can accrue.
+   * @return capRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCapRate() {
+    return capRate;
+  }
+
+
+  public void setCapRate(java.math.BigDecimal capRate) {
+    this.capRate = capRate;
+  }
+
+
+  public FloatSchedule floorRate(java.math.BigDecimal floorRate) {
+    
+    this.floorRate = floorRate;
+    return this;
+  }
+
+   /**
+   * The minimum floating rate which a cashflow can accrue.
+   * @return floorRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFloorRate() {
+    return floorRate;
+  }
+
+
+  public void setFloorRate(java.math.BigDecimal floorRate) {
+    this.floorRate = floorRate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -461,6 +511,8 @@ public class FloatSchedule extends Schedule {
         Objects.equals(this.compounding, floatSchedule.compounding) &&
         Objects.equals(this.resetConvention, floatSchedule.resetConvention) &&
         Objects.equals(this.useAnnualisedDirectRates, floatSchedule.useAnnualisedDirectRates) &&
+        (this.capRate.compareTo(floatSchedule.getCapRate()) == 0) &&
+        (this.floorRate.compareTo(floatSchedule.getFloorRate()) == 0) &&
         super.equals(o);
   }
 
@@ -470,7 +522,7 @@ public class FloatSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, useAnnualisedDirectRates, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, useAnnualisedDirectRates, capRate, floorRate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -500,6 +552,8 @@ public class FloatSchedule extends Schedule {
     sb.append("    compounding: ").append(toIndentedString(compounding)).append("\n");
     sb.append("    resetConvention: ").append(toIndentedString(resetConvention)).append("\n");
     sb.append("    useAnnualisedDirectRates: ").append(toIndentedString(useAnnualisedDirectRates)).append("\n");
+    sb.append("    capRate: ").append(toIndentedString(capRate)).append("\n");
+    sb.append("    floorRate: ").append(toIndentedString(floorRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -538,6 +592,8 @@ public class FloatSchedule extends Schedule {
     openapiFields.add("compounding");
     openapiFields.add("resetConvention");
     openapiFields.add("useAnnualisedDirectRates");
+    openapiFields.add("capRate");
+    openapiFields.add("floorRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
