@@ -20,6 +20,7 @@ import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RealisedGainLoss;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TransactionPrice;
+import com.finbourne.lusid.model.TransactionSettlementSummary;
 import com.finbourne.lusid.model.TransactionTypeDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -267,6 +268,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_SEQUENCE_PRIORITY = "sequencePriority";
   @SerializedName(SERIALIZED_NAME_SEQUENCE_PRIORITY)
   private Integer sequencePriority;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_SUMMARY = "settlementSummary";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_SUMMARY)
+  private TransactionSettlementSummary settlementSummary;
 
   public OutputTransaction() {
   }
@@ -1088,6 +1093,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction settlementSummary(TransactionSettlementSummary settlementSummary) {
+    
+    this.settlementSummary = settlementSummary;
+    return this;
+  }
+
+   /**
+   * Get settlementSummary
+   * @return settlementSummary
+  **/
+  @jakarta.annotation.Nullable
+  public TransactionSettlementSummary getSettlementSummary() {
+    return settlementSummary;
+  }
+
+
+  public void setSettlementSummary(TransactionSettlementSummary settlementSummary) {
+    this.settlementSummary = settlementSummary;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1134,7 +1160,8 @@ public class OutputTransaction {
         Objects.equals(this.economics, outputTransaction.economics) &&
         Objects.equals(this.dataModelMembership, outputTransaction.dataModelMembership) &&
         Objects.equals(this.sequence, outputTransaction.sequence) &&
-        Objects.equals(this.sequencePriority, outputTransaction.sequencePriority);
+        Objects.equals(this.sequencePriority, outputTransaction.sequencePriority) &&
+        Objects.equals(this.settlementSummary, outputTransaction.settlementSummary);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1143,7 +1170,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1194,6 +1221,7 @@ public class OutputTransaction {
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    sequence: ").append(toIndentedString(sequence)).append("\n");
     sb.append("    sequencePriority: ").append(toIndentedString(sequencePriority)).append("\n");
+    sb.append("    settlementSummary: ").append(toIndentedString(settlementSummary)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1253,6 +1281,7 @@ public class OutputTransaction {
     openapiFields.add("dataModelMembership");
     openapiFields.add("sequence");
     openapiFields.add("sequencePriority");
+    openapiFields.add("settlementSummary");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1383,6 +1412,10 @@ public class OutputTransaction {
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
         DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
+      }
+      // validate the optional field `settlementSummary`
+      if (jsonObj.get("settlementSummary") != null && !jsonObj.get("settlementSummary").isJsonNull()) {
+        TransactionSettlementSummary.validateJsonElement(jsonObj.get("settlementSummary"));
       }
   }
 

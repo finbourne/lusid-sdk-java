@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
 **sequence** | **Integer** | The sequential position in which this transaction was processed. | [optional] [default to Integer]
 **sequencePriority** | **Integer** | The calculated priority level for this transaction. | [optional] [default to Integer]
+**settlementSummary** | [**TransactionSettlementSummary**](TransactionSettlementSummary.md) |  | [optional] [default to TransactionSettlementSummary]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -86,6 +87,7 @@ ResourceId AllocationId = new ResourceId();
 DataModelMembership DataModelMembership = new DataModelMembership();
 @jakarta.annotation.Nullable Integer Sequence = new Integer("100.00");
 @jakarta.annotation.Nullable Integer SequencePriority = new Integer("100.00");
+TransactionSettlementSummary SettlementSummary = new TransactionSettlementSummary();
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -125,7 +127,8 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .Economics(Economics)
     .DataModelMembership(DataModelMembership)
     .Sequence(Sequence)
-    .SequencePriority(SequencePriority);
+    .SequencePriority(SequencePriority)
+    .SettlementSummary(SettlementSummary);
 ```
 
 

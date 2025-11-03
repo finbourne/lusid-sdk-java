@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **timelineScope** | **String** | Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions | [optional] [default to String]
 **timelineCode** | **String** | Code of the Timeline for the Portfolio. The Timeline to be used while building transactions | [optional] [default to String]
 **includeEconomics** | **Boolean** | By default is false. When set to true the Economics data would be populated in the response. | [optional] [default to Boolean]
+**includeSettlementStatus** | **Boolean** | By default is false. When set to true the Economics data would be populated in the response. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.TransactionQueryParameters;
@@ -25,6 +26,7 @@ Boolean ShowCancelledTransactions = true;
 @jakarta.annotation.Nullable String TimelineScope = "example TimelineScope";
 @jakarta.annotation.Nullable String TimelineCode = "example TimelineCode";
 Boolean IncludeEconomics = true;
+Boolean IncludeSettlementStatus = true;
 
 
 TransactionQueryParameters transactionQueryParametersInstance = new TransactionQueryParameters()
@@ -34,7 +36,8 @@ TransactionQueryParameters transactionQueryParametersInstance = new TransactionQ
     .ShowCancelledTransactions(ShowCancelledTransactions)
     .TimelineScope(TimelineScope)
     .TimelineCode(TimelineCode)
-    .IncludeEconomics(IncludeEconomics);
+    .IncludeEconomics(IncludeEconomics)
+    .IncludeSettlementStatus(IncludeSettlementStatus);
 ```
 
 
