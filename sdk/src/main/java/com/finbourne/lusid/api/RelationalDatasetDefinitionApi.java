@@ -33,6 +33,8 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfRelationalDatasetDefinition;
 import com.finbourne.lusid.model.RelationalDatasetDefinition;
 import com.finbourne.lusid.model.UpdateRelationalDatasetDefinitionRequest;
+import com.finbourne.lusid.model.UpdateRelationalDatasetDetails;
+import com.finbourne.lusid.model.UpdateRelationalDatasetFieldSchema;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1362,5 +1364,517 @@ public class RelationalDatasetDefinitionApi {
      */
     public APIupdateRelationalDatasetDefinitionRequest updateRelationalDatasetDefinition(String scope, String code) {
         return new APIupdateRelationalDatasetDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call updateRelationalDatasetDetailsCall(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, final ApiCallback _callback) throws ApiException {
+        return updateRelationalDatasetDetailsCall(scope, code, updateRelationalDatasetDetails,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateRelationalDatasetDetailsCall(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateRelationalDatasetDetails;
+
+        // create path and map variables
+        String localVarPath = "/api/relationaldatasetdefinitions/{scope}/{code}/details/$update"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateRelationalDatasetDetailsValidateBeforeCall(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateRelationalDatasetDetails(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateRelationalDatasetDetails(Async)");
+        }
+
+        return updateRelationalDatasetDetailsCall(scope, code, updateRelationalDatasetDetails, _callback, opts);
+
+    }
+
+
+    private ApiResponse<RelationalDatasetDefinition> updateRelationalDatasetDetailsWithHttpInfo(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails) throws ApiException {
+        okhttp3.Call localVarCall = updateRelationalDatasetDetailsValidateBeforeCall(scope, code, updateRelationalDatasetDetails, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<RelationalDatasetDefinition> updateRelationalDatasetDetailsWithHttpInfo(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateRelationalDatasetDetailsValidateBeforeCall(scope, code, updateRelationalDatasetDetails, null, opts);
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateRelationalDatasetDetailsAsync(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, final ApiCallback<RelationalDatasetDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRelationalDatasetDetailsValidateBeforeCall(scope, code, updateRelationalDatasetDetails, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateRelationalDatasetDetailsAsync(String scope, String code, UpdateRelationalDatasetDetails updateRelationalDatasetDetails, final ApiCallback<RelationalDatasetDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRelationalDatasetDetailsValidateBeforeCall(scope, code, updateRelationalDatasetDetails, _callback, opts);
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateRelationalDatasetDetailsRequest {
+        private final String scope;
+        private final String code;
+        private UpdateRelationalDatasetDetails updateRelationalDatasetDetails;
+
+        private APIupdateRelationalDatasetDetailsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set updateRelationalDatasetDetails
+         * @param updateRelationalDatasetDetails The updated details of the relational dataset. (optional)
+         * @return APIupdateRelationalDatasetDetailsRequest
+         */
+        public APIupdateRelationalDatasetDetailsRequest updateRelationalDatasetDetails(UpdateRelationalDatasetDetails updateRelationalDatasetDetails) {
+            this.updateRelationalDatasetDetails = updateRelationalDatasetDetails;
+            return this;
+        }
+
+        /**
+         * Build call for updateRelationalDatasetDetails
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateRelationalDatasetDetailsCall(scope, code, updateRelationalDatasetDetails, _callback);
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request
+         * @return RelationalDatasetDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationalDatasetDefinition execute() throws ApiException {
+            ApiResponse<RelationalDatasetDefinition> localVarResp = updateRelationalDatasetDetailsWithHttpInfo(scope, code, updateRelationalDatasetDetails);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return RelationalDatasetDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationalDatasetDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<RelationalDatasetDefinition> localVarResp = updateRelationalDatasetDetailsWithHttpInfo(scope, code, updateRelationalDatasetDetails, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request with HTTP info returned
+         * @return ApiResponse&lt;RelationalDatasetDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationalDatasetDefinition> executeWithHttpInfo() throws ApiException {
+            return updateRelationalDatasetDetailsWithHttpInfo(scope, code, updateRelationalDatasetDetails);
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;RelationalDatasetDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationalDatasetDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateRelationalDatasetDetailsWithHttpInfo(scope, code, updateRelationalDatasetDetails, opts);
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationalDatasetDefinition> _callback) throws ApiException {
+            return updateRelationalDatasetDetailsAsync(scope, code, updateRelationalDatasetDetails, _callback);
+        }
+
+        /**
+         * Execute updateRelationalDatasetDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationalDatasetDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateRelationalDatasetDetailsAsync(scope, code, updateRelationalDatasetDetails, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
+     * Update an existing relational dataset definition.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
+     * @param scope The scope of the relational dataset definition. (required)
+     * @param code The code of the relational dataset definition. (required)
+     * @return APIupdateRelationalDatasetDetailsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateRelationalDatasetDetailsRequest updateRelationalDatasetDetails(String scope, String code) {
+        return new APIupdateRelationalDatasetDetailsRequest(scope, code);
+    }
+    private okhttp3.Call updateRelationalDatasetFieldSchemaCall(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, final ApiCallback _callback) throws ApiException {
+        return updateRelationalDatasetFieldSchemaCall(scope, code, updateRelationalDatasetFieldSchema,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateRelationalDatasetFieldSchemaCall(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateRelationalDatasetFieldSchema;
+
+        // create path and map variables
+        String localVarPath = "/api/relationaldatasetdefinitions/{scope}/{code}/fieldschema/$update"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateRelationalDatasetFieldSchemaValidateBeforeCall(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateRelationalDatasetFieldSchema(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateRelationalDatasetFieldSchema(Async)");
+        }
+
+        return updateRelationalDatasetFieldSchemaCall(scope, code, updateRelationalDatasetFieldSchema, _callback, opts);
+
+    }
+
+
+    private ApiResponse<RelationalDatasetDefinition> updateRelationalDatasetFieldSchemaWithHttpInfo(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema) throws ApiException {
+        okhttp3.Call localVarCall = updateRelationalDatasetFieldSchemaValidateBeforeCall(scope, code, updateRelationalDatasetFieldSchema, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<RelationalDatasetDefinition> updateRelationalDatasetFieldSchemaWithHttpInfo(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateRelationalDatasetFieldSchemaValidateBeforeCall(scope, code, updateRelationalDatasetFieldSchema, null, opts);
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateRelationalDatasetFieldSchemaAsync(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, final ApiCallback<RelationalDatasetDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRelationalDatasetFieldSchemaValidateBeforeCall(scope, code, updateRelationalDatasetFieldSchema, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateRelationalDatasetFieldSchemaAsync(String scope, String code, UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema, final ApiCallback<RelationalDatasetDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRelationalDatasetFieldSchemaValidateBeforeCall(scope, code, updateRelationalDatasetFieldSchema, _callback, opts);
+        Type localVarReturnType = new TypeToken<RelationalDatasetDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateRelationalDatasetFieldSchemaRequest {
+        private final String scope;
+        private final String code;
+        private UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema;
+
+        private APIupdateRelationalDatasetFieldSchemaRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set updateRelationalDatasetFieldSchema
+         * @param updateRelationalDatasetFieldSchema Relational dataset fields to add, update or remove. (optional)
+         * @return APIupdateRelationalDatasetFieldSchemaRequest
+         */
+        public APIupdateRelationalDatasetFieldSchemaRequest updateRelationalDatasetFieldSchema(UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema) {
+            this.updateRelationalDatasetFieldSchema = updateRelationalDatasetFieldSchema;
+            return this;
+        }
+
+        /**
+         * Build call for updateRelationalDatasetFieldSchema
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateRelationalDatasetFieldSchemaCall(scope, code, updateRelationalDatasetFieldSchema, _callback);
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request
+         * @return RelationalDatasetDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationalDatasetDefinition execute() throws ApiException {
+            ApiResponse<RelationalDatasetDefinition> localVarResp = updateRelationalDatasetFieldSchemaWithHttpInfo(scope, code, updateRelationalDatasetFieldSchema);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request. Use any specified configuration options to override any other configuration for this request only.
+         * @return RelationalDatasetDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public RelationalDatasetDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<RelationalDatasetDefinition> localVarResp = updateRelationalDatasetFieldSchemaWithHttpInfo(scope, code, updateRelationalDatasetFieldSchema, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request with HTTP info returned
+         * @return ApiResponse&lt;RelationalDatasetDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationalDatasetDefinition> executeWithHttpInfo() throws ApiException {
+            return updateRelationalDatasetFieldSchemaWithHttpInfo(scope, code, updateRelationalDatasetFieldSchema);
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;RelationalDatasetDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<RelationalDatasetDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateRelationalDatasetFieldSchemaWithHttpInfo(scope, code, updateRelationalDatasetFieldSchema, opts);
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationalDatasetDefinition> _callback) throws ApiException {
+            return updateRelationalDatasetFieldSchemaAsync(scope, code, updateRelationalDatasetFieldSchema, _callback);
+        }
+
+        /**
+         * Execute updateRelationalDatasetFieldSchema request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<RelationalDatasetDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateRelationalDatasetFieldSchemaAsync(scope, code, updateRelationalDatasetFieldSchema, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
+     * Update an existing relational dataset definition with the new field schema.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
+     * @param scope The scope of the relational dataset definition. (required)
+     * @param code The code of the relational dataset definition. (required)
+     * @return APIupdateRelationalDatasetFieldSchemaRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated relational dataset definition. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateRelationalDatasetFieldSchemaRequest updateRelationalDatasetFieldSchema(String scope, String code) {
+        return new APIupdateRelationalDatasetFieldSchemaRequest(scope, code);
     }
 }

@@ -9,6 +9,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#getRelationalDatasetDefinition) | **GET** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] GetRelationalDatasetDefinition: Get a Relational Dataset Definition |
 | [**listRelationalDatasetDefinitions**](RelationalDatasetDefinitionApi.md#listRelationalDatasetDefinitions) | **GET** /api/relationaldatasetdefinitions | [EARLY ACCESS] ListRelationalDatasetDefinitions: List Relational Dataset Definitions |
 | [**updateRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDefinition) | **PUT** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition |
+| [**updateRelationalDatasetDetails**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDetails) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/details/$update | [EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes |
+| [**updateRelationalDatasetFieldSchema**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetFieldSchema) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/fieldschema/$update | [EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema |
 
 
 
@@ -464,6 +466,196 @@ public class RelationalDatasetDefinitionApiExample {
 | **scope** | **String**| The scope of the relational dataset definition. | |
 | **code** | **String**| The code of the relational dataset definition. | |
 | **updateRelationalDatasetDefinitionRequest** | [**UpdateRelationalDatasetDefinitionRequest**](UpdateRelationalDatasetDefinitionRequest.md)| The updated relational dataset definition. | [optional] |
+
+### Return type
+
+[**RelationalDatasetDefinition**](RelationalDatasetDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated relational dataset definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## updateRelationalDatasetDetails
+
+> RelationalDatasetDefinition updateRelationalDatasetDetails(scope, code, updateRelationalDatasetDetails)
+
+[EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
+
+Update an existing relational dataset definition.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RelationalDatasetDefinitionApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RelationalDatasetDefinitionApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationalDatasetDefinitionApi apiInstance = apiFactory.build(RelationalDatasetDefinitionApi.class);
+
+        RelationalDatasetDefinitionApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationalDatasetDefinitionApi.class);
+        String scope = "scope_example"; // String | The scope of the relational dataset definition.
+        String code = "code_example"; // String | The code of the relational dataset definition.
+        UpdateRelationalDatasetDetails updateRelationalDatasetDetails = new UpdateRelationalDatasetDetails(); // UpdateRelationalDatasetDetails | The updated details of the relational dataset.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RelationalDatasetDefinition result = apiInstance.updateRelationalDatasetDetails(scope, code, updateRelationalDatasetDetails).execute(opts);
+
+            RelationalDatasetDefinition result = apiInstance.updateRelationalDatasetDetails(scope, code, updateRelationalDatasetDetails).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RelationalDatasetDefinitionApi#updateRelationalDatasetDetails");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the relational dataset definition. | |
+| **code** | **String**| The code of the relational dataset definition. | |
+| **updateRelationalDatasetDetails** | [**UpdateRelationalDatasetDetails**](UpdateRelationalDatasetDetails.md)| The updated details of the relational dataset. | [optional] |
+
+### Return type
+
+[**RelationalDatasetDefinition**](RelationalDatasetDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated relational dataset definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## updateRelationalDatasetFieldSchema
+
+> RelationalDatasetDefinition updateRelationalDatasetFieldSchema(scope, code, updateRelationalDatasetFieldSchema)
+
+[EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
+
+Update an existing relational dataset definition with the new field schema.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RelationalDatasetDefinitionApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RelationalDatasetDefinitionApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationalDatasetDefinitionApi apiInstance = apiFactory.build(RelationalDatasetDefinitionApi.class);
+
+        RelationalDatasetDefinitionApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationalDatasetDefinitionApi.class);
+        String scope = "scope_example"; // String | The scope of the relational dataset definition.
+        String code = "code_example"; // String | The code of the relational dataset definition.
+        UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema = new UpdateRelationalDatasetFieldSchema(); // UpdateRelationalDatasetFieldSchema | Relational dataset fields to add, update or remove.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RelationalDatasetDefinition result = apiInstance.updateRelationalDatasetFieldSchema(scope, code, updateRelationalDatasetFieldSchema).execute(opts);
+
+            RelationalDatasetDefinition result = apiInstance.updateRelationalDatasetFieldSchema(scope, code, updateRelationalDatasetFieldSchema).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RelationalDatasetDefinitionApi#updateRelationalDatasetFieldSchema");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the relational dataset definition. | |
+| **code** | **String**| The code of the relational dataset definition. | |
+| **updateRelationalDatasetFieldSchema** | [**UpdateRelationalDatasetFieldSchema**](UpdateRelationalDatasetFieldSchema.md)| Relational dataset fields to add, update or remove. | [optional] |
 
 ### Return type
 

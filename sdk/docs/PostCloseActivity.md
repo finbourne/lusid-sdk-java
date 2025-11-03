@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **entityType** | **String** |  | [default to String]
 **entityUniqueId** | **String** |  | [default to String]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]
+**effectiveAt** | **String** |  | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.PostCloseActivity;
@@ -17,12 +18,14 @@ import java.net.URI;
 String EntityType = "example EntityType";
 String EntityUniqueId = "example EntityUniqueId";
 OffsetDateTime AsAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable String EffectiveAt = "example EffectiveAt";
 
 
 PostCloseActivity postCloseActivityInstance = new PostCloseActivity()
     .EntityType(EntityType)
     .EntityUniqueId(EntityUniqueId)
-    .AsAt(AsAt);
+    .AsAt(AsAt)
+    .EffectiveAt(EffectiveAt);
 ```
 
 

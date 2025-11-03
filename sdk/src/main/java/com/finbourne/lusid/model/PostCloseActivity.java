@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,6 +62,10 @@ public class PostCloseActivity {
   public static final String SERIALIZED_NAME_AS_AT = "asAt";
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
+  private String effectiveAt;
 
   public PostCloseActivity() {
   }
@@ -128,6 +133,27 @@ public class PostCloseActivity {
   }
 
 
+  public PostCloseActivity effectiveAt(String effectiveAt) {
+    
+    this.effectiveAt = effectiveAt;
+    return this;
+  }
+
+   /**
+   * Get effectiveAt
+   * @return effectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public String getEffectiveAt() {
+    return effectiveAt;
+  }
+
+
+  public void setEffectiveAt(String effectiveAt) {
+    this.effectiveAt = effectiveAt;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,12 +166,24 @@ public class PostCloseActivity {
     PostCloseActivity postCloseActivity = (PostCloseActivity) o;
     return Objects.equals(this.entityType, postCloseActivity.entityType) &&
         Objects.equals(this.entityUniqueId, postCloseActivity.entityUniqueId) &&
-        Objects.equals(this.asAt, postCloseActivity.asAt);
+        Objects.equals(this.asAt, postCloseActivity.asAt) &&
+        Objects.equals(this.effectiveAt, postCloseActivity.effectiveAt);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, entityUniqueId, asAt);
+    return Objects.hash(entityType, entityUniqueId, asAt, effectiveAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -155,6 +193,7 @@ public class PostCloseActivity {
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +219,7 @@ public class PostCloseActivity {
     openapiFields.add("entityType");
     openapiFields.add("entityUniqueId");
     openapiFields.add("asAt");
+    openapiFields.add("effectiveAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -213,6 +253,9 @@ public class PostCloseActivity {
       }
       if (!jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
+      }
+      if ((jsonObj.get("effectiveAt") != null && !jsonObj.get("effectiveAt").isJsonNull()) && !jsonObj.get("effectiveAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `effectiveAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveAt").toString()));
       }
   }
 
