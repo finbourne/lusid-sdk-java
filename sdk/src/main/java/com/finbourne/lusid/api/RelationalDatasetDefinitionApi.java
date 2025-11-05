@@ -1350,7 +1350,7 @@ public class RelationalDatasetDefinitionApi {
 
     /**
      * [EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
-     * Update an existing relational dataset definition.
+     * Update an existing relational dataset definition.  Applicable only to the definitions that are not yet in use i.e. there are no DataPoints associated with this definition.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
      * @return APIupdateRelationalDatasetDefinitionRequest
