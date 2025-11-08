@@ -64,6 +64,10 @@ public class DerivationFormulaExplainRequest {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public static final String SERIALIZED_NAME_SUBENTITY_ID = "subentityId";
+  @SerializedName(SERIALIZED_NAME_SUBENTITY_ID)
+  private String subentityId;
+
   public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
   private Map<String, String> identifier;
@@ -139,6 +143,27 @@ public class DerivationFormulaExplainRequest {
 
   public void setCode(String code) {
     this.code = code;
+  }
+
+
+  public DerivationFormulaExplainRequest subentityId(String subentityId) {
+    
+    this.subentityId = subentityId;
+    return this;
+  }
+
+   /**
+   * (Optional) The id of the sub-entity to explain the derived property for. This must be provided along with the scope/code of the parent entity.
+   * @return subentityId
+  **/
+  @jakarta.annotation.Nullable
+  public String getSubentityId() {
+    return subentityId;
+  }
+
+
+  public void setSubentityId(String subentityId) {
+    this.subentityId = subentityId;
   }
 
 
@@ -226,6 +251,7 @@ public class DerivationFormulaExplainRequest {
     return Objects.equals(this.entityType, derivationFormulaExplainRequest.entityType) &&
         Objects.equals(this.scope, derivationFormulaExplainRequest.scope) &&
         Objects.equals(this.code, derivationFormulaExplainRequest.code) &&
+        Objects.equals(this.subentityId, derivationFormulaExplainRequest.subentityId) &&
         Objects.equals(this.identifier, derivationFormulaExplainRequest.identifier) &&
         Objects.equals(this.propertyKey, derivationFormulaExplainRequest.propertyKey) &&
         Objects.equals(this.partialFormula, derivationFormulaExplainRequest.partialFormula);
@@ -237,7 +263,7 @@ public class DerivationFormulaExplainRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, scope, code, identifier, propertyKey, partialFormula);
+    return Objects.hash(entityType, scope, code, subentityId, identifier, propertyKey, partialFormula);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -254,6 +280,7 @@ public class DerivationFormulaExplainRequest {
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    subentityId: ").append(toIndentedString(subentityId)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    propertyKey: ").append(toIndentedString(propertyKey)).append("\n");
     sb.append("    partialFormula: ").append(toIndentedString(partialFormula)).append("\n");
@@ -282,6 +309,7 @@ public class DerivationFormulaExplainRequest {
     openapiFields.add("entityType");
     openapiFields.add("scope");
     openapiFields.add("code");
+    openapiFields.add("subentityId");
     openapiFields.add("identifier");
     openapiFields.add("propertyKey");
     openapiFields.add("partialFormula");
@@ -319,6 +347,9 @@ public class DerivationFormulaExplainRequest {
       }
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("subentityId") != null && !jsonObj.get("subentityId").isJsonNull()) && !jsonObj.get("subentityId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subentityId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subentityId").toString()));
       }
       if ((jsonObj.get("propertyKey") != null && !jsonObj.get("propertyKey").isJsonNull()) && !jsonObj.get("propertyKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("propertyKey").toString()));

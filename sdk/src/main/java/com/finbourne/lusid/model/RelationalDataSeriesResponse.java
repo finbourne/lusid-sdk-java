@@ -125,7 +125,7 @@ public class RelationalDataSeriesResponse {
   }
 
    /**
-   * The identifiers that uniquely define this DataSeries, structured according to the FieldSchema of the parent RelationalDatasetDefinition.
+   * The identifiers that uniquely define this DataSeries, if any, structured according to the FieldSchema of the parent RelationalDatasetDefinition.
    * @return seriesIdentifiers
   **/
   @jakarta.annotation.Nonnull

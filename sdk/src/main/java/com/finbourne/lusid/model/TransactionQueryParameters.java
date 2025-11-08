@@ -129,6 +129,10 @@ public class TransactionQueryParameters {
   @SerializedName(SERIALIZED_NAME_INCLUDE_SETTLEMENT_STATUS)
   private Boolean includeSettlementStatus;
 
+  public static final String SERIALIZED_NAME_SETTLEMENT_STATUS_DATE = "settlementStatusDate";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_STATUS_DATE)
+  private String settlementStatusDate;
+
   public TransactionQueryParameters() {
   }
 
@@ -286,7 +290,7 @@ public class TransactionQueryParameters {
   }
 
    /**
-   * By default is false. When set to true the Economics data would be populated in the response.
+   * By default is false. When set to true the Settlement Status data would be populated in the response.
    * @return includeSettlementStatus
   **/
   @jakarta.annotation.Nullable
@@ -297,6 +301,27 @@ public class TransactionQueryParameters {
 
   public void setIncludeSettlementStatus(Boolean includeSettlementStatus) {
     this.includeSettlementStatus = includeSettlementStatus;
+  }
+
+
+  public TransactionQueryParameters settlementStatusDate(String settlementStatusDate) {
+    
+    this.settlementStatusDate = settlementStatusDate;
+    return this;
+  }
+
+   /**
+   * Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date.
+   * @return settlementStatusDate
+  **/
+  @jakarta.annotation.Nullable
+  public String getSettlementStatusDate() {
+    return settlementStatusDate;
+  }
+
+
+  public void setSettlementStatusDate(String settlementStatusDate) {
+    this.settlementStatusDate = settlementStatusDate;
   }
 
 
@@ -317,7 +342,8 @@ public class TransactionQueryParameters {
         Objects.equals(this.timelineScope, transactionQueryParameters.timelineScope) &&
         Objects.equals(this.timelineCode, transactionQueryParameters.timelineCode) &&
         Objects.equals(this.includeEconomics, transactionQueryParameters.includeEconomics) &&
-        Objects.equals(this.includeSettlementStatus, transactionQueryParameters.includeSettlementStatus);
+        Objects.equals(this.includeSettlementStatus, transactionQueryParameters.includeSettlementStatus) &&
+        Objects.equals(this.settlementStatusDate, transactionQueryParameters.settlementStatusDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -326,7 +352,7 @@ public class TransactionQueryParameters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions, timelineScope, timelineCode, includeEconomics, includeSettlementStatus);
+    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions, timelineScope, timelineCode, includeEconomics, includeSettlementStatus, settlementStatusDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -348,6 +374,7 @@ public class TransactionQueryParameters {
     sb.append("    timelineCode: ").append(toIndentedString(timelineCode)).append("\n");
     sb.append("    includeEconomics: ").append(toIndentedString(includeEconomics)).append("\n");
     sb.append("    includeSettlementStatus: ").append(toIndentedString(includeSettlementStatus)).append("\n");
+    sb.append("    settlementStatusDate: ").append(toIndentedString(settlementStatusDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -378,6 +405,7 @@ public class TransactionQueryParameters {
     openapiFields.add("timelineCode");
     openapiFields.add("includeEconomics");
     openapiFields.add("includeSettlementStatus");
+    openapiFields.add("settlementStatusDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -419,6 +447,9 @@ public class TransactionQueryParameters {
       }
       if ((jsonObj.get("timelineCode") != null && !jsonObj.get("timelineCode").isJsonNull()) && !jsonObj.get("timelineCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timelineCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineCode").toString()));
+      }
+      if ((jsonObj.get("settlementStatusDate") != null && !jsonObj.get("settlementStatusDate").isJsonNull()) && !jsonObj.get("settlementStatusDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `settlementStatusDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementStatusDate").toString()));
       }
   }
 

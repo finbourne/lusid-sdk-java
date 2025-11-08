@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,7 +63,7 @@ public class UpsertRelationalDataPointDataSeries {
 
   public static final String SERIALIZED_NAME_SERIES_IDENTIFIERS = "seriesIdentifiers";
   @SerializedName(SERIALIZED_NAME_SERIES_IDENTIFIERS)
-  private Map<String, Object> seriesIdentifiers = new HashMap<>();
+  private Map<String, Object> seriesIdentifiers;
 
   public UpsertRelationalDataPointDataSeries() {
   }
@@ -124,10 +125,10 @@ public class UpsertRelationalDataPointDataSeries {
   }
 
    /**
-   * The identifiers that uniquely define this DataSeries, structured according to the FieldSchema of the parent RelationalDatasetDefinition.
+   * The identifiers that uniquely define this DataSeries, if any, structured according to the FieldSchema of the parent RelationalDatasetDefinition.
    * @return seriesIdentifiers
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Map<String, Object> getSeriesIdentifiers() {
     return seriesIdentifiers;
   }
@@ -153,9 +154,20 @@ public class UpsertRelationalDataPointDataSeries {
         Objects.equals(this.seriesIdentifiers, upsertRelationalDataPointDataSeries.seriesIdentifiers);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(seriesScope, applicableEntity, seriesIdentifiers);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -195,7 +207,6 @@ public class UpsertRelationalDataPointDataSeries {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("seriesScope");
     openapiRequiredFields.add("applicableEntity");
-    openapiRequiredFields.add("seriesIdentifiers");
   }
 
  /**

@@ -2122,7 +2122,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getHoldingContributors
 
-> VersionedResourceListOfHoldingContributor getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
+> VersionedResourceListOfHoldingContributor getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode)
 
 GetHoldingContributors: Get Holdings Contributors
 
@@ -2179,11 +2179,13 @@ public class TransactionPortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
+        String timelineScope = "timelineScope_example"; // String | The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode.
+        String timelineCode = "timelineCode_example"; // String | The code of the timeline used for evaluation. If provided, you must also provide a timelineScope.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute(opts);
 
-            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
+            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getHoldingContributors");
@@ -2212,6 +2214,8 @@ public class TransactionPortfoliosApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |
+| **timelineScope** | **String**| The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. | [optional] |
+| **timelineCode** | **String**| The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. | [optional] |
 
 ### Return type
 
@@ -2554,7 +2558,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getMultipleHoldingContributors
 
-> VersionedResourceListOfHoldingContributor getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
+> VersionedResourceListOfHoldingContributor getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode)
 
 GetMultipleHoldingContributors: Get Multiple Holding Contributors
 
@@ -2611,11 +2615,13 @@ public class TransactionPortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
+        String timelineScope = "timelineScope_example"; // String | The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode.
+        String timelineCode = "timelineCode_example"; // String | The code of the timeline used for evaluation. If provided, you must also provide a timelineScope.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute(opts);
 
-            VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
+            VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getMultipleHoldingContributors");
@@ -2644,6 +2650,8 @@ public class TransactionPortfoliosApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |
+| **timelineScope** | **String**| The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. | [optional] |
+| **timelineCode** | **String**| The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. | [optional] |
 
 ### Return type
 

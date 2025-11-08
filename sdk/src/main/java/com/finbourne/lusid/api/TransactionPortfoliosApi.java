@@ -5955,11 +5955,11 @@ public class TransactionPortfoliosApi {
     public APIgetDetailsRequest getDetails(String scope, String code) {
         return new APIgetDetailsRequest(scope, code);
     }
-    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
-        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback) throws ApiException {
+        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6023,6 +6023,14 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -6045,7 +6053,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingContributors(Async)");
@@ -6061,34 +6069,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'holdingId' when calling getHoldingContributors(Async)");
         }
 
-        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, opts);
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6107,6 +6115,8 @@ public class TransactionPortfoliosApi {
         private Integer limit;
         private OffsetDateTime asAt;
         private String page;
+        private String timelineScope;
+        private String timelineCode;
 
         private APIgetHoldingContributorsRequest(String scope, String code, Long holdingId) {
             this.scope = scope;
@@ -6205,6 +6215,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. (optional)
+         * @return APIgetHoldingContributorsRequest
+         */
+        public APIgetHoldingContributorsRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. (optional)
+         * @return APIgetHoldingContributorsRequest
+         */
+        public APIgetHoldingContributorsRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
          * Build call for getHoldingContributors
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6218,7 +6248,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback);
         }
 
         /**
@@ -6234,7 +6264,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode);
             return localVarResp.getData();
         }
 
@@ -6251,7 +6281,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, opts);
             return localVarResp.getData();
         }
 
@@ -6268,7 +6298,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo() throws ApiException {
-            return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode);
         }
 
         /**
@@ -6284,7 +6314,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, opts);
         }
 
         /**
@@ -6301,7 +6331,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
-            return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback);
         }
 
         /**
@@ -6318,7 +6348,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
-            return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+            return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
         }
     }
 
@@ -7357,11 +7387,11 @@ public class TransactionPortfoliosApi {
     public APIgetHoldingsWithOrdersRequest getHoldingsWithOrders(String scope, String code) {
         return new APIgetHoldingsWithOrdersRequest(scope, code);
     }
-    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
-        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback) throws ApiException {
+        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7424,6 +7454,14 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7450,7 +7488,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMultipleHoldingContributorsValidateBeforeCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getMultipleHoldingContributorsValidateBeforeCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getMultipleHoldingContributors(Async)");
@@ -7466,34 +7504,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'holdingIdsRequest' when calling getMultipleHoldingContributors(Async)");
         }
 
-        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
-        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode) throws ApiException {
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, opts);
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, String timelineScope, String timelineCode, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7512,6 +7550,8 @@ public class TransactionPortfoliosApi {
         private Integer limit;
         private OffsetDateTime asAt;
         private String page;
+        private String timelineScope;
+        private String timelineCode;
 
         private APIgetMultipleHoldingContributorsRequest(String scope, String code, HoldingIdsRequest holdingIdsRequest) {
             this.scope = scope;
@@ -7610,6 +7650,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
          * Build call for getMultipleHoldingContributors
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -7623,7 +7683,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback);
         }
 
         /**
@@ -7639,7 +7699,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode);
             return localVarResp.getData();
         }
 
@@ -7656,7 +7716,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, opts);
             return localVarResp.getData();
         }
 
@@ -7673,7 +7733,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo() throws ApiException {
-            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode);
         }
 
         /**
@@ -7689,7 +7749,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, opts);
         }
 
         /**
@@ -7706,7 +7766,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
-            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback);
         }
 
         /**
@@ -7723,7 +7783,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
-            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode, _callback, opts);
         }
     }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seriesScope** | **String** | The scope of the DataSeries. | [default to String]
 **applicableEntity** | [**ApplicableEntity**](ApplicableEntity.md) |  | [default to ApplicableEntity]
-**seriesIdentifiers** | [**Map&lt;String, RelationalDataPointFieldValueResponse&gt;**](RelationalDataPointFieldValueResponse.md) | The identifiers that uniquely define this DataSeries, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, RelationalDataPointFieldValueResponse>]
+**seriesIdentifiers** | [**Map&lt;String, RelationalDataPointFieldValueResponse&gt;**](RelationalDataPointFieldValueResponse.md) | The identifiers that uniquely define this DataSeries, if any, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, RelationalDataPointFieldValueResponse>]
 
 ```java
 import com.finbourne.lusid.model.RelationalDataSeriesResponse;

@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.RelationalDatasetFieldsToAdd;
+import com.finbourne.lusid.model.RelationalDatasetFieldsToRemove;
 import com.finbourne.lusid.model.RelationalDatasetFieldsToUpdate;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,10 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,89 +52,81 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateRelationalDatasetFieldSchema {
-  public static final String SERIALIZED_NAME_RELATIONAL_DATASET_FIELDS_TO_ADD = "relationalDatasetFieldsToAdd";
-  @SerializedName(SERIALIZED_NAME_RELATIONAL_DATASET_FIELDS_TO_ADD)
-  private RelationalDatasetFieldsToAdd relationalDatasetFieldsToAdd;
+  public static final String SERIALIZED_NAME_ADD = "add";
+  @SerializedName(SERIALIZED_NAME_ADD)
+  private RelationalDatasetFieldsToAdd add;
 
-  public static final String SERIALIZED_NAME_RELATIONAL_DATASET_FIELDS_TO_UPDATE = "relationalDatasetFieldsToUpdate";
-  @SerializedName(SERIALIZED_NAME_RELATIONAL_DATASET_FIELDS_TO_UPDATE)
-  private RelationalDatasetFieldsToUpdate relationalDatasetFieldsToUpdate;
+  public static final String SERIALIZED_NAME_UPDATE = "update";
+  @SerializedName(SERIALIZED_NAME_UPDATE)
+  private RelationalDatasetFieldsToUpdate update;
 
-  public static final String SERIALIZED_NAME_FIELD_NAMES_TO_REMOVE = "fieldNamesToRemove";
-  @SerializedName(SERIALIZED_NAME_FIELD_NAMES_TO_REMOVE)
-  private List<String> fieldNamesToRemove;
+  public static final String SERIALIZED_NAME_REMOVE = "remove";
+  @SerializedName(SERIALIZED_NAME_REMOVE)
+  private RelationalDatasetFieldsToRemove remove;
 
   public UpdateRelationalDatasetFieldSchema() {
   }
 
-  public UpdateRelationalDatasetFieldSchema relationalDatasetFieldsToAdd(RelationalDatasetFieldsToAdd relationalDatasetFieldsToAdd) {
+  public UpdateRelationalDatasetFieldSchema add(RelationalDatasetFieldsToAdd add) {
     
-    this.relationalDatasetFieldsToAdd = relationalDatasetFieldsToAdd;
+    this.add = add;
     return this;
   }
 
    /**
-   * Get relationalDatasetFieldsToAdd
-   * @return relationalDatasetFieldsToAdd
+   * Get add
+   * @return add
   **/
   @jakarta.annotation.Nullable
-  public RelationalDatasetFieldsToAdd getRelationalDatasetFieldsToAdd() {
-    return relationalDatasetFieldsToAdd;
+  public RelationalDatasetFieldsToAdd getAdd() {
+    return add;
   }
 
 
-  public void setRelationalDatasetFieldsToAdd(RelationalDatasetFieldsToAdd relationalDatasetFieldsToAdd) {
-    this.relationalDatasetFieldsToAdd = relationalDatasetFieldsToAdd;
+  public void setAdd(RelationalDatasetFieldsToAdd add) {
+    this.add = add;
   }
 
 
-  public UpdateRelationalDatasetFieldSchema relationalDatasetFieldsToUpdate(RelationalDatasetFieldsToUpdate relationalDatasetFieldsToUpdate) {
+  public UpdateRelationalDatasetFieldSchema update(RelationalDatasetFieldsToUpdate update) {
     
-    this.relationalDatasetFieldsToUpdate = relationalDatasetFieldsToUpdate;
+    this.update = update;
     return this;
   }
 
    /**
-   * Get relationalDatasetFieldsToUpdate
-   * @return relationalDatasetFieldsToUpdate
+   * Get update
+   * @return update
   **/
   @jakarta.annotation.Nullable
-  public RelationalDatasetFieldsToUpdate getRelationalDatasetFieldsToUpdate() {
-    return relationalDatasetFieldsToUpdate;
+  public RelationalDatasetFieldsToUpdate getUpdate() {
+    return update;
   }
 
 
-  public void setRelationalDatasetFieldsToUpdate(RelationalDatasetFieldsToUpdate relationalDatasetFieldsToUpdate) {
-    this.relationalDatasetFieldsToUpdate = relationalDatasetFieldsToUpdate;
+  public void setUpdate(RelationalDatasetFieldsToUpdate update) {
+    this.update = update;
   }
 
 
-  public UpdateRelationalDatasetFieldSchema fieldNamesToRemove(List<String> fieldNamesToRemove) {
+  public UpdateRelationalDatasetFieldSchema remove(RelationalDatasetFieldsToRemove remove) {
     
-    this.fieldNamesToRemove = fieldNamesToRemove;
-    return this;
-  }
-
-  public UpdateRelationalDatasetFieldSchema addFieldNamesToRemoveItem(String fieldNamesToRemoveItem) {
-    if (this.fieldNamesToRemove == null) {
-      this.fieldNamesToRemove = new ArrayList<>();
-    }
-    this.fieldNamesToRemove.add(fieldNamesToRemoveItem);
+    this.remove = remove;
     return this;
   }
 
    /**
-   * An array of FieldName(s) to be removed from the FieldSchema. Only Value or Metadata fields can be removed.
-   * @return fieldNamesToRemove
+   * Get remove
+   * @return remove
   **/
   @jakarta.annotation.Nullable
-  public List<String> getFieldNamesToRemove() {
-    return fieldNamesToRemove;
+  public RelationalDatasetFieldsToRemove getRemove() {
+    return remove;
   }
 
 
-  public void setFieldNamesToRemove(List<String> fieldNamesToRemove) {
-    this.fieldNamesToRemove = fieldNamesToRemove;
+  public void setRemove(RelationalDatasetFieldsToRemove remove) {
+    this.remove = remove;
   }
 
 
@@ -150,34 +140,23 @@ public class UpdateRelationalDatasetFieldSchema {
       return false;
     }
     UpdateRelationalDatasetFieldSchema updateRelationalDatasetFieldSchema = (UpdateRelationalDatasetFieldSchema) o;
-    return Objects.equals(this.relationalDatasetFieldsToAdd, updateRelationalDatasetFieldSchema.relationalDatasetFieldsToAdd) &&
-        Objects.equals(this.relationalDatasetFieldsToUpdate, updateRelationalDatasetFieldSchema.relationalDatasetFieldsToUpdate) &&
-        Objects.equals(this.fieldNamesToRemove, updateRelationalDatasetFieldSchema.fieldNamesToRemove);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    return Objects.equals(this.add, updateRelationalDatasetFieldSchema.add) &&
+        Objects.equals(this.update, updateRelationalDatasetFieldSchema.update) &&
+        Objects.equals(this.remove, updateRelationalDatasetFieldSchema.remove);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(relationalDatasetFieldsToAdd, relationalDatasetFieldsToUpdate, fieldNamesToRemove);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(add, update, remove);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateRelationalDatasetFieldSchema {\n");
-    sb.append("    relationalDatasetFieldsToAdd: ").append(toIndentedString(relationalDatasetFieldsToAdd)).append("\n");
-    sb.append("    relationalDatasetFieldsToUpdate: ").append(toIndentedString(relationalDatasetFieldsToUpdate)).append("\n");
-    sb.append("    fieldNamesToRemove: ").append(toIndentedString(fieldNamesToRemove)).append("\n");
+    sb.append("    add: ").append(toIndentedString(add)).append("\n");
+    sb.append("    update: ").append(toIndentedString(update)).append("\n");
+    sb.append("    remove: ").append(toIndentedString(remove)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,9 +179,9 @@ public class UpdateRelationalDatasetFieldSchema {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("relationalDatasetFieldsToAdd");
-    openapiFields.add("relationalDatasetFieldsToUpdate");
-    openapiFields.add("fieldNamesToRemove");
+    openapiFields.add("add");
+    openapiFields.add("update");
+    openapiFields.add("remove");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -221,17 +200,17 @@ public class UpdateRelationalDatasetFieldSchema {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `relationalDatasetFieldsToAdd`
-      if (jsonObj.get("relationalDatasetFieldsToAdd") != null && !jsonObj.get("relationalDatasetFieldsToAdd").isJsonNull()) {
-        RelationalDatasetFieldsToAdd.validateJsonElement(jsonObj.get("relationalDatasetFieldsToAdd"));
+      // validate the optional field `add`
+      if (jsonObj.get("add") != null && !jsonObj.get("add").isJsonNull()) {
+        RelationalDatasetFieldsToAdd.validateJsonElement(jsonObj.get("add"));
       }
-      // validate the optional field `relationalDatasetFieldsToUpdate`
-      if (jsonObj.get("relationalDatasetFieldsToUpdate") != null && !jsonObj.get("relationalDatasetFieldsToUpdate").isJsonNull()) {
-        RelationalDatasetFieldsToUpdate.validateJsonElement(jsonObj.get("relationalDatasetFieldsToUpdate"));
+      // validate the optional field `update`
+      if (jsonObj.get("update") != null && !jsonObj.get("update").isJsonNull()) {
+        RelationalDatasetFieldsToUpdate.validateJsonElement(jsonObj.get("update"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("fieldNamesToRemove") != null && !jsonObj.get("fieldNamesToRemove").isJsonNull() && !jsonObj.get("fieldNamesToRemove").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fieldNamesToRemove` to be an array in the JSON string but got `%s`", jsonObj.get("fieldNamesToRemove").toString()));
+      // validate the optional field `remove`
+      if (jsonObj.get("remove") != null && !jsonObj.get("remove").isJsonNull()) {
+        RelationalDatasetFieldsToRemove.validateJsonElement(jsonObj.get("remove"));
       }
   }
 

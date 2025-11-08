@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **timelineScope** | **String** | Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions | [optional] [default to String]
 **timelineCode** | **String** | Code of the Timeline for the Portfolio. The Timeline to be used while building transactions | [optional] [default to String]
 **includeEconomics** | **Boolean** | By default is false. When set to true the Economics data would be populated in the response. | [optional] [default to Boolean]
-**includeSettlementStatus** | **Boolean** | By default is false. When set to true the Economics data would be populated in the response. | [optional] [default to Boolean]
+**includeSettlementStatus** | **Boolean** | By default is false. When set to true the Settlement Status data would be populated in the response. | [optional] [default to Boolean]
+**settlementStatusDate** | **String** | Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TransactionQueryParameters;
@@ -27,6 +28,7 @@ Boolean ShowCancelledTransactions = true;
 @jakarta.annotation.Nullable String TimelineCode = "example TimelineCode";
 Boolean IncludeEconomics = true;
 Boolean IncludeSettlementStatus = true;
+@jakarta.annotation.Nullable String SettlementStatusDate = "example SettlementStatusDate";
 
 
 TransactionQueryParameters transactionQueryParametersInstance = new TransactionQueryParameters()
@@ -37,7 +39,8 @@ TransactionQueryParameters transactionQueryParametersInstance = new TransactionQ
     .TimelineScope(TimelineScope)
     .TimelineCode(TimelineCode)
     .IncludeEconomics(IncludeEconomics)
-    .IncludeSettlementStatus(IncludeSettlementStatus);
+    .IncludeSettlementStatus(IncludeSettlementStatus)
+    .SettlementStatusDate(SettlementStatusDate);
 ```
 
 

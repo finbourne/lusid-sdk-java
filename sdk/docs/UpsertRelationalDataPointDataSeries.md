@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seriesScope** | **String** | The scope of the DataSeries. | [default to String]
 **applicableEntity** | [**ApplicableEntity**](ApplicableEntity.md) |  | [default to ApplicableEntity]
-**seriesIdentifiers** | **Map&lt;String, Object&gt;** | The identifiers that uniquely define this DataSeries, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, Object>]
+**seriesIdentifiers** | **Map&lt;String, Object&gt;** | The identifiers that uniquely define this DataSeries, if any, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [optional] [default to Map<String, Object>]
 
 ```java
 import com.finbourne.lusid.model.UpsertRelationalDataPointDataSeries;
@@ -16,7 +16,7 @@ import java.net.URI;
 
 String SeriesScope = "example SeriesScope";
 ApplicableEntity ApplicableEntity = new ApplicableEntity();
-Map<String, Object> SeriesIdentifiers = new Map<String, Object>();
+@jakarta.annotation.Nullable Map<String, Object> SeriesIdentifiers = new Map<String, Object>();
 
 
 UpsertRelationalDataPointDataSeries upsertRelationalDataPointDataSeriesInstance = new UpsertRelationalDataPointDataSeries()
