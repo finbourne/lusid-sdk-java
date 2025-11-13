@@ -77,7 +77,7 @@ public class QueryRelationalDatasetRequest {
    * The method used to query data points. Can be either &#39;Latest&#39; or &#39;TimeSeries&#39;.
    * @return queryMethod
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getQueryMethod() {
     return queryMethod;
   }
@@ -204,7 +204,6 @@ public class QueryRelationalDatasetRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("queryMethod");
   }
 
  /**
@@ -219,15 +218,8 @@ public class QueryRelationalDatasetRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in QueryRelationalDatasetRequest is not found in the empty JSON string", QueryRelationalDatasetRequest.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : QueryRelationalDatasetRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("queryMethod").isJsonPrimitive()) {
+      if ((jsonObj.get("queryMethod") != null && !jsonObj.get("queryMethod").isJsonNull()) && !jsonObj.get("queryMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `queryMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queryMethod").toString()));
       }
       if ((jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) && !jsonObj.get("filter").isJsonPrimitive()) {

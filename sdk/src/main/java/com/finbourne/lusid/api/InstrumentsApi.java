@@ -4201,11 +4201,11 @@ public class InstrumentsApi {
     public APIgetInstrumentRelationshipsRequest getInstrumentRelationships(String identifierType, String identifier) {
         return new APIgetInstrumentRelationshipsRequest(identifierType, identifier);
     }
-    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4254,6 +4254,14 @@ public class InstrumentsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -4280,7 +4288,7 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentsValidateBeforeCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentsValidateBeforeCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstruments(Async)");
@@ -4291,34 +4299,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getInstruments(Async)");
         }
 
-        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, opts);
+    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback<GetInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4332,6 +4340,8 @@ public class InstrumentsApi {
         private List<String> propertyKeys;
         private String scope;
         private List<String> relationshipDefinitionIds;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIgetInstrumentsRequest(String identifierType, List<String> requestBody) {
             this.identifierType = identifierType;
@@ -4389,6 +4399,26 @@ public class InstrumentsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use. (optional)
+         * @return APIgetInstrumentsRequest
+         */
+        public APIgetInstrumentsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for getInstruments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4402,7 +4432,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+            return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -4418,7 +4448,7 @@ public class InstrumentsApi {
          </table>
          */
         public GetInstrumentsResponse execute() throws ApiException {
-            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -4435,7 +4465,7 @@ public class InstrumentsApi {
          </table>
          */
         public GetInstrumentsResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
+            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -4452,7 +4482,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<GetInstrumentsResponse> executeWithHttpInfo() throws ApiException {
-            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
         }
 
         /**
@@ -4468,7 +4498,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<GetInstrumentsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
+            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -4485,7 +4515,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
-            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -4502,7 +4532,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 

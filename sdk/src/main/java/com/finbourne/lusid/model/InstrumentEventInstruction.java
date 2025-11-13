@@ -102,6 +102,10 @@ public class InstrumentEventInstruction {
   @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
   private String taxLotId;
 
+  public static final String SERIALIZED_NAME_IGNORE_COST_IMPACT = "ignoreCostImpact";
+  @SerializedName(SERIALIZED_NAME_IGNORE_COST_IMPACT)
+  private Boolean ignoreCostImpact;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -340,6 +344,27 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction ignoreCostImpact(Boolean ignoreCostImpact) {
+    
+    this.ignoreCostImpact = ignoreCostImpact;
+    return this;
+  }
+
+   /**
+   * For loan facility holding instructions, set this flag to &#39;true&#39; if you want the event to not impact cost. If you want to use this option, do not add multiple instructions to the same tax lot or you will get undefined behaviour.
+   * @return ignoreCostImpact
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIgnoreCostImpact() {
+    return ignoreCostImpact;
+  }
+
+
+  public void setIgnoreCostImpact(Boolean ignoreCostImpact) {
+    this.ignoreCostImpact = ignoreCostImpact;
+  }
+
+
   public InstrumentEventInstruction links(List<Link> links) {
     
     this.links = links;
@@ -390,6 +415,7 @@ public class InstrumentEventInstruction {
         Objects.equals(this.entitlementDateInstructed, instrumentEventInstruction.entitlementDateInstructed) &&
         Objects.equals(this.quantityInstructed, instrumentEventInstruction.quantityInstructed) &&
         Objects.equals(this.taxLotId, instrumentEventInstruction.taxLotId) &&
+        Objects.equals(this.ignoreCostImpact, instrumentEventInstruction.ignoreCostImpact) &&
         Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
@@ -399,7 +425,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, taxLotId, links);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, taxLotId, ignoreCostImpact, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -424,6 +450,7 @@ public class InstrumentEventInstruction {
     sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
     sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
+    sb.append("    ignoreCostImpact: ").append(toIndentedString(ignoreCostImpact)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -458,6 +485,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("entitlementDateInstructed");
     openapiFields.add("quantityInstructed");
     openapiFields.add("taxLotId");
+    openapiFields.add("ignoreCostImpact");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

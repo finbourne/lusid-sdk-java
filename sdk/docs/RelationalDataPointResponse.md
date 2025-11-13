@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **valueFields** | [**Map&lt;String, RelationalDataPointFieldValueResponse&gt;**](RelationalDataPointFieldValueResponse.md) | The values associated with the DataPoint, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, RelationalDataPointFieldValueResponse>]
 **metaDataFields** | [**Map&lt;String, RelationalDataPointFieldValueResponse&gt;**](RelationalDataPointFieldValueResponse.md) | The metadata associated with the DataPoint, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, RelationalDataPointFieldValueResponse>]
 **effectiveAtEntered** | **String** | The effectiveAt datetime as entered when the DataPoint was created. | [default to String]
+**dataPointVersion** | [**DataPointVersion**](DataPointVersion.md) |  | [optional] [default to DataPointVersion]
 
 ```java
 import com.finbourne.lusid.model.RelationalDataPointResponse;
@@ -23,6 +24,7 @@ OffsetDateTime EffectiveAt = OffsetDateTime.now();
 Map<String, RelationalDataPointFieldValueResponse> ValueFields = new Map<String, RelationalDataPointFieldValueResponse>();
 Map<String, RelationalDataPointFieldValueResponse> MetaDataFields = new Map<String, RelationalDataPointFieldValueResponse>();
 String EffectiveAtEntered = "example EffectiveAtEntered";
+DataPointVersion DataPointVersion = new DataPointVersion();
 
 
 RelationalDataPointResponse relationalDataPointResponseInstance = new RelationalDataPointResponse()
@@ -31,7 +33,8 @@ RelationalDataPointResponse relationalDataPointResponseInstance = new Relational
     .EffectiveAt(EffectiveAt)
     .ValueFields(ValueFields)
     .MetaDataFields(MetaDataFields)
-    .EffectiveAtEntered(EffectiveAtEntered);
+    .EffectiveAtEntered(EffectiveAtEntered)
+    .DataPointVersion(DataPointVersion);
 ```
 
 

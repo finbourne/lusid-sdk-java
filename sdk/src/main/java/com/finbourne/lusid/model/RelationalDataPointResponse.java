@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.DataPointVersion;
 import com.finbourne.lusid.model.RelationalDataPointFieldValueResponse;
 import com.finbourne.lusid.model.RelationalDataSeriesResponse;
 import com.finbourne.lusid.model.ResourceId;
@@ -78,6 +79,10 @@ public class RelationalDataPointResponse {
   public static final String SERIALIZED_NAME_EFFECTIVE_AT_ENTERED = "effectiveAtEntered";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT_ENTERED)
   private String effectiveAtEntered;
+
+  public static final String SERIALIZED_NAME_DATA_POINT_VERSION = "dataPointVersion";
+  @SerializedName(SERIALIZED_NAME_DATA_POINT_VERSION)
+  private DataPointVersion dataPointVersion;
 
   public RelationalDataPointResponse() {
   }
@@ -224,6 +229,27 @@ public class RelationalDataPointResponse {
   }
 
 
+  public RelationalDataPointResponse dataPointVersion(DataPointVersion dataPointVersion) {
+    
+    this.dataPointVersion = dataPointVersion;
+    return this;
+  }
+
+   /**
+   * Get dataPointVersion
+   * @return dataPointVersion
+  **/
+  @jakarta.annotation.Nullable
+  public DataPointVersion getDataPointVersion() {
+    return dataPointVersion;
+  }
+
+
+  public void setDataPointVersion(DataPointVersion dataPointVersion) {
+    this.dataPointVersion = dataPointVersion;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,12 +265,13 @@ public class RelationalDataPointResponse {
         Objects.equals(this.effectiveAt, relationalDataPointResponse.effectiveAt) &&
         Objects.equals(this.valueFields, relationalDataPointResponse.valueFields) &&
         Objects.equals(this.metaDataFields, relationalDataPointResponse.metaDataFields) &&
-        Objects.equals(this.effectiveAtEntered, relationalDataPointResponse.effectiveAtEntered);
+        Objects.equals(this.effectiveAtEntered, relationalDataPointResponse.effectiveAtEntered) &&
+        Objects.equals(this.dataPointVersion, relationalDataPointResponse.dataPointVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(relationalDatasetDefinitionId, dataSeries, effectiveAt, valueFields, metaDataFields, effectiveAtEntered);
+    return Objects.hash(relationalDatasetDefinitionId, dataSeries, effectiveAt, valueFields, metaDataFields, effectiveAtEntered, dataPointVersion);
   }
 
   @Override
@@ -257,6 +284,7 @@ public class RelationalDataPointResponse {
     sb.append("    valueFields: ").append(toIndentedString(valueFields)).append("\n");
     sb.append("    metaDataFields: ").append(toIndentedString(metaDataFields)).append("\n");
     sb.append("    effectiveAtEntered: ").append(toIndentedString(effectiveAtEntered)).append("\n");
+    sb.append("    dataPointVersion: ").append(toIndentedString(dataPointVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -285,6 +313,7 @@ public class RelationalDataPointResponse {
     openapiFields.add("valueFields");
     openapiFields.add("metaDataFields");
     openapiFields.add("effectiveAtEntered");
+    openapiFields.add("dataPointVersion");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -322,6 +351,10 @@ public class RelationalDataPointResponse {
       RelationalDataSeriesResponse.validateJsonElement(jsonObj.get("dataSeries"));
       if (!jsonObj.get("effectiveAtEntered").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effectiveAtEntered` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveAtEntered").toString()));
+      }
+      // validate the optional field `dataPointVersion`
+      if (jsonObj.get("dataPointVersion") != null && !jsonObj.get("dataPointVersion").isJsonNull()) {
+        DataPointVersion.validateJsonElement(jsonObj.get("dataPointVersion"));
       }
   }
 

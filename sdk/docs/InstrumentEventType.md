@@ -84,6 +84,7 @@ InstrumentEventType method = InstrumentEventType.FLEXIBLEREPOPARTIALCLOSUREEVENT
 InstrumentEventType method = InstrumentEventType.FLEXIBLEREPOFULLCLOSUREEVENT;
 InstrumentEventType method = InstrumentEventType.CAPLETFLOORLETCASHFLOWEVENT;
 InstrumentEventType method = InstrumentEventType.EARLYCLOSEOUTEVENT;
+InstrumentEventType method = InstrumentEventType.DEPOSITROLLEVENT;
 ```
 
 

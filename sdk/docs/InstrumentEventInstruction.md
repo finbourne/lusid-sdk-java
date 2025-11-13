@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **entitlementDateInstructed** | [**OffsetDateTime**](OffsetDateTime.md) | The instructed entitlement date for the event (where none is set on the event itself) | [optional] [default to OffsetDateTime]
 **quantityInstructed** | [**QuantityInstructed**](QuantityInstructed.md) |  | [optional] [default to QuantityInstructed]
 **taxLotId** | **String** | For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply | [optional] [default to String]
+**ignoreCostImpact** | **Boolean** | For loan facility holding instructions, set this flag to &#39;true&#39; if you want the event to not impact cost. If you want to use this option, do not add multiple instructions to the same tax lot or you will get undefined behaviour. | [optional] [default to Boolean]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -35,6 +36,7 @@ Version Version = new Version();
 @jakarta.annotation.Nullable OffsetDateTime EntitlementDateInstructed = OffsetDateTime.now();
 QuantityInstructed QuantityInstructed = new QuantityInstructed();
 @jakarta.annotation.Nullable String TaxLotId = "example TaxLotId";
+Boolean IgnoreCostImpact = true;
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -50,6 +52,7 @@ InstrumentEventInstruction instrumentEventInstructionInstance = new InstrumentEv
     .EntitlementDateInstructed(EntitlementDateInstructed)
     .QuantityInstructed(QuantityInstructed)
     .TaxLotId(TaxLotId)
+    .IgnoreCostImpact(IgnoreCostImpact)
     .Links(Links);
 ```
 

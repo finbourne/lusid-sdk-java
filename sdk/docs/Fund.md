@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Fund. | [optional] [default to String]
 **description** | **String** | A description for the Fund. | [optional] [default to String]
 **baseCurrency** | **String** | The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency. | [optional] [default to String]
-**investorStructure** | **String** | The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39;, &#39;Classes&#39; and &#39;Custom&#39;. | [default to String]
+**investorStructure** | **String** | The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39; and &#39;Classes&#39;. | [default to String]
 **portfolioIds** | [**List&lt;PortfolioEntityIdWithDetails&gt;**](PortfolioEntityIdWithDetails.md) | A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency. | [optional] [default to List<PortfolioEntityIdWithDetails>]
 **fundConfigurationId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **aborId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]

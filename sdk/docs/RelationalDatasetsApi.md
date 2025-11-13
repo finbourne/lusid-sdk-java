@@ -108,7 +108,7 @@ public class RelationalDatasetsApiExample {
 
 ## queryRelationalData
 
-> PagedResourceListOfRelationalDataPointResponse queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit)
+> PagedResourceListOfRelationalDataPointResponse queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest)
 
 [EXPERIMENTAL] QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
 
@@ -155,16 +155,16 @@ public class RelationalDatasetsApiExample {
         RelationalDatasetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationalDatasetsApi.class);
         String relationalDatasetDefinitionScope = "relationalDatasetDefinitionScope_example"; // String | The Scope of the relational dataset definition.
         String relationalDatasetDefinitionCode = "relationalDatasetDefinitionCode_example"; // String | The Code of the relational dataset definition.
-        QueryRelationalDatasetRequest queryRelationalDatasetRequest = new QueryRelationalDatasetRequest(); // QueryRelationalDatasetRequest | The query request.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dataset(s). Defaults to returning the latest version of each dataset if not specified.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to query the datasets.   Defaults to the current LUSID system datetime if not specified.
         String page = "page_example"; // String | The pagination token to use to continue query datasets. This value is returned from the previous call.   If a pagination token is provided, the filter, customSortBy, effectiveAt and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        QueryRelationalDatasetRequest queryRelationalDatasetRequest = new QueryRelationalDatasetRequest(); // QueryRelationalDatasetRequest | The query request.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfRelationalDataPointResponse result = apiInstance.queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit).execute(opts);
+            // PagedResourceListOfRelationalDataPointResponse result = apiInstance.queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest).execute(opts);
 
-            PagedResourceListOfRelationalDataPointResponse result = apiInstance.queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit).execute();
+            PagedResourceListOfRelationalDataPointResponse result = apiInstance.queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling RelationalDatasetsApi#queryRelationalData");
@@ -183,11 +183,11 @@ public class RelationalDatasetsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **relationalDatasetDefinitionScope** | **String**| The Scope of the relational dataset definition. | |
 | **relationalDatasetDefinitionCode** | **String**| The Code of the relational dataset definition. | |
-| **queryRelationalDatasetRequest** | [**QueryRelationalDatasetRequest**](QueryRelationalDatasetRequest.md)| The query request. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dataset(s). Defaults to returning the latest version of each dataset if not specified. | [optional] |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to query the datasets.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue query datasets. This value is returned from the previous call.   If a pagination token is provided, the filter, customSortBy, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **queryRelationalDatasetRequest** | [**QueryRelationalDatasetRequest**](QueryRelationalDatasetRequest.md)| The query request. | [optional] |
 
 ### Return type
 

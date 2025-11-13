@@ -163,7 +163,9 @@ public enum InstrumentEventType {
   
   CAPLETFLOORLETCASHFLOWEVENT("CapletFloorletCashFlowEvent"),
   
-  EARLYCLOSEOUTEVENT("EarlyCloseOutEvent");
+  EARLYCLOSEOUTEVENT("EarlyCloseOutEvent"),
+  
+  DEPOSITROLLEVENT("DepositRollEvent");
 
   private String value;
 

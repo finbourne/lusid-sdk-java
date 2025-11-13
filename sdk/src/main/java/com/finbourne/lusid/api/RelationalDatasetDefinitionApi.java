@@ -540,7 +540,7 @@ public class RelationalDatasetDefinitionApi {
 
     /**
      * [EARLY ACCESS] DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition
-     * Delete a relational dataset definition.
+     * Delete a relational dataset definition.  WARNING! This operation is irreversible. Deleting a relational dataset definition will also delete all associated data points.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
      * @return APIdeleteRelationalDatasetDefinitionRequest

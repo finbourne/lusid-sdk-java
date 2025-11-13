@@ -255,7 +255,7 @@ public class Fund {
   }
 
    /**
-   * The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39;, &#39;Classes&#39; and &#39;Custom&#39;.
+   * The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39; and &#39;Classes&#39;.
    * @return investorStructure
   **/
   @jakarta.annotation.Nonnull

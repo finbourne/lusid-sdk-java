@@ -344,11 +344,11 @@ public class RelationalDatasetsApi {
     public APIbatchUpsertRelationalDataRequest batchUpsertRelationalData(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, UpsertRelationalDataPointRequest> requestBody) {
         return new APIbatchUpsertRelationalDataRequest(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody);
     }
-    private okhttp3.Call queryRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
-        return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit,  _callback, new ConfigurationOptions());
+    private okhttp3.Call queryRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, final ApiCallback _callback) throws ApiException {
+        return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call queryRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call queryRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,7 +417,7 @@ public class RelationalDatasetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryRelationalDataValidateBeforeCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call queryRelationalDataValidateBeforeCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'relationalDatasetDefinitionScope' is set
         if (relationalDatasetDefinitionScope == null) {
             throw new ApiException("Missing the required parameter 'relationalDatasetDefinitionScope' when calling queryRelationalData(Async)");
@@ -428,39 +428,34 @@ public class RelationalDatasetsApi {
             throw new ApiException("Missing the required parameter 'relationalDatasetDefinitionCode' when calling queryRelationalData(Async)");
         }
 
-        // verify the required parameter 'queryRelationalDatasetRequest' is set
-        if (queryRelationalDatasetRequest == null) {
-            throw new ApiException("Missing the required parameter 'queryRelationalDatasetRequest' when calling queryRelationalData(Async)");
-        }
-
-        return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback, opts);
+        return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfRelationalDataPointResponse> queryRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfRelationalDataPointResponse> queryRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest) throws ApiException {
+        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationalDataPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfRelationalDataPointResponse> queryRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, null, opts);
+    private ApiResponse<PagedResourceListOfRelationalDataPointResponse> queryRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationalDataPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call queryRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback) throws ApiException {
+    private okhttp3.Call queryRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationalDataPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call queryRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call queryRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, OffsetDateTime asAt, String effectiveAt, String page, Integer limit, QueryRelationalDatasetRequest queryRelationalDatasetRequest, final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback, opts);
+        okhttp3.Call localVarCall = queryRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRelationalDataPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -469,16 +464,15 @@ public class RelationalDatasetsApi {
     public class APIqueryRelationalDataRequest {
         private final String relationalDatasetDefinitionScope;
         private final String relationalDatasetDefinitionCode;
-        private final QueryRelationalDatasetRequest queryRelationalDatasetRequest;
         private OffsetDateTime asAt;
         private String effectiveAt;
         private String page;
         private Integer limit;
+        private QueryRelationalDatasetRequest queryRelationalDatasetRequest;
 
-        private APIqueryRelationalDataRequest(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest) {
+        private APIqueryRelationalDataRequest(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode) {
             this.relationalDatasetDefinitionScope = relationalDatasetDefinitionScope;
             this.relationalDatasetDefinitionCode = relationalDatasetDefinitionCode;
-            this.queryRelationalDatasetRequest = queryRelationalDatasetRequest;
         }
 
         /**
@@ -522,6 +516,16 @@ public class RelationalDatasetsApi {
         }
 
         /**
+         * Set queryRelationalDatasetRequest
+         * @param queryRelationalDatasetRequest The query request. (optional)
+         * @return APIqueryRelationalDataRequest
+         */
+        public APIqueryRelationalDataRequest queryRelationalDatasetRequest(QueryRelationalDatasetRequest queryRelationalDatasetRequest) {
+            this.queryRelationalDatasetRequest = queryRelationalDatasetRequest;
+            return this;
+        }
+
+        /**
          * Build call for queryRelationalData
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -535,7 +539,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback);
+            return queryRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback);
         }
 
         /**
@@ -551,7 +555,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public PagedResourceListOfRelationalDataPointResponse execute() throws ApiException {
-            ApiResponse<PagedResourceListOfRelationalDataPointResponse> localVarResp = queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit);
+            ApiResponse<PagedResourceListOfRelationalDataPointResponse> localVarResp = queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest);
             return localVarResp.getData();
         }
 
@@ -568,7 +572,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public PagedResourceListOfRelationalDataPointResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfRelationalDataPointResponse> localVarResp = queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, opts);
+            ApiResponse<PagedResourceListOfRelationalDataPointResponse> localVarResp = queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, opts);
             return localVarResp.getData();
         }
 
@@ -585,7 +589,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfRelationalDataPointResponse> executeWithHttpInfo() throws ApiException {
-            return queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit);
+            return queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest);
         }
 
         /**
@@ -601,7 +605,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfRelationalDataPointResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, opts);
+            return queryRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, opts);
         }
 
         /**
@@ -618,7 +622,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback) throws ApiException {
-            return queryRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback);
+            return queryRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback);
         }
 
         /**
@@ -635,7 +639,7 @@ public class RelationalDatasetsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRelationalDataPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return queryRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest, asAt, effectiveAt, page, limit, _callback, opts);
+            return queryRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest, _callback, opts);
         }
     }
 
@@ -644,7 +648,6 @@ public class RelationalDatasetsApi {
      * Query Relational Data Points for a given Relational Dataset Definition.
      * @param relationalDatasetDefinitionScope The Scope of the relational dataset definition. (required)
      * @param relationalDatasetDefinitionCode The Code of the relational dataset definition. (required)
-     * @param queryRelationalDatasetRequest The query request. (required)
      * @return APIqueryRelationalDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -654,7 +657,7 @@ public class RelationalDatasetsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIqueryRelationalDataRequest queryRelationalData(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, QueryRelationalDatasetRequest queryRelationalDatasetRequest) {
-        return new APIqueryRelationalDataRequest(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, queryRelationalDatasetRequest);
+    public APIqueryRelationalDataRequest queryRelationalData(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode) {
+        return new APIqueryRelationalDataRequest(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode);
     }
 }
