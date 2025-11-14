@@ -70,6 +70,10 @@ public class ApplicableEntity {
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
   private String identifierValue;
 
+  public static final String SERIALIZED_NAME_SUB_ENTITY_ID = "subEntityId";
+  @SerializedName(SERIALIZED_NAME_SUB_ENTITY_ID)
+  private String subEntityId;
+
   public ApplicableEntity() {
   }
 
@@ -178,6 +182,27 @@ public class ApplicableEntity {
   }
 
 
+  public ApplicableEntity subEntityId(String subEntityId) {
+    
+    this.subEntityId = subEntityId;
+    return this;
+  }
+
+   /**
+   * An optional sub-entity identifier, if applicable.
+   * @return subEntityId
+  **/
+  @jakarta.annotation.Nullable
+  public String getSubEntityId() {
+    return subEntityId;
+  }
+
+
+  public void setSubEntityId(String subEntityId) {
+    this.subEntityId = subEntityId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +217,8 @@ public class ApplicableEntity {
         Objects.equals(this.entityScope, applicableEntity.entityScope) &&
         Objects.equals(this.identifierScope, applicableEntity.identifierScope) &&
         Objects.equals(this.identifierType, applicableEntity.identifierType) &&
-        Objects.equals(this.identifierValue, applicableEntity.identifierValue);
+        Objects.equals(this.identifierValue, applicableEntity.identifierValue) &&
+        Objects.equals(this.subEntityId, applicableEntity.subEntityId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +227,7 @@ public class ApplicableEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, entityScope, identifierScope, identifierType, identifierValue);
+    return Objects.hash(entityType, entityScope, identifierScope, identifierType, identifierValue, subEntityId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +246,7 @@ public class ApplicableEntity {
     sb.append("    identifierScope: ").append(toIndentedString(identifierScope)).append("\n");
     sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
     sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
+    sb.append("    subEntityId: ").append(toIndentedString(subEntityId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +274,7 @@ public class ApplicableEntity {
     openapiFields.add("identifierScope");
     openapiFields.add("identifierType");
     openapiFields.add("identifierValue");
+    openapiFields.add("subEntityId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -287,6 +315,9 @@ public class ApplicableEntity {
       }
       if ((jsonObj.get("identifierValue") != null && !jsonObj.get("identifierValue").isJsonNull()) && !jsonObj.get("identifierValue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
+      }
+      if ((jsonObj.get("subEntityId") != null && !jsonObj.get("subEntityId").isJsonNull()) && !jsonObj.get("subEntityId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subEntityId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subEntityId").toString()));
       }
   }
 
