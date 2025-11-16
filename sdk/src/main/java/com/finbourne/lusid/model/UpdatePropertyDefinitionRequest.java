@@ -64,6 +64,10 @@ public class UpdatePropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPES)
   private List<String> customEntityTypes;
 
+  public static final String SERIALIZED_NAME_VALUE_FORMAT = "valueFormat";
+  @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
+  private String valueFormat;
+
   public UpdatePropertyDefinitionRequest() {
   }
 
@@ -138,6 +142,27 @@ public class UpdatePropertyDefinitionRequest {
   }
 
 
+  public UpdatePropertyDefinitionRequest valueFormat(String valueFormat) {
+    
+    this.valueFormat = valueFormat;
+    return this;
+  }
+
+   /**
+   * The format in which values for this property definition should be represented.
+   * @return valueFormat
+  **/
+  @jakarta.annotation.Nullable
+  public String getValueFormat() {
+    return valueFormat;
+  }
+
+
+  public void setValueFormat(String valueFormat) {
+    this.valueFormat = valueFormat;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -150,7 +175,8 @@ public class UpdatePropertyDefinitionRequest {
     UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = (UpdatePropertyDefinitionRequest) o;
     return Objects.equals(this.displayName, updatePropertyDefinitionRequest.displayName) &&
         Objects.equals(this.propertyDescription, updatePropertyDefinitionRequest.propertyDescription) &&
-        Objects.equals(this.customEntityTypes, updatePropertyDefinitionRequest.customEntityTypes);
+        Objects.equals(this.customEntityTypes, updatePropertyDefinitionRequest.customEntityTypes) &&
+        Objects.equals(this.valueFormat, updatePropertyDefinitionRequest.valueFormat);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -159,7 +185,7 @@ public class UpdatePropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, propertyDescription, customEntityTypes);
+    return Objects.hash(displayName, propertyDescription, customEntityTypes, valueFormat);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -176,6 +202,7 @@ public class UpdatePropertyDefinitionRequest {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
+    sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -201,6 +228,7 @@ public class UpdatePropertyDefinitionRequest {
     openapiFields.add("displayName");
     openapiFields.add("propertyDescription");
     openapiFields.add("customEntityTypes");
+    openapiFields.add("valueFormat");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,6 +264,9 @@ public class UpdatePropertyDefinitionRequest {
       // ensure the optional json data is an array if present
       if (jsonObj.get("customEntityTypes") != null && !jsonObj.get("customEntityTypes").isJsonNull() && !jsonObj.get("customEntityTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `customEntityTypes` to be an array in the JSON string but got `%s`", jsonObj.get("customEntityTypes").toString()));
+      }
+      if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
       }
   }
 

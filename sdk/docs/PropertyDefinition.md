@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. | [optional] [default to Boolean]
 **customEntityTypes** | **List&lt;String&gt;** | The custom entity types that properties relating to this property definition can be applied to. | [optional] [default to List<String>]
+**valueFormat** | **String** | The format in which values for this property definition should be represented. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -57,6 +58,7 @@ Version Version = new Version();
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 Boolean IsFilterable = true;
 @jakarta.annotation.Nullable List<String> CustomEntityTypes = new List<String>();
+@jakarta.annotation.Nullable String ValueFormat = "example ValueFormat";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -83,6 +85,7 @@ PropertyDefinition propertyDefinitionInstance = new PropertyDefinition()
     .StagedModifications(StagedModifications)
     .IsFilterable(IsFilterable)
     .CustomEntityTypes(CustomEntityTypes)
+    .ValueFormat(ValueFormat)
     .Links(Links);
 ```
 

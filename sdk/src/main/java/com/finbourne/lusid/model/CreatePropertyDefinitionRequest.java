@@ -353,6 +353,10 @@ public class CreatePropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPES)
   private List<String> customEntityTypes;
 
+  public static final String SERIALIZED_NAME_VALUE_FORMAT = "valueFormat";
+  @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
+  private String valueFormat;
+
   public CreatePropertyDefinitionRequest() {
   }
 
@@ -595,6 +599,27 @@ public class CreatePropertyDefinitionRequest {
   }
 
 
+  public CreatePropertyDefinitionRequest valueFormat(String valueFormat) {
+    
+    this.valueFormat = valueFormat;
+    return this;
+  }
+
+   /**
+   * The format in which values for this property definition should be represented.
+   * @return valueFormat
+  **/
+  @jakarta.annotation.Nullable
+  public String getValueFormat() {
+    return valueFormat;
+  }
+
+
+  public void setValueFormat(String valueFormat) {
+    this.valueFormat = valueFormat;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -615,7 +640,8 @@ public class CreatePropertyDefinitionRequest {
         Objects.equals(this.constraintStyle, createPropertyDefinitionRequest.constraintStyle) &&
         Objects.equals(this.propertyDescription, createPropertyDefinitionRequest.propertyDescription) &&
         Objects.equals(this.collectionType, createPropertyDefinitionRequest.collectionType) &&
-        Objects.equals(this.customEntityTypes, createPropertyDefinitionRequest.customEntityTypes);
+        Objects.equals(this.customEntityTypes, createPropertyDefinitionRequest.customEntityTypes) &&
+        Objects.equals(this.valueFormat, createPropertyDefinitionRequest.valueFormat);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -624,7 +650,7 @@ public class CreatePropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription, collectionType, customEntityTypes);
+    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription, collectionType, customEntityTypes, valueFormat);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -649,6 +675,7 @@ public class CreatePropertyDefinitionRequest {
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    collectionType: ").append(toIndentedString(collectionType)).append("\n");
     sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
+    sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -682,6 +709,7 @@ public class CreatePropertyDefinitionRequest {
     openapiFields.add("propertyDescription");
     openapiFields.add("collectionType");
     openapiFields.add("customEntityTypes");
+    openapiFields.add("valueFormat");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -741,6 +769,9 @@ public class CreatePropertyDefinitionRequest {
       // ensure the optional json data is an array if present
       if (jsonObj.get("customEntityTypes") != null && !jsonObj.get("customEntityTypes").isJsonNull() && !jsonObj.get("customEntityTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `customEntityTypes` to be an array in the JSON string but got `%s`", jsonObj.get("customEntityTypes").toString()));
+      }
+      if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
       }
   }
 

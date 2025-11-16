@@ -634,6 +634,10 @@ public class PropertyDefinition {
   @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPES)
   private List<String> customEntityTypes;
 
+  public static final String SERIALIZED_NAME_VALUE_FORMAT = "valueFormat";
+  @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
+  private String valueFormat;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -1111,6 +1115,27 @@ public class PropertyDefinition {
   }
 
 
+  public PropertyDefinition valueFormat(String valueFormat) {
+    
+    this.valueFormat = valueFormat;
+    return this;
+  }
+
+   /**
+   * The format in which values for this property definition should be represented.
+   * @return valueFormat
+  **/
+  @jakarta.annotation.Nullable
+  public String getValueFormat() {
+    return valueFormat;
+  }
+
+
+  public void setValueFormat(String valueFormat) {
+    this.valueFormat = valueFormat;
+  }
+
+
   public PropertyDefinition links(List<Link> links) {
     
     this.links = links;
@@ -1172,6 +1197,7 @@ public class PropertyDefinition {
         Objects.equals(this.stagedModifications, propertyDefinition.stagedModifications) &&
         Objects.equals(this.isFilterable, propertyDefinition.isFilterable) &&
         Objects.equals(this.customEntityTypes, propertyDefinition.customEntityTypes) &&
+        Objects.equals(this.valueFormat, propertyDefinition.valueFormat) &&
         Objects.equals(this.links, propertyDefinition.links);
   }
 
@@ -1181,7 +1207,7 @@ public class PropertyDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, isFilterable, customEntityTypes, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, isFilterable, customEntityTypes, valueFormat, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1217,6 +1243,7 @@ public class PropertyDefinition {
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
+    sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1262,6 +1289,7 @@ public class PropertyDefinition {
     openapiFields.add("stagedModifications");
     openapiFields.add("isFilterable");
     openapiFields.add("customEntityTypes");
+    openapiFields.add("valueFormat");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1341,6 +1369,9 @@ public class PropertyDefinition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("customEntityTypes") != null && !jsonObj.get("customEntityTypes").isJsonNull() && !jsonObj.get("customEntityTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `customEntityTypes` to be an array in the JSON string but got `%s`", jsonObj.get("customEntityTypes").toString()));
+      }
+      if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
