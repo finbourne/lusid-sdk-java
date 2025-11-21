@@ -11,6 +11,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteBookmark**](FundsApi.md#deleteBookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark. |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
+| [**deleteNavActivityAdjustments**](FundsApi.md#deleteNavActivityAdjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment/$delete | [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
 | [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
 | [**finaliseCandidateValuationPoint**](FundsApi.md#finaliseCandidateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
 | [**getFee**](FundsApi.md#getFee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
@@ -27,6 +28,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listFees**](FundsApi.md#listFees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund. |
 | [**listFundCalendar**](FundsApi.md#listFundCalendar) | **GET** /api/funds/{scope}/{code}/calendar | [EXPERIMENTAL] ListFundCalendar: List Fund Calendar. |
 | [**listFunds**](FundsApi.md#listFunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds. |
+| [**listNavActivityAdjustments**](FundsApi.md#listNavActivityAdjustments) | **GET** /api/funds/{scope}/{code}/navAdjustment | [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
 | [**listValuationPointOverview**](FundsApi.md#listValuationPointOverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**patchFee**](FundsApi.md#patchFee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**patchFund**](FundsApi.md#patchFund) | **PATCH** /api/funds/{scope}/{code} | [EXPERIMENTAL] PatchFund: Patch a Fund. |
@@ -35,6 +37,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point. |
 | [**upsertFeeProperties**](FundsApi.md#upsertFeeProperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties. |
 | [**upsertFundProperties**](FundsApi.md#upsertFundProperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties. |
+| [**upsertNavActivityAdjustments**](FundsApi.md#upsertNavActivityAdjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment | [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point |
 
 
 
@@ -697,6 +700,105 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the Fund was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteNavActivityAdjustments
+
+> DeletedEntityResponse deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment)
+
+[EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
+
+Delete Nav activity adjustments on a Valuation Point.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope is the unique identifier for the given Fund.
+        String valuationPointCode = "valuationPointCode_example"; // String | The valuation point Code to delete the adjustment from
+        String navTypeCode = "navTypeCode_example"; // String | The Nav Type Code to delete the adjustment from
+        List<NavActivityAdjustment> navActivityAdjustment = Arrays.asList(); // List<NavActivityAdjustment> | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#deleteNavActivityAdjustments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope is the unique identifier for the given Fund. | |
+| **valuationPointCode** | **String**| The valuation point Code to delete the adjustment from | |
+| **navTypeCode** | **String**| The Nav Type Code to delete the adjustment from | |
+| **navActivityAdjustment** | [**List&lt;NavActivityAdjustment&gt;**](NavActivityAdjustment.md)| The request describing the Nav activity adjustments to delete from a specific valuation point and nav type | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Nav activity adjustments were deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -2351,6 +2453,109 @@ public class FundsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## listNavActivityAdjustments
+
+> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit)
+
+[EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
+
+Lists the NAV adjustment activities applied to the specified valuation point for a Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope is the unique identifier for the given Fund.
+        String valuationPointCode = "valuationPointCode_example"; // String | Fetch all NAV adjustment activities for this valuation point.
+        String navTypeCode = "navTypeCode_example"; // String | Fetch all NAV adjustment activities for this Nav type.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Nav activity adjustments. Defaults to returning the latest version of each adjustment if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit).execute(opts);
+
+            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#listNavActivityAdjustments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope is the unique identifier for the given Fund. | |
+| **valuationPointCode** | **String**| Fetch all NAV adjustment activities for this valuation point. | |
+| **navTypeCode** | **String**| Fetch all NAV adjustment activities for this Nav type. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Nav activity adjustments. Defaults to returning the latest version of each adjustment if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfNavActivityAdjustment**](ResourceListOfNavActivityAdjustment.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## listValuationPointOverview
 
 > PagedResourceListOfValuationPointOverview listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode)
@@ -3125,6 +3330,105 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated or inserted properties |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertNavActivityAdjustments
+
+> OffsetDateTime upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment)
+
+[EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
+
+Upserts the NAV adjustment activities to the specified valuation point for a Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope is the unique identifier for the given Fund.
+        String valuationPointCode = "valuationPointCode_example"; // String | The valuation point Code to apply the adjustment to
+        String navTypeCode = "navTypeCode_example"; // String | The Nav Type Code to apply the adjustment to
+        List<NavActivityAdjustment> navActivityAdjustment = Arrays.asList(); // List<NavActivityAdjustment> | The request describing the Nav activity adjustments to apply to a specific valuation point and nav type
+        try {
+            // uncomment the below to set overrides at the request level
+            // OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute(opts);
+
+            OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#upsertNavActivityAdjustments");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope is the unique identifier for the given Fund. | |
+| **valuationPointCode** | **String**| The valuation point Code to apply the adjustment to | |
+| **navTypeCode** | **String**| The Nav Type Code to apply the adjustment to | |
+| **navActivityAdjustment** | [**List&lt;NavActivityAdjustment&gt;**](NavActivityAdjustment.md)| The request describing the Nav activity adjustments to apply to a specific valuation point and nav type | |
+
+### Return type
+
+[**OffsetDateTime**](OffsetDateTime.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The date and time of the successfully applied Nav Activity Adjustments. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

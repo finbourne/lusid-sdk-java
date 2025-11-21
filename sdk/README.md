@@ -245,6 +245,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**deleteBookmark**](docs/FundsApi.md#deletebookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
 *FundsApi* | [**deleteFee**](docs/FundsApi.md#deletefee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee.
 *FundsApi* | [**deleteFund**](docs/FundsApi.md#deletefund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund.
+*FundsApi* | [**deleteNavActivityAdjustments**](docs/FundsApi.md#deletenavactivityadjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment/$delete | [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
 *FundsApi* | [**deleteValuationPoint**](docs/FundsApi.md#deletevaluationpoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
 *FundsApi* | [**finaliseCandidateValuationPoint**](docs/FundsApi.md#finalisecandidatevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
 *FundsApi* | [**getFee**](docs/FundsApi.md#getfee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
@@ -261,6 +262,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**listFees**](docs/FundsApi.md#listfees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund.
 *FundsApi* | [**listFundCalendar**](docs/FundsApi.md#listfundcalendar) | **GET** /api/funds/{scope}/{code}/calendar | [EXPERIMENTAL] ListFundCalendar: List Fund Calendar.
 *FundsApi* | [**listFunds**](docs/FundsApi.md#listfunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds.
+*FundsApi* | [**listNavActivityAdjustments**](docs/FundsApi.md#listnavactivityadjustments) | **GET** /api/funds/{scope}/{code}/navAdjustment | [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 *FundsApi* | [**patchFee**](docs/FundsApi.md#patchfee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee.
 *FundsApi* | [**patchFund**](docs/FundsApi.md#patchfund) | **PATCH** /api/funds/{scope}/{code} | [EXPERIMENTAL] PatchFund: Patch a Fund.
@@ -269,6 +271,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**upsertDiaryEntryTypeValuationPoint**](docs/FundsApi.md#upsertdiaryentrytypevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
 *FundsApi* | [**upsertFeeProperties**](docs/FundsApi.md#upsertfeeproperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
 *FundsApi* | [**upsertFundProperties**](docs/FundsApi.md#upsertfundproperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
+*FundsApi* | [**upsertNavActivityAdjustments**](docs/FundsApi.md#upsertnavactivityadjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment | [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
 *GroupReconciliationsApi* | [**batchUpdateComparisonResults**](docs/GroupReconciliationsApi.md#batchupdatecomparisonresults) | **POST** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/comparisonresults/$batchReview | [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
 *GroupReconciliationsApi* | [**createComparisonRuleset**](docs/GroupReconciliationsApi.md#createcomparisonruleset) | **POST** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] CreateComparisonRuleset: Create a Group Reconciliation Comparison Ruleset
 *GroupReconciliationsApi* | [**createGroupReconciliationDefinition**](docs/GroupReconciliationsApi.md#creategroupreconciliationdefinition) | **POST** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] CreateGroupReconciliationDefinition: Create Group Reconciliation Definition
@@ -1340,6 +1343,8 @@ Class | Method | HTTP request | Description
  - [MovementSettlementSummary](docs/MovementSettlementSummary.md)
  - [MovementType](docs/MovementType.md)
  - [MultiCurrencyAmounts](docs/MultiCurrencyAmounts.md)
+ - [NavActivityAdjustment](docs/NavActivityAdjustment.md)
+ - [NavActivityAdjustmentType](docs/NavActivityAdjustmentType.md)
  - [NavTypeDefinition](docs/NavTypeDefinition.md)
  - [NewInstrument](docs/NewInstrument.md)
  - [NextValueInSequenceResponse](docs/NextValueInSequenceResponse.md)
@@ -1511,6 +1516,7 @@ Class | Method | HTTP request | Description
  - [PortfolioSearchResult](docs/PortfolioSearchResult.md)
  - [PortfolioSettlementConfiguration](docs/PortfolioSettlementConfiguration.md)
  - [PortfolioTradeTicket](docs/PortfolioTradeTicket.md)
+ - [PortfolioTransaction](docs/PortfolioTransaction.md)
  - [PortfolioType](docs/PortfolioType.md)
  - [PortfolioWithoutHref](docs/PortfolioWithoutHref.md)
  - [PortfoliosReconciliationRequest](docs/PortfoliosReconciliationRequest.md)
@@ -1664,6 +1670,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfListComplexMarketDataWithMetaDataResponse](docs/ResourceListOfListComplexMarketDataWithMetaDataResponse.md)
  - [ResourceListOfMapping](docs/ResourceListOfMapping.md)
  - [ResourceListOfMovedOrderToDifferentBlockResponse](docs/ResourceListOfMovedOrderToDifferentBlockResponse.md)
+ - [ResourceListOfNavActivityAdjustment](docs/ResourceListOfNavActivityAdjustment.md)
  - [ResourceListOfOrder](docs/ResourceListOfOrder.md)
  - [ResourceListOfOrderInstruction](docs/ResourceListOfOrderInstruction.md)
  - [ResourceListOfOutputTransaction](docs/ResourceListOfOutputTransaction.md)

@@ -40,6 +40,7 @@ import com.finbourne.lusid.model.FundValuationRequest;
 import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import com.finbourne.lusid.model.NavActivityAdjustment;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfFee;
@@ -47,6 +48,7 @@ import com.finbourne.lusid.model.PagedResourceListOfFund;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustment;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
@@ -1882,6 +1884,283 @@ public class FundsApi {
      */
     public APIdeleteFundRequest deleteFund(String scope, String code) {
         return new APIdeleteFundRequest(scope, code);
+    }
+    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback) throws ApiException {
+        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = navActivityAdjustment;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/navAdjustment/$delete"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (valuationPointCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuationPointCode", valuationPointCode));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'valuationPointCode' is set
+        if (valuationPointCode == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointCode' when calling deleteNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'navTypeCode' is set
+        if (navTypeCode == null) {
+            throw new ApiException("Missing the required parameter 'navTypeCode' when calling deleteNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'navActivityAdjustment' is set
+        if (navActivityAdjustment == null) {
+            throw new ApiException("Missing the required parameter 'navActivityAdjustment' when calling deleteNavActivityAdjustments(Async)");
+        }
+
+        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) throws ApiException {
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteNavActivityAdjustmentsRequest {
+        private final String scope;
+        private final String code;
+        private final String valuationPointCode;
+        private final String navTypeCode;
+        private final List<NavActivityAdjustment> navActivityAdjustment;
+
+        private APIdeleteNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointCode = valuationPointCode;
+            this.navTypeCode = navTypeCode;
+            this.navActivityAdjustment = navActivityAdjustment;
+        }
+
+        /**
+         * Build call for deleteNavActivityAdjustments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback);
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, opts);
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback);
+        }
+
+        /**
+         * Execute deleteNavActivityAdjustments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
+     * Delete Nav activity adjustments on a Valuation Point.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
+     * @param valuationPointCode The valuation point Code to delete the adjustment from (required)
+     * @param navTypeCode The Nav Type Code to delete the adjustment from (required)
+     * @param navActivityAdjustment The request describing the Nav activity adjustments to delete from a specific valuation point and nav type (required)
+     * @return APIdeleteNavActivityAdjustmentsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Nav activity adjustments were deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteNavActivityAdjustmentsRequest deleteNavActivityAdjustments(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) {
+        return new APIdeleteNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
     }
     private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return deleteValuationPointCall(scope, code, diaryEntryCode, navTypeCode,  _callback, new ConfigurationOptions());
@@ -6912,6 +7191,316 @@ public class FundsApi {
     public APIlistFundsRequest listFunds() {
         return new APIlistFundsRequest();
     }
+    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/navAdjustment"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (valuationPointCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuationPointCode", valuationPointCode));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'valuationPointCode' is set
+        if (valuationPointCode == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointCode' when calling listNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'navTypeCode' is set
+        if (navTypeCode == null) {
+            throw new ApiException("Missing the required parameter 'navTypeCode' when calling listNavActivityAdjustments(Async)");
+        }
+
+        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistNavActivityAdjustmentsRequest {
+        private final String scope;
+        private final String code;
+        private final String valuationPointCode;
+        private final String navTypeCode;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+
+        private APIlistNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, String navTypeCode) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointCode = valuationPointCode;
+            this.navTypeCode = navTypeCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Nav activity adjustments. Defaults to returning the latest version of each adjustment if not specified. (optional)
+         * @return APIlistNavActivityAdjustmentsRequest
+         */
+        public APIlistNavActivityAdjustmentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistNavActivityAdjustmentsRequest
+         */
+        public APIlistNavActivityAdjustmentsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistNavActivityAdjustmentsRequest
+         */
+        public APIlistNavActivityAdjustmentsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for listNavActivityAdjustments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback);
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request
+         * @return ResourceListOfNavActivityAdjustment
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfNavActivityAdjustment execute() throws ApiException {
+            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfNavActivityAdjustment
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfNavActivityAdjustment execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustment&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo() throws ApiException {
+            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit);
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustment&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, opts);
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
+            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback);
+        }
+
+        /**
+         * Execute listNavActivityAdjustments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
+     * Lists the NAV adjustment activities applied to the specified valuation point for a Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
+     * @param valuationPointCode Fetch all NAV adjustment activities for this valuation point. (required)
+     * @param navTypeCode Fetch all NAV adjustment activities for this Nav type. (required)
+     * @return APIlistNavActivityAdjustmentsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested NAV activity adjustments for the specific valuation point and Nav type for the Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistNavActivityAdjustmentsRequest listNavActivityAdjustments(String scope, String code, String valuationPointCode, String navTypeCode) {
+        return new APIlistNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navTypeCode);
+    }
     private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
     }
@@ -9082,5 +9671,282 @@ public class FundsApi {
      */
     public APIupsertFundPropertiesRequest upsertFundProperties(String scope, String code) {
         return new APIupsertFundPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call upsertNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback) throws ApiException {
+        return upsertNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = navActivityAdjustment;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/navAdjustment"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (valuationPointCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuationPointCode", valuationPointCode));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'valuationPointCode' is set
+        if (valuationPointCode == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointCode' when calling upsertNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'navTypeCode' is set
+        if (navTypeCode == null) {
+            throw new ApiException("Missing the required parameter 'navTypeCode' when calling upsertNavActivityAdjustments(Async)");
+        }
+
+        // verify the required parameter 'navActivityAdjustment' is set
+        if (navActivityAdjustment == null) {
+            throw new ApiException("Missing the required parameter 'navActivityAdjustment' when calling upsertNavActivityAdjustments(Async)");
+        }
+
+        return upsertNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+
+    }
+
+
+    private ApiResponse<OffsetDateTime> upsertNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) throws ApiException {
+        okhttp3.Call localVarCall = upsertNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<OffsetDateTime> upsertNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, null, opts);
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment, final ApiCallback<OffsetDateTime> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertNavActivityAdjustmentsRequest {
+        private final String scope;
+        private final String code;
+        private final String valuationPointCode;
+        private final String navTypeCode;
+        private final List<NavActivityAdjustment> navActivityAdjustment;
+
+        private APIupsertNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointCode = valuationPointCode;
+            this.navTypeCode = navTypeCode;
+            this.navActivityAdjustment = navActivityAdjustment;
+        }
+
+        /**
+         * Build call for upsertNavActivityAdjustments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback);
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request
+         * @return OffsetDateTime
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffsetDateTime execute() throws ApiException {
+            ApiResponse<OffsetDateTime> localVarResp = upsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return OffsetDateTime
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffsetDateTime execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<OffsetDateTime> localVarResp = upsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request with HTTP info returned
+         * @return ApiResponse&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffsetDateTime> executeWithHttpInfo() throws ApiException {
+            return upsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffsetDateTime> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, opts);
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+            return upsertNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback);
+        }
+
+        /**
+         * Execute upsertNavActivityAdjustments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
+     * Upserts the NAV adjustment activities to the specified valuation point for a Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
+     * @param valuationPointCode The valuation point Code to apply the adjustment to (required)
+     * @param navTypeCode The Nav Type Code to apply the adjustment to (required)
+     * @param navActivityAdjustment The request describing the Nav activity adjustments to apply to a specific valuation point and nav type (required)
+     * @return APIupsertNavActivityAdjustmentsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The date and time of the successfully applied Nav Activity Adjustments. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertNavActivityAdjustmentsRequest upsertNavActivityAdjustments(String scope, String code, String valuationPointCode, String navTypeCode, List<NavActivityAdjustment> navActivityAdjustment) {
+        return new APIupsertNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment);
     }
 }

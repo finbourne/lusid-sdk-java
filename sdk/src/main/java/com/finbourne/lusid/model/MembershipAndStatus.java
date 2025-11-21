@@ -17,7 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,6 +66,10 @@ public class MembershipAndStatus {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
+
+  public static final String SERIALIZED_NAME_VALIDATION_FAILURES = "validationFailures";
+  @SerializedName(SERIALIZED_NAME_VALIDATION_FAILURES)
+  private List<String> validationFailures = new ArrayList<>();
 
   public MembershipAndStatus() {
   }
@@ -152,6 +158,35 @@ public class MembershipAndStatus {
   }
 
 
+  public MembershipAndStatus validationFailures(List<String> validationFailures) {
+    
+    this.validationFailures = validationFailures;
+    return this;
+  }
+
+  public MembershipAndStatus addValidationFailuresItem(String validationFailuresItem) {
+    if (this.validationFailures == null) {
+      this.validationFailures = new ArrayList<>();
+    }
+    this.validationFailures.add(validationFailuresItem);
+    return this;
+  }
+
+   /**
+   * A list of validation failures returned when the entity&#39;s status with respect to the current model is &#39;Invalid&#39; or &#39;Inadmissible&#39;
+   * @return validationFailures
+  **/
+  @jakarta.annotation.Nonnull
+  public List<String> getValidationFailures() {
+    return validationFailures;
+  }
+
+
+  public void setValidationFailures(List<String> validationFailures) {
+    this.validationFailures = validationFailures;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -165,12 +200,13 @@ public class MembershipAndStatus {
     return Objects.equals(this.status, membershipAndStatus.status) &&
         Objects.equals(this.scope, membershipAndStatus.scope) &&
         Objects.equals(this.code, membershipAndStatus.code) &&
-        Objects.equals(this.displayName, membershipAndStatus.displayName);
+        Objects.equals(this.displayName, membershipAndStatus.displayName) &&
+        Objects.equals(this.validationFailures, membershipAndStatus.validationFailures);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, scope, code, displayName);
+    return Objects.hash(status, scope, code, displayName, validationFailures);
   }
 
   @Override
@@ -181,6 +217,7 @@ public class MembershipAndStatus {
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    validationFailures: ").append(toIndentedString(validationFailures)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,6 +244,7 @@ public class MembershipAndStatus {
     openapiFields.add("scope");
     openapiFields.add("code");
     openapiFields.add("displayName");
+    openapiFields.add("validationFailures");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -214,6 +252,7 @@ public class MembershipAndStatus {
     openapiRequiredFields.add("scope");
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("displayName");
+    openapiRequiredFields.add("validationFailures");
   }
 
  /**
@@ -247,6 +286,12 @@ public class MembershipAndStatus {
       }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("validationFailures") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("validationFailures").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `validationFailures` to be an array in the JSON string but got `%s`", jsonObj.get("validationFailures").toString()));
       }
   }
 

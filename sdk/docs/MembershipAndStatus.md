@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **scope** | **String** | The scope of the unique identifier associated with the Custom Data Model. | [default to String]
 **code** | **String** | The code of the unique identifier associated with the Custom Data Model. | [default to String]
 **displayName** | **String** | The name of the Custom Data Model. | [default to String]
+**validationFailures** | **List&lt;String&gt;** | A list of validation failures returned when the entity&#39;s status with respect to the current model is &#39;Invalid&#39; or &#39;Inadmissible&#39; | [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.MembershipAndStatus;
@@ -19,13 +20,15 @@ String Status = "example Status";
 String Scope = "example Scope";
 String Code = "example Code";
 String DisplayName = "example DisplayName";
+List<String> ValidationFailures = new List<String>();
 
 
 MembershipAndStatus membershipAndStatusInstance = new MembershipAndStatus()
     .Status(Status)
     .Scope(Scope)
     .Code(Code)
-    .DisplayName(DisplayName);
+    .DisplayName(DisplayName)
+    .ValidationFailures(ValidationFailures);
 ```
 
 

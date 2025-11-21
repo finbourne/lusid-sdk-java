@@ -58,6 +58,10 @@ public class DerivedPropertyComponent {
   @SerializedName(SERIALIZED_NAME_COMPONENT)
   private String component;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -99,6 +103,27 @@ public class DerivedPropertyComponent {
 
   public void setComponent(String component) {
     this.component = component;
+  }
+
+
+  public DerivedPropertyComponent displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The display name of the component being evaluated.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -234,6 +259,7 @@ public class DerivedPropertyComponent {
     }
     DerivedPropertyComponent derivedPropertyComponent = (DerivedPropertyComponent) o;
     return Objects.equals(this.component, derivedPropertyComponent.component) &&
+        Objects.equals(this.displayName, derivedPropertyComponent.displayName) &&
         Objects.equals(this.type, derivedPropertyComponent.type) &&
         Objects.equals(this.value, derivedPropertyComponent.value) &&
         Objects.equals(this.derivationFormula, derivedPropertyComponent.derivationFormula) &&
@@ -247,7 +273,7 @@ public class DerivedPropertyComponent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(component, type, value, derivationFormula, subComponents, links);
+    return Objects.hash(component, displayName, type, value, derivationFormula, subComponents, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,6 +288,7 @@ public class DerivedPropertyComponent {
     StringBuilder sb = new StringBuilder();
     sb.append("class DerivedPropertyComponent {\n");
     sb.append("    component: ").append(toIndentedString(component)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
@@ -290,6 +317,7 @@ public class DerivedPropertyComponent {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("component");
+    openapiFields.add("displayName");
     openapiFields.add("type");
     openapiFields.add("value");
     openapiFields.add("derivationFormula");
@@ -315,6 +343,9 @@ public class DerivedPropertyComponent {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("component") != null && !jsonObj.get("component").isJsonNull()) && !jsonObj.get("component").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `component` to be a primitive type in the JSON string but got `%s`", jsonObj.get("component").toString()));
+      }
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
