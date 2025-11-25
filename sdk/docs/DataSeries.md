@@ -1,4 +1,4 @@
-# com.finbourne.lusid.model.UpsertRelationalDataPointDataSeries
+# com.finbourne.lusid.model.DataSeries
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **seriesIdentifiers** | **Map&lt;String, Object&gt;** | The identifiers that uniquely define this DataSeries, if any, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [optional] [default to Map<String, Object>]
 
 ```java
-import com.finbourne.lusid.model.UpsertRelationalDataPointDataSeries;
+import com.finbourne.lusid.model.DataSeries;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -19,7 +19,7 @@ ApplicableEntity ApplicableEntity = new ApplicableEntity();
 @jakarta.annotation.Nullable Map<String, Object> SeriesIdentifiers = new Map<String, Object>();
 
 
-UpsertRelationalDataPointDataSeries upsertRelationalDataPointDataSeriesInstance = new UpsertRelationalDataPointDataSeries()
+DataSeries dataSeriesInstance = new DataSeries()
     .SeriesScope(SeriesScope)
     .ApplicableEntity(ApplicableEntity)
     .SeriesIdentifiers(SeriesIdentifiers);

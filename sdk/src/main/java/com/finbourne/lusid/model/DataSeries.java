@@ -49,10 +49,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * UpsertRelationalDataPointDataSeries
+ * DataSeries
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertRelationalDataPointDataSeries {
+public class DataSeries {
   public static final String SERIALIZED_NAME_SERIES_SCOPE = "seriesScope";
   @SerializedName(SERIALIZED_NAME_SERIES_SCOPE)
   private String seriesScope;
@@ -65,10 +65,10 @@ public class UpsertRelationalDataPointDataSeries {
   @SerializedName(SERIALIZED_NAME_SERIES_IDENTIFIERS)
   private Map<String, Object> seriesIdentifiers;
 
-  public UpsertRelationalDataPointDataSeries() {
+  public DataSeries() {
   }
 
-  public UpsertRelationalDataPointDataSeries seriesScope(String seriesScope) {
+  public DataSeries seriesScope(String seriesScope) {
     
     this.seriesScope = seriesScope;
     return this;
@@ -89,7 +89,7 @@ public class UpsertRelationalDataPointDataSeries {
   }
 
 
-  public UpsertRelationalDataPointDataSeries applicableEntity(ApplicableEntity applicableEntity) {
+  public DataSeries applicableEntity(ApplicableEntity applicableEntity) {
     
     this.applicableEntity = applicableEntity;
     return this;
@@ -110,13 +110,13 @@ public class UpsertRelationalDataPointDataSeries {
   }
 
 
-  public UpsertRelationalDataPointDataSeries seriesIdentifiers(Map<String, Object> seriesIdentifiers) {
+  public DataSeries seriesIdentifiers(Map<String, Object> seriesIdentifiers) {
     
     this.seriesIdentifiers = seriesIdentifiers;
     return this;
   }
 
-  public UpsertRelationalDataPointDataSeries putSeriesIdentifiersItem(String key, Object seriesIdentifiersItem) {
+  public DataSeries putSeriesIdentifiersItem(String key, Object seriesIdentifiersItem) {
     if (this.seriesIdentifiers == null) {
       this.seriesIdentifiers = new HashMap<>();
     }
@@ -148,10 +148,10 @@ public class UpsertRelationalDataPointDataSeries {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpsertRelationalDataPointDataSeries upsertRelationalDataPointDataSeries = (UpsertRelationalDataPointDataSeries) o;
-    return Objects.equals(this.seriesScope, upsertRelationalDataPointDataSeries.seriesScope) &&
-        Objects.equals(this.applicableEntity, upsertRelationalDataPointDataSeries.applicableEntity) &&
-        Objects.equals(this.seriesIdentifiers, upsertRelationalDataPointDataSeries.seriesIdentifiers);
+    DataSeries dataSeries = (DataSeries) o;
+    return Objects.equals(this.seriesScope, dataSeries.seriesScope) &&
+        Objects.equals(this.applicableEntity, dataSeries.applicableEntity) &&
+        Objects.equals(this.seriesIdentifiers, dataSeries.seriesIdentifiers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -173,7 +173,7 @@ public class UpsertRelationalDataPointDataSeries {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertRelationalDataPointDataSeries {\n");
+    sb.append("class DataSeries {\n");
     sb.append("    seriesScope: ").append(toIndentedString(seriesScope)).append("\n");
     sb.append("    applicableEntity: ").append(toIndentedString(applicableEntity)).append("\n");
     sb.append("    seriesIdentifiers: ").append(toIndentedString(seriesIdentifiers)).append("\n");
@@ -213,17 +213,17 @@ public class UpsertRelationalDataPointDataSeries {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpsertRelationalDataPointDataSeries
+  * @throws IOException if the JSON Element is invalid with respect to DataSeries
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpsertRelationalDataPointDataSeries.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertRelationalDataPointDataSeries is not found in the empty JSON string", UpsertRelationalDataPointDataSeries.openapiRequiredFields.toString()));
+        if (!DataSeries.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DataSeries is not found in the empty JSON string", DataSeries.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpsertRelationalDataPointDataSeries.openapiRequiredFields) {
+      for (String requiredField : DataSeries.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -240,22 +240,22 @@ public class UpsertRelationalDataPointDataSeries {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpsertRelationalDataPointDataSeries.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpsertRelationalDataPointDataSeries' and its subtypes
+       if (!DataSeries.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DataSeries' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpsertRelationalDataPointDataSeries> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertRelationalDataPointDataSeries.class));
+       final TypeAdapter<DataSeries> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DataSeries.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpsertRelationalDataPointDataSeries>() {
+       return (TypeAdapter<T>) new TypeAdapter<DataSeries>() {
            @Override
-           public void write(JsonWriter out, UpsertRelationalDataPointDataSeries value) throws IOException {
+           public void write(JsonWriter out, DataSeries value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpsertRelationalDataPointDataSeries read(JsonReader in) throws IOException {
+           public DataSeries read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -266,18 +266,18 @@ public class UpsertRelationalDataPointDataSeries {
   }
 
  /**
-  * Create an instance of UpsertRelationalDataPointDataSeries given an JSON string
+  * Create an instance of DataSeries given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpsertRelationalDataPointDataSeries
-  * @throws IOException if the JSON string is invalid with respect to UpsertRelationalDataPointDataSeries
+  * @return An instance of DataSeries
+  * @throws IOException if the JSON string is invalid with respect to DataSeries
   */
-  public static UpsertRelationalDataPointDataSeries fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpsertRelationalDataPointDataSeries.class);
+  public static DataSeries fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DataSeries.class);
   }
 
  /**
-  * Convert an instance of UpsertRelationalDataPointDataSeries to an JSON string
+  * Convert an instance of DataSeries to an JSON string
   *
   * @return JSON string
   */

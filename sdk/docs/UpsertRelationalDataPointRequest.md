@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dataPointDataSeries** | [**UpsertRelationalDataPointDataSeries**](UpsertRelationalDataPointDataSeries.md) |  | [default to UpsertRelationalDataPointDataSeries]
+**dataSeries** | [**DataSeries**](DataSeries.md) |  | [default to DataSeries]
 **effectiveAt** | **String** | The effectiveAt or cut-label datetime of the DataPoint. | [default to String]
 **valueFields** | **Map&lt;String, Object&gt;** | The values associated with the DataPoint, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [default to Map<String, Object>]
 **metaDataFields** | **Map&lt;String, Object&gt;** | The metadata associated with the DataPoint, structured according to the FieldSchema of the parent RelationalDatasetDefinition. | [optional] [default to Map<String, Object>]
@@ -15,14 +15,14 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-UpsertRelationalDataPointDataSeries DataPointDataSeries = new UpsertRelationalDataPointDataSeries();
+DataSeries DataSeries = new DataSeries();
 String EffectiveAt = "example EffectiveAt";
 Map<String, Object> ValueFields = new Map<String, Object>();
 @jakarta.annotation.Nullable Map<String, Object> MetaDataFields = new Map<String, Object>();
 
 
 UpsertRelationalDataPointRequest upsertRelationalDataPointRequestInstance = new UpsertRelationalDataPointRequest()
-    .DataPointDataSeries(DataPointDataSeries)
+    .DataSeries(DataSeries)
     .EffectiveAt(EffectiveAt)
     .ValueFields(ValueFields)
     .MetaDataFields(MetaDataFields);

@@ -7191,11 +7191,11 @@ public class FundsApi {
     public APIlistFundsRequest listFunds() {
         return new APIlistFundsRequest();
     }
-    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
-        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7242,6 +7242,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7264,7 +7268,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listNavActivityAdjustments(Async)");
@@ -7285,34 +7289,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'navTypeCode' when calling listNavActivityAdjustments(Async)");
         }
 
-        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+        return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, null, opts);
+    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+        okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7326,6 +7330,7 @@ public class FundsApi {
         private OffsetDateTime asAt;
         private String page;
         private Integer limit;
+        private String filter;
 
         private APIlistNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, String navTypeCode) {
             this.scope = scope;
@@ -7365,6 +7370,16 @@ public class FundsApi {
         }
 
         /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistNavActivityAdjustmentsRequest
+         */
+        public APIlistNavActivityAdjustmentsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
          * Build call for listNavActivityAdjustments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -7378,7 +7393,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback);
+            return listNavActivityAdjustmentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -7394,7 +7409,7 @@ public class FundsApi {
          </table>
          */
         public ResourceListOfNavActivityAdjustment execute() throws ApiException {
-            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit);
+            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
@@ -7411,7 +7426,7 @@ public class FundsApi {
          </table>
          */
         public ResourceListOfNavActivityAdjustment execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, opts);
+            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, opts);
             return localVarResp.getData();
         }
 
@@ -7428,7 +7443,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo() throws ApiException {
-            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit);
+            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter);
         }
 
         /**
@@ -7444,7 +7459,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, opts);
+            return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -7461,7 +7476,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
-            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback);
+            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback);
         }
 
         /**
@@ -7478,7 +7493,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
-            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, _callback, opts);
+            return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, _callback, opts);
         }
     }
 

@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.UpsertRelationalDataPointDataSeries;
+import com.finbourne.lusid.model.DataSeries;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,9 +53,9 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertRelationalDataPointRequest {
-  public static final String SERIALIZED_NAME_DATA_POINT_DATA_SERIES = "dataPointDataSeries";
-  @SerializedName(SERIALIZED_NAME_DATA_POINT_DATA_SERIES)
-  private UpsertRelationalDataPointDataSeries dataPointDataSeries;
+  public static final String SERIALIZED_NAME_DATA_SERIES = "dataSeries";
+  @SerializedName(SERIALIZED_NAME_DATA_SERIES)
+  private DataSeries dataSeries;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
@@ -72,24 +72,24 @@ public class UpsertRelationalDataPointRequest {
   public UpsertRelationalDataPointRequest() {
   }
 
-  public UpsertRelationalDataPointRequest dataPointDataSeries(UpsertRelationalDataPointDataSeries dataPointDataSeries) {
+  public UpsertRelationalDataPointRequest dataSeries(DataSeries dataSeries) {
     
-    this.dataPointDataSeries = dataPointDataSeries;
+    this.dataSeries = dataSeries;
     return this;
   }
 
    /**
-   * Get dataPointDataSeries
-   * @return dataPointDataSeries
+   * Get dataSeries
+   * @return dataSeries
   **/
   @jakarta.annotation.Nonnull
-  public UpsertRelationalDataPointDataSeries getDataPointDataSeries() {
-    return dataPointDataSeries;
+  public DataSeries getDataSeries() {
+    return dataSeries;
   }
 
 
-  public void setDataPointDataSeries(UpsertRelationalDataPointDataSeries dataPointDataSeries) {
-    this.dataPointDataSeries = dataPointDataSeries;
+  public void setDataSeries(DataSeries dataSeries) {
+    this.dataSeries = dataSeries;
   }
 
 
@@ -182,7 +182,7 @@ public class UpsertRelationalDataPointRequest {
       return false;
     }
     UpsertRelationalDataPointRequest upsertRelationalDataPointRequest = (UpsertRelationalDataPointRequest) o;
-    return Objects.equals(this.dataPointDataSeries, upsertRelationalDataPointRequest.dataPointDataSeries) &&
+    return Objects.equals(this.dataSeries, upsertRelationalDataPointRequest.dataSeries) &&
         Objects.equals(this.effectiveAt, upsertRelationalDataPointRequest.effectiveAt) &&
         Objects.equals(this.valueFields, upsertRelationalDataPointRequest.valueFields) &&
         Objects.equals(this.metaDataFields, upsertRelationalDataPointRequest.metaDataFields);
@@ -194,7 +194,7 @@ public class UpsertRelationalDataPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataPointDataSeries, effectiveAt, valueFields, metaDataFields);
+    return Objects.hash(dataSeries, effectiveAt, valueFields, metaDataFields);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -208,7 +208,7 @@ public class UpsertRelationalDataPointRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpsertRelationalDataPointRequest {\n");
-    sb.append("    dataPointDataSeries: ").append(toIndentedString(dataPointDataSeries)).append("\n");
+    sb.append("    dataSeries: ").append(toIndentedString(dataSeries)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    valueFields: ").append(toIndentedString(valueFields)).append("\n");
     sb.append("    metaDataFields: ").append(toIndentedString(metaDataFields)).append("\n");
@@ -234,14 +234,14 @@ public class UpsertRelationalDataPointRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("dataPointDataSeries");
+    openapiFields.add("dataSeries");
     openapiFields.add("effectiveAt");
     openapiFields.add("valueFields");
     openapiFields.add("metaDataFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("dataPointDataSeries");
+    openapiRequiredFields.add("dataSeries");
     openapiRequiredFields.add("effectiveAt");
     openapiRequiredFields.add("valueFields");
   }
@@ -266,8 +266,8 @@ public class UpsertRelationalDataPointRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `dataPointDataSeries`
-      UpsertRelationalDataPointDataSeries.validateJsonElement(jsonObj.get("dataPointDataSeries"));
+      // validate the required field `dataSeries`
+      DataSeries.validateJsonElement(jsonObj.get("dataSeries"));
       if (!jsonObj.get("effectiveAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effectiveAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveAt").toString()));
       }

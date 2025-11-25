@@ -2455,7 +2455,7 @@ public class FundsApiExample {
 
 ## listNavActivityAdjustments
 
-> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit)
+> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter)
 
 [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 
@@ -2507,11 +2507,12 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Nav activity adjustments. Defaults to returning the latest version of each adjustment if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit).execute(opts);
+            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter).execute(opts);
 
-            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit).execute();
+            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listNavActivityAdjustments");
@@ -2535,6 +2536,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Nav activity adjustments. Defaults to returning the latest version of each adjustment if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
