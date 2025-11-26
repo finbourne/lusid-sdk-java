@@ -69,6 +69,10 @@ public class Collateral {
   @SerializedName(SERIALIZED_NAME_COLLATERAL_VALUE)
   private java.math.BigDecimal collateralValue;
 
+  public static final String SERIALIZED_NAME_DEFER_MANUFACTURED_PAYMENTS = "deferManufacturedPayments";
+  @SerializedName(SERIALIZED_NAME_DEFER_MANUFACTURED_PAYMENTS)
+  private Boolean deferManufacturedPayments;
+
   public Collateral() {
   }
 
@@ -164,6 +168,27 @@ public class Collateral {
   }
 
 
+  public Collateral deferManufacturedPayments(Boolean deferManufacturedPayments) {
+    
+    this.deferManufacturedPayments = deferManufacturedPayments;
+    return this;
+  }
+
+   /**
+   * Indicates whether manufactured collateral payments are capitalised (i.e. deferred). Capitalised payments will  be deferred to the maturity date of the repo and if applicable interest will be accrued at the repo rate.  Defaults to false.
+   * @return deferManufacturedPayments
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDeferManufacturedPayments() {
+    return deferManufacturedPayments;
+  }
+
+
+  public void setDeferManufacturedPayments(Boolean deferManufacturedPayments) {
+    this.deferManufacturedPayments = deferManufacturedPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,7 +202,8 @@ public class Collateral {
     return Objects.equals(this.buyerReceivesCashflows, collateral.buyerReceivesCashflows) &&
         Objects.equals(this.buyerReceivesCorporateActionPayments, collateral.buyerReceivesCorporateActionPayments) &&
         Objects.equals(this.collateralInstruments, collateral.collateralInstruments) &&
-        (this.collateralValue.compareTo(collateral.getCollateralValue()) == 0);
+        (this.collateralValue.compareTo(collateral.getCollateralValue()) == 0) &&
+        Objects.equals(this.deferManufacturedPayments, collateral.deferManufacturedPayments);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -186,7 +212,7 @@ public class Collateral {
 
   @Override
   public int hashCode() {
-    return Objects.hash(buyerReceivesCashflows, buyerReceivesCorporateActionPayments, collateralInstruments, collateralValue);
+    return Objects.hash(buyerReceivesCashflows, buyerReceivesCorporateActionPayments, collateralInstruments, collateralValue, deferManufacturedPayments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -204,6 +230,7 @@ public class Collateral {
     sb.append("    buyerReceivesCorporateActionPayments: ").append(toIndentedString(buyerReceivesCorporateActionPayments)).append("\n");
     sb.append("    collateralInstruments: ").append(toIndentedString(collateralInstruments)).append("\n");
     sb.append("    collateralValue: ").append(toIndentedString(collateralValue)).append("\n");
+    sb.append("    deferManufacturedPayments: ").append(toIndentedString(deferManufacturedPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -230,6 +257,7 @@ public class Collateral {
     openapiFields.add("buyerReceivesCorporateActionPayments");
     openapiFields.add("collateralInstruments");
     openapiFields.add("collateralValue");
+    openapiFields.add("deferManufacturedPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

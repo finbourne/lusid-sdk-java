@@ -100,6 +100,10 @@ public class ClosedPeriod {
   @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_CLOSED_OVERRIDE)
   private OffsetDateTime holdingsAsAtClosedOverride;
 
+  public static final String SERIALIZED_NAME_VALUATION_AS_AT_CLOSED_OVERRIDE = "valuationAsAtClosedOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATION_AS_AT_CLOSED_OVERRIDE)
+  private OffsetDateTime valuationAsAtClosedOverride;
+
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
@@ -337,6 +341,27 @@ public class ClosedPeriod {
   }
 
 
+  public ClosedPeriod valuationAsAtClosedOverride(OffsetDateTime valuationAsAtClosedOverride) {
+    
+    this.valuationAsAtClosedOverride = valuationAsAtClosedOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+   * @return valuationAsAtClosedOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationAsAtClosedOverride() {
+    return valuationAsAtClosedOverride;
+  }
+
+
+  public void setValuationAsAtClosedOverride(OffsetDateTime valuationAsAtClosedOverride) {
+    this.valuationAsAtClosedOverride = valuationAsAtClosedOverride;
+  }
+
+
   public ClosedPeriod href(URI href) {
     
     this.href = href;
@@ -407,6 +432,7 @@ public class ClosedPeriod {
         Objects.equals(this.version, closedPeriod.version) &&
         Objects.equals(this.postCloseActivities, closedPeriod.postCloseActivities) &&
         Objects.equals(this.holdingsAsAtClosedOverride, closedPeriod.holdingsAsAtClosedOverride) &&
+        Objects.equals(this.valuationAsAtClosedOverride, closedPeriod.valuationAsAtClosedOverride) &&
         Objects.equals(this.href, closedPeriod.href) &&
         Objects.equals(this.links, closedPeriod.links);
   }
@@ -417,7 +443,7 @@ public class ClosedPeriod {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, holdingsAsAtClosedOverride, href, links);
+    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, holdingsAsAtClosedOverride, valuationAsAtClosedOverride, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -441,6 +467,7 @@ public class ClosedPeriod {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    postCloseActivities: ").append(toIndentedString(postCloseActivities)).append("\n");
     sb.append("    holdingsAsAtClosedOverride: ").append(toIndentedString(holdingsAsAtClosedOverride)).append("\n");
+    sb.append("    valuationAsAtClosedOverride: ").append(toIndentedString(valuationAsAtClosedOverride)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -475,6 +502,7 @@ public class ClosedPeriod {
     openapiFields.add("version");
     openapiFields.add("postCloseActivities");
     openapiFields.add("holdingsAsAtClosedOverride");
+    openapiFields.add("valuationAsAtClosedOverride");
     openapiFields.add("href");
     openapiFields.add("links");
 

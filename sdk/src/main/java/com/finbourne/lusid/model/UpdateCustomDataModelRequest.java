@@ -89,6 +89,10 @@ public class UpdateCustomDataModelRequest {
   @SerializedName(SERIALIZED_NAME_RECOMMENDED_SORT_BY)
   private List<RecommendedSortBy> recommendedSortBy;
 
+  public static final String SERIALIZED_NAME_SUPPLEMENTAL_PROPERTY_KEYS = "supplementalPropertyKeys";
+  @SerializedName(SERIALIZED_NAME_SUPPLEMENTAL_PROPERTY_KEYS)
+  private List<String> supplementalPropertyKeys;
+
   public UpdateCustomDataModelRequest() {
   }
 
@@ -292,6 +296,35 @@ public class UpdateCustomDataModelRequest {
   }
 
 
+  public UpdateCustomDataModelRequest supplementalPropertyKeys(List<String> supplementalPropertyKeys) {
+    
+    this.supplementalPropertyKeys = supplementalPropertyKeys;
+    return this;
+  }
+
+  public UpdateCustomDataModelRequest addSupplementalPropertyKeysItem(String supplementalPropertyKeysItem) {
+    if (this.supplementalPropertyKeys == null) {
+      this.supplementalPropertyKeys = new ArrayList<>();
+    }
+    this.supplementalPropertyKeys.add(supplementalPropertyKeysItem);
+    return this;
+  }
+
+   /**
+   * Additional property keys that should be decorated on the bound entity.
+   * @return supplementalPropertyKeys
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getSupplementalPropertyKeys() {
+    return supplementalPropertyKeys;
+  }
+
+
+  public void setSupplementalPropertyKeys(List<String> supplementalPropertyKeys) {
+    this.supplementalPropertyKeys = supplementalPropertyKeys;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -309,7 +342,8 @@ public class UpdateCustomDataModelRequest {
         Objects.equals(this.properties, updateCustomDataModelRequest.properties) &&
         Objects.equals(this.identifierTypes, updateCustomDataModelRequest.identifierTypes) &&
         Objects.equals(this.attributeAliases, updateCustomDataModelRequest.attributeAliases) &&
-        Objects.equals(this.recommendedSortBy, updateCustomDataModelRequest.recommendedSortBy);
+        Objects.equals(this.recommendedSortBy, updateCustomDataModelRequest.recommendedSortBy) &&
+        Objects.equals(this.supplementalPropertyKeys, updateCustomDataModelRequest.supplementalPropertyKeys);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -318,7 +352,7 @@ public class UpdateCustomDataModelRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, parentDataModel, conditions, properties, identifierTypes, attributeAliases, recommendedSortBy);
+    return Objects.hash(displayName, description, parentDataModel, conditions, properties, identifierTypes, attributeAliases, recommendedSortBy, supplementalPropertyKeys);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -340,6 +374,7 @@ public class UpdateCustomDataModelRequest {
     sb.append("    identifierTypes: ").append(toIndentedString(identifierTypes)).append("\n");
     sb.append("    attributeAliases: ").append(toIndentedString(attributeAliases)).append("\n");
     sb.append("    recommendedSortBy: ").append(toIndentedString(recommendedSortBy)).append("\n");
+    sb.append("    supplementalPropertyKeys: ").append(toIndentedString(supplementalPropertyKeys)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -370,6 +405,7 @@ public class UpdateCustomDataModelRequest {
     openapiFields.add("identifierTypes");
     openapiFields.add("attributeAliases");
     openapiFields.add("recommendedSortBy");
+    openapiFields.add("supplementalPropertyKeys");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -465,6 +501,10 @@ public class UpdateCustomDataModelRequest {
             RecommendedSortBy.validateJsonElement(jsonArrayrecommendedSortBy.get(i));
           };
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("supplementalPropertyKeys") != null && !jsonObj.get("supplementalPropertyKeys").isJsonNull() && !jsonObj.get("supplementalPropertyKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `supplementalPropertyKeys` to be an array in the JSON string but got `%s`", jsonObj.get("supplementalPropertyKeys").toString()));
       }
   }
 

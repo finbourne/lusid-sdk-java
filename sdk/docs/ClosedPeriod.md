@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **postCloseActivities** | [**List&lt;PostCloseActivity&gt;**](PostCloseActivity.md) | All the post close activities for the closed period. | [optional] [default to List<PostCloseActivity>]
 **holdingsAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
+**valuationAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -33,6 +34,7 @@ OffsetDateTime AsAtClosed = OffsetDateTime.now();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<PostCloseActivity> PostCloseActivities = new List<PostCloseActivity>();
 @jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtClosedOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationAsAtClosedOverride = OffsetDateTime.now();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -48,6 +50,7 @@ ClosedPeriod closedPeriodInstance = new ClosedPeriod()
     .Version(Version)
     .PostCloseActivities(PostCloseActivities)
     .HoldingsAsAtClosedOverride(HoldingsAsAtClosedOverride)
+    .ValuationAsAtClosedOverride(ValuationAsAtClosedOverride)
     .Href(Href)
     .Links(Links);
 ```

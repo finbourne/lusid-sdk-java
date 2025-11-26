@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **identifierTypes** | [**List&lt;CustomDataModelIdentifierTypeSpecification&gt;**](CustomDataModelIdentifierTypeSpecification.md) | The identifier types that are required or allowed on the bound entity. | [optional] [default to List<CustomDataModelIdentifierTypeSpecification>]
 **attributeAliases** | [**List&lt;Alias&gt;**](Alias.md) | The aliases for property keys, identifier types, and fields on the bound entity. | [optional] [default to List<Alias>]
 **recommendedSortBy** | [**List&lt;RecommendedSortBy&gt;**](RecommendedSortBy.md) | The preferred default sorting instructions. | [optional] [default to List<RecommendedSortBy>]
+**supplementalPropertyKeys** | **List&lt;String&gt;** | Additional property keys that should be decorated on the bound entity. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.CreateCustomDataModelRequest;
@@ -29,6 +30,7 @@ ResourceId ParentDataModel = new ResourceId();
 @jakarta.annotation.Nullable List<CustomDataModelIdentifierTypeSpecification> IdentifierTypes = new List<CustomDataModelIdentifierTypeSpecification>();
 @jakarta.annotation.Nullable List<Alias> AttributeAliases = new List<Alias>();
 @jakarta.annotation.Nullable List<RecommendedSortBy> RecommendedSortBy = new List<RecommendedSortBy>();
+@jakarta.annotation.Nullable List<String> SupplementalPropertyKeys = new List<String>();
 
 
 CreateCustomDataModelRequest createCustomDataModelRequestInstance = new CreateCustomDataModelRequest()
@@ -40,7 +42,8 @@ CreateCustomDataModelRequest createCustomDataModelRequestInstance = new CreateCu
     .Properties(Properties)
     .IdentifierTypes(IdentifierTypes)
     .AttributeAliases(AttributeAliases)
-    .RecommendedSortBy(RecommendedSortBy);
+    .RecommendedSortBy(RecommendedSortBy)
+    .SupplementalPropertyKeys(SupplementalPropertyKeys);
 ```
 
 

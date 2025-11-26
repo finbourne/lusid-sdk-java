@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **identifierTypes** | [**List&lt;CustomDataModelIdentifierTypeSpecificationWithDisplayName&gt;**](CustomDataModelIdentifierTypeSpecificationWithDisplayName.md) | The identifier types that are required or allowed on the bound entity. | [optional] [default to List<CustomDataModelIdentifierTypeSpecificationWithDisplayName>]
 **attributeAliases** | [**List&lt;Alias&gt;**](Alias.md) | The aliases for property keys, identifier types, and fields on the bound entity. | [optional] [default to List<Alias>]
 **recommendedSortBy** | [**List&lt;RecommendedSortBy&gt;**](RecommendedSortBy.md) | The preferred default sorting instructions. | [optional] [default to List<RecommendedSortBy>]
+**supplementalPropertyKeys** | **List&lt;String&gt;** | Additional property keys that should be decorated on the bound entity. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.CustomDataModelCriteria;
@@ -21,6 +22,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable List<CustomDataModelIdentifierTypeSpecificationWithDisplayName> IdentifierTypes = new List<CustomDataModelIdentifierTypeSpecificationWithDisplayName>();
 @jakarta.annotation.Nullable List<Alias> AttributeAliases = new List<Alias>();
 @jakarta.annotation.Nullable List<RecommendedSortBy> RecommendedSortBy = new List<RecommendedSortBy>();
+@jakarta.annotation.Nullable List<String> SupplementalPropertyKeys = new List<String>();
 
 
 CustomDataModelCriteria customDataModelCriteriaInstance = new CustomDataModelCriteria()
@@ -28,7 +30,8 @@ CustomDataModelCriteria customDataModelCriteriaInstance = new CustomDataModelCri
     .Properties(Properties)
     .IdentifierTypes(IdentifierTypes)
     .AttributeAliases(AttributeAliases)
-    .RecommendedSortBy(RecommendedSortBy);
+    .RecommendedSortBy(RecommendedSortBy)
+    .SupplementalPropertyKeys(SupplementalPropertyKeys);
 ```
 
 

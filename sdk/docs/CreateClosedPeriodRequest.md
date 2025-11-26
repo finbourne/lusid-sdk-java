@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Closed Period. | [optional] [default to String]
 **description** | **String** | A description for the Closed Period. | [optional] [default to String]
 **holdingsAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
+**valuationAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.CreateClosedPeriodRequest;
@@ -25,6 +26,7 @@ OffsetDateTime EffectiveEnd = OffsetDateTime.now();
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 @jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtClosedOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationAsAtClosedOverride = OffsetDateTime.now();
 
 
 CreateClosedPeriodRequest createClosedPeriodRequestInstance = new CreateClosedPeriodRequest()
@@ -34,7 +36,8 @@ CreateClosedPeriodRequest createClosedPeriodRequestInstance = new CreateClosedPe
     .AsAtClosed(AsAtClosed)
     .DisplayName(DisplayName)
     .Description(Description)
-    .HoldingsAsAtClosedOverride(HoldingsAsAtClosedOverride);
+    .HoldingsAsAtClosedOverride(HoldingsAsAtClosedOverride)
+    .ValuationAsAtClosedOverride(ValuationAsAtClosedOverride);
 ```
 
 

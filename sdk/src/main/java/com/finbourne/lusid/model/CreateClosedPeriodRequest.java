@@ -82,6 +82,10 @@ public class CreateClosedPeriodRequest {
   @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_CLOSED_OVERRIDE)
   private OffsetDateTime holdingsAsAtClosedOverride;
 
+  public static final String SERIALIZED_NAME_VALUATION_AS_AT_CLOSED_OVERRIDE = "valuationAsAtClosedOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATION_AS_AT_CLOSED_OVERRIDE)
+  private OffsetDateTime valuationAsAtClosedOverride;
+
   public CreateClosedPeriodRequest() {
   }
 
@@ -240,6 +244,27 @@ public class CreateClosedPeriodRequest {
   }
 
 
+  public CreateClosedPeriodRequest valuationAsAtClosedOverride(OffsetDateTime valuationAsAtClosedOverride) {
+    
+    this.valuationAsAtClosedOverride = valuationAsAtClosedOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+   * @return valuationAsAtClosedOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationAsAtClosedOverride() {
+    return valuationAsAtClosedOverride;
+  }
+
+
+  public void setValuationAsAtClosedOverride(OffsetDateTime valuationAsAtClosedOverride) {
+    this.valuationAsAtClosedOverride = valuationAsAtClosedOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -256,7 +281,8 @@ public class CreateClosedPeriodRequest {
         Objects.equals(this.asAtClosed, createClosedPeriodRequest.asAtClosed) &&
         Objects.equals(this.displayName, createClosedPeriodRequest.displayName) &&
         Objects.equals(this.description, createClosedPeriodRequest.description) &&
-        Objects.equals(this.holdingsAsAtClosedOverride, createClosedPeriodRequest.holdingsAsAtClosedOverride);
+        Objects.equals(this.holdingsAsAtClosedOverride, createClosedPeriodRequest.holdingsAsAtClosedOverride) &&
+        Objects.equals(this.valuationAsAtClosedOverride, createClosedPeriodRequest.valuationAsAtClosedOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -265,7 +291,7 @@ public class CreateClosedPeriodRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, effectiveEnd, properties, asAtClosed, displayName, description, holdingsAsAtClosedOverride);
+    return Objects.hash(closedPeriodId, effectiveEnd, properties, asAtClosed, displayName, description, holdingsAsAtClosedOverride, valuationAsAtClosedOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +312,7 @@ public class CreateClosedPeriodRequest {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    holdingsAsAtClosedOverride: ").append(toIndentedString(holdingsAsAtClosedOverride)).append("\n");
+    sb.append("    valuationAsAtClosedOverride: ").append(toIndentedString(valuationAsAtClosedOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -315,6 +342,7 @@ public class CreateClosedPeriodRequest {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("holdingsAsAtClosedOverride");
+    openapiFields.add("valuationAsAtClosedOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -798,7 +798,7 @@ public class CorporateActionSourcesApi {
     }
 
     /**
-     * [BETA] DeleteCorporateActionSource: Delete a corporate action source
+     * [EARLY ACCESS] DeleteCorporateActionSource: Delete a corporate action source
      * Deletes a single corporate action source
      * @param scope The scope of the corporate action source to be deleted (required)
      * @param code The code of the corporate action source to be deleted (required)
