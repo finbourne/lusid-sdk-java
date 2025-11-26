@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Check Definition. | [default to String]
 **description** | **String** | A description for the Check Definition. | [default to String]
 **datasetSchema** | [**CheckDefinitionDatasetSchema**](CheckDefinitionDatasetSchema.md) |  | [optional] [default to CheckDefinitionDatasetSchema]
-**ruleSets** | [**List&lt;CheckDefinitionRuleSet&gt;**](CheckDefinitionRuleSet.md) | A collection of rule sets for the Check Definition. | [default to List<CheckDefinitionRuleSet>]
+**ruleSets** | [**List&lt;UpdateCheckDefinitionRuleSet&gt;**](UpdateCheckDefinitionRuleSet.md) | A collection of rule sets for the Check Definition. | [default to List<UpdateCheckDefinitionRuleSet>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Check Definition. | [optional] [default to Map<String, Property>]
 
 ```java
@@ -19,7 +19,7 @@ import java.net.URI;
 String DisplayName = "example DisplayName";
 String Description = "example Description";
 CheckDefinitionDatasetSchema DatasetSchema = new CheckDefinitionDatasetSchema();
-List<CheckDefinitionRuleSet> RuleSets = new List<CheckDefinitionRuleSet>();
+List<UpdateCheckDefinitionRuleSet> RuleSets = new List<UpdateCheckDefinitionRuleSet>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 
 

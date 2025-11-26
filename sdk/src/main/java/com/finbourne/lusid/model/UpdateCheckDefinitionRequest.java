@@ -12,8 +12,8 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CheckDefinitionDatasetSchema;
-import com.finbourne.lusid.model.CheckDefinitionRuleSet;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.UpdateCheckDefinitionRuleSet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -71,7 +71,7 @@ public class UpdateCheckDefinitionRequest {
 
   public static final String SERIALIZED_NAME_RULE_SETS = "ruleSets";
   @SerializedName(SERIALIZED_NAME_RULE_SETS)
-  private List<CheckDefinitionRuleSet> ruleSets = new ArrayList<>();
+  private List<UpdateCheckDefinitionRuleSet> ruleSets = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -143,13 +143,13 @@ public class UpdateCheckDefinitionRequest {
   }
 
 
-  public UpdateCheckDefinitionRequest ruleSets(List<CheckDefinitionRuleSet> ruleSets) {
+  public UpdateCheckDefinitionRequest ruleSets(List<UpdateCheckDefinitionRuleSet> ruleSets) {
     
     this.ruleSets = ruleSets;
     return this;
   }
 
-  public UpdateCheckDefinitionRequest addRuleSetsItem(CheckDefinitionRuleSet ruleSetsItem) {
+  public UpdateCheckDefinitionRequest addRuleSetsItem(UpdateCheckDefinitionRuleSet ruleSetsItem) {
     if (this.ruleSets == null) {
       this.ruleSets = new ArrayList<>();
     }
@@ -162,12 +162,12 @@ public class UpdateCheckDefinitionRequest {
    * @return ruleSets
   **/
   @jakarta.annotation.Nonnull
-  public List<CheckDefinitionRuleSet> getRuleSets() {
+  public List<UpdateCheckDefinitionRuleSet> getRuleSets() {
     return ruleSets;
   }
 
 
-  public void setRuleSets(List<CheckDefinitionRuleSet> ruleSets) {
+  public void setRuleSets(List<UpdateCheckDefinitionRuleSet> ruleSets) {
     this.ruleSets = ruleSets;
   }
 
@@ -316,7 +316,7 @@ public class UpdateCheckDefinitionRequest {
       JsonArray jsonArrayruleSets = jsonObj.getAsJsonArray("ruleSets");
       // validate the required field `ruleSets` (array)
       for (int i = 0; i < jsonArrayruleSets.size(); i++) {
-        CheckDefinitionRuleSet.validateJsonElement(jsonArrayruleSets.get(i));
+        UpdateCheckDefinitionRuleSet.validateJsonElement(jsonArrayruleSets.get(i));
       };
   }
 
