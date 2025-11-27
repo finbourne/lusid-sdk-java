@@ -524,6 +524,7 @@ Class | Method | HTTP request | Description
 *RelationalDatasetDefinitionApi* | [**updateRelationalDatasetDefinition**](docs/RelationalDatasetDefinitionApi.md#updaterelationaldatasetdefinition) | **PUT** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
 *RelationalDatasetDefinitionApi* | [**updateRelationalDatasetDetails**](docs/RelationalDatasetDefinitionApi.md#updaterelationaldatasetdetails) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/details/$update | [EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
 *RelationalDatasetDefinitionApi* | [**updateRelationalDatasetFieldSchema**](docs/RelationalDatasetDefinitionApi.md#updaterelationaldatasetfieldschema) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/fieldschema/$update | [EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
+*RelationalDatasetsApi* | [**batchDeleteRelationalData**](docs/RelationalDatasetsApi.md#batchdeleterelationaldata) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchDelete | [EXPERIMENTAL] BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
 *RelationalDatasetsApi* | [**batchUpsertRelationalData**](docs/RelationalDatasetsApi.md#batchupsertrelationaldata) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchUpsert | [EXPERIMENTAL] BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition.
 *RelationalDatasetsApi* | [**queryRelationalData**](docs/RelationalDatasetsApi.md#queryrelationaldata) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$query | [EXPERIMENTAL] QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
 *RelationsApi* | [**createRelation**](docs/RelationsApi.md#createrelation) | **POST** /api/relations/{scope}/{code} | [EXPERIMENTAL] CreateRelation: Create Relation
@@ -758,6 +759,7 @@ Class | Method | HTTP request | Description
  - [BasketIdentifier](docs/BasketIdentifier.md)
  - [BatchAdjustHoldingsResponse](docs/BatchAdjustHoldingsResponse.md)
  - [BatchAmendCustomDataModelMembershipResponse](docs/BatchAmendCustomDataModelMembershipResponse.md)
+ - [BatchDeleteRelationalDataResponse](docs/BatchDeleteRelationalDataResponse.md)
  - [BatchUpdateUserReviewForComparisonResultRequest](docs/BatchUpdateUserReviewForComparisonResultRequest.md)
  - [BatchUpdateUserReviewForComparisonResultResponse](docs/BatchUpdateUserReviewForComparisonResultResponse.md)
  - [BatchUpsertDatesForCalendarResponse](docs/BatchUpsertDatesForCalendarResponse.md)
@@ -1019,6 +1021,7 @@ Class | Method | HTTP request | Description
  - [DeleteInstrumentsResponse](docs/DeleteInstrumentsResponse.md)
  - [DeleteModes](docs/DeleteModes.md)
  - [DeleteRelationRequest](docs/DeleteRelationRequest.md)
+ - [DeleteRelationalDataPointRequest](docs/DeleteRelationalDataPointRequest.md)
  - [DeleteRelationshipRequest](docs/DeleteRelationshipRequest.md)
  - [DeletedEntityResponse](docs/DeletedEntityResponse.md)
  - [DependencySourceFilter](docs/DependencySourceFilter.md)

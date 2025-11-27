@@ -25,7 +25,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.BatchDeleteRelationalDataResponse;
 import com.finbourne.lusid.model.BatchUpsertRelationalDatasetsResponse;
+import com.finbourne.lusid.model.DeleteRelationalDataPointRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
@@ -76,6 +78,274 @@ public class RelationalDatasetsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call batchDeleteRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return batchDeleteRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchDeleteRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchDelete"
+            .replace("{" + "relationalDatasetDefinitionScope" + "}", localVarApiClient.escapeString(relationalDatasetDefinitionScope.toString()))
+            .replace("{" + "relationalDatasetDefinitionCode" + "}", localVarApiClient.escapeString(relationalDatasetDefinitionCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchDeleteRelationalDataValidateBeforeCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'relationalDatasetDefinitionScope' is set
+        if (relationalDatasetDefinitionScope == null) {
+            throw new ApiException("Missing the required parameter 'relationalDatasetDefinitionScope' when calling batchDeleteRelationalData(Async)");
+        }
+
+        // verify the required parameter 'relationalDatasetDefinitionCode' is set
+        if (relationalDatasetDefinitionCode == null) {
+            throw new ApiException("Missing the required parameter 'relationalDatasetDefinitionCode' when calling batchDeleteRelationalData(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling batchDeleteRelationalData(Async)");
+        }
+
+        return batchDeleteRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = batchDeleteRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteRelationalDataWithHttpInfo(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchDeleteRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, null, opts);
+        Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchDeleteRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, final ApiCallback<BatchDeleteRelationalDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchDeleteRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchDeleteRelationalDataAsync(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody, String successMode, final ApiCallback<BatchDeleteRelationalDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchDeleteRelationalDataValidateBeforeCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchDeleteRelationalDataRequest {
+        private final String relationalDatasetDefinitionScope;
+        private final String relationalDatasetDefinitionCode;
+        private final Map<String, DeleteRelationalDataPointRequest> requestBody;
+        private String successMode;
+
+        private APIbatchDeleteRelationalDataRequest(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody) {
+            this.relationalDatasetDefinitionScope = relationalDatasetDefinitionScope;
+            this.relationalDatasetDefinitionCode = relationalDatasetDefinitionCode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.   Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code. (optional, default to Partial)
+         * @return APIbatchDeleteRelationalDataRequest
+         */
+        public APIbatchDeleteRelationalDataRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for batchDeleteRelationalData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchDeleteRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request
+         * @return BatchDeleteRelationalDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchDeleteRelationalDataResponse execute() throws ApiException {
+            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchDeleteRelationalDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchDeleteRelationalDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request with HTTP info returned
+         * @return ApiResponse&lt;BatchDeleteRelationalDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchDeleteRelationalDataResponse> executeWithHttpInfo() throws ApiException {
+            return batchDeleteRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode);
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchDeleteRelationalDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchDeleteRelationalDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchDeleteRelationalDataWithHttpInfo(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, opts);
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchDeleteRelationalDataResponse> _callback) throws ApiException {
+            return batchDeleteRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute batchDeleteRelationalData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchDeleteRelationalDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchDeleteRelationalDataAsync(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
+     * Batch Delete Relational Data Points for a given Relational Dataset Definition.
+     * @param relationalDatasetDefinitionScope The Scope of the relational dataset definition. (required)
+     * @param relationalDatasetDefinitionCode The Code of the relational dataset definition. (required)
+     * @param requestBody The Delete Request. (required)
+     * @return APIbatchDeleteRelationalDataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The deleted DataPoint metadata. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchDeleteRelationalDataRequest batchDeleteRelationalData(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, DeleteRelationalDataPointRequest> requestBody) {
+        return new APIbatchDeleteRelationalDataRequest(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody);
+    }
     private okhttp3.Call batchUpsertRelationalDataCall(String relationalDatasetDefinitionScope, String relationalDatasetDefinitionCode, Map<String, UpsertRelationalDataPointRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
         return batchUpsertRelationalDataCall(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode,  _callback, new ConfigurationOptions());
     }
