@@ -9,7 +9,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteRules**](CheckDefinitionsApi.md#deleteRules) | **POST** /api/dataquality/checkdefinitions/{scope}/{code}/$deleteRules | [EXPERIMENTAL] DeleteRules: Delete rules on a particular Check Definition |
 | [**getCheckDefinition**](CheckDefinitionsApi.md#getCheckDefinition) | **GET** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] GetCheckDefinition: Get a single Check Definition by scope and code. |
 | [**listCheckDefinitions**](CheckDefinitionsApi.md#listCheckDefinitions) | **GET** /api/dataquality/checkdefinitions | [EXPERIMENTAL] ListCheckDefinitions: List Check Definitions |
-| [**runCheckDefinition**](CheckDefinitionsApi.md#runCheckDefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset. |
+| [**runCheckDefinition**](CheckDefinitionsApi.md#runCheckDefinition) | **POST** /api/dataquality/checkdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset. |
 | [**updateCheckDefinition**](CheckDefinitionsApi.md#updateCheckDefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateCheckDefinition: Update Check Definition defined by scope and code |
 | [**upsertRules**](CheckDefinitionsApi.md#upsertRules) | **POST** /api/dataquality/checkdefinitions/{scope}/{code}/$upsertRules | [EXPERIMENTAL] UpsertRules: Upsert rules to a particular Check Definition |
 
