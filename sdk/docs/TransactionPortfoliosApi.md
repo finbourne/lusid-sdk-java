@@ -3624,7 +3624,7 @@ public class TransactionPortfoliosApiExample {
 
 ## listSettlementInstructions
 
-> ResourceListOfTransactionSettlementInstruction listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt)
+> VersionedResourceListOfTransactionSettlementInstruction listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys)
 
 [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
 
@@ -3677,11 +3677,12 @@ public class TransactionPortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | The expression to filter out settlement instructions
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'SettlementInstruction', 'Instrument' or 'Portfolio' domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or 'SettlementInstruction/strategy/quantsignal'.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt).execute(opts);
+            // VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys).execute(opts);
 
-            ResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt).execute();
+            VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#listSettlementInstructions");
@@ -3706,10 +3707,11 @@ public class TransactionPortfoliosApiExample {
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| The expression to filter out settlement instructions | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. | [optional] |
 
 ### Return type
 
-[**ResourceListOfTransactionSettlementInstruction**](ResourceListOfTransactionSettlementInstruction.md)
+[**VersionedResourceListOfTransactionSettlementInstruction**](VersionedResourceListOfTransactionSettlementInstruction.md)
 
 ### HTTP request headers
 
