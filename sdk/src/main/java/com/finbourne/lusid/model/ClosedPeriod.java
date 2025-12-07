@@ -104,6 +104,10 @@ public class ClosedPeriod {
   @SerializedName(SERIALIZED_NAME_VALUATION_AS_AT_CLOSED_OVERRIDE)
   private OffsetDateTime valuationAsAtClosedOverride;
 
+  public static final String SERIALIZED_NAME_BRANCH_STATUS = "branchStatus";
+  @SerializedName(SERIALIZED_NAME_BRANCH_STATUS)
+  private String branchStatus;
+
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
@@ -362,6 +366,27 @@ public class ClosedPeriod {
   }
 
 
+  public ClosedPeriod branchStatus(String branchStatus) {
+    
+    this.branchStatus = branchStatus;
+    return this;
+  }
+
+   /**
+   * The branch status of the closed period, e.g. Confirmed/Unconfirmed.
+   * @return branchStatus
+  **/
+  @jakarta.annotation.Nullable
+  public String getBranchStatus() {
+    return branchStatus;
+  }
+
+
+  public void setBranchStatus(String branchStatus) {
+    this.branchStatus = branchStatus;
+  }
+
+
   public ClosedPeriod href(URI href) {
     
     this.href = href;
@@ -433,6 +458,7 @@ public class ClosedPeriod {
         Objects.equals(this.postCloseActivities, closedPeriod.postCloseActivities) &&
         Objects.equals(this.holdingsAsAtClosedOverride, closedPeriod.holdingsAsAtClosedOverride) &&
         Objects.equals(this.valuationAsAtClosedOverride, closedPeriod.valuationAsAtClosedOverride) &&
+        Objects.equals(this.branchStatus, closedPeriod.branchStatus) &&
         Objects.equals(this.href, closedPeriod.href) &&
         Objects.equals(this.links, closedPeriod.links);
   }
@@ -443,7 +469,7 @@ public class ClosedPeriod {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, holdingsAsAtClosedOverride, valuationAsAtClosedOverride, href, links);
+    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, holdingsAsAtClosedOverride, valuationAsAtClosedOverride, branchStatus, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -468,6 +494,7 @@ public class ClosedPeriod {
     sb.append("    postCloseActivities: ").append(toIndentedString(postCloseActivities)).append("\n");
     sb.append("    holdingsAsAtClosedOverride: ").append(toIndentedString(holdingsAsAtClosedOverride)).append("\n");
     sb.append("    valuationAsAtClosedOverride: ").append(toIndentedString(valuationAsAtClosedOverride)).append("\n");
+    sb.append("    branchStatus: ").append(toIndentedString(branchStatus)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -503,6 +530,7 @@ public class ClosedPeriod {
     openapiFields.add("postCloseActivities");
     openapiFields.add("holdingsAsAtClosedOverride");
     openapiFields.add("valuationAsAtClosedOverride");
+    openapiFields.add("branchStatus");
     openapiFields.add("href");
     openapiFields.add("links");
 
@@ -549,6 +577,9 @@ public class ClosedPeriod {
             PostCloseActivity.validateJsonElement(jsonArraypostCloseActivities.get(i));
           };
         }
+      }
+      if ((jsonObj.get("branchStatus") != null && !jsonObj.get("branchStatus").isJsonNull()) && !jsonObj.get("branchStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `branchStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("branchStatus").toString()));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));

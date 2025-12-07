@@ -134,7 +134,7 @@ public class LusidEntityDataset {
    * The scope of the entities to check. Required.
    * @return scope
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getScope() {
     return scope;
   }
@@ -176,7 +176,7 @@ public class LusidEntityDataset {
    * An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset.
    * @return selectorAttribute
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getSelectorAttribute() {
     return selectorAttribute;
   }
@@ -197,7 +197,7 @@ public class LusidEntityDataset {
    * The value of the above attribute used to sub-divide the dataset.
    * @return selectorValue
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getSelectorValue() {
     return selectorValue;
   }
@@ -307,9 +307,6 @@ public class LusidEntityDataset {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("scope");
-    openapiRequiredFields.add("selectorAttribute");
-    openapiRequiredFields.add("selectorValue");
   }
 
  /**
@@ -324,21 +321,14 @@ public class LusidEntityDataset {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LusidEntityDataset is not found in the empty JSON string", LusidEntityDataset.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LusidEntityDataset.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("scope").isJsonPrimitive()) {
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
-      if (!jsonObj.get("selectorAttribute").isJsonPrimitive()) {
+      if ((jsonObj.get("selectorAttribute") != null && !jsonObj.get("selectorAttribute").isJsonNull()) && !jsonObj.get("selectorAttribute").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `selectorAttribute` to be a primitive type in the JSON string but got `%s`", jsonObj.get("selectorAttribute").toString()));
       }
-      if (!jsonObj.get("selectorValue").isJsonPrimitive()) {
+      if ((jsonObj.get("selectorValue") != null && !jsonObj.get("selectorValue").isJsonNull()) && !jsonObj.get("selectorValue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `selectorValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("selectorValue").toString()));
       }
       if ((jsonObj.get("returnIdentifierKey") != null && !jsonObj.get("returnIdentifierKey").isJsonNull()) && !jsonObj.get("returnIdentifierKey").isJsonPrimitive()) {

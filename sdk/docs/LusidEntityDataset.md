@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt date to fetch the data. Nullable. Defaults to latest. | [optional] [default to OffsetDateTime]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effectiveAt date to fetch the data. Nullable. Defaults to latest. | [optional] [default to OffsetDateTime]
-**scope** | **String** | The scope of the entities to check. Required. | [default to String]
+**scope** | **String** | The scope of the entities to check. Required. | [optional] [default to String]
 **asAtModifiedSince** | [**OffsetDateTime**](OffsetDateTime.md) | Nullable. Filters the dataset for version.asAtModified greater than or equal to this value. | [optional] [default to OffsetDateTime]
-**selectorAttribute** | **String** | An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset. | [default to String]
-**selectorValue** | **String** | The value of the above attribute used to sub-divide the dataset. | [default to String]
+**selectorAttribute** | **String** | An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset. | [optional] [default to String]
+**selectorValue** | **String** | The value of the above attribute used to sub-divide the dataset. | [optional] [default to String]
 **returnIdentifierKey** | **String** | The preferred identifier to return for entities with multiple external identifiers. | [optional] [default to String]
 
 ```java
@@ -21,10 +21,10 @@ import java.net.URI;
 
 @jakarta.annotation.Nullable OffsetDateTime AsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EffectiveAt = OffsetDateTime.now();
-String Scope = "example Scope";
+@jakarta.annotation.Nullable String Scope = "example Scope";
 @jakarta.annotation.Nullable OffsetDateTime AsAtModifiedSince = OffsetDateTime.now();
-String SelectorAttribute = "example SelectorAttribute";
-String SelectorValue = "example SelectorValue";
+@jakarta.annotation.Nullable String SelectorAttribute = "example SelectorAttribute";
+@jakarta.annotation.Nullable String SelectorValue = "example SelectorValue";
 @jakarta.annotation.Nullable String ReturnIdentifierKey = "example ReturnIdentifierKey";
 
 

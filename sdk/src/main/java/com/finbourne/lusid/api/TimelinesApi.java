@@ -81,6 +81,271 @@ public class TimelinesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call confirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback) throws ApiException {
+        return confirmClosedPeriodCall(scope, code, closedPeriodId, body,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call confirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$confirm"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "closedPeriodId" + "}", localVarApiClient.escapeString(closedPeriodId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call confirmClosedPeriodValidateBeforeCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling confirmClosedPeriod(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling confirmClosedPeriod(Async)");
+        }
+
+        // verify the required parameter 'closedPeriodId' is set
+        if (closedPeriodId == null) {
+            throw new ApiException("Missing the required parameter 'closedPeriodId' when calling confirmClosedPeriod(Async)");
+        }
+
+        return confirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ClosedPeriod> confirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = confirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ClosedPeriod> confirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = confirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call confirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = confirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call confirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = confirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIconfirmClosedPeriodRequest {
+        private final String scope;
+        private final String code;
+        private final String closedPeriodId;
+        private Object body;
+
+        private APIconfirmClosedPeriodRequest(String scope, String code, String closedPeriodId) {
+            this.scope = scope;
+            this.code = code;
+            this.closedPeriodId = closedPeriodId;
+        }
+
+        /**
+         * Set body
+         * @param body Not in use at the moment (optional)
+         * @return APIconfirmClosedPeriodRequest
+         */
+        public APIconfirmClosedPeriodRequest body(Object body) {
+            this.body = body;
+            return this;
+        }
+
+        /**
+         * Build call for confirmClosedPeriod
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return confirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback);
+        }
+
+        /**
+         * Execute confirmClosedPeriod request
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute() throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = confirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute confirmClosedPeriod request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = confirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute confirmClosedPeriod request with HTTP info returned
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo() throws ApiException {
+            return confirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+        }
+
+        /**
+         * Execute confirmClosedPeriod request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return confirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+        }
+
+        /**
+         * Execute confirmClosedPeriod request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+            return confirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback);
+        }
+
+        /**
+         * Execute confirmClosedPeriod request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+            return confirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity
+     * Confirms a Closed Period against a Timeline Entity. Deletes any other unconfirmed Closed Periods on the Timeline.
+     * @param scope The scope of the specified Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. (required)
+     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod (required)
+     * @return APIconfirmClosedPeriodRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The confirmed closed period </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIconfirmClosedPeriodRequest confirmClosedPeriod(String scope, String code, String closedPeriodId) {
+        return new APIconfirmClosedPeriodRequest(scope, code, closedPeriodId);
+    }
     private okhttp3.Call createClosedPeriodCall(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback _callback) throws ApiException {
         return createClosedPeriodCall(scope, code, createClosedPeriodRequest,  _callback, new ConfigurationOptions());
     }
@@ -336,6 +601,262 @@ public class TimelinesApi {
      */
     public APIcreateClosedPeriodRequest createClosedPeriod(String scope, String code) {
         return new APIcreateClosedPeriodRequest(scope, code);
+    }
+    private okhttp3.Call createClosedPeriodCandidateCall(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback _callback) throws ApiException {
+        return createClosedPeriodCandidateCall(scope, code, createClosedPeriodRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createClosedPeriodCandidateCall(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createClosedPeriodRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/candidate"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createClosedPeriodCandidateValidateBeforeCall(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createClosedPeriodCandidate(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling createClosedPeriodCandidate(Async)");
+        }
+
+        return createClosedPeriodCandidateCall(scope, code, createClosedPeriodRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ClosedPeriod> createClosedPeriodCandidateWithHttpInfo(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest) throws ApiException {
+        okhttp3.Call localVarCall = createClosedPeriodCandidateValidateBeforeCall(scope, code, createClosedPeriodRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ClosedPeriod> createClosedPeriodCandidateWithHttpInfo(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createClosedPeriodCandidateValidateBeforeCall(scope, code, createClosedPeriodRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createClosedPeriodCandidateAsync(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createClosedPeriodCandidateValidateBeforeCall(scope, code, createClosedPeriodRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createClosedPeriodCandidateAsync(String scope, String code, CreateClosedPeriodRequest createClosedPeriodRequest, final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createClosedPeriodCandidateValidateBeforeCall(scope, code, createClosedPeriodRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateClosedPeriodCandidateRequest {
+        private final String scope;
+        private final String code;
+        private CreateClosedPeriodRequest createClosedPeriodRequest;
+
+        private APIcreateClosedPeriodCandidateRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set createClosedPeriodRequest
+         * @param createClosedPeriodRequest The request containing the details of the Closed Period (optional)
+         * @return APIcreateClosedPeriodCandidateRequest
+         */
+        public APIcreateClosedPeriodCandidateRequest createClosedPeriodRequest(CreateClosedPeriodRequest createClosedPeriodRequest) {
+            this.createClosedPeriodRequest = createClosedPeriodRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createClosedPeriodCandidate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createClosedPeriodCandidateCall(scope, code, createClosedPeriodRequest, _callback);
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute() throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = createClosedPeriodCandidateWithHttpInfo(scope, code, createClosedPeriodRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = createClosedPeriodCandidateWithHttpInfo(scope, code, createClosedPeriodRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request with HTTP info returned
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo() throws ApiException {
+            return createClosedPeriodCandidateWithHttpInfo(scope, code, createClosedPeriodRequest);
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createClosedPeriodCandidateWithHttpInfo(scope, code, createClosedPeriodRequest, opts);
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+            return createClosedPeriodCandidateAsync(scope, code, createClosedPeriodRequest, _callback);
+        }
+
+        /**
+         * Execute createClosedPeriodCandidate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+            return createClosedPeriodCandidateAsync(scope, code, createClosedPeriodRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateClosedPeriodCandidate: Create a new closed period candidate against a timeline entity
+     * Creates a new closed period candidate against a timeline entity  Returns the newly created closed period candidate entity with properties
+     * @param scope The scope of the specified Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. (required)
+     * @return APIcreateClosedPeriodCandidateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The created closed period </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateClosedPeriodCandidateRequest createClosedPeriodCandidate(String scope, String code) {
+        return new APIcreateClosedPeriodCandidateRequest(scope, code);
     }
     private okhttp3.Call createTimelineCall(CreateTimelineRequest createTimelineRequest, final ApiCallback _callback) throws ApiException {
         return createTimelineCall(createTimelineRequest,  _callback, new ConfigurationOptions());
@@ -2305,6 +2826,271 @@ public class TimelinesApi {
      */
     public APIsetPostCloseActivityRequest setPostCloseActivity(String scope, String code, String closedPeriodId) {
         return new APIsetPostCloseActivityRequest(scope, code, closedPeriodId);
+    }
+    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback) throws ApiException {
+        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "closedPeriodId" + "}", localVarApiClient.escapeString(closedPeriodId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call unconfirmClosedPeriodValidateBeforeCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling unconfirmClosedPeriod(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling unconfirmClosedPeriod(Async)");
+        }
+
+        // verify the required parameter 'closedPeriodId' is set
+        if (closedPeriodId == null) {
+            throw new ApiException("Missing the required parameter 'closedPeriodId' when calling unconfirmClosedPeriod(Async)");
+        }
+
+        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, opts);
+        Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIunconfirmClosedPeriodRequest {
+        private final String scope;
+        private final String code;
+        private final String closedPeriodId;
+        private Object body;
+
+        private APIunconfirmClosedPeriodRequest(String scope, String code, String closedPeriodId) {
+            this.scope = scope;
+            this.code = code;
+            this.closedPeriodId = closedPeriodId;
+        }
+
+        /**
+         * Set body
+         * @param body Not in use at the moment (optional)
+         * @return APIunconfirmClosedPeriodRequest
+         */
+        public APIunconfirmClosedPeriodRequest body(Object body) {
+            this.body = body;
+            return this;
+        }
+
+        /**
+         * Build call for unconfirmClosedPeriod
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback);
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute() throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request with HTTP info returned
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo() throws ApiException {
+            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback);
+        }
+
+        /**
+         * Execute unconfirmClosedPeriod request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+     * Unconfirm the last confirmed Closed Period against a Timeline Entity
+     * @param scope The scope of the specified Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. (required)
+     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline. (required)
+     * @return APIunconfirmClosedPeriodRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The unconfirmed closed period </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIunconfirmClosedPeriodRequest unconfirmClosedPeriod(String scope, String code, String closedPeriodId) {
+        return new APIunconfirmClosedPeriodRequest(scope, code, closedPeriodId);
     }
     private okhttp3.Call updateTimelineCall(String scope, String code, UpdateTimelineRequest updateTimelineRequest, final ApiCallback _callback) throws ApiException {
         return updateTimelineCall(scope, code, updateTimelineRequest,  _callback, new ConfigurationOptions());

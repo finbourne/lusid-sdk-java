@@ -266,6 +266,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 *FundsApi* | [**patchFee**](docs/FundsApi.md#patchfee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee.
 *FundsApi* | [**patchFund**](docs/FundsApi.md#patchfund) | **PATCH** /api/funds/{scope}/{code} | [EXPERIMENTAL] PatchFund: Patch a Fund.
+*FundsApi* | [**revertValuationPointToEstimate**](docs/FundsApi.md#revertvaluationpointtoestimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
 *FundsApi* | [**upsertBookmark**](docs/FundsApi.md#upsertbookmark) | **POST** /api/funds/{scope}/{code}/bookmarks | [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark.
 *FundsApi* | [**upsertDiaryEntryTypeValuationPoint**](docs/FundsApi.md#upsertdiaryentrytypevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
@@ -589,7 +590,9 @@ Class | Method | HTTP request | Description
 *TaxRuleSetsApi* | [**getTaxRuleSet**](docs/TaxRuleSetsApi.md#gettaxruleset) | **GET** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
 *TaxRuleSetsApi* | [**listTaxRuleSets**](docs/TaxRuleSetsApi.md#listtaxrulesets) | **GET** /api/tax/rulesets | [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
 *TaxRuleSetsApi* | [**updateTaxRuleSet**](docs/TaxRuleSetsApi.md#updatetaxruleset) | **PUT** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
+*TimelinesApi* | [**confirmClosedPeriod**](docs/TimelinesApi.md#confirmclosedperiod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$confirm | [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity
 *TimelinesApi* | [**createClosedPeriod**](docs/TimelinesApi.md#createclosedperiod) | **POST** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity
+*TimelinesApi* | [**createClosedPeriodCandidate**](docs/TimelinesApi.md#createclosedperiodcandidate) | **POST** /api/timelines/{scope}/{code}/closedperiods/candidate | [EXPERIMENTAL] CreateClosedPeriodCandidate: Create a new closed period candidate against a timeline entity
 *TimelinesApi* | [**createTimeline**](docs/TimelinesApi.md#createtimeline) | **POST** /api/timelines | [EXPERIMENTAL] CreateTimeline: Create a Timeline
 *TimelinesApi* | [**deleteTimeline**](docs/TimelinesApi.md#deletetimeline) | **DELETE** /api/timelines/{scope}/{code} | [EXPERIMENTAL] DeleteTimeline: Deletes a particular Timeline
 *TimelinesApi* | [**getClosedPeriod**](docs/TimelinesApi.md#getclosedperiod) | **GET** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId} | [EXPERIMENTAL] GetClosedPeriod: Gets a Closed Period entity.
@@ -597,6 +600,7 @@ Class | Method | HTTP request | Description
 *TimelinesApi* | [**listClosedPeriods**](docs/TimelinesApi.md#listclosedperiods) | **GET** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] ListClosedPeriods: List ClosedPeriods for a specified Timeline.
 *TimelinesApi* | [**listTimelines**](docs/TimelinesApi.md#listtimelines) | **GET** /api/timelines | [EXPERIMENTAL] ListTimelines: List Timelines
 *TimelinesApi* | [**setPostCloseActivity**](docs/TimelinesApi.md#setpostcloseactivity) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity | [EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period.
+*TimelinesApi* | [**unconfirmClosedPeriod**](docs/TimelinesApi.md#unconfirmclosedperiod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
 *TimelinesApi* | [**updateTimeline**](docs/TimelinesApi.md#updatetimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
 *TransactionConfigurationApi* | [**deleteSideDefinition**](docs/TransactionConfigurationApi.md#deletesidedefinition) | **DELETE** /api/transactionconfiguration/sides/{side}/$delete | DeleteSideDefinition: Delete the given side definition
 *TransactionConfigurationApi* | [**deleteTransactionType**](docs/TransactionConfigurationApi.md#deletetransactiontype) | **DELETE** /api/transactionconfiguration/types/{source}/{type} | DeleteTransactionType: Delete a transaction type

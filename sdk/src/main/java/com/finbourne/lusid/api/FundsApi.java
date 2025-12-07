@@ -8377,6 +8377,274 @@ public class FundsApi {
     public APIpatchFundRequest patchFund(String scope, String code, List<Operation> operation) {
         return new APIpatchFundRequest(scope, code, operation);
     }
+    private okhttp3.Call revertValuationPointToEstimateCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return revertValuationPointToEstimateCall(scope, code, valuationPointDataRequest, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call revertValuationPointToEstimateCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call revertValuationPointToEstimateValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling revertValuationPointToEstimate(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling revertValuationPointToEstimate(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataRequest' is set
+        if (valuationPointDataRequest == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataRequest' when calling revertValuationPointToEstimate(Async)");
+        }
+
+        return revertValuationPointToEstimateCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointDataResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointDataResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrevertValuationPointToEstimateRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataRequest valuationPointDataRequest;
+        private String navTypeCode;
+
+        private APIrevertValuationPointToEstimateRequest(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataRequest = valuationPointDataRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, sets the status of the Valuation Point of the specified NAV Type to be Estimate.   Otherwise, the Primary NAV Type will be used. (optional)
+         * @return APIrevertValuationPointToEstimateRequest
+         */
+        public APIrevertValuationPointToEstimateRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for revertValuationPointToEstimate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return revertValuationPointToEstimateCall(scope, code, valuationPointDataRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request
+         * @return ValuationPointDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointDataResponse execute() throws ApiException {
+            ApiResponse<ValuationPointDataResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointDataResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
+            return revertValuationPointToEstimateWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return revertValuationPointToEstimateWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+            return revertValuationPointToEstimateAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute revertValuationPointToEstimate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return revertValuationPointToEstimateAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
+     * Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataRequest The valuationPointDataRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. (required)
+     * @return APIrevertValuationPointToEstimateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIrevertValuationPointToEstimateRequest revertValuationPointToEstimate(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
+        return new APIrevertValuationPointToEstimateRequest(scope, code, valuationPointDataRequest);
+    }
     private okhttp3.Call setShareClassInstrumentsCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback) throws ApiException {
         return setShareClassInstrumentsCall(scope, code, setShareClassInstrumentsRequest,  _callback, new ConfigurationOptions());
     }
