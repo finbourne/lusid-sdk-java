@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CustomSortBy;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,7 +63,7 @@ public class QueryRelationalDatasetRequest {
 
   public static final String SERIALIZED_NAME_CUSTOM_SORT_BY = "customSortBy";
   @SerializedName(SERIALIZED_NAME_CUSTOM_SORT_BY)
-  private List<String> customSortBy;
+  private List<CustomSortBy> customSortBy;
 
   public QueryRelationalDatasetRequest() {
   }
@@ -109,13 +110,13 @@ public class QueryRelationalDatasetRequest {
   }
 
 
-  public QueryRelationalDatasetRequest customSortBy(List<String> customSortBy) {
+  public QueryRelationalDatasetRequest customSortBy(List<CustomSortBy> customSortBy) {
     
     this.customSortBy = customSortBy;
     return this;
   }
 
-  public QueryRelationalDatasetRequest addCustomSortByItem(String customSortByItem) {
+  public QueryRelationalDatasetRequest addCustomSortByItem(CustomSortBy customSortByItem) {
     if (this.customSortBy == null) {
       this.customSortBy = new ArrayList<>();
     }
@@ -124,16 +125,16 @@ public class QueryRelationalDatasetRequest {
   }
 
    /**
-   * A list of fields to sort the results by. For example, to sort by a Value field &#39;AValueField&#39; in descending order, specify &#39;AValueField DESC&#39;.
+   * A list of fields and values to sort the results by.
    * @return customSortBy
   **/
   @jakarta.annotation.Nullable
-  public List<String> getCustomSortBy() {
+  public List<CustomSortBy> getCustomSortBy() {
     return customSortBy;
   }
 
 
-  public void setCustomSortBy(List<String> customSortBy) {
+  public void setCustomSortBy(List<CustomSortBy> customSortBy) {
     this.customSortBy = customSortBy;
   }
 
@@ -225,9 +226,19 @@ public class QueryRelationalDatasetRequest {
       if ((jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) && !jsonObj.get("filter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filter").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("customSortBy") != null && !jsonObj.get("customSortBy").isJsonNull() && !jsonObj.get("customSortBy").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customSortBy` to be an array in the JSON string but got `%s`", jsonObj.get("customSortBy").toString()));
+      if (jsonObj.get("customSortBy") != null && !jsonObj.get("customSortBy").isJsonNull()) {
+        JsonArray jsonArraycustomSortBy = jsonObj.getAsJsonArray("customSortBy");
+        if (jsonArraycustomSortBy != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("customSortBy").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `customSortBy` to be an array in the JSON string but got `%s`", jsonObj.get("customSortBy").toString()));
+          }
+
+          // validate the optional field `customSortBy` (array)
+          for (int i = 0; i < jsonArraycustomSortBy.size(); i++) {
+            CustomSortBy.validateJsonElement(jsonArraycustomSortBy.get(i));
+          };
+        }
       }
   }
 

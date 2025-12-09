@@ -292,6 +292,10 @@ public class CreateDerivedPropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_IS_FILTERABLE)
   private Boolean isFilterable;
 
+  public static final String SERIALIZED_NAME_VALUE_FORMAT = "valueFormat";
+  @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
+  private String valueFormat;
+
   public CreateDerivedPropertyDefinitionRequest() {
   }
 
@@ -463,6 +467,27 @@ public class CreateDerivedPropertyDefinitionRequest {
   }
 
 
+  public CreateDerivedPropertyDefinitionRequest valueFormat(String valueFormat) {
+    
+    this.valueFormat = valueFormat;
+    return this;
+  }
+
+   /**
+   * The format in which values for this property definition should be represented.
+   * @return valueFormat
+  **/
+  @jakarta.annotation.Nullable
+  public String getValueFormat() {
+    return valueFormat;
+  }
+
+
+  public void setValueFormat(String valueFormat) {
+    this.valueFormat = valueFormat;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -480,7 +505,8 @@ public class CreateDerivedPropertyDefinitionRequest {
         Objects.equals(this.dataTypeId, createDerivedPropertyDefinitionRequest.dataTypeId) &&
         Objects.equals(this.propertyDescription, createDerivedPropertyDefinitionRequest.propertyDescription) &&
         Objects.equals(this.derivationFormula, createDerivedPropertyDefinitionRequest.derivationFormula) &&
-        Objects.equals(this.isFilterable, createDerivedPropertyDefinitionRequest.isFilterable);
+        Objects.equals(this.isFilterable, createDerivedPropertyDefinitionRequest.isFilterable) &&
+        Objects.equals(this.valueFormat, createDerivedPropertyDefinitionRequest.valueFormat);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -489,7 +515,7 @@ public class CreateDerivedPropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, scope, code, displayName, dataTypeId, propertyDescription, derivationFormula, isFilterable);
+    return Objects.hash(domain, scope, code, displayName, dataTypeId, propertyDescription, derivationFormula, isFilterable, valueFormat);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -511,6 +537,7 @@ public class CreateDerivedPropertyDefinitionRequest {
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
     sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
+    sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -541,6 +568,7 @@ public class CreateDerivedPropertyDefinitionRequest {
     openapiFields.add("propertyDescription");
     openapiFields.add("derivationFormula");
     openapiFields.add("isFilterable");
+    openapiFields.add("valueFormat");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -592,6 +620,9 @@ public class CreateDerivedPropertyDefinitionRequest {
       }
       if (!jsonObj.get("derivationFormula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `derivationFormula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivationFormula").toString()));
+      }
+      if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
       }
   }
 

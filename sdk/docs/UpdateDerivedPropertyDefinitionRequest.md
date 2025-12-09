@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **propertyDescription** | **String** | Describes the property | [optional] [default to String]
 **derivationFormula** | **String** | The rule that defines how data is composed for a derived property. | [default to String]
 **isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. | [default to Boolean]
+**valueFormat** | **String** | The format in which values for this property definition should be represented. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.UpdateDerivedPropertyDefinitionRequest;
@@ -21,6 +22,7 @@ ResourceId DataTypeId = new ResourceId();
 @jakarta.annotation.Nullable String PropertyDescription = "example PropertyDescription";
 String DerivationFormula = "example DerivationFormula";
 Boolean IsFilterable = true;
+@jakarta.annotation.Nullable String ValueFormat = "example ValueFormat";
 
 
 UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequestInstance = new UpdateDerivedPropertyDefinitionRequest()
@@ -28,7 +30,8 @@ UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequestIns
     .DataTypeId(DataTypeId)
     .PropertyDescription(PropertyDescription)
     .DerivationFormula(DerivationFormula)
-    .IsFilterable(IsFilterable);
+    .IsFilterable(IsFilterable)
+    .ValueFormat(ValueFormat);
 ```
 
 
