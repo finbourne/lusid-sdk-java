@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **instruments** | [**List&lt;LusidInstrument&gt;**](LusidInstrument.md) | The set of instruments that define the surface. | [default to List<LusidInstrument>]
 **quotes** | [**List&lt;MarketQuote&gt;**](MarketQuote.md) | The set of market quotes that define the surface, in NormalVol or LogNormalVol terms. | [default to List<MarketQuote>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.EquityVolSurfaceData;
@@ -20,13 +21,15 @@ OffsetDateTime BaseDate = OffsetDateTime.now();
 List<LusidInstrument> Instruments = new List<LusidInstrument>();
 List<MarketQuote> Quotes = new List<MarketQuote>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
+Version Version = new Version();
 
 
 EquityVolSurfaceData equityVolSurfaceDataInstance = new EquityVolSurfaceData()
     .BaseDate(BaseDate)
     .Instruments(Instruments)
     .Quotes(Quotes)
-    .Lineage(Lineage);
+    .Lineage(Lineage)
+    .Version(Version);
 ```
 
 

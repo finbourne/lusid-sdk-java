@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **discountFactors** | **List&lt;java.math.BigDecimal&gt;** | Discount factors to be applied to cashflow on the specified dates | [default to List<java.math.BigDecimal>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.DiscountFactorCurveData;
@@ -22,6 +23,7 @@ List<OffsetDateTime> Dates = new List<OffsetDateTime>();
 List<java.math.BigDecimal> DiscountFactors = new List<java.math.BigDecimal>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
+Version Version = new Version();
 
 
 DiscountFactorCurveData discountFactorCurveDataInstance = new DiscountFactorCurveData()
@@ -29,7 +31,8 @@ DiscountFactorCurveData discountFactorCurveDataInstance = new DiscountFactorCurv
     .Dates(Dates)
     .DiscountFactors(DiscountFactors)
     .Lineage(Lineage)
-    .MarketDataOptions(MarketDataOptions);
+    .MarketDataOptions(MarketDataOptions)
+    .Version(Version);
 ```
 
 

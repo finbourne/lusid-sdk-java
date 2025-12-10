@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ComplexMarketData;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,6 +68,10 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
   public static final String SERIALIZED_NAME_VOLATILITY = "volatility";
   @SerializedName(SERIALIZED_NAME_VOLATILITY)
   private java.math.BigDecimal volatility;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public ConstantVolatilitySurface() {
     // this.marketDataType = this.getClass().getSimpleName();
@@ -156,6 +161,27 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
   }
 
 
+  public ConstantVolatilitySurface version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -170,6 +196,7 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
         Objects.equals(this.assetType, constantVolatilitySurface.assetType) &&
         Objects.equals(this.lineage, constantVolatilitySurface.lineage) &&
         (this.volatility.compareTo(constantVolatilitySurface.getVolatility()) == 0) &&
+        Objects.equals(this.version, constantVolatilitySurface.version) &&
         super.equals(o);
   }
 
@@ -179,7 +206,7 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseDate, assetType, lineage, volatility, super.hashCode());
+    return Objects.hash(baseDate, assetType, lineage, volatility, version, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -198,6 +225,7 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
     sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("    volatility: ").append(toIndentedString(volatility)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,6 +253,7 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
     openapiFields.add("assetType");
     openapiFields.add("lineage");
     openapiFields.add("volatility");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

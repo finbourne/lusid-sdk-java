@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
 **calendars** | [**List&lt;FxTenorConvention&gt;**](FxTenorConvention.md) | The list of conventions that should be used when interpreting tenors as dates. | [optional] [default to List<FxTenorConvention>]
 **spotDaysCalculationType** | **String** | Configures how to calculate the spot date from the build date using the Calendars provided.  Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ] | [optional] [default to String]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.FxForwardCurveByQuoteReference;
@@ -28,6 +29,7 @@ List<Map<String, String>> QuoteReferences = new List<Map<String, String>>();
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
 @jakarta.annotation.Nullable List<FxTenorConvention> Calendars = new List<FxTenorConvention>();
 @jakarta.annotation.Nullable String SpotDaysCalculationType = "example SpotDaysCalculationType";
+Version Version = new Version();
 
 
 FxForwardCurveByQuoteReference fxForwardCurveByQuoteReferenceInstance = new FxForwardCurveByQuoteReference()
@@ -38,7 +40,8 @@ FxForwardCurveByQuoteReference fxForwardCurveByQuoteReferenceInstance = new FxFo
     .Lineage(Lineage)
     .MarketDataOptions(MarketDataOptions)
     .Calendars(Calendars)
-    .SpotDaysCalculationType(SpotDaysCalculationType);
+    .SpotDaysCalculationType(SpotDaysCalculationType)
+    .Version(Version);
 ```
 
 

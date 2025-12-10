@@ -934,11 +934,11 @@ public class EntitiesApi {
     public APIgetEntityHistoryRequest getEntityHistory(String entityType, String entityUniqueId) {
         return new APIgetEntityHistoryRequest(entityType, entityUniqueId);
     }
-    private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
-        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -976,6 +976,14 @@ public class EntitiesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "previews", previews));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -998,40 +1006,40 @@ public class EntitiesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getInstrumentByEntityUniqueId(Async)");
         }
 
-        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, new ConfigurationOptions());
+    private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, opts);
+    private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<InstrumentEntity> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback<InstrumentEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<InstrumentEntity> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback<InstrumentEntity> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1042,6 +1050,8 @@ public class EntitiesApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> previews;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIgetInstrumentByEntityUniqueIdRequest(String entityUniqueId) {
             this.entityUniqueId = entityUniqueId;
@@ -1078,6 +1088,26 @@ public class EntitiesApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use. (optional)
+         * @return APIgetInstrumentByEntityUniqueIdRequest
+         */
+        public APIgetInstrumentByEntityUniqueIdRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use. (optional)
+         * @return APIgetInstrumentByEntityUniqueIdRequest
+         */
+        public APIgetInstrumentByEntityUniqueIdRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for getInstrumentByEntityUniqueId
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1091,7 +1121,7 @@ public class EntitiesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+            return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1107,7 +1137,7 @@ public class EntitiesApi {
          </table>
          */
         public InstrumentEntity execute() throws ApiException {
-            ApiResponse<InstrumentEntity> localVarResp = getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+            ApiResponse<InstrumentEntity> localVarResp = getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -1124,7 +1154,7 @@ public class EntitiesApi {
          </table>
          */
         public InstrumentEntity execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<InstrumentEntity> localVarResp = getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            ApiResponse<InstrumentEntity> localVarResp = getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -1141,7 +1171,7 @@ public class EntitiesApi {
          </table>
          */
         public ApiResponse<InstrumentEntity> executeWithHttpInfo() throws ApiException {
-            return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+            return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode);
         }
 
         /**
@@ -1157,7 +1187,7 @@ public class EntitiesApi {
          </table>
          */
         public ApiResponse<InstrumentEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -1174,7 +1204,7 @@ public class EntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEntity> _callback) throws ApiException {
-            return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+            return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1191,7 +1221,7 @@ public class EntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEntity> _callback, ConfigurationOptions opts) throws ApiException {
-            return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+            return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 

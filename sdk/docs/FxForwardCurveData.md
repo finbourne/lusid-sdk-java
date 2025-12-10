@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **rates** | **List&lt;java.math.BigDecimal&gt;** | Rates provided for the fx forward (price in FgnCcy per unit of DomCcy) | [default to List<java.math.BigDecimal>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.FxForwardCurveData;
@@ -26,6 +27,7 @@ List<OffsetDateTime> Dates = new List<OffsetDateTime>();
 List<java.math.BigDecimal> Rates = new List<java.math.BigDecimal>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
+Version Version = new Version();
 
 
 FxForwardCurveData fxForwardCurveDataInstance = new FxForwardCurveData()
@@ -35,7 +37,8 @@ FxForwardCurveData fxForwardCurveDataInstance = new FxForwardCurveData()
     .Dates(Dates)
     .Rates(Rates)
     .Lineage(Lineage)
-    .MarketDataOptions(MarketDataOptions);
+    .MarketDataOptions(MarketDataOptions)
+    .Version(Version);
 ```
 
 

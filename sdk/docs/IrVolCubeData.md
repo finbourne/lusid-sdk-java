@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **instruments** | [**List&lt;LusidInstrument&gt;**](LusidInstrument.md) | Retrieve the set of instruments that define the cube. | [default to List<LusidInstrument>]
 **quotes** | [**List&lt;MarketQuote&gt;**](MarketQuote.md) | Access the set of quotes that define the cube. | [default to List<MarketQuote>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.IrVolCubeData;
@@ -20,13 +21,15 @@ OffsetDateTime BaseDate = OffsetDateTime.now();
 List<LusidInstrument> Instruments = new List<LusidInstrument>();
 List<MarketQuote> Quotes = new List<MarketQuote>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
+Version Version = new Version();
 
 
 IrVolCubeData irVolCubeDataInstance = new IrVolCubeData()
     .BaseDate(BaseDate)
     .Instruments(Instruments)
     .Quotes(Quotes)
-    .Lineage(Lineage);
+    .Lineage(Lineage)
+    .Version(Version);
 ```
 
 

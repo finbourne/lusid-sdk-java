@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **quotes** | [**List&lt;MarketQuote&gt;**](MarketQuote.md) | The market quotes corresponding to the the instruments used to define the curve | [default to List<MarketQuote>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.YieldCurveData;
@@ -22,6 +23,7 @@ List<LusidInstrument> Instruments = new List<LusidInstrument>();
 List<MarketQuote> Quotes = new List<MarketQuote>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
+Version Version = new Version();
 
 
 YieldCurveData yieldCurveDataInstance = new YieldCurveData()
@@ -29,7 +31,8 @@ YieldCurveData yieldCurveDataInstance = new YieldCurveData()
     .Instruments(Instruments)
     .Quotes(Quotes)
     .Lineage(Lineage)
-    .MarketDataOptions(MarketDataOptions);
+    .MarketDataOptions(MarketDataOptions)
+    .Version(Version);
 ```
 
 

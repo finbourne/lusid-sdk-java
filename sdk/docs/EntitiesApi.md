@@ -311,7 +311,7 @@ public class EntitiesApiExample {
 
 ## getInstrumentByEntityUniqueId
 
-> InstrumentEntity getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews)
+> InstrumentEntity getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode)
 
 GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
 
@@ -360,11 +360,13 @@ public class EntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Instrument definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definition. Defaults to returning the latest version of the instrument definition if not specified.
         List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
         try {
             // uncomment the below to set overrides at the request level
-            // InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute(opts);
+            // InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode).execute(opts);
 
-            InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute();
+            InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling EntitiesApi#getInstrumentByEntityUniqueId");
@@ -385,6 +387,8 @@ public class EntitiesApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Instrument definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definition. Defaults to returning the latest version of the instrument definition if not specified. | [optional] |
 | **previews** | [**List&lt;String&gt;**](String.md)| The ids of the staged modifications to be previewed in the response. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
 
 ### Return type
 

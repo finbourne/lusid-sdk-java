@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **assetType** | **String** | What is the asset that the engine is for.  Supported string (enumeration) values are: [Cash, Commodity, Credit, Equity, Fx, Rates, FxVol, IrVol, EquityVol, HolidayCalendar, IndexConvention, FlowConvention, CdsFlowConvention, CorporateActions, FxForwards, Quote, Inflation, EquityCurve, All, VendorOpaque]. | [default to String]
 **lineage** | **String** |  | [optional] [default to String]
 **volatility** | **java.math.BigDecimal** | Volatility value. | [default to java.math.BigDecimal]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.ConstantVolatilitySurface;
@@ -20,13 +21,15 @@ OffsetDateTime BaseDate = OffsetDateTime.now();
 String AssetType = "example AssetType";
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 java.math.BigDecimal Volatility = new java.math.BigDecimal("100.00");
+Version Version = new Version();
 
 
 ConstantVolatilitySurface constantVolatilitySurfaceInstance = new ConstantVolatilitySurface()
     .BaseDate(BaseDate)
     .AssetType(AssetType)
     .Lineage(Lineage)
-    .Volatility(Volatility);
+    .Volatility(Volatility)
+    .Version(Version);
 ```
 
 

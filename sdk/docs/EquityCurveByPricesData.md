@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **prices** | **List&lt;java.math.BigDecimal&gt;** | Prices provided for the forward price of the Equity at the corresponding date in Dates. | [default to List<java.math.BigDecimal>]
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.EquityCurveByPricesData;
@@ -22,6 +23,7 @@ List<OffsetDateTime> Dates = new List<OffsetDateTime>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 List<java.math.BigDecimal> Prices = new List<java.math.BigDecimal>();
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
+Version Version = new Version();
 
 
 EquityCurveByPricesData equityCurveByPricesDataInstance = new EquityCurveByPricesData()
@@ -29,7 +31,8 @@ EquityCurveByPricesData equityCurveByPricesDataInstance = new EquityCurveByPrice
     .Dates(Dates)
     .Lineage(Lineage)
     .Prices(Prices)
-    .MarketDataOptions(MarketDataOptions);
+    .MarketDataOptions(MarketDataOptions)
+    .Version(Version);
 ```
 
 

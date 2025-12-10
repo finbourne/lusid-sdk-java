@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **maturities** | [**List&lt;OffsetDateTime&gt;**](OffsetDateTime.md) | The maturity dates for which the rates apply.  Either tenors or maturities should be provided, not both. | [optional] [default to List<OffsetDateTime>]
 **lineage** | **String** | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **marketDataOptions** | [**MarketDataOptions**](MarketDataOptions.md) |  | [optional] [default to MarketDataOptions]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.CreditSpreadCurveData;
@@ -30,6 +31,7 @@ java.math.BigDecimal RecoveryRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<OffsetDateTime> Maturities = new List<OffsetDateTime>();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 MarketDataOptions MarketDataOptions = new MarketDataOptions();
+Version Version = new Version();
 
 
 CreditSpreadCurveData creditSpreadCurveDataInstance = new CreditSpreadCurveData()
@@ -41,7 +43,8 @@ CreditSpreadCurveData creditSpreadCurveDataInstance = new CreditSpreadCurveData(
     .ReferenceDate(ReferenceDate)
     .Maturities(Maturities)
     .Lineage(Lineage)
-    .MarketDataOptions(MarketDataOptions);
+    .MarketDataOptions(MarketDataOptions)
+    .Version(Version);
 ```
 
 

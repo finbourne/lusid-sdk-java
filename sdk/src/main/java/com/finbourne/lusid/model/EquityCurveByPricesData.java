@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ComplexMarketData;
 import com.finbourne.lusid.model.MarketDataOptions;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,6 +75,10 @@ public class EquityCurveByPricesData extends ComplexMarketData {
   public static final String SERIALIZED_NAME_MARKET_DATA_OPTIONS = "marketDataOptions";
   @SerializedName(SERIALIZED_NAME_MARKET_DATA_OPTIONS)
   private MarketDataOptions marketDataOptions;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public EquityCurveByPricesData() {
     // this.marketDataType = this.getClass().getSimpleName();
@@ -200,6 +205,27 @@ public class EquityCurveByPricesData extends ComplexMarketData {
   }
 
 
+  public EquityCurveByPricesData version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -215,6 +241,7 @@ public class EquityCurveByPricesData extends ComplexMarketData {
         Objects.equals(this.lineage, equityCurveByPricesData.lineage) &&
         Objects.equals(this.prices, equityCurveByPricesData.prices) &&
         Objects.equals(this.marketDataOptions, equityCurveByPricesData.marketDataOptions) &&
+        Objects.equals(this.version, equityCurveByPricesData.version) &&
         super.equals(o);
   }
 
@@ -224,7 +251,7 @@ public class EquityCurveByPricesData extends ComplexMarketData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseDate, dates, lineage, prices, marketDataOptions, super.hashCode());
+    return Objects.hash(baseDate, dates, lineage, prices, marketDataOptions, version, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -244,6 +271,7 @@ public class EquityCurveByPricesData extends ComplexMarketData {
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("    prices: ").append(toIndentedString(prices)).append("\n");
     sb.append("    marketDataOptions: ").append(toIndentedString(marketDataOptions)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -272,6 +300,7 @@ public class EquityCurveByPricesData extends ComplexMarketData {
     openapiFields.add("lineage");
     openapiFields.add("prices");
     openapiFields.add("marketDataOptions");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

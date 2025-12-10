@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ComplexMarketData;
 import com.finbourne.lusid.model.MarketDataOptions;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -90,6 +91,10 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   public static final String SERIALIZED_NAME_MARKET_DATA_OPTIONS = "marketDataOptions";
   @SerializedName(SERIALIZED_NAME_MARKET_DATA_OPTIONS)
   private MarketDataOptions marketDataOptions;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public CreditSpreadCurveData() {
     // this.marketDataType = this.getClass().getSimpleName();
@@ -308,6 +313,27 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   }
 
 
+  public CreditSpreadCurveData version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -327,6 +353,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
         Objects.equals(this.maturities, creditSpreadCurveData.maturities) &&
         Objects.equals(this.lineage, creditSpreadCurveData.lineage) &&
         Objects.equals(this.marketDataOptions, creditSpreadCurveData.marketDataOptions) &&
+        Objects.equals(this.version, creditSpreadCurveData.version) &&
         super.equals(o);
   }
 
@@ -336,7 +363,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseDate, domCcy, tenors, spreads, recoveryRate, referenceDate, maturities, lineage, marketDataOptions, super.hashCode());
+    return Objects.hash(baseDate, domCcy, tenors, spreads, recoveryRate, referenceDate, maturities, lineage, marketDataOptions, version, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -360,6 +387,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
     sb.append("    maturities: ").append(toIndentedString(maturities)).append("\n");
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("    marketDataOptions: ").append(toIndentedString(marketDataOptions)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -392,6 +420,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
     openapiFields.add("maturities");
     openapiFields.add("lineage");
     openapiFields.add("marketDataOptions");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

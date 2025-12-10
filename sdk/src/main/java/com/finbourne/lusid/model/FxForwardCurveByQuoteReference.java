@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.ComplexMarketData;
 import com.finbourne.lusid.model.FxTenorConvention;
 import com.finbourne.lusid.model.MarketDataOptions;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -87,6 +88,10 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
   public static final String SERIALIZED_NAME_SPOT_DAYS_CALCULATION_TYPE = "spotDaysCalculationType";
   @SerializedName(SERIALIZED_NAME_SPOT_DAYS_CALCULATION_TYPE)
   private String spotDaysCalculationType;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public FxForwardCurveByQuoteReference() {
     // this.marketDataType = this.getClass().getSimpleName();
@@ -284,6 +289,27 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
   }
 
 
+  public FxForwardCurveByQuoteReference version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,6 +328,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
         Objects.equals(this.marketDataOptions, fxForwardCurveByQuoteReference.marketDataOptions) &&
         Objects.equals(this.calendars, fxForwardCurveByQuoteReference.calendars) &&
         Objects.equals(this.spotDaysCalculationType, fxForwardCurveByQuoteReference.spotDaysCalculationType) &&
+        Objects.equals(this.version, fxForwardCurveByQuoteReference.version) &&
         super.equals(o);
   }
 
@@ -311,7 +338,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domCcy, fgnCcy, tenors, quoteReferences, lineage, marketDataOptions, calendars, spotDaysCalculationType, super.hashCode());
+    return Objects.hash(domCcy, fgnCcy, tenors, quoteReferences, lineage, marketDataOptions, calendars, spotDaysCalculationType, version, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -334,6 +361,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
     sb.append("    marketDataOptions: ").append(toIndentedString(marketDataOptions)).append("\n");
     sb.append("    calendars: ").append(toIndentedString(calendars)).append("\n");
     sb.append("    spotDaysCalculationType: ").append(toIndentedString(spotDaysCalculationType)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -365,6 +393,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
     openapiFields.add("marketDataOptions");
     openapiFields.add("calendars");
     openapiFields.add("spotDaysCalculationType");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
