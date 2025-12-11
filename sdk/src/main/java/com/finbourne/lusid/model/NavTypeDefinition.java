@@ -105,6 +105,10 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
   private String cashGainLossCalculationDate;
 
+  public static final String SERIALIZED_NAME_AMORTISATION_RULE_SET_ID = "amortisationRuleSetId";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
+  private ResourceId amortisationRuleSetId;
+
   public NavTypeDefinition() {
   }
 
@@ -405,6 +409,27 @@ public class NavTypeDefinition {
   }
 
 
+  public NavTypeDefinition amortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    
+    this.amortisationRuleSetId = amortisationRuleSetId;
+    return this;
+  }
+
+   /**
+   * Get amortisationRuleSetId
+   * @return amortisationRuleSetId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAmortisationRuleSetId() {
+    return amortisationRuleSetId;
+  }
+
+
+  public void setAmortisationRuleSetId(ResourceId amortisationRuleSetId) {
+    this.amortisationRuleSetId = amortisationRuleSetId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -427,7 +452,8 @@ public class NavTypeDefinition {
         Objects.equals(this.subHoldingKeys, navTypeDefinition.subHoldingKeys) &&
         Objects.equals(this.amortisationMethod, navTypeDefinition.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, navTypeDefinition.transactionTypeScope) &&
-        Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate);
+        Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate) &&
+        Objects.equals(this.amortisationRuleSetId, navTypeDefinition.amortisationRuleSetId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -436,7 +462,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -463,6 +489,7 @@ public class NavTypeDefinition {
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
+    sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -498,6 +525,7 @@ public class NavTypeDefinition {
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
+    openapiFields.add("amortisationRuleSetId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -568,6 +596,10 @@ public class NavTypeDefinition {
       }
       if (!jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
+      }
+      // validate the optional field `amortisationRuleSetId`
+      if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
       }
   }
 
