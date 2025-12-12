@@ -2860,7 +2860,7 @@ public class FundsApiExample {
 
 ## revertValuationPointToEstimate
 
-> ValuationPointDataResponse revertValuationPointToEstimate(scope, code, valuationPointDataRequest, navTypeCode)
+> ValuationPointDataResponse revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode)
 
 [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 
@@ -2907,13 +2907,13 @@ public class FundsApiExample {
         FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
-        ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status.
+        RevertValuationPointDataRequest revertValuationPointDataRequest = new RevertValuationPointDataRequest(); // RevertValuationPointDataRequest | The revertValuationPointRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status.
         String navTypeCode = "navTypeCode_example"; // String | When provided, sets the status of the Valuation Point of the specified NAV Type to be Estimate.   Otherwise, the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, valuationPointDataRequest, navTypeCode).execute(opts);
+            // ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute(opts);
 
-            ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, valuationPointDataRequest, navTypeCode).execute();
+            ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#revertValuationPointToEstimate");
@@ -2932,7 +2932,7 @@ public class FundsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
-| **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. | |
+| **revertValuationPointDataRequest** | [**RevertValuationPointDataRequest**](RevertValuationPointDataRequest.md)| The revertValuationPointRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. | |
 | **navTypeCode** | **String**| When provided, sets the status of the Valuation Point of the specified NAV Type to be Estimate.   Otherwise, the Primary NAV Type will be used. | [optional] |
 
 ### Return type
