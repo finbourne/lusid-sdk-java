@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Fund Calendar entry. | [default to String]
 **description** | **String** | A description for the Fund Calendar entry. | [optional] [default to String]
 **navTypeCode** | **String** | The navTypeCode of the Fund Calendar Entry. This is the code of the NAV type that this Calendar Entry is associated with. | [default to String]
+**timelineId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **previousEntry** | [**PreviousFundCalendarEntry**](PreviousFundCalendarEntry.md) |  | [optional] [default to PreviousFundCalendarEntry]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective at of the Calendar Entry. | [optional] [default to OffsetDateTime]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime for the Calendar Entry. | [default to OffsetDateTime]
@@ -28,6 +29,7 @@ String Code = "example Code";
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String NavTypeCode = "example NavTypeCode";
+ResourceId TimelineId = new ResourceId();
 PreviousFundCalendarEntry PreviousEntry = new PreviousFundCalendarEntry();
 OffsetDateTime EffectiveAt = OffsetDateTime.now();
 OffsetDateTime AsAt = OffsetDateTime.now();
@@ -44,6 +46,7 @@ FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
     .DisplayName(DisplayName)
     .Description(Description)
     .NavTypeCode(NavTypeCode)
+    .TimelineId(TimelineId)
     .PreviousEntry(PreviousEntry)
     .EffectiveAt(EffectiveAt)
     .AsAt(AsAt)

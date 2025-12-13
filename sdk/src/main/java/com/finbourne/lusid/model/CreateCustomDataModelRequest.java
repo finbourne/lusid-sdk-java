@@ -152,7 +152,7 @@ public class CreateCustomDataModelRequest {
    * A description for the Custom Data Model.
    * @return description
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -439,7 +439,6 @@ public class CreateCustomDataModelRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("description");
   }
 
  /**
@@ -467,7 +466,7 @@ public class CreateCustomDataModelRequest {
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `parentDataModel`

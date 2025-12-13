@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** | The name of the Custom Data Model. | [default to String]
-**description** | **String** | A description for the Custom Data Model. | [default to String]
+**description** | **String** | A description for the Custom Data Model. | [optional] [default to String]
 **parentDataModel** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **conditions** | **String** | The conditions that the bound entity must meet to be valid. | [optional] [default to String]
 **properties** | [**List&lt;CustomDataModelPropertySpecification&gt;**](CustomDataModelPropertySpecification.md) | The properties that are required or allowed on the bound entity. | [optional] [default to List<CustomDataModelPropertySpecification>]
@@ -23,7 +23,7 @@ import java.net.URI;
 
 ResourceId Id = new ResourceId();
 String DisplayName = "example DisplayName";
-String Description = "example Description";
+@jakarta.annotation.Nullable String Description = "example Description";
 ResourceId ParentDataModel = new ResourceId();
 @jakarta.annotation.Nullable String Conditions = "example Conditions";
 @jakarta.annotation.Nullable List<CustomDataModelPropertySpecification> Properties = new List<CustomDataModelPropertySpecification>();

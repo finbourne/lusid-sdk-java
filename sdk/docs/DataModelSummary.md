@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** | The name of the Custom Data Model. | [default to String]
-**description** | **String** | A description for the Custom Data Model. | [default to String]
+**description** | **String** | A description for the Custom Data Model. | [optional] [default to String]
 **entityType** | **String** | The entity type that the Custom Data Model binds to. | [default to String]
 **type** | **String** | Either Root or Leaf or Intermediate. | [default to String]
 **precedence** | **Integer** | Where in the hierarchy this model sits. | [default to Integer]
@@ -21,7 +21,7 @@ import java.net.URI;
 
 ResourceId Id = new ResourceId();
 String DisplayName = "example DisplayName";
-String Description = "example Description";
+@jakarta.annotation.Nullable String Description = "example Description";
 String EntityType = "example EntityType";
 String Type = "example Type";
 Integer Precedence = new Integer("100.00");
