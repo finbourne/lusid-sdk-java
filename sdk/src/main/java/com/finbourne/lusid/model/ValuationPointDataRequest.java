@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,6 +54,10 @@ public class ValuationPointDataRequest {
   @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_CODE)
   private String diaryEntryCode;
 
+  public static final String SERIALIZED_NAME_DIARY_ENTRY_VARIANT = "diaryEntryVariant";
+  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_VARIANT)
+  private String diaryEntryVariant;
+
   public ValuationPointDataRequest() {
   }
 
@@ -77,6 +82,27 @@ public class ValuationPointDataRequest {
   }
 
 
+  public ValuationPointDataRequest diaryEntryVariant(String diaryEntryVariant) {
+    
+    this.diaryEntryVariant = diaryEntryVariant;
+    return this;
+  }
+
+   /**
+   * Unique Variant for the given Diary Entry Code. Together with the valuation point code marks the unique branch for the NavType.
+   * @return diaryEntryVariant
+  **/
+  @jakarta.annotation.Nullable
+  public String getDiaryEntryVariant() {
+    return diaryEntryVariant;
+  }
+
+
+  public void setDiaryEntryVariant(String diaryEntryVariant) {
+    this.diaryEntryVariant = diaryEntryVariant;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,12 +113,24 @@ public class ValuationPointDataRequest {
       return false;
     }
     ValuationPointDataRequest valuationPointDataRequest = (ValuationPointDataRequest) o;
-    return Objects.equals(this.diaryEntryCode, valuationPointDataRequest.diaryEntryCode);
+    return Objects.equals(this.diaryEntryCode, valuationPointDataRequest.diaryEntryCode) &&
+        Objects.equals(this.diaryEntryVariant, valuationPointDataRequest.diaryEntryVariant);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode);
+    return Objects.hash(diaryEntryCode, diaryEntryVariant);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -100,6 +138,7 @@ public class ValuationPointDataRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValuationPointDataRequest {\n");
     sb.append("    diaryEntryCode: ").append(toIndentedString(diaryEntryCode)).append("\n");
+    sb.append("    diaryEntryVariant: ").append(toIndentedString(diaryEntryVariant)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,6 +162,7 @@ public class ValuationPointDataRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("diaryEntryCode");
+    openapiFields.add("diaryEntryVariant");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -151,6 +191,9 @@ public class ValuationPointDataRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
+      }
+      if ((jsonObj.get("diaryEntryVariant") != null && !jsonObj.get("diaryEntryVariant").isJsonNull()) && !jsonObj.get("diaryEntryVariant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryVariant").toString()));
       }
   }
 

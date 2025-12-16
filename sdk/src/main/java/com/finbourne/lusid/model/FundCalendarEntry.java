@@ -62,6 +62,10 @@ public class FundCalendarEntry {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private String variant;
+
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -171,7 +175,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry
+   * The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry.
    * @return code
   **/
   @jakarta.annotation.Nonnull
@@ -182,6 +186,27 @@ public class FundCalendarEntry {
 
   public void setCode(String code) {
     this.code = code;
+  }
+
+
+  public FundCalendarEntry variant(String variant) {
+    
+    this.variant = variant;
+    return this;
+  }
+
+   /**
+   * The Variant of the Calendar Entry. Together with the valuation point code marks the unique branch for the NavType.
+   * @return variant
+  **/
+  @jakarta.annotation.Nullable
+  public String getVariant() {
+    return variant;
+  }
+
+
+  public void setVariant(String variant) {
+    this.variant = variant;
   }
 
 
@@ -477,6 +502,7 @@ public class FundCalendarEntry {
     }
     FundCalendarEntry fundCalendarEntry = (FundCalendarEntry) o;
     return Objects.equals(this.code, fundCalendarEntry.code) &&
+        Objects.equals(this.variant, fundCalendarEntry.variant) &&
         Objects.equals(this.displayName, fundCalendarEntry.displayName) &&
         Objects.equals(this.description, fundCalendarEntry.description) &&
         Objects.equals(this.navTypeCode, fundCalendarEntry.navTypeCode) &&
@@ -498,7 +524,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
+    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -513,6 +539,7 @@ public class FundCalendarEntry {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundCalendarEntry {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
@@ -549,6 +576,7 @@ public class FundCalendarEntry {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("code");
+    openapiFields.add("variant");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("navTypeCode");
@@ -596,6 +624,9 @@ public class FundCalendarEntry {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("variant") != null && !jsonObj.get("variant").isJsonNull()) && !jsonObj.get("variant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variant").toString()));
       }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));

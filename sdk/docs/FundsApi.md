@@ -709,7 +709,7 @@ public class FundsApiExample {
 
 ## deleteNavActivityAdjustments
 
-> DeletedEntityResponse deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment)
+> DeletedEntityResponse deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant)
 
 [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
 
@@ -759,11 +759,12 @@ public class FundsApiExample {
         String valuationPointCode = "valuationPointCode_example"; // String | The valuation point Code to delete the adjustment from
         String navTypeCode = "navTypeCode_example"; // String | The Nav Type Code to delete the adjustment from
         List<NavActivityAdjustment> navActivityAdjustment = Arrays.asList(); // List<NavActivityAdjustment> | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type
+        String valuationPointCodeVariant = "valuationPointCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute();
+            DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#deleteNavActivityAdjustments");
@@ -785,6 +786,7 @@ public class FundsApiExample {
 | **valuationPointCode** | **String**| The valuation point Code to delete the adjustment from | |
 | **navTypeCode** | **String**| The Nav Type Code to delete the adjustment from | |
 | **navActivityAdjustment** | [**List&lt;NavActivityAdjustment&gt;**](NavActivityAdjustment.md)| The request describing the Nav activity adjustments to delete from a specific valuation point and nav type | |
+| **valuationPointCodeVariant** | **String**| The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. | [optional] |
 
 ### Return type
 
@@ -808,7 +810,7 @@ public class FundsApiExample {
 
 ## deleteValuationPoint
 
-> DeletedEntityResponse deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode)
+> DeletedEntityResponse deleteValuationPoint(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode)
 
 [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
 
@@ -856,12 +858,13 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         String diaryEntryCode = "diaryEntryCode_example"; // String | The diary entry code for the valuation Point to be deleted.
+        String diaryEntryCodeVariant = "diaryEntryCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. This is working only for the Estimates.
         String navTypeCode = "navTypeCode_example"; // String | When provided, deletes the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode).execute();
+            DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#deleteValuationPoint");
@@ -881,6 +884,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **diaryEntryCode** | **String**| The diary entry code for the valuation Point to be deleted. | |
+| **diaryEntryCodeVariant** | **String**| The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. This is working only for the Estimates. | [optional] |
 | **navTypeCode** | **String**| When provided, deletes the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
 
 ### Return type
@@ -2456,7 +2460,7 @@ public class FundsApiExample {
 
 ## listNavActivityAdjustments
 
-> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter)
+> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant)
 
 [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 
@@ -2509,11 +2513,12 @@ public class FundsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String valuationPointCodeVariant = "valuationPointCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter).execute(opts);
+            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute(opts);
 
-            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter).execute();
+            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listNavActivityAdjustments");
@@ -2538,6 +2543,7 @@ public class FundsApiExample {
 | **page** | **String**| The pagination token to use to continue listing Nav activity adjustments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **valuationPointCodeVariant** | **String**| The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. | [optional] |
 
 ### Return type
 
@@ -3438,7 +3444,7 @@ public class FundsApiExample {
 
 ## upsertNavActivityAdjustments
 
-> OffsetDateTime upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment)
+> OffsetDateTime upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant)
 
 [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
 
@@ -3488,11 +3494,12 @@ public class FundsApiExample {
         String valuationPointCode = "valuationPointCode_example"; // String | The valuation point Code to apply the adjustment to
         String navTypeCode = "navTypeCode_example"; // String | The Nav Type Code to apply the adjustment to
         List<NavActivityAdjustment> navActivityAdjustment = Arrays.asList(); // List<NavActivityAdjustment> | The request describing the Nav activity adjustments to apply to a specific valuation point and nav type
+        String valuationPointCodeVariant = "valuationPointCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType.
         try {
             // uncomment the below to set overrides at the request level
-            // OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute(opts);
+            // OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant).execute(opts);
 
-            OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment).execute();
+            OffsetDateTime result = apiInstance.upsertNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, navActivityAdjustment, valuationPointCodeVariant).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#upsertNavActivityAdjustments");
@@ -3514,6 +3521,7 @@ public class FundsApiExample {
 | **valuationPointCode** | **String**| The valuation point Code to apply the adjustment to | |
 | **navTypeCode** | **String**| The Nav Type Code to apply the adjustment to | |
 | **navActivityAdjustment** | [**List&lt;NavActivityAdjustment&gt;**](NavActivityAdjustment.md)| The request describing the Nav activity adjustments to apply to a specific valuation point and nav type | |
+| **valuationPointCodeVariant** | **String**| The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. | [optional] |
 
 ### Return type
 

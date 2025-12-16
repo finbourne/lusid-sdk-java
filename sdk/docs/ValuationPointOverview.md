@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
 **diaryEntryCode** | **String** | The code for the Valuation Point. | [default to String]
+**diaryEntryVariant** | **String** | The Variant for the Valuation Point. Together with the valuation point code marks the unique branch for the NavType. | [optional] [default to String]
 **effectiveFrom** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the last Valuation Point. | [default to OffsetDateTime]
 **effectiveTo** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the current Valuation Point. | [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the Valuation Point. Defaults to latest. | [optional] [default to OffsetDateTime]
@@ -24,6 +25,7 @@ import java.net.URI;
 
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 String DiaryEntryCode = "example DiaryEntryCode";
+@jakarta.annotation.Nullable String DiaryEntryVariant = "example DiaryEntryVariant";
 OffsetDateTime EffectiveFrom = OffsetDateTime.now();
 OffsetDateTime EffectiveTo = OffsetDateTime.now();
 OffsetDateTime QueryAsAt = OffsetDateTime.now();
@@ -38,6 +40,7 @@ java.math.BigDecimal Nav = new java.math.BigDecimal("100.00");
 ValuationPointOverview valuationPointOverviewInstance = new ValuationPointOverview()
     .Href(Href)
     .DiaryEntryCode(DiaryEntryCode)
+    .DiaryEntryVariant(DiaryEntryVariant)
     .EffectiveFrom(EffectiveFrom)
     .EffectiveTo(EffectiveTo)
     .QueryAsAt(QueryAsAt)

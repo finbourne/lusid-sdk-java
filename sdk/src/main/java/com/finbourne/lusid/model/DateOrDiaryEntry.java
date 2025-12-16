@@ -58,6 +58,10 @@ public class DateOrDiaryEntry {
   @SerializedName(SERIALIZED_NAME_DIARY_ENTRY)
   private String diaryEntry;
 
+  public static final String SERIALIZED_NAME_DIARY_ENTRY_VARIANT = "diaryEntryVariant";
+  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_VARIANT)
+  private String diaryEntryVariant;
+
   public DateOrDiaryEntry() {
   }
 
@@ -103,6 +107,27 @@ public class DateOrDiaryEntry {
   }
 
 
+  public DateOrDiaryEntry diaryEntryVariant(String diaryEntryVariant) {
+    
+    this.diaryEntryVariant = diaryEntryVariant;
+    return this;
+  }
+
+   /**
+   * Unique Variant for the given Diary Entry Code. If not provided, defaults to empty string.
+   * @return diaryEntryVariant
+  **/
+  @jakarta.annotation.Nullable
+  public String getDiaryEntryVariant() {
+    return diaryEntryVariant;
+  }
+
+
+  public void setDiaryEntryVariant(String diaryEntryVariant) {
+    this.diaryEntryVariant = diaryEntryVariant;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,7 +139,8 @@ public class DateOrDiaryEntry {
     }
     DateOrDiaryEntry dateOrDiaryEntry = (DateOrDiaryEntry) o;
     return Objects.equals(this.date, dateOrDiaryEntry.date) &&
-        Objects.equals(this.diaryEntry, dateOrDiaryEntry.diaryEntry);
+        Objects.equals(this.diaryEntry, dateOrDiaryEntry.diaryEntry) &&
+        Objects.equals(this.diaryEntryVariant, dateOrDiaryEntry.diaryEntryVariant);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -123,7 +149,7 @@ public class DateOrDiaryEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, diaryEntry);
+    return Objects.hash(date, diaryEntry, diaryEntryVariant);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,6 +165,7 @@ public class DateOrDiaryEntry {
     sb.append("class DateOrDiaryEntry {\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    diaryEntry: ").append(toIndentedString(diaryEntry)).append("\n");
+    sb.append("    diaryEntryVariant: ").append(toIndentedString(diaryEntryVariant)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +190,7 @@ public class DateOrDiaryEntry {
     openapiFields = new HashSet<String>();
     openapiFields.add("date");
     openapiFields.add("diaryEntry");
+    openapiFields.add("diaryEntryVariant");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -186,6 +214,9 @@ public class DateOrDiaryEntry {
       }
       if ((jsonObj.get("diaryEntry") != null && !jsonObj.get("diaryEntry").isJsonNull()) && !jsonObj.get("diaryEntry").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntry").toString()));
+      }
+      if ((jsonObj.get("diaryEntryVariant") != null && !jsonObj.get("diaryEntryVariant").isJsonNull()) && !jsonObj.get("diaryEntryVariant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryVariant").toString()));
       }
   }
 

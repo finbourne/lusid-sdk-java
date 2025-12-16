@@ -64,6 +64,10 @@ public class FundValuationSchedule {
   @SerializedName(SERIALIZED_NAME_DIARY_ENTRY)
   private String diaryEntry;
 
+  public static final String SERIALIZED_NAME_DIARY_ENTRY_VARIANT = "diaryEntryVariant";
+  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_VARIANT)
+  private String diaryEntryVariant;
+
   public static final String SERIALIZED_NAME_TENOR = "tenor";
   @SerializedName(SERIALIZED_NAME_TENOR)
   private String tenor;
@@ -147,6 +151,27 @@ public class FundValuationSchedule {
 
   public void setDiaryEntry(String diaryEntry) {
     this.diaryEntry = diaryEntry;
+  }
+
+
+  public FundValuationSchedule diaryEntryVariant(String diaryEntryVariant) {
+    
+    this.diaryEntryVariant = diaryEntryVariant;
+    return this;
+  }
+
+   /**
+   * The diary entry variant to use, together with the diary entry to be used for the valuation schedule.
+   * @return diaryEntryVariant
+  **/
+  @jakarta.annotation.Nullable
+  public String getDiaryEntryVariant() {
+    return diaryEntryVariant;
+  }
+
+
+  public void setDiaryEntryVariant(String diaryEntryVariant) {
+    this.diaryEntryVariant = diaryEntryVariant;
   }
 
 
@@ -284,6 +309,7 @@ public class FundValuationSchedule {
     return Objects.equals(this.effectiveFrom, fundValuationSchedule.effectiveFrom) &&
         Objects.equals(this.effectiveAt, fundValuationSchedule.effectiveAt) &&
         Objects.equals(this.diaryEntry, fundValuationSchedule.diaryEntry) &&
+        Objects.equals(this.diaryEntryVariant, fundValuationSchedule.diaryEntryVariant) &&
         Objects.equals(this.tenor, fundValuationSchedule.tenor) &&
         Objects.equals(this.rollConvention, fundValuationSchedule.rollConvention) &&
         Objects.equals(this.holidayCalendars, fundValuationSchedule.holidayCalendars) &&
@@ -297,7 +323,7 @@ public class FundValuationSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, effectiveAt, diaryEntry, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention);
+    return Objects.hash(effectiveFrom, effectiveAt, diaryEntry, diaryEntryVariant, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -314,6 +340,7 @@ public class FundValuationSchedule {
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    diaryEntry: ").append(toIndentedString(diaryEntry)).append("\n");
+    sb.append("    diaryEntryVariant: ").append(toIndentedString(diaryEntryVariant)).append("\n");
     sb.append("    tenor: ").append(toIndentedString(tenor)).append("\n");
     sb.append("    rollConvention: ").append(toIndentedString(rollConvention)).append("\n");
     sb.append("    holidayCalendars: ").append(toIndentedString(holidayCalendars)).append("\n");
@@ -344,6 +371,7 @@ public class FundValuationSchedule {
     openapiFields.add("effectiveFrom");
     openapiFields.add("effectiveAt");
     openapiFields.add("diaryEntry");
+    openapiFields.add("diaryEntryVariant");
     openapiFields.add("tenor");
     openapiFields.add("rollConvention");
     openapiFields.add("holidayCalendars");
@@ -375,6 +403,9 @@ public class FundValuationSchedule {
       }
       if ((jsonObj.get("diaryEntry") != null && !jsonObj.get("diaryEntry").isJsonNull()) && !jsonObj.get("diaryEntry").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntry").toString()));
+      }
+      if ((jsonObj.get("diaryEntryVariant") != null && !jsonObj.get("diaryEntryVariant").isJsonNull()) && !jsonObj.get("diaryEntryVariant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryVariant").toString()));
       }
       if ((jsonObj.get("tenor") != null && !jsonObj.get("tenor").isJsonNull()) && !jsonObj.get("tenor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tenor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenor").toString()));

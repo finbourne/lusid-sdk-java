@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **String** | The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry | [default to String]
+**code** | **String** | The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry. | [default to String]
+**variant** | **String** | The Variant of the Calendar Entry. Together with the valuation point code marks the unique branch for the NavType. | [optional] [default to String]
 **displayName** | **String** | The name of the Fund Calendar entry. | [default to String]
 **description** | **String** | A description for the Fund Calendar entry. | [optional] [default to String]
 **navTypeCode** | **String** | The navTypeCode of the Fund Calendar Entry. This is the code of the NAV type that this Calendar Entry is associated with. | [default to String]
@@ -26,6 +27,7 @@ import java.lang.System;
 import java.net.URI;
 
 String Code = "example Code";
+@jakarta.annotation.Nullable String Variant = "example Variant";
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String NavTypeCode = "example NavTypeCode";
@@ -43,6 +45,7 @@ Version Version = new Version();
 
 FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
     .Code(Code)
+    .Variant(Variant)
     .DisplayName(DisplayName)
     .Description(Description)
     .NavTypeCode(NavTypeCode)

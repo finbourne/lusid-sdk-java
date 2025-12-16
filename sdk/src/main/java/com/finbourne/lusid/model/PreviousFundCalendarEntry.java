@@ -81,7 +81,7 @@ public class PreviousFundCalendarEntry {
   }
 
    /**
-   * The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry
+   * The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry.
    * @return code
   **/
   @jakarta.annotation.Nonnull

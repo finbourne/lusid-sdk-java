@@ -66,6 +66,10 @@ public class ValuationPointOverview {
   @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_CODE)
   private String diaryEntryCode;
 
+  public static final String SERIALIZED_NAME_DIARY_ENTRY_VARIANT = "diaryEntryVariant";
+  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_VARIANT)
+  private String diaryEntryVariant;
+
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
   private OffsetDateTime effectiveFrom;
@@ -144,6 +148,27 @@ public class ValuationPointOverview {
 
   public void setDiaryEntryCode(String diaryEntryCode) {
     this.diaryEntryCode = diaryEntryCode;
+  }
+
+
+  public ValuationPointOverview diaryEntryVariant(String diaryEntryVariant) {
+    
+    this.diaryEntryVariant = diaryEntryVariant;
+    return this;
+  }
+
+   /**
+   * The Variant for the Valuation Point. Together with the valuation point code marks the unique branch for the NavType.
+   * @return diaryEntryVariant
+  **/
+  @jakarta.annotation.Nullable
+  public String getDiaryEntryVariant() {
+    return diaryEntryVariant;
+  }
+
+
+  public void setDiaryEntryVariant(String diaryEntryVariant) {
+    this.diaryEntryVariant = diaryEntryVariant;
   }
 
 
@@ -364,6 +389,7 @@ public class ValuationPointOverview {
     ValuationPointOverview valuationPointOverview = (ValuationPointOverview) o;
     return Objects.equals(this.href, valuationPointOverview.href) &&
         Objects.equals(this.diaryEntryCode, valuationPointOverview.diaryEntryCode) &&
+        Objects.equals(this.diaryEntryVariant, valuationPointOverview.diaryEntryVariant) &&
         Objects.equals(this.effectiveFrom, valuationPointOverview.effectiveFrom) &&
         Objects.equals(this.effectiveTo, valuationPointOverview.effectiveTo) &&
         Objects.equals(this.queryAsAt, valuationPointOverview.queryAsAt) &&
@@ -381,7 +407,7 @@ public class ValuationPointOverview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, diaryEntryCode, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, properties, links);
+    return Objects.hash(href, diaryEntryCode, diaryEntryVariant, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -397,6 +423,7 @@ public class ValuationPointOverview {
     sb.append("class ValuationPointOverview {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    diaryEntryCode: ").append(toIndentedString(diaryEntryCode)).append("\n");
+    sb.append("    diaryEntryVariant: ").append(toIndentedString(diaryEntryVariant)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    effectiveTo: ").append(toIndentedString(effectiveTo)).append("\n");
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
@@ -430,6 +457,7 @@ public class ValuationPointOverview {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("diaryEntryCode");
+    openapiFields.add("diaryEntryVariant");
     openapiFields.add("effectiveFrom");
     openapiFields.add("effectiveTo");
     openapiFields.add("queryAsAt");
@@ -476,6 +504,9 @@ public class ValuationPointOverview {
       }
       if (!jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
+      }
+      if ((jsonObj.get("diaryEntryVariant") != null && !jsonObj.get("diaryEntryVariant").isJsonNull()) && !jsonObj.get("diaryEntryVariant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryVariant").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

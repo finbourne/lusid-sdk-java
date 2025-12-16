@@ -6,6 +6,7 @@ A definition for the period you wish to close
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **diaryEntryCode** | **String** | Unique code for the Valuation Point. | [default to String]
+**diaryEntryVariant** | **String** | Unique Variant for the given Diary Entry Code. Together with the valuation point code marks the unique branch for the NavType. | [optional] [default to String]
 **name** | **String** | Identifiable Name assigned to the Valuation Point. | [optional] [default to String]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the diary entry. | [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the diary entry. Defaults to latest. | [optional] [default to OffsetDateTime]
@@ -19,6 +20,7 @@ import java.lang.System;
 import java.net.URI;
 
 String DiaryEntryCode = "example DiaryEntryCode";
+@jakarta.annotation.Nullable String DiaryEntryVariant = "example DiaryEntryVariant";
 @jakarta.annotation.Nullable String Name = "example Name";
 OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime QueryAsAt = OffsetDateTime.now();
@@ -28,6 +30,7 @@ Boolean ApplyClearDown = true;
 
 UpsertValuationPointRequest upsertValuationPointRequestInstance = new UpsertValuationPointRequest()
     .DiaryEntryCode(DiaryEntryCode)
+    .DiaryEntryVariant(DiaryEntryVariant)
     .Name(Name)
     .EffectiveAt(EffectiveAt)
     .QueryAsAt(QueryAsAt)
