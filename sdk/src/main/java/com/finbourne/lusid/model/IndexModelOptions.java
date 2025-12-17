@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ModelOptions;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -103,6 +104,10 @@ public class IndexModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_SCALING)
   private PortfolioScalingEnum portfolioScaling;
 
+  public static final String SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO_RELATIONSHIP_ID = "lookthroughPortfolioRelationshipId";
+  @SerializedName(SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO_RELATIONSHIP_ID)
+  private ResourceId lookthroughPortfolioRelationshipId;
+
   public IndexModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -128,6 +133,27 @@ public class IndexModelOptions extends ModelOptions {
   }
 
 
+  public IndexModelOptions lookthroughPortfolioRelationshipId(ResourceId lookthroughPortfolioRelationshipId) {
+    
+    this.lookthroughPortfolioRelationshipId = lookthroughPortfolioRelationshipId;
+    return this;
+  }
+
+   /**
+   * Get lookthroughPortfolioRelationshipId
+   * @return lookthroughPortfolioRelationshipId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getLookthroughPortfolioRelationshipId() {
+    return lookthroughPortfolioRelationshipId;
+  }
+
+
+  public void setLookthroughPortfolioRelationshipId(ResourceId lookthroughPortfolioRelationshipId) {
+    this.lookthroughPortfolioRelationshipId = lookthroughPortfolioRelationshipId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,13 @@ public class IndexModelOptions extends ModelOptions {
     }
     IndexModelOptions indexModelOptions = (IndexModelOptions) o;
     return Objects.equals(this.portfolioScaling, indexModelOptions.portfolioScaling) &&
+        Objects.equals(this.lookthroughPortfolioRelationshipId, indexModelOptions.lookthroughPortfolioRelationshipId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioScaling, super.hashCode());
+    return Objects.hash(portfolioScaling, lookthroughPortfolioRelationshipId, super.hashCode());
   }
 
   @Override
@@ -153,6 +180,7 @@ public class IndexModelOptions extends ModelOptions {
     sb.append("class IndexModelOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    portfolioScaling: ").append(toIndentedString(portfolioScaling)).append("\n");
+    sb.append("    lookthroughPortfolioRelationshipId: ").append(toIndentedString(lookthroughPortfolioRelationshipId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,6 +205,7 @@ public class IndexModelOptions extends ModelOptions {
     openapiFields = new HashSet<String>();
     openapiFields.add("modelOptionsType");
     openapiFields.add("portfolioScaling");
+    openapiFields.add("lookthroughPortfolioRelationshipId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

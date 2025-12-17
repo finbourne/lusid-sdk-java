@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **portfolioScaling** | **String** | The available values are: Sum, AbsoluteSum, Unity | [default to String]
+**lookthroughPortfolioRelationshipId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.IndexModelOptions;
@@ -13,10 +14,12 @@ import java.lang.System;
 import java.net.URI;
 
 String PortfolioScaling = "example PortfolioScaling";
+ResourceId LookthroughPortfolioRelationshipId = new ResourceId();
 
 
 IndexModelOptions indexModelOptionsInstance = new IndexModelOptions()
-    .PortfolioScaling(PortfolioScaling);
+    .PortfolioScaling(PortfolioScaling)
+    .LookthroughPortfolioRelationshipId(LookthroughPortfolioRelationshipId);
 ```
 
 
