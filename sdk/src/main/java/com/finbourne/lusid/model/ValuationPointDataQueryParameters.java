@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,6 +58,10 @@ public class ValuationPointDataQueryParameters {
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   private DateOrDiaryEntry end;
+
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private String variant;
 
   public ValuationPointDataQueryParameters() {
   }
@@ -103,6 +108,27 @@ public class ValuationPointDataQueryParameters {
   }
 
 
+  public ValuationPointDataQueryParameters variant(String variant) {
+    
+    this.variant = variant;
+    return this;
+  }
+
+   /**
+   * Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
+   * @return variant
+  **/
+  @jakarta.annotation.Nullable
+  public String getVariant() {
+    return variant;
+  }
+
+
+  public void setVariant(String variant) {
+    this.variant = variant;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +140,24 @@ public class ValuationPointDataQueryParameters {
     }
     ValuationPointDataQueryParameters valuationPointDataQueryParameters = (ValuationPointDataQueryParameters) o;
     return Objects.equals(this.start, valuationPointDataQueryParameters.start) &&
-        Objects.equals(this.end, valuationPointDataQueryParameters.end);
+        Objects.equals(this.end, valuationPointDataQueryParameters.end) &&
+        Objects.equals(this.variant, valuationPointDataQueryParameters.variant);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end);
+    return Objects.hash(start, end, variant);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -128,6 +166,7 @@ public class ValuationPointDataQueryParameters {
     sb.append("class ValuationPointDataQueryParameters {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +191,7 @@ public class ValuationPointDataQueryParameters {
     openapiFields = new HashSet<String>();
     openapiFields.add("start");
     openapiFields.add("end");
+    openapiFields.add("variant");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -184,6 +224,9 @@ public class ValuationPointDataQueryParameters {
       }
       // validate the required field `end`
       DateOrDiaryEntry.validateJsonElement(jsonObj.get("end"));
+      if ((jsonObj.get("variant") != null && !jsonObj.get("variant").isJsonNull()) && !jsonObj.get("variant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variant").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

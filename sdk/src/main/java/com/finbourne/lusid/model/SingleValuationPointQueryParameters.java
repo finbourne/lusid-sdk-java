@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class SingleValuationPointQueryParameters {
   @SerializedName(SERIALIZED_NAME_DATE_OR_DIARY_ENTRY)
   private DateOrDiaryEntry dateOrDiaryEntry;
 
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private String variant;
+
   public SingleValuationPointQueryParameters() {
   }
 
@@ -78,6 +83,27 @@ public class SingleValuationPointQueryParameters {
   }
 
 
+  public SingleValuationPointQueryParameters variant(String variant) {
+    
+    this.variant = variant;
+    return this;
+  }
+
+   /**
+   * Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
+   * @return variant
+  **/
+  @jakarta.annotation.Nullable
+  public String getVariant() {
+    return variant;
+  }
+
+
+  public void setVariant(String variant) {
+    this.variant = variant;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,12 +114,24 @@ public class SingleValuationPointQueryParameters {
       return false;
     }
     SingleValuationPointQueryParameters singleValuationPointQueryParameters = (SingleValuationPointQueryParameters) o;
-    return Objects.equals(this.dateOrDiaryEntry, singleValuationPointQueryParameters.dateOrDiaryEntry);
+    return Objects.equals(this.dateOrDiaryEntry, singleValuationPointQueryParameters.dateOrDiaryEntry) &&
+        Objects.equals(this.variant, singleValuationPointQueryParameters.variant);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOrDiaryEntry);
+    return Objects.hash(dateOrDiaryEntry, variant);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -101,6 +139,7 @@ public class SingleValuationPointQueryParameters {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleValuationPointQueryParameters {\n");
     sb.append("    dateOrDiaryEntry: ").append(toIndentedString(dateOrDiaryEntry)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,6 +163,7 @@ public class SingleValuationPointQueryParameters {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("dateOrDiaryEntry");
+    openapiFields.add("variant");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -152,6 +192,9 @@ public class SingleValuationPointQueryParameters {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `dateOrDiaryEntry`
       DateOrDiaryEntry.validateJsonElement(jsonObj.get("dateOrDiaryEntry"));
+      if ((jsonObj.get("variant") != null && !jsonObj.get("variant").isJsonNull()) && !jsonObj.get("variant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variant").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

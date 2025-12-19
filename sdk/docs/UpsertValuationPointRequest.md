@@ -6,7 +6,7 @@ A definition for the period you wish to close
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **diaryEntryCode** | **String** | Unique code for the Valuation Point. | [default to String]
-**diaryEntryVariant** | **String** | Unique Variant for the given Diary Entry Code. Together with the valuation point code marks the unique branch for the NavType. | [optional] [default to String]
+**diaryEntryVariant** | **String** | Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates. | [optional] [default to String]
 **name** | **String** | Identifiable Name assigned to the Valuation Point. | [optional] [default to String]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the diary entry. | [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the diary entry. Defaults to latest. | [optional] [default to OffsetDateTime]

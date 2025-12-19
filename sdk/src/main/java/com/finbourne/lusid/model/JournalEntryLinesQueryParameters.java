@@ -61,6 +61,10 @@ public class JournalEntryLinesQueryParameters {
   @SerializedName(SERIALIZED_NAME_END)
   private DateOrDiaryEntry end;
 
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private String variant;
+
   public static final String SERIALIZED_NAME_DATE_MODE = "dateMode";
   @SerializedName(SERIALIZED_NAME_DATE_MODE)
   private String dateMode;
@@ -115,6 +119,27 @@ public class JournalEntryLinesQueryParameters {
 
   public void setEnd(DateOrDiaryEntry end) {
     this.end = end;
+  }
+
+
+  public JournalEntryLinesQueryParameters variant(String variant) {
+    
+    this.variant = variant;
+    return this;
+  }
+
+   /**
+   * Unique Variant for the given Valuation points. If not provided, defaults to empty string.
+   * @return variant
+  **/
+  @jakarta.annotation.Nullable
+  public String getVariant() {
+    return variant;
+  }
+
+
+  public void setVariant(String variant) {
+    this.variant = variant;
   }
 
 
@@ -201,6 +226,7 @@ public class JournalEntryLinesQueryParameters {
     JournalEntryLinesQueryParameters journalEntryLinesQueryParameters = (JournalEntryLinesQueryParameters) o;
     return Objects.equals(this.start, journalEntryLinesQueryParameters.start) &&
         Objects.equals(this.end, journalEntryLinesQueryParameters.end) &&
+        Objects.equals(this.variant, journalEntryLinesQueryParameters.variant) &&
         Objects.equals(this.dateMode, journalEntryLinesQueryParameters.dateMode) &&
         Objects.equals(this.generalLedgerProfileCode, journalEntryLinesQueryParameters.generalLedgerProfileCode) &&
         Objects.equals(this.propertyKeys, journalEntryLinesQueryParameters.propertyKeys);
@@ -212,7 +238,7 @@ public class JournalEntryLinesQueryParameters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end, dateMode, generalLedgerProfileCode, propertyKeys);
+    return Objects.hash(start, end, variant, dateMode, generalLedgerProfileCode, propertyKeys);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -228,6 +254,7 @@ public class JournalEntryLinesQueryParameters {
     sb.append("class JournalEntryLinesQueryParameters {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("    dateMode: ").append(toIndentedString(dateMode)).append("\n");
     sb.append("    generalLedgerProfileCode: ").append(toIndentedString(generalLedgerProfileCode)).append("\n");
     sb.append("    propertyKeys: ").append(toIndentedString(propertyKeys)).append("\n");
@@ -255,6 +282,7 @@ public class JournalEntryLinesQueryParameters {
     openapiFields = new HashSet<String>();
     openapiFields.add("start");
     openapiFields.add("end");
+    openapiFields.add("variant");
     openapiFields.add("dateMode");
     openapiFields.add("generalLedgerProfileCode");
     openapiFields.add("propertyKeys");
@@ -283,6 +311,9 @@ public class JournalEntryLinesQueryParameters {
       // validate the optional field `end`
       if (jsonObj.get("end") != null && !jsonObj.get("end").isJsonNull()) {
         DateOrDiaryEntry.validateJsonElement(jsonObj.get("end"));
+      }
+      if ((jsonObj.get("variant") != null && !jsonObj.get("variant").isJsonNull()) && !jsonObj.get("variant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variant").toString()));
       }
       if ((jsonObj.get("dateMode") != null && !jsonObj.get("dateMode").isJsonNull()) && !jsonObj.get("dateMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dateMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dateMode").toString()));

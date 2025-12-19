@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **start** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  | [optional] [default to DateOrDiaryEntry]
 **end** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  | [default to DateOrDiaryEntry]
+**variant** | **String** | Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 DateOrDiaryEntry Start = new DateOrDiaryEntry();
 DateOrDiaryEntry End = new DateOrDiaryEntry();
+@jakarta.annotation.Nullable String Variant = "example Variant";
 
 
 ValuationPointDataQueryParameters valuationPointDataQueryParametersInstance = new ValuationPointDataQueryParameters()
     .Start(Start)
-    .End(End);
+    .End(End)
+    .Variant(Variant);
 ```
 
 

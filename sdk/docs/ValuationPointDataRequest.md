@@ -6,7 +6,7 @@ The ValuationPointDataRequest.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **diaryEntryCode** | **String** | Unique code for the Valuation Point. | [default to String]
-**diaryEntryVariant** | **String** | Unique Variant for the given Diary Entry Code. Together with the valuation point code marks the unique branch for the NavType. | [optional] [default to String]
+**diaryEntryVariant** | **String** | Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.ValuationPointDataRequest;

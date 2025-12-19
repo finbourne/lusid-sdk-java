@@ -113,7 +113,7 @@ public class UpsertValuationPointRequest {
   }
 
    /**
-   * Unique Variant for the given Diary Entry Code. Together with the valuation point code marks the unique branch for the NavType.
+   * Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
    * @return diaryEntryVariant
   **/
   @jakarta.annotation.Nullable

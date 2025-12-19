@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **effectiveFrom** | **String** | If present, the EffectiveFrom and EffectiveAt dates are interpreted as a range of dates for which to perform a valuation.  In this case, valuation is calculated for the portfolio(s) for each business day in the given range. | [optional] [default to String]
 **effectiveAt** | **String** | The market data time, i.e. the time to run the valuation request effective of. | [optional] [default to String]
 **diaryEntry** | **String** | The diary entry to use for the valuation schedule. This is used to determine the date on which the valuation should be performed. | [optional] [default to String]
-**diaryEntryVariant** | **String** | The diary entry variant to use, together with the diary entry to be used for the valuation schedule. | [optional] [default to String]
+**variant** | **String** | The diary entry variant to use, together with the diary entry to be used for the valuation schedule. | [optional] [default to String]
 **tenor** | **String** | Tenor, e.g \&quot;1D\&quot;, \&quot;1M\&quot; to be used in generating the date schedule when effectiveFrom and effectiveAt are both given and are not the same. | [optional] [default to String]
 **rollConvention** | **String** | When Tenor is given and is \&quot;1M\&quot; or longer, this specifies the rule which should be used to generate the date schedule.  For example, \&quot;EndOfMonth\&quot; to generate end of month dates, or \&quot;1\&quot; to specify the first day of the applicable month. | [optional] [default to String]
 **holidayCalendars** | **List&lt;String&gt;** | The holiday calendar(s) that should be used in determining the date schedule.  Holiday calendar(s) are supplied by their names, for example, \&quot;CoppClark\&quot;.  Note that when the calendars are not available (e.g. when the user has insufficient permissions),  a recipe setting will be used to determine whether the whole batch should then fail or whether the calendar not being available should simply be ignored. | [optional] [default to List<String>]
@@ -24,7 +24,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable String EffectiveFrom = "example EffectiveFrom";
 @jakarta.annotation.Nullable String EffectiveAt = "example EffectiveAt";
 @jakarta.annotation.Nullable String DiaryEntry = "example DiaryEntry";
-@jakarta.annotation.Nullable String DiaryEntryVariant = "example DiaryEntryVariant";
+@jakarta.annotation.Nullable String Variant = "example Variant";
 @jakarta.annotation.Nullable String Tenor = "example Tenor";
 @jakarta.annotation.Nullable String RollConvention = "example RollConvention";
 @jakarta.annotation.Nullable List<String> HolidayCalendars = new List<String>();
@@ -36,7 +36,7 @@ FundValuationSchedule fundValuationScheduleInstance = new FundValuationSchedule(
     .EffectiveFrom(EffectiveFrom)
     .EffectiveAt(EffectiveAt)
     .DiaryEntry(DiaryEntry)
-    .DiaryEntryVariant(DiaryEntryVariant)
+    .Variant(Variant)
     .Tenor(Tenor)
     .RollConvention(RollConvention)
     .HolidayCalendars(HolidayCalendars)
