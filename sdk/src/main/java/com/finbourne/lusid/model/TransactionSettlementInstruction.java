@@ -112,6 +112,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_IN_LIEU)
   private SettlementInLieu settlementInLieu;
 
+  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
+  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
+  private Boolean isActive;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
@@ -429,6 +433,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction isActive(Boolean isActive) {
+    
+    this.isActive = isActive;
+    return this;
+  }
+
+   /**
+   * Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true.
+   * @return isActive
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsActive() {
+    return isActive;
+  }
+
+
+  public void setIsActive(Boolean isActive) {
+    this.isActive = isActive;
+  }
+
+
   public TransactionSettlementInstruction properties(Map<String, PerpetualProperty> properties) {
     
     this.properties = properties;
@@ -482,6 +507,7 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.status, transactionSettlementInstruction.status) &&
         (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0) &&
         Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu) &&
+        Objects.equals(this.isActive, transactionSettlementInstruction.isActive) &&
         Objects.equals(this.properties, transactionSettlementInstruction.properties);
   }
 
@@ -491,7 +517,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, properties);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, isActive, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -519,6 +545,7 @@ public class TransactionSettlementInstruction {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
     sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
+    sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -556,6 +583,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("status");
     openapiFields.add("instructionToPortfolioRate");
     openapiFields.add("settlementInLieu");
+    openapiFields.add("isActive");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
