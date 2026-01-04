@@ -108,6 +108,10 @@ public class RealisedGainLoss {
   @SerializedName(SERIALIZED_NAME_REALISED_AMORTISATION)
   private CurrencyAndAmount realisedAmortisation;
 
+  public static final String SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_REALISED_CURRENCY = "tradeDateToSettlementDateRealisedCurrency";
+  @SerializedName(SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_REALISED_CURRENCY)
+  private CurrencyAndAmount tradeDateToSettlementDateRealisedCurrency;
+
   public RealisedGainLoss() {
   }
 
@@ -397,6 +401,27 @@ public class RealisedGainLoss {
   }
 
 
+  public RealisedGainLoss tradeDateToSettlementDateRealisedCurrency(CurrencyAndAmount tradeDateToSettlementDateRealisedCurrency) {
+    
+    this.tradeDateToSettlementDateRealisedCurrency = tradeDateToSettlementDateRealisedCurrency;
+    return this;
+  }
+
+   /**
+   * Get tradeDateToSettlementDateRealisedCurrency
+   * @return tradeDateToSettlementDateRealisedCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getTradeDateToSettlementDateRealisedCurrency() {
+    return tradeDateToSettlementDateRealisedCurrency;
+  }
+
+
+  public void setTradeDateToSettlementDateRealisedCurrency(CurrencyAndAmount tradeDateToSettlementDateRealisedCurrency) {
+    this.tradeDateToSettlementDateRealisedCurrency = tradeDateToSettlementDateRealisedCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -420,7 +445,8 @@ public class RealisedGainLoss {
         Objects.equals(this.realisedMarket, realisedGainLoss.realisedMarket) &&
         Objects.equals(this.realisedCurrency, realisedGainLoss.realisedCurrency) &&
         Objects.equals(this.taxLotId, realisedGainLoss.taxLotId) &&
-        Objects.equals(this.realisedAmortisation, realisedGainLoss.realisedAmortisation);
+        Objects.equals(this.realisedAmortisation, realisedGainLoss.realisedAmortisation) &&
+        Objects.equals(this.tradeDateToSettlementDateRealisedCurrency, realisedGainLoss.tradeDateToSettlementDateRealisedCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -429,7 +455,7 @@ public class RealisedGainLoss {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation);
+    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation, tradeDateToSettlementDateRealisedCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -457,6 +483,7 @@ public class RealisedGainLoss {
     sb.append("    realisedCurrency: ").append(toIndentedString(realisedCurrency)).append("\n");
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("    realisedAmortisation: ").append(toIndentedString(realisedAmortisation)).append("\n");
+    sb.append("    tradeDateToSettlementDateRealisedCurrency: ").append(toIndentedString(tradeDateToSettlementDateRealisedCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -493,6 +520,7 @@ public class RealisedGainLoss {
     openapiFields.add("realisedCurrency");
     openapiFields.add("taxLotId");
     openapiFields.add("realisedAmortisation");
+    openapiFields.add("tradeDateToSettlementDateRealisedCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -552,6 +580,10 @@ public class RealisedGainLoss {
       // validate the optional field `realisedAmortisation`
       if (jsonObj.get("realisedAmortisation") != null && !jsonObj.get("realisedAmortisation").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("realisedAmortisation"));
+      }
+      // validate the optional field `tradeDateToSettlementDateRealisedCurrency`
+      if (jsonObj.get("tradeDateToSettlementDateRealisedCurrency") != null && !jsonObj.get("tradeDateToSettlementDateRealisedCurrency").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("tradeDateToSettlementDateRealisedCurrency"));
       }
   }
 

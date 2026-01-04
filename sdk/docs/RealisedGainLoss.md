@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **realisedCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **taxLotId** | **String** | The identifier of the tax lot with which this gain or loss is associated. | [optional] [default to String]
 **realisedAmortisation** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**tradeDateToSettlementDateRealisedCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 
 ```java
 import com.finbourne.lusid.model.RealisedGainLoss;
@@ -39,6 +40,7 @@ CurrencyAndAmount RealisedMarket = new CurrencyAndAmount();
 CurrencyAndAmount RealisedCurrency = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String TaxLotId = "example TaxLotId";
 CurrencyAndAmount RealisedAmortisation = new CurrencyAndAmount();
+CurrencyAndAmount TradeDateToSettlementDateRealisedCurrency = new CurrencyAndAmount();
 
 
 RealisedGainLoss realisedGainLossInstance = new RealisedGainLoss()
@@ -55,7 +57,8 @@ RealisedGainLoss realisedGainLossInstance = new RealisedGainLoss()
     .RealisedMarket(RealisedMarket)
     .RealisedCurrency(RealisedCurrency)
     .TaxLotId(TaxLotId)
-    .RealisedAmortisation(RealisedAmortisation);
+    .RealisedAmortisation(RealisedAmortisation)
+    .TradeDateToSettlementDateRealisedCurrency(TradeDateToSettlementDateRealisedCurrency);
 ```
 
 
