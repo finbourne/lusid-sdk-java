@@ -740,7 +740,7 @@ public class TransactionPortfoliosApiExample {
 
 ## buildTransactions
 
-> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode)
+> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType)
 
 BuildTransactions: Build transactions
 
@@ -795,11 +795,12 @@ public class TransactionPortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode).execute(opts);
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute(opts);
 
-            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode).execute();
+            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#buildTransactions");
@@ -826,6 +827,7 @@ public class TransactionPortfoliosApiExample {
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to BuildTransactions. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
 
 ### Return type
 
