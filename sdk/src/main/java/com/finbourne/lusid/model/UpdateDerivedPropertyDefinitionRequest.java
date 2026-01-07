@@ -75,6 +75,10 @@ public class UpdateDerivedPropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
   private String valueFormat;
 
+  public static final String SERIALIZED_NAME_CUSTOM_ENTITY_TYPE = "customEntityType";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPE)
+  private String customEntityType;
+
   public UpdateDerivedPropertyDefinitionRequest() {
   }
 
@@ -204,6 +208,27 @@ public class UpdateDerivedPropertyDefinitionRequest {
   }
 
 
+  public UpdateDerivedPropertyDefinitionRequest customEntityType(String customEntityType) {
+    
+    this.customEntityType = customEntityType;
+    return this;
+  }
+
+   /**
+   * The custom entity type that this derived property definition can be applied to.
+   * @return customEntityType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCustomEntityType() {
+    return customEntityType;
+  }
+
+
+  public void setCustomEntityType(String customEntityType) {
+    this.customEntityType = customEntityType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -219,7 +244,8 @@ public class UpdateDerivedPropertyDefinitionRequest {
         Objects.equals(this.propertyDescription, updateDerivedPropertyDefinitionRequest.propertyDescription) &&
         Objects.equals(this.derivationFormula, updateDerivedPropertyDefinitionRequest.derivationFormula) &&
         Objects.equals(this.isFilterable, updateDerivedPropertyDefinitionRequest.isFilterable) &&
-        Objects.equals(this.valueFormat, updateDerivedPropertyDefinitionRequest.valueFormat);
+        Objects.equals(this.valueFormat, updateDerivedPropertyDefinitionRequest.valueFormat) &&
+        Objects.equals(this.customEntityType, updateDerivedPropertyDefinitionRequest.customEntityType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -228,7 +254,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, dataTypeId, propertyDescription, derivationFormula, isFilterable, valueFormat);
+    return Objects.hash(displayName, dataTypeId, propertyDescription, derivationFormula, isFilterable, valueFormat, customEntityType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,6 +274,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
     sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
+    sb.append("    customEntityType: ").append(toIndentedString(customEntityType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,6 +303,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
     openapiFields.add("derivationFormula");
     openapiFields.add("isFilterable");
     openapiFields.add("valueFormat");
+    openapiFields.add("customEntityType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -318,6 +346,9 @@ public class UpdateDerivedPropertyDefinitionRequest {
       }
       if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
+      }
+      if ((jsonObj.get("customEntityType") != null && !jsonObj.get("customEntityType").isJsonNull()) && !jsonObj.get("customEntityType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customEntityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customEntityType").toString()));
       }
   }
 

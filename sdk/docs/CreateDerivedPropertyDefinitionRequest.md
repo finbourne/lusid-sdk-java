@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **derivationFormula** | **String** | The rule that defines how data is composed for a derived property. | [default to String]
 **isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. | [default to Boolean]
 **valueFormat** | **String** | The format in which values for this property definition should be represented. | [optional] [default to String]
+**customEntityType** | **String** | The custom entity type that this derived property definition can be applied to. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateDerivedPropertyDefinitionRequest;
@@ -29,6 +30,7 @@ ResourceId DataTypeId = new ResourceId();
 String DerivationFormula = "example DerivationFormula";
 Boolean IsFilterable = true;
 @jakarta.annotation.Nullable String ValueFormat = "example ValueFormat";
+@jakarta.annotation.Nullable String CustomEntityType = "example CustomEntityType";
 
 
 CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequestInstance = new CreateDerivedPropertyDefinitionRequest()
@@ -40,7 +42,8 @@ CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequestIns
     .PropertyDescription(PropertyDescription)
     .DerivationFormula(DerivationFormula)
     .IsFilterable(IsFilterable)
-    .ValueFormat(ValueFormat);
+    .ValueFormat(ValueFormat)
+    .CustomEntityType(CustomEntityType);
 ```
 
 
