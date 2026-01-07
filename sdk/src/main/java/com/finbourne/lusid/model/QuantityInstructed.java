@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * QuantityInstructed
+ * The quantity of the event that was instructed, represented either as a percentage of the overall holdings or the number of units instructed.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class QuantityInstructed {
@@ -67,7 +67,7 @@ public class QuantityInstructed {
   }
 
    /**
-   * 
+   * The type of quantity instructed, either Percentage or Units.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -88,7 +88,7 @@ public class QuantityInstructed {
   }
 
    /**
-   * 
+   * The actual amount instructed. For Type Percentage, this is between 0 and 100.
    * @return amount
   **/
   @jakarta.annotation.Nonnull
