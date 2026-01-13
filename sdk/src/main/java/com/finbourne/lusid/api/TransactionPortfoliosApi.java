@@ -6242,7 +6242,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set timelineCode
-         * @param timelineCode The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. (optional)
+         * @param timelineCode The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
          * @return APIgetHoldingContributorsRequest
          */
         public APIgetHoldingContributorsRequest timelineCode(String timelineCode) {
@@ -6609,7 +6609,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set timelineCode
-         * @param timelineCode The code of the Timeline. (optional)
+         * @param timelineCode The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest timelineCode(String timelineCode) {
@@ -7677,7 +7677,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set timelineCode
-         * @param timelineCode The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. (optional)
+         * @param timelineCode The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
          * @return APIgetMultipleHoldingContributorsRequest
          */
         public APIgetMultipleHoldingContributorsRequest timelineCode(String timelineCode) {

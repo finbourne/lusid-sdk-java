@@ -248,7 +248,7 @@ public class TransactionQueryParameters {
   }
 
    /**
-   * Code of the Timeline for the Portfolio. The Timeline to be used while building transactions
+   * Code of the Timeline for the Portfolio. The Timeline to be used while building transactions. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.
    * @return timelineCode
   **/
   @jakarta.annotation.Nullable

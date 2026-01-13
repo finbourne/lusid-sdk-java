@@ -2182,7 +2182,7 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         String timelineScope = "timelineScope_example"; // String | The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode.
-        String timelineCode = "timelineCode_example"; // String | The code of the timeline used for evaluation. If provided, you must also provide a timelineScope.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.
         try {
             // uncomment the below to set overrides at the request level
             // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute(opts);
@@ -2217,7 +2217,7 @@ public class TransactionPortfoliosApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |
 | **timelineScope** | **String**| The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. | [optional] |
-| **timelineCode** | **String**| The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
 
 ### Return type
 
@@ -2295,7 +2295,7 @@ public class TransactionPortfoliosApiExample {
         Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
         String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
-        String timelineCode = "timelineCode_example"; // String | The code of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.
         String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline.
         try {
             // uncomment the below to set overrides at the request level
@@ -2327,7 +2327,7 @@ public class TransactionPortfoliosApiExample {
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
 | **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
 | **timelineScope** | **String**| The scope of the Timeline. | [optional] |
-| **timelineCode** | **String**| The code of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
 | **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. | [optional] |
 
 ### Return type
@@ -2618,7 +2618,7 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         String timelineScope = "timelineScope_example"; // String | The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode.
-        String timelineCode = "timelineCode_example"; // String | The code of the timeline used for evaluation. If provided, you must also provide a timelineScope.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.
         try {
             // uncomment the below to set overrides at the request level
             // VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, timelineScope, timelineCode).execute(opts);
@@ -2653,7 +2653,7 @@ public class TransactionPortfoliosApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |
 | **timelineScope** | **String**| The scope of the timeline used for evaluation. If provided, you must also provide a timelineCode. | [optional] |
-| **timelineCode** | **String**| The code of the timeline used for evaluation. If provided, you must also provide a timelineScope. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
 
 ### Return type
 
