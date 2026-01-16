@@ -64,6 +64,10 @@ public class DrawdownEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_CONTRACT_DETAILS)
   private ContractDetails contractDetails;
 
+  public static final String SERIALIZED_NAME_AGENCY_FX_RATE = "agencyFxRate";
+  @SerializedName(SERIALIZED_NAME_AGENCY_FX_RATE)
+  private java.math.BigDecimal agencyFxRate = java.math.BigDecimal.valueOf(1d);
+
   public DrawdownEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -131,6 +135,27 @@ public class DrawdownEvent extends InstrumentEvent {
   }
 
 
+  public DrawdownEvent agencyFxRate(java.math.BigDecimal agencyFxRate) {
+    
+    this.agencyFxRate = agencyFxRate;
+    return this;
+  }
+
+   /**
+   * Agency FX rate for multi-currency drawdowns.  When a drawdown is in a currency that&#39;s different to the facility&#39;s, an agency FX rate is specified for converting drawdown amount into facility currency to alter the facility&#39;s balance.  Default value of 1.
+   * @return agencyFxRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAgencyFxRate() {
+    return agencyFxRate;
+  }
+
+
+  public void setAgencyFxRate(java.math.BigDecimal agencyFxRate) {
+    this.agencyFxRate = agencyFxRate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,12 +169,13 @@ public class DrawdownEvent extends InstrumentEvent {
     return (this.amount.compareTo(drawdownEvent.getAmount()) == 0) &&
         Objects.equals(this.date, drawdownEvent.date) &&
         Objects.equals(this.contractDetails, drawdownEvent.contractDetails) &&
+        (this.agencyFxRate.compareTo(drawdownEvent.getAgencyFxRate()) == 0) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, date, contractDetails, super.hashCode());
+    return Objects.hash(amount, date, contractDetails, agencyFxRate, super.hashCode());
   }
 
   @Override
@@ -160,6 +186,7 @@ public class DrawdownEvent extends InstrumentEvent {
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    contractDetails: ").append(toIndentedString(contractDetails)).append("\n");
+    sb.append("    agencyFxRate: ").append(toIndentedString(agencyFxRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -186,6 +213,7 @@ public class DrawdownEvent extends InstrumentEvent {
     openapiFields.add("amount");
     openapiFields.add("date");
     openapiFields.add("contractDetails");
+    openapiFields.add("agencyFxRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

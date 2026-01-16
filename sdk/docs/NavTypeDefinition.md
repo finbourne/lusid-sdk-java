@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **transactionTypeScope** | **String** |  | [default to String]
 **cashGainLossCalculationDate** | **String** |  | [default to String]
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**leaderNavTypeCode** | **String** |  | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.NavTypeDefinition;
@@ -39,6 +40,7 @@ String AmortisationMethod = "example AmortisationMethod";
 String TransactionTypeScope = "example TransactionTypeScope";
 String CashGainLossCalculationDate = "example CashGainLossCalculationDate";
 ResourceId AmortisationRuleSetId = new ResourceId();
+@jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
 
 
 NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
@@ -55,7 +57,8 @@ NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
     .AmortisationMethod(AmortisationMethod)
     .TransactionTypeScope(TransactionTypeScope)
     .CashGainLossCalculationDate(CashGainLossCalculationDate)
-    .AmortisationRuleSetId(AmortisationRuleSetId);
+    .AmortisationRuleSetId(AmortisationRuleSetId)
+    .LeaderNavTypeCode(LeaderNavTypeCode);
 ```
 
 
