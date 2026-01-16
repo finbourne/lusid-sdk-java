@@ -82,6 +82,10 @@ public class UpsertValuationPointRequest {
   @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
   private Boolean applyClearDown;
 
+  public static final String SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS = "updateInclusionDateNavAdjustments";
+  @SerializedName(SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS)
+  private Boolean updateInclusionDateNavAdjustments;
+
   public UpsertValuationPointRequest() {
   }
 
@@ -240,6 +244,27 @@ public class UpsertValuationPointRequest {
   }
 
 
+  public UpsertValuationPointRequest updateInclusionDateNavAdjustments(Boolean updateInclusionDateNavAdjustments) {
+    
+    this.updateInclusionDateNavAdjustments = updateInclusionDateNavAdjustments;
+    return this;
+  }
+
+   /**
+   * Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+   * @return updateInclusionDateNavAdjustments
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getUpdateInclusionDateNavAdjustments() {
+    return updateInclusionDateNavAdjustments;
+  }
+
+
+  public void setUpdateInclusionDateNavAdjustments(Boolean updateInclusionDateNavAdjustments) {
+    this.updateInclusionDateNavAdjustments = updateInclusionDateNavAdjustments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -256,7 +281,8 @@ public class UpsertValuationPointRequest {
         Objects.equals(this.effectiveAt, upsertValuationPointRequest.effectiveAt) &&
         Objects.equals(this.queryAsAt, upsertValuationPointRequest.queryAsAt) &&
         Objects.equals(this.properties, upsertValuationPointRequest.properties) &&
-        Objects.equals(this.applyClearDown, upsertValuationPointRequest.applyClearDown);
+        Objects.equals(this.applyClearDown, upsertValuationPointRequest.applyClearDown) &&
+        Objects.equals(this.updateInclusionDateNavAdjustments, upsertValuationPointRequest.updateInclusionDateNavAdjustments);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -265,7 +291,7 @@ public class UpsertValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode, diaryEntryVariant, name, effectiveAt, queryAsAt, properties, applyClearDown);
+    return Objects.hash(diaryEntryCode, diaryEntryVariant, name, effectiveAt, queryAsAt, properties, applyClearDown, updateInclusionDateNavAdjustments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +312,7 @@ public class UpsertValuationPointRequest {
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
+    sb.append("    updateInclusionDateNavAdjustments: ").append(toIndentedString(updateInclusionDateNavAdjustments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -315,6 +342,7 @@ public class UpsertValuationPointRequest {
     openapiFields.add("queryAsAt");
     openapiFields.add("properties");
     openapiFields.add("applyClearDown");
+    openapiFields.add("updateInclusionDateNavAdjustments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

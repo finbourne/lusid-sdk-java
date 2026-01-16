@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the diary entry. Defaults to latest. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. | [optional] [default to Map<String, Property>]
 **applyClearDown** | **Boolean** | Defaults to false. Set to true if you want that the closed period to have the clear down applied. | [optional] [default to Boolean]
+**updateInclusionDateNavAdjustments** | **Boolean** | Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
@@ -26,6 +27,7 @@ OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime QueryAsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Boolean ApplyClearDown = true;
+Boolean UpdateInclusionDateNavAdjustments = true;
 
 
 UpsertValuationPointRequest upsertValuationPointRequestInstance = new UpsertValuationPointRequest()
@@ -35,7 +37,8 @@ UpsertValuationPointRequest upsertValuationPointRequestInstance = new UpsertValu
     .EffectiveAt(EffectiveAt)
     .QueryAsAt(QueryAsAt)
     .Properties(Properties)
-    .ApplyClearDown(ApplyClearDown);
+    .ApplyClearDown(ApplyClearDown)
+    .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments);
 ```
 
 
