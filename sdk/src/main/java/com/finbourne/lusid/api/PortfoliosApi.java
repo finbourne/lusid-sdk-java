@@ -2287,11 +2287,11 @@ public class PortfoliosApi {
     public APIgetCompositeBreakdownRequest getCompositeBreakdown(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest) {
         return new APIgetCompositeBreakdownRequest(scope, code, compositeBreakdownRequest);
     }
-    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2327,6 +2327,18 @@ public class PortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2349,7 +2361,7 @@ public class PortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getInstrumentEventInstruction(Async)");
@@ -2365,34 +2377,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'instrumentEventInstructionId' when calling getInstrumentEventInstruction(Async)");
         }
 
-        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
+        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null, new ConfigurationOptions());
+    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null, opts);
+    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
+    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback<InstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<InstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2404,6 +2416,9 @@ public class PortfoliosApi {
         private final String instrumentEventInstructionId;
         private String portfolioEffectiveAt;
         private OffsetDateTime asAt;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetInstrumentEventInstructionRequest(String scope, String code, String instrumentEventInstructionId) {
             this.scope = scope;
@@ -2432,6 +2447,36 @@ public class PortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided. (optional)
+         * @return APIgetInstrumentEventInstructionRequest
+         */
+        public APIgetInstrumentEventInstructionRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided. (optional)
+         * @return APIgetInstrumentEventInstructionRequest
+         */
+        public APIgetInstrumentEventInstructionRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. (optional)
+         * @return APIgetInstrumentEventInstructionRequest
+         */
+        public APIgetInstrumentEventInstructionRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getInstrumentEventInstruction
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2445,7 +2490,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+            return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -2461,7 +2506,7 @@ public class PortfoliosApi {
          </table>
          */
         public InstrumentEventInstruction execute() throws ApiException {
-            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt);
+            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -2478,7 +2523,7 @@ public class PortfoliosApi {
          </table>
          */
         public InstrumentEventInstruction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, opts);
+            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -2495,7 +2540,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<InstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
-            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt);
+            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -2511,7 +2556,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<InstrumentEventInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, opts);
+            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -2528,7 +2573,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
-            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -2545,7 +2590,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
+            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -5962,11 +6007,11 @@ public class PortfoliosApi {
     public APIgetPortfoliosAccessMetadataByKeyRequest getPortfoliosAccessMetadataByKey(String scope, String code, String metadataKey) {
         return new APIgetPortfoliosAccessMetadataByKeyRequest(scope, code, metadataKey);
     }
-    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6017,6 +6062,18 @@ public class PortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -6039,7 +6096,7 @@ public class PortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listInstrumentEventInstructions(Async)");
@@ -6050,34 +6107,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listInstrumentEventInstructions(Async)");
         }
 
-        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null, opts);
+    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
+    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6092,6 +6149,9 @@ public class PortfoliosApi {
         private Integer limit;
         private String filter;
         private List<String> sortBy;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistInstrumentEventInstructionsRequest(String scope, String code) {
             this.scope = scope;
@@ -6159,6 +6219,36 @@ public class PortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. (optional)
+         * @return APIlistInstrumentEventInstructionsRequest
+         */
+        public APIlistInstrumentEventInstructionsRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listInstrumentEventInstructions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6172,7 +6262,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+            return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -6188,7 +6278,7 @@ public class PortfoliosApi {
          </table>
          */
         public PagedResourceListOfInstrumentEventInstruction execute() throws ApiException {
-            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy);
+            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -6205,7 +6295,7 @@ public class PortfoliosApi {
          </table>
          */
         public PagedResourceListOfInstrumentEventInstruction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, opts);
+            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -6222,7 +6312,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfInstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
-            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy);
+            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -6238,7 +6328,7 @@ public class PortfoliosApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfInstrumentEventInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -6255,7 +6345,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
-            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -6272,7 +6362,7 @@ public class PortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
-            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 

@@ -822,7 +822,7 @@ public class PortfoliosApiExample {
 
 ## getInstrumentEventInstruction
 
-> InstrumentEventInstruction getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt)
+> InstrumentEventInstruction getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId)
 
 [EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction
 
@@ -872,11 +872,14 @@ public class PortfoliosApiExample {
         String instrumentEventInstructionId = "instrumentEventInstructionId_example"; // String | The id of the instruction to be retrieved.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided.
+        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period.
         try {
             // uncomment the below to set overrides at the request level
-            // InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt).execute(opts);
+            // InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt).execute();
+            InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfoliosApi#getInstrumentEventInstruction");
@@ -898,6 +901,9 @@ public class PortfoliosApiExample {
 | **instrumentEventInstructionId** | **String**| The id of the instruction to be retrieved. | |
 | **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided. | [optional] |
+| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. | [optional] |
 
 ### Return type
 
@@ -2048,7 +2054,7 @@ public class PortfoliosApiExample {
 
 ## listInstrumentEventInstructions
 
-> PagedResourceListOfInstrumentEventInstruction listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy)
+> PagedResourceListOfInstrumentEventInstruction listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId)
 
 [EARLY ACCESS] ListInstrumentEventInstructions: List Instrument Event Instructions
 
@@ -2101,11 +2107,14 @@ public class PortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided.
+        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy).execute(opts);
+            // PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy).execute();
+            PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfoliosApi#listInstrumentEventInstructions");
@@ -2130,6 +2139,9 @@ public class PortfoliosApiExample {
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode must also be provided. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope must also be provided. | [optional] |
+| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. | [optional] |
 
 ### Return type
 
