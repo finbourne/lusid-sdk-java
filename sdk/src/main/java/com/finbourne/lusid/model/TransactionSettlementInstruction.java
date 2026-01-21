@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SettlementInLieu;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -119,6 +120,10 @@ public class TransactionSettlementInstruction {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public TransactionSettlementInstruction() {
   }
@@ -483,6 +488,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -508,7 +534,8 @@ public class TransactionSettlementInstruction {
         (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0) &&
         Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu) &&
         Objects.equals(this.isActive, transactionSettlementInstruction.isActive) &&
-        Objects.equals(this.properties, transactionSettlementInstruction.properties);
+        Objects.equals(this.properties, transactionSettlementInstruction.properties) &&
+        Objects.equals(this.version, transactionSettlementInstruction.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -517,7 +544,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, isActive, properties);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, isActive, properties, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -547,6 +574,7 @@ public class TransactionSettlementInstruction {
     sb.append("    settlementInLieu: ").append(toIndentedString(settlementInLieu)).append("\n");
     sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -585,6 +613,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("settlementInLieu");
     openapiFields.add("isActive");
     openapiFields.add("properties");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -643,6 +672,10 @@ public class TransactionSettlementInstruction {
       // validate the optional field `settlementInLieu`
       if (jsonObj.get("settlementInLieu") != null && !jsonObj.get("settlementInLieu").isJsonNull()) {
         SettlementInLieu.validateJsonElement(jsonObj.get("settlementInLieu"));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
   }
 

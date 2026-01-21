@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **settlementInLieu** | [**SettlementInLieu**](SettlementInLieu.md) |  | [optional] [default to SettlementInLieu]
 **isActive** | **Boolean** | Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true. | [optional] [default to Boolean]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The properties which have been requested to be decorated onto the settlement instruction. These will be from the &#39;SettlementInstruction&#39;, &#39;Portfolio&#39;, or &#39;Instrument&#39; domains. | [optional] [default to Map<String, PerpetualProperty>]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.TransactionSettlementInstruction;
@@ -43,6 +44,7 @@ Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 SettlementInLieu SettlementInLieu = new SettlementInLieu();
 Boolean IsActive = true;
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+Version Version = new Version();
 
 
 TransactionSettlementInstruction transactionSettlementInstructionInstance = new TransactionSettlementInstruction()
@@ -61,7 +63,8 @@ TransactionSettlementInstruction transactionSettlementInstructionInstance = new 
     .InstructionToPortfolioRate(InstructionToPortfolioRate)
     .SettlementInLieu(SettlementInLieu)
     .IsActive(IsActive)
-    .Properties(Properties);
+    .Properties(Properties)
+    .Version(Version);
 ```
 
 
