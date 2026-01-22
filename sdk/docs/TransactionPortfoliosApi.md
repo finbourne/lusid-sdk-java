@@ -451,7 +451,7 @@ public class TransactionPortfoliosApiExample {
 
 ## batchUpsertSettlementInstructions
 
-> BatchUpsertTransactionSettlementInstructionResponse batchUpsertSettlementInstructions(scope, code, requestBody)
+> BatchUpsertTransactionSettlementInstructionResponse batchUpsertSettlementInstructions(scope, code, requestBody, successMode)
 
 [EARLY ACCESS] BatchUpsertSettlementInstructions: Batch Upsert Settlement Instructions.
 
@@ -499,11 +499,12 @@ public class TransactionPortfoliosApiExample {
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio.
         Map<String, SettlementInstructionRequest> requestBody = new HashMap(); // Map<String, SettlementInstructionRequest> | The definition of the settlement instruction.
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
         try {
             // uncomment the below to set overrides at the request level
-            // BatchUpsertTransactionSettlementInstructionResponse result = apiInstance.batchUpsertSettlementInstructions(scope, code, requestBody).execute(opts);
+            // BatchUpsertTransactionSettlementInstructionResponse result = apiInstance.batchUpsertSettlementInstructions(scope, code, requestBody, successMode).execute(opts);
 
-            BatchUpsertTransactionSettlementInstructionResponse result = apiInstance.batchUpsertSettlementInstructions(scope, code, requestBody).execute();
+            BatchUpsertTransactionSettlementInstructionResponse result = apiInstance.batchUpsertSettlementInstructions(scope, code, requestBody, successMode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#batchUpsertSettlementInstructions");
@@ -523,6 +524,7 @@ public class TransactionPortfoliosApiExample {
 | **scope** | **String**| The scope of the portfolio. | |
 | **code** | **String**| The code of the portfolio. | |
 | **requestBody** | [**Map&lt;String, SettlementInstructionRequest&gt;**](SettlementInstructionRequest.md)| The definition of the settlement instruction. | |
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | [optional] [default to Partial] |
 
 ### Return type
 

@@ -1247,11 +1247,11 @@ public class TransactionPortfoliosApi {
     public APIbatchSetHoldingsRequest batchSetHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
         return new APIbatchSetHoldingsRequest(scope, code, successMode, requestBody);
     }
-    private okhttp3.Call batchUpsertSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, final ApiCallback _callback) throws ApiException {
-        return batchUpsertSettlementInstructionsCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    private okhttp3.Call batchUpsertSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return batchUpsertSettlementInstructionsCall(scope, code, requestBody, successMode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call batchUpsertSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1277,6 +1277,10 @@ public class TransactionPortfoliosApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -1304,7 +1308,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertSettlementInstructionsValidateBeforeCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertSettlementInstructionsValidateBeforeCall(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertSettlementInstructions(Async)");
@@ -1320,34 +1324,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertSettlementInstructions(Async)");
         }
 
-        return batchUpsertSettlementInstructionsCall(scope, code, requestBody, _callback, opts);
+        return batchUpsertSettlementInstructionsCall(scope, code, requestBody, successMode, _callback, opts);
 
     }
 
 
-    private ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> batchUpsertSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+    private ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> batchUpsertSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertTransactionSettlementInstructionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> batchUpsertSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, null, opts);
+    private ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> batchUpsertSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertTransactionSettlementInstructionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchUpsertSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertTransactionSettlementInstructionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call batchUpsertSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionRequest> requestBody, String successMode, final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, _callback, opts);
+        okhttp3.Call localVarCall = batchUpsertSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertTransactionSettlementInstructionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1357,11 +1361,22 @@ public class TransactionPortfoliosApi {
         private final String scope;
         private final String code;
         private final Map<String, SettlementInstructionRequest> requestBody;
+        private String successMode;
 
         private APIbatchUpsertSettlementInstructionsRequest(String scope, String code, Map<String, SettlementInstructionRequest> requestBody) {
             this.scope = scope;
             this.code = code;
             this.requestBody = requestBody;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (optional, default to Partial)
+         * @return APIbatchUpsertSettlementInstructionsRequest
+         */
+        public APIbatchUpsertSettlementInstructionsRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
         }
 
         /**
@@ -1378,7 +1393,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchUpsertSettlementInstructionsCall(scope, code, requestBody, _callback);
+            return batchUpsertSettlementInstructionsCall(scope, code, requestBody, successMode, _callback);
         }
 
         /**
@@ -1394,7 +1409,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public BatchUpsertTransactionSettlementInstructionResponse execute() throws ApiException {
-            ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> localVarResp = batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody);
+            ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> localVarResp = batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode);
             return localVarResp.getData();
         }
 
@@ -1411,7 +1426,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public BatchUpsertTransactionSettlementInstructionResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> localVarResp = batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, opts);
+            ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> localVarResp = batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode, opts);
             return localVarResp.getData();
         }
 
@@ -1428,7 +1443,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> executeWithHttpInfo() throws ApiException {
-            return batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody);
+            return batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode);
         }
 
         /**
@@ -1444,7 +1459,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<BatchUpsertTransactionSettlementInstructionResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, opts);
+            return batchUpsertSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode, opts);
         }
 
         /**
@@ -1461,7 +1476,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback) throws ApiException {
-            return batchUpsertSettlementInstructionsAsync(scope, code, requestBody, _callback);
+            return batchUpsertSettlementInstructionsAsync(scope, code, requestBody, successMode, _callback);
         }
 
         /**
@@ -1478,7 +1493,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertTransactionSettlementInstructionResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return batchUpsertSettlementInstructionsAsync(scope, code, requestBody, _callback, opts);
+            return batchUpsertSettlementInstructionsAsync(scope, code, requestBody, successMode, _callback, opts);
         }
     }
 
