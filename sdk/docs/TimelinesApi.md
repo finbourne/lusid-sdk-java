@@ -13,7 +13,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getTimeline**](TimelinesApi.md#getTimeline) | **GET** /api/timelines/{scope}/{code} | [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code. |
 | [**listClosedPeriods**](TimelinesApi.md#listClosedPeriods) | **GET** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] ListClosedPeriods: List ClosedPeriods for a specified Timeline. |
 | [**listTimelines**](TimelinesApi.md#listTimelines) | **GET** /api/timelines | [EXPERIMENTAL] ListTimelines: List Timelines |
-| [**setPostCloseActivity**](TimelinesApi.md#setPostCloseActivity) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity | [EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period. |
+| [**setPostCloseActivity**](TimelinesApi.md#setPostCloseActivity) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity | [EXPERIMENTAL] SetPostCloseActivity: Sets post-close activities to a Closed Period. |
 | [**unconfirmClosedPeriod**](TimelinesApi.md#unconfirmClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity |
 | [**updateTimeline**](TimelinesApi.md#updateTimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code |
 
@@ -900,9 +900,9 @@ public class TimelinesApiExample {
 
 > ClosedPeriod setPostCloseActivity(scope, code, closedPeriodId, postCloseActivitiesRequest)
 
-[EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period.
+[EXPERIMENTAL] SetPostCloseActivity: Sets post-close activities to a Closed Period.
 
-Sets empty or more post close activities to the specific closed period.
+This sets the given post-close activities to the given Closed Period.     **This is an overwriting action!**     The possible types of entity are:  * &#x60;PortfolioTransaction&#x60;,  * &#x60;Instrument&#x60;,  * &#x60;InstrumentEvent&#x60;,  * &#x60;InstrumentEventInstruction&#x60;,  * &#x60;PortfolioSettlementInstruction&#x60;, and,  * &#x60;Quote&#x60;.
 
 ### Example
 
@@ -945,8 +945,8 @@ public class TimelinesApiExample {
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the Timeline.
         String code = "code_example"; // String | The code of the Timeline.
-        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod
-        PostCloseActivitiesRequest postCloseActivitiesRequest = new PostCloseActivitiesRequest(); // PostCloseActivitiesRequest | Specifies collection of post close activities
+        String closedPeriodId = "closedPeriodId_example"; // String | The ID of the Closed Period.   This ID together with the scope and code of the Timeline uniquely defines the Closed Period.
+        PostCloseActivitiesRequest postCloseActivitiesRequest = new PostCloseActivitiesRequest(); // PostCloseActivitiesRequest | This specifies a collection of post-close activities.
         try {
             // uncomment the below to set overrides at the request level
             // ClosedPeriod result = apiInstance.setPostCloseActivity(scope, code, closedPeriodId, postCloseActivitiesRequest).execute(opts);
@@ -970,8 +970,8 @@ public class TimelinesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Timeline. | |
 | **code** | **String**| The code of the Timeline. | |
-| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod | |
-| **postCloseActivitiesRequest** | [**PostCloseActivitiesRequest**](PostCloseActivitiesRequest.md)| Specifies collection of post close activities | [optional] |
+| **closedPeriodId** | **String**| The ID of the Closed Period.   This ID together with the scope and code of the Timeline uniquely defines the Closed Period. | |
+| **postCloseActivitiesRequest** | [**PostCloseActivitiesRequest**](PostCloseActivitiesRequest.md)| This specifies a collection of post-close activities. | [optional] |
 
 ### Return type
 
@@ -986,7 +986,7 @@ public class TimelinesApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated closed period |  -  |
+| **200** | The updated Closed Period. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

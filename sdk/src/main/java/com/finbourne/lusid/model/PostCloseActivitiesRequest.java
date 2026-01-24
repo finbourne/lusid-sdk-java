@@ -74,7 +74,7 @@ public class PostCloseActivitiesRequest {
   }
 
    /**
-   * Collection of post close activites.
+   * A collection of post-close activities.
    * @return postCloseActivities
   **/
   @jakarta.annotation.Nonnull

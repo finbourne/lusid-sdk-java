@@ -77,7 +77,7 @@ public class PostCloseActivity {
   }
 
    /**
-   * Get entityType
+   * The type of the entity, possible values are: * &#x60;PortfolioTransaction&#x60;, * &#x60;Instrument&#x60;, * &#x60;InstrumentEvent&#x60;, * &#x60;InstrumentEventInstruction&#x60;, * &#x60;PortfolioSettlementInstruction&#x60;, and, * &#x60;Quote&#x60;.
    * @return entityType
   **/
   @jakarta.annotation.Nonnull
@@ -98,7 +98,7 @@ public class PostCloseActivity {
   }
 
    /**
-   * Get entityUniqueId
+   * The entity unique ID. The expected format for each entity is: | entityType | entityUniqueId | |----------------------------------|---------------------------------------------------| | &#x60;PortfolioTransaction&#x60; | &#x60;portfolioUniqueId_transactionId&#x60; | | &#x60;Instrument&#x60; | &#x60;instrumentUniqueId&#x60; | | &#x60;InstrumentEvent&#x60; | &#x60;corporateActionSourceUniqueId_instrumentEventId&#x60; | | &#x60;InstrumentEventInstruction&#x60; | &#x60;portfolioUniqueId_instructionId&#x60; | | &#x60;PortfolioSettlementInstruction&#x60; | &#x60;portfolioUniqueId_settlementInstructionId&#x60; | | &#x60;Quote&#x60; | &#x60;quoteSeriesUniqueId_quoteSeriesInstrumentId&#x60; |
    * @return entityUniqueId
   **/
   @jakarta.annotation.Nonnull
@@ -119,7 +119,7 @@ public class PostCloseActivity {
   }
 
    /**
-   * Get asAt
+   * The &#x60;AsAt&#x60; time of the event that needs to be added to the closed period.
    * @return asAt
   **/
   @jakarta.annotation.Nonnull
@@ -140,7 +140,7 @@ public class PostCloseActivity {
   }
 
    /**
-   * Get effectiveAt
+   * The &#x60;EffectiveAt&#x60; time of the event that need to be added to the closed period. This can be a date or cut label. Only applicable for &#x60;Quote&#x60; post-close activities.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nullable

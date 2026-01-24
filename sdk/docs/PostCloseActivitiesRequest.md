@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**postCloseActivities** | [**List&lt;PostCloseActivity&gt;**](PostCloseActivity.md) | Collection of post close activites. | [default to List<PostCloseActivity>]
+**postCloseActivities** | [**List&lt;PostCloseActivity&gt;**](PostCloseActivity.md) | A collection of post-close activities. | [default to List<PostCloseActivity>]
 
 ```java
 import com.finbourne.lusid.model.PostCloseActivitiesRequest;

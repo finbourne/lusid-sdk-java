@@ -2683,7 +2683,7 @@ public class TimelinesApi {
 
         /**
          * Set postCloseActivitiesRequest
-         * @param postCloseActivitiesRequest Specifies collection of post close activities (optional)
+         * @param postCloseActivitiesRequest This specifies a collection of post-close activities. (optional)
          * @return APIsetPostCloseActivityRequest
          */
         public APIsetPostCloseActivityRequest postCloseActivitiesRequest(PostCloseActivitiesRequest postCloseActivitiesRequest) {
@@ -2699,7 +2699,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2715,7 +2715,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2732,7 +2732,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2749,7 +2749,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2765,7 +2765,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2782,7 +2782,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2799,7 +2799,7 @@ public class TimelinesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2810,16 +2810,16 @@ public class TimelinesApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period.
-     * Sets empty or more post close activities to the specific closed period.
+     * [EXPERIMENTAL] SetPostCloseActivity: Sets post-close activities to a Closed Period.
+     * This sets the given post-close activities to the given Closed Period.     **This is an overwriting action!**     The possible types of entity are:  * &#x60;PortfolioTransaction&#x60;,  * &#x60;Instrument&#x60;,  * &#x60;InstrumentEvent&#x60;,  * &#x60;InstrumentEventInstruction&#x60;,  * &#x60;PortfolioSettlementInstruction&#x60;, and,  * &#x60;Quote&#x60;.
      * @param scope The scope of the Timeline. (required)
      * @param code The code of the Timeline. (required)
-     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod (required)
+     * @param closedPeriodId The ID of the Closed Period.   This ID together with the scope and code of the Timeline uniquely defines the Closed Period. (required)
      * @return APIsetPostCloseActivityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated closed period </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Closed Period. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
