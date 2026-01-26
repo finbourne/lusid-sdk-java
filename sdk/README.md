@@ -621,6 +621,7 @@ Class | Method | HTTP request | Description
 *TransactionFeesApi* | [**upsertTransactionFeeRules**](docs/TransactionFeesApi.md#upserttransactionfeerules) | **POST** /api/transactions/fees/rules | UpsertTransactionFeeRules: Upsert fee rules.
 *TransactionPortfoliosApi* | [**adjustHoldings**](docs/TransactionPortfoliosApi.md#adjustholdings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings | AdjustHoldings: Adjust holdings
 *TransactionPortfoliosApi* | [**batchAdjustHoldings**](docs/TransactionPortfoliosApi.md#batchadjustholdings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchAdjust | BatchAdjustHoldings: Batch adjust holdings
+*TransactionPortfoliosApi* | [**batchAmendSettlementInstructions**](docs/TransactionPortfoliosApi.md#batchamendsettlementinstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions/$batchAmend | [EARLY ACCESS] BatchAmendSettlementInstructions: Batch Amend Settlement Instructions.
 *TransactionPortfoliosApi* | [**batchCreateTradeTickets**](docs/TransactionPortfoliosApi.md#batchcreatetradetickets) | **POST** /api/transactionportfolios/{scope}/{code}/$batchtradetickets | BatchCreateTradeTickets: Batch Create Trade Tickets
 *TransactionPortfoliosApi* | [**batchSetHoldings**](docs/TransactionPortfoliosApi.md#batchsetholdings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchSet | BatchSetHoldings: Batch set holdings
 *TransactionPortfoliosApi* | [**batchUpsertSettlementInstructions**](docs/TransactionPortfoliosApi.md#batchupsertsettlementinstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions/$batchUpsert | [EARLY ACCESS] BatchUpsertSettlementInstructions: Batch Upsert Settlement Instructions.
@@ -764,6 +765,7 @@ Class | Method | HTTP request | Description
  - [BasketIdentifier](docs/BasketIdentifier.md)
  - [BatchAdjustHoldingsResponse](docs/BatchAdjustHoldingsResponse.md)
  - [BatchAmendCustomDataModelMembershipResponse](docs/BatchAmendCustomDataModelMembershipResponse.md)
+ - [BatchAmendTransactionSettlementInstructionResponse](docs/BatchAmendTransactionSettlementInstructionResponse.md)
  - [BatchDeleteRelationalDataResponse](docs/BatchDeleteRelationalDataResponse.md)
  - [BatchUpdateUserReviewForComparisonResultRequest](docs/BatchUpdateUserReviewForComparisonResultRequest.md)
  - [BatchUpdateUserReviewForComparisonResultResponse](docs/BatchUpdateUserReviewForComparisonResultResponse.md)
@@ -1761,6 +1763,7 @@ Class | Method | HTTP request | Description
  - [SettlementConfigurationCategory](docs/SettlementConfigurationCategory.md)
  - [SettlementCycle](docs/SettlementCycle.md)
  - [SettlementInLieu](docs/SettlementInLieu.md)
+ - [SettlementInstructionAmendRequest](docs/SettlementInstructionAmendRequest.md)
  - [SettlementInstructionQuery](docs/SettlementInstructionQuery.md)
  - [SettlementInstructionRequest](docs/SettlementInstructionRequest.md)
  - [SettlementInstructionWithTransaction](docs/SettlementInstructionWithTransaction.md)

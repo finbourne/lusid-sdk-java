@@ -29,6 +29,7 @@ import com.finbourne.lusid.model.AdjustHolding;
 import com.finbourne.lusid.model.AdjustHoldingForDateRequest;
 import com.finbourne.lusid.model.AdjustHoldingRequest;
 import com.finbourne.lusid.model.BatchAdjustHoldingsResponse;
+import com.finbourne.lusid.model.BatchAmendTransactionSettlementInstructionResponse;
 import com.finbourne.lusid.model.BatchUpsertPortfolioTransactionsResponse;
 import com.finbourne.lusid.model.BatchUpsertTransactionSettlementInstructionResponse;
 import com.finbourne.lusid.model.BucketedCashFlowRequest;
@@ -64,6 +65,7 @@ import com.finbourne.lusid.model.ResourceListOfPortfolioCashFlow;
 import com.finbourne.lusid.model.ResourceListOfPortfolioCashLadder;
 import com.finbourne.lusid.model.ResourceListOfTransaction;
 import com.finbourne.lusid.model.ResourceListOfTransactionSettlementInstruction;
+import com.finbourne.lusid.model.SettlementInstructionAmendRequest;
 import com.finbourne.lusid.model.SettlementInstructionQuery;
 import com.finbourne.lusid.model.SettlementInstructionRequest;
 import com.finbourne.lusid.model.TransactionQueryParameters;
@@ -713,6 +715,274 @@ public class TransactionPortfoliosApi {
      */
     public APIbatchAdjustHoldingsRequest batchAdjustHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
         return new APIbatchAdjustHoldingsRequest(scope, code, successMode, requestBody);
+    }
+    private okhttp3.Call batchAmendSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return batchAmendSettlementInstructionsCall(scope, code, requestBody, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchAmendSettlementInstructionsCall(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/settlementinstructions/$batchAmend"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchAmendSettlementInstructionsValidateBeforeCall(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchAmendSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchAmendSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling batchAmendSettlementInstructions(Async)");
+        }
+
+        return batchAmendSettlementInstructionsCall(scope, code, requestBody, successMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchAmendTransactionSettlementInstructionResponse> batchAmendSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = batchAmendSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAmendTransactionSettlementInstructionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchAmendTransactionSettlementInstructionResponse> batchAmendSettlementInstructionsWithHttpInfo(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchAmendSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, null, opts);
+        Type localVarReturnType = new TypeToken<BatchAmendTransactionSettlementInstructionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchAmendSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, final ApiCallback<BatchAmendTransactionSettlementInstructionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchAmendSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAmendTransactionSettlementInstructionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchAmendSettlementInstructionsAsync(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody, String successMode, final ApiCallback<BatchAmendTransactionSettlementInstructionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchAmendSettlementInstructionsValidateBeforeCall(scope, code, requestBody, successMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchAmendTransactionSettlementInstructionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchAmendSettlementInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private final Map<String, SettlementInstructionAmendRequest> requestBody;
+        private String successMode;
+
+        private APIbatchAmendSettlementInstructionsRequest(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (optional, default to Partial)
+         * @return APIbatchAmendSettlementInstructionsRequest
+         */
+        public APIbatchAmendSettlementInstructionsRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for batchAmendSettlementInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchAmendSettlementInstructionsCall(scope, code, requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request
+         * @return BatchAmendTransactionSettlementInstructionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAmendTransactionSettlementInstructionResponse execute() throws ApiException {
+            ApiResponse<BatchAmendTransactionSettlementInstructionResponse> localVarResp = batchAmendSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchAmendTransactionSettlementInstructionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAmendTransactionSettlementInstructionResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchAmendTransactionSettlementInstructionResponse> localVarResp = batchAmendSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request with HTTP info returned
+         * @return ApiResponse&lt;BatchAmendTransactionSettlementInstructionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAmendTransactionSettlementInstructionResponse> executeWithHttpInfo() throws ApiException {
+            return batchAmendSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode);
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchAmendTransactionSettlementInstructionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAmendTransactionSettlementInstructionResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchAmendSettlementInstructionsWithHttpInfo(scope, code, requestBody, successMode, opts);
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAmendTransactionSettlementInstructionResponse> _callback) throws ApiException {
+            return batchAmendSettlementInstructionsAsync(scope, code, requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute batchAmendSettlementInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAmendTransactionSettlementInstructionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchAmendSettlementInstructionsAsync(scope, code, requestBody, successMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] BatchAmendSettlementInstructions: Batch Amend Settlement Instructions.
+     * Update active state and / or properties of instructions.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. (required)
+     * @param requestBody The amendments to make to the settlement instructions. (required)
+     * @return APIbatchAmendSettlementInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The newly amended Settlement Instructions. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchAmendSettlementInstructionsRequest batchAmendSettlementInstructions(String scope, String code, Map<String, SettlementInstructionAmendRequest> requestBody) {
+        return new APIbatchAmendSettlementInstructionsRequest(scope, code, requestBody);
     }
     private okhttp3.Call batchCreateTradeTicketsCall(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback _callback) throws ApiException {
         return batchCreateTradeTicketsCall(scope, code, lusidTradeTicket,  _callback, new ConfigurationOptions());
@@ -1387,7 +1657,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1403,7 +1673,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1420,7 +1690,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1437,7 +1707,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1453,7 +1723,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1470,7 +1740,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1487,7 +1757,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -1507,7 +1777,7 @@ public class TransactionPortfoliosApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created or updated Settlement Instructions. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
