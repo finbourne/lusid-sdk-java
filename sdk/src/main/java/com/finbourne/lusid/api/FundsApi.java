@@ -3859,11 +3859,11 @@ public class FundsApi {
     public APIgetFundPropertiesRequest getFundProperties(String scope, String code) {
         return new APIgetFundPropertiesRequest(scope, code);
     }
-    private okhttp3.Call getHoldingContributorsForFundCall(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
-        return getHoldingContributorsForFundCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getHoldingContributorsForFundCall(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+        return getHoldingContributorsForFundCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getHoldingContributorsForFundCall(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsForFundCall(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3877,7 +3877,7 @@ public class FundsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = singleValuationPointQueryParameters;
+        Object localVarPostBody = valuationPointDataQueryParameters;
 
         // create path and map variables
         String localVarPath = "/api/funds/{scope}/{code}/holdings/{holdingId}/contributors"
@@ -3893,14 +3893,6 @@ public class FundsApi {
 
         if (navTypeCode != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
-        }
-
-        if (fromTradeDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromTradeDate", fromTradeDate));
-        }
-
-        if (toTradeDate != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toTradeDate", toTradeDate));
         }
 
         if (includeHistoric != null) {
@@ -3953,7 +3945,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingContributorsForFundValidateBeforeCall(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsForFundValidateBeforeCall(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingContributorsForFund(Async)");
@@ -3969,39 +3961,39 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'holdingId' when calling getHoldingContributorsForFund(Async)");
         }
 
-        // verify the required parameter 'singleValuationPointQueryParameters' is set
-        if (singleValuationPointQueryParameters == null) {
-            throw new ApiException("Missing the required parameter 'singleValuationPointQueryParameters' when calling getHoldingContributorsForFund(Async)");
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getHoldingContributorsForFund(Async)");
         }
 
-        return getHoldingContributorsForFundCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        return getHoldingContributorsForFundCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsForFundWithHttpInfo(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsForFundWithHttpInfo(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsForFundWithHttpInfo(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, opts);
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsForFundWithHttpInfo(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingContributorsForFundAsync(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsForFundAsync(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingContributorsForFundAsync(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingContributorsForFundAsync(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+        okhttp3.Call localVarCall = getHoldingContributorsForFundValidateBeforeCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4011,10 +4003,8 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final Long holdingId;
-        private final SingleValuationPointQueryParameters singleValuationPointQueryParameters;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
         private String navTypeCode;
-        private String fromTradeDate;
-        private String toTradeDate;
         private Boolean includeHistoric;
         private String taxLotId;
         private Boolean includeUnsettledMovements;
@@ -4022,11 +4012,11 @@ public class FundsApi {
         private OffsetDateTime asAt;
         private String page;
 
-        private APIgetHoldingContributorsForFundRequest(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
+        private APIgetHoldingContributorsForFundRequest(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
             this.code = code;
             this.holdingId = holdingId;
-            this.singleValuationPointQueryParameters = singleValuationPointQueryParameters;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
         }
 
         /**
@@ -4036,26 +4026,6 @@ public class FundsApi {
          */
         public APIgetHoldingContributorsForFundRequest navTypeCode(String navTypeCode) {
             this.navTypeCode = navTypeCode;
-            return this;
-        }
-
-        /**
-         * Set fromTradeDate
-         * @param fromTradeDate The from trade date, defaults to first time this holding is opened, lower bound for transactions (optional)
-         * @return APIgetHoldingContributorsForFundRequest
-         */
-        public APIgetHoldingContributorsForFundRequest fromTradeDate(String fromTradeDate) {
-            this.fromTradeDate = fromTradeDate;
-            return this;
-        }
-
-        /**
-         * Set toTradeDate
-         * @param toTradeDate The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions (optional)
-         * @return APIgetHoldingContributorsForFundRequest
-         */
-        public APIgetHoldingContributorsForFundRequest toTradeDate(String toTradeDate) {
-            this.toTradeDate = toTradeDate;
             return this;
         }
 
@@ -4133,7 +4103,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingContributorsForFundCall(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getHoldingContributorsForFundCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
         }
 
         /**
@@ -4149,7 +4119,7 @@ public class FundsApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
             return localVarResp.getData();
         }
 
@@ -4166,7 +4136,7 @@ public class FundsApi {
          </table>
          */
         public VersionedResourceListOfHoldingContributor execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
             return localVarResp.getData();
         }
 
@@ -4183,7 +4153,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo() throws ApiException {
-            return getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
+            return getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page);
         }
 
         /**
@@ -4199,7 +4169,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
+            return getHoldingContributorsForFundWithHttpInfo(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, opts);
         }
 
         /**
@@ -4216,7 +4186,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
-            return getHoldingContributorsForFundAsync(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
+            return getHoldingContributorsForFundAsync(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback);
         }
 
         /**
@@ -4233,7 +4203,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
-            return getHoldingContributorsForFundAsync(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
+            return getHoldingContributorsForFundAsync(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page, _callback, opts);
         }
     }
 
@@ -4243,7 +4213,7 @@ public class FundsApi {
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param holdingId The unique holding identifier (required)
-     * @param singleValuationPointQueryParameters The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. (required)
      * @return APIgetHoldingContributorsForFundRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4253,8 +4223,8 @@ public class FundsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetHoldingContributorsForFundRequest getHoldingContributorsForFund(String scope, String code, Long holdingId, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
-        return new APIgetHoldingContributorsForFundRequest(scope, code, holdingId, singleValuationPointQueryParameters);
+    public APIgetHoldingContributorsForFundRequest getHoldingContributorsForFund(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetHoldingContributorsForFundRequest(scope, code, holdingId, valuationPointDataQueryParameters);
     }
     private okhttp3.Call getHoldingsForFundCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
         return getHoldingsForFundCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays,  _callback, new ConfigurationOptions());

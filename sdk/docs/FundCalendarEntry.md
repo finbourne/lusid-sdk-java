@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [default to Version]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
+**leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.FundCalendarEntry;
@@ -45,6 +46,7 @@ Boolean ApplyClearDown = true;
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Version Version = new Version();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
+@jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
 
 
 FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
@@ -64,7 +66,8 @@ FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
     .ValuationsAsAtOverride(ValuationsAsAtOverride)
     .Properties(Properties)
     .Version(Version)
-    .Href(Href);
+    .Href(Href)
+    .LeaderNavTypeCode(LeaderNavTypeCode);
 ```
 
 

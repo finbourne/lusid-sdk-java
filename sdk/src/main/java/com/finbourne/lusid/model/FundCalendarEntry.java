@@ -173,6 +173,10 @@ public class FundCalendarEntry {
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
 
+  public static final String SERIALIZED_NAME_LEADER_NAV_TYPE_CODE = "leaderNavTypeCode";
+  @SerializedName(SERIALIZED_NAME_LEADER_NAV_TYPE_CODE)
+  private String leaderNavTypeCode;
+
   public FundCalendarEntry() {
   }
 
@@ -541,6 +545,27 @@ public class FundCalendarEntry {
   }
 
 
+  public FundCalendarEntry leaderNavTypeCode(String leaderNavTypeCode) {
+    
+    this.leaderNavTypeCode = leaderNavTypeCode;
+    return this;
+  }
+
+   /**
+   * The code of the Nav Type that this Nav Type will follow when set.
+   * @return leaderNavTypeCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getLeaderNavTypeCode() {
+    return leaderNavTypeCode;
+  }
+
+
+  public void setLeaderNavTypeCode(String leaderNavTypeCode) {
+    this.leaderNavTypeCode = leaderNavTypeCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -567,7 +592,8 @@ public class FundCalendarEntry {
         Objects.equals(this.valuationsAsAtOverride, fundCalendarEntry.valuationsAsAtOverride) &&
         Objects.equals(this.properties, fundCalendarEntry.properties) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
-        Objects.equals(this.href, fundCalendarEntry.href);
+        Objects.equals(this.href, fundCalendarEntry.href) &&
+        Objects.equals(this.leaderNavTypeCode, fundCalendarEntry.leaderNavTypeCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -576,7 +602,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, properties, version, href);
+    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, properties, version, href, leaderNavTypeCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -607,6 +633,7 @@ public class FundCalendarEntry {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -646,6 +673,7 @@ public class FundCalendarEntry {
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("href");
+    openapiFields.add("leaderNavTypeCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -711,6 +739,9 @@ public class FundCalendarEntry {
       Version.validateJsonElement(jsonObj.get("version"));
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      if ((jsonObj.get("leaderNavTypeCode") != null && !jsonObj.get("leaderNavTypeCode").isJsonNull()) && !jsonObj.get("leaderNavTypeCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `leaderNavTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("leaderNavTypeCode").toString()));
       }
   }
 

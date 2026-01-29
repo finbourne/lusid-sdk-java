@@ -1403,7 +1403,7 @@ public class FundsApiExample {
 
 ## getHoldingContributorsForFund
 
-> VersionedResourceListOfHoldingContributor getHoldingContributorsForFund(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
+> VersionedResourceListOfHoldingContributor getHoldingContributorsForFund(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
 
 [EXPERIMENTAL] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund.
 
@@ -1451,10 +1451,8 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         Long holdingId = 56L; // Long | The unique holding identifier
-        SingleValuationPointQueryParameters singleValuationPointQueryParameters = new SingleValuationPointQueryParameters(); // SingleValuationPointQueryParameters | The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark.
+        ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark.
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
-        String fromTradeDate = "fromTradeDate_example"; // String | The from trade date, defaults to first time this holding is opened, lower bound for transactions
-        String toTradeDate = "toTradeDate_example"; // String | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions
         Boolean includeHistoric = false; // Boolean | If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened.
         String taxLotId = "taxLotId_example"; // String | Constrains the Holding Contributors to those which contributed to the specified tax lot.
         Boolean includeUnsettledMovements = false; // Boolean | If true, contributing transaction which have not settled yet will also be returned. False by default
@@ -1463,9 +1461,9 @@ public class FundsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributorsForFund(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributorsForFund(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
 
-            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributorsForFund(scope, code, holdingId, singleValuationPointQueryParameters, navTypeCode, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
+            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributorsForFund(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getHoldingContributorsForFund");
@@ -1485,10 +1483,8 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **holdingId** | **Long**| The unique holding identifier | |
-| **singleValuationPointQueryParameters** | [**SingleValuationPointQueryParameters**](SingleValuationPointQueryParameters.md)| The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. | |
+| **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. | |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
-| **fromTradeDate** | **String**| The from trade date, defaults to first time this holding is opened, lower bound for transactions | [optional] |
-| **toTradeDate** | **String**| The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions | [optional] |
 | **includeHistoric** | **Boolean**| If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. | [optional] [default to false] |
 | **taxLotId** | **String**| Constrains the Holding Contributors to those which contributed to the specified tax lot. | [optional] |
 | **includeUnsettledMovements** | **Boolean**| If true, contributing transaction which have not settled yet will also be returned. False by default | [optional] [default to false] |
