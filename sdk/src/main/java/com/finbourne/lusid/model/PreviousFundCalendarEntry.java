@@ -71,6 +71,14 @@ public class PreviousFundCalendarEntry {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE = "holdingsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE)
+  private OffsetDateTime holdingsAsAtOverride;
+
+  public static final String SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE = "valuationsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
+  private OffsetDateTime valuationsAsAtOverride;
+
   public PreviousFundCalendarEntry() {
   }
 
@@ -179,6 +187,48 @@ public class PreviousFundCalendarEntry {
   }
 
 
+  public PreviousFundCalendarEntry holdingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
+   * @return holdingsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtOverride() {
+    return holdingsAsAtOverride;
+  }
+
+
+  public void setHoldingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+  }
+
+
+  public PreviousFundCalendarEntry valuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+   * @return valuationsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationsAsAtOverride() {
+    return valuationsAsAtOverride;
+  }
+
+
+  public void setValuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,7 +243,9 @@ public class PreviousFundCalendarEntry {
         Objects.equals(this.displayName, previousFundCalendarEntry.displayName) &&
         Objects.equals(this.description, previousFundCalendarEntry.description) &&
         Objects.equals(this.effectiveAt, previousFundCalendarEntry.effectiveAt) &&
-        Objects.equals(this.asAt, previousFundCalendarEntry.asAt);
+        Objects.equals(this.asAt, previousFundCalendarEntry.asAt) &&
+        Objects.equals(this.holdingsAsAtOverride, previousFundCalendarEntry.holdingsAsAtOverride) &&
+        Objects.equals(this.valuationsAsAtOverride, previousFundCalendarEntry.valuationsAsAtOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +254,7 @@ public class PreviousFundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, effectiveAt, asAt);
+    return Objects.hash(code, displayName, description, effectiveAt, asAt, holdingsAsAtOverride, valuationsAsAtOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,6 +273,8 @@ public class PreviousFundCalendarEntry {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
+    sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,6 +302,8 @@ public class PreviousFundCalendarEntry {
     openapiFields.add("description");
     openapiFields.add("effectiveAt");
     openapiFields.add("asAt");
+    openapiFields.add("holdingsAsAtOverride");
+    openapiFields.add("valuationsAsAtOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

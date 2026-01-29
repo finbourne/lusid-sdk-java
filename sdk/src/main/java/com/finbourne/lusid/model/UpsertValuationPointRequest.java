@@ -82,6 +82,14 @@ public class UpsertValuationPointRequest {
   @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
   private Boolean applyClearDown;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE = "holdingsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE)
+  private OffsetDateTime holdingsAsAtOverride;
+
+  public static final String SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE = "valuationsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
+  private OffsetDateTime valuationsAsAtOverride;
+
   public static final String SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS = "updateInclusionDateNavAdjustments";
   @SerializedName(SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS)
   private Boolean updateInclusionDateNavAdjustments;
@@ -244,6 +252,48 @@ public class UpsertValuationPointRequest {
   }
 
 
+  public UpsertValuationPointRequest holdingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
+   * @return holdingsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtOverride() {
+    return holdingsAsAtOverride;
+  }
+
+
+  public void setHoldingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+  }
+
+
+  public UpsertValuationPointRequest valuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+   * @return valuationsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationsAsAtOverride() {
+    return valuationsAsAtOverride;
+  }
+
+
+  public void setValuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+  }
+
+
   public UpsertValuationPointRequest updateInclusionDateNavAdjustments(Boolean updateInclusionDateNavAdjustments) {
     
     this.updateInclusionDateNavAdjustments = updateInclusionDateNavAdjustments;
@@ -282,6 +332,8 @@ public class UpsertValuationPointRequest {
         Objects.equals(this.queryAsAt, upsertValuationPointRequest.queryAsAt) &&
         Objects.equals(this.properties, upsertValuationPointRequest.properties) &&
         Objects.equals(this.applyClearDown, upsertValuationPointRequest.applyClearDown) &&
+        Objects.equals(this.holdingsAsAtOverride, upsertValuationPointRequest.holdingsAsAtOverride) &&
+        Objects.equals(this.valuationsAsAtOverride, upsertValuationPointRequest.valuationsAsAtOverride) &&
         Objects.equals(this.updateInclusionDateNavAdjustments, upsertValuationPointRequest.updateInclusionDateNavAdjustments);
   }
 
@@ -291,7 +343,7 @@ public class UpsertValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode, diaryEntryVariant, name, effectiveAt, queryAsAt, properties, applyClearDown, updateInclusionDateNavAdjustments);
+    return Objects.hash(diaryEntryCode, diaryEntryVariant, name, effectiveAt, queryAsAt, properties, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, updateInclusionDateNavAdjustments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -312,6 +364,8 @@ public class UpsertValuationPointRequest {
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
+    sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
+    sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("    updateInclusionDateNavAdjustments: ").append(toIndentedString(updateInclusionDateNavAdjustments)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -342,6 +396,8 @@ public class UpsertValuationPointRequest {
     openapiFields.add("queryAsAt");
     openapiFields.add("properties");
     openapiFields.add("applyClearDown");
+    openapiFields.add("holdingsAsAtOverride");
+    openapiFields.add("valuationsAsAtOverride");
     openapiFields.add("updateInclusionDateNavAdjustments");
 
     // a set of required properties/fields (JSON key names)

@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **entryType** | **String** | The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry | [default to String]
 **status** | **String** | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;. | [optional] [default to String]
 **applyClearDown** | **Boolean** | Set to true if that closed period shoould have the clear down applied. | [default to Boolean]
+**holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
+**valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [default to Version]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
@@ -38,6 +40,8 @@ OffsetDateTime AsAt = OffsetDateTime.now();
 String EntryType = "example EntryType";
 @jakarta.annotation.Nullable String Status = "example Status";
 Boolean ApplyClearDown = true;
+@jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Version Version = new Version();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
@@ -56,6 +60,8 @@ FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
     .EntryType(EntryType)
     .Status(Status)
     .ApplyClearDown(ApplyClearDown)
+    .HoldingsAsAtOverride(HoldingsAsAtOverride)
+    .ValuationsAsAtOverride(ValuationsAsAtOverride)
     .Properties(Properties)
     .Version(Version)
     .Href(Href);

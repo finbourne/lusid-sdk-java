@@ -5,7 +5,7 @@ Identification of an Investor on the LUSID API.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**investorType** | **String** | The type of the investor of the Investor Record. Can be either a Person or a LegalEntity | [default to String]
+**investorType** | **String** | The type of the investor of the Investor Record. Can be either a Person, LegalEntity or Nominee. | [default to String]
 **identifiers** | **Map&lt;String, String&gt;** | Single identifier that should target the desired person or legal entity | [optional] [default to Map<String, String>]
 
 ```java

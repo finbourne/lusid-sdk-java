@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **status** | **String** | The status of the Valuation Point. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;. | [default to String]
 **gav** | **java.math.BigDecimal** | The Gross Asset Value of the Fund or Share Class at the Valuation Point. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;. | [default to java.math.BigDecimal]
 **nav** | **java.math.BigDecimal** | The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period. | [default to java.math.BigDecimal]
+**holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
+**valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The Fee properties. These will be from the &#39;Fee&#39; domain. | [optional] [default to Map<String, Property>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -33,6 +35,8 @@ String Type = "example Type";
 String Status = "example Status";
 java.math.BigDecimal Gav = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Nav = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -48,6 +52,8 @@ ValuationPointOverview valuationPointOverviewInstance = new ValuationPointOvervi
     .Status(Status)
     .Gav(Gav)
     .Nav(Nav)
+    .HoldingsAsAtOverride(HoldingsAsAtOverride)
+    .ValuationsAsAtOverride(ValuationsAsAtOverride)
     .Properties(Properties)
     .Links(Links);
 ```

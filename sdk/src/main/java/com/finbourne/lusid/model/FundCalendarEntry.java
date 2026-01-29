@@ -153,6 +153,14 @@ public class FundCalendarEntry {
   @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
   private Boolean applyClearDown;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE = "holdingsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE)
+  private OffsetDateTime holdingsAsAtOverride;
+
+  public static final String SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE = "valuationsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
+  private OffsetDateTime valuationsAsAtOverride;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -420,6 +428,48 @@ public class FundCalendarEntry {
   }
 
 
+  public FundCalendarEntry holdingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
+   * @return holdingsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtOverride() {
+    return holdingsAsAtOverride;
+  }
+
+
+  public void setHoldingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+  }
+
+
+  public FundCalendarEntry valuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+   * @return valuationsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationsAsAtOverride() {
+    return valuationsAsAtOverride;
+  }
+
+
+  public void setValuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+  }
+
+
   public FundCalendarEntry properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -513,6 +563,8 @@ public class FundCalendarEntry {
         Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
         Objects.equals(this.status, fundCalendarEntry.status) &&
         Objects.equals(this.applyClearDown, fundCalendarEntry.applyClearDown) &&
+        Objects.equals(this.holdingsAsAtOverride, fundCalendarEntry.holdingsAsAtOverride) &&
+        Objects.equals(this.valuationsAsAtOverride, fundCalendarEntry.valuationsAsAtOverride) &&
         Objects.equals(this.properties, fundCalendarEntry.properties) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
         Objects.equals(this.href, fundCalendarEntry.href);
@@ -524,7 +576,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
+    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, properties, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -550,6 +602,8 @@ public class FundCalendarEntry {
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
+    sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
+    sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
@@ -587,6 +641,8 @@ public class FundCalendarEntry {
     openapiFields.add("entryType");
     openapiFields.add("status");
     openapiFields.add("applyClearDown");
+    openapiFields.add("holdingsAsAtOverride");
+    openapiFields.add("valuationsAsAtOverride");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("href");

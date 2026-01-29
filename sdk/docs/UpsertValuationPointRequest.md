@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the diary entry. Defaults to latest. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. | [optional] [default to Map<String, Property>]
 **applyClearDown** | **Boolean** | Defaults to false. Set to true if you want that the closed period to have the clear down applied. | [optional] [default to Boolean]
+**holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
+**valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest. | [optional] [default to OffsetDateTime]
 **updateInclusionDateNavAdjustments** | **Boolean** | Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. | [optional] [default to Boolean]
 
 ```java
@@ -27,6 +29,8 @@ OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime QueryAsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Boolean ApplyClearDown = true;
+@jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
 Boolean UpdateInclusionDateNavAdjustments = true;
 
 
@@ -38,6 +42,8 @@ UpsertValuationPointRequest upsertValuationPointRequestInstance = new UpsertValu
     .QueryAsAt(QueryAsAt)
     .Properties(Properties)
     .ApplyClearDown(ApplyClearDown)
+    .HoldingsAsAtOverride(HoldingsAsAtOverride)
+    .ValuationsAsAtOverride(ValuationsAsAtOverride)
     .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments);
 ```
 

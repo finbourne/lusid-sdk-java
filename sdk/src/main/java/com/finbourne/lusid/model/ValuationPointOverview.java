@@ -98,6 +98,14 @@ public class ValuationPointOverview {
   @SerializedName(SERIALIZED_NAME_NAV)
   private java.math.BigDecimal nav;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE = "holdingsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE)
+  private OffsetDateTime holdingsAsAtOverride;
+
+  public static final String SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE = "valuationsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
+  private OffsetDateTime valuationsAsAtOverride;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -319,6 +327,48 @@ public class ValuationPointOverview {
   }
 
 
+  public ValuationPointOverview holdingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
+   * @return holdingsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtOverride() {
+    return holdingsAsAtOverride;
+  }
+
+
+  public void setHoldingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+  }
+
+
+  public ValuationPointOverview valuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+   * @return valuationsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationsAsAtOverride() {
+    return valuationsAsAtOverride;
+  }
+
+
+  public void setValuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+  }
+
+
   public ValuationPointOverview properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -397,6 +447,8 @@ public class ValuationPointOverview {
         Objects.equals(this.status, valuationPointOverview.status) &&
         (this.gav.compareTo(valuationPointOverview.getGav()) == 0) &&
         (this.nav.compareTo(valuationPointOverview.getNav()) == 0) &&
+        Objects.equals(this.holdingsAsAtOverride, valuationPointOverview.holdingsAsAtOverride) &&
+        Objects.equals(this.valuationsAsAtOverride, valuationPointOverview.valuationsAsAtOverride) &&
         Objects.equals(this.properties, valuationPointOverview.properties) &&
         Objects.equals(this.links, valuationPointOverview.links);
   }
@@ -407,7 +459,7 @@ public class ValuationPointOverview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, diaryEntryCode, diaryEntryVariant, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, properties, links);
+    return Objects.hash(href, diaryEntryCode, diaryEntryVariant, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, holdingsAsAtOverride, valuationsAsAtOverride, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -431,6 +483,8 @@ public class ValuationPointOverview {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    gav: ").append(toIndentedString(gav)).append("\n");
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
+    sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
+    sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -465,6 +519,8 @@ public class ValuationPointOverview {
     openapiFields.add("status");
     openapiFields.add("gav");
     openapiFields.add("nav");
+    openapiFields.add("holdingsAsAtOverride");
+    openapiFields.add("valuationsAsAtOverride");
     openapiFields.add("properties");
     openapiFields.add("links");
 
