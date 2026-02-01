@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the Bookmark. | [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the Bookmark. Defaults to latest. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Bookmark. | [optional] [default to Map<String, Property>]
+**holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Bookmark. Defaults to Latest. | [optional] [default to OffsetDateTime]
+**valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Bookmark. Defaults to Latest. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
@@ -24,6 +26,8 @@ String DisplayName = "example DisplayName";
 OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime QueryAsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+@jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
 
 
 UpsertFundBookmarkRequest upsertFundBookmarkRequestInstance = new UpsertFundBookmarkRequest()
@@ -32,7 +36,9 @@ UpsertFundBookmarkRequest upsertFundBookmarkRequestInstance = new UpsertFundBook
     .Description(Description)
     .EffectiveAt(EffectiveAt)
     .QueryAsAt(QueryAsAt)
-    .Properties(Properties);
+    .Properties(Properties)
+    .HoldingsAsAtOverride(HoldingsAsAtOverride)
+    .ValuationsAsAtOverride(ValuationsAsAtOverride);
 ```
 
 

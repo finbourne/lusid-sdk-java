@@ -78,6 +78,14 @@ public class UpsertFundBookmarkRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE = "holdingsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_OVERRIDE)
+  private OffsetDateTime holdingsAsAtOverride;
+
+  public static final String SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE = "valuationsAsAtOverride";
+  @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
+  private OffsetDateTime valuationsAsAtOverride;
+
   public UpsertFundBookmarkRequest() {
   }
 
@@ -215,6 +223,48 @@ public class UpsertFundBookmarkRequest {
   }
 
 
+  public UpsertFundBookmarkRequest holdingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for building holdings in the Bookmark. Defaults to Latest.
+   * @return holdingsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtOverride() {
+    return holdingsAsAtOverride;
+  }
+
+
+  public void setHoldingsAsAtOverride(OffsetDateTime holdingsAsAtOverride) {
+    this.holdingsAsAtOverride = holdingsAsAtOverride;
+  }
+
+
+  public UpsertFundBookmarkRequest valuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAt Override to use for performing valuations in the Bookmark. Defaults to Latest.
+   * @return valuationsAsAtOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getValuationsAsAtOverride() {
+    return valuationsAsAtOverride;
+  }
+
+
+  public void setValuationsAsAtOverride(OffsetDateTime valuationsAsAtOverride) {
+    this.valuationsAsAtOverride = valuationsAsAtOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -230,7 +280,9 @@ public class UpsertFundBookmarkRequest {
         Objects.equals(this.description, upsertFundBookmarkRequest.description) &&
         Objects.equals(this.effectiveAt, upsertFundBookmarkRequest.effectiveAt) &&
         Objects.equals(this.queryAsAt, upsertFundBookmarkRequest.queryAsAt) &&
-        Objects.equals(this.properties, upsertFundBookmarkRequest.properties);
+        Objects.equals(this.properties, upsertFundBookmarkRequest.properties) &&
+        Objects.equals(this.holdingsAsAtOverride, upsertFundBookmarkRequest.holdingsAsAtOverride) &&
+        Objects.equals(this.valuationsAsAtOverride, upsertFundBookmarkRequest.valuationsAsAtOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +291,7 @@ public class UpsertFundBookmarkRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bookmarkCode, displayName, description, effectiveAt, queryAsAt, properties);
+    return Objects.hash(bookmarkCode, displayName, description, effectiveAt, queryAsAt, properties, holdingsAsAtOverride, valuationsAsAtOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +311,8 @@ public class UpsertFundBookmarkRequest {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
+    sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -287,6 +341,8 @@ public class UpsertFundBookmarkRequest {
     openapiFields.add("effectiveAt");
     openapiFields.add("queryAsAt");
     openapiFields.add("properties");
+    openapiFields.add("holdingsAsAtOverride");
+    openapiFields.add("valuationsAsAtOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

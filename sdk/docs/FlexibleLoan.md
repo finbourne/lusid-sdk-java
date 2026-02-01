@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the instrument. This is normally synonymous with the trade-date. | [default to OffsetDateTime]
 **maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it. | [default to OffsetDateTime]
 **domCcy** | **String** | The domestic currency of the instrument. | [default to String]
+**parentFacilityDetails** | **Map&lt;String, String&gt;** | The details of the parent loan facility of this loan if this loan is a contract on a facility. | [optional] [readonly] [default to Map<String, String>]
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the loan. | [default to List<Schedule>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 
@@ -20,6 +21,7 @@ import java.net.URI;
 OffsetDateTime StartDate = OffsetDateTime.now();
 OffsetDateTime MaturityDate = OffsetDateTime.now();
 String DomCcy = "example DomCcy";
+@jakarta.annotation.Nullable Map<String, String> ParentFacilityDetails = new Map<String, String>();
 List<Schedule> Schedules = new List<Schedule>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 
@@ -28,6 +30,7 @@ FlexibleLoan flexibleLoanInstance = new FlexibleLoan()
     .StartDate(StartDate)
     .MaturityDate(MaturityDate)
     .DomCcy(DomCcy)
+    .ParentFacilityDetails(ParentFacilityDetails)
     .Schedules(Schedules)
     .TimeZoneConventions(TimeZoneConventions);
 ```

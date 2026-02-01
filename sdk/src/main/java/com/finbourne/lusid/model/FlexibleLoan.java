@@ -23,7 +23,10 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -67,6 +70,10 @@ public class FlexibleLoan extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
 
+  public static final String SERIALIZED_NAME_PARENT_FACILITY_DETAILS = "parentFacilityDetails";
+  @SerializedName(SERIALIZED_NAME_PARENT_FACILITY_DETAILS)
+  private Map<String, String> parentFacilityDetails;
+
   public static final String SERIALIZED_NAME_SCHEDULES = "schedules";
   @SerializedName(SERIALIZED_NAME_SCHEDULES)
   private List<Schedule> schedules = new ArrayList<>();
@@ -77,6 +84,14 @@ public class FlexibleLoan extends LusidInstrument {
 
   public FlexibleLoan() {
     // this.instrumentType = this.getClass().getSimpleName();
+  }
+
+  
+  public FlexibleLoan(
+     Map<String, String> parentFacilityDetails
+  ) {
+    this();
+    this.parentFacilityDetails = parentFacilityDetails;
   }
 
   public FlexibleLoan startDate(OffsetDateTime startDate) {
@@ -142,6 +157,18 @@ public class FlexibleLoan extends LusidInstrument {
   }
 
 
+   /**
+   * The details of the parent loan facility of this loan if this loan is a contract on a facility.
+   * @return parentFacilityDetails
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, String> getParentFacilityDetails() {
+    return parentFacilityDetails;
+  }
+
+
+
+
   public FlexibleLoan schedules(List<Schedule> schedules) {
     
     this.schedules = schedules;
@@ -205,14 +232,26 @@ public class FlexibleLoan extends LusidInstrument {
     return Objects.equals(this.startDate, flexibleLoan.startDate) &&
         Objects.equals(this.maturityDate, flexibleLoan.maturityDate) &&
         Objects.equals(this.domCcy, flexibleLoan.domCcy) &&
+        Objects.equals(this.parentFacilityDetails, flexibleLoan.parentFacilityDetails) &&
         Objects.equals(this.schedules, flexibleLoan.schedules) &&
         Objects.equals(this.timeZoneConventions, flexibleLoan.timeZoneConventions) &&
         super.equals(o);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, schedules, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, parentFacilityDetails, schedules, timeZoneConventions, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -223,6 +262,7 @@ public class FlexibleLoan extends LusidInstrument {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    parentFacilityDetails: ").append(toIndentedString(parentFacilityDetails)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
@@ -251,6 +291,7 @@ public class FlexibleLoan extends LusidInstrument {
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
+    openapiFields.add("parentFacilityDetails");
     openapiFields.add("schedules");
     openapiFields.add("timeZoneConventions");
 
