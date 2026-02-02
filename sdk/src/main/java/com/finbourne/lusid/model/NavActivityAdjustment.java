@@ -50,11 +50,15 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustment {
   /**
-   * . The available values are: PortfolioTransaction
+   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
-    PORTFOLIOTRANSACTION("PortfolioTransaction");
+    PORTFOLIOTRANSACTION("PortfolioTransaction"),
+    
+    PORTFOLIOSETTLEMENTINSTRUCTION("PortfolioSettlementInstruction"),
+    
+    INSTRUMENTACTIVITY("InstrumentActivity");
 
     private String value;
 
@@ -108,7 +112,7 @@ public class NavActivityAdjustment {
   }
 
    /**
-   * . The available values are: PortfolioTransaction
+   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -189,6 +193,12 @@ public class NavActivityAdjustment {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("navActivityAdjustmentType").getAsString();
       switch (discriminatorValue) {
+        case "InstrumentActivity":
+          InstrumentActivity.validateJsonElement(jsonElement);
+          break;
+        case "PortfolioSettlementInstruction":
+          PortfolioSettlementInstruction.validateJsonElement(jsonElement);
+          break;
         case "PortfolioTransaction":
           PortfolioTransaction.validateJsonElement(jsonElement);
           break;

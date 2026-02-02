@@ -15,6 +15,8 @@ import java.net.URI;
 
 // Example usage of NavActivityAdjustmentType:
 NavActivityAdjustmentType method = NavActivityAdjustmentType.PORTFOLIOTRANSACTION;
+NavActivityAdjustmentType method = NavActivityAdjustmentType.PORTFOLIOSETTLEMENTINSTRUCTION;
+NavActivityAdjustmentType method = NavActivityAdjustmentType.INSTRUMENTACTIVITY;
 ```
 
 

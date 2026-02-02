@@ -25,7 +25,11 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(NavActivityAdjustmentType.Adapter.class)
 public enum NavActivityAdjustmentType {
   
-  PORTFOLIOTRANSACTION("PortfolioTransaction");
+  PORTFOLIOTRANSACTION("PortfolioTransaction"),
+  
+  PORTFOLIOSETTLEMENTINSTRUCTION("PortfolioSettlementInstruction"),
+  
+  INSTRUMENTACTIVITY("InstrumentActivity");
 
   private String value;
 
