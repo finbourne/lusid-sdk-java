@@ -54,6 +54,14 @@ public class OrderGraphBlockAllocationDetail {
   @SerializedName(SERIALIZED_NAME_ID)
   private ResourceId id;
 
+  public static final String SERIALIZED_NAME_ALLOCATED_ORDER_ID = "allocatedOrderId";
+  @SerializedName(SERIALIZED_NAME_ALLOCATED_ORDER_ID)
+  private ResourceId allocatedOrderId;
+
+  public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+  @SerializedName(SERIALIZED_NAME_QUANTITY)
+  private java.math.BigDecimal quantity;
+
   public OrderGraphBlockAllocationDetail() {
   }
 
@@ -78,6 +86,48 @@ public class OrderGraphBlockAllocationDetail {
   }
 
 
+  public OrderGraphBlockAllocationDetail allocatedOrderId(ResourceId allocatedOrderId) {
+    
+    this.allocatedOrderId = allocatedOrderId;
+    return this;
+  }
+
+   /**
+   * Get allocatedOrderId
+   * @return allocatedOrderId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAllocatedOrderId() {
+    return allocatedOrderId;
+  }
+
+
+  public void setAllocatedOrderId(ResourceId allocatedOrderId) {
+    this.allocatedOrderId = allocatedOrderId;
+  }
+
+
+  public OrderGraphBlockAllocationDetail quantity(java.math.BigDecimal quantity) {
+    
+    this.quantity = quantity;
+    return this;
+  }
+
+   /**
+   * The quantity of this allocation, with direction relative to the containing block.
+   * @return quantity
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getQuantity() {
+    return quantity;
+  }
+
+
+  public void setQuantity(java.math.BigDecimal quantity) {
+    this.quantity = quantity;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,12 +138,14 @@ public class OrderGraphBlockAllocationDetail {
       return false;
     }
     OrderGraphBlockAllocationDetail orderGraphBlockAllocationDetail = (OrderGraphBlockAllocationDetail) o;
-    return Objects.equals(this.id, orderGraphBlockAllocationDetail.id);
+    return Objects.equals(this.id, orderGraphBlockAllocationDetail.id) &&
+        Objects.equals(this.allocatedOrderId, orderGraphBlockAllocationDetail.allocatedOrderId) &&
+        (this.quantity.compareTo(orderGraphBlockAllocationDetail.getQuantity()) == 0);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(id, allocatedOrderId, quantity);
   }
 
   @Override
@@ -101,6 +153,8 @@ public class OrderGraphBlockAllocationDetail {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderGraphBlockAllocationDetail {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    allocatedOrderId: ").append(toIndentedString(allocatedOrderId)).append("\n");
+    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,10 +178,13 @@ public class OrderGraphBlockAllocationDetail {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
+    openapiFields.add("allocatedOrderId");
+    openapiFields.add("quantity");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
+    openapiRequiredFields.add("quantity");
   }
 
  /**
@@ -152,6 +209,10 @@ public class OrderGraphBlockAllocationDetail {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
+      // validate the optional field `allocatedOrderId`
+      if (jsonObj.get("allocatedOrderId") != null && !jsonObj.get("allocatedOrderId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("allocatedOrderId"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
