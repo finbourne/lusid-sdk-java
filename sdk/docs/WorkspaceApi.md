@@ -305,7 +305,7 @@ public class WorkspaceApiExample {
 
 ## deleteWorkspace
 
-> DeletedEntityResponse deleteWorkspace(visibility, workspaceName)
+> DeletedEntityResponse deleteWorkspace(visibility, workspaceName, recurse)
 
 [EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
 
@@ -352,11 +352,12 @@ public class WorkspaceApiExample {
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
         String workspaceName = "workspaceName_example"; // String | The name of the workspace.
+        Boolean recurse = false; // Boolean | If true, recursively delete items in the workspace.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteWorkspace(visibility, workspaceName).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteWorkspace(visibility, workspaceName, recurse).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteWorkspace(visibility, workspaceName).execute();
+            DeletedEntityResponse result = apiInstance.deleteWorkspace(visibility, workspaceName, recurse).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#deleteWorkspace");
@@ -375,6 +376,7 @@ public class WorkspaceApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
 | **workspaceName** | **String**| The name of the workspace. | |
+| **recurse** | **Boolean**| If true, recursively delete items in the workspace. | [optional] [default to false] |
 
 ### Return type
 

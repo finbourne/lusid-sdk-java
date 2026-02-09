@@ -844,11 +844,11 @@ public class WorkspaceApi {
     public APIdeleteItemRequest deleteItem(String visibility, String workspaceName, String groupName, String itemName) {
         return new APIdeleteItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, final ApiCallback _callback) throws ApiException {
-        return deleteWorkspaceCall(visibility, workspaceName,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, Boolean recurse, final ApiCallback _callback) throws ApiException {
+        return deleteWorkspaceCall(visibility, workspaceName, recurse,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, Boolean recurse, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -875,6 +875,10 @@ public class WorkspaceApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (recurse != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recurse", recurse));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -897,7 +901,7 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteWorkspaceValidateBeforeCall(String visibility, String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteWorkspaceValidateBeforeCall(String visibility, String workspaceName, Boolean recurse, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'visibility' is set
         if (visibility == null) {
             throw new ApiException("Missing the required parameter 'visibility' when calling deleteWorkspace(Async)");
@@ -908,34 +912,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteWorkspace(Async)");
         }
 
-        return deleteWorkspaceCall(visibility, workspaceName, _callback, opts);
+        return deleteWorkspaceCall(visibility, workspaceName, recurse, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName) throws ApiException {
-        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName, Boolean recurse) throws ApiException {
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, recurse, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName, Boolean recurse, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, recurse, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, Boolean recurse, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, recurse, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, Boolean recurse, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, _callback, opts);
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, recurse, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -944,10 +948,21 @@ public class WorkspaceApi {
     public class APIdeleteWorkspaceRequest {
         private final String visibility;
         private final String workspaceName;
+        private Boolean recurse;
 
         private APIdeleteWorkspaceRequest(String visibility, String workspaceName) {
             this.visibility = visibility;
             this.workspaceName = workspaceName;
+        }
+
+        /**
+         * Set recurse
+         * @param recurse If true, recursively delete items in the workspace. (optional, default to false)
+         * @return APIdeleteWorkspaceRequest
+         */
+        public APIdeleteWorkspaceRequest recurse(Boolean recurse) {
+            this.recurse = recurse;
+            return this;
         }
 
         /**
@@ -964,7 +979,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteWorkspaceCall(visibility, workspaceName, _callback);
+            return deleteWorkspaceCall(visibility, workspaceName, recurse, _callback);
         }
 
         /**
@@ -980,7 +995,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName, recurse);
             return localVarResp.getData();
         }
 
@@ -997,7 +1012,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName, recurse, opts);
             return localVarResp.getData();
         }
 
@@ -1014,7 +1029,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteWorkspaceWithHttpInfo(visibility, workspaceName);
+            return deleteWorkspaceWithHttpInfo(visibility, workspaceName, recurse);
         }
 
         /**
@@ -1030,7 +1045,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteWorkspaceWithHttpInfo(visibility, workspaceName, opts);
+            return deleteWorkspaceWithHttpInfo(visibility, workspaceName, recurse, opts);
         }
 
         /**
@@ -1047,7 +1062,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteWorkspaceAsync(visibility, workspaceName, _callback);
+            return deleteWorkspaceAsync(visibility, workspaceName, recurse, _callback);
         }
 
         /**
@@ -1064,7 +1079,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteWorkspaceAsync(visibility, workspaceName, _callback, opts);
+            return deleteWorkspaceAsync(visibility, workspaceName, recurse, _callback, opts);
         }
     }
 
