@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.SettlementConfigurationMethodOverride;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,6 +62,10 @@ public class SettlementConfigurationCategory {
   public static final String SERIALIZED_NAME_CALCULATE_IN_LIEU_SETTLEMENT_AMOUNT = "calculateInLieuSettlementAmount";
   @SerializedName(SERIALIZED_NAME_CALCULATE_IN_LIEU_SETTLEMENT_AMOUNT)
   private Boolean calculateInLieuSettlementAmount;
+
+  public static final String SERIALIZED_NAME_METHOD_OVERRIDE = "methodOverride";
+  @SerializedName(SERIALIZED_NAME_METHOD_OVERRIDE)
+  private SettlementConfigurationMethodOverride methodOverride;
 
   public SettlementConfigurationCategory() {
   }
@@ -128,6 +133,27 @@ public class SettlementConfigurationCategory {
   }
 
 
+  public SettlementConfigurationCategory methodOverride(SettlementConfigurationMethodOverride methodOverride) {
+    
+    this.methodOverride = methodOverride;
+    return this;
+  }
+
+   /**
+   * Get methodOverride
+   * @return methodOverride
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementConfigurationMethodOverride getMethodOverride() {
+    return methodOverride;
+  }
+
+
+  public void setMethodOverride(SettlementConfigurationMethodOverride methodOverride) {
+    this.methodOverride = methodOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +166,8 @@ public class SettlementConfigurationCategory {
     SettlementConfigurationCategory settlementConfigurationCategory = (SettlementConfigurationCategory) o;
     return Objects.equals(this.method, settlementConfigurationCategory.method) &&
         Objects.equals(this.calculateInstructionToPortfolioRate, settlementConfigurationCategory.calculateInstructionToPortfolioRate) &&
-        Objects.equals(this.calculateInLieuSettlementAmount, settlementConfigurationCategory.calculateInLieuSettlementAmount);
+        Objects.equals(this.calculateInLieuSettlementAmount, settlementConfigurationCategory.calculateInLieuSettlementAmount) &&
+        Objects.equals(this.methodOverride, settlementConfigurationCategory.methodOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +176,7 @@ public class SettlementConfigurationCategory {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, calculateInstructionToPortfolioRate, calculateInLieuSettlementAmount);
+    return Objects.hash(method, calculateInstructionToPortfolioRate, calculateInLieuSettlementAmount, methodOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +193,7 @@ public class SettlementConfigurationCategory {
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    calculateInstructionToPortfolioRate: ").append(toIndentedString(calculateInstructionToPortfolioRate)).append("\n");
     sb.append("    calculateInLieuSettlementAmount: ").append(toIndentedString(calculateInLieuSettlementAmount)).append("\n");
+    sb.append("    methodOverride: ").append(toIndentedString(methodOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +219,7 @@ public class SettlementConfigurationCategory {
     openapiFields.add("method");
     openapiFields.add("calculateInstructionToPortfolioRate");
     openapiFields.add("calculateInLieuSettlementAmount");
+    openapiFields.add("methodOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -211,6 +240,10 @@ public class SettlementConfigurationCategory {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
+      }
+      // validate the optional field `methodOverride`
+      if (jsonObj.get("methodOverride") != null && !jsonObj.get("methodOverride").isJsonNull()) {
+        SettlementConfigurationMethodOverride.validateJsonElement(jsonObj.get("methodOverride"));
       }
   }
 
