@@ -31,6 +31,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.ResourceListOfInvestorRecord;
+import com.finbourne.lusid.model.ResourceListOfRelationship;
 import com.finbourne.lusid.model.UpsertInvestorRecordRequest;
 import com.finbourne.lusid.model.UpsertInvestorRecordsResponse;
 
@@ -666,6 +667,331 @@ public class InvestorRecordsApi {
      */
     public APIgetInvestorRecordRequest getInvestorRecord(String identifierType, String identifierValue, String scope, String identifierScope) {
         return new APIgetInvestorRecordRequest(identifierType, identifierValue, scope, identifierScope);
+    }
+    private okhttp3.Call getInvestorRecordRelationshipsCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getInvestorRecordRelationshipsCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInvestorRecordRelationshipsCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}/relationships"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (identifierTypes != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "identifierTypes", identifierTypes));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInvestorRecordRelationshipsValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling getInvestorRecordRelationships(Async)");
+        }
+
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling getInvestorRecordRelationships(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getInvestorRecordRelationships(Async)");
+        }
+
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling getInvestorRecordRelationships(Async)");
+        }
+
+        return getInvestorRecordRelationshipsCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfRelationship> getInvestorRecordRelationshipsWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
+        okhttp3.Call localVarCall = getInvestorRecordRelationshipsValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelationship> getInvestorRecordRelationshipsWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInvestorRecordRelationshipsValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getInvestorRecordRelationshipsAsync(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInvestorRecordRelationshipsValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInvestorRecordRelationshipsAsync(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInvestorRecordRelationshipsValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetInvestorRecordRelationshipsRequest {
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> identifierTypes;
+
+        private APIgetInvestorRecordRelationshipsRequest(String identifierType, String identifierValue, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetInvestorRecordRelationshipsRequest
+         */
+        public APIgetInvestorRecordRelationshipsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. (optional)
+         * @return APIgetInvestorRecordRelationshipsRequest
+         */
+        public APIgetInvestorRecordRelationshipsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter relationships. Users should provide null or empty string for this field until further notice. (optional)
+         * @return APIgetInvestorRecordRelationshipsRequest
+         */
+        public APIgetInvestorRecordRelationshipsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set identifierTypes
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @return APIgetInvestorRecordRelationshipsRequest
+         */
+        public APIgetInvestorRecordRelationshipsRequest identifierTypes(List<String> identifierTypes) {
+            this.identifierTypes = identifierTypes;
+            return this;
+        }
+
+        /**
+         * Build call for getInvestorRecordRelationships
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getInvestorRecordRelationshipsCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute() throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getInvestorRecordRelationshipsWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getInvestorRecordRelationshipsWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
+            return getInvestorRecordRelationshipsWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInvestorRecordRelationshipsWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, opts);
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
+            return getInvestorRecordRelationshipsAsync(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getInvestorRecordRelationships request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInvestorRecordRelationshipsAsync(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetInvestorRecordRelationships: Get Investor Record relationships
+     * Get relationships for a particular Investor Record.
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
+     * @return APIgetInvestorRecordRelationshipsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The relationships for the specified investor record. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetInvestorRecordRelationshipsRequest getInvestorRecordRelationships(String identifierType, String identifierValue, String scope, String identifierScope) {
+        return new APIgetInvestorRecordRelationshipsRequest(identifierType, identifierValue, scope, identifierScope);
     }
     private okhttp3.Call listAllInvestorRecordsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         return listAllInvestorRecordsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
