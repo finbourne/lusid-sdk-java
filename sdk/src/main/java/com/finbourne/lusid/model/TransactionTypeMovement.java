@@ -96,6 +96,10 @@ public class TransactionTypeMovement {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_MODE)
   private String settlementMode;
 
+  public static final String SERIALIZED_NAME_CALCULATE_TRADE_DATE_TO_SETTLEMENT_FX_PN_L = "calculateTradeDateToSettlementFxPnL";
+  @SerializedName(SERIALIZED_NAME_CALCULATE_TRADE_DATE_TO_SETTLEMENT_FX_PN_L)
+  private Boolean calculateTradeDateToSettlementFxPnL;
+
   public TransactionTypeMovement() {
   }
 
@@ -333,6 +337,27 @@ public class TransactionTypeMovement {
   }
 
 
+  public TransactionTypeMovement calculateTradeDateToSettlementFxPnL(Boolean calculateTradeDateToSettlementFxPnL) {
+    
+    this.calculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
+    return this;
+  }
+
+   /**
+   * Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement.
+   * @return calculateTradeDateToSettlementFxPnL
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCalculateTradeDateToSettlementFxPnL() {
+    return calculateTradeDateToSettlementFxPnL;
+  }
+
+
+  public void setCalculateTradeDateToSettlementFxPnL(Boolean calculateTradeDateToSettlementFxPnL) {
+    this.calculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -352,7 +377,8 @@ public class TransactionTypeMovement {
         Objects.equals(this.movementOptions, transactionTypeMovement.movementOptions) &&
         Objects.equals(this.settlementDateOverride, transactionTypeMovement.settlementDateOverride) &&
         Objects.equals(this.condition, transactionTypeMovement.condition) &&
-        Objects.equals(this.settlementMode, transactionTypeMovement.settlementMode);
+        Objects.equals(this.settlementMode, transactionTypeMovement.settlementMode) &&
+        Objects.equals(this.calculateTradeDateToSettlementFxPnL, transactionTypeMovement.calculateTradeDateToSettlementFxPnL);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -361,7 +387,7 @@ public class TransactionTypeMovement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode);
+    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode, calculateTradeDateToSettlementFxPnL);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -385,6 +411,7 @@ public class TransactionTypeMovement {
     sb.append("    settlementDateOverride: ").append(toIndentedString(settlementDateOverride)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    settlementMode: ").append(toIndentedString(settlementMode)).append("\n");
+    sb.append("    calculateTradeDateToSettlementFxPnL: ").append(toIndentedString(calculateTradeDateToSettlementFxPnL)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -417,6 +444,7 @@ public class TransactionTypeMovement {
     openapiFields.add("settlementDateOverride");
     openapiFields.add("condition");
     openapiFields.add("settlementMode");
+    openapiFields.add("calculateTradeDateToSettlementFxPnL");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

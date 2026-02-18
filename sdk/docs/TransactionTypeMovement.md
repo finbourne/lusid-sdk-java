@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **settlementDateOverride** | **String** | Optional property key that must be in the Transaction domain when specified. When the movement is processed and the transaction has this property set to a valid date, then the property value will override the SettlementDate of the transaction. | [optional] [default to String]
 **condition** | **String** | The condition that the transaction must satisfy to generate the movement, such as: Portfolio.BaseCurrency eq &#39;GBP&#39;. The condition can contain fields and properties from transactions and portfolios. If no condition is provided, the movement will apply for all transactions of this type. | [optional] [default to String]
 **settlementMode** | **String** | Configures how movements should settle. Allowed values: &#39;Internal&#39; and &#39;External&#39;. A movement with &#39;Internal&#39; settlement mode will settle automatically on the contractual settlement date regardlesss of portfolio configuration or settlement instruction. An &#39;External&#39; movement can be settled automatically or by a settlement instruction. | [optional] [default to String]
+**calculateTradeDateToSettlementFxPnL** | **Boolean** | Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.TransactionTypeMovement;
@@ -31,6 +32,7 @@ Integer Direction = new Integer("100.00");
 @jakarta.annotation.Nullable String SettlementDateOverride = "example SettlementDateOverride";
 @jakarta.annotation.Nullable String Condition = "example Condition";
 @jakarta.annotation.Nullable String SettlementMode = "example SettlementMode";
+@jakarta.annotation.Nullable Boolean CalculateTradeDateToSettlementFxPnL = true;
 
 
 TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMovement()
@@ -43,7 +45,8 @@ TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMov
     .MovementOptions(MovementOptions)
     .SettlementDateOverride(SettlementDateOverride)
     .Condition(Condition)
-    .SettlementMode(SettlementMode);
+    .SettlementMode(SettlementMode)
+    .CalculateTradeDateToSettlementFxPnL(CalculateTradeDateToSettlementFxPnL);
 ```
 
 

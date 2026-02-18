@@ -67,6 +67,10 @@ public class SettlementConfigurationCategory {
   @SerializedName(SERIALIZED_NAME_METHOD_OVERRIDE)
   private SettlementConfigurationMethodOverride methodOverride;
 
+  public static final String SERIALIZED_NAME_CALCULATE_TRADE_DATE_TO_SETTLEMENT_FX_PN_L = "calculateTradeDateToSettlementFxPnL";
+  @SerializedName(SERIALIZED_NAME_CALCULATE_TRADE_DATE_TO_SETTLEMENT_FX_PN_L)
+  private Boolean calculateTradeDateToSettlementFxPnL;
+
   public SettlementConfigurationCategory() {
   }
 
@@ -154,6 +158,27 @@ public class SettlementConfigurationCategory {
   }
 
 
+  public SettlementConfigurationCategory calculateTradeDateToSettlementFxPnL(Boolean calculateTradeDateToSettlementFxPnL) {
+    
+    this.calculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
+    return this;
+  }
+
+   /**
+   * An optional flag that allows for the calculation of the in lieu amount for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified.
+   * @return calculateTradeDateToSettlementFxPnL
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCalculateTradeDateToSettlementFxPnL() {
+    return calculateTradeDateToSettlementFxPnL;
+  }
+
+
+  public void setCalculateTradeDateToSettlementFxPnL(Boolean calculateTradeDateToSettlementFxPnL) {
+    this.calculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,7 +192,8 @@ public class SettlementConfigurationCategory {
     return Objects.equals(this.method, settlementConfigurationCategory.method) &&
         Objects.equals(this.calculateInstructionToPortfolioRate, settlementConfigurationCategory.calculateInstructionToPortfolioRate) &&
         Objects.equals(this.calculateInLieuSettlementAmount, settlementConfigurationCategory.calculateInLieuSettlementAmount) &&
-        Objects.equals(this.methodOverride, settlementConfigurationCategory.methodOverride);
+        Objects.equals(this.methodOverride, settlementConfigurationCategory.methodOverride) &&
+        Objects.equals(this.calculateTradeDateToSettlementFxPnL, settlementConfigurationCategory.calculateTradeDateToSettlementFxPnL);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +202,7 @@ public class SettlementConfigurationCategory {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method, calculateInstructionToPortfolioRate, calculateInLieuSettlementAmount, methodOverride);
+    return Objects.hash(method, calculateInstructionToPortfolioRate, calculateInLieuSettlementAmount, methodOverride, calculateTradeDateToSettlementFxPnL);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +220,7 @@ public class SettlementConfigurationCategory {
     sb.append("    calculateInstructionToPortfolioRate: ").append(toIndentedString(calculateInstructionToPortfolioRate)).append("\n");
     sb.append("    calculateInLieuSettlementAmount: ").append(toIndentedString(calculateInLieuSettlementAmount)).append("\n");
     sb.append("    methodOverride: ").append(toIndentedString(methodOverride)).append("\n");
+    sb.append("    calculateTradeDateToSettlementFxPnL: ").append(toIndentedString(calculateTradeDateToSettlementFxPnL)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,6 +247,7 @@ public class SettlementConfigurationCategory {
     openapiFields.add("calculateInstructionToPortfolioRate");
     openapiFields.add("calculateInLieuSettlementAmount");
     openapiFields.add("methodOverride");
+    openapiFields.add("calculateTradeDateToSettlementFxPnL");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

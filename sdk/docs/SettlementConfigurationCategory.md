@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **calculateInstructionToPortfolioRate** | **Boolean** | An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified. | [optional] [default to Boolean]
 **calculateInLieuSettlementAmount** | **Boolean** | An optional flag that allows for the calculation of the in lieu amount for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified. | [optional] [default to Boolean]
 **methodOverride** | [**SettlementConfigurationMethodOverride**](SettlementConfigurationMethodOverride.md) |  | [optional] [default to SettlementConfigurationMethodOverride]
+**calculateTradeDateToSettlementFxPnL** | **Boolean** | An optional flag that allows for the calculation of the in lieu amount for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.SettlementConfigurationCategory;
@@ -19,13 +20,15 @@ import java.net.URI;
 Boolean CalculateInstructionToPortfolioRate = true;
 Boolean CalculateInLieuSettlementAmount = true;
 SettlementConfigurationMethodOverride MethodOverride = new SettlementConfigurationMethodOverride();
+Boolean CalculateTradeDateToSettlementFxPnL = true;
 
 
 SettlementConfigurationCategory settlementConfigurationCategoryInstance = new SettlementConfigurationCategory()
     .Method(Method)
     .CalculateInstructionToPortfolioRate(CalculateInstructionToPortfolioRate)
     .CalculateInLieuSettlementAmount(CalculateInLieuSettlementAmount)
-    .MethodOverride(MethodOverride);
+    .MethodOverride(MethodOverride)
+    .CalculateTradeDateToSettlementFxPnL(CalculateTradeDateToSettlementFxPnL);
 ```
 
 
