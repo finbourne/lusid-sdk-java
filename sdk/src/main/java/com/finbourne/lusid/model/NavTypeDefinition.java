@@ -113,6 +113,10 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_LEADER_NAV_TYPE_CODE)
   private String leaderNavTypeCode;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_TEMPLATE_SCOPE = "transactionTemplateScope";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TEMPLATE_SCOPE)
+  private String transactionTemplateScope;
+
   public NavTypeDefinition() {
   }
 
@@ -455,6 +459,27 @@ public class NavTypeDefinition {
   }
 
 
+  public NavTypeDefinition transactionTemplateScope(String transactionTemplateScope) {
+    
+    this.transactionTemplateScope = transactionTemplateScope;
+    return this;
+  }
+
+   /**
+   * Get transactionTemplateScope
+   * @return transactionTemplateScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionTemplateScope() {
+    return transactionTemplateScope;
+  }
+
+
+  public void setTransactionTemplateScope(String transactionTemplateScope) {
+    this.transactionTemplateScope = transactionTemplateScope;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -479,7 +504,8 @@ public class NavTypeDefinition {
         Objects.equals(this.transactionTypeScope, navTypeDefinition.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate) &&
         Objects.equals(this.amortisationRuleSetId, navTypeDefinition.amortisationRuleSetId) &&
-        Objects.equals(this.leaderNavTypeCode, navTypeDefinition.leaderNavTypeCode);
+        Objects.equals(this.leaderNavTypeCode, navTypeDefinition.leaderNavTypeCode) &&
+        Objects.equals(this.transactionTemplateScope, navTypeDefinition.transactionTemplateScope);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -488,7 +514,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -517,6 +543,7 @@ public class NavTypeDefinition {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
+    sb.append("    transactionTemplateScope: ").append(toIndentedString(transactionTemplateScope)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -554,6 +581,7 @@ public class NavTypeDefinition {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("leaderNavTypeCode");
+    openapiFields.add("transactionTemplateScope");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -631,6 +659,9 @@ public class NavTypeDefinition {
       }
       if ((jsonObj.get("leaderNavTypeCode") != null && !jsonObj.get("leaderNavTypeCode").isJsonNull()) && !jsonObj.get("leaderNavTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `leaderNavTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("leaderNavTypeCode").toString()));
+      }
+      if ((jsonObj.get("transactionTemplateScope") != null && !jsonObj.get("transactionTemplateScope").isJsonNull()) && !jsonObj.get("transactionTemplateScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionTemplateScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTemplateScope").toString()));
       }
   }
 

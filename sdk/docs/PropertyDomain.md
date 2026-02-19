@@ -97,6 +97,7 @@ PropertyDomain method = PropertyDomain.WORKER;
 PropertyDomain method = PropertyDomain.STAGINGRULESET;
 PropertyDomain method = PropertyDomain.IDENTIFIERDEFINITION;
 PropertyDomain method = PropertyDomain.SETTLEMENTINSTRUCTION;
+PropertyDomain method = PropertyDomain.TRANSACTIONFEE;
 ```
 
 

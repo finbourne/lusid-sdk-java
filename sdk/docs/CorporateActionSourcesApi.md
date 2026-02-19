@@ -592,7 +592,7 @@ public class CorporateActionSourcesApiExample {
 
 ## getInstrumentEvents
 
-> PagedResourceListOfInstrumentEventHolder getInstrumentEvents(scope, code, asAt, limit, page, filter)
+> PagedResourceListOfInstrumentEventHolder getInstrumentEvents(scope, code, asAt, limit, page, filter, timelineScope, timelineCode, closedPeriodId)
 
 [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source.
 
@@ -643,11 +643,14 @@ public class CorporateActionSourcesApiExample {
         Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode and closedPeriodId must also be provided.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope and closedPeriodId must also be provided.
+        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope and timelineCode must also be provided.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter).execute(opts);
+            // PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter).execute();
+            PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CorporateActionSourcesApi#getInstrumentEvents");
@@ -670,6 +673,9 @@ public class CorporateActionSourcesApiExample {
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
 | **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineCode and closedPeriodId must also be provided. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope and closedPeriodId must also be provided. | [optional] |
+| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.   If this is provided, timelineScope and timelineCode must also be provided. | [optional] |
 
 ### Return type
 
