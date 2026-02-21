@@ -35,7 +35,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPortfolioCashLadder**](TransactionPortfoliosApi.md#getPortfolioCashLadder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder |
 | [**getPortfolioCashStatement**](TransactionPortfoliosApi.md#getPortfolioCashStatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement |
 | [**getTransactionHistory**](TransactionPortfoliosApi.md#getTransactionHistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | GetTransactionHistory: Get the history of a transaction |
-| [**getTransactionSettlementStatus**](TransactionPortfoliosApi.md#getTransactionSettlementStatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Gets the Transaction Settlement Status for the requested transaction. |
+| [**getTransactionSettlementStatus**](TransactionPortfoliosApi.md#getTransactionSettlementStatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status |
 | [**getTransactions**](TransactionPortfoliosApi.md#getTransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions |
 | [**getUpsertablePortfolioCashFlows**](TransactionPortfoliosApi.md#getUpsertablePortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
 | [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts |
@@ -3199,9 +3199,9 @@ public class TransactionPortfoliosApiExample {
 
 ## getTransactionSettlementStatus
 
-> TransactionSettlementStatus getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt)
+> TransactionSettlementStatus getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt, propertyKeys)
 
-[EARLY ACCESS] GetTransactionSettlementStatus: Gets the Transaction Settlement Status for the requested transaction.
+[EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status
 
 Gets the Transaction Settlement Status for the requested transaction.
 
@@ -3245,15 +3245,16 @@ public class TransactionPortfoliosApiExample {
 
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
-        String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
-        String transactionId = "transactionId_example"; // String | The id of the transaction
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label for which to get the transaction    settlement status. Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to get the transaction settlement status.    Defaults to return the latest status if not specified.
+        String code = "code_example"; // String | The code of the transaction portfolio. This together with the scope uniquely identifies the transaction portfolio.
+        String transactionId = "transactionId_example"; // String | The ID of the transaction.
+        String effectiveAt = "effectiveAt_example"; // String | The effective date and time or cut label to get the transaction settlement status.   This defaults to the current LUSID system time if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt date and time to get the transaction settlement status.    This defaults to return the latest status if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'SettlementInstruction', 'Instrument' or 'Portfolio' domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or 'SettlementInstruction/strategy/quantsignal'.
         try {
             // uncomment the below to set overrides at the request level
-            // TransactionSettlementStatus result = apiInstance.getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt).execute(opts);
+            // TransactionSettlementStatus result = apiInstance.getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt, propertyKeys).execute(opts);
 
-            TransactionSettlementStatus result = apiInstance.getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt).execute();
+            TransactionSettlementStatus result = apiInstance.getTransactionSettlementStatus(scope, code, transactionId, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getTransactionSettlementStatus");
@@ -3271,10 +3272,11 @@ public class TransactionPortfoliosApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the transaction portfolio. | |
-| **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
-| **transactionId** | **String**| The id of the transaction | |
-| **effectiveAt** | **String**| The effective datetime or cut label for which to get the transaction    settlement status. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to get the transaction settlement status.    Defaults to return the latest status if not specified. | [optional] |
+| **code** | **String**| The code of the transaction portfolio. This together with the scope uniquely identifies the transaction portfolio. | |
+| **transactionId** | **String**| The ID of the transaction. | |
+| **effectiveAt** | **String**| The effective date and time or cut label to get the transaction settlement status.   This defaults to the current LUSID system time if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt date and time to get the transaction settlement status.    This defaults to return the latest status if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. | [optional] |
 
 ### Return type
 

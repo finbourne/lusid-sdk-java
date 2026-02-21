@@ -9424,11 +9424,11 @@ public class TransactionPortfoliosApi {
     public APIgetTransactionHistoryRequest getTransactionHistory(String scope, String code, String transactionId) {
         return new APIgetTransactionHistoryRequest(scope, code, transactionId);
     }
-    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9464,6 +9464,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -9486,7 +9490,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionSettlementStatusValidateBeforeCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionSettlementStatusValidateBeforeCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactionSettlementStatus(Async)");
@@ -9502,34 +9506,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionId' when calling getTransactionSettlementStatus(Async)");
         }
 
-        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, null, new ConfigurationOptions());
+    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, null, opts);
+    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TransactionSettlementStatus> _callback) throws ApiException {
+    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionSettlementStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TransactionSettlementStatus> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionSettlementStatus> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9541,6 +9545,7 @@ public class TransactionPortfoliosApi {
         private final String transactionId;
         private String effectiveAt;
         private OffsetDateTime asAt;
+        private List<String> propertyKeys;
 
         private APIgetTransactionSettlementStatusRequest(String scope, String code, String transactionId) {
             this.scope = scope;
@@ -9550,7 +9555,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label for which to get the transaction    settlement status. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective date and time or cut label to get the transaction settlement status.   This defaults to the current LUSID system time if not specified. (optional)
          * @return APIgetTransactionSettlementStatusRequest
          */
         public APIgetTransactionSettlementStatusRequest effectiveAt(String effectiveAt) {
@@ -9560,11 +9565,21 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to get the transaction settlement status.    Defaults to return the latest status if not specified. (optional)
+         * @param asAt The asAt date and time to get the transaction settlement status.    This defaults to return the latest status if not specified. (optional)
          * @return APIgetTransactionSettlementStatusRequest
          */
         public APIgetTransactionSettlementStatusRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. (optional)
+         * @return APIgetTransactionSettlementStatusRequest
+         */
+        public APIgetTransactionSettlementStatusRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
             return this;
         }
 
@@ -9582,7 +9597,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, _callback);
+            return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -9598,7 +9613,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public TransactionSettlementStatus execute() throws ApiException {
-            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt);
+            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -9615,7 +9630,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public TransactionSettlementStatus execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, opts);
+            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -9632,7 +9647,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<TransactionSettlementStatus> executeWithHttpInfo() throws ApiException {
-            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt);
+            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, propertyKeys);
         }
 
         /**
@@ -9648,7 +9663,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<TransactionSettlementStatus> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, opts);
+            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -9665,7 +9680,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSettlementStatus> _callback) throws ApiException {
-            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, _callback);
+            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -9682,16 +9697,16 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSettlementStatus> _callback, ConfigurationOptions opts) throws ApiException {
-            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
     /**
-     * [EARLY ACCESS] GetTransactionSettlementStatus: Gets the Transaction Settlement Status for the requested transaction.
+     * [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status
      * Gets the Transaction Settlement Status for the requested transaction.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
-     * @param transactionId The id of the transaction (required)
+     * @param code The code of the transaction portfolio. This together with the scope uniquely identifies the transaction portfolio. (required)
+     * @param transactionId The ID of the transaction. (required)
      * @return APIgetTransactionSettlementStatusRequest
      * @http.response.details
      <table summary="Response Details" border="1">
