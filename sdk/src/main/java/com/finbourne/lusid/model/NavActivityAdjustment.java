@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustment {
   /**
-   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity
+   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -58,7 +58,9 @@ public class NavActivityAdjustment {
     
     PORTFOLIOSETTLEMENTINSTRUCTION("PortfolioSettlementInstruction"),
     
-    INSTRUMENTACTIVITY("InstrumentActivity");
+    INSTRUMENTACTIVITY("InstrumentActivity"),
+    
+    QUOTEACTIVITY("QuoteActivity");
 
     private String value;
 
@@ -112,7 +114,7 @@ public class NavActivityAdjustment {
   }
 
    /**
-   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity
+   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -201,6 +203,9 @@ public class NavActivityAdjustment {
           break;
         case "PortfolioTransaction":
           PortfolioTransaction.validateJsonElement(jsonElement);
+          break;
+        case "QuoteActivity":
+          QuoteActivity.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `navActivityAdjustmentType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

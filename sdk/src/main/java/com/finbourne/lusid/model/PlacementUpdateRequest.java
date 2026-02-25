@@ -66,6 +66,18 @@ public class PlacementUpdateRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
+  public static final String SERIALIZED_NAME_LIMIT_PRICE = "limitPrice";
+  @SerializedName(SERIALIZED_NAME_LIMIT_PRICE)
+  private java.math.BigDecimal limitPrice;
+
+  public static final String SERIALIZED_NAME_STOP_PRICE = "stopPrice";
+  @SerializedName(SERIALIZED_NAME_STOP_PRICE)
+  private java.math.BigDecimal stopPrice;
+
   public static final String SERIALIZED_NAME_COUNTERPARTY = "counterparty";
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY)
   private String counterparty;
@@ -152,6 +164,69 @@ public class PlacementUpdateRequest {
   }
 
 
+  public PlacementUpdateRequest type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The type of this placement (Market, Limit, etc).
+   * @return type
+  **/
+  @jakarta.annotation.Nullable
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
+  public PlacementUpdateRequest limitPrice(java.math.BigDecimal limitPrice) {
+    
+    this.limitPrice = limitPrice;
+    return this;
+  }
+
+   /**
+   * The optional price, as currency and amount, associated with this placement.
+   * @return limitPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getLimitPrice() {
+    return limitPrice;
+  }
+
+
+  public void setLimitPrice(java.math.BigDecimal limitPrice) {
+    this.limitPrice = limitPrice;
+  }
+
+
+  public PlacementUpdateRequest stopPrice(java.math.BigDecimal stopPrice) {
+    
+    this.stopPrice = stopPrice;
+    return this;
+  }
+
+   /**
+   * The optional price, as currency and amount, associated with this placement.
+   * @return stopPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getStopPrice() {
+    return stopPrice;
+  }
+
+
+  public void setStopPrice(java.math.BigDecimal stopPrice) {
+    this.stopPrice = stopPrice;
+  }
+
+
   public PlacementUpdateRequest counterparty(String counterparty) {
     
     this.counterparty = counterparty;
@@ -228,6 +303,9 @@ public class PlacementUpdateRequest {
     return Objects.equals(this.id, placementUpdateRequest.id) &&
         (this.quantity.compareTo(placementUpdateRequest.getQuantity()) == 0) &&
         Objects.equals(this.properties, placementUpdateRequest.properties) &&
+        Objects.equals(this.type, placementUpdateRequest.type) &&
+        (this.limitPrice.compareTo(placementUpdateRequest.getLimitPrice()) == 0) &&
+        (this.stopPrice.compareTo(placementUpdateRequest.getStopPrice()) == 0) &&
         Objects.equals(this.counterparty, placementUpdateRequest.counterparty) &&
         Objects.equals(this.executionSystem, placementUpdateRequest.executionSystem) &&
         Objects.equals(this.entryType, placementUpdateRequest.entryType);
@@ -239,7 +317,7 @@ public class PlacementUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, properties, counterparty, executionSystem, entryType);
+    return Objects.hash(id, quantity, properties, type, limitPrice, stopPrice, counterparty, executionSystem, entryType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -256,6 +334,9 @@ public class PlacementUpdateRequest {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
+    sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
     sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    executionSystem: ").append(toIndentedString(executionSystem)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
@@ -284,6 +365,9 @@ public class PlacementUpdateRequest {
     openapiFields.add("id");
     openapiFields.add("quantity");
     openapiFields.add("properties");
+    openapiFields.add("type");
+    openapiFields.add("limitPrice");
+    openapiFields.add("stopPrice");
     openapiFields.add("counterparty");
     openapiFields.add("executionSystem");
     openapiFields.add("entryType");
@@ -315,6 +399,9 @@ public class PlacementUpdateRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
       if ((jsonObj.get("counterparty") != null && !jsonObj.get("counterparty").isJsonNull()) && !jsonObj.get("counterparty").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `counterparty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("counterparty").toString()));
       }

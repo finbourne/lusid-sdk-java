@@ -29,7 +29,9 @@ public enum NavActivityAdjustmentType {
   
   PORTFOLIOSETTLEMENTINSTRUCTION("PortfolioSettlementInstruction"),
   
-  INSTRUMENTACTIVITY("InstrumentActivity");
+  INSTRUMENTACTIVITY("InstrumentActivity"),
+  
+  QUOTEACTIVITY("QuoteActivity");
 
   private String value;
 

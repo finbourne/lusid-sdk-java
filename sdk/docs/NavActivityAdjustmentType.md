@@ -17,6 +17,7 @@ import java.net.URI;
 NavActivityAdjustmentType method = NavActivityAdjustmentType.PORTFOLIOTRANSACTION;
 NavActivityAdjustmentType method = NavActivityAdjustmentType.PORTFOLIOSETTLEMENTINSTRUCTION;
 NavActivityAdjustmentType method = NavActivityAdjustmentType.INSTRUMENTACTIVITY;
+NavActivityAdjustmentType method = NavActivityAdjustmentType.QUOTEACTIVITY;
 ```
 
 

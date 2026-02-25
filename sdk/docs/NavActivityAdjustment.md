@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**navActivityAdjustmentType** | **String** | . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity | [default to String]
+**navActivityAdjustmentType** | **String** | . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity | [default to String]
 
 ```java
 import com.finbourne.lusid.model.NavActivityAdjustment;

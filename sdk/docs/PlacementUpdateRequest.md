@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this placement. | [optional] [default to Map<String, PerpetualProperty>]
+**type** | **String** | The type of this placement (Market, Limit, etc). | [optional] [default to String]
+**limitPrice** | **java.math.BigDecimal** | The optional price, as currency and amount, associated with this placement. | [optional] [default to java.math.BigDecimal]
+**stopPrice** | **java.math.BigDecimal** | The optional price, as currency and amount, associated with this placement. | [optional] [default to java.math.BigDecimal]
 **counterparty** | **String** | Optionally specifies the market entity this placement is placed with. | [optional] [default to String]
 **executionSystem** | **String** | Optionally specifies the execution system in use. | [optional] [default to String]
 **entryType** | **String** | Optionally specifies the entry type of this placement. | [optional] [default to String]
@@ -21,6 +24,9 @@ import java.net.URI;
 ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+@jakarta.annotation.Nullable String Type = "example Type";
+@jakarta.annotation.Nullable java.math.BigDecimal LimitPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal StopPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String Counterparty = "example Counterparty";
 @jakarta.annotation.Nullable String ExecutionSystem = "example ExecutionSystem";
 @jakarta.annotation.Nullable String EntryType = "example EntryType";
@@ -30,6 +36,9 @@ PlacementUpdateRequest placementUpdateRequestInstance = new PlacementUpdateReque
     .Id(Id)
     .Quantity(Quantity)
     .Properties(Properties)
+    .Type(Type)
+    .LimitPrice(LimitPrice)
+    .StopPrice(StopPrice)
     .Counterparty(Counterparty)
     .ExecutionSystem(ExecutionSystem)
     .EntryType(EntryType);

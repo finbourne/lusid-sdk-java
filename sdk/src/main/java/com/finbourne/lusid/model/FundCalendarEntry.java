@@ -95,7 +95,7 @@ public class FundCalendarEntry {
   private OffsetDateTime asAt;
 
   /**
-   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
+   * The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
    */
   @JsonAdapter(EntryTypeEnum.Adapter.class)
   public enum EntryTypeEnum {
@@ -376,7 +376,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
+   * The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
    * @return entryType
   **/
   @jakarta.annotation.Nonnull
@@ -397,7 +397,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;.
+   * The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;.
    * @return status
   **/
   @jakarta.annotation.Nullable
@@ -418,7 +418,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * Set to true if that closed period shoould have the clear down applied.
+   * Set to true if that closed period should have the clear down applied.
    * @return applyClearDown
   **/
   @jakarta.annotation.Nonnull
