@@ -1,12 +1,12 @@
 # com.finbourne.lusid.model.BlockRequest
-A request to create or update an Order.
+A request to create or update a Block.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**orderIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The related order ids. | [default to List<ResourceId>]
+**orderIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The related order ids. | [optional] [default to List<ResourceId>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this block. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
 **quantity** | **java.math.BigDecimal** | The total quantity of given instrument ordered. | [default to java.math.BigDecimal]
@@ -25,7 +25,7 @@ import java.lang.System;
 import java.net.URI;
 
 ResourceId Id = new ResourceId();
-List<ResourceId> OrderIds = new List<ResourceId>();
+@jakarta.annotation.Nullable List<ResourceId> OrderIds = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");

@@ -25,6 +25,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.AccessMetadataOperation;
+import com.finbourne.lusid.model.AccessMetadataValue;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.InvestorRecord;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -342,6 +344,605 @@ public class InvestorRecordsApi {
      */
     public APIdeleteInvestorRecordRequest deleteInvestorRecord(String identifierType, String identifierValue, String scope, String identifierScope) {
         return new APIdeleteInvestorRecordRequest(identifierType, identifierValue, scope, identifierScope);
+    }
+    private okhttp3.Call deleteInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return deleteInvestorRecordAccessMetadataCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}/metadata/{metadataKey}"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()))
+            .replace("{" + "metadataKey" + "}", localVarApiClient.escapeString(metadataKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (effectiveUntil != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveUntil", effectiveUntil));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteInvestorRecordAccessMetadataValidateBeforeCall(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling deleteInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling deleteInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'metadataKey' is set
+        if (metadataKey == null) {
+            throw new ApiException("Missing the required parameter 'metadataKey' when calling deleteInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling deleteInvestorRecordAccessMetadata(Async)");
+        }
+
+        return deleteInvestorRecordAccessMetadataCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteInvestorRecordAccessMetadataRequest {
+        private final String identifierType;
+        private final String identifierValue;
+        private final String metadataKey;
+        private final String scope;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIdeleteInvestorRecordAccessMetadataRequest(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.metadataKey = metadataKey;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective date to delete at, if this is not supplied, it will delete all data found (optional)
+         * @return APIdeleteInvestorRecordAccessMetadataRequest
+         */
+        public APIdeleteInvestorRecordAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIdeleteInvestorRecordAccessMetadataRequest
+         */
+        public APIdeleteInvestorRecordAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for deleteInvestorRecordAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInvestorRecordAccessMetadataCall(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, opts);
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteInvestorRecordAccessMetadataAsync(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteInvestorRecordAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInvestorRecordAccessMetadataAsync(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] DeleteInvestorRecordAccessMetadata: Delete an Investor Record Access Metadata entry.
+     * Deletes the Investor Record Access Metadata entry that exactly matches the provided identifier parts.     It is important to always check to verify success (or failure).
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param metadataKey Key of the metadata entry to delete (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
+     * @return APIdeleteInvestorRecordAccessMetadataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteInvestorRecordAccessMetadataRequest deleteInvestorRecordAccessMetadata(String identifierType, String identifierValue, String metadataKey, String scope, String identifierScope) {
+        return new APIdeleteInvestorRecordAccessMetadataRequest(identifierType, identifierValue, metadataKey, scope, identifierScope);
+    }
+    private okhttp3.Call getAllInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAllInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}/metadata"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllInvestorRecordAccessMetadataValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling getAllInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling getAllInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getAllInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling getAllInvestorRecordAccessMetadata(Async)");
+        }
+
+        return getAllInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getAllInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getAllInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String scope, String identifierScope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetAllInvestorRecordAccessMetadataRequest {
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAllInvestorRecordAccessMetadataRequest(String identifierType, String identifierValue, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllInvestorRecordAccessMetadataRequest
+         */
+        public APIgetAllInvestorRecordAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Access Metadata (optional)
+         * @return APIgetAllInvestorRecordAccessMetadataRequest
+         */
+        public APIgetAllInvestorRecordAccessMetadataRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAllInvestorRecordAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return getAllInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return getAllInvestorRecordAccessMetadataAsync(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllInvestorRecordAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllInvestorRecordAccessMetadataAsync(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetAllInvestorRecordAccessMetadata: Get Access Metadata rules for an Investor Record.
+     * Pass the Scope and Code of the Investor Record identifier along with the identifier value parameter to retrieve the associated Access Metadata.
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
+     * @return APIgetAllInvestorRecordAccessMetadataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The access metadata for the Investor Record or any failure. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetAllInvestorRecordAccessMetadataRequest getAllInvestorRecordAccessMetadata(String identifierType, String identifierValue, String scope, String identifierScope) {
+        return new APIgetAllInvestorRecordAccessMetadataRequest(identifierType, identifierValue, scope, identifierScope);
     }
     private okhttp3.Call getInvestorRecordCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         return getInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
@@ -1335,6 +1936,313 @@ public class InvestorRecordsApi {
      */
     public APIlistAllInvestorRecordsRequest listAllInvestorRecords() {
         return new APIlistAllInvestorRecordsRequest();
+    }
+    private okhttp3.Call patchInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return patchInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchInvestorRecordAccessMetadataCall(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = accessMetadataOperation;
+
+        // create path and map variables
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}/metadata"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (effectiveUntil != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveUntil", effectiveUntil));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchInvestorRecordAccessMetadataValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling patchInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling patchInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling patchInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling patchInvestorRecordAccessMetadata(Async)");
+        }
+
+        // verify the required parameter 'accessMetadataOperation' is set
+        if (accessMetadataOperation == null) {
+            throw new ApiException("Missing the required parameter 'accessMetadataOperation' when calling patchInvestorRecordAccessMetadata(Async)");
+        }
+
+        return patchInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+        okhttp3.Call localVarCall = patchInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchInvestorRecordAccessMetadataWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, null, opts);
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call patchInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchInvestorRecordAccessMetadataAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchInvestorRecordAccessMetadataValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpatchInvestorRecordAccessMetadataRequest {
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
+        private final List<AccessMetadataOperation> accessMetadataOperation;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIpatchInvestorRecordAccessMetadataRequest(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
+            this.accessMetadataOperation = accessMetadataOperation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to upsert the Access Metadata (optional)
+         * @return APIpatchInvestorRecordAccessMetadataRequest
+         */
+        public APIpatchInvestorRecordAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata (optional)
+         * @return APIpatchInvestorRecordAccessMetadataRequest
+         */
+        public APIpatchInvestorRecordAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for patchInvestorRecordAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchInvestorRecordAccessMetadataCall(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute() throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
+            return patchInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchInvestorRecordAccessMetadataWithHttpInfo(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
+            return patchInvestorRecordAccessMetadataAsync(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchInvestorRecordAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchInvestorRecordAccessMetadataAsync(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] PatchInvestorRecordAccessMetadata: Patch Access Metadata rules for an Investor Record.
+     * Patch Investor Record Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Investor Record Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
+     * @param accessMetadataOperation The Json Patch document (required)
+     * @return APIpatchInvestorRecordAccessMetadataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpatchInvestorRecordAccessMetadataRequest patchInvestorRecordAccessMetadata(String identifierType, String identifierValue, String scope, String identifierScope, List<AccessMetadataOperation> accessMetadataOperation) {
+        return new APIpatchInvestorRecordAccessMetadataRequest(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation);
     }
     private okhttp3.Call upsertInvestorRecordsCall(String successMode, Map<String, UpsertInvestorRecordRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertInvestorRecordsCall(successMode, requestBody,  _callback, new ConfigurationOptions());

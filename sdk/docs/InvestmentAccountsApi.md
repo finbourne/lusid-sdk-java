@@ -6,6 +6,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**deleteInvestmentAccount**](InvestmentAccountsApi.md#deleteInvestmentAccount) | **DELETE** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] DeleteInvestmentAccount: Delete Investment Account |
 | [**getInvestmentAccount**](InvestmentAccountsApi.md#getInvestmentAccount) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] GetInvestmentAccount: Get Investment Account |
+| [**getInvestmentAccountRelationships**](InvestmentAccountsApi.md#getInvestmentAccountRelationships) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetInvestmentAccountRelationships: Get Investment Account relationships |
 | [**listAllInvestmentAccounts**](InvestmentAccountsApi.md#listAllInvestmentAccounts) | **GET** /api/investmentaccounts | [EXPERIMENTAL] ListAllInvestmentAccounts: List Investment Accounts |
 | [**upsertInvestmentAccounts**](InvestmentAccountsApi.md#upsertInvestmentAccounts) | **POST** /api/investmentaccounts/$batchUpsert | [EXPERIMENTAL] UpsertInvestmentAccounts: Upsert Investment Accounts |
 
@@ -207,6 +208,111 @@ public class InvestmentAccountsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested investment account |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getInvestmentAccountRelationships
+
+> ResourceListOfRelationship getInvestmentAccountRelationships(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes)
+
+[EARLY ACCESS] GetInvestmentAccountRelationships: Get Investment Account relationships
+
+Get relationships for a particular Investment Account.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestmentAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestmentAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestmentAccountsApi apiInstance = apiFactory.build(InvestmentAccountsApi.class);
+
+        InvestmentAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestmentAccountsApi.class);
+        String identifierType = "identifierType_example"; // String | Code of the investment account identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investment account under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investment account entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investment account identifier type.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
+        String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getInvestmentAccountRelationships(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
+            ResourceListOfRelationship result = apiInstance.getInvestmentAccountRelationships(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt, filter, identifierTypes).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestmentAccountsApi#getInvestmentAccountRelationships");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| Code of the investment account identifier type. | |
+| **identifierValue** | **String**| Code of the investment account under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investment account entity. | |
+| **identifierScope** | **String**| Scope of the investment account identifier type. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
+| **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+
+### Return type
+
+[**ResourceListOfRelationship**](ResourceListOfRelationship.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The relationships for the specified investment account. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -66,6 +66,10 @@ public class StagedModificationsEntityHrefs {
   @SerializedName(SERIALIZED_NAME_LATEST)
   private URI latest;
 
+  public static final String SERIALIZED_NAME_WHEN_CLOSED = "whenClosed";
+  @SerializedName(SERIALIZED_NAME_WHEN_CLOSED)
+  private URI whenClosed;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -136,6 +140,27 @@ public class StagedModificationsEntityHrefs {
   }
 
 
+  public StagedModificationsEntityHrefs whenClosed(URI whenClosed) {
+    
+    this.whenClosed = whenClosed;
+    return this;
+  }
+
+   /**
+   * The specific Uniform Resource Identifier (URI) for the staged modification after it has been applied.
+   * @return whenClosed
+  **/
+  @jakarta.annotation.Nullable
+  public URI getWhenClosed() {
+    return whenClosed;
+  }
+
+
+  public void setWhenClosed(URI whenClosed) {
+    this.whenClosed = whenClosed;
+  }
+
+
   public StagedModificationsEntityHrefs links(List<Link> links) {
     
     this.links = links;
@@ -178,6 +203,7 @@ public class StagedModificationsEntityHrefs {
     return Objects.equals(this.whenStaged, stagedModificationsEntityHrefs.whenStaged) &&
         Objects.equals(this.preview, stagedModificationsEntityHrefs.preview) &&
         Objects.equals(this.latest, stagedModificationsEntityHrefs.latest) &&
+        Objects.equals(this.whenClosed, stagedModificationsEntityHrefs.whenClosed) &&
         Objects.equals(this.links, stagedModificationsEntityHrefs.links);
   }
 
@@ -187,7 +213,7 @@ public class StagedModificationsEntityHrefs {
 
   @Override
   public int hashCode() {
-    return Objects.hash(whenStaged, preview, latest, links);
+    return Objects.hash(whenStaged, preview, latest, whenClosed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -204,6 +230,7 @@ public class StagedModificationsEntityHrefs {
     sb.append("    whenStaged: ").append(toIndentedString(whenStaged)).append("\n");
     sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
     sb.append("    latest: ").append(toIndentedString(latest)).append("\n");
+    sb.append("    whenClosed: ").append(toIndentedString(whenClosed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -230,6 +257,7 @@ public class StagedModificationsEntityHrefs {
     openapiFields.add("whenStaged");
     openapiFields.add("preview");
     openapiFields.add("latest");
+    openapiFields.add("whenClosed");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -257,6 +285,9 @@ public class StagedModificationsEntityHrefs {
       }
       if ((jsonObj.get("latest") != null && !jsonObj.get("latest").isJsonNull()) && !jsonObj.get("latest").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `latest` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latest").toString()));
+      }
+      if ((jsonObj.get("whenClosed") != null && !jsonObj.get("whenClosed").isJsonNull()) && !jsonObj.get("whenClosed").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `whenClosed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("whenClosed").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

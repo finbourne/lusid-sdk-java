@@ -54,7 +54,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A request to create or update an Order.
+ * A request to create or update a Block.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BlockRequest {
@@ -64,7 +64,7 @@ public class BlockRequest {
 
   public static final String SERIALIZED_NAME_ORDER_IDS = "orderIds";
   @SerializedName(SERIALIZED_NAME_ORDER_IDS)
-  private List<ResourceId> orderIds = new ArrayList<>();
+  private List<ResourceId> orderIds;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -148,7 +148,7 @@ public class BlockRequest {
    * The related order ids.
    * @return orderIds
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ResourceId> getOrderIds() {
     return orderIds;
   }
@@ -479,7 +479,6 @@ public class BlockRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("orderIds");
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
@@ -510,16 +509,20 @@ public class BlockRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
-      // ensure the json data is an array
-      if (!jsonObj.get("orderIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `orderIds` to be an array in the JSON string but got `%s`", jsonObj.get("orderIds").toString()));
-      }
+      if (jsonObj.get("orderIds") != null && !jsonObj.get("orderIds").isJsonNull()) {
+        JsonArray jsonArrayorderIds = jsonObj.getAsJsonArray("orderIds");
+        if (jsonArrayorderIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("orderIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `orderIds` to be an array in the JSON string but got `%s`", jsonObj.get("orderIds").toString()));
+          }
 
-      JsonArray jsonArrayorderIds = jsonObj.getAsJsonArray("orderIds");
-      // validate the required field `orderIds` (array)
-      for (int i = 0; i < jsonArrayorderIds.size(); i++) {
-        ResourceId.validateJsonElement(jsonArrayorderIds.get(i));
-      };
+          // validate the optional field `orderIds` (array)
+          for (int i = 0; i < jsonArrayorderIds.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayorderIds.get(i));
+          };
+        }
+      }
       if (!jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **whenStaged** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for the staged modification change at the time when the change was requested. | [optional] [default to URI]
 **preview** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for the preview of staged modification change once applied. | [optional] [default to URI]
 **latest** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for the staged modification at latest time. | [optional] [default to URI]
+**whenClosed** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for the staged modification after it has been applied. | [optional] [default to URI]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -18,6 +19,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable URI WhenStaged = URI.create("http://example.com/WhenStaged");
 @jakarta.annotation.Nullable URI Preview = URI.create("http://example.com/Preview");
 @jakarta.annotation.Nullable URI Latest = URI.create("http://example.com/Latest");
+@jakarta.annotation.Nullable URI WhenClosed = URI.create("http://example.com/WhenClosed");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -25,6 +27,7 @@ StagedModificationsEntityHrefs stagedModificationsEntityHrefsInstance = new Stag
     .WhenStaged(WhenStaged)
     .Preview(Preview)
     .Latest(Latest)
+    .WhenClosed(WhenClosed)
     .Links(Links);
 ```
 

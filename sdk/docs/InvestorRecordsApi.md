@@ -5,9 +5,12 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteInvestorRecord**](InvestorRecordsApi.md#deleteInvestorRecord) | **DELETE** /api/investorrecords/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record |
+| [**deleteInvestorRecordAccessMetadata**](InvestorRecordsApi.md#deleteInvestorRecordAccessMetadata) | **DELETE** /api/investorrecords/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteInvestorRecordAccessMetadata: Delete an Investor Record Access Metadata entry. |
+| [**getAllInvestorRecordAccessMetadata**](InvestorRecordsApi.md#getAllInvestorRecordAccessMetadata) | **GET** /api/investorrecords/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllInvestorRecordAccessMetadata: Get Access Metadata rules for an Investor Record. |
 | [**getInvestorRecord**](InvestorRecordsApi.md#getInvestorRecord) | **GET** /api/investorrecords/{identifierType}/{identifierValue} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record |
 | [**getInvestorRecordRelationships**](InvestorRecordsApi.md#getInvestorRecordRelationships) | **GET** /api/investorrecords/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetInvestorRecordRelationships: Get Investor Record relationships |
 | [**listAllInvestorRecords**](InvestorRecordsApi.md#listAllInvestorRecords) | **GET** /api/investorrecords | [EARLY ACCESS] ListAllInvestorRecords: List Investor Records |
+| [**patchInvestorRecordAccessMetadata**](InvestorRecordsApi.md#patchInvestorRecordAccessMetadata) | **PATCH** /api/investorrecords/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] PatchInvestorRecordAccessMetadata: Patch Access Metadata rules for an Investor Record. |
 | [**upsertInvestorRecords**](InvestorRecordsApi.md#upsertInvestorRecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Upsert investor records |
 
 
@@ -103,6 +106,210 @@ public class InvestorRecordsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The response from deleting investor record. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteInvestorRecordAccessMetadata
+
+> DeletedEntityResponse deleteInvestorRecordAccessMetadata(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil)
+
+[EARLY ACCESS] DeleteInvestorRecordAccessMetadata: Delete an Investor Record Access Metadata entry.
+
+Deletes the Investor Record Access Metadata entry that exactly matches the provided identifier parts.     It is important to always check to verify success (or failure).
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestorRecordsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestorRecordsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
+
+        InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
+        String identifierType = "identifierType_example"; // String | Code of the investor record identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investor record under specified identifier type's scope and code.
+        String metadataKey = "metadataKey_example"; // String | Key of the metadata entry to delete
+        String scope = "scope_example"; // String | The scope of the investor record entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investor record identifier type.
+        String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
+        OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteInvestorRecordAccessMetadata(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteInvestorRecordAccessMetadata(identifierType, identifierValue, metadataKey, scope, identifierScope, effectiveAt, effectiveUntil).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestorRecordsApi#deleteInvestorRecordAccessMetadata");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| Code of the investor record identifier type. | |
+| **identifierValue** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. | |
+| **metadataKey** | **String**| Key of the metadata entry to delete | |
+| **scope** | **String**| The scope of the investor record entity. | |
+| **identifierScope** | **String**| Scope of the investor record identifier type. | |
+| **effectiveAt** | **String**| The effective date to delete at, if this is not supplied, it will delete all data found | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata | [optional] |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Access Metadata with the given metadataKey has been deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getAllInvestorRecordAccessMetadata
+
+> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getAllInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt)
+
+[EARLY ACCESS] GetAllInvestorRecordAccessMetadata: Get Access Metadata rules for an Investor Record.
+
+Pass the Scope and Code of the Investor Record identifier along with the identifier value parameter to retrieve the associated Access Metadata.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestorRecordsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestorRecordsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
+
+        InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
+        String identifierType = "identifierType_example"; // String | Code of the investor record identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investor record under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investor record entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investor record identifier type.
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
+        try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getAllInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt).execute(opts);
+
+            Map<String, List<AccessMetadataValue>> result = apiInstance.getAllInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestorRecordsApi#getAllInvestorRecordAccessMetadata");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| Code of the investor record identifier type. | |
+| **identifierValue** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investor record entity. | |
+| **identifierScope** | **String**| Scope of the investor record identifier type. | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata | [optional] |
+
+### Return type
+
+[**Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;**](List.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The access metadata for the Investor Record or any failure. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -418,6 +625,109 @@ public class InvestorRecordsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | All existing Investor Records |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## patchInvestorRecordAccessMetadata
+
+> Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; patchInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil)
+
+[EARLY ACCESS] PatchInvestorRecordAccessMetadata: Patch Access Metadata rules for an Investor Record.
+
+Patch Investor Record Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Investor Record Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestorRecordsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestorRecordsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
+
+        InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
+        String identifierType = "identifierType_example"; // String | Code of the investor record identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investor record under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investor record entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investor record identifier type.
+        List<AccessMetadataOperation> accessMetadataOperation = Arrays.asList(); // List<AccessMetadataOperation> | The Json Patch document
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to upsert the Access Metadata
+        OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
+        try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
+            Map<String, List<AccessMetadataValue>> result = apiInstance.patchInvestorRecordAccessMetadata(identifierType, identifierValue, scope, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestorRecordsApi#patchInvestorRecordAccessMetadata");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| Code of the investor record identifier type. | |
+| **identifierValue** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investor record entity. | |
+| **identifierScope** | **String**| Scope of the investor record identifier type. | |
+| **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to upsert the Access Metadata | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional] |
+
+### Return type
+
+[**Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;**](List.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully patched items. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
