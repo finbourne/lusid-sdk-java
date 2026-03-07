@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
 **quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [default to java.math.BigDecimal]
-**state** | **String** | The state of this placement (typically a FIX state; Open, Filled, etc). | [default to String]
+**state** | **String** | The state of this placement (typically a FIX state; Open, Filled, etc). | [optional] [default to String]
 **side** | **String** | The side (Buy, Sell, ...) of this placement. | [default to String]
 **timeInForce** | **String** | The time in force applicable to this placement (GTC, FOK, Day, etc) | [default to String]
 **type** | **String** | The type of this placement (Market, Limit, etc). | [default to String]
@@ -34,7 +34,7 @@ List<ResourceId> BlockIds = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
-String State = "example State";
+@jakarta.annotation.Nullable String State = "example State";
 String Side = "example Side";
 String TimeInForce = "example TimeInForce";
 String Type = "example Type";

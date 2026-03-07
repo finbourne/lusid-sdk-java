@@ -242,6 +242,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**createFee**](docs/FundsApi.md#createfee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee.
 *FundsApi* | [**createFund**](docs/FundsApi.md#createfund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund.
 *FundsApi* | [**createFundV2**](docs/FundsApi.md#createfundv2) | **POST** /api/funds/v2/{scope} | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+*FundsApi* | [**deactivateNavTypes**](docs/FundsApi.md#deactivatenavtypes) | **POST** /api/funds/{scope}/{code}/deactivateNavTypes | [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund.
 *FundsApi* | [**deleteBookmark**](docs/FundsApi.md#deletebookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
 *FundsApi* | [**deleteFee**](docs/FundsApi.md#deletefee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee.
 *FundsApi* | [**deleteFund**](docs/FundsApi.md#deletefund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund.
@@ -328,9 +329,12 @@ Class | Method | HTTP request | Description
 *InstrumentsApi* | [**upsertInstruments**](docs/InstrumentsApi.md#upsertinstruments) | **POST** /api/instruments | UpsertInstruments: Upsert instruments
 *InstrumentsApi* | [**upsertInstrumentsProperties**](docs/InstrumentsApi.md#upsertinstrumentsproperties) | **POST** /api/instruments/$upsertproperties | UpsertInstrumentsProperties: Upsert instruments properties
 *InvestmentAccountsApi* | [**deleteInvestmentAccount**](docs/InvestmentAccountsApi.md#deleteinvestmentaccount) | **DELETE** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] DeleteInvestmentAccount: Delete Investment Account
+*InvestmentAccountsApi* | [**deleteInvestmentAccountAccessMetadata**](docs/InvestmentAccountsApi.md#deleteinvestmentaccountaccessmetadata) | **DELETE** /api/investmentaccounts/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EXPERIMENTAL] DeleteInvestmentAccountAccessMetadata: Delete an Investment Account Access Metadata entry.
+*InvestmentAccountsApi* | [**getAllInvestmentAccountAccessMetadata**](docs/InvestmentAccountsApi.md#getallinvestmentaccountaccessmetadata) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue}/metadata | [EXPERIMENTAL] GetAllInvestmentAccountAccessMetadata: Get Access Metadata rules for an Investment Account.
 *InvestmentAccountsApi* | [**getInvestmentAccount**](docs/InvestmentAccountsApi.md#getinvestmentaccount) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] GetInvestmentAccount: Get Investment Account
 *InvestmentAccountsApi* | [**getInvestmentAccountRelationships**](docs/InvestmentAccountsApi.md#getinvestmentaccountrelationships) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetInvestmentAccountRelationships: Get Investment Account relationships
 *InvestmentAccountsApi* | [**listAllInvestmentAccounts**](docs/InvestmentAccountsApi.md#listallinvestmentaccounts) | **GET** /api/investmentaccounts | [EXPERIMENTAL] ListAllInvestmentAccounts: List Investment Accounts
+*InvestmentAccountsApi* | [**patchInvestmentAccountAccessMetadata**](docs/InvestmentAccountsApi.md#patchinvestmentaccountaccessmetadata) | **PATCH** /api/investmentaccounts/{identifierType}/{identifierValue}/metadata | [EXPERIMENTAL] PatchInvestmentAccountAccessMetadata: Patch Access Metadata rules for an Investment Account.
 *InvestmentAccountsApi* | [**upsertInvestmentAccounts**](docs/InvestmentAccountsApi.md#upsertinvestmentaccounts) | **POST** /api/investmentaccounts/$batchUpsert | [EXPERIMENTAL] UpsertInvestmentAccounts: Upsert Investment Accounts
 *InvestorRecordsApi* | [**deleteInvestorRecord**](docs/InvestorRecordsApi.md#deleteinvestorrecord) | **DELETE** /api/investorrecords/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record
 *InvestorRecordsApi* | [**deleteInvestorRecordAccessMetadata**](docs/InvestorRecordsApi.md#deleteinvestorrecordaccessmetadata) | **DELETE** /api/investorrecords/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteInvestorRecordAccessMetadata: Delete an Investor Record Access Metadata entry.
@@ -1378,6 +1382,7 @@ Class | Method | HTTP request | Description
  - [MultiCurrencyAmounts](docs/MultiCurrencyAmounts.md)
  - [NavActivityAdjustment](docs/NavActivityAdjustment.md)
  - [NavActivityAdjustmentType](docs/NavActivityAdjustmentType.md)
+ - [NavType](docs/NavType.md)
  - [NavTypeDefinition](docs/NavTypeDefinition.md)
  - [NewInstrument](docs/NewInstrument.md)
  - [NextValueInSequenceResponse](docs/NextValueInSequenceResponse.md)

@@ -285,7 +285,7 @@ public class PlacementRequest {
    * The state of this placement (typically a FIX state; Open, Filled, etc).
    * @return state
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getState() {
     return state;
   }
@@ -594,7 +594,6 @@ public class PlacementRequest {
     openapiRequiredFields.add("blockIds");
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("quantity");
-    openapiRequiredFields.add("state");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("timeInForce");
     openapiRequiredFields.add("type");
@@ -637,7 +636,7 @@ public class PlacementRequest {
       for (int i = 0; i < jsonArrayblockIds.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayblockIds.get(i));
       };
-      if (!jsonObj.get("state").isJsonPrimitive()) {
+      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
       if (!jsonObj.get("side").isJsonPrimitive()) {

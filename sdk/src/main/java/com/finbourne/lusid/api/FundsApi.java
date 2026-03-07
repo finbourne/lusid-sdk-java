@@ -1132,6 +1132,274 @@ public class FundsApi {
     public APIcreateFundV2Request createFundV2(String scope, FundDefinitionRequest fundDefinitionRequest) {
         return new APIcreateFundV2Request(scope, fundDefinitionRequest);
     }
+    private okhttp3.Call deactivateNavTypesCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback) throws ApiException {
+        return deactivateNavTypesCall(scope, code, requestBody, deleteMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deactivateNavTypesCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/deactivateNavTypes"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (deleteMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("deleteMode", deleteMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deactivateNavTypesValidateBeforeCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deactivateNavTypes(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deactivateNavTypes(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling deactivateNavTypes(Async)");
+        }
+
+        return deactivateNavTypesCall(scope, code, requestBody, deleteMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Fund> deactivateNavTypesWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode) throws ApiException {
+        okhttp3.Call localVarCall = deactivateNavTypesValidateBeforeCall(scope, code, requestBody, deleteMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> deactivateNavTypesWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deactivateNavTypesValidateBeforeCall(scope, code, requestBody, deleteMode, null, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deactivateNavTypesAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<Fund> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deactivateNavTypesValidateBeforeCall(scope, code, requestBody, deleteMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deactivateNavTypesAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deactivateNavTypesValidateBeforeCall(scope, code, requestBody, deleteMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeactivateNavTypesRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> requestBody;
+        private String deleteMode;
+
+        private APIdeactivateNavTypesRequest(String scope, String code, List<String> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set deleteMode
+         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @return APIdeactivateNavTypesRequest
+         */
+        public APIdeactivateNavTypesRequest deleteMode(String deleteMode) {
+            this.deleteMode = deleteMode;
+            return this;
+        }
+
+        /**
+         * Build call for deactivateNavTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deactivateNavTypesCall(scope, code, requestBody, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deactivateNavTypes request
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute() throws ApiException {
+            ApiResponse<Fund> localVarResp = deactivateNavTypesWithHttpInfo(scope, code, requestBody, deleteMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deactivateNavTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = deactivateNavTypesWithHttpInfo(scope, code, requestBody, deleteMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deactivateNavTypes request with HTTP info returned
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
+            return deactivateNavTypesWithHttpInfo(scope, code, requestBody, deleteMode);
+        }
+
+        /**
+         * Execute deactivateNavTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deactivateNavTypesWithHttpInfo(scope, code, requestBody, deleteMode, opts);
+        }
+
+        /**
+         * Execute deactivateNavTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
+            return deactivateNavTypesAsync(scope, code, requestBody, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deactivateNavTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return deactivateNavTypesAsync(scope, code, requestBody, deleteMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund.
+     * Deactivate the given NAV types on the Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param requestBody The codes of the nav types to be deactivated. (required)
+     * @return APIdeactivateNavTypesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Fund with the specified NAV types deactivated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeactivateNavTypesRequest deactivateNavTypes(String scope, String code, List<String> requestBody) {
+        return new APIdeactivateNavTypesRequest(scope, code, requestBody);
+    }
     private okhttp3.Call deleteBookmarkCall(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return deleteBookmarkCall(scope, code, bookmarkCode, navTypeCode,  _callback, new ConfigurationOptions());
     }

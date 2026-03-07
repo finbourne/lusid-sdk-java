@@ -14,7 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.DayMonth;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.NavTypeDefinition;
+import com.finbourne.lusid.model.NavType;
 import com.finbourne.lusid.model.PortfolioEntityIdWithDetails;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
@@ -122,11 +122,11 @@ public class Fund {
 
   public static final String SERIALIZED_NAME_PRIMARY_NAV_TYPE = "primaryNavType";
   @SerializedName(SERIALIZED_NAME_PRIMARY_NAV_TYPE)
-  private NavTypeDefinition primaryNavType;
+  private NavType primaryNavType;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_NAV_TYPES = "additionalNavTypes";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_NAV_TYPES)
-  private List<NavTypeDefinition> additionalNavTypes;
+  private List<NavType> additionalNavTypes;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -455,7 +455,7 @@ public class Fund {
   }
 
 
-  public Fund primaryNavType(NavTypeDefinition primaryNavType) {
+  public Fund primaryNavType(NavType primaryNavType) {
     
     this.primaryNavType = primaryNavType;
     return this;
@@ -466,23 +466,23 @@ public class Fund {
    * @return primaryNavType
   **/
   @jakarta.annotation.Nullable
-  public NavTypeDefinition getPrimaryNavType() {
+  public NavType getPrimaryNavType() {
     return primaryNavType;
   }
 
 
-  public void setPrimaryNavType(NavTypeDefinition primaryNavType) {
+  public void setPrimaryNavType(NavType primaryNavType) {
     this.primaryNavType = primaryNavType;
   }
 
 
-  public Fund additionalNavTypes(List<NavTypeDefinition> additionalNavTypes) {
+  public Fund additionalNavTypes(List<NavType> additionalNavTypes) {
     
     this.additionalNavTypes = additionalNavTypes;
     return this;
   }
 
-  public Fund addAdditionalNavTypesItem(NavTypeDefinition additionalNavTypesItem) {
+  public Fund addAdditionalNavTypesItem(NavType additionalNavTypesItem) {
     if (this.additionalNavTypes == null) {
       this.additionalNavTypes = new ArrayList<>();
     }
@@ -495,12 +495,12 @@ public class Fund {
    * @return additionalNavTypes
   **/
   @jakarta.annotation.Nullable
-  public List<NavTypeDefinition> getAdditionalNavTypes() {
+  public List<NavType> getAdditionalNavTypes() {
     return additionalNavTypes;
   }
 
 
-  public void setAdditionalNavTypes(List<NavTypeDefinition> additionalNavTypes) {
+  public void setAdditionalNavTypes(List<NavType> additionalNavTypes) {
     this.additionalNavTypes = additionalNavTypes;
   }
 
@@ -785,7 +785,7 @@ public class Fund {
       }
       // validate the optional field `primaryNavType`
       if (jsonObj.get("primaryNavType") != null && !jsonObj.get("primaryNavType").isJsonNull()) {
-        NavTypeDefinition.validateJsonElement(jsonObj.get("primaryNavType"));
+        NavType.validateJsonElement(jsonObj.get("primaryNavType"));
       }
       if (jsonObj.get("additionalNavTypes") != null && !jsonObj.get("additionalNavTypes").isJsonNull()) {
         JsonArray jsonArrayadditionalNavTypes = jsonObj.getAsJsonArray("additionalNavTypes");
@@ -797,7 +797,7 @@ public class Fund {
 
           // validate the optional field `additionalNavTypes` (array)
           for (int i = 0; i < jsonArrayadditionalNavTypes.size(); i++) {
-            NavTypeDefinition.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
+            NavType.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
           };
         }
       }

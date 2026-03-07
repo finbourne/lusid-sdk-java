@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **inceptionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Inception date of the Fund | [default to OffsetDateTime]
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
 **yearEndDate** | [**DayMonth**](DayMonth.md) |  | [optional] [default to DayMonth]
-**primaryNavType** | [**NavTypeDefinition**](NavTypeDefinition.md) |  | [optional] [default to NavTypeDefinition]
-**additionalNavTypes** | [**List&lt;NavTypeDefinition&gt;**](NavTypeDefinition.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavTypeDefinition>]
+**primaryNavType** | [**NavType**](NavType.md) |  | [optional] [default to NavType]
+**additionalNavTypes** | [**List&lt;NavType&gt;**](NavType.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavType>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
@@ -45,8 +45,8 @@ ResourceId AborId = new ResourceId();
 OffsetDateTime InceptionDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer DecimalPlaces = new Integer("100.00");
 DayMonth YearEndDate = new DayMonth();
-NavTypeDefinition PrimaryNavType = new NavTypeDefinition();
-@jakarta.annotation.Nullable List<NavTypeDefinition> AdditionalNavTypes = new List<NavTypeDefinition>();
+NavType PrimaryNavType = new NavType();
+@jakarta.annotation.Nullable List<NavType> AdditionalNavTypes = new List<NavType>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
