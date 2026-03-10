@@ -3308,6 +3308,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfRelationalDataPointResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfRelationalDatasetDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfRelationshipDefinition.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfResourceRecord.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfSequenceDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfStagedModification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfStagedModificationsRequestedChangeInterval.CustomTypeAdapterFactory());
@@ -3538,6 +3539,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResourceListOfTransactionSettlementInstruction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResourceListOfTransactionType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResourceListOfValueType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResourceRecord.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResponseMetaData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResultDataKeyRule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ResultDataSchema.CustomTypeAdapterFactory());
@@ -3783,6 +3785,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertReferencePortfolioConstituentsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertReferencePortfolioConstituentsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertRelationalDataPointRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertResourceRecordRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertResultValuesDataRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertReturnsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertSingleStructuredDataResponse.CustomTypeAdapterFactory());
