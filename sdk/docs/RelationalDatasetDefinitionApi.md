@@ -4,13 +4,13 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#createRelationalDatasetDefinition) | **POST** /api/relationaldatasetdefinitions | [EARLY ACCESS] CreateRelationalDatasetDefinition: Create a Relational Dataset Definition |
-| [**deleteRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#deleteRelationalDatasetDefinition) | **DELETE** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition |
-| [**getRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#getRelationalDatasetDefinition) | **GET** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] GetRelationalDatasetDefinition: Get a Relational Dataset Definition |
-| [**listRelationalDatasetDefinitions**](RelationalDatasetDefinitionApi.md#listRelationalDatasetDefinitions) | **GET** /api/relationaldatasetdefinitions | [EARLY ACCESS] ListRelationalDatasetDefinitions: List Relational Dataset Definitions |
-| [**updateRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDefinition) | **PUT** /api/relationaldatasetdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition |
-| [**updateRelationalDatasetDetails**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDetails) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/details/$update | [EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes |
-| [**updateRelationalDatasetFieldSchema**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetFieldSchema) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/fieldschema/$update | [EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema |
+| [**createRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#createRelationalDatasetDefinition) | **POST** /api/relationaldatasetdefinitions | CreateRelationalDatasetDefinition: Create a Relational Dataset Definition |
+| [**deleteRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#deleteRelationalDatasetDefinition) | **DELETE** /api/relationaldatasetdefinitions/{scope}/{code} | DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition |
+| [**getRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#getRelationalDatasetDefinition) | **GET** /api/relationaldatasetdefinitions/{scope}/{code} | GetRelationalDatasetDefinition: Get a Relational Dataset Definition |
+| [**listRelationalDatasetDefinitions**](RelationalDatasetDefinitionApi.md#listRelationalDatasetDefinitions) | **GET** /api/relationaldatasetdefinitions | ListRelationalDatasetDefinitions: List Relational Dataset Definitions |
+| [**updateRelationalDatasetDefinition**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDefinition) | **PUT** /api/relationaldatasetdefinitions/{scope}/{code} | UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition |
+| [**updateRelationalDatasetDetails**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetDetails) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/details/$update | UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes |
+| [**updateRelationalDatasetFieldSchema**](RelationalDatasetDefinitionApi.md#updateRelationalDatasetFieldSchema) | **POST** /api/relationaldatasetdefinitions/{scope}/{code}/fieldschema/$update | UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema |
 
 
 
@@ -18,7 +18,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > RelationalDatasetDefinition createRelationalDatasetDefinition(createRelationalDatasetDefinitionRequest)
 
-[EARLY ACCESS] CreateRelationalDatasetDefinition: Create a Relational Dataset Definition
+CreateRelationalDatasetDefinition: Create a Relational Dataset Definition
 
 Create a new relational dataset definition.
 
@@ -109,7 +109,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > DeletedEntityResponse deleteRelationalDatasetDefinition(scope, code)
 
-[EARLY ACCESS] DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition
+DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition
 
 Delete a relational dataset definition.  WARNING! This operation is irreversible. Deleting a relational dataset definition will also delete all associated data points.
 
@@ -202,7 +202,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > RelationalDatasetDefinition getRelationalDatasetDefinition(scope, code, asAt)
 
-[EARLY ACCESS] GetRelationalDatasetDefinition: Get a Relational Dataset Definition
+GetRelationalDatasetDefinition: Get a Relational Dataset Definition
 
 Retrieve a relational dataset definition by its identifier.
 
@@ -297,7 +297,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > PagedResourceListOfRelationalDatasetDefinition listRelationalDatasetDefinitions(asAt, page, sortBy, limit, filter)
 
-[EARLY ACCESS] ListRelationalDatasetDefinitions: List Relational Dataset Definitions
+ListRelationalDatasetDefinitions: List Relational Dataset Definitions
 
 List all relational dataset definitions matching particular criteria.
 
@@ -396,7 +396,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > RelationalDatasetDefinition updateRelationalDatasetDefinition(scope, code, updateRelationalDatasetDefinitionRequest)
 
-[EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
+UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
 
 Update an existing relational dataset definition.  Applicable only to the definitions that are not yet in use i.e. there are no DataPoints associated with this definition.
 
@@ -491,7 +491,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > RelationalDatasetDefinition updateRelationalDatasetDetails(scope, code, updateRelationalDatasetDetails)
 
-[EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
+UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
 
 Update an existing relational dataset definition.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
 
@@ -586,7 +586,7 @@ public class RelationalDatasetDefinitionApiExample {
 
 > RelationalDatasetDefinition updateRelationalDatasetFieldSchema(scope, code, updateRelationalDatasetFieldSchema)
 
-[EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
+UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
 
 Update an existing relational dataset definition with the new field schema.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
 

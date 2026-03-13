@@ -4,9 +4,9 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**batchDeleteRelationalData**](RelationalDatasetsApi.md#batchDeleteRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchDelete | [EXPERIMENTAL] BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition. |
-| [**batchUpsertRelationalData**](RelationalDatasetsApi.md#batchUpsertRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchUpsert | [EXPERIMENTAL] BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition. |
-| [**queryRelationalData**](RelationalDatasetsApi.md#queryRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$query | [EXPERIMENTAL] QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition. |
+| [**batchDeleteRelationalData**](RelationalDatasetsApi.md#batchDeleteRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchDelete | BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition. |
+| [**batchUpsertRelationalData**](RelationalDatasetsApi.md#batchUpsertRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$batchUpsert | BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition. |
+| [**queryRelationalData**](RelationalDatasetsApi.md#queryRelationalData) | **POST** /api/relationaldatasets/{relationalDatasetDefinitionScope}/{relationalDatasetDefinitionCode}/$query | QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition. |
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > BatchDeleteRelationalDataResponse batchDeleteRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode)
 
-[EXPERIMENTAL] BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
+BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
 
 Batch Delete Relational Data Points for a given Relational Dataset Definition.
 
@@ -111,7 +111,7 @@ public class RelationalDatasetsApiExample {
 
 > BatchUpsertRelationalDatasetsResponse batchUpsertRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, requestBody, successMode)
 
-[EXPERIMENTAL] BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition.
+BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition.
 
 Batch Upsert Relational Data Points for a given Relational Dataset Definition.
 
@@ -208,7 +208,7 @@ public class RelationalDatasetsApiExample {
 
 > PagedResourceListOfRelationalDataPointResponse queryRelationalData(relationalDatasetDefinitionScope, relationalDatasetDefinitionCode, asAt, effectiveAt, page, limit, queryRelationalDatasetRequest)
 
-[EXPERIMENTAL] QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
+QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
 
 Query Relational Data Points for a given Relational Dataset Definition.
 

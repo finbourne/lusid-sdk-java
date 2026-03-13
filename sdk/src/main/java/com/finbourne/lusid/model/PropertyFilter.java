@@ -55,7 +55,7 @@ public class PropertyFilter {
   private String left;
 
   /**
-   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In
+   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith
    */
   @JsonAdapter(OperatorEnum.Adapter.class)
   public enum OperatorEnum {
@@ -71,7 +71,9 @@ public class PropertyFilter {
     
     LESSTHANOREQUALTO("LessThanOrEqualTo"),
     
-    IN("In");
+    IN("In"),
+    
+    STARTSWITH("StartsWith");
 
     private String value;
 
@@ -201,7 +203,7 @@ public class PropertyFilter {
   }
 
    /**
-   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In
+   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith
    * @return operator
   **/
   @jakarta.annotation.Nullable

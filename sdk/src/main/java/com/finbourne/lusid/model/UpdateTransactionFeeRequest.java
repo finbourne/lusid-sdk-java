@@ -19,10 +19,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -64,9 +62,9 @@ public class UpdateTransactionFeeRequest {
   @SerializedName(SERIALIZED_NAME_CALCULATION)
   private FeeCalculationRequest calculation;
 
-  public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
-  @SerializedName(SERIALIZED_NAME_CONDITIONS)
-  private List<String> conditions;
+  public static final String SERIALIZED_NAME_CONDITION = "condition";
+  @SerializedName(SERIALIZED_NAME_CONDITION)
+  private String condition;
 
   public static final String SERIALIZED_NAME_CAPITALISATION_CONDITION = "capitalisationCondition";
   @SerializedName(SERIALIZED_NAME_CAPITALISATION_CONDITION)
@@ -129,32 +127,24 @@ public class UpdateTransactionFeeRequest {
   }
 
 
-  public UpdateTransactionFeeRequest conditions(List<String> conditions) {
+  public UpdateTransactionFeeRequest condition(String condition) {
     
-    this.conditions = conditions;
-    return this;
-  }
-
-  public UpdateTransactionFeeRequest addConditionsItem(String conditionsItem) {
-    if (this.conditions == null) {
-      this.conditions = new ArrayList<>();
-    }
-    this.conditions.add(conditionsItem);
+    this.condition = condition;
     return this;
   }
 
    /**
-   * The conditions that the transaction must meet in order for the fee to be applied.
-   * @return conditions
+   * The condition that the transaction must meet in order for the fee to be applied.
+   * @return condition
   **/
   @jakarta.annotation.Nullable
-  public List<String> getConditions() {
-    return conditions;
+  public String getCondition() {
+    return condition;
   }
 
 
-  public void setConditions(List<String> conditions) {
-    this.conditions = conditions;
+  public void setCondition(String condition) {
+    this.condition = condition;
   }
 
 
@@ -262,7 +252,7 @@ public class UpdateTransactionFeeRequest {
     UpdateTransactionFeeRequest updateTransactionFeeRequest = (UpdateTransactionFeeRequest) o;
     return Objects.equals(this.description, updateTransactionFeeRequest.description) &&
         Objects.equals(this.calculation, updateTransactionFeeRequest.calculation) &&
-        Objects.equals(this.conditions, updateTransactionFeeRequest.conditions) &&
+        Objects.equals(this.condition, updateTransactionFeeRequest.condition) &&
         Objects.equals(this.capitalisationCondition, updateTransactionFeeRequest.capitalisationCondition) &&
         Objects.equals(this.txnPropertyKey, updateTransactionFeeRequest.txnPropertyKey) &&
         Objects.equals(this.properties, updateTransactionFeeRequest.properties) &&
@@ -275,7 +265,7 @@ public class UpdateTransactionFeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, calculation, conditions, capitalisationCondition, txnPropertyKey, properties, isActive);
+    return Objects.hash(description, calculation, condition, capitalisationCondition, txnPropertyKey, properties, isActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,7 +281,7 @@ public class UpdateTransactionFeeRequest {
     sb.append("class UpdateTransactionFeeRequest {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    calculation: ").append(toIndentedString(calculation)).append("\n");
-    sb.append("    conditions: ").append(toIndentedString(conditions)).append("\n");
+    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    capitalisationCondition: ").append(toIndentedString(capitalisationCondition)).append("\n");
     sb.append("    txnPropertyKey: ").append(toIndentedString(txnPropertyKey)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -320,7 +310,7 @@ public class UpdateTransactionFeeRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("description");
     openapiFields.add("calculation");
-    openapiFields.add("conditions");
+    openapiFields.add("condition");
     openapiFields.add("capitalisationCondition");
     openapiFields.add("txnPropertyKey");
     openapiFields.add("properties");
@@ -350,9 +340,8 @@ public class UpdateTransactionFeeRequest {
       if (jsonObj.get("calculation") != null && !jsonObj.get("calculation").isJsonNull()) {
         FeeCalculationRequest.validateJsonElement(jsonObj.get("calculation"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("conditions") != null && !jsonObj.get("conditions").isJsonNull() && !jsonObj.get("conditions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conditions` to be an array in the JSON string but got `%s`", jsonObj.get("conditions").toString()));
+      if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) && !jsonObj.get("condition").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `condition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("condition").toString()));
       }
       if ((jsonObj.get("capitalisationCondition") != null && !jsonObj.get("capitalisationCondition").isJsonNull()) && !jsonObj.get("capitalisationCondition").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `capitalisationCondition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("capitalisationCondition").toString()));

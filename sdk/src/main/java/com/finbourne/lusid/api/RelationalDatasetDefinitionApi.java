@@ -299,7 +299,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateRelationalDatasetDefinition: Create a Relational Dataset Definition
+     * CreateRelationalDatasetDefinition: Create a Relational Dataset Definition
      * Create a new relational dataset definition.
      * @param createRelationalDatasetDefinitionRequest The relational dataset definition to create. (required)
      * @return APIcreateRelationalDatasetDefinitionRequest
@@ -539,7 +539,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition
+     * DeleteRelationalDatasetDefinition: Delete a Relational Dataset Definition
      * Delete a relational dataset definition.  WARNING! This operation is irreversible. Deleting a relational dataset definition will also delete all associated data points.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
@@ -795,7 +795,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] GetRelationalDatasetDefinition: Get a Relational Dataset Definition
+     * GetRelationalDatasetDefinition: Get a Relational Dataset Definition
      * Retrieve a relational dataset definition by its identifier.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
@@ -1095,7 +1095,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] ListRelationalDatasetDefinitions: List Relational Dataset Definitions
+     * ListRelationalDatasetDefinitions: List Relational Dataset Definitions
      * List all relational dataset definitions matching particular criteria.
      * @return APIlistRelationalDatasetDefinitionsRequest
      * @http.response.details
@@ -1349,7 +1349,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
+     * UpdateRelationalDatasetDefinition: Update a Relational Dataset Definition
      * Update an existing relational dataset definition.  Applicable only to the definitions that are not yet in use i.e. there are no DataPoints associated with this definition.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
@@ -1605,7 +1605,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
+     * UpdateRelationalDatasetDetails: Update Relational Dataset Details: DisplayName, Description and ApplicableEntityTypes
      * Update an existing relational dataset definition.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)
@@ -1861,7 +1861,7 @@ public class RelationalDatasetDefinitionApi {
     }
 
     /**
-     * [EARLY ACCESS] UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
+     * UpdateRelationalDatasetFieldSchema: Update Relational Dataset Field Schema
      * Update an existing relational dataset definition with the new field schema.  Applicable only to the definitions that are already in use i.e. contain DataPoints associated with this definition.
      * @param scope The scope of the relational dataset definition. (required)
      * @param code The code of the relational dataset definition. (required)

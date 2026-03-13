@@ -329,7 +329,7 @@ public class RelationalDatasetsApi {
     }
 
     /**
-     * [EXPERIMENTAL] BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
+     * BatchDeleteRelationalData: Batch Delete Relational Data Points for a given Relational Dataset Definition.
      * Batch Delete Relational Data Points for a given Relational Dataset Definition.
      * @param relationalDatasetDefinitionScope The Scope of the relational dataset definition. (required)
      * @param relationalDatasetDefinitionCode The Code of the relational dataset definition. (required)
@@ -597,7 +597,7 @@ public class RelationalDatasetsApi {
     }
 
     /**
-     * [EXPERIMENTAL] BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition.
+     * BatchUpsertRelationalData: Batch Upsert Relational Data Points for a given Relational Dataset Definition.
      * Batch Upsert Relational Data Points for a given Relational Dataset Definition.
      * @param relationalDatasetDefinitionScope The Scope of the relational dataset definition. (required)
      * @param relationalDatasetDefinitionCode The Code of the relational dataset definition. (required)
@@ -914,7 +914,7 @@ public class RelationalDatasetsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
+     * QueryRelationalData: Query Relational Data Points for a given Relational Dataset Definition.
      * Query Relational Data Points for a given Relational Dataset Definition.
      * @param relationalDatasetDefinitionScope The Scope of the relational dataset definition. (required)
      * @param relationalDatasetDefinitionCode The Code of the relational dataset definition. (required)

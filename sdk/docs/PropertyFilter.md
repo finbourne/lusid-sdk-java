@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **left** | **String** | The key that uniquely identifies a queryable address in Lusid. | [optional] [default to String]
-**operator** | **String** | The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In | [optional] [default to String]
+**operator** | **String** | The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith | [optional] [default to String]
 **right** | **Object** |  | [optional] [default to Object]
 **rightOperandType** | **String** | The available values are: Absolute, Property | [optional] [default to String]
 

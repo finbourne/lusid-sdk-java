@@ -20,6 +20,7 @@ Operator method = Operator.GREATERTHANOREQUALTO;
 Operator method = Operator.LESSTHAN;
 Operator method = Operator.LESSTHANOREQUALTO;
 Operator method = Operator.IN;
+Operator method = Operator.STARTSWITH;
 ```
 
 

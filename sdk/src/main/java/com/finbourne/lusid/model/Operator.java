@@ -37,7 +37,9 @@ public enum Operator {
   
   LESSTHANOREQUALTO("LessThanOrEqualTo"),
   
-  IN("In");
+  IN("In"),
+  
+  STARTSWITH("StartsWith");
 
   private String value;
 

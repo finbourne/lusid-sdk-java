@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | The display name of the transaction fee. | [optional] [default to String]
 **description** | **String** | A description of the transaction fee. | [optional] [default to String]
 **calculation** | [**FeeCalculationRequest**](FeeCalculationRequest.md) |  | [optional] [default to FeeCalculationRequest]
-**conditions** | **List&lt;String&gt;** | The conditions that the transaction must meet in order for the fee to be applied. | [optional] [default to List<String>]
+**condition** | **String** | The condition that the transaction must meet in order for the fee to be applied. | [optional] [default to String]
 **capitalised** | **String** | Specifies whether the fee should be capitalised, not capitalised or conditionally capitalised. | [optional] [default to String]
 **capitalisationCondition** | **String** | If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction. | [optional] [default to String]
 **txnPropertyKey** | **String** | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. | [optional] [default to String]
@@ -28,7 +28,7 @@ ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable String Name = "example Name";
 @jakarta.annotation.Nullable String Description = "example Description";
 FeeCalculationRequest Calculation = new FeeCalculationRequest();
-@jakarta.annotation.Nullable List<String> Conditions = new List<String>();
+@jakarta.annotation.Nullable String Condition = "example Condition";
 @jakarta.annotation.Nullable String Capitalised = "example Capitalised";
 @jakarta.annotation.Nullable String CapitalisationCondition = "example CapitalisationCondition";
 @jakarta.annotation.Nullable String TxnPropertyKey = "example TxnPropertyKey";
@@ -44,7 +44,7 @@ TransactionFee transactionFeeInstance = new TransactionFee()
     .Name(Name)
     .Description(Description)
     .Calculation(Calculation)
-    .Conditions(Conditions)
+    .Condition(Condition)
     .Capitalised(Capitalised)
     .CapitalisationCondition(CapitalisationCondition)
     .TxnPropertyKey(TxnPropertyKey)
