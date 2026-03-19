@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.GroupReconciliationAggregateAttributeRule;
 import com.finbourne.lusid.model.GroupReconciliationCoreAttributeRule;
+import com.finbourne.lusid.model.GroupReconciliationFilters;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -65,6 +66,10 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
   public static final String SERIALIZED_NAME_RECONCILIATION_TYPE = "reconciliationType";
   @SerializedName(SERIALIZED_NAME_RECONCILIATION_TYPE)
   private String reconciliationType;
+
+  public static final String SERIALIZED_NAME_FILTERS = "filters";
+  @SerializedName(SERIALIZED_NAME_FILTERS)
+  private GroupReconciliationFilters filters;
 
   public static final String SERIALIZED_NAME_CORE_ATTRIBUTE_RULES = "coreAttributeRules";
   @SerializedName(SERIALIZED_NAME_CORE_ATTRIBUTE_RULES)
@@ -140,6 +145,27 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
   }
 
 
+  public CreateGroupReconciliationComparisonRulesetRequest filters(GroupReconciliationFilters filters) {
+    
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @jakarta.annotation.Nullable
+  public GroupReconciliationFilters getFilters() {
+    return filters;
+  }
+
+
+  public void setFilters(GroupReconciliationFilters filters) {
+    this.filters = filters;
+  }
+
+
   public CreateGroupReconciliationComparisonRulesetRequest coreAttributeRules(List<GroupReconciliationCoreAttributeRule> coreAttributeRules) {
     
     this.coreAttributeRules = coreAttributeRules;
@@ -211,13 +237,14 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
     return Objects.equals(this.id, createGroupReconciliationComparisonRulesetRequest.id) &&
         Objects.equals(this.displayName, createGroupReconciliationComparisonRulesetRequest.displayName) &&
         Objects.equals(this.reconciliationType, createGroupReconciliationComparisonRulesetRequest.reconciliationType) &&
+        Objects.equals(this.filters, createGroupReconciliationComparisonRulesetRequest.filters) &&
         Objects.equals(this.coreAttributeRules, createGroupReconciliationComparisonRulesetRequest.coreAttributeRules) &&
         Objects.equals(this.aggregateAttributeRules, createGroupReconciliationComparisonRulesetRequest.aggregateAttributeRules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, reconciliationType, coreAttributeRules, aggregateAttributeRules);
+    return Objects.hash(id, displayName, reconciliationType, filters, coreAttributeRules, aggregateAttributeRules);
   }
 
   @Override
@@ -227,6 +254,7 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    reconciliationType: ").append(toIndentedString(reconciliationType)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    coreAttributeRules: ").append(toIndentedString(coreAttributeRules)).append("\n");
     sb.append("    aggregateAttributeRules: ").append(toIndentedString(aggregateAttributeRules)).append("\n");
     sb.append("}");
@@ -254,6 +282,7 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
     openapiFields.add("id");
     openapiFields.add("displayName");
     openapiFields.add("reconciliationType");
+    openapiFields.add("filters");
     openapiFields.add("coreAttributeRules");
     openapiFields.add("aggregateAttributeRules");
 
@@ -293,6 +322,10 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
       }
       if (!jsonObj.get("reconciliationType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reconciliationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reconciliationType").toString()));
+      }
+      // validate the optional field `filters`
+      if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
+        GroupReconciliationFilters.validateJsonElement(jsonObj.get("filters"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("coreAttributeRules").isJsonArray()) {

@@ -62,6 +62,10 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
   @SerializedName(SERIALIZED_NAME_VALUATION_RECONCILIATION)
   private ResourceId valuationReconciliation;
 
+  public static final String SERIALIZED_NAME_CASH_HOLDING_RECONCILIATION = "cashHoldingReconciliation";
+  @SerializedName(SERIALIZED_NAME_CASH_HOLDING_RECONCILIATION)
+  private ResourceId cashHoldingReconciliation;
+
   public GroupReconciliationDefinitionComparisonRulesetIds() {
   }
 
@@ -128,6 +132,27 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
   }
 
 
+  public GroupReconciliationDefinitionComparisonRulesetIds cashHoldingReconciliation(ResourceId cashHoldingReconciliation) {
+    
+    this.cashHoldingReconciliation = cashHoldingReconciliation;
+    return this;
+  }
+
+   /**
+   * Get cashHoldingReconciliation
+   * @return cashHoldingReconciliation
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCashHoldingReconciliation() {
+    return cashHoldingReconciliation;
+  }
+
+
+  public void setCashHoldingReconciliation(ResourceId cashHoldingReconciliation) {
+    this.cashHoldingReconciliation = cashHoldingReconciliation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,12 +165,13 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
     GroupReconciliationDefinitionComparisonRulesetIds groupReconciliationDefinitionComparisonRulesetIds = (GroupReconciliationDefinitionComparisonRulesetIds) o;
     return Objects.equals(this.transactionReconciliation, groupReconciliationDefinitionComparisonRulesetIds.transactionReconciliation) &&
         Objects.equals(this.holdingReconciliation, groupReconciliationDefinitionComparisonRulesetIds.holdingReconciliation) &&
-        Objects.equals(this.valuationReconciliation, groupReconciliationDefinitionComparisonRulesetIds.valuationReconciliation);
+        Objects.equals(this.valuationReconciliation, groupReconciliationDefinitionComparisonRulesetIds.valuationReconciliation) &&
+        Objects.equals(this.cashHoldingReconciliation, groupReconciliationDefinitionComparisonRulesetIds.cashHoldingReconciliation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionReconciliation, holdingReconciliation, valuationReconciliation);
+    return Objects.hash(transactionReconciliation, holdingReconciliation, valuationReconciliation, cashHoldingReconciliation);
   }
 
   @Override
@@ -155,6 +181,7 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
     sb.append("    transactionReconciliation: ").append(toIndentedString(transactionReconciliation)).append("\n");
     sb.append("    holdingReconciliation: ").append(toIndentedString(holdingReconciliation)).append("\n");
     sb.append("    valuationReconciliation: ").append(toIndentedString(valuationReconciliation)).append("\n");
+    sb.append("    cashHoldingReconciliation: ").append(toIndentedString(cashHoldingReconciliation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +207,7 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
     openapiFields.add("transactionReconciliation");
     openapiFields.add("holdingReconciliation");
     openapiFields.add("valuationReconciliation");
+    openapiFields.add("cashHoldingReconciliation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -209,6 +237,10 @@ public class GroupReconciliationDefinitionComparisonRulesetIds {
       // validate the optional field `valuationReconciliation`
       if (jsonObj.get("valuationReconciliation") != null && !jsonObj.get("valuationReconciliation").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("valuationReconciliation"));
+      }
+      // validate the optional field `cashHoldingReconciliation`
+      if (jsonObj.get("cashHoldingReconciliation") != null && !jsonObj.get("cashHoldingReconciliation").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("cashHoldingReconciliation"));
       }
   }
 

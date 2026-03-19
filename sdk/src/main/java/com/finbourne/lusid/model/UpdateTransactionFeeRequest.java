@@ -66,10 +66,6 @@ public class UpdateTransactionFeeRequest {
   @SerializedName(SERIALIZED_NAME_CONDITION)
   private String condition;
 
-  public static final String SERIALIZED_NAME_CAPITALISATION_CONDITION = "capitalisationCondition";
-  @SerializedName(SERIALIZED_NAME_CAPITALISATION_CONDITION)
-  private String capitalisationCondition;
-
   public static final String SERIALIZED_NAME_TXN_PROPERTY_KEY = "txnPropertyKey";
   @SerializedName(SERIALIZED_NAME_TXN_PROPERTY_KEY)
   private String txnPropertyKey;
@@ -145,27 +141,6 @@ public class UpdateTransactionFeeRequest {
 
   public void setCondition(String condition) {
     this.condition = condition;
-  }
-
-
-  public UpdateTransactionFeeRequest capitalisationCondition(String capitalisationCondition) {
-    
-    this.capitalisationCondition = capitalisationCondition;
-    return this;
-  }
-
-   /**
-   * If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction.
-   * @return capitalisationCondition
-  **/
-  @jakarta.annotation.Nullable
-  public String getCapitalisationCondition() {
-    return capitalisationCondition;
-  }
-
-
-  public void setCapitalisationCondition(String capitalisationCondition) {
-    this.capitalisationCondition = capitalisationCondition;
   }
 
 
@@ -253,7 +228,6 @@ public class UpdateTransactionFeeRequest {
     return Objects.equals(this.description, updateTransactionFeeRequest.description) &&
         Objects.equals(this.calculation, updateTransactionFeeRequest.calculation) &&
         Objects.equals(this.condition, updateTransactionFeeRequest.condition) &&
-        Objects.equals(this.capitalisationCondition, updateTransactionFeeRequest.capitalisationCondition) &&
         Objects.equals(this.txnPropertyKey, updateTransactionFeeRequest.txnPropertyKey) &&
         Objects.equals(this.properties, updateTransactionFeeRequest.properties) &&
         Objects.equals(this.isActive, updateTransactionFeeRequest.isActive);
@@ -265,7 +239,7 @@ public class UpdateTransactionFeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, calculation, condition, capitalisationCondition, txnPropertyKey, properties, isActive);
+    return Objects.hash(description, calculation, condition, txnPropertyKey, properties, isActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -282,7 +256,6 @@ public class UpdateTransactionFeeRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    calculation: ").append(toIndentedString(calculation)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
-    sb.append("    capitalisationCondition: ").append(toIndentedString(capitalisationCondition)).append("\n");
     sb.append("    txnPropertyKey: ").append(toIndentedString(txnPropertyKey)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
@@ -311,7 +284,6 @@ public class UpdateTransactionFeeRequest {
     openapiFields.add("description");
     openapiFields.add("calculation");
     openapiFields.add("condition");
-    openapiFields.add("capitalisationCondition");
     openapiFields.add("txnPropertyKey");
     openapiFields.add("properties");
     openapiFields.add("isActive");
@@ -342,9 +314,6 @@ public class UpdateTransactionFeeRequest {
       }
       if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) && !jsonObj.get("condition").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `condition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("condition").toString()));
-      }
-      if ((jsonObj.get("capitalisationCondition") != null && !jsonObj.get("capitalisationCondition").isJsonNull()) && !jsonObj.get("capitalisationCondition").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `capitalisationCondition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("capitalisationCondition").toString()));
       }
       if ((jsonObj.get("txnPropertyKey") != null && !jsonObj.get("txnPropertyKey").isJsonNull()) && !jsonObj.get("txnPropertyKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `txnPropertyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("txnPropertyKey").toString()));

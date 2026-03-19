@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **transactionReconciliation** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **holdingReconciliation** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **valuationReconciliation** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**cashHoldingReconciliation** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.GroupReconciliationDefinitionComparisonRulesetIds;
@@ -17,12 +18,14 @@ import java.net.URI;
 ResourceId TransactionReconciliation = new ResourceId();
 ResourceId HoldingReconciliation = new ResourceId();
 ResourceId ValuationReconciliation = new ResourceId();
+ResourceId CashHoldingReconciliation = new ResourceId();
 
 
 GroupReconciliationDefinitionComparisonRulesetIds groupReconciliationDefinitionComparisonRulesetIdsInstance = new GroupReconciliationDefinitionComparisonRulesetIds()
     .TransactionReconciliation(TransactionReconciliation)
     .HoldingReconciliation(HoldingReconciliation)
-    .ValuationReconciliation(ValuationReconciliation);
+    .ValuationReconciliation(ValuationReconciliation)
+    .CashHoldingReconciliation(CashHoldingReconciliation);
 ```
 
 
