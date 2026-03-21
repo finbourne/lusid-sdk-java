@@ -69,6 +69,14 @@ public class AccountedTransaction {
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private PortfolioId portfolioId;
 
+  public static final String SERIALIZED_NAME_VALUATION_POINT_ORIGIN = "valuationPointOrigin";
+  @SerializedName(SERIALIZED_NAME_VALUATION_POINT_ORIGIN)
+  private String valuationPointOrigin;
+
+  public static final String SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_CODE = "addedOriginValuationPointCode";
+  @SerializedName(SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_CODE)
+  private String addedOriginValuationPointCode;
+
   public AccountedTransaction() {
   }
 
@@ -156,6 +164,48 @@ public class AccountedTransaction {
   }
 
 
+  public AccountedTransaction valuationPointOrigin(String valuationPointOrigin) {
+    
+    this.valuationPointOrigin = valuationPointOrigin;
+    return this;
+  }
+
+   /**
+   * Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action.
+   * @return valuationPointOrigin
+  **/
+  @jakarta.annotation.Nullable
+  public String getValuationPointOrigin() {
+    return valuationPointOrigin;
+  }
+
+
+  public void setValuationPointOrigin(String valuationPointOrigin) {
+    this.valuationPointOrigin = valuationPointOrigin;
+  }
+
+
+  public AccountedTransaction addedOriginValuationPointCode(String addedOriginValuationPointCode) {
+    
+    this.addedOriginValuationPointCode = addedOriginValuationPointCode;
+    return this;
+  }
+
+   /**
+   * The Valuation Point, only for transaction added as part of a Complex Close action.
+   * @return addedOriginValuationPointCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getAddedOriginValuationPointCode() {
+    return addedOriginValuationPointCode;
+  }
+
+
+  public void setAddedOriginValuationPointCode(String addedOriginValuationPointCode) {
+    this.addedOriginValuationPointCode = addedOriginValuationPointCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,7 +219,9 @@ public class AccountedTransaction {
     return Objects.equals(this.accountingDate, accountedTransaction.accountingDate) &&
         Objects.equals(this.journalEntryAction, accountedTransaction.journalEntryAction) &&
         Objects.equals(this.transaction, accountedTransaction.transaction) &&
-        Objects.equals(this.portfolioId, accountedTransaction.portfolioId);
+        Objects.equals(this.portfolioId, accountedTransaction.portfolioId) &&
+        Objects.equals(this.valuationPointOrigin, accountedTransaction.valuationPointOrigin) &&
+        Objects.equals(this.addedOriginValuationPointCode, accountedTransaction.addedOriginValuationPointCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -178,7 +230,7 @@ public class AccountedTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, journalEntryAction, transaction, portfolioId);
+    return Objects.hash(accountingDate, journalEntryAction, transaction, portfolioId, valuationPointOrigin, addedOriginValuationPointCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -196,6 +248,8 @@ public class AccountedTransaction {
     sb.append("    journalEntryAction: ").append(toIndentedString(journalEntryAction)).append("\n");
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    valuationPointOrigin: ").append(toIndentedString(valuationPointOrigin)).append("\n");
+    sb.append("    addedOriginValuationPointCode: ").append(toIndentedString(addedOriginValuationPointCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -222,6 +276,8 @@ public class AccountedTransaction {
     openapiFields.add("journalEntryAction");
     openapiFields.add("transaction");
     openapiFields.add("portfolioId");
+    openapiFields.add("valuationPointOrigin");
+    openapiFields.add("addedOriginValuationPointCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -250,6 +306,12 @@ public class AccountedTransaction {
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
         PortfolioId.validateJsonElement(jsonObj.get("portfolioId"));
+      }
+      if ((jsonObj.get("valuationPointOrigin") != null && !jsonObj.get("valuationPointOrigin").isJsonNull()) && !jsonObj.get("valuationPointOrigin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valuationPointOrigin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valuationPointOrigin").toString()));
+      }
+      if ((jsonObj.get("addedOriginValuationPointCode") != null && !jsonObj.get("addedOriginValuationPointCode").isJsonNull()) && !jsonObj.get("addedOriginValuationPointCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `addedOriginValuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addedOriginValuationPointCode").toString()));
       }
   }
 
