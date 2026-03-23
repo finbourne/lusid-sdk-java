@@ -259,7 +259,7 @@ public class FundRequest {
   }
 
    /**
-   * Details the user-provided instrument identifiers and the instrument resolved from them.
+   * Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
    * @return shareClassInstruments
   **/
   @jakarta.annotation.Nullable

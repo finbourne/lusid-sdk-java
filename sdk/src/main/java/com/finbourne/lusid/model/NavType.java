@@ -131,7 +131,7 @@ public class NavType {
   }
 
    /**
-   * Get status
+   * The Status of the Nav Type. Can be &#39;Active&#39; or &#39;Inactive&#39;.
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -152,7 +152,7 @@ public class NavType {
   }
 
    /**
-   * Get code
+   * The Code for the Nav Type. Must be unique within the Fund.
    * @return code
   **/
   @jakarta.annotation.Nullable
@@ -173,7 +173,7 @@ public class NavType {
   }
 
    /**
-   * Get displayName
+   * The Display Name for the Nav Type. Must be unique within the Fund.
    * @return displayName
   **/
   @jakarta.annotation.Nullable
@@ -194,7 +194,7 @@ public class NavType {
   }
 
    /**
-   * Get description
+   * The Description for the Nav Type.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -244,7 +244,7 @@ public class NavType {
   }
 
    /**
-   * Get postingModuleCodes
+   * The Posting Module Codes from which the rules to be applied are retrieved.
    * @return postingModuleCodes
   **/
   @jakarta.annotation.Nullable
@@ -273,7 +273,7 @@ public class NavType {
   }
 
    /**
-   * Get cleardownModuleCodes
+   * The Cleardown Module Codes from which the rules to be applied are retrieved.
    * @return cleardownModuleCodes
   **/
   @jakarta.annotation.Nullable
@@ -336,7 +336,7 @@ public class NavType {
   }
 
    /**
-   * Get accountingMethod
+   * Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required.
    * @return accountingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -365,7 +365,7 @@ public class NavType {
   }
 
    /**
-   * Set of unique holding identifiers, e.g. trader, desk, strategy.
+   * A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information.
    * @return subHoldingKeys
   **/
   @jakarta.annotation.Nullable
@@ -386,7 +386,7 @@ public class NavType {
   }
 
    /**
-   * Get amortisationMethod
+   * The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
    * @return amortisationMethod
   **/
   @jakarta.annotation.Nonnull
@@ -407,7 +407,7 @@ public class NavType {
   }
 
    /**
-   * Get transactionTypeScope
+   * The scope of the transaction types.
    * @return transactionTypeScope
   **/
   @jakarta.annotation.Nonnull
@@ -428,7 +428,7 @@ public class NavType {
   }
 
    /**
-   * Get cashGainLossCalculationDate
+   * The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required.
    * @return cashGainLossCalculationDate
   **/
   @jakarta.annotation.Nonnull
@@ -470,7 +470,7 @@ public class NavType {
   }
 
    /**
-   * Get leaderNavTypeCode
+   * The code of the Nav Type that this Nav Type will follow when set.
    * @return leaderNavTypeCode
   **/
   @jakarta.annotation.Nullable
@@ -491,7 +491,7 @@ public class NavType {
   }
 
    /**
-   * Get transactionTemplateScope
+   * The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided.
    * @return transactionTemplateScope
   **/
   @jakarta.annotation.Nullable

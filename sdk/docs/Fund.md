@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **portfolioIds** | [**List&lt;PortfolioEntityIdWithDetails&gt;**](PortfolioEntityIdWithDetails.md) | A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency. | [optional] [default to List<PortfolioEntityIdWithDetails>]
 **fundConfigurationId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **aborId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. | [optional] [default to List<InstrumentResolutionDetail>]
+**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. | [optional] [default to List<InstrumentResolutionDetail>]
 **type** | **String** | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; | [optional] [default to String]
 **inceptionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Inception date of the Fund | [default to OffsetDateTime]
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
@@ -22,6 +22,10 @@ Name | Type | Description | Notes
 **primaryNavType** | [**NavType**](NavType.md) |  | [optional] [default to NavType]
 **additionalNavTypes** | [**List&lt;NavType&gt;**](NavType.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavType>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
+**createInstrument** | **Boolean** | Whether to create an instrument for the Fund upon creation. Defaults to false. | [optional] [default to Boolean]
+**apportionmentMethodProperty** | [**AllocationMethodProperty**](AllocationMethodProperty.md) |  | [optional] [default to AllocationMethodProperty]
+**allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Group definitions for the Fund. | [optional] [default to List<AllocationGroup>]
+**shareClasses** | [**List&lt;ShareClass&gt;**](ShareClass.md) | An optional list of Share Class definitions for the Fund. | [optional] [default to List<ShareClass>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -48,6 +52,10 @@ DayMonth YearEndDate = new DayMonth();
 NavType PrimaryNavType = new NavType();
 @jakarta.annotation.Nullable List<NavType> AdditionalNavTypes = new List<NavType>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+Boolean CreateInstrument = true;
+AllocationMethodProperty ApportionmentMethodProperty = new AllocationMethodProperty();
+@jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
+@jakarta.annotation.Nullable List<ShareClass> ShareClasses = new List<ShareClass>();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -70,6 +78,10 @@ Fund fundInstance = new Fund()
     .PrimaryNavType(PrimaryNavType)
     .AdditionalNavTypes(AdditionalNavTypes)
     .Properties(Properties)
+    .CreateInstrument(CreateInstrument)
+    .ApportionmentMethodProperty(ApportionmentMethodProperty)
+    .AllocationGroups(AllocationGroups)
+    .ShareClasses(ShareClasses)
     .Version(Version)
     .Links(Links);
 ```

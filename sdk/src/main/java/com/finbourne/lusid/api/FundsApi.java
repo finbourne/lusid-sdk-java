@@ -26,6 +26,7 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.AcceptEstimateValuationPointResponse;
+import com.finbourne.lusid.model.AllocationGroupDefinition;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.Fee;
@@ -375,6 +376,259 @@ public class FundsApi {
      */
     public APIacceptEstimateValuationPointRequest acceptEstimateValuationPoint(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
         return new APIacceptEstimateValuationPointRequest(scope, code, valuationPointDataRequest);
+    }
+    private okhttp3.Call addAllocationGroupsCall(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, final ApiCallback _callback) throws ApiException {
+        return addAllocationGroupsCall(scope, code, allocationGroupDefinition,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addAllocationGroupsCall(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationGroupDefinition;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/allocationgroups"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addAllocationGroupsValidateBeforeCall(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling addAllocationGroups(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling addAllocationGroups(Async)");
+        }
+
+        // verify the required parameter 'allocationGroupDefinition' is set
+        if (allocationGroupDefinition == null) {
+            throw new ApiException("Missing the required parameter 'allocationGroupDefinition' when calling addAllocationGroups(Async)");
+        }
+
+        return addAllocationGroupsCall(scope, code, allocationGroupDefinition, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Fund> addAllocationGroupsWithHttpInfo(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition) throws ApiException {
+        okhttp3.Call localVarCall = addAllocationGroupsValidateBeforeCall(scope, code, allocationGroupDefinition, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> addAllocationGroupsWithHttpInfo(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addAllocationGroupsValidateBeforeCall(scope, code, allocationGroupDefinition, null, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call addAllocationGroupsAsync(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, final ApiCallback<Fund> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addAllocationGroupsValidateBeforeCall(scope, code, allocationGroupDefinition, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addAllocationGroupsAsync(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addAllocationGroupsValidateBeforeCall(scope, code, allocationGroupDefinition, _callback, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIaddAllocationGroupsRequest {
+        private final String scope;
+        private final String code;
+        private final List<AllocationGroupDefinition> allocationGroupDefinition;
+
+        private APIaddAllocationGroupsRequest(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationGroupDefinition = allocationGroupDefinition;
+        }
+
+        /**
+         * Build call for addAllocationGroups
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return addAllocationGroupsCall(scope, code, allocationGroupDefinition, _callback);
+        }
+
+        /**
+         * Execute addAllocationGroups request
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute() throws ApiException {
+            ApiResponse<Fund> localVarResp = addAllocationGroupsWithHttpInfo(scope, code, allocationGroupDefinition);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addAllocationGroups request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = addAllocationGroupsWithHttpInfo(scope, code, allocationGroupDefinition, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addAllocationGroups request with HTTP info returned
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
+            return addAllocationGroupsWithHttpInfo(scope, code, allocationGroupDefinition);
+        }
+
+        /**
+         * Execute addAllocationGroups request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addAllocationGroupsWithHttpInfo(scope, code, allocationGroupDefinition, opts);
+        }
+
+        /**
+         * Execute addAllocationGroups request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
+            return addAllocationGroupsAsync(scope, code, allocationGroupDefinition, _callback);
+        }
+
+        /**
+         * Execute addAllocationGroups request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return addAllocationGroupsAsync(scope, code, allocationGroupDefinition, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] AddAllocationGroups: Add Allocation Groups to a Fund.
+     * Add the given Allocation Group definitions to the Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param allocationGroupDefinition The definitions of the Allocation Groups to add to the Fund. (required)
+     * @return APIaddAllocationGroupsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Fund with the added Allocation Groups. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIaddAllocationGroupsRequest addAllocationGroups(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition) {
+        return new APIaddAllocationGroupsRequest(scope, code, allocationGroupDefinition);
     }
     private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return createFeeCall(scope, code, feeRequest, navTypeCode,  _callback, new ConfigurationOptions());

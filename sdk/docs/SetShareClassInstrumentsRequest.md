@@ -6,7 +6,7 @@ The request used to create a Fund.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **shareClassInstrumentScopes** | **List&lt;String&gt;** | The scopes in which the instruments lie, currently limited to one. | [default to List<String>]
-**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. | [default to List<InstrumentResolutionDetail>]
+**shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. | [default to List<InstrumentResolutionDetail>]
 
 ```java
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;

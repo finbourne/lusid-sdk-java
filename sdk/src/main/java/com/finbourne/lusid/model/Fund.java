@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AllocationGroup;
+import com.finbourne.lusid.model.AllocationMethodProperty;
 import com.finbourne.lusid.model.DayMonth;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
@@ -18,6 +20,7 @@ import com.finbourne.lusid.model.NavType;
 import com.finbourne.lusid.model.PortfolioEntityIdWithDetails;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.ShareClass;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -131,6 +134,22 @@ public class Fund {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
+
+  public static final String SERIALIZED_NAME_CREATE_INSTRUMENT = "createInstrument";
+  @SerializedName(SERIALIZED_NAME_CREATE_INSTRUMENT)
+  private Boolean createInstrument;
+
+  public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
+  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
+  private AllocationMethodProperty apportionmentMethodProperty;
+
+  public static final String SERIALIZED_NAME_ALLOCATION_GROUPS = "allocationGroups";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_GROUPS)
+  private List<AllocationGroup> allocationGroups;
+
+  public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
+  private List<ShareClass> shareClasses;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -355,7 +374,7 @@ public class Fund {
   }
 
    /**
-   * Details the user-provided instrument identifiers and the instrument resolved from them.
+   * Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
    * @return shareClassInstruments
   **/
   @jakarta.annotation.Nullable
@@ -534,6 +553,106 @@ public class Fund {
   }
 
 
+  public Fund createInstrument(Boolean createInstrument) {
+    
+    this.createInstrument = createInstrument;
+    return this;
+  }
+
+   /**
+   * Whether to create an instrument for the Fund upon creation. Defaults to false.
+   * @return createInstrument
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCreateInstrument() {
+    return createInstrument;
+  }
+
+
+  public void setCreateInstrument(Boolean createInstrument) {
+    this.createInstrument = createInstrument;
+  }
+
+
+  public Fund apportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+    
+    this.apportionmentMethodProperty = apportionmentMethodProperty;
+    return this;
+  }
+
+   /**
+   * Get apportionmentMethodProperty
+   * @return apportionmentMethodProperty
+  **/
+  @jakarta.annotation.Nullable
+  public AllocationMethodProperty getApportionmentMethodProperty() {
+    return apportionmentMethodProperty;
+  }
+
+
+  public void setApportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+    this.apportionmentMethodProperty = apportionmentMethodProperty;
+  }
+
+
+  public Fund allocationGroups(List<AllocationGroup> allocationGroups) {
+    
+    this.allocationGroups = allocationGroups;
+    return this;
+  }
+
+  public Fund addAllocationGroupsItem(AllocationGroup allocationGroupsItem) {
+    if (this.allocationGroups == null) {
+      this.allocationGroups = new ArrayList<>();
+    }
+    this.allocationGroups.add(allocationGroupsItem);
+    return this;
+  }
+
+   /**
+   * An optional list of Allocation Group definitions for the Fund.
+   * @return allocationGroups
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationGroup> getAllocationGroups() {
+    return allocationGroups;
+  }
+
+
+  public void setAllocationGroups(List<AllocationGroup> allocationGroups) {
+    this.allocationGroups = allocationGroups;
+  }
+
+
+  public Fund shareClasses(List<ShareClass> shareClasses) {
+    
+    this.shareClasses = shareClasses;
+    return this;
+  }
+
+  public Fund addShareClassesItem(ShareClass shareClassesItem) {
+    if (this.shareClasses == null) {
+      this.shareClasses = new ArrayList<>();
+    }
+    this.shareClasses.add(shareClassesItem);
+    return this;
+  }
+
+   /**
+   * An optional list of Share Class definitions for the Fund.
+   * @return shareClasses
+  **/
+  @jakarta.annotation.Nullable
+  public List<ShareClass> getShareClasses() {
+    return shareClasses;
+  }
+
+
+  public void setShareClasses(List<ShareClass> shareClasses) {
+    this.shareClasses = shareClasses;
+  }
+
+
   public Fund version(Version version) {
     
     this.version = version;
@@ -611,6 +730,10 @@ public class Fund {
         Objects.equals(this.primaryNavType, fund.primaryNavType) &&
         Objects.equals(this.additionalNavTypes, fund.additionalNavTypes) &&
         Objects.equals(this.properties, fund.properties) &&
+        Objects.equals(this.createInstrument, fund.createInstrument) &&
+        Objects.equals(this.apportionmentMethodProperty, fund.apportionmentMethodProperty) &&
+        Objects.equals(this.allocationGroups, fund.allocationGroups) &&
+        Objects.equals(this.shareClasses, fund.shareClasses) &&
         Objects.equals(this.version, fund.version) &&
         Objects.equals(this.links, fund.links);
   }
@@ -621,7 +744,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, apportionmentMethodProperty, allocationGroups, shareClasses, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -652,6 +775,10 @@ public class Fund {
     sb.append("    primaryNavType: ").append(toIndentedString(primaryNavType)).append("\n");
     sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
+    sb.append("    apportionmentMethodProperty: ").append(toIndentedString(apportionmentMethodProperty)).append("\n");
+    sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
+    sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -693,6 +820,10 @@ public class Fund {
     openapiFields.add("primaryNavType");
     openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
+    openapiFields.add("createInstrument");
+    openapiFields.add("apportionmentMethodProperty");
+    openapiFields.add("allocationGroups");
+    openapiFields.add("shareClasses");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -798,6 +929,38 @@ public class Fund {
           // validate the optional field `additionalNavTypes` (array)
           for (int i = 0; i < jsonArrayadditionalNavTypes.size(); i++) {
             NavType.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
+          };
+        }
+      }
+      // validate the optional field `apportionmentMethodProperty`
+      if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
+        AllocationMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
+      }
+      if (jsonObj.get("allocationGroups") != null && !jsonObj.get("allocationGroups").isJsonNull()) {
+        JsonArray jsonArrayallocationGroups = jsonObj.getAsJsonArray("allocationGroups");
+        if (jsonArrayallocationGroups != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("allocationGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `allocationGroups` to be an array in the JSON string but got `%s`", jsonObj.get("allocationGroups").toString()));
+          }
+
+          // validate the optional field `allocationGroups` (array)
+          for (int i = 0; i < jsonArrayallocationGroups.size(); i++) {
+            AllocationGroup.validateJsonElement(jsonArrayallocationGroups.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("shareClasses") != null && !jsonObj.get("shareClasses").isJsonNull()) {
+        JsonArray jsonArrayshareClasses = jsonObj.getAsJsonArray("shareClasses");
+        if (jsonArrayshareClasses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("shareClasses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `shareClasses` to be an array in the JSON string but got `%s`", jsonObj.get("shareClasses").toString()));
+          }
+
+          // validate the optional field `shareClasses` (array)
+          for (int i = 0; i < jsonArrayshareClasses.size(); i++) {
+            ShareClass.validateJsonElement(jsonArrayshareClasses.get(i));
           };
         }
       }
