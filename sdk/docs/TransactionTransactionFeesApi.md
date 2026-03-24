@@ -14,7 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 ## createTransactionFee
 
-> TransactionFee createTransactionFee(scope, code, createTransactionFeeRequest, effectiveAt)
+> TransactionFee createTransactionFee(scope, code, createTransactionFeeRequest)
 
 [EXPERIMENTAL] CreateTransactionFee: Create a TransactionFee
 
@@ -62,12 +62,11 @@ public class TransactionTransactionFeesApiExample {
         String scope = "scope_example"; // String | The scope of the TransactionFee.
         String code = "code_example"; // String | The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee.
         CreateTransactionFeeRequest createTransactionFeeRequest = new CreateTransactionFeeRequest(); // CreateTransactionFeeRequest | The contents of the TransactionFee.
-        String effectiveAt = "effectiveAt_example"; // String | The date and time at which the TransactionFee should be effective.
         try {
             // uncomment the below to set overrides at the request level
-            // TransactionFee result = apiInstance.createTransactionFee(scope, code, createTransactionFeeRequest, effectiveAt).execute(opts);
+            // TransactionFee result = apiInstance.createTransactionFee(scope, code, createTransactionFeeRequest).execute(opts);
 
-            TransactionFee result = apiInstance.createTransactionFee(scope, code, createTransactionFeeRequest, effectiveAt).execute();
+            TransactionFee result = apiInstance.createTransactionFee(scope, code, createTransactionFeeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionTransactionFeesApi#createTransactionFee");
@@ -87,7 +86,6 @@ public class TransactionTransactionFeesApiExample {
 | **scope** | **String**| The scope of the TransactionFee. | |
 | **code** | **String**| The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. | |
 | **createTransactionFeeRequest** | [**CreateTransactionFeeRequest**](CreateTransactionFeeRequest.md)| The contents of the TransactionFee. | |
-| **effectiveAt** | **String**| The date and time at which the TransactionFee should be effective. | [optional] |
 
 ### Return type
 
@@ -251,7 +249,7 @@ public class TransactionTransactionFeesApiExample {
         TransactionTransactionFeesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionTransactionFeesApi.class);
         String scope = "scope_example"; // String | The scope of the TransactionFee.
         String code = "code_example"; // String | The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee.
-        String effectiveAt = "effectiveAt_example"; // String | The date and time at which the query is effective.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the TransactionFee properties.   Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | The collection of `PropertyKey`s that we want to decorate on identifies the TransactionFee.
         try {
@@ -277,7 +275,7 @@ public class TransactionTransactionFeesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the TransactionFee. | |
 | **code** | **String**| The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. | |
-| **effectiveAt** | **String**| The date and time at which the query is effective. | [optional] |
+| **effectiveAt** | **String**| The effective datetime at which to retrieve the TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| The collection of &#x60;PropertyKey&#x60;s that we want to decorate on identifies the TransactionFee. | [optional] |
 
@@ -348,9 +346,9 @@ public class TransactionTransactionFeesApiExample {
         // TransactionTransactionFeesApi apiInstance = apiFactory.build(TransactionTransactionFeesApi.class);
 
         TransactionTransactionFeesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionTransactionFeesApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The date and time at which the query is effective.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve TransactionFee properties.   Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy and asAt field must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"scope eq 'ExampleScope'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
@@ -376,9 +374,9 @@ public class TransactionTransactionFeesApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The date and time at which the query is effective. | [optional] |
+| **effectiveAt** | **String**| The effective datetime at which to retrieve TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy and asAt field must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
@@ -406,7 +404,7 @@ public class TransactionTransactionFeesApiExample {
 
 ## updateTransactionFee
 
-> TransactionFee updateTransactionFee(scope, code, updateTransactionFeeRequest, effectiveAt)
+> TransactionFee updateTransactionFee(scope, code, updateTransactionFeeRequest)
 
 [EXPERIMENTAL] UpdateTransactionFee: Update a TransactionFee
 
@@ -453,13 +451,12 @@ public class TransactionTransactionFeesApiExample {
         TransactionTransactionFeesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionTransactionFeesApi.class);
         String scope = "scope_example"; // String | The scope of the TransactionFee.
         String code = "code_example"; // String | The code of the specified TransactionFee.   Together with the scope this uniquely identifies the TransactionFee.
-        UpdateTransactionFeeRequest updateTransactionFeeRequest = new UpdateTransactionFeeRequest(); // UpdateTransactionFeeRequest | The contents of the TransactionFee.
-        String effectiveAt = "effectiveAt_example"; // String | The date and time at which the update should take effect.   The updated contents of the TransactionFee.
+        UpdateTransactionFeeRequest updateTransactionFeeRequest = new UpdateTransactionFeeRequest(); // UpdateTransactionFeeRequest | The updated contents of the TransactionFee.
         try {
             // uncomment the below to set overrides at the request level
-            // TransactionFee result = apiInstance.updateTransactionFee(scope, code, updateTransactionFeeRequest, effectiveAt).execute(opts);
+            // TransactionFee result = apiInstance.updateTransactionFee(scope, code, updateTransactionFeeRequest).execute(opts);
 
-            TransactionFee result = apiInstance.updateTransactionFee(scope, code, updateTransactionFeeRequest, effectiveAt).execute();
+            TransactionFee result = apiInstance.updateTransactionFee(scope, code, updateTransactionFeeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionTransactionFeesApi#updateTransactionFee");
@@ -478,8 +475,7 @@ public class TransactionTransactionFeesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the TransactionFee. | |
 | **code** | **String**| The code of the specified TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. | |
-| **updateTransactionFeeRequest** | [**UpdateTransactionFeeRequest**](UpdateTransactionFeeRequest.md)| The contents of the TransactionFee. | |
-| **effectiveAt** | **String**| The date and time at which the update should take effect.   The updated contents of the TransactionFee. | [optional] |
+| **updateTransactionFeeRequest** | [**UpdateTransactionFeeRequest**](UpdateTransactionFeeRequest.md)| The updated contents of the TransactionFee. | |
 
 ### Return type
 

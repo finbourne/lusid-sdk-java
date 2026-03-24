@@ -77,11 +77,11 @@ public class TransactionTransactionFeesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
-        return createTransactionFeeCall(scope, code, createTransactionFeeRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback) throws ApiException {
+        return createTransactionFeeCall(scope, code, createTransactionFeeRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,10 +107,6 @@ public class TransactionTransactionFeesApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (effectiveAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
-        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -138,7 +134,7 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTransactionFeeValidateBeforeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeValidateBeforeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createTransactionFee(Async)");
@@ -154,34 +150,34 @@ public class TransactionTransactionFeesApi {
             throw new ApiException("Missing the required parameter 'createTransactionFeeRequest' when calling createTransactionFee(Async)");
         }
 
-        return createTransactionFeeCall(scope, code, createTransactionFeeRequest, effectiveAt, _callback, opts);
+        return createTransactionFeeCall(scope, code, createTransactionFeeRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, effectiveAt, null, new ConfigurationOptions());
+    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest) throws ApiException {
+        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, effectiveAt, null, opts);
+    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, final ApiCallback<TransactionFee> _callback) throws ApiException {
+    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback<TransactionFee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, effectiveAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, String effectiveAt, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, effectiveAt, _callback, opts);
+        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -191,22 +187,11 @@ public class TransactionTransactionFeesApi {
         private final String scope;
         private final String code;
         private final CreateTransactionFeeRequest createTransactionFeeRequest;
-        private String effectiveAt;
 
         private APIcreateTransactionFeeRequest(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest) {
             this.scope = scope;
             this.code = code;
             this.createTransactionFeeRequest = createTransactionFeeRequest;
-        }
-
-        /**
-         * Set effectiveAt
-         * @param effectiveAt The date and time at which the TransactionFee should be effective. (optional)
-         * @return APIcreateTransactionFeeRequest
-         */
-        public APIcreateTransactionFeeRequest effectiveAt(String effectiveAt) {
-            this.effectiveAt = effectiveAt;
-            return this;
         }
 
         /**
@@ -223,7 +208,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createTransactionFeeCall(scope, code, createTransactionFeeRequest, effectiveAt, _callback);
+            return createTransactionFeeCall(scope, code, createTransactionFeeRequest, _callback);
         }
 
         /**
@@ -239,7 +224,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public TransactionFee execute() throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, effectiveAt);
+            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
             return localVarResp.getData();
         }
 
@@ -256,7 +241,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public TransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, effectiveAt, opts);
+            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, opts);
             return localVarResp.getData();
         }
 
@@ -273,7 +258,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public ApiResponse<TransactionFee> executeWithHttpInfo() throws ApiException {
-            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, effectiveAt);
+            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
         }
 
         /**
@@ -289,7 +274,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public ApiResponse<TransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, effectiveAt, opts);
+            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, opts);
         }
 
         /**
@@ -306,7 +291,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback) throws ApiException {
-            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, effectiveAt, _callback);
+            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, _callback);
         }
 
         /**
@@ -323,7 +308,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, effectiveAt, _callback, opts);
+            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, _callback, opts);
         }
     }
 
@@ -709,7 +694,7 @@ public class TransactionTransactionFeesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The date and time at which the query is effective. (optional)
+         * @param effectiveAt The effective datetime at which to retrieve the TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetTransactionFeeRequest
          */
         public APIgetTransactionFeeRequest effectiveAt(String effectiveAt) {
@@ -999,7 +984,7 @@ public class TransactionTransactionFeesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The date and time at which the query is effective. (optional)
+         * @param effectiveAt The effective datetime at which to retrieve TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistTransactionFeesRequest
          */
         public APIlistTransactionFeesRequest effectiveAt(String effectiveAt) {
@@ -1019,7 +1004,7 @@ public class TransactionTransactionFeesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy and asAt field must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. (optional)
          * @return APIlistTransactionFeesRequest
          */
         public APIlistTransactionFeesRequest page(String page) {
@@ -1200,11 +1185,11 @@ public class TransactionTransactionFeesApi {
     public APIlistTransactionFeesRequest listTransactionFees() {
         return new APIlistTransactionFeesRequest();
     }
-    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
-        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback) throws ApiException {
+        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1230,10 +1215,6 @@ public class TransactionTransactionFeesApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (effectiveAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
-        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -1261,7 +1242,7 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTransactionFeeValidateBeforeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeValidateBeforeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateTransactionFee(Async)");
@@ -1277,34 +1258,34 @@ public class TransactionTransactionFeesApi {
             throw new ApiException("Missing the required parameter 'updateTransactionFeeRequest' when calling updateTransactionFee(Async)");
         }
 
-        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, effectiveAt, _callback, opts);
+        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, effectiveAt, null, new ConfigurationOptions());
+    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, effectiveAt, null, opts);
+    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, final ApiCallback<TransactionFee> _callback) throws ApiException {
+    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback<TransactionFee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, effectiveAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, String effectiveAt, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, effectiveAt, _callback, opts);
+        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1314,22 +1295,11 @@ public class TransactionTransactionFeesApi {
         private final String scope;
         private final String code;
         private final UpdateTransactionFeeRequest updateTransactionFeeRequest;
-        private String effectiveAt;
 
         private APIupdateTransactionFeeRequest(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest) {
             this.scope = scope;
             this.code = code;
             this.updateTransactionFeeRequest = updateTransactionFeeRequest;
-        }
-
-        /**
-         * Set effectiveAt
-         * @param effectiveAt The date and time at which the update should take effect.   The updated contents of the TransactionFee. (optional)
-         * @return APIupdateTransactionFeeRequest
-         */
-        public APIupdateTransactionFeeRequest effectiveAt(String effectiveAt) {
-            this.effectiveAt = effectiveAt;
-            return this;
         }
 
         /**
@@ -1346,7 +1316,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, effectiveAt, _callback);
+            return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, _callback);
         }
 
         /**
@@ -1362,7 +1332,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public TransactionFee execute() throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, effectiveAt);
+            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
             return localVarResp.getData();
         }
 
@@ -1379,7 +1349,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public TransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, effectiveAt, opts);
+            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, opts);
             return localVarResp.getData();
         }
 
@@ -1396,7 +1366,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public ApiResponse<TransactionFee> executeWithHttpInfo() throws ApiException {
-            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, effectiveAt);
+            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
         }
 
         /**
@@ -1412,7 +1382,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public ApiResponse<TransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, effectiveAt, opts);
+            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, opts);
         }
 
         /**
@@ -1429,7 +1399,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback) throws ApiException {
-            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, effectiveAt, _callback);
+            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, _callback);
         }
 
         /**
@@ -1446,7 +1416,7 @@ public class TransactionTransactionFeesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, effectiveAt, _callback, opts);
+            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, _callback, opts);
         }
     }
 
@@ -1455,7 +1425,7 @@ public class TransactionTransactionFeesApi {
      * Update a TransactionFee by providing the new contents of the TransactionFee.  The name field and the capitalisation field can not be updated.
      * @param scope The scope of the TransactionFee. (required)
      * @param code The code of the specified TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. (required)
-     * @param updateTransactionFeeRequest The contents of the TransactionFee. (required)
+     * @param updateTransactionFeeRequest The updated contents of the TransactionFee. (required)
      * @return APIupdateTransactionFeeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
