@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **cancelDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. | [optional] [default to OffsetDateTime]
 **realisedGainLoss** | [**List&lt;RealisedGainLoss&gt;**](RealisedGainLoss.md) | The collection of realised gains or losses resulting from relevant transactions e.g. a sale transaction. The cost used in calculating the realised gain or loss is determined by the accounting method defined when the transaction portfolio is created. | [optional] [default to List<RealisedGainLoss>]
 **holdingIds** | **List&lt;Long&gt;** | The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio. | [optional] [default to List<Long>]
-**sourceType** | **String** | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment | [optional] [default to String]
+**sourceType** | **String** | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction | [optional] [default to String]
 **sourceInstrumentEventId** | **String** | The unique ID of the instrument event that the transaction is related to. | [optional] [default to String]
 **custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  | [optional] [default to CustodianAccount]
 **transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions | [optional] [default to String]
@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **sequence** | **Integer** | The sequential position in which this transaction was processed. | [optional] [default to Integer]
 **sequencePriority** | **Integer** | The calculated priority level for this transaction. | [optional] [default to Integer]
 **settlementSummary** | [**TransactionSettlementSummary**](TransactionSettlementSummary.md) |  | [optional] [default to TransactionSettlementSummary]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -88,6 +89,7 @@ DataModelMembership DataModelMembership = new DataModelMembership();
 @jakarta.annotation.Nullable Integer Sequence = new Integer("100.00");
 @jakarta.annotation.Nullable Integer SequencePriority = new Integer("100.00");
 TransactionSettlementSummary SettlementSummary = new TransactionSettlementSummary();
+Version Version = new Version();
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -128,7 +130,8 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .DataModelMembership(DataModelMembership)
     .Sequence(Sequence)
     .SequencePriority(SequencePriority)
-    .SettlementSummary(SettlementSummary);
+    .SettlementSummary(SettlementSummary)
+    .Version(Version);
 ```
 
 

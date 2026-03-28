@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationGroupClassDefinition;
-import com.finbourne.lusid.model.AllocationMethodProperty;
+import com.finbourne.lusid.model.ApportionmentMethodProperty;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -76,7 +76,7 @@ public class AllocationGroupDefinition {
 
   public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
-  private AllocationMethodProperty apportionmentMethodProperty;
+  private ApportionmentMethodProperty apportionmentMethodProperty;
 
   public static final String SERIALIZED_NAME_FORMULA = "formula";
   @SerializedName(SERIALIZED_NAME_FORMULA)
@@ -198,7 +198,7 @@ public class AllocationGroupDefinition {
   }
 
 
-  public AllocationGroupDefinition apportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+  public AllocationGroupDefinition apportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
     
     this.apportionmentMethodProperty = apportionmentMethodProperty;
     return this;
@@ -209,12 +209,12 @@ public class AllocationGroupDefinition {
    * @return apportionmentMethodProperty
   **/
   @jakarta.annotation.Nullable
-  public AllocationMethodProperty getApportionmentMethodProperty() {
+  public ApportionmentMethodProperty getApportionmentMethodProperty() {
     return apportionmentMethodProperty;
   }
 
 
-  public void setApportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+  public void setApportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
     this.apportionmentMethodProperty = apportionmentMethodProperty;
   }
 
@@ -371,7 +371,7 @@ public class AllocationGroupDefinition {
       }
       // validate the optional field `apportionmentMethodProperty`
       if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
-        AllocationMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
+        ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
       }
       if ((jsonObj.get("formula") != null && !jsonObj.get("formula").isJsonNull()) && !jsonObj.get("formula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("formula").toString()));

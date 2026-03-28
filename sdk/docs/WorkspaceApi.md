@@ -115,7 +115,7 @@ public class WorkspaceApiExample {
 
 ## createWorkspace
 
-> Workspace createWorkspace(visibility, workspaceCreationRequest)
+> Workspace createWorkspace(visibility, workspaceCreationRequest, includeItemAccess)
 
 [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
 
@@ -162,11 +162,12 @@ public class WorkspaceApiExample {
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String visibility = "shared"; // String | The visibility for the workspace being created. Must be `shared` or `personal`; case is important.
         WorkspaceCreationRequest workspaceCreationRequest = new WorkspaceCreationRequest(); // WorkspaceCreationRequest | The workspace to be created.
+        Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // Workspace result = apiInstance.createWorkspace(visibility, workspaceCreationRequest).execute(opts);
+            // Workspace result = apiInstance.createWorkspace(visibility, workspaceCreationRequest, includeItemAccess).execute(opts);
 
-            Workspace result = apiInstance.createWorkspace(visibility, workspaceCreationRequest).execute();
+            Workspace result = apiInstance.createWorkspace(visibility, workspaceCreationRequest, includeItemAccess).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#createWorkspace");
@@ -184,7 +185,8 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **visibility** | **String**| The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
-| **workspaceCreationRequest** | [**WorkspaceCreationRequest**](WorkspaceCreationRequest.md)| The workspace to be created. | [optional] |
+| **workspaceCreationRequest** | [**WorkspaceCreationRequest**](WorkspaceCreationRequest.md)| The workspace to be created. | |
+| **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -499,7 +501,7 @@ public class WorkspaceApiExample {
 
 ## getWorkspace
 
-> Workspace getWorkspace(visibility, workspaceName, asAt)
+> Workspace getWorkspace(visibility, workspaceName, asAt, includeItemAccess)
 
 [EXPERIMENTAL] GetWorkspace: Get a workspace.
 
@@ -547,11 +549,12 @@ public class WorkspaceApiExample {
         String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
         String workspaceName = "workspaceName_example"; // String | The workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
+        Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // Workspace result = apiInstance.getWorkspace(visibility, workspaceName, asAt).execute(opts);
+            // Workspace result = apiInstance.getWorkspace(visibility, workspaceName, asAt, includeItemAccess).execute(opts);
 
-            Workspace result = apiInstance.getWorkspace(visibility, workspaceName, asAt).execute();
+            Workspace result = apiInstance.getWorkspace(visibility, workspaceName, asAt, includeItemAccess).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#getWorkspace");
@@ -571,6 +574,7 @@ public class WorkspaceApiExample {
 | **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
 | **workspaceName** | **String**| The workspace name. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. | [optional] |
+| **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -697,7 +701,7 @@ public class WorkspaceApiExample {
 
 ## listWorkspaces
 
-> PagedResourceListOfWorkspace listWorkspaces(visibility, asAt, page, sortBy, limit, filter)
+> PagedResourceListOfWorkspace listWorkspaces(visibility, asAt, page, sortBy, limit, filter, includeItemAccess)
 
 [EXPERIMENTAL] ListWorkspaces: List workspaces.
 
@@ -748,11 +752,12 @@ public class WorkspaceApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfWorkspace result = apiInstance.listWorkspaces(visibility, asAt, page, sortBy, limit, filter).execute(opts);
+            // PagedResourceListOfWorkspace result = apiInstance.listWorkspaces(visibility, asAt, page, sortBy, limit, filter, includeItemAccess).execute(opts);
 
-            PagedResourceListOfWorkspace result = apiInstance.listWorkspaces(visibility, asAt, page, sortBy, limit, filter).execute();
+            PagedResourceListOfWorkspace result = apiInstance.listWorkspaces(visibility, asAt, page, sortBy, limit, filter, includeItemAccess).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#listWorkspaces");
@@ -775,6 +780,7 @@ public class WorkspaceApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -998,7 +1004,7 @@ public class WorkspaceApiExample {
 
 ## updateWorkspace
 
-> Workspace updateWorkspace(visibility, workspaceName, workspaceUpdateRequest)
+> Workspace updateWorkspace(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess)
 
 [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
 
@@ -1046,11 +1052,12 @@ public class WorkspaceApiExample {
         String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
         String workspaceName = "workspaceName_example"; // String | The workspace name.
         WorkspaceUpdateRequest workspaceUpdateRequest = new WorkspaceUpdateRequest(); // WorkspaceUpdateRequest | The new workspace details.
+        Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // Workspace result = apiInstance.updateWorkspace(visibility, workspaceName, workspaceUpdateRequest).execute(opts);
+            // Workspace result = apiInstance.updateWorkspace(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess).execute(opts);
 
-            Workspace result = apiInstance.updateWorkspace(visibility, workspaceName, workspaceUpdateRequest).execute();
+            Workspace result = apiInstance.updateWorkspace(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#updateWorkspace");
@@ -1069,7 +1076,8 @@ public class WorkspaceApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
 | **workspaceName** | **String**| The workspace name. | |
-| **workspaceUpdateRequest** | [**WorkspaceUpdateRequest**](WorkspaceUpdateRequest.md)| The new workspace details. | [optional] |
+| **workspaceUpdateRequest** | [**WorkspaceUpdateRequest**](WorkspaceUpdateRequest.md)| The new workspace details. | |
+| **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 

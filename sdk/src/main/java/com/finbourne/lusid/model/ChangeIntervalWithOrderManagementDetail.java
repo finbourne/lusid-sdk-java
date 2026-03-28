@@ -107,6 +107,10 @@ public class ChangeIntervalWithOrderManagementDetail {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_RANGE)
   private EffectiveRange effectiveRange;
 
+  public static final String SERIALIZED_NAME_IS_INHERITED = "isInherited";
+  @SerializedName(SERIALIZED_NAME_IS_INHERITED)
+  private Boolean isInherited;
+
   public ChangeIntervalWithOrderManagementDetail() {
   }
 
@@ -391,6 +395,27 @@ public class ChangeIntervalWithOrderManagementDetail {
   }
 
 
+  public ChangeIntervalWithOrderManagementDetail isInherited(Boolean isInherited) {
+    
+    this.isInherited = isInherited;
+    return this;
+  }
+
+   /**
+   * Indicates whether this change interval is a result of a change to an ancestor or the entity itself.
+   * @return isInherited
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsInherited() {
+    return isInherited;
+  }
+
+
+  public void setIsInherited(Boolean isInherited) {
+    this.isInherited = isInherited;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -413,7 +438,8 @@ public class ChangeIntervalWithOrderManagementDetail {
         Objects.equals(this.attributeName, changeIntervalWithOrderManagementDetail.attributeName) &&
         Objects.equals(this.previousValue, changeIntervalWithOrderManagementDetail.previousValue) &&
         Objects.equals(this.newValue, changeIntervalWithOrderManagementDetail.newValue) &&
-        Objects.equals(this.effectiveRange, changeIntervalWithOrderManagementDetail.effectiveRange);
+        Objects.equals(this.effectiveRange, changeIntervalWithOrderManagementDetail.effectiveRange) &&
+        Objects.equals(this.isInherited, changeIntervalWithOrderManagementDetail.isInherited);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -422,7 +448,7 @@ public class ChangeIntervalWithOrderManagementDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(detail, actionDescription, asAtModified, userIdModified, requestIdModified, reasonModified, asAtVersionNumber, stagedModificationIdModified, action, attributeName, previousValue, newValue, effectiveRange);
+    return Objects.hash(detail, actionDescription, asAtModified, userIdModified, requestIdModified, reasonModified, asAtVersionNumber, stagedModificationIdModified, action, attributeName, previousValue, newValue, effectiveRange, isInherited);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -449,6 +475,7 @@ public class ChangeIntervalWithOrderManagementDetail {
     sb.append("    previousValue: ").append(toIndentedString(previousValue)).append("\n");
     sb.append("    newValue: ").append(toIndentedString(newValue)).append("\n");
     sb.append("    effectiveRange: ").append(toIndentedString(effectiveRange)).append("\n");
+    sb.append("    isInherited: ").append(toIndentedString(isInherited)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -484,6 +511,7 @@ public class ChangeIntervalWithOrderManagementDetail {
     openapiFields.add("previousValue");
     openapiFields.add("newValue");
     openapiFields.add("effectiveRange");
+    openapiFields.add("isInherited");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

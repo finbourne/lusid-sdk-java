@@ -22,8 +22,8 @@ Name | Type | Description | Notes
 **primaryNavType** | [**NavType**](NavType.md) |  | [optional] [default to NavType]
 **additionalNavTypes** | [**List&lt;NavType&gt;**](NavType.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavType>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
-**createInstrument** | **Boolean** | Whether to create an instrument for the Fund upon creation. Defaults to false. | [optional] [default to Boolean]
-**apportionmentMethodProperty** | [**AllocationMethodProperty**](AllocationMethodProperty.md) |  | [optional] [default to AllocationMethodProperty]
+**createInstrument** | **Boolean** | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. | [optional] [default to Boolean]
+**apportionmentMethodProperty** | [**ApportionmentMethodProperty**](ApportionmentMethodProperty.md) |  | [optional] [default to ApportionmentMethodProperty]
 **allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Group definitions for the Fund. | [optional] [default to List<AllocationGroup>]
 **shareClasses** | [**List&lt;ShareClass&gt;**](ShareClass.md) | An optional list of Share Class definitions for the Fund. | [optional] [default to List<ShareClass>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
@@ -53,7 +53,7 @@ NavType PrimaryNavType = new NavType();
 @jakarta.annotation.Nullable List<NavType> AdditionalNavTypes = new List<NavType>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Boolean CreateInstrument = true;
-AllocationMethodProperty ApportionmentMethodProperty = new AllocationMethodProperty();
+ApportionmentMethodProperty ApportionmentMethodProperty = new ApportionmentMethodProperty();
 @jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
 @jakarta.annotation.Nullable List<ShareClass> ShareClasses = new List<ShareClass>();
 Version Version = new Version();

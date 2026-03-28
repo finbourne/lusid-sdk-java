@@ -5425,6 +5425,346 @@ public class TransactionPortfoliosApi {
     public APIgetA2BMovementsRequest getA2BMovements(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
         return new APIgetA2BMovementsRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
+    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/a2bmovements/tradingvsholding"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromEffectiveAt", fromEffectiveAt));
+        }
+
+        if (toEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toEffectiveAt", toEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (recipeIdScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipeIdScope", recipeIdScope));
+        }
+
+        if (recipeIdCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipeIdCode", recipeIdCode));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getA2BMovementsTradingVsHoldingValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getA2BMovementsTradingVsHolding(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getA2BMovementsTradingVsHolding(Async)");
+        }
+
+        // verify the required parameter 'fromEffectiveAt' is set
+        if (fromEffectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'fromEffectiveAt' when calling getA2BMovementsTradingVsHolding(Async)");
+        }
+
+        // verify the required parameter 'toEffectiveAt' is set
+        if (toEffectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getA2BMovementsTradingVsHolding(Async)");
+        }
+
+        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetA2BMovementsTradingVsHoldingRequest {
+        private final String scope;
+        private final String code;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private OffsetDateTime asAt;
+        private String recipeIdScope;
+        private String recipeIdCode;
+        private List<String> propertyKeys;
+        private String filter;
+
+        private APIgetA2BMovementsTradingVsHoldingRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set recipeIdScope
+         * @param recipeIdScope The scope of the given recipeId (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest recipeIdScope(String recipeIdScope) {
+            this.recipeIdScope = recipeIdScope;
+            return this;
+        }
+
+        /**
+         * Set recipeIdCode
+         * @param recipeIdCode The code of the given recipeId (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest recipeIdCode(String recipeIdCode) {
+            this.recipeIdCode = recipeIdCode;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getA2BMovementsTradingVsHolding
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request
+         * @return VersionedResourceListOfA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BMovementRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BMovementRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo() throws ApiException {
+            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
+            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BMovementsTradingVsHolding request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&amp;L split between holding and trading returns.
+     * Get an A2B report at the movement level for the given portfolio. Each transaction in the period is treated as a  synthetic holding rather than a flow, allowing P&amp;L to be attributed to holding returns (market movement on  the starting position) versus trading returns (profit from buy/sell decisions).
+     * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
+     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @return APIgetA2BMovementsTradingVsHoldingRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetA2BMovementsTradingVsHoldingRequest getA2BMovementsTradingVsHolding(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIgetA2BMovementsTradingVsHoldingRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
     private okhttp3.Call getBucketedCashFlowsCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback) throws ApiException {
         return getBucketedCashFlowsCall(scope, code, bucketedCashFlowRequest,  _callback, new ConfigurationOptions());
     }

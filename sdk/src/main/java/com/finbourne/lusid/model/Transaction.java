@@ -20,6 +20,7 @@ import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Strategy;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.finbourne.lusid.model.TransactionTypeDetails;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -222,6 +223,10 @@ public class Transaction {
   public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public Transaction() {
   }
@@ -796,6 +801,27 @@ public class Transaction {
   }
 
 
+  public Transaction version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -831,7 +857,8 @@ public class Transaction {
         Objects.equals(this.transactionGroupId, transaction.transactionGroupId) &&
         Objects.equals(this.strategyTag, transaction.strategyTag) &&
         Objects.equals(this.resolvedTransactionTypeDetails, transaction.resolvedTransactionTypeDetails) &&
-        Objects.equals(this.dataModelMembership, transaction.dataModelMembership);
+        Objects.equals(this.dataModelMembership, transaction.dataModelMembership) &&
+        Objects.equals(this.version, transaction.version);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -840,7 +867,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -880,6 +907,7 @@ public class Transaction {
     sb.append("    strategyTag: ").append(toIndentedString(strategyTag)).append("\n");
     sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -928,6 +956,7 @@ public class Transaction {
     openapiFields.add("strategyTag");
     openapiFields.add("resolvedTransactionTypeDetails");
     openapiFields.add("dataModelMembership");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1030,6 +1059,10 @@ public class Transaction {
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
         DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
   }
 

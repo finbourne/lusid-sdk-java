@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | A workspace&#39;s name. | [default to String]
 **description** | **String** | A friendly description for the workspace. | [default to String]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**permittedItemActions** | [**WorkspacePermittedItemActions**](WorkspacePermittedItemActions.md) |  | [optional] [default to WorkspacePermittedItemActions]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -19,6 +20,7 @@ import java.net.URI;
 String Name = "example Name";
 String Description = "example Description";
 Version Version = new Version();
+WorkspacePermittedItemActions PermittedItemActions = new WorkspacePermittedItemActions();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -26,6 +28,7 @@ Workspace workspaceInstance = new Workspace()
     .Name(Name)
     .Description(Description)
     .Version(Version)
+    .PermittedItemActions(PermittedItemActions)
     .Links(Links);
 ```
 

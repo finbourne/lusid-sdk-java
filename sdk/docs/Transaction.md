@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **strategyTag** | [**List&lt;Strategy&gt;**](Strategy.md) | A list of strategies representing the allocation of units across multiple sub-holding keys | [optional] [default to List<Strategy>]
 **resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  | [optional] [default to TransactionTypeDetails]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
 
 ```java
 import com.finbourne.lusid.model.Transaction;
@@ -64,6 +65,7 @@ CustodianAccount CustodianAccount = new CustodianAccount();
 @jakarta.annotation.Nullable List<Strategy> StrategyTag = new List<Strategy>();
 TransactionTypeDetails ResolvedTransactionTypeDetails = new TransactionTypeDetails();
 DataModelMembership DataModelMembership = new DataModelMembership();
+Version Version = new Version();
 
 
 Transaction transactionInstance = new Transaction()
@@ -92,7 +94,8 @@ Transaction transactionInstance = new Transaction()
     .TransactionGroupId(TransactionGroupId)
     .StrategyTag(StrategyTag)
     .ResolvedTransactionTypeDetails(ResolvedTransactionTypeDetails)
-    .DataModelMembership(DataModelMembership);
+    .DataModelMembership(DataModelMembership)
+    .Version(Version);
 ```
 
 

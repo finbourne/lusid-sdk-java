@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Version;
+import com.finbourne.lusid.model.WorkspacePermittedItemActions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -65,6 +66,10 @@ public class Workspace {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_PERMITTED_ITEM_ACTIONS = "permittedItemActions";
+  @SerializedName(SERIALIZED_NAME_PERMITTED_ITEM_ACTIONS)
+  private WorkspacePermittedItemActions permittedItemActions;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -136,6 +141,27 @@ public class Workspace {
   }
 
 
+  public Workspace permittedItemActions(WorkspacePermittedItemActions permittedItemActions) {
+    
+    this.permittedItemActions = permittedItemActions;
+    return this;
+  }
+
+   /**
+   * Get permittedItemActions
+   * @return permittedItemActions
+  **/
+  @jakarta.annotation.Nullable
+  public WorkspacePermittedItemActions getPermittedItemActions() {
+    return permittedItemActions;
+  }
+
+
+  public void setPermittedItemActions(WorkspacePermittedItemActions permittedItemActions) {
+    this.permittedItemActions = permittedItemActions;
+  }
+
+
   public Workspace links(List<Link> links) {
     
     this.links = links;
@@ -178,6 +204,7 @@ public class Workspace {
     return Objects.equals(this.name, workspace.name) &&
         Objects.equals(this.description, workspace.description) &&
         Objects.equals(this.version, workspace.version) &&
+        Objects.equals(this.permittedItemActions, workspace.permittedItemActions) &&
         Objects.equals(this.links, workspace.links);
   }
 
@@ -187,7 +214,7 @@ public class Workspace {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, version, links);
+    return Objects.hash(name, description, version, permittedItemActions, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -204,6 +231,7 @@ public class Workspace {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    permittedItemActions: ").append(toIndentedString(permittedItemActions)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -230,6 +258,7 @@ public class Workspace {
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("version");
+    openapiFields.add("permittedItemActions");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -267,6 +296,10 @@ public class Workspace {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      // validate the optional field `permittedItemActions`
+      if (jsonObj.get("permittedItemActions") != null && !jsonObj.get("permittedItemActions").isJsonNull()) {
+        WorkspacePermittedItemActions.validateJsonElement(jsonObj.get("permittedItemActions"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

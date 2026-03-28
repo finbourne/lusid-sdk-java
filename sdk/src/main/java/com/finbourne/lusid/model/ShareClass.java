@@ -59,6 +59,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ShareClass {
+  public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
+  private Map<String, String> instrumentIdentifiers = new HashMap<>();
+
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
@@ -137,6 +141,35 @@ public class ShareClass {
 
   public ShareClass() {
   }
+
+  public ShareClass instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
+    this.instrumentIdentifiers = instrumentIdentifiers;
+    return this;
+  }
+
+  public ShareClass putInstrumentIdentifiersItem(String key, String instrumentIdentifiersItem) {
+    if (this.instrumentIdentifiers == null) {
+      this.instrumentIdentifiers = new HashMap<>();
+    }
+    this.instrumentIdentifiers.put(key, instrumentIdentifiersItem);
+    return this;
+  }
+
+   /**
+   * Unique instrument identifiers
+   * @return instrumentIdentifiers
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, String> getInstrumentIdentifiers() {
+    return instrumentIdentifiers;
+  }
+
+
+  public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    this.instrumentIdentifiers = instrumentIdentifiers;
+  }
+
 
   public ShareClass code(String code) {
     
@@ -571,7 +604,8 @@ public class ShareClass {
       return false;
     }
     ShareClass shareClass = (ShareClass) o;
-    return Objects.equals(this.code, shareClass.code) &&
+    return Objects.equals(this.instrumentIdentifiers, shareClass.instrumentIdentifiers) &&
+        Objects.equals(this.code, shareClass.code) &&
         Objects.equals(this.name, shareClass.name) &&
         Objects.equals(this.description, shareClass.description) &&
         Objects.equals(this.shareClassShortCode, shareClass.shareClassShortCode) &&
@@ -598,7 +632,7 @@ public class ShareClass {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, shareClassShortCode, launchPrice, launchDate, apportionmentFactor, properties, fundShareClassType, distributionType, domCcy, tradingConventions, unitsPrecision, pricePrecision, roundingConventions, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
+    return Objects.hash(instrumentIdentifiers, code, name, description, shareClassShortCode, launchPrice, launchDate, apportionmentFactor, properties, fundShareClassType, distributionType, domCcy, tradingConventions, unitsPrecision, pricePrecision, roundingConventions, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -612,6 +646,7 @@ public class ShareClass {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareClass {\n");
+    sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -653,6 +688,7 @@ public class ShareClass {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("instrumentIdentifiers");
     openapiFields.add("code");
     openapiFields.add("name");
     openapiFields.add("description");
@@ -675,6 +711,7 @@ public class ShareClass {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("shareClassShortCode");

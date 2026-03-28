@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationGroup;
-import com.finbourne.lusid.model.AllocationMethodProperty;
+import com.finbourne.lusid.model.ApportionmentMethodProperty;
 import com.finbourne.lusid.model.DayMonth;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
@@ -141,7 +141,7 @@ public class Fund {
 
   public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
-  private AllocationMethodProperty apportionmentMethodProperty;
+  private ApportionmentMethodProperty apportionmentMethodProperty;
 
   public static final String SERIALIZED_NAME_ALLOCATION_GROUPS = "allocationGroups";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_GROUPS)
@@ -560,7 +560,7 @@ public class Fund {
   }
 
    /**
-   * Whether to create an instrument for the Fund upon creation. Defaults to false.
+   * Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
    * @return createInstrument
   **/
   @jakarta.annotation.Nullable
@@ -574,7 +574,7 @@ public class Fund {
   }
 
 
-  public Fund apportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+  public Fund apportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
     
     this.apportionmentMethodProperty = apportionmentMethodProperty;
     return this;
@@ -585,12 +585,12 @@ public class Fund {
    * @return apportionmentMethodProperty
   **/
   @jakarta.annotation.Nullable
-  public AllocationMethodProperty getApportionmentMethodProperty() {
+  public ApportionmentMethodProperty getApportionmentMethodProperty() {
     return apportionmentMethodProperty;
   }
 
 
-  public void setApportionmentMethodProperty(AllocationMethodProperty apportionmentMethodProperty) {
+  public void setApportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
     this.apportionmentMethodProperty = apportionmentMethodProperty;
   }
 
@@ -934,7 +934,7 @@ public class Fund {
       }
       // validate the optional field `apportionmentMethodProperty`
       if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
-        AllocationMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
+        ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
       }
       if (jsonObj.get("allocationGroups") != null && !jsonObj.get("allocationGroups").isJsonNull()) {
         JsonArray jsonArrayallocationGroups = jsonObj.getAsJsonArray("allocationGroups");

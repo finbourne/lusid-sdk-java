@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **String** | The display name of the Allocation Group. | [default to String]
 **description** | **String** | An optional description for the Allocation Group. | [optional] [default to String]
 **shareClassShortCode** | **String** | The short code that identifies the Allocation Group. | [default to String]
-**apportionmentMethodProperty** | [**AllocationMethodProperty**](AllocationMethodProperty.md) |  | [optional] [default to AllocationMethodProperty]
+**apportionmentMethodProperty** | [**ApportionmentMethodProperty**](ApportionmentMethodProperty.md) |  | [optional] [default to ApportionmentMethodProperty]
 **formula** | **String** | An optional filter expression used to define which classes belong to this group, based on fund grouping criteria. You can provide this or the Classes, but not both. | [optional] [default to String]
 
 ```java
@@ -23,7 +23,7 @@ String Code = "example Code";
 String Name = "example Name";
 @jakarta.annotation.Nullable String Description = "example Description";
 String ShareClassShortCode = "example ShareClassShortCode";
-AllocationMethodProperty ApportionmentMethodProperty = new AllocationMethodProperty();
+ApportionmentMethodProperty ApportionmentMethodProperty = new ApportionmentMethodProperty();
 @jakarta.annotation.Nullable String Formula = "example Formula";
 
 

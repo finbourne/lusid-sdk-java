@@ -658,6 +658,7 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**deleteSettlementInstructions**](docs/TransactionPortfoliosApi.md#deletesettlementinstructions) | **DELETE** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions.
 *TransactionPortfoliosApi* | [**getA2BData**](docs/TransactionPortfoliosApi.md#geta2bdata) | **GET** /api/transactionportfolios/{scope}/{code}/a2b | GetA2BData: Get A2B data
 *TransactionPortfoliosApi* | [**getA2BMovements**](docs/TransactionPortfoliosApi.md#geta2bmovements) | **GET** /api/transactionportfolios/{scope}/{code}/a2bmovements | GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
+*TransactionPortfoliosApi* | [**getA2BMovementsTradingVsHolding**](docs/TransactionPortfoliosApi.md#geta2bmovementstradingvsholding) | **GET** /api/transactionportfolios/{scope}/{code}/a2bmovements/tradingvsholding | [EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&L split between holding and trading returns.
 *TransactionPortfoliosApi* | [**getBucketedCashFlows**](docs/TransactionPortfoliosApi.md#getbucketedcashflows) | **POST** /api/transactionportfolios/{scope}/{code}/bucketedCashFlows | GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
 *TransactionPortfoliosApi* | [**getCustodianAccount**](docs/TransactionPortfoliosApi.md#getcustodianaccount) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode} | GetCustodianAccount: Get Custodian Account
 *TransactionPortfoliosApi* | [**getDetails**](docs/TransactionPortfoliosApi.md#getdetails) | **GET** /api/transactionportfolios/{scope}/{code}/details | GetDetails: Get details
@@ -766,7 +767,6 @@ Class | Method | HTTP request | Description
  - [AllocationGroupClass](docs/AllocationGroupClass.md)
  - [AllocationGroupClassDefinition](docs/AllocationGroupClassDefinition.md)
  - [AllocationGroupDefinition](docs/AllocationGroupDefinition.md)
- - [AllocationMethodProperty](docs/AllocationMethodProperty.md)
  - [AllocationRequest](docs/AllocationRequest.md)
  - [AllocationServiceRunResponse](docs/AllocationServiceRunResponse.md)
  - [AllocationSetRequest](docs/AllocationSetRequest.md)
@@ -788,6 +788,7 @@ Class | Method | HTTP request | Description
  - [ApplicableEntity](docs/ApplicableEntity.md)
  - [ApplicableEntityTypes](docs/ApplicableEntityTypes.md)
  - [ApplicableInstrumentEvent](docs/ApplicableInstrumentEvent.md)
+ - [ApportionmentMethodProperty](docs/ApportionmentMethodProperty.md)
  - [AssetClass](docs/AssetClass.md)
  - [AssetLeg](docs/AssetLeg.md)
  - [Barrier](docs/Barrier.md)
@@ -2075,6 +2076,7 @@ Class | Method | HTTP request | Description
  - [WorkspaceItem](docs/WorkspaceItem.md)
  - [WorkspaceItemCreationRequest](docs/WorkspaceItemCreationRequest.md)
  - [WorkspaceItemUpdateRequest](docs/WorkspaceItemUpdateRequest.md)
+ - [WorkspacePermittedItemActions](docs/WorkspacePermittedItemActions.md)
  - [WorkspaceUpdateRequest](docs/WorkspaceUpdateRequest.md)
  - [WorkspaceVisibility](docs/WorkspaceVisibility.md)
  - [YearMonthDay](docs/YearMonthDay.md)

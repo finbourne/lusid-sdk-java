@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **previousValue** | [**PropertyValue**](PropertyValue.md) |  | [optional] [default to PropertyValue]
 **newValue** | [**PropertyValue**](PropertyValue.md) |  | [optional] [default to PropertyValue]
 **effectiveRange** | [**EffectiveRange**](EffectiveRange.md) |  | [optional] [default to EffectiveRange]
+**isInherited** | **Boolean** | Indicates whether this change interval is a result of a change to an ancestor or the entity itself. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.ChangeInterval;
@@ -34,6 +35,7 @@ Integer AsAtVersionNumber = new Integer("100.00");
 PropertyValue PreviousValue = new PropertyValue();
 PropertyValue NewValue = new PropertyValue();
 EffectiveRange EffectiveRange = new EffectiveRange();
+Boolean IsInherited = true;
 
 
 ChangeInterval changeIntervalInstance = new ChangeInterval()
@@ -47,7 +49,8 @@ ChangeInterval changeIntervalInstance = new ChangeInterval()
     .AttributeName(AttributeName)
     .PreviousValue(PreviousValue)
     .NewValue(NewValue)
-    .EffectiveRange(EffectiveRange);
+    .EffectiveRange(EffectiveRange)
+    .IsInherited(IsInherited);
 ```
 
 

@@ -338,11 +338,11 @@ public class WorkspaceApi {
     public APIcreateItemRequest createItem(String visibility, String workspaceName) {
         return new APIcreateItemRequest(visibility, workspaceName);
     }
-    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback) throws ApiException {
-        return createWorkspaceCall(visibility, workspaceCreationRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, final ApiCallback _callback) throws ApiException {
+        return createWorkspaceCall(visibility, workspaceCreationRequest, includeItemAccess,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -367,6 +367,10 @@ public class WorkspaceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (includeItemAccess != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeItemAccess", includeItemAccess));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -394,40 +398,45 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createWorkspaceValidateBeforeCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createWorkspaceValidateBeforeCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'visibility' is set
         if (visibility == null) {
             throw new ApiException("Missing the required parameter 'visibility' when calling createWorkspace(Async)");
         }
 
-        return createWorkspaceCall(visibility, workspaceCreationRequest, _callback, opts);
+        // verify the required parameter 'workspaceCreationRequest' is set
+        if (workspaceCreationRequest == null) {
+            throw new ApiException("Missing the required parameter 'workspaceCreationRequest' when calling createWorkspace(Async)");
+        }
+
+        return createWorkspaceCall(visibility, workspaceCreationRequest, includeItemAccess, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess) throws ApiException {
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, includeItemAccess, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, null, opts);
+    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, includeItemAccess, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, includeItemAccess, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, Boolean includeItemAccess, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, _callback, opts);
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, includeItemAccess, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -435,19 +444,21 @@ public class WorkspaceApi {
 
     public class APIcreateWorkspaceRequest {
         private final String visibility;
-        private WorkspaceCreationRequest workspaceCreationRequest;
+        private final WorkspaceCreationRequest workspaceCreationRequest;
+        private Boolean includeItemAccess;
 
-        private APIcreateWorkspaceRequest(String visibility) {
+        private APIcreateWorkspaceRequest(String visibility, WorkspaceCreationRequest workspaceCreationRequest) {
             this.visibility = visibility;
+            this.workspaceCreationRequest = workspaceCreationRequest;
         }
 
         /**
-         * Set workspaceCreationRequest
-         * @param workspaceCreationRequest The workspace to be created. (optional)
+         * Set includeItemAccess
+         * @param includeItemAccess If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)
          * @return APIcreateWorkspaceRequest
          */
-        public APIcreateWorkspaceRequest workspaceCreationRequest(WorkspaceCreationRequest workspaceCreationRequest) {
-            this.workspaceCreationRequest = workspaceCreationRequest;
+        public APIcreateWorkspaceRequest includeItemAccess(Boolean includeItemAccess) {
+            this.includeItemAccess = includeItemAccess;
             return this;
         }
 
@@ -465,7 +476,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createWorkspaceCall(visibility, workspaceCreationRequest, _callback);
+            return createWorkspaceCall(visibility, workspaceCreationRequest, includeItemAccess, _callback);
         }
 
         /**
@@ -481,7 +492,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest);
+            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess);
             return localVarResp.getData();
         }
 
@@ -498,7 +509,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, opts);
+            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess, opts);
             return localVarResp.getData();
         }
 
@@ -515,7 +526,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest);
+            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess);
         }
 
         /**
@@ -531,7 +542,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, opts);
+            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess, opts);
         }
 
         /**
@@ -548,7 +559,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return createWorkspaceAsync(visibility, workspaceCreationRequest, _callback);
+            return createWorkspaceAsync(visibility, workspaceCreationRequest, includeItemAccess, _callback);
         }
 
         /**
@@ -565,7 +576,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return createWorkspaceAsync(visibility, workspaceCreationRequest, _callback, opts);
+            return createWorkspaceAsync(visibility, workspaceCreationRequest, includeItemAccess, _callback, opts);
         }
     }
 
@@ -573,6 +584,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
      * Create a new workspace.
      * @param visibility The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceCreationRequest The workspace to be created. (required)
      * @return APIcreateWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -582,8 +594,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreateWorkspaceRequest createWorkspace(String visibility) {
-        return new APIcreateWorkspaceRequest(visibility);
+    public APIcreateWorkspaceRequest createWorkspace(String visibility, WorkspaceCreationRequest workspaceCreationRequest) {
+        return new APIcreateWorkspaceRequest(visibility, workspaceCreationRequest);
     }
     private okhttp3.Call deleteItemCall(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
         return deleteItemCall(visibility, workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
@@ -1374,11 +1386,11 @@ public class WorkspaceApi {
     public APIgetItemRequest getItem(String visibility, String workspaceName, String groupName, String itemName) {
         return new APIgetItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getWorkspaceCall(visibility, workspaceName, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, final ApiCallback _callback) throws ApiException {
+        return getWorkspaceCall(visibility, workspaceName, asAt, includeItemAccess,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1409,6 +1421,10 @@ public class WorkspaceApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (includeItemAccess != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeItemAccess", includeItemAccess));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1431,7 +1447,7 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWorkspaceValidateBeforeCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getWorkspaceValidateBeforeCall(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'visibility' is set
         if (visibility == null) {
             throw new ApiException("Missing the required parameter 'visibility' when calling getWorkspace(Async)");
@@ -1442,34 +1458,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling getWorkspace(Async)");
         }
 
-        return getWorkspaceCall(visibility, workspaceName, asAt, _callback, opts);
+        return getWorkspaceCall(visibility, workspaceName, asAt, includeItemAccess, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess) throws ApiException {
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, includeItemAccess, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, null, opts);
+    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, includeItemAccess, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, includeItemAccess, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, Boolean includeItemAccess, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, includeItemAccess, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1479,6 +1495,7 @@ public class WorkspaceApi {
         private final String visibility;
         private final String workspaceName;
         private OffsetDateTime asAt;
+        private Boolean includeItemAccess;
 
         private APIgetWorkspaceRequest(String visibility, String workspaceName) {
             this.visibility = visibility;
@@ -1496,6 +1513,16 @@ public class WorkspaceApi {
         }
 
         /**
+         * Set includeItemAccess
+         * @param includeItemAccess If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)
+         * @return APIgetWorkspaceRequest
+         */
+        public APIgetWorkspaceRequest includeItemAccess(Boolean includeItemAccess) {
+            this.includeItemAccess = includeItemAccess;
+            return this;
+        }
+
+        /**
          * Build call for getWorkspace
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1509,7 +1536,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getWorkspaceCall(visibility, workspaceName, asAt, _callback);
+            return getWorkspaceCall(visibility, workspaceName, asAt, includeItemAccess, _callback);
         }
 
         /**
@@ -1525,7 +1552,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt);
+            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess);
             return localVarResp.getData();
         }
 
@@ -1542,7 +1569,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, opts);
+            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess, opts);
             return localVarResp.getData();
         }
 
@@ -1559,7 +1586,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt);
+            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess);
         }
 
         /**
@@ -1575,7 +1602,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, opts);
+            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess, opts);
         }
 
         /**
@@ -1592,7 +1619,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return getWorkspaceAsync(visibility, workspaceName, asAt, _callback);
+            return getWorkspaceAsync(visibility, workspaceName, asAt, includeItemAccess, _callback);
         }
 
         /**
@@ -1609,7 +1636,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return getWorkspaceAsync(visibility, workspaceName, asAt, _callback, opts);
+            return getWorkspaceAsync(visibility, workspaceName, asAt, includeItemAccess, _callback, opts);
         }
     }
 
@@ -1946,11 +1973,11 @@ public class WorkspaceApi {
     public APIlistItemsRequest listItems(String visibility, String workspaceName) {
         return new APIlistItemsRequest(visibility, workspaceName);
     }
-    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, final ApiCallback _callback) throws ApiException {
+        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1996,6 +2023,10 @@ public class WorkspaceApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (includeItemAccess != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeItemAccess", includeItemAccess));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2018,40 +2049,40 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listWorkspacesValidateBeforeCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listWorkspacesValidateBeforeCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'visibility' is set
         if (visibility == null) {
             throw new ApiException("Missing the required parameter 'visibility' when calling listWorkspaces(Async)");
         }
 
-        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess) throws ApiException {
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
+    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, Boolean includeItemAccess, final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2064,6 +2095,7 @@ public class WorkspaceApi {
         private List<String> sortBy;
         private Integer limit;
         private String filter;
+        private Boolean includeItemAccess;
 
         private APIlistWorkspacesRequest(String visibility) {
             this.visibility = visibility;
@@ -2120,6 +2152,16 @@ public class WorkspaceApi {
         }
 
         /**
+         * Set includeItemAccess
+         * @param includeItemAccess If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)
+         * @return APIlistWorkspacesRequest
+         */
+        public APIlistWorkspacesRequest includeItemAccess(Boolean includeItemAccess) {
+            this.includeItemAccess = includeItemAccess;
+            return this;
+        }
+
+        /**
          * Build call for listWorkspaces
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2133,7 +2175,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, _callback);
+            return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback);
         }
 
         /**
@@ -2149,7 +2191,7 @@ public class WorkspaceApi {
          </table>
          */
         public PagedResourceListOfWorkspace execute() throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
+            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess);
             return localVarResp.getData();
         }
 
@@ -2166,7 +2208,7 @@ public class WorkspaceApi {
          </table>
          */
         public PagedResourceListOfWorkspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
+            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, opts);
             return localVarResp.getData();
         }
 
@@ -2183,7 +2225,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo() throws ApiException {
-            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
+            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess);
         }
 
         /**
@@ -2199,7 +2241,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
+            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, opts);
         }
 
         /**
@@ -2216,7 +2258,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
-            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, _callback);
+            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback);
         }
 
         /**
@@ -2233,7 +2275,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, _callback, opts);
         }
     }
 
@@ -2834,11 +2876,11 @@ public class WorkspaceApi {
     public APIupdateItemRequest updateItem(String visibility, String workspaceName, String groupName, String itemName) {
         return new APIupdateItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, final ApiCallback _callback) throws ApiException {
+        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2864,6 +2906,10 @@ public class WorkspaceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (includeItemAccess != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeItemAccess", includeItemAccess));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -2891,7 +2937,7 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateWorkspaceValidateBeforeCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateWorkspaceValidateBeforeCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'visibility' is set
         if (visibility == null) {
             throw new ApiException("Missing the required parameter 'visibility' when calling updateWorkspace(Async)");
@@ -2902,34 +2948,39 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling updateWorkspace(Async)");
         }
 
-        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
+        // verify the required parameter 'workspaceUpdateRequest' is set
+        if (workspaceUpdateRequest == null) {
+            throw new ApiException("Missing the required parameter 'workspaceUpdateRequest' when calling updateWorkspace(Async)");
+        }
+
+        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess) throws ApiException {
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, null, opts);
+    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, Boolean includeItemAccess, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2938,20 +2989,22 @@ public class WorkspaceApi {
     public class APIupdateWorkspaceRequest {
         private final String visibility;
         private final String workspaceName;
-        private WorkspaceUpdateRequest workspaceUpdateRequest;
+        private final WorkspaceUpdateRequest workspaceUpdateRequest;
+        private Boolean includeItemAccess;
 
-        private APIupdateWorkspaceRequest(String visibility, String workspaceName) {
+        private APIupdateWorkspaceRequest(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) {
             this.visibility = visibility;
             this.workspaceName = workspaceName;
+            this.workspaceUpdateRequest = workspaceUpdateRequest;
         }
 
         /**
-         * Set workspaceUpdateRequest
-         * @param workspaceUpdateRequest The new workspace details. (optional)
+         * Set includeItemAccess
+         * @param includeItemAccess If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)
          * @return APIupdateWorkspaceRequest
          */
-        public APIupdateWorkspaceRequest workspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
-            this.workspaceUpdateRequest = workspaceUpdateRequest;
+        public APIupdateWorkspaceRequest includeItemAccess(Boolean includeItemAccess) {
+            this.includeItemAccess = includeItemAccess;
             return this;
         }
 
@@ -2969,7 +3022,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, _callback);
+            return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback);
         }
 
         /**
@@ -2985,7 +3038,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest);
+            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess);
             return localVarResp.getData();
         }
 
@@ -3002,7 +3055,7 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, opts);
+            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, opts);
             return localVarResp.getData();
         }
 
@@ -3019,7 +3072,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest);
+            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess);
         }
 
         /**
@@ -3035,7 +3088,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, opts);
+            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, opts);
         }
 
         /**
@@ -3052,7 +3105,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, _callback);
+            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback);
         }
 
         /**
@@ -3069,7 +3122,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
+            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, _callback, opts);
         }
     }
 
@@ -3078,6 +3131,7 @@ public class WorkspaceApi {
      * Update a workspace.
      * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
      * @param workspaceName The workspace name. (required)
+     * @param workspaceUpdateRequest The new workspace details. (required)
      * @return APIupdateWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3087,7 +3141,7 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateWorkspaceRequest updateWorkspace(String visibility, String workspaceName) {
-        return new APIupdateWorkspaceRequest(visibility, workspaceName);
+    public APIupdateWorkspaceRequest updateWorkspace(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) {
+        return new APIupdateWorkspaceRequest(visibility, workspaceName, workspaceUpdateRequest);
     }
 }
