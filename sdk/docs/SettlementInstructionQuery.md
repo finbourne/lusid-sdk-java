@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **filter** | **String** |  | [optional] [default to String]
 **settlementInstructionPropertyKeys** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
 **transactionPropertyKeys** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
+**timelineScope** | **String** |  | [optional] [default to String]
+**timelineCode** | **String** |  | [optional] [default to String]
+**closedPeriodId** | **String** |  | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.SettlementInstructionQuery;
@@ -27,6 +30,9 @@ import java.net.URI;
 @jakarta.annotation.Nullable String Filter = "example Filter";
 @jakarta.annotation.Nullable List<String> SettlementInstructionPropertyKeys = new List<String>();
 @jakarta.annotation.Nullable List<String> TransactionPropertyKeys = new List<String>();
+@jakarta.annotation.Nullable String TimelineScope = "example TimelineScope";
+@jakarta.annotation.Nullable String TimelineCode = "example TimelineCode";
+@jakarta.annotation.Nullable String ClosedPeriodId = "example ClosedPeriodId";
 
 
 SettlementInstructionQuery settlementInstructionQueryInstance = new SettlementInstructionQuery()
@@ -37,7 +43,10 @@ SettlementInstructionQuery settlementInstructionQueryInstance = new SettlementIn
     .Page(Page)
     .Filter(Filter)
     .SettlementInstructionPropertyKeys(SettlementInstructionPropertyKeys)
-    .TransactionPropertyKeys(TransactionPropertyKeys);
+    .TransactionPropertyKeys(TransactionPropertyKeys)
+    .TimelineScope(TimelineScope)
+    .TimelineCode(TimelineCode)
+    .ClosedPeriodId(ClosedPeriodId);
 ```
 
 

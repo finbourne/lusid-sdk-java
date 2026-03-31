@@ -3838,7 +3838,7 @@ public class TransactionPortfoliosApiExample {
 
 ## listSettlementInstructions
 
-> VersionedResourceListOfTransactionSettlementInstruction listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys)
+> VersionedResourceListOfTransactionSettlementInstruction listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId)
 
 [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
 
@@ -3892,11 +3892,14 @@ public class TransactionPortfoliosApiExample {
         String filter = "filter_example"; // String | The expression to filter out settlement instructions
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'SettlementInstruction', 'Instrument' or 'Portfolio' domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or 'SettlementInstruction/strategy/quantsignal'.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys).execute(opts);
+            // VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys).execute();
+            VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#listSettlementInstructions");
@@ -3922,6 +3925,9 @@ public class TransactionPortfoliosApiExample {
 | **filter** | **String**| The expression to filter out settlement instructions | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto   settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. | [optional] |
 
 ### Return type
 

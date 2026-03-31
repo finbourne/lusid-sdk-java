@@ -11458,11 +11458,11 @@ public class TransactionPortfoliosApi {
     public APIlistHoldingsAdjustmentsRequest listHoldingsAdjustments(String scope, String code) {
         return new APIlistHoldingsAdjustmentsRequest(scope, code);
     }
-    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11517,6 +11517,18 @@ public class TransactionPortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -11539,7 +11551,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSettlementInstructionsValidateBeforeCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listSettlementInstructionsValidateBeforeCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listSettlementInstructions(Async)");
@@ -11550,34 +11562,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listSettlementInstructions(Async)");
         }
 
-        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback, opts);
+        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransactionSettlementInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, null, opts);
+    private ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransactionSettlementInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
+    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransactionSettlementInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, List<String> propertyKeys, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransactionSettlementInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11593,6 +11605,9 @@ public class TransactionPortfoliosApi {
         private String filter;
         private OffsetDateTime asAt;
         private List<String> propertyKeys;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistSettlementInstructionsRequest(String scope, String code) {
             this.scope = scope;
@@ -11670,6 +11685,36 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listSettlementInstructions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -11683,7 +11728,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback);
+            return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -11699,7 +11744,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfTransactionSettlementInstruction execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys);
+            ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -11716,7 +11761,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfTransactionSettlementInstruction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, opts);
+            ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -11733,7 +11778,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> executeWithHttpInfo() throws ApiException {
-            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys);
+            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -11749,7 +11794,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, opts);
+            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -11766,7 +11811,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
-            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback);
+            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -11783,7 +11828,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
-            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, _callback, opts);
+            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 

@@ -85,6 +85,18 @@ public class SettlementInstructionQuery {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PROPERTY_KEYS)
   private List<String> transactionPropertyKeys;
 
+  public static final String SERIALIZED_NAME_TIMELINE_SCOPE = "timelineScope";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_SCOPE)
+  private String timelineScope;
+
+  public static final String SERIALIZED_NAME_TIMELINE_CODE = "timelineCode";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_CODE)
+  private String timelineCode;
+
+  public static final String SERIALIZED_NAME_CLOSED_PERIOD_ID = "closedPeriodId";
+  @SerializedName(SERIALIZED_NAME_CLOSED_PERIOD_ID)
+  private String closedPeriodId;
+
   public SettlementInstructionQuery() {
   }
 
@@ -272,6 +284,69 @@ public class SettlementInstructionQuery {
   }
 
 
+  public SettlementInstructionQuery timelineScope(String timelineScope) {
+    
+    this.timelineScope = timelineScope;
+    return this;
+  }
+
+   /**
+   * Get timelineScope
+   * @return timelineScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTimelineScope() {
+    return timelineScope;
+  }
+
+
+  public void setTimelineScope(String timelineScope) {
+    this.timelineScope = timelineScope;
+  }
+
+
+  public SettlementInstructionQuery timelineCode(String timelineCode) {
+    
+    this.timelineCode = timelineCode;
+    return this;
+  }
+
+   /**
+   * Get timelineCode
+   * @return timelineCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getTimelineCode() {
+    return timelineCode;
+  }
+
+
+  public void setTimelineCode(String timelineCode) {
+    this.timelineCode = timelineCode;
+  }
+
+
+  public SettlementInstructionQuery closedPeriodId(String closedPeriodId) {
+    
+    this.closedPeriodId = closedPeriodId;
+    return this;
+  }
+
+   /**
+   * Get closedPeriodId
+   * @return closedPeriodId
+  **/
+  @jakarta.annotation.Nullable
+  public String getClosedPeriodId() {
+    return closedPeriodId;
+  }
+
+
+  public void setClosedPeriodId(String closedPeriodId) {
+    this.closedPeriodId = closedPeriodId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -289,7 +364,10 @@ public class SettlementInstructionQuery {
         Objects.equals(this.page, settlementInstructionQuery.page) &&
         Objects.equals(this.filter, settlementInstructionQuery.filter) &&
         Objects.equals(this.settlementInstructionPropertyKeys, settlementInstructionQuery.settlementInstructionPropertyKeys) &&
-        Objects.equals(this.transactionPropertyKeys, settlementInstructionQuery.transactionPropertyKeys);
+        Objects.equals(this.transactionPropertyKeys, settlementInstructionQuery.transactionPropertyKeys) &&
+        Objects.equals(this.timelineScope, settlementInstructionQuery.timelineScope) &&
+        Objects.equals(this.timelineCode, settlementInstructionQuery.timelineCode) &&
+        Objects.equals(this.closedPeriodId, settlementInstructionQuery.closedPeriodId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -298,7 +376,7 @@ public class SettlementInstructionQuery {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, startDate, endDate, limit, page, filter, settlementInstructionPropertyKeys, transactionPropertyKeys);
+    return Objects.hash(asAt, startDate, endDate, limit, page, filter, settlementInstructionPropertyKeys, transactionPropertyKeys, timelineScope, timelineCode, closedPeriodId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -320,6 +398,9 @@ public class SettlementInstructionQuery {
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
     sb.append("    settlementInstructionPropertyKeys: ").append(toIndentedString(settlementInstructionPropertyKeys)).append("\n");
     sb.append("    transactionPropertyKeys: ").append(toIndentedString(transactionPropertyKeys)).append("\n");
+    sb.append("    timelineScope: ").append(toIndentedString(timelineScope)).append("\n");
+    sb.append("    timelineCode: ").append(toIndentedString(timelineCode)).append("\n");
+    sb.append("    closedPeriodId: ").append(toIndentedString(closedPeriodId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -350,6 +431,9 @@ public class SettlementInstructionQuery {
     openapiFields.add("filter");
     openapiFields.add("settlementInstructionPropertyKeys");
     openapiFields.add("transactionPropertyKeys");
+    openapiFields.add("timelineScope");
+    openapiFields.add("timelineCode");
+    openapiFields.add("closedPeriodId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -387,6 +471,15 @@ public class SettlementInstructionQuery {
       // ensure the optional json data is an array if present
       if (jsonObj.get("transactionPropertyKeys") != null && !jsonObj.get("transactionPropertyKeys").isJsonNull() && !jsonObj.get("transactionPropertyKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionPropertyKeys` to be an array in the JSON string but got `%s`", jsonObj.get("transactionPropertyKeys").toString()));
+      }
+      if ((jsonObj.get("timelineScope") != null && !jsonObj.get("timelineScope").isJsonNull()) && !jsonObj.get("timelineScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timelineScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineScope").toString()));
+      }
+      if ((jsonObj.get("timelineCode") != null && !jsonObj.get("timelineCode").isJsonNull()) && !jsonObj.get("timelineCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timelineCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineCode").toString()));
+      }
+      if ((jsonObj.get("closedPeriodId") != null && !jsonObj.get("closedPeriodId").isJsonNull()) && !jsonObj.get("closedPeriodId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `closedPeriodId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closedPeriodId").toString()));
       }
   }
 
