@@ -52,6 +52,7 @@ import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustment;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
+import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
@@ -629,6 +630,259 @@ public class FundsApi {
      */
     public APIaddAllocationGroupsRequest addAllocationGroups(String scope, String code, List<AllocationGroupDefinition> allocationGroupDefinition) {
         return new APIaddAllocationGroupsRequest(scope, code, allocationGroupDefinition);
+    }
+    private okhttp3.Call addSeriesCall(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return addSeriesCall(scope, code, seriesDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addSeriesCall(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = seriesDefinitionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/series"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addSeriesValidateBeforeCall(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling addSeries(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling addSeries(Async)");
+        }
+
+        // verify the required parameter 'seriesDefinitionRequest' is set
+        if (seriesDefinitionRequest == null) {
+            throw new ApiException("Missing the required parameter 'seriesDefinitionRequest' when calling addSeries(Async)");
+        }
+
+        return addSeriesCall(scope, code, seriesDefinitionRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Fund> addSeriesWithHttpInfo(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) throws ApiException {
+        okhttp3.Call localVarCall = addSeriesValidateBeforeCall(scope, code, seriesDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> addSeriesWithHttpInfo(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addSeriesValidateBeforeCall(scope, code, seriesDefinitionRequest, null, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call addSeriesAsync(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, final ApiCallback<Fund> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addSeriesValidateBeforeCall(scope, code, seriesDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addSeriesAsync(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addSeriesValidateBeforeCall(scope, code, seriesDefinitionRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIaddSeriesRequest {
+        private final String scope;
+        private final String code;
+        private final List<SeriesDefinitionRequest> seriesDefinitionRequest;
+
+        private APIaddSeriesRequest(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.seriesDefinitionRequest = seriesDefinitionRequest;
+        }
+
+        /**
+         * Build call for addSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return addSeriesCall(scope, code, seriesDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute addSeries request
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute() throws ApiException {
+            ApiResponse<Fund> localVarResp = addSeriesWithHttpInfo(scope, code, seriesDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = addSeriesWithHttpInfo(scope, code, seriesDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addSeries request with HTTP info returned
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
+            return addSeriesWithHttpInfo(scope, code, seriesDefinitionRequest);
+        }
+
+        /**
+         * Execute addSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addSeriesWithHttpInfo(scope, code, seriesDefinitionRequest, opts);
+        }
+
+        /**
+         * Execute addSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
+            return addSeriesAsync(scope, code, seriesDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute addSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return addSeriesAsync(scope, code, seriesDefinitionRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] AddSeries: Add Series to a Fund.
+     * Add the given Series definitions to the specified Share Classes of the Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param seriesDefinitionRequest The definitions of the Series to add. (required)
+     * @return APIaddSeriesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Fund with the added Series. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIaddSeriesRequest addSeries(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) {
+        return new APIaddSeriesRequest(scope, code, seriesDefinitionRequest);
     }
     private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return createFeeCall(scope, code, feeRequest, navTypeCode,  _callback, new ConfigurationOptions());

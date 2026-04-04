@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **businessDayConvention** | **String** | Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set. | [optional] [default to String]
 **settlementCalendars** | **List&lt;String&gt;** | Holiday calendars for option exercise date to settlement date calculation. | [optional] [default to List<String>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 
 ```java
 import com.finbourne.lusid.model.EquityOption;
@@ -48,6 +49,7 @@ Integer DeliveryDays = new Integer("100.00");
 @jakarta.annotation.Nullable String BusinessDayConvention = "example BusinessDayConvention";
 @jakarta.annotation.Nullable List<String> SettlementCalendars = new List<String>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+TradingConventions TradingConventions = new TradingConventions();
 
 
 EquityOption equityOptionInstance = new EquityOption()
@@ -68,7 +70,8 @@ EquityOption equityOptionInstance = new EquityOption()
     .DeliveryDays(DeliveryDays)
     .BusinessDayConvention(BusinessDayConvention)
     .SettlementCalendars(SettlementCalendars)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .TradingConventions(TradingConventions);
 ```
 
 

@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Premium;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -127,6 +128,10 @@ public class EquityOption extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public EquityOption() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -518,6 +523,27 @@ public class EquityOption extends LusidInstrument {
   }
 
 
+  public EquityOption tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -546,6 +572,7 @@ public class EquityOption extends LusidInstrument {
         Objects.equals(this.businessDayConvention, equityOption.businessDayConvention) &&
         Objects.equals(this.settlementCalendars, equityOption.settlementCalendars) &&
         Objects.equals(this.timeZoneConventions, equityOption.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, equityOption.tradingConventions) &&
         super.equals(o);
   }
 
@@ -555,7 +582,7 @@ public class EquityOption extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, underlying, deliveryDays, businessDayConvention, settlementCalendars, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, underlying, deliveryDays, businessDayConvention, settlementCalendars, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -588,6 +615,7 @@ public class EquityOption extends LusidInstrument {
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("    settlementCalendars: ").append(toIndentedString(settlementCalendars)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -629,6 +657,7 @@ public class EquityOption extends LusidInstrument {
     openapiFields.add("businessDayConvention");
     openapiFields.add("settlementCalendars");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

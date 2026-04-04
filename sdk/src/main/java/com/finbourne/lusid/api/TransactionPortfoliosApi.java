@@ -51,6 +51,7 @@ import com.finbourne.lusid.model.LusidTradeTicket;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
+import com.finbourne.lusid.model.OverrideVirtualTransactionsResponse;
 import com.finbourne.lusid.model.PagedResourceListOfCustodianAccount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Portfolio;
@@ -11848,6 +11849,331 @@ public class TransactionPortfoliosApi {
      */
     public APIlistSettlementInstructionsRequest listSettlementInstructions(String scope, String code) {
         return new APIlistSettlementInstructionsRequest(scope, code);
+    }
+    private okhttp3.Call overrideVirtualTransactionsCall(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return overrideVirtualTransactionsCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call overrideVirtualTransactionsCall(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = transactionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/overridevirtualtransactions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (instrumentEventId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("instrumentEventId", instrumentEventId));
+        }
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (preserveProperties != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
+        }
+
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call overrideVirtualTransactionsValidateBeforeCall(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling overrideVirtualTransactions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling overrideVirtualTransactions(Async)");
+        }
+
+        // verify the required parameter 'instrumentEventId' is set
+        if (instrumentEventId == null) {
+            throw new ApiException("Missing the required parameter 'instrumentEventId' when calling overrideVirtualTransactions(Async)");
+        }
+
+        // verify the required parameter 'transactionRequest' is set
+        if (transactionRequest == null) {
+            throw new ApiException("Missing the required parameter 'transactionRequest' when calling overrideVirtualTransactions(Async)");
+        }
+
+        return overrideVirtualTransactionsCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<OverrideVirtualTransactionsResponse> overrideVirtualTransactionsWithHttpInfo(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = overrideVirtualTransactionsValidateBeforeCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OverrideVirtualTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<OverrideVirtualTransactionsResponse> overrideVirtualTransactionsWithHttpInfo(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = overrideVirtualTransactionsValidateBeforeCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, null, opts);
+        Type localVarReturnType = new TypeToken<OverrideVirtualTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call overrideVirtualTransactionsAsync(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback<OverrideVirtualTransactionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = overrideVirtualTransactionsValidateBeforeCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OverrideVirtualTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call overrideVirtualTransactionsAsync(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest, String portfolioEffectiveAt, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback<OverrideVirtualTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = overrideVirtualTransactionsValidateBeforeCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<OverrideVirtualTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIoverrideVirtualTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final String instrumentEventId;
+        private final List<TransactionRequest> transactionRequest;
+        private String portfolioEffectiveAt;
+        private Boolean preserveProperties;
+        private String dataModelScope;
+        private String dataModelCode;
+
+        private APIoverrideVirtualTransactionsRequest(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.instrumentEventId = instrumentEventId;
+            this.transactionRequest = transactionRequest;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIoverrideVirtualTransactionsRequest
+         */
+        public APIoverrideVirtualTransactionsRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set preserveProperties
+         * @param preserveProperties If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. (optional, default to true)
+         * @return APIoverrideVirtualTransactionsRequest
+         */
+        public APIoverrideVirtualTransactionsRequest preserveProperties(Boolean preserveProperties) {
+            this.preserveProperties = preserveProperties;
+            return this;
+        }
+
+        /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIoverrideVirtualTransactionsRequest
+         */
+        public APIoverrideVirtualTransactionsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIoverrideVirtualTransactionsRequest
+         */
+        public APIoverrideVirtualTransactionsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
+         * Build call for overrideVirtualTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return overrideVirtualTransactionsCall(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback);
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request
+         * @return OverrideVirtualTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OverrideVirtualTransactionsResponse execute() throws ApiException {
+            ApiResponse<OverrideVirtualTransactionsResponse> localVarResp = overrideVirtualTransactionsWithHttpInfo(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return OverrideVirtualTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OverrideVirtualTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<OverrideVirtualTransactionsResponse> localVarResp = overrideVirtualTransactionsWithHttpInfo(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request with HTTP info returned
+         * @return ApiResponse&lt;OverrideVirtualTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OverrideVirtualTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return overrideVirtualTransactionsWithHttpInfo(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode);
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;OverrideVirtualTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OverrideVirtualTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return overrideVirtualTransactionsWithHttpInfo(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, opts);
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OverrideVirtualTransactionsResponse> _callback) throws ApiException {
+            return overrideVirtualTransactionsAsync(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback);
+        }
+
+        /**
+         * Execute overrideVirtualTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OverrideVirtualTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return overrideVirtualTransactionsAsync(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] OverrideVirtualTransactions: [EARLY ACCESS] Override virtual transactions
+     * Override virtual transactions generated by an instrument event with manually provided input transactions.  This will cancel the specified instrument event and upsert the provided transactions as replacements.  The replacement transactions will have the OverrideOfInstrumentEvent system property set and a source type of OverriddenVirtualTransaction.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param instrumentEventId The ID of the instrument event whose virtual transactions should be overridden. (required)
+     * @param transactionRequest A list of transactions to replace the virtual transactions generated by the instrument event. (required)
+     * @return APIoverrideVirtualTransactionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The result of the override including the cancel instruction and instrument event details </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIoverrideVirtualTransactionsRequest overrideVirtualTransactions(String scope, String code, String instrumentEventId, List<TransactionRequest> transactionRequest) {
+        return new APIoverrideVirtualTransactionsRequest(scope, code, instrumentEventId, transactionRequest);
     }
     private okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
         return patchPortfolioDetailsCall(scope, code, operation, effectiveAt,  _callback, new ConfigurationOptions());

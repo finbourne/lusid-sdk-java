@@ -63,6 +63,10 @@ public class AllocationGroupClassDefinition {
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_FACTOR)
   private java.math.BigDecimal apportionmentFactor;
 
+  public static final String SERIALIZED_NAME_SHARE_CLASS_SERIES_CODE = "shareClassSeriesCode";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_SERIES_CODE)
+  private String shareClassSeriesCode;
+
   public AllocationGroupClassDefinition() {
   }
 
@@ -129,6 +133,27 @@ public class AllocationGroupClassDefinition {
   }
 
 
+  public AllocationGroupClassDefinition shareClassSeriesCode(String shareClassSeriesCode) {
+    
+    this.shareClassSeriesCode = shareClassSeriesCode;
+    return this;
+  }
+
+   /**
+   * An optional series identifier for the share class. If not provided, the share class will include all series.
+   * @return shareClassSeriesCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getShareClassSeriesCode() {
+    return shareClassSeriesCode;
+  }
+
+
+  public void setShareClassSeriesCode(String shareClassSeriesCode) {
+    this.shareClassSeriesCode = shareClassSeriesCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +166,8 @@ public class AllocationGroupClassDefinition {
     AllocationGroupClassDefinition allocationGroupClassDefinition = (AllocationGroupClassDefinition) o;
     return Objects.equals(this.shareClassShortCode, allocationGroupClassDefinition.shareClassShortCode) &&
         Objects.equals(this.shareClassFundId, allocationGroupClassDefinition.shareClassFundId) &&
-        (this.apportionmentFactor.compareTo(allocationGroupClassDefinition.getApportionmentFactor()) == 0);
+        (this.apportionmentFactor.compareTo(allocationGroupClassDefinition.getApportionmentFactor()) == 0) &&
+        Objects.equals(this.shareClassSeriesCode, allocationGroupClassDefinition.shareClassSeriesCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +176,7 @@ public class AllocationGroupClassDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shareClassShortCode, shareClassFundId, apportionmentFactor);
+    return Objects.hash(shareClassShortCode, shareClassFundId, apportionmentFactor, shareClassSeriesCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +193,7 @@ public class AllocationGroupClassDefinition {
     sb.append("    shareClassShortCode: ").append(toIndentedString(shareClassShortCode)).append("\n");
     sb.append("    shareClassFundId: ").append(toIndentedString(shareClassFundId)).append("\n");
     sb.append("    apportionmentFactor: ").append(toIndentedString(apportionmentFactor)).append("\n");
+    sb.append("    shareClassSeriesCode: ").append(toIndentedString(shareClassSeriesCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +219,7 @@ public class AllocationGroupClassDefinition {
     openapiFields.add("shareClassShortCode");
     openapiFields.add("shareClassFundId");
     openapiFields.add("apportionmentFactor");
+    openapiFields.add("shareClassSeriesCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -224,6 +252,9 @@ public class AllocationGroupClassDefinition {
       // validate the optional field `shareClassFundId`
       if (jsonObj.get("shareClassFundId") != null && !jsonObj.get("shareClassFundId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("shareClassFundId"));
+      }
+      if ((jsonObj.get("shareClassSeriesCode") != null && !jsonObj.get("shareClassSeriesCode").isJsonNull()) && !jsonObj.get("shareClassSeriesCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shareClassSeriesCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shareClassSeriesCode").toString()));
       }
   }
 
