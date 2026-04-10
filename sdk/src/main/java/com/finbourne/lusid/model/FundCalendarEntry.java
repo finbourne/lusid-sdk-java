@@ -439,7 +439,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
+   * The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
    * @return holdingsAsAtOverride
   **/
   @jakarta.annotation.Nullable
@@ -460,7 +460,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+   * The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt.
    * @return valuationsAsAtOverride
   **/
   @jakarta.annotation.Nullable

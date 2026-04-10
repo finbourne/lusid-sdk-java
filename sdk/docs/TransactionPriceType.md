@@ -19,6 +19,7 @@ TransactionPriceType method = TransactionPriceType.SPREAD;
 TransactionPriceType method = TransactionPriceType.CASHFLOWPERUNIT;
 TransactionPriceType method = TransactionPriceType.CLEANPRICE;
 TransactionPriceType method = TransactionPriceType.DIRTYPRICE;
+TransactionPriceType method = TransactionPriceType.CDSPRICE;
 ```
 
 

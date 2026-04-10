@@ -13,6 +13,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**moveOrders**](OrderManagementApi.md#moveOrders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
 | [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | RunAllocationService: Runs the Allocation Service |
+| [**runAllocationServiceWithWeights**](OrderManagementApi.md#runAllocationServiceWithWeights) | **POST** /api/ordermanagement/allocate/weighted | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
 | [**sweepBlocks**](OrderManagementApi.md#sweepBlocks) | **POST** /api/ordermanagement/SweepBlocks | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
 | [**updateOrders**](OrderManagementApi.md#updateOrders) | **POST** /api/ordermanagement/updateorders | [EARLY ACCESS] UpdateOrders: Update existing orders |
 | [**updatePlacements**](OrderManagementApi.md#updatePlacements) | **POST** /api/ordermanagement/$updateplacements | [EARLY ACCESS] UpdatePlacements: Update existing placements |
@@ -828,6 +829,99 @@ public class OrderManagementApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The List of Placement IDs for which you wish to allocate Executions. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. | [optional] |
+
+### Return type
+
+[**AllocationServiceRunResponse**](AllocationServiceRunResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of Allocations |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## runAllocationServiceWithWeights
+
+> AllocationServiceRunResponse runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm)
+
+[EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+
+Allocates Executions for a given list of placements to a specified set of portfolios by weight,  creating Allocations to record the results. Used for the unsolicited Block and Block Trade booking flows where no Orders exist against the Block.  Weights are relative to each other and are not required to sum to 1 or 100.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.OrderManagementApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class OrderManagementApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
+        OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
+        WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest | The placement IDs to allocate against, and the portfolio weights to use for the allocation split.
+        String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-LF\".  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \"PR-LF\". Valid values are \"PR-LF\", \"PR-SF\", \"LF\", \"SF\".
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm).execute(opts);
+
+            AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderManagementApi#runAllocationServiceWithWeights");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **weightedAllocationServiceRunRequest** | [**WeightedAllocationServiceRunRequest**](WeightedAllocationServiceRunRequest.md)| The placement IDs to allocate against, and the portfolio weights to use for the allocation split. | |
+| **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. | [optional] |
 
 ### Return type
 

@@ -111,6 +111,10 @@ public class InstrumentEventHolder {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_GROUP_CODE = "groupCode";
+  @SerializedName(SERIALIZED_NAME_GROUP_CODE)
+  private String groupCode;
+
   public InstrumentEventHolder() {
   }
 
@@ -395,6 +399,27 @@ public class InstrumentEventHolder {
 
 
 
+  public InstrumentEventHolder groupCode(String groupCode) {
+    
+    this.groupCode = groupCode;
+    return this;
+  }
+
+   /**
+   * The group code that determines the processing order of instrument events with the same effective datetime.
+   * @return groupCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getGroupCode() {
+    return groupCode;
+  }
+
+
+  public void setGroupCode(String groupCode) {
+    this.groupCode = groupCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -417,7 +442,8 @@ public class InstrumentEventHolder {
         Objects.equals(this.properties, instrumentEventHolder.properties) &&
         Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber) &&
         Objects.equals(this.participationType, instrumentEventHolder.participationType) &&
-        Objects.equals(this.asAt, instrumentEventHolder.asAt);
+        Objects.equals(this.asAt, instrumentEventHolder.asAt) &&
+        Objects.equals(this.groupCode, instrumentEventHolder.groupCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -426,7 +452,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType, asAt);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType, asAt, groupCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -453,6 +479,7 @@ public class InstrumentEventHolder {
     sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
     sb.append("    participationType: ").append(toIndentedString(participationType)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    groupCode: ").append(toIndentedString(groupCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -488,6 +515,7 @@ public class InstrumentEventHolder {
     openapiFields.add("sequenceNumber");
     openapiFields.add("participationType");
     openapiFields.add("asAt");
+    openapiFields.add("groupCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -559,6 +587,9 @@ public class InstrumentEventHolder {
       }
       if ((jsonObj.get("participationType") != null && !jsonObj.get("participationType").isJsonNull()) && !jsonObj.get("participationType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `participationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("participationType").toString()));
+      }
+      if ((jsonObj.get("groupCode") != null && !jsonObj.get("groupCode").isJsonNull()) && !jsonObj.get("groupCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `groupCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("groupCode").toString()));
       }
   }
 

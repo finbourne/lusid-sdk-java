@@ -35,7 +35,9 @@ public enum TransactionPriceType {
   
   CLEANPRICE("CleanPrice"),
   
-  DIRTYPRICE("DirtyPrice");
+  DIRTYPRICE("DirtyPrice"),
+  
+  CDSPRICE("CdsPrice");
 
   private String value;
 

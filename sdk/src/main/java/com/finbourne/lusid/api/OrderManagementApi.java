@@ -49,6 +49,7 @@ import com.finbourne.lusid.model.SweepBlocksRequest;
 import com.finbourne.lusid.model.SweepBlocksResponse;
 import com.finbourne.lusid.model.UpdateOrdersResponse;
 import com.finbourne.lusid.model.UpdatePlacementsResponse;
+import com.finbourne.lusid.model.WeightedAllocationServiceRunRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -2284,6 +2285,256 @@ public class OrderManagementApi {
      */
     public APIrunAllocationServiceRequest runAllocationService(List<ResourceId> resourceId) {
         return new APIrunAllocationServiceRequest(resourceId);
+    }
+    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
+        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = weightedAllocationServiceRunRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/allocate/weighted";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (allocationAlgorithm != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("allocationAlgorithm", allocationAlgorithm));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call runAllocationServiceWithWeightsValidateBeforeCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'weightedAllocationServiceRunRequest' is set
+        if (weightedAllocationServiceRunRequest == null) {
+            throw new ApiException("Missing the required parameter 'weightedAllocationServiceRunRequest' when calling runAllocationServiceWithWeights(Async)");
+        }
+
+        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrunAllocationServiceWithWeightsRequest {
+        private final WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest;
+        private String allocationAlgorithm;
+
+        private APIrunAllocationServiceWithWeightsRequest(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest) {
+            this.weightedAllocationServiceRunRequest = weightedAllocationServiceRunRequest;
+        }
+
+        /**
+         * Set allocationAlgorithm
+         * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)
+         * @return APIrunAllocationServiceWithWeightsRequest
+         */
+        public APIrunAllocationServiceWithWeightsRequest allocationAlgorithm(String allocationAlgorithm) {
+            this.allocationAlgorithm = allocationAlgorithm;
+            return this;
+        }
+
+        /**
+         * Build call for runAllocationServiceWithWeights
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback);
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request
+         * @return AllocationServiceRunResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationServiceRunResponse execute() throws ApiException {
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationServiceRunResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationServiceRunResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request with HTTP info returned
+         * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo() throws ApiException {
+            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, opts);
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback);
+        }
+
+        /**
+         * Execute runAllocationServiceWithWeights request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+     * Allocates Executions for a given list of placements to a specified set of portfolios by weight,  creating Allocations to record the results. Used for the unsolicited Block and Block Trade booking flows where no Orders exist against the Block.  Weights are relative to each other and are not required to sum to 1 or 100.
+     * @param weightedAllocationServiceRunRequest The placement IDs to allocate against, and the portfolio weights to use for the allocation split. (required)
+     * @return APIrunAllocationServiceWithWeightsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIrunAllocationServiceWithWeightsRequest runAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest) {
+        return new APIrunAllocationServiceWithWeightsRequest(weightedAllocationServiceRunRequest);
     }
     private okhttp3.Call sweepBlocksCall(SweepBlocksRequest sweepBlocksRequest, final ApiCallback _callback) throws ApiException {
         return sweepBlocksCall(sweepBlocksRequest,  _callback, new ConfigurationOptions());

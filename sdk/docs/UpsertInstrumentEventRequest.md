@@ -24,7 +24,7 @@ Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 @jakarta.annotation.Nullable String Description = "example Description";
 InstrumentEvent InstrumentEvent = new InstrumentEvent();
 @jakarta.annotation.Nullable List<PerpetualProperty> Properties = new List<PerpetualProperty>();
-Integer SequenceNumber = new Integer("100.00");
+@jakarta.annotation.Nullable Integer SequenceNumber = new Integer("100.00");
 @jakarta.annotation.Nullable String ParticipationType = "example ParticipationType";
 @jakarta.annotation.Nullable Map<String, YearMonthDay> EventDateStamps = new Map<String, YearMonthDay>();
 

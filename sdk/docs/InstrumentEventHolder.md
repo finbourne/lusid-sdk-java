@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. | [optional] [default to Integer]
 **participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. | [optional] [default to String]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. | [optional] [readonly] [default to OffsetDateTime]
+**groupCode** | **String** | The group code that determines the processing order of instrument events with the same effective datetime. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.InstrumentEventHolder;
@@ -38,6 +39,7 @@ InstrumentEvent InstrumentEvent = new InstrumentEvent();
 Integer SequenceNumber = new Integer("100.00");
 @jakarta.annotation.Nullable String ParticipationType = "example ParticipationType";
 @jakarta.annotation.Nullable OffsetDateTime AsAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable String GroupCode = "example GroupCode";
 
 
 InstrumentEventHolder instrumentEventHolderInstance = new InstrumentEventHolder()
@@ -53,7 +55,8 @@ InstrumentEventHolder instrumentEventHolderInstance = new InstrumentEventHolder(
     .Properties(Properties)
     .SequenceNumber(SequenceNumber)
     .ParticipationType(ParticipationType)
-    .AsAt(AsAt);
+    .AsAt(AsAt)
+    .GroupCode(GroupCode);
 ```
 
 

@@ -818,7 +818,7 @@ public class InstrumentsApiExample {
 
 ## getInstrument
 
-> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode)
+> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId)
 
 GetInstrument: Get instrument
 
@@ -872,11 +872,14 @@ public class InstrumentsApiExample {
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
+        String timelineScope = "timelineScope_example"; // String | The optional scope of a timeline to use for post-close activity.
+        String timelineCode = "timelineCode_example"; // String | The optional code of a timeline to use for post-close activity.
+        String closedPeriodId = "closedPeriodId_example"; // String | The optional id of a closed period within the timeline to view.
         try {
             // uncomment the below to set overrides at the request level
-            // Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode).execute(opts);
+            // Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode).execute();
+            Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#getInstrument");
@@ -902,6 +905,9 @@ public class InstrumentsApiExample {
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
+| **timelineScope** | **String**| The optional scope of a timeline to use for post-close activity. | [optional] |
+| **timelineCode** | **String**| The optional code of a timeline to use for post-close activity. | [optional] |
+| **closedPeriodId** | **String**| The optional id of a closed period within the timeline to view. | [optional] |
 
 ### Return type
 
@@ -1633,7 +1639,7 @@ public class InstrumentsApiExample {
 
 ## listInstruments
 
-> PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType)
+> PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId)
 
 ListInstruments: List instruments
 
@@ -1690,11 +1696,14 @@ public class InstrumentsApiExample {
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
+        String timelineScope = "timelineScope_example"; // String | The scope of the timeline to use for PCA (Post Close Activity) support.
+        String timelineCode = "timelineCode_example"; // String | The code of the timeline to use for PCA (Post Close Activity) support.
+        String closedPeriodId = "closedPeriodId_example"; // String | The id of the closed period on the timeline to use for PCA (Post Close Activity) support.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType).execute(opts);
+            // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType).execute();
+            PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#listInstruments");
@@ -1723,6 +1732,9 @@ public class InstrumentsApiExample {
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
+| **timelineScope** | **String**| The scope of the timeline to use for PCA (Post Close Activity) support. | [optional] |
+| **timelineCode** | **String**| The code of the timeline to use for PCA (Post Close Activity) support. | [optional] |
+| **closedPeriodId** | **String**| The id of the closed period on the timeline to use for PCA (Post Close Activity) support. | [optional] |
 
 ### Return type
 

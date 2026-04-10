@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **price** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
-**type** | **String** | The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice | [optional] [default to String]
+**type** | **String** | The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice, CdsPrice | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TransactionPrice;

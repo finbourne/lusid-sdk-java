@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the holding adjustment to a unique instrument. | [default to Map<String, String>]
 **subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which identify the holding. Each property must be from the &#39;Transaction&#39; domain. | [optional] [default to Map<String, PerpetualProperty>]
-**currency** | **String** | The Holding currency. | [optional] [default to String]
+**currency** | **String** | The Holding currency. | [default to String]
 **custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
@@ -18,7 +18,7 @@ import java.net.URI;
 
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> SubHoldingKeys = new Map<String, PerpetualProperty>();
-@jakarta.annotation.Nullable String Currency = "example Currency";
+String Currency = "example Currency";
 ResourceId CustodianAccountId = new ResourceId();
 
 

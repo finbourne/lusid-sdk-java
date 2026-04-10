@@ -141,7 +141,7 @@ public class CancelSingleHoldingAdjustmentRequest {
    * The Holding currency.
    * @return currency
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getCurrency() {
     return currency;
   }
@@ -243,6 +243,7 @@ public class CancelSingleHoldingAdjustmentRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentIdentifiers");
+    openapiRequiredFields.add("currency");
   }
 
  /**
@@ -265,7 +266,7 @@ public class CancelSingleHoldingAdjustmentRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+      if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // validate the optional field `custodianAccountId`
