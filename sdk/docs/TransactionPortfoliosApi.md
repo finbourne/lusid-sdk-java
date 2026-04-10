@@ -2561,7 +2561,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getHoldingsAdjustment
 
-> HoldingsAdjustment getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys)
+> HoldingsAdjustment getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys, filter)
 
 GetHoldingsAdjustment: Get holdings adjustment
 
@@ -2610,12 +2610,13 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label of the holdings adjustment.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the ‘Instrument' domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.   Note that properties from the 'Holding’ domain are automatically returned.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.   Note that properties from the 'Holding' domain are automatically returned.
+        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         try {
             // uncomment the below to set overrides at the request level
-            // HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+            // HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys, filter).execute(opts);
 
-            HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys).execute();
+            HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getHoldingsAdjustment");
@@ -2636,7 +2637,8 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **effectiveAt** | **String**| The effective datetime or cut label of the holdings adjustment. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding’ domain are automatically returned. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding&#39; domain are automatically returned. | [optional] |
+| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 
 ### Return type
 
@@ -3740,7 +3742,7 @@ public class TransactionPortfoliosApiExample {
 
 ## listHoldingsAdjustments
 
-> ResourceListOfHoldingsAdjustmentHeader listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt)
+> ResourceListOfHoldingsAdjustmentHeader listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter)
 
 ListHoldingsAdjustments: List holdings adjustments
 
@@ -3790,11 +3792,12 @@ public class TransactionPortfoliosApiExample {
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified.
+        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute(opts);
+            // ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter).execute(opts);
 
-            ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute();
+            ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#listHoldingsAdjustments");
@@ -3816,6 +3819,7 @@ public class TransactionPortfoliosApiExample {
 | **fromEffectiveAt** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified. | [optional] |
 | **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 
 ### Return type
 

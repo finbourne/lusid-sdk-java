@@ -7388,11 +7388,11 @@ public class TransactionPortfoliosApi {
     public APIgetHoldingsRequest getHoldings(String scope, String code) {
         return new APIgetHoldingsRequest(scope, code);
     }
-    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7428,6 +7428,10 @@ public class TransactionPortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7450,7 +7454,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsAdjustmentValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsAdjustment(Async)");
@@ -7466,34 +7470,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getHoldingsAdjustment(Async)");
         }
 
-        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
+    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, filter, null, opts);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String filter, final ApiCallback<HoldingsAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7505,6 +7509,7 @@ public class TransactionPortfoliosApi {
         private final String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> propertyKeys;
+        private String filter;
 
         private APIgetHoldingsAdjustmentRequest(String scope, String code, String effectiveAt) {
             this.scope = scope;
@@ -7524,11 +7529,21 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding&#39; domain are automatically returned. (optional)
          * @return APIgetHoldingsAdjustmentRequest
          */
         public APIgetHoldingsAdjustmentRequest propertyKeys(List<String> propertyKeys) {
             this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetHoldingsAdjustmentRequest
+         */
+        public APIgetHoldingsAdjustmentRequest filter(String filter) {
+            this.filter = filter;
             return this;
         }
 
@@ -7546,7 +7561,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+            return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback);
         }
 
         /**
@@ -7562,7 +7577,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public HoldingsAdjustment execute() throws ApiException {
-            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, filter);
             return localVarResp.getData();
         }
 
@@ -7579,7 +7594,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public HoldingsAdjustment execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, filter, opts);
             return localVarResp.getData();
         }
 
@@ -7596,7 +7611,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<HoldingsAdjustment> executeWithHttpInfo() throws ApiException {
-            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, filter);
         }
 
         /**
@@ -7612,7 +7627,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<HoldingsAdjustment> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, filter, opts);
         }
 
         /**
@@ -7629,7 +7644,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
-            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback);
         }
 
         /**
@@ -7646,7 +7661,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<HoldingsAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
-            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, filter, _callback, opts);
         }
     }
 
@@ -11173,11 +11188,11 @@ public class TransactionPortfoliosApi {
     public APIlistCustodianAccountsRequest listCustodianAccounts(String scope, String code) {
         return new APIlistCustodianAccountsRequest(scope, code);
     }
-    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11216,6 +11231,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -11238,7 +11257,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listHoldingsAdjustmentsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listHoldingsAdjustments(Async)");
@@ -11249,34 +11268,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listHoldingsAdjustments(Async)");
         }
 
-        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, opts);
+    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11288,6 +11307,7 @@ public class TransactionPortfoliosApi {
         private String fromEffectiveAt;
         private String toEffectiveAt;
         private OffsetDateTime asAt;
+        private String filter;
 
         private APIlistHoldingsAdjustmentsRequest(String scope, String code) {
             this.scope = scope;
@@ -11325,6 +11345,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set filter
+         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIlistHoldingsAdjustmentsRequest
+         */
+        public APIlistHoldingsAdjustmentsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
          * Build call for listHoldingsAdjustments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -11338,7 +11368,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+            return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback);
         }
 
         /**
@@ -11354,7 +11384,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfHoldingsAdjustmentHeader execute() throws ApiException {
-            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter);
             return localVarResp.getData();
         }
 
@@ -11371,7 +11401,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfHoldingsAdjustmentHeader execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, opts);
             return localVarResp.getData();
         }
 
@@ -11388,7 +11418,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> executeWithHttpInfo() throws ApiException {
-            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter);
         }
 
         /**
@@ -11404,7 +11434,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, opts);
         }
 
         /**
@@ -11421,7 +11451,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
-            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback);
         }
 
         /**
@@ -11438,7 +11468,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback, ConfigurationOptions opts) throws ApiException {
-            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, _callback, opts);
         }
     }
 
