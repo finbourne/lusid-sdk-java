@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **type** | **String** | The type of calculation to perform | [default to String]
 **side** | **String** | The side to which the calculation is applied | [optional] [default to String]
 **formula** | **String** | The formula used to derive the total consideration amount when it is not provided on the transaction | [optional] [default to String]
+**transactionFeeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**transactionFeeCapitalisation** | [**TransactionFeeCapitalisation**](TransactionFeeCapitalisation.md) |  | [optional] [default to TransactionFeeCapitalisation]
 
 ```java
 import com.finbourne.lusid.model.TransactionTypeCalculation;
@@ -17,12 +19,16 @@ import java.net.URI;
 String Type = "example Type";
 @jakarta.annotation.Nullable String Side = "example Side";
 @jakarta.annotation.Nullable String Formula = "example Formula";
+ResourceId TransactionFeeId = new ResourceId();
+TransactionFeeCapitalisation TransactionFeeCapitalisation = new TransactionFeeCapitalisation();
 
 
 TransactionTypeCalculation transactionTypeCalculationInstance = new TransactionTypeCalculation()
     .Type(Type)
     .Side(Side)
-    .Formula(Formula);
+    .Formula(Formula)
+    .TransactionFeeId(TransactionFeeId)
+    .TransactionFeeCapitalisation(TransactionFeeCapitalisation);
 ```
 
 

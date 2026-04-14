@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.TransactionFeeCapitalisation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,6 +63,14 @@ public class TransactionTypeCalculation {
   public static final String SERIALIZED_NAME_FORMULA = "formula";
   @SerializedName(SERIALIZED_NAME_FORMULA)
   private String formula;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_FEE_ID = "transactionFeeId";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_FEE_ID)
+  private ResourceId transactionFeeId;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_FEE_CAPITALISATION = "transactionFeeCapitalisation";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_FEE_CAPITALISATION)
+  private TransactionFeeCapitalisation transactionFeeCapitalisation;
 
   public TransactionTypeCalculation() {
   }
@@ -128,6 +138,48 @@ public class TransactionTypeCalculation {
   }
 
 
+  public TransactionTypeCalculation transactionFeeId(ResourceId transactionFeeId) {
+    
+    this.transactionFeeId = transactionFeeId;
+    return this;
+  }
+
+   /**
+   * Get transactionFeeId
+   * @return transactionFeeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getTransactionFeeId() {
+    return transactionFeeId;
+  }
+
+
+  public void setTransactionFeeId(ResourceId transactionFeeId) {
+    this.transactionFeeId = transactionFeeId;
+  }
+
+
+  public TransactionTypeCalculation transactionFeeCapitalisation(TransactionFeeCapitalisation transactionFeeCapitalisation) {
+    
+    this.transactionFeeCapitalisation = transactionFeeCapitalisation;
+    return this;
+  }
+
+   /**
+   * Get transactionFeeCapitalisation
+   * @return transactionFeeCapitalisation
+  **/
+  @jakarta.annotation.Nullable
+  public TransactionFeeCapitalisation getTransactionFeeCapitalisation() {
+    return transactionFeeCapitalisation;
+  }
+
+
+  public void setTransactionFeeCapitalisation(TransactionFeeCapitalisation transactionFeeCapitalisation) {
+    this.transactionFeeCapitalisation = transactionFeeCapitalisation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +192,9 @@ public class TransactionTypeCalculation {
     TransactionTypeCalculation transactionTypeCalculation = (TransactionTypeCalculation) o;
     return Objects.equals(this.type, transactionTypeCalculation.type) &&
         Objects.equals(this.side, transactionTypeCalculation.side) &&
-        Objects.equals(this.formula, transactionTypeCalculation.formula);
+        Objects.equals(this.formula, transactionTypeCalculation.formula) &&
+        Objects.equals(this.transactionFeeId, transactionTypeCalculation.transactionFeeId) &&
+        Objects.equals(this.transactionFeeCapitalisation, transactionTypeCalculation.transactionFeeCapitalisation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +203,7 @@ public class TransactionTypeCalculation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, side, formula);
+    return Objects.hash(type, side, formula, transactionFeeId, transactionFeeCapitalisation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +220,8 @@ public class TransactionTypeCalculation {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    formula: ").append(toIndentedString(formula)).append("\n");
+    sb.append("    transactionFeeId: ").append(toIndentedString(transactionFeeId)).append("\n");
+    sb.append("    transactionFeeCapitalisation: ").append(toIndentedString(transactionFeeCapitalisation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +247,8 @@ public class TransactionTypeCalculation {
     openapiFields.add("type");
     openapiFields.add("side");
     openapiFields.add("formula");
+    openapiFields.add("transactionFeeId");
+    openapiFields.add("transactionFeeCapitalisation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -225,6 +283,14 @@ public class TransactionTypeCalculation {
       }
       if ((jsonObj.get("formula") != null && !jsonObj.get("formula").isJsonNull()) && !jsonObj.get("formula").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `formula` to be a primitive type in the JSON string but got `%s`", jsonObj.get("formula").toString()));
+      }
+      // validate the optional field `transactionFeeId`
+      if (jsonObj.get("transactionFeeId") != null && !jsonObj.get("transactionFeeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("transactionFeeId"));
+      }
+      // validate the optional field `transactionFeeCapitalisation`
+      if (jsonObj.get("transactionFeeCapitalisation") != null && !jsonObj.get("transactionFeeCapitalisation").isJsonNull()) {
+        TransactionFeeCapitalisation.validateJsonElement(jsonObj.get("transactionFeeCapitalisation"));
       }
   }
 

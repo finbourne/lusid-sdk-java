@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.RequestedChanges;
 import com.finbourne.lusid.model.StagedModificationDecision;
+import com.finbourne.lusid.model.StagedModificationSourceEntity;
 import com.finbourne.lusid.model.StagedModificationStagingRule;
 import com.finbourne.lusid.model.StagedModificationsEntityHrefs;
 import com.google.gson.TypeAdapter;
@@ -125,6 +126,10 @@ public class StagedModification {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
+
+  public static final String SERIALIZED_NAME_SOURCE_ENTITY = "sourceEntity";
+  @SerializedName(SERIALIZED_NAME_SOURCE_ENTITY)
+  private StagedModificationSourceEntity sourceEntity;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -498,6 +503,27 @@ public class StagedModification {
   }
 
 
+  public StagedModification sourceEntity(StagedModificationSourceEntity sourceEntity) {
+    
+    this.sourceEntity = sourceEntity;
+    return this;
+  }
+
+   /**
+   * Get sourceEntity
+   * @return sourceEntity
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationSourceEntity getSourceEntity() {
+    return sourceEntity;
+  }
+
+
+  public void setSourceEntity(StagedModificationSourceEntity sourceEntity) {
+    this.sourceEntity = sourceEntity;
+  }
+
+
   public StagedModification links(List<Link> links) {
     
     this.links = links;
@@ -554,6 +580,7 @@ public class StagedModification {
         Objects.equals(this.requestedChanges, stagedModification.requestedChanges) &&
         Objects.equals(this.entityHrefs, stagedModification.entityHrefs) &&
         Objects.equals(this.displayName, stagedModification.displayName) &&
+        Objects.equals(this.sourceEntity, stagedModification.sourceEntity) &&
         Objects.equals(this.links, stagedModification.links);
   }
 
@@ -563,7 +590,7 @@ public class StagedModification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, requestReason, action, stagingRule, decisions, decisionsCount, status, asAtClosed, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
+    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, requestReason, action, stagingRule, decisions, decisionsCount, status, asAtClosed, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, sourceEntity, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -594,6 +621,7 @@ public class StagedModification {
     sb.append("    requestedChanges: ").append(toIndentedString(requestedChanges)).append("\n");
     sb.append("    entityHrefs: ").append(toIndentedString(entityHrefs)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    sourceEntity: ").append(toIndentedString(sourceEntity)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -634,6 +662,7 @@ public class StagedModification {
     openapiFields.add("requestedChanges");
     openapiFields.add("entityHrefs");
     openapiFields.add("displayName");
+    openapiFields.add("sourceEntity");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -708,6 +737,10 @@ public class StagedModification {
       }
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      // validate the optional field `sourceEntity`
+      if (jsonObj.get("sourceEntity") != null && !jsonObj.get("sourceEntity").isJsonNull()) {
+        StagedModificationSourceEntity.validateJsonElement(jsonObj.get("sourceEntity"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

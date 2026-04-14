@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **requestedChanges** | [**RequestedChanges**](RequestedChanges.md) |  | [optional] [default to RequestedChanges]
 **entityHrefs** | [**StagedModificationsEntityHrefs**](StagedModificationsEntityHrefs.md) |  | [optional] [default to StagedModificationsEntityHrefs]
 **displayName** | **String** | The display name of the entity the staged modification applies to. | [optional] [default to String]
+**sourceEntity** | [**StagedModificationSourceEntity**](StagedModificationSourceEntity.md) |  | [optional] [default to StagedModificationSourceEntity]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -46,6 +47,7 @@ Integer DecisionsCount = new Integer("100.00");
 RequestedChanges RequestedChanges = new RequestedChanges();
 StagedModificationsEntityHrefs EntityHrefs = new StagedModificationsEntityHrefs();
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
+StagedModificationSourceEntity SourceEntity = new StagedModificationSourceEntity();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -67,6 +69,7 @@ StagedModification stagedModificationInstance = new StagedModification()
     .RequestedChanges(RequestedChanges)
     .EntityHrefs(EntityHrefs)
     .DisplayName(DisplayName)
+    .SourceEntity(SourceEntity)
     .Links(Links);
 ```
 

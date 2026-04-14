@@ -437,7 +437,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -453,7 +453,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -470,7 +470,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -487,7 +487,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -503,7 +503,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -520,7 +520,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -537,7 +537,7 @@ public class AborConfigurationApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -556,7 +556,7 @@ public class AborConfigurationApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the AborConfiguration was deleted </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1258,7 +1258,7 @@ public class AborConfigurationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AborConfiguration if not specified. (optional)
          * @return APIlistAborConfigurationsRequest
          */
         public APIlistAborConfigurationsRequest asAt(OffsetDateTime asAt) {
