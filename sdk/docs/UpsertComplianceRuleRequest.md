@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **active** | **Boolean** |  | [default to Boolean]
 **templateId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **variation** | **String** |  | [default to String]
-**portfolioGroupId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
+**portfolioGroupId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **parameters** | [**Map&lt;String, ComplianceParameter&gt;**](ComplianceParameter.md) |  | [default to Map<String, ComplianceParameter>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [default to Map<String, PerpetualProperty>]
 

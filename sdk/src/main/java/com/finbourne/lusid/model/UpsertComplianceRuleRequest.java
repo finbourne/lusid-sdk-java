@@ -230,7 +230,7 @@ public class UpsertComplianceRuleRequest {
    * Get portfolioGroupId
    * @return portfolioGroupId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public ResourceId getPortfolioGroupId() {
     return portfolioGroupId;
   }
@@ -387,7 +387,6 @@ public class UpsertComplianceRuleRequest {
     openapiRequiredFields.add("active");
     openapiRequiredFields.add("templateId");
     openapiRequiredFields.add("variation");
-    openapiRequiredFields.add("portfolioGroupId");
     openapiRequiredFields.add("parameters");
     openapiRequiredFields.add("properties");
   }
@@ -425,8 +424,10 @@ public class UpsertComplianceRuleRequest {
       if (!jsonObj.get("variation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `variation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variation").toString()));
       }
-      // validate the required field `portfolioGroupId`
-      ResourceId.validateJsonElement(jsonObj.get("portfolioGroupId"));
+      // validate the optional field `portfolioGroupId`
+      if (jsonObj.get("portfolioGroupId") != null && !jsonObj.get("portfolioGroupId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioGroupId"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
