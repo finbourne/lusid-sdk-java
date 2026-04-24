@@ -2613,7 +2613,7 @@ public class InstrumentsApi {
 
         /**
          * Set timelineScope
-         * @param timelineScope The optional scope of a timeline to use for post-close activity. (optional)
+         * @param timelineScope The scope of the Timeline. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest timelineScope(String timelineScope) {
@@ -2623,7 +2623,7 @@ public class InstrumentsApi {
 
         /**
          * Set timelineCode
-         * @param timelineCode The optional code of a timeline to use for post-close activity. (optional)
+         * @param timelineCode The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest timelineCode(String timelineCode) {
@@ -2633,7 +2633,7 @@ public class InstrumentsApi {
 
         /**
          * Set closedPeriodId
-         * @param closedPeriodId The optional id of a closed period within the timeline to view. (optional)
+         * @param closedPeriodId The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest closedPeriodId(String closedPeriodId) {
@@ -5151,7 +5151,7 @@ public class InstrumentsApi {
 
         /**
          * Set scope
-         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.     Use &#39;*&#39; to list instruments across all scopes. (optional, default to default)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest scope(String scope) {
@@ -5201,7 +5201,7 @@ public class InstrumentsApi {
 
         /**
          * Set timelineScope
-         * @param timelineScope The scope of the timeline to use for PCA (Post Close Activity) support. (optional)
+         * @param timelineScope The scope of the Timeline. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest timelineScope(String timelineScope) {
@@ -5211,7 +5211,7 @@ public class InstrumentsApi {
 
         /**
          * Set timelineCode
-         * @param timelineCode The code of the timeline to use for PCA (Post Close Activity) support. (optional)
+         * @param timelineCode The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest timelineCode(String timelineCode) {
@@ -5221,7 +5221,7 @@ public class InstrumentsApi {
 
         /**
          * Set closedPeriodId
-         * @param closedPeriodId The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)
+         * @param closedPeriodId The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest closedPeriodId(String closedPeriodId) {
@@ -5349,7 +5349,7 @@ public class InstrumentsApi {
 
     /**
      * ListInstruments: List instruments
-     * List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+     * List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
      * @return APIlistInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

@@ -908,6 +908,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FilteredFundIdList.class, new TypeSelector<com.finbourne.lusid.model.FilteredFundIdList>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FilteredFundIdList> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FilteredFundIdList", com.finbourne.lusid.model.FilteredFundIdList.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "referenceListType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FinalisedValuationPoint.class, new TypeSelector<com.finbourne.lusid.model.FinalisedValuationPoint>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FinalisedValuationPoint> getClassForElement(JsonElement readElement) {
@@ -2120,6 +2129,7 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("AddressKeyList", com.finbourne.lusid.model.AddressKeyList.class);
                         classByDiscriminatorValue.put("DecimalList", com.finbourne.lusid.model.DecimalList.class);
+                        classByDiscriminatorValue.put("FilteredFundIdList", com.finbourne.lusid.model.FilteredFundIdList.class);
                         classByDiscriminatorValue.put("FundIdList", com.finbourne.lusid.model.FundIdList.class);
                         classByDiscriminatorValue.put("InstrumentList", com.finbourne.lusid.model.InstrumentList.class);
                         classByDiscriminatorValue.put("PortfolioGroupIdList", com.finbourne.lusid.model.PortfolioGroupIdList.class);
@@ -2958,6 +2968,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterPredicateComplianceParameter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterStep.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilterStepRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FilteredFundIdList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FinalisedValuationPoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLegAllOfOverrides.CustomTypeAdapterFactory());

@@ -39,7 +39,9 @@ public enum ReferenceListType {
   
   PROPERTYLIST("PropertyList"),
   
-  FUNDIDLIST("FundIdList");
+  FUNDIDLIST("FundIdList"),
+  
+  FILTEREDFUNDIDLIST("FilteredFundIdList");
 
   private String value;
 

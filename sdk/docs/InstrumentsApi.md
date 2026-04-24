@@ -872,9 +872,9 @@ public class InstrumentsApiExample {
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
-        String timelineScope = "timelineScope_example"; // String | The optional scope of a timeline to use for post-close activity.
-        String timelineCode = "timelineCode_example"; // String | The optional code of a timeline to use for post-close activity.
-        String closedPeriodId = "closedPeriodId_example"; // String | The optional id of a closed period within the timeline to view.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
         try {
             // uncomment the below to set overrides at the request level
             // Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId).execute(opts);
@@ -905,9 +905,9 @@ public class InstrumentsApiExample {
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
-| **timelineScope** | **String**| The optional scope of a timeline to use for post-close activity. | [optional] |
-| **timelineCode** | **String**| The optional code of a timeline to use for post-close activity. | [optional] |
-| **closedPeriodId** | **String**| The optional id of a closed period within the timeline to view. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |
 
 ### Return type
 
@@ -1643,7 +1643,7 @@ public class InstrumentsApiExample {
 
 ListInstruments: List instruments
 
-List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
 
 ### Example
 
@@ -1691,14 +1691,14 @@ public class InstrumentsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
         String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.     Use '*' to list instruments across all scopes.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
-        String timelineScope = "timelineScope_example"; // String | The scope of the timeline to use for PCA (Post Close Activity) support.
-        String timelineCode = "timelineCode_example"; // String | The code of the timeline to use for PCA (Post Close Activity) support.
-        String closedPeriodId = "closedPeriodId_example"; // String | The id of the closed period on the timeline to use for PCA (Post Close Activity) support.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId).execute(opts);
@@ -1727,14 +1727,14 @@ public class InstrumentsApiExample {
 | **limit** | **Integer**| When paginating, limit the results to this number. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] [default to State eq &#39;Active&#39;] |
 | **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
-| **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.     Use &#39;*&#39; to list instruments across all scopes. | [optional] [default to default] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
-| **timelineScope** | **String**| The scope of the timeline to use for PCA (Post Close Activity) support. | [optional] |
-| **timelineCode** | **String**| The code of the timeline to use for PCA (Post Close Activity) support. | [optional] |
-| **closedPeriodId** | **String**| The id of the closed period on the timeline to use for PCA (Post Close Activity) support. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |
 
 ### Return type
 

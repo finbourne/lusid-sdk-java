@@ -324,11 +324,11 @@ public class ComplexMarketDataApi {
     public APIdeleteComplexMarketDataRequest deleteComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) {
         return new APIdeleteComplexMarketDataRequest(scope, requestBody);
     }
-    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
-        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -366,6 +366,18 @@ public class ComplexMarketDataApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("maxAge", maxAge));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -392,7 +404,7 @@ public class ComplexMarketDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getComplexMarketData(Async)");
@@ -403,34 +415,34 @@ public class ComplexMarketDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getComplexMarketData(Async)");
         }
 
-        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
+        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge) throws ApiException {
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null, new ConfigurationOptions());
+    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null, opts);
+    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
+    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetComplexMarketDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -442,6 +454,9 @@ public class ComplexMarketDataApi {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String maxAge;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetComplexMarketDataRequest(String scope, Map<String, ComplexMarketDataId> requestBody) {
             this.scope = scope;
@@ -479,6 +494,36 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)
+         * @return APIgetComplexMarketDataRequest
+         */
+        public APIgetComplexMarketDataRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getComplexMarketData
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -492,7 +537,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+            return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -508,7 +553,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public GetComplexMarketDataResponse execute() throws ApiException {
-            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -525,7 +570,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public GetComplexMarketDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, opts);
+            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -542,7 +587,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<GetComplexMarketDataResponse> executeWithHttpInfo() throws ApiException {
-            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -558,7 +603,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<GetComplexMarketDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, opts);
+            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -575,7 +620,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
-            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -592,7 +637,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetComplexMarketDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
+            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -613,11 +658,11 @@ public class ComplexMarketDataApi {
     public APIgetComplexMarketDataRequest getComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) {
         return new APIgetComplexMarketDataRequest(scope, requestBody);
     }
-    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
-        return listComplexMarketDataCall(asAt, effectiveAt, page, limit,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listComplexMarketDataCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -658,6 +703,18 @@ public class ComplexMarketDataApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -680,35 +737,35 @@ public class ComplexMarketDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listComplexMarketDataCall(asAt, effectiveAt, page, limit, _callback, opts);
+    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listComplexMarketDataCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, null, opts);
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, _callback, opts);
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -719,6 +776,9 @@ public class ComplexMarketDataApi {
         private String effectiveAt;
         private String page;
         private Integer limit;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistComplexMarketDataRequest() {
         }
@@ -764,6 +824,36 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listComplexMarketData
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -777,7 +867,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listComplexMarketDataCall(asAt, effectiveAt, page, limit, _callback);
+            return listComplexMarketDataCall(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -793,7 +883,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ResourceListOfListComplexMarketDataWithMetaDataResponse execute() throws ApiException {
-            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit);
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -810,7 +900,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ResourceListOfListComplexMarketDataWithMetaDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, opts);
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -827,7 +917,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo() throws ApiException {
-            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit);
+            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -843,7 +933,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, opts);
+            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -860,7 +950,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
-            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, _callback);
+            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -877,7 +967,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, _callback, opts);
+            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 

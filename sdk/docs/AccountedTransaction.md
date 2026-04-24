@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **portfolioId** | [**PortfolioId**](PortfolioId.md) |  | [optional] [default to PortfolioId]
 **valuationPointOrigin** | **String** | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. | [optional] [default to String]
 **addedOriginValuationPointCode** | **String** | The Valuation Point, only for transaction added as part of a Complex Close action. | [optional] [default to String]
+**addedOriginValuationPointVariantCode** | **String** | The Valuation Point variant, only for transactions added as part of a Complex Close action. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.AccountedTransaction;
@@ -24,6 +25,7 @@ OutputTransaction Transaction = new OutputTransaction();
 PortfolioId PortfolioId = new PortfolioId();
 @jakarta.annotation.Nullable String ValuationPointOrigin = "example ValuationPointOrigin";
 @jakarta.annotation.Nullable String AddedOriginValuationPointCode = "example AddedOriginValuationPointCode";
+@jakarta.annotation.Nullable String AddedOriginValuationPointVariantCode = "example AddedOriginValuationPointVariantCode";
 
 
 AccountedTransaction accountedTransactionInstance = new AccountedTransaction()
@@ -32,7 +34,8 @@ AccountedTransaction accountedTransactionInstance = new AccountedTransaction()
     .Transaction(Transaction)
     .PortfolioId(PortfolioId)
     .ValuationPointOrigin(ValuationPointOrigin)
-    .AddedOriginValuationPointCode(AddedOriginValuationPointCode);
+    .AddedOriginValuationPointCode(AddedOriginValuationPointCode)
+    .AddedOriginValuationPointVariantCode(AddedOriginValuationPointVariantCode);
 ```
 
 

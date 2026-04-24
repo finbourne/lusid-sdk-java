@@ -107,7 +107,7 @@ public class ComplexMarketDataApiExample {
 
 ## getComplexMarketData
 
-> GetComplexMarketDataResponse getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge)
+> GetComplexMarketDataResponse getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId)
 
 GetComplexMarketData: Get complex market data
 
@@ -157,11 +157,14 @@ public class ComplexMarketDataApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the Effective at of each ComplexMarketDataId given in the request body.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
         String maxAge = "maxAge_example"; // String | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
         try {
             // uncomment the below to set overrides at the request level
-            // GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge).execute(opts);
+            // GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge).execute();
+            GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplexMarketDataApi#getComplexMarketData");
@@ -183,6 +186,9 @@ public class ComplexMarketDataApiExample {
 | **effectiveAt** | **String**| The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the Effective at of each ComplexMarketDataId given in the request body. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. | [optional] |
 | **maxAge** | **String**| The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |
 
 ### Return type
 
@@ -206,7 +212,7 @@ public class ComplexMarketDataApiExample {
 
 ## listComplexMarketData
 
-> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt, effectiveAt, page, limit)
+> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId)
 
 ListComplexMarketData: List the set of ComplexMarketData
 
@@ -255,11 +261,14 @@ public class ComplexMarketDataApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned.
         String page = "page_example"; // String | The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit).execute(opts);
+            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit).execute();
+            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
@@ -280,6 +289,9 @@ public class ComplexMarketDataApiExample {
 | **effectiveAt** | **String**| The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |
 
 ### Return type
 

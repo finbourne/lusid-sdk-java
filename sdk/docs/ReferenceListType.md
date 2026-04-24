@@ -21,6 +21,7 @@ ReferenceListType method = ReferenceListType.INSTRUMENTLIST;
 ReferenceListType method = ReferenceListType.DECIMALLIST;
 ReferenceListType method = ReferenceListType.PROPERTYLIST;
 ReferenceListType method = ReferenceListType.FUNDIDLIST;
+ReferenceListType method = ReferenceListType.FILTEREDFUNDIDLIST;
 ```
 
 

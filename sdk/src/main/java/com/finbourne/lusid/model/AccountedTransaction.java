@@ -77,6 +77,10 @@ public class AccountedTransaction {
   @SerializedName(SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_CODE)
   private String addedOriginValuationPointCode;
 
+  public static final String SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_VARIANT_CODE = "addedOriginValuationPointVariantCode";
+  @SerializedName(SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_VARIANT_CODE)
+  private String addedOriginValuationPointVariantCode;
+
   public AccountedTransaction() {
   }
 
@@ -206,6 +210,27 @@ public class AccountedTransaction {
   }
 
 
+  public AccountedTransaction addedOriginValuationPointVariantCode(String addedOriginValuationPointVariantCode) {
+    
+    this.addedOriginValuationPointVariantCode = addedOriginValuationPointVariantCode;
+    return this;
+  }
+
+   /**
+   * The Valuation Point variant, only for transactions added as part of a Complex Close action.
+   * @return addedOriginValuationPointVariantCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getAddedOriginValuationPointVariantCode() {
+    return addedOriginValuationPointVariantCode;
+  }
+
+
+  public void setAddedOriginValuationPointVariantCode(String addedOriginValuationPointVariantCode) {
+    this.addedOriginValuationPointVariantCode = addedOriginValuationPointVariantCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -221,7 +246,8 @@ public class AccountedTransaction {
         Objects.equals(this.transaction, accountedTransaction.transaction) &&
         Objects.equals(this.portfolioId, accountedTransaction.portfolioId) &&
         Objects.equals(this.valuationPointOrigin, accountedTransaction.valuationPointOrigin) &&
-        Objects.equals(this.addedOriginValuationPointCode, accountedTransaction.addedOriginValuationPointCode);
+        Objects.equals(this.addedOriginValuationPointCode, accountedTransaction.addedOriginValuationPointCode) &&
+        Objects.equals(this.addedOriginValuationPointVariantCode, accountedTransaction.addedOriginValuationPointVariantCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -230,7 +256,7 @@ public class AccountedTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, journalEntryAction, transaction, portfolioId, valuationPointOrigin, addedOriginValuationPointCode);
+    return Objects.hash(accountingDate, journalEntryAction, transaction, portfolioId, valuationPointOrigin, addedOriginValuationPointCode, addedOriginValuationPointVariantCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -250,6 +276,7 @@ public class AccountedTransaction {
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    valuationPointOrigin: ").append(toIndentedString(valuationPointOrigin)).append("\n");
     sb.append("    addedOriginValuationPointCode: ").append(toIndentedString(addedOriginValuationPointCode)).append("\n");
+    sb.append("    addedOriginValuationPointVariantCode: ").append(toIndentedString(addedOriginValuationPointVariantCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -278,6 +305,7 @@ public class AccountedTransaction {
     openapiFields.add("portfolioId");
     openapiFields.add("valuationPointOrigin");
     openapiFields.add("addedOriginValuationPointCode");
+    openapiFields.add("addedOriginValuationPointVariantCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -312,6 +340,9 @@ public class AccountedTransaction {
       }
       if ((jsonObj.get("addedOriginValuationPointCode") != null && !jsonObj.get("addedOriginValuationPointCode").isJsonNull()) && !jsonObj.get("addedOriginValuationPointCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addedOriginValuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addedOriginValuationPointCode").toString()));
+      }
+      if ((jsonObj.get("addedOriginValuationPointVariantCode") != null && !jsonObj.get("addedOriginValuationPointVariantCode").isJsonNull()) && !jsonObj.get("addedOriginValuationPointVariantCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `addedOriginValuationPointVariantCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addedOriginValuationPointVariantCode").toString()));
       }
   }
 
