@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **lifeCycleStatus** | **String** | Within an API where an item can be accessed through an address or property, there is an associated status that determines whether the item is stable or likely to change. This status is one of [Experimental, Beta, EAP, Prod, Deprecated]. If the item is deprecated it will be removed on or after the associated DateTime RemovalDate field. That field will not otherwise be set. | [default to String]
 **removalDate** | [**OffsetDateTime**](OffsetDateTime.md) | If the life cycle status is set to deprecated then this will be populated with the date on or after which removal of the address query will happen | [optional] [default to OffsetDateTime]
 **applicableOptions** | [**Map&lt;String, AddressKeyOptionDefinition&gt;**](AddressKeyOptionDefinition.md) | A mapping from option names to the definition that the corresponding option value must match. | [optional] [default to Map<String, AddressKeyOptionDefinition>]
-**derivationFormula** | **String** | Derivation formula for when the for when the query key represents a DerivedValuation property. | [optional] [default to String]
+**derivationFormula** | **String** | Derivation formula for when the query key represents a DerivedValuation property. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.QueryableKey;

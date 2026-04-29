@@ -369,7 +369,7 @@ public class QueryableKey {
   }
 
    /**
-   * Derivation formula for when the for when the query key represents a DerivedValuation property.
+   * Derivation formula for when the query key represents a DerivedValuation property.
    * @return derivationFormula
   **/
   @jakarta.annotation.Nullable

@@ -135,7 +135,7 @@ public class FundValuationPointData {
   }
 
    /**
-   * Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
+   * Bucket of detail for any &#39;Dealing&#39; that has occurred inside the queried period.
    * @return dealing
   **/
   @jakarta.annotation.Nonnull

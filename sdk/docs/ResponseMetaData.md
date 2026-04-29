@@ -6,7 +6,7 @@ Metadata related to an api response
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of meta data information being provided | [optional] [default to String]
-**description** | **String** | The description of what occured for this specific piece of meta data | [optional] [default to String]
+**description** | **String** | The description of what occurred for this specific piece of meta data | [optional] [default to String]
 **identifierType** | **String** | The type of the listed identifiers | [optional] [default to String]
 **identifiers** | **List&lt;String&gt;** | The related identifiers that were impacted by this event | [optional] [default to List<String>]
 

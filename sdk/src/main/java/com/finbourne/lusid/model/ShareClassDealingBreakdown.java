@@ -79,7 +79,7 @@ public class ShareClassDealingBreakdown {
   }
 
    /**
-   * Bucket of detail for any &#39;Dealing&#39; specific to the share class that has occured inside the queried period.
+   * Bucket of detail for any &#39;Dealing&#39; specific to the share class that has occurred inside the queried period.
    * @return classDealing
   **/
   @jakarta.annotation.Nonnull
@@ -108,7 +108,7 @@ public class ShareClassDealingBreakdown {
   }
 
    /**
-   * Bucket of detail for any &#39;Dealing&#39; units specific to the share class that has occured inside the queried period.
+   * Bucket of detail for any &#39;Dealing&#39; units specific to the share class that has occurred inside the queried period.
    * @return classDealingUnits
   **/
   @jakarta.annotation.Nonnull

@@ -99,7 +99,7 @@ public class ResponseMetaData {
   }
 
    /**
-   * The description of what occured for this specific piece of meta data
+   * The description of what occurred for this specific piece of meta data
    * @return description
   **/
   @jakarta.annotation.Nullable

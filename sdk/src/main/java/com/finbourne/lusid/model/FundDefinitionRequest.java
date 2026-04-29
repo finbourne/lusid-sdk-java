@@ -257,7 +257,7 @@ public class FundDefinitionRequest {
   }
 
    /**
-   * A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency.
+   * A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also match the Fund Base Currency.
    * @return portfolioIds
   **/
   @jakarta.annotation.Nonnull
