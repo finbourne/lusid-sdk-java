@@ -89,7 +89,7 @@ public class SimpleRoundingConvention {
   }
 
    /**
-   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].  Defaults to \&quot;None\&quot; if not set.
+   * The type of rounding.  Default value: None. Available values: None, Down, Up, Nearest.
    * @return roundingType
   **/
   @jakarta.annotation.Nullable

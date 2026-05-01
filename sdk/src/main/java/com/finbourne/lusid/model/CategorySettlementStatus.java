@@ -74,7 +74,7 @@ public class CategorySettlementStatus {
   }
 
    /**
-   * The Status of the settlement category - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;.
+   * The Status of the settlement category. Available values: Unsettled, PartSettled, Settled, None.
    * @return status
   **/
   @jakarta.annotation.Nonnull

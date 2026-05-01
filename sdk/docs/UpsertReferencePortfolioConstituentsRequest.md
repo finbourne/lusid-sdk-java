@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **effectiveFrom** | **String** | The first date from which the weights will apply | [default to String]
-**weightType** | **String** | The available values are: Static, Floating, Periodical | [default to String]
-**periodType** | **String** | The available values are: Daily, Weekly, Monthly, Quarterly, Annually | [optional] [default to String]
+**weightType** | **String** | Available values: Static, Floating, Periodical. | [default to String]
+**periodType** | **String** | Available values: Daily, Weekly, Monthly, Quarterly, Annually. | [optional] [default to String]
 **periodCount** | **Integer** |  | [optional] [default to Integer]
 **constituents** | [**List&lt;ReferencePortfolioConstituentRequest&gt;**](ReferencePortfolioConstituentRequest.md) | Set of constituents (instrument/weight pairings) | [default to List<ReferencePortfolioConstituentRequest>]
 

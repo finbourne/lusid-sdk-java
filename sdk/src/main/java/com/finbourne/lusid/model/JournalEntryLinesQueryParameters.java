@@ -150,7 +150,7 @@ public class JournalEntryLinesQueryParameters {
   }
 
    /**
-   * The mode of calculation of the journal entry lines. The available values are: ActivityDate, AccountingDate.
+   * The mode of calculation of the journal entry lines. Available values: ActivityDate, AccountingDate.
    * @return dateMode
   **/
   @jakarta.annotation.Nullable

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entitlementDate** | **String** |  | [default to String]
-**eligibleUnits** | **String** |  | [default to String]
+**eligibleUnits** | **String** | Available values: TotalUnits, SettledUnits, NotApplicable. | [default to String]
 **dateModifiableByInstruction** | **Boolean** |  | [optional] [default to Boolean]
 
 ```java

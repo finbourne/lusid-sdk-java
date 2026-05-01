@@ -99,7 +99,7 @@ public class LockPeriodDiaryEntryRequest {
   }
 
    /**
-   * The options which will be executed once a period is closed or locked.
+   * The options which will be executed once a period is closed or locked. Available values: ApplyClearDown.
    * @return closingOptions
   **/
   @jakarta.annotation.Nullable

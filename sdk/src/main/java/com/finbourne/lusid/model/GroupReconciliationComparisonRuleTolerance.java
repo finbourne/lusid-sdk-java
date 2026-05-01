@@ -67,7 +67,7 @@ public class GroupReconciliationComparisonRuleTolerance {
   }
 
    /**
-   * The type of tolerance to allow. \&quot;Relative\&quot; | \&quot;Absolute\&quot;
+   * The type of tolerance to allow. Available values: Relative, Absolute.
    * @return type
   **/
   @jakarta.annotation.Nonnull

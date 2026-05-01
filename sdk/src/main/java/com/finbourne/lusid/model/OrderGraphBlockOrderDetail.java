@@ -117,7 +117,7 @@ public class OrderGraphBlockOrderDetail {
   }
 
    /**
-   * The compliance state of this order. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;.
+   * The compliance state of this order. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
    * @return complianceState
   **/
   @jakarta.annotation.Nonnull
@@ -138,7 +138,7 @@ public class OrderGraphBlockOrderDetail {
   }
 
    /**
-   * The approval state of this order. Possible values are &#39;Pending&#39;, &#39;Rejected&#39; and &#39;Approved&#39;.
+   * The approval state of this order. Available values: Pending, Rejected, Approved.
    * @return approvalState
   **/
   @jakarta.annotation.Nonnull

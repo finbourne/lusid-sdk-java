@@ -113,7 +113,7 @@ public class SettlementProblem {
   }
 
    /**
-   * The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;.
+   * The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan.
    * @return status
   **/
   @jakarta.annotation.Nonnull

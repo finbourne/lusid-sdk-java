@@ -65,8 +65,8 @@ public class ScriptedTranslationApiExample {
         String scope = "scope_example"; // String | The scope of the dialect.
         String vendor = "vendor_example"; // String | The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.
         String sourceSystem = "sourceSystem_example"; // String | The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.
-        String entityType = "entityType_example"; // String | The type of entity this dialect describes e.g. Instrument.
-        String serialisationFormat = "serialisationFormat_example"; // String | The serialisation format of a document in this dialect. e.g. JSON, XML.
+        String entityType = "entityType_example"; // String | The type of entity this dialect describes e.g. Instrument. Available values: Instrument.
+        String serialisationFormat = "serialisationFormat_example"; // String | The serialisation format of a document in this dialect. Available values: Json, Xml.
         String version = "version_example"; // String | The semantic version of the dialect: MAJOR.MINOR.PATCH.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified.
         try {
@@ -93,8 +93,8 @@ public class ScriptedTranslationApiExample {
 | **scope** | **String**| The scope of the dialect. | |
 | **vendor** | **String**| The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. | |
 | **sourceSystem** | **String**| The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. | |
-| **entityType** | **String**| The type of entity this dialect describes e.g. Instrument. | |
-| **serialisationFormat** | **String**| The serialisation format of a document in this dialect. e.g. JSON, XML. | |
+| **entityType** | **String**| The type of entity this dialect describes e.g. Instrument. Available values: Instrument. | |
+| **serialisationFormat** | **String**| The serialisation format of a document in this dialect. Available values: Json, Xml. | |
 | **version** | **String**| The semantic version of the dialect: MAJOR.MINOR.PATCH. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. | [optional] |
 

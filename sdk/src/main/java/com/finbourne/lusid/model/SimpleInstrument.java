@@ -65,7 +65,7 @@ public class SimpleInstrument extends LusidInstrument {
   private String domCcy;
 
   /**
-   * The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown
+   * Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown.
    */
   @JsonAdapter(AssetClassEnum.Adapter.class)
   public enum AssetClassEnum {
@@ -196,7 +196,7 @@ public class SimpleInstrument extends LusidInstrument {
   }
 
    /**
-   * The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown
+   * Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown.
    * @return assetClass
   **/
   @jakarta.annotation.Nonnull

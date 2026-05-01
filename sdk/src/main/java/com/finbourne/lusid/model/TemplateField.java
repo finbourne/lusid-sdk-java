@@ -106,7 +106,7 @@ public class TemplateField {
   }
 
    /**
-   * Get specificity
+   * Available values: AllEventsAndHoldings, InstrumentEventType, ElectionType.
    * @return specificity
   **/
   @jakarta.annotation.Nonnull
@@ -148,7 +148,7 @@ public class TemplateField {
   }
 
    /**
-   * Get type
+   * Available values: String, Decimal, InstrumentScope, Currency, DateTime, PriceType, InstrumentId, PropertyKey, Boolean.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -169,7 +169,7 @@ public class TemplateField {
   }
 
    /**
-   * Get availability
+   * Available values: Guaranteed, DataDependent, Informational.
    * @return availability
   **/
   @jakarta.annotation.Nonnull

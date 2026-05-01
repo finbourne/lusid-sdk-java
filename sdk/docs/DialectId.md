@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **vendor** | **String** | The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. | [default to String]
 **sourceSystem** | **String** | The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. | [default to String]
 **version** | **String** | The semantic version of the dialect: MAJOR.MINOR.PATCH. | [default to String]
-**serialisationFormat** | **String** | The serialisation format of a document in this dialect. e.g. JSON, XML. | [default to String]
-**entityType** | **String** | The type of entity this dialect describes e.g. Instrument. | [default to String]
+**serialisationFormat** | **String** | The serialisation format of a document in this dialect. Available values: Json, Xml. | [default to String]
+**entityType** | **String** | The type of entity this dialect describes e.g. Instrument. Available values: Instrument. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.DialectId;

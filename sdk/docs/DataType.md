@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**typeValueRange** | **String** | The available values are: Open, Closed | [default to String]
+**typeValueRange** | **String** | Available values: Open, Closed. | [default to String]
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** |  | [default to String]
 **description** | **String** |  | [default to String]
-**valueType** | **String** | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | [default to String]
+**valueType** | **String** | Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. | [default to String]
 **acceptableValues** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
-**unitSchema** | **String** | The available values are: NoUnits, Basic, Iso4217Currency | [optional] [default to String]
+**unitSchema** | **String** | Available values: NoUnits, Basic, Iso4217Currency. | [optional] [default to String]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  | [optional] [default to List<IUnitDefinitionDto>]
 **referenceData** | [**ReferenceData**](ReferenceData.md) |  | [optional] [default to ReferenceData]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]

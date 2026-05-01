@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **type** | **String** | The transaction type | [default to String]
 **description** | **String** | Brief description of the transaction | [default to String]
 **transactionClass** | **String** | Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut | [default to String]
-**transactionRoles** | **String** | Transactions role within a class. E.g. Increase a long position | [default to String]
+**transactionRoles** | **String** | Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. | [default to String]
 **isDefault** | **Boolean** | IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source. | [optional] [default to Boolean]
 
 ```java

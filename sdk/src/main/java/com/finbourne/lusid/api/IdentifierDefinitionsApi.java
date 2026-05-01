@@ -550,7 +550,7 @@ public class IdentifierDefinitionsApi {
     /**
      * [EXPERIMENTAL] DeleteIdentifierDefinition: Delete a particular Identifier Definition
      * The deletion will take effect from the Identifier Definition deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
-     * @param domain The type of entity to which the identifier relates (required)
+     * @param domain The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. (required)
      * @param identifierScope The scope that the identifier exists in (required)
      * @param identifierType What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition (required)
      * @return APIdeleteIdentifierDefinitionRequest
@@ -845,7 +845,7 @@ public class IdentifierDefinitionsApi {
     /**
      * [EXPERIMENTAL] GetIdentifierDefinition: Get a single Identifier Definition
      * Get a single Identifier Definition using domain, identifierScope, identifierType, and an optional asAt   - defaulting to latest if not specified
-     * @param domain The type of entity to which the identifier relates. (required)
+     * @param domain The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. (required)
      * @param identifierScope The scope that the identifier exists in (required)
      * @param identifierType What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition (required)
      * @return APIgetIdentifierDefinitionRequest
@@ -1438,7 +1438,7 @@ public class IdentifierDefinitionsApi {
     /**
      * [EXPERIMENTAL] UpdateIdentifierDefinition: Update Identifier Definition defined by domain, identifierScope, and identifierType
      * Overwrites an existing Identifier Definition.
-     * @param domain The type of entity to which the identifier relates (required)
+     * @param domain The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. (required)
      * @param identifierScope The scope that the identifier exists in (required)
      * @param identifierType What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the Identifier Definition (required)
      * @return APIupdateIdentifierDefinitionRequest

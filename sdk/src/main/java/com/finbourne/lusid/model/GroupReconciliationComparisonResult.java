@@ -157,7 +157,7 @@ public class GroupReconciliationComparisonResult {
   }
 
    /**
-   * The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+   * The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.
    * @return reconciliationType
   **/
   @jakarta.annotation.Nonnull
@@ -262,7 +262,7 @@ public class GroupReconciliationComparisonResult {
   }
 
    /**
-   * Reconciliation run general result. \&quot;Break\&quot; | \&quot;Match\&quot; | \&quot;PartialMatch\&quot; | \&quot;NotFound
+   * Reconciliation run general result. Available values: Match, PartialMatch, Break, NotFound, Resolved.
    * @return resultType
   **/
   @jakarta.annotation.Nonnull
@@ -283,7 +283,7 @@ public class GroupReconciliationComparisonResult {
   }
 
    /**
-   * Indicates how a particular result evolves from one run to the next. \&quot;New\&quot; | \&quot;Confirmed\&quot; | \&quot;Changed\&quot;
+   * Indicates how a particular result evolves from one run to the next. Available values: New, Confirmed, Changed.
    * @return resultStatus
   **/
   @jakarta.annotation.Nonnull
@@ -304,7 +304,7 @@ public class GroupReconciliationComparisonResult {
   }
 
    /**
-   * Status of whether user has provided any input (comments, manual matches, break codes). \&quot;Pending\&quot; | \&quot;Reviewed\&quot; | \&quot;Matched\&quot; | \&quot;Invalid\&quot;
+   * Status of whether user has provided any input (comments, manual matches, break codes). Available values: Pending, Reviewed, Matched, Invalid.
    * @return reviewStatus
   **/
   @jakarta.annotation.Nonnull

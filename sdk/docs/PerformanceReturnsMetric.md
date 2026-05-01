@@ -5,7 +5,7 @@ The request used in the AggregatedReturns.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of the metric. Default to Return | [optional] [default to String]
+**type** | **String** | The type of the metric. Default value: Return. Available values: Return, Volatility, IndicativeAmount, Dispersion. | [optional] [default to String]
 **window** | **String** | The given metric for the calculation i.e. 1Y, 1D. | [optional] [default to String]
 **allowPartial** | **Boolean** | Bool if the metric is allowed partial results. Default to false. | [optional] [default to Boolean]
 **annualised** | **Boolean** | Bool if the metric is annualized. Default to false. | [optional] [default to Boolean]

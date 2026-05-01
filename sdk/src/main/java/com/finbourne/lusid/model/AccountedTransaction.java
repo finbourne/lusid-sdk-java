@@ -175,7 +175,7 @@ public class AccountedTransaction {
   }
 
    /**
-   * Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action.
+   * Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added.
    * @return valuationPointOrigin
   **/
   @jakarta.annotation.Nullable

@@ -93,7 +93,7 @@ public class PartialClosureConstituent {
   }
 
    /**
-   * The type of amount represented by the Amount field.  I.e., does it represent a number of units or a percentage of the total repoed units of the instrument?  When defining a FlexibleRepoPartialClosureEvent AmountType can be set to either Units or Percentage.    Supported string (enumeration) values are: [Percentage, Units].
+   * The type of amount represented by the Amount field.  I.e., does it represent a number of units or a percentage of the total repoed units of the instrument?  When defining a FlexibleRepoPartialClosureEvent AmountType can be set to either Units or Percentage. Available values: Percentage, Units.
    * @return amountType
   **/
   @jakarta.annotation.Nonnull

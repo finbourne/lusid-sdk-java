@@ -66,7 +66,7 @@ public class Account {
   private String type;
 
   /**
-   * The Account status. Can be Active, Inactive or Deleted. The available values are: Active, Inactive, Deleted
+   * The Account status. Available values: Active, Inactive, Deleted.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -178,7 +178,7 @@ public class Account {
   }
 
    /**
-   * The Account type. Can have the values: Asset/Liabilities/Income/Expense/Capital/Revenue.
+   * The Account type. Available values: Asset, Liabilities, Income, Expense, Capital, Revenue.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -199,7 +199,7 @@ public class Account {
   }
 
    /**
-   * The Account status. Can be Active, Inactive or Deleted. The available values are: Active, Inactive, Deleted
+   * The Account status. Available values: Active, Inactive, Deleted.
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -220,7 +220,7 @@ public class Account {
   }
 
    /**
-   * This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Can have the values: System/ManualIt will default to “Manual”.
+   * This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Default value: Manual. Available values: Manual, System.
    * @return control
   **/
   @jakarta.annotation.Nullable

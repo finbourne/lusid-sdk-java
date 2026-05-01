@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **leftValue** | **String** | The left string to map | [default to String]
 **rightValue** | **String** | The right string to map | [default to String]
-**direction** | **String** | The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot; | [default to String]
+**direction** | **String** | The direction to map. Available values: BiDirectional, UniDirectional. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.GroupReconciliationComparisonRuleStringValueMap;

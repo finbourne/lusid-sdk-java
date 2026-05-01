@@ -51,7 +51,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FxForwardModelOptions extends ModelOptions {
   /**
-   * The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid
+   * Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid.
    */
   @JsonAdapter(ForwardRateObservableTypeEnum.Adapter.class)
   public enum ForwardRateObservableTypeEnum {
@@ -108,7 +108,7 @@ public class FxForwardModelOptions extends ModelOptions {
   private ForwardRateObservableTypeEnum forwardRateObservableType;
 
   /**
-   * The available values are: Standard, ConstantTimeValueOfMoney, Invalid
+   * Available values: Standard, ConstantTimeValueOfMoney, Invalid.
    */
   @JsonAdapter(DiscountingMethodEnum.Adapter.class)
   public enum DiscountingMethodEnum {
@@ -175,7 +175,7 @@ public class FxForwardModelOptions extends ModelOptions {
   }
 
    /**
-   * The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid
+   * Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid.
    * @return forwardRateObservableType
   **/
   @jakarta.annotation.Nonnull
@@ -196,7 +196,7 @@ public class FxForwardModelOptions extends ModelOptions {
   }
 
    /**
-   * The available values are: Standard, ConstantTimeValueOfMoney, Invalid
+   * Available values: Standard, ConstantTimeValueOfMoney, Invalid.
    * @return discountingMethod
   **/
   @jakarta.annotation.Nonnull

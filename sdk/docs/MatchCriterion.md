@@ -5,7 +5,7 @@ A condition to be evaluated.  Each supported CriterionType has a corresponding s
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**criterionType** | **String** | The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals | [default to String]
+**criterionType** | **String** | Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.MatchCriterion;

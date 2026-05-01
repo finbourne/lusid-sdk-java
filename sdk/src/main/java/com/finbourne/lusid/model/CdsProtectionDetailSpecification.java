@@ -76,7 +76,7 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set.
+   * The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2.
    * @return seniority
   **/
   @jakarta.annotation.Nullable
@@ -97,7 +97,7 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set.
+   * The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14.
    * @return restructuringType
   **/
   @jakarta.annotation.Nullable

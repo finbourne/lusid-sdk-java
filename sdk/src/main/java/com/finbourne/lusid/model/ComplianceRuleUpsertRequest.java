@@ -178,7 +178,7 @@ public class ComplianceRuleUpsertRequest {
   }
 
    /**
-   * 
+   * Available values: RangeNumberSecurities, RangePercentSecurityType, RangePercentCash, RangePercentPropertyKey.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -283,7 +283,7 @@ public class ComplianceRuleUpsertRequest {
   }
 
    /**
-   * 
+   * Available values: PreTrade, PostTrade, PreAndPostTrade.
    * @return schedule
   **/
   @jakarta.annotation.Nonnull

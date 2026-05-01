@@ -6,7 +6,7 @@ Represents a set of diagnostics per generatedEvent, where applicable.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentEventId** | **String** |  | [default to String]
-**type** | **String** |  | [default to String]
+**type** | **String** | Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure. | [default to String]
 **detail** | **String** |  | [default to String]
 **errorDetails** | **List&lt;String&gt;** |  | [default to List<String>]
 

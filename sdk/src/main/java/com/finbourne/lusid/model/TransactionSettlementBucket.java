@@ -113,7 +113,7 @@ public class TransactionSettlementBucket {
   }
 
    /**
-   * A category representing the set of movement types that this instruction applies to.
+   * A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt.
    * @return settlementCategory
   **/
   @jakarta.annotation.Nonnull
@@ -281,7 +281,7 @@ public class TransactionSettlementBucket {
   }
 
    /**
-   * The method of settlement for the settlement bucket, as defined in the portfolio&#39;s SettlementConfiguration
+   * The effective method of settlement for the settlement bucket. This reflects any transaction-level settlement method overrides, falling back to the portfolio&#39;s SettlementConfiguration if no override applies. Available values: Automatic, Instructed, NotApplicable.
    * @return configuredSettlement
   **/
   @jakarta.annotation.Nullable
@@ -302,7 +302,7 @@ public class TransactionSettlementBucket {
   }
 
    /**
-   * The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;.
+   * The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None.
    * @return status
   **/
   @jakarta.annotation.Nonnull

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **type** | **String** |  | [default to String]
 **description** | **String** |  | [default to String]
 **transactionClass** | **String** |  | [default to String]
-**transactionRole** | **String** |  | [default to String]
+**transactionRole** | **String** | Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. | [default to String]
 **isDefault** | **Boolean** |  | [optional] [default to Boolean]
 
 ```java

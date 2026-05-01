@@ -88,7 +88,7 @@ public class GroupReconciliationCoreComparisonRuleOperand {
   }
 
    /**
-   * What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot;
+   * What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot;. Available values: Value.
    * @return operation
   **/
   @jakarta.annotation.Nonnull

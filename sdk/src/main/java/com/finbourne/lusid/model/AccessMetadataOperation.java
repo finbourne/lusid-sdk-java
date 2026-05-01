@@ -62,7 +62,7 @@ public class AccessMetadataOperation {
   private String path;
 
   /**
-   * The available values are: add, remove
+   * Available values: add, remove.
    */
   @JsonAdapter(OpEnum.Adapter.class)
   public enum OpEnum {
@@ -176,7 +176,7 @@ public class AccessMetadataOperation {
   }
 
    /**
-   * The available values are: add, remove
+   * Available values: add, remove.
    * @return op
   **/
   @jakarta.annotation.Nonnull

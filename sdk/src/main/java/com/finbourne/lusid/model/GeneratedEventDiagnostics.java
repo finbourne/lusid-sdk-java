@@ -98,7 +98,7 @@ public class GeneratedEventDiagnostics {
   }
 
    /**
-   * Get type
+   * Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure.
    * @return type
   **/
   @jakarta.annotation.Nonnull

@@ -167,7 +167,7 @@ public class DialectId {
   }
 
    /**
-   * The serialisation format of a document in this dialect. e.g. JSON, XML.
+   * The serialisation format of a document in this dialect. Available values: Json, Xml.
    * @return serialisationFormat
   **/
   @jakarta.annotation.Nonnull
@@ -188,7 +188,7 @@ public class DialectId {
   }
 
    /**
-   * The type of entity this dialect describes e.g. Instrument.
+   * The type of entity this dialect describes e.g. Instrument. Available values: Instrument.
    * @return entityType
   **/
   @jakarta.annotation.Nonnull

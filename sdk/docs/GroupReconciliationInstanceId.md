@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instanceIdType** | **String** | Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot; | [default to String]
+**instanceIdType** | **String** | Type of the reconciliation run, manual or automatic (via the workflow). Available values: WorkflowServiceTaskId, Manual. | [default to String]
 **instanceIdValue** | **String** | Reconciliation run identifier: a manually-provided key or taskId. | [default to String]
 
 ```java

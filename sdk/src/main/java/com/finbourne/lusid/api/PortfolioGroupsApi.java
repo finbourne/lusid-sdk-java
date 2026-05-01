@@ -865,7 +865,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIbuildTransactionsForPortfolioGroupRequest
          */
         public APIbuildTransactionsForPortfolioGroupRequest membershipType(String membershipType) {
@@ -6167,7 +6167,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest membershipType(String membershipType) {

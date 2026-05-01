@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TradeTicket {
   /**
-   * The available values are: LusidTradeTicket, ExternalTradeTicket
+   * Available values: LusidTradeTicket, ExternalTradeTicket.
    */
   @JsonAdapter(TradeTicketTypeEnum.Adapter.class)
   public enum TradeTicketTypeEnum {
@@ -110,7 +110,7 @@ public class TradeTicket {
   }
 
    /**
-   * The available values are: LusidTradeTicket, ExternalTradeTicket
+   * Available values: LusidTradeTicket, ExternalTradeTicket.
    * @return tradeTicketType
   **/
   @jakarta.annotation.Nonnull

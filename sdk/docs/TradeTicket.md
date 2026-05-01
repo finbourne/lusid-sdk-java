@@ -5,7 +5,7 @@ The base class for representing a Trade Ticket in LUSID.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tradeTicketType** | **String** | The available values are: LusidTradeTicket, ExternalTradeTicket | [default to String]
+**tradeTicketType** | **String** | Available values: LusidTradeTicket, ExternalTradeTicket. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.TradeTicket;

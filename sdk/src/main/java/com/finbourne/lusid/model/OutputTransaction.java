@@ -140,7 +140,7 @@ public class OutputTransaction {
   private String source;
 
   /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
+   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
    */
   @JsonAdapter(TransactionStatusEnum.Adapter.class)
   public enum TransactionStatusEnum {
@@ -682,7 +682,7 @@ public class OutputTransaction {
   }
 
    /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
+   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
    * @return transactionStatus
   **/
   @jakarta.annotation.Nullable
@@ -803,7 +803,7 @@ public class OutputTransaction {
   }
 
    /**
-   * The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction
+   * The type of source that the transaction originated from. Available values: Unknown, InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction.
    * @return sourceType
   **/
   @jakarta.annotation.Nullable

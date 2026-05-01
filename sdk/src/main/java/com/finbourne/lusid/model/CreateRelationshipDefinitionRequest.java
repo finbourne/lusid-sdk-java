@@ -243,7 +243,7 @@ public class CreateRelationshipDefinitionRequest {
   }
 
    /**
-   * Describes how the relationships can change over time. Allowed values are &#39;Perpetual&#39; and &#39;TimeVariant&#39;, defaults to &#39;Perpetual&#39; if not specified.
+   * Describes how the relationships can change over time. Default value: Perpetual. Available values: Perpetual, TimeVariant.
    * @return lifeTime
   **/
   @jakarta.annotation.Nullable
@@ -264,7 +264,7 @@ public class CreateRelationshipDefinitionRequest {
   }
 
    /**
-   * Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Allowed values are &#39;ManyToMany&#39; and &#39;ManyToOne&#39;, defaults to &#39;ManyToMany&#39; if not specified.
+   * Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Default value: ManyToMany. Available values: ManyToOne, ManyToMany.
    * @return relationshipCardinality
   **/
   @jakarta.annotation.Nullable

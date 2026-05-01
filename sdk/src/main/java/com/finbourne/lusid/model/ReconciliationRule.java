@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReconciliationRule {
   /**
-   * The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact
+   * Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact.
    */
   @JsonAdapter(RuleTypeEnum.Adapter.class)
   public enum RuleTypeEnum {
@@ -114,7 +114,7 @@ public class ReconciliationRule {
   }
 
    /**
-   * The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact
+   * Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact.
    * @return ruleType
   **/
   @jakarta.annotation.Nonnull

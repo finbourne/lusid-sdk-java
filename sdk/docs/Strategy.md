@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **keys** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  | [default to List<PerpetualProperty>]
-**valueType** | **String** |  | [default to String]
+**valueType** | **String** | Available values: Units, Weight. | [default to String]
 **value** | **java.math.BigDecimal** |  | [default to java.math.BigDecimal]
 
 ```java

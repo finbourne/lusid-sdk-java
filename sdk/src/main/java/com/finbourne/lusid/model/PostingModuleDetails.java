@@ -114,7 +114,7 @@ public class PostingModuleDetails {
   }
 
    /**
-   * The Posting Module status. Can be Active or Inactive. Defaults to Active.
+   * The Posting Module status. Default value: Active. Available values: Active, Inactive.
    * @return status
   **/
   @jakarta.annotation.Nonnull

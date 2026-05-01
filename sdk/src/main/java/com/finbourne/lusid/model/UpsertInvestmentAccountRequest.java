@@ -191,7 +191,7 @@ public class UpsertInvestmentAccountRequest {
   }
 
    /**
-   * The type of the of the Investment Account.
+   * The type of the of the Investment Account. Available values: Individual, Corporate, Joint, Nominee.
    * @return accountType
   **/
   @jakarta.annotation.Nonnull

@@ -273,6 +273,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 *FundsApi* | [**patchFee**](docs/FundsApi.md#patchfee) | **PATCH** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] PatchFee: Patch Fee.
 *FundsApi* | [**patchFund**](docs/FundsApi.md#patchfund) | **PATCH** /api/funds/{scope}/{code} | [EXPERIMENTAL] PatchFund: Patch a Fund.
+*FundsApi* | [**queryCashStatement**](docs/FundsApi.md#querycashstatement) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatement/$query | [EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point.
 *FundsApi* | [**revertValuationPointToEstimate**](docs/FundsApi.md#revertvaluationpointtoestimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
 *FundsApi* | [**upsertBookmark**](docs/FundsApi.md#upsertbookmark) | **POST** /api/funds/{scope}/{code}/bookmarks | [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark.
@@ -945,6 +946,7 @@ Class | Method | HTTP request | Description
  - [CompositeDispersionResponse](docs/CompositeDispersionResponse.md)
  - [Compounding](docs/Compounding.md)
  - [ConfigurationRecipe](docs/ConfigurationRecipe.md)
+ - [ConsentEvent](docs/ConsentEvent.md)
  - [ConstantVolatilitySurface](docs/ConstantVolatilitySurface.md)
  - [ConstituentsAdjustmentHeader](docs/ConstituentsAdjustmentHeader.md)
  - [ContractDetails](docs/ContractDetails.md)
@@ -1165,6 +1167,7 @@ Class | Method | HTTP request | Description
  - [FundCalendarEntriesType](docs/FundCalendarEntriesType.md)
  - [FundCalendarEntry](docs/FundCalendarEntry.md)
  - [FundCalendarEntryType](docs/FundCalendarEntryType.md)
+ - [FundCashStatementRow](docs/FundCashStatementRow.md)
  - [FundConfiguration](docs/FundConfiguration.md)
  - [FundConfigurationProperties](docs/FundConfigurationProperties.md)
  - [FundConfigurationRequest](docs/FundConfigurationRequest.md)
@@ -1625,6 +1628,7 @@ Class | Method | HTTP request | Description
  - [QueryApplicableInstrumentEventsRequest](docs/QueryApplicableInstrumentEventsRequest.md)
  - [QueryBucketedCashFlowsRequest](docs/QueryBucketedCashFlowsRequest.md)
  - [QueryCashFlowsRequest](docs/QueryCashFlowsRequest.md)
+ - [QueryFundCashStatementParameters](docs/QueryFundCashStatementParameters.md)
  - [QueryInstrumentEventsRequest](docs/QueryInstrumentEventsRequest.md)
  - [QueryRelationalDatasetRequest](docs/QueryRelationalDatasetRequest.md)
  - [QueryTradeTicketsRequest](docs/QueryTradeTicketsRequest.md)
@@ -2051,6 +2055,7 @@ Class | Method | HTTP request | Description
  - [ValuationPointDataResponse](docs/ValuationPointDataResponse.md)
  - [ValuationPointOverview](docs/ValuationPointOverview.md)
  - [ValuationPointResourceListOfAccountedTransaction](docs/ValuationPointResourceListOfAccountedTransaction.md)
+ - [ValuationPointResourceListOfFundCashStatementRow](docs/ValuationPointResourceListOfFundCashStatementRow.md)
  - [ValuationPointResourceListOfFundJournalEntryLine](docs/ValuationPointResourceListOfFundJournalEntryLine.md)
  - [ValuationPointResourceListOfPnlJournalEntryLine](docs/ValuationPointResourceListOfPnlJournalEntryLine.md)
  - [ValuationPointResourceListOfTrialBalance](docs/ValuationPointResourceListOfTrialBalance.md)

@@ -147,7 +147,7 @@ public class QuoteAccessMetadataRuleId {
   }
 
    /**
-   * The type of instrument identifier used to uniquely identify the instrument that the quote is for, e.g. &#39;Figi&#39;.
+   * The type of instrument identifier used to uniquely identify the instrument that the quote is for.
    * @return instrumentIdType
   **/
   @jakarta.annotation.Nullable

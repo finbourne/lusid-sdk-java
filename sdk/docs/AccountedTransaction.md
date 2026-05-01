@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **journalEntryAction** | **String** | The journal entry line action associated with this transaction. | [optional] [default to String]
 **transaction** | [**OutputTransaction**](OutputTransaction.md) |  | [optional] [default to OutputTransaction]
 **portfolioId** | [**PortfolioId**](PortfolioId.md) |  | [optional] [default to PortfolioId]
-**valuationPointOrigin** | **String** | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. | [optional] [default to String]
+**valuationPointOrigin** | **String** | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added. | [optional] [default to String]
 **addedOriginValuationPointCode** | **String** | The Valuation Point, only for transaction added as part of a Complex Close action. | [optional] [default to String]
 **addedOriginValuationPointVariantCode** | **String** | The Valuation Point variant, only for transactions added as part of a Complex Close action. | [optional] [default to String]
 

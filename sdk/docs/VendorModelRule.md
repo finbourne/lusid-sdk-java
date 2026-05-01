@@ -5,7 +5,7 @@ A rule that identifies the set of preferences to be used for a given library, mo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**supplier** | **String** | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc | [default to String]
+**supplier** | **String** | Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc. | [default to String]
 **modelName** | **String** | The vendor library model name | [default to String]
 **instrumentType** | **String** | The vendor library instrument type | [default to String]
 **parameters** | **String** | THIS FIELD IS DEPRECATED - use ModelOptions  The set of opaque model parameters, provided as a Json object, that is a string object which will internally be converted to a dictionary of string to object.  Note that this is not intended as the final form of this object. It will be replaced with a more structured object as the set of parameters that are possible is  better understood. | [optional] [default to String]

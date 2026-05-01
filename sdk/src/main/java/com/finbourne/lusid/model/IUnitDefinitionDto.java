@@ -51,7 +51,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IUnitDefinitionDto {
   /**
-   * The available values are: NoUnits, Basic, Iso4217Currency
+   * Available values: NoUnits, Basic, Iso4217Currency.
    */
   @JsonAdapter(SchemaEnum.Adapter.class)
   public enum SchemaEnum {
@@ -137,7 +137,7 @@ public class IUnitDefinitionDto {
   }
 
    /**
-   * The available values are: NoUnits, Basic, Iso4217Currency
+   * Available values: NoUnits, Basic, Iso4217Currency.
    * @return schema
   **/
   @jakarta.annotation.Nullable

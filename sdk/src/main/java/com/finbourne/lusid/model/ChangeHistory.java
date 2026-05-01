@@ -68,7 +68,7 @@ public class ChangeHistory {
   private String requestId;
 
   /**
-   * The action performed on the transaction, either created, updated, or deleted. The available values are: Create, Update, Delete
+   * The action performed on the transaction. Available values: Create, Update, Delete.
    */
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
@@ -201,7 +201,7 @@ public class ChangeHistory {
   }
 
    /**
-   * The action performed on the transaction, either created, updated, or deleted. The available values are: Create, Update, Delete
+   * The action performed on the transaction. Available values: Create, Update, Delete.
    * @return action
   **/
   @jakarta.annotation.Nonnull

@@ -147,7 +147,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * The entity type of the source entity object.
+   * The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
    * @return sourceEntityType
   **/
   @jakarta.annotation.Nonnull
@@ -168,7 +168,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * The entity type of the target entity object.
+   * The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
    * @return targetEntityType
   **/
   @jakarta.annotation.Nonnull
@@ -252,7 +252,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * Describes how the relationships can change over time.
+   * Describes how the relationships can change over time. Available values: Perpetual, TimeVariant.
    * @return lifeTime
   **/
   @jakarta.annotation.Nonnull
@@ -273,7 +273,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * Describes the cardinality of the relationship between source entity and target entity.
+   * Describes the cardinality of the relationship between source entity and target entity. Available values: ManyToOne, ManyToMany.
    * @return relationshipCardinality
   **/
   @jakarta.annotation.Nonnull

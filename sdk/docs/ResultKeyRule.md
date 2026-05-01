@@ -5,7 +5,7 @@ Base class for representing result key rules in LUSID, which describe how to res
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**resultKeyRuleType** | **String** | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule | [default to String]
+**resultKeyRuleType** | **String** | Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ResultKeyRule;

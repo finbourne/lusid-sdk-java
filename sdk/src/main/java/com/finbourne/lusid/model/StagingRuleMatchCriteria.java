@@ -86,7 +86,7 @@ public class StagingRuleMatchCriteria {
   }
 
    /**
-   * Get actionIn
+   * Available values: Create, Update, Delete.
    * @return actionIn
   **/
   @jakarta.annotation.Nullable

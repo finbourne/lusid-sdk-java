@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MatchCriterion {
   /**
-   * The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals
+   * Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals.
    */
   @JsonAdapter(CriterionTypeEnum.Adapter.class)
   public enum CriterionTypeEnum {
@@ -112,7 +112,7 @@ public class MatchCriterion {
   }
 
    /**
-   * The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals
+   * Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals.
    * @return criterionType
   **/
   @jakarta.annotation.Nonnull

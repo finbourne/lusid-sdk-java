@@ -349,7 +349,7 @@ public class FlowConventions {
   }
 
    /**
-   * When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  If not set, defaults to the value of RollConvention.
+   * When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.     If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

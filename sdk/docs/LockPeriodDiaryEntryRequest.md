@@ -6,7 +6,7 @@ A definition for the period you wish to lock
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **diaryEntryCode** | **String** | Unique code assigned to a period. When left blank last closed period will be located. | [optional] [default to String]
-**closingOptions** | **List&lt;String&gt;** | The options which will be executed once a period is closed or locked. | [optional] [default to List<String>]
+**closingOptions** | **List&lt;String&gt;** | The options which will be executed once a period is closed or locked. Available values: ApplyClearDown. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.LockPeriodDiaryEntryRequest;

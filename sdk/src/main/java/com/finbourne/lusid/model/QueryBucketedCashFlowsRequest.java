@@ -268,7 +268,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * When bucketing, there is not a unique way to allocate the bucket points.  RoundingMethod Supported string (enumeration) values are: [RoundDown, RoundUp].
+   * When bucketing, there is not a unique way to allocate the bucket points. Available values: RoundUp, RoundDown.
    * @return roundingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -468,7 +468,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this)  Options: [InstrumentCashFlow, PortfolioCashFlow]
+   * Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow, PortfolioCashFlow, TransactionCashFlow.
    * @return cashFlowType
   **/
   @jakarta.annotation.Nullable

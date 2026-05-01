@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fieldName** | **String** | The name of the field to sort by. | [default to String]
 **priorityValues** | **List&lt;String&gt;** | An optional list of priority field values to sort by, in the order they should be prioritized. | [optional] [default to List<String>]
-**remainderOrder** | **String** | The sorting direction for the remaining field values. Either ascending (ASC) or descending (DESC). | [default to String]
+**remainderOrder** | **String** | The sorting direction for the remaining field values. Either ascending (ASC) or descending (DESC). Available values: ASC, DESC. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.CustomSortBy;

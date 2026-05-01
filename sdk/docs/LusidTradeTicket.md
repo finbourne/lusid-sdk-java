@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **counterparty** | **String** | Counterparty | [optional] [default to String]
 **instrumentProperties** | [**List&lt;Property&gt;**](Property.md) | Set of instrument properties (as defined by client/user). | [optional] [default to List<Property>]
 **transactionProperties** | [**List&lt;Property&gt;**](Property.md) | Set of transaction properties (as defined by client/user). | [optional] [default to List<Property>]
-**tradeTicketType** | **String** | The available values are: LusidTradeTicket, ExternalTradeTicket | [default to String]
+**tradeTicketType** | **String** | Available values: LusidTradeTicket, ExternalTradeTicket. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.LusidTradeTicket;

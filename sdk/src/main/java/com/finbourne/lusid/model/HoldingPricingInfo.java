@@ -79,7 +79,7 @@ public class HoldingPricingInfo {
   }
 
    /**
-   * The default Holding field to fall back on if the Market Data resolution process fails to find a price quote.
+   * The default Holding field to fall back on if the Market Data resolution process fails to find a price quote. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty.
    * @return fallbackField
   **/
   @jakarta.annotation.Nullable
@@ -100,7 +100,7 @@ public class HoldingPricingInfo {
   }
 
    /**
-   * The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated.
+   * The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty.
    * @return overrideField
   **/
   @jakarta.annotation.Nullable

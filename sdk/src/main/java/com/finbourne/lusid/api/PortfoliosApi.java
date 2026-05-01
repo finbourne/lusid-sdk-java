@@ -1574,7 +1574,7 @@ public class PortfoliosApi {
 
         /**
          * Set period
-         * @param period The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)
+         * @param period The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)
          * @return APIdeletePortfolioReturnsRequest
          */
         public APIdeletePortfolioReturnsRequest period(String period) {
@@ -3127,7 +3127,7 @@ public class PortfoliosApi {
 
         /**
          * Set compositeMethod
-         * @param compositeMethod The method used to calculate the Portfolio performance:   Equal/Asset. (optional)
+         * @param compositeMethod The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)
          * @return APIgetPortfolioAggregateReturnsRequest
          */
         public APIgetPortfolioAggregateReturnsRequest compositeMethod(String compositeMethod) {
@@ -3137,7 +3137,7 @@ public class PortfoliosApi {
 
         /**
          * Set period
-         * @param period The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)
+         * @param period The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)
          * @return APIgetPortfolioAggregateReturnsRequest
          */
         public APIgetPortfolioAggregateReturnsRequest period(String period) {
@@ -3147,7 +3147,7 @@ public class PortfoliosApi {
 
         /**
          * Set outputFrequency
-         * @param outputFrequency The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)
+         * @param outputFrequency The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)
          * @return APIgetPortfolioAggregateReturnsRequest
          */
         public APIgetPortfolioAggregateReturnsRequest outputFrequency(String outputFrequency) {
@@ -5572,7 +5572,7 @@ public class PortfoliosApi {
 
         /**
          * Set period
-         * @param period Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)
+         * @param period The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)
          * @return APIgetPortfolioReturnsRequest
          */
         public APIgetPortfolioReturnsRequest period(String period) {

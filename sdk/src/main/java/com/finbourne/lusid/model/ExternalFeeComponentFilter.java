@@ -113,7 +113,7 @@ public class ExternalFeeComponentFilter {
   }
 
    /**
-   * Get appliesTo
+   * Available values: Undefined, PnLBucket, Fees.
    * @return appliesTo
   **/
   @jakarta.annotation.Nonnull

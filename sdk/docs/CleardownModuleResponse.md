@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the Cleardown Module. | [default to String]
 **description** | **String** | A description for the Cleardown Module. | [optional] [default to String]
 **rules** | [**List&lt;CleardownModuleRule&gt;**](CleardownModuleRule.md) | The Cleardown Rules that apply for the Cleardown Module. Rules are evaluated in the order they occur in this collection. | [optional] [default to List<CleardownModuleRule>]
-**status** | **String** | The Cleardown Module status. Can be Active, Inactive or Deleted. Defaults to Active. | [default to String]
+**status** | **String** | The Cleardown Module status. Default value: Active. Available values: Active, Inactive, Deleted. | [default to String]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 

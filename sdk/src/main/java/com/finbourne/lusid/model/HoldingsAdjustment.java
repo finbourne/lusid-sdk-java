@@ -65,7 +65,7 @@ public class HoldingsAdjustment {
   private Version version;
 
   /**
-   * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;. The available values are: PositionToZero, KeepTheSame
+   * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;. Available values: PositionToZero, KeepTheSame.
    */
   @JsonAdapter(UnmatchedHoldingMethodEnum.Adapter.class)
   public enum UnmatchedHoldingMethodEnum {
@@ -175,7 +175,7 @@ public class HoldingsAdjustment {
   }
 
    /**
-   * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;. The available values are: PositionToZero, KeepTheSame
+   * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;. Available values: PositionToZero, KeepTheSame.
    * @return unmatchedHoldingMethod
   **/
   @jakarta.annotation.Nonnull

@@ -61,7 +61,7 @@ public class GetReferencePortfolioConstituentsResponse {
   private OffsetDateTime effectiveFrom;
 
   /**
-   * The available values are: Static, Floating, Periodical
+   * Available values: Static, Floating, Periodical.
    */
   @JsonAdapter(WeightTypeEnum.Adapter.class)
   public enum WeightTypeEnum {
@@ -114,7 +114,7 @@ public class GetReferencePortfolioConstituentsResponse {
   private WeightTypeEnum weightType;
 
   /**
-   * The available values are: Daily, Weekly, Monthly, Quarterly, Annually
+   * Available values: Daily, Weekly, Monthly, Quarterly, Annually.
    */
   @JsonAdapter(PeriodTypeEnum.Adapter.class)
   public enum PeriodTypeEnum {
@@ -217,7 +217,7 @@ public class GetReferencePortfolioConstituentsResponse {
   }
 
    /**
-   * The available values are: Static, Floating, Periodical
+   * Available values: Static, Floating, Periodical.
    * @return weightType
   **/
   @jakarta.annotation.Nonnull
@@ -238,7 +238,7 @@ public class GetReferencePortfolioConstituentsResponse {
   }
 
    /**
-   * The available values are: Daily, Weekly, Monthly, Quarterly, Annually
+   * Available values: Daily, Weekly, Monthly, Quarterly, Annually.
    * @return periodType
   **/
   @jakarta.annotation.Nullable

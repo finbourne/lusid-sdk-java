@@ -1442,7 +1442,7 @@ public class ReconciliationsApi {
 
         /**
          * Set reconciliationType
-         * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
+         * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Default value: Transaction. Available values: Transaction, Holding, Valuation, Cash, CashHolding. (optional)
          * @return APIlistReconciliationMappingsRequest
          */
         public APIlistReconciliationMappingsRequest reconciliationType(String reconciliationType) {

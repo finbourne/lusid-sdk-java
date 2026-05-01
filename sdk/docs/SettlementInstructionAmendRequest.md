@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **settlementInstructionId** | **String** |  | [default to String]
-**operation** | **String** |  | [optional] [default to String]
+**operation** | **String** | Available values: Activate, Deactivate. | [optional] [default to String]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to List<PerpetualProperty>]
 
 ```java

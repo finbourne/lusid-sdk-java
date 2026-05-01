@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**recipeEntity** | **String** | Entity a recipe is retrieved from for use in the aggregated returns calculation. Either RecipeId or RecipeEntity must be specified. | [optional] [default to String]
-**feeHandling** | **String** | Configures how fees are handled in the aggregated returns calculation. | [optional] [default to String]
-**flowHandling** | **String** | Configures how flows are handled in the aggregated returns calculation. | [optional] [default to String]
+**recipeEntity** | **String** | Entity a recipe is retrieved from for use in the aggregated returns calculation. Either RecipeId or RecipeEntity must be specified. Available values: Portfolio, PortfolioGroup, ABOR. | [optional] [default to String]
+**feeHandling** | **String** | Configures how fees are handled in the aggregated returns calculation. Available values: Net, Gross. | [optional] [default to String]
+**flowHandling** | **String** | Configures how flows are handled in the aggregated returns calculation. Available values: BeginningOfDay, EndOfDay. | [optional] [default to String]
 **businessCalendar** | **String** | Calendar used in the aggregated returns calculation. | [optional] [default to String]
-**handleFlowDiscrepancy** | **String** | Configures handling for the case where net flows do not match the sum of tagged flows. | [optional] [default to String]
+**handleFlowDiscrepancy** | **String** | Configures handling for the case where net flows do not match the sum of tagged flows. Available values: TreatAsFlow, TreatAsGainloss, Error. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.ReturnsEntity;

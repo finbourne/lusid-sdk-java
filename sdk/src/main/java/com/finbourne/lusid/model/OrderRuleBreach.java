@@ -88,7 +88,7 @@ public class OrderRuleBreach {
   }
 
    /**
-   * The compliance state of this order breach. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;.
+   * The compliance state of this order breach. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
    * @return complianceState
   **/
   @jakarta.annotation.Nonnull

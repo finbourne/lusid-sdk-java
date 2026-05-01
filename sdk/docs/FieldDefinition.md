@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **key** | **String** |  | [default to String]
 **isRequired** | **Boolean** |  | [default to Boolean]
 **isUnique** | **Boolean** |  | [default to Boolean]
-**valueType** | **String** |  | [optional] [default to String]
+**valueType** | **String** | Available values: String, Decimal. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.FieldDefinition;

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Unique client-defined identifiers of the Investment Account. | [default to Map<String, Property>]
 **displayName** | **String** | The display name of the Investment Account | [default to String]
 **description** | **String** | The description of the Investment Account | [optional] [default to String]
-**accountType** | **String** | The type of the of the Investment Account. | [default to String]
+**accountType** | **String** | The type of the of the Investment Account. Available values: Individual, Corporate, Joint, Nominee. | [default to String]
 **accountHolders** | [**List&lt;AccountHolderIdentifier&gt;**](AccountHolderIdentifier.md) | The identification of the account holders associated with this investment account | [optional] [default to List<AccountHolderIdentifier>]
 **investmentPortfolios** | [**List&lt;InvestmentPortfolioIdentifier&gt;**](InvestmentPortfolioIdentifier.md) | The identification of the investment portfolios associated with this investment account | [optional] [default to List<InvestmentPortfolioIdentifier>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Investment Account. | [optional] [default to Map<String, Property>]

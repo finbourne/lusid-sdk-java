@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actionIn** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
+**actionIn** | **List&lt;String&gt;** | Available values: Create, Update, Delete. | [optional] [default to List<String>]
 **requestingUser** | **String** |  | [optional] [default to String]
 **entityAttributes** | **String** |  | [optional] [default to String]
 **changedAttributeNameIn** | **List&lt;String&gt;** |  | [optional] [default to List<String>]

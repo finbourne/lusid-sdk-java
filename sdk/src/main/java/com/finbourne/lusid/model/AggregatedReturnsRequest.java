@@ -183,7 +183,7 @@ public class AggregatedReturnsRequest {
   }
 
    /**
-   * The method used to calculate the Portfolio performance: Equal/Asset.
+   * The method used to calculate the Portfolio performance. Available values: Equal, Asset.
    * @return compositeMethod
   **/
   @jakarta.annotation.Nullable
@@ -204,7 +204,7 @@ public class AggregatedReturnsRequest {
   }
 
    /**
-   * The type of the returns used to calculate the aggregation result: Daily/Monthly.
+   * The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly.
    * @return period
   **/
   @jakarta.annotation.Nullable
@@ -225,7 +225,7 @@ public class AggregatedReturnsRequest {
   }
 
    /**
-   * The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly.
+   * The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly.
    * @return outputFrequency
   **/
   @jakarta.annotation.Nullable
@@ -317,7 +317,7 @@ public class AggregatedReturnsRequest {
   }
 
    /**
-   * The dates the AggregatedReturns output will be calculated: ReturnData/WeekDays/AllDays/MonthEnd. Defaults to ReturnData.
+   * The dates the AggregatedReturns output will be calculated. Default value: ReturnData. Available values: ReturnData, WeekDays, AllDays, MonthEnd.
    * @return runMode
   **/
   @jakarta.annotation.Nullable

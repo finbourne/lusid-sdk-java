@@ -162,7 +162,7 @@ public class SettlementInstructionRequest {
   }
 
    /**
-   * Get settlementCategory
+   * Available values: StockSettlement, CashSettlement, DeferredCashReceipt.
    * @return settlementCategory
   **/
   @jakarta.annotation.Nonnull
@@ -183,7 +183,7 @@ public class SettlementInstructionRequest {
   }
 
    /**
-   * Get instructionType
+   * Available values: Complete, CancelAutomatic, Partial.
    * @return instructionType
   **/
   @jakarta.annotation.Nullable

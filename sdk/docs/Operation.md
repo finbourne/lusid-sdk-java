@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **Object** |  | [optional] [default to Object]
 **path** | **String** |  | [default to String]
-**op** | **String** |  | [default to String]
+**op** | **String** | Available values: add, remove. | [default to String]
 **from** | **String** |  | [optional] [default to String]
 
 ```java

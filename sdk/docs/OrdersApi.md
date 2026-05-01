@@ -256,7 +256,7 @@ public class OrdersApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto each order.   These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".   All properties, except derived properties, are returned by default, without specifying here.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
-        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType).execute(opts);
@@ -286,7 +286,7 @@ public class OrdersApiExample {
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.   These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
-| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
 
 ### Return type
 

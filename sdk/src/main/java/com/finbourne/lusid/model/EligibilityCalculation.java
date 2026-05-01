@@ -92,7 +92,7 @@ public class EligibilityCalculation {
   }
 
    /**
-   * Get eligibleUnits
+   * Available values: TotalUnits, SettledUnits, NotApplicable.
    * @return eligibleUnits
   **/
   @jakarta.annotation.Nonnull

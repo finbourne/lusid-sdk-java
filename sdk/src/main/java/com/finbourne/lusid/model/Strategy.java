@@ -103,7 +103,7 @@ public class Strategy {
   }
 
    /**
-   * Get valueType
+   * Available values: Units, Weight.
    * @return valueType
   **/
   @jakarta.annotation.Nonnull

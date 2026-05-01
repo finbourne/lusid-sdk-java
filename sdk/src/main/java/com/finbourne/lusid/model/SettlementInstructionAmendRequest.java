@@ -96,7 +96,7 @@ public class SettlementInstructionAmendRequest {
   }
 
    /**
-   * Get operation
+   * Available values: Activate, Deactivate.
    * @return operation
   **/
   @jakarta.annotation.Nullable

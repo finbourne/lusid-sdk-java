@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fieldName** | **String** |  | [default to String]
-**specificity** | **String** |  | [default to String]
+**specificity** | **String** | Available values: AllEventsAndHoldings, InstrumentEventType, ElectionType. | [default to String]
 **description** | **String** |  | [default to String]
-**type** | **String** |  | [default to String]
-**availability** | **String** |  | [default to String]
+**type** | **String** | Available values: String, Decimal, InstrumentScope, Currency, DateTime, PriceType, InstrumentId, PropertyKey, Boolean. | [default to String]
+**availability** | **String** | Available values: Guaranteed, DataDependent, Informational. | [default to String]
 **usage** | **List&lt;String&gt;** |  | [default to List<String>]
 
 ```java

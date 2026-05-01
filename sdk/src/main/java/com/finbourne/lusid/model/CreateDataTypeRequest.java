@@ -63,7 +63,7 @@ public class CreateDataTypeRequest {
   private String code;
 
   /**
-   * Indicates the range of data acceptable by a data type. The available values are: Open, Closed
+   * Indicates the range of data acceptable by a data type. Available values: Open, Closed.
    */
   @JsonAdapter(TypeValueRangeEnum.Adapter.class)
   public enum TypeValueRangeEnum {
@@ -122,7 +122,7 @@ public class CreateDataTypeRequest {
   private String description;
 
   /**
-   * The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    */
   @JsonAdapter(ValueTypeEnum.Adapter.class)
   public enum ValueTypeEnum {
@@ -215,7 +215,7 @@ public class CreateDataTypeRequest {
   private List<String> acceptableValues;
 
   /**
-   * The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency
+   * The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.
    */
   @JsonAdapter(UnitSchemaEnum.Adapter.class)
   public enum UnitSchemaEnum {
@@ -327,7 +327,7 @@ public class CreateDataTypeRequest {
   }
 
    /**
-   * Indicates the range of data acceptable by a data type. The available values are: Open, Closed
+   * Indicates the range of data acceptable by a data type. Available values: Open, Closed.
    * @return typeValueRange
   **/
   @jakarta.annotation.Nonnull
@@ -390,7 +390,7 @@ public class CreateDataTypeRequest {
   }
 
    /**
-   * The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    * @return valueType
   **/
   @jakarta.annotation.Nonnull
@@ -440,7 +440,7 @@ public class CreateDataTypeRequest {
   }
 
    /**
-   * The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency
+   * The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.
    * @return unitSchema
   **/
   @jakarta.annotation.Nullable

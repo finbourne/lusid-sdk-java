@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **String** | The code given for the Account. | [default to String]
 **description** | **String** | A description for the Account. | [optional] [default to String]
-**type** | **String** | The Account type. Can have the values: Asset/Liabilities/Income/Expense/Capital/Revenue. | [default to String]
-**status** | **String** | The Account status. Can be Active, Inactive or Deleted. The available values are: Active, Inactive, Deleted | [default to String]
-**control** | **String** | This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Can have the values: System/ManualIt will default to “Manual”. | [optional] [default to String]
+**type** | **String** | The Account type. Available values: Asset, Liabilities, Income, Expense, Capital, Revenue. | [default to String]
+**status** | **String** | The Account status. Available values: Active, Inactive, Deleted. | [default to String]
+**control** | **String** | This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Default value: Manual. Available values: Manual, System. | [optional] [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Account. | [optional] [default to Map<String, Property>]
 
 ```java

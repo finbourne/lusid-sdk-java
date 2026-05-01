@@ -422,7 +422,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set.
+   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

@@ -806,7 +806,7 @@ public class OrdersApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIlistOrdersRequest
          */
         public APIlistOrdersRequest membershipType(String membershipType) {

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schema** | **String** | The available values are: NoUnits, Basic, Iso4217Currency | [optional] [default to String]
+**schema** | **String** | Available values: NoUnits, Basic, Iso4217Currency. | [optional] [default to String]
 **code** | **String** |  | [optional] [readonly] [default to String]
 **displayName** | **String** |  | [optional] [readonly] [default to String]
 **description** | **String** |  | [optional] [readonly] [default to String]

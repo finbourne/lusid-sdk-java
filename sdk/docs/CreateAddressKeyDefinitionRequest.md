@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addressKey** | **String** | The address key of the address key definition. | [default to String]
-**type** | **String** | The type of the address key definition | [default to String]
+**type** | **String** | The type of the address key definition. Available values: Text, Integer, Decimal, Boolean, DateTime, Result0D. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateAddressKeyDefinitionRequest;

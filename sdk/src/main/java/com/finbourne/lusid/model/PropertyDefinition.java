@@ -69,7 +69,7 @@ public class PropertyDefinition {
   private String key;
 
   /**
-   * The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * The type of values that can be associated with this property. This is defined by the property&#39;s data type. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    */
   @JsonAdapter(ValueTypeEnum.Adapter.class)
   public enum ValueTypeEnum {
@@ -166,7 +166,7 @@ public class PropertyDefinition {
   private ResourceId dataTypeId;
 
   /**
-   * The type of the property. The available values are: Label, Metric, Information
+   * The type of the property. Available values: Label, Metric, Information.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -219,7 +219,7 @@ public class PropertyDefinition {
   private TypeEnum type;
 
   /**
-   * The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency
+   * The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. Available values: NoUnits, Basic, Iso4217Currency.
    */
   @JsonAdapter(UnitSchemaEnum.Adapter.class)
   public enum UnitSchemaEnum {
@@ -272,7 +272,7 @@ public class PropertyDefinition {
   private UnitSchemaEnum unitSchema;
 
   /**
-   * The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition, SettlementInstruction, TransactionFee
+   * The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.
    */
   @JsonAdapter(DomainEnum.Adapter.class)
   public enum DomainEnum {
@@ -499,7 +499,7 @@ public class PropertyDefinition {
   private Boolean valueRequired;
 
   /**
-   * Describes how the property&#39;s values can change over time. The available values are: Perpetual, TimeVariant
+   * Describes how the property&#39;s values can change over time. Available values: Perpetual, TimeVariant.
    */
   @JsonAdapter(LifeTimeEnum.Adapter.class)
   public enum LifeTimeEnum {
@@ -554,7 +554,7 @@ public class PropertyDefinition {
   private String constraintStyle;
 
   /**
-   * The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition
+   * The definition type. Available values: ValueProperty, DerivedDefinition.
    */
   @JsonAdapter(PropertyDefinitionTypeEnum.Adapter.class)
   public enum PropertyDefinitionTypeEnum {
@@ -706,7 +706,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * The type of values that can be associated with this property. This is defined by the property&#39;s data type. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    * @return valueType
   **/
   @jakarta.annotation.Nullable
@@ -769,7 +769,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * The type of the property. The available values are: Label, Metric, Information
+   * The type of the property. Available values: Label, Metric, Information.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -790,7 +790,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency
+   * The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. Available values: NoUnits, Basic, Iso4217Currency.
    * @return unitSchema
   **/
   @jakarta.annotation.Nullable
@@ -811,7 +811,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition, SettlementInstruction, TransactionFee
+   * The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.
    * @return domain
   **/
   @jakarta.annotation.Nullable
@@ -877,7 +877,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * Describes how the property&#39;s values can change over time. The available values are: Perpetual, TimeVariant
+   * Describes how the property&#39;s values can change over time. Available values: Perpetual, TimeVariant.
    * @return lifeTime
   **/
   @jakarta.annotation.Nullable
@@ -919,7 +919,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition
+   * The definition type. Available values: ValueProperty, DerivedDefinition.
    * @return propertyDefinitionType
   **/
   @jakarta.annotation.Nullable
@@ -982,7 +982,7 @@ public class PropertyDefinition {
   }
 
    /**
-   * Describes whether a collection property should behave as a set or as an array.
+   * Describes whether a collection property should behave as a Set or as an Array.
    * @return collectionType
   **/
   @jakarta.annotation.Nullable

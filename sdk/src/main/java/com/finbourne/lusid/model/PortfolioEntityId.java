@@ -114,7 +114,7 @@ public class PortfolioEntityId {
   }
 
    /**
-   * String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio.
+   * String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio. Available values: SinglePortfolio, GroupPortfolio.
    * @return portfolioEntityType
   **/
   @jakarta.annotation.Nullable

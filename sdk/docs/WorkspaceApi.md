@@ -65,7 +65,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         WorkspaceItemCreationRequest workspaceItemCreationRequest = new WorkspaceItemCreationRequest(); // WorkspaceItemCreationRequest | The item to be created.
         try {
@@ -89,7 +89,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The item&#39;s workspace name. | |
 | **workspaceItemCreationRequest** | [**WorkspaceItemCreationRequest**](WorkspaceItemCreationRequest.md)| The item to be created. | [optional] |
 
@@ -160,7 +160,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the workspace being created. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the workspace being created; case is important. Available values: shared, personal.
         WorkspaceCreationRequest workspaceCreationRequest = new WorkspaceCreationRequest(); // WorkspaceCreationRequest | The workspace to be created.
         Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
         try {
@@ -184,7 +184,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the workspace being created; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceCreationRequest** | [**WorkspaceCreationRequest**](WorkspaceCreationRequest.md)| The workspace to be created. | |
 | **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
 
@@ -255,7 +255,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The name of the workspace.
         String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
@@ -280,7 +280,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The name of the workspace. | |
 | **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
@@ -352,7 +352,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The name of the workspace.
         Boolean recurse = false; // Boolean | If true, recursively delete items in the workspace.
         try {
@@ -376,7 +376,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The name of the workspace. | |
 | **recurse** | **Boolean**| If true, recursively delete items in the workspace. | [optional] [default to false] |
 
@@ -447,7 +447,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The name of the workspace.
         String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
@@ -473,7 +473,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The name of the workspace. | |
 | **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
@@ -546,7 +546,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
@@ -571,7 +571,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The workspace name. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. | [optional] |
 | **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |
@@ -643,7 +643,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspace items. Defaults to 'latest' if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -671,7 +671,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The item&#39;s workspace name. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
@@ -746,7 +746,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the workspaces. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the workspaces; case is important. Available values: shared, personal.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
@@ -774,7 +774,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the workspaces; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
@@ -849,7 +849,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspace items. Defaults to 'latest' if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
@@ -876,7 +876,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
@@ -950,7 +950,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the containing workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the containing workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The workspace name.
         String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The item name.
@@ -976,7 +976,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the containing workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The workspace name. | |
 | **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The item name. | |
@@ -1049,7 +1049,7 @@ public class WorkspaceApiExample {
         // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
-        String visibility = "shared"; // String | The visibility for the workspace. Must be `shared` or `personal`; case is important.
+        String visibility = "shared"; // String | The visibility for the workspace; case is important. Available values: shared, personal.
         String workspaceName = "workspaceName_example"; // String | The workspace name.
         WorkspaceUpdateRequest workspaceUpdateRequest = new WorkspaceUpdateRequest(); // WorkspaceUpdateRequest | The new workspace details.
         Boolean includeItemAccess = false; // Boolean | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false.
@@ -1074,7 +1074,7 @@ public class WorkspaceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **visibility** | **String**| The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. | [enum: shared, personal] |
+| **visibility** | **String**| The visibility for the workspace; case is important. Available values: shared, personal. | [enum: shared, personal] |
 | **workspaceName** | **String**| The workspace name. | |
 | **workspaceUpdateRequest** | [**WorkspaceUpdateRequest**](WorkspaceUpdateRequest.md)| The new workspace details. | |
 | **includeItemAccess** | **Boolean**| If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. | [optional] [default to false] |

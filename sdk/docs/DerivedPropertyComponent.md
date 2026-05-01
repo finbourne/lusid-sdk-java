@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **component** | **String** | The component of the formula which is being evaluated. | [optional] [default to String]
 **displayName** | **String** | The display name of the component being evaluated. | [optional] [default to String]
-**type** | **String** | The type of the formula component. This can be a Literal, Variable, DerivedProperty, or PartialFormula. | [optional] [default to String]
+**type** | **String** | The type of the formula component. Available values: Variable, DerivedProperty, Literal, PartialFormula. | [optional] [default to String]
 **value** | [**PropertyValue**](PropertyValue.md) |  | [optional] [default to PropertyValue]
 **derivationFormula** | **String** | The derivation formula of the component. This field will only be populated if the component is a derived property. | [optional] [default to String]
 **subComponents** | [**List&lt;DerivedPropertyComponent&gt;**](DerivedPropertyComponent.md) | Any sub-components of this formula. If this formula cannot be further decomposed, this collection will be null. | [optional] [default to List<DerivedPropertyComponent>]

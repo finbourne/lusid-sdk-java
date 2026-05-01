@@ -71,7 +71,7 @@ public class TransactionConfigurationTypeAlias {
   private String source;
 
   /**
-   * . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles
+   * Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
    */
   @JsonAdapter(TransactionRolesEnum.Adapter.class)
   public enum TransactionRolesEnum {
@@ -252,7 +252,7 @@ public class TransactionConfigurationTypeAlias {
   }
 
    /**
-   * . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles
+   * Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
    * @return transactionRoles
   **/
   @jakarta.annotation.Nonnull

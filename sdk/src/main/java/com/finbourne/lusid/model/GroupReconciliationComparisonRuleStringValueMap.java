@@ -113,7 +113,7 @@ public class GroupReconciliationComparisonRuleStringValueMap {
   }
 
    /**
-   * The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot;
+   * The direction to map. Available values: BiDirectional, UniDirectional.
    * @return direction
   **/
   @jakarta.annotation.Nonnull

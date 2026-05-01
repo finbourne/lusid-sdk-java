@@ -139,7 +139,7 @@ public class MembershipAmendmentRequest {
   }
 
    /**
-   * The operation to be performed on the entity&#39;s membership in the Custom Data Model. Either &#39;Add&#39; or &#39;Remove&#39;.
+   * The operation to be performed on the entity&#39;s membership in the Custom Data Model. Available values: Add, Remove.
    * @return operation
   **/
   @jakarta.annotation.Nonnull

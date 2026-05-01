@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ruleId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **templateId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **variation** | **String** |  | [default to String]
-**ruleStatus** | **String** |  | [default to String]
+**ruleStatus** | **String** | Available values: Passed, Failed, MissingData, Warning. | [default to String]
 **affectedPortfolios** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [default to List<ResourceId>]
 **affectedOrders** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [default to List<ResourceId>]
 **parametersUsed** | **Map&lt;String, String&gt;** |  | [default to Map<String, String>]

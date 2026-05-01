@@ -54,7 +54,7 @@ public class OrderBySpec {
   private String key;
 
   /**
-   * The available values are: Ascending, Descending
+   * Available values: Ascending, Descending.
    */
   @JsonAdapter(SortOrderEnum.Adapter.class)
   public enum SortOrderEnum {
@@ -135,7 +135,7 @@ public class OrderBySpec {
   }
 
    /**
-   * The available values are: Ascending, Descending
+   * Available values: Ascending, Descending.
    * @return sortOrder
   **/
   @jakarta.annotation.Nonnull

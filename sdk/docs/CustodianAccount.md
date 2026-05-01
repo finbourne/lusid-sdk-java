@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**status** | **String** | The Account status. Can be Active, Inactive or Deleted. | [default to String]
+**status** | **String** | The Account status. Available values: Active, Inactive, Deleted. | [default to String]
 **accountNumber** | **String** | The Custodian Account Number | [default to String]
 **accountName** | **String** | The identifiable name given to the Custodian Account | [default to String]
-**accountingMethod** | **String** | The Accounting method to be used | [default to String]
+**accountingMethod** | **String** | The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [default to String]
 **currency** | **String** | The Currency for the Account | [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. | [optional] [default to Map<String, Property>]
 **custodian** | [**LegalEntity**](LegalEntity.md) |  | [default to LegalEntity]
-**accountType** | **String** | The Type of the Custodian Account. Can be Margin, Cash or Swap. Defaults to Margin. | [default to String]
+**accountType** | **String** | The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.CustodianAccount;

@@ -146,7 +146,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Account status. Can be Active, Inactive or Deleted.
+   * The Account status. Available values: Active, Inactive, Deleted.
    * @return status
   **/
   @jakarta.annotation.Nullable
@@ -209,7 +209,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Accounting method to be used
+   * The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
    * @return accountingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -301,7 +301,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Type of the Custodian Account. Can be Margin, Cash or Swap. Defaults to Margin.
+   * The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
    * @return accountType
   **/
   @jakarta.annotation.Nullable

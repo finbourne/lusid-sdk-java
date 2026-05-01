@@ -1229,7 +1229,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set deleteMode
-         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @param deleteMode The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)
          * @return APIdeleteAccountsRequest
          */
         public APIdeleteAccountsRequest deleteMode(String deleteMode) {

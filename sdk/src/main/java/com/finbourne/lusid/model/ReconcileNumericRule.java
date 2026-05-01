@@ -52,7 +52,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReconcileNumericRule extends ReconciliationRule {
   /**
-   * The available values are: Exact, AbsoluteDifference, RelativeDifference
+   * Available values: Exact, AbsoluteDifference, RelativeDifference.
    */
   @JsonAdapter(ComparisonTypeEnum.Adapter.class)
   public enum ComparisonTypeEnum {
@@ -123,7 +123,7 @@ public class ReconcileNumericRule extends ReconciliationRule {
   }
 
    /**
-   * The available values are: Exact, AbsoluteDifference, RelativeDifference
+   * Available values: Exact, AbsoluteDifference, RelativeDifference.
    * @return comparisonType
   **/
   @jakarta.annotation.Nonnull

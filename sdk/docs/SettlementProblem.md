@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **settlementInstructionId** | **String** | The id of the problematic settlement instruction. Combined with the portfolio id this uniquely identifies a settlement instruction | [default to String]
 **category** | **String** | The category this instruction belongs to | [default to String]
-**status** | **String** | The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;. | [default to String]
+**status** | **String** | The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.SettlementProblem;

@@ -311,7 +311,7 @@ public class NavTypeDefinition {
   }
 
    /**
-   * Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required.
+   * Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
    * @return accountingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -361,7 +361,7 @@ public class NavTypeDefinition {
   }
 
    /**
-   * The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
+   * The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
    * @return amortisationMethod
   **/
   @jakarta.annotation.Nonnull
@@ -403,7 +403,7 @@ public class NavTypeDefinition {
   }
 
    /**
-   * The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required.
+   * The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. Available values: SettlementDate, TransactionDate.
    * @return cashGainLossCalculationDate
   **/
   @jakarta.annotation.Nonnull

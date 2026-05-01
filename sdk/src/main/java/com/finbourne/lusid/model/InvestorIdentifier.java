@@ -70,7 +70,7 @@ public class InvestorIdentifier {
   }
 
    /**
-   * The type of the investor of the Investor Record. Can be either a Person, LegalEntity or Nominee.
+   * The type of the investor of the Investor Record. Available values: Person, LegalEntity, Nominee.
    * @return investorType
   **/
   @jakarta.annotation.Nonnull

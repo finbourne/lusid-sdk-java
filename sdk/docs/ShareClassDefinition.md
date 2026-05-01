@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **launchDate** | [**OffsetDateTime**](OffsetDateTime.md) | The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date. | [optional] [default to OffsetDateTime]
 **apportionmentFactor** | **java.math.BigDecimal** | The weighting factor used for apportionment across this share class. | [optional] [default to java.math.BigDecimal]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true. | [optional] [default to Map<String, Property>]
-**fundShareClassType** | **String** | The Type of Share Class. Supported values are: Unitised / Non-Unitised / Series / Private Equity / Partnership. | [default to String]
-**distributionType** | **String** | The type of distribution the ShareClass will calculate. Supported values are: Income, Accumulation. | [default to String]
+**fundShareClassType** | **String** | The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership. | [default to String]
+**distributionType** | **String** | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. | [default to String]
 **domCcy** | **String** | The domestic currency of the ShareClass instrument. | [default to String]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 **unitsPrecision** | **Integer** | Decimal places for the share class units. | [optional] [default to Integer]
@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **roundingConventions** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding conventions used for the ShareClass quotes. | [optional] [default to List<SimpleRoundingConvention>]
 **roundingConventionsUnits** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding conventions used for the ShareClass units. | [optional] [default to List<SimpleRoundingConvention>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
-**distributionPaymentType** | **String** | The tax treatment applied to distributions. Supported values are: Gross, Net. | [optional] [default to String]
-**hedging** | **String** | Indicates whether the ShareClass applies currency hedging. Supported values are: Invalid, None, ApplyHedging. | [default to String]
+**distributionPaymentType** | **String** | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. | [optional] [default to String]
+**hedging** | **String** | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ShareClassDefinition;

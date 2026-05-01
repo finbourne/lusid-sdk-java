@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**capitalisation** | **String** | Whether the transaction fee should be capitalised, not capitalised, or conditionally capitalised. The allowed values are Capitalised, NonCapitalised, Conditional. | [optional] [default to String]
+**capitalisation** | **String** | Whether the transaction fee should be capitalised, not capitalised, or conditionally capitalised. Available values: Capitalised, NonCapitalised, Conditional. | [optional] [default to String]
 **capitalisedCondition** | **String** | The condition that determines whether the fee is capitalised when applied to the transaction. Required only when Capitalisation is &#39;Conditional&#39;. | [optional] [default to String]
 
 ```java

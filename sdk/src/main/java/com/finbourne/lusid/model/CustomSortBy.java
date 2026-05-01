@@ -124,7 +124,7 @@ public class CustomSortBy {
   }
 
    /**
-   * The sorting direction for the remaining field values. Either ascending (ASC) or descending (DESC).
+   * The sorting direction for the remaining field values. Either ascending (ASC) or descending (DESC). Available values: ASC, DESC.
    * @return remainderOrder
   **/
   @jakarta.annotation.Nonnull

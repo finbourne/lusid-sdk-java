@@ -156,7 +156,7 @@ public class TransactionSettlementInstruction {
   }
 
    /**
-   * The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement.
+   * The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement. Available values: Complete, CancelAutomatic, Partial.
    * @return instructionType
   **/
   @jakarta.annotation.Nonnull
@@ -240,7 +240,7 @@ public class TransactionSettlementInstruction {
   }
 
    /**
-   * A category representing the set of movement types that this instruction applies to.
+   * A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt, NotApplicable.
    * @return settlementCategory
   **/
   @jakarta.annotation.Nonnull
@@ -382,7 +382,7 @@ public class TransactionSettlementInstruction {
   }
 
    /**
-   * The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;.
+   * The status of the settlement instruction. Available values: Applied, Inactive, Invalid, Orphan, Rejected. Available values: Invalid, Rejected, Applied, Orphan.
    * @return status
   **/
   @jakarta.annotation.Nullable

@@ -131,7 +131,7 @@ public class CreateGroupReconciliationComparisonRulesetRequest {
   }
 
    /**
-   * The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+   * The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.
    * @return reconciliationType
   **/
   @jakarta.annotation.Nonnull

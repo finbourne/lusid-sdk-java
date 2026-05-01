@@ -92,7 +92,7 @@ public class FundBookmark extends FundCalendarEntries {
   private OffsetDateTime asAt;
 
   /**
-   * The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
+   * The type of the Fund Calendar Entry. Available values: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry.
    */
   @JsonAdapter(EntryTypeEnum.Adapter.class)
   public enum EntryTypeEnum {
@@ -353,7 +353,7 @@ public class FundBookmark extends FundCalendarEntries {
   }
 
    /**
-   * The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
+   * The type of the Fund Calendar Entry. Available values: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry.
    * @return entryType
   **/
   @jakarta.annotation.Nonnull

@@ -68,7 +68,7 @@ public class TransactionFeeCapitalisation {
   }
 
    /**
-   * Whether the transaction fee should be capitalised, not capitalised, or conditionally capitalised. The allowed values are Capitalised, NonCapitalised, Conditional.
+   * Whether the transaction fee should be capitalised, not capitalised, or conditionally capitalised. Available values: Capitalised, NonCapitalised, Conditional.
    * @return capitalisation
   **/
   @jakarta.annotation.Nullable

@@ -5,7 +5,7 @@ Base class for representing schedules in LUSID.  This base class should not be d
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scheduleType** | **String** | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid | [default to String]
+**scheduleType** | **String** | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.Schedule;

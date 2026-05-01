@@ -250,7 +250,7 @@ public class ValuationPointOverview {
   }
 
    /**
-   * The type of the diary entry. This is &#39;ValuationPoint&#39;.
+   * The type of the diary entry. This is &#39;ValuationPoint&#39;. Available values: PeriodBoundary, ValuationPoint, Other.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -271,7 +271,7 @@ public class ValuationPointOverview {
   }
 
    /**
-   * The status of the Valuation Point. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;.
+   * The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
    * @return status
   **/
   @jakarta.annotation.Nonnull

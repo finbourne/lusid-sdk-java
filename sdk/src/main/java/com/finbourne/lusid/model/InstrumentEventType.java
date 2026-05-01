@@ -165,7 +165,9 @@ public enum InstrumentEventType {
   
   EARLYCLOSEOUTEVENT("EarlyCloseOutEvent"),
   
-  DEPOSITROLLEVENT("DepositRollEvent");
+  DEPOSITROLLEVENT("DepositRollEvent"),
+  
+  CONSENTEVENT("ConsentEvent");
 
   private String value;
 

@@ -178,7 +178,7 @@ public class LoanFacility extends LusidInstrument {
   }
 
    /**
-   * LoanType for this facility. The facility can either be a revolving or a  term loan.    Supported string (enumeration) values are: [Revolver, TermLoan].
+   * LoanType for this facility. The facility can either be a revolving or a  term loan. Available values: Revolver, TermLoan.
    * @return loanType
   **/
   @jakarta.annotation.Nonnull

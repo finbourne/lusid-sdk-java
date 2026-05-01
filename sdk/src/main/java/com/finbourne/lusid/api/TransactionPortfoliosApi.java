@@ -1373,7 +1373,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set reconciliationMethods
-         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward. (optional)
          * @return APIbatchSetHoldingsRequest
          */
         public APIbatchSetHoldingsRequest reconciliationMethods(List<String> reconciliationMethods) {
@@ -2548,7 +2548,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIbuildTransactionsRequest
          */
         public APIbuildTransactionsRequest membershipType(String membershipType) {
@@ -4087,7 +4087,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set deleteMode
-         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @param deleteMode The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)
          * @return APIdeleteCustodianAccountsRequest
          */
         public APIdeleteCustodianAccountsRequest deleteMode(String deleteMode) {
@@ -10353,7 +10353,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest membershipType(String membershipType) {

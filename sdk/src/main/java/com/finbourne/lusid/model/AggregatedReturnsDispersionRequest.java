@@ -179,7 +179,7 @@ public class AggregatedReturnsDispersionRequest {
   }
 
    /**
-   * The method used to calculate the Portfolio performance: Equal/Asset.
+   * The method used to calculate the Portfolio performance. Available values: Equal, Asset.
    * @return compositeMethod
   **/
   @jakarta.annotation.Nullable

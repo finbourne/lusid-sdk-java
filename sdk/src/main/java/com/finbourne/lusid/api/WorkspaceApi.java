@@ -324,7 +324,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] CreateItem: Create a new item in a workspace.
      * Create a new item in a workspace.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIcreateItemRequest
      * @http.response.details
@@ -583,7 +583,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
      * Create a new workspace.
-     * @param visibility The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the workspace being created; case is important. Available values: shared, personal. (required)
      * @param workspaceCreationRequest The workspace to be created. (required)
      * @return APIcreateWorkspaceRequest
      * @http.response.details
@@ -840,7 +840,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
      * Delete an item from a workspace.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The name of the workspace. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
@@ -1098,7 +1098,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
      * Delete a workspace.
-     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The name of the workspace. (required)
      * @return APIdeleteWorkspaceRequest
      * @http.response.details
@@ -1370,7 +1370,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] GetItem: Get a single workspace item.
      * Get a single workspace item.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The name of the workspace. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
@@ -1643,7 +1643,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] GetWorkspace: Get a workspace.
      * Get a workspace.
-     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The workspace name. (required)
      * @return APIgetWorkspaceRequest
      * @http.response.details
@@ -1959,7 +1959,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] ListItems: List the items in a workspace.
      * List the items in a workspace.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The item&#39;s workspace name. (required)
      * @return APIlistItemsRequest
      * @http.response.details
@@ -2282,7 +2282,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] ListWorkspaces: List workspaces.
      * List workspaces.
-     * @param visibility The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the workspaces; case is important. Available values: shared, personal. (required)
      * @return APIlistWorkspacesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2589,7 +2589,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] SearchItems: List items across all workspaces.
      * List items across all workspaces.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @return APIsearchItemsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2860,7 +2860,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] UpdateItem: Update an item in a workspace.
      * Update an item in a workspace.
-     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the containing workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The workspace name. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The item name. (required)
@@ -3129,7 +3129,7 @@ public class WorkspaceApi {
     /**
      * [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
      * Update a workspace.
-     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param visibility The visibility for the workspace; case is important. Available values: shared, personal. (required)
      * @param workspaceName The workspace name. (required)
      * @param workspaceUpdateRequest The new workspace details. (required)
      * @return APIupdateWorkspaceRequest

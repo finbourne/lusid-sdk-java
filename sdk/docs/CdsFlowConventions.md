@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **resetCalendars** | **List&lt;String&gt;** | An array of strings denoting holiday calendars that apply to generation of reset schedules. | [default to List<String>]
 **settleDays** | **Integer** | Number of Good Business Days between the trade date and the effective or settlement date of the instrument. Defaults to 0 if not set. | [optional] [default to Integer]
 **resetDays** | **Integer** | The number of Good Business Days between determination and payment of reset. Defaults to 0 if not set. | [optional] [default to Integer]
-**businessDayConvention** | **String** | When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest]. | [optional] [default to String]
+**businessDayConvention** | **String** | When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid. | [optional] [default to String]
 **scope** | **String** | The scope used when updating or inserting the convention. | [optional] [default to String]
 **code** | **String** | The code of the convention. | [optional] [default to String]
 

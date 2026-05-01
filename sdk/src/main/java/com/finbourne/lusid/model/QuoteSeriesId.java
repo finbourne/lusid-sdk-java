@@ -63,7 +63,7 @@ public class QuoteSeriesId {
   private String instrumentId;
 
   /**
-   * The type of instrument identifier used to uniquely identify the instrument that the quote is for, e.g. &#39;Figi&#39;. The available values are: LusidInstrumentId, Figi, RIC, QuotePermId, Isin, CurrencyPair, ClientInternal, Sedol, Cusip
+   * The type of instrument identifier used to uniquely identify the instrument that the quote is for. Available values: LusidInstrumentId, Figi, RIC, QuotePermId, Isin, CurrencyPair, ClientInternal, Sedol, Cusip.
    */
   @JsonAdapter(InstrumentIdTypeEnum.Adapter.class)
   public enum InstrumentIdTypeEnum {
@@ -128,7 +128,7 @@ public class QuoteSeriesId {
   private InstrumentIdTypeEnum instrumentIdType;
 
   /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -299,7 +299,7 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of instrument identifier used to uniquely identify the instrument that the quote is for, e.g. &#39;Figi&#39;. The available values are: LusidInstrumentId, Figi, RIC, QuotePermId, Isin, CurrencyPair, ClientInternal, Sedol, Cusip
+   * The type of instrument identifier used to uniquely identify the instrument that the quote is for. Available values: LusidInstrumentId, Figi, RIC, QuotePermId, Isin, CurrencyPair, ClientInternal, Sedol, Cusip.
    * @return instrumentIdType
   **/
   @jakarta.annotation.Nonnull
@@ -320,7 +320,7 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

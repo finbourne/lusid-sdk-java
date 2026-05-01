@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**settlementCategory** | **String** | A category representing the set of movement types that this instruction applies to. | [default to String]
+**settlementCategory** | **String** | A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt. | [default to String]
 **lusidInstrumentId** | **String** | The LusidInstrumentId of the instrument being settled. | [default to String]
 **instrumentScope** | **String** | The Scope of the instrument being settled. | [default to String]
 **contractualSettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The contractual settlement date. Used to match the instruction to the correct settlement bucket. | [optional] [default to OffsetDateTime]
@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **settledUnits** | **java.math.BigDecimal** | The settled units. | [optional] [default to java.math.BigDecimal]
 **unsettledUnits** | **java.math.BigDecimal** | The unsettled units. | [optional] [default to java.math.BigDecimal]
 **overdueUnits** | **java.math.BigDecimal** | The overdue units. | [optional] [default to java.math.BigDecimal]
-**configuredSettlement** | **String** | The method of settlement for the settlement bucket, as defined in the portfolio&#39;s SettlementConfiguration | [optional] [default to String]
-**status** | **String** | The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. | [default to String]
+**configuredSettlement** | **String** | The effective method of settlement for the settlement bucket. This reflects any transaction-level settlement method overrides, falling back to the portfolio&#39;s SettlementConfiguration if no override applies. Available values: Automatic, Instructed, NotApplicable. | [optional] [default to String]
+**status** | **String** | The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None. | [default to String]
 **settlementInstructions** | [**List&lt;TransactionSettlementInstruction&gt;**](TransactionSettlementInstruction.md) | The settlement instructions received for this settlement bucket. | [optional] [default to List<TransactionSettlementInstruction>]
 **movements** | [**List&lt;TransactionSettlementMovement&gt;**](TransactionSettlementMovement.md) | The movements for the settlement bucket. | [optional] [default to List<TransactionSettlementMovement>]
 

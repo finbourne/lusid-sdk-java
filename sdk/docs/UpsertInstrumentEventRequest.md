@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **instrumentEvent** | [**InstrumentEvent**](InstrumentEvent.md) |  | [default to InstrumentEvent]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. | [optional] [default to List<PerpetualProperty>]
 **sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. | [optional] [default to Integer]
-**participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. | [optional] [default to String]
+**participationType** | **String** | Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. | [optional] [default to String]
 **eventDateStamps** | [**Map&lt;String, YearMonthDay&gt;**](YearMonthDay.md) | The date stamps corresponding to the relevant date-time fields for the instrument event. The key for each provided date stamp must match the field name of a valid datetime field from the InstrumentEvent DTO. | [optional] [default to Map<String, YearMonthDay>]
 
 ```java

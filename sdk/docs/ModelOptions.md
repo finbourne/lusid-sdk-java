@@ -5,7 +5,7 @@ Base class for representing model options in LUSID, which provide config for ins
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modelOptionsType** | **String** | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions | [default to String]
+**modelOptionsType** | **String** | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ModelOptions;

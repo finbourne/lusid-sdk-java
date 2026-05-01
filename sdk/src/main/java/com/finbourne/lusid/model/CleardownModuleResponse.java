@@ -237,7 +237,7 @@ public class CleardownModuleResponse {
   }
 
    /**
-   * The Cleardown Module status. Can be Active, Inactive or Deleted. Defaults to Active.
+   * The Cleardown Module status. Default value: Active. Available values: Active, Inactive, Deleted.
    * @return status
   **/
   @jakarta.annotation.Nonnull

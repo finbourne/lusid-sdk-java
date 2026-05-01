@@ -88,7 +88,7 @@ public class Compounding {
   }
 
    /**
-   * Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Supported string (enumeration) values are: [Unweighted, UnweightedIncludingWeekends, Weighted].  Defaults to \&quot;None\&quot; if not set.
+   * Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Default value: None. Available values: None, Unweighted, Weighted, UnweightedIncludingWeekends.
    * @return averagingMethod
   **/
   @jakarta.annotation.Nullable
@@ -109,7 +109,7 @@ public class Compounding {
   }
 
    /**
-   * Defines which resets and day counts are used for the rate calculation    Supported string (enumeration) values are: [Lookback, NoShift, ObservationPeriodShift, Lockout].  Defaults to \&quot;NoShift\&quot; if not set.
+   * Defines which resets and day counts are used for the rate calculation    Default value: NoShift. Available values: Lookback, NoShift, ObservationPeriodShift, Lockout.
    * @return calculationShiftMethod
   **/
   @jakarta.annotation.Nullable

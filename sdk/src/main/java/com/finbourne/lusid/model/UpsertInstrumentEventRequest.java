@@ -241,7 +241,7 @@ public class UpsertInstrumentEventRequest {
   }
 
    /**
-   * Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+   * Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
    * @return participationType
   **/
   @jakarta.annotation.Nullable

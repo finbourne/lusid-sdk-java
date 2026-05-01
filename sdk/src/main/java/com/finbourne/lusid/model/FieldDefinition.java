@@ -139,7 +139,7 @@ public class FieldDefinition {
   }
 
    /**
-   * Get valueType
+   * Available values: String, Decimal.
    * @return valueType
   **/
   @jakarta.annotation.Nullable

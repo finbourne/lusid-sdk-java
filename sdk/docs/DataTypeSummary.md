@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**typeValueRange** | **String** | Indicates the range of data acceptable by a data type. The available values are: Open, Closed | [default to String]
+**typeValueRange** | **String** | Indicates the range of data acceptable by a data type. Available values: Open, Closed. | [default to String]
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** | The display name of the data type. | [default to String]
 **description** | **String** | The description of the data type. | [default to String]
-**valueType** | **String** | The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | [default to String]
+**valueType** | **String** | The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. | [default to String]
 **acceptableValues** | **List&lt;String&gt;** | The acceptable set of values for this data type. Only applies to &#39;open&#39; value type range. | [optional] [default to List<String>]
-**unitSchema** | **String** | The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency | [optional] [default to String]
+**unitSchema** | **String** | The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency. | [optional] [default to String]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) | The definitions of the acceptable units. | [optional] [default to List<IUnitDefinitionDto>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 

@@ -228,7 +228,7 @@ public class FundDefinitionRequest {
   }
 
    /**
-   * The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39; and &#39;Classes&#39;.
+   * The Investor structure to be used by the Fund. Available values: NonUnitised, Classes.
    * @return investorStructure
   **/
   @jakarta.annotation.Nullable
@@ -357,7 +357,7 @@ public class FundDefinitionRequest {
   }
 
    /**
-   * The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
+   * The type of fund. Available values: Standalone, Master, Feeder.
    * @return type
   **/
   @jakarta.annotation.Nullable

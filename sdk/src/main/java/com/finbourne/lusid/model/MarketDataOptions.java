@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketDataOptions {
   /**
-   * The available values are: CurveOptions
+   * Available values: CurveOptions. Available values: CurveOptions.
    */
   @JsonAdapter(MarketDataOptionsTypeEnum.Adapter.class)
   public enum MarketDataOptionsTypeEnum {
@@ -108,7 +108,7 @@ public class MarketDataOptions {
   }
 
    /**
-   * The available values are: CurveOptions
+   * Available values: CurveOptions. Available values: CurveOptions.
    * @return marketDataOptionsType
   **/
   @jakarta.annotation.Nonnull

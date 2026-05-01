@@ -5,7 +5,7 @@ Base class for types containing required data to append to complex market data.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketDataType** | **String** | The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData | [default to String]
+**marketDataType** | **String** | Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.AppendMarketData;

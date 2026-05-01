@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **name** | **String** | Identifiable Name assigned to the period. Where left blank, the system will generate a name in the format &#39;yyyyMMDD&#39;. | [optional] [default to String]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the diary entry. | [optional] [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The query time of the diary entry. Defaults to latest. | [optional] [default to OffsetDateTime]
-**status** | **String** | The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. | [optional] [default to String]
+**status** | **String** | The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. Available values: Undefined, Estimate, Final, Candidate, Unofficial. | [optional] [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. | [optional] [default to Map<String, Property>]
-**closingOptions** | **List&lt;String&gt;** | The options which will be executed once a period is closed or locked. | [optional] [default to List<String>]
+**closingOptions** | **List&lt;String&gt;** | The options which will be executed once a period is closed or locked. Available values: ApplyClearDown. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.ClosePeriodDiaryEntryRequest;

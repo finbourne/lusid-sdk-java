@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. | [optional] [default to OffsetDateTime]
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. | [optional] [readonly] [default to Boolean]
-**type** | **String** | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition | [optional] [default to String]
+**type** | **String** | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. | [optional] [default to String]
 **version** | [**Version**](Version.md) |  | [default to Version]
 **properties** | [**List&lt;Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. | [optional] [default to List<Property>]
 **baseCurrency** | **String** | If the portfolio is a transaction portfolio or derived transaction portfolio, this is the base currency of the portfolio. | [optional] [default to String]

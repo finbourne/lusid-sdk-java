@@ -131,7 +131,7 @@ public class ReturnsEntity {
   }
 
    /**
-   * Entity a recipe is retrieved from for use in the aggregated returns calculation. Either RecipeId or RecipeEntity must be specified.
+   * Entity a recipe is retrieved from for use in the aggregated returns calculation. Either RecipeId or RecipeEntity must be specified. Available values: Portfolio, PortfolioGroup, ABOR.
    * @return recipeEntity
   **/
   @jakarta.annotation.Nullable
@@ -152,7 +152,7 @@ public class ReturnsEntity {
   }
 
    /**
-   * Configures how fees are handled in the aggregated returns calculation.
+   * Configures how fees are handled in the aggregated returns calculation. Available values: Net, Gross.
    * @return feeHandling
   **/
   @jakarta.annotation.Nullable
@@ -173,7 +173,7 @@ public class ReturnsEntity {
   }
 
    /**
-   * Configures how flows are handled in the aggregated returns calculation.
+   * Configures how flows are handled in the aggregated returns calculation. Available values: BeginningOfDay, EndOfDay.
    * @return flowHandling
   **/
   @jakarta.annotation.Nullable
@@ -215,7 +215,7 @@ public class ReturnsEntity {
   }
 
    /**
-   * Configures handling for the case where net flows do not match the sum of tagged flows.
+   * Configures handling for the case where net flows do not match the sum of tagged flows. Available values: TreatAsFlow, TreatAsGainloss, Error.
    * @return handleFlowDiscrepancy
   **/
   @jakarta.annotation.Nullable

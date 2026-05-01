@@ -118,7 +118,7 @@ public class Operation {
   }
 
    /**
-   * Get op
+   * Available values: add, remove.
    * @return op
   **/
   @jakarta.annotation.Nonnull

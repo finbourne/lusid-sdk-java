@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **runDetails** | [**GroupReconciliationRunDetails**](GroupReconciliationRunDetails.md) |  | [optional] [default to GroupReconciliationRunDetails]
 **groupReconciliationDefinitionId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**reconciliationType** | **String** | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; | [default to String]
+**reconciliationType** | **String** | The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding. | [default to String]
 **instanceId** | [**GroupReconciliationInstanceId**](GroupReconciliationInstanceId.md) |  | [default to GroupReconciliationInstanceId]
 **datesReconciled** | [**GroupReconciliationDates**](GroupReconciliationDates.md) |  | [default to GroupReconciliationDates]
 **reconciliationRunAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time the reconciliation was run | [default to OffsetDateTime]

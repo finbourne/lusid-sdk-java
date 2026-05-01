@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **yearsCount** | **Integer** | For how many years to calculate the dispersion. Default to 10. | [optional] [default to Integer]
 **returnIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The Scope and code of the returns. | [optional] [default to List<ResourceId>]
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**compositeMethod** | **String** | The method used to calculate the Portfolio performance: Equal/Asset. | [optional] [default to String]
+**compositeMethod** | **String** | The method used to calculate the Portfolio performance. Available values: Equal, Asset. | [optional] [default to String]
 **alternativeInceptionDate** | **String** | Optional - either a date, or the key for a portfolio property containing a date. If provided, the given date will override the inception date for this request. | [optional] [default to String]
 
 ```java

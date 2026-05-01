@@ -88,7 +88,7 @@ public class PerformanceReturnsMetric {
   }
 
    /**
-   * The type of the metric. Default to Return
+   * The type of the metric. Default value: Return. Available values: Return, Volatility, IndicativeAmount, Dispersion.
    * @return type
   **/
   @jakarta.annotation.Nullable

@@ -181,7 +181,7 @@ public class PortfolioEntity {
   }
 
    /**
-   * The status of the entity at the current time.
+   * The status of the entity at the current time. Available values: Prevailing, Deleted, DoesNotExist.
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -328,7 +328,7 @@ public class PortfolioEntity {
   }
 
    /**
-   * The status of the previewed entity.
+   * The status of the previewed entity. Available values: Prevailing, Deleted, DoesNotExist.
    * @return previewedStatus
   **/
   @jakarta.annotation.Nullable

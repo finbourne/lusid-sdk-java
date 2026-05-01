@@ -1372,7 +1372,7 @@ public class InstrumentsApi {
 
         /**
          * Set deleteMode
-         * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
+         * @param deleteMode The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)
          * @return APIdeleteInstrumentsRequest
          */
         public APIdeleteInstrumentsRequest deleteMode(String deleteMode) {
@@ -5191,7 +5191,7 @@ public class InstrumentsApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest membershipType(String membershipType) {

@@ -67,7 +67,7 @@ public class GroupReconciliationInstanceId {
   }
 
    /**
-   * Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot;
+   * Type of the reconciliation run, manual or automatic (via the workflow). Available values: WorkflowServiceTaskId, Manual.
    * @return instanceIdType
   **/
   @jakarta.annotation.Nonnull

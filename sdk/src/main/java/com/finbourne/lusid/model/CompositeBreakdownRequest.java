@@ -137,7 +137,7 @@ public class CompositeBreakdownRequest {
   }
 
    /**
-   * The method used to calculate the Portfolio performance: Equal/Asset.
+   * The method used to calculate the Portfolio performance. Available values: Equal, Asset.
    * @return compositeMethod
   **/
   @jakarta.annotation.Nullable
@@ -158,7 +158,7 @@ public class CompositeBreakdownRequest {
   }
 
    /**
-   * The type of the returns used to calculate the aggregation result: Daily/Monthly.
+   * The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly.
    * @return period
   **/
   @jakarta.annotation.Nullable

@@ -5,7 +5,7 @@ Represents a collection of MarketDataKeyRules that should be resolved together w
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketDataKeyRuleGroupOperation** | **String** | The operation that will be used to process the collection of market data items and failures found on resolution  into a single market data item or failure to be used.  Supported values: [FirstLatest, AverageOfQuotesFound, AverageOfAllQuotes, FirstMinimum, FirstMaximum] | [default to String]
+**marketDataKeyRuleGroupOperation** | **String** | The operation that will be used to process the collection of market data items and failures found on resolution  into a single market data item or failure to be used. Available values: FirstLatest, AverageOfQuotesFound, AverageOfAllQuotes, FirstMinimum, FirstMaximum. | [default to String]
 **marketRules** | [**List&lt;MarketDataKeyRule&gt;**](MarketDataKeyRule.md) | The rules that should be grouped together in market data resolution. | [default to List<MarketDataKeyRule>]
 
 ```java

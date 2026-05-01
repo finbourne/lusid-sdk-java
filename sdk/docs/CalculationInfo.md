@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**calculationMethod** | **String** | Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. | [default to String]
-**multiplier** | **String** | Field by which to multiply the numerical amount. Eg: Quantity, Value | [default to String]
+**calculationMethod** | **String** | Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat. | [default to String]
+**multiplier** | **String** | Field by which to multiply the numerical amount. Available values: None, Quantity, Value. | [default to String]
 **calculationAmount** | **java.math.BigDecimal** | Numerical fee amount | [default to java.math.BigDecimal]
 
 ```java

@@ -105,7 +105,7 @@ public class Instrument {
   private LusidInstrument instrumentDefinition;
 
   /**
-   * The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive, Deleted
+   * The state of of the instrument at the asAt datetime of this version of the instrument definition. Available values: Active, Inactive, Deleted.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -158,7 +158,7 @@ public class Instrument {
   private StateEnum state;
 
   /**
-   * The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown
+   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown.
    */
   @JsonAdapter(AssetClassEnum.Adapter.class)
   public enum AssetClassEnum {
@@ -476,7 +476,7 @@ public class Instrument {
   }
 
    /**
-   * The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive, Deleted
+   * The state of of the instrument at the asAt datetime of this version of the instrument definition. Available values: Active, Inactive, Deleted.
    * @return state
   **/
   @jakarta.annotation.Nonnull
@@ -497,7 +497,7 @@ public class Instrument {
   }
 
    /**
-   * The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown
+   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown.
    * @return assetClass
   **/
   @jakarta.annotation.Nullable

@@ -6,7 +6,7 @@ The definition of an Address Key Option
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name of the option | [default to String]
-**type** | **String** | The type of the option | [default to String]
+**type** | **String** | The type of the option. Available values: Bool, Int, Decimal, DateTimeOffset, String, Enum, TimeZoneId, Invalid. | [default to String]
 **description** | **String** | The description of the option | [default to String]
 **optional** | **Boolean** | Is this option required or optional? | [default to Boolean]
 **allowedValueSet** | **List&lt;String&gt;** | If the option is a string or enum, the allowed set of values it can take. | [optional] [default to List<String>]

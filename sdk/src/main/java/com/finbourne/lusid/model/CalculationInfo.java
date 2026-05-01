@@ -71,7 +71,7 @@ public class CalculationInfo {
   }
 
    /**
-   * Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc.
+   * Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat.
    * @return calculationMethod
   **/
   @jakarta.annotation.Nonnull
@@ -92,7 +92,7 @@ public class CalculationInfo {
   }
 
    /**
-   * Field by which to multiply the numerical amount. Eg: Quantity, Value
+   * Field by which to multiply the numerical amount. Available values: None, Quantity, Value.
    * @return multiplier
   **/
   @jakarta.annotation.Nonnull

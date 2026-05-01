@@ -55,7 +55,7 @@ public class PropertyFilter {
   private String left;
 
   /**
-   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith
+   * Available values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith.
    */
   @JsonAdapter(OperatorEnum.Adapter.class)
   public enum OperatorEnum {
@@ -122,7 +122,7 @@ public class PropertyFilter {
   private Object right = null;
 
   /**
-   * The available values are: Absolute, Property
+   * Available values: Absolute, Property.
    */
   @JsonAdapter(RightOperandTypeEnum.Adapter.class)
   public enum RightOperandTypeEnum {
@@ -203,7 +203,7 @@ public class PropertyFilter {
   }
 
    /**
-   * The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith
+   * Available values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith.
    * @return operator
   **/
   @jakarta.annotation.Nullable
@@ -245,7 +245,7 @@ public class PropertyFilter {
   }
 
    /**
-   * The available values are: Absolute, Property
+   * Available values: Absolute, Property.
    * @return rightOperandType
   **/
   @jakarta.annotation.Nullable

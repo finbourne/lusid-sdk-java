@@ -88,7 +88,7 @@ public class GroupReconciliationAggregateComparisonRuleOperand {
   }
 
    /**
-   * What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot;
+   * What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot;. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
    * @return operation
   **/
   @jakarta.annotation.Nonnull

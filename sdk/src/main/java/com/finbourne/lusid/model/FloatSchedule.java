@@ -409,7 +409,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].  Defaults to \&quot;InAdvance\&quot; if not set.
+   * Control how resets are generated relative to payment convention(s).    Default value: InAdvance. Available values: InAdvance, InArrears.
    * @return resetConvention
   **/
   @jakarta.annotation.Nullable

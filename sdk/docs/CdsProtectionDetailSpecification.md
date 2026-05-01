@@ -5,8 +5,8 @@ CDSs generally conform to fairly standard definitions, but can be tweaked in a n
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**seniority** | **String** | The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set. | [optional] [default to String]
-**restructuringType** | **String** | The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set. | [optional] [default to String]
+**seniority** | **String** | The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2. | [optional] [default to String]
+**restructuringType** | **String** | The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14. | [optional] [default to String]
 **protectStartDay** | **Boolean** | Does the protection leg pay out in the case of default on the start date. Defaults to true if not set. | [optional] [default to Boolean]
 **payAccruedInterestOnDefault** | **Boolean** | Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set. | [optional] [default to Boolean]
 

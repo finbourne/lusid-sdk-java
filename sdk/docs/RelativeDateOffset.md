@@ -6,8 +6,8 @@ Defines a date offset which is relative to some anchor date.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **days** | **Integer** | The number of days to add to the anchor date. | [default to Integer]
-**businessDayConvention** | **String** | The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.    Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest]. | [default to String]
-**dayType** | **String** | Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Supported string (enumeration) values are: [Business, Calendar].  Defaults to \&quot;Business\&quot; if not set. | [optional] [default to String]
+**businessDayConvention** | **String** | The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid. | [default to String]
+**dayType** | **String** | Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Default value: Business. Available values: Business, Calendar. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.RelativeDateOffset;

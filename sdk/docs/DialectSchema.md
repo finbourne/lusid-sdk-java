@@ -5,7 +5,7 @@ A schema that a given document must obey. A representation of the validation of 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of schema this represents | [default to String]
+**type** | **String** | The type of schema this represents. Available values: None, JsonSchema. | [default to String]
 **body** | **String** | The body of the schema | [optional] [default to String]
 
 ```java

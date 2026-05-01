@@ -5,7 +5,7 @@ Base class for representing reconciliation rules in LUSID.  Reconciliation rules
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ruleType** | **String** | The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact | [default to String]
+**ruleType** | **String** | Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ReconciliationRule;

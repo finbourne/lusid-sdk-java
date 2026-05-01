@@ -190,7 +190,7 @@ public class RelationalDatasetFieldDefinition {
   }
 
    /**
-   * The intended category of the field (SeriesIdentifier, Value, or Metadata).
+   * The intended category of the field (SeriesIdentifier, Value, or Metadata). Available values: SeriesIdentifier, Value, Metadata.
    * @return category
   **/
   @jakarta.annotation.Nonnull

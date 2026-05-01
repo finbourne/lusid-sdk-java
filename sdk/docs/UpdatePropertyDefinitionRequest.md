@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The display name of the property. | [default to String]
 **propertyDescription** | **String** | Describes the property | [optional] [default to String]
 **customEntityTypes** | **List&lt;String&gt;** | The custom entity types that properties relating to this property definition can be applied to. | [optional] [default to List<String>]
-**valueFormat** | **String** | The format in which values for this property definition should be represented. | [optional] [default to String]
+**valueFormat** | **String** | The format in which values for this property definition should be represented. Available values: Text, Html. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.UpdatePropertyDefinitionRequest;

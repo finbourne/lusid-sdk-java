@@ -469,7 +469,7 @@ public class ChartOfAccountsApiExample {
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts.
         List<String> requestBody = ["AccountCode1","AccountCode2"]; // List<String> | The codes of the accounts to delete.
-        String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
+        String deleteMode = "Soft"; // String | The delete mode to use. Default value: Soft. Available values: Soft, Hard.
         try {
             // uncomment the below to set overrides at the request level
             // DeleteAccountsResponse result = apiInstance.deleteAccounts(scope, code, requestBody, deleteMode).execute(opts);
@@ -494,7 +494,7 @@ public class ChartOfAccountsApiExample {
 | **scope** | **String**| The scope of the Chart of Accounts. | |
 | **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| The codes of the accounts to delete. | |
-| **deleteMode** | **String**| The delete mode to use (defaults to &#39;Soft&#39;). | [optional] [enum: Soft, Hard] |
+| **deleteMode** | **String**| The delete mode to use. Default value: Soft. Available values: Soft, Hard. | [optional] [enum: Soft, Hard] |
 
 ### Return type
 

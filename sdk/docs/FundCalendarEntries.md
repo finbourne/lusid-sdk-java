@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fundCalendarEntriesType** | **String** | The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark | [default to String]
+**fundCalendarEntriesType** | **String** | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.FundCalendarEntries;

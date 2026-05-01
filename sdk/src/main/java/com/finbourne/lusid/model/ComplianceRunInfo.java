@@ -151,7 +151,7 @@ public class ComplianceRunInfo {
   }
 
    /**
-   * Whether the compliance run was pre or post trade
+   * Whether the compliance run was pre or post trade. Available values: PreTrade, PostTrade, PreAndPostTrade.
    * @return schedule
   **/
   @jakarta.annotation.Nonnull

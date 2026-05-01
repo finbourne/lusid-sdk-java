@@ -276,7 +276,7 @@ public class PlacementUpdateRequest {
   }
 
    /**
-   * Optionally specifies the entry type of this placement.
+   * Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External.
    * @return entryType
   **/
   @jakarta.annotation.Nullable

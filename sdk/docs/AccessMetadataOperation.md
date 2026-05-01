@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | [**List&lt;AccessMetadataValue&gt;**](AccessMetadataValue.md) |  | [default to List<AccessMetadataValue>]
 **path** | **String** |  | [default to String]
-**op** | **String** | The available values are: add, remove | [default to String]
+**op** | **String** | Available values: add, remove. | [default to String]
 **from** | **String** |  | [optional] [default to String]
 
 ```java

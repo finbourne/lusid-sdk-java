@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **instrumentScope** | **String** | The scope of the instrument. | [default to String]
 **description** | **String** | The description of the instrument event. | [default to String]
 **eventDateRange** | [**EventDateRange**](EventDateRange.md) |  | [default to EventDateRange]
-**completeness** | **String** | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). | [optional] [readonly] [default to String]
+**completeness** | **String** | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete. | [optional] [readonly] [default to String]
 **instrumentEvent** | [**InstrumentEvent**](InstrumentEvent.md) |  | [default to InstrumentEvent]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. | [optional] [default to List<PerpetualProperty>]
 **sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. | [optional] [default to Integer]
-**participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. | [optional] [default to String]
+**participationType** | **String** | Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. | [optional] [default to String]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. | [optional] [readonly] [default to OffsetDateTime]
-**groupCode** | **String** | The group code that determines the processing order of instrument events with the same effective datetime. | [optional] [default to String]
+**groupCode** | **String** | The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.InstrumentEventHolder;

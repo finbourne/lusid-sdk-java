@@ -144,7 +144,7 @@ public class ComplianceRunInfoV2 {
   }
 
    /**
-   * Get schedule
+   * Available values: PreTrade, PostTrade, PreAndPostTrade.
    * @return schedule
   **/
   @jakarta.annotation.Nonnull

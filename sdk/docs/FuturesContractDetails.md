@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **tickerStep** | **java.math.BigDecimal** | Minimal step size change in ticker. | [optional] [default to java.math.BigDecimal]
 **unitValue** | **java.math.BigDecimal** | The value in the currency of a 1 unit change in the contract price. | [optional] [default to java.math.BigDecimal]
 **calendars** | **List&lt;String&gt;** | Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures). | [optional] [default to List<String>]
-**deliveryType** | **String** | Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical]. | [optional] [default to String]
+**deliveryType** | **String** | Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.FuturesContractDetails;

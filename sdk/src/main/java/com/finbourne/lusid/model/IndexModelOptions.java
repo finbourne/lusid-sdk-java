@@ -52,7 +52,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IndexModelOptions extends ModelOptions {
   /**
-   * The available values are: Sum, AbsoluteSum, Unity
+   * Available values: Sum, AbsoluteSum, Unity.
    */
   @JsonAdapter(PortfolioScalingEnum.Adapter.class)
   public enum PortfolioScalingEnum {
@@ -119,7 +119,7 @@ public class IndexModelOptions extends ModelOptions {
   }
 
    /**
-   * The available values are: Sum, AbsoluteSum, Unity
+   * Available values: Sum, AbsoluteSum, Unity.
    * @return portfolioScaling
   **/
   @jakarta.annotation.Nonnull

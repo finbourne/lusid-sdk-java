@@ -284,7 +284,7 @@ public class InstrumentEventHolder {
 
 
    /**
-   * Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete).
+   * Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete.
    * @return completeness
   **/
   @jakarta.annotation.Nullable
@@ -373,7 +373,7 @@ public class InstrumentEventHolder {
   }
 
    /**
-   * Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+   * Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
    * @return participationType
   **/
   @jakarta.annotation.Nullable
@@ -406,7 +406,7 @@ public class InstrumentEventHolder {
   }
 
    /**
-   * The group code that determines the processing order of instrument events with the same effective datetime.
+   * The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.
    * @return groupCode
   **/
   @jakarta.annotation.Nullable

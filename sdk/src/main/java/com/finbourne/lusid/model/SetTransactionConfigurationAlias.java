@@ -142,7 +142,7 @@ public class SetTransactionConfigurationAlias {
   }
 
    /**
-   * Get transactionRole
+   * Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
    * @return transactionRole
   **/
   @jakarta.annotation.Nonnull

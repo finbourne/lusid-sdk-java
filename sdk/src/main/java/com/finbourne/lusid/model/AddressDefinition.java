@@ -56,7 +56,7 @@ public class AddressDefinition {
   private String displayName;
 
   /**
-   * The available values are: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json
+   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -165,7 +165,7 @@ public class AddressDefinition {
   }
 
    /**
-   * The available values are: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json
+   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
    * @return type
   **/
   @jakarta.annotation.Nullable

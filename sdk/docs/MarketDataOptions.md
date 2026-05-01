@@ -5,7 +5,7 @@ Base class for representing market data options in LUSID.  Abstractly, these are
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketDataOptionsType** | **String** | The available values are: CurveOptions | [default to String]
+**marketDataOptionsType** | **String** | Available values: CurveOptions. Available values: CurveOptions. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.MarketDataOptions;

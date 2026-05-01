@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**reconciliationType** | **String** | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; | [default to String]
+**reconciliationType** | **String** | The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding. | [default to String]
 **groupReconciliationDefinitionId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **instanceId** | [**GroupReconciliationInstanceId**](GroupReconciliationInstanceId.md) |  | [default to GroupReconciliationInstanceId]
 **comparisonResultId** | **String** | Comparison result identifier, encoded value for core attribute results, aggregate attribute results, reconciliation type and run instanceId. | [default to String]
 **reconciliationRunAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp when the run occurred. | [default to OffsetDateTime]
-**resultType** | **String** | Reconciliation run general result. \&quot;Break\&quot; | \&quot;Match\&quot; | \&quot;PartialMatch\&quot; | \&quot;NotFound | [default to String]
-**resultStatus** | **String** | Indicates how a particular result evolves from one run to the next. \&quot;New\&quot; | \&quot;Confirmed\&quot; | \&quot;Changed\&quot; | [default to String]
-**reviewStatus** | **String** | Status of whether user has provided any input (comments, manual matches, break codes). \&quot;Pending\&quot; | \&quot;Reviewed\&quot; | \&quot;Matched\&quot; | \&quot;Invalid\&quot; | [default to String]
+**resultType** | **String** | Reconciliation run general result. Available values: Match, PartialMatch, Break, NotFound, Resolved. | [default to String]
+**resultStatus** | **String** | Indicates how a particular result evolves from one run to the next. Available values: New, Confirmed, Changed. | [default to String]
+**reviewStatus** | **String** | Status of whether user has provided any input (comments, manual matches, break codes). Available values: Pending, Reviewed, Matched, Invalid. | [default to String]
 **datesReconciled** | [**GroupReconciliationDates**](GroupReconciliationDates.md) |  | [default to GroupReconciliationDates]
 **coreAttributes** | [**GroupReconciliationCoreAttributeValues**](GroupReconciliationCoreAttributeValues.md) |  | [default to GroupReconciliationCoreAttributeValues]
 **aggregateAttributes** | [**GroupReconciliationAggregateAttributeValues**](GroupReconciliationAggregateAttributeValues.md) |  | [default to GroupReconciliationAggregateAttributeValues]

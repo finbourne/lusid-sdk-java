@@ -88,7 +88,7 @@ public class CreateAddressKeyDefinitionRequest {
   }
 
    /**
-   * The type of the address key definition
+   * The type of the address key definition. Available values: Text, Integer, Decimal, Boolean, DateTime, Result0D.
    * @return type
   **/
   @jakarta.annotation.Nonnull

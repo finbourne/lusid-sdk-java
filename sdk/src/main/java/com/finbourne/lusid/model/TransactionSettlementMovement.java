@@ -101,7 +101,7 @@ public class TransactionSettlementMovement {
   }
 
    /**
-   * Movement types determine the impact of the movement on the holdings. The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, Carry, CarryAsPnl, VariationMargin, Capital, Fee, Deferred, CashDeferred.
+   * Movement types determine the impact of the movement on the holdings.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -164,7 +164,7 @@ public class TransactionSettlementMovement {
   }
 
    /**
-   * The mode of settlement for the movement which can either be Internal or External. An Internal movement will settle automatically on the contractual settlement date using TransactionConfiguration. An External movement will be determined by portfolio configuration and settlement instruction.
+   * The mode of settlement for the movement which can either be Internal or External. An Internal movement will settle automatically on the contractual settlement date using TransactionConfiguration. An External movement will be determined by portfolio configuration and settlement instruction. Available values: Internal, External.
    * @return settlementMode
   **/
   @jakarta.annotation.Nullable

@@ -5,7 +5,7 @@ The market quote for an observable which will be used to calibrate the market da
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**quoteType** | **String** | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor | [default to String]
+**quoteType** | **String** | Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor. | [default to String]
 **value** | **java.math.BigDecimal** | Numeric value of the quote | [default to java.math.BigDecimal]
 
 ```java

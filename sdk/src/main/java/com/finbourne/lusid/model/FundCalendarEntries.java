@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FundCalendarEntries {
   /**
-   * The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+   * The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
    */
   @JsonAdapter(FundCalendarEntriesTypeEnum.Adapter.class)
   public enum FundCalendarEntriesTypeEnum {
@@ -112,7 +112,7 @@ public class FundCalendarEntries {
   }
 
    /**
-   * The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+   * The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
    * @return fundCalendarEntriesType
   **/
   @jakarta.annotation.Nonnull

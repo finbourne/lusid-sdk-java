@@ -194,7 +194,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
   }
 
    /**
-   * The format in which values for this property definition should be represented.
+   * The format in which values for this property definition should be represented. Available values: Text, Html.
    * @return valueFormat
   **/
   @jakarta.annotation.Nullable

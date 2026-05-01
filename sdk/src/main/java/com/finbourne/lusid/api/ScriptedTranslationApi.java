@@ -358,8 +358,8 @@ public class ScriptedTranslationApi {
      * @param scope The scope of the dialect. (required)
      * @param vendor The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. (required)
      * @param sourceSystem The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. (required)
-     * @param entityType The type of entity this dialect describes e.g. Instrument. (required)
-     * @param serialisationFormat The serialisation format of a document in this dialect. e.g. JSON, XML. (required)
+     * @param entityType The type of entity this dialect describes e.g. Instrument. Available values: Instrument. (required)
+     * @param serialisationFormat The serialisation format of a document in this dialect. Available values: Json, Xml. (required)
      * @param version The semantic version of the dialect: MAJOR.MINOR.PATCH. (required)
      * @return APIgetTranslationDialectRequest
      * @http.response.details

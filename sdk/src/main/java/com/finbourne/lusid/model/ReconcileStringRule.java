@@ -56,7 +56,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReconcileStringRule extends ReconciliationRule {
   /**
-   * The available values are: Exact, Contains, CaseInsensitive, ContainsAnyCase, IsOneOf, IsOneOfCaseInsensitive
+   * Available values: Exact, Contains, CaseInsensitive, ContainsAnyCase, IsOneOf, IsOneOfCaseInsensitive.
    */
   @JsonAdapter(ComparisonTypeEnum.Adapter.class)
   public enum ComparisonTypeEnum {
@@ -133,7 +133,7 @@ public class ReconcileStringRule extends ReconciliationRule {
   }
 
    /**
-   * The available values are: Exact, Contains, CaseInsensitive, ContainsAnyCase, IsOneOf, IsOneOfCaseInsensitive
+   * Available values: Exact, Contains, CaseInsensitive, ContainsAnyCase, IsOneOf, IsOneOfCaseInsensitive.
    * @return comparisonType
   **/
   @jakarta.annotation.Nonnull

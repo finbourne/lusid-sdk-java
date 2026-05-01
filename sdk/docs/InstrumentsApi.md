@@ -474,7 +474,7 @@ public class InstrumentsApiExample {
 
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         List<String> requestBody = ["LUID_12345678","LUID_87654321"]; // List<String> | The list of lusidInstrumentId's to delete.
-        String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
+        String deleteMode = "Soft"; // String | The delete mode to use. Default value: Soft. Available values: Soft, Hard.
         String scope = "default"; // String | The scope in which the instruments lie. When not supplied the scope is 'default'.
         try {
             // uncomment the below to set overrides at the request level
@@ -498,7 +498,7 @@ public class InstrumentsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **requestBody** | [**List&lt;String&gt;**](String.md)| The list of lusidInstrumentId&#39;s to delete. | |
-| **deleteMode** | **String**| The delete mode to use (defaults to &#39;Soft&#39;). | [optional] [enum: Soft, Hard] |
+| **deleteMode** | **String**| The delete mode to use. Default value: Soft. Available values: Soft, Hard. | [optional] [enum: Soft, Hard] |
 | **scope** | **String**| The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -1695,7 +1695,7 @@ public class InstrumentsApiExample {
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
-        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
         String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
         String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
         String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
@@ -1731,7 +1731,7 @@ public class InstrumentsApiExample {
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
-| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
 | **timelineScope** | **String**| The scope of the Timeline. | [optional] |
 | **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
 | **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |

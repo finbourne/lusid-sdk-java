@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** | The name of the Posting Module. | [default to String]
 **description** | **String** | A description for the Posting Module. | [optional] [default to String]
-**status** | **String** | The Posting Module status. Can be Active or Inactive. Defaults to Active. | [default to String]
+**status** | **String** | The Posting Module status. Default value: Active. Available values: Active, Inactive. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.PostingModuleDetails;

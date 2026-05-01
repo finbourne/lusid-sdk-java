@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | The type of tolerance to allow. \&quot;Relative\&quot; | \&quot;Absolute\&quot; | [default to String]
+**type** | **String** | The type of tolerance to allow. Available values: Relative, Absolute. | [default to String]
 **value** | **java.math.BigDecimal** | The decimal value of how much tolerance to allow when comparing in relative (i.e percentage) or absolute terms depending on the ToleranceType specified | [default to java.math.BigDecimal]
 
 ```java

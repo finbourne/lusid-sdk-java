@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **runId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **instigatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]
 **completedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]
-**schedule** | **String** |  | [default to String]
+**schedule** | **String** | Available values: None, PreTrade, PostTrade, PreAndPostTrade. | [default to String]
 **results** | [**List&lt;ComplianceSummaryRuleResultRequest&gt;**](ComplianceSummaryRuleResultRequest.md) |  | [default to List<ComplianceSummaryRuleResultRequest>]
 
 ```java

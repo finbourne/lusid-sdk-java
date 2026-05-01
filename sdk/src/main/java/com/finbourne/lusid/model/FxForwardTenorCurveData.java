@@ -300,7 +300,7 @@ public class FxForwardTenorCurveData extends ComplexMarketData {
   }
 
    /**
-   * Configures how to calculate the spot date from the build date using the Calendars provided.  Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ]
+   * Configures how to calculate the spot date from the build date using the Calendars provided. Available values: SingleCalendar, UnionCalendars.
    * @return spotDaysCalculationType
   **/
   @jakarta.annotation.Nullable

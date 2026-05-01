@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** | A detailed description of the field and its purpose. | [optional] [default to String]
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **required** | **Boolean** | Whether this field is mandatory in the dataset. | [optional] [default to Boolean]
-**category** | **String** | The intended category of the field (SeriesIdentifier, Value, or Metadata). | [default to String]
+**category** | **String** | The intended category of the field (SeriesIdentifier, Value, or Metadata). Available values: SeriesIdentifier, Value, Metadata. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.RelationalDatasetFieldDefinition;

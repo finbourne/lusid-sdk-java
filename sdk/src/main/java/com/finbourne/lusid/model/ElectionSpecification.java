@@ -75,7 +75,7 @@ public class ElectionSpecification {
   }
 
    /**
-   * Get electionType
+   * Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection.
    * @return electionType
   **/
   @jakarta.annotation.Nonnull

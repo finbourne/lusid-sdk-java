@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** | The key that uniquely identifies a queryable address in Lusid. | [default to String]
-**sortOrder** | **String** | The available values are: Ascending, Descending | [default to String]
+**sortOrder** | **String** | Available values: Ascending, Descending. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.OrderBySpec;

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **displayName** | **String** |  | [optional] [default to String]
 **description** | **String** |  | [optional] [default to String]
-**type** | **String** | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | [optional] [default to String]
+**type** | **String** | Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. | [optional] [default to String]
 **displayOrder** | **Integer** |  | [optional] [default to Integer]
 
 ```java

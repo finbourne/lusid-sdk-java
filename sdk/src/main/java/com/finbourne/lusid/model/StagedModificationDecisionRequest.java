@@ -67,7 +67,7 @@ public class StagedModificationDecisionRequest {
   }
 
    /**
-   * The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;.
+   * The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;. Available values: Approve, Reject.
    * @return decision
   **/
   @jakarta.annotation.Nonnull

@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustment {
   /**
-   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -114,7 +114,7 @@ public class NavActivityAdjustment {
   }
 
    /**
-   * . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull

@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceStep {
   /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep
+   * The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.
    */
   @JsonAdapter(ComplianceStepTypeEnum.Adapter.class)
   public enum ComplianceStepTypeEnum {
@@ -120,7 +120,7 @@ public class ComplianceStep {
   }
 
    /**
-   * . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep
+   * The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.
    * @return complianceStepType
   **/
   @jakarta.annotation.Nonnull

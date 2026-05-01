@@ -139,7 +139,7 @@ public class AmortisationRule {
   }
 
    /**
-   * The filter for this rule.
+   * The filter for this rule. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
    * @return amortisationMethod
   **/
   @jakarta.annotation.Nonnull

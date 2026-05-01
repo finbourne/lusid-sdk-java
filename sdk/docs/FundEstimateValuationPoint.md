@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **timelineId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **previousEntry** | [**PreviousFundCalendarEntry**](PreviousFundCalendarEntry.md) |  | [optional] [default to PreviousFundCalendarEntry]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective at of the Calendar Entry. | [optional] [default to OffsetDateTime]
-**entryType** | **String** | The type of the Fund Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark | [default to String]
+**entryType** | **String** | The type of the Fund Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. | [default to String]
 **status** | **String** | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;. | [optional] [default to String]
 **applyClearDown** | **Boolean** | Set to true if that closed period should have the clear down applied. | [optional] [default to Boolean]
 **leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]

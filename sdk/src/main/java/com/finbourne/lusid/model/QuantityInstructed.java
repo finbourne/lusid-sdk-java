@@ -67,7 +67,7 @@ public class QuantityInstructed {
   }
 
    /**
-   * The type of quantity instructed, either Percentage or Units.
+   * The type of quantity instructed. Available values: Percentage, Units, Invalid.
    * @return type
   **/
   @jakarta.annotation.Nonnull

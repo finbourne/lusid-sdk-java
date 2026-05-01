@@ -72,6 +72,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_PRODUCE_SEPARATE_RESULT_FOR_LINEAR_OTC_LEGS)
   private Boolean produceSeparateResultForLinearOtcLegs;
 
+  public static final String SERIALIZED_NAME_FX_FORWARD_CONTRACTS_AS_UNITS_IN_BOTH_LEGS = "fxForwardContractsAsUnitsInBothLegs";
+  @SerializedName(SERIALIZED_NAME_FX_FORWARD_CONTRACTS_AS_UNITS_IN_BOTH_LEGS)
+  private Boolean fxForwardContractsAsUnitsInBothLegs;
+
   public static final String SERIALIZED_NAME_ENABLE_USE_OF_CACHED_UNIT_RESULTS = "enableUseOfCachedUnitResults";
   @SerializedName(SERIALIZED_NAME_ENABLE_USE_OF_CACHED_UNIT_RESULTS)
   private Boolean enableUseOfCachedUnitResults;
@@ -221,6 +225,27 @@ public class PricingOptions {
 
   public void setProduceSeparateResultForLinearOtcLegs(Boolean produceSeparateResultForLinearOtcLegs) {
     this.produceSeparateResultForLinearOtcLegs = produceSeparateResultForLinearOtcLegs;
+  }
+
+
+  public PricingOptions fxForwardContractsAsUnitsInBothLegs(Boolean fxForwardContractsAsUnitsInBothLegs) {
+    
+    this.fxForwardContractsAsUnitsInBothLegs = fxForwardContractsAsUnitsInBothLegs;
+    return this;
+  }
+
+   /**
+   * When true, Holding/Units on both legs of an instrument-booked FxForward valued with  ProduceSeparateResultForLinearOtcLegs reports the number of forward contracts held (the  non-split holding units), so that Holding/Units generate justfile test_sdk Valuation/InstrumentPV &#x3D;&#x3D; Valuation/PV  holds on each leg. When false (default), the foreign leg reports  &lt;non-split units&gt; generate justfile test_sdk (fgnAmount / domAmount).
+   * @return fxForwardContractsAsUnitsInBothLegs
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFxForwardContractsAsUnitsInBothLegs() {
+    return fxForwardContractsAsUnitsInBothLegs;
+  }
+
+
+  public void setFxForwardContractsAsUnitsInBothLegs(Boolean fxForwardContractsAsUnitsInBothLegs) {
+    this.fxForwardContractsAsUnitsInBothLegs = fxForwardContractsAsUnitsInBothLegs;
   }
 
 
@@ -378,7 +403,7 @@ public class PricingOptions {
   }
 
    /**
-   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;.
+   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;. Available values: PV, Exposure.
    * @return conservedQuantityForLookthroughExpansion
   **/
   @jakarta.annotation.Nullable
@@ -470,6 +495,7 @@ public class PricingOptions {
         Objects.equals(this.allowAnyInstrumentsWithSecUidToPriceOffLookup, pricingOptions.allowAnyInstrumentsWithSecUidToPriceOffLookup) &&
         Objects.equals(this.allowPartiallySuccessfulEvaluation, pricingOptions.allowPartiallySuccessfulEvaluation) &&
         Objects.equals(this.produceSeparateResultForLinearOtcLegs, pricingOptions.produceSeparateResultForLinearOtcLegs) &&
+        Objects.equals(this.fxForwardContractsAsUnitsInBothLegs, pricingOptions.fxForwardContractsAsUnitsInBothLegs) &&
         Objects.equals(this.enableUseOfCachedUnitResults, pricingOptions.enableUseOfCachedUnitResults) &&
         Objects.equals(this.windowValuationOnInstrumentStartEnd, pricingOptions.windowValuationOnInstrumentStartEnd) &&
         Objects.equals(this.removeContingentCashflowsInPaymentDiary, pricingOptions.removeContingentCashflowsInPaymentDiary) &&
@@ -489,7 +515,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -508,6 +534,7 @@ public class PricingOptions {
     sb.append("    allowAnyInstrumentsWithSecUidToPriceOffLookup: ").append(toIndentedString(allowAnyInstrumentsWithSecUidToPriceOffLookup)).append("\n");
     sb.append("    allowPartiallySuccessfulEvaluation: ").append(toIndentedString(allowPartiallySuccessfulEvaluation)).append("\n");
     sb.append("    produceSeparateResultForLinearOtcLegs: ").append(toIndentedString(produceSeparateResultForLinearOtcLegs)).append("\n");
+    sb.append("    fxForwardContractsAsUnitsInBothLegs: ").append(toIndentedString(fxForwardContractsAsUnitsInBothLegs)).append("\n");
     sb.append("    enableUseOfCachedUnitResults: ").append(toIndentedString(enableUseOfCachedUnitResults)).append("\n");
     sb.append("    windowValuationOnInstrumentStartEnd: ").append(toIndentedString(windowValuationOnInstrumentStartEnd)).append("\n");
     sb.append("    removeContingentCashflowsInPaymentDiary: ").append(toIndentedString(removeContingentCashflowsInPaymentDiary)).append("\n");
@@ -546,6 +573,7 @@ public class PricingOptions {
     openapiFields.add("allowAnyInstrumentsWithSecUidToPriceOffLookup");
     openapiFields.add("allowPartiallySuccessfulEvaluation");
     openapiFields.add("produceSeparateResultForLinearOtcLegs");
+    openapiFields.add("fxForwardContractsAsUnitsInBothLegs");
     openapiFields.add("enableUseOfCachedUnitResults");
     openapiFields.add("windowValuationOnInstrumentStartEnd");
     openapiFields.add("removeContingentCashflowsInPaymentDiary");

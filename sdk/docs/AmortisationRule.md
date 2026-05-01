@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** | The name of the rule. | [default to String]
 **description** | **String** | A description of the rule. | [optional] [default to String]
 **filter** | **String** | The filter for this rule. | [default to String]
-**amortisationMethod** | **String** | The filter for this rule. | [default to String]
+**amortisationMethod** | **String** | The filter for this rule. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.AmortisationRule;

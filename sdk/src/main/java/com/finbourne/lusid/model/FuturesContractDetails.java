@@ -424,7 +424,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical].
+   * Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical.
    * @return deliveryType
   **/
   @jakarta.annotation.Nullable

@@ -388,7 +388,7 @@ public class ShareClass {
   }
 
    /**
-   * The Type of Share Class. Supported values are: Unitised / Non-Unitised / Series / Private Equity / Partnership.
+   * The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership.
    * @return fundShareClassType
   **/
   @jakarta.annotation.Nonnull
@@ -409,7 +409,7 @@ public class ShareClass {
   }
 
    /**
-   * The type of distribution the ShareClass will calculate. Supported values are: Income, Accumulation.
+   * The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
    * @return distributionType
   **/
   @jakarta.annotation.Nonnull
@@ -593,7 +593,7 @@ public class ShareClass {
   }
 
    /**
-   * The tax treatment applied to distributions. Supported values are: Gross, Net.
+   * The tax treatment applied to distributions. Available values: Invalid, Gross, Net.
    * @return distributionPaymentType
   **/
   @jakarta.annotation.Nullable
@@ -614,7 +614,7 @@ public class ShareClass {
   }
 
    /**
-   * Indicates whether the ShareClass applies currency hedging. Supported values are: Invalid, None, ApplyHedging.
+   * Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
    * @return hedging
   **/
   @jakarta.annotation.Nonnull

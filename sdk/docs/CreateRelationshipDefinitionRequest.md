@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **displayName** | **String** | The display name of the relationship definition. | [default to String]
 **outwardDescription** | **String** | The description to relate source entity object and target entity object. | [default to String]
 **inwardDescription** | **String** | The description to relate target entity object and source entity object. | [default to String]
-**lifeTime** | **String** | Describes how the relationships can change over time. Allowed values are &#39;Perpetual&#39; and &#39;TimeVariant&#39;, defaults to &#39;Perpetual&#39; if not specified. | [optional] [default to String]
-**relationshipCardinality** | **String** | Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Allowed values are &#39;ManyToMany&#39; and &#39;ManyToOne&#39;, defaults to &#39;ManyToMany&#39; if not specified. | [optional] [default to String]
+**lifeTime** | **String** | Describes how the relationships can change over time. Default value: Perpetual. Available values: Perpetual, TimeVariant. | [optional] [default to String]
+**relationshipCardinality** | **String** | Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Default value: ManyToMany. Available values: ManyToOne, ManyToMany. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateRelationshipDefinitionRequest;

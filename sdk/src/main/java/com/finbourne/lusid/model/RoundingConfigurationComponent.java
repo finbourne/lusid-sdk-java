@@ -63,7 +63,7 @@ public class RoundingConfigurationComponent {
   }
 
    /**
-   * The type of rounding that should be used, eg: Up, Down, NearestRoundHalfAwayFromZero
+   * The type of rounding that should be used. Available values: Up, Down, NearestRoundHalfAwayFromZero.
    * @return roundingType
   **/
   @jakarta.annotation.Nonnull

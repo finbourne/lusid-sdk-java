@@ -202,7 +202,7 @@ public class CalculateOrderDatesRequest {
   }
 
    /**
-   * Get transactionCategory
+   * Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn.
    * @return transactionCategory
   **/
   @jakarta.annotation.Nullable

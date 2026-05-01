@@ -6,7 +6,7 @@ A list of portfolios.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**type** | **String** | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition | [default to String]
+**type** | **String** | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. | [default to String]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
 **description** | **String** | The long form description of the portfolio. | [optional] [default to String]
 **displayName** | **String** | The name of the portfolio. | [default to String]

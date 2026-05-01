@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **customDataModelId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **entityType** | **String** | The type of the entity that is being added or removed from the Custom Data Model. | [default to String]
 **entityUniqueId** | **String** | The entity unique identifier of the entity that is being added or removed from the Custom Data Model. | [default to String]
-**operation** | **String** | The operation to be performed on the entity&#39;s membership in the Custom Data Model. Either &#39;Add&#39; or &#39;Remove&#39;. | [default to String]
+**operation** | **String** | The operation to be performed on the entity&#39;s membership in the Custom Data Model. Available values: Add, Remove. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.MembershipAmendmentRequest;

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** | The key of the value to compare | [default to String]
-**operation** | **String** | What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot; | [default to String]
+**operation** | **String** | What to do with the value pointed to by the key, e.g. Sum. Only \&quot;Value is allowed for core rules\&quot;. Available values: Value. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.GroupReconciliationCoreComparisonRuleOperand;

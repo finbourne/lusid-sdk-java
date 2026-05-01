@@ -68,7 +68,7 @@ public class DialectSchema {
   }
 
    /**
-   * The type of schema this represents
+   * The type of schema this represents. Available values: None, JsonSchema.
    * @return type
   **/
   @jakarta.annotation.Nonnull

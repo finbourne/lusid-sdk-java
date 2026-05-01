@@ -58,7 +58,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
   private String effectiveFrom;
 
   /**
-   * The available values are: Static, Floating, Periodical
+   * Available values: Static, Floating, Periodical.
    */
   @JsonAdapter(WeightTypeEnum.Adapter.class)
   public enum WeightTypeEnum {
@@ -111,7 +111,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
   private WeightTypeEnum weightType;
 
   /**
-   * The available values are: Daily, Weekly, Monthly, Quarterly, Annually
+   * Available values: Daily, Weekly, Monthly, Quarterly, Annually.
    */
   @JsonAdapter(PeriodTypeEnum.Adapter.class)
   public enum PeriodTypeEnum {
@@ -206,7 +206,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
   }
 
    /**
-   * The available values are: Static, Floating, Periodical
+   * Available values: Static, Floating, Periodical.
    * @return weightType
   **/
   @jakarta.annotation.Nonnull
@@ -227,7 +227,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
   }
 
    /**
-   * The available values are: Daily, Weekly, Monthly, Quarterly, Annually
+   * Available values: Daily, Weekly, Monthly, Quarterly, Annually.
    * @return periodType
   **/
   @jakarta.annotation.Nullable

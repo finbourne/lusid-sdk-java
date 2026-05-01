@@ -109,7 +109,7 @@ public class SeriesDefinition {
   }
 
    /**
-   * The type of the Series. Valid values are: Lead, Standard.
+   * The type of the Series. Available values: Lead, Standard.
    * @return seriesType
   **/
   @jakarta.annotation.Nonnull
@@ -151,7 +151,7 @@ public class SeriesDefinition {
   }
 
    /**
-   * The type of launch price for the Series. Valid values are: Manual, Calculated.
+   * The type of launch price for the Series. Available values: Manual, Calculated.
    * @return launchPriceType
   **/
   @jakarta.annotation.Nonnull

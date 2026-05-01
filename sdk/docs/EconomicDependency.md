@@ -5,7 +5,7 @@ Base class for representing economic dependencies.  Economic dependencies are a 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dependencyType** | **String** | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency | [default to String]
+**dependencyType** | **String** | Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.EconomicDependency;

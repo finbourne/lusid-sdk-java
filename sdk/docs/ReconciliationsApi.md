@@ -540,7 +540,7 @@ public class ReconciliationsApiExample {
         // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
 
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
-        String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided.
+        String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned.  Default value: Transaction. Available values: Transaction, Holding, Valuation, Cash, CashHolding.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfMapping result = apiInstance.listReconciliationMappings(reconciliationType).execute(opts);
@@ -562,7 +562,7 @@ public class ReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reconciliationType** | **String**| Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. | [optional] |
+| **reconciliationType** | **String**| Optional parameter to specify which type of mappings should be returned.  Default value: Transaction. Available values: Transaction, Holding, Valuation, Cash, CashHolding. | [optional] |
 
 ### Return type
 

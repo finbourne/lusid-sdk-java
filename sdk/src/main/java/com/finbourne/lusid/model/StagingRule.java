@@ -124,7 +124,7 @@ public class StagingRule {
   }
 
    /**
-   * Whether the rule is &#39;Active&#39; or &#39;Inactive&#39;.
+   * Status of the rule. Available values: Active, Inactive.
    * @return status
   **/
   @jakarta.annotation.Nonnull

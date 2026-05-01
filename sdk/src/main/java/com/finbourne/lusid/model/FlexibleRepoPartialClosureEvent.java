@@ -148,7 +148,7 @@ public class FlexibleRepoPartialClosureEvent extends InstrumentEvent {
   }
 
    /**
-   * AmountType of the cash amount to be exchanged as part of a partial closure of the repurchase agreement.  Either percentage or absolute cash amount.    Supported string (enumeration) values are: [Percentage, Units].
+   * AmountType of the cash amount to be exchanged as part of a partial closure of the repurchase agreement.  Either percentage or absolute cash amount. Available values: Percentage, Units.
    * @return amountType
   **/
   @jakarta.annotation.Nonnull

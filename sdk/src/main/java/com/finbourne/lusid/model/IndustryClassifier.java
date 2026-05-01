@@ -67,7 +67,7 @@ public class IndustryClassifier {
   }
 
    /**
-   * The name of the classification system to which the classification code belongs (e.g. GICS).
+   * The name of the classification system to which the classification code belongs (e.g. GICS). Available values: GICS2018.
    * @return classificationSystemName
   **/
   @jakarta.annotation.Nonnull

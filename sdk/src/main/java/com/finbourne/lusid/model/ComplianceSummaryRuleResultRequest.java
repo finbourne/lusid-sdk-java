@@ -160,7 +160,7 @@ public class ComplianceSummaryRuleResultRequest {
   }
 
    /**
-   * Get ruleStatus
+   * Available values: Passed, Failed, MissingData, Warning.
    * @return ruleStatus
   **/
   @jakarta.annotation.Nonnull

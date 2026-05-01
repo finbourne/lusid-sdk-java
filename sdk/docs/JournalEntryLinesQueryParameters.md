@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **start** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  | [optional] [default to DateOrDiaryEntry]
 **end** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  | [optional] [default to DateOrDiaryEntry]
 **variant** | **String** | Unique Variant for the given Valuation points. If not provided, defaults to empty string. | [optional] [default to String]
-**dateMode** | **String** | The mode of calculation of the journal entry lines. The available values are: ActivityDate, AccountingDate. | [optional] [default to String]
+**dateMode** | **String** | The mode of calculation of the journal entry lines. Available values: ActivityDate, AccountingDate. | [optional] [default to String]
 **generalLedgerProfileCode** | **String** | The optional code of a general ledger profile used to decorate journal entry lines with levels. | [optional] [default to String]
 **propertyKeys** | **List&lt;String&gt;** | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the journal entry lines. | [optional] [default to List<String>]
 

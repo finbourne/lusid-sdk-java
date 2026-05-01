@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filterId** | **String** |  | [default to String]
 **filter** | **String** |  | [default to String]
-**appliesTo** | **String** |  | [default to String]
+**appliesTo** | **String** | Available values: Undefined, PnLBucket, Fees. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ExternalFeeComponentFilter;

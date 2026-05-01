@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** | The name of the Cleardown Module. | [default to String]
 **description** | **String** | A description for the Cleardown Module. | [optional] [default to String]
-**status** | **String** | The Cleardown Module status. Can be Active or Inactive. Defaults to Active. | [default to String]
+**status** | **String** | The Cleardown Module status. Default value: Active. Available values: Active, Inactive. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.CleardownModuleDetails;

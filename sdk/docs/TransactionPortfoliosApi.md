@@ -501,7 +501,7 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
         Map<String, AdjustHoldingForDateRequest> requestBody = new HashMap(); // Map<String, AdjustHoldingForDateRequest> | The selected set of holdings to adjust to the provided targets for the   transaction portfolio.
-        List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
+        List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward.
         try {
             // uncomment the below to set overrides at the request level
             // BatchAdjustHoldingsResponse result = apiInstance.batchSetHoldings(scope, code, successMode, requestBody, reconciliationMethods).execute(opts);
@@ -527,7 +527,7 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | [default to Partial] |
 | **requestBody** | [**Map&lt;String, AdjustHoldingForDateRequest&gt;**](AdjustHoldingForDateRequest.md)| The selected set of holdings to adjust to the provided targets for the   transaction portfolio. | |
-| **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. | [optional] |
+| **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward. | [optional] |
 
 ### Return type
 
@@ -897,7 +897,7 @@ public class TransactionPortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
-        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
         try {
             // uncomment the below to set overrides at the request level
             // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute(opts);
@@ -929,7 +929,7 @@ public class TransactionPortfoliosApiExample {
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to BuildTransactions. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
-| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
 
 ### Return type
 
@@ -1476,7 +1476,7 @@ public class TransactionPortfoliosApiExample {
         String scope = "scope_example"; // String | The scope of the Transaction Portfolios.
         String code = "code_example"; // String | The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios.
         List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The scope and codes of the custodian accounts to delete.
-        String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
+        String deleteMode = "Soft"; // String | The delete mode to use. Default value: Soft. Available values: Soft, Hard.
         try {
             // uncomment the below to set overrides at the request level
             // DeleteCustodianAccountsResponse result = apiInstance.deleteCustodianAccounts(scope, code, resourceId, deleteMode).execute(opts);
@@ -1501,7 +1501,7 @@ public class TransactionPortfoliosApiExample {
 | **scope** | **String**| The scope of the Transaction Portfolios. | |
 | **code** | **String**| The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios. | |
 | **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The scope and codes of the custodian accounts to delete. | |
-| **deleteMode** | **String**| The delete mode to use (defaults to &#39;Soft&#39;). | [optional] [enum: Soft, Hard] |
+| **deleteMode** | **String**| The delete mode to use. Default value: Soft. Available values: Soft, Hard. | [optional] [enum: Soft, Hard] |
 
 ### Return type
 
@@ -3469,7 +3469,7 @@ public class TransactionPortfoliosApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
-        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
         try {
             // uncomment the below to set overrides at the request level
             // VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, membershipType).execute(opts);
@@ -3504,7 +3504,7 @@ public class TransactionPortfoliosApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
-| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
 
 ### Return type
 

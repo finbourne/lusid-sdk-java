@@ -60,7 +60,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DataType {
   /**
-   * The available values are: Open, Closed
+   * Available values: Open, Closed.
    */
   @JsonAdapter(TypeValueRangeEnum.Adapter.class)
   public enum TypeValueRangeEnum {
@@ -123,7 +123,7 @@ public class DataType {
   private String description;
 
   /**
-   * The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    */
   @JsonAdapter(ValueTypeEnum.Adapter.class)
   public enum ValueTypeEnum {
@@ -216,7 +216,7 @@ public class DataType {
   private List<String> acceptableValues;
 
   /**
-   * The available values are: NoUnits, Basic, Iso4217Currency
+   * Available values: NoUnits, Basic, Iso4217Currency.
    */
   @JsonAdapter(UnitSchemaEnum.Adapter.class)
   public enum UnitSchemaEnum {
@@ -302,7 +302,7 @@ public class DataType {
   }
 
    /**
-   * The available values are: Open, Closed
+   * Available values: Open, Closed.
    * @return typeValueRange
   **/
   @jakarta.annotation.Nonnull
@@ -386,7 +386,7 @@ public class DataType {
   }
 
    /**
-   * The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+   * Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
    * @return valueType
   **/
   @jakarta.annotation.Nonnull
@@ -436,7 +436,7 @@ public class DataType {
   }
 
    /**
-   * The available values are: NoUnits, Basic, Iso4217Currency
+   * Available values: NoUnits, Basic, Iso4217Currency.
    * @return unitSchema
   **/
   @jakarta.annotation.Nullable

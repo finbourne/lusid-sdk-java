@@ -134,7 +134,7 @@ public class DerivedPropertyComponent {
   }
 
    /**
-   * The type of the formula component. This can be a Literal, Variable, DerivedProperty, or PartialFormula.
+   * The type of the formula component. Available values: Variable, DerivedProperty, Literal, PartialFormula.
    * @return type
   **/
   @jakarta.annotation.Nullable

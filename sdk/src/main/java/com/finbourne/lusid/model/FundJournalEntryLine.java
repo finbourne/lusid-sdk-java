@@ -518,7 +518,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * So far are 4 types: LusidTxn, LusidValuation, Manual and External.
+   * The type of source for the Journal Entry Line. Available values: LusidTransaction, LusidValuation, Manual, External.
    * @return sourceType
   **/
   @jakarta.annotation.Nonnull
@@ -652,7 +652,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Sub bucket of the economic bucket.
+   * Sub bucket of the economic bucket. Available values: Undefined, Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income, Expense.
    * @return economicBucketComponent
   **/
   @jakarta.annotation.Nullable
@@ -673,7 +673,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Categorisation of a Mark-to-market journal entry line into LongTerm or ShortTerm based on whether the ActivityDate is more than a year after the purchase trade date or not.
+   * Further categorisation of a journal entry line. LongTerm/ShortTerm: based on whether the ActivityDate is more than a year after the purchase trade date. TradeDateToSettlementDate: FX gain/loss between trade date and settlement date. InLieuSubstitution: FX gain/loss from settling in a different currency when the original settlement currency is the portfolio base currency. Available values: Undefined, ShortTerm, LongTerm, Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution.
    * @return economicBucketVariant
   **/
   @jakarta.annotation.Nullable
@@ -752,7 +752,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Indicates if the Journal Entry Line corresponds to a Long or Short movement.
+   * Indicates if the Journal Entry Line corresponds to a Long or Short movement. Available values: NA, Long, Short.
    * @return movementSign
   **/
   @jakarta.annotation.Nullable
@@ -773,7 +773,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Indicates if the Journal Entry Line is operating against a Long or Short holding.
+   * Indicates if the Journal Entry Line is operating against a Long or Short holding. Available values: NA, Long, Short.
    * @return holdingSign
   **/
   @jakarta.annotation.Nullable
@@ -794,7 +794,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Indicates if the Journal Entry Line is credit or debit.
+   * Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit.
    * @return ledgerColumn
   **/
   @jakarta.annotation.Nullable
@@ -815,7 +815,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Indicates the Journal Entry Line type
+   * Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp.
    * @return journalEntryLineType
   **/
   @jakarta.annotation.Nullable

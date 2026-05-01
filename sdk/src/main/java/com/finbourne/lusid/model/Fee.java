@@ -327,7 +327,7 @@ public class Fee {
   }
 
    /**
-   * The accrual period of the Fee; &#39;Monthly&#39; or &#39;Daily&#39;.
+   * The accrual period of the Fee. Available values: Daily, Monthly.
    * @return treatment
   **/
   @jakarta.annotation.Nonnull
@@ -390,7 +390,7 @@ public class Fee {
   }
 
    /**
-   * The payable frequency for the Fee; &#39;Annually&#39;, &#39;Quarterly&#39; or &#39;Monthly&#39;.
+   * The payable frequency for the Fee. Available values: Annually, Quarterly, Monthly.
    * @return payableFrequency
   **/
   @jakarta.annotation.Nonnull
@@ -411,7 +411,7 @@ public class Fee {
   }
 
    /**
-   * The business day convention to use for Fee calculations on weekends or holidays. Supported string values are: [Previous, P, Following, F, None].
+   * The business day convention to use for Fee calculations on weekends or holidays. Available values: None, P, Previous, F, Following.
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nonnull

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**roundingType** | **String** | The type of rounding that should be used, eg: Up, Down, NearestRoundHalfAwayFromZero | [default to String]
+**roundingType** | **String** | The type of rounding that should be used. Available values: Up, Down, NearestRoundHalfAwayFromZero. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.RoundingConfigurationComponent;

@@ -59,7 +59,7 @@ public class TransactionQueryParameters {
   private String endDate;
 
   /**
-   * The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to &#39;TradeDate&#39; if not specified. The available values are: TradeDate, SettleDate
+   * The date to compare against the upper and lower bounds for the effective datetime or cut label. Default value: TradeDate. Available values: TradeDate, SettleDate.
    */
   @JsonAdapter(QueryModeEnum.Adapter.class)
   public enum QueryModeEnum {
@@ -185,7 +185,7 @@ public class TransactionQueryParameters {
   }
 
    /**
-   * The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to &#39;TradeDate&#39; if not specified. The available values are: TradeDate, SettleDate
+   * The date to compare against the upper and lower bounds for the effective datetime or cut label. Default value: TradeDate. Available values: TradeDate, SettleDate.
    * @return queryMode
   **/
   @jakarta.annotation.Nullable

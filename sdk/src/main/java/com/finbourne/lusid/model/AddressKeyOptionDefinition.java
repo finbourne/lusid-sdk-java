@@ -107,7 +107,7 @@ public class AddressKeyOptionDefinition {
   }
 
    /**
-   * The type of the option
+   * The type of the option. Available values: Bool, Int, Decimal, DateTimeOffset, String, Enum, TimeZoneId, Invalid.
    * @return type
   **/
   @jakarta.annotation.Nonnull

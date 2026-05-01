@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **counterparty** | **String** | Optionally specifies the market entity this placement is placed with. | [optional] [default to String]
 **executionSystem** | **String** | Optionally specifies the execution system in use. | [optional] [default to String]
-**entryType** | **String** | Optionally specifies the entry type of this placement. | [optional] [default to String]
+**entryType** | **String** | Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.PlacementRequest;

@@ -178,7 +178,7 @@ public class ClosePeriodDiaryEntryRequest {
   }
 
    /**
-   * The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.
+   * The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
    * @return status
   **/
   @jakarta.annotation.Nullable
@@ -236,7 +236,7 @@ public class ClosePeriodDiaryEntryRequest {
   }
 
    /**
-   * The options which will be executed once a period is closed or locked.
+   * The options which will be executed once a period is closed or locked. Available values: ApplyClearDown.
    * @return closingOptions
   **/
   @jakarta.annotation.Nullable

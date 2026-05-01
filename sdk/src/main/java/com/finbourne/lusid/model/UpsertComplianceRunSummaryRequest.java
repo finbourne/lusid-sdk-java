@@ -147,7 +147,7 @@ public class UpsertComplianceRunSummaryRequest {
   }
 
    /**
-   * Get schedule
+   * Available values: None, PreTrade, PostTrade, PreAndPostTrade.
    * @return schedule
   **/
   @jakarta.annotation.Nonnull

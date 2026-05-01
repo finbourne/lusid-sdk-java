@@ -146,7 +146,7 @@ public class Mapping {
   }
 
    /**
-   * What type of reconciliation this mapping is for
+   * What type of reconciliation this mapping is for. Available values: Transaction, Holding, Valuation, Cash, CashHolding.
    * @return reconciliationType
   **/
   @jakarta.annotation.Nonnull

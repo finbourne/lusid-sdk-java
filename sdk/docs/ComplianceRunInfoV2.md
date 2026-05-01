@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **runId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **instigatedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]
 **completedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]
-**schedule** | **String** |  | [default to String]
+**schedule** | **String** | Available values: PreTrade, PostTrade, PreAndPostTrade. | [default to String]
 **instigatedBy** | **String** |  | [default to String]
 
 ```java

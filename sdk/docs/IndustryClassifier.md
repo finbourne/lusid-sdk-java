@@ -5,7 +5,7 @@ Object describing a particular industry classifier,  which comprises a classific
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**classificationSystemName** | **String** | The name of the classification system to which the classification code belongs (e.g. GICS). | [default to String]
+**classificationSystemName** | **String** | The name of the classification system to which the classification code belongs (e.g. GICS). Available values: GICS2018. | [default to String]
 **classificationCode** | **String** | The specific industry classification code assigned to the legal entity. | [default to String]
 
 ```java

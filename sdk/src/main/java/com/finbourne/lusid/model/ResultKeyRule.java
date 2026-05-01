@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResultKeyRule {
   /**
-   * The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+   * Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
    */
   @JsonAdapter(ResultKeyRuleTypeEnum.Adapter.class)
   public enum ResultKeyRuleTypeEnum {
@@ -112,7 +112,7 @@ public class ResultKeyRule {
   }
 
    /**
-   * The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+   * Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
    * @return resultKeyRuleType
   **/
   @jakarta.annotation.Nonnull

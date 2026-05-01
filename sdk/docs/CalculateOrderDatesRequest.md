@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **instrumentScope** | **String** |  | [optional] [default to String]
 **receivedDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **priceDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
-**transactionCategory** | **String** |  | [optional] [default to String]
+**transactionCategory** | **String** | Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn. | [optional] [default to String]
 **liquidatingShareClassIdentifier** | **String** |  | [optional] [default to String]
 **liquidatingShareClassIdentifierType** | **String** |  | [optional] [default to String]
 **liquidatingShareClassInstrumentScope** | **String** |  | [optional] [default to String]

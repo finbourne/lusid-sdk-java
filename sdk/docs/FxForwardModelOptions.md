@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**forwardRateObservableType** | **String** | The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid | [default to String]
-**discountingMethod** | **String** | The available values are: Standard, ConstantTimeValueOfMoney, Invalid | [default to String]
+**forwardRateObservableType** | **String** | Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid. | [default to String]
+**discountingMethod** | **String** | Available values: Standard, ConstantTimeValueOfMoney, Invalid. | [default to String]
 **convertToReportCcy** | **Boolean** | Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base. | [default to Boolean]
 
 ```java

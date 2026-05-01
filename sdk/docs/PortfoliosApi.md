@@ -572,7 +572,7 @@ public class PortfoliosApiExample {
         String returnCode = "returnCode_example"; // String | The code of the Returns.
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The start date from which to delete the Returns.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date from which to delete the Returns.
-        String period = "period_example"; // String | The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily.
+        String period = "period_example"; // String | The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePortfolioReturns(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period).execute(opts);
@@ -600,7 +600,7 @@ public class PortfoliosApiExample {
 | **returnCode** | **String**| The code of the Returns. | |
 | **fromEffectiveAt** | **String**| The start date from which to delete the Returns. | |
 | **toEffectiveAt** | **String**| The end date from which to delete the Returns. | |
-| **period** | **String**| The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. | [optional] |
+| **period** | **String**| The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. | [optional] |
 
 ### Return type
 
@@ -1081,9 +1081,9 @@ public class PortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The Recipe Code for getting the fx rates
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The start date from which to calculate the Returns.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date for which to calculate the Returns.
-        String compositeMethod = "compositeMethod_example"; // String | The method used to calculate the Portfolio performance:   Equal/Asset.
-        String period = "period_example"; // String | The type of the returns used to calculate the aggregation result: Daily/Monthly.
-        String outputFrequency = "outputFrequency_example"; // String | The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly.
+        String compositeMethod = "compositeMethod_example"; // String | The method used to calculate the Portfolio performance. Available values: Equal, Asset.
+        String period = "period_example"; // String | The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly.
+        String outputFrequency = "outputFrequency_example"; // String | The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly.
         List<String> metrics = Arrays.asList(); // List<String> | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         String alternativeIncDate = "alternativeIncDate_example"; // String | The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property.
@@ -1116,9 +1116,9 @@ public class PortfoliosApiExample {
 | **recipeIdCode** | **String**| The Recipe Code for getting the fx rates | [optional] |
 | **fromEffectiveAt** | **String**| The start date from which to calculate the Returns. | [optional] |
 | **toEffectiveAt** | **String**| The end date for which to calculate the Returns. | [optional] |
-| **compositeMethod** | **String**| The method used to calculate the Portfolio performance:   Equal/Asset. | [optional] |
-| **period** | **String**| The type of the returns used to calculate the aggregation result: Daily/Monthly. | [optional] |
-| **outputFrequency** | **String**| The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. | [optional] |
+| **compositeMethod** | **String**| The method used to calculate the Portfolio performance. Available values: Equal, Asset. | [optional] |
+| **period** | **String**| The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. | [optional] |
+| **outputFrequency** | **String**| The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. | [optional] |
 | **metrics** | [**List&lt;String&gt;**](String.md)| Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Returns. Defaults to the latest. | [optional] |
 | **alternativeIncDate** | **String**| The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. | [optional] |
@@ -1901,7 +1901,7 @@ public class PortfoliosApiExample {
         String returnCode = "returnCode_example"; // String | The code of the Returns.
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The start date from which to get the Returns.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date from which to get the Returns.
-        String period = "period_example"; // String | Show the Returns on a Daily or Monthly period. Defaults to Daily.
+        String period = "period_example"; // String | The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         try {
             // uncomment the below to set overrides at the request level
@@ -1930,7 +1930,7 @@ public class PortfoliosApiExample {
 | **returnCode** | **String**| The code of the Returns. | |
 | **fromEffectiveAt** | **String**| The start date from which to get the Returns. | [optional] |
 | **toEffectiveAt** | **String**| The end date from which to get the Returns. | [optional] |
-| **period** | **String**| Show the Returns on a Daily or Monthly period. Defaults to Daily. | [optional] |
+| **period** | **String**| The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Returns. Defaults to the latest. | [optional] |
 
 ### Return type

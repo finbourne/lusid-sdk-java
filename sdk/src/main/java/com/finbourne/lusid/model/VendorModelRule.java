@@ -55,7 +55,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VendorModelRule {
   /**
-   * The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc
+   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc.
    */
   @JsonAdapter(SupplierEnum.Adapter.class)
   public enum SupplierEnum {
@@ -149,7 +149,7 @@ public class VendorModelRule {
   }
 
    /**
-   * The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc
+   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc.
    * @return supplier
   **/
   @jakarta.annotation.Nonnull

@@ -73,7 +73,7 @@ public class Portfolio {
   private ResourceId id;
 
   /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -172,7 +172,7 @@ public class Portfolio {
   private List<String> instrumentScopes;
 
   /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency
+   * The AccountingMethod used for the portfolio. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
    */
   @JsonAdapter(AccountingMethodEnum.Adapter.class)
   public enum AccountingMethodEnum {
@@ -334,7 +334,7 @@ public class Portfolio {
   }
 
    /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -610,7 +610,7 @@ public class Portfolio {
   }
 
    /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency
+   * The AccountingMethod used for the portfolio. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
    * @return accountingMethod
   **/
   @jakarta.annotation.Nullable
@@ -631,7 +631,7 @@ public class Portfolio {
   }
 
    /**
-   * The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
+   * The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
    * @return amortisationMethod
   **/
   @jakarta.annotation.Nullable

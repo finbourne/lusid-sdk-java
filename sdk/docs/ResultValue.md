@@ -5,7 +5,7 @@ Base class for representing result values in LUSID.  This base class should not 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**resultValueType** | **String** | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset | [default to String]
+**resultValueType** | **String** | Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ResultValue;

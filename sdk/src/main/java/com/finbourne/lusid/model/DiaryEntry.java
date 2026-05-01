@@ -185,7 +185,7 @@ public class DiaryEntry {
   }
 
    /**
-   * The type of the diary entry.
+   * The type of the diary entry. Available values: PeriodBoundary, ValuationPoint, Other.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -227,7 +227,7 @@ public class DiaryEntry {
   }
 
    /**
-   * The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised.
+   * The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -248,7 +248,7 @@ public class DiaryEntry {
   }
 
    /**
-   * Defaults to false. Set to true if you want that the closed period to have the clear down applied.
+   * Defaults to false. Set to true if you want that the closed period to have the clear down applied. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
    * @return applyClearDown
   **/
   @jakarta.annotation.Nullable

@@ -142,7 +142,7 @@ public class TransactionTypeAlias {
   }
 
    /**
-   * Transactions role within a class. E.g. Increase a long position
+   * Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
    * @return transactionRoles
   **/
   @jakarta.annotation.Nonnull

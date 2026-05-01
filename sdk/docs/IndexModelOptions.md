@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**portfolioScaling** | **String** | The available values are: Sum, AbsoluteSum, Unity | [default to String]
+**portfolioScaling** | **String** | Available values: Sum, AbsoluteSum, Unity. | [default to String]
 **lookthroughPortfolioRelationshipId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java

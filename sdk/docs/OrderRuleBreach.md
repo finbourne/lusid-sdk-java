@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **breachTaskId** | **String** | Uniquely identifies this historical order breach workflow task. | [default to String]
-**complianceState** | **String** | The compliance state of this order breach. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;. | [default to String]
+**complianceState** | **String** | The compliance state of this order breach. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.OrderRuleBreach;

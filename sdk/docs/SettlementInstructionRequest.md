@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **settlementInstructionId** | **String** |  | [default to String]
 **transactionId** | **String** |  | [default to String]
-**settlementCategory** | **String** |  | [default to String]
-**instructionType** | **String** |  | [optional] [default to String]
+**settlementCategory** | **String** | Available values: StockSettlement, CashSettlement, DeferredCashReceipt. | [default to String]
+**instructionType** | **String** | Available values: Complete, CancelAutomatic, Partial. | [optional] [default to String]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** |  | [default to Map<String, String>]
 **contractualSettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **actualSettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [default to OffsetDateTime]

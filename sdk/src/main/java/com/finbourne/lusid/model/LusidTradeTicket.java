@@ -119,7 +119,7 @@ public class LusidTradeTicket {
   private List<Property> transactionProperties;
 
   /**
-   * The available values are: LusidTradeTicket, ExternalTradeTicket
+   * Available values: LusidTradeTicket, ExternalTradeTicket.
    */
   @JsonAdapter(TradeTicketTypeEnum.Adapter.class)
   public enum TradeTicketTypeEnum {
@@ -518,7 +518,7 @@ public class LusidTradeTicket {
   }
 
    /**
-   * The available values are: LusidTradeTicket, ExternalTradeTicket
+   * Available values: LusidTradeTicket, ExternalTradeTicket.
    * @return tradeTicketType
   **/
   @jakarta.annotation.Nonnull
