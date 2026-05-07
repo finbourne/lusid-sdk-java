@@ -5426,11 +5426,11 @@ public class TransactionPortfoliosApi {
     public APIgetA2BMovementsRequest getA2BMovements(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
         return new APIgetA2BMovementsRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
-    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
-        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getA2BMovementsTradingVsHoldingCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5485,6 +5485,18 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5507,7 +5519,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getA2BMovementsTradingVsHoldingValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getA2BMovementsTradingVsHoldingValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getA2BMovementsTradingVsHolding(Async)");
@@ -5528,34 +5540,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getA2BMovementsTradingVsHolding(Async)");
         }
 
-        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+        return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, opts);
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsTradingVsHoldingWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
+    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getA2BMovementsTradingVsHoldingAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+        okhttp3.Call localVarCall = getA2BMovementsTradingVsHoldingValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5571,6 +5583,9 @@ public class TransactionPortfoliosApi {
         private String recipeIdCode;
         private List<String> propertyKeys;
         private String filter;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetA2BMovementsTradingVsHoldingRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
             this.scope = scope;
@@ -5630,6 +5645,36 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the timeline to use for loading data per closed period. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the timeline to use for loading data per closed period. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The closed period ID. If specified, both timelineScope and timelineCode must also be specified.   When provided, the timeline A2B is filtered to only the matching closed period. The fromEffectiveAt and toEffectiveAt   parameters still define the overall query window; the closedPeriodId restricts which closed period&#39;s data is returned within that window. (optional)
+         * @return APIgetA2BMovementsTradingVsHoldingRequest
+         */
+        public APIgetA2BMovementsTradingVsHoldingRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getA2BMovementsTradingVsHolding
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -5643,7 +5688,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+            return getA2BMovementsTradingVsHoldingCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -5659,7 +5704,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfA2BMovementRecord execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -5676,7 +5721,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfA2BMovementRecord execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -5693,7 +5738,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo() throws ApiException {
-            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -5709,7 +5754,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+            return getA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -5726,7 +5771,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
-            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -5743,7 +5788,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
-            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
+            return getA2BMovementsTradingVsHoldingAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 

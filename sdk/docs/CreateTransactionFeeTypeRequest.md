@@ -1,24 +1,24 @@
-# com.finbourne.lusid.model.CreateTransactionFeeRequest
+# com.finbourne.lusid.model.CreateTransactionFeeTypeRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The display name of the transaction fee. | [default to String]
-**description** | **String** | A description of the transaction fee. | [default to String]
+**displayName** | **String** | The display name of the transaction fee type. | [default to String]
+**description** | **String** | A description of the transaction fee type. | [default to String]
 **calculation** | [**FeeCalculationRequest**](FeeCalculationRequest.md) |  | [default to FeeCalculationRequest]
 **condition** | **String** | The condition that the transaction must meet in order for the fee to be applied. | [default to String]
 **txnPropertyKey** | **String** | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. | [default to String]
-**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee. | [optional] [default to Map<String, Property>]
-**isActive** | **Boolean** | Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided. | [optional] [default to Boolean]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee type. | [optional] [default to Map<String, Property>]
+**isActive** | **Boolean** | Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided. | [optional] [default to Boolean]
 
 ```java
-import com.finbourne.lusid.model.CreateTransactionFeeRequest;
+import com.finbourne.lusid.model.CreateTransactionFeeTypeRequest;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-String Name = "example Name";
+String DisplayName = "example DisplayName";
 String Description = "example Description";
 FeeCalculationRequest Calculation = new FeeCalculationRequest();
 String Condition = "example Condition";
@@ -27,8 +27,8 @@ String TxnPropertyKey = "example TxnPropertyKey";
 Boolean IsActive = true;
 
 
-CreateTransactionFeeRequest createTransactionFeeRequestInstance = new CreateTransactionFeeRequest()
-    .Name(Name)
+CreateTransactionFeeTypeRequest createTransactionFeeTypeRequestInstance = new CreateTransactionFeeTypeRequest()
+    .DisplayName(DisplayName)
     .Description(Description)
     .Calculation(Calculation)
     .Condition(Condition)

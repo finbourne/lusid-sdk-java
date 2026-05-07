@@ -1,29 +1,29 @@
-# com.finbourne.lusid.model.TransactionFee
+# com.finbourne.lusid.model.TransactionFeeType
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**name** | **String** | The display name of the transaction fee. | [optional] [default to String]
-**description** | **String** | A description of the transaction fee. | [optional] [default to String]
+**displayName** | **String** | The display name of the transaction fee type. | [optional] [default to String]
+**description** | **String** | A description of the transaction fee type. | [optional] [default to String]
 **calculation** | [**FeeCalculationRequest**](FeeCalculationRequest.md) |  | [optional] [default to FeeCalculationRequest]
 **condition** | **String** | The condition that the transaction must meet in order for the fee to be applied. | [optional] [default to String]
 **txnPropertyKey** | **String** | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. | [optional] [default to String]
-**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee. | [optional] [default to Map<String, Property>]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee type. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
-**isActive** | **Boolean** | Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided. | [optional] [default to Boolean]
+**isActive** | **Boolean** | Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided. | [optional] [default to Boolean]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
-import com.finbourne.lusid.model.TransactionFee;
+import com.finbourne.lusid.model.TransactionFeeType;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
 ResourceId Id = new ResourceId();
-@jakarta.annotation.Nullable String Name = "example Name";
+@jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 FeeCalculationRequest Calculation = new FeeCalculationRequest();
 @jakarta.annotation.Nullable String Condition = "example Condition";
@@ -35,9 +35,9 @@ Boolean IsActive = true;
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
-TransactionFee transactionFeeInstance = new TransactionFee()
+TransactionFeeType transactionFeeTypeInstance = new TransactionFeeType()
     .Id(Id)
-    .Name(Name)
+    .DisplayName(DisplayName)
     .Description(Description)
     .Calculation(Calculation)
     .Condition(Condition)

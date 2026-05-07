@@ -191,7 +191,7 @@ public enum PropertyDomain {
   
   SETTLEMENTINSTRUCTION("SettlementInstruction"),
   
-  TRANSACTIONFEE("TransactionFee");
+  TRANSACTIONFEETYPE("TransactionFeeType");
 
   private String value;
 

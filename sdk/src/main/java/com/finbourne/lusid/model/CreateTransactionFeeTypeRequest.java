@@ -50,13 +50,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * CreateTransactionFeeRequest
+ * CreateTransactionFeeTypeRequest
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CreateTransactionFeeRequest {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+public class CreateTransactionFeeTypeRequest {
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -82,38 +82,38 @@ public class CreateTransactionFeeRequest {
   @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
   private Boolean isActive;
 
-  public CreateTransactionFeeRequest() {
+  public CreateTransactionFeeTypeRequest() {
   }
 
-  public CreateTransactionFeeRequest name(String name) {
+  public CreateTransactionFeeTypeRequest displayName(String displayName) {
     
-    this.name = name;
+    this.displayName = displayName;
     return this;
   }
 
    /**
-   * The display name of the transaction fee.
-   * @return name
+   * The display name of the transaction fee type.
+   * @return displayName
   **/
   @jakarta.annotation.Nonnull
-  public String getName() {
-    return name;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
-  public CreateTransactionFeeRequest description(String description) {
+  public CreateTransactionFeeTypeRequest description(String description) {
     
     this.description = description;
     return this;
   }
 
    /**
-   * A description of the transaction fee.
+   * A description of the transaction fee type.
    * @return description
   **/
   @jakarta.annotation.Nonnull
@@ -127,7 +127,7 @@ public class CreateTransactionFeeRequest {
   }
 
 
-  public CreateTransactionFeeRequest calculation(FeeCalculationRequest calculation) {
+  public CreateTransactionFeeTypeRequest calculation(FeeCalculationRequest calculation) {
     
     this.calculation = calculation;
     return this;
@@ -148,7 +148,7 @@ public class CreateTransactionFeeRequest {
   }
 
 
-  public CreateTransactionFeeRequest condition(String condition) {
+  public CreateTransactionFeeTypeRequest condition(String condition) {
     
     this.condition = condition;
     return this;
@@ -169,7 +169,7 @@ public class CreateTransactionFeeRequest {
   }
 
 
-  public CreateTransactionFeeRequest txnPropertyKey(String txnPropertyKey) {
+  public CreateTransactionFeeTypeRequest txnPropertyKey(String txnPropertyKey) {
     
     this.txnPropertyKey = txnPropertyKey;
     return this;
@@ -190,13 +190,13 @@ public class CreateTransactionFeeRequest {
   }
 
 
-  public CreateTransactionFeeRequest properties(Map<String, Property> properties) {
+  public CreateTransactionFeeTypeRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
     return this;
   }
 
-  public CreateTransactionFeeRequest putPropertiesItem(String key, Property propertiesItem) {
+  public CreateTransactionFeeTypeRequest putPropertiesItem(String key, Property propertiesItem) {
     if (this.properties == null) {
       this.properties = new HashMap<>();
     }
@@ -205,7 +205,7 @@ public class CreateTransactionFeeRequest {
   }
 
    /**
-   * A set of properties for the transaction fee.
+   * A set of properties for the transaction fee type.
    * @return properties
   **/
   @jakarta.annotation.Nullable
@@ -219,14 +219,14 @@ public class CreateTransactionFeeRequest {
   }
 
 
-  public CreateTransactionFeeRequest isActive(Boolean isActive) {
+  public CreateTransactionFeeTypeRequest isActive(Boolean isActive) {
     
     this.isActive = isActive;
     return this;
   }
 
    /**
-   * Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.
+   * Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.
    * @return isActive
   **/
   @jakarta.annotation.Nullable
@@ -249,14 +249,14 @@ public class CreateTransactionFeeRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateTransactionFeeRequest createTransactionFeeRequest = (CreateTransactionFeeRequest) o;
-    return Objects.equals(this.name, createTransactionFeeRequest.name) &&
-        Objects.equals(this.description, createTransactionFeeRequest.description) &&
-        Objects.equals(this.calculation, createTransactionFeeRequest.calculation) &&
-        Objects.equals(this.condition, createTransactionFeeRequest.condition) &&
-        Objects.equals(this.txnPropertyKey, createTransactionFeeRequest.txnPropertyKey) &&
-        Objects.equals(this.properties, createTransactionFeeRequest.properties) &&
-        Objects.equals(this.isActive, createTransactionFeeRequest.isActive);
+    CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest = (CreateTransactionFeeTypeRequest) o;
+    return Objects.equals(this.displayName, createTransactionFeeTypeRequest.displayName) &&
+        Objects.equals(this.description, createTransactionFeeTypeRequest.description) &&
+        Objects.equals(this.calculation, createTransactionFeeTypeRequest.calculation) &&
+        Objects.equals(this.condition, createTransactionFeeTypeRequest.condition) &&
+        Objects.equals(this.txnPropertyKey, createTransactionFeeTypeRequest.txnPropertyKey) &&
+        Objects.equals(this.properties, createTransactionFeeTypeRequest.properties) &&
+        Objects.equals(this.isActive, createTransactionFeeTypeRequest.isActive);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -265,7 +265,7 @@ public class CreateTransactionFeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, calculation, condition, txnPropertyKey, properties, isActive);
+    return Objects.hash(displayName, description, calculation, condition, txnPropertyKey, properties, isActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -278,8 +278,8 @@ public class CreateTransactionFeeRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateTransactionFeeRequest {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class CreateTransactionFeeTypeRequest {\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    calculation: ").append(toIndentedString(calculation)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
@@ -308,7 +308,7 @@ public class CreateTransactionFeeRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
+    openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("calculation");
     openapiFields.add("condition");
@@ -318,7 +318,7 @@ public class CreateTransactionFeeRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("calculation");
     openapiRequiredFields.add("condition");
@@ -329,24 +329,24 @@ public class CreateTransactionFeeRequest {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CreateTransactionFeeRequest
+  * @throws IOException if the JSON Element is invalid with respect to CreateTransactionFeeTypeRequest
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CreateTransactionFeeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateTransactionFeeRequest is not found in the empty JSON string", CreateTransactionFeeRequest.openapiRequiredFields.toString()));
+        if (!CreateTransactionFeeTypeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateTransactionFeeTypeRequest is not found in the empty JSON string", CreateTransactionFeeTypeRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateTransactionFeeRequest.openapiRequiredFields) {
+      for (String requiredField : CreateTransactionFeeTypeRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
@@ -365,22 +365,22 @@ public class CreateTransactionFeeRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateTransactionFeeRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateTransactionFeeRequest' and its subtypes
+       if (!CreateTransactionFeeTypeRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateTransactionFeeTypeRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateTransactionFeeRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateTransactionFeeRequest.class));
+       final TypeAdapter<CreateTransactionFeeTypeRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateTransactionFeeTypeRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CreateTransactionFeeRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateTransactionFeeTypeRequest>() {
            @Override
-           public void write(JsonWriter out, CreateTransactionFeeRequest value) throws IOException {
+           public void write(JsonWriter out, CreateTransactionFeeTypeRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CreateTransactionFeeRequest read(JsonReader in) throws IOException {
+           public CreateTransactionFeeTypeRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -391,18 +391,18 @@ public class CreateTransactionFeeRequest {
   }
 
  /**
-  * Create an instance of CreateTransactionFeeRequest given an JSON string
+  * Create an instance of CreateTransactionFeeTypeRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CreateTransactionFeeRequest
-  * @throws IOException if the JSON string is invalid with respect to CreateTransactionFeeRequest
+  * @return An instance of CreateTransactionFeeTypeRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateTransactionFeeTypeRequest
   */
-  public static CreateTransactionFeeRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateTransactionFeeRequest.class);
+  public static CreateTransactionFeeTypeRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateTransactionFeeTypeRequest.class);
   }
 
  /**
-  * Convert an instance of CreateTransactionFeeRequest to an JSON string
+  * Convert an instance of CreateTransactionFeeTypeRequest to an JSON string
   *
   * @return JSON string
   */

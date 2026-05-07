@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **movementName** | **String** | The name of the movement. | [optional] [default to String]
 **effectiveDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date of the movement. | [optional] [default to OffsetDateTime]
 **units** | **java.math.BigDecimal** | The number of units of the instrument that are affected by the movement. | [optional] [default to java.math.BigDecimal]
+**runningUnits** | **java.math.BigDecimal** | The cumulative number of units for this sub-holding, as at this movement. | [optional] [default to java.math.BigDecimal]
+**runningBalance** | [**A2BCategory**](A2BCategory.md) |  | [optional] [default to A2BCategory]
+**runningCost** | **java.math.BigDecimal** | The running cost in portfolio currency for this sub-holding, as at this movement. | [optional] [default to java.math.BigDecimal]
 **start** | [**A2BCategory**](A2BCategory.md) |  | [optional] [default to A2BCategory]
 **flows** | [**A2BCategory**](A2BCategory.md) |  | [optional] [default to A2BCategory]
 **gains** | [**A2BCategory**](A2BCategory.md) |  | [optional] [default to A2BCategory]
@@ -40,6 +43,9 @@ ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String MovementName = "example MovementName";
 OffsetDateTime EffectiveDate = OffsetDateTime.now();
 java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal RunningUnits = new java.math.BigDecimal("100.00");
+A2BCategory RunningBalance = new A2BCategory();
+@jakarta.annotation.Nullable java.math.BigDecimal RunningCost = new java.math.BigDecimal("100.00");
 A2BCategory Start = new A2BCategory();
 A2BCategory Flows = new A2BCategory();
 A2BCategory Gains = new A2BCategory();
@@ -61,6 +67,9 @@ A2BMovementRecord a2BMovementRecordInstance = new A2BMovementRecord()
     .MovementName(MovementName)
     .EffectiveDate(EffectiveDate)
     .Units(Units)
+    .RunningUnits(RunningUnits)
+    .RunningBalance(RunningBalance)
+    .RunningCost(RunningCost)
     .Start(Start)
     .Flows(Flows)
     .Gains(Gains)

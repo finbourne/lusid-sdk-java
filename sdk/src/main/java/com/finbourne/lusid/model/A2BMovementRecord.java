@@ -100,6 +100,18 @@ public class A2BMovementRecord {
   @SerializedName(SERIALIZED_NAME_UNITS)
   private java.math.BigDecimal units;
 
+  public static final String SERIALIZED_NAME_RUNNING_UNITS = "runningUnits";
+  @SerializedName(SERIALIZED_NAME_RUNNING_UNITS)
+  private java.math.BigDecimal runningUnits;
+
+  public static final String SERIALIZED_NAME_RUNNING_BALANCE = "runningBalance";
+  @SerializedName(SERIALIZED_NAME_RUNNING_BALANCE)
+  private A2BCategory runningBalance;
+
+  public static final String SERIALIZED_NAME_RUNNING_COST = "runningCost";
+  @SerializedName(SERIALIZED_NAME_RUNNING_COST)
+  private java.math.BigDecimal runningCost;
+
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
   private A2BCategory start;
@@ -353,6 +365,69 @@ public class A2BMovementRecord {
   }
 
 
+  public A2BMovementRecord runningUnits(java.math.BigDecimal runningUnits) {
+    
+    this.runningUnits = runningUnits;
+    return this;
+  }
+
+   /**
+   * The cumulative number of units for this sub-holding, as at this movement.
+   * @return runningUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getRunningUnits() {
+    return runningUnits;
+  }
+
+
+  public void setRunningUnits(java.math.BigDecimal runningUnits) {
+    this.runningUnits = runningUnits;
+  }
+
+
+  public A2BMovementRecord runningBalance(A2BCategory runningBalance) {
+    
+    this.runningBalance = runningBalance;
+    return this;
+  }
+
+   /**
+   * Get runningBalance
+   * @return runningBalance
+  **/
+  @jakarta.annotation.Nullable
+  public A2BCategory getRunningBalance() {
+    return runningBalance;
+  }
+
+
+  public void setRunningBalance(A2BCategory runningBalance) {
+    this.runningBalance = runningBalance;
+  }
+
+
+  public A2BMovementRecord runningCost(java.math.BigDecimal runningCost) {
+    
+    this.runningCost = runningCost;
+    return this;
+  }
+
+   /**
+   * The running cost in portfolio currency for this sub-holding, as at this movement.
+   * @return runningCost
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getRunningCost() {
+    return runningCost;
+  }
+
+
+  public void setRunningCost(java.math.BigDecimal runningCost) {
+    this.runningCost = runningCost;
+  }
+
+
   public A2BMovementRecord start(A2BCategory start) {
     
     this.start = start;
@@ -557,6 +632,9 @@ public class A2BMovementRecord {
         Objects.equals(this.movementName, a2BMovementRecord.movementName) &&
         Objects.equals(this.effectiveDate, a2BMovementRecord.effectiveDate) &&
         (this.units.compareTo(a2BMovementRecord.getUnits()) == 0) &&
+        (this.runningUnits.compareTo(a2BMovementRecord.getRunningUnits()) == 0) &&
+        Objects.equals(this.runningBalance, a2BMovementRecord.runningBalance) &&
+        (this.runningCost.compareTo(a2BMovementRecord.getRunningCost()) == 0) &&
         Objects.equals(this.start, a2BMovementRecord.start) &&
         Objects.equals(this.flows, a2BMovementRecord.flows) &&
         Objects.equals(this.gains, a2BMovementRecord.gains) &&
@@ -573,7 +651,7 @@ public class A2BMovementRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingType, instrumentScope, instrumentUid, subHoldingKeys, currency, transactionId, movementName, effectiveDate, units, start, flows, gains, carry, end, properties, groupId, errors);
+    return Objects.hash(portfolioId, holdingType, instrumentScope, instrumentUid, subHoldingKeys, currency, transactionId, movementName, effectiveDate, units, runningUnits, runningBalance, runningCost, start, flows, gains, carry, end, properties, groupId, errors);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -597,6 +675,9 @@ public class A2BMovementRecord {
     sb.append("    movementName: ").append(toIndentedString(movementName)).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    runningUnits: ").append(toIndentedString(runningUnits)).append("\n");
+    sb.append("    runningBalance: ").append(toIndentedString(runningBalance)).append("\n");
+    sb.append("    runningCost: ").append(toIndentedString(runningCost)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    flows: ").append(toIndentedString(flows)).append("\n");
     sb.append("    gains: ").append(toIndentedString(gains)).append("\n");
@@ -637,6 +718,9 @@ public class A2BMovementRecord {
     openapiFields.add("movementName");
     openapiFields.add("effectiveDate");
     openapiFields.add("units");
+    openapiFields.add("runningUnits");
+    openapiFields.add("runningBalance");
+    openapiFields.add("runningCost");
     openapiFields.add("start");
     openapiFields.add("flows");
     openapiFields.add("gains");
@@ -684,6 +768,10 @@ public class A2BMovementRecord {
       }
       if ((jsonObj.get("movementName") != null && !jsonObj.get("movementName").isJsonNull()) && !jsonObj.get("movementName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
+      }
+      // validate the optional field `runningBalance`
+      if (jsonObj.get("runningBalance") != null && !jsonObj.get("runningBalance").isJsonNull()) {
+        A2BCategory.validateJsonElement(jsonObj.get("runningBalance"));
       }
       // validate the optional field `start`
       if (jsonObj.get("start") != null && !jsonObj.get("start").isJsonNull()) {

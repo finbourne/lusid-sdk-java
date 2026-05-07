@@ -1,29 +1,29 @@
-# com.finbourne.lusid.model.ResourceListOfTransactionFee
+# com.finbourne.lusid.model.ResourceListOfTransactionFeeType
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**List&lt;TransactionFee&gt;**](TransactionFee.md) |  | [default to List<TransactionFee>]
+**values** | [**List&lt;TransactionFeeType&gt;**](TransactionFeeType.md) |  | [default to List<TransactionFeeType>]
 **href** | [**URI**](URI.md) |  | [optional] [default to URI]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 **nextPage** | **String** |  | [optional] [default to String]
 **previousPage** | **String** |  | [optional] [default to String]
 
 ```java
-import com.finbourne.lusid.model.ResourceListOfTransactionFee;
+import com.finbourne.lusid.model.ResourceListOfTransactionFeeType;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-List<TransactionFee> Values = new List<TransactionFee>();
+List<TransactionFeeType> Values = new List<TransactionFeeType>();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 @jakarta.annotation.Nullable String NextPage = "example NextPage";
 @jakarta.annotation.Nullable String PreviousPage = "example PreviousPage";
 
 
-ResourceListOfTransactionFee resourceListOfTransactionFeeInstance = new ResourceListOfTransactionFee()
+ResourceListOfTransactionFeeType resourceListOfTransactionFeeTypeInstance = new ResourceListOfTransactionFeeType()
     .Values(Values)
     .Href(Href)
     .Links(Links)

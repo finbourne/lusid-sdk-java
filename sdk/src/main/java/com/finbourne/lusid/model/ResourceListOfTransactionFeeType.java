@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.TransactionFee;
+import com.finbourne.lusid.model.TransactionFeeType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,13 +51,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * ResourceListOfTransactionFee
+ * ResourceListOfTransactionFeeType
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ResourceListOfTransactionFee {
+public class ResourceListOfTransactionFeeType {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<TransactionFee> values = new ArrayList<>();
+  private List<TransactionFeeType> values = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -75,16 +75,16 @@ public class ResourceListOfTransactionFee {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
-  public ResourceListOfTransactionFee() {
+  public ResourceListOfTransactionFeeType() {
   }
 
-  public ResourceListOfTransactionFee values(List<TransactionFee> values) {
+  public ResourceListOfTransactionFeeType values(List<TransactionFeeType> values) {
     
     this.values = values;
     return this;
   }
 
-  public ResourceListOfTransactionFee addValuesItem(TransactionFee valuesItem) {
+  public ResourceListOfTransactionFeeType addValuesItem(TransactionFeeType valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -97,17 +97,17 @@ public class ResourceListOfTransactionFee {
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public List<TransactionFee> getValues() {
+  public List<TransactionFeeType> getValues() {
     return values;
   }
 
 
-  public void setValues(List<TransactionFee> values) {
+  public void setValues(List<TransactionFeeType> values) {
     this.values = values;
   }
 
 
-  public ResourceListOfTransactionFee href(URI href) {
+  public ResourceListOfTransactionFeeType href(URI href) {
     
     this.href = href;
     return this;
@@ -128,13 +128,13 @@ public class ResourceListOfTransactionFee {
   }
 
 
-  public ResourceListOfTransactionFee links(List<Link> links) {
+  public ResourceListOfTransactionFeeType links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public ResourceListOfTransactionFee addLinksItem(Link linksItem) {
+  public ResourceListOfTransactionFeeType addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -157,7 +157,7 @@ public class ResourceListOfTransactionFee {
   }
 
 
-  public ResourceListOfTransactionFee nextPage(String nextPage) {
+  public ResourceListOfTransactionFeeType nextPage(String nextPage) {
     
     this.nextPage = nextPage;
     return this;
@@ -178,7 +178,7 @@ public class ResourceListOfTransactionFee {
   }
 
 
-  public ResourceListOfTransactionFee previousPage(String previousPage) {
+  public ResourceListOfTransactionFeeType previousPage(String previousPage) {
     
     this.previousPage = previousPage;
     return this;
@@ -208,12 +208,12 @@ public class ResourceListOfTransactionFee {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfTransactionFee resourceListOfTransactionFee = (ResourceListOfTransactionFee) o;
-    return Objects.equals(this.values, resourceListOfTransactionFee.values) &&
-        Objects.equals(this.href, resourceListOfTransactionFee.href) &&
-        Objects.equals(this.links, resourceListOfTransactionFee.links) &&
-        Objects.equals(this.nextPage, resourceListOfTransactionFee.nextPage) &&
-        Objects.equals(this.previousPage, resourceListOfTransactionFee.previousPage);
+    ResourceListOfTransactionFeeType resourceListOfTransactionFeeType = (ResourceListOfTransactionFeeType) o;
+    return Objects.equals(this.values, resourceListOfTransactionFeeType.values) &&
+        Objects.equals(this.href, resourceListOfTransactionFeeType.href) &&
+        Objects.equals(this.links, resourceListOfTransactionFeeType.links) &&
+        Objects.equals(this.nextPage, resourceListOfTransactionFeeType.nextPage) &&
+        Objects.equals(this.previousPage, resourceListOfTransactionFeeType.previousPage);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -235,7 +235,7 @@ public class ResourceListOfTransactionFee {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfTransactionFee {\n");
+    sb.append("class ResourceListOfTransactionFeeType {\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -278,17 +278,17 @@ public class ResourceListOfTransactionFee {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ResourceListOfTransactionFee
+  * @throws IOException if the JSON Element is invalid with respect to ResourceListOfTransactionFeeType
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ResourceListOfTransactionFee.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceListOfTransactionFee is not found in the empty JSON string", ResourceListOfTransactionFee.openapiRequiredFields.toString()));
+        if (!ResourceListOfTransactionFeeType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceListOfTransactionFeeType is not found in the empty JSON string", ResourceListOfTransactionFeeType.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ResourceListOfTransactionFee.openapiRequiredFields) {
+      for (String requiredField : ResourceListOfTransactionFeeType.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -302,7 +302,7 @@ public class ResourceListOfTransactionFee {
       JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
       // validate the required field `values` (array)
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        TransactionFee.validateJsonElement(jsonArrayvalues.get(i));
+        TransactionFeeType.validateJsonElement(jsonArrayvalues.get(i));
       };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -333,22 +333,22 @@ public class ResourceListOfTransactionFee {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ResourceListOfTransactionFee.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ResourceListOfTransactionFee' and its subtypes
+       if (!ResourceListOfTransactionFeeType.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ResourceListOfTransactionFeeType' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ResourceListOfTransactionFee> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceListOfTransactionFee.class));
+       final TypeAdapter<ResourceListOfTransactionFeeType> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceListOfTransactionFeeType.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ResourceListOfTransactionFee>() {
+       return (TypeAdapter<T>) new TypeAdapter<ResourceListOfTransactionFeeType>() {
            @Override
-           public void write(JsonWriter out, ResourceListOfTransactionFee value) throws IOException {
+           public void write(JsonWriter out, ResourceListOfTransactionFeeType value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ResourceListOfTransactionFee read(JsonReader in) throws IOException {
+           public ResourceListOfTransactionFeeType read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -359,18 +359,18 @@ public class ResourceListOfTransactionFee {
   }
 
  /**
-  * Create an instance of ResourceListOfTransactionFee given an JSON string
+  * Create an instance of ResourceListOfTransactionFeeType given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ResourceListOfTransactionFee
-  * @throws IOException if the JSON string is invalid with respect to ResourceListOfTransactionFee
+  * @return An instance of ResourceListOfTransactionFeeType
+  * @throws IOException if the JSON string is invalid with respect to ResourceListOfTransactionFeeType
   */
-  public static ResourceListOfTransactionFee fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ResourceListOfTransactionFee.class);
+  public static ResourceListOfTransactionFeeType fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ResourceListOfTransactionFeeType.class);
   }
 
  /**
-  * Convert an instance of ResourceListOfTransactionFee to an JSON string
+  * Convert an instance of ResourceListOfTransactionFeeType to an JSON string
   *
   * @return JSON string
   */

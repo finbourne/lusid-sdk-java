@@ -25,14 +25,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.finbourne.lusid.model.CreateTransactionFeeRequest;
+import com.finbourne.lusid.model.CreateTransactionFeeTypeRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
-import com.finbourne.lusid.model.ResourceListOfTransactionFee;
-import com.finbourne.lusid.model.TransactionFee;
-import com.finbourne.lusid.model.UpdateTransactionFeeRequest;
+import com.finbourne.lusid.model.ResourceListOfTransactionFeeType;
+import com.finbourne.lusid.model.TransactionFeeType;
+import com.finbourne.lusid.model.UpdateTransactionFeeTypeRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -40,16 +40,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TransactionTransactionFeesApi {
+public class TransactionFeeTypesApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public TransactionTransactionFeesApi() {
+    public TransactionFeeTypesApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public TransactionTransactionFeesApi(ApiClient apiClient) {
+    public TransactionFeeTypesApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -77,11 +77,11 @@ public class TransactionTransactionFeesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback) throws ApiException {
-        return createTransactionFeeCall(scope, code, createTransactionFeeRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createTransactionFeeTypeCall(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, final ApiCallback _callback) throws ApiException {
+        return createTransactionFeeTypeCall(scope, code, createTransactionFeeTypeRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createTransactionFeeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeTypeCall(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -95,10 +95,10 @@ public class TransactionTransactionFeesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createTransactionFeeRequest;
+        Object localVarPostBody = createTransactionFeeTypeRequest;
 
         // create path and map variables
-        String localVarPath = "/api/transactions/transactionfees/{scope}/{code}"
+        String localVarPath = "/api/transactions/transactionfeetypes/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -134,207 +134,207 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTransactionFeeValidateBeforeCall(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeTypeValidateBeforeCall(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling createTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'scope' when calling createTransactionFeeType(Async)");
         }
 
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling createTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling createTransactionFeeType(Async)");
         }
 
-        // verify the required parameter 'createTransactionFeeRequest' is set
-        if (createTransactionFeeRequest == null) {
-            throw new ApiException("Missing the required parameter 'createTransactionFeeRequest' when calling createTransactionFee(Async)");
+        // verify the required parameter 'createTransactionFeeTypeRequest' is set
+        if (createTransactionFeeTypeRequest == null) {
+            throw new ApiException("Missing the required parameter 'createTransactionFeeTypeRequest' when calling createTransactionFeeType(Async)");
         }
 
-        return createTransactionFeeCall(scope, code, createTransactionFeeRequest, _callback, opts);
+        return createTransactionFeeTypeCall(scope, code, createTransactionFeeTypeRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest) throws ApiException {
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> createTransactionFeeTypeWithHttpInfo(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest) throws ApiException {
+        okhttp3.Call localVarCall = createTransactionFeeTypeValidateBeforeCall(scope, code, createTransactionFeeTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionFee> createTransactionFeeWithHttpInfo(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, null, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> createTransactionFeeTypeWithHttpInfo(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createTransactionFeeTypeValidateBeforeCall(scope, code, createTransactionFeeTypeRequest, null, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback<TransactionFee> _callback) throws ApiException {
+    private okhttp3.Call createTransactionFeeTypeAsync(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, final ApiCallback<TransactionFeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = createTransactionFeeTypeValidateBeforeCall(scope, code, createTransactionFeeTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createTransactionFeeAsync(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createTransactionFeeTypeAsync(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransactionFeeValidateBeforeCall(scope, code, createTransactionFeeRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = createTransactionFeeTypeValidateBeforeCall(scope, code, createTransactionFeeTypeRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIcreateTransactionFeeRequest {
+    public class APIcreateTransactionFeeTypeRequest {
         private final String scope;
         private final String code;
-        private final CreateTransactionFeeRequest createTransactionFeeRequest;
+        private final CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest;
 
-        private APIcreateTransactionFeeRequest(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest) {
+        private APIcreateTransactionFeeTypeRequest(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest) {
             this.scope = scope;
             this.code = code;
-            this.createTransactionFeeRequest = createTransactionFeeRequest;
+            this.createTransactionFeeTypeRequest = createTransactionFeeTypeRequest;
         }
 
         /**
-         * Build call for createTransactionFee
+         * Build call for createTransactionFeeType
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createTransactionFeeCall(scope, code, createTransactionFeeRequest, _callback);
+            return createTransactionFeeTypeCall(scope, code, createTransactionFeeTypeRequest, _callback);
         }
 
         /**
-         * Execute createTransactionFee request
-         * @return TransactionFee
+         * Execute createTransactionFeeType request
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute() throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
+        public TransactionFeeType execute() throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = createTransactionFeeTypeWithHttpInfo(scope, code, createTransactionFeeTypeRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createTransactionFee request. Use any specified configuration options to override any other configuration for this request only.
-         * @return TransactionFee
+         * Execute createTransactionFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, opts);
+        public TransactionFeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = createTransactionFeeTypeWithHttpInfo(scope, code, createTransactionFeeTypeRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createTransactionFee request with HTTP info returned
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute createTransactionFeeType request with HTTP info returned
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo() throws ApiException {
-            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo() throws ApiException {
+            return createTransactionFeeTypeWithHttpInfo(scope, code, createTransactionFeeTypeRequest);
         }
 
         /**
-         * Execute createTransactionFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute createTransactionFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, opts);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createTransactionFeeTypeWithHttpInfo(scope, code, createTransactionFeeTypeRequest, opts);
         }
 
         /**
-         * Execute createTransactionFee request (asynchronously)
+         * Execute createTransactionFeeType request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback) throws ApiException {
-            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback) throws ApiException {
+            return createTransactionFeeTypeAsync(scope, code, createTransactionFeeTypeRequest, _callback);
         }
 
         /**
-         * Execute createTransactionFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute createTransactionFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return createTransactionFeeAsync(scope, code, createTransactionFeeRequest, _callback, opts);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return createTransactionFeeTypeAsync(scope, code, createTransactionFeeTypeRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] CreateTransactionFee: Create a TransactionFee
-     * Create a TransactionFee for the specified scope and code.
-     * @param scope The scope of the TransactionFee. (required)
-     * @param code The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. (required)
-     * @param createTransactionFeeRequest The contents of the TransactionFee. (required)
-     * @return APIcreateTransactionFeeRequest
+     * [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+     * Create a transaction fee type for the specified scope and code.
+     * @param scope The scope of the transaction fee type. (required)
+     * @param code The code of the transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
+     * @param createTransactionFeeTypeRequest The contents of the transaction fee type. (required)
+     * @return APIcreateTransactionFeeTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created TransactionFee. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created transaction fee type. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreateTransactionFeeRequest createTransactionFee(String scope, String code, CreateTransactionFeeRequest createTransactionFeeRequest) {
-        return new APIcreateTransactionFeeRequest(scope, code, createTransactionFeeRequest);
+    public APIcreateTransactionFeeTypeRequest createTransactionFeeType(String scope, String code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest) {
+        return new APIcreateTransactionFeeTypeRequest(scope, code, createTransactionFeeTypeRequest);
     }
-    private okhttp3.Call deleteTransactionFeeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        return deleteTransactionFeeCall(scope, code,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteTransactionFeeTypeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteTransactionFeeTypeCall(scope, code,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteTransactionFeeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeTypeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -351,7 +351,7 @@ public class TransactionTransactionFeesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/transactions/transactionfees/{scope}/{code}"
+        String localVarPath = "/api/transactions/transactionfeetypes/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -383,199 +383,199 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTransactionFeeValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeTypeValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling deleteTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteTransactionFeeType(Async)");
         }
 
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling deleteTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling deleteTransactionFeeType(Async)");
         }
 
-        return deleteTransactionFeeCall(scope, code, _callback, opts);
+        return deleteTransactionFeeTypeCall(scope, code, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteTransactionFeeValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeTypeWithHttpInfo(String scope, String code) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionFeeTypeValidateBeforeCall(scope, code, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteTransactionFeeValidateBeforeCall(scope, code, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeTypeWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionFeeTypeValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteTransactionFeeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTransactionFeeValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteTransactionFeeTypeValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteTransactionFeeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTransactionFeeValidateBeforeCall(scope, code, _callback, opts);
+        okhttp3.Call localVarCall = deleteTransactionFeeTypeValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIdeleteTransactionFeeRequest {
+    public class APIdeleteTransactionFeeTypeRequest {
         private final String scope;
         private final String code;
 
-        private APIdeleteTransactionFeeRequest(String scope, String code) {
+        private APIdeleteTransactionFeeTypeRequest(String scope, String code) {
             this.scope = scope;
             this.code = code;
         }
 
         /**
-         * Build call for deleteTransactionFee
+         * Build call for deleteTransactionFeeType
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteTransactionFeeCall(scope, code, _callback);
+            return deleteTransactionFeeTypeCall(scope, code, _callback);
         }
 
         /**
-         * Execute deleteTransactionFee request
+         * Execute deleteTransactionFeeType request
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeWithHttpInfo(scope, code);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeTypeWithHttpInfo(scope, code);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deleteTransactionFee request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteTransactionFeeType request. Use any specified configuration options to override any other configuration for this request only.
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeWithHttpInfo(scope, code, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeTypeWithHttpInfo(scope, code, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deleteTransactionFee request with HTTP info returned
+         * Execute deleteTransactionFeeType request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteTransactionFeeWithHttpInfo(scope, code);
+            return deleteTransactionFeeTypeWithHttpInfo(scope, code);
         }
 
         /**
-         * Execute deleteTransactionFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteTransactionFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteTransactionFeeWithHttpInfo(scope, code, opts);
+            return deleteTransactionFeeTypeWithHttpInfo(scope, code, opts);
         }
 
         /**
-         * Execute deleteTransactionFee request (asynchronously)
+         * Execute deleteTransactionFeeType request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteTransactionFeeAsync(scope, code, _callback);
+            return deleteTransactionFeeTypeAsync(scope, code, _callback);
         }
 
         /**
-         * Execute deleteTransactionFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteTransactionFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteTransactionFeeAsync(scope, code, _callback, opts);
+            return deleteTransactionFeeTypeAsync(scope, code, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] DeleteTransactionFee: Delete a TransactionFee
-     * Delete a TransactionFee for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the TransactionFee will be deleted for all effective time (including past and future versions of the TransactionFee).
-     * @param scope The scope of the TransactionFee. (required)
-     * @param code The code of the specified TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. (required)
-     * @return APIdeleteTransactionFeeRequest
+     * [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+     * Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
+     * @param scope The scope of the transaction fee type. (required)
+     * @param code The code of the specified transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
+     * @return APIdeleteTransactionFeeTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Delete a TransactionFee. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Delete a transaction fee type. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeleteTransactionFeeRequest deleteTransactionFee(String scope, String code) {
-        return new APIdeleteTransactionFeeRequest(scope, code);
+    public APIdeleteTransactionFeeTypeRequest deleteTransactionFeeType(String scope, String code) {
+        return new APIdeleteTransactionFeeTypeRequest(scope, code);
     }
-    private okhttp3.Call getTransactionFeeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getTransactionFeeCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getTransactionFeeTypeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getTransactionFeeTypeCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getTransactionFeeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionFeeTypeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -592,7 +592,7 @@ public class TransactionTransactionFeesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/transactions/transactionfees/{scope}/{code}"
+        String localVarPath = "/api/transactions/transactionfeetypes/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -636,232 +636,232 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionFeeValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionFeeTypeValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling getTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'scope' when calling getTransactionFeeType(Async)");
         }
 
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling getTransactionFeeType(Async)");
         }
 
-        return getTransactionFeeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+        return getTransactionFeeTypeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionFee> getTransactionFeeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionFeeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> getTransactionFeeTypeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionFeeTypeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionFee> getTransactionFeeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionFeeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> getTransactionFeeTypeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionFeeTypeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionFeeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionFee> _callback) throws ApiException {
+    private okhttp3.Call getTransactionFeeTypeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionFeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionFeeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = getTransactionFeeTypeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getTransactionFeeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionFeeTypeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionFeeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = getTransactionFeeTypeValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetTransactionFeeRequest {
+    public class APIgetTransactionFeeTypeRequest {
         private final String scope;
         private final String code;
         private String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> propertyKeys;
 
-        private APIgetTransactionFeeRequest(String scope, String code) {
+        private APIgetTransactionFeeTypeRequest(String scope, String code) {
             this.scope = scope;
             this.code = code;
         }
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime at which to retrieve the TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. (optional)
-         * @return APIgetTransactionFeeRequest
+         * @param effectiveAt The effective datetime at which to retrieve the transaction fee type properties.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetTransactionFeeTypeRequest
          */
-        public APIgetTransactionFeeRequest effectiveAt(String effectiveAt) {
+        public APIgetTransactionFeeTypeRequest effectiveAt(String effectiveAt) {
             this.effectiveAt = effectiveAt;
             return this;
         }
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified. (optional)
-         * @return APIgetTransactionFeeRequest
+         * @param asAt The asAt datetime at which to retrieve the transaction fee types.   Defaults to latest if not specified. (optional)
+         * @return APIgetTransactionFeeTypeRequest
          */
-        public APIgetTransactionFeeRequest asAt(OffsetDateTime asAt) {
+        public APIgetTransactionFeeTypeRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
 
         /**
          * Set propertyKeys
-         * @param propertyKeys The collection of &#x60;PropertyKey&#x60;s that we want to decorate on identifies the TransactionFee. (optional)
-         * @return APIgetTransactionFeeRequest
+         * @param propertyKeys The collection of &#x60;PropertyKey&#x60;s that we want to decorate on the transaction fee type. (optional)
+         * @return APIgetTransactionFeeTypeRequest
          */
-        public APIgetTransactionFeeRequest propertyKeys(List<String> propertyKeys) {
+        public APIgetTransactionFeeTypeRequest propertyKeys(List<String> propertyKeys) {
             this.propertyKeys = propertyKeys;
             return this;
         }
 
         /**
-         * Build call for getTransactionFee
+         * Build call for getTransactionFeeType
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionFeeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+            return getTransactionFeeTypeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
-         * Execute getTransactionFee request
-         * @return TransactionFee
+         * Execute getTransactionFeeType request
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute() throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = getTransactionFeeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        public TransactionFeeType execute() throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = getTransactionFeeTypeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getTransactionFee request. Use any specified configuration options to override any other configuration for this request only.
-         * @return TransactionFee
+         * Execute getTransactionFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = getTransactionFeeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+        public TransactionFeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = getTransactionFeeTypeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getTransactionFee request with HTTP info returned
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute getTransactionFeeType request with HTTP info returned
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo() throws ApiException {
-            return getTransactionFeeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo() throws ApiException {
+            return getTransactionFeeTypeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
         }
 
         /**
-         * Execute getTransactionFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute getTransactionFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getTransactionFeeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionFeeTypeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
-         * Execute getTransactionFee request (asynchronously)
+         * Execute getTransactionFeeType request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback) throws ApiException {
-            return getTransactionFeeAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback) throws ApiException {
+            return getTransactionFeeTypeAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
-         * Execute getTransactionFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute getTransactionFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return getTransactionFeeAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionFeeTypeAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] GetTransactionFee: Get a TransactionFee
-     * Get the TransactionFee for the specified scope and code.
-     * @param scope The scope of the TransactionFee. (required)
-     * @param code The code of the TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. (required)
-     * @return APIgetTransactionFeeRequest
+     * [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+     * Get the transaction fee type for the specified scope and code.
+     * @param scope The scope of the transaction fee type. (required)
+     * @param code The code of the transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
+     * @return APIgetTransactionFeeTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The TransactionFee matching the specified scope and code. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The transaction fee type matching the specified scope and code. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetTransactionFeeRequest getTransactionFee(String scope, String code) {
-        return new APIgetTransactionFeeRequest(scope, code);
+    public APIgetTransactionFeeTypeRequest getTransactionFeeType(String scope, String code) {
+        return new APIgetTransactionFeeTypeRequest(scope, code);
     }
-    private okhttp3.Call listTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listTransactionFeesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listTransactionFeeTypesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listTransactionFeeTypesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listTransactionFeeTypesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -878,7 +878,7 @@ public class TransactionTransactionFeesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/transactions/transactionfees";
+        String localVarPath = "/api/transactions/transactionfeetypes";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -936,41 +936,41 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTransactionFeesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listTransactionFeesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+    private okhttp3.Call listTransactionFeeTypesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransactionFeeTypesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfTransactionFee> listTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionFeesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFee>(){}.getType();
+    private ApiResponse<ResourceListOfTransactionFeeType> listTransactionFeeTypesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionFeeTypesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfTransactionFee> listTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionFeesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFee>(){}.getType();
+    private ApiResponse<ResourceListOfTransactionFeeType> listTransactionFeeTypesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionFeeTypesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransactionFee> _callback) throws ApiException {
+    private okhttp3.Call listTransactionFeeTypesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransactionFeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionFeesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = listTransactionFeeTypesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listTransactionFeeTypesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionFeesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = listTransactionFeeTypesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistTransactionFeesRequest {
+    public class APIlistTransactionFeeTypesRequest {
         private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
@@ -979,35 +979,35 @@ public class TransactionTransactionFeesApi {
         private List<String> sortBy;
         private List<String> propertyKeys;
 
-        private APIlistTransactionFeesRequest() {
+        private APIlistTransactionFeeTypesRequest() {
         }
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime at which to retrieve TransactionFee properties.   Defaults to the current LUSID system datetime if not specified. (optional)
-         * @return APIlistTransactionFeesRequest
+         * @param effectiveAt The effective datetime at which to retrieve transaction fee type properties.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest effectiveAt(String effectiveAt) {
+        public APIlistTransactionFeeTypesRequest effectiveAt(String effectiveAt) {
             this.effectiveAt = effectiveAt;
             return this;
         }
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the TransactionFees.   Defaults to latest if not specified. (optional)
-         * @return APIlistTransactionFeesRequest
+         * @param asAt The asAt datetime at which to retrieve the transaction fee types.   Defaults to latest if not specified. (optional)
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest asAt(OffsetDateTime asAt) {
+        public APIlistTransactionFeeTypesRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. (optional)
-         * @return APIlistTransactionFeesRequest
+         * @param page The pagination token to use to continue listing transaction fee types from a previous call to list transaction fee types.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. (optional)
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest page(String page) {
+        public APIlistTransactionFeeTypesRequest page(String page) {
             this.page = page;
             return this;
         }
@@ -1015,9 +1015,9 @@ public class TransactionTransactionFeesApi {
         /**
          * Set limit
          * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
-         * @return APIlistTransactionFeesRequest
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest limit(Integer limit) {
+        public APIlistTransactionFeeTypesRequest limit(Integer limit) {
             this.limit = limit;
             return this;
         }
@@ -1025,9 +1025,9 @@ public class TransactionTransactionFeesApi {
         /**
          * Set filter
          * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
-         * @return APIlistTransactionFeesRequest
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest filter(String filter) {
+        public APIlistTransactionFeeTypesRequest filter(String filter) {
             this.filter = filter;
             return this;
         }
@@ -1035,9 +1035,9 @@ public class TransactionTransactionFeesApi {
         /**
          * Set sortBy
          * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
-         * @return APIlistTransactionFeesRequest
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest sortBy(List<String> sortBy) {
+        public APIlistTransactionFeeTypesRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
             return this;
         }
@@ -1045,151 +1045,151 @@ public class TransactionTransactionFeesApi {
         /**
          * Set propertyKeys
          * @param propertyKeys The collection of &#x60;PropertyKey&#x60;s to filter on (optional)
-         * @return APIlistTransactionFeesRequest
+         * @return APIlistTransactionFeeTypesRequest
          */
-        public APIlistTransactionFeesRequest propertyKeys(List<String> propertyKeys) {
+        public APIlistTransactionFeeTypesRequest propertyKeys(List<String> propertyKeys) {
             this.propertyKeys = propertyKeys;
             return this;
         }
 
         /**
-         * Build call for listTransactionFees
+         * Build call for listTransactionFeeTypes
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listTransactionFeesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+            return listTransactionFeeTypesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
-         * Execute listTransactionFees request
-         * @return ResourceListOfTransactionFee
+         * Execute listTransactionFeeTypes request
+         * @return ResourceListOfTransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfTransactionFee execute() throws ApiException {
-            ApiResponse<ResourceListOfTransactionFee> localVarResp = listTransactionFeesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        public ResourceListOfTransactionFeeType execute() throws ApiException {
+            ApiResponse<ResourceListOfTransactionFeeType> localVarResp = listTransactionFeeTypesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listTransactionFees request. Use any specified configuration options to override any other configuration for this request only.
-         * @return ResourceListOfTransactionFee
+         * Execute listTransactionFeeTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfTransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfTransactionFee> localVarResp = listTransactionFeesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+        public ResourceListOfTransactionFeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTransactionFeeType> localVarResp = listTransactionFeeTypesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listTransactionFees request with HTTP info returned
-         * @return ApiResponse&lt;ResourceListOfTransactionFee&gt;
+         * Execute listTransactionFeeTypes request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfTransactionFee> executeWithHttpInfo() throws ApiException {
-            return listTransactionFeesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        public ApiResponse<ResourceListOfTransactionFeeType> executeWithHttpInfo() throws ApiException {
+            return listTransactionFeeTypesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
-         * Execute listTransactionFees request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;ResourceListOfTransactionFee&gt;
+         * Execute listTransactionFeeTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfTransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listTransactionFeesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+        public ApiResponse<ResourceListOfTransactionFeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTransactionFeeTypesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
-         * Execute listTransactionFees request (asynchronously)
+         * Execute listTransactionFeeTypes request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionFee> _callback) throws ApiException {
-            return listTransactionFeesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionFeeType> _callback) throws ApiException {
+            return listTransactionFeeTypesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
-         * Execute listTransactionFees request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute listTransactionFeeTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return listTransactionFeesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTransactionFeeTypesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] ListTransactionFees: List TransactionFees
-     * List TransactionFees that match the specified criteria.
-     * @return APIlistTransactionFeesRequest
+     * [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+     * List transaction fee types that match the specified criteria.
+     * @return APIlistTransactionFeeTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A collection of TransactionFees matching the specified criteria. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A collection of transaction fee types matching the specified criteria. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIlistTransactionFeesRequest listTransactionFees() {
-        return new APIlistTransactionFeesRequest();
+    public APIlistTransactionFeeTypesRequest listTransactionFeeTypes() {
+        return new APIlistTransactionFeeTypesRequest();
     }
-    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback) throws ApiException {
-        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateTransactionFeeTypeCall(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, final ApiCallback _callback) throws ApiException {
+        return updateTransactionFeeTypeCall(scope, code, updateTransactionFeeTypeRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateTransactionFeeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeTypeCall(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1203,10 +1203,10 @@ public class TransactionTransactionFeesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateTransactionFeeRequest;
+        Object localVarPostBody = updateTransactionFeeTypeRequest;
 
         // create path and map variables
-        String localVarPath = "/api/transactions/transactionfees/{scope}/{code}"
+        String localVarPath = "/api/transactions/transactionfeetypes/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -1242,200 +1242,200 @@ public class TransactionTransactionFeesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTransactionFeeValidateBeforeCall(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeTypeValidateBeforeCall(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling updateTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'scope' when calling updateTransactionFeeType(Async)");
         }
 
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling updateTransactionFee(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling updateTransactionFeeType(Async)");
         }
 
-        // verify the required parameter 'updateTransactionFeeRequest' is set
-        if (updateTransactionFeeRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateTransactionFeeRequest' when calling updateTransactionFee(Async)");
+        // verify the required parameter 'updateTransactionFeeTypeRequest' is set
+        if (updateTransactionFeeTypeRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateTransactionFeeTypeRequest' when calling updateTransactionFeeType(Async)");
         }
 
-        return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, _callback, opts);
+        return updateTransactionFeeTypeCall(scope, code, updateTransactionFeeTypeRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> updateTransactionFeeTypeWithHttpInfo(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateTransactionFeeTypeValidateBeforeCall(scope, code, updateTransactionFeeTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<TransactionFee> updateTransactionFeeWithHttpInfo(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, null, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+    private ApiResponse<TransactionFeeType> updateTransactionFeeTypeWithHttpInfo(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateTransactionFeeTypeValidateBeforeCall(scope, code, updateTransactionFeeTypeRequest, null, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback<TransactionFee> _callback) throws ApiException {
+    private okhttp3.Call updateTransactionFeeTypeAsync(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, final ApiCallback<TransactionFeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = updateTransactionFeeTypeValidateBeforeCall(scope, code, updateTransactionFeeTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateTransactionFeeAsync(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest, final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateTransactionFeeTypeAsync(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTransactionFeeValidateBeforeCall(scope, code, updateTransactionFeeRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<TransactionFee>(){}.getType();
+        okhttp3.Call localVarCall = updateTransactionFeeTypeValidateBeforeCall(scope, code, updateTransactionFeeTypeRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<TransactionFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIupdateTransactionFeeRequest {
+    public class APIupdateTransactionFeeTypeRequest {
         private final String scope;
         private final String code;
-        private final UpdateTransactionFeeRequest updateTransactionFeeRequest;
+        private final UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest;
 
-        private APIupdateTransactionFeeRequest(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest) {
+        private APIupdateTransactionFeeTypeRequest(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest) {
             this.scope = scope;
             this.code = code;
-            this.updateTransactionFeeRequest = updateTransactionFeeRequest;
+            this.updateTransactionFeeTypeRequest = updateTransactionFeeTypeRequest;
         }
 
         /**
-         * Build call for updateTransactionFee
+         * Build call for updateTransactionFeeType
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateTransactionFeeCall(scope, code, updateTransactionFeeRequest, _callback);
+            return updateTransactionFeeTypeCall(scope, code, updateTransactionFeeTypeRequest, _callback);
         }
 
         /**
-         * Execute updateTransactionFee request
-         * @return TransactionFee
+         * Execute updateTransactionFeeType request
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute() throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
+        public TransactionFeeType execute() throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = updateTransactionFeeTypeWithHttpInfo(scope, code, updateTransactionFeeTypeRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updateTransactionFee request. Use any specified configuration options to override any other configuration for this request only.
-         * @return TransactionFee
+         * Execute updateTransactionFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionFeeType
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public TransactionFee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<TransactionFee> localVarResp = updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, opts);
+        public TransactionFeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionFeeType> localVarResp = updateTransactionFeeTypeWithHttpInfo(scope, code, updateTransactionFeeTypeRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updateTransactionFee request with HTTP info returned
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute updateTransactionFeeType request with HTTP info returned
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo() throws ApiException {
-            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo() throws ApiException {
+            return updateTransactionFeeTypeWithHttpInfo(scope, code, updateTransactionFeeTypeRequest);
         }
 
         /**
-         * Execute updateTransactionFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;TransactionFee&gt;
+         * Execute updateTransactionFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<TransactionFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, opts);
+        public ApiResponse<TransactionFeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateTransactionFeeTypeWithHttpInfo(scope, code, updateTransactionFeeTypeRequest, opts);
         }
 
         /**
-         * Execute updateTransactionFee request (asynchronously)
+         * Execute updateTransactionFeeType request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback) throws ApiException {
-            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback) throws ApiException {
+            return updateTransactionFeeTypeAsync(scope, code, updateTransactionFeeTypeRequest, _callback);
         }
 
         /**
-         * Execute updateTransactionFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateTransactionFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<TransactionFee> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateTransactionFeeAsync(scope, code, updateTransactionFeeRequest, _callback, opts);
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateTransactionFeeTypeAsync(scope, code, updateTransactionFeeTypeRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] UpdateTransactionFee: Update a TransactionFee
-     * Update a TransactionFee by providing the new contents of the TransactionFee.  The name field and the capitalisation field can not be updated.
-     * @param scope The scope of the TransactionFee. (required)
-     * @param code The code of the specified TransactionFee.   Together with the scope this uniquely identifies the TransactionFee. (required)
-     * @param updateTransactionFeeRequest The updated contents of the TransactionFee. (required)
-     * @return APIupdateTransactionFeeRequest
+     * [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+     * Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
+     * @param scope The scope of the transaction fee type. (required)
+     * @param code The code of the specified transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
+     * @param updateTransactionFeeTypeRequest The updated contents of the transaction fee type. (required)
+     * @return APIupdateTransactionFeeTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated TransactionFee. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated transaction fee type. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateTransactionFeeRequest updateTransactionFee(String scope, String code, UpdateTransactionFeeRequest updateTransactionFeeRequest) {
-        return new APIupdateTransactionFeeRequest(scope, code, updateTransactionFeeRequest);
+    public APIupdateTransactionFeeTypeRequest updateTransactionFeeType(String scope, String code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest) {
+        return new APIupdateTransactionFeeTypeRequest(scope, code, updateTransactionFeeTypeRequest);
     }
 }

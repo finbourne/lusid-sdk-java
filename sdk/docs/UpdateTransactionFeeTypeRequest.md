@@ -1,18 +1,18 @@
-# com.finbourne.lusid.model.UpdateTransactionFeeRequest
+# com.finbourne.lusid.model.UpdateTransactionFeeTypeRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** | A description of the transaction fee. | [optional] [default to String]
+**description** | **String** | A description of the transaction fee type. | [optional] [default to String]
 **calculation** | [**FeeCalculationRequest**](FeeCalculationRequest.md) |  | [optional] [default to FeeCalculationRequest]
 **condition** | **String** | The condition that the transaction must meet in order for the fee to be applied. | [optional] [default to String]
 **txnPropertyKey** | **String** | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. | [optional] [default to String]
-**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee. | [optional] [default to Map<String, Property>]
-**isActive** | **Boolean** | Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided. | [optional] [default to Boolean]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the transaction fee type. | [optional] [default to Map<String, Property>]
+**isActive** | **Boolean** | Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided. | [optional] [default to Boolean]
 
 ```java
-import com.finbourne.lusid.model.UpdateTransactionFeeRequest;
+import com.finbourne.lusid.model.UpdateTransactionFeeTypeRequest;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -25,7 +25,7 @@ FeeCalculationRequest Calculation = new FeeCalculationRequest();
 @jakarta.annotation.Nullable Boolean IsActive = true;
 
 
-UpdateTransactionFeeRequest updateTransactionFeeRequestInstance = new UpdateTransactionFeeRequest()
+UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequestInstance = new UpdateTransactionFeeTypeRequest()
     .Description(Description)
     .Calculation(Calculation)
     .Condition(Condition)
