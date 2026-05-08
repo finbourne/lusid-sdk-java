@@ -42,6 +42,7 @@ import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.NavActivityAdjustment;
+import com.finbourne.lusid.model.NavActivityAdjustmentResponse;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfFee;
@@ -51,7 +52,7 @@ import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.QueryFundCashStatementParameters;
-import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustment;
+import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustmentResponse;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
@@ -2666,11 +2667,11 @@ public class FundsApi {
     public APIdeleteFundRequest deleteFund(String scope, String code) {
         return new APIdeleteFundRequest(scope, code);
     }
-    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback) throws ApiException {
-        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback) throws ApiException {
+        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteNavActivityAdjustmentsCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2684,7 +2685,7 @@ public class FundsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = navActivityAdjustment;
+        Object localVarPostBody = navActivityAdjustmentResponse;
 
         // create path and map variables
         String localVarPath = "/api/funds/{scope}/{code}/navAdjustment/$delete"
@@ -2735,7 +2736,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteNavActivityAdjustmentsValidateBeforeCall(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteNavActivityAdjustments(Async)");
@@ -2751,39 +2752,39 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointCode' when calling deleteNavActivityAdjustments(Async)");
         }
 
-        // verify the required parameter 'navActivityAdjustment' is set
-        if (navActivityAdjustment == null) {
-            throw new ApiException("Missing the required parameter 'navActivityAdjustment' when calling deleteNavActivityAdjustments(Async)");
+        // verify the required parameter 'navActivityAdjustmentResponse' is set
+        if (navActivityAdjustmentResponse == null) {
+            throw new ApiException("Missing the required parameter 'navActivityAdjustmentResponse' when calling deleteNavActivityAdjustments(Async)");
         }
 
-        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback, opts);
+        return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant) throws ApiException {
-        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant) throws ApiException {
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, String navTypeCode, String valuationPointCodeVariant, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, String navTypeCode, String valuationPointCodeVariant, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback, opts);
+        okhttp3.Call localVarCall = deleteNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2793,15 +2794,15 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final String valuationPointCode;
-        private final List<NavActivityAdjustment> navActivityAdjustment;
+        private final List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse;
         private String navTypeCode;
         private String valuationPointCodeVariant;
 
-        private APIdeleteNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment) {
+        private APIdeleteNavActivityAdjustmentsRequest(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse) {
             this.scope = scope;
             this.code = code;
             this.valuationPointCode = valuationPointCode;
-            this.navActivityAdjustment = navActivityAdjustment;
+            this.navActivityAdjustmentResponse = navActivityAdjustmentResponse;
         }
 
         /**
@@ -2838,7 +2839,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback);
+            return deleteNavActivityAdjustmentsCall(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback);
         }
 
         /**
@@ -2854,7 +2855,7 @@ public class FundsApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant);
             return localVarResp.getData();
         }
 
@@ -2871,7 +2872,7 @@ public class FundsApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, opts);
             return localVarResp.getData();
         }
 
@@ -2888,7 +2889,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant);
         }
 
         /**
@@ -2904,7 +2905,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, opts);
+            return deleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, opts);
         }
 
         /**
@@ -2921,7 +2922,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback);
+            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback);
         }
 
         /**
@@ -2938,7 +2939,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, _callback, opts);
+            return deleteNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, _callback, opts);
         }
     }
 
@@ -2948,7 +2949,7 @@ public class FundsApi {
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
      * @param valuationPointCode The valuation point Code to delete the adjustment from (required)
-     * @param navActivityAdjustment The request describing the Nav activity adjustments to delete from a specific valuation point and nav type (required)
+     * @param navActivityAdjustmentResponse The request describing the Nav activity adjustments to delete from a specific valuation point and nav type (required)
      * @return APIdeleteNavActivityAdjustmentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2958,8 +2959,8 @@ public class FundsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeleteNavActivityAdjustmentsRequest deleteNavActivityAdjustments(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment) {
-        return new APIdeleteNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navActivityAdjustment);
+    public APIdeleteNavActivityAdjustmentsRequest deleteNavActivityAdjustments(String scope, String code, String valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse) {
+        return new APIdeleteNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navActivityAdjustmentResponse);
     }
     private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, String diaryEntryCodeVariant, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return deleteValuationPointCall(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode,  _callback, new ConfigurationOptions());
@@ -8820,30 +8821,30 @@ public class FundsApi {
     }
 
 
-    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant) throws ApiException {
+    private ApiResponse<ResourceListOfNavActivityAdjustmentResponse> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant) throws ApiException {
         okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustmentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfNavActivityAdjustment> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<ResourceListOfNavActivityAdjustmentResponse> listNavActivityAdjustmentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, null, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustmentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, final ApiCallback<ResourceListOfNavActivityAdjustmentResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustmentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listNavActivityAdjustmentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, String valuationPointCodeVariant, final ApiCallback<ResourceListOfNavActivityAdjustmentResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = listNavActivityAdjustmentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, _callback, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListOfNavActivityAdjustmentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -8944,7 +8945,7 @@ public class FundsApi {
 
         /**
          * Execute listNavActivityAdjustments request
-         * @return ResourceListOfNavActivityAdjustment
+         * @return ResourceListOfNavActivityAdjustmentResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -8954,14 +8955,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfNavActivityAdjustment execute() throws ApiException {
-            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
+        public ResourceListOfNavActivityAdjustmentResponse execute() throws ApiException {
+            ApiResponse<ResourceListOfNavActivityAdjustmentResponse> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
             return localVarResp.getData();
         }
 
         /**
          * Execute listNavActivityAdjustments request. Use any specified configuration options to override any other configuration for this request only.
-         * @return ResourceListOfNavActivityAdjustment
+         * @return ResourceListOfNavActivityAdjustmentResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -8971,14 +8972,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfNavActivityAdjustment execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfNavActivityAdjustment> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, opts);
+        public ResourceListOfNavActivityAdjustmentResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfNavActivityAdjustmentResponse> localVarResp = listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute listNavActivityAdjustments request with HTTP info returned
-         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustment&gt;
+         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustmentResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -8988,13 +8989,13 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<ResourceListOfNavActivityAdjustmentResponse> executeWithHttpInfo() throws ApiException {
             return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
         }
 
         /**
          * Execute listNavActivityAdjustments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustment&gt;
+         * @return ApiResponse&lt;ResourceListOfNavActivityAdjustmentResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -9004,7 +9005,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfNavActivityAdjustment> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<ResourceListOfNavActivityAdjustmentResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return listNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, opts);
         }
 
@@ -9021,7 +9022,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustmentResponse> _callback) throws ApiException {
             return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, _callback);
         }
 
@@ -9038,7 +9039,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfNavActivityAdjustmentResponse> _callback, ConfigurationOptions opts) throws ApiException {
             return listNavActivityAdjustmentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, _callback, opts);
         }
     }

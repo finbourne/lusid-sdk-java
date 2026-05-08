@@ -1002,7 +1002,7 @@ public class FundsApiExample {
 
 ## deleteNavActivityAdjustments
 
-> DeletedEntityResponse deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant)
+> DeletedEntityResponse deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant)
 
 [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
 
@@ -1050,14 +1050,14 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope is the unique identifier for the given Fund.
         String valuationPointCode = "valuationPointCode_example"; // String | The valuation point Code to delete the adjustment from
-        List<NavActivityAdjustment> navActivityAdjustment = Arrays.asList(); // List<NavActivityAdjustment> | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type
+        List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse = Arrays.asList(); // List<NavActivityAdjustmentResponse> | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
         String valuationPointCodeVariant = "valuationPointCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant).execute();
+            DeletedEntityResponse result = apiInstance.deleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#deleteNavActivityAdjustments");
@@ -1077,7 +1077,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope is the unique identifier for the given Fund. | |
 | **valuationPointCode** | **String**| The valuation point Code to delete the adjustment from | |
-| **navActivityAdjustment** | [**List&lt;NavActivityAdjustment&gt;**](NavActivityAdjustment.md)| The request describing the Nav activity adjustments to delete from a specific valuation point and nav type | |
+| **navActivityAdjustmentResponse** | [**List&lt;NavActivityAdjustmentResponse&gt;**](NavActivityAdjustmentResponse.md)| The request describing the Nav activity adjustments to delete from a specific valuation point and nav type | |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
 | **valuationPointCodeVariant** | **String**| The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. | [optional] |
 
@@ -2971,7 +2971,7 @@ public class FundsApiExample {
 
 ## listNavActivityAdjustments
 
-> ResourceListOfNavActivityAdjustment listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant)
+> ResourceListOfNavActivityAdjustmentResponse listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant)
 
 [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 
@@ -3027,9 +3027,9 @@ public class FundsApiExample {
         String valuationPointCodeVariant = "valuationPointCodeVariant_example"; // String | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute(opts);
+            // ResourceListOfNavActivityAdjustmentResponse result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute(opts);
 
-            ResourceListOfNavActivityAdjustment result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute();
+            ResourceListOfNavActivityAdjustmentResponse result = apiInstance.listNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listNavActivityAdjustments");
@@ -3058,7 +3058,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**ResourceListOfNavActivityAdjustment**](ResourceListOfNavActivityAdjustment.md)
+[**ResourceListOfNavActivityAdjustmentResponse**](ResourceListOfNavActivityAdjustmentResponse.md)
 
 ### HTTP request headers
 
