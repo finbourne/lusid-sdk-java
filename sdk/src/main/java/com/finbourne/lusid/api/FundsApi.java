@@ -67,6 +67,8 @@ import com.finbourne.lusid.model.ValuationPointResourceListOfFundCashStatementRo
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfPnlJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfTrialBalance;
+import com.finbourne.lusid.model.VersionedResourceListOfFundA2BDataRecord;
+import com.finbourne.lusid.model.VersionedResourceListOfFundA2BMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfHoldingContributor;
 import com.finbourne.lusid.model.VersionedResourceListOfPortfolioHolding;
 
@@ -3509,6 +3511,632 @@ public class FundsApi {
      */
     public APIfinaliseCandidateValuationPointRequest finaliseCandidateValuationPoint(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
         return new APIfinaliseCandidateValuationPointRequest(scope, code, valuationPointDataRequest);
+    }
+    private okhttp3.Call getA2BDataForFundCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getA2BDataForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getA2BDataForFundCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/a2b/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getA2BDataForFundValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getA2BDataForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getA2BDataForFund(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getA2BDataForFund(Async)");
+        }
+
+        return getA2BDataForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfFundA2BDataRecord> getA2BDataForFundWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getA2BDataForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BDataRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfFundA2BDataRecord> getA2BDataForFundWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BDataForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BDataRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getA2BDataForFundAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfFundA2BDataRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BDataForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BDataRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getA2BDataForFundAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfFundA2BDataRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BDataForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BDataRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetA2BDataForFundRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private String navTypeCode;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIgetA2BDataForFundRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetA2BDataForFundRequest
+         */
+        public APIgetA2BDataForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetA2BDataForFundRequest
+         */
+        public APIgetA2BDataForFundRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetA2BDataForFundRequest
+         */
+        public APIgetA2BDataForFundRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @return APIgetA2BDataForFundRequest
+         */
+        public APIgetA2BDataForFundRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getA2BDataForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getA2BDataForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getA2BDataForFund request
+         * @return VersionedResourceListOfFundA2BDataRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfFundA2BDataRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfFundA2BDataRecord> localVarResp = getA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BDataForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfFundA2BDataRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfFundA2BDataRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfFundA2BDataRecord> localVarResp = getA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BDataForFund request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfFundA2BDataRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfFundA2BDataRecord> executeWithHttpInfo() throws ApiException {
+            return getA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+        }
+
+        /**
+         * Execute getA2BDataForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfFundA2BDataRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfFundA2BDataRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts);
+        }
+
+        /**
+         * Execute getA2BDataForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfFundA2BDataRecord> _callback) throws ApiException {
+            return getA2BDataForFundAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getA2BDataForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfFundA2BDataRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getA2BDataForFundAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+     * Get the A2B data for transaction portfolios in a specified Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the A2B data. This includes start and end dates. (required)
+     * @return APIgetA2BDataForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The A2B data for transaction portfolios in a Fund </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetA2BDataForFundRequest getA2BDataForFund(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetA2BDataForFundRequest(scope, code, valuationPointDataQueryParameters);
+    }
+    private okhttp3.Call getA2BMovementsForFundCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getA2BMovementsForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getA2BMovementsForFundCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getA2BMovementsForFundValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getA2BMovementsForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getA2BMovementsForFund(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getA2BMovementsForFund(Async)");
+        }
+
+        return getA2BMovementsForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfFundA2BMovementRecord> getA2BMovementsForFundWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfFundA2BMovementRecord> getA2BMovementsForFundWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getA2BMovementsForFundAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfFundA2BMovementRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BMovementsForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getA2BMovementsForFundAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListOfFundA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BMovementsForFundValidateBeforeCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfFundA2BMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetA2BMovementsForFundRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private String navTypeCode;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIgetA2BMovementsForFundRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetA2BMovementsForFundRequest
+         */
+        public APIgetA2BMovementsForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetA2BMovementsForFundRequest
+         */
+        public APIgetA2BMovementsForFundRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetA2BMovementsForFundRequest
+         */
+        public APIgetA2BMovementsForFundRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @return APIgetA2BMovementsForFundRequest
+         */
+        public APIgetA2BMovementsForFundRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getA2BMovementsForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getA2BMovementsForFundCall(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request
+         * @return VersionedResourceListOfFundA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfFundA2BMovementRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfFundA2BMovementRecord> localVarResp = getA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfFundA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfFundA2BMovementRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfFundA2BMovementRecord> localVarResp = getA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfFundA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfFundA2BMovementRecord> executeWithHttpInfo() throws ApiException {
+            return getA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfFundA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfFundA2BMovementRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts);
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfFundA2BMovementRecord> _callback) throws ApiException {
+            return getA2BMovementsForFundAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getA2BMovementsForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfFundA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsForFundAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+     * Get the A2B movement records of transaction portfolios in a specified Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the A2B movements. This includes start and end dates. (required)
+     * @return APIgetA2BMovementsForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The A2B movement records of transaction portfolios for a Fund </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetA2BMovementsForFundRequest getA2BMovementsForFund(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetA2BMovementsForFundRequest(scope, code, valuationPointDataQueryParameters);
     }
     private okhttp3.Call getFeeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return getFeeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());

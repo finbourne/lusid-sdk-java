@@ -17,6 +17,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteNavActivityAdjustments**](FundsApi.md#deleteNavActivityAdjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment/$delete | [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
 | [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
 | [**finaliseCandidateValuationPoint**](FundsApi.md#finaliseCandidateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
+| [**getA2BDataForFund**](FundsApi.md#getA2BDataForFund) | **POST** /api/funds/{scope}/{code}/valuationpoints/a2b/$query | [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. |
+| [**getA2BMovementsForFund**](FundsApi.md#getA2BMovementsForFund) | **POST** /api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query | [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
 | [**getFee**](FundsApi.md#getFee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
 | [**getFeeProperties**](FundsApi.md#getFeeProperties) | **GET** /api/funds/{scope}/{code}/fees/{feeCode}/properties | [EXPERIMENTAL] GetFeeProperties: Get Fee properties. |
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund. |
@@ -1291,6 +1293,212 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated Valuation Point response as a result of it be marked as Final. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getA2BDataForFund
+
+> VersionedResourceListOfFundA2BDataRecord getA2BDataForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys)
+
+[EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+
+Get the A2B data for transaction portfolios in a specified Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the A2B data. This includes start and end dates.
+        String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the A2B data. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
+        try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfFundA2BDataRecord result = apiInstance.getA2BDataForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys).execute(opts);
+
+            VersionedResourceListOfFundA2BDataRecord result = apiInstance.getA2BDataForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getA2BDataForFund");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the A2B data. This includes start and end dates. | |
+| **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional] |
+
+### Return type
+
+[**VersionedResourceListOfFundA2BDataRecord**](VersionedResourceListOfFundA2BDataRecord.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The A2B data for transaction portfolios in a Fund |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getA2BMovementsForFund
+
+> VersionedResourceListOfFundA2BMovementRecord getA2BMovementsForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys)
+
+[EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+
+Get the A2B movement records of transaction portfolios in a specified Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the A2B movements. This includes start and end dates.
+        String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the A2B movements. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
+        try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfFundA2BMovementRecord result = apiInstance.getA2BMovementsForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys).execute(opts);
+
+            VersionedResourceListOfFundA2BMovementRecord result = apiInstance.getA2BMovementsForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getA2BMovementsForFund");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the A2B movements. This includes start and end dates. | |
+| **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional] |
+
+### Return type
+
+[**VersionedResourceListOfFundA2BMovementRecord**](VersionedResourceListOfFundA2BMovementRecord.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The A2B movement records of transaction portfolios for a Fund |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
