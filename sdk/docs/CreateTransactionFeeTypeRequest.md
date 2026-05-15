@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** | The display name of the transaction fee type. | [default to String]
-**description** | **String** | A description of the transaction fee type. | [default to String]
+**description** | **String** | A description of the transaction fee type. | [optional] [default to String]
 **calculation** | [**FeeCalculationRequest**](FeeCalculationRequest.md) |  | [default to FeeCalculationRequest]
 **condition** | **String** | The condition that the transaction must meet in order for the fee to be applied. | [default to String]
 **txnPropertyKey** | **String** | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. | [default to String]
@@ -19,7 +19,7 @@ import java.lang.System;
 import java.net.URI;
 
 String DisplayName = "example DisplayName";
-String Description = "example Description";
+@jakarta.annotation.Nullable String Description = "example Description";
 FeeCalculationRequest Calculation = new FeeCalculationRequest();
 String Condition = "example Condition";
 String TxnPropertyKey = "example TxnPropertyKey";

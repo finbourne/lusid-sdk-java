@@ -1076,7 +1076,7 @@ public class GroupReconciliationsApiExample {
 
 ## runReconciliation
 
-> GroupReconciliationRunResponse runReconciliation(scope, code, groupReconciliationRunRequest)
+> GroupReconciliationRunResponse runReconciliation(scope, code, groupReconciliationRunRequest, instanceRunType)
 
 [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
 
@@ -1124,11 +1124,12 @@ public class GroupReconciliationsApiExample {
         String scope = "scope_example"; // String | The scope of the group reconciliation definition to use for the reconciliation.
         String code = "code_example"; // String | The code of the group reconciliation definition to use for the reconciliation.
         GroupReconciliationRunRequest groupReconciliationRunRequest = new GroupReconciliationRunRequest(); // GroupReconciliationRunRequest | 
+        String instanceRunType = "instanceRunType_example"; // String | The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId.
         try {
             // uncomment the below to set overrides at the request level
-            // GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest).execute(opts);
+            // GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest, instanceRunType).execute(opts);
 
-            GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest).execute();
+            GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest, instanceRunType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupReconciliationsApi#runReconciliation");
@@ -1147,7 +1148,8 @@ public class GroupReconciliationsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group reconciliation definition to use for the reconciliation. | |
 | **code** | **String**| The code of the group reconciliation definition to use for the reconciliation. | |
-| **groupReconciliationRunRequest** | [**GroupReconciliationRunRequest**](GroupReconciliationRunRequest.md)|  | [optional] |
+| **groupReconciliationRunRequest** | [**GroupReconciliationRunRequest**](GroupReconciliationRunRequest.md)|  | |
+| **instanceRunType** | **String**| The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. | [optional] |
 
 ### Return type
 

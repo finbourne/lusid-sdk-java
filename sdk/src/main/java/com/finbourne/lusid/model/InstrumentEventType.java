@@ -167,7 +167,9 @@ public enum InstrumentEventType {
   
   DEPOSITROLLEVENT("DepositRollEvent"),
   
-  CONSENTEVENT("ConsentEvent");
+  CONSENTEVENT("ConsentEvent"),
+  
+  DRAWINGEVENT("DrawingEvent");
 
   private String value;
 

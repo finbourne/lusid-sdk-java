@@ -66,10 +66,6 @@ public class UpdateTransactionFeeTypeRequest {
   @SerializedName(SERIALIZED_NAME_CONDITION)
   private String condition;
 
-  public static final String SERIALIZED_NAME_TXN_PROPERTY_KEY = "txnPropertyKey";
-  @SerializedName(SERIALIZED_NAME_TXN_PROPERTY_KEY)
-  private String txnPropertyKey;
-
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -144,27 +140,6 @@ public class UpdateTransactionFeeTypeRequest {
   }
 
 
-  public UpdateTransactionFeeTypeRequest txnPropertyKey(String txnPropertyKey) {
-    
-    this.txnPropertyKey = txnPropertyKey;
-    return this;
-  }
-
-   /**
-   * The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
-   * @return txnPropertyKey
-  **/
-  @jakarta.annotation.Nullable
-  public String getTxnPropertyKey() {
-    return txnPropertyKey;
-  }
-
-
-  public void setTxnPropertyKey(String txnPropertyKey) {
-    this.txnPropertyKey = txnPropertyKey;
-  }
-
-
   public UpdateTransactionFeeTypeRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -228,7 +203,6 @@ public class UpdateTransactionFeeTypeRequest {
     return Objects.equals(this.description, updateTransactionFeeTypeRequest.description) &&
         Objects.equals(this.calculation, updateTransactionFeeTypeRequest.calculation) &&
         Objects.equals(this.condition, updateTransactionFeeTypeRequest.condition) &&
-        Objects.equals(this.txnPropertyKey, updateTransactionFeeTypeRequest.txnPropertyKey) &&
         Objects.equals(this.properties, updateTransactionFeeTypeRequest.properties) &&
         Objects.equals(this.isActive, updateTransactionFeeTypeRequest.isActive);
   }
@@ -239,7 +213,7 @@ public class UpdateTransactionFeeTypeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, calculation, condition, txnPropertyKey, properties, isActive);
+    return Objects.hash(description, calculation, condition, properties, isActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -256,7 +230,6 @@ public class UpdateTransactionFeeTypeRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    calculation: ").append(toIndentedString(calculation)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
-    sb.append("    txnPropertyKey: ").append(toIndentedString(txnPropertyKey)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
     sb.append("}");
@@ -284,7 +257,6 @@ public class UpdateTransactionFeeTypeRequest {
     openapiFields.add("description");
     openapiFields.add("calculation");
     openapiFields.add("condition");
-    openapiFields.add("txnPropertyKey");
     openapiFields.add("properties");
     openapiFields.add("isActive");
 
@@ -314,9 +286,6 @@ public class UpdateTransactionFeeTypeRequest {
       }
       if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) && !jsonObj.get("condition").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `condition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("condition").toString()));
-      }
-      if ((jsonObj.get("txnPropertyKey") != null && !jsonObj.get("txnPropertyKey").isJsonNull()) && !jsonObj.get("txnPropertyKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `txnPropertyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("txnPropertyKey").toString()));
       }
   }
 

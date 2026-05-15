@@ -89,6 +89,22 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_RESPONSE_DEADLINE_DATE)
   private OffsetDateTime responseDeadlineDate;
 
+  public static final String SERIALIZED_NAME_EARLY_RESPONSE_DEADLINE = "earlyResponseDeadline";
+  @SerializedName(SERIALIZED_NAME_EARLY_RESPONSE_DEADLINE)
+  private OffsetDateTime earlyResponseDeadline;
+
+  public static final String SERIALIZED_NAME_MIN_PIECE_SIZE = "minPieceSize";
+  @SerializedName(SERIALIZED_NAME_MIN_PIECE_SIZE)
+  private java.math.BigDecimal minPieceSize;
+
+  public static final String SERIALIZED_NAME_MIN_INCREMENT = "minIncrement";
+  @SerializedName(SERIALIZED_NAME_MIN_INCREMENT)
+  private java.math.BigDecimal minIncrement;
+
+  public static final String SERIALIZED_NAME_ACCRUED_INTEREST_PER_UNIT = "accruedInterestPerUnit";
+  @SerializedName(SERIALIZED_NAME_ACCRUED_INTEREST_PER_UNIT)
+  private java.math.BigDecimal accruedInterestPerUnit;
+
   public RepurchaseOfferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -285,6 +301,90 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
 
+  public RepurchaseOfferEvent earlyResponseDeadline(OffsetDateTime earlyResponseDeadline) {
+    
+    this.earlyResponseDeadline = earlyResponseDeadline;
+    return this;
+  }
+
+   /**
+   * Optional CTEN early-tender deadline. If set, must be on or before ResponseDeadlineDate.  Used for bond tender offers where early tenders attract a premium.
+   * @return earlyResponseDeadline
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEarlyResponseDeadline() {
+    return earlyResponseDeadline;
+  }
+
+
+  public void setEarlyResponseDeadline(OffsetDateTime earlyResponseDeadline) {
+    this.earlyResponseDeadline = earlyResponseDeadline;
+  }
+
+
+  public RepurchaseOfferEvent minPieceSize(java.math.BigDecimal minPieceSize) {
+    
+    this.minPieceSize = minPieceSize;
+    return this;
+  }
+
+   /**
+   * Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set.
+   * @return minPieceSize
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinPieceSize() {
+    return minPieceSize;
+  }
+
+
+  public void setMinPieceSize(java.math.BigDecimal minPieceSize) {
+    this.minPieceSize = minPieceSize;
+  }
+
+
+  public RepurchaseOfferEvent minIncrement(java.math.BigDecimal minIncrement) {
+    
+    this.minIncrement = minIncrement;
+    return this;
+  }
+
+   /**
+   * Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive.
+   * @return minIncrement
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinIncrement() {
+    return minIncrement;
+  }
+
+
+  public void setMinIncrement(java.math.BigDecimal minIncrement) {
+    this.minIncrement = minIncrement;
+  }
+
+
+  public RepurchaseOfferEvent accruedInterestPerUnit(java.math.BigDecimal accruedInterestPerUnit) {
+    
+    this.accruedInterestPerUnit = accruedInterestPerUnit;
+    return this;
+  }
+
+   /**
+   * Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data.
+   * @return accruedInterestPerUnit
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAccruedInterestPerUnit() {
+    return accruedInterestPerUnit;
+  }
+
+
+  public void setAccruedInterestPerUnit(java.math.BigDecimal accruedInterestPerUnit) {
+    this.accruedInterestPerUnit = accruedInterestPerUnit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -303,6 +403,10 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
         Objects.equals(this.tenderOfferElections, repurchaseOfferEvent.tenderOfferElections) &&
         (this.prorationRate.compareTo(repurchaseOfferEvent.getProrationRate()) == 0) &&
         Objects.equals(this.responseDeadlineDate, repurchaseOfferEvent.responseDeadlineDate) &&
+        Objects.equals(this.earlyResponseDeadline, repurchaseOfferEvent.earlyResponseDeadline) &&
+        (this.minPieceSize.compareTo(repurchaseOfferEvent.getMinPieceSize()) == 0) &&
+        (this.minIncrement.compareTo(repurchaseOfferEvent.getMinIncrement()) == 0) &&
+        (this.accruedInterestPerUnit.compareTo(repurchaseOfferEvent.getAccruedInterestPerUnit()) == 0) &&
         super.equals(o);
   }
 
@@ -312,7 +416,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, marketDeadlineDate, repurchaseQuantity, cashOfferElections, lapseElections, tenderOfferElections, prorationRate, responseDeadlineDate, super.hashCode());
+    return Objects.hash(paymentDate, marketDeadlineDate, repurchaseQuantity, cashOfferElections, lapseElections, tenderOfferElections, prorationRate, responseDeadlineDate, earlyResponseDeadline, minPieceSize, minIncrement, accruedInterestPerUnit, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -335,6 +439,10 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
     sb.append("    tenderOfferElections: ").append(toIndentedString(tenderOfferElections)).append("\n");
     sb.append("    prorationRate: ").append(toIndentedString(prorationRate)).append("\n");
     sb.append("    responseDeadlineDate: ").append(toIndentedString(responseDeadlineDate)).append("\n");
+    sb.append("    earlyResponseDeadline: ").append(toIndentedString(earlyResponseDeadline)).append("\n");
+    sb.append("    minPieceSize: ").append(toIndentedString(minPieceSize)).append("\n");
+    sb.append("    minIncrement: ").append(toIndentedString(minIncrement)).append("\n");
+    sb.append("    accruedInterestPerUnit: ").append(toIndentedString(accruedInterestPerUnit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -366,6 +474,10 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
     openapiFields.add("tenderOfferElections");
     openapiFields.add("prorationRate");
     openapiFields.add("responseDeadlineDate");
+    openapiFields.add("earlyResponseDeadline");
+    openapiFields.add("minPieceSize");
+    openapiFields.add("minIncrement");
+    openapiFields.add("accruedInterestPerUnit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

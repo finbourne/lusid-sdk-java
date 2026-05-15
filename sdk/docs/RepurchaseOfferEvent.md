@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **tenderOfferElections** | [**List&lt;TenderOfferElection&gt;**](TenderOfferElection.md) | List of possible TenderOfferElections for this event. Only 1 should be provided. | [default to List<TenderOfferElection>]
 **prorationRate** | **java.math.BigDecimal** | The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used.  Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1. | [optional] [default to java.math.BigDecimal]
 **responseDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date set by the account servicer as the latest date to respond to the offer.  Optional. If set, must be before or equal to MarketDeadlineDate.  Defaults to MarketDeadlineDate if not set. | [optional] [default to OffsetDateTime]
+**earlyResponseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | Optional CTEN early-tender deadline. If set, must be on or before ResponseDeadlineDate.  Used for bond tender offers where early tenders attract a premium. | [optional] [default to OffsetDateTime]
+**minPieceSize** | **java.math.BigDecimal** | Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set. | [optional] [default to java.math.BigDecimal]
+**minIncrement** | **java.math.BigDecimal** | Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive. | [optional] [default to java.math.BigDecimal]
+**accruedInterestPerUnit** | **java.math.BigDecimal** | Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.RepurchaseOfferEvent;
@@ -28,6 +32,10 @@ List<LapseElection> LapseElections = new List<LapseElection>();
 List<TenderOfferElection> TenderOfferElections = new List<TenderOfferElection>();
 java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable OffsetDateTime ResponseDeadlineDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EarlyResponseDeadline = OffsetDateTime.now();
+@jakarta.annotation.Nullable java.math.BigDecimal MinPieceSize = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal MinIncrement = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal AccruedInterestPerUnit = new java.math.BigDecimal("100.00");
 
 
 RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
@@ -38,7 +46,11 @@ RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
     .LapseElections(LapseElections)
     .TenderOfferElections(TenderOfferElections)
     .ProrationRate(ProrationRate)
-    .ResponseDeadlineDate(ResponseDeadlineDate);
+    .ResponseDeadlineDate(ResponseDeadlineDate)
+    .EarlyResponseDeadline(EarlyResponseDeadline)
+    .MinPieceSize(MinPieceSize)
+    .MinIncrement(MinIncrement)
+    .AccruedInterestPerUnit(AccruedInterestPerUnit);
 ```
 
 
