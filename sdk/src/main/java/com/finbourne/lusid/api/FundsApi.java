@@ -49,6 +49,7 @@ import com.finbourne.lusid.model.PagedResourceListOfFee;
 import com.finbourne.lusid.model.PagedResourceListOfFund;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntries;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
+import com.finbourne.lusid.model.PagedResourceListOfValuationPointInstrument;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.QueryFundCashStatementParameters;
@@ -67,6 +68,7 @@ import com.finbourne.lusid.model.ValuationPointResourceListOfFundCashStatementRo
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfPnlJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfTrialBalance;
+import com.finbourne.lusid.model.ValuationPointResourceListOfUnsettledTransaction;
 import com.finbourne.lusid.model.VersionedResourceListOfFundA2BDataRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfFundA2BMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfHoldingContributor;
@@ -8011,6 +8013,334 @@ public class FundsApi {
     public APIgetValuationPointTrialBalanceRequest getValuationPointTrialBalance(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointTrialBalanceRequest(scope, code, valuationPointDataQueryParameters);
     }
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointUnsettledTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValuationPointUnsettledTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointUnsettledTransactions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getValuationPointUnsettledTransactions(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointUnsettledTransactions(Async)");
+        }
+
+        return getValuationPointUnsettledTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationPointUnsettledTransactionsRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String page;
+        private List<String> propertyKeys;
+        private String navTypeCode;
+
+        private APIgetValuationPointUnsettledTransactionsRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the report. Defaults to latest. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing from a previous call. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;   domain to decorate onto the transactions. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationPointUnsettledTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationPointUnsettledTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request
+         * @return ValuationPointResourceListOfUnsettledTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfUnsettledTransaction execute() throws ApiException {
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointResourceListOfUnsettledTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfUnsettledTransaction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointResourceListOfUnsettledTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo() throws ApiException {
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointResourceListOfUnsettledTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, opts);
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
+            return getValuationPointUnsettledTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getValuationPointUnsettledTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationPointUnsettledTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
+     * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the unsettled transactions. (required)
+     * @return APIgetValuationPointUnsettledTransactionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The unsettled transactions for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetValuationPointUnsettledTransactionsRequest getValuationPointUnsettledTransactions(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetValuationPointUnsettledTransactionsRequest(scope, code, valuationPointDataQueryParameters);
+    }
     private okhttp3.Call listFeesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
     }
@@ -9689,6 +10019,379 @@ public class FundsApi {
      */
     public APIlistNavActivityAdjustmentsRequest listNavActivityAdjustments(String scope, String code, String valuationPointCode) {
         return new APIlistNavActivityAdjustmentsRequest(scope, code, valuationPointCode);
+    }
+    private okhttp3.Call listValuationPointInstrumentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, final ApiCallback _callback) throws ApiException {
+        return listValuationPointInstrumentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listValuationPointInstrumentsCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/instruments/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (valuationPointCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuationPointCode", valuationPointCode));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (instrumentPropertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "instrumentPropertyKeys", instrumentPropertyKeys));
+        }
+
+        if (valuationPointCodeVariant != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valuationPointCodeVariant", valuationPointCodeVariant));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listValuationPointInstrumentsValidateBeforeCall(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listValuationPointInstruments(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listValuationPointInstruments(Async)");
+        }
+
+        // verify the required parameter 'valuationPointCode' is set
+        if (valuationPointCode == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointCode' when calling listValuationPointInstruments(Async)");
+        }
+
+        return listValuationPointInstrumentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfValuationPointInstrument> listValuationPointInstrumentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant) throws ApiException {
+        okhttp3.Call localVarCall = listValuationPointInstrumentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointInstrument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfValuationPointInstrument> listValuationPointInstrumentsWithHttpInfo(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listValuationPointInstrumentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointInstrument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listValuationPointInstrumentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, final ApiCallback<PagedResourceListOfValuationPointInstrument> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listValuationPointInstrumentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointInstrument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listValuationPointInstrumentsAsync(String scope, String code, String valuationPointCode, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> instrumentPropertyKeys, String valuationPointCodeVariant, final ApiCallback<PagedResourceListOfValuationPointInstrument> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listValuationPointInstrumentsValidateBeforeCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointInstrument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistValuationPointInstrumentsRequest {
+        private final String scope;
+        private final String code;
+        private final String valuationPointCode;
+        private String navTypeCode;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> instrumentPropertyKeys;
+        private String valuationPointCodeVariant;
+
+        private APIlistValuationPointInstrumentsRequest(String scope, String code, String valuationPointCode) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointCode = valuationPointCode;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the instruments. Defaults to returning the latest version of each instrument if not specified. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing instruments; this   value is returned from the previous call. If a pagination token is provided, the filter,   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set instrumentPropertyKeys
+         * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest instrumentPropertyKeys(List<String> instrumentPropertyKeys) {
+            this.instrumentPropertyKeys = instrumentPropertyKeys;
+            return this;
+        }
+
+        /**
+         * Set valuationPointCodeVariant
+         * @param valuationPointCodeVariant The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)
+         * @return APIlistValuationPointInstrumentsRequest
+         */
+        public APIlistValuationPointInstrumentsRequest valuationPointCodeVariant(String valuationPointCodeVariant) {
+            this.valuationPointCodeVariant = valuationPointCodeVariant;
+            return this;
+        }
+
+        /**
+         * Build call for listValuationPointInstruments
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listValuationPointInstrumentsCall(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback);
+        }
+
+        /**
+         * Execute listValuationPointInstruments request
+         * @return PagedResourceListOfValuationPointInstrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfValuationPointInstrument execute() throws ApiException {
+            ApiResponse<PagedResourceListOfValuationPointInstrument> localVarResp = listValuationPointInstrumentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listValuationPointInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfValuationPointInstrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfValuationPointInstrument execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfValuationPointInstrument> localVarResp = listValuationPointInstrumentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listValuationPointInstruments request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfValuationPointInstrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfValuationPointInstrument> executeWithHttpInfo() throws ApiException {
+            return listValuationPointInstrumentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant);
+        }
+
+        /**
+         * Execute listValuationPointInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfValuationPointInstrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfValuationPointInstrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listValuationPointInstrumentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, opts);
+        }
+
+        /**
+         * Execute listValuationPointInstruments request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointInstrument> _callback) throws ApiException {
+            return listValuationPointInstrumentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback);
+        }
+
+        /**
+         * Execute listValuationPointInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointInstrument> _callback, ConfigurationOptions opts) throws ApiException {
+            return listValuationPointInstrumentsAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point
+     * Lists the Instruments linked to Transactions within a Valuation Point for a Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
+     * @param valuationPointCode Fetch all instruments for this valuation point. (required)
+     * @return APIlistValuationPointInstrumentsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The instruments held at the specified valuation point for the Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistValuationPointInstrumentsRequest listValuationPointInstruments(String scope, String code, String valuationPointCode) {
+        return new APIlistValuationPointInstrumentsRequest(scope, code, valuationPointCode);
     }
     private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
