@@ -98,6 +98,7 @@ PropertyDomain method = PropertyDomain.STAGINGRULESET;
 PropertyDomain method = PropertyDomain.IDENTIFIERDEFINITION;
 PropertyDomain method = PropertyDomain.SETTLEMENTINSTRUCTION;
 PropertyDomain method = PropertyDomain.TRANSACTIONFEETYPE;
+PropertyDomain method = PropertyDomain.TRANSACTIONFEE;
 ```
 
 

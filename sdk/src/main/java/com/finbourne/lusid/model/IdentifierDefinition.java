@@ -230,7 +230,9 @@ public class IdentifierDefinition {
     
     SETTLEMENTINSTRUCTION("SettlementInstruction"),
     
-    TRANSACTIONFEETYPE("TransactionFeeType");
+    TRANSACTIONFEETYPE("TransactionFeeType"),
+    
+    TRANSACTIONFEE("TransactionFee");
 
     private String value;
 
@@ -472,7 +474,7 @@ public class IdentifierDefinition {
   }
 
    /**
-   * MasterIdentifier (aka unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can only be associated with one entity (in a given scope) on a given effective date. ParentIdentifier (aka non-unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can be associated with many entities (in a given scope) on a given effective date. Default value: MasterIdentifier. Available values: MasterIdentifier, ParentIdentifier.
+   * MasterIdentifier (aka unique)  An entity can have one value for this identifier definition on a given effective date.  A value for this identifier definition can only be associated with one entity (in a given scope) on a given effective date.  ParentIdentifier (aka non-unique)  An entity can have one value for this identifier definition on a given effective date.  A value for this identifier definition can be associated with many entities (in a given scope) on a given effective date.  Default value: MasterIdentifier. Available values: MasterIdentifier, ParentIdentifier.
    * @return hierarchyUsage
   **/
   @jakarta.annotation.Nullable

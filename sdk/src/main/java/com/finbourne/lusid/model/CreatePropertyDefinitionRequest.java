@@ -224,7 +224,9 @@ public class CreatePropertyDefinitionRequest {
     
     SETTLEMENTINSTRUCTION("SettlementInstruction"),
     
-    TRANSACTIONFEETYPE("TransactionFeeType");
+    TRANSACTIONFEETYPE("TransactionFeeType"),
+    
+    TRANSACTIONFEE("TransactionFee");
 
     private String value;
 

@@ -58,6 +58,7 @@ import com.finbourne.lusid.model.RevertValuationPointDataRequest;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
+import com.finbourne.lusid.model.UpdateValuationPointRequest;
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
@@ -12118,6 +12119,282 @@ public class FundsApi {
     public APIsetShareClassInstrumentsRequest setShareClassInstruments(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest) {
         return new APIsetShareClassInstrumentsRequest(scope, code, setShareClassInstrumentsRequest);
     }
+    private okhttp3.Call updateValuationPointCall(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return updateValuationPointCall(scope, code, updateValuationPointRequest, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateValuationPointCall(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateValuationPointRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateValuationPointValidateBeforeCall(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateValuationPoint(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateValuationPoint(Async)");
+        }
+
+        // verify the required parameter 'updateValuationPointRequest' is set
+        if (updateValuationPointRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateValuationPointRequest' when calling updateValuationPoint(Async)");
+        }
+
+        return updateValuationPointCall(scope, code, updateValuationPointRequest, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DiaryEntry> updateValuationPointWithHttpInfo(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = updateValuationPointValidateBeforeCall(scope, code, updateValuationPointRequest, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DiaryEntry> updateValuationPointWithHttpInfo(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateValuationPointValidateBeforeCall(scope, code, updateValuationPointRequest, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateValuationPointAsync(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateValuationPointValidateBeforeCall(scope, code, updateValuationPointRequest, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateValuationPointAsync(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateValuationPointValidateBeforeCall(scope, code, updateValuationPointRequest, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateValuationPointRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateValuationPointRequest updateValuationPointRequest;
+        private String navTypeCode;
+
+        private APIupdateValuationPointRequest(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateValuationPointRequest = updateValuationPointRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIupdateValuationPointRequest
+         */
+        public APIupdateValuationPointRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for updateValuationPoint
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateValuationPointCall(scope, code, updateValuationPointRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute updateValuationPoint request
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute() throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = updateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateValuationPoint request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = updateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateValuationPoint request with HTTP info returned
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
+            return updateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode);
+        }
+
+        /**
+         * Execute updateValuationPoint request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode, opts);
+        }
+
+        /**
+         * Execute updateValuationPoint request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
+            return updateValuationPointAsync(scope, code, updateValuationPointRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute updateValuationPoint request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateValuationPointAsync(scope, code, updateValuationPointRequest, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point.
+     * Updates an existing Valuation Point.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param updateValuationPointRequest The Valuation Point Estimate definition to upsert. (required)
+     * @return APIupdateValuationPointRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated estimated Valuation Point </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateValuationPointRequest updateValuationPoint(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest) {
+        return new APIupdateValuationPointRequest(scope, code, updateValuationPointRequest);
+    }
     private okhttp3.Call upsertBookmarkCall(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return upsertBookmarkCall(scope, code, upsertFundBookmarkRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
@@ -12638,7 +12915,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
-     * Insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     It is not possible to update an existing Valuation Point. As an alternative, the Valuation Point could be deleted and recreated.
+     * Insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param upsertValuationPointRequest The Valuation Point Estimate definition to upsert. (required)

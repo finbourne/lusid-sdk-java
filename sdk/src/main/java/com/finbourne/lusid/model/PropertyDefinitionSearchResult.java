@@ -437,7 +437,9 @@ public class PropertyDefinitionSearchResult {
     
     SETTLEMENTINSTRUCTION("SettlementInstruction"),
     
-    TRANSACTIONFEETYPE("TransactionFeeType");
+    TRANSACTIONFEETYPE("TransactionFeeType"),
+    
+    TRANSACTIONFEE("TransactionFee");
 
     private String value;
 
