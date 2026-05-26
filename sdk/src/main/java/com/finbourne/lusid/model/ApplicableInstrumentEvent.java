@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.GeneratedEventDiagnostics;
 import com.finbourne.lusid.model.InstrumentEventHolder;
+import com.finbourne.lusid.model.InstrumentEventInstruction;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Transaction;
 import com.finbourne.lusid.model.TransactionDiagnostics;
@@ -108,6 +109,14 @@ public class ApplicableInstrumentEvent {
   public static final String SERIALIZED_NAME_TRANSACTION_DIAGNOSTICS = "transactionDiagnostics";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_DIAGNOSTICS)
   private TransactionDiagnostics transactionDiagnostics;
+
+  public static final String SERIALIZED_NAME_APPLIED_INSTRUMENT_EVENT_INSTRUCTION = "appliedInstrumentEventInstruction";
+  @SerializedName(SERIALIZED_NAME_APPLIED_INSTRUMENT_EVENT_INSTRUCTION)
+  private InstrumentEventInstruction appliedInstrumentEventInstruction;
+
+  public static final String SERIALIZED_NAME_ELIGIBLE_BALANCE = "eligibleBalance";
+  @SerializedName(SERIALIZED_NAME_ELIGIBLE_BALANCE)
+  private java.math.BigDecimal eligibleBalance;
 
   public ApplicableInstrumentEvent() {
   }
@@ -393,6 +402,48 @@ public class ApplicableInstrumentEvent {
   }
 
 
+  public ApplicableInstrumentEvent appliedInstrumentEventInstruction(InstrumentEventInstruction appliedInstrumentEventInstruction) {
+    
+    this.appliedInstrumentEventInstruction = appliedInstrumentEventInstruction;
+    return this;
+  }
+
+   /**
+   * Get appliedInstrumentEventInstruction
+   * @return appliedInstrumentEventInstruction
+  **/
+  @jakarta.annotation.Nullable
+  public InstrumentEventInstruction getAppliedInstrumentEventInstruction() {
+    return appliedInstrumentEventInstruction;
+  }
+
+
+  public void setAppliedInstrumentEventInstruction(InstrumentEventInstruction appliedInstrumentEventInstruction) {
+    this.appliedInstrumentEventInstruction = appliedInstrumentEventInstruction;
+  }
+
+
+  public ApplicableInstrumentEvent eligibleBalance(java.math.BigDecimal eligibleBalance) {
+    
+    this.eligibleBalance = eligibleBalance;
+    return this;
+  }
+
+   /**
+   * Get eligibleBalance
+   * @return eligibleBalance
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getEligibleBalance() {
+    return eligibleBalance;
+  }
+
+
+  public void setEligibleBalance(java.math.BigDecimal eligibleBalance) {
+    this.eligibleBalance = eligibleBalance;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -415,7 +466,9 @@ public class ApplicableInstrumentEvent {
         Objects.equals(this.loadedEvent, applicableInstrumentEvent.loadedEvent) &&
         Objects.equals(this.appliedInstrumentEventInstructionId, applicableInstrumentEvent.appliedInstrumentEventInstructionId) &&
         Objects.equals(this.transactions, applicableInstrumentEvent.transactions) &&
-        Objects.equals(this.transactionDiagnostics, applicableInstrumentEvent.transactionDiagnostics);
+        Objects.equals(this.transactionDiagnostics, applicableInstrumentEvent.transactionDiagnostics) &&
+        Objects.equals(this.appliedInstrumentEventInstruction, applicableInstrumentEvent.appliedInstrumentEventInstruction) &&
+        (this.eligibleBalance.compareTo(applicableInstrumentEvent.getEligibleBalance()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -424,7 +477,7 @@ public class ApplicableInstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, generatedEventDiagnostics, loadedEvent, appliedInstrumentEventInstructionId, transactions, transactionDiagnostics);
+    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, generatedEventDiagnostics, loadedEvent, appliedInstrumentEventInstructionId, transactions, transactionDiagnostics, appliedInstrumentEventInstruction, eligibleBalance);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -451,6 +504,8 @@ public class ApplicableInstrumentEvent {
     sb.append("    appliedInstrumentEventInstructionId: ").append(toIndentedString(appliedInstrumentEventInstructionId)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    transactionDiagnostics: ").append(toIndentedString(transactionDiagnostics)).append("\n");
+    sb.append("    appliedInstrumentEventInstruction: ").append(toIndentedString(appliedInstrumentEventInstruction)).append("\n");
+    sb.append("    eligibleBalance: ").append(toIndentedString(eligibleBalance)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,6 +541,8 @@ public class ApplicableInstrumentEvent {
     openapiFields.add("appliedInstrumentEventInstructionId");
     openapiFields.add("transactions");
     openapiFields.add("transactionDiagnostics");
+    openapiFields.add("appliedInstrumentEventInstruction");
+    openapiFields.add("eligibleBalance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -567,6 +624,10 @@ public class ApplicableInstrumentEvent {
       // validate the optional field `transactionDiagnostics`
       if (jsonObj.get("transactionDiagnostics") != null && !jsonObj.get("transactionDiagnostics").isJsonNull()) {
         TransactionDiagnostics.validateJsonElement(jsonObj.get("transactionDiagnostics"));
+      }
+      // validate the optional field `appliedInstrumentEventInstruction`
+      if (jsonObj.get("appliedInstrumentEventInstruction") != null && !jsonObj.get("appliedInstrumentEventInstruction").isJsonNull()) {
+        InstrumentEventInstruction.validateJsonElement(jsonObj.get("appliedInstrumentEventInstruction"));
       }
   }
 

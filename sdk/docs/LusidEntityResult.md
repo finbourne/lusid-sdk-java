@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective-at timestamp for the entity | [optional] [default to OffsetDateTime]
 **entityType** | **String** | The type of the LUSID entity | [optional] [default to String]
 **scope** | **String** | The scope of the entity | [optional] [default to String]
+**code** | **String** | The code of the entity. Populated for scope+code entities (e.g. Portfolio). Null for identifier-based entities (e.g. Instrument). | [optional] [default to String]
 **identifierKey** | **String** | The identifier key for the entity | [optional] [default to String]
 **identifierValue** | **String** | The identifier value for the entity | [optional] [default to String]
 **entityUniqueId** | **String** | The unique identifier for the entity | [optional] [default to String]
@@ -24,6 +25,7 @@ OffsetDateTime AsAt = OffsetDateTime.now();
 OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable String EntityType = "example EntityType";
 @jakarta.annotation.Nullable String Scope = "example Scope";
+@jakarta.annotation.Nullable String Code = "example Code";
 @jakarta.annotation.Nullable String IdentifierKey = "example IdentifierKey";
 @jakarta.annotation.Nullable String IdentifierValue = "example IdentifierValue";
 @jakarta.annotation.Nullable String EntityUniqueId = "example EntityUniqueId";
@@ -35,6 +37,7 @@ LusidEntityResult lusidEntityResultInstance = new LusidEntityResult()
     .EffectiveAt(EffectiveAt)
     .EntityType(EntityType)
     .Scope(Scope)
+    .Code(Code)
     .IdentifierKey(IdentifierKey)
     .IdentifierValue(IdentifierValue)
     .EntityUniqueId(EntityUniqueId)

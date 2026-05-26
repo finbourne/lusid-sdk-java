@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.NavSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -76,6 +77,10 @@ public class NavTypeDefinition {
   public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
   @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
   private List<String> cleardownModuleCodes;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CONFIGURATION = "settlementConfiguration";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
+  private NavSettlementConfiguration settlementConfiguration;
 
   public static final String SERIALIZED_NAME_VALUATION_RECIPE_ID = "valuationRecipeId";
   @SerializedName(SERIALIZED_NAME_VALUATION_RECIPE_ID)
@@ -259,6 +264,27 @@ public class NavTypeDefinition {
 
   public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
     this.cleardownModuleCodes = cleardownModuleCodes;
+  }
+
+
+  public NavTypeDefinition settlementConfiguration(NavSettlementConfiguration settlementConfiguration) {
+    
+    this.settlementConfiguration = settlementConfiguration;
+    return this;
+  }
+
+   /**
+   * Get settlementConfiguration
+   * @return settlementConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public NavSettlementConfiguration getSettlementConfiguration() {
+    return settlementConfiguration;
+  }
+
+
+  public void setSettlementConfiguration(NavSettlementConfiguration settlementConfiguration) {
+    this.settlementConfiguration = settlementConfiguration;
   }
 
 
@@ -496,6 +522,7 @@ public class NavTypeDefinition {
         Objects.equals(this.chartOfAccountsId, navTypeDefinition.chartOfAccountsId) &&
         Objects.equals(this.postingModuleCodes, navTypeDefinition.postingModuleCodes) &&
         Objects.equals(this.cleardownModuleCodes, navTypeDefinition.cleardownModuleCodes) &&
+        Objects.equals(this.settlementConfiguration, navTypeDefinition.settlementConfiguration) &&
         Objects.equals(this.valuationRecipeId, navTypeDefinition.valuationRecipeId) &&
         Objects.equals(this.holdingRecipeId, navTypeDefinition.holdingRecipeId) &&
         Objects.equals(this.accountingMethod, navTypeDefinition.accountingMethod) &&
@@ -514,7 +541,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -534,6 +561,7 @@ public class NavTypeDefinition {
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
     sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
+    sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    valuationRecipeId: ").append(toIndentedString(valuationRecipeId)).append("\n");
     sb.append("    holdingRecipeId: ").append(toIndentedString(holdingRecipeId)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
@@ -572,6 +600,7 @@ public class NavTypeDefinition {
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("postingModuleCodes");
     openapiFields.add("cleardownModuleCodes");
+    openapiFields.add("settlementConfiguration");
     openapiFields.add("valuationRecipeId");
     openapiFields.add("holdingRecipeId");
     openapiFields.add("accountingMethod");
@@ -632,6 +661,10 @@ public class NavTypeDefinition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
+      }
+      // validate the optional field `settlementConfiguration`
+      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
+        NavSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       }
       // validate the required field `valuationRecipeId`
       ResourceId.validateJsonElement(jsonObj.get("valuationRecipeId"));

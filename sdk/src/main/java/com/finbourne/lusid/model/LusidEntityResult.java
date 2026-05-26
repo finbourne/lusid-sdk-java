@@ -67,6 +67,10 @@ public class LusidEntityResult {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
 
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
   public static final String SERIALIZED_NAME_IDENTIFIER_KEY = "identifierKey";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_KEY)
   private String identifierKey;
@@ -170,6 +174,27 @@ public class LusidEntityResult {
   }
 
 
+  public LusidEntityResult code(String code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * The code of the entity. Populated for scope+code entities (e.g. Portfolio). Null for identifier-based entities (e.g. Instrument).
+   * @return code
+  **/
+  @jakarta.annotation.Nullable
+  public String getCode() {
+    return code;
+  }
+
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+
   public LusidEntityResult identifierKey(String identifierKey) {
     
     this.identifierKey = identifierKey;
@@ -268,6 +293,7 @@ public class LusidEntityResult {
         Objects.equals(this.effectiveAt, lusidEntityResult.effectiveAt) &&
         Objects.equals(this.entityType, lusidEntityResult.entityType) &&
         Objects.equals(this.scope, lusidEntityResult.scope) &&
+        Objects.equals(this.code, lusidEntityResult.code) &&
         Objects.equals(this.identifierKey, lusidEntityResult.identifierKey) &&
         Objects.equals(this.identifierValue, lusidEntityResult.identifierValue) &&
         Objects.equals(this.entityUniqueId, lusidEntityResult.entityUniqueId) &&
@@ -280,7 +306,7 @@ public class LusidEntityResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, effectiveAt, entityType, scope, identifierKey, identifierValue, entityUniqueId, displayName);
+    return Objects.hash(asAt, effectiveAt, entityType, scope, code, identifierKey, identifierValue, entityUniqueId, displayName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -298,6 +324,7 @@ public class LusidEntityResult {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    identifierKey: ").append(toIndentedString(identifierKey)).append("\n");
     sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
@@ -328,6 +355,7 @@ public class LusidEntityResult {
     openapiFields.add("effectiveAt");
     openapiFields.add("entityType");
     openapiFields.add("scope");
+    openapiFields.add("code");
     openapiFields.add("identifierKey");
     openapiFields.add("identifierValue");
     openapiFields.add("entityUniqueId");
@@ -355,6 +383,9 @@ public class LusidEntityResult {
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("identifierKey") != null && !jsonObj.get("identifierKey").isJsonNull()) && !jsonObj.get("identifierKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifierKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierKey").toString()));

@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.CashOfferElection;
 import com.finbourne.lusid.model.EventDateRange;
 import com.finbourne.lusid.model.InstrumentEvent;
+import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.SecurityOfferElection;
 import com.google.gson.TypeAdapter;
@@ -79,6 +80,10 @@ public class ConversionEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_MARKET_DEADLINE_DATE)
   private OffsetDateTime marketDeadlineDate;
 
+  public static final String SERIALIZED_NAME_EFFECTIVE_DATE = "effectiveDate";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_DATE)
+  private OffsetDateTime effectiveDate;
+
   public static final String SERIALIZED_NAME_PERIOD_OF_ACTION = "periodOfAction";
   @SerializedName(SERIALIZED_NAME_PERIOD_OF_ACTION)
   private EventDateRange periodOfAction;
@@ -102,6 +107,10 @@ public class ConversionEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_CASH_OFFER_ELECTIONS = "cashOfferElections";
   @SerializedName(SERIALIZED_NAME_CASH_OFFER_ELECTIONS)
   private List<CashOfferElection> cashOfferElections;
+
+  public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
+  @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
+  private List<LapseElection> lapseElections;
 
   public ConversionEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -209,6 +218,27 @@ public class ConversionEvent extends InstrumentEvent {
 
   public void setMarketDeadlineDate(OffsetDateTime marketDeadlineDate) {
     this.marketDeadlineDate = marketDeadlineDate;
+  }
+
+
+  public ConversionEvent effectiveDate(OffsetDateTime effectiveDate) {
+    
+    this.effectiveDate = effectiveDate;
+    return this;
+  }
+
+   /**
+   * Date which establishes when the conversion is recognised.
+   * @return effectiveDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveDate() {
+    return effectiveDate;
+  }
+
+
+  public void setEffectiveDate(OffsetDateTime effectiveDate) {
+    this.effectiveDate = effectiveDate;
   }
 
 
@@ -362,6 +392,35 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
 
+  public ConversionEvent lapseElections(List<LapseElection> lapseElections) {
+    
+    this.lapseElections = lapseElections;
+    return this;
+  }
+
+  public ConversionEvent addLapseElectionsItem(LapseElection lapseElectionsItem) {
+    if (this.lapseElections == null) {
+      this.lapseElections = new ArrayList<>();
+    }
+    this.lapseElections.add(lapseElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible lapse elections for this conversion event. There must be at most one election of this type.    If provided, the holder is not entitled to receive anything for the conversion.
+   * @return lapseElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<LapseElection> getLapseElections() {
+    return lapseElections;
+  }
+
+
+  public void setLapseElections(List<LapseElection> lapseElections) {
+    this.lapseElections = lapseElections;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -377,12 +436,14 @@ public class ConversionEvent extends InstrumentEvent {
         Objects.equals(this.newInstrument, conversionEvent.newInstrument) &&
         Objects.equals(this.responseDeadlineDate, conversionEvent.responseDeadlineDate) &&
         Objects.equals(this.marketDeadlineDate, conversionEvent.marketDeadlineDate) &&
+        Objects.equals(this.effectiveDate, conversionEvent.effectiveDate) &&
         Objects.equals(this.periodOfAction, conversionEvent.periodOfAction) &&
         (this.fractionalUnitsCashPrice.compareTo(conversionEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.fractionalUnitsCashCurrency, conversionEvent.fractionalUnitsCashCurrency) &&
         Objects.equals(this.securityOfferElections, conversionEvent.securityOfferElections) &&
         Objects.equals(this.cashAndSecurityOfferElections, conversionEvent.cashAndSecurityOfferElections) &&
         Objects.equals(this.cashOfferElections, conversionEvent.cashOfferElections) &&
+        Objects.equals(this.lapseElections, conversionEvent.lapseElections) &&
         super.equals(o);
   }
 
@@ -392,7 +453,7 @@ public class ConversionEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recordDate, paymentDate, newInstrument, responseDeadlineDate, marketDeadlineDate, periodOfAction, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, super.hashCode());
+    return Objects.hash(recordDate, paymentDate, newInstrument, responseDeadlineDate, marketDeadlineDate, effectiveDate, periodOfAction, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, lapseElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -412,12 +473,14 @@ public class ConversionEvent extends InstrumentEvent {
     sb.append("    newInstrument: ").append(toIndentedString(newInstrument)).append("\n");
     sb.append("    responseDeadlineDate: ").append(toIndentedString(responseDeadlineDate)).append("\n");
     sb.append("    marketDeadlineDate: ").append(toIndentedString(marketDeadlineDate)).append("\n");
+    sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    periodOfAction: ").append(toIndentedString(periodOfAction)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
     sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
     sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
     sb.append("    cashOfferElections: ").append(toIndentedString(cashOfferElections)).append("\n");
+    sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -446,12 +509,14 @@ public class ConversionEvent extends InstrumentEvent {
     openapiFields.add("newInstrument");
     openapiFields.add("responseDeadlineDate");
     openapiFields.add("marketDeadlineDate");
+    openapiFields.add("effectiveDate");
     openapiFields.add("periodOfAction");
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("fractionalUnitsCashCurrency");
     openapiFields.add("securityOfferElections");
     openapiFields.add("cashAndSecurityOfferElections");
     openapiFields.add("cashOfferElections");
+    openapiFields.add("lapseElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

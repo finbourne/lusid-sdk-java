@@ -10,12 +10,14 @@ Name | Type | Description | Notes
 **newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [default to NewInstrument]
 **responseDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date/time that the account servicer has set as the deadline to respond,  with instructions, to an outstanding event. Not required. | [optional] [default to OffsetDateTime]
 **marketDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date/time which the issuer or issuer&#39;s agent has set as the deadline to respond,  with an instruction, to an outstanding offer or privilege. Not required. | [optional] [default to OffsetDateTime]
+**effectiveDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date which establishes when the conversion is recognised. | [optional] [default to OffsetDateTime]
 **periodOfAction** | [**EventDateRange**](EventDateRange.md) |  | [optional] [default to EventDateRange]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. Not required.  If provided, must have FractionalUnitsCashCurrency too. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. Not required.  If provided, must have FractionalUnitsCashPrice too. | [optional] [default to String]
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:     This list must have exactly one election that is chosen and default.  CashAndSecurityOfferElections and CashOfferElections &lt;b&gt; must be null or empty&lt;/b&gt;.     If the ParticipationType is Voluntary:     This list can be empty,  so long as CashAndSecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<SecurityOfferElection>]
 **cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible cash and security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<CashAndSecurityOfferElection>]
 **cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible cash offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashAndSecurityOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<CashOfferElection>]
+**lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this conversion event. There must be at most one election of this type.    If provided, the holder is not entitled to receive anything for the conversion. | [optional] [default to List<LapseElection>]
 
 ```java
 import com.finbourne.lusid.model.ConversionEvent;
@@ -28,12 +30,14 @@ OffsetDateTime PaymentDate = OffsetDateTime.now();
 NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable OffsetDateTime ResponseDeadlineDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime MarketDeadlineDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EffectiveDate = OffsetDateTime.now();
 EventDateRange PeriodOfAction = new EventDateRange();
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashAndSecurityOfferElection> CashAndSecurityOfferElections = new List<CashAndSecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
+@jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
 
 
 ConversionEvent conversionEventInstance = new ConversionEvent()
@@ -42,12 +46,14 @@ ConversionEvent conversionEventInstance = new ConversionEvent()
     .NewInstrument(NewInstrument)
     .ResponseDeadlineDate(ResponseDeadlineDate)
     .MarketDeadlineDate(MarketDeadlineDate)
+    .EffectiveDate(EffectiveDate)
     .PeriodOfAction(PeriodOfAction)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
     .SecurityOfferElections(SecurityOfferElections)
     .CashAndSecurityOfferElections(CashAndSecurityOfferElections)
-    .CashOfferElections(CashOfferElections);
+    .CashOfferElections(CashOfferElections)
+    .LapseElections(LapseElections);
 ```
 
 

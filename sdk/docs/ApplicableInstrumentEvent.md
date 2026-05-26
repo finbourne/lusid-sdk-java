@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **appliedInstrumentEventInstructionId** | **String** |  | [optional] [default to String]
 **transactions** | [**List&lt;Transaction&gt;**](Transaction.md) |  | [optional] [default to List<Transaction>]
 **transactionDiagnostics** | [**TransactionDiagnostics**](TransactionDiagnostics.md) |  | [optional] [default to TransactionDiagnostics]
+**appliedInstrumentEventInstruction** | [**InstrumentEventInstruction**](InstrumentEventInstruction.md) |  | [optional] [default to InstrumentEventInstruction]
+**eligibleBalance** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.ApplicableInstrumentEvent;
@@ -38,6 +40,8 @@ InstrumentEventHolder LoadedEvent = new InstrumentEventHolder();
 @jakarta.annotation.Nullable String AppliedInstrumentEventInstructionId = "example AppliedInstrumentEventInstructionId";
 @jakarta.annotation.Nullable List<Transaction> Transactions = new List<Transaction>();
 TransactionDiagnostics TransactionDiagnostics = new TransactionDiagnostics();
+InstrumentEventInstruction AppliedInstrumentEventInstruction = new InstrumentEventInstruction();
+@jakarta.annotation.Nullable java.math.BigDecimal EligibleBalance = new java.math.BigDecimal("100.00");
 
 
 ApplicableInstrumentEvent applicableInstrumentEventInstance = new ApplicableInstrumentEvent()
@@ -53,7 +57,9 @@ ApplicableInstrumentEvent applicableInstrumentEventInstance = new ApplicableInst
     .LoadedEvent(LoadedEvent)
     .AppliedInstrumentEventInstructionId(AppliedInstrumentEventInstructionId)
     .Transactions(Transactions)
-    .TransactionDiagnostics(TransactionDiagnostics);
+    .TransactionDiagnostics(TransactionDiagnostics)
+    .AppliedInstrumentEventInstruction(AppliedInstrumentEventInstruction)
+    .EligibleBalance(EligibleBalance);
 ```
 
 
