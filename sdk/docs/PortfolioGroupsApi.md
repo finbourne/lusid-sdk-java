@@ -1230,7 +1230,7 @@ public class PortfolioGroupsApiExample {
 
 ## getPortfolioGroup
 
-> PortfolioGroup getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds)
+> PortfolioGroup getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys)
 
 GetPortfolioGroup: Get portfolio group
 
@@ -1281,11 +1281,12 @@ public class PortfolioGroupsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return   the latest version of the portfolio group definition if not specified.
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'PortfolioGroup' domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. 'PortfolioGroup/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
-            // PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+            // PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute(opts);
 
-            PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
+            PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroup");
@@ -1308,6 +1309,7 @@ public class PortfolioGroupsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio group definition. Defaults to return   the latest version of the portfolio group definition if not specified. | [optional] |
 | **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -2149,7 +2151,7 @@ public class PortfolioGroupsApiExample {
 
 ## listAllPortfolioGroups
 
-> PagedResourceListOfPortfolioGroup listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds)
+> PagedResourceListOfPortfolioGroup listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys)
 
 ListAllPortfolioGroups: List all portfolio groups
 
@@ -2202,11 +2204,12 @@ public class PortfolioGroupsApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'PortfolioGroup' domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. 'PortfolioGroup/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfPortfolioGroup result = apiInstance.listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+            // PagedResourceListOfPortfolioGroup result = apiInstance.listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute(opts);
 
-            PagedResourceListOfPortfolioGroup result = apiInstance.listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
+            PagedResourceListOfPortfolioGroup result = apiInstance.listAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfolioGroupsApi#listAllPortfolioGroups");
@@ -2231,6 +2234,7 @@ public class PortfolioGroupsApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -2254,7 +2258,7 @@ public class PortfolioGroupsApiExample {
 
 ## listPortfolioGroups
 
-> PagedResourceListOfPortfolioGroup listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds)
+> PagedResourceListOfPortfolioGroup listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys)
 
 ListPortfolioGroups: List portfolio groups
 
@@ -2308,11 +2312,12 @@ public class PortfolioGroupsApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'PortfolioGroup' domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. 'PortfolioGroup/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+            // PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute(opts);
 
-            PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
+            PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfolioGroupsApi#listPortfolioGroups");
@@ -2338,6 +2343,7 @@ public class PortfolioGroupsApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. | [optional] |
 
 ### Return type
 

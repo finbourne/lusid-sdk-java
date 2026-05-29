@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  | [default to Version]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
 **leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]
+**dateOfLastPcaScan** | [**OffsetDateTime**](OffsetDateTime.md) | The last date a PCA scan was conducted for a Valuation Point | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.FinalisedValuationPoint;
@@ -47,6 +48,7 @@ Boolean ApplyClearDown = true;
 Version Version = new Version();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
+@jakarta.annotation.Nullable OffsetDateTime DateOfLastPcaScan = OffsetDateTime.now();
 
 
 FinalisedValuationPoint finalisedValuationPointInstance = new FinalisedValuationPoint()
@@ -67,7 +69,8 @@ FinalisedValuationPoint finalisedValuationPointInstance = new FinalisedValuation
     .Properties(Properties)
     .Version(Version)
     .Href(Href)
-    .LeaderNavTypeCode(LeaderNavTypeCode);
+    .LeaderNavTypeCode(LeaderNavTypeCode)
+    .DateOfLastPcaScan(DateOfLastPcaScan);
 ```
 
 

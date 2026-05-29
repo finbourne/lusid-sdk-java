@@ -224,6 +224,8 @@ public class CreateDerivedPropertyDefinitionRequest {
     
     TRANSACTIONFEETYPE("TransactionFeeType"),
     
+    ALLOCATIONMETHOD("AllocationMethod"),
+    
     TRANSACTIONFEE("TransactionFee");
 
     private String value;

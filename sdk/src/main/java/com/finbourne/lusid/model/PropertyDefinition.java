@@ -444,6 +444,8 @@ public class PropertyDefinition {
     
     TRANSACTIONFEETYPE("TransactionFeeType"),
     
+    ALLOCATIONMETHOD("AllocationMethod"),
+    
     TRANSACTIONFEE("TransactionFee");
 
     private String value;

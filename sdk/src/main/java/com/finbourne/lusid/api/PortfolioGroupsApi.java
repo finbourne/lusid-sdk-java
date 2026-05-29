@@ -3535,11 +3535,11 @@ public class PortfolioGroupsApi {
     public APIgetHoldingsForPortfolioGroupRequest getHoldingsForPortfolioGroup(String scope, String code) {
         return new APIgetHoldingsForPortfolioGroupRequest(scope, code);
     }
-    private okhttp3.Call getPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioGroupCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3582,6 +3582,10 @@ public class PortfolioGroupsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3604,7 +3608,7 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioGroupValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioGroupValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioGroup(Async)");
@@ -3615,34 +3619,34 @@ public class PortfolioGroupsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioGroup(Async)");
         }
 
-        return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PortfolioGroup> getPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<PortfolioGroup> getPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PortfolioGroup> getPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, null, opts);
+    private ApiResponse<PortfolioGroup> getPortfolioGroupWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PortfolioGroup> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PortfolioGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioGroupAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = getPortfolioGroupValidateBeforeCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3655,6 +3659,7 @@ public class PortfolioGroupsApi {
         private OffsetDateTime asAt;
         private List<String> relatedEntityPropertyKeys;
         private List<String> relationshipDefinitionIds;
+        private List<String> propertyKeys;
 
         private APIgetPortfolioGroupRequest(String scope, String code) {
             this.scope = scope;
@@ -3702,6 +3707,16 @@ public class PortfolioGroupsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. (optional)
+         * @return APIgetPortfolioGroupRequest
+         */
+        public APIgetPortfolioGroupRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for getPortfolioGroup
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3715,7 +3730,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return getPortfolioGroupCall(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -3731,7 +3746,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PortfolioGroup execute() throws ApiException {
-            ApiResponse<PortfolioGroup> localVarResp = getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            ApiResponse<PortfolioGroup> localVarResp = getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -3748,7 +3763,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PortfolioGroup execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PortfolioGroup> localVarResp = getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            ApiResponse<PortfolioGroup> localVarResp = getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -3765,7 +3780,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PortfolioGroup> executeWithHttpInfo() throws ApiException {
-            return getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
         }
 
         /**
@@ -3781,7 +3796,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PortfolioGroup> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            return getPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
         }
 
         /**
@@ -3798,7 +3813,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioGroup> _callback) throws ApiException {
-            return getPortfolioGroupAsync(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return getPortfolioGroupAsync(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -3815,7 +3830,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPortfolioGroupAsync(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+            return getPortfolioGroupAsync(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         }
     }
 
@@ -6310,11 +6325,11 @@ public class PortfolioGroupsApi {
     public APIgetTransactionsForPortfolioGroupRequest getTransactionsForPortfolioGroup(String scope, String code) {
         return new APIgetTransactionsForPortfolioGroupRequest(scope, code);
     }
-    private okhttp3.Call listAllPortfolioGroupsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listAllPortfolioGroupsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listAllPortfolioGroupsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listAllPortfolioGroupsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6371,6 +6386,10 @@ public class PortfolioGroupsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -6393,35 +6412,35 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllPortfolioGroupsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+    private okhttp3.Call listAllPortfolioGroupsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfPortfolioGroup> listAllPortfolioGroupsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfPortfolioGroup> listAllPortfolioGroupsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfPortfolioGroup> listAllPortfolioGroupsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, null, opts);
+    private ApiResponse<PagedResourceListOfPortfolioGroup> listAllPortfolioGroupsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listAllPortfolioGroupsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
+    private okhttp3.Call listAllPortfolioGroupsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listAllPortfolioGroupsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listAllPortfolioGroupsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = listAllPortfolioGroupsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6436,6 +6455,7 @@ public class PortfolioGroupsApi {
         private List<String> sortBy;
         private List<String> relatedEntityPropertyKeys;
         private List<String> relationshipDefinitionIds;
+        private List<String> propertyKeys;
 
         private APIlistAllPortfolioGroupsRequest() {
         }
@@ -6521,6 +6541,16 @@ public class PortfolioGroupsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. (optional)
+         * @return APIlistAllPortfolioGroupsRequest
+         */
+        public APIlistAllPortfolioGroupsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for listAllPortfolioGroups
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6534,7 +6564,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listAllPortfolioGroupsCall(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -6550,7 +6580,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PagedResourceListOfPortfolioGroup execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -6567,7 +6597,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PagedResourceListOfPortfolioGroup execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -6584,7 +6614,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPortfolioGroup> executeWithHttpInfo() throws ApiException {
-            return listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
         }
 
         /**
@@ -6600,7 +6630,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPortfolioGroup> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            return listAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
         }
 
         /**
@@ -6617,7 +6647,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
-            return listAllPortfolioGroupsAsync(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listAllPortfolioGroupsAsync(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -6634,7 +6664,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
-            return listAllPortfolioGroupsAsync(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+            return listAllPortfolioGroupsAsync(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         }
     }
 
@@ -6653,11 +6683,11 @@ public class PortfolioGroupsApi {
     public APIlistAllPortfolioGroupsRequest listAllPortfolioGroups() {
         return new APIlistAllPortfolioGroupsRequest();
     }
-    private okhttp3.Call listPortfolioGroupsCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listPortfolioGroupsCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listPortfolioGroupsCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listPortfolioGroupsCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6715,6 +6745,10 @@ public class PortfolioGroupsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -6737,40 +6771,40 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfolioGroupsValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listPortfolioGroupsValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPortfolioGroups(Async)");
         }
 
-        return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfPortfolioGroup> listPortfolioGroupsWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfPortfolioGroup> listPortfolioGroupsWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfPortfolioGroup> listPortfolioGroupsWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, null, opts);
+    private ApiResponse<PagedResourceListOfPortfolioGroup> listPortfolioGroupsWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPortfolioGroupsAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
+    private okhttp3.Call listPortfolioGroupsAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listPortfolioGroupsAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listPortfolioGroupsAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = listPortfolioGroupsValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6786,6 +6820,7 @@ public class PortfolioGroupsApi {
         private List<String> sortBy;
         private List<String> relatedEntityPropertyKeys;
         private List<String> relationshipDefinitionIds;
+        private List<String> propertyKeys;
 
         private APIlistPortfolioGroupsRequest(String scope) {
             this.scope = scope;
@@ -6872,6 +6907,16 @@ public class PortfolioGroupsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. (optional)
+         * @return APIlistPortfolioGroupsRequest
+         */
+        public APIlistPortfolioGroupsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for listPortfolioGroups
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6885,7 +6930,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfolioGroupsCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -6901,7 +6946,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PagedResourceListOfPortfolioGroup execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -6918,7 +6963,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public PagedResourceListOfPortfolioGroup execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            ApiResponse<PagedResourceListOfPortfolioGroup> localVarResp = listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -6935,7 +6980,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPortfolioGroup> executeWithHttpInfo() throws ApiException {
-            return listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
         }
 
         /**
@@ -6951,7 +6996,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfPortfolioGroup> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            return listPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
         }
 
         /**
@@ -6968,7 +7013,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroup> _callback) throws ApiException {
-            return listPortfolioGroupsAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listPortfolioGroupsAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -6985,7 +7030,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroup> _callback, ConfigurationOptions opts) throws ApiException {
-            return listPortfolioGroupsAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+            return listPortfolioGroupsAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         }
     }
 

@@ -309,7 +309,7 @@ public class Block {
    * The block order&#39;s type (examples: Limit, Market, ...)
    * @return type
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getType() {
     return type;
   }
@@ -330,7 +330,7 @@ public class Block {
    * The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)
    * @return timeInForce
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getTimeInForce() {
     return timeInForce;
   }
@@ -607,8 +607,6 @@ public class Block {
     openapiRequiredFields.add("lusidInstrumentId");
     openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("timeInForce");
     openapiRequiredFields.add("createdDate");
     openapiRequiredFields.add("isSwept");
   }
@@ -651,10 +649,10 @@ public class Block {
       if (!jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if (!jsonObj.get("timeInForce").isJsonPrimitive()) {
+      if ((jsonObj.get("timeInForce") != null && !jsonObj.get("timeInForce").isJsonNull()) && !jsonObj.get("timeInForce").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timeInForce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeInForce").toString()));
       }
       // validate the optional field `limitPrice`

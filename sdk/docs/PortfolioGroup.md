@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date. | [optional] [default to OffsetDateTime]
 **portfolios** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The collection of resource identifiers for the portfolios contained in the portfolio group. | [optional] [default to List<ResourceId>]
 **subGroups** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups. | [optional] [default to List<ResourceId>]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys. | [optional] [default to Map<String, Property>]
 **relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the portfolio group. | [optional] [default to List<Relationship>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
@@ -28,6 +29,7 @@ String DisplayName = "example DisplayName";
 OffsetDateTime Created = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<ResourceId> Portfolios = new List<ResourceId>();
 @jakarta.annotation.Nullable List<ResourceId> SubGroups = new List<ResourceId>();
+@jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable List<Relationship> Relationships = new List<Relationship>();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
@@ -41,6 +43,7 @@ PortfolioGroup portfolioGroupInstance = new PortfolioGroup()
     .Created(Created)
     .Portfolios(Portfolios)
     .SubGroups(SubGroups)
+    .Properties(Properties)
     .Relationships(Relationships)
     .Version(Version)
     .Links(Links);

@@ -193,6 +193,8 @@ public enum PropertyDomain {
   
   TRANSACTIONFEETYPE("TransactionFeeType"),
   
+  ALLOCATIONMETHOD("AllocationMethod"),
+  
   TRANSACTIONFEE("TransactionFee");
 
   private String value;

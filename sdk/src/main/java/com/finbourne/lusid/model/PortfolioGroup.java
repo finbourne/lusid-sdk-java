@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
@@ -25,7 +26,9 @@ import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -85,6 +88,10 @@ public class PortfolioGroup {
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
   private List<ResourceId> subGroups;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
   @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
@@ -264,6 +271,35 @@ public class PortfolioGroup {
   }
 
 
+  public PortfolioGroup properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public PortfolioGroup putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
   public PortfolioGroup relationships(List<Relationship> relationships) {
     
     this.relationships = relationships;
@@ -360,6 +396,7 @@ public class PortfolioGroup {
         Objects.equals(this.created, portfolioGroup.created) &&
         Objects.equals(this.portfolios, portfolioGroup.portfolios) &&
         Objects.equals(this.subGroups, portfolioGroup.subGroups) &&
+        Objects.equals(this.properties, portfolioGroup.properties) &&
         Objects.equals(this.relationships, portfolioGroup.relationships) &&
         Objects.equals(this.version, portfolioGroup.version) &&
         Objects.equals(this.links, portfolioGroup.links);
@@ -371,7 +408,7 @@ public class PortfolioGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, created, portfolios, subGroups, relationships, version, links);
+    return Objects.hash(href, id, displayName, description, created, portfolios, subGroups, properties, relationships, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -392,6 +429,7 @@ public class PortfolioGroup {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    portfolios: ").append(toIndentedString(portfolios)).append("\n");
     sb.append("    subGroups: ").append(toIndentedString(subGroups)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -424,6 +462,7 @@ public class PortfolioGroup {
     openapiFields.add("created");
     openapiFields.add("portfolios");
     openapiFields.add("subGroups");
+    openapiFields.add("properties");
     openapiFields.add("relationships");
     openapiFields.add("version");
     openapiFields.add("links");

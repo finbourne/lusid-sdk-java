@@ -232,6 +232,8 @@ public class IdentifierDefinition {
     
     TRANSACTIONFEETYPE("TransactionFeeType"),
     
+    ALLOCATIONMETHOD("AllocationMethod"),
+    
     TRANSACTIONFEE("TransactionFee");
 
     private String value;

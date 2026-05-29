@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **applyClearDown** | **Boolean** | Set to true if that closed period should have the clear down applied. | [optional] [default to Boolean]
 **leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]
 **variants** | [**List&lt;EstimateVariant&gt;**](EstimateVariant.md) | The variants of the Estimate Valuation Point.  | [optional] [default to List<EstimateVariant>]
+**dateOfLastPcaScan** | [**OffsetDateTime**](OffsetDateTime.md) | The last date a PCA scan was conducted for a Valuation Point | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.FundEstimateValuationPoint;
@@ -31,6 +32,7 @@ String EntryType = "example EntryType";
 Boolean ApplyClearDown = true;
 @jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
 @jakarta.annotation.Nullable List<EstimateVariant> Variants = new List<EstimateVariant>();
+@jakarta.annotation.Nullable OffsetDateTime DateOfLastPcaScan = OffsetDateTime.now();
 
 
 FundEstimateValuationPoint fundEstimateValuationPointInstance = new FundEstimateValuationPoint()
@@ -43,7 +45,8 @@ FundEstimateValuationPoint fundEstimateValuationPointInstance = new FundEstimate
     .Status(Status)
     .ApplyClearDown(ApplyClearDown)
     .LeaderNavTypeCode(LeaderNavTypeCode)
-    .Variants(Variants);
+    .Variants(Variants)
+    .DateOfLastPcaScan(DateOfLastPcaScan);
 ```
 
 

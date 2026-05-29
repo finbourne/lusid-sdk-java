@@ -146,6 +146,10 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
   @SerializedName(SERIALIZED_NAME_VARIANTS)
   private List<EstimateVariant> variants;
 
+  public static final String SERIALIZED_NAME_DATE_OF_LAST_PCA_SCAN = "dateOfLastPcaScan";
+  @SerializedName(SERIALIZED_NAME_DATE_OF_LAST_PCA_SCAN)
+  private OffsetDateTime dateOfLastPcaScan;
+
   public FundEstimateValuationPoint() {
     // this.fundCalendarEntriesType = this.getClass().getSimpleName();
   }
@@ -368,6 +372,27 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
   }
 
 
+  public FundEstimateValuationPoint dateOfLastPcaScan(OffsetDateTime dateOfLastPcaScan) {
+    
+    this.dateOfLastPcaScan = dateOfLastPcaScan;
+    return this;
+  }
+
+   /**
+   * The last date a PCA scan was conducted for a Valuation Point
+   * @return dateOfLastPcaScan
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDateOfLastPcaScan() {
+    return dateOfLastPcaScan;
+  }
+
+
+  public void setDateOfLastPcaScan(OffsetDateTime dateOfLastPcaScan) {
+    this.dateOfLastPcaScan = dateOfLastPcaScan;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -388,6 +413,7 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
         Objects.equals(this.applyClearDown, fundEstimateValuationPoint.applyClearDown) &&
         Objects.equals(this.leaderNavTypeCode, fundEstimateValuationPoint.leaderNavTypeCode) &&
         Objects.equals(this.variants, fundEstimateValuationPoint.variants) &&
+        Objects.equals(this.dateOfLastPcaScan, fundEstimateValuationPoint.dateOfLastPcaScan) &&
         super.equals(o);
   }
 
@@ -397,7 +423,7 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, navTypeCode, timelineId, previousEntry, effectiveAt, entryType, status, applyClearDown, leaderNavTypeCode, variants, super.hashCode());
+    return Objects.hash(code, navTypeCode, timelineId, previousEntry, effectiveAt, entryType, status, applyClearDown, leaderNavTypeCode, variants, dateOfLastPcaScan, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -422,6 +448,7 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
     sb.append("    variants: ").append(toIndentedString(variants)).append("\n");
+    sb.append("    dateOfLastPcaScan: ").append(toIndentedString(dateOfLastPcaScan)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -455,6 +482,7 @@ public class FundEstimateValuationPoint extends FundCalendarEntries {
     openapiFields.add("applyClearDown");
     openapiFields.add("leaderNavTypeCode");
     openapiFields.add("variants");
+    openapiFields.add("dateOfLastPcaScan");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
