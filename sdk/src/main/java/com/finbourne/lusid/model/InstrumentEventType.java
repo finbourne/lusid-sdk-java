@@ -169,7 +169,9 @@ public enum InstrumentEventType {
   
   CONSENTEVENT("ConsentEvent"),
   
-  DRAWINGEVENT("DrawingEvent");
+  DRAWINGEVENT("DrawingEvent"),
+  
+  CAPITALGAINSDISTRIBUTIONEVENT("CapitalGainsDistributionEvent");
 
   private String value;
 

@@ -10,6 +10,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**createFundV2**](FundsApi.md#createFundV2) | **POST** /api/funds/v2/{scope} | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview). |
+| [**createValuationPoint**](FundsApi.md#createValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$create | [EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point. |
 | [**deactivateNavTypes**](FundsApi.md#deactivateNavTypes) | **POST** /api/funds/{scope}/{code}/deactivateNavTypes | [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund. |
 | [**deleteBookmark**](FundsApi.md#deleteBookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark. |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
@@ -617,6 +618,103 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The newly created Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## createValuationPoint
+
+> ValuationPoint createValuationPoint(scope, code, createValuationPointRequest, navTypeCode)
+
+[EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point.
+
+Insert the estimate Valuation Point.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        CreateValuationPointRequest createValuationPointRequest = new CreateValuationPointRequest(); // CreateValuationPointRequest | The Valuation Point Estimate definition to create.
+        String navTypeCode = "navTypeCode_example"; // String | When provided, creates the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ValuationPoint result = apiInstance.createValuationPoint(scope, code, createValuationPointRequest, navTypeCode).execute(opts);
+
+            ValuationPoint result = apiInstance.createValuationPoint(scope, code, createValuationPointRequest, navTypeCode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#createValuationPoint");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **createValuationPointRequest** | [**CreateValuationPointRequest**](CreateValuationPointRequest.md)| The Valuation Point Estimate definition to create. | |
+| **navTypeCode** | **String**| When provided, creates the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+
+### Return type
+
+[**ValuationPoint**](ValuationPoint.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The created estimated Valuation Point |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -4103,7 +4201,7 @@ public class FundsApiExample {
 
 ## updateValuationPoint
 
-> DiaryEntry updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode)
+> ValuationPoint updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode)
 
 [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point.
 
@@ -4154,9 +4252,9 @@ public class FundsApiExample {
         String navTypeCode = "navTypeCode_example"; // String | When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // DiaryEntry result = apiInstance.updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode).execute(opts);
+            // ValuationPoint result = apiInstance.updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode).execute(opts);
 
-            DiaryEntry result = apiInstance.updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode).execute();
+            ValuationPoint result = apiInstance.updateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#updateValuationPoint");
@@ -4180,7 +4278,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**DiaryEntry**](DiaryEntry.md)
+[**ValuationPoint**](ValuationPoint.md)
 
 ### HTTP request headers
 

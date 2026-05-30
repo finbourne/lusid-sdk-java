@@ -246,6 +246,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**createFee**](docs/FundsApi.md#createfee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee.
 *FundsApi* | [**createFund**](docs/FundsApi.md#createfund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund.
 *FundsApi* | [**createFundV2**](docs/FundsApi.md#createfundv2) | **POST** /api/funds/v2/{scope} | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+*FundsApi* | [**createValuationPoint**](docs/FundsApi.md#createvaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$create | [EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point.
 *FundsApi* | [**deactivateNavTypes**](docs/FundsApi.md#deactivatenavtypes) | **POST** /api/funds/{scope}/{code}/deactivateNavTypes | [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund.
 *FundsApi* | [**deleteBookmark**](docs/FundsApi.md#deletebookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
 *FundsApi* | [**deleteFee**](docs/FundsApi.md#deletefee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee.
@@ -863,6 +864,7 @@ Class | Method | HTTP request | Description
  - [CancelledPlacementResult](docs/CancelledPlacementResult.md)
  - [CapFloor](docs/CapFloor.md)
  - [CapitalDistributionEvent](docs/CapitalDistributionEvent.md)
+ - [CapitalGainsDistributionEvent](docs/CapitalGainsDistributionEvent.md)
  - [CapletFloorletCashFlowEvent](docs/CapletFloorletCashFlowEvent.md)
  - [Cash](docs/Cash.md)
  - [CashAndSecurityOfferElection](docs/CashAndSecurityOfferElection.md)
@@ -1009,6 +1011,7 @@ Class | Method | HTTP request | Description
  - [CreateTransactionFeeTypeRequest](docs/CreateTransactionFeeTypeRequest.md)
  - [CreateTransactionPortfolioRequest](docs/CreateTransactionPortfolioRequest.md)
  - [CreateUnitDefinition](docs/CreateUnitDefinition.md)
+ - [CreateValuationPointRequest](docs/CreateValuationPointRequest.md)
  - [CreditDefaultSwap](docs/CreditDefaultSwap.md)
  - [CreditPremiumCashFlowEvent](docs/CreditPremiumCashFlowEvent.md)
  - [CreditRating](docs/CreditRating.md)
@@ -1617,6 +1620,7 @@ Class | Method | HTTP request | Description
  - [PreviousFundValuationPointData](docs/PreviousFundValuationPointData.md)
  - [PreviousNAV](docs/PreviousNAV.md)
  - [PreviousShareClassBreakdown](docs/PreviousShareClassBreakdown.md)
+ - [PreviousValuationPoint](docs/PreviousValuationPoint.md)
  - [PricingContext](docs/PricingContext.md)
  - [PricingModel](docs/PricingModel.md)
  - [PricingOptions](docs/PricingOptions.md)
@@ -2074,6 +2078,7 @@ Class | Method | HTTP request | Description
  - [UpsertTranslationScriptRequest](docs/UpsertTranslationScriptRequest.md)
  - [UpsertValuationPointRequest](docs/UpsertValuationPointRequest.md)
  - [User](docs/User.md)
+ - [ValuationPoint](docs/ValuationPoint.md)
  - [ValuationPointDataQueryParameters](docs/ValuationPointDataQueryParameters.md)
  - [ValuationPointDataRequest](docs/ValuationPointDataRequest.md)
  - [ValuationPointDataResponse](docs/ValuationPointDataResponse.md)

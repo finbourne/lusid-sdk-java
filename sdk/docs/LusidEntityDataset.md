@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt date to fetch the data. Nullable. Defaults to latest. | [optional] [default to OffsetDateTime]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effectiveAt date to fetch the data. Nullable. Defaults to latest. | [optional] [default to OffsetDateTime]
-**scope** | **String** | The scope of the entities to check. Required. | [optional] [default to String]
+**scope** | **String** | The scope of the entities to check. Required for scoped entity types (Instrument, Portfolio).  Must not be provided for unscoped entity types (LegalEntity). | [optional] [default to String]
 **asAtModifiedSince** | [**OffsetDateTime**](OffsetDateTime.md) | Nullable. Filters the dataset for version.asAtModified greater than or equal to this value. | [optional] [default to OffsetDateTime]
 **selectorAttribute** | **String** | An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset. | [optional] [default to String]
 **selectorValue** | **String** | The value of the above attribute used to sub-divide the dataset. | [optional] [default to String]

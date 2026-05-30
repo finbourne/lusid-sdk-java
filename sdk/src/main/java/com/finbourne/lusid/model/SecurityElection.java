@@ -71,6 +71,10 @@ public class SecurityElection {
   @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
   private UnitsRatio unitsRatio;
 
+  public static final String SERIALIZED_NAME_SECURITY_ELECTION_CURRENCY = "securityElectionCurrency";
+  @SerializedName(SERIALIZED_NAME_SECURITY_ELECTION_CURRENCY)
+  private String securityElectionCurrency;
+
   public SecurityElection() {
   }
 
@@ -179,6 +183,27 @@ public class SecurityElection {
   }
 
 
+  public SecurityElection securityElectionCurrency(String securityElectionCurrency) {
+    
+    this.securityElectionCurrency = securityElectionCurrency;
+    return this;
+  }
+
+   /**
+   * Optional currency in which the security election&#39;s price is denominated
+   * @return securityElectionCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getSecurityElectionCurrency() {
+    return securityElectionCurrency;
+  }
+
+
+  public void setSecurityElectionCurrency(String securityElectionCurrency) {
+    this.securityElectionCurrency = securityElectionCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,7 +218,8 @@ public class SecurityElection {
         Objects.equals(this.isChosen, securityElection.isChosen) &&
         Objects.equals(this.isDefault, securityElection.isDefault) &&
         (this.price.compareTo(securityElection.getPrice()) == 0) &&
-        Objects.equals(this.unitsRatio, securityElection.unitsRatio);
+        Objects.equals(this.unitsRatio, securityElection.unitsRatio) &&
+        Objects.equals(this.securityElectionCurrency, securityElection.securityElectionCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +228,7 @@ public class SecurityElection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(electionKey, isChosen, isDefault, price, unitsRatio);
+    return Objects.hash(electionKey, isChosen, isDefault, price, unitsRatio, securityElectionCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,6 +247,7 @@ public class SecurityElection {
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
+    sb.append("    securityElectionCurrency: ").append(toIndentedString(securityElectionCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,6 +275,7 @@ public class SecurityElection {
     openapiFields.add("isDefault");
     openapiFields.add("price");
     openapiFields.add("unitsRatio");
+    openapiFields.add("securityElectionCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -280,6 +308,9 @@ public class SecurityElection {
       // validate the optional field `unitsRatio`
       if (jsonObj.get("unitsRatio") != null && !jsonObj.get("unitsRatio").isJsonNull()) {
         UnitsRatio.validateJsonElement(jsonObj.get("unitsRatio"));
+      }
+      if ((jsonObj.get("securityElectionCurrency") != null && !jsonObj.get("securityElectionCurrency").isJsonNull()) && !jsonObj.get("securityElectionCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `securityElectionCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("securityElectionCurrency").toString()));
       }
   }
 

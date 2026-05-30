@@ -53,13 +53,13 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateValuationPointRequest {
-  public static final String SERIALIZED_NAME_DIARY_ENTRY_CODE = "diaryEntryCode";
-  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_CODE)
-  private String diaryEntryCode;
+  public static final String SERIALIZED_NAME_VALUATION_POINT_CODE = "valuationPointCode";
+  @SerializedName(SERIALIZED_NAME_VALUATION_POINT_CODE)
+  private String valuationPointCode;
 
-  public static final String SERIALIZED_NAME_DIARY_ENTRY_VARIANT = "diaryEntryVariant";
-  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_VARIANT)
-  private String diaryEntryVariant;
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private String variant;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -80,45 +80,45 @@ public class UpdateValuationPointRequest {
   public UpdateValuationPointRequest() {
   }
 
-  public UpdateValuationPointRequest diaryEntryCode(String diaryEntryCode) {
+  public UpdateValuationPointRequest valuationPointCode(String valuationPointCode) {
     
-    this.diaryEntryCode = diaryEntryCode;
+    this.valuationPointCode = valuationPointCode;
     return this;
   }
 
    /**
    * Unique code for the Valuation Point.
-   * @return diaryEntryCode
+   * @return valuationPointCode
   **/
   @jakarta.annotation.Nonnull
-  public String getDiaryEntryCode() {
-    return diaryEntryCode;
+  public String getValuationPointCode() {
+    return valuationPointCode;
   }
 
 
-  public void setDiaryEntryCode(String diaryEntryCode) {
-    this.diaryEntryCode = diaryEntryCode;
+  public void setValuationPointCode(String valuationPointCode) {
+    this.valuationPointCode = valuationPointCode;
   }
 
 
-  public UpdateValuationPointRequest diaryEntryVariant(String diaryEntryVariant) {
+  public UpdateValuationPointRequest variant(String variant) {
     
-    this.diaryEntryVariant = diaryEntryVariant;
+    this.variant = variant;
     return this;
   }
 
    /**
    * Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
-   * @return diaryEntryVariant
+   * @return variant
   **/
-  @jakarta.annotation.Nonnull
-  public String getDiaryEntryVariant() {
-    return diaryEntryVariant;
+  @jakarta.annotation.Nullable
+  public String getVariant() {
+    return variant;
   }
 
 
-  public void setDiaryEntryVariant(String diaryEntryVariant) {
-    this.diaryEntryVariant = diaryEntryVariant;
+  public void setVariant(String variant) {
+    this.variant = variant;
   }
 
 
@@ -179,7 +179,7 @@ public class UpdateValuationPointRequest {
   }
 
    /**
-   * Defaults to false. Set to true if you want that the closed period to have the clear down applied.
+   * Defaults to null. Set to true if you want the closed period to have the clear down applied.
    * @return applyClearDown
   **/
   @jakarta.annotation.Nullable
@@ -200,7 +200,7 @@ public class UpdateValuationPointRequest {
   }
 
    /**
-   * Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+   * Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
    * @return updateInclusionDateNavAdjustments
   **/
   @jakarta.annotation.Nullable
@@ -224,8 +224,8 @@ public class UpdateValuationPointRequest {
       return false;
     }
     UpdateValuationPointRequest updateValuationPointRequest = (UpdateValuationPointRequest) o;
-    return Objects.equals(this.diaryEntryCode, updateValuationPointRequest.diaryEntryCode) &&
-        Objects.equals(this.diaryEntryVariant, updateValuationPointRequest.diaryEntryVariant) &&
+    return Objects.equals(this.valuationPointCode, updateValuationPointRequest.valuationPointCode) &&
+        Objects.equals(this.variant, updateValuationPointRequest.variant) &&
         Objects.equals(this.name, updateValuationPointRequest.name) &&
         Objects.equals(this.properties, updateValuationPointRequest.properties) &&
         Objects.equals(this.applyClearDown, updateValuationPointRequest.applyClearDown) &&
@@ -238,7 +238,7 @@ public class UpdateValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode, diaryEntryVariant, name, properties, applyClearDown, updateInclusionDateNavAdjustments);
+    return Objects.hash(valuationPointCode, variant, name, properties, applyClearDown, updateInclusionDateNavAdjustments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -252,8 +252,8 @@ public class UpdateValuationPointRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateValuationPointRequest {\n");
-    sb.append("    diaryEntryCode: ").append(toIndentedString(diaryEntryCode)).append("\n");
-    sb.append("    diaryEntryVariant: ").append(toIndentedString(diaryEntryVariant)).append("\n");
+    sb.append("    valuationPointCode: ").append(toIndentedString(valuationPointCode)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
@@ -280,8 +280,8 @@ public class UpdateValuationPointRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("diaryEntryCode");
-    openapiFields.add("diaryEntryVariant");
+    openapiFields.add("valuationPointCode");
+    openapiFields.add("variant");
     openapiFields.add("name");
     openapiFields.add("properties");
     openapiFields.add("applyClearDown");
@@ -289,8 +289,7 @@ public class UpdateValuationPointRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("diaryEntryCode");
-    openapiRequiredFields.add("diaryEntryVariant");
+    openapiRequiredFields.add("valuationPointCode");
   }
 
  /**
@@ -313,11 +312,11 @@ public class UpdateValuationPointRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
+      if (!jsonObj.get("valuationPointCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valuationPointCode").toString()));
       }
-      if (!jsonObj.get("diaryEntryVariant").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryVariant").toString()));
+      if ((jsonObj.get("variant") != null && !jsonObj.get("variant").isJsonNull()) && !jsonObj.get("variant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variant").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

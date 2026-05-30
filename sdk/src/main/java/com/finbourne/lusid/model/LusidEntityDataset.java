@@ -131,7 +131,7 @@ public class LusidEntityDataset {
   }
 
    /**
-   * The scope of the entities to check. Required.
+   * The scope of the entities to check. Required for scoped entity types (Instrument, Portfolio).  Must not be provided for unscoped entity types (LegalEntity).
    * @return scope
   **/
   @jakarta.annotation.Nullable

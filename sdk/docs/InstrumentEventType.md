@@ -87,6 +87,7 @@ InstrumentEventType method = InstrumentEventType.EARLYCLOSEOUTEVENT;
 InstrumentEventType method = InstrumentEventType.DEPOSITROLLEVENT;
 InstrumentEventType method = InstrumentEventType.CONSENTEVENT;
 InstrumentEventType method = InstrumentEventType.DRAWINGEVENT;
+InstrumentEventType method = InstrumentEventType.CAPITALGAINSDISTRIBUTIONEVENT;
 ```
 
 

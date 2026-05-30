@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **isDefault** | **Boolean** | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. | [optional] [default to Boolean]
 **price** | **java.math.BigDecimal** | Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero. | [optional] [default to java.math.BigDecimal]
 **unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  | [optional] [default to UnitsRatio]
+**securityElectionCurrency** | **String** | Optional currency in which the security election&#39;s price is denominated | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.SecurityElection;
@@ -22,6 +23,7 @@ Boolean IsChosen = true;
 Boolean IsDefault = true;
 @jakarta.annotation.Nullable java.math.BigDecimal Price = new java.math.BigDecimal("100.00");
 UnitsRatio UnitsRatio = new UnitsRatio();
+@jakarta.annotation.Nullable String SecurityElectionCurrency = "example SecurityElectionCurrency";
 
 
 SecurityElection securityElectionInstance = new SecurityElection()
@@ -29,7 +31,8 @@ SecurityElection securityElectionInstance = new SecurityElection()
     .IsChosen(IsChosen)
     .IsDefault(IsDefault)
     .Price(Price)
-    .UnitsRatio(UnitsRatio);
+    .UnitsRatio(UnitsRatio)
+    .SecurityElectionCurrency(SecurityElectionCurrency);
 ```
 
 
