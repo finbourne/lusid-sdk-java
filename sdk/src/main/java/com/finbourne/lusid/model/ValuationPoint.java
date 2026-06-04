@@ -210,7 +210,7 @@ public class ValuationPoint {
   }
 
    /**
-   * The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
+   * The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected.
    * @return status
   **/
   @jakarta.annotation.Nonnull

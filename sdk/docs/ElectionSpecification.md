@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**electionType** | **String** | Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection. | [default to String]
+**electionType** | **String** | Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection. | [default to String]
 **cardinality** | **Map&lt;String, String&gt;** |  | [default to Map<String, String>]
 **referencedAs** | **List&lt;String&gt;** |  | [default to List<String>]
 

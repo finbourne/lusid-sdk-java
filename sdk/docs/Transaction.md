@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  | [optional] [default to TransactionTypeDetails]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 
 ```java
 import com.finbourne.lusid.model.Transaction;
@@ -66,6 +67,7 @@ CustodianAccount CustodianAccount = new CustodianAccount();
 TransactionTypeDetails ResolvedTransactionTypeDetails = new TransactionTypeDetails();
 DataModelMembership DataModelMembership = new DataModelMembership();
 Version Version = new Version();
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 
 
 Transaction transactionInstance = new Transaction()
@@ -95,7 +97,8 @@ Transaction transactionInstance = new Transaction()
     .StrategyTag(StrategyTag)
     .ResolvedTransactionTypeDetails(ResolvedTransactionTypeDetails)
     .DataModelMembership(DataModelMembership)
-    .Version(Version);
+    .Version(Version)
+    .StagedModifications(StagedModifications);
 ```
 
 

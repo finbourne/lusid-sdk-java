@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **sequencePriority** | **Integer** | The calculated priority level for this transaction. | [optional] [default to Integer]
 **settlementSummary** | [**TransactionSettlementSummary**](TransactionSettlementSummary.md) |  | [optional] [default to TransactionSettlementSummary]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -90,6 +91,7 @@ DataModelMembership DataModelMembership = new DataModelMembership();
 @jakarta.annotation.Nullable Integer SequencePriority = new Integer("100.00");
 TransactionSettlementSummary SettlementSummary = new TransactionSettlementSummary();
 Version Version = new Version();
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -131,7 +133,8 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .Sequence(Sequence)
     .SequencePriority(SequencePriority)
     .SettlementSummary(SettlementSummary)
-    .Version(Version);
+    .Version(Version)
+    .StagedModifications(StagedModifications);
 ```
 
 

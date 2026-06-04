@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **valuationPointCode** | **String** | The code of the Valuation Point. | [optional] [default to String]
 **variant** | **String** | The Variant name for the Valuation Point. | [optional] [default to String]
 **name** | **String** | Identifiable Name assigned to the Valuation Point. | [optional] [default to String]
-**status** | **String** | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial. | [default to String]
+**status** | **String** | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected. | [default to String]
 **applyClearDown** | **Boolean** | Indicates whether a clear down was applied when the Valuation Point was created. | [optional] [default to Boolean]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective time of the Valuation Point. | [default to OffsetDateTime]
 **queryAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The AsAt time of the Valuation Point. This is the AsAt time that will be used when requests are made using the entry. | [optional] [default to OffsetDateTime]

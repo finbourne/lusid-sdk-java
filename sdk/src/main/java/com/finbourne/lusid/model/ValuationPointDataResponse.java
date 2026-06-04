@@ -145,7 +145,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The status of a Diary Entry of Type &#39;ValuationPoint&#39;. Defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised.  The status of a Diary Entry becomes &#39;Unofficial&#39; when a diary entry wasn&#39;t used. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
+   * The status of a Diary Entry of Type &#39;ValuationPoint&#39;. Defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised.  The status of a Diary Entry becomes &#39;Unofficial&#39; when a diary entry wasn&#39;t used. Available values: Undefined, Estimate, Final, Candidate, Rejected, Unofficial.
    * @return status
   **/
   @jakarta.annotation.Nonnull
