@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime for the Calendar Entry. | [default to OffsetDateTime]
 **holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. | [optional] [default to OffsetDateTime]
 **valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. | [optional] [default to OffsetDateTime]
+**dateOfLastPcaScan** | [**OffsetDateTime**](OffsetDateTime.md) | The last date a PCA scan was conducted for a Valuation Point | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [default to Version]
 
@@ -25,6 +26,7 @@ String DisplayName = "example DisplayName";
 OffsetDateTime AsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime DateOfLastPcaScan = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Version Version = new Version();
 
@@ -36,6 +38,7 @@ EstimateVariant estimateVariantInstance = new EstimateVariant()
     .AsAt(AsAt)
     .HoldingsAsAtOverride(HoldingsAsAtOverride)
     .ValuationsAsAtOverride(ValuationsAsAtOverride)
+    .DateOfLastPcaScan(DateOfLastPcaScan)
     .Properties(Properties)
     .Version(Version);
 ```

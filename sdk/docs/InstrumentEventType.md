@@ -90,6 +90,7 @@ InstrumentEventType method = InstrumentEventType.DRAWINGEVENT;
 InstrumentEventType method = InstrumentEventType.CAPITALGAINSDISTRIBUTIONEVENT;
 InstrumentEventType method = InstrumentEventType.EXCHANGEOFFEREVENT;
 InstrumentEventType method = InstrumentEventType.DUTCHAUCTIONEVENT;
+InstrumentEventType method = InstrumentEventType.WORTHLESSEVENT;
 ```
 
 

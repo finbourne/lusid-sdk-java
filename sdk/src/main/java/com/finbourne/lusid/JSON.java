@@ -1558,6 +1558,7 @@ public class JSON {
                         classByDiscriminatorValue.put("TransitionEvent", com.finbourne.lusid.model.TransitionEvent.class);
                         classByDiscriminatorValue.put("TriggerEvent", com.finbourne.lusid.model.TriggerEvent.class);
                         classByDiscriminatorValue.put("UpdateDepositAmountEvent", com.finbourne.lusid.model.UpdateDepositAmountEvent.class);
+                        classByDiscriminatorValue.put("WorthlessEvent", com.finbourne.lusid.model.WorthlessEvent.class);
                         classByDiscriminatorValue.put("InstrumentEvent", com.finbourne.lusid.model.InstrumentEvent.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
@@ -2618,6 +2619,15 @@ public class JSON {
                         classByDiscriminatorValue.put("VendorDependency", com.finbourne.lusid.model.VendorDependency.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "dependencyType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.WorthlessEvent.class, new TypeSelector<com.finbourne.lusid.model.WorthlessEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.WorthlessEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("WorthlessEvent", com.finbourne.lusid.model.WorthlessEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.YieldCurveData.class, new TypeSelector<com.finbourne.lusid.model.YieldCurveData>() {
@@ -4000,6 +4010,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WorkspaceItemUpdateRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WorkspacePermittedItemActions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WorkspaceUpdateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WorthlessEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.YearMonthDay.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.YieldCurveData.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();

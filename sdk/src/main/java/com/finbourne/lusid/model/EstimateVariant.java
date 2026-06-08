@@ -79,6 +79,10 @@ public class EstimateVariant {
   @SerializedName(SERIALIZED_NAME_VALUATIONS_AS_AT_OVERRIDE)
   private OffsetDateTime valuationsAsAtOverride;
 
+  public static final String SERIALIZED_NAME_DATE_OF_LAST_PCA_SCAN = "dateOfLastPcaScan";
+  @SerializedName(SERIALIZED_NAME_DATE_OF_LAST_PCA_SCAN)
+  private OffsetDateTime dateOfLastPcaScan;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -216,6 +220,27 @@ public class EstimateVariant {
   }
 
 
+  public EstimateVariant dateOfLastPcaScan(OffsetDateTime dateOfLastPcaScan) {
+    
+    this.dateOfLastPcaScan = dateOfLastPcaScan;
+    return this;
+  }
+
+   /**
+   * The last date a PCA scan was conducted for a Valuation Point
+   * @return dateOfLastPcaScan
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDateOfLastPcaScan() {
+    return dateOfLastPcaScan;
+  }
+
+
+  public void setDateOfLastPcaScan(OffsetDateTime dateOfLastPcaScan) {
+    this.dateOfLastPcaScan = dateOfLastPcaScan;
+  }
+
+
   public EstimateVariant properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -282,6 +307,7 @@ public class EstimateVariant {
         Objects.equals(this.asAt, estimateVariant.asAt) &&
         Objects.equals(this.holdingsAsAtOverride, estimateVariant.holdingsAsAtOverride) &&
         Objects.equals(this.valuationsAsAtOverride, estimateVariant.valuationsAsAtOverride) &&
+        Objects.equals(this.dateOfLastPcaScan, estimateVariant.dateOfLastPcaScan) &&
         Objects.equals(this.properties, estimateVariant.properties) &&
         Objects.equals(this.version, estimateVariant.version);
   }
@@ -292,7 +318,7 @@ public class EstimateVariant {
 
   @Override
   public int hashCode() {
-    return Objects.hash(variant, displayName, description, asAt, holdingsAsAtOverride, valuationsAsAtOverride, properties, version);
+    return Objects.hash(variant, displayName, description, asAt, holdingsAsAtOverride, valuationsAsAtOverride, dateOfLastPcaScan, properties, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -312,6 +338,7 @@ public class EstimateVariant {
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
     sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
+    sb.append("    dateOfLastPcaScan: ").append(toIndentedString(dateOfLastPcaScan)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
@@ -342,6 +369,7 @@ public class EstimateVariant {
     openapiFields.add("asAt");
     openapiFields.add("holdingsAsAtOverride");
     openapiFields.add("valuationsAsAtOverride");
+    openapiFields.add("dateOfLastPcaScan");
     openapiFields.add("properties");
     openapiFields.add("version");
 
