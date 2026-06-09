@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **costBasisBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **avgRate** | **java.math.BigDecimal** | Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero. | [optional] [default to java.math.BigDecimal]
 **fxRateMovement** | **java.math.BigDecimal** | FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero. | [optional] [default to java.math.BigDecimal]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested properties decorated onto the cash statement row. | [optional] [default to Map<String, Property>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -51,6 +52,7 @@ CurrencyAndAmount RealisedFxPnl = new CurrencyAndAmount();
 CurrencyAndAmount CostBasisBase = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal AvgRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FxRateMovement = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -74,6 +76,7 @@ FundCashStatementRow fundCashStatementRowInstance = new FundCashStatementRow()
     .CostBasisBase(CostBasisBase)
     .AvgRate(AvgRate)
     .FxRateMovement(FxRateMovement)
+    .Properties(Properties)
     .Links(Links);
 ```
 

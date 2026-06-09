@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -134,6 +135,10 @@ public class FundCashStatementRow {
   public static final String SERIALIZED_NAME_FX_RATE_MOVEMENT = "fxRateMovement";
   @SerializedName(SERIALIZED_NAME_FX_RATE_MOVEMENT)
   private java.math.BigDecimal fxRateMovement;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -549,6 +554,35 @@ public class FundCashStatementRow {
   }
 
 
+  public FundCashStatementRow properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public FundCashStatementRow putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The requested properties decorated onto the cash statement row.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
   public FundCashStatementRow links(List<Link> links) {
     
     this.links = links;
@@ -607,6 +641,7 @@ public class FundCashStatementRow {
         Objects.equals(this.costBasisBase, fundCashStatementRow.costBasisBase) &&
         (this.avgRate.compareTo(fundCashStatementRow.getAvgRate()) == 0) &&
         (this.fxRateMovement.compareTo(fundCashStatementRow.getFxRateMovement()) == 0) &&
+        Objects.equals(this.properties, fundCashStatementRow.properties) &&
         Objects.equals(this.links, fundCashStatementRow.links);
   }
 
@@ -616,7 +651,7 @@ public class FundCashStatementRow {
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupById, sequenceNumber, subHoldingKeys, sourceId, cashStatementActionType, accountingDate, activityDate, movementName, portfolioId, instructionType, diaryEntryCode, originDiaryEntryCode, cashflowLocal, balanceLocal, cashflowBase, realisedFxPnl, costBasisBase, avgRate, fxRateMovement, links);
+    return Objects.hash(groupById, sequenceNumber, subHoldingKeys, sourceId, cashStatementActionType, accountingDate, activityDate, movementName, portfolioId, instructionType, diaryEntryCode, originDiaryEntryCode, cashflowLocal, balanceLocal, cashflowBase, realisedFxPnl, costBasisBase, avgRate, fxRateMovement, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -649,6 +684,7 @@ public class FundCashStatementRow {
     sb.append("    costBasisBase: ").append(toIndentedString(costBasisBase)).append("\n");
     sb.append("    avgRate: ").append(toIndentedString(avgRate)).append("\n");
     sb.append("    fxRateMovement: ").append(toIndentedString(fxRateMovement)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -691,6 +727,7 @@ public class FundCashStatementRow {
     openapiFields.add("costBasisBase");
     openapiFields.add("avgRate");
     openapiFields.add("fxRateMovement");
+    openapiFields.add("properties");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
