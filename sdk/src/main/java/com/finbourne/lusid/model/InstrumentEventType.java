@@ -177,7 +177,11 @@ public enum InstrumentEventType {
   
   DUTCHAUCTIONEVENT("DutchAuctionEvent"),
   
-  WORTHLESSEVENT("WorthlessEvent");
+  WORTHLESSEVENT("WorthlessEvent"),
+  
+  PUTREDEMPTIONEVENT("PutRedemptionEvent"),
+  
+  LOANFACILITYDELAYEDCOMPENSATIONPAYMENTEVENT("LoanFacilityDelayedCompensationPaymentEvent");
 
   private String value;
 

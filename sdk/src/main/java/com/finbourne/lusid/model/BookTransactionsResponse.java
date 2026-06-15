@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BlockAndOrders;
 import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Transaction;
 import com.google.gson.TypeAdapter;
@@ -19,8 +20,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -61,6 +64,10 @@ public class BookTransactionsResponse {
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   private Map<String, ErrorDetail> failed;
+
+  public static final String SERIALIZED_NAME_FX_ORDERS = "fxOrders";
+  @SerializedName(SERIALIZED_NAME_FX_ORDERS)
+  private List<BlockAndOrders> fxOrders;
 
   public BookTransactionsResponse() {
   }
@@ -123,6 +130,35 @@ public class BookTransactionsResponse {
   }
 
 
+  public BookTransactionsResponse fxOrders(List<BlockAndOrders> fxOrders) {
+    
+    this.fxOrders = fxOrders;
+    return this;
+  }
+
+  public BookTransactionsResponse addFxOrdersItem(BlockAndOrders fxOrdersItem) {
+    if (this.fxOrders == null) {
+      this.fxOrders = new ArrayList<>();
+    }
+    this.fxOrders.add(fxOrdersItem);
+    return this;
+  }
+
+   /**
+   * Get fxOrders
+   * @return fxOrders
+  **/
+  @jakarta.annotation.Nullable
+  public List<BlockAndOrders> getFxOrders() {
+    return fxOrders;
+  }
+
+
+  public void setFxOrders(List<BlockAndOrders> fxOrders) {
+    this.fxOrders = fxOrders;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -134,7 +170,8 @@ public class BookTransactionsResponse {
     }
     BookTransactionsResponse bookTransactionsResponse = (BookTransactionsResponse) o;
     return Objects.equals(this.values, bookTransactionsResponse.values) &&
-        Objects.equals(this.failed, bookTransactionsResponse.failed);
+        Objects.equals(this.failed, bookTransactionsResponse.failed) &&
+        Objects.equals(this.fxOrders, bookTransactionsResponse.fxOrders);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -143,7 +180,7 @@ public class BookTransactionsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, failed);
+    return Objects.hash(values, failed, fxOrders);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -159,6 +196,7 @@ public class BookTransactionsResponse {
     sb.append("class BookTransactionsResponse {\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+    sb.append("    fxOrders: ").append(toIndentedString(fxOrders)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -183,6 +221,7 @@ public class BookTransactionsResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("values");
     openapiFields.add("failed");
+    openapiFields.add("fxOrders");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -201,6 +240,20 @@ public class BookTransactionsResponse {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("fxOrders") != null && !jsonObj.get("fxOrders").isJsonNull()) {
+        JsonArray jsonArrayfxOrders = jsonObj.getAsJsonArray("fxOrders");
+        if (jsonArrayfxOrders != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("fxOrders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `fxOrders` to be an array in the JSON string but got `%s`", jsonObj.get("fxOrders").toString()));
+          }
+
+          // validate the optional field `fxOrders` (array)
+          for (int i = 0; i < jsonArrayfxOrders.size(); i++) {
+            BlockAndOrders.validateJsonElement(jsonArrayfxOrders.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

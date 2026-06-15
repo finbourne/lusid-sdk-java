@@ -112,6 +112,10 @@ public class ConversionEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
 
+  public static final String SERIALIZED_NAME_CONVERSION_TYPE = "conversionType";
+  @SerializedName(SERIALIZED_NAME_CONVERSION_TYPE)
+  private String conversionType;
+
   public ConversionEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -421,6 +425,27 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
 
+  public ConversionEvent conversionType(String conversionType) {
+    
+    this.conversionType = conversionType;
+    return this;
+  }
+
+   /**
+   * The type of conversion. Regular for standard conversions; Exchange144A for SEC Rule 144A exchanges.     Supported string (enumeration) values are: [Regular, Exchange144A]. Available values: Regular, Exchange144A.
+   * @return conversionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getConversionType() {
+    return conversionType;
+  }
+
+
+  public void setConversionType(String conversionType) {
+    this.conversionType = conversionType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -444,6 +469,7 @@ public class ConversionEvent extends InstrumentEvent {
         Objects.equals(this.cashAndSecurityOfferElections, conversionEvent.cashAndSecurityOfferElections) &&
         Objects.equals(this.cashOfferElections, conversionEvent.cashOfferElections) &&
         Objects.equals(this.lapseElections, conversionEvent.lapseElections) &&
+        Objects.equals(this.conversionType, conversionEvent.conversionType) &&
         super.equals(o);
   }
 
@@ -453,7 +479,7 @@ public class ConversionEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recordDate, paymentDate, newInstrument, responseDeadlineDate, marketDeadlineDate, effectiveDate, periodOfAction, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, lapseElections, super.hashCode());
+    return Objects.hash(recordDate, paymentDate, newInstrument, responseDeadlineDate, marketDeadlineDate, effectiveDate, periodOfAction, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, lapseElections, conversionType, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -481,6 +507,7 @@ public class ConversionEvent extends InstrumentEvent {
     sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
     sb.append("    cashOfferElections: ").append(toIndentedString(cashOfferElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    conversionType: ").append(toIndentedString(conversionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -517,6 +544,7 @@ public class ConversionEvent extends InstrumentEvent {
     openapiFields.add("cashAndSecurityOfferElections");
     openapiFields.add("cashOfferElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("conversionType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

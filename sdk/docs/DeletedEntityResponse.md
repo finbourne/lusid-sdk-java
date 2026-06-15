@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **entityType** | **String** | The type of the entity that the deleted response applies to. | [optional] [default to String]
 **entityUniqueId** | **String** | The unique Id of the entity that the deleted response applies to. | [optional] [default to String]
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
+**metadata** | [**Map&lt;String, List&lt;ResponseMetaData&gt;&gt;**](List.md) | Contains warnings or additional information related to the delete operation. | [optional] [default to Map<String, List<ResponseMetaData>>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -24,6 +25,7 @@ OffsetDateTime AsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable String EntityType = "example EntityType";
 @jakarta.annotation.Nullable String EntityUniqueId = "example EntityUniqueId";
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
+@jakarta.annotation.Nullable Map<String, List<ResponseMetaData>> Metadata = new Map<String, List<ResponseMetaData>>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -34,6 +36,7 @@ DeletedEntityResponse deletedEntityResponseInstance = new DeletedEntityResponse(
     .EntityType(EntityType)
     .EntityUniqueId(EntityUniqueId)
     .StagedModifications(StagedModifications)
+    .Metadata(Metadata)
     .Links(Links);
 ```
 

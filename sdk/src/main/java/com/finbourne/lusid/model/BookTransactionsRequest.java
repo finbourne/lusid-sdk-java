@@ -64,6 +64,10 @@ public class BookTransactionsRequest {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PROPERTIES)
   private Map<String, PerpetualProperty> transactionProperties;
 
+  public static final String SERIALIZED_NAME_FX_INSTRUMENT_TYPE = "fxInstrumentType";
+  @SerializedName(SERIALIZED_NAME_FX_INSTRUMENT_TYPE)
+  private String fxInstrumentType;
+
   public BookTransactionsRequest() {
   }
 
@@ -125,6 +129,27 @@ public class BookTransactionsRequest {
   }
 
 
+  public BookTransactionsRequest fxInstrumentType(String fxInstrumentType) {
+    
+    this.fxInstrumentType = fxInstrumentType;
+    return this;
+  }
+
+   /**
+   * The type of FX instrument to create when settlement currency differs from portfolio base currency. Use None to suppress FX instrument and order creation. Defaults to None. Available values: None, FxForward, FxSpot.
+   * @return fxInstrumentType
+  **/
+  @jakarta.annotation.Nullable
+  public String getFxInstrumentType() {
+    return fxInstrumentType;
+  }
+
+
+  public void setFxInstrumentType(String fxInstrumentType) {
+    this.fxInstrumentType = fxInstrumentType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -136,7 +161,8 @@ public class BookTransactionsRequest {
     }
     BookTransactionsRequest bookTransactionsRequest = (BookTransactionsRequest) o;
     return Objects.equals(this.allocationIds, bookTransactionsRequest.allocationIds) &&
-        Objects.equals(this.transactionProperties, bookTransactionsRequest.transactionProperties);
+        Objects.equals(this.transactionProperties, bookTransactionsRequest.transactionProperties) &&
+        Objects.equals(this.fxInstrumentType, bookTransactionsRequest.fxInstrumentType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -145,7 +171,7 @@ public class BookTransactionsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allocationIds, transactionProperties);
+    return Objects.hash(allocationIds, transactionProperties, fxInstrumentType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -161,6 +187,7 @@ public class BookTransactionsRequest {
     sb.append("class BookTransactionsRequest {\n");
     sb.append("    allocationIds: ").append(toIndentedString(allocationIds)).append("\n");
     sb.append("    transactionProperties: ").append(toIndentedString(transactionProperties)).append("\n");
+    sb.append("    fxInstrumentType: ").append(toIndentedString(fxInstrumentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,6 +212,7 @@ public class BookTransactionsRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("allocationIds");
     openapiFields.add("transactionProperties");
+    openapiFields.add("fxInstrumentType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -221,6 +249,9 @@ public class BookTransactionsRequest {
       for (int i = 0; i < jsonArrayallocationIds.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayallocationIds.get(i));
       };
+      if ((jsonObj.get("fxInstrumentType") != null && !jsonObj.get("fxInstrumentType").isJsonNull()) && !jsonObj.get("fxInstrumentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fxInstrumentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fxInstrumentType").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

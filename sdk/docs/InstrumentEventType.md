@@ -91,6 +91,8 @@ InstrumentEventType method = InstrumentEventType.CAPITALGAINSDISTRIBUTIONEVENT;
 InstrumentEventType method = InstrumentEventType.EXCHANGEOFFEREVENT;
 InstrumentEventType method = InstrumentEventType.DUTCHAUCTIONEVENT;
 InstrumentEventType method = InstrumentEventType.WORTHLESSEVENT;
+InstrumentEventType method = InstrumentEventType.PUTREDEMPTIONEVENT;
+InstrumentEventType method = InstrumentEventType.LOANFACILITYDELAYEDCOMPENSATIONPAYMENTEVENT;
 ```
 
 

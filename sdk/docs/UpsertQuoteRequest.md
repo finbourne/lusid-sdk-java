@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **metricValue** | [**MetricValue**](MetricValue.md) |  | [optional] [default to MetricValue]
 **lineage** | **String** | Description of the quote&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. | [optional] [default to String]
 **scaleFactor** | **java.math.BigDecimal** | An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1. | [optional] [default to java.math.BigDecimal]
+**metadataFields** | **Map&lt;String, Object&gt;** | The metadata field values for this quote, keyed by field name. | [optional] [default to Map<String, Object>]
 
 ```java
 import com.finbourne.lusid.model.UpsertQuoteRequest;
@@ -20,13 +21,15 @@ QuoteId QuoteId = new QuoteId();
 MetricValue MetricValue = new MetricValue();
 @jakarta.annotation.Nullable String Lineage = "example Lineage";
 @jakarta.annotation.Nullable java.math.BigDecimal ScaleFactor = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable Map<String, Object> MetadataFields = new Map<String, Object>();
 
 
 UpsertQuoteRequest upsertQuoteRequestInstance = new UpsertQuoteRequest()
     .QuoteId(QuoteId)
     .MetricValue(MetricValue)
     .Lineage(Lineage)
-    .ScaleFactor(ScaleFactor);
+    .ScaleFactor(ScaleFactor)
+    .MetadataFields(MetadataFields);
 ```
 
 

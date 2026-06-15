@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -80,6 +82,10 @@ public class Quote {
   public static final String SERIALIZED_NAME_SCALE_FACTOR = "scaleFactor";
   @SerializedName(SERIALIZED_NAME_SCALE_FACTOR)
   private java.math.BigDecimal scaleFactor;
+
+  public static final String SERIALIZED_NAME_METADATA_FIELDS = "metadataFields";
+  @SerializedName(SERIALIZED_NAME_METADATA_FIELDS)
+  private Map<String, Object> metadataFields;
 
   public Quote() {
   }
@@ -231,6 +237,35 @@ public class Quote {
   }
 
 
+  public Quote metadataFields(Map<String, Object> metadataFields) {
+    
+    this.metadataFields = metadataFields;
+    return this;
+  }
+
+  public Quote putMetadataFieldsItem(String key, Object metadataFieldsItem) {
+    if (this.metadataFields == null) {
+      this.metadataFields = new HashMap<>();
+    }
+    this.metadataFields.put(key, metadataFieldsItem);
+    return this;
+  }
+
+   /**
+   * The metadata field values for this quote, keyed by field name.
+   * @return metadataFields
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Object> getMetadataFields() {
+    return metadataFields;
+  }
+
+
+  public void setMetadataFields(Map<String, Object> metadataFields) {
+    this.metadataFields = metadataFields;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -247,7 +282,8 @@ public class Quote {
         Objects.equals(this.cutLabel, quote.cutLabel) &&
         Objects.equals(this.uploadedBy, quote.uploadedBy) &&
         Objects.equals(this.asAt, quote.asAt) &&
-        (this.scaleFactor.compareTo(quote.getScaleFactor()) == 0);
+        (this.scaleFactor.compareTo(quote.getScaleFactor()) == 0) &&
+        Objects.equals(this.metadataFields, quote.metadataFields);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -256,7 +292,7 @@ public class Quote {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quoteId, metricValue, lineage, cutLabel, uploadedBy, asAt, scaleFactor);
+    return Objects.hash(quoteId, metricValue, lineage, cutLabel, uploadedBy, asAt, scaleFactor, metadataFields);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -277,6 +313,7 @@ public class Quote {
     sb.append("    uploadedBy: ").append(toIndentedString(uploadedBy)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    scaleFactor: ").append(toIndentedString(scaleFactor)).append("\n");
+    sb.append("    metadataFields: ").append(toIndentedString(metadataFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -306,6 +343,7 @@ public class Quote {
     openapiFields.add("uploadedBy");
     openapiFields.add("asAt");
     openapiFields.add("scaleFactor");
+    openapiFields.add("metadataFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

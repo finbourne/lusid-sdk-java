@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ResponseMetaData;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,7 +24,9 @@ import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -79,6 +82,10 @@ public class DeletedEntityResponse {
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, List<ResponseMetaData>> metadata;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -213,6 +220,35 @@ public class DeletedEntityResponse {
   }
 
 
+  public DeletedEntityResponse metadata(Map<String, List<ResponseMetaData>> metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  public DeletedEntityResponse putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+   /**
+   * Contains warnings or additional information related to the delete operation.
+   * @return metadata
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, List<ResponseMetaData>> getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Map<String, List<ResponseMetaData>> metadata) {
+    this.metadata = metadata;
+  }
+
+
   public DeletedEntityResponse links(List<Link> links) {
     
     this.links = links;
@@ -258,6 +294,7 @@ public class DeletedEntityResponse {
         Objects.equals(this.entityType, deletedEntityResponse.entityType) &&
         Objects.equals(this.entityUniqueId, deletedEntityResponse.entityUniqueId) &&
         Objects.equals(this.stagedModifications, deletedEntityResponse.stagedModifications) &&
+        Objects.equals(this.metadata, deletedEntityResponse.metadata) &&
         Objects.equals(this.links, deletedEntityResponse.links);
   }
 
@@ -267,7 +304,7 @@ public class DeletedEntityResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, effectiveFrom, asAt, entityType, entityUniqueId, stagedModifications, links);
+    return Objects.hash(href, effectiveFrom, asAt, entityType, entityUniqueId, stagedModifications, metadata, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -287,6 +324,7 @@ public class DeletedEntityResponse {
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -316,6 +354,7 @@ public class DeletedEntityResponse {
     openapiFields.add("entityType");
     openapiFields.add("entityUniqueId");
     openapiFields.add("stagedModifications");
+    openapiFields.add("metadata");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

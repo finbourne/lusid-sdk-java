@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**Map&lt;String, Transaction&gt;**](Transaction.md) |  | [optional] [default to Map<String, Transaction>]
 **failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) |  | [optional] [default to Map<String, ErrorDetail>]
+**fxOrders** | [**List&lt;BlockAndOrders&gt;**](BlockAndOrders.md) |  | [optional] [default to List<BlockAndOrders>]
 
 ```java
 import com.finbourne.lusid.model.BookTransactionsResponse;
@@ -15,11 +16,13 @@ import java.net.URI;
 
 @jakarta.annotation.Nullable Map<String, Transaction> Values = new Map<String, Transaction>();
 @jakarta.annotation.Nullable Map<String, ErrorDetail> Failed = new Map<String, ErrorDetail>();
+@jakarta.annotation.Nullable List<BlockAndOrders> FxOrders = new List<BlockAndOrders>();
 
 
 BookTransactionsResponse bookTransactionsResponseInstance = new BookTransactionsResponse()
     .Values(Values)
-    .Failed(Failed);
+    .Failed(Failed)
+    .FxOrders(FxOrders);
 ```
 
 

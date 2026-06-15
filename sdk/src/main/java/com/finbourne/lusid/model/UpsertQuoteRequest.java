@@ -20,6 +20,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -67,6 +69,10 @@ public class UpsertQuoteRequest {
   public static final String SERIALIZED_NAME_SCALE_FACTOR = "scaleFactor";
   @SerializedName(SERIALIZED_NAME_SCALE_FACTOR)
   private java.math.BigDecimal scaleFactor;
+
+  public static final String SERIALIZED_NAME_METADATA_FIELDS = "metadataFields";
+  @SerializedName(SERIALIZED_NAME_METADATA_FIELDS)
+  private Map<String, Object> metadataFields;
 
   public UpsertQuoteRequest() {
   }
@@ -155,6 +161,35 @@ public class UpsertQuoteRequest {
   }
 
 
+  public UpsertQuoteRequest metadataFields(Map<String, Object> metadataFields) {
+    
+    this.metadataFields = metadataFields;
+    return this;
+  }
+
+  public UpsertQuoteRequest putMetadataFieldsItem(String key, Object metadataFieldsItem) {
+    if (this.metadataFields == null) {
+      this.metadataFields = new HashMap<>();
+    }
+    this.metadataFields.put(key, metadataFieldsItem);
+    return this;
+  }
+
+   /**
+   * The metadata field values for this quote, keyed by field name.
+   * @return metadataFields
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Object> getMetadataFields() {
+    return metadataFields;
+  }
+
+
+  public void setMetadataFields(Map<String, Object> metadataFields) {
+    this.metadataFields = metadataFields;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,7 +203,8 @@ public class UpsertQuoteRequest {
     return Objects.equals(this.quoteId, upsertQuoteRequest.quoteId) &&
         Objects.equals(this.metricValue, upsertQuoteRequest.metricValue) &&
         Objects.equals(this.lineage, upsertQuoteRequest.lineage) &&
-        (this.scaleFactor.compareTo(upsertQuoteRequest.getScaleFactor()) == 0);
+        (this.scaleFactor.compareTo(upsertQuoteRequest.getScaleFactor()) == 0) &&
+        Objects.equals(this.metadataFields, upsertQuoteRequest.metadataFields);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +213,7 @@ public class UpsertQuoteRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quoteId, metricValue, lineage, scaleFactor);
+    return Objects.hash(quoteId, metricValue, lineage, scaleFactor, metadataFields);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +231,7 @@ public class UpsertQuoteRequest {
     sb.append("    metricValue: ").append(toIndentedString(metricValue)).append("\n");
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("    scaleFactor: ").append(toIndentedString(scaleFactor)).append("\n");
+    sb.append("    metadataFields: ").append(toIndentedString(metadataFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +258,7 @@ public class UpsertQuoteRequest {
     openapiFields.add("metricValue");
     openapiFields.add("lineage");
     openapiFields.add("scaleFactor");
+    openapiFields.add("metadataFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

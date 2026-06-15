@@ -53,6 +53,10 @@ public class HoldingContext {
   @SerializedName(SERIALIZED_NAME_TAX_LOT_LEVEL_HOLDINGS)
   private Boolean taxLotLevelHoldings;
 
+  public static final String SERIALIZED_NAME_AGGREGATE_CASH_COMMITMENTS = "aggregateCashCommitments";
+  @SerializedName(SERIALIZED_NAME_AGGREGATE_CASH_COMMITMENTS)
+  private Boolean aggregateCashCommitments;
+
   public HoldingContext() {
   }
 
@@ -77,6 +81,27 @@ public class HoldingContext {
   }
 
 
+  public HoldingContext aggregateCashCommitments(Boolean aggregateCashCommitments) {
+    
+    this.aggregateCashCommitments = aggregateCashCommitments;
+    return this;
+  }
+
+   /**
+   * When true, cash commitment holdings sharing a SubHoldingKey are folded into a single aggregated  row per portfolio, mirroring how cash balances are already aggregated. Defaults to false to  preserve existing behaviour. Ignored when TaxLotLevelHoldings is true — tax-lot granularity  takes precedence. Aggregation is per-portfolio: cross-portfolio rows in portfolio-group / fund  responses stay separate, matching the behaviour of positions and cash balances.
+   * @return aggregateCashCommitments
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getAggregateCashCommitments() {
+    return aggregateCashCommitments;
+  }
+
+
+  public void setAggregateCashCommitments(Boolean aggregateCashCommitments) {
+    this.aggregateCashCommitments = aggregateCashCommitments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,12 +112,13 @@ public class HoldingContext {
       return false;
     }
     HoldingContext holdingContext = (HoldingContext) o;
-    return Objects.equals(this.taxLotLevelHoldings, holdingContext.taxLotLevelHoldings);
+    return Objects.equals(this.taxLotLevelHoldings, holdingContext.taxLotLevelHoldings) &&
+        Objects.equals(this.aggregateCashCommitments, holdingContext.aggregateCashCommitments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(taxLotLevelHoldings);
+    return Objects.hash(taxLotLevelHoldings, aggregateCashCommitments);
   }
 
   @Override
@@ -100,6 +126,7 @@ public class HoldingContext {
     StringBuilder sb = new StringBuilder();
     sb.append("class HoldingContext {\n");
     sb.append("    taxLotLevelHoldings: ").append(toIndentedString(taxLotLevelHoldings)).append("\n");
+    sb.append("    aggregateCashCommitments: ").append(toIndentedString(aggregateCashCommitments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,6 +150,7 @@ public class HoldingContext {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("taxLotLevelHoldings");
+    openapiFields.add("aggregateCashCommitments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
