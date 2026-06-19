@@ -93,6 +93,7 @@ InstrumentEventType method = InstrumentEventType.DUTCHAUCTIONEVENT;
 InstrumentEventType method = InstrumentEventType.WORTHLESSEVENT;
 InstrumentEventType method = InstrumentEventType.PUTREDEMPTIONEVENT;
 InstrumentEventType method = InstrumentEventType.LOANFACILITYDELAYEDCOMPENSATIONPAYMENTEVENT;
+InstrumentEventType method = InstrumentEventType.INTERESTPAYMENTEVENT;
 ```
 
 

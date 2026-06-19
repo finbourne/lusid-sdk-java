@@ -105,7 +105,7 @@ public class ValuationPointInstrument {
   }
 
    /**
-   * Designates if the instrument was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added.
+   * Designates if the instrument was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added, OriginalAndAdded.
    * @return valuationPointOrigin
   **/
   @jakarta.annotation.Nullable

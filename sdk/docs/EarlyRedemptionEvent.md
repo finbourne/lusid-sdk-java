@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **effectiveDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date of redemption.  For internally generated European callables, this is set to the exercise date.  For internally generated American callables, this is set to the start of the exercise period. | [optional] [default to OffsetDateTime]
 **currency** | **String** | Currency of the redemption. | [default to String]
 **earlyRedemptionElections** | [**List&lt;EarlyRedemptionElection&gt;**](EarlyRedemptionElection.md) | EarlyRedemptionElection for the redemption. Used to trigger the redemption. | [default to List<EarlyRedemptionElection>]
-**redemptionPercentage** | **java.math.BigDecimal** | Percentage of the original issue that is redeemed, where 0.5 implies 50%. Defaults to 1 if not set. Must be between 0 and 1. | [optional] [default to java.math.BigDecimal]
+**redemptionPercentage** | **java.math.BigDecimal** | Percentage of the issued amount to be redeemed, value between 0 and 1, where 1 is a full redemption | [optional] [default to java.math.BigDecimal]
 **pricePerUnit** | **java.math.BigDecimal** | The price, or strike, that each unit is redeemed at. | [optional] [default to java.math.BigDecimal]
 **accruedInterestPerUnit** | **java.math.BigDecimal** | Unpaid accrued interest also repaid as part of the redemption, per unit.  Optional field.  If left empty, will be resolved internally by calculating the accrued owed on the EffectiveDate.  This process may require additional market data. | [optional] [default to java.math.BigDecimal]
 

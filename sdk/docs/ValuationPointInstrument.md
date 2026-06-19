@@ -6,7 +6,7 @@ An Instrument held at a Valuation Point, including its origin
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrument** | [**Instrument**](Instrument.md) |  | [optional] [default to Instrument]
-**valuationPointOrigin** | **String** | Designates if the instrument was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added. | [optional] [default to String]
+**valuationPointOrigin** | **String** | Designates if the instrument was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added, OriginalAndAdded. | [optional] [default to String]
 **addedOriginValuationPointCode** | **String** | The Valuation Point, only for an Instrument added as part of a Complex Close action. | [optional] [default to String]
 **addedOriginValuationPointVariantCode** | **String** | The Valuation Point variant, only for Instruments added as part of a Complex Close action. | [optional] [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested instrument properties. These will be from the &#39;Instrument&#39; domain. | [optional] [default to Map<String, Property>]

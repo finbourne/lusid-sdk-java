@@ -277,10 +277,10 @@ public class CustodianAccount {
   }
 
    /**
-   * The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
+   * The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.
    * @return accountType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getAccountType() {
     return accountType;
   }
@@ -382,7 +382,6 @@ public class CustodianAccount {
     openapiRequiredFields.add("accountingMethod");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("custodian");
-    openapiRequiredFields.add("accountType");
   }
 
  /**
@@ -424,7 +423,7 @@ public class CustodianAccount {
       }
       // validate the required field `custodian`
       LegalEntity.validateJsonElement(jsonObj.get("custodian"));
-      if (!jsonObj.get("accountType").isJsonPrimitive()) {
+      if ((jsonObj.get("accountType") != null && !jsonObj.get("accountType").isJsonNull()) && !jsonObj.get("accountType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountType").toString()));
       }
   }

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **currency** | **String** | The Currency for the Account | [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. | [optional] [default to Map<String, Property>]
 **custodian** | [**LegalEntity**](LegalEntity.md) |  | [default to LegalEntity]
-**accountType** | **String** | The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap. | [default to String]
+**accountType** | **String** | The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CustodianAccount;
@@ -28,7 +28,7 @@ String AccountingMethod = "example AccountingMethod";
 String Currency = "example Currency";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 LegalEntity Custodian = new LegalEntity();
-String AccountType = "example AccountType";
+@jakarta.annotation.Nullable String AccountType = "example AccountType";
 
 
 CustodianAccount custodianAccountInstance = new CustodianAccount()

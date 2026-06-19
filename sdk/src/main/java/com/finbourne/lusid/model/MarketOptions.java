@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The set of options that control miscellaneous and default market resolution behaviour.  These are aimed at a &#39;crude&#39; level of control for those who do not wish to fine tune the way that data is resolved.  For clients who wish to simply match instruments to prices this is quite possibly sufficient. For those wishing to control market data sources  according to requirements based on accuracy or timeliness it is not. In more advanced cases the options should largely be ignored and rules specified  per source. Be aware that where no specified rule matches the final fallback is on to the logic implied here.
+ * The set of options that control miscellaneous and default market resolution behaviour.  A default scope entered here will cause duplicate (\&quot;default\&quot;) rules to be created across all asset types, pointing at that scope.  These are aimed at a &#39;crude&#39; level of control for those who do not wish to fine tune the way that data is resolved.  For clients who wish to simply match instruments to prices this is quite possibly sufficient. For those wishing to control market data sources  according to requirements based on accuracy or timeliness it is not recommended. In more advanced cases the options should largely be ignored and rules specified  per source.  If no default scope is supplied, no default rules are created.  Where a default scope is supplied, a default rule is constructed per asset type, pointing at that scope, and appended  after all specified rules so it is only tried as a last resort. Each default rule is wild-carded within its asset type  (for example Quote.{instrumentCodeType}.* or Fx.*.*) rather than being a single fully wild-carded rule, and one (two for  Rates) is generated per asset type. Consequently, where no specified rule matches a dependency, the failure reported is  this constructed default rule in the provided default scope.  It is not recommended to rely on this behaviour, as these rules match a wide range of data and are likely to be slow to resolve.  It is better to specify rules for the data you require in the MarketRules of the MarketContext.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketOptions {
@@ -126,10 +126,10 @@ public class MarketOptions {
   }
 
    /**
-   * For default rules, which scope should data be searched for in
+   * The scope in which to search for data when applying default rules. This is optional: if omitted, no default rules  are created and market data is resolved only via the explicitly specified market data key rules.
    * @return defaultScope
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDefaultScope() {
     return defaultScope;
   }
@@ -278,7 +278,6 @@ public class MarketOptions {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("defaultScope");
   }
 
  /**
@@ -293,13 +292,6 @@ public class MarketOptions {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MarketOptions is not found in the empty JSON string", MarketOptions.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : MarketOptions.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("defaultSupplier") != null && !jsonObj.get("defaultSupplier").isJsonNull()) && !jsonObj.get("defaultSupplier").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `defaultSupplier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("defaultSupplier").toString()));
@@ -307,7 +299,7 @@ public class MarketOptions {
       if ((jsonObj.get("defaultInstrumentCodeType") != null && !jsonObj.get("defaultInstrumentCodeType").isJsonNull()) && !jsonObj.get("defaultInstrumentCodeType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `defaultInstrumentCodeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("defaultInstrumentCodeType").toString()));
       }
-      if (!jsonObj.get("defaultScope").isJsonPrimitive()) {
+      if ((jsonObj.get("defaultScope") != null && !jsonObj.get("defaultScope").isJsonNull()) && !jsonObj.get("defaultScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `defaultScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("defaultScope").toString()));
       }
       if ((jsonObj.get("calendarScope") != null && !jsonObj.get("calendarScope").isJsonNull()) && !jsonObj.get("calendarScope").isJsonPrimitive()) {

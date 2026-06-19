@@ -161,7 +161,7 @@ public class EarlyRedemptionEvent extends InstrumentEvent {
   }
 
    /**
-   * Percentage of the original issue that is redeemed, where 0.5 implies 50%. Defaults to 1 if not set. Must be between 0 and 1.
+   * Percentage of the issued amount to be redeemed, value between 0 and 1, where 1 is a full redemption
    * @return redemptionPercentage
   **/
   @jakarta.annotation.Nullable

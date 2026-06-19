@@ -301,7 +301,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
+   * The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.
    * @return accountType
   **/
   @jakarta.annotation.Nullable
