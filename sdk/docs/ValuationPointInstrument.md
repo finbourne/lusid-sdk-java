@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **valuationPointOrigin** | **String** | Designates if the instrument was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added, OriginalAndAdded. | [optional] [default to String]
 **addedOriginValuationPointCode** | **String** | The Valuation Point, only for an Instrument added as part of a Complex Close action. | [optional] [default to String]
 **addedOriginValuationPointVariantCode** | **String** | The Valuation Point variant, only for Instruments added as part of a Complex Close action. | [optional] [default to String]
+**valuationPointOriginSource** | **List&lt;String&gt;** | Collection of sources of Post Close Activities which added this instrument. Available values: Undefined, Manual, Auto. | [optional] [default to List<String>]
+**valuationPointOriginType** | **List&lt;String&gt;** | Collection of types of Post Close Activities which added this instrument. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. | [optional] [default to List<String>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested instrument properties. These will be from the &#39;Instrument&#39; domain. | [optional] [default to Map<String, Property>]
 
 ```java
@@ -21,6 +23,8 @@ Instrument Instrument = new Instrument();
 @jakarta.annotation.Nullable String ValuationPointOrigin = "example ValuationPointOrigin";
 @jakarta.annotation.Nullable String AddedOriginValuationPointCode = "example AddedOriginValuationPointCode";
 @jakarta.annotation.Nullable String AddedOriginValuationPointVariantCode = "example AddedOriginValuationPointVariantCode";
+@jakarta.annotation.Nullable List<String> ValuationPointOriginSource = new List<String>();
+@jakarta.annotation.Nullable List<String> ValuationPointOriginType = new List<String>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 
 
@@ -29,6 +33,8 @@ ValuationPointInstrument valuationPointInstrumentInstance = new ValuationPointIn
     .ValuationPointOrigin(ValuationPointOrigin)
     .AddedOriginValuationPointCode(AddedOriginValuationPointCode)
     .AddedOriginValuationPointVariantCode(AddedOriginValuationPointVariantCode)
+    .ValuationPointOriginSource(ValuationPointOriginSource)
+    .ValuationPointOriginType(ValuationPointOriginType)
     .Properties(Properties);
 ```
 

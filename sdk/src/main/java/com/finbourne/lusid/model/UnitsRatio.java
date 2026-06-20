@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,6 +57,10 @@ public class UnitsRatio {
   public static final String SERIALIZED_NAME_OUTPUT = "output";
   @SerializedName(SERIALIZED_NAME_OUTPUT)
   private java.math.BigDecimal output;
+
+  public static final String SERIALIZED_NAME_UNIT_SCALE_TYPE = "unitScaleType";
+  @SerializedName(SERIALIZED_NAME_UNIT_SCALE_TYPE)
+  private String unitScaleType;
 
   public UnitsRatio() {
   }
@@ -102,6 +107,27 @@ public class UnitsRatio {
   }
 
 
+  public UnitsRatio unitScaleType(String unitScaleType) {
+    
+    this.unitScaleType = unitScaleType;
+    return this;
+  }
+
+   /**
+   * Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX.
+   * @return unitScaleType
+  **/
+  @jakarta.annotation.Nullable
+  public String getUnitScaleType() {
+    return unitScaleType;
+  }
+
+
+  public void setUnitScaleType(String unitScaleType) {
+    this.unitScaleType = unitScaleType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,12 +139,24 @@ public class UnitsRatio {
     }
     UnitsRatio unitsRatio = (UnitsRatio) o;
     return (this.input.compareTo(unitsRatio.getInput()) == 0) &&
-        (this.output.compareTo(unitsRatio.getOutput()) == 0);
+        (this.output.compareTo(unitsRatio.getOutput()) == 0) &&
+        Objects.equals(this.unitScaleType, unitsRatio.unitScaleType);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, output);
+    return Objects.hash(input, output, unitScaleType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -127,6 +165,7 @@ public class UnitsRatio {
     sb.append("class UnitsRatio {\n");
     sb.append("    input: ").append(toIndentedString(input)).append("\n");
     sb.append("    output: ").append(toIndentedString(output)).append("\n");
+    sb.append("    unitScaleType: ").append(toIndentedString(unitScaleType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,6 +190,7 @@ public class UnitsRatio {
     openapiFields = new HashSet<String>();
     openapiFields.add("input");
     openapiFields.add("output");
+    openapiFields.add("unitScaleType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -178,6 +218,9 @@ public class UnitsRatio {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("unitScaleType") != null && !jsonObj.get("unitScaleType").isJsonNull()) && !jsonObj.get("unitScaleType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `unitScaleType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unitScaleType").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

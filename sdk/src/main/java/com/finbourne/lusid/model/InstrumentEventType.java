@@ -183,7 +183,9 @@ public enum InstrumentEventType {
   
   LOANFACILITYDELAYEDCOMPENSATIONPAYMENTEVENT("LoanFacilityDelayedCompensationPaymentEvent"),
   
-  INTERESTPAYMENTEVENT("InterestPaymentEvent");
+  INTERESTPAYMENTEVENT("InterestPaymentEvent"),
+  
+  PRIORITYISSUEEVENT("PriorityIssueEvent");
 
   private String value;
 

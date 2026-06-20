@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **input** | **java.math.BigDecimal** | Input amount. Denominator of the Ratio | [default to java.math.BigDecimal]
 **output** | **java.math.BigDecimal** | Output amount. Numerator of the Ratio | [default to java.math.BigDecimal]
+**unitScaleType** | **String** | Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.UnitsRatio;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 java.math.BigDecimal Input = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Output = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String UnitScaleType = "example UnitScaleType";
 
 
 UnitsRatio unitsRatioInstance = new UnitsRatio()
     .Input(Input)
-    .Output(Output);
+    .Output(Output)
+    .UnitScaleType(UnitScaleType);
 ```
 
 

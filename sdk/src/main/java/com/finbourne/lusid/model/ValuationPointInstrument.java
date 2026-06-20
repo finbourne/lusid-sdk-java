@@ -19,8 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -69,6 +71,14 @@ public class ValuationPointInstrument {
   public static final String SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_VARIANT_CODE = "addedOriginValuationPointVariantCode";
   @SerializedName(SERIALIZED_NAME_ADDED_ORIGIN_VALUATION_POINT_VARIANT_CODE)
   private String addedOriginValuationPointVariantCode;
+
+  public static final String SERIALIZED_NAME_VALUATION_POINT_ORIGIN_SOURCE = "valuationPointOriginSource";
+  @SerializedName(SERIALIZED_NAME_VALUATION_POINT_ORIGIN_SOURCE)
+  private List<String> valuationPointOriginSource;
+
+  public static final String SERIALIZED_NAME_VALUATION_POINT_ORIGIN_TYPE = "valuationPointOriginType";
+  @SerializedName(SERIALIZED_NAME_VALUATION_POINT_ORIGIN_TYPE)
+  private List<String> valuationPointOriginType;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -161,6 +171,64 @@ public class ValuationPointInstrument {
   }
 
 
+  public ValuationPointInstrument valuationPointOriginSource(List<String> valuationPointOriginSource) {
+    
+    this.valuationPointOriginSource = valuationPointOriginSource;
+    return this;
+  }
+
+  public ValuationPointInstrument addValuationPointOriginSourceItem(String valuationPointOriginSourceItem) {
+    if (this.valuationPointOriginSource == null) {
+      this.valuationPointOriginSource = new ArrayList<>();
+    }
+    this.valuationPointOriginSource.add(valuationPointOriginSourceItem);
+    return this;
+  }
+
+   /**
+   * Collection of sources of Post Close Activities which added this instrument. Available values: Undefined, Manual, Auto.
+   * @return valuationPointOriginSource
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getValuationPointOriginSource() {
+    return valuationPointOriginSource;
+  }
+
+
+  public void setValuationPointOriginSource(List<String> valuationPointOriginSource) {
+    this.valuationPointOriginSource = valuationPointOriginSource;
+  }
+
+
+  public ValuationPointInstrument valuationPointOriginType(List<String> valuationPointOriginType) {
+    
+    this.valuationPointOriginType = valuationPointOriginType;
+    return this;
+  }
+
+  public ValuationPointInstrument addValuationPointOriginTypeItem(String valuationPointOriginTypeItem) {
+    if (this.valuationPointOriginType == null) {
+      this.valuationPointOriginType = new ArrayList<>();
+    }
+    this.valuationPointOriginType.add(valuationPointOriginTypeItem);
+    return this;
+  }
+
+   /**
+   * Collection of types of Post Close Activities which added this instrument. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
+   * @return valuationPointOriginType
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getValuationPointOriginType() {
+    return valuationPointOriginType;
+  }
+
+
+  public void setValuationPointOriginType(List<String> valuationPointOriginType) {
+    this.valuationPointOriginType = valuationPointOriginType;
+  }
+
+
   public ValuationPointInstrument properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -204,6 +272,8 @@ public class ValuationPointInstrument {
         Objects.equals(this.valuationPointOrigin, valuationPointInstrument.valuationPointOrigin) &&
         Objects.equals(this.addedOriginValuationPointCode, valuationPointInstrument.addedOriginValuationPointCode) &&
         Objects.equals(this.addedOriginValuationPointVariantCode, valuationPointInstrument.addedOriginValuationPointVariantCode) &&
+        Objects.equals(this.valuationPointOriginSource, valuationPointInstrument.valuationPointOriginSource) &&
+        Objects.equals(this.valuationPointOriginType, valuationPointInstrument.valuationPointOriginType) &&
         Objects.equals(this.properties, valuationPointInstrument.properties);
   }
 
@@ -213,7 +283,7 @@ public class ValuationPointInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrument, valuationPointOrigin, addedOriginValuationPointCode, addedOriginValuationPointVariantCode, properties);
+    return Objects.hash(instrument, valuationPointOrigin, addedOriginValuationPointCode, addedOriginValuationPointVariantCode, valuationPointOriginSource, valuationPointOriginType, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -231,6 +301,8 @@ public class ValuationPointInstrument {
     sb.append("    valuationPointOrigin: ").append(toIndentedString(valuationPointOrigin)).append("\n");
     sb.append("    addedOriginValuationPointCode: ").append(toIndentedString(addedOriginValuationPointCode)).append("\n");
     sb.append("    addedOriginValuationPointVariantCode: ").append(toIndentedString(addedOriginValuationPointVariantCode)).append("\n");
+    sb.append("    valuationPointOriginSource: ").append(toIndentedString(valuationPointOriginSource)).append("\n");
+    sb.append("    valuationPointOriginType: ").append(toIndentedString(valuationPointOriginType)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -258,6 +330,8 @@ public class ValuationPointInstrument {
     openapiFields.add("valuationPointOrigin");
     openapiFields.add("addedOriginValuationPointCode");
     openapiFields.add("addedOriginValuationPointVariantCode");
+    openapiFields.add("valuationPointOriginSource");
+    openapiFields.add("valuationPointOriginType");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
@@ -289,6 +363,14 @@ public class ValuationPointInstrument {
       }
       if ((jsonObj.get("addedOriginValuationPointVariantCode") != null && !jsonObj.get("addedOriginValuationPointVariantCode").isJsonNull()) && !jsonObj.get("addedOriginValuationPointVariantCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addedOriginValuationPointVariantCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addedOriginValuationPointVariantCode").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("valuationPointOriginSource") != null && !jsonObj.get("valuationPointOriginSource").isJsonNull() && !jsonObj.get("valuationPointOriginSource").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valuationPointOriginSource` to be an array in the JSON string but got `%s`", jsonObj.get("valuationPointOriginSource").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("valuationPointOriginType") != null && !jsonObj.get("valuationPointOriginType").isJsonNull() && !jsonObj.get("valuationPointOriginType").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valuationPointOriginType` to be an array in the JSON string but got `%s`", jsonObj.get("valuationPointOriginType").toString()));
       }
   }
 
