@@ -7057,11 +7057,11 @@ public class TransactionPortfoliosApi {
     public APIgetHoldingContributorsRequest getHoldingContributors(String scope, String code, Long holdingId) {
         return new APIgetHoldingContributorsRequest(scope, code, holdingId);
     }
-    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
-        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback _callback) throws ApiException {
+        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7124,6 +7124,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
         }
 
+        if (aggregateCashCommitments != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("aggregateCashCommitments", aggregateCashCommitments));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7146,7 +7150,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldings(Async)");
@@ -7157,34 +7161,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getHoldings(Async)");
         }
 
-        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, null, opts);
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7202,6 +7206,7 @@ public class TransactionPortfoliosApi {
         private String timelineScope;
         private String timelineCode;
         private String closedPeriodId;
+        private Boolean aggregateCashCommitments;
 
         private APIgetHoldingsRequest(String scope, String code) {
             this.scope = scope;
@@ -7299,6 +7304,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set aggregateCashCommitments
+         * @param aggregateCashCommitments When true, collapses cash-commitment rows that share a sub-holding key   into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the   settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)
+         * @return APIgetHoldingsRequest
+         */
+        public APIgetHoldingsRequest aggregateCashCommitments(Boolean aggregateCashCommitments) {
+            this.aggregateCashCommitments = aggregateCashCommitments;
+            return this;
+        }
+
+        /**
          * Build call for getHoldings
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -7312,7 +7327,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback);
         }
 
         /**
@@ -7328,7 +7343,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId);
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
             return localVarResp.getData();
         }
 
@@ -7345,7 +7360,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, opts);
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts);
             return localVarResp.getData();
         }
 
@@ -7362,7 +7377,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
-            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId);
+            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
         }
 
         /**
@@ -7378,7 +7393,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, opts);
+            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts);
         }
 
         /**
@@ -7395,7 +7410,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
-            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback);
+            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback);
         }
 
         /**
@@ -7412,7 +7427,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
-            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, opts);
         }
     }
 
@@ -7728,11 +7743,11 @@ public class TransactionPortfoliosApi {
     public APIgetHoldingsAdjustmentRequest getHoldingsAdjustment(String scope, String code, String effectiveAt) {
         return new APIgetHoldingsAdjustmentRequest(scope, code, effectiveAt);
     }
-    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
-        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, final ApiCallback _callback) throws ApiException {
+        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7791,6 +7806,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeSettlementEventsAfterDays", includeSettlementEventsAfterDays));
         }
 
+        if (aggregateCashCommitments != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("aggregateCashCommitments", aggregateCashCommitments));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7813,7 +7832,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsWithOrdersValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsWithOrders(Async)");
@@ -7824,34 +7843,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getHoldingsWithOrders(Async)");
         }
 
-        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
+        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, null, opts);
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7868,6 +7887,7 @@ public class TransactionPortfoliosApi {
         private String recipeIdScope;
         private String recipeIdCode;
         private Integer includeSettlementEventsAfterDays;
+        private Boolean aggregateCashCommitments;
 
         private APIgetHoldingsWithOrdersRequest(String scope, String code) {
             this.scope = scope;
@@ -7955,6 +7975,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set aggregateCashCommitments
+         * @param aggregateCashCommitments When true, collapses cash-commitment rows that share a sub-holding key   into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the   settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)
+         * @return APIgetHoldingsWithOrdersRequest
+         */
+        public APIgetHoldingsWithOrdersRequest aggregateCashCommitments(Boolean aggregateCashCommitments) {
+            this.aggregateCashCommitments = aggregateCashCommitments;
+            return this;
+        }
+
+        /**
          * Build call for getHoldingsWithOrders
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -7968,7 +7998,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback);
+            return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback);
         }
 
         /**
@@ -7984,7 +8014,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfPortfolioHolding execute() throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays);
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments);
             return localVarResp.getData();
         }
 
@@ -8001,7 +8031,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, opts);
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, opts);
             return localVarResp.getData();
         }
 
@@ -8018,7 +8048,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
-            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays);
+            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments);
         }
 
         /**
@@ -8034,7 +8064,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, opts);
+            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, opts);
         }
 
         /**
@@ -8051,7 +8081,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
-            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback);
+            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback);
         }
 
         /**
@@ -8068,7 +8098,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
-            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
+            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments, _callback, opts);
         }
     }
 
