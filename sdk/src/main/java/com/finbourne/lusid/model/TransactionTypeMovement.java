@@ -100,6 +100,14 @@ public class TransactionTypeMovement {
   @SerializedName(SERIALIZED_NAME_CALCULATE_TRADE_DATE_TO_SETTLEMENT_FX_PN_L)
   private Boolean calculateTradeDateToSettlementFxPnL;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE = "custodianAccountType";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE)
+  private String custodianAccountType;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_SELECTOR = "accountSelector";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_SELECTOR)
+  private String accountSelector;
+
   public TransactionTypeMovement() {
   }
 
@@ -358,6 +366,48 @@ public class TransactionTypeMovement {
   }
 
 
+  public TransactionTypeMovement custodianAccountType(String custodianAccountType) {
+    
+    this.custodianAccountType = custodianAccountType;
+    return this;
+  }
+
+   /**
+   * The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional.
+   * @return custodianAccountType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCustodianAccountType() {
+    return custodianAccountType;
+  }
+
+
+  public void setCustodianAccountType(String custodianAccountType) {
+    this.custodianAccountType = custodianAccountType;
+  }
+
+
+  public TransactionTypeMovement accountSelector(String accountSelector) {
+    
+    this.accountSelector = accountSelector;
+    return this;
+  }
+
+   /**
+   * An optional selector expression used to identify the specific account this movement targets. E.g. From/To.
+   * @return accountSelector
+  **/
+  @jakarta.annotation.Nullable
+  public String getAccountSelector() {
+    return accountSelector;
+  }
+
+
+  public void setAccountSelector(String accountSelector) {
+    this.accountSelector = accountSelector;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -378,7 +428,9 @@ public class TransactionTypeMovement {
         Objects.equals(this.settlementDateOverride, transactionTypeMovement.settlementDateOverride) &&
         Objects.equals(this.condition, transactionTypeMovement.condition) &&
         Objects.equals(this.settlementMode, transactionTypeMovement.settlementMode) &&
-        Objects.equals(this.calculateTradeDateToSettlementFxPnL, transactionTypeMovement.calculateTradeDateToSettlementFxPnL);
+        Objects.equals(this.calculateTradeDateToSettlementFxPnL, transactionTypeMovement.calculateTradeDateToSettlementFxPnL) &&
+        Objects.equals(this.custodianAccountType, transactionTypeMovement.custodianAccountType) &&
+        Objects.equals(this.accountSelector, transactionTypeMovement.accountSelector);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -387,7 +439,7 @@ public class TransactionTypeMovement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode, calculateTradeDateToSettlementFxPnL);
+    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode, calculateTradeDateToSettlementFxPnL, custodianAccountType, accountSelector);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -412,6 +464,8 @@ public class TransactionTypeMovement {
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    settlementMode: ").append(toIndentedString(settlementMode)).append("\n");
     sb.append("    calculateTradeDateToSettlementFxPnL: ").append(toIndentedString(calculateTradeDateToSettlementFxPnL)).append("\n");
+    sb.append("    custodianAccountType: ").append(toIndentedString(custodianAccountType)).append("\n");
+    sb.append("    accountSelector: ").append(toIndentedString(accountSelector)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -445,6 +499,8 @@ public class TransactionTypeMovement {
     openapiFields.add("condition");
     openapiFields.add("settlementMode");
     openapiFields.add("calculateTradeDateToSettlementFxPnL");
+    openapiFields.add("custodianAccountType");
+    openapiFields.add("accountSelector");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -508,6 +564,12 @@ public class TransactionTypeMovement {
       }
       if ((jsonObj.get("settlementMode") != null && !jsonObj.get("settlementMode").isJsonNull()) && !jsonObj.get("settlementMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `settlementMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementMode").toString()));
+      }
+      if ((jsonObj.get("custodianAccountType") != null && !jsonObj.get("custodianAccountType").isJsonNull()) && !jsonObj.get("custodianAccountType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custodianAccountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custodianAccountType").toString()));
+      }
+      if ((jsonObj.get("accountSelector") != null && !jsonObj.get("accountSelector").isJsonNull()) && !jsonObj.get("accountSelector").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountSelector` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountSelector").toString()));
       }
   }
 

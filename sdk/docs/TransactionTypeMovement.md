@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **condition** | **String** | The condition that the transaction must satisfy to generate the movement, such as: Portfolio.BaseCurrency eq &#39;GBP&#39;. The condition can contain fields and properties from transactions and portfolios. If no condition is provided, the movement will apply for all transactions of this type. | [optional] [default to String]
 **settlementMode** | **String** | Configures how movements should settle. Allowed values: &#39;Internal&#39; and &#39;External&#39;. A movement with &#39;Internal&#39; settlement mode will settle automatically on the contractual settlement date regardlesss of portfolio configuration or settlement instruction. An &#39;External&#39; movement can be settled automatically or by a settlement instruction. Available values: Internal, External. | [optional] [default to String]
 **calculateTradeDateToSettlementFxPnL** | **Boolean** | Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement. | [optional] [default to Boolean]
+**custodianAccountType** | **String** | The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional. | [optional] [default to String]
+**accountSelector** | **String** | An optional selector expression used to identify the specific account this movement targets. E.g. From/To. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TransactionTypeMovement;
@@ -33,6 +35,8 @@ Integer Direction = new Integer("100.00");
 @jakarta.annotation.Nullable String Condition = "example Condition";
 @jakarta.annotation.Nullable String SettlementMode = "example SettlementMode";
 @jakarta.annotation.Nullable Boolean CalculateTradeDateToSettlementFxPnL = true;
+@jakarta.annotation.Nullable String CustodianAccountType = "example CustodianAccountType";
+@jakarta.annotation.Nullable String AccountSelector = "example AccountSelector";
 
 
 TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMovement()
@@ -46,7 +50,9 @@ TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMov
     .SettlementDateOverride(SettlementDateOverride)
     .Condition(Condition)
     .SettlementMode(SettlementMode)
-    .CalculateTradeDateToSettlementFxPnL(CalculateTradeDateToSettlementFxPnL);
+    .CalculateTradeDateToSettlementFxPnL(CalculateTradeDateToSettlementFxPnL)
+    .CustodianAccountType(CustodianAccountType)
+    .AccountSelector(AccountSelector);
 ```
 
 
