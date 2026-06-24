@@ -438,6 +438,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceStepTypeRequest"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.ClassActionEvent.class, new TypeSelector<com.finbourne.lusid.model.ClassActionEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.ClassActionEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ClassActionEvent", com.finbourne.lusid.model.ClassActionEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CloseEvent.class, new TypeSelector<com.finbourne.lusid.model.CloseEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CloseEvent> getClassForElement(JsonElement readElement) {
@@ -1497,6 +1506,7 @@ public class JSON {
                         classByDiscriminatorValue.put("CashFlowEvent", com.finbourne.lusid.model.CashFlowEvent.class);
                         classByDiscriminatorValue.put("CdsCreditEvent", com.finbourne.lusid.model.CdsCreditEvent.class);
                         classByDiscriminatorValue.put("CdxCreditEvent", com.finbourne.lusid.model.CdxCreditEvent.class);
+                        classByDiscriminatorValue.put("ClassActionEvent", com.finbourne.lusid.model.ClassActionEvent.class);
                         classByDiscriminatorValue.put("CloseEvent", com.finbourne.lusid.model.CloseEvent.class);
                         classByDiscriminatorValue.put("ConsentEvent", com.finbourne.lusid.model.ConsentEvent.class);
                         classByDiscriminatorValue.put("ContractInitialisationEvent", com.finbourne.lusid.model.ContractInitialisationEvent.class);
@@ -2886,6 +2896,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CheckDefinitionRuleSet.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CheckStep.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CheckStepRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ClassActionEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleDetails.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CleardownModuleResponse.CustomTypeAdapterFactory());

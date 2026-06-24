@@ -185,7 +185,9 @@ public enum InstrumentEventType {
   
   INTERESTPAYMENTEVENT("InterestPaymentEvent"),
   
-  PRIORITYISSUEEVENT("PriorityIssueEvent");
+  PRIORITYISSUEEVENT("PriorityIssueEvent"),
+  
+  CLASSACTIONEVENT("ClassActionEvent");
 
   private String value;
 
