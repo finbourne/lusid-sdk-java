@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **movements** | [**List&lt;TransactionTypeMovement&gt;**](TransactionTypeMovement.md) | Movement data for the transaction type | [default to List<TransactionTypeMovement>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties attached to the transaction type | [optional] [default to Map<String, PerpetualProperty>]
 **calculations** | [**List&lt;TransactionTypeCalculation&gt;**](TransactionTypeCalculation.md) | Calculations to be performed for the transaction type | [optional] [default to List<TransactionTypeCalculation>]
+**scope** | **String** | The scope in which the transaction type exists. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -20,6 +21,7 @@ List<TransactionTypeAlias> Aliases = new List<TransactionTypeAlias>();
 List<TransactionTypeMovement> Movements = new List<TransactionTypeMovement>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable List<TransactionTypeCalculation> Calculations = new List<TransactionTypeCalculation>();
+@jakarta.annotation.Nullable String Scope = "example Scope";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -28,6 +30,7 @@ TransactionType transactionTypeInstance = new TransactionType()
     .Movements(Movements)
     .Properties(Properties)
     .Calculations(Calculations)
+    .Scope(Scope)
     .Links(Links);
 ```
 

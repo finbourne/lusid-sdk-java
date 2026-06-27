@@ -96,6 +96,8 @@ InstrumentEventType method = InstrumentEventType.LOANFACILITYDELAYEDCOMPENSATION
 InstrumentEventType method = InstrumentEventType.INTERESTPAYMENTEVENT;
 InstrumentEventType method = InstrumentEventType.PRIORITYISSUEEVENT;
 InstrumentEventType method = InstrumentEventType.CLASSACTIONEVENT;
+InstrumentEventType method = InstrumentEventType.BANKRUPTCYEVENT;
+InstrumentEventType method = InstrumentEventType.LIQUIDATIONPAYMENTEVENT;
 ```
 
 

@@ -149,6 +149,14 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
 
+  public static final String SERIALIZED_NAME_DERIVED_COMPLIANCE_STATE = "derivedComplianceState";
+  @SerializedName(SERIALIZED_NAME_DERIVED_COMPLIANCE_STATE)
+  private String derivedComplianceState;
+
+  public static final String SERIALIZED_NAME_DERIVED_APPROVAL_STATE = "derivedApprovalState";
+  @SerializedName(SERIALIZED_NAME_DERIVED_APPROVAL_STATE)
+  private String derivedApprovalState;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -634,6 +642,48 @@ public class Order {
   }
 
 
+  public Order derivedComplianceState(String derivedComplianceState) {
+    
+    this.derivedComplianceState = derivedComplianceState;
+    return this;
+  }
+
+   /**
+   * The compliance state of the order, derived from pre-trade compliance runs.
+   * @return derivedComplianceState
+  **/
+  @jakarta.annotation.Nullable
+  public String getDerivedComplianceState() {
+    return derivedComplianceState;
+  }
+
+
+  public void setDerivedComplianceState(String derivedComplianceState) {
+    this.derivedComplianceState = derivedComplianceState;
+  }
+
+
+  public Order derivedApprovalState(String derivedApprovalState) {
+    
+    this.derivedApprovalState = derivedApprovalState;
+    return this;
+  }
+
+   /**
+   * The approval state of the order.
+   * @return derivedApprovalState
+  **/
+  @jakarta.annotation.Nullable
+  public String getDerivedApprovalState() {
+    return derivedApprovalState;
+  }
+
+
+  public void setDerivedApprovalState(String derivedApprovalState) {
+    this.derivedApprovalState = derivedApprovalState;
+  }
+
+
   public Order links(List<Link> links) {
     
     this.links = links;
@@ -695,6 +745,8 @@ public class Order {
         (this.weight.compareTo(order.getWeight()) == 0) &&
         Objects.equals(this.amount, order.amount) &&
         Objects.equals(this.dataModelMembership, order.dataModelMembership) &&
+        Objects.equals(this.derivedComplianceState, order.derivedComplianceState) &&
+        Objects.equals(this.derivedApprovalState, order.derivedApprovalState) &&
         Objects.equals(this.links, order.links);
   }
 
@@ -704,7 +756,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, dataModelMembership, links);
+    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, dataModelMembership, derivedComplianceState, derivedApprovalState, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -740,6 +792,8 @@ public class Order {
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
+    sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
+    sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -785,6 +839,8 @@ public class Order {
     openapiFields.add("weight");
     openapiFields.add("amount");
     openapiFields.add("dataModelMembership");
+    openapiFields.add("derivedComplianceState");
+    openapiFields.add("derivedApprovalState");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -874,6 +930,12 @@ public class Order {
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
         DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
+      }
+      if ((jsonObj.get("derivedComplianceState") != null && !jsonObj.get("derivedComplianceState").isJsonNull()) && !jsonObj.get("derivedComplianceState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `derivedComplianceState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivedComplianceState").toString()));
+      }
+      if ((jsonObj.get("derivedApprovalState") != null && !jsonObj.get("derivedApprovalState").isJsonNull()) && !jsonObj.get("derivedApprovalState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `derivedApprovalState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("derivedApprovalState").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

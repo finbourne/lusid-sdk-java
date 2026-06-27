@@ -66,6 +66,7 @@ import com.finbourne.lusid.model.ValuationPoint;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
 import com.finbourne.lusid.model.ValuationPointDataRequest;
 import com.finbourne.lusid.model.ValuationPointDataResponse;
+import com.finbourne.lusid.model.ValuationPointResourceListOfAccountedQuote;
 import com.finbourne.lusid.model.ValuationPointResourceListOfAccountedTransaction;
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundCashStatementRow;
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine;
@@ -7507,6 +7508,319 @@ public class FundsApi {
      */
     public APIgetValuationPointPnlSummaryRequest getValuationPointPnlSummary(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointPnlSummaryRequest(scope, code, valuationPointDataQueryParameters);
+    }
+    private okhttp3.Call getValuationPointQuotesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointQuotesCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationPointQuotesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/quotes/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValuationPointQuotesValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointQuotes(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getValuationPointQuotes(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointQuotes(Async)");
+        }
+
+        return getValuationPointQuotesCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointResourceListOfAccountedQuote> getValuationPointQuotesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointQuotesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedQuote>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointResourceListOfAccountedQuote> getValuationPointQuotesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointQuotesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedQuote>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getValuationPointQuotesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedQuote> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointQuotesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedQuote>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationPointQuotesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedQuote> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointQuotesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedQuote>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationPointQuotesRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private OffsetDateTime asAt;
+        private Integer limit;
+        private String page;
+        private String navTypeCode;
+
+        private APIgetValuationPointQuotesRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve quotes. Defaults to returning the latest version   of each quote if not specified. (optional)
+         * @return APIgetValuationPointQuotesRequest
+         */
+        public APIgetValuationPointQuotesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetValuationPointQuotesRequest
+         */
+        public APIgetValuationPointQuotesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing quotes from a previous call to GetValuationPointQuotes. (optional)
+         * @return APIgetValuationPointQuotesRequest
+         */
+        public APIgetValuationPointQuotesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetValuationPointQuotesRequest
+         */
+        public APIgetValuationPointQuotesRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationPointQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationPointQuotesCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getValuationPointQuotes request
+         * @return ValuationPointResourceListOfAccountedQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfAccountedQuote execute() throws ApiException {
+            ApiResponse<ValuationPointResourceListOfAccountedQuote> localVarResp = getValuationPointQuotesWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointQuotes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointResourceListOfAccountedQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfAccountedQuote execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointResourceListOfAccountedQuote> localVarResp = getValuationPointQuotesWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointQuotes request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointResourceListOfAccountedQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfAccountedQuote> executeWithHttpInfo() throws ApiException {
+            return getValuationPointQuotesWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
+        }
+
+        /**
+         * Execute getValuationPointQuotes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointResourceListOfAccountedQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfAccountedQuote> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationPointQuotesWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, opts);
+        }
+
+        /**
+         * Execute getValuationPointQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedQuote> _callback) throws ApiException {
+            return getValuationPointQuotesAsync(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getValuationPointQuotes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedQuote> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationPointQuotesAsync(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
+     * Gets all quotes within the effective date range of the specified Valuation Point for a Fund,  including any quotes added via a Complex Close (Post-Close Activity).
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the quotes. (required)
+     * @return APIgetValuationPointQuotesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested quotes for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetValuationPointQuotesRequest getValuationPointQuotes(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetValuationPointQuotesRequest(scope, code, valuationPointDataQueryParameters);
     }
     private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback _callback) throws ApiException {
         return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType,  _callback, new ConfigurationOptions());

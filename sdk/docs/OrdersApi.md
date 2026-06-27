@@ -203,7 +203,7 @@ public class OrdersApiExample {
 
 ## listOrders
 
-> PagedResourceListOfOrder listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType)
+> PagedResourceListOfOrder listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses)
 
 ListOrders: List Orders
 
@@ -257,11 +257,12 @@ public class OrdersApiExample {
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
+        Boolean getDerivedComplianceStatuses = false; // Boolean | If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType).execute(opts);
+            // PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses).execute(opts);
 
-            PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType).execute();
+            PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrdersApi#listOrders");
@@ -287,6 +288,7 @@ public class OrdersApiExample {
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
+| **getDerivedComplianceStatuses** | **Boolean**| If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 

@@ -75,6 +75,10 @@ public class TransactionType {
   @SerializedName(SERIALIZED_NAME_CALCULATIONS)
   private List<TransactionTypeCalculation> calculations;
 
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -198,6 +202,27 @@ public class TransactionType {
   }
 
 
+  public TransactionType scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope in which the transaction type exists.
+   * @return scope
+  **/
+  @jakarta.annotation.Nullable
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
   public TransactionType links(List<Link> links) {
     
     this.links = links;
@@ -241,6 +266,7 @@ public class TransactionType {
         Objects.equals(this.movements, transactionType.movements) &&
         Objects.equals(this.properties, transactionType.properties) &&
         Objects.equals(this.calculations, transactionType.calculations) &&
+        Objects.equals(this.scope, transactionType.scope) &&
         Objects.equals(this.links, transactionType.links);
   }
 
@@ -250,7 +276,7 @@ public class TransactionType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aliases, movements, properties, calculations, links);
+    return Objects.hash(aliases, movements, properties, calculations, scope, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -268,6 +294,7 @@ public class TransactionType {
     sb.append("    movements: ").append(toIndentedString(movements)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    calculations: ").append(toIndentedString(calculations)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -295,6 +322,7 @@ public class TransactionType {
     openapiFields.add("movements");
     openapiFields.add("properties");
     openapiFields.add("calculations");
+    openapiFields.add("scope");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -356,6 +384,9 @@ public class TransactionType {
             TransactionTypeCalculation.validateJsonElement(jsonArraycalculations.get(i));
           };
         }
+      }
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

@@ -1475,7 +1475,7 @@ public class TransactionConfigurationApi {
 
         /**
          * Set scope
-         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to default)
          * @return APIlistSideDefinitionsRequest
          */
         public APIlistSideDefinitionsRequest scope(String scope) {
@@ -1603,7 +1603,7 @@ public class TransactionConfigurationApi {
 
     /**
      * ListSideDefinitions: List the side definitions
-     * List all the side definitions in the given scope
+     * List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
      * @return APIlistSideDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1728,7 +1728,7 @@ public class TransactionConfigurationApi {
 
         /**
          * Set scope
-         * @param scope The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @param scope The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to default)
          * @return APIlistTransactionTypesRequest
          */
         public APIlistTransactionTypesRequest scope(String scope) {

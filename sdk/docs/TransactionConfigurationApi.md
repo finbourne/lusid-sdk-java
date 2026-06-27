@@ -497,7 +497,7 @@ public class TransactionConfigurationApiExample {
 
 ListSideDefinitions: List the side definitions
 
-List all the side definitions in the given scope
+List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
 
 ### Example
 
@@ -539,7 +539,7 @@ public class TransactionConfigurationApiExample {
 
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
-        String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
+        String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'. Use '*' to list across all scopes.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute(opts);
@@ -562,7 +562,7 @@ public class TransactionConfigurationApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. | [optional] |
-| **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. | [optional] [default to default] |
 
 ### Return type
 
@@ -632,7 +632,7 @@ public class TransactionConfigurationApiExample {
 
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
-        String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
+        String scope = "default"; // String | The scope in which the transaction types exist. When not supplied the scope is 'default'. Use '*' to list across all scopes.
         try {
             // uncomment the below to set overrides at the request level
             // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute(opts);
@@ -655,7 +655,7 @@ public class TransactionConfigurationApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
-| **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **scope** | **String**| The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. | [optional] [default to default] |
 
 ### Return type
 
