@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
-**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
+**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The properties that were upserted on the transaction. | [optional] [default to Map<String, PerpetualProperty>]
+**metadata** | [**Map&lt;String, List&lt;ResponseMetaData&gt;&gt;**](List.md) | Contains warnings related to the upsert event. | [optional] [default to Map<String, List<ResponseMetaData>>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -18,6 +19,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 Version Version = new Version();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+@jakarta.annotation.Nullable Map<String, List<ResponseMetaData>> Metadata = new Map<String, List<ResponseMetaData>>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -25,6 +27,7 @@ UpsertTransactionPropertiesResponse upsertTransactionPropertiesResponseInstance 
     .Href(Href)
     .Version(Version)
     .Properties(Properties)
+    .Metadata(Metadata)
     .Links(Links);
 ```
 

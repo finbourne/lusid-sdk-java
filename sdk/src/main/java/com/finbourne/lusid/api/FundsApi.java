@@ -68,6 +68,7 @@ import com.finbourne.lusid.model.ValuationPointDataRequest;
 import com.finbourne.lusid.model.ValuationPointDataResponse;
 import com.finbourne.lusid.model.ValuationPointResourceListOfAccountedQuote;
 import com.finbourne.lusid.model.ValuationPointResourceListOfAccountedTransaction;
+import com.finbourne.lusid.model.ValuationPointResourceListOfFundCashStatementLocalCurrency;
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundCashStatementRow;
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfPnlJournalEntryLine;
@@ -12165,8 +12166,8 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point.
-     * Returns settled cash movements with running balance, cost basis, average FX rate, and realised FX PnL  for the specified Fund valuation point period. The cash statement is derived from Journal Entry Lines  filtered to settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter  on the request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses reversals into AvgRateCorrection rows).
+     * [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point.
+     * Deprecated: use QueryCashStatementLocalCurrency instead. Returns settled cash movements with  running balance, cost basis, average FX rate, and realised FX PnL for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses reversals into AvgRateCorrection rows).
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param queryFundCashStatementParameters The query parameters specifying the diary entry period and display mode. (required)
@@ -12181,6 +12182,349 @@ public class FundsApi {
      */
     public APIqueryCashStatementRequest queryCashStatement(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters) {
         return new APIqueryCashStatementRequest(scope, code, queryFundCashStatementParameters);
+    }
+    private okhttp3.Call queryCashStatementLocalCurrencyCall(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return queryCashStatementLocalCurrencyCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryCashStatementLocalCurrencyCall(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = queryFundCashStatementParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call queryCashStatementLocalCurrencyValidateBeforeCall(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling queryCashStatementLocalCurrency(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling queryCashStatementLocalCurrency(Async)");
+        }
+
+        // verify the required parameter 'queryFundCashStatementParameters' is set
+        if (queryFundCashStatementParameters == null) {
+            throw new ApiException("Missing the required parameter 'queryFundCashStatementParameters' when calling queryCashStatementLocalCurrency(Async)");
+        }
+
+        return queryCashStatementLocalCurrencyCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> queryCashStatementLocalCurrencyWithHttpInfo(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = queryCashStatementLocalCurrencyValidateBeforeCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundCashStatementLocalCurrency>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> queryCashStatementLocalCurrencyWithHttpInfo(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryCashStatementLocalCurrencyValidateBeforeCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundCashStatementLocalCurrency>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call queryCashStatementLocalCurrencyAsync(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfFundCashStatementLocalCurrency> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = queryCashStatementLocalCurrencyValidateBeforeCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundCashStatementLocalCurrency>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryCashStatementLocalCurrencyAsync(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfFundCashStatementLocalCurrency> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryCashStatementLocalCurrencyValidateBeforeCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundCashStatementLocalCurrency>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIqueryCashStatementLocalCurrencyRequest {
+        private final String scope;
+        private final String code;
+        private final QueryFundCashStatementParameters queryFundCashStatementParameters;
+        private OffsetDateTime asAt;
+        private String filter;
+        private Integer limit;
+        private String page;
+        private List<String> propertyKeys;
+        private String navTypeCode;
+
+        private APIqueryCashStatementLocalCurrencyRequest(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.queryFundCashStatementParameters = queryFundCashStatementParameters;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the cash statement. Defaults to the latest version if not specified. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to get the next page of results. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys to decorate onto the cash statement rows. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode The code of the NAV type to use. Defaults to the primary NAV type if not specified. (optional)
+         * @return APIqueryCashStatementLocalCurrencyRequest
+         */
+        public APIqueryCashStatementLocalCurrencyRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for queryCashStatementLocalCurrency
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return queryCashStatementLocalCurrencyCall(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request
+         * @return ValuationPointResourceListOfFundCashStatementLocalCurrency
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfFundCashStatementLocalCurrency execute() throws ApiException {
+            ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> localVarResp = queryCashStatementLocalCurrencyWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointResourceListOfFundCashStatementLocalCurrency
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfFundCashStatementLocalCurrency execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> localVarResp = queryCashStatementLocalCurrencyWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointResourceListOfFundCashStatementLocalCurrency&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> executeWithHttpInfo() throws ApiException {
+            return queryCashStatementLocalCurrencyWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointResourceListOfFundCashStatementLocalCurrency&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryCashStatementLocalCurrencyWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfFundCashStatementLocalCurrency> _callback) throws ApiException {
+            return queryCashStatementLocalCurrencyAsync(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute queryCashStatementLocalCurrency request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfFundCashStatementLocalCurrency> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryCashStatementLocalCurrencyAsync(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
+     * Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param queryFundCashStatementParameters The query parameters specifying the diary entry period and display mode. (required)
+     * @return APIqueryCashStatementLocalCurrencyRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The local-currency cash statement for the specified Fund valuation point. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIqueryCashStatementLocalCurrencyRequest queryCashStatementLocalCurrency(String scope, String code, QueryFundCashStatementParameters queryFundCashStatementParameters) {
+        return new APIqueryCashStatementLocalCurrencyRequest(scope, code, queryFundCashStatementParameters);
     }
     private okhttp3.Call revertValuationPointToEstimateCall(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return revertValuationPointToEstimateCall(scope, code, revertValuationPointDataRequest, navTypeCode,  _callback, new ConfigurationOptions());

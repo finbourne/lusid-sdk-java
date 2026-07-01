@@ -17,6 +17,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**isBusinessDateTime**](CalendarsApi.md#isBusinessDateTime) | **GET** /api/calendars/businessday/{scope}/{code} | [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot; |
 | [**listCalendars**](CalendarsApi.md#listCalendars) | **GET** /api/calendars/generic | [EARLY ACCESS] ListCalendars: List Calendars |
 | [**listCalendarsInScope**](CalendarsApi.md#listCalendarsInScope) | **GET** /api/calendars/generic/{scope} | ListCalendarsInScope: List all calenders in a specified scope |
+| [**resolveTenors**](CalendarsApi.md#resolveTenors) | **POST** /api/calendars/tenors/resolve | [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. |
 | [**updateCalendar**](CalendarsApi.md#updateCalendar) | **POST** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] UpdateCalendar: Update a calendar |
 
 
@@ -1264,6 +1265,97 @@ public class CalendarsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Calendars in the requested scope |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## resolveTenors
+
+> ResolveTenorsResponse resolveTenors(resolveTenorsRequest)
+
+[EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+
+Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.     The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.     Unrecognised tenor strings cause a validation error.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CalendarsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CalendarsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
+        CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
+        ResolveTenorsRequest resolveTenorsRequest = new ResolveTenorsRequest(); // ResolveTenorsRequest | Request containing start date, calendars, spot days, tenors, and optional conventions
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResolveTenorsResponse result = apiInstance.resolveTenors(resolveTenorsRequest).execute(opts);
+
+            ResolveTenorsResponse result = apiInstance.resolveTenors(resolveTenorsRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CalendarsApi#resolveTenors");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resolveTenorsRequest** | [**ResolveTenorsRequest**](ResolveTenorsRequest.md)| Request containing start date, calendars, spot days, tenors, and optional conventions | |
+
+### Return type
+
+[**ResolveTenorsResponse**](ResolveTenorsResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The resolved settlement dates for each tenor |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

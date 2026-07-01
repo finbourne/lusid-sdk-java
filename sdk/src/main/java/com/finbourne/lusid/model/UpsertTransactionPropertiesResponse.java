@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResponseMetaData;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -69,6 +70,10 @@ public class UpsertTransactionPropertiesResponse {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, List<ResponseMetaData>> metadata;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -134,7 +139,7 @@ public class UpsertTransactionPropertiesResponse {
   }
 
    /**
-   * Get properties
+   * The properties that were upserted on the transaction.
    * @return properties
   **/
   @jakarta.annotation.Nullable
@@ -145,6 +150,35 @@ public class UpsertTransactionPropertiesResponse {
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;
+  }
+
+
+  public UpsertTransactionPropertiesResponse metadata(Map<String, List<ResponseMetaData>> metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  public UpsertTransactionPropertiesResponse putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+   /**
+   * Contains warnings related to the upsert event.
+   * @return metadata
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, List<ResponseMetaData>> getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Map<String, List<ResponseMetaData>> metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -190,6 +224,7 @@ public class UpsertTransactionPropertiesResponse {
     return Objects.equals(this.href, upsertTransactionPropertiesResponse.href) &&
         Objects.equals(this.version, upsertTransactionPropertiesResponse.version) &&
         Objects.equals(this.properties, upsertTransactionPropertiesResponse.properties) &&
+        Objects.equals(this.metadata, upsertTransactionPropertiesResponse.metadata) &&
         Objects.equals(this.links, upsertTransactionPropertiesResponse.links);
   }
 
@@ -199,7 +234,7 @@ public class UpsertTransactionPropertiesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, version, properties, links);
+    return Objects.hash(href, version, properties, metadata, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -216,6 +251,7 @@ public class UpsertTransactionPropertiesResponse {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -242,6 +278,7 @@ public class UpsertTransactionPropertiesResponse {
     openapiFields.add("href");
     openapiFields.add("version");
     openapiFields.add("properties");
+    openapiFields.add("metadata");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

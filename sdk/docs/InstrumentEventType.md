@@ -98,6 +98,7 @@ InstrumentEventType method = InstrumentEventType.PRIORITYISSUEEVENT;
 InstrumentEventType method = InstrumentEventType.CLASSACTIONEVENT;
 InstrumentEventType method = InstrumentEventType.BANKRUPTCYEVENT;
 InstrumentEventType method = InstrumentEventType.LIQUIDATIONPAYMENTEVENT;
+InstrumentEventType method = InstrumentEventType.PARTIALDEFEASANCEEVENT;
 ```
 
 

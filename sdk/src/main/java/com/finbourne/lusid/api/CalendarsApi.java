@@ -37,6 +37,8 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfCalendar;
+import com.finbourne.lusid.model.ResolveTenorsRequest;
+import com.finbourne.lusid.model.ResolveTenorsResponse;
 import com.finbourne.lusid.model.ResourceListOfCalendarDate;
 import com.finbourne.lusid.model.UpdateCalendarRequest;
 import com.finbourne.lusid.model.ValuationSchedule;
@@ -3528,6 +3530,241 @@ public class CalendarsApi {
      */
     public APIlistCalendarsInScopeRequest listCalendarsInScope(String scope) {
         return new APIlistCalendarsInScopeRequest(scope);
+    }
+    private okhttp3.Call resolveTenorsCall(ResolveTenorsRequest resolveTenorsRequest, final ApiCallback _callback) throws ApiException {
+        return resolveTenorsCall(resolveTenorsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call resolveTenorsCall(ResolveTenorsRequest resolveTenorsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = resolveTenorsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/calendars/tenors/resolve";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resolveTenorsValidateBeforeCall(ResolveTenorsRequest resolveTenorsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'resolveTenorsRequest' is set
+        if (resolveTenorsRequest == null) {
+            throw new ApiException("Missing the required parameter 'resolveTenorsRequest' when calling resolveTenors(Async)");
+        }
+
+        return resolveTenorsCall(resolveTenorsRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResolveTenorsResponse> resolveTenorsWithHttpInfo(ResolveTenorsRequest resolveTenorsRequest) throws ApiException {
+        okhttp3.Call localVarCall = resolveTenorsValidateBeforeCall(resolveTenorsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResolveTenorsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResolveTenorsResponse> resolveTenorsWithHttpInfo(ResolveTenorsRequest resolveTenorsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = resolveTenorsValidateBeforeCall(resolveTenorsRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ResolveTenorsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call resolveTenorsAsync(ResolveTenorsRequest resolveTenorsRequest, final ApiCallback<ResolveTenorsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resolveTenorsValidateBeforeCall(resolveTenorsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResolveTenorsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call resolveTenorsAsync(ResolveTenorsRequest resolveTenorsRequest, final ApiCallback<ResolveTenorsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = resolveTenorsValidateBeforeCall(resolveTenorsRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResolveTenorsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIresolveTenorsRequest {
+        private final ResolveTenorsRequest resolveTenorsRequest;
+
+        private APIresolveTenorsRequest(ResolveTenorsRequest resolveTenorsRequest) {
+            this.resolveTenorsRequest = resolveTenorsRequest;
+        }
+
+        /**
+         * Build call for resolveTenors
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return resolveTenorsCall(resolveTenorsRequest, _callback);
+        }
+
+        /**
+         * Execute resolveTenors request
+         * @return ResolveTenorsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResolveTenorsResponse execute() throws ApiException {
+            ApiResponse<ResolveTenorsResponse> localVarResp = resolveTenorsWithHttpInfo(resolveTenorsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resolveTenors request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResolveTenorsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResolveTenorsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResolveTenorsResponse> localVarResp = resolveTenorsWithHttpInfo(resolveTenorsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resolveTenors request with HTTP info returned
+         * @return ApiResponse&lt;ResolveTenorsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResolveTenorsResponse> executeWithHttpInfo() throws ApiException {
+            return resolveTenorsWithHttpInfo(resolveTenorsRequest);
+        }
+
+        /**
+         * Execute resolveTenors request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResolveTenorsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResolveTenorsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return resolveTenorsWithHttpInfo(resolveTenorsRequest, opts);
+        }
+
+        /**
+         * Execute resolveTenors request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResolveTenorsResponse> _callback) throws ApiException {
+            return resolveTenorsAsync(resolveTenorsRequest, _callback);
+        }
+
+        /**
+         * Execute resolveTenors request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResolveTenorsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return resolveTenorsAsync(resolveTenorsRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+     * Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.     The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.     Unrecognised tenor strings cause a validation error.
+     * @param resolveTenorsRequest Request containing start date, calendars, spot days, tenors, and optional conventions (required)
+     * @return APIresolveTenorsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The resolved settlement dates for each tenor </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIresolveTenorsRequest resolveTenors(ResolveTenorsRequest resolveTenorsRequest) {
+        return new APIresolveTenorsRequest(resolveTenorsRequest);
     }
     private okhttp3.Call updateCalendarCall(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback _callback) throws ApiException {
         return updateCalendarCall(scope, code, updateCalendarRequest,  _callback, new ConfigurationOptions());

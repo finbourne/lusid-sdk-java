@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **cashGainLossCalculationDate** | **String** | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. Available values: SettlementDate, TransactionDate. | [default to String]
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]
-**transactionTemplateScope** | **String** | The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided. | [optional] [default to String]
+**transactionTemplateScope** | **String** | The Transaction Template Scope used by the NavType. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.NavType;
@@ -46,7 +46,7 @@ String TransactionTypeScope = "example TransactionTypeScope";
 String CashGainLossCalculationDate = "example CashGainLossCalculationDate";
 ResourceId AmortisationRuleSetId = new ResourceId();
 @jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
-@jakarta.annotation.Nullable String TransactionTemplateScope = "example TransactionTemplateScope";
+String TransactionTemplateScope = "example TransactionTemplateScope";
 
 
 NavType navTypeInstance = new NavType()

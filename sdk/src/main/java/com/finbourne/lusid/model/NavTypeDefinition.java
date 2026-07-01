@@ -492,10 +492,10 @@ public class NavTypeDefinition {
   }
 
    /**
-   * The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided.
+   * The Transaction Template Scope used by the NavType.
    * @return transactionTemplateScope
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getTransactionTemplateScope() {
     return transactionTemplateScope;
   }
@@ -621,6 +621,7 @@ public class NavTypeDefinition {
     openapiRequiredFields.add("amortisationMethod");
     openapiRequiredFields.add("transactionTypeScope");
     openapiRequiredFields.add("cashGainLossCalculationDate");
+    openapiRequiredFields.add("transactionTemplateScope");
   }
 
  /**
@@ -693,7 +694,7 @@ public class NavTypeDefinition {
       if ((jsonObj.get("leaderNavTypeCode") != null && !jsonObj.get("leaderNavTypeCode").isJsonNull()) && !jsonObj.get("leaderNavTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `leaderNavTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("leaderNavTypeCode").toString()));
       }
-      if ((jsonObj.get("transactionTemplateScope") != null && !jsonObj.get("transactionTemplateScope").isJsonNull()) && !jsonObj.get("transactionTemplateScope").isJsonPrimitive()) {
+      if (!jsonObj.get("transactionTemplateScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTemplateScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTemplateScope").toString()));
       }
   }
