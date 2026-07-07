@@ -313,7 +313,7 @@ public class TransactionFeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+     * [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
      * Create a transaction fee type for the specified scope and code.
      * @param scope The scope of the transaction fee type. (required)
      * @param code The code of the transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
@@ -555,7 +555,7 @@ public class TransactionFeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+     * [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
      * Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
      * @param scope The scope of the transaction fee type. (required)
      * @param code The code of the specified transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
@@ -841,7 +841,7 @@ public class TransactionFeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+     * [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
      * Get the transaction fee type for the specified scope and code.
      * @param scope The scope of the transaction fee type. (required)
      * @param code The code of the transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)
@@ -1171,7 +1171,7 @@ public class TransactionFeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+     * [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
      * List transaction fee types that match the specified criteria.
      * @return APIlistTransactionFeeTypesRequest
      * @http.response.details
@@ -1421,7 +1421,7 @@ public class TransactionFeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+     * [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
      * Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
      * @param scope The scope of the transaction fee type. (required)
      * @param code The code of the specified transaction fee type.   Together with the scope this uniquely identifies the transaction fee type. (required)

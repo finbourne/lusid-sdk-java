@@ -1786,11 +1786,11 @@ public class TransactionPortfoliosApi {
     public APIbatchUpsertSettlementInstructionsRequest batchUpsertSettlementInstructions(String scope, String code, Map<String, SettlementInstructionRequest> requestBody) {
         return new APIbatchUpsertSettlementInstructionsRequest(scope, code, requestBody);
     }
-    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
-        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties,  _callback, new ConfigurationOptions());
+    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1825,6 +1825,14 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1851,7 +1859,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertTransactions(Async)");
@@ -1872,34 +1880,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertTransactions(Async)");
         }
 
-        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
+        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null, new ConfigurationOptions());
+    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null, opts);
+    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, String dataModelScope, String dataModelCode, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1911,6 +1919,8 @@ public class TransactionPortfoliosApi {
         private final String successMode;
         private final Map<String, TransactionRequest> requestBody;
         private Boolean preserveProperties;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIbatchUpsertTransactionsRequest(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) {
             this.scope = scope;
@@ -1930,6 +1940,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIbatchUpsertTransactionsRequest
+         */
+        public APIbatchUpsertTransactionsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIbatchUpsertTransactionsRequest
+         */
+        public APIbatchUpsertTransactionsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for batchUpsertTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1943,7 +1973,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback);
+            return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1959,7 +1989,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public BatchUpsertPortfolioTransactionsResponse execute() throws ApiException {
-            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
+            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -1976,7 +2006,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public BatchUpsertPortfolioTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, opts);
+            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -1993,7 +2023,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
+            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode);
         }
 
         /**
@@ -2009,7 +2039,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, opts);
+            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -2026,7 +2056,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
-            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, _callback);
+            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -2043,7 +2073,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
+            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 

@@ -655,11 +655,11 @@ Class | Method | HTTP request | Description
 *TransactionConfigurationApi* | [**setSideDefinitions**](docs/TransactionConfigurationApi.md#setsidedefinitions) | **PUT** /api/transactionconfiguration/sides | SetSideDefinitions: Set the given side definitions
 *TransactionConfigurationApi* | [**setTransactionType**](docs/TransactionConfigurationApi.md#settransactiontype) | **PUT** /api/transactionconfiguration/types/{source}/{type} | SetTransactionType: Set a specific transaction type
 *TransactionConfigurationApi* | [**setTransactionTypeSource**](docs/TransactionConfigurationApi.md#settransactiontypesource) | **PUT** /api/transactionconfiguration/types/{source} | SetTransactionTypeSource: Set the transaction types for the given source and scope
-*TransactionFeeTypesApi* | [**createTransactionFeeType**](docs/TransactionFeeTypesApi.md#createtransactionfeetype) | **POST** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
-*TransactionFeeTypesApi* | [**deleteTransactionFeeType**](docs/TransactionFeeTypesApi.md#deletetransactionfeetype) | **DELETE** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
-*TransactionFeeTypesApi* | [**getTransactionFeeType**](docs/TransactionFeeTypesApi.md#gettransactionfeetype) | **GET** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
-*TransactionFeeTypesApi* | [**listTransactionFeeTypes**](docs/TransactionFeeTypesApi.md#listtransactionfeetypes) | **GET** /api/transactions/transactionfeetypes | [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
-*TransactionFeeTypesApi* | [**updateTransactionFeeType**](docs/TransactionFeeTypesApi.md#updatetransactionfeetype) | **PUT** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+*TransactionFeeTypesApi* | [**createTransactionFeeType**](docs/TransactionFeeTypesApi.md#createtransactionfeetype) | **POST** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
+*TransactionFeeTypesApi* | [**deleteTransactionFeeType**](docs/TransactionFeeTypesApi.md#deletetransactionfeetype) | **DELETE** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
+*TransactionFeeTypesApi* | [**getTransactionFeeType**](docs/TransactionFeeTypesApi.md#gettransactionfeetype) | **GET** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
+*TransactionFeeTypesApi* | [**listTransactionFeeTypes**](docs/TransactionFeeTypesApi.md#listtransactionfeetypes) | **GET** /api/transactions/transactionfeetypes | [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
+*TransactionFeeTypesApi* | [**updateTransactionFeeType**](docs/TransactionFeeTypesApi.md#updatetransactionfeetype) | **PUT** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
 *TransactionFeesApi* | [**deleteTransactionFeeRule**](docs/TransactionFeesApi.md#deletetransactionfeerule) | **DELETE** /api/transactions/fees/rules/{code} | DeleteTransactionFeeRule: Deletes a fee rule.
 *TransactionFeesApi* | [**getApplicableTransactionFees**](docs/TransactionFeesApi.md#getapplicabletransactionfees) | **POST** /api/transactions/fees/$GetApplicableFees | GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
 *TransactionFeesApi* | [**getTransactionFeeRule**](docs/TransactionFeesApi.md#gettransactionfeerule) | **GET** /api/transactions/fees/rules/{code} | GetTransactionFeeRule: Retrieve the definition of single fee rule.
@@ -1041,6 +1041,7 @@ Class | Method | HTTP request | Description
  - [CustodianAccountProperties](docs/CustodianAccountProperties.md)
  - [CustodianAccountRequest](docs/CustodianAccountRequest.md)
  - [CustodianAccountsUpsertResponse](docs/CustodianAccountsUpsertResponse.md)
+ - [CustodianEntry](docs/CustodianEntry.md)
  - [CustomDataModel](docs/CustomDataModel.md)
  - [CustomDataModelCriteria](docs/CustomDataModelCriteria.md)
  - [CustomDataModelIdentifierTypeSpecification](docs/CustomDataModelIdentifierTypeSpecification.md)
@@ -1870,6 +1871,7 @@ Class | Method | HTTP request | Description
  - [SecurityElection](docs/SecurityElection.md)
  - [SecurityOfferConstituent](docs/SecurityOfferConstituent.md)
  - [SecurityOfferElection](docs/SecurityOfferElection.md)
+ - [SecurityWriteOffEvent](docs/SecurityWriteOffEvent.md)
  - [SequenceDefinition](docs/SequenceDefinition.md)
  - [Series](docs/Series.md)
  - [SeriesDefinition](docs/SeriesDefinition.md)
@@ -1938,6 +1940,7 @@ Class | Method | HTTP request | Description
  - [StructuredResultData](docs/StructuredResultData.md)
  - [StructuredResultDataId](docs/StructuredResultDataId.md)
  - [SubHoldingKeyValueEquals](docs/SubHoldingKeyValueEquals.md)
+ - [SubscribeElection](docs/SubscribeElection.md)
  - [SwapCashFlowEvent](docs/SwapCashFlowEvent.md)
  - [SwapPrincipalEvent](docs/SwapPrincipalEvent.md)
  - [SweepBlocksRequest](docs/SweepBlocksRequest.md)

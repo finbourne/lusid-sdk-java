@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.CustodianEntry;
 import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
@@ -232,6 +233,10 @@ public class Transaction {
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ENTRIES = "custodianEntries";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ENTRIES)
+  private List<CustodianEntry> custodianEntries;
 
   public Transaction() {
   }
@@ -848,6 +853,35 @@ public class Transaction {
   }
 
 
+  public Transaction custodianEntries(List<CustodianEntry> custodianEntries) {
+    
+    this.custodianEntries = custodianEntries;
+    return this;
+  }
+
+  public Transaction addCustodianEntriesItem(CustodianEntry custodianEntriesItem) {
+    if (this.custodianEntries == null) {
+      this.custodianEntries = new ArrayList<>();
+    }
+    this.custodianEntries.add(custodianEntriesItem);
+    return this;
+  }
+
+   /**
+   * A list of Custodian Entries associated with the transaction.
+   * @return custodianEntries
+  **/
+  @jakarta.annotation.Nullable
+  public List<CustodianEntry> getCustodianEntries() {
+    return custodianEntries;
+  }
+
+
+  public void setCustodianEntries(List<CustodianEntry> custodianEntries) {
+    this.custodianEntries = custodianEntries;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -885,7 +919,8 @@ public class Transaction {
         Objects.equals(this.resolvedTransactionTypeDetails, transaction.resolvedTransactionTypeDetails) &&
         Objects.equals(this.dataModelMembership, transaction.dataModelMembership) &&
         Objects.equals(this.version, transaction.version) &&
-        Objects.equals(this.stagedModifications, transaction.stagedModifications);
+        Objects.equals(this.stagedModifications, transaction.stagedModifications) &&
+        Objects.equals(this.custodianEntries, transaction.custodianEntries);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -894,7 +929,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications, custodianEntries);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -936,6 +971,7 @@ public class Transaction {
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -986,6 +1022,7 @@ public class Transaction {
     openapiFields.add("dataModelMembership");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
+    openapiFields.add("custodianEntries");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1096,6 +1133,20 @@ public class Transaction {
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
         StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
+      if (jsonObj.get("custodianEntries") != null && !jsonObj.get("custodianEntries").isJsonNull()) {
+        JsonArray jsonArraycustodianEntries = jsonObj.getAsJsonArray("custodianEntries");
+        if (jsonArraycustodianEntries != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("custodianEntries").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `custodianEntries` to be an array in the JSON string but got `%s`", jsonObj.get("custodianEntries").toString()));
+          }
+
+          // validate the optional field `custodianEntries` (array)
+          for (int i = 0; i < jsonArraycustodianEntries.size(); i++) {
+            CustodianEntry.validateJsonElement(jsonArraycustodianEntries.get(i));
+          };
+        }
       }
   }
 

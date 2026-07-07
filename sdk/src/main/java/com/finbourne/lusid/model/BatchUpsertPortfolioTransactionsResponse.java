@@ -70,6 +70,10 @@ public class BatchUpsertPortfolioTransactionsResponse {
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Map<String, List<ResponseMetaData>> metadata;
 
+  public static final String SERIALIZED_NAME_STAGED = "staged";
+  @SerializedName(SERIALIZED_NAME_STAGED)
+  private Map<String, Transaction> staged;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -164,6 +168,35 @@ public class BatchUpsertPortfolioTransactionsResponse {
   }
 
 
+  public BatchUpsertPortfolioTransactionsResponse staged(Map<String, Transaction> staged) {
+    
+    this.staged = staged;
+    return this;
+  }
+
+  public BatchUpsertPortfolioTransactionsResponse putStagedItem(String key, Transaction stagedItem) {
+    if (this.staged == null) {
+      this.staged = new HashMap<>();
+    }
+    this.staged.put(key, stagedItem);
+    return this;
+  }
+
+   /**
+   * The transactions that have been staged pending approval.
+   * @return staged
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Transaction> getStaged() {
+    return staged;
+  }
+
+
+  public void setStaged(Map<String, Transaction> staged) {
+    this.staged = staged;
+  }
+
+
   public BatchUpsertPortfolioTransactionsResponse links(List<Link> links) {
     
     this.links = links;
@@ -206,6 +239,7 @@ public class BatchUpsertPortfolioTransactionsResponse {
     return Objects.equals(this.values, batchUpsertPortfolioTransactionsResponse.values) &&
         Objects.equals(this.failed, batchUpsertPortfolioTransactionsResponse.failed) &&
         Objects.equals(this.metadata, batchUpsertPortfolioTransactionsResponse.metadata) &&
+        Objects.equals(this.staged, batchUpsertPortfolioTransactionsResponse.staged) &&
         Objects.equals(this.links, batchUpsertPortfolioTransactionsResponse.links);
   }
 
@@ -215,7 +249,7 @@ public class BatchUpsertPortfolioTransactionsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, failed, metadata, links);
+    return Objects.hash(values, failed, metadata, staged, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +266,7 @@ public class BatchUpsertPortfolioTransactionsResponse {
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -258,6 +293,7 @@ public class BatchUpsertPortfolioTransactionsResponse {
     openapiFields.add("values");
     openapiFields.add("failed");
     openapiFields.add("metadata");
+    openapiFields.add("staged");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

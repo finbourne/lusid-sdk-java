@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions | [optional] [default to String]
 **strategyTag** | [**List&lt;Strategy&gt;**](Strategy.md) | A list of strategies representing the allocation of units across multiple sub-holding keys | [optional] [default to List<Strategy>]
+**custodianEntries** | [**List&lt;CustodianEntry&gt;**](CustodianEntry.md) | A list of Custodian Entries associated with the transaction. | [optional] [default to List<CustodianEntry>]
 
 ```java
 import com.finbourne.lusid.model.TransactionRequest;
@@ -49,6 +50,7 @@ ResourceId AllocationId = new ResourceId();
 ResourceId CustodianAccountId = new ResourceId();
 @jakarta.annotation.Nullable String TransactionGroupId = "example TransactionGroupId";
 @jakarta.annotation.Nullable List<Strategy> StrategyTag = new List<Strategy>();
+@jakarta.annotation.Nullable List<CustodianEntry> CustodianEntries = new List<CustodianEntry>();
 
 
 TransactionRequest transactionRequestInstance = new TransactionRequest()
@@ -70,7 +72,8 @@ TransactionRequest transactionRequestInstance = new TransactionRequest()
     .AllocationId(AllocationId)
     .CustodianAccountId(CustodianAccountId)
     .TransactionGroupId(TransactionGroupId)
-    .StrategyTag(StrategyTag);
+    .StrategyTag(StrategyTag)
+    .CustodianEntries(CustodianEntries);
 ```
 
 

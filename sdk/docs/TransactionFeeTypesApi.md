@@ -4,11 +4,11 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTransactionFeeType**](TransactionFeeTypesApi.md#createTransactionFeeType) | **POST** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type |
-| [**deleteTransactionFeeType**](TransactionFeeTypesApi.md#deleteTransactionFeeType) | **DELETE** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type |
-| [**getTransactionFeeType**](TransactionFeeTypesApi.md#getTransactionFeeType) | **GET** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type |
-| [**listTransactionFeeTypes**](TransactionFeeTypesApi.md#listTransactionFeeTypes) | **GET** /api/transactions/transactionfeetypes | [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types |
-| [**updateTransactionFeeType**](TransactionFeeTypesApi.md#updateTransactionFeeType) | **PUT** /api/transactions/transactionfeetypes/{scope}/{code} | [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type |
+| [**createTransactionFeeType**](TransactionFeeTypesApi.md#createTransactionFeeType) | **POST** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type |
+| [**deleteTransactionFeeType**](TransactionFeeTypesApi.md#deleteTransactionFeeType) | **DELETE** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type |
+| [**getTransactionFeeType**](TransactionFeeTypesApi.md#getTransactionFeeType) | **GET** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type |
+| [**listTransactionFeeTypes**](TransactionFeeTypesApi.md#listTransactionFeeTypes) | **GET** /api/transactions/transactionfeetypes | [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types |
+| [**updateTransactionFeeType**](TransactionFeeTypesApi.md#updateTransactionFeeType) | **PUT** /api/transactions/transactionfeetypes/{scope}/{code} | [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type |
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > TransactionFeeType createTransactionFeeType(scope, code, createTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+[EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
 
 Create a transaction fee type for the specified scope and code.
 
@@ -111,7 +111,7 @@ public class TransactionFeeTypesApiExample {
 
 > DeletedEntityResponse deleteTransactionFeeType(scope, code)
 
-[EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+[EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
 
 Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
 
@@ -204,7 +204,7 @@ public class TransactionFeeTypesApiExample {
 
 > TransactionFeeType getTransactionFeeType(scope, code, effectiveAt, asAt, propertyKeys)
 
-[EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+[EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
 
 Get the transaction fee type for the specified scope and code.
 
@@ -303,7 +303,7 @@ public class TransactionFeeTypesApiExample {
 
 > ResourceListOfTransactionFeeType listTransactionFeeTypes(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
-[EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+[EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
 
 List transaction fee types that match the specified criteria.
 
@@ -406,7 +406,7 @@ public class TransactionFeeTypesApiExample {
 
 > TransactionFeeType updateTransactionFeeType(scope, code, updateTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+[EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
 
 Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
 

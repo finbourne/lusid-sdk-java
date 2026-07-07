@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.CustodianEntry;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -135,6 +136,10 @@ public class TransactionRequest {
   public static final String SERIALIZED_NAME_STRATEGY_TAG = "strategyTag";
   @SerializedName(SERIALIZED_NAME_STRATEGY_TAG)
   private List<Strategy> strategyTag;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ENTRIES = "custodianEntries";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ENTRIES)
+  private List<CustodianEntry> custodianEntries;
 
   public TransactionRequest() {
   }
@@ -562,6 +567,35 @@ public class TransactionRequest {
   }
 
 
+  public TransactionRequest custodianEntries(List<CustodianEntry> custodianEntries) {
+    
+    this.custodianEntries = custodianEntries;
+    return this;
+  }
+
+  public TransactionRequest addCustodianEntriesItem(CustodianEntry custodianEntriesItem) {
+    if (this.custodianEntries == null) {
+      this.custodianEntries = new ArrayList<>();
+    }
+    this.custodianEntries.add(custodianEntriesItem);
+    return this;
+  }
+
+   /**
+   * A list of Custodian Entries associated with the transaction.
+   * @return custodianEntries
+  **/
+  @jakarta.annotation.Nullable
+  public List<CustodianEntry> getCustodianEntries() {
+    return custodianEntries;
+  }
+
+
+  public void setCustodianEntries(List<CustodianEntry> custodianEntries) {
+    this.custodianEntries = custodianEntries;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -590,7 +624,8 @@ public class TransactionRequest {
         Objects.equals(this.allocationId, transactionRequest.allocationId) &&
         Objects.equals(this.custodianAccountId, transactionRequest.custodianAccountId) &&
         Objects.equals(this.transactionGroupId, transactionRequest.transactionGroupId) &&
-        Objects.equals(this.strategyTag, transactionRequest.strategyTag);
+        Objects.equals(this.strategyTag, transactionRequest.strategyTag) &&
+        Objects.equals(this.custodianEntries, transactionRequest.custodianEntries);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -599,7 +634,7 @@ public class TransactionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, otcConfirmation, orderId, allocationId, custodianAccountId, transactionGroupId, strategyTag);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, otcConfirmation, orderId, allocationId, custodianAccountId, transactionGroupId, strategyTag, custodianEntries);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -632,6 +667,7 @@ public class TransactionRequest {
     sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("    strategyTag: ").append(toIndentedString(strategyTag)).append("\n");
+    sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -673,6 +709,7 @@ public class TransactionRequest {
     openapiFields.add("custodianAccountId");
     openapiFields.add("transactionGroupId");
     openapiFields.add("strategyTag");
+    openapiFields.add("custodianEntries");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -762,6 +799,20 @@ public class TransactionRequest {
           // validate the optional field `strategyTag` (array)
           for (int i = 0; i < jsonArraystrategyTag.size(); i++) {
             Strategy.validateJsonElement(jsonArraystrategyTag.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("custodianEntries") != null && !jsonObj.get("custodianEntries").isJsonNull()) {
+        JsonArray jsonArraycustodianEntries = jsonObj.getAsJsonArray("custodianEntries");
+        if (jsonArraycustodianEntries != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("custodianEntries").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `custodianEntries` to be an array in the JSON string but got `%s`", jsonObj.get("custodianEntries").toString()));
+          }
+
+          // validate the optional field `custodianEntries` (array)
+          for (int i = 0; i < jsonArraycustodianEntries.size(); i++) {
+            CustodianEntry.validateJsonElement(jsonArraycustodianEntries.get(i));
           };
         }
       }

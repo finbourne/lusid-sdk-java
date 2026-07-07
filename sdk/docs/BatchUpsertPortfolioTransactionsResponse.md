@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **values** | [**Map&lt;String, Transaction&gt;**](Transaction.md) | The transactions which have been successfully upserted. | [optional] [default to Map<String, Transaction>]
 **failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) | The transactions that could not be upserted along with a reason for their failure. | [optional] [default to Map<String, ErrorDetail>]
 **metadata** | [**Map&lt;String, List&lt;ResponseMetaData&gt;&gt;**](List.md) | Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades | [optional] [default to Map<String, List<ResponseMetaData>>]
+**staged** | [**Map&lt;String, Transaction&gt;**](Transaction.md) | The transactions that have been staged pending approval. | [optional] [default to Map<String, Transaction>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -18,6 +19,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable Map<String, Transaction> Values = new Map<String, Transaction>();
 @jakarta.annotation.Nullable Map<String, ErrorDetail> Failed = new Map<String, ErrorDetail>();
 @jakarta.annotation.Nullable Map<String, List<ResponseMetaData>> Metadata = new Map<String, List<ResponseMetaData>>();
+@jakarta.annotation.Nullable Map<String, Transaction> Staged = new Map<String, Transaction>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -25,6 +27,7 @@ BatchUpsertPortfolioTransactionsResponse batchUpsertPortfolioTransactionsRespons
     .Values(Values)
     .Failed(Failed)
     .Metadata(Metadata)
+    .Staged(Staged)
     .Links(Links);
 ```
 

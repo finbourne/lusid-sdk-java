@@ -185,6 +185,8 @@ public enum PropertyDomain {
   
   WORKER("Worker"),
   
+  WORKFLOW("Workflow"),
+  
   STAGINGRULESET("StagingRuleSet"),
   
   IDENTIFIERDEFINITION("IdentifierDefinition"),
