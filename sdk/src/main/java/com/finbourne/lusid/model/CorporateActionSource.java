@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.EventInheritance;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
@@ -79,6 +80,10 @@ public class CorporateActionSource {
   public static final String SERIALIZED_NAME_INSTRUMENT_SCOPES = "instrumentScopes";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPES)
   private List<String> instrumentScopes;
+
+  public static final String SERIALIZED_NAME_EVENT_INHERITANCE = "eventInheritance";
+  @SerializedName(SERIALIZED_NAME_EVENT_INHERITANCE)
+  private EventInheritance eventInheritance;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -221,6 +226,27 @@ public class CorporateActionSource {
   }
 
 
+  public CorporateActionSource eventInheritance(EventInheritance eventInheritance) {
+    
+    this.eventInheritance = eventInheritance;
+    return this;
+  }
+
+   /**
+   * Get eventInheritance
+   * @return eventInheritance
+  **/
+  @jakarta.annotation.Nullable
+  public EventInheritance getEventInheritance() {
+    return eventInheritance;
+  }
+
+
+  public void setEventInheritance(EventInheritance eventInheritance) {
+    this.eventInheritance = eventInheritance;
+  }
+
+
   public CorporateActionSource links(List<Link> links) {
     
     this.links = links;
@@ -266,6 +292,7 @@ public class CorporateActionSource {
         Objects.equals(this.displayName, corporateActionSource.displayName) &&
         Objects.equals(this.description, corporateActionSource.description) &&
         Objects.equals(this.instrumentScopes, corporateActionSource.instrumentScopes) &&
+        Objects.equals(this.eventInheritance, corporateActionSource.eventInheritance) &&
         Objects.equals(this.links, corporateActionSource.links);
   }
 
@@ -275,7 +302,7 @@ public class CorporateActionSource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, version, displayName, description, instrumentScopes, links);
+    return Objects.hash(href, id, version, displayName, description, instrumentScopes, eventInheritance, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -295,6 +322,7 @@ public class CorporateActionSource {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    instrumentScopes: ").append(toIndentedString(instrumentScopes)).append("\n");
+    sb.append("    eventInheritance: ").append(toIndentedString(eventInheritance)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -324,6 +352,7 @@ public class CorporateActionSource {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("instrumentScopes");
+    openapiFields.add("eventInheritance");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -363,6 +392,10 @@ public class CorporateActionSource {
       // ensure the optional json data is an array if present
       if (jsonObj.get("instrumentScopes") != null && !jsonObj.get("instrumentScopes").isJsonNull() && !jsonObj.get("instrumentScopes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScopes` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentScopes").toString()));
+      }
+      // validate the optional field `eventInheritance`
+      if (jsonObj.get("eventInheritance") != null && !jsonObj.get("eventInheritance").isJsonNull()) {
+        EventInheritance.validateJsonElement(jsonObj.get("eventInheritance"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

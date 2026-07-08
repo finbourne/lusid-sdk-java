@@ -19,6 +19,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPortfolioCommands**](PortfoliosApi.md#getPortfolioCommands) | **GET** /api/portfolios/{scope}/{code}/commands | GetPortfolioCommands: Get portfolio commands |
 | [**getPortfolioMetadata**](PortfoliosApi.md#getPortfolioMetadata) | **GET** /api/portfolios/{scope}/{code}/metadata | GetPortfolioMetadata: Get access metadata rules for a portfolio |
 | [**getPortfolioProperties**](PortfoliosApi.md#getPortfolioProperties) | **GET** /api/portfolios/{scope}/{code}/properties | GetPortfolioProperties: Get portfolio properties |
+| [**getPortfolioPropertiesTimeSeries**](PortfoliosApi.md#getPortfolioPropertiesTimeSeries) | **GET** /api/portfolios/{scope}/{code}/properties/time-series/batch | [BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series |
 | [**getPortfolioPropertyTimeSeries**](PortfoliosApi.md#getPortfolioPropertyTimeSeries) | **GET** /api/portfolios/{scope}/{code}/properties/time-series | GetPortfolioPropertyTimeSeries: Get portfolio property time series |
 | [**getPortfolioRelations**](PortfoliosApi.md#getPortfolioRelations) | **GET** /api/portfolios/{scope}/{code}/relations | [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations |
 | [**getPortfolioRelationships**](PortfoliosApi.md#getPortfolioRelationships) | **GET** /api/portfolios/{scope}/{code}/relationships | GetPortfolioRelationships: Get portfolio relationships |
@@ -1535,6 +1536,111 @@ public class PortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The properties of the specified portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getPortfolioPropertiesTimeSeries
+
+> ResourceListOfPropertyIntervalTimeSeries getPortfolioPropertiesTimeSeries(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit)
+
+[BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
+
+Show the complete time series (history) for multiple portfolio properties at once, grouped by property key.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
+        PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties whose history to show. These must be from the 'Portfolio' domain and in the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt   fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the number of property keys returned per page to this number.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyIntervalTimeSeries result = apiInstance.getPortfolioPropertiesTimeSeries(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit).execute(opts);
+
+            ResourceListOfPropertyIntervalTimeSeries result = apiInstance.getPortfolioPropertiesTimeSeries(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PortfoliosApi#getPortfolioPropertiesTimeSeries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | |
+| **portfolioEffectiveAt** | **String**| The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt   fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of property keys returned per page to this number. | [optional] |
+
+### Return type
+
+[**ResourceListOfPropertyIntervalTimeSeries**](ResourceListOfPropertyIntervalTimeSeries.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The time series of the properties, grouped by property key |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

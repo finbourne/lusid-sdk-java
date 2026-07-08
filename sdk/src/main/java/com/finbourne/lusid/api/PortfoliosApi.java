@@ -55,6 +55,7 @@ import com.finbourne.lusid.model.ResourceListOfPortfolio;
 import com.finbourne.lusid.model.ResourceListOfProcessedCommand;
 import com.finbourne.lusid.model.ResourceListOfProperty;
 import com.finbourne.lusid.model.ResourceListOfPropertyInterval;
+import com.finbourne.lusid.model.ResourceListOfPropertyIntervalTimeSeries;
 import com.finbourne.lusid.model.ResourceListOfRelation;
 import com.finbourne.lusid.model.ResourceListOfRelationship;
 import com.finbourne.lusid.model.UpdatePortfolioRequest;
@@ -4477,6 +4478,334 @@ public class PortfoliosApi {
      */
     public APIgetPortfolioPropertiesRequest getPortfolioProperties(String scope, String code) {
         return new APIgetPortfolioPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call getPortfolioPropertiesTimeSeriesCall(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPortfolioPropertiesTimeSeriesCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioPropertiesTimeSeriesCall(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/properties/time-series/batch"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPortfolioPropertiesTimeSeriesValidateBeforeCall(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioPropertiesTimeSeries(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getPortfolioPropertiesTimeSeries(Async)");
+        }
+
+        // verify the required parameter 'propertyKeys' is set
+        if (propertyKeys == null) {
+            throw new ApiException("Missing the required parameter 'propertyKeys' when calling getPortfolioPropertiesTimeSeries(Async)");
+        }
+
+        return getPortfolioPropertiesTimeSeriesCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfPropertyIntervalTimeSeries> getPortfolioPropertiesTimeSeriesWithHttpInfo(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioPropertiesTimeSeriesValidateBeforeCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyIntervalTimeSeries>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyIntervalTimeSeries> getPortfolioPropertiesTimeSeriesWithHttpInfo(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioPropertiesTimeSeriesValidateBeforeCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyIntervalTimeSeries>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPortfolioPropertiesTimeSeriesAsync(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyIntervalTimeSeries> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioPropertiesTimeSeriesValidateBeforeCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyIntervalTimeSeries>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioPropertiesTimeSeriesAsync(String scope, String code, List<String> propertyKeys, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyIntervalTimeSeries> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioPropertiesTimeSeriesValidateBeforeCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyIntervalTimeSeries>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPortfolioPropertiesTimeSeriesRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> propertyKeys;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private String page;
+        private Integer limit;
+
+        private APIgetPortfolioPropertiesTimeSeriesRequest(String scope, String code, List<String> propertyKeys) {
+            this.scope = scope;
+            this.code = code;
+            this.propertyKeys = propertyKeys;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPortfolioPropertiesTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertiesTimeSeriesRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. (optional)
+         * @return APIgetPortfolioPropertiesTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertiesTimeSeriesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @return APIgetPortfolioPropertiesTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertiesTimeSeriesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt   fields must not have changed since the original request. (optional)
+         * @return APIgetPortfolioPropertiesTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertiesTimeSeriesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of property keys returned per page to this number. (optional)
+         * @return APIgetPortfolioPropertiesTimeSeriesRequest
+         */
+        public APIgetPortfolioPropertiesTimeSeriesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getPortfolioPropertiesTimeSeries
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPortfolioPropertiesTimeSeriesCall(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request
+         * @return ResourceListOfPropertyIntervalTimeSeries
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyIntervalTimeSeries execute() throws ApiException {
+            ApiResponse<ResourceListOfPropertyIntervalTimeSeries> localVarResp = getPortfolioPropertiesTimeSeriesWithHttpInfo(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyIntervalTimeSeries
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyIntervalTimeSeries execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyIntervalTimeSeries> localVarResp = getPortfolioPropertiesTimeSeriesWithHttpInfo(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPropertyIntervalTimeSeries&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyIntervalTimeSeries> executeWithHttpInfo() throws ApiException {
+            return getPortfolioPropertiesTimeSeriesWithHttpInfo(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyIntervalTimeSeries&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyIntervalTimeSeries> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertiesTimeSeriesWithHttpInfo(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, opts);
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyIntervalTimeSeries> _callback) throws ApiException {
+            return getPortfolioPropertiesTimeSeriesAsync(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioPropertiesTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyIntervalTimeSeries> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertiesTimeSeriesAsync(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
+        }
+    }
+
+    /**
+     * [BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
+     * Show the complete time series (history) for multiple portfolio properties at once, grouped by property key.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param propertyKeys The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
+     * @return APIgetPortfolioPropertiesTimeSeriesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The time series of the properties, grouped by property key </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPortfolioPropertiesTimeSeriesRequest getPortfolioPropertiesTimeSeries(String scope, String code, List<String> propertyKeys) {
+        return new APIgetPortfolioPropertiesTimeSeriesRequest(scope, code, propertyKeys);
     }
     private okhttp3.Call getPortfolioPropertyTimeSeriesCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
         return getPortfolioPropertyTimeSeriesCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit,  _callback, new ConfigurationOptions());

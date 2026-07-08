@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.EventInheritance;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -71,6 +72,10 @@ public class CreateCorporateActionSourceRequest {
   public static final String SERIALIZED_NAME_INSTRUMENT_SCOPES = "instrumentScopes";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPES)
   private List<String> instrumentScopes;
+
+  public static final String SERIALIZED_NAME_EVENT_INHERITANCE = "eventInheritance";
+  @SerializedName(SERIALIZED_NAME_EVENT_INHERITANCE)
+  private EventInheritance eventInheritance;
 
   public CreateCorporateActionSourceRequest() {
   }
@@ -188,6 +193,27 @@ public class CreateCorporateActionSourceRequest {
   }
 
 
+  public CreateCorporateActionSourceRequest eventInheritance(EventInheritance eventInheritance) {
+    
+    this.eventInheritance = eventInheritance;
+    return this;
+  }
+
+   /**
+   * Get eventInheritance
+   * @return eventInheritance
+  **/
+  @jakarta.annotation.Nullable
+  public EventInheritance getEventInheritance() {
+    return eventInheritance;
+  }
+
+
+  public void setEventInheritance(EventInheritance eventInheritance) {
+    this.eventInheritance = eventInheritance;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -202,7 +228,8 @@ public class CreateCorporateActionSourceRequest {
         Objects.equals(this.code, createCorporateActionSourceRequest.code) &&
         Objects.equals(this.displayName, createCorporateActionSourceRequest.displayName) &&
         Objects.equals(this.description, createCorporateActionSourceRequest.description) &&
-        Objects.equals(this.instrumentScopes, createCorporateActionSourceRequest.instrumentScopes);
+        Objects.equals(this.instrumentScopes, createCorporateActionSourceRequest.instrumentScopes) &&
+        Objects.equals(this.eventInheritance, createCorporateActionSourceRequest.eventInheritance);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -211,7 +238,7 @@ public class CreateCorporateActionSourceRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, instrumentScopes);
+    return Objects.hash(scope, code, displayName, description, instrumentScopes, eventInheritance);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -230,6 +257,7 @@ public class CreateCorporateActionSourceRequest {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    instrumentScopes: ").append(toIndentedString(instrumentScopes)).append("\n");
+    sb.append("    eventInheritance: ").append(toIndentedString(eventInheritance)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -257,6 +285,7 @@ public class CreateCorporateActionSourceRequest {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("instrumentScopes");
+    openapiFields.add("eventInheritance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -300,6 +329,10 @@ public class CreateCorporateActionSourceRequest {
       // ensure the optional json data is an array if present
       if (jsonObj.get("instrumentScopes") != null && !jsonObj.get("instrumentScopes").isJsonNull() && !jsonObj.get("instrumentScopes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScopes` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentScopes").toString()));
+      }
+      // validate the optional field `eventInheritance`
+      if (jsonObj.get("eventInheritance") != null && !jsonObj.get("eventInheritance").isJsonNull()) {
+        EventInheritance.validateJsonElement(jsonObj.get("eventInheritance"));
       }
   }
 

@@ -195,7 +195,9 @@ public enum InstrumentEventType {
   
   PARTIALDEFEASANCEEVENT("PartialDefeasanceEvent"),
   
-  SECURITYWRITEOFFEVENT("SecurityWriteOffEvent");
+  SECURITYWRITEOFFEVENT("SecurityWriteOffEvent"),
+  
+  WARRANTSEXERCISEEVENT("WarrantsExerciseEvent");
 
   private String value;
 

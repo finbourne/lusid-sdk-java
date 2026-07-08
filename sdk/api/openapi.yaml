@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9420
+  version: 0.11.9428
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -51790,7 +51790,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -51897,7 +51897,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -52012,7 +52012,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -52233,7 +52233,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -52455,7 +52455,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -93238,6 +93238,147 @@ paths:
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/properties/time-series/batch:
+    get:
+      description: "Show the complete time series (history) for multiple portfolio\
+        \ properties at once, grouped by property key."
+      operationId: GetPortfolioPropertiesTimeSeries
+      parameters:
+      - description: The scope of the portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the portfolio. Together with the scope this uniquely
+          identifies the portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The property keys of the properties whose history to show. These\
+          \ must be from the 'Portfolio' domain and in the format {domain}/{scope}/{code},\
+          \ for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: true
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+      - description: The effective datetime used to resolve the portfolio. Defaults
+          to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: portfolioEffectiveAt
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The asAt datetime at which to show the history. Defaults to returning
+          the current datetime if not supplied.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the results. For more information about\
+          \ filtering,\r\n see https://support.lusid.com/knowledgebase/article/KA-01914."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing properties;\
+          \ this value is returned from\r\n the previous call. If a pagination token\
+          \ is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt\r\
+          \n fields must not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of property keys returned\
+          \ per page to this number."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyIntervalTimeSeries'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyIntervalTimeSeries'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyIntervalTimeSeries'
+          description: "The time series of the properties, grouped by property key"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties\
+        \ time series"
+      tags:
+      - Portfolios
+      x-fbn-apistatus: Beta
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/relations:
     get:
@@ -150925,7 +151066,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -151013,6 +151155,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - dividendCurrency
@@ -151506,7 +151649,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -151594,6 +151738,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -153289,7 +153434,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -153377,6 +153523,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amountReduced
@@ -155026,7 +155173,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -155114,6 +155262,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -158999,7 +159148,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -159087,6 +159237,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -159127,7 +159278,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -159215,6 +159367,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -159266,7 +159419,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -159354,6 +159508,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -159439,7 +159594,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -159527,6 +159683,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -161406,7 +161563,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -161494,6 +161652,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - exerciseCurrency
@@ -162746,7 +162905,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -162834,6 +162994,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashElections
@@ -162897,7 +163058,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -162985,6 +163147,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -163039,7 +163202,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163127,6 +163291,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -163344,7 +163509,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163432,6 +163598,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashElections
@@ -163513,7 +163680,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163601,6 +163769,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashFlowValue
@@ -163959,7 +164128,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164047,6 +164217,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -164417,7 +164588,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164505,6 +164677,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - constituentWeight
@@ -165467,7 +165640,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -165555,6 +165729,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -165997,7 +166172,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166085,6 +166261,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -169580,7 +169757,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -169668,6 +169846,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - consentType
@@ -169974,7 +170153,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170062,6 +170242,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - contractDetails
@@ -170225,7 +170406,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170313,6 +170495,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -170413,6 +170596,10 @@ components:
         instrumentScopes:
         - instrumentScopes
         - instrumentScopes
+        eventInheritance:
+          parentCorporateActionSourceId:
+            code: code
+            scope: scope
         description: description
         links:
         - method: method
@@ -170467,6 +170654,8 @@ components:
             type: string
           nullable: true
           type: array
+        eventInheritance:
+          $ref: '#/components/schemas/EventInheritance'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -171052,6 +171241,10 @@ components:
         instrumentScopes:
         - instrumentScopes
         scope: scope
+        eventInheritance:
+          parentCorporateActionSourceId:
+            code: code
+            scope: scope
         description: description
       properties:
         scope:
@@ -171087,6 +171280,8 @@ components:
           maxItems: 1
           nullable: true
           type: array
+        eventInheritance:
+          $ref: '#/components/schemas/EventInheritance'
       required:
       - code
       - displayName
@@ -174472,7 +174667,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174560,6 +174756,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -179489,7 +179686,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179577,6 +179775,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -179622,7 +179821,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179710,6 +179910,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -179760,7 +179961,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179848,6 +180050,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -180492,7 +180695,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180580,6 +180784,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashElections
@@ -180652,7 +180857,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180740,6 +180946,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashElections
@@ -180795,7 +181002,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180883,6 +181091,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -180945,7 +181154,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181033,6 +181243,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - affectedAmount
@@ -181178,7 +181389,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181266,6 +181478,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -181344,7 +181557,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181432,6 +181646,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - closeOutAmount
@@ -181523,7 +181738,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181611,6 +181827,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -182664,6 +182881,20 @@ components:
           format: date-time
           type: string
       type: object
+    EventInheritance:
+      additionalProperties: false
+      description: The information that determines the rules for instrument event
+        inheritance.
+      example:
+        parentCorporateActionSourceId:
+          code: code
+          scope: scope
+      properties:
+        parentCorporateActionSourceId:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - parentCorporateActionSourceId
+      type: object
     ExchangeOfferEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -182741,7 +182972,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182829,6 +183061,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - eventSource
@@ -183472,7 +183705,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -183560,6 +183794,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - anchorDate
@@ -183902,7 +184137,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -183990,6 +184226,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -186167,7 +186404,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186255,6 +186493,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -186310,7 +186549,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186398,6 +186638,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -186447,7 +186688,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186535,6 +186777,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -186590,7 +186833,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186678,6 +186922,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -186750,7 +186995,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186838,6 +187084,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -191004,7 +191251,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191092,6 +191340,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -191140,7 +191389,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191228,6 +191478,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -191957,7 +192208,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -192045,6 +192297,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - domAmountPerUnit
@@ -198317,7 +198570,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198405,6 +198659,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - effectiveAt
@@ -198463,7 +198718,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198551,6 +198807,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - anchorDate
@@ -200448,7 +200705,7 @@ components:
             \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
             \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-            \ SecurityWriteOffEvent."
+            \ SecurityWriteOffEvent, WarrantsExerciseEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -200536,6 +200793,7 @@ components:
           - LiquidationPaymentEvent
           - PartialDefeasanceEvent
           - SecurityWriteOffEvent
+          - WarrantsExerciseEvent
           type: string
       required:
       - instrumentEventType
@@ -201012,6 +201270,7 @@ components:
       - LiquidationPaymentEvent
       - PartialDefeasanceEvent
       - SecurityWriteOffEvent
+      - WarrantsExerciseEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -201973,7 +202232,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202061,6 +202321,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashElections
@@ -202428,7 +202689,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202516,6 +202778,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -206729,7 +206992,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206817,6 +207081,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashOfferElections
@@ -207266,7 +207531,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207354,6 +207620,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -207416,7 +207683,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207504,6 +207772,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -207574,7 +207843,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207662,6 +207932,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -207750,7 +208021,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207838,6 +208110,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -209463,7 +209736,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209551,6 +209825,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -209603,7 +209878,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209691,6 +209967,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -209745,7 +210022,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209833,6 +210111,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -209889,7 +210168,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209977,6 +210257,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -210033,7 +210314,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210121,6 +210403,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -210176,7 +210459,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210264,6 +210548,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -210545,7 +210830,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210633,6 +210919,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -211805,7 +212092,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211893,6 +212181,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -212099,7 +212388,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -212187,6 +212477,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - exerciseType
@@ -212302,7 +212593,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -212390,6 +212682,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - exerciseType
@@ -217522,6 +217815,10 @@ components:
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
+          eventInheritance:
+            parentCorporateActionSourceId:
+              code: code
+              scope: scope
           description: description
           links:
           - method: method
@@ -217554,6 +217851,10 @@ components:
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
+          eventInheritance:
+            parentCorporateActionSourceId:
+              code: code
+              scope: scope
           description: description
           links:
           - method: method
@@ -229192,7 +229493,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229280,6 +229582,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -235902,7 +236205,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235990,6 +236294,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -237116,6 +237421,57 @@ components:
       - status
       - value
       type: object
+    PropertyIntervalTimeSeries:
+      additionalProperties: false
+      example:
+        values:
+        - effectiveRange:
+            fromDate: 2000-01-23T04:56:07.000+00:00
+            untilDate: 2000-01-23T04:56:07.000+00:00
+          asAtRange:
+            fromDate: 2000-01-23T04:56:07.000+00:00
+            untilDate: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          status: status
+        - effectiveRange:
+            fromDate: 2000-01-23T04:56:07.000+00:00
+            untilDate: 2000-01-23T04:56:07.000+00:00
+          asAtRange:
+            fromDate: 2000-01-23T04:56:07.000+00:00
+            untilDate: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          status: status
+        key: key
+      properties:
+        key:
+          description: The property key that this time series belongs to.
+          type: string
+        values:
+          description: The complete time series (history) of intervals for the property
+            key.
+          items:
+            $ref: '#/components/schemas/PropertyInterval'
+          type: array
+      required:
+      - key
+      - values
+      type: object
     PropertyKeyComplianceParameter:
       allOf:
       - $ref: '#/components/schemas/ComplianceParameter'
@@ -237477,7 +237833,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237565,6 +237922,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -237669,7 +238027,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237757,6 +238116,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashOfferElections
@@ -238866,7 +239226,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238954,6 +239315,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - effectiveAt
@@ -242269,7 +242631,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242357,6 +242720,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -242423,7 +242787,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242511,6 +242876,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -242631,7 +242997,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242719,6 +243086,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - cashOfferElections
@@ -242796,7 +243164,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242884,6 +243253,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - fixingDate
@@ -259807,6 +260177,113 @@ components:
       required:
       - values
       type: object
+    ResourceListOfPropertyIntervalTimeSeries:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - values:
+          - effectiveRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            asAtRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            status: status
+          - effectiveRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            asAtRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            status: status
+          key: key
+        - values:
+          - effectiveRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            asAtRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            status: status
+          - effectiveRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            asAtRange:
+              fromDate: 2000-01-23T04:56:07.000+00:00
+              untilDate: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            status: status
+          key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/PropertyIntervalTimeSeries'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfQueryableKey:
       additionalProperties: false
       example:
@@ -264421,7 +264898,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -264509,6 +264987,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -264939,7 +265418,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -265027,6 +265507,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -265201,7 +265682,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -265289,6 +265771,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -269073,7 +269556,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -269161,6 +269645,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -269875,7 +270360,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -269963,6 +270449,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -270031,7 +270518,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270119,6 +270607,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -270487,7 +270976,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270575,6 +271065,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -270628,7 +271119,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270716,6 +271208,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -271237,7 +271730,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271325,6 +271819,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -271503,7 +271998,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271591,6 +272087,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -271639,7 +272136,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271727,6 +272225,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - currency
@@ -279076,7 +279575,7 @@ components:
             \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
             \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-            \ SecurityWriteOffEvent."
+            \ SecurityWriteOffEvent, WarrantsExerciseEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -279976,7 +280475,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280064,6 +280564,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -280699,7 +281200,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280787,6 +281289,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
@@ -281990,7 +282493,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282078,6 +282582,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - amount
@@ -303916,6 +304421,200 @@ components:
       - entityId
       - message
       type: object
+    WarrantsExerciseEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          paymentDate:
+            description: "The DvP settlement date on which the strike is paid and\
+              \ the underlying is delivered.\r\nMust be on or after PeriodOfActionEnd."
+            format: date-time
+            type: string
+          periodOfActionStart:
+            description: Start of the exercise window.
+            format: date-time
+            type: string
+          periodOfActionEnd:
+            description: End of the exercise window.
+            format: date-time
+            type: string
+          responseDeadlineDate:
+            description: Holder response deadline. Required when participation is
+              MandatoryWithChoices.
+            format: date-time
+            nullable: true
+            type: string
+          marketDeadlineDate:
+            description: Market deadline. Required when participation is MandatoryWithChoices.
+            format: date-time
+            nullable: true
+            type: string
+          earlyResponseDeadline:
+            description: Early response deadline. Optional; populated by some vendor
+              wires.
+            format: date-time
+            nullable: true
+            type: string
+          strikePerUnit:
+            description: "Cash payable per warrant on exercise. Null-allowed on upsert\
+              \ if the warrant instrument resolves\r\na non-null EquityOption.Strike\
+              \ (instrument-level fallback applied later). If supplied, must be\r\n\
+              strictly positive and accompanied by a StrikeCurrency."
+            format: double
+            nullable: true
+            type: number
+          strikeCurrency:
+            description: Currency of the strike (ISO 4217 3-letter code). Required
+              if StrikePerUnit is non-null.
+            nullable: true
+            type: string
+          unitsRatio:
+            $ref: '#/components/schemas/UnitsRatio'
+          newInstrument:
+            $ref: '#/components/schemas/NewInstrument'
+          fractionDisposition:
+            description: "Handling of fractional underlying units. Defaults to round-down\
+              \ (RDDN) in the holdings engine when null.\r\n \r\nSupported string\
+              \ (enumeration) values are: [RDDN, CINL]. Available values: RDDN, CINL."
+            nullable: true
+            type: string
+          optionExerciseElections:
+            description: Option exercise elections for this event. At least one entry.
+            items:
+              $ref: '#/components/schemas/OptionExerciseElection'
+            nullable: true
+            type: array
+          lapseElections:
+            description: "Lapse elections for this event. Required when participation\
+              \ is MandatoryWithChoices or when the\r\nissuer publishes a no-action\
+              \ default."
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            type: string
+        required:
+        - instrumentEventType
+        type: object
+      description: "Warrants Exercise (EXWA) — the holder's election to exercise an\
+        \ outstanding warrant, paying the\r\nstrike and receiving the underlying security,\
+        \ or to let it lapse at zero proceeds. Elective\r\n(Voluntary / MandatoryWithChoices)\
+        \ on EquityOption (EquityOptionType = Warrant) and SimpleInstrument."
     WeekendMask:
       additionalProperties: false
       example:
@@ -304236,7 +304935,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|lusid-web-rebalance-control-panel|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content
@@ -304270,7 +304969,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|lusid-web-rebalance-control-panel|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content
@@ -304366,7 +305065,8 @@ components:
               \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
-              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent."
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304454,6 +305154,7 @@ components:
             - LiquidationPaymentEvent
             - PartialDefeasanceEvent
             - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
             type: string
         required:
         - instrumentEventType
