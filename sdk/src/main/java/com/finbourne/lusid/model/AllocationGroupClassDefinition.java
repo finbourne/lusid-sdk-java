@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,17 +54,9 @@ public class AllocationGroupClassDefinition {
   @SerializedName(SERIALIZED_NAME_SHARE_CLASS_SHORT_CODE)
   private String shareClassShortCode;
 
-  public static final String SERIALIZED_NAME_SHARE_CLASS_FUND_ID = "shareClassFundId";
-  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_FUND_ID)
-  private ResourceId shareClassFundId;
-
   public static final String SERIALIZED_NAME_APPORTIONMENT_FACTOR = "apportionmentFactor";
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_FACTOR)
   private java.math.BigDecimal apportionmentFactor;
-
-  public static final String SERIALIZED_NAME_SHARE_CLASS_SERIES_CODE = "shareClassSeriesCode";
-  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_SERIES_CODE)
-  private String shareClassSeriesCode;
 
   public AllocationGroupClassDefinition() {
   }
@@ -91,27 +82,6 @@ public class AllocationGroupClassDefinition {
   }
 
 
-  public AllocationGroupClassDefinition shareClassFundId(ResourceId shareClassFundId) {
-    
-    this.shareClassFundId = shareClassFundId;
-    return this;
-  }
-
-   /**
-   * Get shareClassFundId
-   * @return shareClassFundId
-  **/
-  @jakarta.annotation.Nullable
-  public ResourceId getShareClassFundId() {
-    return shareClassFundId;
-  }
-
-
-  public void setShareClassFundId(ResourceId shareClassFundId) {
-    this.shareClassFundId = shareClassFundId;
-  }
-
-
   public AllocationGroupClassDefinition apportionmentFactor(java.math.BigDecimal apportionmentFactor) {
     
     this.apportionmentFactor = apportionmentFactor;
@@ -119,7 +89,7 @@ public class AllocationGroupClassDefinition {
   }
 
    /**
-   * The weighting factor used for apportionment across this share class.
+   * Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
    * @return apportionmentFactor
   **/
   @jakarta.annotation.Nullable
@@ -130,27 +100,6 @@ public class AllocationGroupClassDefinition {
 
   public void setApportionmentFactor(java.math.BigDecimal apportionmentFactor) {
     this.apportionmentFactor = apportionmentFactor;
-  }
-
-
-  public AllocationGroupClassDefinition shareClassSeriesCode(String shareClassSeriesCode) {
-    
-    this.shareClassSeriesCode = shareClassSeriesCode;
-    return this;
-  }
-
-   /**
-   * An optional series identifier for the share class. If not provided, the share class will include all series.
-   * @return shareClassSeriesCode
-  **/
-  @jakarta.annotation.Nullable
-  public String getShareClassSeriesCode() {
-    return shareClassSeriesCode;
-  }
-
-
-  public void setShareClassSeriesCode(String shareClassSeriesCode) {
-    this.shareClassSeriesCode = shareClassSeriesCode;
   }
 
 
@@ -165,9 +114,7 @@ public class AllocationGroupClassDefinition {
     }
     AllocationGroupClassDefinition allocationGroupClassDefinition = (AllocationGroupClassDefinition) o;
     return Objects.equals(this.shareClassShortCode, allocationGroupClassDefinition.shareClassShortCode) &&
-        Objects.equals(this.shareClassFundId, allocationGroupClassDefinition.shareClassFundId) &&
-        (this.apportionmentFactor.compareTo(allocationGroupClassDefinition.getApportionmentFactor()) == 0) &&
-        Objects.equals(this.shareClassSeriesCode, allocationGroupClassDefinition.shareClassSeriesCode);
+        (this.apportionmentFactor.compareTo(allocationGroupClassDefinition.getApportionmentFactor()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +123,7 @@ public class AllocationGroupClassDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shareClassShortCode, shareClassFundId, apportionmentFactor, shareClassSeriesCode);
+    return Objects.hash(shareClassShortCode, apportionmentFactor);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -191,9 +138,7 @@ public class AllocationGroupClassDefinition {
     StringBuilder sb = new StringBuilder();
     sb.append("class AllocationGroupClassDefinition {\n");
     sb.append("    shareClassShortCode: ").append(toIndentedString(shareClassShortCode)).append("\n");
-    sb.append("    shareClassFundId: ").append(toIndentedString(shareClassFundId)).append("\n");
     sb.append("    apportionmentFactor: ").append(toIndentedString(apportionmentFactor)).append("\n");
-    sb.append("    shareClassSeriesCode: ").append(toIndentedString(shareClassSeriesCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -217,9 +162,7 @@ public class AllocationGroupClassDefinition {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("shareClassShortCode");
-    openapiFields.add("shareClassFundId");
     openapiFields.add("apportionmentFactor");
-    openapiFields.add("shareClassSeriesCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,13 +191,6 @@ public class AllocationGroupClassDefinition {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("shareClassShortCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shareClassShortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shareClassShortCode").toString()));
-      }
-      // validate the optional field `shareClassFundId`
-      if (jsonObj.get("shareClassFundId") != null && !jsonObj.get("shareClassFundId").isJsonNull()) {
-        ResourceId.validateJsonElement(jsonObj.get("shareClassFundId"));
-      }
-      if ((jsonObj.get("shareClassSeriesCode") != null && !jsonObj.get("shareClassSeriesCode").isJsonNull()) && !jsonObj.get("shareClassSeriesCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `shareClassSeriesCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shareClassSeriesCode").toString()));
       }
   }
 

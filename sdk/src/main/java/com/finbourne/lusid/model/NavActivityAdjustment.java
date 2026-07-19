@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustment {
   /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -60,7 +60,9 @@ public class NavActivityAdjustment {
     
     INSTRUMENTACTIVITY("InstrumentActivity"),
     
-    QUOTEACTIVITY("QuoteActivity");
+    QUOTEACTIVITY("QuoteActivity"),
+    
+    COMPLEXMARKETDATAACTIVITY("ComplexMarketDataActivity");
 
     private String value;
 
@@ -114,7 +116,7 @@ public class NavActivityAdjustment {
   }
 
    /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -195,6 +197,9 @@ public class NavActivityAdjustment {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("navActivityAdjustmentType").getAsString();
       switch (discriminatorValue) {
+        case "ComplexMarketDataActivity":
+          ComplexMarketDataActivity.validateJsonElement(jsonElement);
+          break;
         case "InstrumentActivity":
           InstrumentActivity.validateJsonElement(jsonElement);
           break;

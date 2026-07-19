@@ -58,10 +58,6 @@ public class AllocationGroup {
   @SerializedName(SERIALIZED_NAME_CLASSES)
   private List<AllocationGroupClass> classes;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
-
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -111,27 +107,6 @@ public class AllocationGroup {
 
   public void setClasses(List<AllocationGroupClass> classes) {
     this.classes = classes;
-  }
-
-
-  public AllocationGroup code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * The unique code for the Allocation Group. Must be unique within the Fund.
-   * @return code
-  **/
-  @jakarta.annotation.Nonnull
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
   }
 
 
@@ -251,7 +226,6 @@ public class AllocationGroup {
     }
     AllocationGroup allocationGroup = (AllocationGroup) o;
     return Objects.equals(this.classes, allocationGroup.classes) &&
-        Objects.equals(this.code, allocationGroup.code) &&
         Objects.equals(this.name, allocationGroup.name) &&
         Objects.equals(this.description, allocationGroup.description) &&
         Objects.equals(this.shareClassShortCode, allocationGroup.shareClassShortCode) &&
@@ -265,7 +239,7 @@ public class AllocationGroup {
 
   @Override
   public int hashCode() {
-    return Objects.hash(classes, code, name, description, shareClassShortCode, apportionmentMethodProperty, formula);
+    return Objects.hash(classes, name, description, shareClassShortCode, apportionmentMethodProperty, formula);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -280,7 +254,6 @@ public class AllocationGroup {
     StringBuilder sb = new StringBuilder();
     sb.append("class AllocationGroup {\n");
     sb.append("    classes: ").append(toIndentedString(classes)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    shareClassShortCode: ").append(toIndentedString(shareClassShortCode)).append("\n");
@@ -309,7 +282,6 @@ public class AllocationGroup {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("classes");
-    openapiFields.add("code");
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("shareClassShortCode");
@@ -318,7 +290,6 @@ public class AllocationGroup {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("shareClassShortCode");
   }
@@ -356,9 +327,6 @@ public class AllocationGroup {
             AllocationGroupClass.validateJsonElement(jsonArrayclasses.get(i));
           };
         }
-      }
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationGroup;
-import com.finbourne.lusid.model.ApportionmentMethodProperty;
 import com.finbourne.lusid.model.DayMonth;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
@@ -138,10 +137,6 @@ public class Fund {
   public static final String SERIALIZED_NAME_CREATE_INSTRUMENT = "createInstrument";
   @SerializedName(SERIALIZED_NAME_CREATE_INSTRUMENT)
   private Boolean createInstrument;
-
-  public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
-  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
-  private ApportionmentMethodProperty apportionmentMethodProperty;
 
   public static final String SERIALIZED_NAME_ALLOCATION_GROUPS = "allocationGroups";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_GROUPS)
@@ -574,27 +569,6 @@ public class Fund {
   }
 
 
-  public Fund apportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
-    
-    this.apportionmentMethodProperty = apportionmentMethodProperty;
-    return this;
-  }
-
-   /**
-   * Get apportionmentMethodProperty
-   * @return apportionmentMethodProperty
-  **/
-  @jakarta.annotation.Nullable
-  public ApportionmentMethodProperty getApportionmentMethodProperty() {
-    return apportionmentMethodProperty;
-  }
-
-
-  public void setApportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
-    this.apportionmentMethodProperty = apportionmentMethodProperty;
-  }
-
-
   public Fund allocationGroups(List<AllocationGroup> allocationGroups) {
     
     this.allocationGroups = allocationGroups;
@@ -731,7 +705,6 @@ public class Fund {
         Objects.equals(this.additionalNavTypes, fund.additionalNavTypes) &&
         Objects.equals(this.properties, fund.properties) &&
         Objects.equals(this.createInstrument, fund.createInstrument) &&
-        Objects.equals(this.apportionmentMethodProperty, fund.apportionmentMethodProperty) &&
         Objects.equals(this.allocationGroups, fund.allocationGroups) &&
         Objects.equals(this.shareClasses, fund.shareClasses) &&
         Objects.equals(this.version, fund.version) &&
@@ -744,7 +717,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, apportionmentMethodProperty, allocationGroups, shareClasses, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -776,7 +749,6 @@ public class Fund {
     sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
-    sb.append("    apportionmentMethodProperty: ").append(toIndentedString(apportionmentMethodProperty)).append("\n");
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -821,7 +793,6 @@ public class Fund {
     openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
     openapiFields.add("createInstrument");
-    openapiFields.add("apportionmentMethodProperty");
     openapiFields.add("allocationGroups");
     openapiFields.add("shareClasses");
     openapiFields.add("version");
@@ -931,10 +902,6 @@ public class Fund {
             NavType.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
           };
         }
-      }
-      // validate the optional field `apportionmentMethodProperty`
-      if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
-        ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
       }
       if (jsonObj.get("allocationGroups") != null && !jsonObj.get("allocationGroups").isJsonNull()) {
         JsonArray jsonArrayallocationGroups = jsonObj.getAsJsonArray("allocationGroups");

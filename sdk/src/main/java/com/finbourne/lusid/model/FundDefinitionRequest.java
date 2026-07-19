@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ApportionmentMethodProperty;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.NavTypeDefinition;
 import com.finbourne.lusid.model.PortfolioEntityId;
@@ -125,10 +124,6 @@ public class FundDefinitionRequest {
   public static final String SERIALIZED_NAME_CREATE_INSTRUMENT = "createInstrument";
   @SerializedName(SERIALIZED_NAME_CREATE_INSTRUMENT)
   private Boolean createInstrument;
-
-  public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
-  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
-  private ApportionmentMethodProperty apportionmentMethodProperty;
 
   public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
@@ -515,27 +510,6 @@ public class FundDefinitionRequest {
   }
 
 
-  public FundDefinitionRequest apportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
-    
-    this.apportionmentMethodProperty = apportionmentMethodProperty;
-    return this;
-  }
-
-   /**
-   * Get apportionmentMethodProperty
-   * @return apportionmentMethodProperty
-  **/
-  @jakarta.annotation.Nullable
-  public ApportionmentMethodProperty getApportionmentMethodProperty() {
-    return apportionmentMethodProperty;
-  }
-
-
-  public void setApportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
-    this.apportionmentMethodProperty = apportionmentMethodProperty;
-  }
-
-
   public FundDefinitionRequest shareClasses(List<ShareClassDefinition> shareClasses) {
     
     this.shareClasses = shareClasses;
@@ -591,7 +565,6 @@ public class FundDefinitionRequest {
         Objects.equals(this.additionalNavTypes, fundDefinitionRequest.additionalNavTypes) &&
         Objects.equals(this.properties, fundDefinitionRequest.properties) &&
         Objects.equals(this.createInstrument, fundDefinitionRequest.createInstrument) &&
-        Objects.equals(this.apportionmentMethodProperty, fundDefinitionRequest.apportionmentMethodProperty) &&
         Objects.equals(this.shareClasses, fundDefinitionRequest.shareClasses);
   }
 
@@ -601,7 +574,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, apportionmentMethodProperty, shareClasses);
+    return Objects.hash(code, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -631,7 +604,6 @@ public class FundDefinitionRequest {
     sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
-    sb.append("    apportionmentMethodProperty: ").append(toIndentedString(apportionmentMethodProperty)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -671,7 +643,6 @@ public class FundDefinitionRequest {
     openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
     openapiFields.add("createInstrument");
-    openapiFields.add("apportionmentMethodProperty");
     openapiFields.add("shareClasses");
 
     // a set of required properties/fields (JSON key names)
@@ -768,10 +739,6 @@ public class FundDefinitionRequest {
             NavTypeDefinition.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
           };
         }
-      }
-      // validate the optional field `apportionmentMethodProperty`
-      if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
-        ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
       }
       if (jsonObj.get("shareClasses") != null && !jsonObj.get("shareClasses").isJsonNull()) {
         JsonArray jsonArrayshareClasses = jsonObj.getAsJsonArray("shareClasses");

@@ -13,11 +13,13 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.CustodianEntry;
 import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Economics;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RealisedGainLoss;
+import com.finbourne.lusid.model.ResolvedCustodianAccount;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.TransactionPrice;
@@ -282,6 +284,14 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ENTRIES = "custodianEntries";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ENTRIES)
+  private List<CustodianEntry> custodianEntries;
+
+  public static final String SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNTS = "resolvedCustodianAccounts";
+  @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNTS)
+  private List<ResolvedCustodianAccount> resolvedCustodianAccounts;
 
   public OutputTransaction() {
   }
@@ -1166,6 +1176,64 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction custodianEntries(List<CustodianEntry> custodianEntries) {
+    
+    this.custodianEntries = custodianEntries;
+    return this;
+  }
+
+  public OutputTransaction addCustodianEntriesItem(CustodianEntry custodianEntriesItem) {
+    if (this.custodianEntries == null) {
+      this.custodianEntries = new ArrayList<>();
+    }
+    this.custodianEntries.add(custodianEntriesItem);
+    return this;
+  }
+
+   /**
+   * Set of of Custodian Entries associated with the transaction.
+   * @return custodianEntries
+  **/
+  @jakarta.annotation.Nullable
+  public List<CustodianEntry> getCustodianEntries() {
+    return custodianEntries;
+  }
+
+
+  public void setCustodianEntries(List<CustodianEntry> custodianEntries) {
+    this.custodianEntries = custodianEntries;
+  }
+
+
+  public OutputTransaction resolvedCustodianAccounts(List<ResolvedCustodianAccount> resolvedCustodianAccounts) {
+    
+    this.resolvedCustodianAccounts = resolvedCustodianAccounts;
+    return this;
+  }
+
+  public OutputTransaction addResolvedCustodianAccountsItem(ResolvedCustodianAccount resolvedCustodianAccountsItem) {
+    if (this.resolvedCustodianAccounts == null) {
+      this.resolvedCustodianAccounts = new ArrayList<>();
+    }
+    this.resolvedCustodianAccounts.add(resolvedCustodianAccountsItem);
+    return this;
+  }
+
+   /**
+   * Set of Custodian Accounts resolved from each movement on the Transaction.
+   * @return resolvedCustodianAccounts
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResolvedCustodianAccount> getResolvedCustodianAccounts() {
+    return resolvedCustodianAccounts;
+  }
+
+
+  public void setResolvedCustodianAccounts(List<ResolvedCustodianAccount> resolvedCustodianAccounts) {
+    this.resolvedCustodianAccounts = resolvedCustodianAccounts;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1215,7 +1283,9 @@ public class OutputTransaction {
         Objects.equals(this.sequencePriority, outputTransaction.sequencePriority) &&
         Objects.equals(this.settlementSummary, outputTransaction.settlementSummary) &&
         Objects.equals(this.version, outputTransaction.version) &&
-        Objects.equals(this.stagedModifications, outputTransaction.stagedModifications);
+        Objects.equals(this.stagedModifications, outputTransaction.stagedModifications) &&
+        Objects.equals(this.custodianEntries, outputTransaction.custodianEntries) &&
+        Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1224,7 +1294,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1278,6 +1348,8 @@ public class OutputTransaction {
     sb.append("    settlementSummary: ").append(toIndentedString(settlementSummary)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
+    sb.append("    resolvedCustodianAccounts: ").append(toIndentedString(resolvedCustodianAccounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1340,6 +1412,8 @@ public class OutputTransaction {
     openapiFields.add("settlementSummary");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
+    openapiFields.add("custodianEntries");
+    openapiFields.add("resolvedCustodianAccounts");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1482,6 +1556,34 @@ public class OutputTransaction {
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
         StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
+      if (jsonObj.get("custodianEntries") != null && !jsonObj.get("custodianEntries").isJsonNull()) {
+        JsonArray jsonArraycustodianEntries = jsonObj.getAsJsonArray("custodianEntries");
+        if (jsonArraycustodianEntries != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("custodianEntries").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `custodianEntries` to be an array in the JSON string but got `%s`", jsonObj.get("custodianEntries").toString()));
+          }
+
+          // validate the optional field `custodianEntries` (array)
+          for (int i = 0; i < jsonArraycustodianEntries.size(); i++) {
+            CustodianEntry.validateJsonElement(jsonArraycustodianEntries.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("resolvedCustodianAccounts") != null && !jsonObj.get("resolvedCustodianAccounts").isJsonNull()) {
+        JsonArray jsonArrayresolvedCustodianAccounts = jsonObj.getAsJsonArray("resolvedCustodianAccounts");
+        if (jsonArrayresolvedCustodianAccounts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("resolvedCustodianAccounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `resolvedCustodianAccounts` to be an array in the JSON string but got `%s`", jsonObj.get("resolvedCustodianAccounts").toString()));
+          }
+
+          // validate the optional field `resolvedCustodianAccounts` (array)
+          for (int i = 0; i < jsonArrayresolvedCustodianAccounts.size(); i++) {
+            ResolvedCustodianAccount.validateJsonElement(jsonArrayresolvedCustodianAccounts.get(i));
+          };
+        }
       }
   }
 

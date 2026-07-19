@@ -236,7 +236,11 @@ public class IdentifierDefinition {
     
     ALLOCATIONMETHOD("AllocationMethod"),
     
-    TRANSACTIONFEE("TransactionFee");
+    TRANSACTIONFEE("TransactionFee"),
+    
+    SUBSCRIPTION("Subscription"),
+    
+    SCENARIODEFINITION("ScenarioDefinition");
 
     private String value;
 

@@ -95,6 +95,10 @@ public class FixedSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_EX_DIVIDEND_CONFIGURATION)
   private ExDividendConfiguration exDividendConfiguration;
 
+  public static final String SERIALIZED_NAME_SCHEDULE_ID = "scheduleId";
+  @SerializedName(SERIALIZED_NAME_SCHEDULE_ID)
+  private String scheduleId;
+
   public FixedSchedule() {
     // this.scheduleType = this.getClass().getSimpleName();
   }
@@ -309,6 +313,27 @@ public class FixedSchedule extends Schedule {
   }
 
 
+  public FixedSchedule scheduleId(String scheduleId) {
+    
+    this.scheduleId = scheduleId;
+    return this;
+  }
+
+   /**
+   * Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent.
+   * @return scheduleId
+  **/
+  @jakarta.annotation.Nullable
+  public String getScheduleId() {
+    return scheduleId;
+  }
+
+
+  public void setScheduleId(String scheduleId) {
+    this.scheduleId = scheduleId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -329,6 +354,7 @@ public class FixedSchedule extends Schedule {
         Objects.equals(this.paymentCurrency, fixedSchedule.paymentCurrency) &&
         Objects.equals(this.stubType, fixedSchedule.stubType) &&
         Objects.equals(this.exDividendConfiguration, fixedSchedule.exDividendConfiguration) &&
+        Objects.equals(this.scheduleId, fixedSchedule.scheduleId) &&
         super.equals(o);
   }
 
@@ -338,7 +364,7 @@ public class FixedSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, conventionName, exDividendDays, notional, paymentCurrency, stubType, exDividendConfiguration, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, conventionName, exDividendDays, notional, paymentCurrency, stubType, exDividendConfiguration, scheduleId, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -363,6 +389,7 @@ public class FixedSchedule extends Schedule {
     sb.append("    paymentCurrency: ").append(toIndentedString(paymentCurrency)).append("\n");
     sb.append("    stubType: ").append(toIndentedString(stubType)).append("\n");
     sb.append("    exDividendConfiguration: ").append(toIndentedString(exDividendConfiguration)).append("\n");
+    sb.append("    scheduleId: ").append(toIndentedString(scheduleId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -396,6 +423,7 @@ public class FixedSchedule extends Schedule {
     openapiFields.add("paymentCurrency");
     openapiFields.add("stubType");
     openapiFields.add("exDividendConfiguration");
+    openapiFields.add("scheduleId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

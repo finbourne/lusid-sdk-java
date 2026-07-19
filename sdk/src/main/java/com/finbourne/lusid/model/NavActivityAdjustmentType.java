@@ -31,7 +31,9 @@ public enum NavActivityAdjustmentType {
   
   INSTRUMENTACTIVITY("InstrumentActivity"),
   
-  QUOTEACTIVITY("QuoteActivity");
+  QUOTEACTIVITY("QuoteActivity"),
+  
+  COMPLEXMARKETDATAACTIVITY("ComplexMarketDataActivity");
 
   private String value;
 

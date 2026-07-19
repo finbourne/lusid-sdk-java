@@ -18,6 +18,7 @@ NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.POR
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.PORTFOLIOSETTLEMENTINSTRUCTIONADJUSTMENT;
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.INSTRUMENTACTIVITYADJUSTMENT;
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.QUOTEACTIVITYADJUSTMENT;
+NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.COMPLEXMARKETDATAACTIVITYADJUSTMENT;
 ```
 
 

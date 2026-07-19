@@ -448,7 +448,11 @@ public class PropertyDefinition {
     
     ALLOCATIONMETHOD("AllocationMethod"),
     
-    TRANSACTIONFEE("TransactionFee");
+    TRANSACTIONFEE("TransactionFee"),
+    
+    SUBSCRIPTION("Subscription"),
+    
+    SCENARIODEFINITION("ScenarioDefinition");
 
     private String value;
 

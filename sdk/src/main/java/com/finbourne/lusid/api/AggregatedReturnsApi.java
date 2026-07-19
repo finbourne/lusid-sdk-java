@@ -25,6 +25,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.AggregatedReturnsEntityRequest;
+import com.finbourne.lusid.model.AggregatedReturnsResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -315,6 +317,241 @@ public class AggregatedReturnsApi {
      */
     public APIdeleteReturnsEntityRequest deleteReturnsEntity(String scope, String code) {
         return new APIdeleteReturnsEntityRequest(scope, code);
+    }
+    private okhttp3.Call getAggregatedReturnsCall(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, final ApiCallback _callback) throws ApiException {
+        return getAggregatedReturnsCall(aggregatedReturnsEntityRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAggregatedReturnsCall(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = aggregatedReturnsEntityRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/returns/$aggregated";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAggregatedReturnsValidateBeforeCall(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'aggregatedReturnsEntityRequest' is set
+        if (aggregatedReturnsEntityRequest == null) {
+            throw new ApiException("Missing the required parameter 'aggregatedReturnsEntityRequest' when calling getAggregatedReturns(Async)");
+        }
+
+        return getAggregatedReturnsCall(aggregatedReturnsEntityRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AggregatedReturnsResponse> getAggregatedReturnsWithHttpInfo(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest) throws ApiException {
+        okhttp3.Call localVarCall = getAggregatedReturnsValidateBeforeCall(aggregatedReturnsEntityRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AggregatedReturnsResponse> getAggregatedReturnsWithHttpInfo(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAggregatedReturnsValidateBeforeCall(aggregatedReturnsEntityRequest, null, opts);
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getAggregatedReturnsAsync(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAggregatedReturnsValidateBeforeCall(aggregatedReturnsEntityRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAggregatedReturnsAsync(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, final ApiCallback<AggregatedReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAggregatedReturnsValidateBeforeCall(aggregatedReturnsEntityRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetAggregatedReturnsRequest {
+        private final AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest;
+
+        private APIgetAggregatedReturnsRequest(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest) {
+            this.aggregatedReturnsEntityRequest = aggregatedReturnsEntityRequest;
+        }
+
+        /**
+         * Build call for getAggregatedReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAggregatedReturnsCall(aggregatedReturnsEntityRequest, _callback);
+        }
+
+        /**
+         * Execute getAggregatedReturns request
+         * @return AggregatedReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AggregatedReturnsResponse execute() throws ApiException {
+            ApiResponse<AggregatedReturnsResponse> localVarResp = getAggregatedReturnsWithHttpInfo(aggregatedReturnsEntityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAggregatedReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AggregatedReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AggregatedReturnsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AggregatedReturnsResponse> localVarResp = getAggregatedReturnsWithHttpInfo(aggregatedReturnsEntityRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAggregatedReturns request with HTTP info returned
+         * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AggregatedReturnsResponse> executeWithHttpInfo() throws ApiException {
+            return getAggregatedReturnsWithHttpInfo(aggregatedReturnsEntityRequest);
+        }
+
+        /**
+         * Execute getAggregatedReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AggregatedReturnsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAggregatedReturnsWithHttpInfo(aggregatedReturnsEntityRequest, opts);
+        }
+
+        /**
+         * Execute getAggregatedReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
+            return getAggregatedReturnsAsync(aggregatedReturnsEntityRequest, _callback);
+        }
+
+        /**
+         * Execute getAggregatedReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AggregatedReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAggregatedReturnsAsync(aggregatedReturnsEntityRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
+     * Calculate time-weighted returns for the entity specified in the request body over the   effective window. Currently, supports a single entity of type Portfolio and calculates a daily   return grid. The recipe, fee handling, and flow-discrepancy handling are taken from the persisted   Returns entity identified by the supplied scope/code; the request fails if no such entity exists.
+     * @param aggregatedReturnsEntityRequest The entity to calculate returns for, the Returns entity that configures the   calculation, the effective window and the metrics to calculate. (required)
+     * @return APIgetAggregatedReturnsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The aggregated returns grouped by entity. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetAggregatedReturnsRequest getAggregatedReturns(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest) {
+        return new APIgetAggregatedReturnsRequest(aggregatedReturnsEntityRequest);
     }
     private okhttp3.Call getReturnsEntityCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getReturnsEntityCall(scope, code, asAt,  _callback, new ConfigurationOptions());

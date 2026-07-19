@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustmentResponse {
   /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -60,7 +60,9 @@ public class NavActivityAdjustmentResponse {
     
     INSTRUMENTACTIVITYADJUSTMENT("InstrumentActivityAdjustment"),
     
-    QUOTEACTIVITYADJUSTMENT("QuoteActivityAdjustment");
+    QUOTEACTIVITYADJUSTMENT("QuoteActivityAdjustment"),
+    
+    COMPLEXMARKETDATAACTIVITYADJUSTMENT("ComplexMarketDataActivityAdjustment");
 
     private String value;
 
@@ -114,7 +116,7 @@ public class NavActivityAdjustmentResponse {
   }
 
    /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -195,6 +197,9 @@ public class NavActivityAdjustmentResponse {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("navActivityAdjustmentType").getAsString();
       switch (discriminatorValue) {
+        case "ComplexMarketDataActivityAdjustment":
+          ComplexMarketDataActivityAdjustment.validateJsonElement(jsonElement);
+          break;
         case "InstrumentActivityAdjustment":
           InstrumentActivityAdjustment.validateJsonElement(jsonElement);
           break;

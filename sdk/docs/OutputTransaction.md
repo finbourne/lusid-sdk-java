@@ -45,6 +45,8 @@ Name | Type | Description | Notes
 **settlementSummary** | [**TransactionSettlementSummary**](TransactionSettlementSummary.md) |  | [optional] [default to TransactionSettlementSummary]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
+**custodianEntries** | [**List&lt;CustodianEntry&gt;**](CustodianEntry.md) | Set of of Custodian Entries associated with the transaction. | [optional] [default to List<CustodianEntry>]
+**resolvedCustodianAccounts** | [**List&lt;ResolvedCustodianAccount&gt;**](ResolvedCustodianAccount.md) | Set of Custodian Accounts resolved from each movement on the Transaction. | [optional] [default to List<ResolvedCustodianAccount>]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -92,6 +94,8 @@ DataModelMembership DataModelMembership = new DataModelMembership();
 TransactionSettlementSummary SettlementSummary = new TransactionSettlementSummary();
 Version Version = new Version();
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
+@jakarta.annotation.Nullable List<CustodianEntry> CustodianEntries = new List<CustodianEntry>();
+@jakarta.annotation.Nullable List<ResolvedCustodianAccount> ResolvedCustodianAccounts = new List<ResolvedCustodianAccount>();
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -134,7 +138,9 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .SequencePriority(SequencePriority)
     .SettlementSummary(SettlementSummary)
     .Version(Version)
-    .StagedModifications(StagedModifications);
+    .StagedModifications(StagedModifications)
+    .CustodianEntries(CustodianEntries)
+    .ResolvedCustodianAccounts(ResolvedCustodianAccounts);
 ```
 
 

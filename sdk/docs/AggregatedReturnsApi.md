@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteReturnsEntity**](AggregatedReturnsApi.md#deleteReturnsEntity) | **DELETE** /api/returns/{scope}/{code} | [EXPERIMENTAL] DeleteReturnsEntity: Delete returns entity. |
+| [**getAggregatedReturns**](AggregatedReturnsApi.md#getAggregatedReturns) | **POST** /api/returns/$aggregated | [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. |
 | [**getReturnsEntity**](AggregatedReturnsApi.md#getReturnsEntity) | **GET** /api/returns/{scope}/{code} | [EXPERIMENTAL] GetReturnsEntity: Get returns entity. |
 | [**listReturnsEntities**](AggregatedReturnsApi.md#listReturnsEntities) | **GET** /api/returns | [EXPERIMENTAL] ListReturnsEntities: List returns entities. |
 | [**upsertReturnsEntity**](AggregatedReturnsApi.md#upsertReturnsEntity) | **POST** /api/returns | [EXPERIMENTAL] UpsertReturnsEntity: Upsert returns entity. |
@@ -98,6 +99,97 @@ public class AggregatedReturnsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The time that the returns entity was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getAggregatedReturns
+
+> AggregatedReturnsResponse getAggregatedReturns(aggregatedReturnsEntityRequest)
+
+[EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
+
+Calculate time-weighted returns for the entity specified in the request body over the   effective window. Currently, supports a single entity of type Portfolio and calculates a daily   return grid. The recipe, fee handling, and flow-discrepancy handling are taken from the persisted   Returns entity identified by the supplied scope/code; the request fails if no such entity exists.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AggregatedReturnsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AggregatedReturnsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AggregatedReturnsApi apiInstance = apiFactory.build(AggregatedReturnsApi.class);
+
+        AggregatedReturnsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregatedReturnsApi.class);
+        AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest = new AggregatedReturnsEntityRequest(); // AggregatedReturnsEntityRequest | The entity to calculate returns for, the Returns entity that configures the   calculation, the effective window and the metrics to calculate.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AggregatedReturnsResponse result = apiInstance.getAggregatedReturns(aggregatedReturnsEntityRequest).execute(opts);
+
+            AggregatedReturnsResponse result = apiInstance.getAggregatedReturns(aggregatedReturnsEntityRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AggregatedReturnsApi#getAggregatedReturns");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **aggregatedReturnsEntityRequest** | [**AggregatedReturnsEntityRequest**](AggregatedReturnsEntityRequest.md)| The entity to calculate returns for, the Returns entity that configures the   calculation, the effective window and the metrics to calculate. | |
+
+### Return type
+
+[**AggregatedReturnsResponse**](AggregatedReturnsResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The aggregated returns grouped by entity. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

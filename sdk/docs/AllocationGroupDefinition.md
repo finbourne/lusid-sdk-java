@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **classes** | [**List&lt;AllocationGroupClassDefinition&gt;**](AllocationGroupClassDefinition.md) | An optional list of share classes that belong to this group. Each entry must reference a ShareClass already present on the Fund. You can provide this or the Formula, but not both. | [optional] [default to List<AllocationGroupClassDefinition>]
-**code** | **String** | The unique code for the Allocation Group. Must be unique within the Fund. | [default to String]
 **name** | **String** | The display name of the Allocation Group. | [default to String]
 **description** | **String** | An optional description for the Allocation Group. | [optional] [default to String]
 **shareClassShortCode** | **String** | The short code that identifies the Allocation Group. | [default to String]
@@ -19,7 +18,6 @@ import java.lang.System;
 import java.net.URI;
 
 @jakarta.annotation.Nullable List<AllocationGroupClassDefinition> Classes = new List<AllocationGroupClassDefinition>();
-String Code = "example Code";
 String Name = "example Name";
 @jakarta.annotation.Nullable String Description = "example Description";
 String ShareClassShortCode = "example ShareClassShortCode";
@@ -29,7 +27,6 @@ ApportionmentMethodProperty ApportionmentMethodProperty = new ApportionmentMetho
 
 AllocationGroupDefinition allocationGroupDefinitionInstance = new AllocationGroupDefinition()
     .Classes(Classes)
-    .Code(Code)
     .Name(Name)
     .Description(Description)
     .ShareClassShortCode(ShareClassShortCode)

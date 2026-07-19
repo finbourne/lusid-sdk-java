@@ -101,6 +101,7 @@ InstrumentEventType method = InstrumentEventType.LIQUIDATIONPAYMENTEVENT;
 InstrumentEventType method = InstrumentEventType.PARTIALDEFEASANCEEVENT;
 InstrumentEventType method = InstrumentEventType.SECURITYWRITEOFFEVENT;
 InstrumentEventType method = InstrumentEventType.WARRANTSEXERCISEEVENT;
+InstrumentEventType method = InstrumentEventType.PARIPASSUEVENT;
 ```
 
 

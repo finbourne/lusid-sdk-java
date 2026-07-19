@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Property;
-import com.finbourne.lusid.model.Series;
 import com.finbourne.lusid.model.SimpleRoundingConvention;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
@@ -63,14 +62,6 @@ public class ShareClass {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
   private Map<String, String> instrumentIdentifiers = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_SERIES = "series";
-  @SerializedName(SERIALIZED_NAME_SERIES)
-  private List<Series> series;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -173,56 +164,6 @@ public class ShareClass {
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
-  }
-
-
-  public ShareClass series(List<Series> series) {
-    
-    this.series = series;
-    return this;
-  }
-
-  public ShareClass addSeriesItem(Series seriesItem) {
-    if (this.series == null) {
-      this.series = new ArrayList<>();
-    }
-    this.series.add(seriesItem);
-    return this;
-  }
-
-   /**
-   * The series that belong to this Share Class.
-   * @return series
-  **/
-  @jakarta.annotation.Nullable
-  public List<Series> getSeries() {
-    return series;
-  }
-
-
-  public void setSeries(List<Series> series) {
-    this.series = series;
-  }
-
-
-  public ShareClass code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * The unique code for the Share Class. Must be unique within the Fund.
-   * @return code
-  **/
-  @jakarta.annotation.Nonnull
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
   }
 
 
@@ -338,7 +279,7 @@ public class ShareClass {
   }
 
    /**
-   * The weighting factor used for apportionment across this share class.
+   * Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
    * @return apportionmentFactor
   **/
   @jakarta.annotation.Nullable
@@ -639,8 +580,6 @@ public class ShareClass {
     }
     ShareClass shareClass = (ShareClass) o;
     return Objects.equals(this.instrumentIdentifiers, shareClass.instrumentIdentifiers) &&
-        Objects.equals(this.series, shareClass.series) &&
-        Objects.equals(this.code, shareClass.code) &&
         Objects.equals(this.name, shareClass.name) &&
         Objects.equals(this.description, shareClass.description) &&
         Objects.equals(this.shareClassShortCode, shareClass.shareClassShortCode) &&
@@ -667,7 +606,7 @@ public class ShareClass {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, series, code, name, description, shareClassShortCode, launchPrice, launchDate, apportionmentFactor, properties, fundShareClassType, distributionType, domCcy, tradingConventions, unitsPrecision, pricePrecision, roundingConventions, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
+    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, apportionmentFactor, properties, fundShareClassType, distributionType, domCcy, tradingConventions, unitsPrecision, pricePrecision, roundingConventions, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -682,8 +621,6 @@ public class ShareClass {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareClass {\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
-    sb.append("    series: ").append(toIndentedString(series)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    shareClassShortCode: ").append(toIndentedString(shareClassShortCode)).append("\n");
@@ -725,8 +662,6 @@ public class ShareClass {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentIdentifiers");
-    openapiFields.add("series");
-    openapiFields.add("code");
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("shareClassShortCode");
@@ -749,7 +684,6 @@ public class ShareClass {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("code");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("shareClassShortCode");
     openapiRequiredFields.add("fundShareClassType");
@@ -778,23 +712,6 @@ public class ShareClass {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull()) {
-        JsonArray jsonArrayseries = jsonObj.getAsJsonArray("series");
-        if (jsonArrayseries != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("series").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `series` to be an array in the JSON string but got `%s`", jsonObj.get("series").toString()));
-          }
-
-          // validate the optional field `series` (array)
-          for (int i = 0; i < jsonArrayseries.size(); i++) {
-            Series.validateJsonElement(jsonArrayseries.get(i));
-          };
-        }
-      }
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }

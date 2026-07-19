@@ -125,6 +125,10 @@ public class FloatSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_FLOOR_RATE)
   private java.math.BigDecimal floorRate;
 
+  public static final String SERIALIZED_NAME_SCHEDULE_ID = "scheduleId";
+  @SerializedName(SERIALIZED_NAME_SCHEDULE_ID)
+  private String scheduleId;
+
   public FloatSchedule() {
     // this.scheduleType = this.getClass().getSimpleName();
   }
@@ -486,6 +490,27 @@ public class FloatSchedule extends Schedule {
   }
 
 
+  public FloatSchedule scheduleId(String scheduleId) {
+    
+    this.scheduleId = scheduleId;
+    return this;
+  }
+
+   /**
+   * Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent.
+   * @return scheduleId
+  **/
+  @jakarta.annotation.Nullable
+  public String getScheduleId() {
+    return scheduleId;
+  }
+
+
+  public void setScheduleId(String scheduleId) {
+    this.scheduleId = scheduleId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -513,6 +538,7 @@ public class FloatSchedule extends Schedule {
         Objects.equals(this.useAnnualisedDirectRates, floatSchedule.useAnnualisedDirectRates) &&
         (this.capRate.compareTo(floatSchedule.getCapRate()) == 0) &&
         (this.floorRate.compareTo(floatSchedule.getFloorRate()) == 0) &&
+        Objects.equals(this.scheduleId, floatSchedule.scheduleId) &&
         super.equals(o);
   }
 
@@ -522,7 +548,7 @@ public class FloatSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, useAnnualisedDirectRates, capRate, floorRate, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, conventionName, exDividendDays, indexConventionName, indexConventions, notional, paymentCurrency, spread, stubType, exDividendConfiguration, compounding, resetConvention, useAnnualisedDirectRates, capRate, floorRate, scheduleId, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -554,6 +580,7 @@ public class FloatSchedule extends Schedule {
     sb.append("    useAnnualisedDirectRates: ").append(toIndentedString(useAnnualisedDirectRates)).append("\n");
     sb.append("    capRate: ").append(toIndentedString(capRate)).append("\n");
     sb.append("    floorRate: ").append(toIndentedString(floorRate)).append("\n");
+    sb.append("    scheduleId: ").append(toIndentedString(scheduleId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -594,6 +621,7 @@ public class FloatSchedule extends Schedule {
     openapiFields.add("useAnnualisedDirectRates");
     openapiFields.add("capRate");
     openapiFields.add("floorRate");
+    openapiFields.add("scheduleId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
