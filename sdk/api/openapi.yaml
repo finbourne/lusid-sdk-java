@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9485
+  version: 0.11.9486
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -43592,6 +43592,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -43646,6 +43655,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             application/json:
@@ -43705,6 +43723,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -43759,6 +43786,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             text/json:
@@ -43818,6 +43854,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -43872,6 +43917,15 @@ paths:
                       instrumentActive: true
                   valuationPointCode: FebValuationPoint
                   previousValuationPointCode: JanValuationPoint
+                  apportionmentResults:
+                  - apportionmentLevel: Fund
+                    apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                    factors:
+                    - memberIdentifier: ShareClassShortCode
+                      fundScope: FundScope
+                      fundCode: FundCode
+                      baseValue: 99999.99
+                      apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
           description: The Accepted Estimate point and status after being Accepted
@@ -44233,6 +44287,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -44290,6 +44353,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -44347,6 +44419,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -44522,6 +44603,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -44579,6 +44669,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -44636,6 +44735,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The requested Valuation Point data for the Fund.
@@ -44790,6 +44898,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -44847,6 +44964,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -44904,6 +45030,15 @@ paths:
                     instrumentActive: true
                 valuationPointCode: FebValuationPoint
                 previousValuationPointCode: JanValuationPoint
+                apportionmentResults:
+                - apportionmentLevel: Fund
+                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
+                  factors:
+                  - memberIdentifier: ShareClassShortCode
+                    fundScope: FundScope
+                    fundCode: FundCode
+                    baseValue: 99999.99
+                    apportionmentFactor: 1
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -151705,6 +151840,35 @@ components:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
+          apportionmentResults:
+          - apportionmentLevel: apportionmentLevel
+            allocationGroupCode: allocationGroupCode
+            apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+            factors:
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+          - apportionmentLevel: apportionmentLevel
+            allocationGroupCode: allocationGroupCode
+            apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+            factors:
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
           fundDetails:
             currency: currency
           previousValuationPointCode: previousValuationPointCode
@@ -151931,6 +152095,35 @@ components:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
+          apportionmentResults:
+          - apportionmentLevel: apportionmentLevel
+            allocationGroupCode: allocationGroupCode
+            apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+            factors:
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+          - apportionmentLevel: apportionmentLevel
+            allocationGroupCode: allocationGroupCode
+            apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+            factors:
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
+            - baseValue: 4.965218492984954
+              fundCode: fundCode
+              apportionmentFactor: 5.025004791520295
+              memberIdentifier: memberIdentifier
+              fundScope: fundScope
           fundDetails:
             currency: currency
           previousValuationPointCode: previousValuationPointCode
@@ -158327,6 +158520,93 @@ components:
       - instrumentType
       - lusidInstrumentId
       - portfolioId
+      type: object
+    ApportionmentBreakdown:
+      additionalProperties: false
+      description: "The apportionment result for one level - the fund (apportioning\
+        \ the non-class-specific P&L across all\r\nshare classes) or a single allocation\
+        \ group (apportioning its tagged P&L across its members) - with the\r\nper-member\
+        \ base values and factors the method produced."
+      example:
+        apportionmentLevel: apportionmentLevel
+        allocationGroupCode: allocationGroupCode
+        apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+        factors:
+        - baseValue: 4.965218492984954
+          fundCode: fundCode
+          apportionmentFactor: 5.025004791520295
+          memberIdentifier: memberIdentifier
+          fundScope: fundScope
+        - baseValue: 4.965218492984954
+          fundCode: fundCode
+          apportionmentFactor: 5.025004791520295
+          memberIdentifier: memberIdentifier
+          fundScope: fundScope
+      properties:
+        apportionmentLevel:
+          description: "Whether this result is the fund-level apportionment (across\
+            \ all share classes) or an allocation group's (across its share classes).\
+            \ Available values: Fund, AllocationGroup."
+          minLength: 1
+          type: string
+        allocationGroupCode:
+          description: "The ShareClassShortCode identifying the allocation group this\
+            \ result is for, or null for the fund-level result."
+          nullable: true
+          type: string
+        apportionmentMethodPropertyKey:
+          description: The apportionment method property key that produced the factors.
+          minLength: 1
+          type: string
+        factors:
+          description: The per-member base values and apportionment factors produced
+            by the method.
+          items:
+            $ref: '#/components/schemas/ApportionmentMemberFactor'
+          type: array
+      required:
+      - apportionmentLevel
+      - apportionmentMethodPropertyKey
+      - factors
+      type: object
+    ApportionmentMemberFactor:
+      additionalProperties: false
+      description: "One member share class's outcome within an apportionment result:\
+        \ the base value the method produced for it\r\nand the resulting apportionment\
+        \ factor."
+      example:
+        baseValue: 4.965218492984954
+        fundCode: fundCode
+        apportionmentFactor: 5.025004791520295
+        memberIdentifier: memberIdentifier
+        fundScope: fundScope
+      properties:
+        memberIdentifier:
+          description: The member share class's short code.
+          minLength: 1
+          type: string
+        fundScope:
+          description: The scope of the fund the member share class belongs to.
+          nullable: true
+          type: string
+        fundCode:
+          description: The code of the fund the member share class belongs to.
+          nullable: true
+          type: string
+        baseValue:
+          description: "The base value the method produced for the member, or null\
+            \ for the SetFactor method."
+          format: double
+          nullable: true
+          type: number
+        apportionmentFactor:
+          description: "The member's apportionment factor: its base value over the\
+            \ total across the group or fund."
+          format: double
+          type: number
+      required:
+      - apportionmentFactor
+      - memberIdentifier
       type: object
     ApportionmentMethodProperty:
       additionalProperties: false
@@ -302032,6 +302312,35 @@ components:
                 key:
                   fundCurrencyAmount: 2.027123023002322
                   shareClassCurrencyAmount: 4.145608029883936
+        apportionmentResults:
+        - apportionmentLevel: apportionmentLevel
+          allocationGroupCode: allocationGroupCode
+          apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+          factors:
+          - baseValue: 4.965218492984954
+            fundCode: fundCode
+            apportionmentFactor: 5.025004791520295
+            memberIdentifier: memberIdentifier
+            fundScope: fundScope
+          - baseValue: 4.965218492984954
+            fundCode: fundCode
+            apportionmentFactor: 5.025004791520295
+            memberIdentifier: memberIdentifier
+            fundScope: fundScope
+        - apportionmentLevel: apportionmentLevel
+          allocationGroupCode: allocationGroupCode
+          apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
+          factors:
+          - baseValue: 4.965218492984954
+            fundCode: fundCode
+            apportionmentFactor: 5.025004791520295
+            memberIdentifier: memberIdentifier
+            fundScope: fundScope
+          - baseValue: 4.965218492984954
+            fundCode: fundCode
+            apportionmentFactor: 5.025004791520295
+            memberIdentifier: memberIdentifier
+            fundScope: fundScope
         fundDetails:
           currency: currency
         previousValuationPointCode: previousValuationPointCode
@@ -302132,6 +302441,13 @@ components:
           description: The code of the previous valuation point.
           nullable: true
           type: string
+        apportionmentResults:
+          description: "The apportionment results for the valuation point: one fund-level\
+            \ entry plus one entry per allocation group."
+          items:
+            $ref: '#/components/schemas/ApportionmentBreakdown'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **shareClassData** | [**List&lt;ShareClassData&gt;**](ShareClassData.md) | The data for all share classes in fund. Share classes are identified by their short codes. | [default to List<ShareClassData>]
 **valuationPointCode** | **String** | The code of the valuation point. | [optional] [default to String]
 **previousValuationPointCode** | **String** | The code of the previous valuation point. | [optional] [default to String]
+**apportionmentResults** | [**List&lt;ApportionmentBreakdown&gt;**](ApportionmentBreakdown.md) | The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. | [optional] [default to List<ApportionmentBreakdown>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -29,6 +30,7 @@ FundValuationPointData FundValuationPointData = new FundValuationPointData();
 List<ShareClassData> ShareClassData = new List<ShareClassData>();
 @jakarta.annotation.Nullable String ValuationPointCode = "example ValuationPointCode";
 @jakarta.annotation.Nullable String PreviousValuationPointCode = "example PreviousValuationPointCode";
+@jakarta.annotation.Nullable List<ApportionmentBreakdown> ApportionmentResults = new List<ApportionmentBreakdown>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -41,6 +43,7 @@ ValuationPointDataResponse valuationPointDataResponseInstance = new ValuationPoi
     .ShareClassData(ShareClassData)
     .ValuationPointCode(ValuationPointCode)
     .PreviousValuationPointCode(PreviousValuationPointCode)
+    .ApportionmentResults(ApportionmentResults)
     .Links(Links);
 ```
 

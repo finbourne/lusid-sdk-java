@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ApportionmentBreakdown;
 import com.finbourne.lusid.model.FundDetails;
 import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
@@ -88,6 +89,10 @@ public class ValuationPointDataResponse {
   public static final String SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_CODE = "previousValuationPointCode";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_CODE)
   private String previousValuationPointCode;
+
+  public static final String SERIALIZED_NAME_APPORTIONMENT_RESULTS = "apportionmentResults";
+  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_RESULTS)
+  private List<ApportionmentBreakdown> apportionmentResults;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -272,6 +277,35 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse apportionmentResults(List<ApportionmentBreakdown> apportionmentResults) {
+    
+    this.apportionmentResults = apportionmentResults;
+    return this;
+  }
+
+  public ValuationPointDataResponse addApportionmentResultsItem(ApportionmentBreakdown apportionmentResultsItem) {
+    if (this.apportionmentResults == null) {
+      this.apportionmentResults = new ArrayList<>();
+    }
+    this.apportionmentResults.add(apportionmentResultsItem);
+    return this;
+  }
+
+   /**
+   * The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group.
+   * @return apportionmentResults
+  **/
+  @jakarta.annotation.Nullable
+  public List<ApportionmentBreakdown> getApportionmentResults() {
+    return apportionmentResults;
+  }
+
+
+  public void setApportionmentResults(List<ApportionmentBreakdown> apportionmentResults) {
+    this.apportionmentResults = apportionmentResults;
+  }
+
+
   public ValuationPointDataResponse links(List<Link> links) {
     
     this.links = links;
@@ -319,6 +353,7 @@ public class ValuationPointDataResponse {
         Objects.equals(this.shareClassData, valuationPointDataResponse.shareClassData) &&
         Objects.equals(this.valuationPointCode, valuationPointDataResponse.valuationPointCode) &&
         Objects.equals(this.previousValuationPointCode, valuationPointDataResponse.previousValuationPointCode) &&
+        Objects.equals(this.apportionmentResults, valuationPointDataResponse.apportionmentResults) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -328,7 +363,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
+    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -350,6 +385,7 @@ public class ValuationPointDataResponse {
     sb.append("    shareClassData: ").append(toIndentedString(shareClassData)).append("\n");
     sb.append("    valuationPointCode: ").append(toIndentedString(valuationPointCode)).append("\n");
     sb.append("    previousValuationPointCode: ").append(toIndentedString(previousValuationPointCode)).append("\n");
+    sb.append("    apportionmentResults: ").append(toIndentedString(apportionmentResults)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -381,6 +417,7 @@ public class ValuationPointDataResponse {
     openapiFields.add("shareClassData");
     openapiFields.add("valuationPointCode");
     openapiFields.add("previousValuationPointCode");
+    openapiFields.add("apportionmentResults");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -440,6 +477,20 @@ public class ValuationPointDataResponse {
       }
       if ((jsonObj.get("previousValuationPointCode") != null && !jsonObj.get("previousValuationPointCode").isJsonNull()) && !jsonObj.get("previousValuationPointCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `previousValuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousValuationPointCode").toString()));
+      }
+      if (jsonObj.get("apportionmentResults") != null && !jsonObj.get("apportionmentResults").isJsonNull()) {
+        JsonArray jsonArrayapportionmentResults = jsonObj.getAsJsonArray("apportionmentResults");
+        if (jsonArrayapportionmentResults != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("apportionmentResults").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `apportionmentResults` to be an array in the JSON string but got `%s`", jsonObj.get("apportionmentResults").toString()));
+          }
+
+          // validate the optional field `apportionmentResults` (array)
+          for (int i = 0; i < jsonArrayapportionmentResults.size(); i++) {
+            ApportionmentBreakdown.validateJsonElement(jsonArrayapportionmentResults.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
