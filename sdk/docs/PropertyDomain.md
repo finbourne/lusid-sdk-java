@@ -103,6 +103,7 @@ PropertyDomain method = PropertyDomain.ALLOCATIONMETHOD;
 PropertyDomain method = PropertyDomain.TRANSACTIONFEE;
 PropertyDomain method = PropertyDomain.SUBSCRIPTION;
 PropertyDomain method = PropertyDomain.SCENARIODEFINITION;
+PropertyDomain method = PropertyDomain.PAYMENTINSTRUCTION;
 ```
 
 

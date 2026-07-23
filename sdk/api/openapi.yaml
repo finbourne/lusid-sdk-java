@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9486
+  version: 0.11.9506
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -52165,7 +52165,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -52261,6 +52261,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -52344,7 +52345,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -52440,6 +52441,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -52626,7 +52628,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -52722,6 +52724,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -97969,7 +97972,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -98065,6 +98068,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: Scope of the property definition
@@ -98300,7 +98304,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -98396,6 +98400,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -98477,7 +98482,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -98573,6 +98578,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -98774,7 +98780,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -98870,6 +98876,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -99077,7 +99084,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -99173,6 +99180,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -99384,7 +99392,7 @@ paths:
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
           \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
           \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType."
+          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -99480,6 +99488,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -99623,7 +99632,8 @@ paths:
           \ Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration,\
           \ Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance,\
           \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
-          \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType."
+          \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
+          \ PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -99719,6 +99729,7 @@ paths:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -156447,7 +156458,6 @@ components:
           description: The short code that identifies the Allocation Group.
           maxLength: 64
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         apportionmentMethodProperty:
           $ref: '#/components/schemas/ApportionmentMethodProperty'
@@ -156474,7 +156484,6 @@ components:
             the Fund and is attached to the transaction.
           maxLength: 64
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         apportionmentFactor:
           description: "Only used for fixed percentage method or be zero, must equal\
@@ -156496,7 +156505,6 @@ components:
             the Fund and is attached to the transaction.
           maxLength: 64
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         apportionmentFactor:
           description: "Only used for fixed percentage method or be zero, must equal\
@@ -156547,7 +156555,6 @@ components:
           description: The short code that identifies the Allocation Group.
           maxLength: 64
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         apportionmentMethodProperty:
           $ref: '#/components/schemas/ApportionmentMethodProperty'
@@ -175360,7 +175367,7 @@ components:
             \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
             \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
             \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType."
+            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -175451,6 +175458,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         scope:
           description: The scope that the property exists in.
@@ -175886,7 +175894,7 @@ components:
             \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
             \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
             \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType."
+            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -175977,6 +175985,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -176164,7 +176173,7 @@ components:
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType."
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -176255,6 +176264,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         scope:
           description: The scope that the property exists in.
@@ -202773,7 +202783,7 @@ components:
             \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
             \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
             \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType."
+            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -202864,6 +202874,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -243913,7 +243924,7 @@ components:
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType."
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -244004,6 +244015,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         scope:
           description: The scope that the property exists in.
@@ -244489,7 +244501,7 @@ components:
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType."
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -244580,6 +244592,7 @@ components:
           - TransactionFee
           - Subscription
           - ScenarioDefinition
+          - PaymentInstruction
           type: string
         scope:
           description: The scope that the property exists in.
@@ -244732,6 +244745,7 @@ components:
       - TransactionFee
       - Subscription
       - ScenarioDefinition
+      - PaymentInstruction
       type: string
     PropertyFilter:
       additionalProperties: false
