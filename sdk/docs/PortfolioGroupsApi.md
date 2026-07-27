@@ -230,7 +230,7 @@ public class PortfolioGroupsApiExample {
 
 ## buildTransactionsForPortfolioGroup
 
-> VersionedResourceListOfOutputTransaction buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType)
+> VersionedResourceListOfOutputTransaction buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions)
 
 BuildTransactionsForPortfolioGroup: Build transactions for transaction portfolios in a portfolio group
 
@@ -286,11 +286,12 @@ public class PortfolioGroupsApiExample {
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
+        Boolean returnExcludedTransactions = false; // Boolean | Whether to include transactions that a portfolio's transaction exclusion filter marks as excluded. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute(opts);
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute(opts);
 
-            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute();
+            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfolioGroupsApi#buildTransactionsForPortfolioGroup");
@@ -318,6 +319,7 @@ public class PortfolioGroupsApiExample {
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
+| **returnExcludedTransactions** | **Boolean**| Whether to include transactions that a portfolio&#39;s transaction exclusion filter marks as excluded. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 

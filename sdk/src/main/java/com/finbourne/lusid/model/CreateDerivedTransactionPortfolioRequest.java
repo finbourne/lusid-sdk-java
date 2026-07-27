@@ -76,6 +76,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_ENABLEMENT_DATE = "enablementDate";
+  @SerializedName(SERIALIZED_NAME_ENABLEMENT_DATE)
+  private OffsetDateTime enablementDate;
+
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
   private ResourceId corporateActionSourceId;
@@ -191,6 +195,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
   private PortfolioSettlementConfiguration settlementConfiguration;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER = "transactionExclusionFilter";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
+  private String transactionExclusionFilter;
+
   public CreateDerivedTransactionPortfolioRequest() {
   }
 
@@ -296,6 +304,27 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
+  }
+
+
+  public CreateDerivedTransactionPortfolioRequest enablementDate(OffsetDateTime enablementDate) {
+    
+    this.enablementDate = enablementDate;
+    return this;
+  }
+
+   /**
+   * The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.
+   * @return enablementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEnablementDate() {
+    return enablementDate;
+  }
+
+
+  public void setEnablementDate(OffsetDateTime enablementDate) {
+    this.enablementDate = enablementDate;
   }
 
 
@@ -525,6 +554,27 @@ public class CreateDerivedTransactionPortfolioRequest {
   }
 
 
+  public CreateDerivedTransactionPortfolioRequest transactionExclusionFilter(String transactionExclusionFilter) {
+    
+    this.transactionExclusionFilter = transactionExclusionFilter;
+    return this;
+  }
+
+   /**
+   * A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+   * @return transactionExclusionFilter
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionExclusionFilter() {
+    return transactionExclusionFilter;
+  }
+
+
+  public void setTransactionExclusionFilter(String transactionExclusionFilter) {
+    this.transactionExclusionFilter = transactionExclusionFilter;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -540,6 +590,7 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.code, createDerivedTransactionPortfolioRequest.code) &&
         Objects.equals(this.parentPortfolioId, createDerivedTransactionPortfolioRequest.parentPortfolioId) &&
         Objects.equals(this.created, createDerivedTransactionPortfolioRequest.created) &&
+        Objects.equals(this.enablementDate, createDerivedTransactionPortfolioRequest.enablementDate) &&
         Objects.equals(this.corporateActionSourceId, createDerivedTransactionPortfolioRequest.corporateActionSourceId) &&
         Objects.equals(this.accountingMethod, createDerivedTransactionPortfolioRequest.accountingMethod) &&
         Objects.equals(this.subHoldingKeys, createDerivedTransactionPortfolioRequest.subHoldingKeys) &&
@@ -549,7 +600,8 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.cashGainLossCalculationDate, createDerivedTransactionPortfolioRequest.cashGainLossCalculationDate) &&
         Objects.equals(this.amortisationRuleSetId, createDerivedTransactionPortfolioRequest.amortisationRuleSetId) &&
         Objects.equals(this.instrumentEventConfiguration, createDerivedTransactionPortfolioRequest.instrumentEventConfiguration) &&
-        Objects.equals(this.settlementConfiguration, createDerivedTransactionPortfolioRequest.settlementConfiguration);
+        Objects.equals(this.settlementConfiguration, createDerivedTransactionPortfolioRequest.settlementConfiguration) &&
+        Objects.equals(this.transactionExclusionFilter, createDerivedTransactionPortfolioRequest.transactionExclusionFilter);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -558,7 +610,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration);
+    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -577,6 +629,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    enablementDate: ").append(toIndentedString(enablementDate)).append("\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
@@ -587,6 +640,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
+    sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -614,6 +668,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("code");
     openapiFields.add("parentPortfolioId");
     openapiFields.add("created");
+    openapiFields.add("enablementDate");
     openapiFields.add("corporateActionSourceId");
     openapiFields.add("accountingMethod");
     openapiFields.add("subHoldingKeys");
@@ -624,6 +679,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("settlementConfiguration");
+    openapiFields.add("transactionExclusionFilter");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -698,6 +754,9 @@ public class CreateDerivedTransactionPortfolioRequest {
       // validate the optional field `settlementConfiguration`
       if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
         PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
+      }
+      if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
       }
   }
 

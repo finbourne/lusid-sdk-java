@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date you have to be the holder of record in order to participate in the tender. | [optional] [default to OffsetDateTime]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  | [default to UnitsRatio]
 
 ```java
@@ -25,6 +27,8 @@ OffsetDateTime PaymentDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime RecordDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 UnitsRatio UnitsRatio = new UnitsRatio();
 
 
@@ -35,6 +39,8 @@ StockDividendEvent stockDividendEventInstance = new StockDividendEvent()
     .RecordDate(RecordDate)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .UnitsRatio(UnitsRatio);
 ```
 

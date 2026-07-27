@@ -109,6 +109,14 @@ public class PriorityIssueEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
   private String fractionalUnitsCashCurrency;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION = "fractionalUnitsRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION)
+  private String fractionalUnitsRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES = "fractionalUnitsDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES)
+  private Integer fractionalUnitsDecimalPlaces;
+
   public static final String SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS = "securityOfferElections";
   @SerializedName(SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS)
   private List<SecurityOfferElection> securityOfferElections;
@@ -394,6 +402,48 @@ public class PriorityIssueEvent extends InstrumentEvent {
   }
 
 
+  public PriorityIssueEvent fractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+    return this;
+  }
+
+   /**
+   * The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return fractionalUnitsRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsRoundingConvention() {
+    return fractionalUnitsRoundingConvention;
+  }
+
+
+  public void setFractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+  }
+
+
+  public PriorityIssueEvent fractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+   * @return fractionalUnitsDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFractionalUnitsDecimalPlaces() {
+    return fractionalUnitsDecimalPlaces;
+  }
+
+
+  public void setFractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+  }
+
+
   public PriorityIssueEvent securityOfferElections(List<SecurityOfferElection> securityOfferElections) {
     
     this.securityOfferElections = securityOfferElections;
@@ -475,6 +525,8 @@ public class PriorityIssueEvent extends InstrumentEvent {
         (this.prorationRate.compareTo(priorityIssueEvent.getProrationRate()) == 0) &&
         (this.fractionalUnitsCashPrice.compareTo(priorityIssueEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.fractionalUnitsCashCurrency, priorityIssueEvent.fractionalUnitsCashCurrency) &&
+        Objects.equals(this.fractionalUnitsRoundingConvention, priorityIssueEvent.fractionalUnitsRoundingConvention) &&
+        Objects.equals(this.fractionalUnitsDecimalPlaces, priorityIssueEvent.fractionalUnitsDecimalPlaces) &&
         Objects.equals(this.securityOfferElections, priorityIssueEvent.securityOfferElections) &&
         Objects.equals(this.lapseElections, priorityIssueEvent.lapseElections) &&
         super.equals(o);
@@ -486,7 +538,7 @@ public class PriorityIssueEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, exDate, recordDate, responseDeadline, marketDeadline, paymentDate, securitySettlementDate, subscriptionPrice, subscriptionCurrency, newInstrument, prorationRate, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, securityOfferElections, lapseElections, super.hashCode());
+    return Objects.hash(announcementDate, exDate, recordDate, responseDeadline, marketDeadline, paymentDate, securitySettlementDate, subscriptionPrice, subscriptionCurrency, newInstrument, prorationRate, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, securityOfferElections, lapseElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -514,6 +566,8 @@ public class PriorityIssueEvent extends InstrumentEvent {
     sb.append("    prorationRate: ").append(toIndentedString(prorationRate)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsRoundingConvention: ").append(toIndentedString(fractionalUnitsRoundingConvention)).append("\n");
+    sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
     sb.append("}");
@@ -552,6 +606,8 @@ public class PriorityIssueEvent extends InstrumentEvent {
     openapiFields.add("prorationRate");
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsRoundingConvention");
+    openapiFields.add("fractionalUnitsDecimalPlaces");
     openapiFields.add("securityOfferElections");
     openapiFields.add("lapseElections");
 

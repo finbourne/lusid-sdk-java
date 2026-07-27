@@ -90,6 +90,14 @@ public class SpinOffEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
   private String fractionalUnitsCashCurrency;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION = "fractionalUnitsRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION)
+  private String fractionalUnitsRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES = "fractionalUnitsDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES)
+  private Integer fractionalUnitsDecimalPlaces;
+
   public SpinOffEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -283,6 +291,48 @@ public class SpinOffEvent extends InstrumentEvent {
   }
 
 
+  public SpinOffEvent fractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+    return this;
+  }
+
+   /**
+   * The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return fractionalUnitsRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsRoundingConvention() {
+    return fractionalUnitsRoundingConvention;
+  }
+
+
+  public void setFractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+  }
+
+
+  public SpinOffEvent fractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+   * @return fractionalUnitsDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFractionalUnitsDecimalPlaces() {
+    return fractionalUnitsDecimalPlaces;
+  }
+
+
+  public void setFractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,6 +352,8 @@ public class SpinOffEvent extends InstrumentEvent {
         (this.costFactor.compareTo(spinOffEvent.getCostFactor()) == 0) &&
         (this.fractionalUnitsCashPrice.compareTo(spinOffEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.fractionalUnitsCashCurrency, spinOffEvent.fractionalUnitsCashCurrency) &&
+        Objects.equals(this.fractionalUnitsRoundingConvention, spinOffEvent.fractionalUnitsRoundingConvention) &&
+        Objects.equals(this.fractionalUnitsDecimalPlaces, spinOffEvent.fractionalUnitsDecimalPlaces) &&
         super.equals(o);
   }
 
@@ -311,7 +363,7 @@ public class SpinOffEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, newInstrument, unitsRatio, costFactor, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, super.hashCode());
+    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, newInstrument, unitsRatio, costFactor, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -335,6 +387,8 @@ public class SpinOffEvent extends InstrumentEvent {
     sb.append("    costFactor: ").append(toIndentedString(costFactor)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsRoundingConvention: ").append(toIndentedString(fractionalUnitsRoundingConvention)).append("\n");
+    sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -367,6 +421,8 @@ public class SpinOffEvent extends InstrumentEvent {
     openapiFields.add("costFactor");
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsRoundingConvention");
+    openapiFields.add("fractionalUnitsDecimalPlaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

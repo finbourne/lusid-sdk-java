@@ -83,7 +83,7 @@ public class DependencySourceFilter {
   }
 
    /**
-   * Specify that a rule should only apply if the market data is requested by an instrument of a given instrument type.  If null, then no filtering on instrument type is applied. Available values: Bond, CashPerpetual, CapFloor, CashSettled, CreditDefaultSwap, ForwardRateAgreement, Future, FxForward, FxOption, Index, InterestRateSwap, QuotedSecurity, Repo, ExoticInstrument, Equity, InterestRateSwaption, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, StructuredInstrument, TermDeposit, ContractForDifference, EquitySwap, CdsIndex, Basket, FundingLeg, FxSwap, SimpleInstrument, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, Unknown.
+   * Specify that a rule should only apply if the market data is requested by an instrument of a given instrument type.  If null, then no filtering on instrument type is applied. Available values: Bond, CashPerpetual, CapFloor, CashSettled, CreditDefaultSwap, ForwardRateAgreement, Future, FxForward, FxOption, Index, InterestRateSwap, QuotedSecurity, Repo, ExoticInstrument, Equity, InterestRateSwaption, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, StructuredInstrument, TermDeposit, ContractForDifference, EquitySwap, CdsIndex, Basket, FundingLeg, FxSwap, SimpleInstrument, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, Unknown.
    * @return instrumentType
   **/
   @jakarta.annotation.Nullable
@@ -104,7 +104,7 @@ public class DependencySourceFilter {
   }
 
    /**
-   * Specify that a rule should only apply if the market data is requested by an instrument of a given asset class.  If null, then no filtering on asset class is applied. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate.
+   * Specify that a rule should only apply if the market data is requested by an instrument of a given asset class.  If null, then no filtering on asset class is applied. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate, Exotic.
    * @return assetClass
   **/
   @jakarta.annotation.Nullable

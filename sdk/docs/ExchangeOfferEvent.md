@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **minIncrement** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** |  | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **instructionReference** | **String** |  | [optional] [default to String]
 
 ```java
@@ -36,6 +38,8 @@ NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable java.math.BigDecimal MinIncrement = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 @jakarta.annotation.Nullable String InstructionReference = "example InstructionReference";
 
 
@@ -52,6 +56,8 @@ ExchangeOfferEvent exchangeOfferEventInstance = new ExchangeOfferEvent()
     .MinIncrement(MinIncrement)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .InstructionReference(InstructionReference);
 ```
 

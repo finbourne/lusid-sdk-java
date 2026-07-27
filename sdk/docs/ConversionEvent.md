@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **periodOfAction** | [**EventDateRange**](EventDateRange.md) |  | [optional] [default to EventDateRange]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. Not required.  If provided, must have FractionalUnitsCashCurrency too. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. Not required.  If provided, must have FractionalUnitsCashPrice too. | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor.  Not permitted when ConversionType is Exchange144A. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:     This list must have exactly one election that is chosen and default.  CashAndSecurityOfferElections and CashOfferElections &lt;b&gt; must be null or empty&lt;/b&gt;.     If the ParticipationType is Voluntary:     This list can be empty,  so long as CashAndSecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<SecurityOfferElection>]
 **cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible cash and security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<CashAndSecurityOfferElection>]
 **cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible cash offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashAndSecurityOfferElections  has at least one election. None of these elections have to be chosen or default. | [optional] [default to List<CashOfferElection>]
@@ -35,6 +37,8 @@ NewInstrument NewInstrument = new NewInstrument();
 EventDateRange PeriodOfAction = new EventDateRange();
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 @jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashAndSecurityOfferElection> CashAndSecurityOfferElections = new List<CashAndSecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
@@ -52,6 +56,8 @@ ConversionEvent conversionEventInstance = new ConversionEvent()
     .PeriodOfAction(PeriodOfAction)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .SecurityOfferElections(SecurityOfferElections)
     .CashAndSecurityOfferElections(CashAndSecurityOfferElections)
     .CashOfferElections(CashOfferElections)

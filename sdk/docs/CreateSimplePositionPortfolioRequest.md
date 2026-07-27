@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **description** | **String** | A description for the simple position portfolio. | [optional] [default to String]
 **code** | **String** | The code of the simple position portfolio. Together with the scope this uniquely identifies the simple position portfolio. | [default to String]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which to create the simple position portfolio. No holdings can be set on the simple position portfolio before this date. Defaults to the current LUSID system datetime if not specified. | [optional] [default to OffsetDateTime]
+**enablementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which holdings set on the simple position portfolio begin contributing to valuations and other computed results. Holdings with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified. | [optional] [default to OffsetDateTime]
 **baseCurrency** | **String** | The base currency of the simple position portfolio in ISO 4217 currency code format. | [default to String]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **accountingMethod** | **String** | Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [optional] [default to String]
@@ -30,6 +31,7 @@ String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String Code = "example Code";
 @jakarta.annotation.Nullable OffsetDateTime Created = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EnablementDate = OffsetDateTime.now();
 String BaseCurrency = "example BaseCurrency";
 ResourceId CorporateActionSourceId = new ResourceId();
 String AccountingMethod = "example AccountingMethod";
@@ -48,6 +50,7 @@ CreateSimplePositionPortfolioRequest createSimplePositionPortfolioRequestInstanc
     .Description(Description)
     .Code(Code)
     .Created(Created)
+    .EnablementDate(EnablementDate)
     .BaseCurrency(BaseCurrency)
     .CorporateActionSourceId(CorporateActionSourceId)
     .AccountingMethod(AccountingMethod)

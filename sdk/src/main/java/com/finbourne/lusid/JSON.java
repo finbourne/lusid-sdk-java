@@ -1819,7 +1819,9 @@ public class JSON {
                         classByDiscriminatorValue.put("SimpleCashFlowLoan", com.finbourne.lusid.model.SimpleCashFlowLoan.class);
                         classByDiscriminatorValue.put("SimpleInstrument", com.finbourne.lusid.model.SimpleInstrument.class);
                         classByDiscriminatorValue.put("TermDeposit", com.finbourne.lusid.model.TermDeposit.class);
+                        classByDiscriminatorValue.put("ToBeAnnounced", com.finbourne.lusid.model.ToBeAnnounced.class);
                         classByDiscriminatorValue.put("TotalReturnSwap", com.finbourne.lusid.model.TotalReturnSwap.class);
+                        classByDiscriminatorValue.put("VolatilitySwap", com.finbourne.lusid.model.VolatilitySwap.class);
                         classByDiscriminatorValue.put("LusidInstrument", com.finbourne.lusid.model.LusidInstrument.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentType"));
@@ -2269,6 +2271,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "dependencyType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.RateCurveShiftDefinition.class, new TypeSelector<com.finbourne.lusid.model.RateCurveShiftDefinition>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.RateCurveShiftDefinition> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("RateCurveShiftDefinition", com.finbourne.lusid.model.RateCurveShiftDefinition.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scenarioShiftType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.RawVendorEvent.class, new TypeSelector<com.finbourne.lusid.model.RawVendorEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.RawVendorEvent> getClassForElement(JsonElement readElement) {
@@ -2519,6 +2530,16 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.ScenarioShiftDefinition.class, new TypeSelector<com.finbourne.lusid.model.ScenarioShiftDefinition>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.ScenarioShiftDefinition> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("RateCurveShiftDefinition", com.finbourne.lusid.model.RateCurveShiftDefinition.class);
+                        classByDiscriminatorValue.put("ScenarioShiftDefinition", com.finbourne.lusid.model.ScenarioShiftDefinition.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scenarioShiftType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.Schedule.class, new TypeSelector<com.finbourne.lusid.model.Schedule>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.Schedule> getClassForElement(JsonElement readElement) {
@@ -2697,6 +2718,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.ToBeAnnounced.class, new TypeSelector<com.finbourne.lusid.model.ToBeAnnounced>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.ToBeAnnounced> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ToBeAnnounced", com.finbourne.lusid.model.ToBeAnnounced.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.TotalReturnSwap.class, new TypeSelector<com.finbourne.lusid.model.TotalReturnSwap>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.TotalReturnSwap> getClassForElement(JsonElement readElement) {
@@ -2740,6 +2770,15 @@ public class JSON {
                         classByDiscriminatorValue.put("VendorDependency", com.finbourne.lusid.model.VendorDependency.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "dependencyType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.VolatilitySwap.class, new TypeSelector<com.finbourne.lusid.model.VolatilitySwap>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.VolatilitySwap> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("VolatilitySwap", com.finbourne.lusid.model.VolatilitySwap.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.WarrantsExerciseEvent.class, new TypeSelector<com.finbourne.lusid.model.WarrantsExerciseEvent>() {
@@ -2927,6 +2966,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BranchStepRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BreakCodeSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Bucket.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketSetNode.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketSetResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketSetResultBucket.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketedCashFlowRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketedCashFlowResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BucketingSchedule.CustomTypeAdapterFactory());
@@ -3732,6 +3774,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteId.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteSeriesId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RateCurveShiftDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RawVendorEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ReOpenPeriodDiaryEntryRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RealisedGainLoss.CustomTypeAdapterFactory());
@@ -3888,7 +3931,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RunCheckRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RunCheckResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ScenarioDefinition.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ScenarioShiftDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Schema.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ScopeDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ScripDividendEvent.CustomTypeAdapterFactory());
@@ -3980,6 +4022,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TermDepositPrincipalEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TimeZoneConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Timeline.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ToBeAnnounced.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TotalReturnSwap.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Touch.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TradeTicket.CustomTypeAdapterFactory());
@@ -4180,6 +4223,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.VirtualDocument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.VirtualDocumentRow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.VirtualRow.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.VolatilitySwap.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Warning.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WarrantsExerciseEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeekendMask.CustomTypeAdapterFactory());

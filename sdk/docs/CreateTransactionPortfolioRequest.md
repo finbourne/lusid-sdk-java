@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **description** | **String** | A description for the transaction portfolio. | [optional] [default to String]
 **code** | **String** | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. | [default to String]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which to create the transaction portfolio. No transactions can be added to the transaction portfolio before this date. Defaults to the current LUSID system datetime if not specified. | [optional] [default to OffsetDateTime]
+**enablementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which transactions booked to the transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified. | [optional] [default to OffsetDateTime]
 **baseCurrency** | **String** | The base currency of the transaction portfolio in ISO 4217 currency code format. | [default to String]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **accountingMethod** | **String** | Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [optional] [default to String]
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **taxRuleSetScope** | **String** | The scope of the tax rule sets for this portfolio. | [optional] [default to String]
 **settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  | [optional] [default to PortfolioSettlementConfiguration]
+**transactionExclusionFilter** | **String** | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateTransactionPortfolioRequest;
@@ -32,6 +34,7 @@ String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String Code = "example Code";
 @jakarta.annotation.Nullable OffsetDateTime Created = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EnablementDate = OffsetDateTime.now();
 String BaseCurrency = "example BaseCurrency";
 ResourceId CorporateActionSourceId = new ResourceId();
 String AccountingMethod = "example AccountingMethod";
@@ -45,6 +48,7 @@ InstrumentEventConfiguration InstrumentEventConfiguration = new InstrumentEventC
 ResourceId AmortisationRuleSetId = new ResourceId();
 @jakarta.annotation.Nullable String TaxRuleSetScope = "example TaxRuleSetScope";
 PortfolioSettlementConfiguration SettlementConfiguration = new PortfolioSettlementConfiguration();
+@jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
 
 
 CreateTransactionPortfolioRequest createTransactionPortfolioRequestInstance = new CreateTransactionPortfolioRequest()
@@ -52,6 +56,7 @@ CreateTransactionPortfolioRequest createTransactionPortfolioRequestInstance = ne
     .Description(Description)
     .Code(Code)
     .Created(Created)
+    .EnablementDate(EnablementDate)
     .BaseCurrency(BaseCurrency)
     .CorporateActionSourceId(CorporateActionSourceId)
     .AccountingMethod(AccountingMethod)
@@ -64,7 +69,8 @@ CreateTransactionPortfolioRequest createTransactionPortfolioRequestInstance = ne
     .InstrumentEventConfiguration(InstrumentEventConfiguration)
     .AmortisationRuleSetId(AmortisationRuleSetId)
     .TaxRuleSetScope(TaxRuleSetScope)
-    .SettlementConfiguration(SettlementConfiguration);
+    .SettlementConfiguration(SettlementConfiguration)
+    .TransactionExclusionFilter(TransactionExclusionFilter);
 ```
 
 

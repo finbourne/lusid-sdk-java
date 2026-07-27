@@ -297,9 +297,19 @@ public class ScenarioDefinition {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("shifts") != null && !jsonObj.get("shifts").isJsonNull() && !jsonObj.get("shifts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `shifts` to be an array in the JSON string but got `%s`", jsonObj.get("shifts").toString()));
+      if (jsonObj.get("shifts") != null && !jsonObj.get("shifts").isJsonNull()) {
+        JsonArray jsonArrayshifts = jsonObj.getAsJsonArray("shifts");
+        if (jsonArrayshifts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("shifts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `shifts` to be an array in the JSON string but got `%s`", jsonObj.get("shifts").toString()));
+          }
+
+          // validate the optional field `shifts` (array)
+          for (int i = 0; i < jsonArrayshifts.size(); i++) {
+            ScenarioShiftDefinition.validateJsonElement(jsonArrayshifts.get(i));
+          };
+        }
       }
   }
 

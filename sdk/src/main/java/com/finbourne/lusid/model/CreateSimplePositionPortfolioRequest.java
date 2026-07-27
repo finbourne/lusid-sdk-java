@@ -74,6 +74,10 @@ public class CreateSimplePositionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_ENABLEMENT_DATE = "enablementDate";
+  @SerializedName(SERIALIZED_NAME_ENABLEMENT_DATE)
+  private OffsetDateTime enablementDate;
+
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
   private String baseCurrency;
@@ -277,6 +281,27 @@ public class CreateSimplePositionPortfolioRequest {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
+  }
+
+
+  public CreateSimplePositionPortfolioRequest enablementDate(OffsetDateTime enablementDate) {
+    
+    this.enablementDate = enablementDate;
+    return this;
+  }
+
+   /**
+   * The effective datetime from which holdings set on the simple position portfolio begin contributing to valuations and other computed results. Holdings with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.
+   * @return enablementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEnablementDate() {
+    return enablementDate;
+  }
+
+
+  public void setEnablementDate(OffsetDateTime enablementDate) {
+    this.enablementDate = enablementDate;
   }
 
 
@@ -549,6 +574,7 @@ public class CreateSimplePositionPortfolioRequest {
         Objects.equals(this.description, createSimplePositionPortfolioRequest.description) &&
         Objects.equals(this.code, createSimplePositionPortfolioRequest.code) &&
         Objects.equals(this.created, createSimplePositionPortfolioRequest.created) &&
+        Objects.equals(this.enablementDate, createSimplePositionPortfolioRequest.enablementDate) &&
         Objects.equals(this.baseCurrency, createSimplePositionPortfolioRequest.baseCurrency) &&
         Objects.equals(this.corporateActionSourceId, createSimplePositionPortfolioRequest.corporateActionSourceId) &&
         Objects.equals(this.accountingMethod, createSimplePositionPortfolioRequest.accountingMethod) &&
@@ -568,7 +594,7 @@ public class CreateSimplePositionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId);
+    return Objects.hash(displayName, description, code, created, enablementDate, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -586,6 +612,7 @@ public class CreateSimplePositionPortfolioRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    enablementDate: ").append(toIndentedString(enablementDate)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
@@ -623,6 +650,7 @@ public class CreateSimplePositionPortfolioRequest {
     openapiFields.add("description");
     openapiFields.add("code");
     openapiFields.add("created");
+    openapiFields.add("enablementDate");
     openapiFields.add("baseCurrency");
     openapiFields.add("corporateActionSourceId");
     openapiFields.add("accountingMethod");

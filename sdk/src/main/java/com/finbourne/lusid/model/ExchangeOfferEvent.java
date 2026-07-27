@@ -107,6 +107,14 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
   private String fractionalUnitsCashCurrency;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION = "fractionalUnitsRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION)
+  private String fractionalUnitsRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES = "fractionalUnitsDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES)
+  private Integer fractionalUnitsDecimalPlaces;
+
   public static final String SERIALIZED_NAME_INSTRUCTION_REFERENCE = "instructionReference";
   @SerializedName(SERIALIZED_NAME_INSTRUCTION_REFERENCE)
   private String instructionReference;
@@ -399,6 +407,48 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
 
+  public ExchangeOfferEvent fractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+    return this;
+  }
+
+   /**
+   * The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return fractionalUnitsRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsRoundingConvention() {
+    return fractionalUnitsRoundingConvention;
+  }
+
+
+  public void setFractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+  }
+
+
+  public ExchangeOfferEvent fractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+   * @return fractionalUnitsDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFractionalUnitsDecimalPlaces() {
+    return fractionalUnitsDecimalPlaces;
+  }
+
+
+  public void setFractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+  }
+
+
   public ExchangeOfferEvent instructionReference(String instructionReference) {
     
     this.instructionReference = instructionReference;
@@ -442,6 +492,8 @@ public class ExchangeOfferEvent extends InstrumentEvent {
         (this.minIncrement.compareTo(exchangeOfferEvent.getMinIncrement()) == 0) &&
         (this.fractionalUnitsCashPrice.compareTo(exchangeOfferEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.fractionalUnitsCashCurrency, exchangeOfferEvent.fractionalUnitsCashCurrency) &&
+        Objects.equals(this.fractionalUnitsRoundingConvention, exchangeOfferEvent.fractionalUnitsRoundingConvention) &&
+        Objects.equals(this.fractionalUnitsDecimalPlaces, exchangeOfferEvent.fractionalUnitsDecimalPlaces) &&
         Objects.equals(this.instructionReference, exchangeOfferEvent.instructionReference) &&
         super.equals(o);
   }
@@ -452,7 +504,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, instructionReference, super.hashCode());
+    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, instructionReference, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -479,6 +531,8 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     sb.append("    minIncrement: ").append(toIndentedString(minIncrement)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsRoundingConvention: ").append(toIndentedString(fractionalUnitsRoundingConvention)).append("\n");
+    sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("    instructionReference: ").append(toIndentedString(instructionReference)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -515,6 +569,8 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     openapiFields.add("minIncrement");
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsRoundingConvention");
+    openapiFields.add("fractionalUnitsDecimalPlaces");
     openapiFields.add("instructionReference");
 
     // a set of required properties/fields (JSON key names)

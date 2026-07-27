@@ -293,6 +293,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNTS)
   private List<ResolvedCustodianAccount> resolvedCustodianAccounts;
 
+  public static final String SERIALIZED_NAME_IS_EXCLUDED = "isExcluded";
+  @SerializedName(SERIALIZED_NAME_IS_EXCLUDED)
+  private Boolean isExcluded;
+
   public OutputTransaction() {
   }
 
@@ -1234,6 +1238,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction isExcluded(Boolean isExcluded) {
+    
+    this.isExcluded = isExcluded;
+    return this;
+  }
+
+   /**
+   * Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter.
+   * @return isExcluded
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsExcluded() {
+    return isExcluded;
+  }
+
+
+  public void setIsExcluded(Boolean isExcluded) {
+    this.isExcluded = isExcluded;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1285,7 +1310,8 @@ public class OutputTransaction {
         Objects.equals(this.version, outputTransaction.version) &&
         Objects.equals(this.stagedModifications, outputTransaction.stagedModifications) &&
         Objects.equals(this.custodianEntries, outputTransaction.custodianEntries) &&
-        Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts);
+        Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts) &&
+        Objects.equals(this.isExcluded, outputTransaction.isExcluded);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1294,7 +1320,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, isExcluded);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1350,6 +1376,7 @@ public class OutputTransaction {
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
     sb.append("    resolvedCustodianAccounts: ").append(toIndentedString(resolvedCustodianAccounts)).append("\n");
+    sb.append("    isExcluded: ").append(toIndentedString(isExcluded)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1414,6 +1441,7 @@ public class OutputTransaction {
     openapiFields.add("stagedModifications");
     openapiFields.add("custodianEntries");
     openapiFields.add("resolvedCustodianAccounts");
+    openapiFields.add("isExcluded");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

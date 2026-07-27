@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **announcementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date the reverse stock split was announced. | [optional] [default to OffsetDateTime]
 **fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. | [optional] [default to String]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. | [optional] [default to java.math.BigDecimal]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.ReverseStockSplitEvent;
@@ -26,6 +28,8 @@ UnitsRatio UnitsRatio = new UnitsRatio();
 @jakarta.annotation.Nullable OffsetDateTime AnnouncementDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 
 
 ReverseStockSplitEvent reverseStockSplitEventInstance = new ReverseStockSplitEvent()
@@ -35,7 +39,9 @@ ReverseStockSplitEvent reverseStockSplitEventInstance = new ReverseStockSplitEve
     .RecordDate(RecordDate)
     .AnnouncementDate(AnnouncementDate)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
-    .FractionalUnitsCashPrice(FractionalUnitsCashPrice);
+    .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces);
 ```
 
 

@@ -47,6 +47,7 @@ Name | Type | Description | Notes
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **custodianEntries** | [**List&lt;CustodianEntry&gt;**](CustodianEntry.md) | Set of of Custodian Entries associated with the transaction. | [optional] [default to List<CustodianEntry>]
 **resolvedCustodianAccounts** | [**List&lt;ResolvedCustodianAccount&gt;**](ResolvedCustodianAccount.md) | Set of Custodian Accounts resolved from each movement on the Transaction. | [optional] [default to List<ResolvedCustodianAccount>]
+**isExcluded** | **Boolean** | Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.OutputTransaction;
@@ -96,6 +97,7 @@ Version Version = new Version();
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable List<CustodianEntry> CustodianEntries = new List<CustodianEntry>();
 @jakarta.annotation.Nullable List<ResolvedCustodianAccount> ResolvedCustodianAccounts = new List<ResolvedCustodianAccount>();
+Boolean IsExcluded = true;
 
 
 OutputTransaction outputTransactionInstance = new OutputTransaction()
@@ -140,7 +142,8 @@ OutputTransaction outputTransactionInstance = new OutputTransaction()
     .Version(Version)
     .StagedModifications(StagedModifications)
     .CustodianEntries(CustodianEntries)
-    .ResolvedCustodianAccounts(ResolvedCustodianAccounts);
+    .ResolvedCustodianAccounts(ResolvedCustodianAccounts)
+    .IsExcluded(IsExcluded);
 ```
 
 

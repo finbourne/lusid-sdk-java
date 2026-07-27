@@ -139,6 +139,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_ENABLEMENT_DATE = "enablementDate";
+  @SerializedName(SERIALIZED_NAME_ENABLEMENT_DATE)
+  private OffsetDateTime enablementDate;
+
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
   private ResourceId parentPortfolioId;
@@ -278,6 +282,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
   private PortfolioSettlementConfiguration settlementConfiguration;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER = "transactionExclusionFilter";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
+  private String transactionExclusionFilter;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -408,6 +416,27 @@ public class Portfolio {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
+  }
+
+
+  public Portfolio enablementDate(OffsetDateTime enablementDate) {
+    
+    this.enablementDate = enablementDate;
+    return this;
+  }
+
+   /**
+   * The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set.
+   * @return enablementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEnablementDate() {
+    return enablementDate;
+  }
+
+
+  public void setEnablementDate(OffsetDateTime enablementDate) {
+    this.enablementDate = enablementDate;
   }
 
 
@@ -771,6 +800,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio transactionExclusionFilter(String transactionExclusionFilter) {
+    
+    this.transactionExclusionFilter = transactionExclusionFilter;
+    return this;
+  }
+
+   /**
+   * A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+   * @return transactionExclusionFilter
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionExclusionFilter() {
+    return transactionExclusionFilter;
+  }
+
+
+  public void setTransactionExclusionFilter(String transactionExclusionFilter) {
+    this.transactionExclusionFilter = transactionExclusionFilter;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -816,6 +866,7 @@ public class Portfolio {
         Objects.equals(this.displayName, portfolio.displayName) &&
         Objects.equals(this.description, portfolio.description) &&
         Objects.equals(this.created, portfolio.created) &&
+        Objects.equals(this.enablementDate, portfolio.enablementDate) &&
         Objects.equals(this.parentPortfolioId, portfolio.parentPortfolioId) &&
         Objects.equals(this.version, portfolio.version) &&
         Objects.equals(this.stagedModifications, portfolio.stagedModifications) &&
@@ -832,6 +883,7 @@ public class Portfolio {
         Objects.equals(this.amortisationRuleSetId, portfolio.amortisationRuleSetId) &&
         Objects.equals(this.taxRuleSetScope, portfolio.taxRuleSetScope) &&
         Objects.equals(this.settlementConfiguration, portfolio.settlementConfiguration) &&
+        Objects.equals(this.transactionExclusionFilter, portfolio.transactionExclusionFilter) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -841,7 +893,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, links);
+    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -861,6 +913,7 @@ public class Portfolio {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    enablementDate: ").append(toIndentedString(enablementDate)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
@@ -877,6 +930,7 @@ public class Portfolio {
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
+    sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -906,6 +960,7 @@ public class Portfolio {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("created");
+    openapiFields.add("enablementDate");
     openapiFields.add("parentPortfolioId");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
@@ -922,6 +977,7 @@ public class Portfolio {
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("taxRuleSetScope");
     openapiFields.add("settlementConfiguration");
+    openapiFields.add("transactionExclusionFilter");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1025,6 +1081,9 @@ public class Portfolio {
       // validate the optional field `settlementConfiguration`
       if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
         PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
+      }
+      if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

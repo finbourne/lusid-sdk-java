@@ -847,7 +847,7 @@ public class TransactionPortfoliosApiExample {
 
 ## buildTransactions
 
-> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType)
+> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions)
 
 BuildTransactions: Build transactions
 
@@ -903,11 +903,12 @@ public class TransactionPortfoliosApiExample {
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
+        Boolean returnExcludedTransactions = false; // Boolean | Whether to include transactions that the portfolio's transaction exclusion filter marks as excluded. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute(opts);
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute(opts);
 
-            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute();
+            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#buildTransactions");
@@ -935,6 +936,7 @@ public class TransactionPortfoliosApiExample {
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
+| **returnExcludedTransactions** | **Boolean**| Whether to include transactions that the portfolio&#39;s transaction exclusion filter marks as excluded. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -4072,7 +4074,7 @@ public class TransactionPortfoliosApiExample {
 
 PatchPortfolioDetails: Patch portfolio details
 
-Create or update certain details for a particular transaction portfolio.  Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: BaseCurrency, AccountingMethod, SubHoldingKeys, AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration, AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration.
+Create or update certain details for a particular transaction portfolio.  Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: BaseCurrency, AccountingMethod, SubHoldingKeys, AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration, AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter.
 
 ### Example
 

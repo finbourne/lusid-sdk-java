@@ -22,6 +22,7 @@ AssetClass method = AssetClass.COMMODITIES;
 AssetClass method = AssetClass.MONEY;
 AssetClass method = AssetClass.UNKNOWN;
 AssetClass method = AssetClass.REALESTATE;
+AssetClass method = AssetClass.EXOTIC;
 ```
 
 

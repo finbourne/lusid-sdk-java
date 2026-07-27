@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **prorationRate** | **java.math.BigDecimal** | The proration rate applied to OVER subscriptions when the offer is oversubscribed.  Treated as 1 (full allocation) when not supplied. Must be greater than 0 and less than  or equal to 1. SECU basic entitlement is never prorated. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Price per fractional unit used to compute cash-in-lieu for fractional entitlement remainders.  When not supplied, fractional residuals are discarded with no cash-in-lieu.  Forms an optional pair with FractionalUnitsCashCurrency — both must be supplied together. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | Currency of FractionalUnitsCashPrice. Required if and only if FractionalUnitsCashPrice is supplied. | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | Security offer elections — exactly one entry keyed &#39;SECU&#39; (basic entitlement) and an optional  entry keyed &#39;OVER&#39; (over-subscription) when the issuer offers the over-subscription facility. | [optional] [default to List<SecurityOfferElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | Lapse elections — exactly one entry keyed &#39;NOAC&#39;, recording the holder&#39;s explicit no-action election. | [optional] [default to List<LapseElection>]
 
@@ -40,6 +42,8 @@ NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 @jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
 
@@ -58,6 +62,8 @@ PriorityIssueEvent priorityIssueEventInstance = new PriorityIssueEvent()
     .ProrationRate(ProrationRate)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .SecurityOfferElections(SecurityOfferElections)
     .LapseElections(LapseElections);
 ```

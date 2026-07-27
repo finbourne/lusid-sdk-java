@@ -57,6 +57,8 @@ InstrumentType method = InstrumentType.MASTEREDINSTRUMENT;
 InstrumentType method = InstrumentType.LOANFACILITY;
 InstrumentType method = InstrumentType.FLEXIBLEDEPOSIT;
 InstrumentType method = InstrumentType.FLEXIBLEREPO;
+InstrumentType method = InstrumentType.TOBEANNOUNCED;
+InstrumentType method = InstrumentType.VOLATILITYSWAP;
 ```
 
 

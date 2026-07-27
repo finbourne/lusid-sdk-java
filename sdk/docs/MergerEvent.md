@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **exDate** | [**OffsetDateTime**](OffsetDateTime.md) | The first date on which the holder of record of the original shares has entitled ownership of the new shares. | [optional] [default to OffsetDateTime]
 **fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to String]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to java.math.BigDecimal]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [default to NewInstrument]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the merger takes place. | [optional] [default to OffsetDateTime]
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. Date you have to be the holder of record of the original shares in order to receive the new shares. | [optional] [default to OffsetDateTime]
@@ -28,6 +30,8 @@ import java.net.URI;
 OffsetDateTime ExDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 NewInstrument NewInstrument = new NewInstrument();
 OffsetDateTime PaymentDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime RecordDate = OffsetDateTime.now();
@@ -41,6 +45,8 @@ MergerEvent mergerEventInstance = new MergerEvent()
     .ExDate(ExDate)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .NewInstrument(NewInstrument)
     .PaymentDate(PaymentDate)
     .RecordDate(RecordDate)

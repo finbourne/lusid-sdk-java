@@ -198,6 +198,10 @@ public class PortfolioDetails {
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER = "transactionExclusionFilter";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
+  private String transactionExclusionFilter;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -557,6 +561,27 @@ public class PortfolioDetails {
   }
 
 
+  public PortfolioDetails transactionExclusionFilter(String transactionExclusionFilter) {
+    
+    this.transactionExclusionFilter = transactionExclusionFilter;
+    return this;
+  }
+
+   /**
+   * A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+   * @return transactionExclusionFilter
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionExclusionFilter() {
+    return transactionExclusionFilter;
+  }
+
+
+  public void setTransactionExclusionFilter(String transactionExclusionFilter) {
+    this.transactionExclusionFilter = transactionExclusionFilter;
+  }
+
+
   public PortfolioDetails links(List<Link> links) {
     
     this.links = links;
@@ -612,6 +637,7 @@ public class PortfolioDetails {
         Objects.equals(this.taxRuleSetScope, portfolioDetails.taxRuleSetScope) &&
         Objects.equals(this.settlementConfiguration, portfolioDetails.settlementConfiguration) &&
         Objects.equals(this.stagedModifications, portfolioDetails.stagedModifications) &&
+        Objects.equals(this.transactionExclusionFilter, portfolioDetails.transactionExclusionFilter) &&
         Objects.equals(this.links, portfolioDetails.links);
   }
 
@@ -621,7 +647,7 @@ public class PortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, stagedModifications, links);
+    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, stagedModifications, transactionExclusionFilter, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -651,6 +677,7 @@ public class PortfolioDetails {
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -690,6 +717,7 @@ public class PortfolioDetails {
     openapiFields.add("taxRuleSetScope");
     openapiFields.add("settlementConfiguration");
     openapiFields.add("stagedModifications");
+    openapiFields.add("transactionExclusionFilter");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -771,6 +799,9 @@ public class PortfolioDetails {
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
         StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
+      if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

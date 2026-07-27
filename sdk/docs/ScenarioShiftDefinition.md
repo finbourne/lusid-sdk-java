@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shiftType** | **String** |  | [default to String]
+**scenarioShiftType** | **String** | Available values: RateCurveShiftDefinition. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ScenarioShiftDefinition;
@@ -12,11 +12,11 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-String ShiftType = "example ShiftType";
+String ScenarioShiftType = "example ScenarioShiftType";
 
 
 ScenarioShiftDefinition scenarioShiftDefinitionInstance = new ScenarioShiftDefinition()
-    .ShiftType(ShiftType);
+    .ScenarioShiftType(ScenarioShiftType);
 ```
 
 

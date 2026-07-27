@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **costFactor** | **java.math.BigDecimal** | Optional. The fraction of cost that is transferred from the existing shares to the new shares. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.IntermediateSecuritiesDistributionEvent;
@@ -30,6 +32,8 @@ UnitsRatio UnitsRatio = new UnitsRatio();
 @jakarta.annotation.Nullable java.math.BigDecimal CostFactor = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 
 
 IntermediateSecuritiesDistributionEvent intermediateSecuritiesDistributionEventInstance = new IntermediateSecuritiesDistributionEvent()
@@ -41,7 +45,9 @@ IntermediateSecuritiesDistributionEvent intermediateSecuritiesDistributionEventI
     .UnitsRatio(UnitsRatio)
     .CostFactor(CostFactor)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
-    .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency);
+    .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces);
 ```
 
 

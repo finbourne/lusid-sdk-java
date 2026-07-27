@@ -158,7 +158,7 @@ public class Instrument {
   private StateEnum state;
 
   /**
-   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate.
+   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate, Exotic.
    */
   @JsonAdapter(AssetClassEnum.Adapter.class)
   public enum AssetClassEnum {
@@ -178,7 +178,9 @@ public class Instrument {
     
     UNKNOWN("Unknown"),
     
-    REALESTATE("RealEstate");
+    REALESTATE("RealEstate"),
+    
+    EXOTIC("Exotic");
 
     private String value;
 
@@ -499,7 +501,7 @@ public class Instrument {
   }
 
    /**
-   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate.
+   * The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate, Exotic.
    * @return assetClass
   **/
   @jakarta.annotation.Nullable

@@ -1,12 +1,12 @@
 # com.finbourne.lusid.model.TypedResourceId
-Represents the user-defined identifier for a Legal Entity or Person.  Users can define their own, scoped identifiers for Legal Entities and Persons using identifier properties.  For example,  when used to identify a Person, the identifier defined by Person/myScope/username would be represented as   {   \"idTypeScope\": \"myScope\",   \"idTypeCode\": \"username\",   \"code\": \"john_doe_001\"   }
+Represents the user-defined identifier for a Legal Entity.  Users can define their own, scoped identifiers for Legal Entities using identifier properties.  For example,  when used to identify a Legal Entity, the identifier defined by LegalEntity/myScope/1234ABC0000000000063 would be represented as   {   \"idTypeScope\": \"myScope\",   \"idTypeCode\": \"1234ABC0000000000063\",   \"code\": \"ACME_CO\"   }
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **idTypeScope** | **String** | The scope of the identifier&#39;s (property) definition. | [default to String]
-**idTypeCode** | **String** | The code of identifier&#39;s (property) definition. This describes what the identifier represents.  For a Person this might be a username, nationalInsuranceNumber or similar.  For a Legal Entity, this might be a registeredCompanyNumber or LEI. | [default to String]
+**idTypeCode** | **String** | The code of identifier&#39;s (property) definition. This describes what the identifier represents.  For a Legal Entity, this might be a registeredCompanyNumber or LEI. | [default to String]
 **code** | **String** | The value of the user-defined identifier in respect of the entity. | [default to String]
 
 ```java

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **code** | **String** | The code of the derived transaction portfolio. Together with the scope this uniquely identifies the derived transaction portfolio. | [default to String]
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | This will be auto-populated to be the parent portfolio creation date. | [optional] [default to OffsetDateTime]
+**enablementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified. | [optional] [default to OffsetDateTime]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **accountingMethod** | **String** | Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [optional] [default to String]
 **subHoldingKeys** | **List&lt;String&gt;** | A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information. | [optional] [default to List<String>]
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  | [optional] [default to InstrumentEventConfiguration]
 **settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  | [optional] [default to PortfolioSettlementConfiguration]
+**transactionExclusionFilter** | **String** | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateDerivedTransactionPortfolioRequest;
@@ -31,6 +33,7 @@ String DisplayName = "example DisplayName";
 String Code = "example Code";
 ResourceId ParentPortfolioId = new ResourceId();
 @jakarta.annotation.Nullable OffsetDateTime Created = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EnablementDate = OffsetDateTime.now();
 ResourceId CorporateActionSourceId = new ResourceId();
 String AccountingMethod = "example AccountingMethod";
 @jakarta.annotation.Nullable List<String> SubHoldingKeys = new List<String>();
@@ -41,6 +44,7 @@ String AccountingMethod = "example AccountingMethod";
 ResourceId AmortisationRuleSetId = new ResourceId();
 InstrumentEventConfiguration InstrumentEventConfiguration = new InstrumentEventConfiguration();
 PortfolioSettlementConfiguration SettlementConfiguration = new PortfolioSettlementConfiguration();
+@jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
 
 
 CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequestInstance = new CreateDerivedTransactionPortfolioRequest()
@@ -49,6 +53,7 @@ CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioReques
     .Code(Code)
     .ParentPortfolioId(ParentPortfolioId)
     .Created(Created)
+    .EnablementDate(EnablementDate)
     .CorporateActionSourceId(CorporateActionSourceId)
     .AccountingMethod(AccountingMethod)
     .SubHoldingKeys(SubHoldingKeys)
@@ -58,7 +63,8 @@ CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioReques
     .CashGainLossCalculationDate(CashGainLossCalculationDate)
     .AmortisationRuleSetId(AmortisationRuleSetId)
     .InstrumentEventConfiguration(InstrumentEventConfiguration)
-    .SettlementConfiguration(SettlementConfiguration);
+    .SettlementConfiguration(SettlementConfiguration)
+    .TransactionExclusionFilter(TransactionExclusionFilter);
 ```
 
 

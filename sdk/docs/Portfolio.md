@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the portfolio. | [default to String]
 **description** | **String** | The long form description of the portfolio. | [optional] [default to String]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. | [default to OffsetDateTime]
+**enablementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set. | [optional] [default to OffsetDateTime]
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **taxRuleSetScope** | **String** | The scope of the tax rule sets for this portfolio. | [optional] [default to String]
 **settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  | [optional] [default to PortfolioSettlementConfiguration]
+**transactionExclusionFilter** | **String** | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -41,6 +43,7 @@ String Type = "example Type";
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 OffsetDateTime Created = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime EnablementDate = OffsetDateTime.now();
 ResourceId ParentPortfolioId = new ResourceId();
 Version Version = new Version();
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
@@ -57,6 +60,7 @@ InstrumentEventConfiguration InstrumentEventConfiguration = new InstrumentEventC
 ResourceId AmortisationRuleSetId = new ResourceId();
 @jakarta.annotation.Nullable String TaxRuleSetScope = "example TaxRuleSetScope";
 PortfolioSettlementConfiguration SettlementConfiguration = new PortfolioSettlementConfiguration();
+@jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -67,6 +71,7 @@ Portfolio portfolioInstance = new Portfolio()
     .DisplayName(DisplayName)
     .Description(Description)
     .Created(Created)
+    .EnablementDate(EnablementDate)
     .ParentPortfolioId(ParentPortfolioId)
     .Version(Version)
     .StagedModifications(StagedModifications)
@@ -83,6 +88,7 @@ Portfolio portfolioInstance = new Portfolio()
     .AmortisationRuleSetId(AmortisationRuleSetId)
     .TaxRuleSetScope(TaxRuleSetScope)
     .SettlementConfiguration(SettlementConfiguration)
+    .TransactionExclusionFilter(TransactionExclusionFilter)
     .Links(Links);
 ```
 

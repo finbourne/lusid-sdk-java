@@ -111,7 +111,11 @@ public enum InstrumentType {
   
   FLEXIBLEDEPOSIT("FlexibleDeposit"),
   
-  FLEXIBLEREPO("FlexibleRepo");
+  FLEXIBLEREPO("FlexibleRepo"),
+  
+  TOBEANNOUNCED("ToBeAnnounced"),
+  
+  VOLATILITYSWAP("VolatilitySwap");
 
   private String value;
 
