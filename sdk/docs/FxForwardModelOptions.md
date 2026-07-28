@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **forwardRateObservableType** | **String** | Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid. | [default to String]
 **discountingMethod** | **String** | Available values: Standard, ConstantTimeValueOfMoney, Invalid. | [default to String]
 **convertToReportCcy** | **Boolean** | Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base. | [default to Boolean]
+**allowSpotFallbackForReportCcy** | **Boolean** | When converting to the report currency, allow falling back to pricing off the natural-pair forward  and converting to the report currency at spot when the report-currency cross forward curves are not  available. Defaults to false, in which case the report-currency cross forwards are required. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.FxForwardModelOptions;
@@ -17,12 +18,14 @@ import java.net.URI;
 String ForwardRateObservableType = "example ForwardRateObservableType";
 String DiscountingMethod = "example DiscountingMethod";
 Boolean ConvertToReportCcy = true;
+Boolean AllowSpotFallbackForReportCcy = true;
 
 
 FxForwardModelOptions fxForwardModelOptionsInstance = new FxForwardModelOptions()
     .ForwardRateObservableType(ForwardRateObservableType)
     .DiscountingMethod(DiscountingMethod)
-    .ConvertToReportCcy(ConvertToReportCcy);
+    .ConvertToReportCcy(ConvertToReportCcy)
+    .AllowSpotFallbackForReportCcy(AllowSpotFallbackForReportCcy);
 ```
 
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scenarioShiftType** | **String** | Available values: RateCurveShiftDefinition. | [default to String]
+**scenarioShiftType** | **String** | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ScenarioShiftDefinition;

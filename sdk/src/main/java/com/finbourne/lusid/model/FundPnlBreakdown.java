@@ -60,6 +60,10 @@ public class FundPnlBreakdown {
   @SerializedName(SERIALIZED_NAME_AGGREGATED_CLASS_PNL)
   private Map<String, FundAmount> aggregatedClassPnl = new HashMap<>();
 
+  public static final String SERIALIZED_NAME_AGGREGATED_GROUP_PNL = "aggregatedGroupPnl";
+  @SerializedName(SERIALIZED_NAME_AGGREGATED_GROUP_PNL)
+  private Map<String, FundAmount> aggregatedGroupPnl = new HashMap<>();
+
   public static final String SERIALIZED_NAME_TOTAL_PNL = "totalPnl";
   @SerializedName(SERIALIZED_NAME_TOTAL_PNL)
   private Map<String, FundAmount> totalPnl = new HashMap<>();
@@ -125,6 +129,35 @@ public class FundPnlBreakdown {
   }
 
 
+  public FundPnlBreakdown aggregatedGroupPnl(Map<String, FundAmount> aggregatedGroupPnl) {
+    
+    this.aggregatedGroupPnl = aggregatedGroupPnl;
+    return this;
+  }
+
+  public FundPnlBreakdown putAggregatedGroupPnlItem(String key, FundAmount aggregatedGroupPnlItem) {
+    if (this.aggregatedGroupPnl == null) {
+      this.aggregatedGroupPnl = new HashMap<>();
+    }
+    this.aggregatedGroupPnl.put(key, aggregatedGroupPnlItem);
+    return this;
+  }
+
+   /**
+   * Bucket of detail for the sum, across all share classes, of PnL allocated to allocation groups and apportioned to their member share classes, within the queried period.
+   * @return aggregatedGroupPnl
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, FundAmount> getAggregatedGroupPnl() {
+    return aggregatedGroupPnl;
+  }
+
+
+  public void setAggregatedGroupPnl(Map<String, FundAmount> aggregatedGroupPnl) {
+    this.aggregatedGroupPnl = aggregatedGroupPnl;
+  }
+
+
   public FundPnlBreakdown totalPnl(Map<String, FundAmount> totalPnl) {
     
     this.totalPnl = totalPnl;
@@ -140,7 +173,7 @@ public class FundPnlBreakdown {
   }
 
    /**
-   * Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period.
+   * Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL.
    * @return totalPnl
   **/
   @jakarta.annotation.Nonnull
@@ -166,12 +199,13 @@ public class FundPnlBreakdown {
     FundPnlBreakdown fundPnlBreakdown = (FundPnlBreakdown) o;
     return Objects.equals(this.nonClassSpecificPnl, fundPnlBreakdown.nonClassSpecificPnl) &&
         Objects.equals(this.aggregatedClassPnl, fundPnlBreakdown.aggregatedClassPnl) &&
+        Objects.equals(this.aggregatedGroupPnl, fundPnlBreakdown.aggregatedGroupPnl) &&
         Objects.equals(this.totalPnl, fundPnlBreakdown.totalPnl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nonClassSpecificPnl, aggregatedClassPnl, totalPnl);
+    return Objects.hash(nonClassSpecificPnl, aggregatedClassPnl, aggregatedGroupPnl, totalPnl);
   }
 
   @Override
@@ -180,6 +214,7 @@ public class FundPnlBreakdown {
     sb.append("class FundPnlBreakdown {\n");
     sb.append("    nonClassSpecificPnl: ").append(toIndentedString(nonClassSpecificPnl)).append("\n");
     sb.append("    aggregatedClassPnl: ").append(toIndentedString(aggregatedClassPnl)).append("\n");
+    sb.append("    aggregatedGroupPnl: ").append(toIndentedString(aggregatedGroupPnl)).append("\n");
     sb.append("    totalPnl: ").append(toIndentedString(totalPnl)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -205,12 +240,14 @@ public class FundPnlBreakdown {
     openapiFields = new HashSet<String>();
     openapiFields.add("nonClassSpecificPnl");
     openapiFields.add("aggregatedClassPnl");
+    openapiFields.add("aggregatedGroupPnl");
     openapiFields.add("totalPnl");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("nonClassSpecificPnl");
     openapiRequiredFields.add("aggregatedClassPnl");
+    openapiRequiredFields.add("aggregatedGroupPnl");
     openapiRequiredFields.add("totalPnl");
   }
 

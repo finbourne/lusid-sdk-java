@@ -60,6 +60,10 @@ public class ShareClassPnlBreakdown {
   @SerializedName(SERIALIZED_NAME_CLASS_PNL)
   private Map<String, ShareClassAmount> classPnl = new HashMap<>();
 
+  public static final String SERIALIZED_NAME_GROUP_APPORTIONED_PNL = "groupApportionedPnl";
+  @SerializedName(SERIALIZED_NAME_GROUP_APPORTIONED_PNL)
+  private Map<String, ShareClassAmount> groupApportionedPnl = new HashMap<>();
+
   public static final String SERIALIZED_NAME_TOTAL_PNL = "totalPnl";
   @SerializedName(SERIALIZED_NAME_TOTAL_PNL)
   private Map<String, ShareClassAmount> totalPnl = new HashMap<>();
@@ -125,6 +129,35 @@ public class ShareClassPnlBreakdown {
   }
 
 
+  public ShareClassPnlBreakdown groupApportionedPnl(Map<String, ShareClassAmount> groupApportionedPnl) {
+    
+    this.groupApportionedPnl = groupApportionedPnl;
+    return this;
+  }
+
+  public ShareClassPnlBreakdown putGroupApportionedPnlItem(String key, ShareClassAmount groupApportionedPnlItem) {
+    if (this.groupApportionedPnl == null) {
+      this.groupApportionedPnl = new HashMap<>();
+    }
+    this.groupApportionedPnl.put(key, groupApportionedPnlItem);
+    return this;
+  }
+
+   /**
+   * Bucket of detail for the share class&#39;s apportioned share of PnL allocated to the allocation groups it belongs to, within the queried period.
+   * @return groupApportionedPnl
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, ShareClassAmount> getGroupApportionedPnl() {
+    return groupApportionedPnl;
+  }
+
+
+  public void setGroupApportionedPnl(Map<String, ShareClassAmount> groupApportionedPnl) {
+    this.groupApportionedPnl = groupApportionedPnl;
+  }
+
+
   public ShareClassPnlBreakdown totalPnl(Map<String, ShareClassAmount> totalPnl) {
     
     this.totalPnl = totalPnl;
@@ -140,7 +173,7 @@ public class ShareClassPnlBreakdown {
   }
 
    /**
-   * Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period.
+   * Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL.
    * @return totalPnl
   **/
   @jakarta.annotation.Nonnull
@@ -166,12 +199,13 @@ public class ShareClassPnlBreakdown {
     ShareClassPnlBreakdown shareClassPnlBreakdown = (ShareClassPnlBreakdown) o;
     return Objects.equals(this.apportionedNonClassSpecificPnl, shareClassPnlBreakdown.apportionedNonClassSpecificPnl) &&
         Objects.equals(this.classPnl, shareClassPnlBreakdown.classPnl) &&
+        Objects.equals(this.groupApportionedPnl, shareClassPnlBreakdown.groupApportionedPnl) &&
         Objects.equals(this.totalPnl, shareClassPnlBreakdown.totalPnl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apportionedNonClassSpecificPnl, classPnl, totalPnl);
+    return Objects.hash(apportionedNonClassSpecificPnl, classPnl, groupApportionedPnl, totalPnl);
   }
 
   @Override
@@ -180,6 +214,7 @@ public class ShareClassPnlBreakdown {
     sb.append("class ShareClassPnlBreakdown {\n");
     sb.append("    apportionedNonClassSpecificPnl: ").append(toIndentedString(apportionedNonClassSpecificPnl)).append("\n");
     sb.append("    classPnl: ").append(toIndentedString(classPnl)).append("\n");
+    sb.append("    groupApportionedPnl: ").append(toIndentedString(groupApportionedPnl)).append("\n");
     sb.append("    totalPnl: ").append(toIndentedString(totalPnl)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -205,12 +240,14 @@ public class ShareClassPnlBreakdown {
     openapiFields = new HashSet<String>();
     openapiFields.add("apportionedNonClassSpecificPnl");
     openapiFields.add("classPnl");
+    openapiFields.add("groupApportionedPnl");
     openapiFields.add("totalPnl");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("apportionedNonClassSpecificPnl");
     openapiRequiredFields.add("classPnl");
+    openapiRequiredFields.add("groupApportionedPnl");
     openapiRequiredFields.add("totalPnl");
   }
 

@@ -25,7 +25,13 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ScenarioShiftType.Adapter.class)
 public enum ScenarioShiftType {
   
-  RATECURVESHIFTDEFINITION("RateCurveShiftDefinition");
+  RATECURVESHIFTDEFINITION("RateCurveShiftDefinition"),
+  
+  FXSHIFTDEFINITION("FxShiftDefinition"),
+  
+  EQUITYSHIFTDEFINITION("EquityShiftDefinition"),
+  
+  VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition");
 
   private String value;
 

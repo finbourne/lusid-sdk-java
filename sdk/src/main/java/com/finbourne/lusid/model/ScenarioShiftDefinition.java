@@ -50,11 +50,17 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScenarioShiftDefinition {
   /**
-   * Available values: RateCurveShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
    */
   @JsonAdapter(ScenarioShiftTypeEnum.Adapter.class)
   public enum ScenarioShiftTypeEnum {
-    RATECURVESHIFTDEFINITION("RateCurveShiftDefinition");
+    RATECURVESHIFTDEFINITION("RateCurveShiftDefinition"),
+    
+    FXSHIFTDEFINITION("FxShiftDefinition"),
+    
+    EQUITYSHIFTDEFINITION("EquityShiftDefinition"),
+    
+    VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition");
 
     private String value;
 
@@ -108,7 +114,7 @@ public class ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: RateCurveShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
    * @return scenarioShiftType
   **/
   @jakarta.annotation.Nonnull
@@ -189,8 +195,17 @@ public class ScenarioShiftDefinition {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("scenarioShiftType").getAsString();
       switch (discriminatorValue) {
+        case "EquityShiftDefinition":
+          EquityShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "FxShiftDefinition":
+          FxShiftDefinition.validateJsonElement(jsonElement);
+          break;
         case "RateCurveShiftDefinition":
           RateCurveShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "VolSurfaceShiftDefinition":
+          VolSurfaceShiftDefinition.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `scenarioShiftType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

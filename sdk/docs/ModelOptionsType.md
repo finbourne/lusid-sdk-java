@@ -21,6 +21,7 @@ ModelOptionsType method = ModelOptionsType.FXFORWARDMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.FUNDINGLEGMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.EQUITYMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.CDSMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.FLEXIBLELOANPRICEROPTIONS;
 ```
 
 

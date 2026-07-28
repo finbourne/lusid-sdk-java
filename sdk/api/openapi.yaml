@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9534
+  version: 0.11.9554
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1327,6 +1327,8 @@ tags:
     \ Participations are treatedmonotemporally; any updates are effective at the as-at\
     \ time of update, and its not possible to make retroactive(or forward) changes."
   name: Participations
+- description: Methods for interacting with Payment Instructions.
+  name: Payment Instructions
 - description: Endpoints for interacting with Persons entities.
   name: Persons
 - description: "Methods for interacting with Placements. This is experimental functionality,\
@@ -31940,6 +31942,84 @@ paths:
       - Derived Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/entities/bookmarks/{entityUniqueId}:
+    get:
+      description: "Retrieve the definition of a particular bookmark.\r\n\r\nIf the\
+        \ bookmark is deleted, this will return the state of the bookmark immediately\
+        \ prior to deletion."
+      operationId: GetBookmarkByEntityUniqueId
+      parameters:
+      - description: The universally unique identifier of the bookmark.
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the bookmark. Defaults
+          to returning the latest version of the bookmark if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids of the staged modifications to be previewed in the response.
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BookmarkEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookmarkEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BookmarkEntity'
+          description: The requested bookmark entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "GetBookmarkByEntityUniqueId: Get bookmark by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: Stable
+      x-accepts: application/json
   /api/entities/changes/portfolios:
     get:
       description: "Gets the time of the next (earliest effective at) modification\
@@ -43550,6 +43630,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43567,6 +43648,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -43634,6 +43716,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43651,6 +43734,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -43723,6 +43807,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43740,6 +43825,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -43807,6 +43893,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43824,6 +43911,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -43896,6 +43984,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43913,6 +44002,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -43980,6 +44070,7 @@ paths:
                     pnL:
                       nonClassSpecificPnl: {}
                       aggregatedClassPnl: {}
+                      aggregatedGroupPnl: {}
                       totalPnl: {}
                     gav: 99999.99
                     fees: {}
@@ -43997,6 +44088,7 @@ paths:
                       pnL:
                         apportionedNonClassSpecificPnl: {}
                         classPnl: {}
+                        groupApportionedPnl: {}
                         totalPnl: {}
                       gav:
                         fundCurrencyAmount: 99999.99
@@ -44371,6 +44463,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44388,6 +44481,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -44458,6 +44552,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44475,6 +44570,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -44545,6 +44641,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44562,6 +44659,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -44750,6 +44848,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44767,6 +44866,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -44837,6 +44937,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44854,6 +44955,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -44924,6 +45026,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -44941,6 +45044,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -45108,6 +45212,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -45125,6 +45230,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -45195,6 +45301,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -45212,6 +45319,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -45282,6 +45390,7 @@ paths:
                   pnL:
                     nonClassSpecificPnl: {}
                     aggregatedClassPnl: {}
+                    aggregatedGroupPnl: {}
                     totalPnl: {}
                   gav: 99999.99
                   fees: {}
@@ -45299,6 +45408,7 @@ paths:
                     pnL:
                       apportionedNonClassSpecificPnl: {}
                       classPnl: {}
+                      groupApportionedPnl: {}
                       totalPnl: {}
                     gav:
                       fundCurrencyAmount: 99999.99
@@ -54149,7 +54259,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54256,7 +54366,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54371,7 +54481,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54592,7 +54702,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54814,7 +54924,7 @@ paths:
           \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
           \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+          \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -77801,6 +77911,340 @@ paths:
       summary: "[EARLY ACCESS] GetParticipation: Get Participation"
       tags:
       - Participations
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/paymentinstructions:
+    post:
+      description: Create or update a collection of Payment Instructions.
+      operationId: UpsertPaymentInstructions
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              paymentInstruction1:
+                id:
+                  scope: myScope
+                  code: paymentInstruction1
+                paymentRecordIds:
+                - portfolioId:
+                    scope: myScope
+                    code: myPortfolio
+                  transactionId: transaction1
+                  paymentRecordId: paymentRecord1
+                currency: GBP
+                totalPaymentAmount: 1000
+                paymentDate: 2024-01-01T00:00:00.0000000+00:00
+                payorPaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4Q
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+                payeePaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4R
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PaymentInstructionRequest'
+              type: object
+          application/json:
+            example:
+              paymentInstruction1:
+                id:
+                  scope: myScope
+                  code: paymentInstruction1
+                paymentRecordIds:
+                - portfolioId:
+                    scope: myScope
+                    code: myPortfolio
+                  transactionId: transaction1
+                  paymentRecordId: paymentRecord1
+                currency: GBP
+                totalPaymentAmount: 1000
+                paymentDate: 2024-01-01T00:00:00.0000000+00:00
+                payorPaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4Q
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+                payeePaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4R
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PaymentInstructionRequest'
+              type: object
+          text/json:
+            example:
+              paymentInstruction1:
+                id:
+                  scope: myScope
+                  code: paymentInstruction1
+                paymentRecordIds:
+                - portfolioId:
+                    scope: myScope
+                    code: myPortfolio
+                  transactionId: transaction1
+                  paymentRecordId: paymentRecord1
+                currency: GBP
+                totalPaymentAmount: 1000
+                paymentDate: 2024-01-01T00:00:00.0000000+00:00
+                payorPaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4Q
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+                payeePaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4R
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PaymentInstructionRequest'
+              type: object
+          application/*+json:
+            example:
+              paymentInstruction1:
+                id:
+                  scope: myScope
+                  code: paymentInstruction1
+                paymentRecordIds:
+                - portfolioId:
+                    scope: myScope
+                    code: myPortfolio
+                  transactionId: transaction1
+                  paymentRecordId: paymentRecord1
+                currency: GBP
+                totalPaymentAmount: 1000
+                paymentDate: 2024-01-01T00:00:00.0000000+00:00
+                payorPaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4Q
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+                payeePaymentDetailsReference:
+                  seriesScope: myScope
+                  applicableEntity:
+                    entityType: Portfolio
+                    entityScope: myScope
+                    identifierType: code
+                    identifierScope: myScope
+                    identifierValue: LUID_00003D4R
+                  seriesIdentifiers:
+                    paymentType: Dividend
+                    currency: GBP
+                  effectiveDate: 2024-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PaymentInstructionRequest'
+              type: object
+        description: A collection of requests to create or update Payment Instructions.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PaymentInstructionsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInstructionsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInstructionsResponse'
+          description: The successfully created or updated payment instructions along
+            with any failures
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] UpsertPaymentInstructions: Upsert Payment Instructions"
+      tags:
+      - Payment Instructions
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/paymentinstructions/{scope}/{code}:
+    get:
+      description: Retrieve a single Payment Instruction.
+      operationId: GetPaymentInstruction
+      parameters:
+      - description: The scope of the payment instruction.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the payment instruction.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "A list of property keys from the \"PaymentInstruction\" domain\
+          \ to decorate onto the\r\n payment instruction. These take the format {domain}/{scope}/{code}\
+          \ e.g. \"PaymentInstruction/myScope/myProperty\"."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "The effective datetime or cut label at which to retrieve the\
+          \ payment instruction.\r\n Defaults to the current LUSID system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
+        style: form
+      - description: "The asAt datetime at which to retrieve the payment instruction.\
+          \ Defaults to return the latest\r\n version of the payment instruction if\
+          \ not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PaymentInstruction'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInstruction'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PaymentInstruction'
+          description: The requested payment instruction
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetPaymentInstruction: Get Payment Instruction"
+      tags:
+      - Payment Instructions
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/persons:
@@ -115143,6 +115587,117 @@ paths:
       - Scenarios
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/scenarios/{scope}/$fromTemplate:
+    post:
+      description: "Creates and stores a scenario built from a pre-defined parameterised\
+        \ template, for example a\r\nparallel rates shift or an equity crash. The\
+        \ template determines the scenario's shifts; the\r\nparameters supply the\
+        \ targets (e.g. currency or instrument) and optionally override the default\r\
+        \nshift size. The created scenario is stored in the given scope and behaves\
+        \ exactly like a\r\nhand-built scenario.\r\n \r\nAvailable templates: RatesUp,\
+        \ RatesDown, CurveSteepener, CurveFlattener, VolSpike, EquityCrash,\r\nFxShock,\
+        \ RiskOff."
+      operationId: CreateScenarioFromTemplate
+      parameters:
+      - description: The scope in which to create the scenario
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              template: RatesUp
+              code: rates-up-50
+              displayName: Rates +50bps Parallel
+              description: Parallel shift of +50bps across all USD rate curves
+              parameters:
+                ccy: USD
+                amount: "50"
+            schema:
+              $ref: '#/components/schemas/CreateScenarioFromTemplateRequest'
+          application/json:
+            example:
+              template: RatesUp
+              code: rates-up-50
+              displayName: Rates +50bps Parallel
+              description: Parallel shift of +50bps across all USD rate curves
+              parameters:
+                ccy: USD
+                amount: "50"
+            schema:
+              $ref: '#/components/schemas/CreateScenarioFromTemplateRequest'
+          text/json:
+            example:
+              template: RatesUp
+              code: rates-up-50
+              displayName: Rates +50bps Parallel
+              description: Parallel shift of +50bps across all USD rate curves
+              parameters:
+                ccy: USD
+                amount: "50"
+            schema:
+              $ref: '#/components/schemas/CreateScenarioFromTemplateRequest'
+          application/*+json:
+            example:
+              template: RatesUp
+              code: rates-up-50
+              displayName: Rates +50bps Parallel
+              description: Parallel shift of +50bps across all USD rate curves
+              parameters:
+                ccy: USD
+                amount: "50"
+            schema:
+              $ref: '#/components/schemas/CreateScenarioFromTemplateRequest'
+        description: "The template, code and parameters to create the scenario from"
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UpsertSingleStructuredDataResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertSingleStructuredDataResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UpsertSingleStructuredDataResponse'
+          description: The successfully created scenario or any failure
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate:\
+        \ Create a Scenario from a pre-built template."
+      tags:
+      - Scenarios
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/scenarios/{scope}/{code}:
     delete:
       description: "Delete the specified Scenario definition from a single scope.\r\
@@ -152169,6 +152724,10 @@ components:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
+                groupApportionedPnl:
+                  key:
+                    fundCurrencyAmount: 2.027123023002322
+                    shareClassCurrencyAmount: 4.145608029883936
                 apportionedNonClassSpecificPnl:
                   key:
                     fundCurrencyAmount: 2.027123023002322
@@ -152243,6 +152802,10 @@ components:
                 shareClassCurrencyAmount: 4.145608029883936
               pnL:
                 classPnl:
+                  key:
+                    fundCurrencyAmount: 2.027123023002322
+                    shareClassCurrencyAmount: 4.145608029883936
+                groupApportionedPnl:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
@@ -152406,6 +152969,9 @@ components:
                 key:
                   value: 0.8008281904610115
               totalPnl:
+                key:
+                  value: 0.8008281904610115
+              aggregatedGroupPnl:
                 key:
                   value: 0.8008281904610115
         links:
@@ -152489,6 +153055,10 @@ components:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
+                groupApportionedPnl:
+                  key:
+                    fundCurrencyAmount: 2.027123023002322
+                    shareClassCurrencyAmount: 4.145608029883936
                 apportionedNonClassSpecificPnl:
                   key:
                     fundCurrencyAmount: 2.027123023002322
@@ -152563,6 +153133,10 @@ components:
                 shareClassCurrencyAmount: 4.145608029883936
               pnL:
                 classPnl:
+                  key:
+                    fundCurrencyAmount: 2.027123023002322
+                    shareClassCurrencyAmount: 4.145608029883936
+                groupApportionedPnl:
                   key:
                     fundCurrencyAmount: 2.027123023002322
                     shareClassCurrencyAmount: 4.145608029883936
@@ -152726,6 +153300,9 @@ components:
                 key:
                   value: 0.8008281904610115
               totalPnl:
+                key:
+                  value: 0.8008281904610115
+              aggregatedGroupPnl:
                 key:
                   value: 0.8008281904610115
       properties:
@@ -155025,7 +155602,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -155115,6 +155692,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - dividendCurrency
@@ -155609,7 +156187,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -155699,6 +156277,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -157423,7 +158002,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -157513,6 +158092,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amountReduced
@@ -159252,7 +159832,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -159342,6 +159922,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -163234,7 +163815,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163324,6 +163905,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -163365,7 +163947,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163455,6 +164037,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -163507,7 +164090,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163597,6 +164180,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -163695,7 +164279,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163785,11 +164369,268 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
         type: object
       description: Representation of a Bonus Issue corporate action.
+    BookmarkEntity:
+      additionalProperties: false
+      example:
+        prevailingBookmark:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        deletedBookmark:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        requestIdDeleted: requestIdDeleted
+        effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
+        asAtVersionNumber: 0
+        previewedBookmark:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        previewedStatus: previewedStatus
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        effectiveAtCreated:
+          description: "The EffectiveAt this Entity is created, if entity does not\
+            \ currently exist in EffectiveAt."
+          format: date-time
+          nullable: true
+          type: string
+        prevailingBookmark:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        deletedBookmark:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedBookmark:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
+      type: object
     BookTransactionsRequest:
       additionalProperties: false
       example:
@@ -165813,7 +166654,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -165903,6 +166744,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - exerciseCurrency
@@ -167159,7 +168001,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -167249,6 +168091,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashElections
@@ -167313,7 +168156,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -167403,6 +168246,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -167458,7 +168302,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -167548,6 +168392,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -167769,7 +168614,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -167859,6 +168704,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashElections
@@ -167941,7 +168787,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168031,6 +168877,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashFlowValue
@@ -168393,7 +169240,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168483,6 +169330,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -168752,7 +169600,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -168762,6 +169610,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - modelOptionsType
@@ -168857,7 +169706,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168947,6 +169796,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - constituentWeight
@@ -169020,6 +169870,172 @@ components:
       - corrected
       - entityId
       type: object
+    ChangeEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          recordDate:
+            description: "The record date — the eligibility cutoff. Holders of record\
+              \ on this date enter the\r\nchange."
+            format: date-time
+            type: string
+          paymentDate:
+            description: "The payment date — the date the change fires and the paired\
+              \ StockMovement\r\ntransactions land."
+            format: date-time
+            type: string
+          newInstrument:
+            $ref: '#/components/schemas/NewInstrument'
+          unitsRatio:
+            $ref: '#/components/schemas/UnitsRatio'
+          changeType:
+            description: "The nature of the change — one of \"Certificates\", \"Name\"\
+              , or \"Terms\". Available values: Certificates, Name, Terms."
+            minLength: 1
+            type: string
+          termTarget:
+            description: "The target of a terms change — one of \"InstrumentDefinitionField\"\
+              \ or\r\n\"InstrumentProperty\". Only applicable when ChangeType is \"\
+              Terms\". Available values: InstrumentDefinitionField, InstrumentProperty."
+            nullable: true
+            type: string
+          termTargetIdentifier:
+            description: The identifier of the term target being changed. Must be
+              paired with TermTarget.
+            nullable: true
+            type: string
+          additionalInformation:
+            description: Free-text additional information describing the change.
+            nullable: true
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            type: string
+        required:
+        - changeType
+        - instrumentEventType
+        - newInstrument
+        - unitsRatio
+        type: object
+      description: "Change event (CHAN) — a reorganisation in which an instrument's\
+        \ certificates, name, or\r\nterms are changed. Holders of record on the record\
+        \ date have their positions converted\r\nautomatically to the new instrument\
+        \ at a fixed 1:1 ratio on the payment date."
     ChangeHistory:
       additionalProperties: false
       description: A group of changes made by the same person at the same time.
@@ -169910,7 +170926,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170000,6 +171016,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -170443,7 +171460,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170533,6 +171550,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -174114,7 +175132,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174204,6 +175222,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - consentType
@@ -174514,7 +175533,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174604,6 +175623,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - contractDetails
@@ -174781,7 +175801,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174871,6 +175891,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -177857,6 +178878,64 @@ components:
       - sourceEntityId
       - targetEntityId
       type: object
+    CreateScenarioFromTemplateRequest:
+      additionalProperties: false
+      description: "Request to create a scenario from a pre-built parameterised template.\
+        \ The template determines the\r\nshape of the scenario's shifts; the parameters\
+        \ supply the targets (e.g. currency, instrument) and\r\noptionally override\
+        \ the template's default shift size."
+      example:
+        template: template
+        code: code
+        displayName: displayName
+        description: description
+        parameters:
+          key: parameters
+      properties:
+        template:
+          description: "The template to build the scenario from. Available templates:\
+            \ RatesUp, RatesDown, CurveSteepener,\r\nCurveFlattener, VolSpike, EquityCrash,\
+            \ FxShock, RiskOff."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        code:
+          description: The code of the scenario to create.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        displayName:
+          description: The display name of the created scenario. Defaults to a name
+            derived from the template.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        description:
+          description: The description of the created scenario. Defaults to a description
+            derived from the template.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+        parameters:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Template parameters. Which parameters are required depends\
+            \ on the template: 'ccy' for rate curve\r\ntemplates, 'instrument' for\
+            \ equity and vol templates, 'currencyPair' for FX templates; RiskOff\r\
+            \nrequires 'ccy' and 'instrument'. All templates accept an optional 'amount'\
+            \ override of the\r\ntemplate's default shift size."
+          nullable: true
+          type: object
+      required:
+      - code
+      - template
+      type: object
     CreateSequenceRequest:
       additionalProperties: false
       example:
@@ -179105,7 +180184,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179195,6 +180274,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -184127,7 +185207,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184217,6 +185297,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -184263,7 +185344,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184353,6 +185434,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -184404,7 +185486,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184494,6 +185576,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -185139,7 +186222,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185229,6 +186312,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashElections
@@ -185302,7 +186386,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185392,6 +186476,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashElections
@@ -185448,7 +186533,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185538,6 +186623,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -185601,7 +186687,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185691,6 +186777,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - affectedAmount
@@ -185837,7 +186924,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185927,6 +187014,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -186006,7 +187094,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186096,6 +187184,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - closeOutAmount
@@ -186188,7 +187277,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186278,6 +187367,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -186543,7 +187633,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -186553,6 +187643,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - modelOptionsType
@@ -186799,7 +187890,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -186809,6 +187900,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - equityForwardProjectionType
@@ -186977,6 +188069,45 @@ components:
         - strike
         type: object
       description: LUSID representation of a plain vanilla OTC Equity Option.
+    EquityShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          instrument:
+            maxLength: 50
+            minLength: 1
+            type: string
+          amount:
+            format: double
+            type: number
+          shiftType:
+            description: "Available values: Absolute, Relative, Percentage."
+            enum:
+            - Absolute
+            - Relative
+            - Percentage
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - EquityShiftDefinition
+            - VolSurfaceShiftDefinition
+            type: string
+        required:
+        - amount
+        - instrument
+        - scenarioShiftType
+        - shiftType
+        type: object
+    EquityShiftMode:
+      enum:
+      - absolute
+      - relative
+      - percentage
+      type: string
     EquitySwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -187444,7 +188575,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187534,6 +188665,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - eventSource
@@ -188181,7 +189313,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188271,6 +189403,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - anchorDate
@@ -188617,7 +189750,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188707,6 +189840,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -190659,6 +191793,35 @@ components:
       description: "LUSID flexible loan instrument. Represents the basic building\
         \ block of a more complex loan structure that\r\ncan handle deferred interest\
         \ payments."
+    FlexibleLoanPricerOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - properties:
+          setCleanPVToZero:
+            description: If set to true the CleanPV will be set to zero in valuations
+              and PV will effectively just be the Accrual.
+            type: boolean
+          modelOptionsType:
+            description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
+              \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
+            enum:
+            - Invalid
+            - OpaqueModelOptions
+            - EmptyModelOptions
+            - IndexModelOptions
+            - FxForwardModelOptions
+            - FundingLegModelOptions
+            - EquityModelOptions
+            - CdsModelOptions
+            - FlexibleLoanPricerOptions
+            type: string
+        required:
+        - modelOptionsType
+        - setCleanPVToZero
+        type: object
+      description: Model options for instruments of type flexibleDeposit and flexibleLoan
+        when used on a standalone basis.
     FlexibleRepo:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -190903,7 +192066,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -190993,6 +192156,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -191049,7 +192213,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191139,6 +192303,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -191189,7 +192354,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191279,6 +192444,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -191335,7 +192501,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191425,6 +192591,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -191498,7 +192665,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191588,6 +192755,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -194492,7 +195660,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -194502,6 +195670,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - expectedFundingLegNotional
@@ -194791,6 +195960,9 @@ components:
         totalPnl:
           key:
             value: 0.8008281904610115
+        aggregatedGroupPnl:
+          key:
+            value: 0.8008281904610115
       properties:
         nonClassSpecificPnl:
           additionalProperties:
@@ -194804,14 +195976,23 @@ components:
           description: Bucket of detail for the sum of class PnL across all share
             classes in a fund and within the queried period.
           type: object
+        aggregatedGroupPnl:
+          additionalProperties:
+            $ref: '#/components/schemas/FundAmount'
+          description: "Bucket of detail for the sum, across all share classes, of\
+            \ PnL allocated to allocation groups and apportioned to their member share\
+            \ classes, within the queried period."
+          type: object
         totalPnl:
           additionalProperties:
             $ref: '#/components/schemas/FundAmount'
-          description: Bucket of detail for the sum of class PnL and PnL not specific
-            to a class within the queried period.
+          description: "Bucket of detail for the total PnL within the queried period:\
+            \ the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned\
+            \ PnL."
           type: object
       required:
       - aggregatedClassPnl
+      - aggregatedGroupPnl
       - nonClassSpecificPnl
       - totalPnl
       type: object
@@ -196736,6 +197917,9 @@ components:
           totalPnl:
             key:
               value: 0.8008281904610115
+          aggregatedGroupPnl:
+            key:
+              value: 0.8008281904610115
       properties:
         backOut:
           additionalProperties:
@@ -197215,7 +198399,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197305,6 +198489,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -197354,7 +198539,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197444,6 +198629,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -197941,10 +199127,17 @@ components:
               \ this all FX forwards will be priced using Forward Curves that have\
               \ Report Currency as the base."
             type: boolean
+          allowSpotFallbackForReportCcy:
+            description: "When converting to the report currency, allow falling back\
+              \ to pricing off the natural-pair forward\r\nand converting to the report\
+              \ currency at spot when the report-currency cross forward curves are\
+              \ not\r\navailable. Defaults to false, in which case the report-currency\
+              \ cross forwards are required."
+            type: boolean
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -197954,6 +199147,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - convertToReportCcy
@@ -198177,7 +199371,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198267,6 +199461,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - domAmountPerUnit
@@ -198689,6 +199884,45 @@ components:
         \ coupon and principal payoffs will be wrapped in an fx rate payoff method.\r\
         \nEither the fx rate is predefined (fixed) or relies on fx resets (floating).\r\
         \nUsed in representation of dual currency bond."
+    FxShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          currencyPair:
+            minLength: 1
+            pattern: "^[A-Z]{3}/[A-Z]{3}$"
+            type: string
+          amount:
+            format: double
+            type: number
+          shiftType:
+            description: "Available values: Absolute, Relative, Percentage."
+            enum:
+            - Absolute
+            - Relative
+            - Percentage
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - EquityShiftDefinition
+            - VolSurfaceShiftDefinition
+            type: string
+        required:
+        - amount
+        - currencyPair
+        - scenarioShiftType
+        - shiftType
+        type: object
+    FxShiftMode:
+      enum:
+      - absolute
+      - relative
+      - percentage
+      type: string
     FxSwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -203972,7 +205206,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -203982,6 +205216,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - modelOptionsType
@@ -204660,7 +205895,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204750,6 +205985,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - effectiveAt
@@ -204809,7 +206045,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204899,6 +206135,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - anchorDate
@@ -206800,7 +208037,7 @@ components:
             \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
             \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-            \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+            \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -206890,6 +208127,7 @@ components:
           - SecurityWriteOffEvent
           - WarrantsExerciseEvent
           - PariPassuEvent
+          - ChangeEvent
           type: string
       required:
       - instrumentEventType
@@ -207368,6 +208606,7 @@ components:
       - SecurityWriteOffEvent
       - WarrantsExerciseEvent
       - PariPassuEvent
+      - ChangeEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -208335,7 +209574,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208425,6 +209664,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashElections
@@ -208811,7 +210051,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208901,6 +210141,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -213121,7 +214362,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213211,6 +214452,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashOfferElections
@@ -213664,7 +214906,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213754,6 +214996,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -213817,7 +215060,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213907,6 +215150,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -213978,7 +215222,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214068,6 +215312,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -214157,7 +215402,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214247,6 +215492,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -215879,7 +217125,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215969,6 +217215,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -216022,7 +217269,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216112,6 +217359,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -216167,7 +217415,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216257,6 +217505,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -216314,7 +217563,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216404,6 +217653,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -216461,7 +217711,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216551,6 +217801,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -216607,7 +217858,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216697,6 +217948,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -216991,7 +218243,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217081,6 +218333,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -217237,7 +218490,7 @@ components:
         modelOptionsType:
           description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
             \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions,\
-            \ CdsModelOptions."
+            \ CdsModelOptions, FlexibleLoanPricerOptions."
           enum:
           - Invalid
           - OpaqueModelOptions
@@ -217247,6 +218500,7 @@ components:
           - FundingLegModelOptions
           - EquityModelOptions
           - CdsModelOptions
+          - FlexibleLoanPricerOptions
           type: string
       required:
       - modelOptionsType
@@ -217261,6 +218515,7 @@ components:
       - FundingLegModelOptions
       - EquityModelOptions
       - CdsModelOptions
+      - FlexibleLoanPricerOptions
       type: string
     ModelSelection:
       additionalProperties: false
@@ -218209,7 +219464,7 @@ components:
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
-              \ EquityModelOptions, CdsModelOptions."
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -218219,6 +219474,7 @@ components:
             - FundingLegModelOptions
             - EquityModelOptions
             - CdsModelOptions
+            - FlexibleLoanPricerOptions
             type: string
         required:
         - data
@@ -218258,7 +219514,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218348,6 +219604,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -218555,7 +219812,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218645,6 +219902,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - exerciseType
@@ -218761,7 +220019,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218851,6 +220109,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - exerciseType
@@ -237572,7 +238831,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237662,6 +238921,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -237792,7 +239052,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237882,6 +239142,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -238022,6 +239283,657 @@ components:
             $ref: '#/components/schemas/ParticipationRequest'
           nullable: true
           type: array
+      type: object
+    PaymentDetailsApplicableEntity:
+      additionalProperties: false
+      description: Identifies the LUSID entity that holds the payment details (e.g.
+        an InvestorRecord or Portfolio).
+      example:
+        entityScope: entityScope
+        entityType: entityType
+        identifierValue: identifierValue
+        identifierType: identifierType
+        identifierScope: identifierScope
+      properties:
+        entityType:
+          description: "The type of the LUSID entity holding the payment details.\
+            \ e.g. \"InvestorRecord\", \"InvestmentAccount\", \"Portfolio\"."
+          maxLength: 64
+          minLength: 0
+          type: string
+        entityScope:
+          description: The scope of the entity. Optional — required depends on the
+            entity type.
+          maxLength: 64
+          minLength: 0
+          nullable: true
+          type: string
+        identifierType:
+          description: The identifier type used to identify the entity. e.g. "lusidInvestmentAccountId".
+          maxLength: 64
+          minLength: 0
+          type: string
+        identifierScope:
+          description: The scope of the identifier used to identify the entity. Optional
+            — null for native LUSID identifiers such as code.
+          maxLength: 64
+          minLength: 0
+          nullable: true
+          type: string
+        identifierValue:
+          description: The identifier value for the entity. e.g. "LUID_00003DNL".
+          maxLength: 256
+          minLength: 0
+          type: string
+      required:
+      - entityType
+      - identifierType
+      - identifierValue
+      type: object
+    PaymentDetailsReference:
+      additionalProperties: false
+      description: "A pointer to a Payment Details relational dataset series for a\
+        \ payor or payee entity.\r\nNo PII is stored here — bank account details are\
+        \ resolved at read time from the referenced series."
+      example:
+        seriesScope: seriesScope
+        seriesIdentifiers:
+          custodianAccountCode: custodianAccountCode
+          custodianAccountScope: custodianAccountScope
+          currency: currency
+          paymentType: paymentType
+        effectiveDate: 2000-01-23T04:56:07.000+00:00
+        applicableEntity:
+          entityScope: entityScope
+          entityType: entityType
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+        asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        seriesScope:
+          description: The scope of the relational datapoint. May differ from the
+            scope of the dataset definition.
+          maxLength: 64
+          minLength: 0
+          type: string
+        applicableEntity:
+          $ref: '#/components/schemas/PaymentDetailsApplicableEntity'
+        seriesIdentifiers:
+          $ref: '#/components/schemas/PaymentDetailsSeriesIdentifiers'
+        effectiveDate:
+          description: The effective date of the relational datapoint observation
+            to retrieve. ISO 8601 datetime.
+          format: date-time
+          type: string
+        asAtDate:
+          description: The as-at date of the relational datapoint observation to retrieve.
+            ISO 8601 datetime.
+          format: date-time
+          type: string
+      required:
+      - applicableEntity
+      - asAtDate
+      - effectiveDate
+      - seriesIdentifiers
+      - seriesScope
+      type: object
+    PaymentDetailsReferenceResponse:
+      additionalProperties: false
+      description: "Response representation of a Payment Details reference. Extends\
+        \ the request shape with\r\na system-populated relational dataset definition\
+        \ identifier."
+      example:
+        seriesScope: seriesScope
+        relationalDatasetDefinitionId:
+          code: code
+          scope: scope
+        seriesIdentifiers:
+          custodianAccountCode: custodianAccountCode
+          custodianAccountScope: custodianAccountScope
+          currency: currency
+          paymentType: paymentType
+        effectiveDate: 2000-01-23T04:56:07.000+00:00
+        applicableEntity:
+          entityScope: entityScope
+          entityType: entityType
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+        asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        relationalDatasetDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        seriesScope:
+          description: The scope of the relational datapoint. May differ from the
+            scope of the dataset definition.
+          maxLength: 64
+          minLength: 0
+          type: string
+        applicableEntity:
+          $ref: '#/components/schemas/PaymentDetailsApplicableEntity'
+        seriesIdentifiers:
+          $ref: '#/components/schemas/PaymentDetailsSeriesIdentifiers'
+        effectiveDate:
+          description: The effective date of the relational datapoint observation
+            to retrieve. ISO 8601 datetime.
+          format: date-time
+          type: string
+        asAtDate:
+          description: The as-at date of the relational datapoint observation to retrieve.
+            ISO 8601 datetime.
+          format: date-time
+          type: string
+      required:
+      - applicableEntity
+      - asAtDate
+      - effectiveDate
+      - seriesIdentifiers
+      - seriesScope
+      type: object
+    PaymentDetailsSeriesIdentifiers:
+      additionalProperties: false
+      description: "The two hardcoded series identifier keys that uniquely identify\
+        \ a Payment Details data series.\r\nThe currency value must match the top-level\
+        \ currency field on the Payment Instruction."
+      example:
+        custodianAccountCode: custodianAccountCode
+        custodianAccountScope: custodianAccountScope
+        currency: currency
+        paymentType: paymentType
+      properties:
+        paymentType:
+          description: "The type of payment series. One of \"Dividend\", \"Fee\",\
+            \ \"Rebate\", \"Redemption\", \"Subscription\"."
+          maxLength: 64
+          minLength: 0
+          type: string
+        currency:
+          description: ISO 4217 currency code identifying the currency-specific series
+            row. Must match the top-level currency field.
+          maxLength: 3
+          minLength: 0
+          type: string
+        custodianAccountScope:
+          description: Optional. The scope of the custodian account on the portfolio.
+            Only permitted when the applicable entity is a Portfolio.
+          maxLength: 64
+          minLength: 0
+          nullable: true
+          type: string
+        custodianAccountCode:
+          description: Optional. The code of the custodian account on the portfolio.
+            Only permitted when the applicable entity is a Portfolio.
+          maxLength: 64
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - currency
+      - paymentType
+      type: object
+    PaymentInstruction:
+      additionalProperties: false
+      description: "A Payment Instruction groups one or more Payment Records into\
+        \ a single block\r\nfor transmission to a downstream treasury management system\
+        \ via the Horizon integration."
+      example:
+        payeePaymentDetailsReference:
+          seriesScope: seriesScope
+          relationalDatasetDefinitionId:
+            code: code
+            scope: scope
+          seriesIdentifiers:
+            custodianAccountCode: custodianAccountCode
+            custodianAccountScope: custodianAccountScope
+            currency: currency
+            paymentType: paymentType
+          effectiveDate: 2000-01-23T04:56:07.000+00:00
+          applicableEntity:
+            entityScope: entityScope
+            entityType: entityType
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        currency: currency
+        payorPaymentDetailsReference:
+          seriesScope: seriesScope
+          relationalDatasetDefinitionId:
+            code: code
+            scope: scope
+          seriesIdentifiers:
+            custodianAccountCode: custodianAccountCode
+            custodianAccountScope: custodianAccountScope
+            currency: currency
+            paymentType: paymentType
+          effectiveDate: 2000-01-23T04:56:07.000+00:00
+          applicableEntity:
+            entityScope: entityScope
+            entityType: entityType
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        totalPaymentAmount: 0.8008281904610115
+        paymentDate: 2000-01-23T04:56:07.000+00:00
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+        paymentRecordIds:
+        - portfolioId:
+            code: code
+            scope: scope
+          paymentRecordId: paymentRecordId
+          transactionId: transactionId
+        - portfolioId:
+            code: code
+            scope: scope
+          paymentRecordId: paymentRecordId
+          transactionId: transactionId
+        status:
+          asAtLastTransition: 2000-01-23T04:56:07.000+00:00
+          userIdLastTransition: userIdLastTransition
+          currentValue: currentValue
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        paymentRecordIds:
+          description: One or more Payment Records batched into this instruction block.
+            All referenced Payment Records must share the same currency as the top-level
+            currency field.
+          items:
+            $ref: '#/components/schemas/PaymentRecordReference'
+          type: array
+        currency:
+          description: ISO 4217 currency code. All referenced Payment Records must
+            share this currency value.
+          type: string
+        totalPaymentAmount:
+          description: Total payment amount across all referenced Payment Records.
+          format: double
+          type: number
+        paymentDate:
+          description: The value date on which settlement is due. ISO 8601 date.
+          format: date-time
+          type: string
+        payorPaymentDetailsReference:
+          $ref: '#/components/schemas/PaymentDetailsReferenceResponse'
+        payeePaymentDetailsReference:
+          $ref: '#/components/schemas/PaymentDetailsReferenceResponse'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: Client-defined properties associated with this Payment Instruction.
+          nullable: true
+          type: object
+        status:
+          $ref: '#/components/schemas/PaymentInstructionStatus'
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - currency
+      - id
+      - payeePaymentDetailsReference
+      - paymentDate
+      - paymentRecordIds
+      - payorPaymentDetailsReference
+      - status
+      - totalPaymentAmount
+      type: object
+    PaymentInstructionRequest:
+      additionalProperties: false
+      description: "A request to create or update a Payment Instruction. Status is\
+        \ not accepted here —\r\nstatus transitions are managed exclusively via the\
+        \ dedicated Payment Instruction status API."
+      example:
+        payeePaymentDetailsReference:
+          seriesScope: seriesScope
+          seriesIdentifiers:
+            custodianAccountCode: custodianAccountCode
+            custodianAccountScope: custodianAccountScope
+            currency: currency
+            paymentType: paymentType
+          effectiveDate: 2000-01-23T04:56:07.000+00:00
+          applicableEntity:
+            entityScope: entityScope
+            entityType: entityType
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        currency: currency
+        payorPaymentDetailsReference:
+          seriesScope: seriesScope
+          seriesIdentifiers:
+            custodianAccountCode: custodianAccountCode
+            custodianAccountScope: custodianAccountScope
+            currency: currency
+            paymentType: paymentType
+          effectiveDate: 2000-01-23T04:56:07.000+00:00
+          applicableEntity:
+            entityScope: entityScope
+            entityType: entityType
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        id:
+          code: code
+          scope: scope
+        totalPaymentAmount: 0.8008281904610115
+        paymentDate: 2000-01-23T04:56:07.000+00:00
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+        paymentRecordIds:
+        - portfolioId:
+            code: code
+            scope: scope
+          paymentRecordId: paymentRecordId
+          transactionId: transactionId
+        - portfolioId:
+            code: code
+            scope: scope
+          paymentRecordId: paymentRecordId
+          transactionId: transactionId
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        paymentRecordIds:
+          description: One or more Payment Records batched into this instruction block.
+            All referenced Payment Records must share the same currency as the top-level
+            currency field.
+          items:
+            $ref: '#/components/schemas/PaymentRecordReference'
+          minItems: 1
+          type: array
+        currency:
+          description: ISO 4217 currency code. All referenced Payment Records must
+            share this currency value.
+          type: string
+        totalPaymentAmount:
+          description: Total payment amount across all referenced Payment Records.
+          format: double
+          type: number
+        paymentDate:
+          description: The value date on which settlement is due. ISO 8601 date.
+          format: date-time
+          type: string
+        payorPaymentDetailsReference:
+          $ref: '#/components/schemas/PaymentDetailsReference'
+        payeePaymentDetailsReference:
+          $ref: '#/components/schemas/PaymentDetailsReference'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: Client-defined properties associated with this Payment Instruction.
+          nullable: true
+          type: object
+      required:
+      - currency
+      - id
+      - payeePaymentDetailsReference
+      - paymentDate
+      - paymentRecordIds
+      - payorPaymentDetailsReference
+      - totalPaymentAmount
+      type: object
+    PaymentInstructionsResponse:
+      additionalProperties: false
+      description: "The response from upserting a set of Payment Instructions. Each\
+        \ request key from the\r\nincoming map appears in exactly one of Successes\
+        \ or Failed."
+      example:
+        successes:
+          key:
+            payeePaymentDetailsReference:
+              seriesScope: seriesScope
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+              seriesIdentifiers:
+                custodianAccountCode: custodianAccountCode
+                custodianAccountScope: custodianAccountScope
+                currency: currency
+                paymentType: paymentType
+              effectiveDate: 2000-01-23T04:56:07.000+00:00
+              applicableEntity:
+                entityScope: entityScope
+                entityType: entityType
+                identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            currency: currency
+            payorPaymentDetailsReference:
+              seriesScope: seriesScope
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+              seriesIdentifiers:
+                custodianAccountCode: custodianAccountCode
+                custodianAccountScope: custodianAccountScope
+                currency: currency
+                paymentType: paymentType
+              effectiveDate: 2000-01-23T04:56:07.000+00:00
+              applicableEntity:
+                entityScope: entityScope
+                entityType: entityType
+                identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            id:
+              code: code
+              scope: scope
+            totalPaymentAmount: 0.8008281904610115
+            paymentDate: 2000-01-23T04:56:07.000+00:00
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+            paymentRecordIds:
+            - portfolioId:
+                code: code
+                scope: scope
+              paymentRecordId: paymentRecordId
+              transactionId: transactionId
+            - portfolioId:
+                code: code
+                scope: scope
+              paymentRecordId: paymentRecordId
+              transactionId: transactionId
+            status:
+              asAtLastTransition: 2000-01-23T04:56:07.000+00:00
+              userIdLastTransition: userIdLastTransition
+              currentValue: currentValue
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+      properties:
+        successes:
+          additionalProperties:
+            $ref: '#/components/schemas/PaymentInstruction'
+          description: "The Payment Instructions that were created or updated successfully,\
+            \ keyed by the ephemeral request key supplied by the caller."
+          nullable: true
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: "Details of the requests that failed, keyed by the ephemeral\
+            \ request key supplied by the caller."
+          nullable: true
+          type: object
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
+    PaymentInstructionStatus:
+      additionalProperties: false
+      description: "The current status of a Payment Instruction. Managed exclusively\
+        \ via the dedicated\r\nstatus transition API — not accepted on upsert."
+      example:
+        asAtLastTransition: 2000-01-23T04:56:07.000+00:00
+        userIdLastTransition: userIdLastTransition
+        currentValue: currentValue
+      properties:
+        currentValue:
+          description: "The current status value. One of: Created, Staged, Released,\
+            \ Instructed, Sent, Cancelled."
+          minLength: 1
+          type: string
+        asAtLastTransition:
+          description: The as-at timestamp of the most recent status transition.
+          format: date-time
+          type: string
+        userIdLastTransition:
+          description: The ID of the user who made the most recent status transition.
+          minLength: 1
+          type: string
+      required:
+      - asAtLastTransition
+      - currentValue
+      - userIdLastTransition
+      type: object
+    PaymentRecordReference:
+      additionalProperties: false
+      description: Identifies a Payment Record attached to a specific transaction
+        within a portfolio.
+      example:
+        portfolioId:
+          code: code
+          scope: scope
+        paymentRecordId: paymentRecordId
+        transactionId: transactionId
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        transactionId:
+          description: The ID of the cash transaction within the portfolio to which
+            the Payment Record is attached.
+          maxLength: 256
+          minLength: 0
+          type: string
+        paymentRecordId:
+          description: The unique identifier of the Payment Record attached to the
+            above transaction.
+          maxLength: 256
+          minLength: 0
+          type: string
+      required:
+      - paymentRecordId
+      - portfolioId
+      - transactionId
       type: object
     PercentCheckStep:
       allOf:
@@ -244795,7 +246707,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -244885,6 +246797,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -246433,7 +248346,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -246523,6 +248436,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -246628,7 +248542,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -246718,6 +248632,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashOfferElections
@@ -247821,9 +249736,13 @@ components:
             - Twist
             type: string
           scenarioShiftType:
-            description: "Available values: RateCurveShiftDefinition."
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
             enum:
             - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - EquityShiftDefinition
+            - VolSurfaceShiftDefinition
             type: string
         required:
         - amount
@@ -247879,7 +249798,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -247969,6 +249888,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - effectiveAt
@@ -251291,7 +253211,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251381,6 +253301,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -251448,7 +253369,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251538,6 +253459,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -251659,7 +253581,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251749,6 +253671,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - cashOfferElections
@@ -251827,7 +253750,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251917,6 +253840,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - fixingDate
@@ -275640,7 +277564,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -275730,6 +277654,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -276059,9 +277984,13 @@ components:
         scenarioShiftType: RateCurveShiftDefinition
       properties:
         scenarioShiftType:
-          description: "Available values: RateCurveShiftDefinition."
+          description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+            \ EquityShiftDefinition, VolSurfaceShiftDefinition."
           enum:
           - RateCurveShiftDefinition
+          - FxShiftDefinition
+          - EquityShiftDefinition
+          - VolSurfaceShiftDefinition
           type: string
       required:
       - scenarioShiftType
@@ -276069,6 +277998,9 @@ components:
     ScenarioShiftType:
       enum:
       - RateCurveShiftDefinition
+      - FxShiftDefinition
+      - EquityShiftDefinition
+      - VolSurfaceShiftDefinition
       type: string
     Schedule:
       additionalProperties: false
@@ -276237,7 +278169,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -276327,6 +278259,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -276502,7 +278435,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -276592,6 +278525,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -280103,6 +282037,10 @@ components:
             key:
               fundCurrencyAmount: 2.027123023002322
               shareClassCurrencyAmount: 4.145608029883936
+          groupApportionedPnl:
+            key:
+              fundCurrencyAmount: 2.027123023002322
+              shareClassCurrencyAmount: 4.145608029883936
           apportionedNonClassSpecificPnl:
             key:
               fundCurrencyAmount: 2.027123023002322
@@ -280237,6 +282175,10 @@ components:
             shareClassCurrencyAmount: 4.145608029883936
           pnL:
             classPnl:
+              key:
+                fundCurrencyAmount: 2.027123023002322
+                shareClassCurrencyAmount: 4.145608029883936
+            groupApportionedPnl:
               key:
                 fundCurrencyAmount: 2.027123023002322
                 shareClassCurrencyAmount: 4.145608029883936
@@ -280494,6 +282436,10 @@ components:
           key:
             fundCurrencyAmount: 2.027123023002322
             shareClassCurrencyAmount: 4.145608029883936
+        groupApportionedPnl:
+          key:
+            fundCurrencyAmount: 2.027123023002322
+            shareClassCurrencyAmount: 4.145608029883936
         apportionedNonClassSpecificPnl:
           key:
             fundCurrencyAmount: 2.027123023002322
@@ -280515,15 +282461,24 @@ components:
           description: Bucket of detail for PnL specific to the share class within
             the queried period.
           type: object
+        groupApportionedPnl:
+          additionalProperties:
+            $ref: '#/components/schemas/ShareClassAmount'
+          description: "Bucket of detail for the share class's apportioned share of\
+            \ PnL allocated to the allocation groups it belongs to, within the queried\
+            \ period."
+          type: object
         totalPnl:
           additionalProperties:
             $ref: '#/components/schemas/ShareClassAmount'
-          description: Bucket of detail for the sum of class PnL and PnL not specific
-            to a class within the queried period.
+          description: "Bucket of detail for the total PnL within the queried period:\
+            \ the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned\
+            \ PnL."
           type: object
       required:
       - apportionedNonClassSpecificPnl
       - classPnl
+      - groupApportionedPnl
       - totalPnl
       type: object
     SideConfigurationData:
@@ -281169,7 +283124,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281259,6 +283214,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -281986,7 +283942,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282076,6 +284032,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -282157,7 +284114,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282247,6 +284204,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -282692,7 +284650,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282782,6 +284740,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -282836,7 +284795,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282926,6 +284885,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -283460,7 +285420,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -283550,6 +285510,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -283732,7 +285693,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -283822,6 +285783,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -283871,7 +285833,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -283961,6 +285923,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - currency
@@ -291428,7 +293391,7 @@ components:
             \ ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent,\
             \ LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent,\
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
-            \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent."
+            \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -292328,7 +294291,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -292418,6 +294381,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -293054,7 +295018,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -293144,6 +295108,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -294796,7 +296761,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -294886,6 +296851,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - amount
@@ -303725,6 +305691,10 @@ components:
                 key:
                   fundCurrencyAmount: 2.027123023002322
                   shareClassCurrencyAmount: 4.145608029883936
+              groupApportionedPnl:
+                key:
+                  fundCurrencyAmount: 2.027123023002322
+                  shareClassCurrencyAmount: 4.145608029883936
               apportionedNonClassSpecificPnl:
                 key:
                   fundCurrencyAmount: 2.027123023002322
@@ -303799,6 +305769,10 @@ components:
               shareClassCurrencyAmount: 4.145608029883936
             pnL:
               classPnl:
+                key:
+                  fundCurrencyAmount: 2.027123023002322
+                  shareClassCurrencyAmount: 4.145608029883936
+              groupApportionedPnl:
                 key:
                   fundCurrencyAmount: 2.027123023002322
                   shareClassCurrencyAmount: 4.145608029883936
@@ -303962,6 +305936,9 @@ components:
               key:
                 value: 0.8008281904610115
             totalPnl:
+              key:
+                value: 0.8008281904610115
+            aggregatedGroupPnl:
               key:
                 value: 0.8008281904610115
       properties:
@@ -321594,6 +323571,53 @@ components:
         \ distinction is expressed purely through the\r\nscalar (1 for volatility\
         \ swaps, 100 for variance swaps) and instrument\r\nproperties; it is not a\
         \ first-class field."
+    VolSurfaceShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          instrument:
+            maxLength: 50
+            minLength: 1
+            type: string
+          amount:
+            format: double
+            type: number
+          strike:
+            format: double
+            nullable: true
+            type: number
+          expiry:
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          shiftType:
+            description: "Available values: Absolute, Relative."
+            enum:
+            - Absolute
+            - Relative
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - EquityShiftDefinition
+            - VolSurfaceShiftDefinition
+            type: string
+        required:
+        - amount
+        - instrument
+        - scenarioShiftType
+        - shiftType
+        type: object
+    VolSurfaceShiftMode:
+      enum:
+      - absolute
+      - relative
+      type: string
     Warning:
       additionalProperties: false
       example:
@@ -321705,7 +323729,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -321795,6 +323819,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -322254,7 +324279,7 @@ components:
               \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
-              \ WarrantsExerciseEvent, PariPassuEvent."
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -322344,6 +324369,7 @@ components:
             - SecurityWriteOffEvent
             - WarrantsExerciseEvent
             - PariPassuEvent
+            - ChangeEvent
             type: string
         required:
         - instrumentEventType
@@ -322607,6 +324633,7 @@ x-tagGroups:
   - Orders
   - Packages
   - Participations
+  - Payment Instructions
   - Persons
   - Placements
   - Portfolio Groups

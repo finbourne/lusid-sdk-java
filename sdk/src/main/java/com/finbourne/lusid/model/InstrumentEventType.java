@@ -199,7 +199,9 @@ public enum InstrumentEventType {
   
   WARRANTSEXERCISEEVENT("WarrantsExerciseEvent"),
   
-  PARIPASSUEVENT("PariPassuEvent");
+  PARIPASSUEVENT("PariPassuEvent"),
+  
+  CHANGEEVENT("ChangeEvent");
 
   private String value;
 
