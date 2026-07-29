@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9554
+  version: 0.11.9559
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -115394,6 +115394,7 @@ paths:
                   startTenor: 1m
                   endTenor: 30y
                   shiftType: parallel
+                  scale: Bps
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -115410,6 +115411,7 @@ paths:
                   startTenor: 1m
                   endTenor: 30y
                   shiftType: parallel
+                  scale: Bps
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -115426,6 +115428,7 @@ paths:
                   startTenor: 1m
                   endTenor: 30y
                   shiftType: parallel
+                  scale: Bps
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -115442,6 +115445,7 @@ paths:
                   startTenor: 1m
                   endTenor: 30y
                   shiftType: parallel
+                  scale: Bps
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -174685,7 +174689,8 @@ components:
         compoundingMethod:
           description: "If the interest rate is simple, compounded or using a pre-computed\
             \ compounded index.\r\n\r\nSupported string (enumeration) values are:\
-            \ [Averaging, Compounding, CompoundedIndex, NonCumulativeCompounding]."
+            \ [Averaging, Compounding, CompoundedIndex, NonCumulativeCompounding,\
+            \ NonCumulativeCompoundingBalanceAware]."
           minLength: 1
           type: string
         resetFrequency:
@@ -187048,6 +187053,18 @@ components:
             description: The date of the event.
             format: date-time
             type: string
+          closeOutTolerance:
+            description: "Tolerance for inferring a full close-out. Optional. When\
+              \ set, and the recomputed close-out quantity is\r\nwithin this tolerance\
+              \ of the holding's units, the full holding is closed out so the holding\
+              \ nets to zero;\r\notherwise the recomputed quantity is used. When absent,\
+              \ the recomputed quantity is always used, which may\r\nleave a residual\
+              \ holding.\r\nFor example, if the tolerance is set to 0.01 and the calculated\
+              \ value returns 99.99 against a true\r\nsub-holding of 100, the full\
+              \ holding will be closed out and no residual will be produced."
+            format: double
+            nullable: true
+            type: number
           otherAmount:
             description: "The other amount to be closed out early. Optional. If provided,\
               \ must be strictly positive."
@@ -188079,6 +188096,8 @@ components:
             type: string
           amount:
             format: double
+            maximum: 1000000
+            minimum: -1000000
             type: number
           shiftType:
             description: "Available values: Absolute, Relative, Percentage."
@@ -199894,6 +199913,8 @@ components:
             type: string
           amount:
             format: double
+            maximum: 1000000
+            minimum: -1000000
             type: number
           shiftType:
             description: "Available values: Absolute, Relative, Percentage."
@@ -249713,7 +249734,12 @@ components:
             minLength: 3
             type: string
           amount:
+            description: "The size of the shift, in the units given by Scale: basis\
+              \ points by default (50 means +50bps),\r\nor a percentage of each rate\
+              \ when Scale is Percentage (1 means rates scaled by 1.01)."
             format: double
+            maximum: 1000000
+            minimum: -1000000
             type: number
           startTenor:
             maxLength: 10
@@ -249734,6 +249760,12 @@ components:
             - Steepen
             - Flatten
             - Twist
+            type: string
+          scale:
+            description: "Available values: Bps, Percentage."
+            enum:
+            - Bps
+            - Percentage
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
@@ -249756,6 +249788,13 @@ components:
       - steepen
       - flatten
       - twist
+      type: string
+    RateCurveShiftScale:
+      description: "The units of a rate curve shift's amount: basis points for absolute\
+        \ shifts, percentage for\r\nrelative shifts."
+      enum:
+      - Bps
+      - Percentage
       type: string
     RawVendorEvent:
       allOf:
@@ -251515,6 +251554,10 @@ components:
                 value: 0.8008281904610115
           equipWithSubtotals: true
           reportCurrency: reportCurrency
+          scenario:
+            code: code
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
           corporateActionSourceId:
             code: code
             scope: scope
@@ -251600,6 +251643,10 @@ components:
                 value: 0.8008281904610115
           equipWithSubtotals: true
           reportCurrency: reportCurrency
+          scenario:
+            code: code
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
           corporateActionSourceId:
             code: code
             scope: scope
@@ -277972,6 +278019,37 @@ components:
           maxItems: 100
           nullable: true
           type: array
+      required:
+      - code
+      - scope
+      type: object
+    ScenarioReference:
+      additionalProperties: false
+      description: "A reference to a stored Scenario, identified by scope and code,\
+        \ optionally pinned to an AsAt version."
+      example:
+        code: code
+        scope: scope
+        asAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        scope:
+          description: The scope of the scenario to apply.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        code:
+          description: The code of the scenario to apply.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        asAt:
+          description: "The AsAt of the scenario version to apply. If not supplied,\
+            \ the latest version is used."
+          format: date-time
+          nullable: true
+          type: string
       required:
       - code
       - scope
@@ -312236,6 +312314,10 @@ components:
               value: 0.8008281904610115
         equipWithSubtotals: true
         reportCurrency: reportCurrency
+        scenario:
+          code: code
+          scope: scope
+          asAt: 2000-01-23T04:56:07.000+00:00
         corporateActionSourceId:
           code: code
           scope: scope
@@ -312326,6 +312408,8 @@ components:
           $ref: '#/components/schemas/MarketDataOverrides'
         corporateActionSourceId:
           $ref: '#/components/schemas/ResourceId'
+        scenario:
+          $ref: '#/components/schemas/ScenarioReference'
       required:
       - metrics
       - portfolioEntityIds
@@ -312511,6 +312595,10 @@ components:
                 value: 0.8008281904610115
           equipWithSubtotals: true
           reportCurrency: reportCurrency
+          scenario:
+            code: code
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
           corporateActionSourceId:
             code: code
             scope: scope
@@ -312596,6 +312684,10 @@ components:
                 value: 0.8008281904610115
           equipWithSubtotals: true
           reportCurrency: reportCurrency
+          scenario:
+            code: code
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
           corporateActionSourceId:
             code: code
             scope: scope
@@ -323581,6 +323673,8 @@ components:
             type: string
           amount:
             format: double
+            maximum: 1000000
+            minimum: -1000000
             type: number
           strike:
             format: double

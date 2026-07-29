@@ -122,6 +122,57 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_SHIFT_TYPE)
   private ShiftTypeEnum shiftType;
 
+  /**
+   * Available values: Bps, Percentage.
+   */
+  @JsonAdapter(ScaleEnum.Adapter.class)
+  public enum ScaleEnum {
+    BPS("Bps"),
+    
+    PERCENTAGE("Percentage");
+
+    private String value;
+
+    ScaleEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ScaleEnum fromValue(String value) {
+      for (ScaleEnum b : ScaleEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ScaleEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ScaleEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ScaleEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ScaleEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SCALE = "scale";
+  @SerializedName(SERIALIZED_NAME_SCALE)
+  private ScaleEnum scale;
+
   public RateCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
@@ -154,7 +205,9 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Get amount
+   * The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01).
+   * minimum: -1000000
+   * maximum: 1000000
    * @return amount
   **/
   @jakarta.annotation.Nonnull
@@ -231,6 +284,27 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public RateCurveShiftDefinition scale(ScaleEnum scale) {
+    
+    this.scale = scale;
+    return this;
+  }
+
+   /**
+   * Available values: Bps, Percentage.
+   * @return scale
+  **/
+  @jakarta.annotation.Nullable
+  public ScaleEnum getScale() {
+    return scale;
+  }
+
+
+  public void setScale(ScaleEnum scale) {
+    this.scale = scale;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -246,6 +320,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
         Objects.equals(this.startTenor, rateCurveShiftDefinition.startTenor) &&
         Objects.equals(this.endTenor, rateCurveShiftDefinition.endTenor) &&
         Objects.equals(this.shiftType, rateCurveShiftDefinition.shiftType) &&
+        Objects.equals(this.scale, rateCurveShiftDefinition.scale) &&
         super.equals(o);
   }
 
@@ -255,7 +330,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, super.hashCode());
+    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,6 +350,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     sb.append("    startTenor: ").append(toIndentedString(startTenor)).append("\n");
     sb.append("    endTenor: ").append(toIndentedString(endTenor)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
+    sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -303,6 +379,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("startTenor");
     openapiFields.add("endTenor");
     openapiFields.add("shiftType");
+    openapiFields.add("scale");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

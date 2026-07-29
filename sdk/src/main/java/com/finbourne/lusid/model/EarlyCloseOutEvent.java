@@ -68,6 +68,10 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_DATE)
   private OffsetDateTime effectiveDate;
 
+  public static final String SERIALIZED_NAME_CLOSE_OUT_TOLERANCE = "closeOutTolerance";
+  @SerializedName(SERIALIZED_NAME_CLOSE_OUT_TOLERANCE)
+  private java.math.BigDecimal closeOutTolerance;
+
   public static final String SERIALIZED_NAME_OTHER_AMOUNT = "otherAmount";
   @SerializedName(SERIALIZED_NAME_OTHER_AMOUNT)
   private java.math.BigDecimal otherAmount;
@@ -172,6 +176,27 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
   }
 
 
+  public EarlyCloseOutEvent closeOutTolerance(java.math.BigDecimal closeOutTolerance) {
+    
+    this.closeOutTolerance = closeOutTolerance;
+    return this;
+  }
+
+   /**
+   * Tolerance for inferring a full close-out. Optional. When set, and the recomputed close-out quantity is  within this tolerance of the holding&#39;s units, the full holding is closed out so the holding nets to zero;  otherwise the recomputed quantity is used. When absent, the recomputed quantity is always used, which may  leave a residual holding.  For example, if the tolerance is set to 0.01 and the calculated value returns 99.99 against a true  sub-holding of 100, the full holding will be closed out and no residual will be produced.
+   * @return closeOutTolerance
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCloseOutTolerance() {
+    return closeOutTolerance;
+  }
+
+
+  public void setCloseOutTolerance(java.math.BigDecimal closeOutTolerance) {
+    this.closeOutTolerance = closeOutTolerance;
+  }
+
+
   public EarlyCloseOutEvent otherAmount(java.math.BigDecimal otherAmount) {
     
     this.otherAmount = otherAmount;
@@ -270,6 +295,7 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
         Objects.equals(this.closeOutCcy, earlyCloseOutEvent.closeOutCcy) &&
         (this.closeOutToOtherRate.compareTo(earlyCloseOutEvent.getCloseOutToOtherRate()) == 0) &&
         Objects.equals(this.effectiveDate, earlyCloseOutEvent.effectiveDate) &&
+        (this.closeOutTolerance.compareTo(earlyCloseOutEvent.getCloseOutTolerance()) == 0) &&
         (this.otherAmount.compareTo(earlyCloseOutEvent.getOtherAmount()) == 0) &&
         Objects.equals(this.otherCcy, earlyCloseOutEvent.otherCcy) &&
         (this.otherToCloseOutRate.compareTo(earlyCloseOutEvent.getOtherToCloseOutRate()) == 0) &&
@@ -283,7 +309,7 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closeOutAmount, closeOutCcy, closeOutToOtherRate, effectiveDate, otherAmount, otherCcy, otherToCloseOutRate, settlementCcy, super.hashCode());
+    return Objects.hash(closeOutAmount, closeOutCcy, closeOutToOtherRate, effectiveDate, closeOutTolerance, otherAmount, otherCcy, otherToCloseOutRate, settlementCcy, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,6 +328,7 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
     sb.append("    closeOutCcy: ").append(toIndentedString(closeOutCcy)).append("\n");
     sb.append("    closeOutToOtherRate: ").append(toIndentedString(closeOutToOtherRate)).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
+    sb.append("    closeOutTolerance: ").append(toIndentedString(closeOutTolerance)).append("\n");
     sb.append("    otherAmount: ").append(toIndentedString(otherAmount)).append("\n");
     sb.append("    otherCcy: ").append(toIndentedString(otherCcy)).append("\n");
     sb.append("    otherToCloseOutRate: ").append(toIndentedString(otherToCloseOutRate)).append("\n");
@@ -333,6 +360,7 @@ public class EarlyCloseOutEvent extends InstrumentEvent {
     openapiFields.add("closeOutCcy");
     openapiFields.add("closeOutToOtherRate");
     openapiFields.add("effectiveDate");
+    openapiFields.add("closeOutTolerance");
     openapiFields.add("otherAmount");
     openapiFields.add("otherCcy");
     openapiFields.add("otherToCloseOutRate");

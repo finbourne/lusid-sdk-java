@@ -18,6 +18,7 @@ import com.finbourne.lusid.model.OrderFlowConfiguration;
 import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.PropertyFilter;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.ScenarioReference;
 import com.finbourne.lusid.model.ValuationSchedule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -116,6 +117,10 @@ public class ValuationRequest {
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
   private ResourceId corporateActionSourceId;
+
+  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
+  @SerializedName(SERIALIZED_NAME_SCENARIO)
+  private ScenarioReference scenario;
 
   public ValuationRequest() {
   }
@@ -454,6 +459,27 @@ public class ValuationRequest {
   }
 
 
+  public ValuationRequest scenario(ScenarioReference scenario) {
+    
+    this.scenario = scenario;
+    return this;
+  }
+
+   /**
+   * Get scenario
+   * @return scenario
+  **/
+  @jakarta.annotation.Nullable
+  public ScenarioReference getScenario() {
+    return scenario;
+  }
+
+
+  public void setScenario(ScenarioReference scenario) {
+    this.scenario = scenario;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -477,7 +503,8 @@ public class ValuationRequest {
         Objects.equals(this.portfolioEntityIds, valuationRequest.portfolioEntityIds) &&
         Objects.equals(this.valuationSchedule, valuationRequest.valuationSchedule) &&
         Objects.equals(this.marketDataOverrides, valuationRequest.marketDataOverrides) &&
-        Objects.equals(this.corporateActionSourceId, valuationRequest.corporateActionSourceId);
+        Objects.equals(this.corporateActionSourceId, valuationRequest.corporateActionSourceId) &&
+        Objects.equals(this.scenario, valuationRequest.scenario);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -486,7 +513,7 @@ public class ValuationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, portfolioEntityIds, valuationSchedule, marketDataOverrides, corporateActionSourceId);
+    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, portfolioEntityIds, valuationSchedule, marketDataOverrides, corporateActionSourceId, scenario);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -514,6 +541,7 @@ public class ValuationRequest {
     sb.append("    valuationSchedule: ").append(toIndentedString(valuationSchedule)).append("\n");
     sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
+    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -550,6 +578,7 @@ public class ValuationRequest {
     openapiFields.add("valuationSchedule");
     openapiFields.add("marketDataOverrides");
     openapiFields.add("corporateActionSourceId");
+    openapiFields.add("scenario");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -649,6 +678,10 @@ public class ValuationRequest {
       // validate the optional field `corporateActionSourceId`
       if (jsonObj.get("corporateActionSourceId") != null && !jsonObj.get("corporateActionSourceId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("corporateActionSourceId"));
+      }
+      // validate the optional field `scenario`
+      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
+        ScenarioReference.validateJsonElement(jsonObj.get("scenario"));
       }
   }
 

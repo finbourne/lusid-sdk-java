@@ -144,6 +144,8 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
 
    /**
    * Get amount
+   * minimum: -1000000
+   * maximum: 1000000
    * @return amount
   **/
   @jakarta.annotation.Nonnull
