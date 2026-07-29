@@ -86,6 +86,10 @@ public class SubscriptionDefinition {
   @SerializedName(SERIALIZED_NAME_BY_TAX_LOTS)
   private Boolean byTaxLots;
 
+  public static final String SERIALIZED_NAME_SUBSCRIPTION_TYPE = "subscriptionType";
+  @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_TYPE)
+  private String subscriptionType;
+
   public static final String SERIALIZED_NAME_START_EFFECTIVE_AT = "startEffectiveAt";
   @SerializedName(SERIALIZED_NAME_START_EFFECTIVE_AT)
   private OffsetDateTime startEffectiveAt;
@@ -277,6 +281,27 @@ public class SubscriptionDefinition {
   }
 
 
+  public SubscriptionDefinition subscriptionType(String subscriptionType) {
+    
+    this.subscriptionType = subscriptionType;
+    return this;
+  }
+
+   /**
+   * The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.
+   * @return subscriptionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getSubscriptionType() {
+    return subscriptionType;
+  }
+
+
+  public void setSubscriptionType(String subscriptionType) {
+    this.subscriptionType = subscriptionType;
+  }
+
+
   public SubscriptionDefinition startEffectiveAt(OffsetDateTime startEffectiveAt) {
     
     this.startEffectiveAt = startEffectiveAt;
@@ -358,6 +383,7 @@ public class SubscriptionDefinition {
         Objects.equals(this.timelineId, subscriptionDefinition.timelineId) &&
         Objects.equals(this.addressKeys, subscriptionDefinition.addressKeys) &&
         Objects.equals(this.byTaxLots, subscriptionDefinition.byTaxLots) &&
+        Objects.equals(this.subscriptionType, subscriptionDefinition.subscriptionType) &&
         Objects.equals(this.startEffectiveAt, subscriptionDefinition.startEffectiveAt) &&
         Objects.equals(this.endEffectiveAt, subscriptionDefinition.endEffectiveAt) &&
         Objects.equals(this.startAsAt, subscriptionDefinition.startAsAt);
@@ -369,7 +395,7 @@ public class SubscriptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, addressKeys, byTaxLots, startEffectiveAt, endEffectiveAt, startAsAt);
+    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, startAsAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -391,6 +417,7 @@ public class SubscriptionDefinition {
     sb.append("    timelineId: ").append(toIndentedString(timelineId)).append("\n");
     sb.append("    addressKeys: ").append(toIndentedString(addressKeys)).append("\n");
     sb.append("    byTaxLots: ").append(toIndentedString(byTaxLots)).append("\n");
+    sb.append("    subscriptionType: ").append(toIndentedString(subscriptionType)).append("\n");
     sb.append("    startEffectiveAt: ").append(toIndentedString(startEffectiveAt)).append("\n");
     sb.append("    endEffectiveAt: ").append(toIndentedString(endEffectiveAt)).append("\n");
     sb.append("    startAsAt: ").append(toIndentedString(startAsAt)).append("\n");
@@ -424,6 +451,7 @@ public class SubscriptionDefinition {
     openapiFields.add("timelineId");
     openapiFields.add("addressKeys");
     openapiFields.add("byTaxLots");
+    openapiFields.add("subscriptionType");
     openapiFields.add("startEffectiveAt");
     openapiFields.add("endEffectiveAt");
     openapiFields.add("startAsAt");
@@ -476,6 +504,9 @@ public class SubscriptionDefinition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("addressKeys") != null && !jsonObj.get("addressKeys").isJsonNull() && !jsonObj.get("addressKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `addressKeys` to be an array in the JSON string but got `%s`", jsonObj.get("addressKeys").toString()));
+      }
+      if ((jsonObj.get("subscriptionType") != null && !jsonObj.get("subscriptionType").isJsonNull()) && !jsonObj.get("subscriptionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subscriptionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscriptionType").toString()));
       }
   }
 

@@ -201,7 +201,15 @@ public enum InstrumentEventType {
   
   PARIPASSUEVENT("PariPassuEvent"),
   
-  CHANGEEVENT("ChangeEvent");
+  CHANGEEVENT("ChangeEvent"),
+  
+  PIKBONDCOUPONEVENT("PikBondCouponEvent"),
+  
+  PIKBONDCASHCOUPONEVENT("PikBondCashCouponEvent"),
+  
+  PIKBONDINTERESTCAPITALISATIONEVENT("PikBondInterestCapitalisationEvent"),
+  
+  PIKBONDPRINCIPALEVENT("PikBondPrincipalEvent");
 
   private String value;
 

@@ -103,6 +103,10 @@ InstrumentEventType method = InstrumentEventType.SECURITYWRITEOFFEVENT;
 InstrumentEventType method = InstrumentEventType.WARRANTSEXERCISEEVENT;
 InstrumentEventType method = InstrumentEventType.PARIPASSUEVENT;
 InstrumentEventType method = InstrumentEventType.CHANGEEVENT;
+InstrumentEventType method = InstrumentEventType.PIKBONDCOUPONEVENT;
+InstrumentEventType method = InstrumentEventType.PIKBONDCASHCOUPONEVENT;
+InstrumentEventType method = InstrumentEventType.PIKBONDINTERESTCAPITALISATIONEVENT;
+InstrumentEventType method = InstrumentEventType.PIKBONDPRINCIPALEVENT;
 ```
 
 
