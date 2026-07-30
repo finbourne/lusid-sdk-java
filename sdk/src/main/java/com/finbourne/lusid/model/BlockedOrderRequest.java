@@ -64,6 +64,10 @@ public class BlockedOrderRequest {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_ORDER_BOOK_ID = "orderBookId";
   @SerializedName(SERIALIZED_NAME_ORDER_BOOK_ID)
   private ResourceId orderBookId;
@@ -142,7 +146,7 @@ public class BlockedOrderRequest {
    * The quantity of the given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -150,6 +154,27 @@ public class BlockedOrderRequest {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public BlockedOrderRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -354,6 +379,7 @@ public class BlockedOrderRequest {
     BlockedOrderRequest blockedOrderRequest = (BlockedOrderRequest) o;
     return Objects.equals(this.properties, blockedOrderRequest.properties) &&
         (this.quantity.compareTo(blockedOrderRequest.getQuantity()) == 0) &&
+        Objects.equals(this.amount, blockedOrderRequest.amount) &&
         Objects.equals(this.orderBookId, blockedOrderRequest.orderBookId) &&
         Objects.equals(this.portfolioId, blockedOrderRequest.portfolioId) &&
         Objects.equals(this.id, blockedOrderRequest.id) &&
@@ -371,7 +397,7 @@ public class BlockedOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, quantity, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package, side);
+    return Objects.hash(properties, quantity, amount, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package, side);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +413,7 @@ public class BlockedOrderRequest {
     sb.append("class BlockedOrderRequest {\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    orderBookId: ").append(toIndentedString(orderBookId)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -420,6 +447,7 @@ public class BlockedOrderRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("properties");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("orderBookId");
     openapiFields.add("portfolioId");
     openapiFields.add("id");
@@ -432,7 +460,6 @@ public class BlockedOrderRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("id");
   }
 
@@ -456,6 +483,10 @@ public class BlockedOrderRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
       // validate the optional field `orderBookId`
       if (jsonObj.get("orderBookId") != null && !jsonObj.get("orderBookId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("orderBookId"));

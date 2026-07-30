@@ -8,7 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**cancelOrders**](OrderManagementApi.md#cancelOrders) | **POST** /api/ordermanagement/cancelorders | [EARLY ACCESS] CancelOrders: Cancel existing orders |
 | [**cancelOrdersAndMoveRemaining**](OrderManagementApi.md#cancelOrdersAndMoveRemaining) | **POST** /api/ordermanagement/cancelordersandmoveremaining | [EARLY ACCESS] CancelOrdersAndMoveRemaining: Cancel existing orders and move any unplaced quantities to new orders in new blocks |
 | [**cancelPlacements**](OrderManagementApi.md#cancelPlacements) | **POST** /api/ordermanagement/$cancelplacements | [EARLY ACCESS] CancelPlacements: Cancel existing placements |
-| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | CreateOrders: Upsert a Block and associated orders |
+| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | CreateOrders: Create Orders and create/update Block |
 | [**getOrderHistory**](OrderManagementApi.md#getOrderHistory) | **GET** /api/ordermanagement/order/{scope}/{code}/$history | GetOrderHistory: Get the history of an order and related entity changes |
 | [**moveOrders**](OrderManagementApi.md#moveOrders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
@@ -392,7 +392,7 @@ public class OrderManagementApiExample {
 
 > ResourceListOfBlockAndOrders createOrders(blockAndOrdersCreateRequest)
 
-CreateOrders: Upsert a Block and associated orders
+CreateOrders: Create Orders and create/update Block
 
 Create orders, and blocks if they don&#39;t already exist.  This will fail if the block exists and already references orders with differing blocking fields.
 

@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this block. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument ordered. | [default to String]
-**quantity** | **java.math.BigDecimal** | The total quantity of given instrument ordered. | [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | The total quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **side** | **String** | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc) | [default to String]
 **type** | **String** | The block order&#39;s type (examples: Limit, Market, ...) | [optional] [default to String]
 **timeInForce** | **String** | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) | [optional] [default to String]
@@ -33,7 +34,8 @@ List<ResourceId> OrderIds = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 String LusidInstrumentId = "example LusidInstrumentId";
-java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 String Side = "example Side";
 @jakarta.annotation.Nullable String Type = "example Type";
 @jakarta.annotation.Nullable String TimeInForce = "example TimeInForce";
@@ -53,6 +55,7 @@ Block blockInstance = new Block()
     .InstrumentIdentifiers(InstrumentIdentifiers)
     .LusidInstrumentId(LusidInstrumentId)
     .Quantity(Quantity)
+    .Amount(Amount)
     .Side(Side)
     .Type(Type)
     .TimeInForce(TimeInForce)

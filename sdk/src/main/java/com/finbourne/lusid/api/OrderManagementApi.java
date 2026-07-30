@@ -1284,7 +1284,7 @@ public class OrderManagementApi {
     }
 
     /**
-     * CreateOrders: Upsert a Block and associated orders
+     * CreateOrders: Create Orders and create/update Block
      * Create orders, and blocks if they don&#39;t already exist.  This will fail if the block exists and already references orders with differing blocking fields.
      * @param blockAndOrdersCreateRequest The collection of block and orders requests. (required)
      * @return APIcreateOrdersRequest

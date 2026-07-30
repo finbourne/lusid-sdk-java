@@ -78,6 +78,10 @@ public class BlockRequest {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_SIDE = "side";
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
@@ -227,7 +231,7 @@ public class BlockRequest {
    * The total quantity of given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -235,6 +239,27 @@ public class BlockRequest {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public BlockRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -400,6 +425,7 @@ public class BlockRequest {
         Objects.equals(this.properties, blockRequest.properties) &&
         Objects.equals(this.instrumentIdentifiers, blockRequest.instrumentIdentifiers) &&
         (this.quantity.compareTo(blockRequest.getQuantity()) == 0) &&
+        Objects.equals(this.amount, blockRequest.amount) &&
         Objects.equals(this.side, blockRequest.side) &&
         Objects.equals(this.type, blockRequest.type) &&
         Objects.equals(this.timeInForce, blockRequest.timeInForce) &&
@@ -415,7 +441,7 @@ public class BlockRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, quantity, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept);
+    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, quantity, amount, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -434,6 +460,7 @@ public class BlockRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
@@ -468,6 +495,7 @@ public class BlockRequest {
     openapiFields.add("properties");
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("side");
     openapiFields.add("type");
     openapiFields.add("timeInForce");
@@ -480,7 +508,6 @@ public class BlockRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("createdDate");
   }
@@ -520,6 +547,10 @@ public class BlockRequest {
             ResourceId.validateJsonElement(jsonArrayorderIds.get(i));
           };
         }
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
       }
       if (!jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));

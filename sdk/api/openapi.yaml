@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9561
+  version: 0.11.9570
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1355,6 +1355,9 @@ tags:
 - description: Methods for the storage and retrieval of Quotes. Read more about Quotes
     in the LUSID Knowledge Base here https://support.lusid.com/what-is-a-quote.
   name: Quotes
+- description: Endpoints for retrieving and acting on advanced reconciliation result
+    sets.
+  name: Rec Result Sets
 - description: Endpoints for performing reconciliations
   name: Reconciliations
 - description: "A reference portfolio stores a weighted set of instruments rather\
@@ -71277,6 +71280,7 @@ paths:
                   ordered:
                     quantity: 1500
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -71389,6 +71393,7 @@ paths:
                   ordered:
                     quantity: 1500
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -71501,6 +71506,7 @@ paths:
                   ordered:
                     quantity: 1500
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -74832,7 +74838,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "CreateOrders: Upsert a Block and associated orders"
+      summary: "CreateOrders: Create Orders and create/update Block"
       tags:
       - Order Management
       x-fbn-apistatus: Stable
@@ -107866,6 +107872,377 @@ paths:
       tags:
       - Group Reconciliations
       x-fbn-apistatus: Experimental
+      x-accepts: application/json
+  /api/recs/resultsets:
+    get:
+      description: List rec result sets.
+      operationId: ListRecResultSets
+      parameters:
+      - description: The asAt datetime at which to list result sets. Defaults to latest
+          if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "When true, each item's previousRuns array is populated with\
+          \ prior run snapshots. Defaults to false."
+        explode: true
+        in: query
+        name: includePreviousRuns
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
+      - description: The pagination token to use to continue listing result sets from
+          a previous call. If a pagination token is provided the filter and asAt fields
+          must not have changed since the original request.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of returned results to this\
+          \ many. Defaults to 100 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: A list of field names suffixed by " ASC" or " DESC".
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultSet'
+          description: The rec result sets.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ListRecResultSets: ListRecResultSets"
+      tags:
+      - Rec Result Sets
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+  /api/recs/resultsets/{entityUniqueId}:
+    get:
+      description: Retrieve a single rec result set by its entity unique id.
+      operationId: GetRecResultSet
+      parameters:
+      - description: The entity unique id of the rec result set (its version.entityUniqueId).
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the result set. Defaults
+          to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "When true, the previousRuns array is populated with prior run\
+          \ snapshots. Defaults to false."
+        explode: true
+        in: query
+        name: includePreviousRuns
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+          description: The requested rec result set.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRecResultSet: GetRecResultSet"
+      tags:
+      - Rec Result Sets
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+  /api/recs/resultsets/{entityUniqueId}/$decide:
+    post:
+      description: Add an approver decision (approve or request revisions) to a rec
+        result set.
+      operationId: AddRecResultSetApprovalDecision
+      parameters:
+      - description: The entity unique id of the rec result set (its version.entityUniqueId).
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              approvalCode: Desk
+              decision: RequestRevisions
+              reason: Please re-check the flagged holding breaks.
+              requestedResultRevisions:
+              - recResultId: 00000000-0000-0000-0000-000000000001
+                commentText: This break needs a second look.
+            schema:
+              $ref: '#/components/schemas/RecResultSetApprovalDecisionRequest'
+          application/json:
+            example:
+              approvalCode: Desk
+              decision: RequestRevisions
+              reason: Please re-check the flagged holding breaks.
+              requestedResultRevisions:
+              - recResultId: 00000000-0000-0000-0000-000000000001
+                commentText: This break needs a second look.
+            schema:
+              $ref: '#/components/schemas/RecResultSetApprovalDecisionRequest'
+          text/json:
+            example:
+              approvalCode: Desk
+              decision: RequestRevisions
+              reason: Please re-check the flagged holding breaks.
+              requestedResultRevisions:
+              - recResultId: 00000000-0000-0000-0000-000000000001
+                commentText: This break needs a second look.
+            schema:
+              $ref: '#/components/schemas/RecResultSetApprovalDecisionRequest'
+          application/*+json:
+            example:
+              approvalCode: Desk
+              decision: RequestRevisions
+              reason: Please re-check the flagged holding breaks.
+              requestedResultRevisions:
+              - recResultId: 00000000-0000-0000-0000-000000000001
+                commentText: This break needs a second look.
+            schema:
+              $ref: '#/components/schemas/RecResultSetApprovalDecisionRequest'
+        description: The approval decision request.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+          description: The updated rec result set.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision"
+      tags:
+      - Rec Result Sets
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/resultsets/{entityUniqueId}/$submit:
+    post:
+      description: "Submit a rec result set review for approval, or resubmit after\
+        \ addressing requested revisions."
+      operationId: SubmitRecResultSetReview
+      parameters:
+      - description: The entity unique id of the rec result set (its version.entityUniqueId).
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              commentText: Reviewed all breaks; ready for approval.
+            schema:
+              $ref: '#/components/schemas/SubmitRecResultSetReviewRequest'
+          application/json:
+            example:
+              commentText: Reviewed all breaks; ready for approval.
+            schema:
+              $ref: '#/components/schemas/SubmitRecResultSetReviewRequest'
+          text/json:
+            example:
+              commentText: Reviewed all breaks; ready for approval.
+            schema:
+              $ref: '#/components/schemas/SubmitRecResultSetReviewRequest'
+          application/*+json:
+            example:
+              commentText: Reviewed all breaks; ready for approval.
+            schema:
+              $ref: '#/components/schemas/SubmitRecResultSetReviewRequest'
+        description: The submission request.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecResultSet'
+          description: The updated rec result set.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review\
+        \ for approval, or resubmit after addressing requested revisions."
+      tags:
+      - Rec Result Sets
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/referencelists:
     get:
@@ -162075,6 +162452,9 @@ components:
       description: "A block of orders for the same instrument, intended to record\
         \ for example a trader's aggregation\r\nof outstanding orders at a given time."
       example:
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         side: side
         quantity: 0.8008281904610115
         limitPrice:
@@ -162180,7 +162560,10 @@ components:
         quantity:
           description: The total quantity of given instrument ordered.
           format: double
+          nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         side:
           description: "The client's representation of the block's side (buy, sell,\
             \ short, etc)"
@@ -162223,7 +162606,6 @@ components:
       - isSwept
       - lusidInstrumentId
       - orderIds
-      - quantity
       - side
       type: object
     BlockAndOrderIdRequest:
@@ -162248,6 +162630,9 @@ components:
       additionalProperties: false
       example:
         block:
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -162561,6 +162946,9 @@ components:
               key: key
           orders:
           - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -162599,114 +162987,9 @@ components:
                     - values
                 key: key
           - date: 2000-01-23T04:56:07.000+00:00
-            side: side
-            quantity: 0.8008281904610115
-            portfolioId:
-              code: code
-              scope: scope
-            package:
-              code: code
-              scope: scope
-            orderBookId:
-              code: code
-              scope: scope
-            price:
+            amount:
               amount: 0.8008281904610115
               currency: currency
-            orderInstruction:
-              code: code
-              scope: scope
-            id:
-              code: code
-              scope: scope
-            state: state
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                key: key
-          instrumentIdentifiers:
-            key: instrumentIdentifiers
-          type: type
-          timeInForce: timeInForce
-        - blockId:
-            code: code
-            scope: scope
-          date: 2000-01-23T04:56:07.000+00:00
-          side: side
-          stopPrice:
-            amount: 0.8008281904610115
-            currency: currency
-          limitPrice:
-            amount: 0.8008281904610115
-            currency: currency
-          blockProperties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              key: key
-          orders:
-          - date: 2000-01-23T04:56:07.000+00:00
-            side: side
-            quantity: 0.8008281904610115
-            portfolioId:
-              code: code
-              scope: scope
-            package:
-              code: code
-              scope: scope
-            orderBookId:
-              code: code
-              scope: scope
-            price:
-              amount: 0.8008281904610115
-              currency: currency
-            orderInstruction:
-              code: code
-              scope: scope
-            id:
-              code: code
-              scope: scope
-            state: state
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                key: key
-          - date: 2000-01-23T04:56:07.000+00:00
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -162777,6 +163060,9 @@ components:
               key: key
           orders:
           - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -162815,114 +163101,9 @@ components:
                     - values
                 key: key
           - date: 2000-01-23T04:56:07.000+00:00
-            side: side
-            quantity: 0.8008281904610115
-            portfolioId:
-              code: code
-              scope: scope
-            package:
-              code: code
-              scope: scope
-            orderBookId:
-              code: code
-              scope: scope
-            price:
+            amount:
               amount: 0.8008281904610115
               currency: currency
-            orderInstruction:
-              code: code
-              scope: scope
-            id:
-              code: code
-              scope: scope
-            state: state
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                key: key
-          instrumentIdentifiers:
-            key: instrumentIdentifiers
-          type: type
-          timeInForce: timeInForce
-        - blockId:
-            code: code
-            scope: scope
-          date: 2000-01-23T04:56:07.000+00:00
-          side: side
-          stopPrice:
-            amount: 0.8008281904610115
-            currency: currency
-          limitPrice:
-            amount: 0.8008281904610115
-            currency: currency
-          blockProperties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              key: key
-          orders:
-          - date: 2000-01-23T04:56:07.000+00:00
-            side: side
-            quantity: 0.8008281904610115
-            portfolioId:
-              code: code
-              scope: scope
-            package:
-              code: code
-              scope: scope
-            orderBookId:
-              code: code
-              scope: scope
-            price:
-              amount: 0.8008281904610115
-              currency: currency
-            orderInstruction:
-              code: code
-              scope: scope
-            id:
-              code: code
-              scope: scope
-            state: state
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                key: key
-          - date: 2000-01-23T04:56:07.000+00:00
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -162993,6 +163174,9 @@ components:
               key: key
           orders:
           - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -163031,6 +163215,237 @@ components:
                     - values
                 key: key
           - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
+            side: side
+            quantity: 0.8008281904610115
+            portfolioId:
+              code: code
+              scope: scope
+            package:
+              code: code
+              scope: scope
+            orderBookId:
+              code: code
+              scope: scope
+            price:
+              amount: 0.8008281904610115
+              currency: currency
+            orderInstruction:
+              code: code
+              scope: scope
+            id:
+              code: code
+              scope: scope
+            state: state
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          type: type
+          timeInForce: timeInForce
+        - blockId:
+            code: code
+            scope: scope
+          date: 2000-01-23T04:56:07.000+00:00
+          side: side
+          stopPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          limitPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          blockProperties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          orders:
+          - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
+            side: side
+            quantity: 0.8008281904610115
+            portfolioId:
+              code: code
+              scope: scope
+            package:
+              code: code
+              scope: scope
+            orderBookId:
+              code: code
+              scope: scope
+            price:
+              amount: 0.8008281904610115
+              currency: currency
+            orderInstruction:
+              code: code
+              scope: scope
+            id:
+              code: code
+              scope: scope
+            state: state
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
+            side: side
+            quantity: 0.8008281904610115
+            portfolioId:
+              code: code
+              scope: scope
+            package:
+              code: code
+              scope: scope
+            orderBookId:
+              code: code
+              scope: scope
+            price:
+              amount: 0.8008281904610115
+              currency: currency
+            orderInstruction:
+              code: code
+              scope: scope
+            id:
+              code: code
+              scope: scope
+            state: state
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          type: type
+          timeInForce: timeInForce
+        - blockId:
+            code: code
+            scope: scope
+          date: 2000-01-23T04:56:07.000+00:00
+          side: side
+          stopPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          limitPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          blockProperties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          orders:
+          - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
+            side: side
+            quantity: 0.8008281904610115
+            portfolioId:
+              code: code
+              scope: scope
+            package:
+              code: code
+              scope: scope
+            orderBookId:
+              code: code
+              scope: scope
+            price:
+              amount: 0.8008281904610115
+              currency: currency
+            orderInstruction:
+              code: code
+              scope: scope
+            id:
+              code: code
+              scope: scope
+            state: state
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          - date: 2000-01-23T04:56:07.000+00:00
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             portfolioId:
@@ -163115,6 +163530,9 @@ components:
             key: key
         orders:
         - date: 2000-01-23T04:56:07.000+00:00
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           portfolioId:
@@ -163153,6 +163571,9 @@ components:
                   - values
               key: key
         - date: 2000-01-23T04:56:07.000+00:00
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           portfolioId:
@@ -163247,6 +163668,9 @@ components:
       additionalProperties: false
       example:
         date: 2000-01-23T04:56:07.000+00:00
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         side: side
         quantity: 0.8008281904610115
         portfolioId:
@@ -163294,7 +163718,10 @@ components:
         quantity:
           description: The quantity of the given instrument ordered.
           format: double
+          nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         orderBookId:
           $ref: '#/components/schemas/ResourceId'
         portfolioId:
@@ -163322,23 +163749,27 @@ components:
           type: string
       required:
       - id
-      - quantity
       type: object
     BlockRequest:
       additionalProperties: false
       description: A request to create or update a Block.
       example:
-        side: side
-        stopPrice:
+        amount:
           amount: 0.8008281904610115
           currency: currency
+        side: side
         quantity: 0.8008281904610115
-        createdDate: 2000-01-23T04:56:07.000+00:00
         limitPrice:
           amount: 0.8008281904610115
           currency: currency
         instrumentIdentifiers:
           key: instrumentIdentifiers
+        type: type
+        isSwept: true
+        stopPrice:
+          amount: 0.8008281904610115
+          currency: currency
+        createdDate: 2000-01-23T04:56:07.000+00:00
         id:
           code: code
           scope: scope
@@ -163347,7 +163778,6 @@ components:
           scope: scope
         - code: code
           scope: scope
-        type: type
         timeInForce: timeInForce
         properties:
           key:
@@ -163365,7 +163795,6 @@ components:
                 - values
                 - values
             key: key
-        isSwept: true
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -163390,7 +163819,10 @@ components:
         quantity:
           description: The total quantity of given instrument ordered.
           format: double
+          nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         side:
           description: "The client's representation of the block's side (buy, sell,\
             \ short, etc)"
@@ -163421,7 +163853,6 @@ components:
       - createdDate
       - id
       - instrumentIdentifiers
-      - quantity
       - side
       type: object
     BlockSetRequest:
@@ -163429,17 +163860,22 @@ components:
       description: A request to create or update multiple Blocks.
       example:
         requests:
-        - side: side
-          stopPrice:
+        - amount:
             amount: 0.8008281904610115
             currency: currency
+          side: side
           quantity: 0.8008281904610115
-          createdDate: 2000-01-23T04:56:07.000+00:00
           limitPrice:
             amount: 0.8008281904610115
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          type: type
+          isSwept: true
+          stopPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          createdDate: 2000-01-23T04:56:07.000+00:00
           id:
             code: code
             scope: scope
@@ -163448,7 +163884,6 @@ components:
             scope: scope
           - code: code
             scope: scope
-          type: type
           timeInForce: timeInForce
           properties:
             key:
@@ -163466,18 +163901,22 @@ components:
                   - values
                   - values
               key: key
-          isSwept: true
-        - side: side
-          stopPrice:
+        - amount:
             amount: 0.8008281904610115
             currency: currency
+          side: side
           quantity: 0.8008281904610115
-          createdDate: 2000-01-23T04:56:07.000+00:00
           limitPrice:
             amount: 0.8008281904610115
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          type: type
+          isSwept: true
+          stopPrice:
+            amount: 0.8008281904610115
+            currency: currency
+          createdDate: 2000-01-23T04:56:07.000+00:00
           id:
             code: code
             scope: scope
@@ -163486,7 +163925,6 @@ components:
             scope: scope
           - code: code
             scope: scope
-          type: type
           timeInForce: timeInForce
           properties:
             key:
@@ -163504,7 +163942,6 @@ components:
                   - values
                   - values
               key: key
-          isSwept: true
       properties:
         requests:
           description: A collection of BlockRequests.
@@ -164745,6 +165182,9 @@ components:
       example:
         fxOrders:
         - block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -165015,6 +165455,9 @@ components:
                 - validationFailures
                 status: status
         - block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -172203,6 +172646,17 @@ components:
             format: double
             nullable: true
             type: number
+          issueDate:
+            description: "The date the bond was issued to the market. This may be\
+              \ after the StartDate (dated date) from which interest accrues, for\
+              \ example for agency mortgage-backed securities. The payment schedule\
+              \ is unchanged, but no coupon entitlement (ex-dividend) date can fall\
+              \ before this date: a buyer settling on the issue date is entitled to\
+              \ the first coupon, and accrued interest includes completed-but-unpaid\
+              \ coupons until their entitlement passes."
+            format: date-time
+            nullable: true
+            type: string
           roundingConventions:
             description: "Rounding conventions for analytics, if any."
             items:
@@ -218921,6 +219375,9 @@ components:
       additionalProperties: false
       example:
         destinationBlock:
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -220759,6 +221216,9 @@ components:
         ordered:
           quantityByState:
             key: 6.027456183070403
+          amount: 1.4658129805029452
+          amountByState:
+            key: 5.962133916683182
           quantity: 0.8008281904610115
           details:
           - orderApprovalTaskId: orderApprovalTaskId
@@ -220823,8 +221283,8 @@ components:
               likelyResponsibleForStatus: true
         placed:
           quantityByState:
-            key: 5.962133916683182
-          quantity: 1.4658129805029452
+            key: 2.3021358869347655
+          quantity: 5.637376656633329
           details:
           - id:
               code: code
@@ -220833,13 +221293,16 @@ components:
               code: code
               scope: scope
         booked:
-          quantity: 9.301444243932576
+          quantity: 2.027123023002322
           details:
           - id: id
           - id: id
         derivedState: derivedState
         derivedApprovalState: derivedApprovalState
         block:
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -220919,7 +221382,7 @@ components:
               - validationFailures
               status: status
         executed:
-          quantity: 5.637376656633329
+          quantity: 7.061401241503109
           details:
           - id:
               code: code
@@ -220929,19 +221392,19 @@ components:
               scope: scope
         derivedComplianceState: derivedComplianceState
         allocated:
-          quantity: 2.3021358869347655
+          quantity: 9.301444243932576
           details:
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 7.061401241503109
+            quantity: 3.616076749251911
             id:
               code: code
               scope: scope
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 7.061401241503109
+            quantity: 3.616076749251911
             id:
               code: code
               scope: scope
@@ -220990,7 +221453,7 @@ components:
         allocatedOrderId:
           code: code
           scope: scope
-        quantity: 7.061401241503109
+        quantity: 3.616076749251911
         id:
           code: code
           scope: scope
@@ -221011,19 +221474,19 @@ components:
     OrderGraphBlockAllocationSynopsis:
       additionalProperties: false
       example:
-        quantity: 2.3021358869347655
+        quantity: 9.301444243932576
         details:
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 7.061401241503109
+          quantity: 3.616076749251911
           id:
             code: code
             scope: scope
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 7.061401241503109
+          quantity: 3.616076749251911
           id:
             code: code
             scope: scope
@@ -221056,7 +221519,7 @@ components:
     OrderGraphBlockExecutionSynopsis:
       additionalProperties: false
       example:
-        quantity: 5.637376656633329
+        quantity: 7.061401241503109
         details:
         - id:
             code: code
@@ -221152,6 +221615,9 @@ components:
       example:
         quantityByState:
           key: 6.027456183070403
+        amount: 1.4658129805029452
+        amountByState:
+          key: 5.962133916683182
         quantity: 0.8008281904610115
         details:
         - orderApprovalTaskId: orderApprovalTaskId
@@ -221218,12 +221684,25 @@ components:
         quantity:
           description: Total number of units ordered.
           format: double
+          nullable: true
           type: number
         quantityByState:
           additionalProperties:
             format: double
             type: number
           description: Total number of units placed.
+          nullable: true
+          type: object
+        amount:
+          description: "Total monetary value ordered, in the block currency."
+          format: double
+          nullable: true
+          type: number
+        amountByState:
+          additionalProperties:
+            format: double
+            type: number
+          description: "Total monetary value ordered, broken down by order state."
           nullable: true
           type: object
         details:
@@ -221233,7 +221712,6 @@ components:
           type: array
       required:
       - details
-      - quantity
       type: object
     OrderGraphBlockPlacementDetail:
       additionalProperties: false
@@ -221251,8 +221729,8 @@ components:
       additionalProperties: false
       example:
         quantityByState:
-          key: 5.962133916683182
-        quantity: 1.4658129805029452
+          key: 2.3021358869347655
+        quantity: 5.637376656633329
         details:
         - id:
             code: code
@@ -221296,7 +221774,7 @@ components:
     OrderGraphBlockTransactionSynopsis:
       additionalProperties: false
       example:
-        quantity: 9.301444243932576
+        quantity: 2.027123023002322
         details:
         - id: id
         - id: id
@@ -224637,7 +225115,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - side: side
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          side: side
           quantity: 0.8008281904610115
           limitPrice:
             amount: 0.8008281904610115
@@ -224715,7 +225196,10 @@ components:
               - validationFailures
               - validationFailures
               status: status
-        - side: side
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          side: side
           quantity: 0.8008281904610115
           limitPrice:
             amount: 0.8008281904610115
@@ -233618,6 +234102,9 @@ components:
         - ordered:
             quantityByState:
               key: 6.027456183070403
+            amount: 1.4658129805029452
+            amountByState:
+              key: 5.962133916683182
             quantity: 0.8008281904610115
             details:
             - orderApprovalTaskId: orderApprovalTaskId
@@ -233682,8 +234169,8 @@ components:
                 likelyResponsibleForStatus: true
           placed:
             quantityByState:
-              key: 5.962133916683182
-            quantity: 1.4658129805029452
+              key: 2.3021358869347655
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -233692,13 +234179,16 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 9.301444243932576
+            quantity: 2.027123023002322
             details:
             - id: id
             - id: id
           derivedState: derivedState
           derivedApprovalState: derivedApprovalState
           block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -233778,7 +234268,7 @@ components:
                 - validationFailures
                 status: status
           executed:
-            quantity: 5.637376656633329
+            quantity: 7.061401241503109
             details:
             - id:
                 code: code
@@ -233788,25 +234278,28 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 2.3021358869347655
+            quantity: 9.301444243932576
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 7.061401241503109
+              quantity: 3.616076749251911
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 7.061401241503109
+              quantity: 3.616076749251911
               id:
                 code: code
                 scope: scope
         - ordered:
             quantityByState:
               key: 6.027456183070403
+            amount: 1.4658129805029452
+            amountByState:
+              key: 5.962133916683182
             quantity: 0.8008281904610115
             details:
             - orderApprovalTaskId: orderApprovalTaskId
@@ -233871,8 +234364,8 @@ components:
                 likelyResponsibleForStatus: true
           placed:
             quantityByState:
-              key: 5.962133916683182
-            quantity: 1.4658129805029452
+              key: 2.3021358869347655
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -233881,13 +234374,16 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 9.301444243932576
+            quantity: 2.027123023002322
             details:
             - id: id
             - id: id
           derivedState: derivedState
           derivedApprovalState: derivedApprovalState
           block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -233967,7 +234463,7 @@ components:
                 - validationFailures
                 status: status
           executed:
-            quantity: 5.637376656633329
+            quantity: 7.061401241503109
             details:
             - id:
                 code: code
@@ -233977,19 +234473,19 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 2.3021358869347655
+            quantity: 9.301444243932576
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 7.061401241503109
+              quantity: 3.616076749251911
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 7.061401241503109
+              quantity: 3.616076749251911
               id:
                 code: code
                 scope: scope
@@ -236715,6 +237211,583 @@ components:
         values:
           items:
             $ref: '#/components/schemas/Reconciliation'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfRecResultSet:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - approvalStatus: approvalStatus
+          execution:
+            errorDetail: errorDetail
+            outcome: outcome
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          requiredApprovals:
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          resultCounts:
+            closedExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 3
+              byClosureType:
+                forceMatched: 7
+                accepted: 4
+                cleared: 2
+            openExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 6
+              byResultType:
+                partialMatch: 5
+                partialCross: 5
+                break: 1
+            matches:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 1
+              byResultType:
+                match: 1
+                cross: 1
+          review:
+            countReviewed: 6
+            countRequired: 7
+            countNotRequired: 1
+            completionRatio: 4.965218492984954
+          submissions:
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          previousRuns:
+          - approvalStatus: approvalStatus
+            execution:
+              errorDetail: errorDetail
+              outcome: outcome
+            supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            requiredApprovals:
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            resultCounts:
+              closedExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 3
+                byClosureType:
+                  forceMatched: 7
+                  accepted: 4
+                  cleared: 2
+              openExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 6
+                byResultType:
+                  partialMatch: 5
+                  partialCross: 5
+                  break: 1
+              matches:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 1
+                byResultType:
+                  match: 1
+                  cross: 1
+            review:
+              countReviewed: 6
+              countRequired: 7
+              countNotRequired: 1
+              completionRatio: 4.965218492984954
+            submissions:
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            runNumber: 5
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            decisions:
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          - approvalStatus: approvalStatus
+            execution:
+              errorDetail: errorDetail
+              outcome: outcome
+            supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            requiredApprovals:
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            resultCounts:
+              closedExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 3
+                byClosureType:
+                  forceMatched: 7
+                  accepted: 4
+                  cleared: 2
+              openExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 6
+                byResultType:
+                  partialMatch: 5
+                  partialCross: 5
+                  break: 1
+              matches:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 1
+                byResultType:
+                  match: 1
+                  cross: 1
+            review:
+              countReviewed: 6
+              countRequired: 7
+              countNotRequired: 1
+              completionRatio: 4.965218492984954
+            submissions:
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            runNumber: 5
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            decisions:
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          runNumber: 0
+          decisions:
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          recInstance:
+            recDefinitionId:
+              code: code
+              scope: scope
+            asAtLocked: 2000-01-23T04:56:07.000+00:00
+            asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+            workflowTaskInstantiated:
+              id: id
+              state: state
+              taskDefinitionId:
+                code: code
+                scope: scope
+            id:
+              instanceIdType: instanceIdType
+              instanceIdValue: instanceIdValue
+            status: status
+        - approvalStatus: approvalStatus
+          execution:
+            errorDetail: errorDetail
+            outcome: outcome
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          requiredApprovals:
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          resultCounts:
+            closedExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 3
+              byClosureType:
+                forceMatched: 7
+                accepted: 4
+                cleared: 2
+            openExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 6
+              byResultType:
+                partialMatch: 5
+                partialCross: 5
+                break: 1
+            matches:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 1
+              byResultType:
+                match: 1
+                cross: 1
+          review:
+            countReviewed: 6
+            countRequired: 7
+            countNotRequired: 1
+            completionRatio: 4.965218492984954
+          submissions:
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          previousRuns:
+          - approvalStatus: approvalStatus
+            execution:
+              errorDetail: errorDetail
+              outcome: outcome
+            supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            requiredApprovals:
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            resultCounts:
+              closedExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 3
+                byClosureType:
+                  forceMatched: 7
+                  accepted: 4
+                  cleared: 2
+              openExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 6
+                byResultType:
+                  partialMatch: 5
+                  partialCross: 5
+                  break: 1
+              matches:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 1
+                byResultType:
+                  match: 1
+                  cross: 1
+            review:
+              countReviewed: 6
+              countRequired: 7
+              countNotRequired: 1
+              completionRatio: 4.965218492984954
+            submissions:
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            runNumber: 5
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            decisions:
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          - approvalStatus: approvalStatus
+            execution:
+              errorDetail: errorDetail
+              outcome: outcome
+            supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            requiredApprovals:
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            - approvalCode: approvalCode
+              currentUserCanDecide: true
+              description: description
+            resultCounts:
+              closedExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 3
+                byClosureType:
+                  forceMatched: 7
+                  accepted: 4
+                  cleared: 2
+              openExceptions:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 6
+                byResultType:
+                  partialMatch: 5
+                  partialCross: 5
+                  break: 1
+              matches:
+                byReviewStatus:
+                  notRequired: 7
+                  reviewed: 9
+                  required: 2
+                total: 1
+                byResultType:
+                  match: 1
+                  cross: 1
+            review:
+              countReviewed: 6
+              countRequired: 7
+              countNotRequired: 1
+              completionRatio: 4.965218492984954
+            submissions:
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+              commentText: commentText
+            runNumber: 5
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            decisions:
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            - reason: reason
+              approvalCode: approvalCode
+              decision: decision
+              asAtDecided: 2000-01-23T04:56:07.000+00:00
+              asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+              userId: userId
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          runNumber: 0
+          decisions:
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          recInstance:
+            recDefinitionId:
+              code: code
+              scope: scope
+            asAtLocked: 2000-01-23T04:56:07.000+00:00
+            asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+            workflowTaskInstantiated:
+              id: id
+              state: state
+              taskDefinitionId:
+                code: code
+                scope: scope
+            id:
+              instanceIdType: instanceIdType
+              instanceIdValue: instanceIdValue
+            status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/RecResultSet'
           type: array
         href:
           format: uri
@@ -251025,6 +252098,250 @@ components:
       - realisedTradeCcy
       - units
       type: object
+    RecApprovalDecision:
+      additionalProperties: false
+      description: An entry in the append-only log of approver decisions.
+      example:
+        reason: reason
+        approvalCode: approvalCode
+        decision: decision
+        asAtDecided: 2000-01-23T04:56:07.000+00:00
+        asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+        userId: userId
+      properties:
+        approvalCode:
+          description: The approval slot this decision satisfies. Must match a required
+            approval code.
+          minLength: 1
+          type: string
+        decision:
+          description: "The decision made. Available values: Approve, RequestRevisions."
+          minLength: 1
+          type: string
+        reason:
+          description: Rationale for the decision.
+          nullable: true
+          type: string
+        userId:
+          description: The approver who made the decision.
+          minLength: 1
+          type: string
+        asAtDecided:
+          description: The asAt datetime at which the decision was made.
+          format: date-time
+          type: string
+        asAtSuperseded:
+          description: The asAt datetime at which this entry was superseded. Null
+            when it is the current standing entry.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - approvalCode
+      - asAtDecided
+      - decision
+      - userId
+      type: object
+    RecClosedExceptionCounts:
+      additionalProperties: false
+      description: Counts for results that are exceptions with a Closed status.
+      example:
+        byReviewStatus:
+          notRequired: 7
+          reviewed: 9
+          required: 2
+        total: 3
+        byClosureType:
+          forceMatched: 7
+          accepted: 4
+          cleared: 2
+      properties:
+        total:
+          description: The total number of results in this category.
+          format: int32
+          type: integer
+        byClosureType:
+          $ref: '#/components/schemas/RecExceptionCountByClosureType'
+        byReviewStatus:
+          $ref: '#/components/schemas/RecResultCountByReviewStatus'
+      required:
+      - byClosureType
+      - byReviewStatus
+      - total
+      type: object
+    RecDatesReconciled:
+      additionalProperties: false
+      description: The left and right effective and asAt dates of the data reconciled
+        in a run.
+      example:
+        rightAsAt: 2000-01-23T04:56:07.000+00:00
+        leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        leftAsAt: 2000-01-23T04:56:07.000+00:00
+        rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        leftEffectiveAt:
+          description: The effective datetime of the data reconciled on the left side.
+          format: date-time
+          type: string
+        leftAsAt:
+          description: The asAt datetime of the data reconciled on the left side.
+          format: date-time
+          type: string
+        rightEffectiveAt:
+          description: The effective datetime of the data reconciled on the right
+            side.
+          format: date-time
+          type: string
+        rightAsAt:
+          description: The asAt datetime of the data reconciled on the right side.
+          format: date-time
+          type: string
+      required:
+      - leftAsAt
+      - leftEffectiveAt
+      - rightAsAt
+      - rightEffectiveAt
+      type: object
+    RecExceptionCountByClosureType:
+      additionalProperties: false
+      description: Closed exception result counts broken down by closure type.
+      example:
+        forceMatched: 7
+        accepted: 4
+        cleared: 2
+      properties:
+        cleared:
+          description: The number of Cleared results.
+          format: int32
+          type: integer
+        accepted:
+          description: The number of Accepted results.
+          format: int32
+          type: integer
+        forceMatched:
+          description: The number of Force Matched results.
+          format: int32
+          type: integer
+      required:
+      - accepted
+      - cleared
+      - forceMatched
+      type: object
+    RecExceptionCountByResultType:
+      additionalProperties: false
+      description: Exception result counts broken down by result type.
+      example:
+        partialMatch: 5
+        partialCross: 5
+        break: 1
+      properties:
+        break:
+          description: The number of Break results.
+          format: int32
+          type: integer
+        partialMatch:
+          description: The number of Partial Match results.
+          format: int32
+          type: integer
+        partialCross:
+          description: The number of Partial Cross results.
+          format: int32
+          type: integer
+      required:
+      - break
+      - partialCross
+      - partialMatch
+      type: object
+    RecExecution:
+      additionalProperties: false
+      description: The execution outcome for a run.
+      example:
+        errorDetail: errorDetail
+        outcome: outcome
+      properties:
+        outcome:
+          description: "The execution outcome. Available values: Succeeded, Failed."
+          minLength: 1
+          type: string
+        errorDetail:
+          description: Detail of the execution failure. Populated when outcome is
+            Failed.
+          nullable: true
+          type: string
+      required:
+      - outcome
+      type: object
+    RecInstanceId:
+      additionalProperties: false
+      description: "Identifies a rec instance, and how it was created."
+      example:
+        instanceIdType: instanceIdType
+        instanceIdValue: instanceIdValue
+      properties:
+        instanceIdType:
+          description: "How the instance was created. Available values: WorkflowServiceTaskId,\
+            \ Manual."
+          minLength: 1
+          type: string
+        instanceIdValue:
+          description: The instance identifier value (a GUID).
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+      required:
+      - instanceIdType
+      - instanceIdValue
+      type: object
+    RecInstanceSummary:
+      additionalProperties: false
+      description: "A lightweight view of the rec instance, nested on each result\
+        \ set. It carries the instance-level\r\nstatus, which is how a result set\
+        \ surfaces the instance's running/locked state to the dashboard."
+      example:
+        recDefinitionId:
+          code: code
+          scope: scope
+        asAtLocked: 2000-01-23T04:56:07.000+00:00
+        asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+        workflowTaskInstantiated:
+          id: id
+          state: state
+          taskDefinitionId:
+            code: code
+            scope: scope
+        id:
+          instanceIdType: instanceIdType
+          instanceIdValue: instanceIdValue
+        status: status
+      properties:
+        id:
+          $ref: '#/components/schemas/RecInstanceId'
+        recDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        asAtInstantiated:
+          description: The asAt datetime at which the instance was first created.
+          format: date-time
+          type: string
+        workflowTaskInstantiated:
+          $ref: '#/components/schemas/RecWorkflowTask'
+        status:
+          description: "The instance-level lifecycle rollup. Available values: Running,\
+            \ Failures, ReviewAndApproval, AllApproved, Locked."
+          minLength: 1
+          type: string
+        asAtLocked:
+          description: The wall-clock time the lock action was performed. Null when
+            the instance has not been locked.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - asAtInstantiated
+      - id
+      - recDefinitionId
+      - status
+      type: object
     RecipeBlock:
       additionalProperties: false
       description: An atomic operation used in Recipe composer to compose a Configuration
@@ -251122,6 +252439,51 @@ components:
           type: string
         fromRecipe:
           $ref: '#/components/schemas/FromRecipe'
+      type: object
+    RecMatchCountByResultType:
+      additionalProperties: false
+      description: Match result counts broken down by result type.
+      example:
+        match: 1
+        cross: 1
+      properties:
+        match:
+          description: The number of Match results.
+          format: int32
+          type: integer
+        cross:
+          description: The number of Cross results.
+          format: int32
+          type: integer
+      required:
+      - cross
+      - match
+      type: object
+    RecMatchCounts:
+      additionalProperties: false
+      description: "Counts for non-exception results (Match, Cross)."
+      example:
+        byReviewStatus:
+          notRequired: 7
+          reviewed: 9
+          required: 2
+        total: 1
+        byResultType:
+          match: 1
+          cross: 1
+      properties:
+        total:
+          description: The total number of results in this category.
+          format: int32
+          type: integer
+        byResultType:
+          $ref: '#/components/schemas/RecMatchCountByResultType'
+        byReviewStatus:
+          $ref: '#/components/schemas/RecResultCountByReviewStatus'
+      required:
+      - byResultType
+      - byReviewStatus
+      - total
       type: object
     RecombineStep:
       allOf:
@@ -252825,6 +254187,773 @@ components:
           $ref: '#/components/schemas/DateRange'
         mappingId:
           $ref: '#/components/schemas/ResourceId'
+      type: object
+    RecOpenExceptionCounts:
+      additionalProperties: false
+      description: Counts for results that are exceptions with an Open status.
+      example:
+        byReviewStatus:
+          notRequired: 7
+          reviewed: 9
+          required: 2
+        total: 6
+        byResultType:
+          partialMatch: 5
+          partialCross: 5
+          break: 1
+      properties:
+        total:
+          description: The total number of results in this category.
+          format: int32
+          type: integer
+        byResultType:
+          $ref: '#/components/schemas/RecExceptionCountByResultType'
+        byReviewStatus:
+          $ref: '#/components/schemas/RecResultCountByReviewStatus'
+      required:
+      - byResultType
+      - byReviewStatus
+      - total
+      type: object
+    RecRequestedResultRevision:
+      additionalProperties: false
+      description: A result flagged for re-review as part of a Request Revisions decision.
+      example:
+        recResultId: recResultId
+        commentText: commentText
+      properties:
+        recResultId:
+          description: The identifier of the result to flag for re-review.
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        commentText:
+          description: An optional per-result comment added to the result's user comments.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - recResultId
+      type: object
+    RecRequiredApproval:
+      additionalProperties: false
+      description: "An approval slot required for a result set, passed through from\
+        \ the rec definition's review configuration."
+      example:
+        approvalCode: approvalCode
+        currentUserCanDecide: true
+        description: description
+      properties:
+        approvalCode:
+          description: "Client-defined identifier for the approval slot (e.g. 'Desk',\
+            \ 'Risk')."
+          minLength: 1
+          type: string
+        description:
+          description: Human-readable label for the approval slot.
+          nullable: true
+          type: string
+        currentUserCanDecide:
+          description: "Whether the calling user may decide this approval slot, pre-evaluated\
+            \ at request time."
+          type: boolean
+      required:
+      - approvalCode
+      type: object
+    RecResultCountByReviewStatus:
+      additionalProperties: false
+      description: Result counts broken down by review status.
+      example:
+        notRequired: 7
+        reviewed: 9
+        required: 2
+      properties:
+        required:
+          description: The number of results with review status Required.
+          format: int32
+          type: integer
+        notRequired:
+          description: The number of results with review status Not Required.
+          format: int32
+          type: integer
+        reviewed:
+          description: The number of results with review status Reviewed.
+          format: int32
+          type: integer
+      required:
+      - notRequired
+      - required
+      - reviewed
+      type: object
+    RecResultCounts:
+      additionalProperties: false
+      description: Counts of results broken down by the structural categories that
+        align with the review configuration.
+      example:
+        closedExceptions:
+          byReviewStatus:
+            notRequired: 7
+            reviewed: 9
+            required: 2
+          total: 3
+          byClosureType:
+            forceMatched: 7
+            accepted: 4
+            cleared: 2
+        openExceptions:
+          byReviewStatus:
+            notRequired: 7
+            reviewed: 9
+            required: 2
+          total: 6
+          byResultType:
+            partialMatch: 5
+            partialCross: 5
+            break: 1
+        matches:
+          byReviewStatus:
+            notRequired: 7
+            reviewed: 9
+            required: 2
+          total: 1
+          byResultType:
+            match: 1
+            cross: 1
+      properties:
+        openExceptions:
+          $ref: '#/components/schemas/RecOpenExceptionCounts'
+        closedExceptions:
+          $ref: '#/components/schemas/RecClosedExceptionCounts'
+        matches:
+          $ref: '#/components/schemas/RecMatchCounts'
+      required:
+      - closedExceptions
+      - matches
+      - openExceptions
+      type: object
+    RecResultSet:
+      additionalProperties: false
+      description: "The collection of reconciliation results for a given rec type\
+        \ within a rec instance. Identified by\r\nits rec type and instance. The latest\
+        \ run's data is promoted to the root; prior runs are available\r\nvia previousRuns."
+      example:
+        approvalStatus: approvalStatus
+        execution:
+          errorDetail: errorDetail
+          outcome: outcome
+        runAsAt: 2000-01-23T04:56:07.000+00:00
+        datesReconciled:
+          rightAsAt: 2000-01-23T04:56:07.000+00:00
+          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftAsAt: 2000-01-23T04:56:07.000+00:00
+          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        recType: recType
+        requiredApprovals:
+        - approvalCode: approvalCode
+          currentUserCanDecide: true
+          description: description
+        - approvalCode: approvalCode
+          currentUserCanDecide: true
+          description: description
+        resultCounts:
+          closedExceptions:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 3
+            byClosureType:
+              forceMatched: 7
+              accepted: 4
+              cleared: 2
+          openExceptions:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 6
+            byResultType:
+              partialMatch: 5
+              partialCross: 5
+              break: 1
+          matches:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 1
+            byResultType:
+              match: 1
+              cross: 1
+        review:
+          countReviewed: 6
+          countRequired: 7
+          countNotRequired: 1
+          completionRatio: 4.965218492984954
+        submissions:
+        - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+          commentText: commentText
+        - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+          commentText: commentText
+        previousRuns:
+        - approvalStatus: approvalStatus
+          execution:
+            errorDetail: errorDetail
+            outcome: outcome
+          supersededAsAt: 2000-01-23T04:56:07.000+00:00
+          requiredApprovals:
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          resultCounts:
+            closedExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 3
+              byClosureType:
+                forceMatched: 7
+                accepted: 4
+                cleared: 2
+            openExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 6
+              byResultType:
+                partialMatch: 5
+                partialCross: 5
+                break: 1
+            matches:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 1
+              byResultType:
+                match: 1
+                cross: 1
+          review:
+            countReviewed: 6
+            countRequired: 7
+            countNotRequired: 1
+            completionRatio: 4.965218492984954
+          submissions:
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          runNumber: 5
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          decisions:
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        - approvalStatus: approvalStatus
+          execution:
+            errorDetail: errorDetail
+            outcome: outcome
+          supersededAsAt: 2000-01-23T04:56:07.000+00:00
+          requiredApprovals:
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          - approvalCode: approvalCode
+            currentUserCanDecide: true
+            description: description
+          resultCounts:
+            closedExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 3
+              byClosureType:
+                forceMatched: 7
+                accepted: 4
+                cleared: 2
+            openExceptions:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 6
+              byResultType:
+                partialMatch: 5
+                partialCross: 5
+                break: 1
+            matches:
+              byReviewStatus:
+                notRequired: 7
+                reviewed: 9
+                required: 2
+              total: 1
+              byResultType:
+                match: 1
+                cross: 1
+          review:
+            countReviewed: 6
+            countRequired: 7
+            countNotRequired: 1
+            completionRatio: 4.965218492984954
+          submissions:
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+            commentText: commentText
+          runNumber: 5
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          decisions:
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          - reason: reason
+            approvalCode: approvalCode
+            decision: decision
+            asAtDecided: 2000-01-23T04:56:07.000+00:00
+            asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+            userId: userId
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        runNumber: 0
+        decisions:
+        - reason: reason
+          approvalCode: approvalCode
+          decision: decision
+          asAtDecided: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+        - reason: reason
+          approvalCode: approvalCode
+          decision: decision
+          asAtDecided: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        recInstance:
+          recDefinitionId:
+            code: code
+            scope: scope
+          asAtLocked: 2000-01-23T04:56:07.000+00:00
+          asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          workflowTaskInstantiated:
+            id: id
+            state: state
+            taskDefinitionId:
+              code: code
+              scope: scope
+          id:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          status: status
+      properties:
+        recType:
+          description: "The type of rec that this result set belongs to (e.g. Holding).\
+            \ Together with the rec instance, this uniquely identifies the result\
+            \ set. Available values: Holding, Transaction, Valuation, CashHolding."
+          minLength: 1
+          type: string
+        recInstance:
+          $ref: '#/components/schemas/RecInstanceSummary'
+        runNumber:
+          description: The run number within the instance. Increments with each re-run.
+          format: int32
+          type: integer
+        runAsAt:
+          description: The asAt datetime at which the run happened.
+          format: date-time
+          type: string
+        execution:
+          $ref: '#/components/schemas/RecExecution'
+        datesReconciled:
+          $ref: '#/components/schemas/RecDatesReconciled'
+        resultCounts:
+          $ref: '#/components/schemas/RecResultCounts'
+        review:
+          $ref: '#/components/schemas/RecReview'
+        approvalStatus:
+          description: "The position of this result set in the approval ceremony.\
+            \ Available values: UnderReview, PendingApproval, RevisionsRequested,\
+            \ Approved, NotApplicable."
+          minLength: 1
+          type: string
+        requiredApprovals:
+          description: "The approval slots required for this result set, passed through\
+            \ from the rec definition's review configuration. May be empty."
+          items:
+            $ref: '#/components/schemas/RecRequiredApproval'
+          type: array
+        submissions:
+          description: An append-only log of review submissions. May be empty.
+          items:
+            $ref: '#/components/schemas/RecSubmission'
+          type: array
+        decisions:
+          description: An append-only log of approver decisions. May be empty.
+          items:
+            $ref: '#/components/schemas/RecApprovalDecision'
+          type: array
+        previousRuns:
+          description: "Prior run snapshots, each frozen at the point of re-run. Populated\
+            \ only when includePreviousRuns is true."
+          items:
+            $ref: '#/components/schemas/RecSupersededRun'
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - approvalStatus
+      - datesReconciled
+      - decisions
+      - execution
+      - previousRuns
+      - recInstance
+      - recType
+      - requiredApprovals
+      - resultCounts
+      - review
+      - runAsAt
+      - runNumber
+      - submissions
+      type: object
+    RecResultSetApprovalDecisionRequest:
+      additionalProperties: false
+      description: "The request for an approver to approve a submitted review or request\
+        \ revisions. Each call satisfies\r\n(or rejects) one approval slot from the\
+        \ result set's required approvals."
+      example:
+        reason: reason
+        requestedResultRevisions:
+        - recResultId: recResultId
+          commentText: commentText
+        - recResultId: recResultId
+          commentText: commentText
+        approvalCode: approvalCode
+        decision: decision
+      properties:
+        approvalCode:
+          description: The approval slot being decided. Must match a required approval
+            code.
+          maxLength: 512
+          minLength: 1
+          type: string
+        decision:
+          description: "The decision made. Available values: Approve, RequestRevisions."
+          minLength: 1
+          type: string
+        reason:
+          description: Rationale for the decision.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+        requestedResultRevisions:
+          description: The results flagged for re-review. Only applicable when the
+            decision is Request Revisions.
+          items:
+            $ref: '#/components/schemas/RecRequestedResultRevision'
+          nullable: true
+          type: array
+      required:
+      - approvalCode
+      - decision
+      type: object
+    RecReview:
+      additionalProperties: false
+      description: A summary of the per-result review state across the result set.
+      example:
+        countReviewed: 6
+        countRequired: 7
+        countNotRequired: 1
+        completionRatio: 4.965218492984954
+      properties:
+        countReviewed:
+          description: The number of results with review status Reviewed.
+          format: int32
+          type: integer
+        countRequired:
+          description: The number of results with review status Required.
+          format: int32
+          type: integer
+        countNotRequired:
+          description: The number of results with review status Not Required.
+          format: int32
+          type: integer
+        completionRatio:
+          description: "Reviewed / (Reviewed + Required). Is 1.0 when the denominator\
+            \ is zero, and null when execution failed."
+          format: double
+          type: number
+      required:
+      - completionRatio
+      - countNotRequired
+      - countRequired
+      - countReviewed
+      type: object
+    RecSubmission:
+      additionalProperties: false
+      description: An entry in the append-only log of review submissions.
+      example:
+        asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+        asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+        userId: userId
+        commentText: commentText
+      properties:
+        userId:
+          description: The user who submitted the review.
+          minLength: 1
+          type: string
+        commentText:
+          description: An optional comment from the submitter.
+          nullable: true
+          type: string
+        asAtSubmitted:
+          description: The asAt datetime at which the submission was made.
+          format: date-time
+          type: string
+        asAtSuperseded:
+          description: The asAt datetime at which this entry was superseded. Null
+            when it is the current standing entry.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - asAtSubmitted
+      - userId
+      type: object
+    RecSupersededRun:
+      additionalProperties: false
+      description: "A prior run snapshot, frozen at the point of re-run. Has the same\
+        \ shape as the root-level run\r\nfields on the result set, plus the asAt at\
+        \ which the run was superseded."
+      example:
+        approvalStatus: approvalStatus
+        execution:
+          errorDetail: errorDetail
+          outcome: outcome
+        supersededAsAt: 2000-01-23T04:56:07.000+00:00
+        requiredApprovals:
+        - approvalCode: approvalCode
+          currentUserCanDecide: true
+          description: description
+        - approvalCode: approvalCode
+          currentUserCanDecide: true
+          description: description
+        resultCounts:
+          closedExceptions:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 3
+            byClosureType:
+              forceMatched: 7
+              accepted: 4
+              cleared: 2
+          openExceptions:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 6
+            byResultType:
+              partialMatch: 5
+              partialCross: 5
+              break: 1
+          matches:
+            byReviewStatus:
+              notRequired: 7
+              reviewed: 9
+              required: 2
+            total: 1
+            byResultType:
+              match: 1
+              cross: 1
+        review:
+          countReviewed: 6
+          countRequired: 7
+          countNotRequired: 1
+          completionRatio: 4.965218492984954
+        submissions:
+        - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+          commentText: commentText
+        - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+          commentText: commentText
+        runNumber: 5
+        runAsAt: 2000-01-23T04:56:07.000+00:00
+        decisions:
+        - reason: reason
+          approvalCode: approvalCode
+          decision: decision
+          asAtDecided: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+        - reason: reason
+          approvalCode: approvalCode
+          decision: decision
+          asAtDecided: 2000-01-23T04:56:07.000+00:00
+          asAtSuperseded: 2000-01-23T04:56:07.000+00:00
+          userId: userId
+        datesReconciled:
+          rightAsAt: 2000-01-23T04:56:07.000+00:00
+          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftAsAt: 2000-01-23T04:56:07.000+00:00
+          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        runNumber:
+          description: The run number within the instance. Increments with each re-run.
+          format: int32
+          type: integer
+        runAsAt:
+          description: The asAt datetime at which the run happened.
+          format: date-time
+          type: string
+        supersededAsAt:
+          description: The asAt datetime at which this run was superseded by a subsequent
+            run.
+          format: date-time
+          type: string
+        execution:
+          $ref: '#/components/schemas/RecExecution'
+        datesReconciled:
+          $ref: '#/components/schemas/RecDatesReconciled'
+        resultCounts:
+          $ref: '#/components/schemas/RecResultCounts'
+        review:
+          $ref: '#/components/schemas/RecReview'
+        approvalStatus:
+          description: "The position of this result set in the approval ceremony.\
+            \ Available values: UnderReview, PendingApproval, RevisionsRequested,\
+            \ Approved, NotApplicable."
+          minLength: 1
+          type: string
+        requiredApprovals:
+          description: "The approval slots required for this result set, passed through\
+            \ from the rec definition's review configuration. May be empty."
+          items:
+            $ref: '#/components/schemas/RecRequiredApproval'
+          type: array
+        submissions:
+          description: An append-only log of review submissions. May be empty.
+          items:
+            $ref: '#/components/schemas/RecSubmission'
+          type: array
+        decisions:
+          description: An append-only log of approver decisions. May be empty.
+          items:
+            $ref: '#/components/schemas/RecApprovalDecision'
+          type: array
+      required:
+      - approvalStatus
+      - datesReconciled
+      - decisions
+      - execution
+      - requiredApprovals
+      - resultCounts
+      - review
+      - runAsAt
+      - runNumber
+      - submissions
+      - supersededAsAt
+      type: object
+    RecWorkflowTask:
+      additionalProperties: false
+      description: "The workflow service task that instantiated a rec instance.\r\n\
+        Minimal placeholder until the full workflow service task DTO is available."
+      example:
+        id: id
+        state: state
+        taskDefinitionId:
+          code: code
+          scope: scope
+      properties:
+        id:
+          description: The identifier of the workflow service task.
+          nullable: true
+          type: string
+        taskDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        state:
+          description: The current state of the workflow service task.
+          nullable: true
+          type: string
       type: object
     ReferenceData:
       additionalProperties: false
@@ -257902,7 +260031,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - side: side
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          side: side
           quantity: 0.8008281904610115
           limitPrice:
             amount: 0.8008281904610115
@@ -257980,7 +260112,10 @@ components:
               - validationFailures
               - validationFailures
               status: status
-        - side: side
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          side: side
           quantity: 0.8008281904610115
           limitPrice:
             amount: 0.8008281904610115
@@ -258098,6 +260233,9 @@ components:
         nextPage: nextPage
         values:
         - block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -258368,6 +260506,9 @@ components:
                 - validationFailures
                 status: status
         - block:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -267101,6 +269242,9 @@ components:
         nextPage: nextPage
         values:
         - destinationBlock:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -267279,6 +269423,9 @@ components:
                 - validationFailures
                 status: status
         - destinationBlock:
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -285623,6 +287770,20 @@ components:
         type: object
       description: A criterion that checks whether a SubHoldingKey Value is equal
         to the given string value
+    SubmitRecResultSetReviewRequest:
+      additionalProperties: false
+      description: The request to submit a result set review for approval (or resubmit
+        after addressing revisions).
+      example:
+        commentText: commentText
+      properties:
+        commentText:
+          description: An optional comment recorded on the submission.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
     SubscribeElection:
       additionalProperties: false
       description: "Subscribe (opt-in) election. The inverse of a LapseElection: a\
@@ -325834,6 +327995,7 @@ x-tagGroups:
   - Property Definitions
   - QueryableKeys
   - Quotes
+  - Rec Result Sets
   - Reconciliations
   - Reference Portfolio
   - ReferenceLists

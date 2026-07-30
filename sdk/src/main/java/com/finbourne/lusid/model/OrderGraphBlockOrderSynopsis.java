@@ -63,6 +63,14 @@ public class OrderGraphBlockOrderSynopsis {
   @SerializedName(SERIALIZED_NAME_QUANTITY_BY_STATE)
   private Map<String, java.math.BigDecimal> quantityByState;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private java.math.BigDecimal amount;
+
+  public static final String SERIALIZED_NAME_AMOUNT_BY_STATE = "amountByState";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_BY_STATE)
+  private Map<String, java.math.BigDecimal> amountByState;
+
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private List<OrderGraphBlockOrderDetail> details = new ArrayList<>();
@@ -80,7 +88,7 @@ public class OrderGraphBlockOrderSynopsis {
    * Total number of units ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -117,6 +125,56 @@ public class OrderGraphBlockOrderSynopsis {
 
   public void setQuantityByState(Map<String, java.math.BigDecimal> quantityByState) {
     this.quantityByState = quantityByState;
+  }
+
+
+  public OrderGraphBlockOrderSynopsis amount(java.math.BigDecimal amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Total monetary value ordered, in the block currency.
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(java.math.BigDecimal amount) {
+    this.amount = amount;
+  }
+
+
+  public OrderGraphBlockOrderSynopsis amountByState(Map<String, java.math.BigDecimal> amountByState) {
+    
+    this.amountByState = amountByState;
+    return this;
+  }
+
+  public OrderGraphBlockOrderSynopsis putAmountByStateItem(String key, java.math.BigDecimal amountByStateItem) {
+    if (this.amountByState == null) {
+      this.amountByState = new HashMap<>();
+    }
+    this.amountByState.put(key, amountByStateItem);
+    return this;
+  }
+
+   /**
+   * Total monetary value ordered, broken down by order state.
+   * @return amountByState
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, java.math.BigDecimal> getAmountByState() {
+    return amountByState;
+  }
+
+
+  public void setAmountByState(Map<String, java.math.BigDecimal> amountByState) {
+    this.amountByState = amountByState;
   }
 
 
@@ -161,6 +219,8 @@ public class OrderGraphBlockOrderSynopsis {
     OrderGraphBlockOrderSynopsis orderGraphBlockOrderSynopsis = (OrderGraphBlockOrderSynopsis) o;
     return (this.quantity.compareTo(orderGraphBlockOrderSynopsis.getQuantity()) == 0) &&
         Objects.equals(this.quantityByState, orderGraphBlockOrderSynopsis.quantityByState) &&
+        (this.amount.compareTo(orderGraphBlockOrderSynopsis.getAmount()) == 0) &&
+        Objects.equals(this.amountByState, orderGraphBlockOrderSynopsis.amountByState) &&
         Objects.equals(this.details, orderGraphBlockOrderSynopsis.details);
   }
 
@@ -170,7 +230,7 @@ public class OrderGraphBlockOrderSynopsis {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, quantityByState, details);
+    return Objects.hash(quantity, quantityByState, amount, amountByState, details);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -186,6 +246,8 @@ public class OrderGraphBlockOrderSynopsis {
     sb.append("class OrderGraphBlockOrderSynopsis {\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    quantityByState: ").append(toIndentedString(quantityByState)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    amountByState: ").append(toIndentedString(amountByState)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -211,11 +273,12 @@ public class OrderGraphBlockOrderSynopsis {
     openapiFields = new HashSet<String>();
     openapiFields.add("quantity");
     openapiFields.add("quantityByState");
+    openapiFields.add("amount");
+    openapiFields.add("amountByState");
     openapiFields.add("details");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("details");
   }
 
