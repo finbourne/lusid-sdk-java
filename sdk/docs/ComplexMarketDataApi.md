@@ -212,7 +212,7 @@ public class ComplexMarketDataApiExample {
 
 ## listComplexMarketData
 
-> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId)
+> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, filter, scope)
 
 ListComplexMarketData: List the set of ComplexMarketData
 
@@ -258,17 +258,19 @@ public class ComplexMarketDataApiExample {
 
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned.
-        String page = "page_example"; // String | The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime or cut label at which to list the ComplexMarketData. Defaults to latest if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the filter, scope, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future.
         String timelineScope = "timelineScope_example"; // String | The scope of the Timeline.
         String timelineCode = "timelineCode_example"; // String | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods.
         String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified.
+        String filter = "filter_example"; // String | Expression to filter the result set. The following fields are supported:   'Scope', 'MarketDataId.MarketAsset', 'MarketDataId.Provider', 'MarketDataId.PriceSource',   'MarketDataId.Lineage' (the lineage of the stored market data) and 'MarketData.MarketDataType'.   The market data document contents are not filterable.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String scope = "scope_example"; // String | Optionally restrict the results to ComplexMarketData in a single scope. If not   specified, ComplexMarketData from all scopes will be returned.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId).execute(opts);
+            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, filter, scope).execute(opts);
 
-            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId).execute();
+            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, filter, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
@@ -286,12 +288,14 @@ public class ComplexMarketDataApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. | [optional] |
-| **effectiveAt** | **String**| The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effectiveAt datetime or cut label at which to list the ComplexMarketData. Defaults to latest if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the filter, scope, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. | [optional] |
 | **timelineScope** | **String**| The scope of the Timeline. | [optional] |
 | **timelineCode** | **String**| The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. | [optional] |
 | **closedPeriodId** | **String**| The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. The following fields are supported:   &#39;Scope&#39;, &#39;MarketDataId.MarketAsset&#39;, &#39;MarketDataId.Provider&#39;, &#39;MarketDataId.PriceSource&#39;,   &#39;MarketDataId.Lineage&#39; (the lineage of the stored market data) and &#39;MarketData.MarketDataType&#39;.   The market data document contents are not filterable.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **scope** | **String**| Optionally restrict the results to ComplexMarketData in a single scope. If not   specified, ComplexMarketData from all scopes will be returned. | [optional] |
 
 ### Return type
 

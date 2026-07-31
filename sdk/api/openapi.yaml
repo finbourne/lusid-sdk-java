@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9570
+  version: 0.11.9578
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -14957,10 +14957,8 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: "The effectiveAt datetime at which to list the ComplexMarketData.\
-          \ Defaults to latest if not specified. Note\r\nthat this parameter is not\
-          \ implemented at this time and the latest version of the ComplexMarketData\
-          \ will\r\nalways be returned."
+      - description: The effectiveAt datetime or cut label at which to list the ComplexMarketData.
+          Defaults to latest if not specified.
         explode: true
         in: query
         name: effectiveAt
@@ -14971,8 +14969,8 @@ paths:
         style: form
       - description: "The pagination token to use to continue listing ComplexMarketData;\
           \ this\r\n value is returned from the previous call. If a pagination token\
-          \ is provided, the effectiveAt\r\n and asAt fields must not have changed\
-          \ since the original request."
+          \ is provided, the filter, scope, effectiveAt\r\n and asAt fields must not\
+          \ have changed since the original request."
         explode: true
         in: query
         name: page
@@ -15029,6 +15027,35 @@ paths:
         required: false
         schema:
           maxLength: 512
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "Expression to filter the result set. The following fields are\
+          \ supported:\r\n 'Scope', 'MarketDataId.MarketAsset', 'MarketDataId.Provider',\
+          \ 'MarketDataId.PriceSource',\r\n 'MarketDataId.Lineage' (the lineage of\
+          \ the stored market data) and 'MarketData.MarketDataType'.\r\n The market\
+          \ data document contents are not filterable.\r\n Read more about filtering\
+          \ results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "Optionally restrict the results to ComplexMarketData in a single\
+          \ scope. If not\r\n specified, ComplexMarketData from all scopes will be\
+          \ returned."
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
@@ -101513,6 +101540,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101574,6 +101602,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101655,6 +101684,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101716,6 +101746,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101797,6 +101828,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101858,6 +101890,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -101965,6 +101998,7 @@ paths:
                       instrumentMatured: false
                     enableLegLevelInferenceForCustomSrsColumns: false
                     useInstrumentScaleFactorAsDefault: false
+                    scaleInstrumentAccruedOverrideByContractSize: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -102030,6 +102064,7 @@ paths:
                       instrumentMatured: false
                     enableLegLevelInferenceForCustomSrsColumns: false
                     useInstrumentScaleFactorAsDefault: false
+                    scaleInstrumentAccruedOverrideByContractSize: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -102095,6 +102130,7 @@ paths:
                       instrumentMatured: false
                     enableLegLevelInferenceForCustomSrsColumns: false
                     useInstrumentScaleFactorAsDefault: false
+                    scaleInstrumentAccruedOverrideByContractSize: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -102160,6 +102196,7 @@ paths:
                       instrumentMatured: false
                     enableLegLevelInferenceForCustomSrsColumns: false
                     useInstrumentScaleFactorAsDefault: false
+                    scaleInstrumentAccruedOverrideByContractSize: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -102701,6 +102738,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -102774,6 +102812,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -102847,6 +102886,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -103185,6 +103225,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103246,6 +103287,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103327,6 +103369,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103388,6 +103431,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103469,6 +103513,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103530,6 +103575,7 @@ paths:
                           instrumentMatured: false
                         enableLegLevelInferenceForCustomSrsColumns: false
                         useInstrumentScaleFactorAsDefault: false
+                        scaleInstrumentAccruedOverrideByContractSize: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -103680,6 +103726,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -103753,6 +103800,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -103826,6 +103874,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -104038,6 +104087,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -104111,6 +104161,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -104184,6 +104235,7 @@ paths:
                         instrumentMatured: false
                       enableLegLevelInferenceForCustomSrsColumns: false
                       useInstrumentScaleFactorAsDefault: false
+                      scaleInstrumentAccruedOverrideByContractSize: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -175465,6 +175517,7 @@ components:
           options:
             mbsValuationUsingHoldingCurrentFace: true
             fxForwardContractsAsUnitsInBothLegs: true
+            scaleInstrumentAccruedOverrideByContractSize: true
             convertSrsCashFlowsToPortfolioCurrency: true
             modelSelection:
               library: Lusid
@@ -178849,6 +178902,7 @@ components:
             options:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
+              scaleInstrumentAccruedOverrideByContractSize: true
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid
@@ -202133,6 +202187,7 @@ components:
             options:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
+              scaleInstrumentAccruedOverrideByContractSize: true
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid
@@ -248322,6 +248377,7 @@ components:
         options:
           mbsValuationUsingHoldingCurrentFace: true
           fxForwardContractsAsUnitsInBothLegs: true
+          scaleInstrumentAccruedOverrideByContractSize: true
           convertSrsCashFlowsToPortfolioCurrency: true
           modelSelection:
             library: Lusid
@@ -248514,6 +248570,7 @@ components:
       example:
         mbsValuationUsingHoldingCurrentFace: true
         fxForwardContractsAsUnitsInBothLegs: true
+        scaleInstrumentAccruedOverrideByContractSize: true
         convertSrsCashFlowsToPortfolioCurrency: true
         modelSelection:
           library: Lusid
@@ -248628,6 +248685,12 @@ components:
         useInstrumentScaleFactorAsDefault:
           description: "When enabled, priceScaleFactor defined at the instrument level\
             \ will\r\nbe used in the absence of quote scaleFactor when resolving quotes."
+          type: boolean
+        scaleInstrumentAccruedOverrideByContractSize:
+          description: "When enabled, an SRS InstrumentAccrued override is multiplied\
+            \ by the instrument contractSize (legacy behaviour).\r\nBy default this\
+            \ is disabled, and the override is treated as the accrued for a single\
+            \ unit, keeping the\r\nholding-level identity PV = CleanPv + Accrued consistent."
           type: boolean
       type: object
     PrimarySchedule:
@@ -263179,6 +263242,7 @@ components:
               options:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
+                scaleInstrumentAccruedOverrideByContractSize: true
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
                   library: Lusid
@@ -263471,6 +263535,7 @@ components:
               options:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
+                scaleInstrumentAccruedOverrideByContractSize: true
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
                   library: Lusid
@@ -307824,6 +307889,7 @@ components:
             options:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
+              scaleInstrumentAccruedOverrideByContractSize: true
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid
