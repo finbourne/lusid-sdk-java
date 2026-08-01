@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **blockIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The IDs of the Blocks associated with this placement. | [default to List<ResourceId>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
-**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **state** | **String** | The state of this placement (typically a FIX state; Open, Filled, etc). | [optional] [default to String]
 **side** | **String** | The side (Buy, Sell, ...) of this placement. | [default to String]
 **timeInForce** | **String** | The time in force applicable to this placement (GTC, FOK, Day, etc) | [default to String]
@@ -33,7 +34,8 @@ ResourceId ParentPlacementId = new ResourceId();
 List<ResourceId> BlockIds = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
-java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String State = "example State";
 String Side = "example Side";
 String TimeInForce = "example TimeInForce";
@@ -53,6 +55,7 @@ PlacementRequest placementRequestInstance = new PlacementRequest()
     .Properties(Properties)
     .InstrumentIdentifiers(InstrumentIdentifiers)
     .Quantity(Quantity)
+    .Amount(Amount)
     .State(State)
     .Side(Side)
     .TimeInForce(TimeInForce)

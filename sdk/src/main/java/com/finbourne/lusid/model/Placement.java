@@ -89,6 +89,10 @@ public class Placement {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
@@ -304,7 +308,7 @@ public class Placement {
    * The quantity of given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -312,6 +316,27 @@ public class Placement {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public Placement amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -613,6 +638,7 @@ public class Placement {
         Objects.equals(this.instrumentIdentifiers, placement.instrumentIdentifiers) &&
         Objects.equals(this.lusidInstrumentId, placement.lusidInstrumentId) &&
         (this.quantity.compareTo(placement.getQuantity()) == 0) &&
+        Objects.equals(this.amount, placement.amount) &&
         Objects.equals(this.state, placement.state) &&
         Objects.equals(this.side, placement.side) &&
         Objects.equals(this.timeInForce, placement.timeInForce) &&
@@ -634,7 +660,7 @@ public class Placement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, links);
+    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -655,6 +681,7 @@ public class Placement {
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
@@ -697,6 +724,7 @@ public class Placement {
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("state");
     openapiFields.add("side");
     openapiFields.add("timeInForce");
@@ -717,7 +745,6 @@ public class Placement {
     openapiRequiredFields.add("blockIds");
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("lusidInstrumentId");
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("state");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("timeInForce");
@@ -763,6 +790,10 @@ public class Placement {
       };
       if (!jsonObj.get("lusidInstrumentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lusidInstrumentId").toString()));
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
       }
       if (!jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));

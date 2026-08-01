@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9578
+  version: 0.11.9591
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -32691,6 +32691,84 @@ paths:
       - Entities
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/entities/valuationpoints/{entityUniqueId}:
+    get:
+      description: "Retrieve the definition of a particular valuation point.\r\n\r\
+        \nIf the valuation point is deleted, this will return the state of the valuation\
+        \ point immediately prior to deletion."
+      operationId: GetValuationPointByEntityUniqueId
+      parameters:
+      - description: The universally unique identifier of the valuation point.
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the valuation point. Defaults
+          to returning the latest version of the valuation point if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids of the staged modifications to be previewed in the response.
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValuationPointEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValuationPointEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValuationPointEntity'
+          description: The requested valuation point entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: Stable
+      x-accepts: application/json
   /api/entities/{entityType}/{entityUniqueId}/history:
     get:
       description: Retrieve a page of an entity's change history up to a particular
@@ -35199,7 +35277,8 @@ paths:
       description: "Create or update certain fields for a particular FundConfiguration.\r\
         \nThe behaviour is defined by the JSON Patch specification.\r\n\r\nCurrently\
         \ supported fields are: DisplayName, Description, DealingFilters, PnlFilters,\
-        \ BackOutFilters, ExternalFeeFilters."
+        \ BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet,\
+        \ ApportionmentMethodProperty."
       operationId: PatchFundConfiguration
       parameters:
       - description: The scope of the FundConfiguration.
@@ -54309,7 +54388,8 @@ paths:
           \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
-          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap."
+          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
+          \ ToBeAnnouncedOption."
         explode: false
         in: path
         name: instrumentType
@@ -54418,7 +54498,8 @@ paths:
           \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
-          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap."
+          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
+          \ ToBeAnnouncedOption."
         explode: false
         in: path
         name: instrumentType
@@ -54535,7 +54616,8 @@ paths:
           \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
-          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap."
+          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
+          \ ToBeAnnouncedOption."
         explode: false
         in: path
         name: instrumentType
@@ -54758,7 +54840,8 @@ paths:
           \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
-          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap."
+          \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
+          \ ToBeAnnouncedOption."
         explode: false
         in: path
         name: instrumentType
@@ -71330,6 +71413,7 @@ paths:
                   placed:
                     quantity: 1250
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -71443,6 +71527,7 @@ paths:
                   placed:
                     quantity: 1250
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -71556,6 +71641,7 @@ paths:
                   placed:
                     quantity: 1250
                     quantityByState: {}
+                    amountByState: {}
                     details:
                     - id:
                         scope: MyScope
@@ -115925,6 +116011,121 @@ paths:
       - oauth2: []
       summary: "[EARLY ACCESS] UpsertScenario: Upsert a Scenario. This creates or\
         \ updates the scenario definition in LUSID."
+      tags:
+      - Scenarios
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/scenarios/$preview:
+    post:
+      description: "Preview what a scenario would do to a portfolio's market data,\
+        \ without running a valuation.\r\n \r\nThe portfolio's market data dependencies\
+        \ are resolved through the given recipe and the scenario's\r\nshifts are applied;\
+        \ the response lists every market data target the shifts changed, with values\r\
+        \nbefore and after, plus any market data that matched a shift but could not\
+        \ honour it. Supply\r\neither a reference to a stored scenario, or inline\
+        \ shift definitions to test a definition before\r\nsaving it."
+      operationId: PreviewScenario
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+            schema:
+              $ref: '#/components/schemas/ScenarioPreviewRequest'
+          application/json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+            schema:
+              $ref: '#/components/schemas/ScenarioPreviewRequest'
+          text/json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+            schema:
+              $ref: '#/components/schemas/ScenarioPreviewRequest'
+          application/*+json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+            schema:
+              $ref: '#/components/schemas/ScenarioPreviewRequest'
+        description: "The recipe, portfolios, effective date and scenario (stored\
+          \ reference or inline shifts) to preview"
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ScenarioPreviewResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScenarioPreviewResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ScenarioPreviewResponse'
+          description: "The preview of the scenario's effect on the portfolio's market\
+            \ data, or any failure"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] PreviewScenario: Preview a Scenario"
       tags:
       - Scenarios
       x-fbn-apistatus: EarlyAccess
@@ -160446,7 +160647,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -160494,6 +160695,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - basketName
@@ -164111,7 +164313,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -164159,6 +164361,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - couponRate
@@ -166403,6 +166606,40 @@ components:
           format: date-time
           type: string
       type: object
+    BucketDefinition:
+      additionalProperties: false
+      example:
+        bucketType: bucketType
+        displayName: displayName
+        filterExpression: filterExpression
+        bucketId: bucketId
+        unitised: true
+      properties:
+        bucketId:
+          maxLength: 64
+          minLength: 1
+          type: string
+        displayName:
+          maxLength: 256
+          minLength: 1
+          type: string
+        filterExpression:
+          maxLength: 1024
+          minLength: 0
+          type: string
+        bucketType:
+          description: "Available values: Dealing, PnL, Fees, BalanceSheet, Misc."
+          minLength: 1
+          type: string
+        unitised:
+          nullable: true
+          type: boolean
+      required:
+      - bucketId
+      - bucketType
+      - displayName
+      - filterExpression
+      type: object
     BucketedCashFlowRequest:
       additionalProperties: false
       description: Specification class consisting of parameters for BucketedCashFlow
@@ -166644,6 +166881,52 @@ components:
           description: Rolling tenor
           nullable: true
           type: string
+      type: object
+    BucketSetDefinition:
+      additionalProperties: false
+      example:
+        code: code
+        displayName: displayName
+        navTypes:
+        - navTypes
+        - navTypes
+        buckets:
+        - bucketType: bucketType
+          displayName: displayName
+          filterExpression: filterExpression
+          bucketId: bucketId
+          unitised: true
+        - bucketType: bucketType
+          displayName: displayName
+          filterExpression: filterExpression
+          bucketId: bucketId
+          unitised: true
+        unitised: true
+      properties:
+        code:
+          maxLength: 64
+          minLength: 1
+          type: string
+        displayName:
+          maxLength: 256
+          minLength: 1
+          type: string
+        navTypes:
+          items:
+            type: string
+          nullable: true
+          type: array
+        unitised:
+          type: boolean
+        buckets:
+          items:
+            $ref: '#/components/schemas/BucketDefinition'
+          type: array
+      required:
+      - buckets
+      - code
+      - displayName
+      - unitised
       type: object
     BucketSetNode:
       additionalProperties: false
@@ -167423,6 +167706,9 @@ components:
           scope: scope
         placementState:
           entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -168211,6 +168497,9 @@ components:
               scope: scope
             placementState:
               entryType: entryType
+              amount:
+                amount: 0.8008281904610115
+                currency: currency
               side: side
               quantity: 0.8008281904610115
               limitPrice:
@@ -168443,7 +168732,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -168491,6 +168780,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - capFloorType
@@ -168991,7 +169281,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -169039,6 +169329,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - amount
@@ -169685,7 +169976,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -169733,6 +170024,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -170107,7 +170399,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -170155,6 +170447,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - couponRate
@@ -172749,7 +173042,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -172797,6 +173090,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -176059,7 +176353,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -176107,6 +176401,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -180707,7 +181002,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -180755,6 +181050,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - couponRate
@@ -185773,7 +186069,7 @@ components:
             \ InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-            \ Unknown."
+            \ ToBeAnnouncedOption, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -188401,7 +188697,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -188449,6 +188745,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -188710,7 +189007,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -188758,6 +189055,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - deliveryType
@@ -188791,12 +189089,13 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - EquityShiftDefinition
             - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
             type: string
         required:
         - amount
@@ -188887,7 +189186,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -188935,6 +189234,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - code
@@ -189412,7 +189712,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -189460,6 +189760,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - contractDetails
@@ -190150,7 +190451,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -190198,6 +190499,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - content
@@ -192153,7 +192455,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192201,6 +192503,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -192345,7 +192648,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192393,6 +192696,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -192451,7 +192755,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192499,6 +192803,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -192673,7 +192978,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192721,6 +193026,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - buyerOrSeller
@@ -193567,7 +193873,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193615,6 +193921,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -193972,7 +194279,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -194020,6 +194327,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -195503,6 +195811,9 @@ components:
     FundConfiguration:
       additionalProperties: false
       example:
+        apportionmentMethodProperty:
+          code: code
+          scope: scope
         displayName: displayName
         externalFeeFilters:
         - filterId: filterId
@@ -195512,24 +195823,6 @@ components:
           filter: filter
           appliesTo: appliesTo
         description: description
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-        id:
-          code: code
-          scope: scope
-        pnlFilters:
-        - filterId: filterId
-          filter: filter
-        - filterId: filterId
-          filter: filter
         backOutFilters:
         - filterId: filterId
           filter: filter
@@ -195554,6 +195847,60 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        bucketSets:
+        - code: code
+          displayName: displayName
+          navTypes:
+          - navTypes
+          - navTypes
+          buckets:
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          unitised: true
+        - code: code
+          displayName: displayName
+          navTypes:
+          - navTypes
+          - navTypes
+          buckets:
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          unitised: true
+        apportionmentBucketSet: apportionmentBucketSet
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        id:
+          code: code
+          scope: scope
+        pnlFilters:
+        - filterId: filterId
+          filter: filter
+        - filterId: filterId
+          filter: filter
         properties:
           key:
             referenceData:
@@ -195625,6 +195972,22 @@ components:
           type: object
         version:
           $ref: '#/components/schemas/Version'
+        bucketSets:
+          description: The ordered set of component bucket set definitions for this
+            fund configuration. Each bucket set defines how JE lines are grouped into
+            buckets at VP finalisation.
+          items:
+            $ref: '#/components/schemas/BucketSetDefinition'
+          nullable: true
+          type: array
+        apportionmentBucketSet:
+          description: The code of the bucket set definition within this fund configuration
+            that is designated as the apportionment bucket set. Must reference a BucketSetDefinition
+            code within the BucketSets collection.
+          nullable: true
+          type: string
+        apportionmentMethodProperty:
+          $ref: '#/components/schemas/ApportionmentMethodProperty'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -195703,7 +196066,11 @@ components:
     FundConfigurationRequest:
       additionalProperties: false
       example:
+        apportionmentMethodProperty:
+          code: code
+          scope: scope
         code: code
+        apportionmentBucketSet: apportionmentBucketSet
         displayName: displayName
         externalFeeFilters:
         - filterId: filterId
@@ -195728,6 +196095,41 @@ components:
           filter: filter
         - filterId: filterId
           filter: filter
+        bucketSets:
+        - code: code
+          displayName: displayName
+          navTypes:
+          - navTypes
+          - navTypes
+          buckets:
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          unitised: true
+        - code: code
+          displayName: displayName
+          navTypes:
+          - navTypes
+          - navTypes
+          buckets:
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          - bucketType: bucketType
+            displayName: displayName
+            filterExpression: filterExpression
+            bucketId: bucketId
+            unitised: true
+          unitised: true
         properties:
           key:
             referenceData:
@@ -195771,18 +196173,21 @@ components:
             in the dealing.
           items:
             $ref: '#/components/schemas/ComponentFilter'
+          nullable: true
           type: array
         pnlFilters:
           description: The set of filters used to decide which JE lines are included
             in the PnL.
           items:
             $ref: '#/components/schemas/ComponentFilter'
+          nullable: true
           type: array
         backOutFilters:
           description: The set of filters used to decide which JE lines are included
             in the back outs.
           items:
             $ref: '#/components/schemas/ComponentFilter'
+          nullable: true
           type: array
         externalFeeFilters:
           description: The set of filters used to decide which JE lines are used for
@@ -195791,17 +196196,32 @@ components:
             $ref: '#/components/schemas/ExternalFeeComponentFilter'
           nullable: true
           type: array
+        bucketSets:
+          description: The ordered set of component bucket set definitions for this
+            fund configuration. Each bucket set defines how JE lines are grouped into
+            buckets at VP finalisation.
+          items:
+            $ref: '#/components/schemas/BucketSetDefinition'
+          nullable: true
+          type: array
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
           description: A set of properties for the Fund Configuration.
           nullable: true
           type: object
+        apportionmentBucketSet:
+          description: The code of the bucket set definition within this fund configuration
+            that is designated as the apportionment bucket set. Must reference a BucketSetDefinition
+            code within the BucketSets collection.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        apportionmentMethodProperty:
+          $ref: '#/components/schemas/ApportionmentMethodProperty'
       required:
-      - backOutFilters
       - code
-      - dealingFilters
-      - pnlFilters
       type: object
     FundDefinitionRequest:
       additionalProperties: false
@@ -196326,7 +196746,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -196374,6 +196794,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -196990,7 +197411,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -197038,6 +197459,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - distributionPaymentType
@@ -199040,7 +199462,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -199088,6 +199510,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - contractDetails
@@ -199635,7 +200058,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -199683,6 +200106,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domAmount
@@ -200535,7 +200959,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200583,6 +201007,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -200663,12 +201088,13 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - EquityShiftDefinition
             - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
             type: string
         required:
         - amount
@@ -200712,7 +201138,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200760,6 +201186,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - farFxForward
@@ -206245,7 +206672,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -206293,6 +206720,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - calculationType
@@ -206446,7 +206874,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -206494,6 +206922,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - couponRate
@@ -206548,7 +206977,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -206596,6 +207025,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - fixedLeg
@@ -209444,7 +209874,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -209492,6 +209922,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -210287,6 +210718,7 @@ components:
       - FlexibleRepo
       - ToBeAnnounced
       - VolatilitySwap
+      - ToBeAnnouncedOption
       type: string
     InterestPaymentEvent:
       allOf:
@@ -210515,7 +210947,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -210563,6 +210995,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentType
@@ -210638,7 +211071,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -210686,6 +211119,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - deliveryMethod
@@ -214580,6 +215014,24 @@ components:
           nullable: true
           type: array
       type: object
+    KeyedMarketDataKeyRule:
+      additionalProperties: false
+      description: "One keyed rule of an MdkrGroup shift: the key names the result\
+        \ column (scenario:key) and the rule\r\nis a standard market data key rule\
+        \ resolved for that column."
+      properties:
+        key:
+          description: "The key naming this rule's result column, e.g. \"bid\"."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        rule:
+          $ref: '#/components/schemas/MarketDataKeyRule'
+      required:
+      - key
+      - rule
+      type: object
     LabelValueSet:
       additionalProperties: false
       description: The set of string labels in a multi-value property.
@@ -215588,7 +216040,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -215636,6 +216088,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -216473,7 +216926,7 @@ components:
             \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
             \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
             \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-            \ ToBeAnnounced, VolatilitySwap."
+            \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -216521,6 +216974,7 @@ components:
           - FlexibleRepo
           - ToBeAnnounced
           - VolatilitySwap
+          - ToBeAnnouncedOption
           type: string
       required:
       - instrumentType
@@ -217833,7 +218287,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -217881,6 +218335,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - identifiers
@@ -218803,6 +219258,38 @@ components:
       description: "Definition of an MBS Principal Write Off Event\r\nThis is an event\
         \ that describes the occurence of a cashflow due to a mortgage-backed security\
         \ principal write off."
+    MdkrGroupShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          rules:
+            description: "The keyed rules of the group. Keys must be unique within\
+              \ the group; each key produces one\r\nresult column."
+            items:
+              $ref: '#/components/schemas/KeyedMarketDataKeyRule'
+            maxItems: 10
+            minItems: 1
+            type: array
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - EquityShiftDefinition
+            - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
+            type: string
+        required:
+        - rules
+        - scenarioShiftType
+        type: object
+      description: "A group of keyed market data key rules (e.g. bid/mid/ask). When\
+        \ the scenario is used in a\r\nvaluation, each key's rule re-resolves the\
+        \ matching market data dependencies independently and\r\nproduces its own\
+        \ result column named scenario:key, alongside the base column - which continues\
+        \ to\r\nresolve through the recipe's own rules in the standard waterfall,\
+        \ whether or not the same rules\r\nappear here."
     Membership:
       additionalProperties: false
       example:
@@ -221339,6 +221826,9 @@ components:
         placed:
           quantityByState:
             key: 2.3021358869347655
+          amount: 7.061401241503109
+          amountByState:
+            key: 9.301444243932576
           quantity: 5.637376656633329
           details:
           - id:
@@ -221348,7 +221838,7 @@ components:
               code: code
               scope: scope
         booked:
-          quantity: 2.027123023002322
+          quantity: 7.386281948385884
           details:
           - id: id
           - id: id
@@ -221437,7 +221927,7 @@ components:
               - validationFailures
               status: status
         executed:
-          quantity: 7.061401241503109
+          quantity: 3.616076749251911
           details:
           - id:
               code: code
@@ -221447,19 +221937,19 @@ components:
               scope: scope
         derivedComplianceState: derivedComplianceState
         allocated:
-          quantity: 9.301444243932576
+          quantity: 2.027123023002322
           details:
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 3.616076749251911
+            quantity: 4.145608029883936
             id:
               code: code
               scope: scope
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 3.616076749251911
+            quantity: 4.145608029883936
             id:
               code: code
               scope: scope
@@ -221488,7 +221978,8 @@ components:
           type: string
         derivedApprovalState:
           description: "The overall approval state of a block, derived from approval\
-            \ of the block's orders. Available values: Pending, Rejected, Approved."
+            \ of the block's orders. Available values: Pending, Rejected, Approved,\
+            \ Placed."
           minLength: 1
           type: string
       required:
@@ -221508,7 +221999,7 @@ components:
         allocatedOrderId:
           code: code
           scope: scope
-        quantity: 3.616076749251911
+        quantity: 4.145608029883936
         id:
           code: code
           scope: scope
@@ -221529,19 +222020,19 @@ components:
     OrderGraphBlockAllocationSynopsis:
       additionalProperties: false
       example:
-        quantity: 9.301444243932576
+        quantity: 2.027123023002322
         details:
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 3.616076749251911
+          quantity: 4.145608029883936
           id:
             code: code
             scope: scope
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 3.616076749251911
+          quantity: 4.145608029883936
           id:
             code: code
             scope: scope
@@ -221574,7 +222065,7 @@ components:
     OrderGraphBlockExecutionSynopsis:
       additionalProperties: false
       example:
-        quantity: 7.061401241503109
+        quantity: 3.616076749251911
         details:
         - id:
             code: code
@@ -221639,7 +222130,7 @@ components:
           type: string
         approvalState:
           description: "The approval state of this order. Available values: Pending,\
-            \ Rejected, Approved."
+            \ Rejected, Approved, Placed."
           minLength: 1
           type: string
         portfolioId:
@@ -221785,6 +222276,9 @@ components:
       example:
         quantityByState:
           key: 2.3021358869347655
+        amount: 7.061401241503109
+        amountByState:
+          key: 9.301444243932576
         quantity: 5.637376656633329
         details:
         - id:
@@ -221797,12 +222291,25 @@ components:
         quantity:
           description: Total number of units placed.
           format: double
+          nullable: true
           type: number
         quantityByState:
           additionalProperties:
             format: double
             type: number
           description: Total number of units placed.
+          nullable: true
+          type: object
+        amount:
+          description: "Total monetary value placed, in the block currency."
+          format: double
+          nullable: true
+          type: number
+        amountByState:
+          additionalProperties:
+            format: double
+            type: number
+          description: "Total monetary value placed, broken down by placement state."
           nullable: true
           type: object
         details:
@@ -221812,7 +222319,6 @@ components:
           type: array
       required:
       - details
-      - quantity
       type: object
     OrderGraphBlockTransactionDetail:
       additionalProperties: false
@@ -221829,7 +222335,7 @@ components:
     OrderGraphBlockTransactionSynopsis:
       additionalProperties: false
       example:
-        quantity: 2.027123023002322
+        quantity: 7.386281948385884
         details:
         - id: id
         - id: id
@@ -221862,6 +222368,7 @@ components:
               code: code
               scope: scope
         placed:
+          amount: 1.4658129805029452
           quantity: 6.027456183070403
           details:
           - id:
@@ -221871,9 +222378,9 @@ components:
               code: code
               scope: scope
         derivedState: derivedState
-        calculatedAveragePrice: 5.637376656633329
+        calculatedAveragePrice: 2.3021358869347655
         executed:
-          quantity: 1.4658129805029452
+          quantity: 5.962133916683182
           details:
           - id:
               code: code
@@ -221883,6 +222390,9 @@ components:
               scope: scope
         placement:
           entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -221967,7 +222477,7 @@ components:
               - validationFailures
               status: status
         allocated:
-          quantity: 5.962133916683182
+          quantity: 5.637376656633329
           details:
           - id:
               code: code
@@ -222021,7 +222531,7 @@ components:
     OrderGraphPlacementAllocationSynopsis:
       additionalProperties: false
       example:
-        quantity: 5.962133916683182
+        quantity: 5.637376656633329
         details:
         - id:
             code: code
@@ -222070,7 +222580,7 @@ components:
     OrderGraphPlacementExecutionSynopsis:
       additionalProperties: false
       example:
-        quantity: 1.4658129805029452
+        quantity: 5.962133916683182
         details:
         - id:
             code: code
@@ -222126,6 +222636,7 @@ components:
     OrderGraphPlacementPlacementSynopsis:
       additionalProperties: false
       example:
+        amount: 1.4658129805029452
         quantity: 6.027456183070403
         details:
         - id:
@@ -222143,10 +222654,15 @@ components:
         quantity:
           description: Total number of units placed.
           format: double
+          nullable: true
+          type: number
+        amount:
+          description: "Total monetary value placed, in the block currency."
+          format: double
+          nullable: true
           type: number
       required:
       - details
-      - quantity
       type: object
     OrderInstruction:
       additionalProperties: false
@@ -229705,7 +230221,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - displayName: displayName
+        - apportionmentMethodProperty:
+            code: code
+            scope: scope
+          displayName: displayName
           externalFeeFilters:
           - filterId: filterId
             filter: filter
@@ -229714,24 +230233,6 @@ components:
             filter: filter
             appliesTo: appliesTo
           description: description
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          pnlFilters:
-          - filterId: filterId
-            filter: filter
-          - filterId: filterId
-            filter: filter
           backOutFilters:
           - filterId: filterId
             filter: filter
@@ -229756,6 +230257,60 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          bucketSets:
+          - code: code
+            displayName: displayName
+            navTypes:
+            - navTypes
+            - navTypes
+            buckets:
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            unitised: true
+          - code: code
+            displayName: displayName
+            navTypes:
+            - navTypes
+            - navTypes
+            buckets:
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            unitised: true
+          apportionmentBucketSet: apportionmentBucketSet
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          pnlFilters:
+          - filterId: filterId
+            filter: filter
+          - filterId: filterId
+            filter: filter
           properties:
             key:
               referenceData:
@@ -229774,7 +230329,10 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-        - displayName: displayName
+        - apportionmentMethodProperty:
+            code: code
+            scope: scope
+          displayName: displayName
           externalFeeFilters:
           - filterId: filterId
             filter: filter
@@ -229783,24 +230341,6 @@ components:
             filter: filter
             appliesTo: appliesTo
           description: description
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          pnlFilters:
-          - filterId: filterId
-            filter: filter
-          - filterId: filterId
-            filter: filter
           backOutFilters:
           - filterId: filterId
             filter: filter
@@ -229825,6 +230365,60 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          bucketSets:
+          - code: code
+            displayName: displayName
+            navTypes:
+            - navTypes
+            - navTypes
+            buckets:
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            unitised: true
+          - code: code
+            displayName: displayName
+            navTypes:
+            - navTypes
+            - navTypes
+            buckets:
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            - bucketType: bucketType
+              displayName: displayName
+              filterExpression: filterExpression
+              bucketId: bucketId
+              unitised: true
+            unitised: true
+          apportionmentBucketSet: apportionmentBucketSet
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          pnlFilters:
+          - filterId: filterId
+            filter: filter
+          - filterId: filterId
+            filter: filter
           properties:
             key:
               referenceData:
@@ -234225,6 +234819,9 @@ components:
           placed:
             quantityByState:
               key: 2.3021358869347655
+            amount: 7.061401241503109
+            amountByState:
+              key: 9.301444243932576
             quantity: 5.637376656633329
             details:
             - id:
@@ -234234,7 +234831,7 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 2.027123023002322
+            quantity: 7.386281948385884
             details:
             - id: id
             - id: id
@@ -234323,7 +234920,7 @@ components:
                 - validationFailures
                 status: status
           executed:
-            quantity: 7.061401241503109
+            quantity: 3.616076749251911
             details:
             - id:
                 code: code
@@ -234333,19 +234930,19 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 9.301444243932576
+            quantity: 2.027123023002322
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 3.616076749251911
+              quantity: 4.145608029883936
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 3.616076749251911
+              quantity: 4.145608029883936
               id:
                 code: code
                 scope: scope
@@ -234420,6 +235017,9 @@ components:
           placed:
             quantityByState:
               key: 2.3021358869347655
+            amount: 7.061401241503109
+            amountByState:
+              key: 9.301444243932576
             quantity: 5.637376656633329
             details:
             - id:
@@ -234429,7 +235029,7 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 2.027123023002322
+            quantity: 7.386281948385884
             details:
             - id: id
             - id: id
@@ -234518,7 +235118,7 @@ components:
                 - validationFailures
                 status: status
           executed:
-            quantity: 7.061401241503109
+            quantity: 3.616076749251911
             details:
             - id:
                 code: code
@@ -234528,19 +235128,19 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 9.301444243932576
+            quantity: 2.027123023002322
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 3.616076749251911
+              quantity: 4.145608029883936
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 3.616076749251911
+              quantity: 4.145608029883936
               id:
                 code: code
                 scope: scope
@@ -234595,6 +235195,7 @@ components:
                 code: code
                 scope: scope
           placed:
+            amount: 1.4658129805029452
             quantity: 6.027456183070403
             details:
             - id:
@@ -234604,9 +235205,9 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 5.637376656633329
+          calculatedAveragePrice: 2.3021358869347655
           executed:
-            quantity: 1.4658129805029452
+            quantity: 5.962133916683182
             details:
             - id:
                 code: code
@@ -234616,6 +235217,9 @@ components:
                 scope: scope
           placement:
             entryType: entryType
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -234700,7 +235304,7 @@ components:
                 - validationFailures
                 status: status
           allocated:
-            quantity: 5.962133916683182
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -234720,6 +235324,7 @@ components:
                 code: code
                 scope: scope
           placed:
+            amount: 1.4658129805029452
             quantity: 6.027456183070403
             details:
             - id:
@@ -234729,9 +235334,9 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 5.637376656633329
+          calculatedAveragePrice: 2.3021358869347655
           executed:
-            quantity: 1.4658129805029452
+            quantity: 5.962133916683182
             details:
             - id:
                 code: code
@@ -234741,6 +235346,9 @@ components:
                 scope: scope
           placement:
             entryType: entryType
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -234825,7 +235433,7 @@ components:
                 - validationFailures
                 status: status
           allocated:
-            quantity: 5.962133916683182
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -235755,6 +236363,9 @@ components:
         nextPage: nextPage
         values:
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -235839,6 +236450,9 @@ components:
               - validationFailures
               status: status
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242532,6 +243146,9 @@ components:
       example:
         requests:
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242576,6 +243193,9 @@ components:
                   - values
               key: key
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242620,6 +243240,9 @@ components:
                   - values
               key: key
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242664,6 +243287,9 @@ components:
                   - values
               key: key
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242708,6 +243334,9 @@ components:
                   - values
               key: key
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -242768,6 +243397,9 @@ components:
         a single market entity.
       example:
         entryType: entryType
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         side: side
         quantity: 0.8008281904610115
         limitPrice:
@@ -242880,7 +243512,10 @@ components:
         quantity:
           description: The quantity of given instrument ordered.
           format: double
+          nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         state:
           description: "The state of this placement (typically a FIX state; Open,\
             \ Filled, etc)."
@@ -242935,7 +243570,6 @@ components:
       - id
       - instrumentIdentifiers
       - lusidInstrumentId
-      - quantity
       - side
       - state
       - timeInForce
@@ -242946,6 +243580,9 @@ components:
       description: A request to create or update a Placement.
       example:
         entryType: entryType
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         side: side
         quantity: 0.8008281904610115
         limitPrice:
@@ -243014,7 +243651,10 @@ components:
         quantity:
           description: The quantity of given instrument ordered.
           format: double
+          nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         state:
           description: "The state of this placement (typically a FIX state; Open,\
             \ Filled, etc)."
@@ -243064,7 +243704,6 @@ components:
       - createdDate
       - id
       - instrumentIdentifiers
-      - quantity
       - side
       - timeInForce
       - type
@@ -243075,6 +243714,9 @@ components:
       example:
         requests:
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -243119,6 +243761,9 @@ components:
                   - values
               key: key
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -243175,6 +243820,9 @@ components:
       description: A request to create or update a Placement.
       example:
         entryType: entryType
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         stopPrice: 1.4658129805029452
         quantity: 0.8008281904610115
         limitPrice: 6.027456183070403
@@ -243208,6 +243856,8 @@ components:
           format: double
           nullable: true
           type: number
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
@@ -251889,12 +252539,13 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - EquityShiftDefinition
             - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
             type: string
         required:
         - amount
@@ -255080,7 +255731,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -255128,6 +255779,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - instrumentId
@@ -256329,7 +256981,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -256377,6 +257029,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - accrualBasis
@@ -272888,6 +273541,9 @@ components:
         nextPage: nextPage
         values:
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -272972,6 +273628,9 @@ components:
               - validationFailures
               status: status
         - entryType: entryType
+          amount:
+            amount: 0.8008281904610115
+            currency: currency
           side: side
           quantity: 0.8008281904610115
           limitPrice:
@@ -281249,6 +281908,155 @@ components:
       - code
       - scope
       type: object
+    ScenarioPreviewAppliedShift:
+      additionalProperties: false
+      description: One market data target changed by one scenario shift.
+      example:
+        valueAfter: 6.027456183070403
+        shift: shift
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        valueBefore: 0.8008281904610115
+        target: target
+      properties:
+        effectiveAt:
+          description: The effective date of the market data the shift was applied
+            to.
+          format: date-time
+          type: string
+        shift:
+          description: "Description of the shift, e.g. \"EquityShift on 'SCENARIO_EQUITY'\"\
+            ."
+          nullable: true
+          type: string
+        target:
+          description: Description of the market data target the shift changed.
+          nullable: true
+          type: string
+        valueBefore:
+          description: "The target's value before the shift. Null for multi-point\
+            \ targets (e.g. whole curves) where a\r\nsingle number is not meaningful."
+          format: double
+          nullable: true
+          type: number
+        valueAfter:
+          description: The target's value after the shift. Null for multi-point targets.
+          format: double
+          nullable: true
+          type: number
+      type: object
+    ScenarioPreviewRequest:
+      additionalProperties: false
+      description: "Request to preview a scenario against a portfolio's market data\
+        \ without running a valuation: the\r\nportfolio's market data dependencies\
+        \ are resolved and the scenario's shifts applied, and the\r\nresponse reports\
+        \ which targets each shift changed (with values before and after) and which\
+        \ market\r\ndata was skipped. Supply either a reference to a stored scenario\
+        \ or inline shift definitions\r\n(for previewing a definition before saving\
+        \ it), not both."
+      example:
+        portfolioEntityIds:
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        scenario:
+          code: code
+          scope: scope
+          asAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        shifts:
+        - scenarioShiftType: RateCurveShiftDefinition
+        - scenarioShiftType: RateCurveShiftDefinition
+        - scenarioShiftType: RateCurveShiftDefinition
+        - scenarioShiftType: RateCurveShiftDefinition
+        - scenarioShiftType: RateCurveShiftDefinition
+        recipeId:
+          code: code
+          scope: scope
+      properties:
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioEntityIds:
+          description: The portfolios whose market data dependencies the scenario
+            is previewed against.
+          items:
+            $ref: '#/components/schemas/PortfolioEntityId'
+          maxItems: 100
+          type: array
+        effectiveAt:
+          description: The effective date to resolve market data at.
+          format: date-time
+          type: string
+        asAt:
+          description: The as-at time to resolve at. Defaults to the latest.
+          format: date-time
+          nullable: true
+          type: string
+        scenario:
+          $ref: '#/components/schemas/ScenarioReference'
+        shifts:
+          description: "Inline shift definitions to preview without saving a scenario,\
+            \ e.g. to test what a definition\r\nwould match while authoring it. Mutually\
+            \ exclusive with supplying a stored scenario reference."
+          items:
+            $ref: '#/components/schemas/ScenarioShiftDefinition'
+          maxItems: 100
+          nullable: true
+          type: array
+      required:
+      - effectiveAt
+      - portfolioEntityIds
+      - recipeId
+      type: object
+    ScenarioPreviewResponse:
+      additionalProperties: false
+      description: "The result of previewing a scenario: every market data target\
+        \ the scenario's shifts changed, with\r\nvalues before and after, plus warnings\
+        \ for market data that matched a shift but could not honour it.\r\nAn empty\
+        \ applied list means the scenario would touch nothing for this portfolio and\
+        \ recipe."
+      example:
+        applied:
+        - valueAfter: 6.027456183070403
+          shift: shift
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          valueBefore: 0.8008281904610115
+          target: target
+        - valueAfter: 6.027456183070403
+          shift: shift
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          valueBefore: 0.8008281904610115
+          target: target
+        skipped:
+        - skipped
+        - skipped
+      properties:
+        applied:
+          description: One entry per market data target changed by a shift.
+          items:
+            $ref: '#/components/schemas/ScenarioPreviewAppliedShift'
+          nullable: true
+          type: array
+        skipped:
+          description: "Market data that matched a shift but was skipped (e.g. an\
+            \ element type that does not support\r\ntransformation), with the reason."
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     ScenarioReference:
       additionalProperties: false
       description: "A reference to a stored Scenario, identified by scope and code,\
@@ -281289,12 +282097,13 @@ components:
       properties:
         scenarioShiftType:
           description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-            \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+            \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
           enum:
           - RateCurveShiftDefinition
           - FxShiftDefinition
           - EquityShiftDefinition
           - VolSurfaceShiftDefinition
+          - MdkrGroupShiftDefinition
           type: string
       required:
       - scenarioShiftType
@@ -281305,6 +282114,7 @@ components:
       - FxShiftDefinition
       - EquityShiftDefinition
       - VolSurfaceShiftDefinition
+      - MdkrGroupShiftDefinition
       type: string
     Schedule:
       additionalProperties: false
@@ -286104,7 +286914,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -286152,6 +286962,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -286218,7 +287029,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -286266,6 +287077,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - assetClass
@@ -288958,7 +289770,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -289006,6 +289818,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - contractSize
@@ -289472,7 +290285,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -289520,6 +290333,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -289530,6 +290344,143 @@ components:
       description: "LUSID representation of a TBA (To Be Announced) forward contract\
         \ for generic agency mortgage-backed securities.\r\nValued as Quantity x Price\
         \ via EOD quote lookup; carries no coupon cashflows, accrual or factor."
+    ToBeAnnouncedOption:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - properties:
+          startDate:
+            description: The start date of the instrument. This is normally synonymous
+              with the trade-date.
+            format: date-time
+            type: string
+          expiryDate:
+            description: "The date on which the option expires, i.e. the last exercise\
+              \ date of the option."
+            format: date-time
+            type: string
+          domCcy:
+            description: The domestic currency of the instrument.
+            type: string
+          optionType:
+            description: "Type of optionality for the option.\r\n \r\nSupported string\
+              \ (enumeration) values are: [Call, Put]."
+            minLength: 1
+            type: string
+          strike:
+            description: The strike of the option.
+            format: double
+            type: number
+          deliveryType:
+            description: "Is the option cash settled or physical delivery of the underlying\
+              \ TBA.\r\n \r\nSupported string (enumeration) values are: [Cash, Physical]."
+            minLength: 1
+            type: string
+          underlying:
+            $ref: '#/components/schemas/MasteredInstrument'
+          exerciseType:
+            description: "Type of optionality that is present; European only in this\
+              \ scope.\r\n \r\nSupported string (enumeration) values are: [European]."
+            minLength: 1
+            type: string
+          premium:
+            $ref: '#/components/schemas/Premium'
+          deliveryDays:
+            description: "Number of business days between exercise date and settlement\
+              \ of the option payoff or underlying.\r\nDefaults to 0 if not set."
+            format: int32
+            type: integer
+          businessDayConvention:
+            description: "Business day convention for option exercise date to settlement\
+              \ date calculation.\r\nDefault value: F. Available values: NoAdjustment,\
+              \ None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing,\
+              \ MF, HalfMonthModifiedFollowing, Nearest, Invalid."
+            nullable: true
+            type: string
+          settlementCalendars:
+            description: Holiday calendar for option exercise date to settlement date
+              calculation.
+            items:
+              type: string
+            nullable: true
+            type: array
+          timeZoneConventions:
+            $ref: '#/components/schemas/TimeZoneConventions'
+          tradingConventions:
+            $ref: '#/components/schemas/TradingConventions'
+          instrumentType:
+            description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
+              \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
+              \ Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,\
+              \ TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,\
+              \ CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,\
+              \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
+              \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
+              \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
+              \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+            enum:
+            - QuotedSecurity
+            - InterestRateSwap
+            - FxForward
+            - Future
+            - ExoticInstrument
+            - FxOption
+            - CreditDefaultSwap
+            - InterestRateSwaption
+            - Bond
+            - EquityOption
+            - FixedLeg
+            - FloatingLeg
+            - BespokeCashFlowsLeg
+            - Unknown
+            - TermDeposit
+            - ContractForDifference
+            - EquitySwap
+            - CashPerpetual
+            - CapFloor
+            - CashSettled
+            - CdsIndex
+            - Basket
+            - FundingLeg
+            - FxSwap
+            - ForwardRateAgreement
+            - SimpleInstrument
+            - Repo
+            - Equity
+            - ExchangeTradedOption
+            - ReferenceInstrument
+            - ComplexBond
+            - InflationLinkedBond
+            - InflationSwap
+            - SimpleCashFlowLoan
+            - TotalReturnSwap
+            - InflationLeg
+            - FundShareClass
+            - FlexibleLoan
+            - UnsettledCash
+            - Cash
+            - MasteredInstrument
+            - LoanFacility
+            - FlexibleDeposit
+            - FlexibleRepo
+            - ToBeAnnounced
+            - VolatilitySwap
+            - ToBeAnnouncedOption
+            type: string
+        required:
+        - deliveryType
+        - domCcy
+        - exerciseType
+        - expiryDate
+        - instrumentType
+        - optionType
+        - premium
+        - startDate
+        - strike
+        - underlying
+        type: object
+      description: LUSID representation of an OTC option on a ToBeAnnounced (TBA)
+        forward contract.
     TotalReturnSwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -289573,7 +290524,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -289621,6 +290572,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - assetLeg
@@ -300949,6 +301901,9 @@ components:
         values:
           key:
             entryType: entryType
+            amount:
+              amount: 0.8008281904610115
+              currency: currency
             side: side
             quantity: 0.8008281904610115
             limitPrice:
@@ -309400,6 +310355,262 @@ components:
       - shareClassData
       - status
       - type
+      type: object
+    ValuationPointEntity:
+      additionalProperties: false
+      example:
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        requestIdDeleted: requestIdDeleted
+        effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
+        asAtVersionNumber: 0
+        previewedValuationPoint:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        previewedStatus: previewedStatus
+        prevailingValuationPoint:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        status: status
+        deletedValuationPoint:
+          entryType: ValuationPointFundCalendarEntry
+          code: code
+          displayName: displayName
+          timelineId:
+            code: code
+            scope: scope
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          navTypeCode: navTypeCode
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          applyClearDown: true
+          previousEntry:
+            code: code
+            displayName: displayName
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+            valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          variant: variant
+          leaderNavTypeCode: leaderNavTypeCode
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        effectiveAtCreated:
+          description: "The EffectiveAt this Entity is created, if entity does not\
+            \ currently exist in EffectiveAt."
+          format: date-time
+          nullable: true
+          type: string
+        prevailingValuationPoint:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        deletedValuationPoint:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedValuationPoint:
+          $ref: '#/components/schemas/FundCalendarEntry'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
       type: object
     ValuationPointInstrument:
       additionalProperties: false
@@ -326914,7 +328125,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -326962,6 +328173,7 @@ components:
             - FlexibleRepo
             - ToBeAnnounced
             - VolatilitySwap
+            - ToBeAnnouncedOption
             type: string
         required:
         - domCcy
@@ -327010,12 +328222,13 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition."
+              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - EquityShiftDefinition
             - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
             type: string
         required:
         - amount

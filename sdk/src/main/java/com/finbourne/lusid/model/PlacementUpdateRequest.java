@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -61,6 +62,10 @@ public class PlacementUpdateRequest {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -132,6 +137,27 @@ public class PlacementUpdateRequest {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public PlacementUpdateRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -302,6 +328,7 @@ public class PlacementUpdateRequest {
     PlacementUpdateRequest placementUpdateRequest = (PlacementUpdateRequest) o;
     return Objects.equals(this.id, placementUpdateRequest.id) &&
         (this.quantity.compareTo(placementUpdateRequest.getQuantity()) == 0) &&
+        Objects.equals(this.amount, placementUpdateRequest.amount) &&
         Objects.equals(this.properties, placementUpdateRequest.properties) &&
         Objects.equals(this.type, placementUpdateRequest.type) &&
         (this.limitPrice.compareTo(placementUpdateRequest.getLimitPrice()) == 0) &&
@@ -317,7 +344,7 @@ public class PlacementUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, properties, type, limitPrice, stopPrice, counterparty, executionSystem, entryType);
+    return Objects.hash(id, quantity, amount, properties, type, limitPrice, stopPrice, counterparty, executionSystem, entryType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -333,6 +360,7 @@ public class PlacementUpdateRequest {
     sb.append("class PlacementUpdateRequest {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
@@ -364,6 +392,7 @@ public class PlacementUpdateRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("properties");
     openapiFields.add("type");
     openapiFields.add("limitPrice");
@@ -399,6 +428,10 @@ public class PlacementUpdateRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

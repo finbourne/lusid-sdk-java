@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this placement. | [optional] [default to Map<String, PerpetualProperty>]
 **type** | **String** | The type of this placement (Market, Limit, etc). | [optional] [default to String]
 **limitPrice** | **java.math.BigDecimal** | The optional price, as currency and amount, associated with this placement. | [optional] [default to java.math.BigDecimal]
@@ -23,6 +24,7 @@ import java.net.URI;
 
 ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable String Type = "example Type";
 @jakarta.annotation.Nullable java.math.BigDecimal LimitPrice = new java.math.BigDecimal("100.00");
@@ -35,6 +37,7 @@ ResourceId Id = new ResourceId();
 PlacementUpdateRequest placementUpdateRequestInstance = new PlacementUpdateRequest()
     .Id(Id)
     .Quantity(Quantity)
+    .Amount(Amount)
     .Properties(Properties)
     .Type(Type)
     .LimitPrice(LimitPrice)

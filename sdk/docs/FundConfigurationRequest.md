@@ -7,11 +7,14 @@ Name | Type | Description | Notes
 **code** | **String** |  | [default to String]
 **displayName** | **String** | The name of the Fund. | [optional] [default to String]
 **description** | **String** | A description for the Fund. | [optional] [default to String]
-**dealingFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the dealing. | [default to List<ComponentFilter>]
-**pnlFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the PnL. | [default to List<ComponentFilter>]
-**backOutFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the back outs. | [default to List<ComponentFilter>]
+**dealingFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the dealing. | [optional] [default to List<ComponentFilter>]
+**pnlFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the PnL. | [optional] [default to List<ComponentFilter>]
+**backOutFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the back outs. | [optional] [default to List<ComponentFilter>]
 **externalFeeFilters** | [**List&lt;ExternalFeeComponentFilter&gt;**](ExternalFeeComponentFilter.md) | The set of filters used to decide which JE lines are used for inputting fees from an external source. | [optional] [default to List<ExternalFeeComponentFilter>]
+**bucketSets** | [**List&lt;BucketSetDefinition&gt;**](BucketSetDefinition.md) | The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation. | [optional] [default to List<BucketSetDefinition>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. | [optional] [default to Map<String, Property>]
+**apportionmentBucketSet** | **String** | The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection. | [optional] [default to String]
+**apportionmentMethodProperty** | [**ApportionmentMethodProperty**](ApportionmentMethodProperty.md) |  | [optional] [default to ApportionmentMethodProperty]
 
 ```java
 import com.finbourne.lusid.model.FundConfigurationRequest;
@@ -22,11 +25,14 @@ import java.net.URI;
 String Code = "example Code";
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
-List<ComponentFilter> DealingFilters = new List<ComponentFilter>();
-List<ComponentFilter> PnlFilters = new List<ComponentFilter>();
-List<ComponentFilter> BackOutFilters = new List<ComponentFilter>();
+@jakarta.annotation.Nullable List<ComponentFilter> DealingFilters = new List<ComponentFilter>();
+@jakarta.annotation.Nullable List<ComponentFilter> PnlFilters = new List<ComponentFilter>();
+@jakarta.annotation.Nullable List<ComponentFilter> BackOutFilters = new List<ComponentFilter>();
 @jakarta.annotation.Nullable List<ExternalFeeComponentFilter> ExternalFeeFilters = new List<ExternalFeeComponentFilter>();
+@jakarta.annotation.Nullable List<BucketSetDefinition> BucketSets = new List<BucketSetDefinition>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+@jakarta.annotation.Nullable String ApportionmentBucketSet = "example ApportionmentBucketSet";
+ApportionmentMethodProperty ApportionmentMethodProperty = new ApportionmentMethodProperty();
 
 
 FundConfigurationRequest fundConfigurationRequestInstance = new FundConfigurationRequest()
@@ -37,7 +43,10 @@ FundConfigurationRequest fundConfigurationRequestInstance = new FundConfiguratio
     .PnlFilters(PnlFilters)
     .BackOutFilters(BackOutFilters)
     .ExternalFeeFilters(ExternalFeeFilters)
-    .Properties(Properties);
+    .BucketSets(BucketSets)
+    .Properties(Properties)
+    .ApportionmentBucketSet(ApportionmentBucketSet)
+    .ApportionmentMethodProperty(ApportionmentMethodProperty);
 ```
 
 

@@ -32,6 +32,8 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfGetScenarioResponse;
+import com.finbourne.lusid.model.ScenarioPreviewRequest;
+import com.finbourne.lusid.model.ScenarioPreviewResponse;
 import com.finbourne.lusid.model.UpsertScenarioRequest;
 import com.finbourne.lusid.model.UpsertSingleStructuredDataResponse;
 
@@ -1110,6 +1112,241 @@ public class ScenariosApi {
      */
     public APIlistScenariosRequest listScenarios(String scope) {
         return new APIlistScenariosRequest(scope);
+    }
+    private okhttp3.Call previewScenarioCall(ScenarioPreviewRequest scenarioPreviewRequest, final ApiCallback _callback) throws ApiException {
+        return previewScenarioCall(scenarioPreviewRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call previewScenarioCall(ScenarioPreviewRequest scenarioPreviewRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = scenarioPreviewRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/scenarios/$preview";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewScenarioValidateBeforeCall(ScenarioPreviewRequest scenarioPreviewRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scenarioPreviewRequest' is set
+        if (scenarioPreviewRequest == null) {
+            throw new ApiException("Missing the required parameter 'scenarioPreviewRequest' when calling previewScenario(Async)");
+        }
+
+        return previewScenarioCall(scenarioPreviewRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ScenarioPreviewResponse> previewScenarioWithHttpInfo(ScenarioPreviewRequest scenarioPreviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = previewScenarioValidateBeforeCall(scenarioPreviewRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ScenarioPreviewResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ScenarioPreviewResponse> previewScenarioWithHttpInfo(ScenarioPreviewRequest scenarioPreviewRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = previewScenarioValidateBeforeCall(scenarioPreviewRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ScenarioPreviewResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call previewScenarioAsync(ScenarioPreviewRequest scenarioPreviewRequest, final ApiCallback<ScenarioPreviewResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewScenarioValidateBeforeCall(scenarioPreviewRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ScenarioPreviewResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call previewScenarioAsync(ScenarioPreviewRequest scenarioPreviewRequest, final ApiCallback<ScenarioPreviewResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = previewScenarioValidateBeforeCall(scenarioPreviewRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ScenarioPreviewResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpreviewScenarioRequest {
+        private final ScenarioPreviewRequest scenarioPreviewRequest;
+
+        private APIpreviewScenarioRequest(ScenarioPreviewRequest scenarioPreviewRequest) {
+            this.scenarioPreviewRequest = scenarioPreviewRequest;
+        }
+
+        /**
+         * Build call for previewScenario
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return previewScenarioCall(scenarioPreviewRequest, _callback);
+        }
+
+        /**
+         * Execute previewScenario request
+         * @return ScenarioPreviewResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ScenarioPreviewResponse execute() throws ApiException {
+            ApiResponse<ScenarioPreviewResponse> localVarResp = previewScenarioWithHttpInfo(scenarioPreviewRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewScenario request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ScenarioPreviewResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ScenarioPreviewResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ScenarioPreviewResponse> localVarResp = previewScenarioWithHttpInfo(scenarioPreviewRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewScenario request with HTTP info returned
+         * @return ApiResponse&lt;ScenarioPreviewResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ScenarioPreviewResponse> executeWithHttpInfo() throws ApiException {
+            return previewScenarioWithHttpInfo(scenarioPreviewRequest);
+        }
+
+        /**
+         * Execute previewScenario request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ScenarioPreviewResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ScenarioPreviewResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return previewScenarioWithHttpInfo(scenarioPreviewRequest, opts);
+        }
+
+        /**
+         * Execute previewScenario request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ScenarioPreviewResponse> _callback) throws ApiException {
+            return previewScenarioAsync(scenarioPreviewRequest, _callback);
+        }
+
+        /**
+         * Execute previewScenario request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ScenarioPreviewResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return previewScenarioAsync(scenarioPreviewRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] PreviewScenario: Preview a Scenario
+     * Preview what a scenario would do to a portfolio&#39;s market data, without running a valuation.     The portfolio&#39;s market data dependencies are resolved through the given recipe and the scenario&#39;s  shifts are applied; the response lists every market data target the shifts changed, with values  before and after, plus any market data that matched a shift but could not honour it. Supply  either a reference to a stored scenario, or inline shift definitions to test a definition before  saving it.
+     * @param scenarioPreviewRequest The recipe, portfolios, effective date and scenario (stored reference or inline shifts) to preview (required)
+     * @return APIpreviewScenarioRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpreviewScenarioRequest previewScenario(ScenarioPreviewRequest scenarioPreviewRequest) {
+        return new APIpreviewScenarioRequest(scenarioPreviewRequest);
     }
     private okhttp3.Call upsertScenarioCall(UpsertScenarioRequest upsertScenarioRequest, final ApiCallback _callback) throws ApiException {
         return upsertScenarioCall(upsertScenarioRequest,  _callback, new ConfigurationOptions());

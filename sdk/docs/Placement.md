@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this placement. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument placement. | [default to String]
-**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **state** | **String** | The state of this placement (typically a FIX state; Open, Filled, etc). | [default to String]
 **side** | **String** | The side (Buy, Sell, ...) of this placement. | [default to String]
 **timeInForce** | **String** | The time in force applicable to this placement (GTC, FOK, Day, etc) | [default to String]
@@ -38,7 +39,8 @@ List<ResourceId> BlockIds = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 String LusidInstrumentId = "example LusidInstrumentId";
-java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 String State = "example State";
 String Side = "example Side";
 String TimeInForce = "example TimeInForce";
@@ -62,6 +64,7 @@ Placement placementInstance = new Placement()
     .InstrumentIdentifiers(InstrumentIdentifiers)
     .LusidInstrumentId(LusidInstrumentId)
     .Quantity(Quantity)
+    .Amount(Amount)
     .State(State)
     .Side(Side)
     .TimeInForce(TimeInForce)

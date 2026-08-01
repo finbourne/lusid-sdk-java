@@ -17,6 +17,7 @@ ScenarioShiftType method = ScenarioShiftType.RATECURVESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.FXSHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.EQUITYSHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.VOLSURFACESHIFTDEFINITION;
+ScenarioShiftType method = ScenarioShiftType.MDKRGROUPSHIFTDEFINITION;
 ```
 
 

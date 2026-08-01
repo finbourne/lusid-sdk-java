@@ -82,6 +82,10 @@ public class PlacementRequest {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
@@ -264,7 +268,7 @@ public class PlacementRequest {
    * The quantity of given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -272,6 +276,27 @@ public class PlacementRequest {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public PlacementRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -501,6 +526,7 @@ public class PlacementRequest {
         Objects.equals(this.properties, placementRequest.properties) &&
         Objects.equals(this.instrumentIdentifiers, placementRequest.instrumentIdentifiers) &&
         (this.quantity.compareTo(placementRequest.getQuantity()) == 0) &&
+        Objects.equals(this.amount, placementRequest.amount) &&
         Objects.equals(this.state, placementRequest.state) &&
         Objects.equals(this.side, placementRequest.side) &&
         Objects.equals(this.timeInForce, placementRequest.timeInForce) &&
@@ -519,7 +545,7 @@ public class PlacementRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, quantity, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType);
+    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, quantity, amount, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -539,6 +565,7 @@ public class PlacementRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
@@ -577,6 +604,7 @@ public class PlacementRequest {
     openapiFields.add("properties");
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("state");
     openapiFields.add("side");
     openapiFields.add("timeInForce");
@@ -593,7 +621,6 @@ public class PlacementRequest {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("blockIds");
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("timeInForce");
     openapiRequiredFields.add("type");
@@ -636,6 +663,10 @@ public class PlacementRequest {
       for (int i = 0; i < jsonArrayblockIds.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayblockIds.get(i));
       };
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
       if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }

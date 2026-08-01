@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScenarioShiftDefinition {
   /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
    */
   @JsonAdapter(ScenarioShiftTypeEnum.Adapter.class)
   public enum ScenarioShiftTypeEnum {
@@ -60,7 +60,9 @@ public class ScenarioShiftDefinition {
     
     EQUITYSHIFTDEFINITION("EquityShiftDefinition"),
     
-    VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition");
+    VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition"),
+    
+    MDKRGROUPSHIFTDEFINITION("MdkrGroupShiftDefinition");
 
     private String value;
 
@@ -114,7 +116,7 @@ public class ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
    * @return scenarioShiftType
   **/
   @jakarta.annotation.Nonnull
@@ -200,6 +202,9 @@ public class ScenarioShiftDefinition {
           break;
         case "FxShiftDefinition":
           FxShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "MdkrGroupShiftDefinition":
+          MdkrGroupShiftDefinition.validateJsonElement(jsonElement);
           break;
         case "RateCurveShiftDefinition":
           RateCurveShiftDefinition.validateJsonElement(jsonElement);

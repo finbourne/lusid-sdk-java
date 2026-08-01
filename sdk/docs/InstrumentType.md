@@ -59,6 +59,7 @@ InstrumentType method = InstrumentType.FLEXIBLEDEPOSIT;
 InstrumentType method = InstrumentType.FLEXIBLEREPO;
 InstrumentType method = InstrumentType.TOBEANNOUNCED;
 InstrumentType method = InstrumentType.VOLATILITYSWAP;
+InstrumentType method = InstrumentType.TOBEANNOUNCEDOPTION;
 ```
 
 

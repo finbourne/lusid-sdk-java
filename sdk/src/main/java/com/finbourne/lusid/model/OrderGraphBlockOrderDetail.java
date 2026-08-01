@@ -138,7 +138,7 @@ public class OrderGraphBlockOrderDetail {
   }
 
    /**
-   * The approval state of this order. Available values: Pending, Rejected, Approved.
+   * The approval state of this order. Available values: Pending, Rejected, Approved, Placed.
    * @return approvalState
   **/
   @jakarta.annotation.Nonnull

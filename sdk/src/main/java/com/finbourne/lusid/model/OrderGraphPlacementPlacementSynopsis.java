@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,6 +60,10 @@ public class OrderGraphPlacementPlacementSynopsis {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private java.math.BigDecimal amount;
 
   public OrderGraphPlacementPlacementSynopsis() {
   }
@@ -102,7 +107,7 @@ public class OrderGraphPlacementPlacementSynopsis {
    * Total number of units placed.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -110,6 +115,27 @@ public class OrderGraphPlacementPlacementSynopsis {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public OrderGraphPlacementPlacementSynopsis amount(java.math.BigDecimal amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Total monetary value placed, in the block currency.
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(java.math.BigDecimal amount) {
+    this.amount = amount;
   }
 
 
@@ -124,12 +150,24 @@ public class OrderGraphPlacementPlacementSynopsis {
     }
     OrderGraphPlacementPlacementSynopsis orderGraphPlacementPlacementSynopsis = (OrderGraphPlacementPlacementSynopsis) o;
     return Objects.equals(this.details, orderGraphPlacementPlacementSynopsis.details) &&
-        (this.quantity.compareTo(orderGraphPlacementPlacementSynopsis.getQuantity()) == 0);
+        (this.quantity.compareTo(orderGraphPlacementPlacementSynopsis.getQuantity()) == 0) &&
+        (this.amount.compareTo(orderGraphPlacementPlacementSynopsis.getAmount()) == 0);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, quantity);
+    return Objects.hash(details, quantity, amount);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -138,6 +176,7 @@ public class OrderGraphPlacementPlacementSynopsis {
     sb.append("class OrderGraphPlacementPlacementSynopsis {\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,11 +201,11 @@ public class OrderGraphPlacementPlacementSynopsis {
     openapiFields = new HashSet<String>();
     openapiFields.add("details");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("details");
-    openapiRequiredFields.add("quantity");
   }
 
  /**

@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ApportionmentMethodProperty;
+import com.finbourne.lusid.model.BucketSetDefinition;
 import com.finbourne.lusid.model.ComponentFilter;
 import com.finbourne.lusid.model.ExternalFeeComponentFilter;
 import com.finbourne.lusid.model.Property;
@@ -71,23 +73,35 @@ public class FundConfigurationRequest {
 
   public static final String SERIALIZED_NAME_DEALING_FILTERS = "dealingFilters";
   @SerializedName(SERIALIZED_NAME_DEALING_FILTERS)
-  private List<ComponentFilter> dealingFilters = new ArrayList<>();
+  private List<ComponentFilter> dealingFilters;
 
   public static final String SERIALIZED_NAME_PNL_FILTERS = "pnlFilters";
   @SerializedName(SERIALIZED_NAME_PNL_FILTERS)
-  private List<ComponentFilter> pnlFilters = new ArrayList<>();
+  private List<ComponentFilter> pnlFilters;
 
   public static final String SERIALIZED_NAME_BACK_OUT_FILTERS = "backOutFilters";
   @SerializedName(SERIALIZED_NAME_BACK_OUT_FILTERS)
-  private List<ComponentFilter> backOutFilters = new ArrayList<>();
+  private List<ComponentFilter> backOutFilters;
 
   public static final String SERIALIZED_NAME_EXTERNAL_FEE_FILTERS = "externalFeeFilters";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_FEE_FILTERS)
   private List<ExternalFeeComponentFilter> externalFeeFilters;
 
+  public static final String SERIALIZED_NAME_BUCKET_SETS = "bucketSets";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SETS)
+  private List<BucketSetDefinition> bucketSets;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
+
+  public static final String SERIALIZED_NAME_APPORTIONMENT_BUCKET_SET = "apportionmentBucketSet";
+  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_BUCKET_SET)
+  private String apportionmentBucketSet;
+
+  public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
+  @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
+  private ApportionmentMethodProperty apportionmentMethodProperty;
 
   public FundConfigurationRequest() {
   }
@@ -173,7 +187,7 @@ public class FundConfigurationRequest {
    * The set of filters used to decide which JE lines are included in the dealing.
    * @return dealingFilters
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ComponentFilter> getDealingFilters() {
     return dealingFilters;
   }
@@ -202,7 +216,7 @@ public class FundConfigurationRequest {
    * The set of filters used to decide which JE lines are included in the PnL.
    * @return pnlFilters
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ComponentFilter> getPnlFilters() {
     return pnlFilters;
   }
@@ -231,7 +245,7 @@ public class FundConfigurationRequest {
    * The set of filters used to decide which JE lines are included in the back outs.
    * @return backOutFilters
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ComponentFilter> getBackOutFilters() {
     return backOutFilters;
   }
@@ -271,6 +285,35 @@ public class FundConfigurationRequest {
   }
 
 
+  public FundConfigurationRequest bucketSets(List<BucketSetDefinition> bucketSets) {
+    
+    this.bucketSets = bucketSets;
+    return this;
+  }
+
+  public FundConfigurationRequest addBucketSetsItem(BucketSetDefinition bucketSetsItem) {
+    if (this.bucketSets == null) {
+      this.bucketSets = new ArrayList<>();
+    }
+    this.bucketSets.add(bucketSetsItem);
+    return this;
+  }
+
+   /**
+   * The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation.
+   * @return bucketSets
+  **/
+  @jakarta.annotation.Nullable
+  public List<BucketSetDefinition> getBucketSets() {
+    return bucketSets;
+  }
+
+
+  public void setBucketSets(List<BucketSetDefinition> bucketSets) {
+    this.bucketSets = bucketSets;
+  }
+
+
   public FundConfigurationRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -300,6 +343,48 @@ public class FundConfigurationRequest {
   }
 
 
+  public FundConfigurationRequest apportionmentBucketSet(String apportionmentBucketSet) {
+    
+    this.apportionmentBucketSet = apportionmentBucketSet;
+    return this;
+  }
+
+   /**
+   * The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection.
+   * @return apportionmentBucketSet
+  **/
+  @jakarta.annotation.Nullable
+  public String getApportionmentBucketSet() {
+    return apportionmentBucketSet;
+  }
+
+
+  public void setApportionmentBucketSet(String apportionmentBucketSet) {
+    this.apportionmentBucketSet = apportionmentBucketSet;
+  }
+
+
+  public FundConfigurationRequest apportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
+    
+    this.apportionmentMethodProperty = apportionmentMethodProperty;
+    return this;
+  }
+
+   /**
+   * Get apportionmentMethodProperty
+   * @return apportionmentMethodProperty
+  **/
+  @jakarta.annotation.Nullable
+  public ApportionmentMethodProperty getApportionmentMethodProperty() {
+    return apportionmentMethodProperty;
+  }
+
+
+  public void setApportionmentMethodProperty(ApportionmentMethodProperty apportionmentMethodProperty) {
+    this.apportionmentMethodProperty = apportionmentMethodProperty;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -317,7 +402,10 @@ public class FundConfigurationRequest {
         Objects.equals(this.pnlFilters, fundConfigurationRequest.pnlFilters) &&
         Objects.equals(this.backOutFilters, fundConfigurationRequest.backOutFilters) &&
         Objects.equals(this.externalFeeFilters, fundConfigurationRequest.externalFeeFilters) &&
-        Objects.equals(this.properties, fundConfigurationRequest.properties);
+        Objects.equals(this.bucketSets, fundConfigurationRequest.bucketSets) &&
+        Objects.equals(this.properties, fundConfigurationRequest.properties) &&
+        Objects.equals(this.apportionmentBucketSet, fundConfigurationRequest.apportionmentBucketSet) &&
+        Objects.equals(this.apportionmentMethodProperty, fundConfigurationRequest.apportionmentMethodProperty);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -326,7 +414,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, properties);
+    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, bucketSets, properties, apportionmentBucketSet, apportionmentMethodProperty);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,7 +435,10 @@ public class FundConfigurationRequest {
     sb.append("    pnlFilters: ").append(toIndentedString(pnlFilters)).append("\n");
     sb.append("    backOutFilters: ").append(toIndentedString(backOutFilters)).append("\n");
     sb.append("    externalFeeFilters: ").append(toIndentedString(externalFeeFilters)).append("\n");
+    sb.append("    bucketSets: ").append(toIndentedString(bucketSets)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    apportionmentBucketSet: ").append(toIndentedString(apportionmentBucketSet)).append("\n");
+    sb.append("    apportionmentMethodProperty: ").append(toIndentedString(apportionmentMethodProperty)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -377,14 +468,14 @@ public class FundConfigurationRequest {
     openapiFields.add("pnlFilters");
     openapiFields.add("backOutFilters");
     openapiFields.add("externalFeeFilters");
+    openapiFields.add("bucketSets");
     openapiFields.add("properties");
+    openapiFields.add("apportionmentBucketSet");
+    openapiFields.add("apportionmentMethodProperty");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("dealingFilters");
-    openapiRequiredFields.add("pnlFilters");
-    openapiRequiredFields.add("backOutFilters");
   }
 
  /**
@@ -416,36 +507,48 @@ public class FundConfigurationRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("dealingFilters").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dealingFilters` to be an array in the JSON string but got `%s`", jsonObj.get("dealingFilters").toString()));
-      }
+      if (jsonObj.get("dealingFilters") != null && !jsonObj.get("dealingFilters").isJsonNull()) {
+        JsonArray jsonArraydealingFilters = jsonObj.getAsJsonArray("dealingFilters");
+        if (jsonArraydealingFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("dealingFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `dealingFilters` to be an array in the JSON string but got `%s`", jsonObj.get("dealingFilters").toString()));
+          }
 
-      JsonArray jsonArraydealingFilters = jsonObj.getAsJsonArray("dealingFilters");
-      // validate the required field `dealingFilters` (array)
-      for (int i = 0; i < jsonArraydealingFilters.size(); i++) {
-        ComponentFilter.validateJsonElement(jsonArraydealingFilters.get(i));
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("pnlFilters").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pnlFilters` to be an array in the JSON string but got `%s`", jsonObj.get("pnlFilters").toString()));
+          // validate the optional field `dealingFilters` (array)
+          for (int i = 0; i < jsonArraydealingFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraydealingFilters.get(i));
+          };
+        }
       }
+      if (jsonObj.get("pnlFilters") != null && !jsonObj.get("pnlFilters").isJsonNull()) {
+        JsonArray jsonArraypnlFilters = jsonObj.getAsJsonArray("pnlFilters");
+        if (jsonArraypnlFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("pnlFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `pnlFilters` to be an array in the JSON string but got `%s`", jsonObj.get("pnlFilters").toString()));
+          }
 
-      JsonArray jsonArraypnlFilters = jsonObj.getAsJsonArray("pnlFilters");
-      // validate the required field `pnlFilters` (array)
-      for (int i = 0; i < jsonArraypnlFilters.size(); i++) {
-        ComponentFilter.validateJsonElement(jsonArraypnlFilters.get(i));
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("backOutFilters").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `backOutFilters` to be an array in the JSON string but got `%s`", jsonObj.get("backOutFilters").toString()));
+          // validate the optional field `pnlFilters` (array)
+          for (int i = 0; i < jsonArraypnlFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraypnlFilters.get(i));
+          };
+        }
       }
+      if (jsonObj.get("backOutFilters") != null && !jsonObj.get("backOutFilters").isJsonNull()) {
+        JsonArray jsonArraybackOutFilters = jsonObj.getAsJsonArray("backOutFilters");
+        if (jsonArraybackOutFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("backOutFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `backOutFilters` to be an array in the JSON string but got `%s`", jsonObj.get("backOutFilters").toString()));
+          }
 
-      JsonArray jsonArraybackOutFilters = jsonObj.getAsJsonArray("backOutFilters");
-      // validate the required field `backOutFilters` (array)
-      for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
-        ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
-      };
+          // validate the optional field `backOutFilters` (array)
+          for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
+          };
+        }
+      }
       if (jsonObj.get("externalFeeFilters") != null && !jsonObj.get("externalFeeFilters").isJsonNull()) {
         JsonArray jsonArrayexternalFeeFilters = jsonObj.getAsJsonArray("externalFeeFilters");
         if (jsonArrayexternalFeeFilters != null) {
@@ -459,6 +562,27 @@ public class FundConfigurationRequest {
             ExternalFeeComponentFilter.validateJsonElement(jsonArrayexternalFeeFilters.get(i));
           };
         }
+      }
+      if (jsonObj.get("bucketSets") != null && !jsonObj.get("bucketSets").isJsonNull()) {
+        JsonArray jsonArraybucketSets = jsonObj.getAsJsonArray("bucketSets");
+        if (jsonArraybucketSets != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bucketSets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bucketSets` to be an array in the JSON string but got `%s`", jsonObj.get("bucketSets").toString()));
+          }
+
+          // validate the optional field `bucketSets` (array)
+          for (int i = 0; i < jsonArraybucketSets.size(); i++) {
+            BucketSetDefinition.validateJsonElement(jsonArraybucketSets.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("apportionmentBucketSet") != null && !jsonObj.get("apportionmentBucketSet").isJsonNull()) && !jsonObj.get("apportionmentBucketSet").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `apportionmentBucketSet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("apportionmentBucketSet").toString()));
+      }
+      // validate the optional field `apportionmentMethodProperty`
+      if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
+        ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
       }
   }
 

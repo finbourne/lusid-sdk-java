@@ -13,6 +13,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPortfolioChanges**](EntitiesApi.md#getPortfolioChanges) | **GET** /api/entities/changes/portfolios | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
 | [**getPropertyDefinitionByEntityUniqueId**](EntitiesApi.md#getPropertyDefinitionByEntityUniqueId) | **GET** /api/entities/propertydefinitions/{entityUniqueId} | GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
 | [**getTransactionByEntityUniqueId**](EntitiesApi.md#getTransactionByEntityUniqueId) | **GET** /api/entities/transactions/{entityUniqueId} | GetTransactionByEntityUniqueId: Get transaction by EntityUniqueId |
+| [**getValuationPointByEntityUniqueId**](EntitiesApi.md#getValuationPointByEntityUniqueId) | **GET** /api/entities/valuationpoints/{entityUniqueId} | GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId |
 
 
 
@@ -889,6 +890,101 @@ public class EntitiesApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested transaction entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getValuationPointByEntityUniqueId
+
+> ValuationPointEntity getValuationPointByEntityUniqueId(entityUniqueId, asAt, previews)
+
+GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+
+Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.EntitiesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class EntitiesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
+        EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
+        String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the valuation point.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified.
+        List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ValuationPointEntity result = apiInstance.getValuationPointByEntityUniqueId(entityUniqueId, asAt, previews).execute(opts);
+
+            ValuationPointEntity result = apiInstance.getValuationPointByEntityUniqueId(entityUniqueId, asAt, previews).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EntitiesApi#getValuationPointByEntityUniqueId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityUniqueId** | **String**| The universally unique identifier of the valuation point. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. | [optional] |
+| **previews** | [**List&lt;String&gt;**](String.md)| The ids of the staged modifications to be previewed in the response. | [optional] |
+
+### Return type
+
+[**ValuationPointEntity**](ValuationPointEntity.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested valuation point entity |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
