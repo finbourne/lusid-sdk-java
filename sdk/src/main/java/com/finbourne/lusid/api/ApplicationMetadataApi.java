@@ -26,6 +26,7 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.FileResponse;
+import com.finbourne.lusid.model.LatestAsAt;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.ResourceListOfAccessControlledResource;
@@ -311,6 +312,221 @@ public class ApplicationMetadataApi {
      */
     public APIgetExcelAddinRequest getExcelAddin() {
         return new APIgetExcelAddinRequest();
+    }
+    private okhttp3.Call getLatestAsAtCall(final ApiCallback _callback) throws ApiException {
+        return getLatestAsAtCall( _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLatestAsAtCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/metadata/asat";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLatestAsAtValidateBeforeCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getLatestAsAtCall(_callback, opts);
+
+    }
+
+
+    private ApiResponse<LatestAsAt> getLatestAsAtWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLatestAsAtValidateBeforeCall(null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LatestAsAt>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LatestAsAt> getLatestAsAtWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLatestAsAtValidateBeforeCall(null, opts);
+        Type localVarReturnType = new TypeToken<LatestAsAt>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getLatestAsAtAsync(final ApiCallback<LatestAsAt> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLatestAsAtValidateBeforeCall(_callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LatestAsAt>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLatestAsAtAsync(final ApiCallback<LatestAsAt> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLatestAsAtValidateBeforeCall(_callback, opts);
+        Type localVarReturnType = new TypeToken<LatestAsAt>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetLatestAsAtRequest {
+
+        private APIgetLatestAsAtRequest() {
+        }
+
+        /**
+         * Build call for getLatestAsAt
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getLatestAsAtCall(_callback);
+        }
+
+        /**
+         * Execute getLatestAsAt request
+         * @return LatestAsAt
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LatestAsAt execute() throws ApiException {
+            ApiResponse<LatestAsAt> localVarResp = getLatestAsAtWithHttpInfo();
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLatestAsAt request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LatestAsAt
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LatestAsAt execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LatestAsAt> localVarResp = getLatestAsAtWithHttpInfo(opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getLatestAsAt request with HTTP info returned
+         * @return ApiResponse&lt;LatestAsAt&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LatestAsAt> executeWithHttpInfo() throws ApiException {
+            return getLatestAsAtWithHttpInfo();
+        }
+
+        /**
+         * Execute getLatestAsAt request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LatestAsAt&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LatestAsAt> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLatestAsAtWithHttpInfo(opts);
+        }
+
+        /**
+         * Execute getLatestAsAt request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LatestAsAt> _callback) throws ApiException {
+            return getLatestAsAtAsync(_callback);
+        }
+
+        /**
+         * Execute getLatestAsAt request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LatestAsAt> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLatestAsAtAsync(_callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetLatestAsAt: Get latest AsAt
+     * Get the latest asAt datetime of the system, i.e. the asAt datetime of the most recent write.  This is the asAt datetime that a request made without an explicit asAt resolves to.
+     * @return APIgetLatestAsAtRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The latest asAt datetime of the system </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetLatestAsAtRequest getLatestAsAt() {
+        return new APIgetLatestAsAtRequest();
     }
     private okhttp3.Call getLusidVersionsCall(final ApiCallback _callback) throws ApiException {
         return getLusidVersionsCall( _callback, new ConfigurationOptions());

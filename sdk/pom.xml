@@ -5,7 +5,7 @@
     <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>2.1.164</version>
+    <version>2.1.165</version>
     <url>https://github.com/finbourne/lusid-sdk-java</url>
     <description>lusid</description>
     <scm>
@@ -378,8 +378,8 @@
         <okhttp-version>4.12.0</okhttp-version>
         <gson-version>2.9.1</gson-version>
         <commons-lang3-version>3.18.0</commons-lang3-version>
-        <jackson-core-version>2.22.0</jackson-core-version>
-        <jackson-databind-version>2.22.0</jackson-databind-version>
+        <jackson-core-version>2.22.1</jackson-core-version>
+        <jackson-databind-version>2.22.1</jackson-databind-version>
         <json-version>20240303</json-version>
         <jackson-databind-nullable-version>0.2.6</jackson-databind-nullable-version>
         <jakarta-annotation-version>2.1.1</jakarta-annotation-version>

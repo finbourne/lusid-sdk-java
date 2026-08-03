@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9591
+  version: 0.11.9604
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -70721,6 +70721,38 @@ paths:
       tags:
       - Application Metadata
       x-fbn-apistatus: Stable
+      x-accepts: application/json
+  /api/metadata/asat:
+    get:
+      description: "Get the latest asAt datetime of the system, i.e. the asAt datetime\
+        \ of the most recent write.\r\nThis is the asAt datetime that a request made\
+        \ without an explicit asAt resolves to."
+      operationId: GetLatestAsAt
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LatestAsAt'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatestAsAt'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LatestAsAt'
+          description: The latest asAt datetime of the system
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetLatestAsAt: Get latest AsAt"
+      tags:
+      - Application Metadata
+      x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/metadata/downloads/exceladdin:
     get:
@@ -215067,6 +215099,29 @@ components:
           type: boolean
       required:
       - electionKey
+      type: object
+    LatestAsAt:
+      additionalProperties: false
+      example:
+        asAt: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+      properties:
+        asAt:
+          format: date-time
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
       type: object
     LegalEntity:
       additionalProperties: false
