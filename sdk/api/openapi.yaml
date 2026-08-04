@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9609
+  version: 0.11.9610
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -194995,25 +194995,24 @@ components:
         baseCurrency: baseCurrency
         decimalPlaces: 18
         shareClasses:
-        - pricePrecision: 7
+        - pricePrecision: 4
           launchPrice: 2.3021358869347655
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
-          apportionmentFactor: 7.061401241503109
           description: description
           roundingConventions:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
           roundingConventionsUnits:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -195023,9 +195022,9 @@ components:
             primaryMarketOpen: primaryMarketOpen
           name: name
           tradingConventions:
-            minimumOrderIncrement: 2.027123023002322
-            priceScaleFactor: 9.301444243932576
-            minimumOrderSize: 3.616076749251911
+            minimumOrderIncrement: 3.616076749251911
+            priceScaleFactor: 7.061401241503109
+            minimumOrderSize: 9.301444243932576
           properties:
             key:
               referenceData:
@@ -195045,26 +195044,25 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
           fundShareClassType: fundShareClassType
-          unitsPrecision: 4
-        - pricePrecision: 7
+          unitsPrecision: 2
+        - pricePrecision: 4
           launchPrice: 2.3021358869347655
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
-          apportionmentFactor: 7.061401241503109
           description: description
           roundingConventions:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
           roundingConventionsUnits:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -195074,9 +195072,9 @@ components:
             primaryMarketOpen: primaryMarketOpen
           name: name
           tradingConventions:
-            minimumOrderIncrement: 2.027123023002322
-            priceScaleFactor: 9.301444243932576
-            minimumOrderSize: 3.616076749251911
+            minimumOrderIncrement: 3.616076749251911
+            priceScaleFactor: 7.061401241503109
+            minimumOrderSize: 9.301444243932576
           properties:
             key:
               referenceData:
@@ -195096,7 +195094,7 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
           fundShareClassType: fundShareClassType
-          unitsPrecision: 4
+          unitsPrecision: 2
         inceptionDate: 2000-01-23T04:56:07.000+00:00
         primaryNavType:
           subHoldingKeys:
@@ -196827,20 +196825,19 @@ components:
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
-          apportionmentFactor: 1.4658129805029452
           description: description
           roundingConventions:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
           roundingConventionsUnits:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -196850,9 +196847,9 @@ components:
             primaryMarketOpen: primaryMarketOpen
           name: name
           tradingConventions:
-            minimumOrderIncrement: 2.027123023002322
-            priceScaleFactor: 9.301444243932576
-            minimumOrderSize: 3.616076749251911
+            minimumOrderIncrement: 3.616076749251911
+            priceScaleFactor: 7.061401241503109
+            minimumOrderSize: 9.301444243932576
           properties:
             key:
               referenceData:
@@ -196872,26 +196869,25 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
           fundShareClassType: fundShareClassType
-          unitsPrecision: 5
+          unitsPrecision: 1
         - pricePrecision: 5
           launchPrice: 6.027456183070403
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
-          apportionmentFactor: 1.4658129805029452
           description: description
           roundingConventions:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
           roundingConventionsUnits:
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
-          - precision: 1
+          - precision: 7
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -196901,9 +196897,9 @@ components:
             primaryMarketOpen: primaryMarketOpen
           name: name
           tradingConventions:
-            minimumOrderIncrement: 2.027123023002322
-            priceScaleFactor: 9.301444243932576
-            minimumOrderSize: 3.616076749251911
+            minimumOrderIncrement: 3.616076749251911
+            priceScaleFactor: 7.061401241503109
+            minimumOrderSize: 9.301444243932576
           properties:
             key:
               referenceData:
@@ -196923,7 +196919,7 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
           fundShareClassType: fundShareClassType
-          unitsPrecision: 5
+          unitsPrecision: 1
         shareClassInstrumentScopes:
         - shareClassInstrumentScopes
         inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -198162,25 +198158,24 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 7
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -198190,9 +198185,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -198212,26 +198207,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
-          - pricePrecision: 7
+            unitsPrecision: 2
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -198241,9 +198235,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -198263,7 +198257,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
+            unitsPrecision: 2
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -198492,25 +198486,24 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 7
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -198520,9 +198513,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -198542,26 +198535,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
-          - pricePrecision: 7
+            unitsPrecision: 2
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -198571,9 +198563,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -198593,7 +198585,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
+            unitsPrecision: 2
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -199003,20 +198995,19 @@ components:
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 1.4658129805029452
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -199026,9 +199017,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -199048,26 +199039,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 5
+            unitsPrecision: 1
           - pricePrecision: 5
             launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 1.4658129805029452
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -199077,9 +199067,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -199099,7 +199089,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 5
+            unitsPrecision: 1
           shareClassInstrumentScopes:
           - shareClassInstrumentScopes
           inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -199271,20 +199261,19 @@ components:
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 1.4658129805029452
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -199294,9 +199283,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -199316,26 +199305,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 5
+            unitsPrecision: 1
           - pricePrecision: 5
             launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 1.4658129805029452
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -199345,9 +199333,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -199367,7 +199355,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 5
+            unitsPrecision: 1
           shareClassInstrumentScopes:
           - shareClassInstrumentScopes
           inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -230079,25 +230067,24 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 7
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -230107,9 +230094,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -230129,26 +230116,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
-          - pricePrecision: 7
+            unitsPrecision: 2
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -230158,9 +230144,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -230180,7 +230166,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
+            unitsPrecision: 2
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -230409,25 +230395,24 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 7
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -230437,9 +230422,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -230459,26 +230444,25 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
-          - pricePrecision: 7
+            unitsPrecision: 2
+          - pricePrecision: 4
             launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
-            apportionmentFactor: 7.061401241503109
             description: description
             roundingConventions:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
             roundingConventionsUnits:
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
-            - precision: 1
+            - precision: 7
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -230488,9 +230472,9 @@ components:
               primaryMarketOpen: primaryMarketOpen
             name: name
             tradingConventions:
-              minimumOrderIncrement: 2.027123023002322
-              priceScaleFactor: 9.301444243932576
-              minimumOrderSize: 3.616076749251911
+              minimumOrderIncrement: 3.616076749251911
+              priceScaleFactor: 7.061401241503109
+              minimumOrderSize: 9.301444243932576
             properties:
               key:
                 referenceData:
@@ -230510,7 +230494,7 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             fundShareClassType: fundShareClassType
-            unitsPrecision: 4
+            unitsPrecision: 2
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -231273,25 +231257,24 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 7
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -231301,9 +231284,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -231323,26 +231306,25 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
-            - pricePrecision: 7
+              unitsPrecision: 2
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -231352,9 +231334,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -231374,7 +231356,7 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
+              unitsPrecision: 2
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -231603,25 +231585,24 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 7
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -231631,9 +231612,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -231653,26 +231634,25 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
-            - pricePrecision: 7
+              unitsPrecision: 2
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -231682,9 +231662,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -231704,7 +231684,7 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
+              unitsPrecision: 2
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -232024,25 +232004,24 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 7
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -232052,9 +232031,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -232074,26 +232053,25 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
-            - pricePrecision: 7
+              unitsPrecision: 2
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -232103,9 +232081,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -232125,7 +232103,7 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
+              unitsPrecision: 2
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -232354,25 +232332,24 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 7
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -232382,9 +232359,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -232404,26 +232381,25 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
-            - pricePrecision: 7
+              unitsPrecision: 2
+            - pricePrecision: 4
               launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
-              apportionmentFactor: 7.061401241503109
               description: description
               roundingConventions:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
               roundingConventionsUnits:
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
-              - precision: 1
+              - precision: 7
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -232433,9 +232409,9 @@ components:
                 primaryMarketOpen: primaryMarketOpen
               name: name
               tradingConventions:
-                minimumOrderIncrement: 2.027123023002322
-                priceScaleFactor: 9.301444243932576
-                minimumOrderSize: 3.616076749251911
+                minimumOrderIncrement: 3.616076749251911
+                priceScaleFactor: 7.061401241503109
+                minimumOrderSize: 9.301444243932576
               properties:
                 key:
                   referenceData:
@@ -232455,7 +232431,7 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               fundShareClassType: fundShareClassType
-              unitsPrecision: 4
+              unitsPrecision: 2
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -287099,25 +287075,24 @@ components:
     ShareClass:
       additionalProperties: false
       example:
-        pricePrecision: 7
+        pricePrecision: 4
         launchPrice: 2.3021358869347655
         distributionType: distributionType
         domCcy: domCcy
         shareClassShortCode: shareClassShortCode
-        apportionmentFactor: 7.061401241503109
         description: description
         roundingConventions:
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
         instrumentIdentifiers:
           key: instrumentIdentifiers
         launchDate: 2000-01-23T04:56:07.000+00:00
         roundingConventionsUnits:
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
         distributionPaymentType: distributionPaymentType
         hedging: hedging
@@ -287127,9 +287102,9 @@ components:
           primaryMarketOpen: primaryMarketOpen
         name: name
         tradingConventions:
-          minimumOrderIncrement: 2.027123023002322
-          priceScaleFactor: 9.301444243932576
-          minimumOrderSize: 3.616076749251911
+          minimumOrderIncrement: 3.616076749251911
+          priceScaleFactor: 7.061401241503109
+          minimumOrderSize: 9.301444243932576
         properties:
           key:
             referenceData:
@@ -287149,13 +287124,14 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
         fundShareClassType: fundShareClassType
-        unitsPrecision: 4
+        unitsPrecision: 2
       properties:
         instrumentIdentifiers:
           additionalProperties:
             nullable: true
             type: string
           description: Unique instrument identifiers
+          nullable: true
           type: object
         name:
           description: The display name of the Share Class.
@@ -287188,12 +287164,6 @@ components:
           format: date-time
           nullable: true
           type: string
-        apportionmentFactor:
-          description: "Only used for fixed percentage method or be zero, must equal\
-            \ 1 or 0 across all classes in the fund."
-          format: double
-          nullable: true
-          type: number
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
@@ -287255,7 +287225,6 @@ components:
       - domCcy
       - fundShareClassType
       - hedging
-      - instrumentIdentifiers
       - name
       - shareClassShortCode
       type: object
@@ -287537,20 +287506,19 @@ components:
         distributionType: distributionType
         domCcy: domCcy
         shareClassShortCode: shareClassShortCode
-        apportionmentFactor: 1.4658129805029452
         description: description
         roundingConventions:
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
         instrumentIdentifiers:
           key: instrumentIdentifiers
         launchDate: 2000-01-23T04:56:07.000+00:00
         roundingConventionsUnits:
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
-        - precision: 1
+        - precision: 7
           roundingType: roundingType
         distributionPaymentType: distributionPaymentType
         hedging: hedging
@@ -287560,9 +287528,9 @@ components:
           primaryMarketOpen: primaryMarketOpen
         name: name
         tradingConventions:
-          minimumOrderIncrement: 2.027123023002322
-          priceScaleFactor: 9.301444243932576
-          minimumOrderSize: 3.616076749251911
+          minimumOrderIncrement: 3.616076749251911
+          priceScaleFactor: 7.061401241503109
+          minimumOrderSize: 9.301444243932576
         properties:
           key:
             referenceData:
@@ -287582,7 +287550,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
         fundShareClassType: fundShareClassType
-        unitsPrecision: 5
+        unitsPrecision: 1
       properties:
         instrumentIdentifiers:
           additionalProperties:
@@ -287621,12 +287589,6 @@ components:
           format: date-time
           nullable: true
           type: string
-        apportionmentFactor:
-          description: "Only used for fixed percentage method or be zero, must equal\
-            \ 1 or 0 across all classes in the fund."
-          format: double
-          nullable: true
-          type: number
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
@@ -288272,7 +288234,7 @@ components:
         \ example, Thai government bonds will round accrued interest and cashflow\
         \ values 2dp, whereas for\r\nFrench government bonds, the rounding is to 7dp."
       example:
-        precision: 1
+        precision: 7
         roundingType: roundingType
       properties:
         precision:
@@ -291844,9 +291806,9 @@ components:
       description: Common Trading details for exchange traded instruments like Futures
         and Bonds
       example:
-        minimumOrderIncrement: 2.027123023002322
-        priceScaleFactor: 9.301444243932576
-        minimumOrderSize: 3.616076749251911
+        minimumOrderIncrement: 3.616076749251911
+        priceScaleFactor: 7.061401241503109
+        minimumOrderSize: 9.301444243932576
       properties:
         priceScaleFactor:
           description: "The factor used to scale prices for the instrument. Currently\
