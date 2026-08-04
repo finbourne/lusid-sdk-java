@@ -714,6 +714,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceParameterType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.DelistingEvent.class, new TypeSelector<com.finbourne.lusid.model.DelistingEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.DelistingEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("DelistingEvent", com.finbourne.lusid.model.DelistingEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.DepositCloseEvent.class, new TypeSelector<com.finbourne.lusid.model.DepositCloseEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.DepositCloseEvent> getClassForElement(JsonElement readElement) {
@@ -1577,6 +1586,7 @@ public class JSON {
                         classByDiscriminatorValue.put("ContractInitialisationEvent", com.finbourne.lusid.model.ContractInitialisationEvent.class);
                         classByDiscriminatorValue.put("ConversionEvent", com.finbourne.lusid.model.ConversionEvent.class);
                         classByDiscriminatorValue.put("CreditPremiumCashFlowEvent", com.finbourne.lusid.model.CreditPremiumCashFlowEvent.class);
+                        classByDiscriminatorValue.put("DelistingEvent", com.finbourne.lusid.model.DelistingEvent.class);
                         classByDiscriminatorValue.put("DepositCloseEvent", com.finbourne.lusid.model.DepositCloseEvent.class);
                         classByDiscriminatorValue.put("DepositInterestPaymentEvent", com.finbourne.lusid.model.DepositInterestPaymentEvent.class);
                         classByDiscriminatorValue.put("DepositRollEvent", com.finbourne.lusid.model.DepositRollEvent.class);
@@ -3311,6 +3321,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DeleteRelationalDataPointRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DeleteRelationshipRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DeletedEntityResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DelistingEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DependencySourceFilter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositCloseEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositInterestPaymentEvent.CustomTypeAdapterFactory());

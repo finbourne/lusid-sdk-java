@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9605
+  version: 0.11.9606
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -54370,7 +54370,7 @@ paths:
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
           \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-          \ PikBondPrincipalEvent."
+          \ PikBondPrincipalEvent, DelistingEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54480,7 +54480,7 @@ paths:
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
           \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-          \ PikBondPrincipalEvent."
+          \ PikBondPrincipalEvent, DelistingEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54598,7 +54598,7 @@ paths:
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
           \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-          \ PikBondPrincipalEvent."
+          \ PikBondPrincipalEvent, DelistingEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -54822,7 +54822,7 @@ paths:
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
           \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-          \ PikBondPrincipalEvent."
+          \ PikBondPrincipalEvent, DelistingEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -55047,7 +55047,7 @@ paths:
           \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
           \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-          \ PikBondPrincipalEvent."
+          \ PikBondPrincipalEvent, DelistingEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -156279,7 +156279,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -156374,6 +156375,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - dividendCurrency
@@ -156869,7 +156871,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -156964,6 +156967,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -158689,7 +158693,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -158784,6 +158789,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amountReduced
@@ -160524,7 +160530,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -160619,6 +160626,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -164574,7 +164582,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164669,6 +164678,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -164711,7 +164721,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164806,6 +164817,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -164859,7 +164871,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164954,6 +164967,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -165053,7 +165067,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -165148,6 +165163,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -167519,7 +167535,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -167614,6 +167631,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - exerciseCurrency
@@ -168878,7 +168896,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168973,6 +168992,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashElections
@@ -169038,7 +169058,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -169133,6 +169154,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -169189,7 +169211,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -169284,6 +169307,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -169507,7 +169531,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -169602,6 +169627,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashElections
@@ -169685,7 +169711,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -169780,6 +169807,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashFlowValue
@@ -170144,7 +170172,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170239,6 +170268,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -170616,7 +170646,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170711,6 +170742,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - constituentWeight
@@ -170849,7 +170881,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170944,6 +170977,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - changeType
@@ -171846,7 +171880,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -171941,6 +171976,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -172385,7 +172421,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -172480,6 +172517,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -176076,7 +176114,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -176171,6 +176210,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - consentType
@@ -176483,7 +176523,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -176578,6 +176619,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - contractDetails
@@ -176756,7 +176798,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -176851,6 +176894,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -181146,7 +181190,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181241,6 +181286,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -186065,6 +186111,157 @@ components:
       - sourceEntityId
       - targetEntityId
       type: object
+    DelistingEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          effectiveDate:
+            description: The date the security is removed from official board quotation
+              (the trading-status change takes effect).
+            format: date-time
+            type: string
+          announcementDate:
+            description: "The date the delisting was announced. Optional — null when\
+              \ no separate announcement date is provided.\r\nWhen populated, must\
+              \ be <= EffectiveDate."
+            format: date-time
+            nullable: true
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            type: string
+        required:
+        - instrumentEventType
+        type: object
+      description: "A Delisting (DLST) corporate action. A mandatory notification\
+        \ that a security has been removed from\r\nofficial exchange quotation. It\
+        \ records the trading-status change on the instrument's timeline and\r\ngenerates\
+        \ no cash movement, no security movement, and no change to the holder's position\
+        \ — the position\r\nis retained. DLST records listing status only; a valueless\
+        \ security with no distribution is a\r\nWorthlessEvent (WRTH) and an issuer\
+        \ debt default is a BondDefaultEvent (DFLT)."
     DependencySourceFilter:
       additionalProperties: false
       description: "Encapsulates parts of a market data rule relating not to the nature\
@@ -186174,7 +186371,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186269,6 +186467,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -186316,7 +186515,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186411,6 +186611,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -186463,7 +186664,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186558,6 +186760,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -187204,7 +187407,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187299,6 +187503,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashElections
@@ -187373,7 +187578,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187468,6 +187674,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashElections
@@ -187525,7 +187732,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187620,6 +187828,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -187684,7 +187893,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187779,6 +187989,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - affectedAmount
@@ -187926,7 +188137,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188021,6 +188233,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -188113,7 +188326,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188208,6 +188422,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - closeOutAmount
@@ -188301,7 +188516,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188396,6 +188612,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -189610,7 +189827,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189705,6 +189923,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - eventSource
@@ -190354,7 +190573,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -190449,6 +190669,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - anchorDate
@@ -190797,7 +191018,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -190892,6 +191114,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -193122,7 +193345,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193217,6 +193441,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -193274,7 +193499,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193369,6 +193595,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -193420,7 +193647,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193515,6 +193743,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -193572,7 +193801,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193667,6 +193897,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -193741,7 +193972,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193836,6 +194068,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -199597,7 +199830,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199692,6 +199926,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -199742,7 +199977,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199837,6 +200073,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -200580,7 +200817,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200675,6 +200913,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - domAmountPerUnit
@@ -207119,7 +207358,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207214,6 +207454,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - effectiveAt
@@ -207274,7 +207515,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207369,6 +207611,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - anchorDate
@@ -209272,7 +209515,7 @@ components:
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
             \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
             \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-            \ PikBondPrincipalEvent."
+            \ PikBondPrincipalEvent, DelistingEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -209367,6 +209610,7 @@ components:
           - PikBondCashCouponEvent
           - PikBondInterestCapitalisationEvent
           - PikBondPrincipalEvent
+          - DelistingEvent
           type: string
       required:
       - instrumentEventType
@@ -209850,6 +210094,7 @@ components:
       - PikBondCashCouponEvent
       - PikBondInterestCapitalisationEvent
       - PikBondPrincipalEvent
+      - DelistingEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -210820,7 +211065,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210915,6 +211161,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashElections
@@ -211304,7 +211551,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211399,6 +211647,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -215661,7 +215910,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215756,6 +216006,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashOfferElections
@@ -216211,7 +216462,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216306,6 +216558,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -216370,7 +216623,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216465,6 +216719,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -216537,7 +216792,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216632,6 +216888,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -216722,7 +216979,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216817,6 +217075,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -218452,7 +218711,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218547,6 +218807,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -218601,7 +218862,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218696,6 +218958,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -218752,7 +219015,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218847,6 +219111,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -218905,7 +219170,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219000,6 +219266,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -219058,7 +219325,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219153,6 +219421,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -219210,7 +219479,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219305,6 +219575,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -219632,7 +219903,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219727,6 +219999,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -220911,7 +221184,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221006,6 +221280,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -221214,7 +221489,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221309,6 +221585,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - exerciseType
@@ -221426,7 +221703,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221521,6 +221799,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - exerciseType
@@ -240988,7 +241267,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241083,6 +241363,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -241214,7 +241495,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241309,6 +241591,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -242623,7 +242906,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242718,6 +243002,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -242771,7 +243056,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242866,6 +243152,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -242921,7 +243208,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243016,6 +243304,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -243073,7 +243362,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243168,6 +243458,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -249539,7 +249830,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -249634,6 +249926,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -251183,7 +251476,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251278,6 +251572,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -251384,7 +251679,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251479,6 +251775,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashOfferElections
@@ -252664,7 +252961,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252759,6 +253057,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - effectiveAt
@@ -257148,7 +257447,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257243,6 +257543,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -257311,7 +257612,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257406,6 +257708,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -257528,7 +257831,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257623,6 +257927,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - cashOfferElections
@@ -257702,7 +258007,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257797,6 +258103,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - fixingDate
@@ -281547,7 +281854,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281642,6 +281950,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -282339,7 +282648,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282434,6 +282744,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -282610,7 +282921,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282705,6 +283017,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -287306,7 +287619,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -287401,6 +287715,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -288129,7 +288444,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -288224,6 +288540,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -288306,7 +288623,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -288401,6 +288719,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -288868,7 +289187,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -288963,6 +289283,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -289018,7 +289339,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -289113,6 +289435,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -289648,7 +289971,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -289743,6 +290067,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -289927,7 +290252,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -290022,6 +290348,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -290072,7 +290399,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -290167,6 +290495,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - currency
@@ -297775,7 +298104,7 @@ components:
             \ ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent,\
             \ SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent,\
             \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
-            \ PikBondPrincipalEvent."
+            \ PikBondPrincipalEvent, DelistingEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -298676,7 +299005,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -298771,6 +299101,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -299408,7 +299739,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -299503,6 +299835,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -301156,7 +301489,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -301251,6 +301585,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - amount
@@ -328408,7 +328743,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -328503,6 +328839,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
@@ -328963,7 +329300,8 @@ components:
               \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
               \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
               \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
-              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent."
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -329058,6 +329396,7 @@ components:
             - PikBondCashCouponEvent
             - PikBondInterestCapitalisationEvent
             - PikBondPrincipalEvent
+            - DelistingEvent
             type: string
         required:
         - instrumentEventType
