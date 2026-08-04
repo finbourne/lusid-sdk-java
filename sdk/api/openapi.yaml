@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9608
+  version: 0.11.9609
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -189665,48 +189665,6 @@ components:
         - strike
         type: object
       description: LUSID representation of a plain vanilla OTC Equity Option.
-    EquityShiftDefinition:
-      allOf:
-      - $ref: '#/components/schemas/ScenarioShiftDefinition'
-      - properties:
-          instrument:
-            maxLength: 50
-            minLength: 1
-            type: string
-          amount:
-            format: double
-            maximum: 1000000
-            minimum: -1000000
-            type: number
-          shiftType:
-            description: "Available values: Absolute, Relative, Percentage."
-            enum:
-            - Absolute
-            - Relative
-            - Percentage
-            type: string
-          scenarioShiftType:
-            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
-            enum:
-            - RateCurveShiftDefinition
-            - FxShiftDefinition
-            - EquityShiftDefinition
-            - VolSurfaceShiftDefinition
-            - MdkrGroupShiftDefinition
-            type: string
-        required:
-        - amount
-        - instrument
-        - scenarioShiftType
-        - shiftType
-        type: object
-    EquityShiftMode:
-      enum:
-      - absolute
-      - relative
-      - percentage
-      type: string
     EquitySwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -201708,11 +201666,11 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
-            - EquityShiftDefinition
+            - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             type: string
@@ -219990,11 +219948,11 @@ components:
             type: array
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
-            - EquityShiftDefinition
+            - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             type: string
@@ -249914,6 +249872,74 @@ components:
       - queryAsAt
       - valuationPointCode
       type: object
+    PriceShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          instrument:
+            maxLength: 50
+            minLength: 1
+            type: string
+          amount:
+            format: double
+            maximum: 1000000
+            minimum: -1000000
+            type: number
+          shiftType:
+            description: "Available values: Absolute, Relative, Percentage."
+            enum:
+            - Absolute
+            - Relative
+            - Percentage
+            type: string
+          quoteType:
+            description: "Available values: Price, Spread, Rate, LogNormalVol, NormalVol,\
+              \ ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption,\
+              \ DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall,\
+              \ ConstituentWeightFactor."
+            enum:
+            - Price
+            - Spread
+            - Rate
+            - LogNormalVol
+            - NormalVol
+            - ParSpread
+            - IsdaSpread
+            - Upfront
+            - Index
+            - Ratio
+            - Delta
+            - PoolFactor
+            - InflationAssumption
+            - DirtyPrice
+            - PrincipalWriteOff
+            - InterestDeferred
+            - InterestShortfall
+            - ConstituentWeightFactor
+            nullable: true
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - PriceShiftDefinition
+            - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
+            type: string
+        required:
+        - amount
+        - instrument
+        - scenarioShiftType
+        - shiftType
+        type: object
+    PriceShiftMode:
+      enum:
+      - absolute
+      - relative
+      - percentage
+      type: string
     PricingContext:
       additionalProperties: false
       description: "Pricing context node. In order to price an instrument a number\
@@ -253466,11 +253492,11 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
-            - EquityShiftDefinition
+            - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             type: string
@@ -283073,7 +283099,7 @@ components:
           format: date-time
           type: string
         shift:
-          description: "Description of the shift, e.g. \"EquityShift on 'SCENARIO_EQUITY'\"\
+          description: "Description of the shift, e.g. \"PriceShift on 'SCENARIO_EQUITY'\"\
             ."
           nullable: true
           type: string
@@ -283246,11 +283272,11 @@ components:
       properties:
         scenarioShiftType:
           description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-            \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+            \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
           enum:
           - RateCurveShiftDefinition
           - FxShiftDefinition
-          - EquityShiftDefinition
+          - PriceShiftDefinition
           - VolSurfaceShiftDefinition
           - MdkrGroupShiftDefinition
           type: string
@@ -283261,7 +283287,7 @@ components:
       enum:
       - RateCurveShiftDefinition
       - FxShiftDefinition
-      - EquityShiftDefinition
+      - PriceShiftDefinition
       - VolSurfaceShiftDefinition
       - MdkrGroupShiftDefinition
       type: string
@@ -329411,11 +329437,11 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
-            - EquityShiftDefinition
+            - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             type: string

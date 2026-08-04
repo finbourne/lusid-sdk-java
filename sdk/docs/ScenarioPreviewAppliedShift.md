@@ -6,7 +6,7 @@ One market data target changed by one scenario shift.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective date of the market data the shift was applied to. | [optional] [default to OffsetDateTime]
-**shift** | **String** | Description of the shift, e.g. \&quot;EquityShift on &#39;SCENARIO_EQUITY&#39;\&quot;. | [optional] [default to String]
+**shift** | **String** | Description of the shift, e.g. \&quot;PriceShift on &#39;SCENARIO_EQUITY&#39;\&quot;. | [optional] [default to String]
 **target** | **String** | Description of the market data target the shift changed. | [optional] [default to String]
 **valueBefore** | **java.math.BigDecimal** | The target&#39;s value before the shift. Null for multi-point targets (e.g. whole curves) where a  single number is not meaningful. | [optional] [default to java.math.BigDecimal]
 **valueAfter** | **java.math.BigDecimal** | The target&#39;s value after the shift. Null for multi-point targets. | [optional] [default to java.math.BigDecimal]

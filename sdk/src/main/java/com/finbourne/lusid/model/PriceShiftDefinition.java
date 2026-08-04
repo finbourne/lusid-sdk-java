@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,10 +47,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * EquityShiftDefinition
+ * PriceShiftDefinition
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class EquityShiftDefinition extends ScenarioShiftDefinition {
+public class PriceShiftDefinition extends ScenarioShiftDefinition {
   public static final String SERIALIZED_NAME_INSTRUMENT = "instrument";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT)
   private String instrument;
@@ -111,11 +112,94 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_SHIFT_TYPE)
   private ShiftTypeEnum shiftType;
 
-  public EquityShiftDefinition() {
+  /**
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   */
+  @JsonAdapter(QuoteTypeEnum.Adapter.class)
+  public enum QuoteTypeEnum {
+    PRICE("Price"),
+    
+    SPREAD("Spread"),
+    
+    RATE("Rate"),
+    
+    LOGNORMALVOL("LogNormalVol"),
+    
+    NORMALVOL("NormalVol"),
+    
+    PARSPREAD("ParSpread"),
+    
+    ISDASPREAD("IsdaSpread"),
+    
+    UPFRONT("Upfront"),
+    
+    INDEX("Index"),
+    
+    RATIO("Ratio"),
+    
+    DELTA("Delta"),
+    
+    POOLFACTOR("PoolFactor"),
+    
+    INFLATIONASSUMPTION("InflationAssumption"),
+    
+    DIRTYPRICE("DirtyPrice"),
+    
+    PRINCIPALWRITEOFF("PrincipalWriteOff"),
+    
+    INTERESTDEFERRED("InterestDeferred"),
+    
+    INTERESTSHORTFALL("InterestShortfall"),
+    
+    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor");
+
+    private String value;
+
+    QuoteTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static QuoteTypeEnum fromValue(String value) {
+      for (QuoteTypeEnum b : QuoteTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<QuoteTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final QuoteTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public QuoteTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return QuoteTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_QUOTE_TYPE = "quoteType";
+  @SerializedName(SERIALIZED_NAME_QUOTE_TYPE)
+  private QuoteTypeEnum quoteType;
+
+  public PriceShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
 
-  public EquityShiftDefinition instrument(String instrument) {
+  public PriceShiftDefinition instrument(String instrument) {
     
     this.instrument = instrument;
     return this;
@@ -136,7 +220,7 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public EquityShiftDefinition amount(java.math.BigDecimal amount) {
+  public PriceShiftDefinition amount(java.math.BigDecimal amount) {
     
     this.amount = amount;
     return this;
@@ -159,7 +243,7 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public EquityShiftDefinition shiftType(ShiftTypeEnum shiftType) {
+  public PriceShiftDefinition shiftType(ShiftTypeEnum shiftType) {
     
     this.shiftType = shiftType;
     return this;
@@ -180,6 +264,27 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public PriceShiftDefinition quoteType(QuoteTypeEnum quoteType) {
+    
+    this.quoteType = quoteType;
+    return this;
+  }
+
+   /**
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   * @return quoteType
+  **/
+  @jakarta.annotation.Nullable
+  public QuoteTypeEnum getQuoteType() {
+    return quoteType;
+  }
+
+
+  public void setQuoteType(QuoteTypeEnum quoteType) {
+    this.quoteType = quoteType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -189,26 +294,39 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EquityShiftDefinition equityShiftDefinition = (EquityShiftDefinition) o;
-    return Objects.equals(this.instrument, equityShiftDefinition.instrument) &&
-        (this.amount.compareTo(equityShiftDefinition.getAmount()) == 0) &&
-        Objects.equals(this.shiftType, equityShiftDefinition.shiftType) &&
+    PriceShiftDefinition priceShiftDefinition = (PriceShiftDefinition) o;
+    return Objects.equals(this.instrument, priceShiftDefinition.instrument) &&
+        (this.amount.compareTo(priceShiftDefinition.getAmount()) == 0) &&
+        Objects.equals(this.shiftType, priceShiftDefinition.shiftType) &&
+        Objects.equals(this.quoteType, priceShiftDefinition.quoteType) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrument, amount, shiftType, super.hashCode());
+    return Objects.hash(instrument, amount, shiftType, quoteType, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EquityShiftDefinition {\n");
+    sb.append("class PriceShiftDefinition {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
+    sb.append("    quoteType: ").append(toIndentedString(quoteType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -235,6 +353,7 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("instrument");
     openapiFields.add("amount");
     openapiFields.add("shiftType");
+    openapiFields.add("quoteType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,17 +367,17 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to EquityShiftDefinition
+  * @throws IOException if the JSON Element is invalid with respect to PriceShiftDefinition
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!EquityShiftDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EquityShiftDefinition is not found in the empty JSON string", EquityShiftDefinition.openapiRequiredFields.toString()));
+        if (!PriceShiftDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PriceShiftDefinition is not found in the empty JSON string", PriceShiftDefinition.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : EquityShiftDefinition.openapiRequiredFields) {
+      for (String requiredField : PriceShiftDefinition.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -269,22 +388,22 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EquityShiftDefinition.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EquityShiftDefinition' and its subtypes
+       if (!PriceShiftDefinition.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PriceShiftDefinition' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EquityShiftDefinition> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EquityShiftDefinition.class));
+       final TypeAdapter<PriceShiftDefinition> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PriceShiftDefinition.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EquityShiftDefinition>() {
+       return (TypeAdapter<T>) new TypeAdapter<PriceShiftDefinition>() {
            @Override
-           public void write(JsonWriter out, EquityShiftDefinition value) throws IOException {
+           public void write(JsonWriter out, PriceShiftDefinition value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public EquityShiftDefinition read(JsonReader in) throws IOException {
+           public PriceShiftDefinition read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -295,18 +414,18 @@ public class EquityShiftDefinition extends ScenarioShiftDefinition {
   }
 
  /**
-  * Create an instance of EquityShiftDefinition given an JSON string
+  * Create an instance of PriceShiftDefinition given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of EquityShiftDefinition
-  * @throws IOException if the JSON string is invalid with respect to EquityShiftDefinition
+  * @return An instance of PriceShiftDefinition
+  * @throws IOException if the JSON string is invalid with respect to PriceShiftDefinition
   */
-  public static EquityShiftDefinition fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EquityShiftDefinition.class);
+  public static PriceShiftDefinition fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PriceShiftDefinition.class);
   }
 
  /**
-  * Convert an instance of EquityShiftDefinition to an JSON string
+  * Convert an instance of PriceShiftDefinition to an JSON string
   *
   * @return JSON string
   */

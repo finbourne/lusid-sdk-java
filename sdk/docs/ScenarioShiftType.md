@@ -15,7 +15,7 @@ import java.net.URI;
 // Example usage of ScenarioShiftType:
 ScenarioShiftType method = ScenarioShiftType.RATECURVESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.FXSHIFTDEFINITION;
-ScenarioShiftType method = ScenarioShiftType.EQUITYSHIFTDEFINITION;
+ScenarioShiftType method = ScenarioShiftType.PRICESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.VOLSURFACESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.MDKRGROUPSHIFTDEFINITION;
 ```

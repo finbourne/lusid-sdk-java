@@ -20,10 +20,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets EquityShiftMode
+ * Gets or Sets PriceShiftMode
  */
-@JsonAdapter(EquityShiftMode.Adapter.class)
-public enum EquityShiftMode {
+@JsonAdapter(PriceShiftMode.Adapter.class)
+public enum PriceShiftMode {
   
   ABSOLUTE("absolute"),
   
@@ -33,7 +33,7 @@ public enum EquityShiftMode {
 
   private String value;
 
-  EquityShiftMode(String value) {
+  PriceShiftMode(String value) {
     this.value = value;
   }
 
@@ -46,8 +46,8 @@ public enum EquityShiftMode {
     return String.valueOf(value);
   }
 
-  public static EquityShiftMode fromValue(String value) {
-    for (EquityShiftMode b : EquityShiftMode.values()) {
+  public static PriceShiftMode fromValue(String value) {
+    for (PriceShiftMode b : PriceShiftMode.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -55,16 +55,16 @@ public enum EquityShiftMode {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<EquityShiftMode> {
+  public static class Adapter extends TypeAdapter<PriceShiftMode> {
     @Override
-    public void write(final JsonWriter jsonWriter, final EquityShiftMode enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final PriceShiftMode enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public EquityShiftMode read(final JsonReader jsonReader) throws IOException {
+    public PriceShiftMode read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return EquityShiftMode.fromValue(value);
+      return PriceShiftMode.fromValue(value);
     }
   }
 }

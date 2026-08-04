@@ -1,21 +1,21 @@
-# com.finbourne.lusid.model.EquityShiftMode
+# com.finbourne.lusid.model.PriceShiftMode
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EquityShiftMode** | [**String**](.md) | **** | [default to String]
+**PriceShiftMode** | [**String**](.md) | **** | [default to String]
 
 ```java
-import com.finbourne.lusid.model.EquityShiftMode;
+import com.finbourne.lusid.model.PriceShiftMode;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-// Example usage of EquityShiftMode:
-EquityShiftMode method = EquityShiftMode.ABSOLUTE;
-EquityShiftMode method = EquityShiftMode.RELATIVE;
-EquityShiftMode method = EquityShiftMode.PERCENTAGE;
+// Example usage of PriceShiftMode:
+PriceShiftMode method = PriceShiftMode.ABSOLUTE;
+PriceShiftMode method = PriceShiftMode.RELATIVE;
+PriceShiftMode method = PriceShiftMode.PERCENTAGE;
 ```
 
 

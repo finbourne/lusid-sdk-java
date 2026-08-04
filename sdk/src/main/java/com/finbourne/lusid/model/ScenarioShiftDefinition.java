@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScenarioShiftDefinition {
   /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
    */
   @JsonAdapter(ScenarioShiftTypeEnum.Adapter.class)
   public enum ScenarioShiftTypeEnum {
@@ -58,7 +58,7 @@ public class ScenarioShiftDefinition {
     
     FXSHIFTDEFINITION("FxShiftDefinition"),
     
-    EQUITYSHIFTDEFINITION("EquityShiftDefinition"),
+    PRICESHIFTDEFINITION("PriceShiftDefinition"),
     
     VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition"),
     
@@ -116,7 +116,7 @@ public class ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
    * @return scenarioShiftType
   **/
   @jakarta.annotation.Nonnull
@@ -197,14 +197,14 @@ public class ScenarioShiftDefinition {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("scenarioShiftType").getAsString();
       switch (discriminatorValue) {
-        case "EquityShiftDefinition":
-          EquityShiftDefinition.validateJsonElement(jsonElement);
-          break;
         case "FxShiftDefinition":
           FxShiftDefinition.validateJsonElement(jsonElement);
           break;
         case "MdkrGroupShiftDefinition":
           MdkrGroupShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "PriceShiftDefinition":
+          PriceShiftDefinition.validateJsonElement(jsonElement);
           break;
         case "RateCurveShiftDefinition":
           RateCurveShiftDefinition.validateJsonElement(jsonElement);
