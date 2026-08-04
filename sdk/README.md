@@ -536,10 +536,6 @@ Class | Method | HTTP request | Description
 *QuotesApi* | [**listQuotesForScope**](docs/QuotesApi.md#listquotesforscope) | **GET** /api/quotes/{scope} | ListQuotesForScope: List quotes for scope
 *QuotesApi* | [**upsertQuoteAccessMetadataRule**](docs/QuotesApi.md#upsertquoteaccessmetadatarule) | **POST** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
 *QuotesApi* | [**upsertQuotes**](docs/QuotesApi.md#upsertquotes) | **POST** /api/quotes/{scope} | UpsertQuotes: Upsert quotes
-*RecResultSetsApi* | [**addRecResultSetApprovalDecision**](docs/RecResultSetsApi.md#addrecresultsetapprovaldecision) | **POST** /api/recs/resultsets/{entityUniqueId}/$decide | [EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision
-*RecResultSetsApi* | [**getRecResultSet**](docs/RecResultSetsApi.md#getrecresultset) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet
-*RecResultSetsApi* | [**listRecResultSets**](docs/RecResultSetsApi.md#listrecresultsets) | **GET** /api/recs/resultsets | [EXPERIMENTAL] ListRecResultSets: ListRecResultSets
-*RecResultSetsApi* | [**submitRecResultSetReview**](docs/RecResultSetsApi.md#submitrecresultsetreview) | **POST** /api/recs/resultsets/{entityUniqueId}/$submit | [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions.
 *ReconciliationsApi* | [**createScheduledReconciliation**](docs/ReconciliationsApi.md#createscheduledreconciliation) | **POST** /api/portfolios/$scheduledReconciliations/{scope} | [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
 *ReconciliationsApi* | [**deleteReconciliation**](docs/ReconciliationsApi.md#deletereconciliation) | **DELETE** /api/portfolios/$scheduledReconciliations/{scope}/{code} | [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
 *ReconciliationsApi* | [**deleteReconciliationMapping**](docs/ReconciliationsApi.md#deletereconciliationmapping) | **DELETE** /api/portfolios/mapping/{scope}/{code} | [EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping
@@ -555,6 +551,14 @@ Class | Method | HTTP request | Description
 *ReconciliationsApi* | [**reconcileValuation**](docs/ReconciliationsApi.md#reconcilevaluation) | **POST** /api/portfolios/$reconcileValuation | ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
 *ReconciliationsApi* | [**updateReconciliation**](docs/ReconciliationsApi.md#updatereconciliation) | **POST** /api/portfolios/$scheduledReconciliations/{scope}/{code} | [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation
 *ReconciliationsApi* | [**upsertReconciliationMapping**](docs/ReconciliationsApi.md#upsertreconciliationmapping) | **POST** /api/portfolios/mapping | [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
+*RecsApi* | [**addRecResultSetApprovalDecision**](docs/RecsApi.md#addrecresultsetapprovaldecision) | **POST** /api/recs/resultsets/{entityUniqueId}/$decide | [EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision
+*RecsApi* | [**getRecInstance**](docs/RecsApi.md#getrecinstance) | **GET** /api/recs/instances/{instanceIdType}/{instanceIdValue} | [EXPERIMENTAL] GetRecInstance: GetRecInstance
+*RecsApi* | [**getRecResultSet**](docs/RecsApi.md#getrecresultset) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet
+*RecsApi* | [**instantiateRec**](docs/RecsApi.md#instantiaterec) | **POST** /api/recs/instances | [EXPERIMENTAL] InstantiateRec: InstantiateRec
+*RecsApi* | [**listRecInstances**](docs/RecsApi.md#listrecinstances) | **GET** /api/recs/instances | [EXPERIMENTAL] ListRecInstances: ListRecInstances
+*RecsApi* | [**listRecResultSets**](docs/RecsApi.md#listrecresultsets) | **GET** /api/recs/resultsets | [EXPERIMENTAL] ListRecResultSets: ListRecResultSets
+*RecsApi* | [**submitRecResultSetReview**](docs/RecsApi.md#submitrecresultsetreview) | **POST** /api/recs/resultsets/{entityUniqueId}/$submit | [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions.
+*RecsApi* | [**transitionRecInstance**](docs/RecsApi.md#transitionrecinstance) | **POST** /api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance
 *ReferenceListsApi* | [**deleteReferenceList**](docs/ReferenceListsApi.md#deletereferencelist) | **DELETE** /api/referencelists/{scope}/{code} | [EARLY ACCESS] DeleteReferenceList: Delete Reference List
 *ReferenceListsApi* | [**getReferenceList**](docs/ReferenceListsApi.md#getreferencelist) | **GET** /api/referencelists/{scope}/{code} | GetReferenceList: Get Reference List
 *ReferenceListsApi* | [**listReferenceLists**](docs/ReferenceListsApi.md#listreferencelists) | **GET** /api/referencelists | [EARLY ACCESS] ListReferenceLists: List Reference Lists
@@ -1382,6 +1386,7 @@ Class | Method | HTTP request | Description
  - [InlineValuationRequest](docs/InlineValuationRequest.md)
  - [InlineValuationsReconciliationRequest](docs/InlineValuationsReconciliationRequest.md)
  - [InputTransition](docs/InputTransition.md)
+ - [InstantiateRecRequest](docs/InstantiateRecRequest.md)
  - [Instrument](docs/Instrument.md)
  - [InstrumentActivity](docs/InstrumentActivity.md)
  - [InstrumentActivityAdjustment](docs/InstrumentActivityAdjustment.md)
@@ -1628,6 +1633,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfPostingModuleRule](docs/PagedResourceListOfPostingModuleRule.md)
  - [PagedResourceListOfPropertyDefinition](docs/PagedResourceListOfPropertyDefinition.md)
  - [PagedResourceListOfPropertyDefinitionSearchResult](docs/PagedResourceListOfPropertyDefinitionSearchResult.md)
+ - [PagedResourceListOfRecInstance](docs/PagedResourceListOfRecInstance.md)
  - [PagedResourceListOfRecResultSet](docs/PagedResourceListOfRecResultSet.md)
  - [PagedResourceListOfReconciliation](docs/PagedResourceListOfReconciliation.md)
  - [PagedResourceListOfReferenceListResponse](docs/PagedResourceListOfReferenceListResponse.md)
@@ -1785,10 +1791,13 @@ Class | Method | HTTP request | Description
  - [RealisedGainLoss](docs/RealisedGainLoss.md)
  - [RecApprovalDecision](docs/RecApprovalDecision.md)
  - [RecClosedExceptionCounts](docs/RecClosedExceptionCounts.md)
+ - [RecClosedPeriodReference](docs/RecClosedPeriodReference.md)
+ - [RecClosedPeriods](docs/RecClosedPeriods.md)
  - [RecDatesReconciled](docs/RecDatesReconciled.md)
  - [RecExceptionCountByClosureType](docs/RecExceptionCountByClosureType.md)
  - [RecExceptionCountByResultType](docs/RecExceptionCountByResultType.md)
  - [RecExecution](docs/RecExecution.md)
+ - [RecInstance](docs/RecInstance.md)
  - [RecInstanceId](docs/RecInstanceId.md)
  - [RecInstanceSummary](docs/RecInstanceSummary.md)
  - [RecMatchCountByResultType](docs/RecMatchCountByResultType.md)
@@ -1801,6 +1810,7 @@ Class | Method | HTTP request | Description
  - [RecResultSet](docs/RecResultSet.md)
  - [RecResultSetApprovalDecisionRequest](docs/RecResultSetApprovalDecisionRequest.md)
  - [RecReview](docs/RecReview.md)
+ - [RecRunLogEntry](docs/RecRunLogEntry.md)
  - [RecSubmission](docs/RecSubmission.md)
  - [RecSupersededRun](docs/RecSupersededRun.md)
  - [RecWorkflowTask](docs/RecWorkflowTask.md)
@@ -2125,6 +2135,7 @@ Class | Method | HTTP request | Description
  - [TransferAgencyOrderResult](docs/TransferAgencyOrderResult.md)
  - [TransferAgencyOrdersResponse](docs/TransferAgencyOrdersResponse.md)
  - [TransitionEvent](docs/TransitionEvent.md)
+ - [TransitionRecInstanceRequest](docs/TransitionRecInstanceRequest.md)
  - [TranslateEntitiesInlinedRequest](docs/TranslateEntitiesInlinedRequest.md)
  - [TranslateEntitiesRequest](docs/TranslateEntitiesRequest.md)
  - [TranslateEntitiesResponse](docs/TranslateEntitiesResponse.md)

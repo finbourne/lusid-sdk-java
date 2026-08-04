@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9606
+  version: 0.11.9608
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1355,11 +1355,10 @@ tags:
 - description: Methods for the storage and retrieval of Quotes. Read more about Quotes
     in the LUSID Knowledge Base here https://support.lusid.com/what-is-a-quote.
   name: Quotes
-- description: Endpoints for retrieving and acting on advanced reconciliation result
-    sets.
-  name: Rec Result Sets
 - description: Endpoints for performing reconciliations
   name: Reconciliations
+- description: Endpoints for advanced reconciliation instances and result sets.
+  name: Recs
 - description: "A reference portfolio stores a weighted set of instruments rather\
     \ than transactions, enabling entities such as indices to be represented. Note\
     \ that a reference portfolio is a type of portfolio, so endpoints in the Portfolios\
@@ -108043,6 +108042,356 @@ paths:
       - Group Reconciliations
       x-fbn-apistatus: Experimental
       x-accepts: application/json
+  /api/recs/instances:
+    get:
+      description: List rec instances.
+      operationId: ListRecInstances
+      parameters:
+      - description: The asAt datetime at which to list instances. Defaults to latest
+          if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The pagination token to use to continue listing instances from
+          a previous call. If a pagination token is provided the filter and asAt fields
+          must not have changed since the original request.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of returned results to this\
+          \ many. Defaults to 100 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: A list of field names suffixed by " ASC" or " DESC".
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecInstance'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecInstance'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecInstance'
+          description: The rec instances.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ListRecInstances: ListRecInstances"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    post:
+      description: "Instantiate a new rec instance from a rec definition and start\
+        \ its first run. The run\r\n executes asynchronously; the response returns\
+        \ once the run has started, with the instance Running."
+      operationId: InstantiateRec
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              recDefinitionId:
+                scope: recscope
+                code: reccode
+              leftEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+              rightEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/InstantiateRecRequest'
+          application/json:
+            example:
+              recDefinitionId:
+                scope: recscope
+                code: reccode
+              leftEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+              rightEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/InstantiateRecRequest'
+          text/json:
+            example:
+              recDefinitionId:
+                scope: recscope
+                code: reccode
+              leftEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+              rightEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/InstantiateRecRequest'
+          application/*+json:
+            example:
+              recDefinitionId:
+                scope: recscope
+                code: reccode
+              leftEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+              rightEffectiveAt: 2024-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/InstantiateRecRequest'
+        description: The instantiation request.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+          description: "The instantiated rec instance, in a Running state."
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] InstantiateRec: InstantiateRec"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/instances/{instanceIdType}/{instanceIdValue}:
+    get:
+      description: Retrieve a single rec instance by its identifier.
+      operationId: GetRecInstance
+      parameters:
+      - description: "How the instance was created: \"WorkflowServiceTaskId\" or \"\
+          Manual\". Available values: WorkflowServiceTaskId, Manual."
+        explode: false
+        in: path
+        name: instanceIdType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The instance identifier value (a GUID).
+        explode: false
+        in: path
+        name: instanceIdValue
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the instance. Defaults
+          to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+          description: The requested rec instance.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRecInstance: GetRecInstance"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+  /api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition:
+    post:
+      description: "Apply a lifecycle transition (re-run, lock or unlock) to a rec\
+        \ instance."
+      operationId: TransitionRecInstance
+      parameters:
+      - description: "How the instance was created: \"WorkflowServiceTaskId\" or \"\
+          Manual\". Available values: WorkflowServiceTaskId, Manual."
+        explode: false
+        in: path
+        name: instanceIdType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The instance identifier value (a GUID).
+        explode: false
+        in: path
+        name: instanceIdValue
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              action: ReRun
+            schema:
+              $ref: '#/components/schemas/TransitionRecInstanceRequest'
+          application/json:
+            example:
+              action: ReRun
+            schema:
+              $ref: '#/components/schemas/TransitionRecInstanceRequest'
+          text/json:
+            example:
+              action: ReRun
+            schema:
+              $ref: '#/components/schemas/TransitionRecInstanceRequest'
+          application/*+json:
+            example:
+              action: ReRun
+            schema:
+              $ref: '#/components/schemas/TransitionRecInstanceRequest'
+        description: The transition request.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RecInstance'
+          description: The rec instance in its post-transition state.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/recs/resultsets:
     get:
       description: List rec result sets.
@@ -108154,7 +108503,7 @@ paths:
       - oauth2: []
       summary: "[EXPERIMENTAL] ListRecResultSets: ListRecResultSets"
       tags:
-      - Rec Result Sets
+      - Recs
       x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/recs/resultsets/{entityUniqueId}:
@@ -108230,7 +108579,7 @@ paths:
       - oauth2: []
       summary: "[EXPERIMENTAL] GetRecResultSet: GetRecResultSet"
       tags:
-      - Rec Result Sets
+      - Recs
       x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/recs/resultsets/{entityUniqueId}/$decide:
@@ -108329,7 +108678,7 @@ paths:
       - oauth2: []
       summary: "[EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision"
       tags:
-      - Rec Result Sets
+      - Recs
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
@@ -108410,7 +108759,7 @@ paths:
       summary: "[EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review\
         \ for approval, or resubmit after addressing requested revisions."
       tags:
-      - Rec Result Sets
+      - Recs
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
@@ -208101,6 +208450,49 @@ components:
       - costFactor
       - unitsFactor
       type: object
+    InstantiateRecRequest:
+      additionalProperties: false
+      description: "The request to instantiate a new rec instance from a rec definition\
+        \ and start its first run. Each\r\ndate accepts a date-time or a LUSID cut\
+        \ label, and defaults to the current date-time when omitted."
+      example:
+        rightAsAt: rightAsAt
+        recDefinitionId:
+          code: code
+          scope: scope
+        leftEffectiveAt: leftEffectiveAt
+        leftAsAt: leftAsAt
+        rightEffectiveAt: rightEffectiveAt
+      properties:
+        recDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        leftEffectiveAt:
+          description: "The left effective datetime, as a date-time or a LUSID cut\
+            \ label. Defaults to the current date-time."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        leftAsAt:
+          description: "The left asAt datetime, as a date-time or a LUSID cut label.\
+            \ Defaults to the current date-time."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        rightEffectiveAt:
+          description: "The right effective datetime, as a date-time or a LUSID cut\
+            \ label. Defaults to the current date-time."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        rightAsAt:
+          description: "The right asAt datetime, as a date-time or a LUSID cut label.\
+            \ Defaults to the current date-time."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+      required:
+      - recDefinitionId
+      type: object
     Instrument:
       additionalProperties: false
       description: A list of instruments.
@@ -237988,6 +238380,189 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfRecInstance:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - recDefinitionId:
+            code: code
+            scope: scope
+          asAtLocked: 2000-01-23T04:56:07.000+00:00
+          datesLocked:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          runLog:
+          - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            runNumber: 0
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            runNumber: 0
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          workflowTaskInstantiated:
+            id: id
+            state: state
+            taskDefinitionId:
+              code: code
+              scope: scope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          closedPeriods:
+            left:
+              closedPeriodId: closedPeriodId
+              timelineId:
+                code: code
+                scope: scope
+            right:
+              closedPeriodId: closedPeriodId
+              timelineId:
+                code: code
+                scope: scope
+          href: https://openapi-generator.tech
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          status: status
+        - recDefinitionId:
+            code: code
+            scope: scope
+          asAtLocked: 2000-01-23T04:56:07.000+00:00
+          datesLocked:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          runLog:
+          - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            runNumber: 0
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+            runNumber: 0
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          workflowTaskInstantiated:
+            id: id
+            state: state
+            taskDefinitionId:
+              code: code
+              scope: scope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          closedPeriods:
+            left:
+              closedPeriodId: closedPeriodId
+              timelineId:
+                code: code
+                scope: scope
+            right:
+              closedPeriodId: closedPeriodId
+              timelineId:
+                code: code
+                scope: scope
+          href: https://openapi-generator.tech
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/RecInstance'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfReconciliation:
       additionalProperties: false
       example:
@@ -253237,6 +253812,50 @@ components:
       - byReviewStatus
       - total
       type: object
+    RecClosedPeriodReference:
+      additionalProperties: false
+      description: A reference to a closed period created on a timeline when the instance
+        was locked.
+      example:
+        closedPeriodId: closedPeriodId
+        timelineId:
+          code: code
+          scope: scope
+      properties:
+        timelineId:
+          $ref: '#/components/schemas/ResourceId'
+        closedPeriodId:
+          description: The identifier of the closed period.
+          minLength: 1
+          type: string
+      required:
+      - closedPeriodId
+      - timelineId
+      type: object
+    RecClosedPeriods:
+      additionalProperties: false
+      description: "References to the closed periods created on the left and right\
+        \ timelines when a Closed Period\r\ninstance is locked."
+      example:
+        left:
+          closedPeriodId: closedPeriodId
+          timelineId:
+            code: code
+            scope: scope
+        right:
+          closedPeriodId: closedPeriodId
+          timelineId:
+            code: code
+            scope: scope
+      properties:
+        left:
+          $ref: '#/components/schemas/RecClosedPeriodReference'
+        right:
+          $ref: '#/components/schemas/RecClosedPeriodReference'
+      required:
+      - left
+      - right
+      type: object
     RecDatesReconciled:
       additionalProperties: false
       description: The left and right effective and asAt dates of the data reconciled
@@ -253338,6 +253957,136 @@ components:
           type: string
       required:
       - outcome
+      type: object
+    RecInstance:
+      additionalProperties: false
+      description: "The expanded view of a rec instance: its identity, lifecycle status,\
+        \ lock state, closed periods\r\n(for Closed Period windows) and the time-series\
+        \ of runs in the run log."
+      example:
+        recDefinitionId:
+          code: code
+          scope: scope
+        asAtLocked: 2000-01-23T04:56:07.000+00:00
+        datesLocked:
+          rightAsAt: 2000-01-23T04:56:07.000+00:00
+          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftAsAt: 2000-01-23T04:56:07.000+00:00
+          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        runLog:
+        - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+          runNumber: 0
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        - supersededAsAt: 2000-01-23T04:56:07.000+00:00
+          runNumber: 0
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+        workflowTaskInstantiated:
+          id: id
+          state: state
+          taskDefinitionId:
+            code: code
+            scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          instanceIdType: instanceIdType
+          instanceIdValue: instanceIdValue
+        closedPeriods:
+          left:
+            closedPeriodId: closedPeriodId
+            timelineId:
+              code: code
+              scope: scope
+          right:
+            closedPeriodId: closedPeriodId
+            timelineId:
+              code: code
+              scope: scope
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        status: status
+      properties:
+        id:
+          $ref: '#/components/schemas/RecInstanceId'
+        recDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        asAtInstantiated:
+          description: The asAt datetime at which the instance was first created.
+          format: date-time
+          type: string
+        workflowTaskInstantiated:
+          $ref: '#/components/schemas/RecWorkflowTask'
+        status:
+          description: "The instance-level lifecycle rollup. Available values: Running,\
+            \ Failures, ReviewAndApproval, AllApproved, Locked."
+          minLength: 1
+          type: string
+        asAtLocked:
+          description: The wall-clock time the lock action was performed. Null when
+            the instance has not been locked.
+          format: date-time
+          nullable: true
+          type: string
+        datesLocked:
+          $ref: '#/components/schemas/RecDatesReconciled'
+        closedPeriods:
+          $ref: '#/components/schemas/RecClosedPeriods'
+        runLog:
+          description: A chronologically ordered list of all runs on the instance.
+            Always contains at least one entry.
+          items:
+            $ref: '#/components/schemas/RecRunLogEntry'
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - asAtInstantiated
+      - id
+      - recDefinitionId
+      - runLog
+      - status
       type: object
     RecInstanceId:
       additionalProperties: false
@@ -255830,6 +256579,42 @@ components:
       - countNotRequired
       - countRequired
       - countReviewed
+      type: object
+    RecRunLogEntry:
+      additionalProperties: false
+      description: "A single run within an instance's run log. All runs share the\
+        \ same effective dates (frozen at\r\ninstantiation); each has a different\
+        \ asAt, advanced on re-run."
+      example:
+        supersededAsAt: 2000-01-23T04:56:07.000+00:00
+        runNumber: 0
+        runAsAt: 2000-01-23T04:56:07.000+00:00
+        datesReconciled:
+          rightAsAt: 2000-01-23T04:56:07.000+00:00
+          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftAsAt: 2000-01-23T04:56:07.000+00:00
+          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        runNumber:
+          description: The run number within the instance. Increments with each re-run.
+          format: int32
+          type: integer
+        runAsAt:
+          description: The asAt datetime at which the run happened.
+          format: date-time
+          type: string
+        supersededAsAt:
+          description: The asAt datetime at which this run was superseded by a subsequent
+            run.
+          format: date-time
+          nullable: true
+          type: string
+        datesReconciled:
+          $ref: '#/components/schemas/RecDatesReconciled'
+      required:
+      - datesReconciled
+      - runAsAt
+      - runNumber
       type: object
     RecSubmission:
       additionalProperties: false
@@ -299108,6 +299893,20 @@ components:
         type: object
       description: "A 'transition' within a corporate action, representing a set of\
         \ output movements paired to a single input position"
+    TransitionRecInstanceRequest:
+      additionalProperties: false
+      description: "The request to apply a lifecycle transition (re-run, lock or unlock)\
+        \ to a rec instance."
+      example:
+        action: action
+      properties:
+        action:
+          description: "The transition to apply. Available values: ReRun, Lock, Unlock."
+          minLength: 1
+          type: string
+      required:
+      - action
+      type: object
     TranslateEntitiesInlinedRequest:
       additionalProperties: false
       description: "Request to translate financial entities with a given script body.\r\
@@ -329668,8 +330467,8 @@ x-tagGroups:
   - Property Definitions
   - QueryableKeys
   - Quotes
-  - Rec Result Sets
   - Reconciliations
+  - Recs
   - Reference Portfolio
   - ReferenceLists
   - Relation Definitions
