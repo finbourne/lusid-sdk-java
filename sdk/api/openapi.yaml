@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9615
+  version: 0.11.9616
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -253655,6 +253655,17 @@ components:
             enum:
             - Bps
             - Percentage
+            type: string
+          applyTo:
+            description: "A LUSID filter expression over the instrument entity scoping\
+              \ which instruments this shift is\r\nfor, e.g. \"properties[Instrument/default/CountryOfIssue]\
+              \ eq 'Italy'\". The shifted market data\r\nis used by the whole valuation\
+              \ run, but when the scenario is requested as a result column the\r\n\
+              column is only populated for matching instruments. Only usable when\
+              \ the scenario is applied as\r\na per-metric column."
+            maxLength: 2000
+            minLength: 1
+            nullable: true
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\

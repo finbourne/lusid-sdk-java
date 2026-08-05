@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **endTenor** | **String** |  | [optional] [default to String]
 **shiftType** | **String** | Available values: Parallel, Steepen, Flatten, Twist. | [default to String]
 **scale** | **String** | Available values: Bps, Percentage. | [optional] [default to String]
+**applyTo** | **String** | A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.RateCurveShiftDefinition;
@@ -23,6 +24,7 @@ java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String EndTenor = "example EndTenor";
 String ShiftType = "example ShiftType";
 String Scale = "example Scale";
+@jakarta.annotation.Nullable String ApplyTo = "example ApplyTo";
 
 
 RateCurveShiftDefinition rateCurveShiftDefinitionInstance = new RateCurveShiftDefinition()
@@ -31,7 +33,8 @@ RateCurveShiftDefinition rateCurveShiftDefinitionInstance = new RateCurveShiftDe
     .StartTenor(StartTenor)
     .EndTenor(EndTenor)
     .ShiftType(ShiftType)
-    .Scale(Scale);
+    .Scale(Scale)
+    .ApplyTo(ApplyTo);
 ```
 
 

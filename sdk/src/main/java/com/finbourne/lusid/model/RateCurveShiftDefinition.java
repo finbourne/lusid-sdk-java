@@ -173,6 +173,10 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_SCALE)
   private ScaleEnum scale;
 
+  public static final String SERIALIZED_NAME_APPLY_TO = "applyTo";
+  @SerializedName(SERIALIZED_NAME_APPLY_TO)
+  private String applyTo;
+
   public RateCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
@@ -305,6 +309,27 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public RateCurveShiftDefinition applyTo(String applyTo) {
+    
+    this.applyTo = applyTo;
+    return this;
+  }
+
+   /**
+   * A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column.
+   * @return applyTo
+  **/
+  @jakarta.annotation.Nullable
+  public String getApplyTo() {
+    return applyTo;
+  }
+
+
+  public void setApplyTo(String applyTo) {
+    this.applyTo = applyTo;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -321,6 +346,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
         Objects.equals(this.endTenor, rateCurveShiftDefinition.endTenor) &&
         Objects.equals(this.shiftType, rateCurveShiftDefinition.shiftType) &&
         Objects.equals(this.scale, rateCurveShiftDefinition.scale) &&
+        Objects.equals(this.applyTo, rateCurveShiftDefinition.applyTo) &&
         super.equals(o);
   }
 
@@ -330,7 +356,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, super.hashCode());
+    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, applyTo, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -351,6 +377,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     sb.append("    endTenor: ").append(toIndentedString(endTenor)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
+    sb.append("    applyTo: ").append(toIndentedString(applyTo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -380,6 +407,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("endTenor");
     openapiFields.add("shiftType");
     openapiFields.add("scale");
+    openapiFields.add("applyTo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
