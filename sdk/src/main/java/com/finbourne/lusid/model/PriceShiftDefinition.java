@@ -55,6 +55,10 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT)
   private String instrument;
 
+  public static final String SERIALIZED_NAME_FILTER = "filter";
+  @SerializedName(SERIALIZED_NAME_FILTER)
+  private String filter;
+
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private java.math.BigDecimal amount;
@@ -206,10 +210,10 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Get instrument
+   * A single instrument identifier this shift applies to. Exactly one of Instrument and Filter  must be supplied.
    * @return instrument
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getInstrument() {
     return instrument;
   }
@@ -217,6 +221,27 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
 
   public void setInstrument(String instrument) {
     this.instrument = instrument;
+  }
+
+
+  public PriceShiftDefinition filter(String filter) {
+    
+    this.filter = filter;
+    return this;
+  }
+
+   /**
+   * A LUSID filter expression over the instrument entity - fields and properties - selecting which  instruments&#39; quotes the shift applies to, e.g.  \&quot;assetClass eq &#39;Bond&#39; and properties[Instrument/Issuer/Name] eq &#39;X&#39;\&quot;.  Exactly one of Instrument and Filter must be supplied.
+   * @return filter
+  **/
+  @jakarta.annotation.Nullable
+  public String getFilter() {
+    return filter;
+  }
+
+
+  public void setFilter(String filter) {
+    this.filter = filter;
   }
 
 
@@ -296,6 +321,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
     }
     PriceShiftDefinition priceShiftDefinition = (PriceShiftDefinition) o;
     return Objects.equals(this.instrument, priceShiftDefinition.instrument) &&
+        Objects.equals(this.filter, priceShiftDefinition.filter) &&
         (this.amount.compareTo(priceShiftDefinition.getAmount()) == 0) &&
         Objects.equals(this.shiftType, priceShiftDefinition.shiftType) &&
         Objects.equals(this.quoteType, priceShiftDefinition.quoteType) &&
@@ -308,7 +334,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrument, amount, shiftType, quoteType, super.hashCode());
+    return Objects.hash(instrument, filter, amount, shiftType, quoteType, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,6 +350,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
     sb.append("class PriceShiftDefinition {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
+    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
     sb.append("    quoteType: ").append(toIndentedString(quoteType)).append("\n");
@@ -351,13 +378,13 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
     openapiFields = new HashSet<String>();
     openapiFields.add("scenarioShiftType");
     openapiFields.add("instrument");
+    openapiFields.add("filter");
     openapiFields.add("amount");
     openapiFields.add("shiftType");
     openapiFields.add("quoteType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("instrument");
     openapiRequiredFields.add("amount");
     openapiRequiredFields.add("shiftType");
     openapiRequiredFields.add("scenarioShiftType");

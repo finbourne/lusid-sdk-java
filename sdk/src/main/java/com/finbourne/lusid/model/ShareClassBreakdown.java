@@ -325,7 +325,7 @@ public class ShareClassBreakdown {
   }
 
    /**
-   * The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class.
+   * The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes.
    * @return capitalRatio
   **/
   @jakarta.annotation.Nonnull

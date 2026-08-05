@@ -474,6 +474,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CommodityForward.class, new TypeSelector<com.finbourne.lusid.model.CommodityForward>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CommodityForward> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CommodityForward", com.finbourne.lusid.model.CommodityForward.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.ComplexBond.class, new TypeSelector<com.finbourne.lusid.model.ComplexBond>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.ComplexBond> getClassForElement(JsonElement readElement) {
@@ -1828,6 +1837,7 @@ public class JSON {
                         classByDiscriminatorValue.put("Cash", com.finbourne.lusid.model.Cash.class);
                         classByDiscriminatorValue.put("CashPerpetual", com.finbourne.lusid.model.CashPerpetual.class);
                         classByDiscriminatorValue.put("CdsIndex", com.finbourne.lusid.model.CdsIndex.class);
+                        classByDiscriminatorValue.put("CommodityForward", com.finbourne.lusid.model.CommodityForward.class);
                         classByDiscriminatorValue.put("ComplexBond", com.finbourne.lusid.model.ComplexBond.class);
                         classByDiscriminatorValue.put("ContractForDifference", com.finbourne.lusid.model.ContractForDifference.class);
                         classByDiscriminatorValue.put("CreditDefaultSwap", com.finbourne.lusid.model.CreditDefaultSwap.class);
@@ -3161,6 +3171,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ClosedPeriod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Collateral.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CollateralInstrument.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityForward.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ComparisonAttributeValuePair.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CompletePortfolio.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CompleteRelation.CustomTypeAdapterFactory());

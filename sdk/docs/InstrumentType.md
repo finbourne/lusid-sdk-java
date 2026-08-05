@@ -60,6 +60,7 @@ InstrumentType method = InstrumentType.FLEXIBLEREPO;
 InstrumentType method = InstrumentType.TOBEANNOUNCED;
 InstrumentType method = InstrumentType.VOLATILITYSWAP;
 InstrumentType method = InstrumentType.TOBEANNOUNCEDOPTION;
+InstrumentType method = InstrumentType.COMMODITYFORWARD;
 ```
 
 

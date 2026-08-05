@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9610
+  version: 0.11.9615
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -34948,6 +34948,9 @@ paths:
                   value:
                     labelValue: Smith
                   effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+              apportionmentMethodProperty:
+                code: PriorAdjustedNav
+                scope: default
             schema:
               $ref: '#/components/schemas/FundConfigurationRequest'
           application/json:
@@ -34983,6 +34986,9 @@ paths:
                   value:
                     labelValue: Smith
                   effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+              apportionmentMethodProperty:
+                code: PriorAdjustedNav
+                scope: default
             schema:
               $ref: '#/components/schemas/FundConfigurationRequest'
           text/json:
@@ -35018,6 +35024,9 @@ paths:
                   value:
                     labelValue: Smith
                   effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+              apportionmentMethodProperty:
+                code: PriorAdjustedNav
+                scope: default
             schema:
               $ref: '#/components/schemas/FundConfigurationRequest'
           application/*+json:
@@ -35053,6 +35062,9 @@ paths:
                   value:
                     labelValue: Smith
                   effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+              apportionmentMethodProperty:
+                code: PriorAdjustedNav
+                scope: default
             schema:
               $ref: '#/components/schemas/FundConfigurationRequest'
         description: The definition of the FundConfiguration.
@@ -35314,6 +35326,11 @@ paths:
                 filter: GeneralLedgerAccountCode eq '3002'
               path: /dealingFilters
               op: add
+            - value:
+                code: PriorAdjustedNav
+                scope: default
+              path: /apportionmentMethodProperty
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -35326,6 +35343,11 @@ paths:
               - filterId: RED
                 filter: GeneralLedgerAccountCode eq '3002'
               path: /dealingFilters
+              op: add
+            - value:
+                code: PriorAdjustedNav
+                scope: default
+              path: /apportionmentMethodProperty
               op: add
             schema:
               items:
@@ -35340,6 +35362,11 @@ paths:
                 filter: GeneralLedgerAccountCode eq '3002'
               path: /dealingFilters
               op: add
+            - value:
+                code: PriorAdjustedNav
+                scope: default
+              path: /apportionmentMethodProperty
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -35352,6 +35379,11 @@ paths:
               - filterId: RED
                 filter: GeneralLedgerAccountCode eq '3002'
               path: /dealingFilters
+              op: add
+            - value:
+                code: PriorAdjustedNav
+                scope: default
+              path: /apportionmentMethodProperty
               op: add
             schema:
               items:
@@ -54388,7 +54420,7 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption."
+          \ ToBeAnnouncedOption, CommodityForward."
         explode: false
         in: path
         name: instrumentType
@@ -54498,7 +54530,7 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption."
+          \ ToBeAnnouncedOption, CommodityForward."
         explode: false
         in: path
         name: instrumentType
@@ -54616,7 +54648,7 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption."
+          \ ToBeAnnouncedOption, CommodityForward."
         explode: false
         in: path
         name: instrumentType
@@ -54840,7 +54872,7 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption."
+          \ ToBeAnnouncedOption, CommodityForward."
         explode: false
         in: path
         name: instrumentType
@@ -161036,7 +161068,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -161085,6 +161117,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - basketName
@@ -164702,7 +164735,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -164751,6 +164784,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - couponRate
@@ -169131,7 +169165,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -169180,6 +169214,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - capFloorType
@@ -169686,7 +169721,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -169735,6 +169770,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - amount
@@ -170385,7 +170421,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -170434,6 +170470,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -170810,7 +170847,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -170859,6 +170896,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - couponRate
@@ -173007,6 +173045,117 @@ components:
       - instrument
       - units
       type: object
+    CommodityForward:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - properties:
+          startDate:
+            description: The start date of the instrument. This is normally synonymous
+              with the trade-date.
+            format: date-time
+            type: string
+          maturityDate:
+            description: "The final maturity date of the instrument. This means the\
+              \ last date on which the instruments makes a payment of any amount.\r\
+              \nFor the avoidance of doubt, that is not necessarily prior to its last\
+              \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+              \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+              \ may well be observed or set prior to the maturity date, but refer\
+              \ to a termination date beyond it."
+            format: date-time
+            type: string
+          domCcy:
+            description: The domestic currency of the instrument.
+            type: string
+          strike:
+            description: "Agreed forward price at trade inception. Reference only\
+              \ — not used in the market value calculation,\r\nwhich consumes the\
+              \ pre-netted price from the quote store."
+            format: double
+            nullable: true
+            type: number
+          deliveryType:
+            description: "Whether the forward settles in cash or through physical\
+              \ delivery of the underlying.\r\n \r\nSupported string (enumeration)\
+              \ values are: [Cash, Physical]. Available values: Cash, Physical."
+            minLength: 1
+            type: string
+          underlying:
+            $ref: '#/components/schemas/LusidInstrument'
+          instrumentType:
+            description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
+              \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
+              \ Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,\
+              \ TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,\
+              \ CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,\
+              \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
+              \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
+              \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
+              \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
+            enum:
+            - QuotedSecurity
+            - InterestRateSwap
+            - FxForward
+            - Future
+            - ExoticInstrument
+            - FxOption
+            - CreditDefaultSwap
+            - InterestRateSwaption
+            - Bond
+            - EquityOption
+            - FixedLeg
+            - FloatingLeg
+            - BespokeCashFlowsLeg
+            - Unknown
+            - TermDeposit
+            - ContractForDifference
+            - EquitySwap
+            - CashPerpetual
+            - CapFloor
+            - CashSettled
+            - CdsIndex
+            - Basket
+            - FundingLeg
+            - FxSwap
+            - ForwardRateAgreement
+            - SimpleInstrument
+            - Repo
+            - Equity
+            - ExchangeTradedOption
+            - ReferenceInstrument
+            - ComplexBond
+            - InflationLinkedBond
+            - InflationSwap
+            - SimpleCashFlowLoan
+            - TotalReturnSwap
+            - InflationLeg
+            - FundShareClass
+            - FlexibleLoan
+            - UnsettledCash
+            - Cash
+            - MasteredInstrument
+            - LoanFacility
+            - FlexibleDeposit
+            - FlexibleRepo
+            - ToBeAnnounced
+            - VolatilitySwap
+            - ToBeAnnouncedOption
+            - CommodityForward
+            type: string
+        required:
+        - deliveryType
+        - domCcy
+        - instrumentType
+        - maturityDate
+        - startDate
+        type: object
+      description: "LUSID representation of an OTC bilateral commodity forward.\r\n\
+        The forward settles as a single bullet at MaturityDate. Its present value\
+        \ is\r\nQuantity x Price, where the price is supplied externally pre-netted\
+        \ (the current forward\r\nprice minus strike) via the quote store. LUSID calculates\
+        \ no analytics for this instrument, and it\r\ncan only be priced by lookup\
+        \ pricing."
     ComparisonAttributeValuePair:
       additionalProperties: false
       example:
@@ -173461,7 +173610,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -173510,6 +173659,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -176774,7 +176924,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -176823,6 +176973,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -181427,7 +181578,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -181476,6 +181627,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - couponRate
@@ -186647,7 +186799,7 @@ components:
             \ InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-            \ ToBeAnnouncedOption, Unknown."
+            \ ToBeAnnouncedOption, CommodityForward, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -189295,7 +189447,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -189344,6 +189496,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -189605,7 +189758,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -189654,6 +189807,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - deliveryType
@@ -189742,7 +189896,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -189791,6 +189945,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - code
@@ -190270,7 +190425,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -190319,6 +190474,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - contractDetails
@@ -191011,7 +191167,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -191060,6 +191216,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - content
@@ -193017,7 +193174,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193066,6 +193223,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -193210,7 +193368,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193259,6 +193417,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -193317,7 +193476,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193366,6 +193525,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -193540,7 +193700,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193589,6 +193749,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - buyerOrSeller
@@ -194445,7 +194606,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -194494,6 +194655,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -194851,7 +195013,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -194900,6 +195062,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -197314,7 +197477,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -197363,6 +197526,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -197979,7 +198143,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -198028,6 +198192,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - distributionPaymentType
@@ -200022,7 +200187,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200071,6 +200236,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - contractDetails
@@ -200622,7 +200788,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200671,6 +200837,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domAmount
@@ -201525,7 +201692,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -201574,6 +201741,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -201704,7 +201872,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -201753,6 +201921,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - farFxForward
@@ -207238,7 +207407,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -207287,6 +207456,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - calculationType
@@ -207440,7 +207610,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -207489,6 +207659,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - couponRate
@@ -207543,7 +207714,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -207592,6 +207763,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - fixedLeg
@@ -210489,7 +210661,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -210538,6 +210710,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -211334,6 +211507,7 @@ components:
       - ToBeAnnounced
       - VolatilitySwap
       - ToBeAnnouncedOption
+      - CommodityForward
       type: string
     InterestPaymentEvent:
       allOf:
@@ -211564,7 +211738,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -211613,6 +211787,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentType
@@ -211688,7 +211863,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -211737,6 +211912,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - deliveryMethod
@@ -216684,7 +216860,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -216733,6 +216909,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -217578,7 +217755,7 @@ components:
             \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
             \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
             \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-            \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+            \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -217627,6 +217804,7 @@ components:
           - ToBeAnnounced
           - VolatilitySwap
           - ToBeAnnouncedOption
+          - CommodityForward
           type: string
       required:
       - instrumentType
@@ -218939,7 +219117,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -218988,6 +219166,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - identifiers
@@ -249853,8 +250032,20 @@ components:
       - $ref: '#/components/schemas/ScenarioShiftDefinition'
       - properties:
           instrument:
+            description: "A single instrument identifier this shift applies to. Exactly\
+              \ one of Instrument and Filter\r\nmust be supplied."
             maxLength: 50
             minLength: 1
+            nullable: true
+            type: string
+          filter:
+            description: "A LUSID filter expression over the instrument entity - fields\
+              \ and properties - selecting which\r\ninstruments' quotes the shift\
+              \ applies to, e.g.\r\n\"assetClass eq 'Bond' and properties[Instrument/Issuer/Name]\
+              \ eq 'X'\".\r\nExactly one of Instrument and Filter must be supplied."
+            maxLength: 2000
+            minLength: 1
+            nullable: true
             type: string
           amount:
             format: double
@@ -249906,7 +250097,6 @@ components:
             type: string
         required:
         - amount
-        - instrument
         - scenarioShiftType
         - shiftType
         type: object
@@ -256431,7 +256621,8 @@ components:
         recType:
           description: "The type of rec that this result set belongs to (e.g. Holding).\
             \ Together with the rec instance, this uniquely identifies the result\
-            \ set. Available values: Holding, Transaction, Valuation, CashHolding."
+            \ set. Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity."
           minLength: 1
           type: string
         recInstance:
@@ -256872,7 +257063,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -256921,6 +257112,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - instrumentId
@@ -258122,7 +258314,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -258171,6 +258363,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - accrualBasis
@@ -287358,9 +287551,8 @@ components:
           format: double
           type: number
         capitalRatio:
-          description: "The proportion of the fund's adjusted beginning equity (ie:\
-            \ the sum of the previous NAV and the net dealing) that is invested in\
-            \ the share class."
+          description: The proportion of the fund's non-class-specific P&L apportioned
+            to this share class. Sums to 1 across the fund's share classes.
           format: double
           type: number
         previousShareClassBreakdown:
@@ -288055,7 +288247,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -288104,6 +288296,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -288170,7 +288363,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -288219,6 +288412,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - assetClass
@@ -290923,7 +291117,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -290972,6 +291166,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - contractSize
@@ -291442,7 +291637,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -291491,6 +291686,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy
@@ -291574,7 +291770,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -291623,6 +291819,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - deliveryType
@@ -291681,7 +291878,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -291730,6 +291927,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - assetLeg
@@ -329302,7 +329500,7 @@ components:
               \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
-              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption."
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -329351,6 +329549,7 @@ components:
             - ToBeAnnounced
             - VolatilitySwap
             - ToBeAnnouncedOption
+            - CommodityForward
             type: string
         required:
         - domCcy

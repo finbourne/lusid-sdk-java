@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **unitisation** | [**UnitisationData**](UnitisationData.md) |  | [optional] [default to UnitisationData]
 **miscellaneous** | [**Map&lt;String, ShareClassAmount&gt;**](ShareClassAmount.md) | Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations). | [optional] [default to Map<String, ShareClassAmount>]
 **shareClassToFundFxRate** | **java.math.BigDecimal** | The fx rate from the Share Class currency to the fund currency at this valuation point. | [default to java.math.BigDecimal]
-**capitalRatio** | **java.math.BigDecimal** | The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class. | [default to java.math.BigDecimal]
+**capitalRatio** | **java.math.BigDecimal** | The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes. | [default to java.math.BigDecimal]
 **previousShareClassBreakdown** | [**PreviousShareClassBreakdown**](PreviousShareClassBreakdown.md) |  | [default to PreviousShareClassBreakdown]
 
 ```java
