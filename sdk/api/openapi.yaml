@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9616
+  version: 0.11.9617
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -160720,6 +160720,48 @@ components:
       - lusidInstrumentId
       - portfolioId
       type: object
+    AppliedScenarioShift:
+      additionalProperties: false
+      description: One market data target changed by one scenario shift during a valuation.
+      example:
+        scenario: scenario
+        valueAfter: 1.4658129805029452
+        shift: shift
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        valueBefore: 6.027456183070403
+        target: target
+      properties:
+        scenario:
+          description: The "scope/code" reference of the scenario the shift belongs
+            to.
+          nullable: true
+          type: string
+        effectiveAt:
+          description: The effective date of the market data the shift was applied
+            to.
+          format: date-time
+          type: string
+        shift:
+          description: "Description of the shift, e.g. \"PriceShift on 'SCENARIO_EQUITY'\"\
+            ."
+          nullable: true
+          type: string
+        target:
+          description: Description of the market data target the shift changed.
+          nullable: true
+          type: string
+        valueBefore:
+          description: "The target's value before the shift. Null for multi-point\
+            \ targets (e.g. whole curves) where a\r\nsingle number is not meaningful."
+          format: double
+          nullable: true
+          type: number
+        valueAfter:
+          description: The target's value after the shift. Null for multi-point targets.
+          format: double
+          nullable: true
+          type: number
+      type: object
     ApportionmentBreakdown:
       additionalProperties: false
       description: "The apportionment result for one level - the fund (apportioning\
@@ -216591,6 +216633,24 @@ components:
           data:
           - key: ""
           - key: ""
+          scenarioDiagnostics:
+            applied:
+            - scenario: scenario
+              valueAfter: 1.4658129805029452
+              shift: shift
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              valueBefore: 6.027456183070403
+              target: target
+            - scenario: scenario
+              valueAfter: 1.4658129805029452
+              shift: shift
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              valueBefore: 6.027456183070403
+              target: target
+            omittedApplied: 5
+            skipped:
+            - skipped
+            - skipped
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -216652,6 +216712,24 @@ components:
           data:
           - key: ""
           - key: ""
+          scenarioDiagnostics:
+            applied:
+            - scenario: scenario
+              valueAfter: 1.4658129805029452
+              shift: shift
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              valueBefore: 6.027456183070403
+              target: target
+            - scenario: scenario
+              valueAfter: 1.4658129805029452
+              shift: shift
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              valueBefore: 6.027456183070403
+              target: target
+            omittedApplied: 5
+            skipped:
+            - skipped
+            - skipped
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -216726,6 +216804,24 @@ components:
         data:
         - key: ""
         - key: ""
+        scenarioDiagnostics:
+          applied:
+          - scenario: scenario
+            valueAfter: 1.4658129805029452
+            shift: shift
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            valueBefore: 6.027456183070403
+            target: target
+          - scenario: scenario
+            valueAfter: 1.4658129805029452
+            shift: shift
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            valueBefore: 6.027456183070403
+            target: target
+          omittedApplied: 5
+          skipped:
+          - skipped
+          - skipped
         aggregationFailures:
         - reason: reason
           measure: measure
@@ -216780,6 +216876,8 @@ components:
           type: array
         recipeId:
           $ref: '#/components/schemas/ResourceId'
+        scenarioDiagnostics:
+          $ref: '#/components/schemas/ScenarioDiagnostics'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -253662,7 +253760,11 @@ components:
               \ eq 'Italy'\". The shifted market data\r\nis used by the whole valuation\
               \ run, but when the scenario is requested as a result column the\r\n\
               column is only populated for matching instruments. Only usable when\
-              \ the scenario is applied as\r\na per-metric column."
+              \ the scenario is applied as\r\na per-metric column. Note that with\
+              \ a scope set, the base and scenario columns cover different\r\ninstrument\
+              \ populations: an aggregate (e.g. Sum) of the scenario column totals\
+              \ only the matching\r\ninstruments, so it is not directly comparable\
+              \ to the same aggregate of the base column."
             maxLength: 2000
             minLength: 1
             nullable: true
@@ -283262,6 +283364,56 @@ components:
       required:
       - code
       - scope
+      type: object
+    ScenarioDiagnostics:
+      additionalProperties: false
+      description: "Diagnostics for the scenario shifts a valuation applied: every\
+        \ market data target changed by a\r\nshift, with values before and after,\
+        \ plus warnings for market data that matched a shift but could\r\nnot honour\
+        \ it. Populated whenever the valuation ran with a request-level scenario or\r\
+        \nscenario-decorated metrics; null otherwise. The same material is written\
+        \ to the market data\r\nmanifest."
+      example:
+        applied:
+        - scenario: scenario
+          valueAfter: 1.4658129805029452
+          shift: shift
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          valueBefore: 6.027456183070403
+          target: target
+        - scenario: scenario
+          valueAfter: 1.4658129805029452
+          shift: shift
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          valueBefore: 6.027456183070403
+          target: target
+        omittedApplied: 5
+        skipped:
+        - skipped
+        - skipped
+      properties:
+        applied:
+          description: One entry per market data target changed by a shift.
+          items:
+            $ref: '#/components/schemas/AppliedScenarioShift'
+          nullable: true
+          type: array
+        skipped:
+          description: "Market data that matched a shift but was skipped (e.g. an\
+            \ element type that does not support\r\ntransformation), with the reason.\
+            \ Prefixed with the scenario's \"scope/code\" reference."
+          items:
+            type: string
+          nullable: true
+          type: array
+        omittedApplied:
+          description: "The number of further applied records omitted from this section,\
+            \ when the valuation changed\r\nmore targets than the section carries\
+            \ (large portfolios over long schedules). Null when\r\nnothing was omitted.\
+            \ The market data manifest always carries the complete set."
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ScenarioPreviewAppliedShift:
       additionalProperties: false

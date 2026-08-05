@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dataSchema** | [**ResultDataSchema**](ResultDataSchema.md) |  | [optional] [default to ResultDataSchema]
 **aggregationFailures** | [**List&lt;AggregationMeasureFailureDetail&gt;**](AggregationMeasureFailureDetail.md) |  | [optional] [default to List<AggregationMeasureFailureDetail>]
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**scenarioDiagnostics** | [**ScenarioDiagnostics**](ScenarioDiagnostics.md) |  | [optional] [default to ScenarioDiagnostics]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -28,6 +29,7 @@ OffsetDateTime AggregationAsAt = OffsetDateTime.now();
 ResultDataSchema DataSchema = new ResultDataSchema();
 @jakarta.annotation.Nullable List<AggregationMeasureFailureDetail> AggregationFailures = new List<AggregationMeasureFailureDetail>();
 ResourceId RecipeId = new ResourceId();
+ScenarioDiagnostics ScenarioDiagnostics = new ScenarioDiagnostics();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -40,6 +42,7 @@ ListAggregationResponse listAggregationResponseInstance = new ListAggregationRes
     .DataSchema(DataSchema)
     .AggregationFailures(AggregationFailures)
     .RecipeId(RecipeId)
+    .ScenarioDiagnostics(ScenarioDiagnostics)
     .Links(Links);
 ```
 

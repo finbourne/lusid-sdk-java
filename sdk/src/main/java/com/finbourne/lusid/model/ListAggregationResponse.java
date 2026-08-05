@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AggregationMeasureFailureDetail;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResultDataSchema;
+import com.finbourne.lusid.model.ScenarioDiagnostics;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -90,6 +91,10 @@ public class ListAggregationResponse {
   public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
   @SerializedName(SERIALIZED_NAME_RECIPE_ID)
   private ResourceId recipeId;
+
+  public static final String SERIALIZED_NAME_SCENARIO_DIAGNOSTICS = "scenarioDiagnostics";
+  @SerializedName(SERIALIZED_NAME_SCENARIO_DIAGNOSTICS)
+  private ScenarioDiagnostics scenarioDiagnostics;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -282,6 +287,27 @@ public class ListAggregationResponse {
   }
 
 
+  public ListAggregationResponse scenarioDiagnostics(ScenarioDiagnostics scenarioDiagnostics) {
+    
+    this.scenarioDiagnostics = scenarioDiagnostics;
+    return this;
+  }
+
+   /**
+   * Get scenarioDiagnostics
+   * @return scenarioDiagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public ScenarioDiagnostics getScenarioDiagnostics() {
+    return scenarioDiagnostics;
+  }
+
+
+  public void setScenarioDiagnostics(ScenarioDiagnostics scenarioDiagnostics) {
+    this.scenarioDiagnostics = scenarioDiagnostics;
+  }
+
+
   public ListAggregationResponse links(List<Link> links) {
     
     this.links = links;
@@ -329,6 +355,7 @@ public class ListAggregationResponse {
         Objects.equals(this.dataSchema, listAggregationResponse.dataSchema) &&
         Objects.equals(this.aggregationFailures, listAggregationResponse.aggregationFailures) &&
         Objects.equals(this.recipeId, listAggregationResponse.recipeId) &&
+        Objects.equals(this.scenarioDiagnostics, listAggregationResponse.scenarioDiagnostics) &&
         Objects.equals(this.links, listAggregationResponse.links);
   }
 
@@ -338,7 +365,7 @@ public class ListAggregationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, recipeId, links);
+    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, recipeId, scenarioDiagnostics, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -360,6 +387,7 @@ public class ListAggregationResponse {
     sb.append("    dataSchema: ").append(toIndentedString(dataSchema)).append("\n");
     sb.append("    aggregationFailures: ").append(toIndentedString(aggregationFailures)).append("\n");
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
+    sb.append("    scenarioDiagnostics: ").append(toIndentedString(scenarioDiagnostics)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -391,6 +419,7 @@ public class ListAggregationResponse {
     openapiFields.add("dataSchema");
     openapiFields.add("aggregationFailures");
     openapiFields.add("recipeId");
+    openapiFields.add("scenarioDiagnostics");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -441,6 +470,10 @@ public class ListAggregationResponse {
       // validate the optional field `recipeId`
       if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("recipeId"));
+      }
+      // validate the optional field `scenarioDiagnostics`
+      if (jsonObj.get("scenarioDiagnostics") != null && !jsonObj.get("scenarioDiagnostics").isJsonNull()) {
+        ScenarioDiagnostics.validateJsonElement(jsonObj.get("scenarioDiagnostics"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
