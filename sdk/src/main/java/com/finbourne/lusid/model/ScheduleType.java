@@ -41,6 +41,8 @@ public enum ScheduleType {
   
   BONDCONVERSIONSCHEDULE("BondConversionSchedule"),
   
+  PIKSCHEDULE("PikSchedule"),
+  
   INVALID("Invalid");
 
   private String value;

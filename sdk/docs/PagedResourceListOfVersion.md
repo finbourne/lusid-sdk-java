@@ -1,33 +1,33 @@
-# com.finbourne.lusid.model.GetScenarioResponse
+# com.finbourne.lusid.model.PagedResourceListOfVersion
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**nextPage** | **String** |  | [optional] [default to String]
+**previousPage** | **String** |  | [optional] [default to String]
+**values** | [**List&lt;Version&gt;**](Version.md) |  | [default to List<Version>]
 **href** | [**URI**](URI.md) |  | [optional] [default to URI]
-**value** | [**ScenarioDefinition**](ScenarioDefinition.md) |  | [optional] [default to ScenarioDefinition]
-**version** | [**Version**](Version.md) |  | [optional] [default to Version]
-**failed** | [**ErrorDetail**](ErrorDetail.md) |  | [optional] [default to ErrorDetail]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
-import com.finbourne.lusid.model.GetScenarioResponse;
+import com.finbourne.lusid.model.PagedResourceListOfVersion;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
+@jakarta.annotation.Nullable String NextPage = "example NextPage";
+@jakarta.annotation.Nullable String PreviousPage = "example PreviousPage";
+List<Version> Values = new List<Version>();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
-ScenarioDefinition Value = new ScenarioDefinition();
-Version Version = new Version();
-ErrorDetail Failed = new ErrorDetail();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
-GetScenarioResponse getScenarioResponseInstance = new GetScenarioResponse()
+PagedResourceListOfVersion pagedResourceListOfVersionInstance = new PagedResourceListOfVersion()
+    .NextPage(NextPage)
+    .PreviousPage(PreviousPage)
+    .Values(Values)
     .Href(Href)
-    .Value(Value)
-    .Version(Version)
-    .Failed(Failed)
     .Links(Links);
 ```
 

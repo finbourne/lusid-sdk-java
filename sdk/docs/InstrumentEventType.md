@@ -108,6 +108,7 @@ InstrumentEventType method = InstrumentEventType.PIKBONDCASHCOUPONEVENT;
 InstrumentEventType method = InstrumentEventType.PIKBONDINTERESTCAPITALISATIONEVENT;
 InstrumentEventType method = InstrumentEventType.PIKBONDPRINCIPALEVENT;
 InstrumentEventType method = InstrumentEventType.DELISTINGEVENT;
+InstrumentEventType method = InstrumentEventType.PIKBONDINTERESTEVENT;
 ```
 
 

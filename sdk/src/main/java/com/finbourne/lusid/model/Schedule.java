@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Schedule {
   /**
-   * Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
+   * Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
    */
   @JsonAdapter(ScheduleTypeEnum.Adapter.class)
   public enum ScheduleTypeEnum {
@@ -69,6 +69,8 @@ public class Schedule {
     FXLINKEDNOTIONALSCHEDULE("FxLinkedNotionalSchedule"),
     
     BONDCONVERSIONSCHEDULE("BondConversionSchedule"),
+    
+    PIKSCHEDULE("PikSchedule"),
     
     INVALID("Invalid");
 
@@ -124,7 +126,7 @@ public class Schedule {
   }
 
    /**
-   * Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
+   * Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
    * @return scheduleType
   **/
   @jakarta.annotation.Nonnull
@@ -222,6 +224,9 @@ public class Schedule {
           break;
         case "OptionalitySchedule":
           OptionalitySchedule.validateJsonElement(jsonElement);
+          break;
+        case "PikSchedule":
+          PikSchedule.validateJsonElement(jsonElement);
           break;
         case "StepSchedule":
           StepSchedule.validateJsonElement(jsonElement);

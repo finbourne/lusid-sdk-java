@@ -11,13 +11,17 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RateBreakdownComponent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -77,6 +81,14 @@ public class CashElection {
   public static final String SERIALIZED_NAME_DIVIDEND_CURRENCY = "dividendCurrency";
   @SerializedName(SERIALIZED_NAME_DIVIDEND_CURRENCY)
   private String dividendCurrency;
+
+  public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+  private OffsetDateTime paymentDate;
+
+  public static final String SERIALIZED_NAME_RATE_BREAKDOWN = "rateBreakdown";
+  @SerializedName(SERIALIZED_NAME_RATE_BREAKDOWN)
+  private List<RateBreakdownComponent> rateBreakdown;
 
   public CashElection() {
   }
@@ -228,6 +240,56 @@ public class CashElection {
   }
 
 
+  public CashElection paymentDate(OffsetDateTime paymentDate) {
+    
+    this.paymentDate = paymentDate;
+    return this;
+  }
+
+   /**
+   * Optional option-level payment date. When set, it takes precedence over the event-level payment date; when omitted, the event-level payment date applies.
+   * @return paymentDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPaymentDate() {
+    return paymentDate;
+  }
+
+
+  public void setPaymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
+  }
+
+
+  public CashElection rateBreakdown(List<RateBreakdownComponent> rateBreakdown) {
+    
+    this.rateBreakdown = rateBreakdown;
+    return this;
+  }
+
+  public CashElection addRateBreakdownItem(RateBreakdownComponent rateBreakdownItem) {
+    if (this.rateBreakdown == null) {
+      this.rateBreakdown = new ArrayList<>();
+    }
+    this.rateBreakdown.add(rateBreakdownItem);
+    return this;
+  }
+
+   /**
+   * Optional tax-characterised payout lines for this election (CashDividendEvent only). When absent or empty, the election produces a single standard payment.
+   * @return rateBreakdown
+  **/
+  @jakarta.annotation.Nullable
+  public List<RateBreakdownComponent> getRateBreakdown() {
+    return rateBreakdown;
+  }
+
+
+  public void setRateBreakdown(List<RateBreakdownComponent> rateBreakdown) {
+    this.rateBreakdown = rateBreakdown;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -244,7 +306,9 @@ public class CashElection {
         Objects.equals(this.isChosen, cashElection.isChosen) &&
         Objects.equals(this.isDeclared, cashElection.isDeclared) &&
         Objects.equals(this.isDefault, cashElection.isDefault) &&
-        Objects.equals(this.dividendCurrency, cashElection.dividendCurrency);
+        Objects.equals(this.dividendCurrency, cashElection.dividendCurrency) &&
+        Objects.equals(this.paymentDate, cashElection.paymentDate) &&
+        Objects.equals(this.rateBreakdown, cashElection.rateBreakdown);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -253,7 +317,7 @@ public class CashElection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(electionKey, exchangeRate, dividendRate, isChosen, isDeclared, isDefault, dividendCurrency);
+    return Objects.hash(electionKey, exchangeRate, dividendRate, isChosen, isDeclared, isDefault, dividendCurrency, paymentDate, rateBreakdown);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -274,6 +338,8 @@ public class CashElection {
     sb.append("    isDeclared: ").append(toIndentedString(isDeclared)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    dividendCurrency: ").append(toIndentedString(dividendCurrency)).append("\n");
+    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    rateBreakdown: ").append(toIndentedString(rateBreakdown)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -303,6 +369,8 @@ public class CashElection {
     openapiFields.add("isDeclared");
     openapiFields.add("isDefault");
     openapiFields.add("dividendCurrency");
+    openapiFields.add("paymentDate");
+    openapiFields.add("rateBreakdown");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -335,6 +403,20 @@ public class CashElection {
       }
       if (!jsonObj.get("dividendCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dividendCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dividendCurrency").toString()));
+      }
+      if (jsonObj.get("rateBreakdown") != null && !jsonObj.get("rateBreakdown").isJsonNull()) {
+        JsonArray jsonArrayrateBreakdown = jsonObj.getAsJsonArray("rateBreakdown");
+        if (jsonArrayrateBreakdown != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("rateBreakdown").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `rateBreakdown` to be an array in the JSON string but got `%s`", jsonObj.get("rateBreakdown").toString()));
+          }
+
+          // validate the optional field `rateBreakdown` (array)
+          for (int i = 0; i < jsonArrayrateBreakdown.size(); i++) {
+            RateBreakdownComponent.validateJsonElement(jsonArrayrateBreakdown.get(i));
+          };
+        }
       }
   }
 

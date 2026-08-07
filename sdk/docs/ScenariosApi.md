@@ -7,6 +7,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createScenarioFromTemplate**](ScenariosApi.md#createScenarioFromTemplate) | **POST** /api/scenarios/{scope}/$fromTemplate | [EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template. |
 | [**deleteScenario**](ScenariosApi.md#deleteScenario) | **DELETE** /api/scenarios/{scope}/{code} | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present. |
 | [**getScenario**](ScenariosApi.md#getScenario) | **GET** /api/scenarios/{scope}/{code} | [EARLY ACCESS] GetScenario: Get Scenario |
+| [**listScenarioVersions**](ScenariosApi.md#listScenarioVersions) | **GET** /api/scenarios/{scope}/{code}/versions | [EARLY ACCESS] ListScenarioVersions: List the versions of a Scenario |
 | [**listScenarios**](ScenariosApi.md#listScenarios) | **GET** /api/scenarios/{scope} | [EARLY ACCESS] ListScenarios: List the set of Scenario definitions |
 | [**previewScenario**](ScenariosApi.md#previewScenario) | **POST** /api/scenarios/$preview | [EARLY ACCESS] PreviewScenario: Preview a Scenario |
 | [**upsertScenario**](ScenariosApi.md#upsertScenario) | **POST** /api/scenarios | [EARLY ACCESS] UpsertScenario: Upsert a Scenario. This creates or updates the scenario definition in LUSID. |
@@ -288,6 +289,105 @@ public class ScenariosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successfully retrieved Scenario or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listScenarioVersions
+
+> PagedResourceListOfVersion listScenarioVersions(scope, code, asAt, limit, page)
+
+[EARLY ACCESS] ListScenarioVersions: List the versions of a Scenario
+
+List the AsAt versions of a single Scenario definition, newest first: one entry per change,  with the version number, the AsAt datetime it was written, and the user that wrote it.     Scenarios are perpetual (AsAt-only), so a version&#39;s AsAt datetime identifies it completely:  pass it as the asAt on GetScenario to view that version, or as the scenario reference&#39;s  asAt on a valuation to price under it.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ScenariosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ScenariosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScenariosApi apiInstance = apiFactory.build(ScenariosApi.class);
+
+        ScenariosApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScenariosApi.class);
+        String scope = "scope_example"; // String | The scope of the Scenario to list versions for.
+        String code = "code_example"; // String | The code of the Scenario to list versions for.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime to cap the version history at. Defaults to all versions up to now.
+        Integer limit = 56; // Integer | Maximum number of results to return. Defaults to 100.
+        String page = "page_example"; // String | Pagination token from a previous result to fetch the next page.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfVersion result = apiInstance.listScenarioVersions(scope, code, asAt, limit, page).execute(opts);
+
+            PagedResourceListOfVersion result = apiInstance.listScenarioVersions(scope, code, asAt, limit, page).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScenariosApi#listScenarioVersions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Scenario to list versions for. | |
+| **code** | **String**| The code of the Scenario to list versions for. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime to cap the version history at. Defaults to all versions up to now. | [optional] |
+| **limit** | **Integer**| Maximum number of results to return. Defaults to 100. | [optional] |
+| **page** | **String**| Pagination token from a previous result to fetch the next page. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfVersion**](PagedResourceListOfVersion.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The versions of the scenario, newest first |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

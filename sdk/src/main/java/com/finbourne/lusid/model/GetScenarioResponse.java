@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ScenarioDefinition;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class GetScenarioResponse {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private ScenarioDefinition value;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
@@ -114,6 +119,27 @@ public class GetScenarioResponse {
 
   public void setValue(ScenarioDefinition value) {
     this.value = value;
+  }
+
+
+  public GetScenarioResponse version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
   }
 
 
@@ -179,6 +205,7 @@ public class GetScenarioResponse {
     GetScenarioResponse getScenarioResponse = (GetScenarioResponse) o;
     return Objects.equals(this.href, getScenarioResponse.href) &&
         Objects.equals(this.value, getScenarioResponse.value) &&
+        Objects.equals(this.version, getScenarioResponse.version) &&
         Objects.equals(this.failed, getScenarioResponse.failed) &&
         Objects.equals(this.links, getScenarioResponse.links);
   }
@@ -189,7 +216,7 @@ public class GetScenarioResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, value, failed, links);
+    return Objects.hash(href, value, version, failed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,6 +232,7 @@ public class GetScenarioResponse {
     sb.append("class GetScenarioResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -231,6 +259,7 @@ public class GetScenarioResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("value");
+    openapiFields.add("version");
     openapiFields.add("failed");
     openapiFields.add("links");
 
@@ -257,6 +286,10 @@ public class GetScenarioResponse {
       // validate the optional field `value`
       if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
         ScenarioDefinition.validateJsonElement(jsonObj.get("value"));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
       // validate the optional field `failed`
       if (jsonObj.get("failed") != null && !jsonObj.get("failed").isJsonNull()) {

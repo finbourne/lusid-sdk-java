@@ -257,7 +257,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
    * maximum: 1000000
    * @return amount
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getAmount() {
     return amount;
   }
@@ -385,7 +385,6 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
     openapiRequiredFields.add("shiftType");
     openapiRequiredFields.add("scenarioShiftType");
   }

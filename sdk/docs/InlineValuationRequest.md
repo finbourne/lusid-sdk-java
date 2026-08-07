@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **instruments** | [**List&lt;WeightedInstrument&gt;**](WeightedInstrument.md) | The set of instruments, weighted by the quantities held that are required.  It is identified by an identifier tag that can be used to identify it externally.  For a single, unique trade or transaction this can be thought of as equivalent to the transaction identifier, or  a composite of the sub-holding keys for a regular sub-holding. When there are multiple transactions sharing the same underlying instrument  such as purchase of shares on multiple dates where tax implications are different this would not be the case. | [default to List<WeightedInstrument>]
 **marketDataOverrides** | [**MarketDataOverrides**](MarketDataOverrides.md) |  | [optional] [default to MarketDataOverrides]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**scenario** | [**ScenarioReference**](ScenarioReference.md) |  | [optional] [default to ScenarioReference]
 
 ```java
 import com.finbourne.lusid.model.InlineValuationRequest;
@@ -38,6 +39,7 @@ ValuationSchedule ValuationSchedule = new ValuationSchedule();
 List<WeightedInstrument> Instruments = new List<WeightedInstrument>();
 MarketDataOverrides MarketDataOverrides = new MarketDataOverrides();
 ResourceId CorporateActionSourceId = new ResourceId();
+ScenarioReference Scenario = new ScenarioReference();
 
 
 InlineValuationRequest inlineValuationRequestInstance = new InlineValuationRequest()
@@ -53,7 +55,8 @@ InlineValuationRequest inlineValuationRequestInstance = new InlineValuationReque
     .ValuationSchedule(ValuationSchedule)
     .Instruments(Instruments)
     .MarketDataOverrides(MarketDataOverrides)
-    .CorporateActionSourceId(CorporateActionSourceId);
+    .CorporateActionSourceId(CorporateActionSourceId)
+    .Scenario(Scenario);
 ```
 
 

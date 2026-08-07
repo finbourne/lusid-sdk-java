@@ -21,6 +21,7 @@ ScheduleType method = ScheduleType.EXERCISE;
 ScheduleType method = ScheduleType.FXRATESCHEDULE;
 ScheduleType method = ScheduleType.FXLINKEDNOTIONALSCHEDULE;
 ScheduleType method = ScheduleType.BONDCONVERSIONSCHEDULE;
+ScheduleType method = ScheduleType.PIKSCHEDULE;
 ScheduleType method = ScheduleType.INVALID;
 ```
 

@@ -1632,6 +1632,7 @@ public class JSON {
                         classByDiscriminatorValue.put("PikBondCashCouponEvent", com.finbourne.lusid.model.PikBondCashCouponEvent.class);
                         classByDiscriminatorValue.put("PikBondCouponEvent", com.finbourne.lusid.model.PikBondCouponEvent.class);
                         classByDiscriminatorValue.put("PikBondInterestCapitalisationEvent", com.finbourne.lusid.model.PikBondInterestCapitalisationEvent.class);
+                        classByDiscriminatorValue.put("PikBondInterestEvent", com.finbourne.lusid.model.PikBondInterestEvent.class);
                         classByDiscriminatorValue.put("PikBondPrincipalEvent", com.finbourne.lusid.model.PikBondPrincipalEvent.class);
                         classByDiscriminatorValue.put("PriorityIssueEvent", com.finbourne.lusid.model.PriorityIssueEvent.class);
                         classByDiscriminatorValue.put("ProtectionPayoutCashFlowEvent", com.finbourne.lusid.model.ProtectionPayoutCashFlowEvent.class);
@@ -2154,6 +2155,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.PikBondInterestEvent.class, new TypeSelector<com.finbourne.lusid.model.PikBondInterestEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.PikBondInterestEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PikBondInterestEvent", com.finbourne.lusid.model.PikBondInterestEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.PikBondPrincipalEvent.class, new TypeSelector<com.finbourne.lusid.model.PikBondPrincipalEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.PikBondPrincipalEvent> getClassForElement(JsonElement readElement) {
@@ -2161,6 +2171,15 @@ public class JSON {
                         classByDiscriminatorValue.put("PikBondPrincipalEvent", com.finbourne.lusid.model.PikBondPrincipalEvent.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.PikSchedule.class, new TypeSelector<com.finbourne.lusid.model.PikSchedule>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.PikSchedule> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PikSchedule", com.finbourne.lusid.model.PikSchedule.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scheduleType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter.class, new TypeSelector<com.finbourne.lusid.model.PortfolioGroupIdComplianceParameter>() {
@@ -2662,6 +2681,7 @@ public class JSON {
                         classByDiscriminatorValue.put("FxLinkedNotionalSchedule", com.finbourne.lusid.model.FxLinkedNotionalSchedule.class);
                         classByDiscriminatorValue.put("FxRateSchedule", com.finbourne.lusid.model.FxRateSchedule.class);
                         classByDiscriminatorValue.put("OptionalitySchedule", com.finbourne.lusid.model.OptionalitySchedule.class);
+                        classByDiscriminatorValue.put("PikSchedule", com.finbourne.lusid.model.PikSchedule.class);
                         classByDiscriminatorValue.put("StepSchedule", com.finbourne.lusid.model.StepSchedule.class);
                         classByDiscriminatorValue.put("Schedule", com.finbourne.lusid.model.Schedule.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -3812,6 +3832,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfTranslationScriptId.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfValuationPointInstrument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfVersion.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfVirtualRow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfWorkspace.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PagedResourceListOfWorkspaceItem.CustomTypeAdapterFactory());
@@ -3840,8 +3861,10 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikBondCashCouponEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikBondCouponEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikBondInterestCapitalisationEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikBondInterestEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikBondPrincipalEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikElection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PikSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PlaceBlocksRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Placement.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.PlacementRequest.CustomTypeAdapterFactory());
@@ -3935,6 +3958,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteId.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.QuoteSeriesId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RateBreakdownComponent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RateCurveShiftDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.RawVendorEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ReOpenPeriodDiaryEntryRequest.CustomTypeAdapterFactory());

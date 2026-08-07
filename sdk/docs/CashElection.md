@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **isDeclared** | **Boolean** | Is this the declared CashElection. Only one Election may be Declared per Event. | [optional] [default to Boolean]
 **isDefault** | **Boolean** | Is this election the default. Only one Election may be Default per Event | [optional] [default to Boolean]
 **dividendCurrency** | **String** | The payment currency for this CashElection. | [default to String]
+**paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional option-level payment date. When set, it takes precedence over the event-level payment date; when omitted, the event-level payment date applies. | [optional] [default to OffsetDateTime]
+**rateBreakdown** | [**List&lt;RateBreakdownComponent&gt;**](RateBreakdownComponent.md) | Optional tax-characterised payout lines for this election (CashDividendEvent only). When absent or empty, the election produces a single standard payment. | [optional] [default to List<RateBreakdownComponent>]
 
 ```java
 import com.finbourne.lusid.model.CashElection;
@@ -26,6 +28,8 @@ Boolean IsChosen = true;
 Boolean IsDeclared = true;
 Boolean IsDefault = true;
 String DividendCurrency = "example DividendCurrency";
+@jakarta.annotation.Nullable OffsetDateTime PaymentDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable List<RateBreakdownComponent> RateBreakdown = new List<RateBreakdownComponent>();
 
 
 CashElection cashElectionInstance = new CashElection()
@@ -35,7 +39,9 @@ CashElection cashElectionInstance = new CashElection()
     .IsChosen(IsChosen)
     .IsDeclared(IsDeclared)
     .IsDefault(IsDefault)
-    .DividendCurrency(DividendCurrency);
+    .DividendCurrency(DividendCurrency)
+    .PaymentDate(PaymentDate)
+    .RateBreakdown(RateBreakdown);
 ```
 
 
