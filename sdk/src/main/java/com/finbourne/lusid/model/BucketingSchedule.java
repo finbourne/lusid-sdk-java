@@ -54,6 +54,14 @@ public class BucketingSchedule {
   @SerializedName(SERIALIZED_NAME_TENOR)
   private String tenor;
 
+  public static final String SERIALIZED_NAME_ROLL_DIRECTION = "rollDirection";
+  @SerializedName(SERIALIZED_NAME_ROLL_DIRECTION)
+  private String rollDirection;
+
+  public static final String SERIALIZED_NAME_STUB_TYPE = "stubType";
+  @SerializedName(SERIALIZED_NAME_STUB_TYPE)
+  private String stubType;
+
   public BucketingSchedule() {
   }
 
@@ -78,6 +86,48 @@ public class BucketingSchedule {
   }
 
 
+  public BucketingSchedule rollDirection(String rollDirection) {
+    
+    this.rollDirection = rollDirection;
+    return this;
+  }
+
+   /**
+   * Optional direction in which the bucketing dates are rolled out from the schedule tenor.  Supported string (enumeration) values are: [ForwardFromStart, BackwardFromEnd].  If absent (and StubType is also absent), the pre-existing date generation behaviour is used. Available values: ForwardFromStart, BackwardFromEnd.
+   * @return rollDirection
+  **/
+  @jakarta.annotation.Nullable
+  public String getRollDirection() {
+    return rollDirection;
+  }
+
+
+  public void setRollDirection(String rollDirection) {
+    this.rollDirection = rollDirection;
+  }
+
+
+  public BucketingSchedule stubType(String stubType) {
+    
+    this.stubType = stubType;
+    return this;
+  }
+
+   /**
+   * Optional treatment of the irregular (stub) period when the window length is not an exact multiple of the tenor.  Supported string (enumeration) values are: [ShortStub, LongStub].  If absent (and RollDirection is also absent), the pre-existing date generation behaviour is used. Available values: ShortStub, LongStub.
+   * @return stubType
+  **/
+  @jakarta.annotation.Nullable
+  public String getStubType() {
+    return stubType;
+  }
+
+
+  public void setStubType(String stubType) {
+    this.stubType = stubType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +138,9 @@ public class BucketingSchedule {
       return false;
     }
     BucketingSchedule bucketingSchedule = (BucketingSchedule) o;
-    return Objects.equals(this.tenor, bucketingSchedule.tenor);
+    return Objects.equals(this.tenor, bucketingSchedule.tenor) &&
+        Objects.equals(this.rollDirection, bucketingSchedule.rollDirection) &&
+        Objects.equals(this.stubType, bucketingSchedule.stubType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -97,7 +149,7 @@ public class BucketingSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenor);
+    return Objects.hash(tenor, rollDirection, stubType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -112,6 +164,8 @@ public class BucketingSchedule {
     StringBuilder sb = new StringBuilder();
     sb.append("class BucketingSchedule {\n");
     sb.append("    tenor: ").append(toIndentedString(tenor)).append("\n");
+    sb.append("    rollDirection: ").append(toIndentedString(rollDirection)).append("\n");
+    sb.append("    stubType: ").append(toIndentedString(stubType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,6 +189,8 @@ public class BucketingSchedule {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("tenor");
+    openapiFields.add("rollDirection");
+    openapiFields.add("stubType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -155,6 +211,12 @@ public class BucketingSchedule {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("tenor") != null && !jsonObj.get("tenor").isJsonNull()) && !jsonObj.get("tenor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tenor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tenor").toString()));
+      }
+      if ((jsonObj.get("rollDirection") != null && !jsonObj.get("rollDirection").isJsonNull()) && !jsonObj.get("rollDirection").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rollDirection` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rollDirection").toString()));
+      }
+      if ((jsonObj.get("stubType") != null && !jsonObj.get("stubType").isJsonNull()) && !jsonObj.get("stubType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stubType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stubType").toString()));
       }
   }
 

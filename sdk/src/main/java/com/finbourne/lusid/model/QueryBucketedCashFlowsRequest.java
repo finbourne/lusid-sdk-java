@@ -11,7 +11,9 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketBorderConfiguration;
 import com.finbourne.lusid.model.BucketingSchedule;
+import com.finbourne.lusid.model.CashFlowHaircutRule;
 import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -123,6 +125,22 @@ public class QueryBucketedCashFlowsRequest {
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
   private String filter;
+
+  public static final String SERIALIZED_NAME_CASH_FLOW_CALCULATION_VERSION = "cashFlowCalculationVersion";
+  @SerializedName(SERIALIZED_NAME_CASH_FLOW_CALCULATION_VERSION)
+  private String cashFlowCalculationVersion;
+
+  public static final String SERIALIZED_NAME_HAIRCUT_RULES = "haircutRules";
+  @SerializedName(SERIALIZED_NAME_HAIRCUT_RULES)
+  private List<CashFlowHaircutRule> haircutRules;
+
+  public static final String SERIALIZED_NAME_BORDER_CONFIGURATION = "borderConfiguration";
+  @SerializedName(SERIALIZED_NAME_BORDER_CONFIGURATION)
+  private BucketBorderConfiguration borderConfiguration;
+
+  public static final String SERIALIZED_NAME_STARTING_BALANCE = "startingBalance";
+  @SerializedName(SERIALIZED_NAME_STARTING_BALANCE)
+  private String startingBalance;
 
   public QueryBucketedCashFlowsRequest() {
   }
@@ -524,6 +542,98 @@ public class QueryBucketedCashFlowsRequest {
   }
 
 
+  public QueryBucketedCashFlowsRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
+    
+    this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+    return this;
+  }
+
+   /**
+   * The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering.
+   * @return cashFlowCalculationVersion
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashFlowCalculationVersion() {
+    return cashFlowCalculationVersion;
+  }
+
+
+  public void setCashFlowCalculationVersion(String cashFlowCalculationVersion) {
+    this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+  }
+
+
+  public QueryBucketedCashFlowsRequest haircutRules(List<CashFlowHaircutRule> haircutRules) {
+    
+    this.haircutRules = haircutRules;
+    return this;
+  }
+
+  public QueryBucketedCashFlowsRequest addHaircutRulesItem(CashFlowHaircutRule haircutRulesItem) {
+    if (this.haircutRules == null) {
+      this.haircutRules = new ArrayList<>();
+    }
+    this.haircutRules.add(haircutRulesItem);
+    return this;
+  }
+
+   /**
+   * Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, the additional per-bucket columns &#39;Valuation/Bucket/HaircutAmount&#39; and &#39;Valuation/Bucket/NetOfHaircutAmount&#39; are produced; with no rules the results are unchanged. Only supported for the InstrumentCashFlow CashFlowType.
+   * @return haircutRules
+  **/
+  @jakarta.annotation.Nullable
+  public List<CashFlowHaircutRule> getHaircutRules() {
+    return haircutRules;
+  }
+
+
+  public void setHaircutRules(List<CashFlowHaircutRule> haircutRules) {
+    this.haircutRules = haircutRules;
+  }
+
+
+  public QueryBucketedCashFlowsRequest borderConfiguration(BucketBorderConfiguration borderConfiguration) {
+    
+    this.borderConfiguration = borderConfiguration;
+    return this;
+  }
+
+   /**
+   * Get borderConfiguration
+   * @return borderConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public BucketBorderConfiguration getBorderConfiguration() {
+    return borderConfiguration;
+  }
+
+
+  public void setBorderConfiguration(BucketBorderConfiguration borderConfiguration) {
+    this.borderConfiguration = borderConfiguration;
+  }
+
+
+  public QueryBucketedCashFlowsRequest startingBalance(String startingBalance) {
+    
+    this.startingBalance = startingBalance;
+    return this;
+  }
+
+   /**
+   * The balance to use at the start of the bucketing window when computing open/close balances.  Supported string (enumeration) values are: [PortfolioCashBalance, Zero]. Defaults to &#39;PortfolioCashBalance&#39;. Available values: PortfolioCashBalance, Zero.
+   * @return startingBalance
+  **/
+  @jakarta.annotation.Nullable
+  public String getStartingBalance() {
+    return startingBalance;
+  }
+
+
+  public void setStartingBalance(String startingBalance) {
+    this.startingBalance = startingBalance;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -550,7 +660,11 @@ public class QueryBucketedCashFlowsRequest {
         Objects.equals(this.excludeUnsettledTrades, queryBucketedCashFlowsRequest.excludeUnsettledTrades) &&
         Objects.equals(this.cashFlowType, queryBucketedCashFlowsRequest.cashFlowType) &&
         Objects.equals(this.bucketingSchedule, queryBucketedCashFlowsRequest.bucketingSchedule) &&
-        Objects.equals(this.filter, queryBucketedCashFlowsRequest.filter);
+        Objects.equals(this.filter, queryBucketedCashFlowsRequest.filter) &&
+        Objects.equals(this.cashFlowCalculationVersion, queryBucketedCashFlowsRequest.cashFlowCalculationVersion) &&
+        Objects.equals(this.haircutRules, queryBucketedCashFlowsRequest.haircutRules) &&
+        Objects.equals(this.borderConfiguration, queryBucketedCashFlowsRequest.borderConfiguration) &&
+        Objects.equals(this.startingBalance, queryBucketedCashFlowsRequest.startingBalance);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -559,7 +673,7 @@ public class QueryBucketedCashFlowsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals, excludeUnsettledTrades, cashFlowType, bucketingSchedule, filter);
+    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals, excludeUnsettledTrades, cashFlowType, bucketingSchedule, filter, cashFlowCalculationVersion, haircutRules, borderConfiguration, startingBalance);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -590,6 +704,10 @@ public class QueryBucketedCashFlowsRequest {
     sb.append("    cashFlowType: ").append(toIndentedString(cashFlowType)).append("\n");
     sb.append("    bucketingSchedule: ").append(toIndentedString(bucketingSchedule)).append("\n");
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    cashFlowCalculationVersion: ").append(toIndentedString(cashFlowCalculationVersion)).append("\n");
+    sb.append("    haircutRules: ").append(toIndentedString(haircutRules)).append("\n");
+    sb.append("    borderConfiguration: ").append(toIndentedString(borderConfiguration)).append("\n");
+    sb.append("    startingBalance: ").append(toIndentedString(startingBalance)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -629,6 +747,10 @@ public class QueryBucketedCashFlowsRequest {
     openapiFields.add("cashFlowType");
     openapiFields.add("bucketingSchedule");
     openapiFields.add("filter");
+    openapiFields.add("cashFlowCalculationVersion");
+    openapiFields.add("haircutRules");
+    openapiFields.add("borderConfiguration");
+    openapiFields.add("startingBalance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -704,6 +826,30 @@ public class QueryBucketedCashFlowsRequest {
       }
       if ((jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) && !jsonObj.get("filter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filter").toString()));
+      }
+      if ((jsonObj.get("cashFlowCalculationVersion") != null && !jsonObj.get("cashFlowCalculationVersion").isJsonNull()) && !jsonObj.get("cashFlowCalculationVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashFlowCalculationVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashFlowCalculationVersion").toString()));
+      }
+      if (jsonObj.get("haircutRules") != null && !jsonObj.get("haircutRules").isJsonNull()) {
+        JsonArray jsonArrayhaircutRules = jsonObj.getAsJsonArray("haircutRules");
+        if (jsonArrayhaircutRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("haircutRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `haircutRules` to be an array in the JSON string but got `%s`", jsonObj.get("haircutRules").toString()));
+          }
+
+          // validate the optional field `haircutRules` (array)
+          for (int i = 0; i < jsonArrayhaircutRules.size(); i++) {
+            CashFlowHaircutRule.validateJsonElement(jsonArrayhaircutRules.get(i));
+          };
+        }
+      }
+      // validate the optional field `borderConfiguration`
+      if (jsonObj.get("borderConfiguration") != null && !jsonObj.get("borderConfiguration").isJsonNull()) {
+        BucketBorderConfiguration.validateJsonElement(jsonObj.get("borderConfiguration"));
+      }
+      if ((jsonObj.get("startingBalance") != null && !jsonObj.get("startingBalance").isJsonNull()) && !jsonObj.get("startingBalance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startingBalance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startingBalance").toString()));
       }
   }
 

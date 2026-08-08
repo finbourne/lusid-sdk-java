@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **portfolioEntityIds** | [**List&lt;PortfolioEntityId&gt;**](PortfolioEntityId.md) | The set of portfolios and portfolio groups to which the instrument events must belong. | [default to List<PortfolioEntityId>]
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The Effective date used in the valuation of the cashflows. | [default to OffsetDateTime]
+**cashFlowCalculationVersion** | **String** | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.QueryCashFlowsRequest;
@@ -24,6 +25,7 @@ OffsetDateTime WindowEnd = OffsetDateTime.now();
 List<PortfolioEntityId> PortfolioEntityIds = new List<PortfolioEntityId>();
 ResourceId RecipeId = new ResourceId();
 OffsetDateTime EffectiveAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable String CashFlowCalculationVersion = "example CashFlowCalculationVersion";
 
 
 QueryCashFlowsRequest queryCashFlowsRequestInstance = new QueryCashFlowsRequest()
@@ -32,7 +34,8 @@ QueryCashFlowsRequest queryCashFlowsRequestInstance = new QueryCashFlowsRequest(
     .WindowEnd(WindowEnd)
     .PortfolioEntityIds(PortfolioEntityIds)
     .RecipeId(RecipeId)
-    .EffectiveAt(EffectiveAt);
+    .EffectiveAt(EffectiveAt)
+    .CashFlowCalculationVersion(CashFlowCalculationVersion);
 ```
 
 

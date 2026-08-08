@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9627
+  version: 0.11.9636
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -53750,6 +53750,127 @@ paths:
       x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/instrumentevents/$queryBucketCashFlowDrillDown:
+    post:
+      description: "Returns the individual cashflows inside the requested bucket window\
+        \ for the holdings of the specified\r\nportfolios, annotated with the source\
+        \ (Instrument, Transaction or SRS) that produced each cashflow."
+      operationId: QueryBucketCashFlowDrillDown
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              bucketStart: 2020-01-01T00:00:00.0000000+00:00
+              bucketEnd: 2020-07-01T00:00:00.0000000+00:00
+              startInclusive: true
+              endInclusive: false
+              portfolioEntityIds:
+              - scope: portfolioScope
+                code: portfolioCode
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2020-01-01T00:00:00.0000000+00:00
+              recipeId:
+                scope: default
+                code: default
+              reportCurrency: USD
+              excludeUnsettledTrades: false
+            schema:
+              $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
+          application/json:
+            example:
+              bucketStart: 2020-01-01T00:00:00.0000000+00:00
+              bucketEnd: 2020-07-01T00:00:00.0000000+00:00
+              startInclusive: true
+              endInclusive: false
+              portfolioEntityIds:
+              - scope: portfolioScope
+                code: portfolioCode
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2020-01-01T00:00:00.0000000+00:00
+              recipeId:
+                scope: default
+                code: default
+              reportCurrency: USD
+              excludeUnsettledTrades: false
+            schema:
+              $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
+          text/json:
+            example:
+              bucketStart: 2020-01-01T00:00:00.0000000+00:00
+              bucketEnd: 2020-07-01T00:00:00.0000000+00:00
+              startInclusive: true
+              endInclusive: false
+              portfolioEntityIds:
+              - scope: portfolioScope
+                code: portfolioCode
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2020-01-01T00:00:00.0000000+00:00
+              recipeId:
+                scope: default
+                code: default
+              reportCurrency: USD
+              excludeUnsettledTrades: false
+            schema:
+              $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
+          application/*+json:
+            example:
+              bucketStart: 2020-01-01T00:00:00.0000000+00:00
+              bucketEnd: 2020-07-01T00:00:00.0000000+00:00
+              startInclusive: true
+              endInclusive: false
+              portfolioEntityIds:
+              - scope: portfolioScope
+                code: portfolioCode
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2020-01-01T00:00:00.0000000+00:00
+              recipeId:
+                scope: default
+                code: default
+              reportCurrency: USD
+              excludeUnsettledTrades: false
+            schema:
+              $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
+        description: The Query Information.
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCashFlowDetail'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCashFlowDetail'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCashFlowDetail'
+          description: The individual cashflows inside the requested bucket.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "QueryBucketCashFlowDrillDown: Returns the individual cashflows that\
+        \ make up a single cashflow bucket, with their source lineage."
+      tags:
+      - Instrument Events
+      x-fbn-apistatus: Stable
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/instrumentevents/$queryBucketedCashFlows:
     post:
       description: Returns bucketed cashflows based on the holdings of the portfolios
@@ -53779,6 +53900,7 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
+              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           application/json:
@@ -53803,6 +53925,7 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
+              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           text/json:
@@ -53827,6 +53950,7 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
+              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           application/*+json:
@@ -53851,6 +53975,7 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
+              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
         description: The Query Information.
@@ -134512,6 +134637,20 @@ paths:
           type: boolean
         style: form
         x-nullable: true
+      - description: "The version of the cash flow calculation logic to use. Defaults\
+          \ to '1' if not specified; valid values are '1' (the current production\
+          \ behaviour)\r\n and '2' (cash flows resolved via a deterministic source\
+          \ waterfall, with factual cash flows classified by transaction trade date\
+          \ and corporate action date filtering applied)."
+        explode: true
+        in: query
+        name: cashFlowCalculationVersion
+        required: false
+        schema:
+          maxLength: 1
+          minLength: 1
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -134671,6 +134810,20 @@ paths:
           type: boolean
         style: form
         x-nullable: true
+      - description: "The version of the cash flow calculation logic to use. Defaults\
+          \ to '1' if not specified; valid values are '1' (the current production\
+          \ behaviour)\r\n and '2' (cash flows resolved via a deterministic source\
+          \ waterfall, with factual cash flows classified by transaction trade date\
+          \ and corporate action date filtering applied)."
+        explode: true
+        in: query
+        name: cashFlowCalculationVersion
+        required: false
+        schema:
+          maxLength: 1
+          minLength: 1
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -147246,6 +147399,20 @@ paths:
           type: boolean
         style: form
         x-nullable: true
+      - description: "The version of the cash flow calculation logic to use. Defaults\
+          \ to '1' if not specified; valid values are '1' (the current production\
+          \ behaviour)\r\n and '2' (cash flows resolved via a deterministic source\
+          \ waterfall, with factual cash flows classified by transaction trade date\
+          \ and corporate action date filtering applied)."
+        explode: true
+        in: query
+        name: cashFlowCalculationVersion
+        required: false
+        schema:
+          maxLength: 1
+          minLength: 1
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -167192,6 +167359,33 @@ components:
           format: date-time
           type: string
       type: object
+    BucketBorderConfiguration:
+      additionalProperties: false
+      description: "Configuration determining how the borders of bucket intervals\
+        \ behave when allocating cash flows to buckets.\r\nWhen supplied, cash flows\
+        \ are bucketed into intervals defined by the bucketing dates rather than being\r\
+        \nrounded to the nearest bucketing date."
+      example:
+        startInclusive: true
+        endInclusive: true
+        boundaryBelongsTo: boundaryBelongsTo
+      properties:
+        startInclusive:
+          description: Is the start of the first bucket interval inclusive of its
+            start date. Defaults to true.
+          type: boolean
+        endInclusive:
+          description: Is the end of the last bucket interval inclusive of its end
+            date. Defaults to false.
+          type: boolean
+        boundaryBelongsTo:
+          description: "For boundaries shared by two adjacent intervals, which interval\
+            \ a cash flow falling exactly on the\r\nboundary belongs to. Supported\
+            \ string (enumeration) values are: [Earlier, Later]. Defaults to 'Earlier'.\
+            \ Available values: Earlier, Later."
+          nullable: true
+          type: string
+      type: object
     BucketDefinition:
       additionalProperties: false
       example:
@@ -167255,9 +167449,12 @@ components:
         bucketTenors:
         - bucketTenors
         - bucketTenors
+        cashFlowCalculationVersion: cashFlowCalculationVersion
         windowEnd: windowEnd
         bucketingSchedule:
           tenor: tenor
+          stubType: stubType
+          rollDirection: rollDirection
       properties:
         roundingMethod:
           description: "When bucketing, there is not a unique way to allocate the\
@@ -167362,6 +167559,21 @@ components:
           nullable: true
           pattern: "^[\\s\\S]*$"
           type: string
+        cashFlowCalculationVersion:
+          description: "The version of the cash flow calculation logic to use. Defaults\
+            \ to '1' if not specified. Valid values are '1' and '2'.\r\n'1' is the\
+            \ current production behaviour: cash flows booked as transactions are\
+            \ de-duplicated against the\r\ninstrument cash flows by identifier, and\
+            \ movements are treated as factual when they settle on or before the effective\
+            \ date.\r\n'2' resolves cash flows via a deterministic source waterfall\
+            \ (structured result store > transaction > instrument),\r\nclassifies\
+            \ cash flows as factual by the transaction trade date (so trades dealt\
+            \ on or before the effective date\r\nthat settle afterwards are factual),\
+            \ and applies corporate action date filtering."
+          maxLength: 1
+          minLength: 1
+          nullable: true
+          type: string
       required:
       - roundingMethod
       type: object
@@ -167462,9 +167674,27 @@ components:
       description: A schedule for dates
       example:
         tenor: tenor
+        stubType: stubType
+        rollDirection: rollDirection
       properties:
         tenor:
           description: Rolling tenor
+          nullable: true
+          type: string
+        rollDirection:
+          description: "Optional direction in which the bucketing dates are rolled\
+            \ out from the schedule tenor.\r\nSupported string (enumeration) values\
+            \ are: [ForwardFromStart, BackwardFromEnd].\r\nIf absent (and StubType\
+            \ is also absent), the pre-existing date generation behaviour is used.\
+            \ Available values: ForwardFromStart, BackwardFromEnd."
+          nullable: true
+          type: string
+        stubType:
+          description: "Optional treatment of the irregular (stub) period when the\
+            \ window length is not an exact multiple of the tenor.\r\nSupported string\
+            \ (enumeration) values are: [ShortStub, LongStub].\r\nIf absent (and RollDirection\
+            \ is also absent), the pre-existing date generation behaviour is used.\
+            \ Available values: ShortStub, LongStub."
           nullable: true
           type: string
       type: object
@@ -170232,6 +170462,116 @@ components:
       - dividendCurrency
       - electionKey
       type: object
+    CashFlowDetail:
+      additionalProperties: false
+      description: "An individual cashflow inside a cashflow bucket, annotated with\
+        \ the source that produced it\r\nin the cash flow waterfall (SRS > Transaction\
+        \ > Instrument)."
+      example:
+        amount: 0.8008281904610115
+        payReceive: payReceive
+        netAmount: 5.962133916683182
+        instrumentId: instrumentId
+        haircutRuleApplied: haircutRuleApplied
+        grossAmount: 6.027456183070403
+        transactionId: transactionId
+        haircutFraction: 1.4658129805029452
+        portfolioId:
+          code: code
+          scope: scope
+        sourceType: sourceType
+        currency: currency
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        paymentDate: 2000-01-23T04:56:07.000+00:00
+        flowType: flowType
+      properties:
+        paymentDate:
+          description: The date on which the cashflow is paid.
+          format: date-time
+          type: string
+        amount:
+          description: "The signed amount of the cashflow. A positive amount indicates\
+            \ money is received, a negative amount indicates money is paid. The amount\
+            \ is always the gross (pre-haircut) signed amount; when haircut rules\
+            \ are supplied the haircut and net amounts are reported separately."
+          format: double
+          nullable: true
+          type: number
+        currency:
+          description: The payment currency of the cashflow.
+          type: string
+        sourceType:
+          description: "The source that produced the cashflow in the cash flow waterfall.\
+            \ One of 'Instrument' (produced by the valuation engine), 'Transaction'\
+            \ (produced from a booked transaction or movement) or 'SRS' (sourced from\
+            \ the structured results store)."
+          minLength: 1
+          type: string
+        instrumentId:
+          description: The LUSID instrument identifier of the instrument that produced
+            the cashflow.
+          minLength: 1
+          type: string
+        transactionId:
+          description: "The identifier of the transaction from which the cashflow\
+            \ originates, where known."
+          nullable: true
+          type: string
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        flowType:
+          description: "The type of the cashflow, e.g. Coupon, Principal or Premium."
+          nullable: true
+          type: string
+        payReceive:
+          description: Indicates whether the cashflow is paid or received.
+          nullable: true
+          type: string
+        grossAmount:
+          description: The signed amount of the cashflow before any haircut was applied.
+            Only populated when haircut rules were supplied on the request.
+          format: double
+          nullable: true
+          type: number
+        haircutFraction:
+          description: "The fraction of the gross amount removed by the haircut, in\
+            \ the range [0, 1]. Zero for outflows and for cashflows no rule matched.\
+            \ Only populated when haircut rules were supplied on the request."
+          format: double
+          nullable: true
+          type: number
+        netAmount:
+          description: The signed amount of the cashflow net of the haircut. Only
+            populated when haircut rules were supplied on the request.
+          format: double
+          nullable: true
+          type: number
+        haircutRuleApplied:
+          description: "The identifier of the haircut rule that was applied to the\
+            \ cashflow, or not present when no rule matched or no haircut rules were\
+            \ supplied on the request."
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - currency
+      - instrumentId
+      - paymentDate
+      - portfolioId
+      - sourceType
+      type: object
     CashFlowEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -170377,6 +170717,109 @@ components:
         type: object
       description: "Definition of a CashFlow event.\r\nThis is an event that describes\
         \ the occurence of a cashflow and associated information."
+    CashFlowHaircutRule:
+      additionalProperties: false
+      description: "A rule describing how projected cashflow inflows are reduced by\
+        \ a haircut representing expected\r\ndefault loss or cost of downgrade, for\
+        \ matching-adjustment and liquidity (Solvency II) analyses.\r\nRules are matched\
+        \ in request order against each cashflow's instrument and the first matching\
+        \ rule\r\nwins; a rule with no criteria acts as a catch-all. Only inflows\
+        \ are haircut; outflows always pass\r\nthrough untouched."
+      example:
+        propertyKey: propertyKey
+        instrumentType: instrumentType
+        haircutType: haircutType
+        rate: 0.08008281904610115
+        termStructure:
+        - tenor: tenor
+          rate: 0.6027456183070403
+        - tenor: tenor
+          rate: 0.6027456183070403
+        propertyValue: propertyValue
+        ruleId: ruleId
+      properties:
+        ruleId:
+          description: "Optional identifier reported back against cashflows this rule\
+            \ haircut. Defaults to the rule's position in the list, e.g. 'HaircutRules[0]'."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        propertyKey:
+          description: "The instrument property key the rule matches on, e.g. 'Instrument/default/CreditRating'.\
+            \ When omitted the rule does not match on a property."
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        propertyValue:
+          description: The instrument property value the rule matches. Required when
+            PropertyKey is supplied.
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        instrumentType:
+          description: "Optional instrument type filter, e.g. 'Bond'. When supplied\
+            \ the rule only matches cashflows from instruments of that type."
+          maxLength: 64
+          minLength: 0
+          nullable: true
+          type: string
+        haircutType:
+          description: "The mathematical form of the haircut. One of 'CumulativeAnnualised'\
+            \ (net = gross x (1 - rate)^t, where t is the ACT/365.25 year fraction\
+            \ from the valuation date to the payment date) or 'Flat' (net = gross\
+            \ x (1 - h(t)), where h(t) is the flat rate or the term structure rate\
+            \ at t). Available values: CumulativeAnnualised, Flat."
+          minLength: 1
+          type: string
+        rate:
+          description: "The haircut rate as a fraction in the range [0, 1]. Exactly\
+            \ one of Rate and TermStructure must be supplied."
+          format: double
+          maximum: 1
+          minimum: 0
+          nullable: true
+          type: number
+        termStructure:
+          description: "The haircut rate term structure, linearly interpolated on\
+            \ time-to-payment with flat extrapolation beyond either end. Exactly one\
+            \ of Rate and TermStructure must be supplied."
+          items:
+            $ref: '#/components/schemas/CashFlowHaircutTermPoint'
+          nullable: true
+          type: array
+      required:
+      - haircutType
+      type: object
+    CashFlowHaircutTermPoint:
+      additionalProperties: false
+      description: "A point on a cashflow haircut term structure: the haircut rate\
+        \ applying at a given tenor from\r\nthe valuation date. Rates are linearly\
+        \ interpolated on time-to-payment between points and\r\nextrapolated flat\
+        \ beyond either end of the term structure."
+      example:
+        tenor: tenor
+        rate: 0.6027456183070403
+      properties:
+        tenor:
+          description: "The tenor from the valuation date at which the rate applies,\
+            \ e.g. '6M' or '5Y'."
+          maxLength: 16
+          minLength: 0
+          type: string
+        rate:
+          description: "The haircut rate applying at the tenor, as a fraction in the\
+            \ range [0, 1]."
+          format: double
+          maximum: 1
+          minimum: 0
+          type: number
+      required:
+      - rate
+      - tenor
+      type: object
     CashFlowLineage:
       additionalProperties: false
       description: Lineage for cash flow value
@@ -253457,6 +253900,121 @@ components:
       - windowEnd
       - windowStart
       type: object
+    QueryBucketCashFlowDrillDownRequest:
+      additionalProperties: false
+      description: "Query for the individual cashflows inside a single cashflow bucket,\
+        \ with their source lineage."
+      example:
+        bucketEnd: 2000-01-23T04:56:07.000+00:00
+        reportCurrency: reportCurrency
+        haircutRules:
+        - propertyKey: propertyKey
+          instrumentType: instrumentType
+          haircutType: haircutType
+          rate: 0.08008281904610115
+          termStructure:
+          - tenor: tenor
+            rate: 0.6027456183070403
+          - tenor: tenor
+            rate: 0.6027456183070403
+          propertyValue: propertyValue
+          ruleId: ruleId
+        - propertyKey: propertyKey
+          instrumentType: instrumentType
+          haircutType: haircutType
+          rate: 0.08008281904610115
+          termStructure:
+          - tenor: tenor
+            rate: 0.6027456183070403
+          - tenor: tenor
+            rate: 0.6027456183070403
+          propertyValue: propertyValue
+          ruleId: ruleId
+        portfolioEntityIds:
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        startInclusive: true
+        excludeUnsettledTrades: true
+        asAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        bucketStart: 2000-01-23T04:56:07.000+00:00
+        endInclusive: true
+        recipeId:
+          code: code
+          scope: scope
+      properties:
+        asAt:
+          description: The time of the system at which to query for cashflows.
+          format: date-time
+          nullable: true
+          type: string
+        bucketStart:
+          description: The lower bound effective datetime of the bucket from which
+            to retrieve the cashflows.
+          format: date-time
+          type: string
+        bucketEnd:
+          description: The upper bound effective datetime of the bucket from which
+            to retrieve the cashflows.
+          format: date-time
+          type: string
+        startInclusive:
+          description: Whether a cashflow paid exactly on the bucket start is included
+            in the bucket. Defaults to true.
+          type: boolean
+        endInclusive:
+          description: Whether a cashflow paid exactly on the bucket end is included
+            in the bucket. Defaults to true.
+          type: boolean
+        portfolioEntityIds:
+          description: The set of portfolios and portfolio groups to which the cashflows
+            must belong.
+          items:
+            $ref: '#/components/schemas/PortfolioEntityId'
+          type: array
+        effectiveAt:
+          description: "The valuation (pricing) effective datetime or cut label (inclusive)\
+            \ at which to evaluate the cashflows.\r\nThis determines whether cashflows\
+            \ are evaluated in a historic or forward looking context and will, for\
+            \ certain models, affect where data is looked up."
+          format: date-time
+          type: string
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        reportCurrency:
+          description: Three letter ISO currency string indicating what currency to
+            report in for ReportCurrency denominated queries.
+          maxLength: 3
+          minLength: 0
+          type: string
+        excludeUnsettledTrades:
+          description: "If set to true, unsettled trades are excluded from the result\
+            \ set. Set this to match the value used on the bucketed cash flow query\
+            \ being drilled into, so the individual cash flows reconcile with the\
+            \ bucket."
+          type: boolean
+        haircutRules:
+          description: "Optional ordered haircut rules applied to cashflow inflows;\
+            \ the first matching rule wins and a rule with no criteria acts as a catch-all.\
+            \ When supplied, each returned cashflow carries its gross amount, haircut\
+            \ fraction, net amount and the rule that was applied; with no rules those\
+            \ fields are omitted and the results are unchanged."
+          items:
+            $ref: '#/components/schemas/CashFlowHaircutRule'
+          nullable: true
+          type: array
+      required:
+      - bucketEnd
+      - bucketStart
+      - effectiveAt
+      - portfolioEntityIds
+      - recipeId
+      - reportCurrency
+      type: object
     QueryBucketedCashFlowsRequest:
       additionalProperties: false
       description: Query for bucketed cashflows from one or more portfolios.
@@ -253481,17 +254039,48 @@ components:
         groupBy:
         - groupBy
         - groupBy
+        borderConfiguration:
+          startInclusive: true
+          endInclusive: true
+          boundaryBelongsTo: boundaryBelongsTo
         cashFlowType: cashFlowType
         roundingMethod: roundingMethod
         recipeId:
           code: code
           scope: scope
         equipWithSubtotals: true
+        startingBalance: startingBalance
         filter: filter
         reportCurrency: reportCurrency
+        haircutRules:
+        - propertyKey: propertyKey
+          instrumentType: instrumentType
+          haircutType: haircutType
+          rate: 0.08008281904610115
+          termStructure:
+          - tenor: tenor
+            rate: 0.6027456183070403
+          - tenor: tenor
+            rate: 0.6027456183070403
+          propertyValue: propertyValue
+          ruleId: ruleId
+        - propertyKey: propertyKey
+          instrumentType: instrumentType
+          haircutType: haircutType
+          rate: 0.08008281904610115
+          termStructure:
+          - tenor: tenor
+            rate: 0.6027456183070403
+          - tenor: tenor
+            rate: 0.6027456183070403
+          propertyValue: propertyValue
+          ruleId: ruleId
+        cashFlowCalculationVersion: cashFlowCalculationVersion
         windowEnd: 2000-01-23T04:56:07.000+00:00
         bucketingSchedule:
           tenor: tenor
+          stubType: stubType
+          rollDirection: rollDirection
         bucketingTenors:
         - bucketingTenors
         - bucketingTenors
@@ -253604,6 +254193,41 @@ components:
           nullable: true
           pattern: "^[\\s\\S]*$"
           type: string
+        cashFlowCalculationVersion:
+          description: "The version of the cash flow calculation logic to use. Defaults\
+            \ to '1' if not specified. Valid values are '1' and '2'.\r\n'1' is the\
+            \ current production behaviour: cash flows booked as transactions are\
+            \ de-duplicated against the\r\ninstrument cash flows by identifier, and\
+            \ movements are treated as factual when they settle on or before the effective\
+            \ date.\r\n'2' resolves cash flows via a deterministic source waterfall\
+            \ (structured result store > transaction > instrument),\r\nclassifies\
+            \ cash flows as factual by the transaction trade date (so trades dealt\
+            \ on or before the effective date\r\nthat settle afterwards are factual),\
+            \ and applies corporate action date filtering."
+          maxLength: 1
+          minLength: 1
+          nullable: true
+          type: string
+        haircutRules:
+          description: "Optional ordered haircut rules applied to cashflow inflows;\
+            \ the first matching rule wins and a rule with no criteria acts as a catch-all.\
+            \ When supplied, the additional per-bucket columns 'Valuation/Bucket/HaircutAmount'\
+            \ and 'Valuation/Bucket/NetOfHaircutAmount' are produced; with no rules\
+            \ the results are unchanged. Only supported for the InstrumentCashFlow\
+            \ CashFlowType."
+          items:
+            $ref: '#/components/schemas/CashFlowHaircutRule'
+          nullable: true
+          type: array
+        borderConfiguration:
+          $ref: '#/components/schemas/BucketBorderConfiguration'
+        startingBalance:
+          description: "The balance to use at the start of the bucketing window when\
+            \ computing open/close balances.\r\nSupported string (enumeration) values\
+            \ are: [PortfolioCashBalance, Zero]. Defaults to 'PortfolioCashBalance'.\
+            \ Available values: PortfolioCashBalance, Zero."
+          nullable: true
+          type: string
       required:
       - effectiveAt
       - portfolioEntityIds
@@ -253625,6 +254249,7 @@ components:
           scope: scope
           portfolioEntityType: portfolioEntityType
         windowStart: 2000-01-23T04:56:07.000+00:00
+        cashFlowCalculationVersion: cashFlowCalculationVersion
         asAt: 2000-01-23T04:56:07.000+00:00
         effectiveAt: 2000-01-23T04:56:07.000+00:00
         windowEnd: 2000-01-23T04:56:07.000+00:00
@@ -253656,6 +254281,21 @@ components:
         effectiveAt:
           description: The Effective date used in the valuation of the cashflows.
           format: date-time
+          type: string
+        cashFlowCalculationVersion:
+          description: "The version of the cash flow calculation logic to use. Defaults\
+            \ to '1' if not specified. Valid values are '1' and '2'.\r\n'1' is the\
+            \ current production behaviour: cash flows booked as transactions are\
+            \ de-duplicated against the\r\ninstrument cash flows by identifier, and\
+            \ movements are treated as factual when they settle on or before the effective\
+            \ date.\r\n'2' resolves cash flows via a deterministic source waterfall\
+            \ (structured result store > transaction > instrument),\r\nclassifies\
+            \ cash flows as factual by the transaction trade date (so trades dealt\
+            \ on or before the effective date\r\nthat settle afterwards are factual),\
+            \ and applies corporate action date filtering."
+          maxLength: 1
+          minLength: 1
+          nullable: true
           type: string
       required:
       - effectiveAt
@@ -263678,6 +264318,93 @@ components:
         values:
           items:
             $ref: '#/components/schemas/CalendarDate'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfCashFlowDetail:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - amount: 0.8008281904610115
+          payReceive: payReceive
+          netAmount: 5.962133916683182
+          instrumentId: instrumentId
+          haircutRuleApplied: haircutRuleApplied
+          grossAmount: 6.027456183070403
+          transactionId: transactionId
+          haircutFraction: 1.4658129805029452
+          portfolioId:
+            code: code
+            scope: scope
+          sourceType: sourceType
+          currency: currency
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          paymentDate: 2000-01-23T04:56:07.000+00:00
+          flowType: flowType
+        - amount: 0.8008281904610115
+          payReceive: payReceive
+          netAmount: 5.962133916683182
+          instrumentId: instrumentId
+          haircutRuleApplied: haircutRuleApplied
+          grossAmount: 6.027456183070403
+          transactionId: transactionId
+          haircutFraction: 1.4658129805029452
+          portfolioId:
+            code: code
+            scope: scope
+          sourceType: sourceType
+          currency: currency
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          paymentDate: 2000-01-23T04:56:07.000+00:00
+          flowType: flowType
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/CashFlowDetail'
           type: array
         href:
           format: uri
@@ -289155,6 +289882,11 @@ components:
             description: The Instrument type of the simple instrument.
             minLength: 1
             type: string
+          contractSize:
+            default: 1
+            description: The size of the contract of the simple instrument
+            format: double
+            type: number
           timeZoneConventions:
             $ref: '#/components/schemas/TimeZoneConventions'
           tradingConventions:

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **cashFlowType** | **String** | Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow, PortfolioCashFlow, TransactionCashFlow. | [optional] [default to String]
 **bucketingSchedule** | [**BucketingSchedule**](BucketingSchedule.md) |  | [optional] [default to BucketingSchedule]
 **filter** | **String** |  | [optional] [default to String]
+**cashFlowCalculationVersion** | **String** | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.BucketedCashFlowRequest;
@@ -44,6 +45,7 @@ Boolean ExcludeUnsettledTrades = true;
 @jakarta.annotation.Nullable String CashFlowType = "example CashFlowType";
 BucketingSchedule BucketingSchedule = new BucketingSchedule();
 @jakarta.annotation.Nullable String Filter = "example Filter";
+@jakarta.annotation.Nullable String CashFlowCalculationVersion = "example CashFlowCalculationVersion";
 
 
 BucketedCashFlowRequest bucketedCashFlowRequestInstance = new BucketedCashFlowRequest()
@@ -62,7 +64,8 @@ BucketedCashFlowRequest bucketedCashFlowRequestInstance = new BucketedCashFlowRe
     .ExcludeUnsettledTrades(ExcludeUnsettledTrades)
     .CashFlowType(CashFlowType)
     .BucketingSchedule(BucketingSchedule)
-    .Filter(Filter);
+    .Filter(Filter)
+    .CashFlowCalculationVersion(CashFlowCalculationVersion);
 ```
 
 

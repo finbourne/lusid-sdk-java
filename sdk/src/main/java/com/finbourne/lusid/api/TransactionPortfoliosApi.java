@@ -8850,11 +8850,11 @@ public class TransactionPortfoliosApi {
     public APIgetMultipleHoldingContributorsRequest getMultipleHoldingContributors(String scope, String code, HoldingIdsRequest holdingIdsRequest) {
         return new APIgetMultipleHoldingContributorsRequest(scope, code, holdingIdsRequest);
     }
-    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
-        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8913,6 +8913,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("excludeUnsettledTrades", excludeUnsettledTrades));
         }
 
+        if (cashFlowCalculationVersion != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cashFlowCalculationVersion", cashFlowCalculationVersion));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -8935,7 +8939,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashFlows(Async)");
@@ -8946,34 +8950,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioCashFlows(Async)");
         }
 
-        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
+    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8990,6 +8994,7 @@ public class TransactionPortfoliosApi {
         private String recipeIdScope;
         private String recipeIdCode;
         private Boolean excludeUnsettledTrades;
+        private String cashFlowCalculationVersion;
 
         private APIgetPortfolioCashFlowsRequest(String scope, String code) {
             this.scope = scope;
@@ -9077,6 +9082,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set cashFlowCalculationVersion
+         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). (optional)
+         * @return APIgetPortfolioCashFlowsRequest
+         */
+        public APIgetPortfolioCashFlowsRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
+            this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+            return this;
+        }
+
+        /**
          * Build call for getPortfolioCashFlows
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -9090,7 +9105,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -9106,7 +9121,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfInstrumentCashFlow execute() throws ApiException {
-            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
             return localVarResp.getData();
         }
 
@@ -9123,7 +9138,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfInstrumentCashFlow execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
             return localVarResp.getData();
         }
 
@@ -9140,7 +9155,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo() throws ApiException {
-            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
         }
 
         /**
@@ -9156,7 +9171,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
         }
 
         /**
@@ -9173,7 +9188,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
-            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -9190,7 +9205,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         }
     }
 
@@ -9211,11 +9226,11 @@ public class TransactionPortfoliosApi {
     public APIgetPortfolioCashFlowsRequest getPortfolioCashFlows(String scope, String code) {
         return new APIgetPortfolioCashFlowsRequest(scope, code);
     }
-    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
-        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9274,6 +9289,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("excludeUnsettledTrades", excludeUnsettledTrades));
         }
 
+        if (cashFlowCalculationVersion != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cashFlowCalculationVersion", cashFlowCalculationVersion));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -9296,7 +9315,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashLadderValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashLadder(Async)");
@@ -9322,34 +9341,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getPortfolioCashLadder(Async)");
         }
 
-        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
+    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9366,6 +9385,7 @@ public class TransactionPortfoliosApi {
         private String recipeIdScope;
         private String recipeIdCode;
         private Boolean excludeUnsettledTrades;
+        private String cashFlowCalculationVersion;
 
         private APIgetPortfolioCashLadderRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt) {
             this.scope = scope;
@@ -9426,6 +9446,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set cashFlowCalculationVersion
+         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). (optional)
+         * @return APIgetPortfolioCashLadderRequest
+         */
+        public APIgetPortfolioCashLadderRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
+            this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+            return this;
+        }
+
+        /**
          * Build call for getPortfolioCashLadder
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -9439,7 +9469,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -9455,7 +9485,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolioCashLadder execute() throws ApiException {
-            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
             return localVarResp.getData();
         }
 
@@ -9472,7 +9502,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolioCashLadder execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
             return localVarResp.getData();
         }
 
@@ -9489,7 +9519,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolioCashLadder> executeWithHttpInfo() throws ApiException {
-            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
         }
 
         /**
@@ -9505,7 +9535,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolioCashLadder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
         }
 
         /**
@@ -9522,7 +9552,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
-            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -9539,7 +9569,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashLadder> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         }
     }
 
@@ -10884,11 +10914,11 @@ public class TransactionPortfoliosApi {
     public APIgetTransactionsRequest getTransactions(String scope, String code) {
         return new APIgetTransactionsRequest(scope, code);
     }
-    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
-        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback) throws ApiException {
+        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10947,6 +10977,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("excludeUnsettledTrades", excludeUnsettledTrades));
         }
 
+        if (cashFlowCalculationVersion != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cashFlowCalculationVersion", cashFlowCalculationVersion));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -10969,7 +11003,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUpsertablePortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getUpsertablePortfolioCashFlows(Async)");
@@ -10980,34 +11014,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getUpsertablePortfolioCashFlows(Async)");
         }
 
-        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion) throws ApiException {
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
+    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, String cashFlowCalculationVersion, final ApiCallback<ResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11024,6 +11058,7 @@ public class TransactionPortfoliosApi {
         private String recipeIdScope;
         private String recipeIdCode;
         private Boolean excludeUnsettledTrades;
+        private String cashFlowCalculationVersion;
 
         private APIgetUpsertablePortfolioCashFlowsRequest(String scope, String code) {
             this.scope = scope;
@@ -11111,6 +11146,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set cashFlowCalculationVersion
+         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). (optional)
+         * @return APIgetUpsertablePortfolioCashFlowsRequest
+         */
+        public APIgetUpsertablePortfolioCashFlowsRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
+            this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+            return this;
+        }
+
+        /**
          * Build call for getUpsertablePortfolioCashFlows
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -11124,7 +11169,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -11140,7 +11185,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfTransaction execute() throws ApiException {
-            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
             return localVarResp.getData();
         }
 
@@ -11157,7 +11202,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
             return localVarResp.getData();
         }
 
@@ -11174,7 +11219,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
-            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
         }
 
         /**
@@ -11190,7 +11235,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, opts);
         }
 
         /**
@@ -11207,7 +11252,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
-            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback);
         }
 
         /**
@@ -11224,7 +11269,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
+            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion, _callback, opts);
         }
     }
 

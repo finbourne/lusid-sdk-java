@@ -330,6 +330,7 @@ Class | Method | HTTP request | Description
 *InstrumentEventTypesApi* | [**listTransactionTemplates**](docs/InstrumentEventTypesApi.md#listtransactiontemplates) | **GET** /api/instrumenteventtypes/transactiontemplates | ListTransactionTemplates: List Transaction Templates
 *InstrumentEventTypesApi* | [**updateTransactionTemplate**](docs/InstrumentEventTypesApi.md#updatetransactiontemplate) | **PUT** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | UpdateTransactionTemplate: Update Transaction Template
 *InstrumentEventsApi* | [**queryApplicableInstrumentEvents**](docs/InstrumentEventsApi.md#queryapplicableinstrumentevents) | **POST** /api/instrumentevents/$queryApplicableInstrumentEvents | QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
+*InstrumentEventsApi* | [**queryBucketCashFlowDrillDown**](docs/InstrumentEventsApi.md#querybucketcashflowdrilldown) | **POST** /api/instrumentevents/$queryBucketCashFlowDrillDown | QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
 *InstrumentEventsApi* | [**queryBucketedCashFlows**](docs/InstrumentEventsApi.md#querybucketedcashflows) | **POST** /api/instrumentevents/$queryBucketedCashFlows | QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
 *InstrumentEventsApi* | [**queryCashFlows**](docs/InstrumentEventsApi.md#querycashflows) | **POST** /api/instrumentevents/$queryCashFlows | QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
 *InstrumentEventsApi* | [**queryInstrumentEvents**](docs/InstrumentEventsApi.md#queryinstrumentevents) | **POST** /api/instrumentevents/$query | QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
@@ -896,6 +897,7 @@ Class | Method | HTTP request | Description
  - [BranchStepRequest](docs/BranchStepRequest.md)
  - [BreakCodeSource](docs/BreakCodeSource.md)
  - [Bucket](docs/Bucket.md)
+ - [BucketBorderConfiguration](docs/BucketBorderConfiguration.md)
  - [BucketDefinition](docs/BucketDefinition.md)
  - [BucketSetDefinition](docs/BucketSetDefinition.md)
  - [BucketSetNode](docs/BucketSetNode.md)
@@ -928,7 +930,10 @@ Class | Method | HTTP request | Description
  - [CashDependency](docs/CashDependency.md)
  - [CashDividendEvent](docs/CashDividendEvent.md)
  - [CashElection](docs/CashElection.md)
+ - [CashFlowDetail](docs/CashFlowDetail.md)
  - [CashFlowEvent](docs/CashFlowEvent.md)
+ - [CashFlowHaircutRule](docs/CashFlowHaircutRule.md)
+ - [CashFlowHaircutTermPoint](docs/CashFlowHaircutTermPoint.md)
  - [CashFlowLineage](docs/CashFlowLineage.md)
  - [CashFlowValue](docs/CashFlowValue.md)
  - [CashFlowValueSet](docs/CashFlowValueSet.md)
@@ -1772,6 +1777,7 @@ Class | Method | HTTP request | Description
  - [PutRedemptionEvent](docs/PutRedemptionEvent.md)
  - [QuantityInstructed](docs/QuantityInstructed.md)
  - [QueryApplicableInstrumentEventsRequest](docs/QueryApplicableInstrumentEventsRequest.md)
+ - [QueryBucketCashFlowDrillDownRequest](docs/QueryBucketCashFlowDrillDownRequest.md)
  - [QueryBucketedCashFlowsRequest](docs/QueryBucketedCashFlowsRequest.md)
  - [QueryCashFlowsRequest](docs/QueryCashFlowsRequest.md)
  - [QueryFundCashStatementParameters](docs/QueryFundCashStatementParameters.md)
@@ -1885,6 +1891,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfBlock](docs/ResourceListOfBlock.md)
  - [ResourceListOfBlockAndOrders](docs/ResourceListOfBlockAndOrders.md)
  - [ResourceListOfCalendarDate](docs/ResourceListOfCalendarDate.md)
+ - [ResourceListOfCashFlowDetail](docs/ResourceListOfCashFlowDetail.md)
  - [ResourceListOfChange](docs/ResourceListOfChange.md)
  - [ResourceListOfChangeHistory](docs/ResourceListOfChangeHistory.md)
  - [ResourceListOfChangeInterval](docs/ResourceListOfChangeInterval.md)

@@ -119,6 +119,10 @@ public class BucketedCashFlowRequest {
   @SerializedName(SERIALIZED_NAME_FILTER)
   private String filter;
 
+  public static final String SERIALIZED_NAME_CASH_FLOW_CALCULATION_VERSION = "cashFlowCalculationVersion";
+  @SerializedName(SERIALIZED_NAME_CASH_FLOW_CALCULATION_VERSION)
+  private String cashFlowCalculationVersion;
+
   public BucketedCashFlowRequest() {
   }
 
@@ -490,6 +494,27 @@ public class BucketedCashFlowRequest {
   }
 
 
+  public BucketedCashFlowRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
+    
+    this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+    return this;
+  }
+
+   /**
+   * The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering.
+   * @return cashFlowCalculationVersion
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashFlowCalculationVersion() {
+    return cashFlowCalculationVersion;
+  }
+
+
+  public void setCashFlowCalculationVersion(String cashFlowCalculationVersion) {
+    this.cashFlowCalculationVersion = cashFlowCalculationVersion;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -515,7 +540,8 @@ public class BucketedCashFlowRequest {
         Objects.equals(this.excludeUnsettledTrades, bucketedCashFlowRequest.excludeUnsettledTrades) &&
         Objects.equals(this.cashFlowType, bucketedCashFlowRequest.cashFlowType) &&
         Objects.equals(this.bucketingSchedule, bucketedCashFlowRequest.bucketingSchedule) &&
-        Objects.equals(this.filter, bucketedCashFlowRequest.filter);
+        Objects.equals(this.filter, bucketedCashFlowRequest.filter) &&
+        Objects.equals(this.cashFlowCalculationVersion, bucketedCashFlowRequest.cashFlowCalculationVersion);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -524,7 +550,7 @@ public class BucketedCashFlowRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(roundingMethod, bucketingDates, bucketTenors, effectiveAt, windowStart, windowEnd, recipeId, reportCurrency, groupBy, addresses, equipWithSubtotals, asAt, excludeUnsettledTrades, cashFlowType, bucketingSchedule, filter);
+    return Objects.hash(roundingMethod, bucketingDates, bucketTenors, effectiveAt, windowStart, windowEnd, recipeId, reportCurrency, groupBy, addresses, equipWithSubtotals, asAt, excludeUnsettledTrades, cashFlowType, bucketingSchedule, filter, cashFlowCalculationVersion);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -554,6 +580,7 @@ public class BucketedCashFlowRequest {
     sb.append("    cashFlowType: ").append(toIndentedString(cashFlowType)).append("\n");
     sb.append("    bucketingSchedule: ").append(toIndentedString(bucketingSchedule)).append("\n");
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    cashFlowCalculationVersion: ").append(toIndentedString(cashFlowCalculationVersion)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -592,6 +619,7 @@ public class BucketedCashFlowRequest {
     openapiFields.add("cashFlowType");
     openapiFields.add("bucketingSchedule");
     openapiFields.add("filter");
+    openapiFields.add("cashFlowCalculationVersion");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -662,6 +690,9 @@ public class BucketedCashFlowRequest {
       }
       if ((jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) && !jsonObj.get("filter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `filter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filter").toString()));
+      }
+      if ((jsonObj.get("cashFlowCalculationVersion") != null && !jsonObj.get("cashFlowCalculationVersion").isJsonNull()) && !jsonObj.get("cashFlowCalculationVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashFlowCalculationVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashFlowCalculationVersion").toString()));
       }
   }
 

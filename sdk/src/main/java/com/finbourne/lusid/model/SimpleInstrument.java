@@ -139,6 +139,10 @@ public class SimpleInstrument extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_SIMPLE_INSTRUMENT_TYPE)
   private String simpleInstrumentType;
 
+  public static final String SERIALIZED_NAME_CONTRACT_SIZE = "contractSize";
+  @SerializedName(SERIALIZED_NAME_CONTRACT_SIZE)
+  private java.math.BigDecimal contractSize = java.math.BigDecimal.valueOf(1d);
+
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
@@ -264,6 +268,27 @@ public class SimpleInstrument extends LusidInstrument {
   }
 
 
+  public SimpleInstrument contractSize(java.math.BigDecimal contractSize) {
+    
+    this.contractSize = contractSize;
+    return this;
+  }
+
+   /**
+   * The size of the contract of the simple instrument
+   * @return contractSize
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getContractSize() {
+    return contractSize;
+  }
+
+
+  public void setContractSize(java.math.BigDecimal contractSize) {
+    this.contractSize = contractSize;
+  }
+
+
   public SimpleInstrument timeZoneConventions(TimeZoneConventions timeZoneConventions) {
     
     this.timeZoneConventions = timeZoneConventions;
@@ -321,6 +346,7 @@ public class SimpleInstrument extends LusidInstrument {
         Objects.equals(this.assetClass, simpleInstrument.assetClass) &&
         Objects.equals(this.fgnCcys, simpleInstrument.fgnCcys) &&
         Objects.equals(this.simpleInstrumentType, simpleInstrument.simpleInstrumentType) &&
+        (this.contractSize.compareTo(simpleInstrument.getContractSize()) == 0) &&
         Objects.equals(this.timeZoneConventions, simpleInstrument.timeZoneConventions) &&
         Objects.equals(this.tradingConventions, simpleInstrument.tradingConventions) &&
         super.equals(o);
@@ -332,7 +358,7 @@ public class SimpleInstrument extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(maturityDate, domCcy, assetClass, fgnCcys, simpleInstrumentType, timeZoneConventions, tradingConventions, super.hashCode());
+    return Objects.hash(maturityDate, domCcy, assetClass, fgnCcys, simpleInstrumentType, contractSize, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -352,6 +378,7 @@ public class SimpleInstrument extends LusidInstrument {
     sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
     sb.append("    fgnCcys: ").append(toIndentedString(fgnCcys)).append("\n");
     sb.append("    simpleInstrumentType: ").append(toIndentedString(simpleInstrumentType)).append("\n");
+    sb.append("    contractSize: ").append(toIndentedString(contractSize)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
@@ -382,6 +409,7 @@ public class SimpleInstrument extends LusidInstrument {
     openapiFields.add("assetClass");
     openapiFields.add("fgnCcys");
     openapiFields.add("simpleInstrumentType");
+    openapiFields.add("contractSize");
     openapiFields.add("timeZoneConventions");
     openapiFields.add("tradingConventions");
 
