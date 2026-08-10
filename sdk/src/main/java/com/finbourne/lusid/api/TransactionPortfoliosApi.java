@@ -6253,7 +6253,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6269,7 +6269,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6286,7 +6286,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6303,7 +6303,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6319,7 +6319,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6336,7 +6336,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6353,7 +6353,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -6372,7 +6372,7 @@ public class TransactionPortfoliosApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -9099,7 +9099,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9115,7 +9115,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9132,7 +9132,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9149,7 +9149,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9165,7 +9165,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9182,7 +9182,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9199,7 +9199,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9218,7 +9218,7 @@ public class TransactionPortfoliosApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -9463,7 +9463,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9479,7 +9479,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9496,7 +9496,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9513,7 +9513,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9529,7 +9529,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9546,7 +9546,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9563,7 +9563,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -9585,7 +9585,7 @@ public class TransactionPortfoliosApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -11163,7 +11163,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11179,7 +11179,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11196,7 +11196,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11213,7 +11213,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11229,7 +11229,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11246,7 +11246,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11263,7 +11263,7 @@ public class TransactionPortfoliosApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -11282,7 +11282,7 @@ public class TransactionPortfoliosApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  * Deprecation - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1 (explicitly or by default): an RFC 9745 structured-field date marking when version 1 was deprecated. Set cashFlowCalculationVersion&#x3D;2, its successor. <br>  * Link - Only present when the request resolved to cashFlowCalculationVersion&#x3D;1: an RFC 8288 link with rel&#x3D;\&quot;deprecation\&quot; pointing at the version 1 to version 2 migration documentation. <br>  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

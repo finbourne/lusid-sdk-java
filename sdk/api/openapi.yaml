@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9636
+  version: 0.11.9637
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -53900,7 +53900,6 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
-              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           application/json:
@@ -53925,7 +53924,6 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
-              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           text/json:
@@ -53950,7 +53948,6 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
-              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
           application/*+json:
@@ -53975,7 +53972,6 @@ paths:
               equipWithSubtotals: false
               excludeUnsettledTrades: false
               cashFlowType: InstrumentCashFlow
-              startingBalance: PortfolioCashBalance
             schema:
               $ref: '#/components/schemas/QueryBucketedCashFlowsRequest'
         description: The Query Information.
@@ -53992,6 +53988,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/BucketedCashFlowResponse'
           description: Query bucketed cashflows across portfolios.
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -54123,6 +54137,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceListOfInstrumentCashFlow'
           description: Instrument Events as Cashflows.
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -134483,6 +134515,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/BucketedCashFlowResponse'
           description: The requested portfolio instruments' bucketed cash flow data
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -134664,6 +134714,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceListOfInstrumentCashFlow'
           description: The requested portfolio instruments' cash flow data
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -135062,6 +135130,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceListOfPortfolioCashLadder'
           description: The requested portfolio cash-ladder
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -147427,6 +147513,24 @@ paths:
                 $ref: '#/components/schemas/ResourceListOfTransaction'
           description: The requested portfolio instruments' cash flow data as a set
             of upsertable transactions
+          headers:
+            Deprecation:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1\
+                \ (explicitly or by default): an RFC 9745 structured-field date marking\
+                \ when version 1 was deprecated. Set cashFlowCalculationVersion=2,\
+                \ its successor."
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Link:
+              description: "Only present when the request resolved to cashFlowCalculationVersion=1:\
+                \ an RFC 8288 link with rel=\"deprecation\" pointing at the version\
+                \ 1 to version 2 migration documentation."
+              explode: false
+              schema:
+                type: string
+              style: simple
         "400":
           content:
             text/plain:
@@ -167545,9 +167649,11 @@ components:
             \ will be excluded from the result set."
           type: boolean
         cashFlowType:
-          description: "Indicate the requested cash flow representation InstrumentCashFlows\
-            \ or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow,\
-            \ PortfolioCashFlow, TransactionCashFlow."
+          description: "Indicate the requested cash flow representation. Supported\
+            \ string (enumeration) values are: [InstrumentCashFlow, PortfolioCashFlow,\
+            \ TransactionCashFlow]. Defaults to 'InstrumentCashFlow' (GetCashLadder\
+            \ uses PortfolioCashFlow). Available values: InstrumentCashFlow, PortfolioCashFlow,\
+            \ TransactionCashFlow."
           nullable: true
           type: string
         bucketingSchedule:
@@ -167569,7 +167675,13 @@ components:
             \ (structured result store > transaction > instrument),\r\nclassifies\
             \ cash flows as factual by the transaction trade date (so trades dealt\
             \ on or before the effective date\r\nthat settle afterwards are factual),\
-            \ and applies corporate action date filtering."
+            \ and applies corporate action date filtering.\r\nBucketed responses calculated\
+            \ under version '2' always include the bucket interval metadata columns\r\
+            \n('Valuation/Bucket/Start', 'Valuation/Bucket/End', 'Valuation/Bucket/StartInclusive',\
+            \ 'Valuation/Bucket/EndInclusive'),\r\nwhich are the required input of\
+            \ the bucket cash flow drill-down endpoint. Without a border configuration\
+            \ the\r\nmetadata describes the window-clamped interval of cash flow dates\
+            \ that the rounding method allocates to each bucket point."
           maxLength: 1
           minLength: 1
           nullable: true
@@ -254179,9 +254291,11 @@ components:
             \ will be excluded from the result set."
           type: boolean
         cashFlowType:
-          description: "Indicate the requested cash flow representation InstrumentCashFlows\
-            \ or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow,\
-            \ PortfolioCashFlow, TransactionCashFlow."
+          description: "Indicate the requested cash flow representation. Supported\
+            \ string (enumeration) values are: [InstrumentCashFlow, PortfolioCashFlow,\
+            \ TransactionCashFlow]. Defaults to 'InstrumentCashFlow' (GetCashLadder\
+            \ uses PortfolioCashFlow). Available values: InstrumentCashFlow, PortfolioCashFlow,\
+            \ TransactionCashFlow."
           nullable: true
           type: string
         bucketingSchedule:
@@ -254203,7 +254317,13 @@ components:
             \ (structured result store > transaction > instrument),\r\nclassifies\
             \ cash flows as factual by the transaction trade date (so trades dealt\
             \ on or before the effective date\r\nthat settle afterwards are factual),\
-            \ and applies corporate action date filtering."
+            \ and applies corporate action date filtering.\r\nBucketed responses calculated\
+            \ under version '2' always include the bucket interval metadata columns\r\
+            \n('Valuation/Bucket/Start', 'Valuation/Bucket/End', 'Valuation/Bucket/StartInclusive',\
+            \ 'Valuation/Bucket/EndInclusive'),\r\nwhich are the required input of\
+            \ the bucket cash flow drill-down endpoint. Without a border configuration\
+            \ the\r\nmetadata describes the window-clamped interval of cash flow dates\
+            \ that the rounding method allocates to each bucket point."
           maxLength: 1
           minLength: 1
           nullable: true
@@ -254224,8 +254344,16 @@ components:
         startingBalance:
           description: "The balance to use at the start of the bucketing window when\
             \ computing open/close balances.\r\nSupported string (enumeration) values\
-            \ are: [PortfolioCashBalance, Zero]. Defaults to 'PortfolioCashBalance'.\
-            \ Available values: PortfolioCashBalance, Zero."
+            \ are: [PortfolioCashBalance, Zero].\r\nWhen supplied, the additional\
+            \ per-bucket running balance columns 'Valuation/Bucket/OpenBalance' and\
+            \ 'Valuation/Bucket/CloseBalance' are produced\r\nper group, in the currency\
+            \ of the group's cash flows: the first bucket opens at zero ('Zero') or\
+            \ at the portfolio cash balance at the window\r\nstart ('PortfolioCashBalance'),\
+            \ and each subsequent bucket opens at the previous bucket's close balance.\
+            \ When absent, no balance columns are\r\nproduced and the results are\
+            \ unchanged. 'PortfolioCashBalance' is only supported for the PortfolioCashFlow\
+            \ and TransactionCashFlow CashFlowTypes. Available values: PortfolioCashBalance,\
+            \ Zero."
           nullable: true
           type: string
       required:
@@ -254292,7 +254420,13 @@ components:
             \ (structured result store > transaction > instrument),\r\nclassifies\
             \ cash flows as factual by the transaction trade date (so trades dealt\
             \ on or before the effective date\r\nthat settle afterwards are factual),\
-            \ and applies corporate action date filtering."
+            \ and applies corporate action date filtering.\r\nBucketed responses calculated\
+            \ under version '2' always include the bucket interval metadata columns\r\
+            \n('Valuation/Bucket/Start', 'Valuation/Bucket/End', 'Valuation/Bucket/StartInclusive',\
+            \ 'Valuation/Bucket/EndInclusive'),\r\nwhich are the required input of\
+            \ the bucket cash flow drill-down endpoint. Without a border configuration\
+            \ the\r\nmetadata describes the window-clamped interval of cash flow dates\
+            \ that the rounding method allocates to each bucket point."
           maxLength: 1
           minLength: 1
           nullable: true
