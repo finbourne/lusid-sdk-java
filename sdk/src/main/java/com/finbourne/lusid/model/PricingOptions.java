@@ -68,6 +68,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_ALLOW_PARTIALLY_SUCCESSFUL_EVALUATION)
   private Boolean allowPartiallySuccessfulEvaluation;
 
+  public static final String SERIALIZED_NAME_RISK_ENGINE = "riskEngine";
+  @SerializedName(SERIALIZED_NAME_RISK_ENGINE)
+  private String riskEngine;
+
   public static final String SERIALIZED_NAME_PRODUCE_SEPARATE_RESULT_FOR_LINEAR_OTC_LEGS = "produceSeparateResultForLinearOtcLegs";
   @SerializedName(SERIALIZED_NAME_PRODUCE_SEPARATE_RESULT_FOR_LINEAR_OTC_LEGS)
   private Boolean produceSeparateResultForLinearOtcLegs;
@@ -208,6 +212,27 @@ public class PricingOptions {
 
   public void setAllowPartiallySuccessfulEvaluation(Boolean allowPartiallySuccessfulEvaluation) {
     this.allowPartiallySuccessfulEvaluation = allowPartiallySuccessfulEvaluation;
+  }
+
+
+  public PricingOptions riskEngine(String riskEngine) {
+    
+    this.riskEngine = riskEngine;
+    return this;
+  }
+
+   /**
+   * Which engine computes first-order Risk/_* measures. One of \&quot;Bump\&quot; (default: central  finite differences by bump-and-revalue - the historical behaviour, used when this is  absent), \&quot;Parity\&quot; (bump computes and is reported, the adjoint engine independently checks  every calculator and any disagreement fails the measure loudly - the recommended  enablement gate), or \&quot;Adjoint\&quot; (algorithmic differentiation where an evaluator exists,  with silent fallback to Bump elsewhere - selecting it can never reduce coverage). Available values: Bump, Adjoint, Parity.
+   * @return riskEngine
+  **/
+  @jakarta.annotation.Nullable
+  public String getRiskEngine() {
+    return riskEngine;
+  }
+
+
+  public void setRiskEngine(String riskEngine) {
+    this.riskEngine = riskEngine;
   }
 
 
@@ -519,6 +544,7 @@ public class PricingOptions {
         Objects.equals(this.useInstrumentTypeToDeterminePricer, pricingOptions.useInstrumentTypeToDeterminePricer) &&
         Objects.equals(this.allowAnyInstrumentsWithSecUidToPriceOffLookup, pricingOptions.allowAnyInstrumentsWithSecUidToPriceOffLookup) &&
         Objects.equals(this.allowPartiallySuccessfulEvaluation, pricingOptions.allowPartiallySuccessfulEvaluation) &&
+        Objects.equals(this.riskEngine, pricingOptions.riskEngine) &&
         Objects.equals(this.produceSeparateResultForLinearOtcLegs, pricingOptions.produceSeparateResultForLinearOtcLegs) &&
         Objects.equals(this.fxForwardContractsAsUnitsInBothLegs, pricingOptions.fxForwardContractsAsUnitsInBothLegs) &&
         Objects.equals(this.enableUseOfCachedUnitResults, pricingOptions.enableUseOfCachedUnitResults) &&
@@ -541,7 +567,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -559,6 +585,7 @@ public class PricingOptions {
     sb.append("    useInstrumentTypeToDeterminePricer: ").append(toIndentedString(useInstrumentTypeToDeterminePricer)).append("\n");
     sb.append("    allowAnyInstrumentsWithSecUidToPriceOffLookup: ").append(toIndentedString(allowAnyInstrumentsWithSecUidToPriceOffLookup)).append("\n");
     sb.append("    allowPartiallySuccessfulEvaluation: ").append(toIndentedString(allowPartiallySuccessfulEvaluation)).append("\n");
+    sb.append("    riskEngine: ").append(toIndentedString(riskEngine)).append("\n");
     sb.append("    produceSeparateResultForLinearOtcLegs: ").append(toIndentedString(produceSeparateResultForLinearOtcLegs)).append("\n");
     sb.append("    fxForwardContractsAsUnitsInBothLegs: ").append(toIndentedString(fxForwardContractsAsUnitsInBothLegs)).append("\n");
     sb.append("    enableUseOfCachedUnitResults: ").append(toIndentedString(enableUseOfCachedUnitResults)).append("\n");
@@ -599,6 +626,7 @@ public class PricingOptions {
     openapiFields.add("useInstrumentTypeToDeterminePricer");
     openapiFields.add("allowAnyInstrumentsWithSecUidToPriceOffLookup");
     openapiFields.add("allowPartiallySuccessfulEvaluation");
+    openapiFields.add("riskEngine");
     openapiFields.add("produceSeparateResultForLinearOtcLegs");
     openapiFields.add("fxForwardContractsAsUnitsInBothLegs");
     openapiFields.add("enableUseOfCachedUnitResults");
@@ -634,6 +662,9 @@ public class PricingOptions {
       // validate the optional field `modelSelection`
       if (jsonObj.get("modelSelection") != null && !jsonObj.get("modelSelection").isJsonNull()) {
         ModelSelection.validateJsonElement(jsonObj.get("modelSelection"));
+      }
+      if ((jsonObj.get("riskEngine") != null && !jsonObj.get("riskEngine").isJsonNull()) && !jsonObj.get("riskEngine").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `riskEngine` to be a primitive type in the JSON string but got `%s`", jsonObj.get("riskEngine").toString()));
       }
       if ((jsonObj.get("conservedQuantityForLookthroughExpansion") != null && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonNull()) && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conservedQuantityForLookthroughExpansion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conservedQuantityForLookthroughExpansion").toString()));

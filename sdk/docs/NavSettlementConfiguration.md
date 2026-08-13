@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cashSettlement** | [**NavSettlementConfigurationCategory**](NavSettlementConfigurationCategory.md) |  | [optional] [default to NavSettlementConfigurationCategory]
-**deferredCashReceipt** | [**NavSettlementConfigurationCategory**](NavSettlementConfigurationCategory.md) |  | [optional] [default to NavSettlementConfigurationCategory]
+**cashSettlement** | [**NavSettlementConfigurationCategory**](NavSettlementConfigurationCategory.md) |  | [default to NavSettlementConfigurationCategory]
+**deferredCashReceipt** | [**NavSettlementConfigurationCategory**](NavSettlementConfigurationCategory.md) |  | [default to NavSettlementConfigurationCategory]
 
 ```java
 import com.finbourne.lusid.model.NavSettlementConfiguration;

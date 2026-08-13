@@ -107,6 +107,10 @@ public class CashFlowDetail {
   @SerializedName(SERIALIZED_NAME_HAIRCUT_RULE_APPLIED)
   private String haircutRuleApplied;
 
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  private String error;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -387,6 +391,27 @@ public class CashFlowDetail {
   }
 
 
+  public CashFlowDetail error(String error) {
+    
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * Only present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. When set, the amount is null rather than zero.
+   * @return error
+  **/
+  @jakarta.annotation.Nullable
+  public String getError() {
+    return error;
+  }
+
+
+  public void setError(String error) {
+    this.error = error;
+  }
+
+
   public CashFlowDetail links(List<Link> links) {
     
     this.links = links;
@@ -439,6 +464,7 @@ public class CashFlowDetail {
         (this.haircutFraction.compareTo(cashFlowDetail.getHaircutFraction()) == 0) &&
         (this.netAmount.compareTo(cashFlowDetail.getNetAmount()) == 0) &&
         Objects.equals(this.haircutRuleApplied, cashFlowDetail.haircutRuleApplied) &&
+        Objects.equals(this.error, cashFlowDetail.error) &&
         Objects.equals(this.links, cashFlowDetail.links);
   }
 
@@ -448,7 +474,7 @@ public class CashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, transactionId, portfolioId, flowType, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, links);
+    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, transactionId, portfolioId, flowType, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -475,6 +501,7 @@ public class CashFlowDetail {
     sb.append("    haircutFraction: ").append(toIndentedString(haircutFraction)).append("\n");
     sb.append("    netAmount: ").append(toIndentedString(netAmount)).append("\n");
     sb.append("    haircutRuleApplied: ").append(toIndentedString(haircutRuleApplied)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -511,6 +538,7 @@ public class CashFlowDetail {
     openapiFields.add("haircutFraction");
     openapiFields.add("netAmount");
     openapiFields.add("haircutRuleApplied");
+    openapiFields.add("error");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -564,6 +592,9 @@ public class CashFlowDetail {
       }
       if ((jsonObj.get("haircutRuleApplied") != null && !jsonObj.get("haircutRuleApplied").isJsonNull()) && !jsonObj.get("haircutRuleApplied").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `haircutRuleApplied` to be a primitive type in the JSON string but got `%s`", jsonObj.get("haircutRuleApplied").toString()));
+      }
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

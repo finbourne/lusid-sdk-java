@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **postingModuleCodes** | **List&lt;String&gt;** | The Posting Module Codes from which the rules to be applied are retrieved. | [optional] [default to List<String>]
 **cleardownModuleCodes** | **List&lt;String&gt;** | The Cleardown Module Codes from which the rules to be applied are retrieved. | [optional] [default to List<String>]
-**settlementConfiguration** | [**NavSettlementConfiguration**](NavSettlementConfiguration.md) |  | [optional] [default to NavSettlementConfiguration]
+**settlementConfiguration** | [**NavSettlementConfiguration**](NavSettlementConfiguration.md) |  | [default to NavSettlementConfiguration]
 **valuationRecipeId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **holdingRecipeId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **accountingMethod** | **String** | Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [default to String]

@@ -277,7 +277,7 @@ public class NavTypeDefinition {
    * Get settlementConfiguration
    * @return settlementConfiguration
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public NavSettlementConfiguration getSettlementConfiguration() {
     return settlementConfiguration;
   }
@@ -615,6 +615,7 @@ public class NavTypeDefinition {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("chartOfAccountsId");
+    openapiRequiredFields.add("settlementConfiguration");
     openapiRequiredFields.add("valuationRecipeId");
     openapiRequiredFields.add("holdingRecipeId");
     openapiRequiredFields.add("accountingMethod");
@@ -663,10 +664,8 @@ public class NavTypeDefinition {
       if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
       }
-      // validate the optional field `settlementConfiguration`
-      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
-        NavSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
-      }
+      // validate the required field `settlementConfiguration`
+      NavSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       // validate the required field `valuationRecipeId`
       ResourceId.validateJsonElement(jsonObj.get("valuationRecipeId"));
       // validate the required field `holdingRecipeId`

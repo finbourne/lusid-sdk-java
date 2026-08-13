@@ -119,7 +119,9 @@ public enum InstrumentType {
   
   TOBEANNOUNCEDOPTION("ToBeAnnouncedOption"),
   
-  COMMODITYFORWARD("CommodityForward");
+  COMMODITYFORWARD("CommodityForward"),
+  
+  BONDOPTION("BondOption");
 
   private String value;
 

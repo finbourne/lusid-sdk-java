@@ -306,7 +306,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFeeType: Create a FeeType.
+     * [EARLY ACCESS] CreateFeeType: Create a FeeType.
      * Create a FeeType that contains templates used to create fee transactions.
      * @param scope The scope of the FeeType. (required)
      * @param feeTypeRequest The contents of the FeeType. (required)
@@ -547,7 +547,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+     * [EARLY ACCESS] DeleteFeeType: Delete a FeeType.
      * Delete a FeeType that contains templates used to create fee transactions.
      * @param scope The scope of the FeeType. (required)
      * @param code The code of the fee type (required)
@@ -765,7 +765,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+     * [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
      * Get FeeTemplateSpecifications used in the FeeType.
      * @return APIgetFeeTemplateSpecificationsRequest
      * @http.response.details
@@ -1018,7 +1018,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFeeType: Get a FeeType
+     * [EARLY ACCESS] GetFeeType: Get a FeeType
      * Get a FeeType that contains templates used to create fee transactions.
      * @param scope The scope of the FeeType (required)
      * @param code The code of the FeeType (required)
@@ -1318,7 +1318,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFeeTypes: List FeeTypes
+     * [EARLY ACCESS] ListFeeTypes: List FeeTypes
      * List FeeTypes that contain templates used to create fee transactions.
      * @return APIlistFeeTypesRequest
      * @http.response.details
@@ -1568,7 +1568,7 @@ public class FeeTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+     * [EARLY ACCESS] UpdateFeeType: Update a FeeType.
      * Update a FeeType that contains templates used to create fee transactions.
      * @param scope The scope of the FeeType. (required)
      * @param code The code of the fee type (required)

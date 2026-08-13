@@ -307,7 +307,7 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
    /**
-   * If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket.
+   * If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling.
    * @return excludeUnsettledTrades
   **/
   @jakarta.annotation.Nullable

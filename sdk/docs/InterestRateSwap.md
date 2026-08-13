@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **settlementCcy** | **String** | Settlement currency if IRS is non-deliverable. | [optional] [default to String]
 **additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven fixed-floating swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. | [optional] [default to List<AdditionalPayment>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**cancelSchedule** | [**CancelSchedule**](CancelSchedule.md) |  | [optional] [default to CancelSchedule]
 
 ```java
 import com.finbourne.lusid.model.InterestRateSwap;
@@ -26,6 +27,7 @@ List<InstrumentLeg> Legs = new List<InstrumentLeg>();
 @jakarta.annotation.Nullable String SettlementCcy = "example SettlementCcy";
 @jakarta.annotation.Nullable List<AdditionalPayment> AdditionalPayments = new List<AdditionalPayment>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+CancelSchedule CancelSchedule = new CancelSchedule();
 
 
 InterestRateSwap interestRateSwapInstance = new InterestRateSwap()
@@ -35,7 +37,8 @@ InterestRateSwap interestRateSwapInstance = new InterestRateSwap()
     .Legs(Legs)
     .SettlementCcy(SettlementCcy)
     .AdditionalPayments(AdditionalPayments)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .CancelSchedule(CancelSchedule);
 ```
 
 

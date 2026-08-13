@@ -98,7 +98,7 @@ public class SubscriptionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/subscriptions/holdings/{scope}/{code}"
+        String localVarPath = "/api/subscriptions/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -339,7 +339,7 @@ public class SubscriptionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/subscriptions/holdings/{scope}/{code}"
+        String localVarPath = "/api/subscriptions/{scope}/{code}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -595,7 +595,7 @@ public class SubscriptionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/subscriptions/holdings/{scope}"
+        String localVarPath = "/api/subscriptions/{scope}"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -887,7 +887,7 @@ public class SubscriptionsApi {
         Object localVarPostBody = upsertSubscriptionRequest;
 
         // create path and map variables
-        String localVarPath = "/api/subscriptions/holdings";
+        String localVarPath = "/api/subscriptions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

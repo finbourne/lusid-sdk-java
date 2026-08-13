@@ -374,7 +374,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
+     * [EARLY ACCESS] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
      * Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;,  otherwise it will be marked as &#39;Final&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -627,7 +627,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] AddAllocationGroups: Add Allocation Groups to a Fund.
+     * [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund.
      * Add the given Allocation Group definitions to the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -880,7 +880,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] AddSeries: Add Series to a Fund.
+     * [EARLY ACCESS] AddSeries: Add Series to a Fund.
      * Add the given Series definitions to the specified Share Classes of the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -1148,7 +1148,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFee: Create a Fee.
+     * [EARLY ACCESS] CreateFee: Create a Fee.
      * Create the given Fee.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -1393,7 +1393,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFund: Create a Fund.
+     * [EARLY ACCESS] CreateFund: Create a Fund.
      * Create the given Fund.
      * @param scope The scope of the Fund. (required)
      * @param fundRequest The definition of the Fund. (required)
@@ -1637,7 +1637,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+     * [EARLY ACCESS] CreateFundV2: Create a Fund V2 (Preview).
      * Create the given V2 Fund.
      * @param scope The scope of the Fund. (required)
      * @param fundDefinitionRequest The definition of the Fund. (required)
@@ -1904,7 +1904,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point.
+     * [EARLY ACCESS] CreateValuationPoint: Create a Valuation Point.
      * Insert the estimate Valuation Point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -2172,7 +2172,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund.
+     * [EARLY ACCESS] DeactivateNavTypes: Deactivate NAV types on a Fund.
      * Deactivate the given NAV types on the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -2437,7 +2437,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
+     * [EARLY ACCESS] DeleteBookmark: Delete a Bookmark.
      * Deletes the given Bookmark.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -2687,7 +2687,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteFee: Delete a Fee.
+     * [EARLY ACCESS] DeleteFee: Delete a Fee.
      * Delete the given Fee.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -2929,7 +2929,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteFund: Delete a Fund.
+     * [EARLY ACCESS] DeleteFund: Delete a Fund.
      * Delete the given Fund.
      * @param scope The scope of the Fund to be deleted. (required)
      * @param code The code of the Fund to be deleted. Together with the scope this uniquely identifies the Fund. (required)
@@ -3222,7 +3222,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
+     * [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
      * Delete Nav activity adjustments on a Valuation Point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
@@ -3503,7 +3503,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
+     * [EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point.
      * Deletes the given Valuation Point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -3771,7 +3771,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
+     * [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
      * Moves a &#39;Candidate&#39; status Valuation Point to status &#39;Final&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -4084,7 +4084,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+     * [EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund.
      * Get the A2B data for transaction portfolios in a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -4397,7 +4397,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+     * [EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
      * Get the A2B movement records of transaction portfolios in a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -4692,7 +4692,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
+     * [EARLY ACCESS] GetFee: Get a Fee for a specified Fund.
      * Retrieve a fee for a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -4972,7 +4972,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFeeProperties: Get Fee properties.
+     * [EARLY ACCESS] GetFeeProperties: Get Fee properties.
      * Get all the properties of a single fee.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -5259,7 +5259,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFund: Get a Fund.
+     * [EARLY ACCESS] GetFund: Get a Fund.
      * Retrieve the definition of a particular Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -5530,7 +5530,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFundProperties: Get Fund properties.
+     * [EARLY ACCESS] GetFundProperties: Get Fund properties.
      * Get all the properties of a single fund.
      * @param scope The scope of the Fund to list the properties for. (required)
      * @param code The code of the Fund to list the properties for. Together with the scope this uniquely identifies the Fund. (required)
@@ -5895,7 +5895,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund.
+     * [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund.
      * Get the holdings of transaction portfolios in a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -6239,7 +6239,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
+     * [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
      * Get the holdings of transaction portfolios in a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -6511,7 +6511,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund.
+     * [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
      * Perform valuation on a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -6793,7 +6793,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
+     * [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund.
      * Retrieves the Valuation Point data between given dates or Valuation Point codes.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the Fund&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; ValuationPoint and EndDate will be as provided.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -7151,7 +7151,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
+     * [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
      * Gets the Journal Entry Lines for the given Valuation Point for a Fund.     The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -7494,7 +7494,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
+     * [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
      * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -7807,7 +7807,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
+     * [EARLY ACCESS] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
      * Gets all quotes within the effective date range of the specified Valuation Point for a Fund,  including any quotes added via a Complex Close (Post-Close Activity).
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -8210,7 +8210,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund.
+     * [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
      * Gets the Transactions for the given Valuation Point for a Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -8583,8 +8583,8 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
-     * Gets the Trial Balance for the given Valuation Point for a Fund.     The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
+     * [EARLY ACCESS] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
+     * Gets the Trial Balance for the given Valuation Point for a Fund.     The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).     Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance check.  Any caller with access to this endpoint may use it; it is not role-restricted.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for generating the Trial Balance. (required)
@@ -8911,7 +8911,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
+     * [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
      * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -9258,7 +9258,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFees: List Fees for a specified Fund.
+     * [EARLY ACCESS] ListFees: List Fees for a specified Fund.
      * List all the Fees matching a particular criteria.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -9589,7 +9589,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFundCalendar: List Fund Calendar.
+     * [EARLY ACCESS] ListFundCalendar: List Fund Calendar.
      * List all the Calendar Entries associated with the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -9920,7 +9920,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFundCalendarEntries: List Fund Calendar Entries.
+     * [EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries.
      * List all the Calendar Entries associated with the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -10250,7 +10250,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFunds: List Funds.
+     * [EARLY ACCESS] ListFunds: List Funds.
      * List all the Funds matching particular criteria.
      * @return APIlistFundsRequest
      * @http.response.details
@@ -10590,7 +10590,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
+     * [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
      * Lists the NAV adjustment activities applied to the specified valuation point for a Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
@@ -10903,7 +10903,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
+     * [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
      * Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -11276,7 +11276,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point
+     * [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point
      * Lists the Instruments linked to Transactions within a Valuation Point for a Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
@@ -11623,7 +11623,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
+     * [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
      * List the overview of all the Valuation Points that match the given criteria for a given Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -11883,7 +11883,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchFee: Patch Fee.
+     * [EARLY ACCESS] PatchFee: Patch Fee.
      * Create or update certain fields for a particular Fee.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: EndDate, ShareClasses.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -12137,7 +12137,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchFund: Patch a Fund.
+     * [EARLY ACCESS] PatchFund: Patch a Fund.
      * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -12823,7 +12823,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
+     * [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
      * Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -13091,7 +13091,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
+     * [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
      * Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -13344,7 +13344,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
+     * [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
      * Update the ShareClass Instruments on an existing Fund with the set of instruments provided.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -13619,7 +13619,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point.
+     * [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
      * Updates an existing Valuation Point.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -13888,7 +13888,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark.
+     * [EARLY ACCESS] UpsertBookmark: Upsert a bookmark.
      * This method will update or upsert a Bookmark for the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -14156,7 +14156,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
+     * [EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
      * Insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -14421,7 +14421,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
+     * [EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties.
      * Update or insert one or more properties onto a single Fee. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.     Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -14678,7 +14678,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
+     * [EARLY ACCESS] UpsertFundProperties: Upsert Fund properties.
      * Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.     Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -14971,7 +14971,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
+     * [EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
      * Upserts the NAV adjustment activities to the specified valuation point for a Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)

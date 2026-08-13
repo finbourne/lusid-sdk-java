@@ -326,7 +326,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;.
+     * [EARLY ACCESS] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;.
      * Adds a new diary entry to the specified Abor
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
@@ -579,7 +579,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
+     * [EARLY ACCESS] ClosePeriod: Closes or locks the current period for the given Abor.
      * Closes or Locks the current open period for the given Abor.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
@@ -824,7 +824,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateAbor: Create an Abor.
+     * [EARLY ACCESS] CreateAbor: Create an Abor.
      * Create the given Abor.
      * @param scope The scope of the Abor. (required)
      * @param aborRequest The definition of the Abor. (required)
@@ -1065,7 +1065,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteAbor: Delete an Abor.
+     * [EARLY ACCESS] DeleteAbor: Delete an Abor.
      * Delete the given Abor.
      * @param scope The scope of the Abor to be deleted. (required)
      * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
@@ -1314,7 +1314,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor.
+     * [EARLY ACCESS] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor.
      * Delete a diary entry type &#39;Other&#39; from the specified Abor.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
@@ -1601,7 +1601,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetAbor: Get Abor.
+     * [EARLY ACCESS] GetAbor: Get Abor.
      * Retrieve the definition of a particular Abor.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
@@ -1872,7 +1872,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetAborProperties: Get Abor properties
+     * [EARLY ACCESS] GetAborProperties: Get Abor properties
      * Get all the properties of a single abor.
      * @param scope The scope of the Abor to list the properties for. (required)
      * @param code The code of the Abor to list the properties for. Together with the scope this uniquely identifies the Abor. (required)
@@ -2184,7 +2184,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+     * [EARLY ACCESS] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
      * Gets the Journal Entry lines for the given Abor     The Journal Entry lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
@@ -2497,8 +2497,8 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor.
-     * Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
+     * [EARLY ACCESS] GetTrialBalance: Get the Trial Balance for the given Abor.
+     * Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).     Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance check.  Any caller with access to this endpoint may use it; it is not role-restricted.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
      * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
@@ -2828,7 +2828,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListAbors: List Abors.
+     * [EARLY ACCESS] ListAbors: List Abors.
      * List all the Abors matching particular criteria.
      * @return APIlistAborsRequest
      * @http.response.details
@@ -3172,7 +3172,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListDiaryEntries: List diary entries.
+     * [EARLY ACCESS] ListDiaryEntries: List diary entries.
      * List all the diary entries matching particular criteria.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
@@ -3428,7 +3428,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period.
+     * [EARLY ACCESS] LockPeriod: Locks the last Closed or given Closed Period.
      * Locks the specified or last locked period for the given Abor.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
@@ -3680,7 +3680,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchAbor: Patch Abor.
+     * [EARLY ACCESS] PatchAbor: Patch Abor.
      * Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: PortfolioIds.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the   scope this uniquely identifies the Abor. (required)
@@ -3937,7 +3937,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
+     * [EARLY ACCESS] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
      * Reopens one or more periods.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
@@ -4193,7 +4193,7 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
+     * [EARLY ACCESS] UpsertAborProperties: Upsert Abor properties
      * Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.     Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Abor to update or insert the properties onto. (required)
      * @param code The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. (required)

@@ -4,12 +4,12 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createFeeType**](FeeTypesApi.md#createFeeType) | **POST** /api/feetypes/{scope} | [EXPERIMENTAL] CreateFeeType: Create a FeeType. |
-| [**deleteFeeType**](FeeTypesApi.md#deleteFeeType) | **DELETE** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. |
-| [**getFeeTemplateSpecifications**](FeeTypesApi.md#getFeeTemplateSpecifications) | **GET** /api/feetypes/feetransactiontemplatespecification | [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. |
-| [**getFeeType**](FeeTypesApi.md#getFeeType) | **GET** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] GetFeeType: Get a FeeType |
-| [**listFeeTypes**](FeeTypesApi.md#listFeeTypes) | **GET** /api/feetypes | [EXPERIMENTAL] ListFeeTypes: List FeeTypes |
-| [**updateFeeType**](FeeTypesApi.md#updateFeeType) | **PUT** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] UpdateFeeType: Update a FeeType. |
+| [**createFeeType**](FeeTypesApi.md#createFeeType) | **POST** /api/feetypes/{scope} | [EARLY ACCESS] CreateFeeType: Create a FeeType. |
+| [**deleteFeeType**](FeeTypesApi.md#deleteFeeType) | **DELETE** /api/feetypes/{scope}/{code} | [EARLY ACCESS] DeleteFeeType: Delete a FeeType. |
+| [**getFeeTemplateSpecifications**](FeeTypesApi.md#getFeeTemplateSpecifications) | **GET** /api/feetypes/feetransactiontemplatespecification | [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. |
+| [**getFeeType**](FeeTypesApi.md#getFeeType) | **GET** /api/feetypes/{scope}/{code} | [EARLY ACCESS] GetFeeType: Get a FeeType |
+| [**listFeeTypes**](FeeTypesApi.md#listFeeTypes) | **GET** /api/feetypes | [EARLY ACCESS] ListFeeTypes: List FeeTypes |
+| [**updateFeeType**](FeeTypesApi.md#updateFeeType) | **PUT** /api/feetypes/{scope}/{code} | [EARLY ACCESS] UpdateFeeType: Update a FeeType. |
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > FeeType createFeeType(scope, feeTypeRequest)
 
-[EXPERIMENTAL] CreateFeeType: Create a FeeType.
+[EARLY ACCESS] CreateFeeType: Create a FeeType.
 
 Create a FeeType that contains templates used to create fee transactions.
 
@@ -110,7 +110,7 @@ public class FeeTypesApiExample {
 
 > DeletedEntityResponse deleteFeeType(scope, code)
 
-[EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+[EARLY ACCESS] DeleteFeeType: Delete a FeeType.
 
 Delete a FeeType that contains templates used to create fee transactions.
 
@@ -203,7 +203,7 @@ public class FeeTypesApiExample {
 
 > FeeTransactionTemplateSpecification getFeeTemplateSpecifications()
 
-[EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+[EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
 
 Get FeeTemplateSpecifications used in the FeeType.
 
@@ -289,7 +289,7 @@ This endpoint does not need any parameter.
 
 > FeeType getFeeType(scope, code, asAt)
 
-[EXPERIMENTAL] GetFeeType: Get a FeeType
+[EARLY ACCESS] GetFeeType: Get a FeeType
 
 Get a FeeType that contains templates used to create fee transactions.
 
@@ -384,7 +384,7 @@ public class FeeTypesApiExample {
 
 > PagedResourceListOfFeeType listFeeTypes(asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListFeeTypes: List FeeTypes
+[EARLY ACCESS] ListFeeTypes: List FeeTypes
 
 List FeeTypes that contain templates used to create fee transactions.
 
@@ -483,7 +483,7 @@ public class FeeTypesApiExample {
 
 > FeeType updateFeeType(scope, code, updateFeeTypeRequest)
 
-[EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+[EARLY ACCESS] UpdateFeeType: Update a FeeType.
 
 Update a FeeType that contains templates used to create fee transactions.
 

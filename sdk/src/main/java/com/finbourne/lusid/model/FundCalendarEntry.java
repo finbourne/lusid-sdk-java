@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.PreviousFundCalendarEntry;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -176,6 +177,10 @@ public class FundCalendarEntry {
   public static final String SERIALIZED_NAME_LEADER_NAV_TYPE_CODE = "leaderNavTypeCode";
   @SerializedName(SERIALIZED_NAME_LEADER_NAV_TYPE_CODE)
   private String leaderNavTypeCode;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public FundCalendarEntry() {
   }
@@ -566,6 +571,27 @@ public class FundCalendarEntry {
   }
 
 
+  public FundCalendarEntry stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -593,7 +619,8 @@ public class FundCalendarEntry {
         Objects.equals(this.properties, fundCalendarEntry.properties) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
         Objects.equals(this.href, fundCalendarEntry.href) &&
-        Objects.equals(this.leaderNavTypeCode, fundCalendarEntry.leaderNavTypeCode);
+        Objects.equals(this.leaderNavTypeCode, fundCalendarEntry.leaderNavTypeCode) &&
+        Objects.equals(this.stagedModifications, fundCalendarEntry.stagedModifications);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -602,7 +629,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, properties, version, href, leaderNavTypeCode);
+    return Objects.hash(code, variant, displayName, description, navTypeCode, timelineId, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, holdingsAsAtOverride, valuationsAsAtOverride, properties, version, href, leaderNavTypeCode, stagedModifications);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -634,6 +661,7 @@ public class FundCalendarEntry {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -674,6 +702,7 @@ public class FundCalendarEntry {
     openapiFields.add("version");
     openapiFields.add("href");
     openapiFields.add("leaderNavTypeCode");
+    openapiFields.add("stagedModifications");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -742,6 +771,10 @@ public class FundCalendarEntry {
       }
       if ((jsonObj.get("leaderNavTypeCode") != null && !jsonObj.get("leaderNavTypeCode").isJsonNull()) && !jsonObj.get("leaderNavTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `leaderNavTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("leaderNavTypeCode").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
   }
 

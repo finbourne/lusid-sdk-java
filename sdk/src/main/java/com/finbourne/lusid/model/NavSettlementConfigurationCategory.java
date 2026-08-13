@@ -18,7 +18,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,7 +70,7 @@ public class NavSettlementConfigurationCategory {
    * An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction.
    * @return calculateInstructionToPortfolioRate
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Boolean getCalculateInstructionToPortfolioRate() {
     return calculateInstructionToPortfolioRate;
   }
@@ -92,7 +91,7 @@ public class NavSettlementConfigurationCategory {
    * An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date.
    * @return calculateTradeDateToSettlementFxPnL
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Boolean getCalculateTradeDateToSettlementFxPnL() {
     return calculateTradeDateToSettlementFxPnL;
   }
@@ -117,20 +116,9 @@ public class NavSettlementConfigurationCategory {
         Objects.equals(this.calculateTradeDateToSettlementFxPnL, navSettlementConfigurationCategory.calculateTradeDateToSettlementFxPnL);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(calculateInstructionToPortfolioRate, calculateTradeDateToSettlementFxPnL);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -166,6 +154,8 @@ public class NavSettlementConfigurationCategory {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("calculateInstructionToPortfolioRate");
+    openapiRequiredFields.add("calculateTradeDateToSettlementFxPnL");
   }
 
  /**
@@ -178,6 +168,13 @@ public class NavSettlementConfigurationCategory {
       if (jsonElement == null) {
         if (!NavSettlementConfigurationCategory.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in NavSettlementConfigurationCategory is not found in the empty JSON string", NavSettlementConfigurationCategory.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : NavSettlementConfigurationCategory.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

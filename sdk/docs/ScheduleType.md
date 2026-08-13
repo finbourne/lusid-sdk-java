@@ -23,6 +23,7 @@ ScheduleType method = ScheduleType.FXLINKEDNOTIONALSCHEDULE;
 ScheduleType method = ScheduleType.BONDCONVERSIONSCHEDULE;
 ScheduleType method = ScheduleType.PIKSCHEDULE;
 ScheduleType method = ScheduleType.INVALID;
+ScheduleType method = ScheduleType.CANCELSCHEDULE;
 ```
 
 

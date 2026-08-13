@@ -4,12 +4,12 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createFundConfiguration**](FundConfigurationApi.md#createFundConfiguration) | **POST** /api/fundconfigurations/{scope} | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. |
-| [**deleteFundConfiguration**](FundConfigurationApi.md#deleteFundConfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. |
-| [**getFundConfiguration**](FundConfigurationApi.md#getFundConfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. |
-| [**listFundConfigurations**](FundConfigurationApi.md#listFundConfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. |
-| [**patchFundConfiguration**](FundConfigurationApi.md#patchFundConfiguration) | **PATCH** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. |
-| [**upsertFundConfigurationProperties**](FundConfigurationApi.md#upsertFundConfigurationProperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
+| [**createFundConfiguration**](FundConfigurationApi.md#createFundConfiguration) | **POST** /api/fundconfigurations/{scope} | [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. |
+| [**deleteFundConfiguration**](FundConfigurationApi.md#deleteFundConfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. |
+| [**getFundConfiguration**](FundConfigurationApi.md#getFundConfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. |
+| [**listFundConfigurations**](FundConfigurationApi.md#listFundConfigurations) | **GET** /api/fundconfigurations | [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. |
+| [**patchFundConfiguration**](FundConfigurationApi.md#patchFundConfiguration) | **PATCH** /api/fundconfigurations/{scope}/{code} | [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. |
+| [**upsertFundConfigurationProperties**](FundConfigurationApi.md#upsertFundConfigurationProperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > FundConfiguration createFundConfiguration(scope, fundConfigurationRequest)
 
-[EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+[EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
 
 Create the given FundConfiguration.
 
@@ -110,7 +110,7 @@ public class FundConfigurationApiExample {
 
 > DeletedEntityResponse deleteFundConfiguration(scope, code)
 
-[EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+[EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
 
 Delete the given FundConfiguration.
 
@@ -203,7 +203,7 @@ public class FundConfigurationApiExample {
 
 > FundConfiguration getFundConfiguration(scope, code, effectiveAt, asAt, propertyKeys)
 
-[EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+[EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
 
 Retrieve the definition of a particular FundConfiguration.
 
@@ -302,7 +302,7 @@ public class FundConfigurationApiExample {
 
 > PagedResourceListOfFundConfiguration listFundConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
-[EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+[EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
 
 List all the FundConfiguration matching particular criteria.
 
@@ -405,7 +405,7 @@ public class FundConfigurationApiExample {
 
 > FundConfiguration patchFundConfiguration(scope, code, operation)
 
-[EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+[EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
 
 Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
 
@@ -500,7 +500,7 @@ public class FundConfigurationApiExample {
 
 > FundConfigurationProperties upsertFundConfigurationProperties(scope, code, requestBody)
 
-[EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+[EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
 
 Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.     Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 

@@ -307,7 +307,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+     * [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
      * Create the given FundConfiguration.
      * @param scope The scope of the FundConfiguration. (required)
      * @param fundConfigurationRequest The definition of the FundConfiguration. (required)
@@ -548,7 +548,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+     * [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
      * Delete the given FundConfiguration.
      * @param scope The scope of the FundConfiguration to be deleted. (required)
      * @param code The code of the FundConfiguration to be deleted.    Together with the scope this uniquely identifies the FundConfiguration. (required)
@@ -834,7 +834,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+     * [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
      * Retrieve the definition of a particular FundConfiguration.
      * @param scope The scope of the FundConfiguration. (required)
      * @param code The code of the FundConfiguration. Together with the scope this uniquely identifies the FundConfiguration. (required)
@@ -1164,7 +1164,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+     * [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
      * List all the FundConfiguration matching particular criteria.
      * @return APIlistFundConfigurationsRequest
      * @http.response.details
@@ -1414,7 +1414,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+     * [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
      * Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
      * @param scope The scope of the FundConfiguration. (required)
      * @param code The code of the FundConfiguration. Together with the   scope this uniquely identifies the FundConfiguration. (required)
@@ -1671,7 +1671,7 @@ public class FundConfigurationApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+     * [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
      * Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.     Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the FundConfiguration to update or insert the properties onto. (required)
      * @param code The code of the FundConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the FundConfiguration. (required)

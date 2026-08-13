@@ -98,10 +98,6 @@ public class SubscriptionDefinition {
   @SerializedName(SERIALIZED_NAME_END_EFFECTIVE_AT)
   private OffsetDateTime endEffectiveAt;
 
-  public static final String SERIALIZED_NAME_START_AS_AT = "startAsAt";
-  @SerializedName(SERIALIZED_NAME_START_AS_AT)
-  private OffsetDateTime startAsAt;
-
   public SubscriptionDefinition() {
   }
 
@@ -344,27 +340,6 @@ public class SubscriptionDefinition {
   }
 
 
-  public SubscriptionDefinition startAsAt(OffsetDateTime startAsAt) {
-    
-    this.startAsAt = startAsAt;
-    return this;
-  }
-
-   /**
-   * Get startAsAt
-   * @return startAsAt
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getStartAsAt() {
-    return startAsAt;
-  }
-
-
-  public void setStartAsAt(OffsetDateTime startAsAt) {
-    this.startAsAt = startAsAt;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -385,8 +360,7 @@ public class SubscriptionDefinition {
         Objects.equals(this.byTaxLots, subscriptionDefinition.byTaxLots) &&
         Objects.equals(this.subscriptionType, subscriptionDefinition.subscriptionType) &&
         Objects.equals(this.startEffectiveAt, subscriptionDefinition.startEffectiveAt) &&
-        Objects.equals(this.endEffectiveAt, subscriptionDefinition.endEffectiveAt) &&
-        Objects.equals(this.startAsAt, subscriptionDefinition.startAsAt);
+        Objects.equals(this.endEffectiveAt, subscriptionDefinition.endEffectiveAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -395,7 +369,7 @@ public class SubscriptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, startAsAt);
+    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -420,7 +394,6 @@ public class SubscriptionDefinition {
     sb.append("    subscriptionType: ").append(toIndentedString(subscriptionType)).append("\n");
     sb.append("    startEffectiveAt: ").append(toIndentedString(startEffectiveAt)).append("\n");
     sb.append("    endEffectiveAt: ").append(toIndentedString(endEffectiveAt)).append("\n");
-    sb.append("    startAsAt: ").append(toIndentedString(startAsAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -454,7 +427,6 @@ public class SubscriptionDefinition {
     openapiFields.add("subscriptionType");
     openapiFields.add("startEffectiveAt");
     openapiFields.add("endEffectiveAt");
-    openapiFields.add("startAsAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

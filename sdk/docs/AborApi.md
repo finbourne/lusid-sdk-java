@@ -4,21 +4,21 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;. |
-| [**closePeriod**](AborApi.md#closePeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor. |
-| [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
-| [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
-| [**deleteDiaryEntry**](AborApi.md#deleteDiaryEntry) | **DELETE** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor. |
-| [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
-| [**getAborProperties**](AborApi.md#getAborProperties) | **GET** /api/abor/{scope}/{code}/properties | [EXPERIMENTAL] GetAborProperties: Get Abor properties |
-| [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
-| [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor. |
-| [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
-| [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
-| [**lockPeriod**](AborApi.md#lockPeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$lockperiod | [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period. |
-| [**patchAbor**](AborApi.md#patchAbor) | **PATCH** /api/abor/{scope}/{code} | [EXPERIMENTAL] PatchAbor: Patch Abor. |
-| [**reOpenPeriods**](AborApi.md#reOpenPeriods) | **POST** /api/abor/{scope}/{code}/accountingdiary/$reopenperiods | [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor. |
-| [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
+| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EARLY ACCESS] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;. |
+| [**closePeriod**](AborApi.md#closePeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EARLY ACCESS] ClosePeriod: Closes or locks the current period for the given Abor. |
+| [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EARLY ACCESS] CreateAbor: Create an Abor. |
+| [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EARLY ACCESS] DeleteAbor: Delete an Abor. |
+| [**deleteDiaryEntry**](AborApi.md#deleteDiaryEntry) | **DELETE** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EARLY ACCESS] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor. |
+| [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EARLY ACCESS] GetAbor: Get Abor. |
+| [**getAborProperties**](AborApi.md#getAborProperties) | **GET** /api/abor/{scope}/{code}/properties | [EARLY ACCESS] GetAborProperties: Get Abor properties |
+| [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EARLY ACCESS] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
+| [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EARLY ACCESS] GetTrialBalance: Get the Trial Balance for the given Abor. |
+| [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EARLY ACCESS] ListAbors: List Abors. |
+| [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EARLY ACCESS] ListDiaryEntries: List diary entries. |
+| [**lockPeriod**](AborApi.md#lockPeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$lockperiod | [EARLY ACCESS] LockPeriod: Locks the last Closed or given Closed Period. |
+| [**patchAbor**](AborApi.md#patchAbor) | **PATCH** /api/abor/{scope}/{code} | [EARLY ACCESS] PatchAbor: Patch Abor. |
+| [**reOpenPeriods**](AborApi.md#reOpenPeriods) | **POST** /api/abor/{scope}/{code}/accountingdiary/$reopenperiods | [EARLY ACCESS] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor. |
+| [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertAborProperties: Upsert Abor properties |
 
 
 
@@ -26,7 +26,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > DiaryEntry addDiaryEntry(scope, code, diaryEntryRequest)
 
-[EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;.
+[EARLY ACCESS] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;.
 
 Adds a new diary entry to the specified Abor
 
@@ -121,7 +121,7 @@ public class AborApiExample {
 
 > DiaryEntry closePeriod(scope, code, closePeriodDiaryEntryRequest)
 
-[EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
+[EARLY ACCESS] ClosePeriod: Closes or locks the current period for the given Abor.
 
 Closes or Locks the current open period for the given Abor.
 
@@ -216,7 +216,7 @@ public class AborApiExample {
 
 > Abor createAbor(scope, aborRequest)
 
-[EXPERIMENTAL] CreateAbor: Create an Abor.
+[EARLY ACCESS] CreateAbor: Create an Abor.
 
 Create the given Abor.
 
@@ -309,7 +309,7 @@ public class AborApiExample {
 
 > DeletedEntityResponse deleteAbor(scope, code)
 
-[EXPERIMENTAL] DeleteAbor: Delete an Abor.
+[EARLY ACCESS] DeleteAbor: Delete an Abor.
 
 Delete the given Abor.
 
@@ -402,7 +402,7 @@ public class AborApiExample {
 
 > DeletedEntityResponse deleteDiaryEntry(scope, code, diaryEntryCode)
 
-[EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor.
+[EARLY ACCESS] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor.
 
 Delete a diary entry type &#39;Other&#39; from the specified Abor.
 
@@ -497,7 +497,7 @@ public class AborApiExample {
 
 > Abor getAbor(scope, code, effectiveAt, asAt, propertyKeys)
 
-[EXPERIMENTAL] GetAbor: Get Abor.
+[EARLY ACCESS] GetAbor: Get Abor.
 
 Retrieve the definition of a particular Abor.
 
@@ -596,7 +596,7 @@ public class AborApiExample {
 
 > AborProperties getAborProperties(scope, code, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetAborProperties: Get Abor properties
+[EARLY ACCESS] GetAborProperties: Get Abor properties
 
 Get all the properties of a single abor.
 
@@ -693,7 +693,7 @@ public class AborApiExample {
 
 > VersionedResourceListOfJournalEntryLine getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page)
 
-[EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+[EARLY ACCESS] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
 
 Gets the Journal Entry lines for the given Abor     The Journal Entry lines have been generated from transactions and translated via posting rules
 
@@ -796,9 +796,9 @@ public class AborApiExample {
 
 > VersionedResourceListOfTrialBalance getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page)
 
-[EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor.
+[EARLY ACCESS] GetTrialBalance: Get the Trial Balance for the given Abor.
 
-Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
+Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).     Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance check.  Any caller with access to this endpoint may use it; it is not role-restricted.
 
 ### Example
 
@@ -899,7 +899,7 @@ public class AborApiExample {
 
 > PagedResourceListOfAbor listAbors(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
-[EXPERIMENTAL] ListAbors: List Abors.
+[EARLY ACCESS] ListAbors: List Abors.
 
 List all the Abors matching particular criteria.
 
@@ -1002,7 +1002,7 @@ public class AborApiExample {
 
 > PagedResourceListOfDiaryEntry listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
-[EXPERIMENTAL] ListDiaryEntries: List diary entries.
+[EARLY ACCESS] ListDiaryEntries: List diary entries.
 
 List all the diary entries matching particular criteria.
 
@@ -1109,7 +1109,7 @@ public class AborApiExample {
 
 > DiaryEntry lockPeriod(scope, code, lockPeriodDiaryEntryRequest)
 
-[EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period.
+[EARLY ACCESS] LockPeriod: Locks the last Closed or given Closed Period.
 
 Locks the specified or last locked period for the given Abor.
 
@@ -1204,7 +1204,7 @@ public class AborApiExample {
 
 > Abor patchAbor(scope, code, operation)
 
-[EXPERIMENTAL] PatchAbor: Patch Abor.
+[EARLY ACCESS] PatchAbor: Patch Abor.
 
 Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: PortfolioIds.
 
@@ -1299,7 +1299,7 @@ public class AborApiExample {
 
 > PeriodDiaryEntriesReopenedResponse reOpenPeriods(scope, code, reOpenPeriodDiaryEntryRequest)
 
-[EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
+[EARLY ACCESS] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
 
 Reopens one or more periods.
 
@@ -1394,7 +1394,7 @@ public class AborApiExample {
 
 > AborProperties upsertAborProperties(scope, code, requestBody)
 
-[EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
+[EARLY ACCESS] UpsertAborProperties: Upsert Abor properties
 
 Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Abor&#39;.     Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 

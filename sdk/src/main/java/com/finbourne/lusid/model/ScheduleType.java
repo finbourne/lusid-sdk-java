@@ -43,7 +43,9 @@ public enum ScheduleType {
   
   PIKSCHEDULE("PikSchedule"),
   
-  INVALID("Invalid");
+  INVALID("Invalid"),
+  
+  CANCELSCHEDULE("CancelSchedule");
 
   private String value;
 

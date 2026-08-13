@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AdditionalPayment;
+import com.finbourne.lusid.model.CancelSchedule;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
@@ -84,6 +85,10 @@ public class InterestRateSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_CANCEL_SCHEDULE = "cancelSchedule";
+  @SerializedName(SERIALIZED_NAME_CANCEL_SCHEDULE)
+  private CancelSchedule cancelSchedule;
 
   public InterestRateSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -252,6 +257,27 @@ public class InterestRateSwap extends LusidInstrument {
   }
 
 
+  public InterestRateSwap cancelSchedule(CancelSchedule cancelSchedule) {
+    
+    this.cancelSchedule = cancelSchedule;
+    return this;
+  }
+
+   /**
+   * Get cancelSchedule
+   * @return cancelSchedule
+  **/
+  @jakarta.annotation.Nullable
+  public CancelSchedule getCancelSchedule() {
+    return cancelSchedule;
+  }
+
+
+  public void setCancelSchedule(CancelSchedule cancelSchedule) {
+    this.cancelSchedule = cancelSchedule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -269,6 +295,7 @@ public class InterestRateSwap extends LusidInstrument {
         Objects.equals(this.settlementCcy, interestRateSwap.settlementCcy) &&
         Objects.equals(this.additionalPayments, interestRateSwap.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, interestRateSwap.timeZoneConventions) &&
+        Objects.equals(this.cancelSchedule, interestRateSwap.cancelSchedule) &&
         super.equals(o);
   }
 
@@ -278,7 +305,7 @@ public class InterestRateSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, isNonDeliverable, legs, settlementCcy, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, isNonDeliverable, legs, settlementCcy, additionalPayments, timeZoneConventions, cancelSchedule, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -300,6 +327,7 @@ public class InterestRateSwap extends LusidInstrument {
     sb.append("    settlementCcy: ").append(toIndentedString(settlementCcy)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    cancelSchedule: ").append(toIndentedString(cancelSchedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -330,6 +358,7 @@ public class InterestRateSwap extends LusidInstrument {
     openapiFields.add("settlementCcy");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("cancelSchedule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

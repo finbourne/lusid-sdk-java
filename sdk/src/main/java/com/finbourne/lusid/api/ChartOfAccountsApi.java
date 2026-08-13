@@ -330,7 +330,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+     * [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
      * Create the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
@@ -582,7 +582,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+     * [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
      * Create the given Cleardown Module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -835,7 +835,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+     * [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
      * Create the given General Ledger profile.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. (required)
@@ -1088,7 +1088,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+     * [EARLY ACCESS] CreatePostingModule: Create a Posting Module
      * Create the given Posting Module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -1356,7 +1356,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+     * [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
      * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
@@ -1598,7 +1598,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+     * [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
      * Delete the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts to be deleted. (required)
      * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -1847,7 +1847,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+     * [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
      * Delete the given Cleardown Module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -2097,7 +2097,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+     * [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
      * Delete the given General Ledger Profile.
      * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
      * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
@@ -2347,7 +2347,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+     * [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
      * Delete the given Posting Module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -2642,7 +2642,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetAccount: Get Account
+     * [EARLY ACCESS] GetAccount: Get Account
      * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -2922,7 +2922,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetAccountProperties: Get Account properties
+     * [EARLY ACCESS] GetAccountProperties: Get Account properties
      * Get all the properties of a single account.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -3209,7 +3209,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+     * [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
      * Retrieve the definition of a particular Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -3480,7 +3480,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+     * [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
      * Get all the properties of a single chart of accounts.
      * @param scope The scope of the chart of accounts to list the properties for. (required)
      * @param code The code of the chart of accounts to list the properties for. Together with the scope this uniquely identifies the chart of accounts. (required)
@@ -3744,7 +3744,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+     * [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
      * Retrieve the definition of a Cleardown Module complete with its rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -4009,7 +4009,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+     * [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
      * Get the given General Ledger Profile.
      * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
      * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
@@ -4274,7 +4274,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+     * [EARLY ACCESS] GetPostingModule: Get a Posting Module
      * Retrieve the definition of a Posting Module complete with its rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -4606,7 +4606,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListAccounts: List Accounts
+     * [EARLY ACCESS] ListAccounts: List Accounts
      * List the accounts in a Chart of Accounts
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
@@ -4936,7 +4936,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+     * [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
      * List all the Charts of Accounts matching particular criteria.
      * @return APIlistChartsOfAccountsRequest
      * @http.response.details
@@ -5243,7 +5243,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+     * [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
      * List the Rules in a Cleardown Module
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -5560,7 +5560,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+     * [EARLY ACCESS] ListCleardownModules: List Cleardown Modules
      * List all the Cleardown Modules matching particular criteria.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -5876,7 +5876,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+     * [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
      * List all the General Ledger profiles matching particular criteria.
      * @param scope The scope of the Chart of Accounts (required)
      * @param code The code of the Chart of Accounts (required)
@@ -6185,7 +6185,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+     * [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
      * List the Rules in a Posting Module
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -6502,7 +6502,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListPostingModules: List Posting Modules
+     * [EARLY ACCESS] ListPostingModules: List Posting Modules
      * List all the Posting Modules matching particular criteria.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -6754,7 +6754,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+     * [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
      * Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -7015,7 +7015,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+     * [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
      * Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -7277,7 +7277,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+     * [EARLY ACCESS] PatchPostingModule: Patch a Posting Module
      * Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -7539,7 +7539,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+     * [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
      * Update the given Cleardown Module details.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -7801,7 +7801,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+     * [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
      * Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -8063,7 +8063,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+     * [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
      * Update the given General Ledger profile Mappings.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. (required)
@@ -8325,7 +8325,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+     * [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
      * Update the given Posting Module details.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -8587,7 +8587,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+     * [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
      * Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -8853,7 +8853,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+     * [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
      * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.     Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -9106,7 +9106,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+     * [EARLY ACCESS] UpsertAccounts: Upsert Accounts
      * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
@@ -9363,7 +9363,7 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+     * [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
      * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.     Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)

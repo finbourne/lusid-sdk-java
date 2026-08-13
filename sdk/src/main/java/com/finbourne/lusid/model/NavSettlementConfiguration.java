@@ -71,7 +71,7 @@ public class NavSettlementConfiguration {
    * Get cashSettlement
    * @return cashSettlement
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public NavSettlementConfigurationCategory getCashSettlement() {
     return cashSettlement;
   }
@@ -92,7 +92,7 @@ public class NavSettlementConfiguration {
    * Get deferredCashReceipt
    * @return deferredCashReceipt
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public NavSettlementConfigurationCategory getDeferredCashReceipt() {
     return deferredCashReceipt;
   }
@@ -155,6 +155,8 @@ public class NavSettlementConfiguration {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("cashSettlement");
+    openapiRequiredFields.add("deferredCashReceipt");
   }
 
  /**
@@ -169,15 +171,18 @@ public class NavSettlementConfiguration {
           throw new IllegalArgumentException(String.format("The required field(s) %s in NavSettlementConfiguration is not found in the empty JSON string", NavSettlementConfiguration.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : NavSettlementConfiguration.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `cashSettlement`
-      if (jsonObj.get("cashSettlement") != null && !jsonObj.get("cashSettlement").isJsonNull()) {
-        NavSettlementConfigurationCategory.validateJsonElement(jsonObj.get("cashSettlement"));
-      }
-      // validate the optional field `deferredCashReceipt`
-      if (jsonObj.get("deferredCashReceipt") != null && !jsonObj.get("deferredCashReceipt").isJsonNull()) {
-        NavSettlementConfigurationCategory.validateJsonElement(jsonObj.get("deferredCashReceipt"));
-      }
+      // validate the required field `cashSettlement`
+      NavSettlementConfigurationCategory.validateJsonElement(jsonObj.get("cashSettlement"));
+      // validate the required field `deferredCashReceipt`
+      NavSettlementConfigurationCategory.validateJsonElement(jsonObj.get("deferredCashReceipt"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

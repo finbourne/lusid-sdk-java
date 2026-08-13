@@ -64,6 +64,10 @@ public class OrderUpdateRequest {
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
@@ -134,6 +138,27 @@ public class OrderUpdateRequest {
 
   public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
+  }
+
+
+  public OrderUpdateRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
   }
 
 
@@ -304,6 +329,7 @@ public class OrderUpdateRequest {
     OrderUpdateRequest orderUpdateRequest = (OrderUpdateRequest) o;
     return Objects.equals(this.id, orderUpdateRequest.id) &&
         (this.quantity.compareTo(orderUpdateRequest.getQuantity()) == 0) &&
+        Objects.equals(this.amount, orderUpdateRequest.amount) &&
         Objects.equals(this.portfolioId, orderUpdateRequest.portfolioId) &&
         Objects.equals(this.properties, orderUpdateRequest.properties) &&
         Objects.equals(this.price, orderUpdateRequest.price) &&
@@ -319,7 +345,7 @@ public class OrderUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, portfolioId, properties, price, limitPrice, stopPrice, date, side);
+    return Objects.hash(id, quantity, amount, portfolioId, properties, price, limitPrice, stopPrice, date, side);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -335,6 +361,7 @@ public class OrderUpdateRequest {
     sb.append("class OrderUpdateRequest {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -366,6 +393,7 @@ public class OrderUpdateRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
     openapiFields.add("portfolioId");
     openapiFields.add("properties");
     openapiFields.add("price");
@@ -401,6 +429,10 @@ public class OrderUpdateRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("portfolioId"));

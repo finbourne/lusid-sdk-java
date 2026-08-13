@@ -9083,7 +9083,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set cashFlowCalculationVersion
-         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). (optional)
+         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied).   Under &#39;2&#39; the waterfall governs resolution only: this endpoint returns the de-duplicated instrument and structured result store stream, so a cash flow booked as a transaction   is removed rather than re-listed. Transaction-sourced cash flows are returned by the bucket cash flow drill-down endpoint and by requests using the PortfolioCashFlow or   TransactionCashFlow representation. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {
@@ -11147,7 +11147,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set cashFlowCalculationVersion
-         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). (optional)
+         * @param cashFlowCalculationVersion The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)   and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied).   Under &#39;2&#39; the waterfall governs resolution only: this endpoint returns the de-duplicated instrument and structured result store stream, so a cash flow booked as a transaction   is removed rather than re-listed. Transaction-sourced cash flows are returned by the bucket cash flow drill-down endpoint and by requests using the PortfolioCashFlow or   TransactionCashFlow representation. (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest cashFlowCalculationVersion(String cashFlowCalculationVersion) {

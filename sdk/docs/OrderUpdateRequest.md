@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **quantity** | **java.math.BigDecimal** | The quantity of the given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. | [optional] [default to Map<String, PerpetualProperty>]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
@@ -23,6 +24,7 @@ import java.net.URI;
 
 ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 CurrencyAndAmount Price = new CurrencyAndAmount();
@@ -35,6 +37,7 @@ CurrencyAndAmount StopPrice = new CurrencyAndAmount();
 OrderUpdateRequest orderUpdateRequestInstance = new OrderUpdateRequest()
     .Id(Id)
     .Quantity(Quantity)
+    .Amount(Amount)
     .PortfolioId(PortfolioId)
     .Properties(Properties)
     .Price(Price)

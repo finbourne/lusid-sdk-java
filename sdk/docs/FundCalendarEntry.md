@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  | [default to Version]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
 **leaderNavTypeCode** | **String** | The code of the Nav Type that this Nav Type will follow when set. | [optional] [default to String]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 
 ```java
 import com.finbourne.lusid.model.FundCalendarEntry;
@@ -47,6 +48,7 @@ Boolean ApplyClearDown = true;
 Version Version = new Version();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable String LeaderNavTypeCode = "example LeaderNavTypeCode";
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 
 
 FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
@@ -67,7 +69,8 @@ FundCalendarEntry fundCalendarEntryInstance = new FundCalendarEntry()
     .Properties(Properties)
     .Version(Version)
     .Href(Href)
-    .LeaderNavTypeCode(LeaderNavTypeCode);
+    .LeaderNavTypeCode(LeaderNavTypeCode)
+    .StagedModifications(StagedModifications);
 ```
 
 
