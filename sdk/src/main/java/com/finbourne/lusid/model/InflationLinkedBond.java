@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.InflationIndexConventions;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.RoundingConvention;
+import com.finbourne.lusid.model.StepSchedule;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
@@ -132,6 +133,10 @@ public class InflationLinkedBond extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_AMORTISATION_SCHEDULE = "amortisationSchedule";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_SCHEDULE)
+  private StepSchedule amortisationSchedule;
 
   public InflationLinkedBond() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -531,6 +536,27 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
 
+  public InflationLinkedBond amortisationSchedule(StepSchedule amortisationSchedule) {
+    
+    this.amortisationSchedule = amortisationSchedule;
+    return this;
+  }
+
+   /**
+   * Get amortisationSchedule
+   * @return amortisationSchedule
+  **/
+  @jakarta.annotation.Nullable
+  public StepSchedule getAmortisationSchedule() {
+    return amortisationSchedule;
+  }
+
+
+  public void setAmortisationSchedule(StepSchedule amortisationSchedule) {
+    this.amortisationSchedule = amortisationSchedule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -559,6 +585,7 @@ public class InflationLinkedBond extends LusidInstrument {
         Objects.equals(this.tradingConventions, inflationLinkedBond.tradingConventions) &&
         (this.originalIssuePrice.compareTo(inflationLinkedBond.getOriginalIssuePrice()) == 0) &&
         Objects.equals(this.timeZoneConventions, inflationLinkedBond.timeZoneConventions) &&
+        Objects.equals(this.amortisationSchedule, inflationLinkedBond.amortisationSchedule) &&
         super.equals(o);
   }
 
@@ -568,7 +595,7 @@ public class InflationLinkedBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, tradingConventions, originalIssuePrice, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, tradingConventions, originalIssuePrice, timeZoneConventions, amortisationSchedule, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -601,6 +628,7 @@ public class InflationLinkedBond extends LusidInstrument {
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    amortisationSchedule: ").append(toIndentedString(amortisationSchedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -642,6 +670,7 @@ public class InflationLinkedBond extends LusidInstrument {
     openapiFields.add("tradingConventions");
     openapiFields.add("originalIssuePrice");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("amortisationSchedule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

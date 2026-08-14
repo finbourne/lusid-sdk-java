@@ -1689,6 +1689,7 @@ Class | Method | HTTP request | Description
  - [PaymentDetailsReference](docs/PaymentDetailsReference.md)
  - [PaymentDetailsReferenceResponse](docs/PaymentDetailsReferenceResponse.md)
  - [PaymentDetailsSeriesIdentifiers](docs/PaymentDetailsSeriesIdentifiers.md)
+ - [PaymentInKindEvent](docs/PaymentInKindEvent.md)
  - [PaymentInstruction](docs/PaymentInstruction.md)
  - [PaymentInstructionRequest](docs/PaymentInstructionRequest.md)
  - [PaymentInstructionStatus](docs/PaymentInstructionStatus.md)

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractional units. | [optional] [default to String]
 **fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
 **fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
+**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
 
 ```java
 import com.finbourne.lusid.model.StockSplitEvent;
@@ -30,6 +31,7 @@ UnitsRatio UnitsRatio = new UnitsRatio();
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
 @jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
+NewInstrument NewInstrument = new NewInstrument();
 
 
 StockSplitEvent stockSplitEventInstance = new StockSplitEvent()
@@ -41,7 +43,8 @@ StockSplitEvent stockSplitEventInstance = new StockSplitEvent()
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
     .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
-    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces);
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
+    .NewInstrument(NewInstrument);
 ```
 
 
