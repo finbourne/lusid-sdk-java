@@ -5,7 +5,7 @@ Event for cash option exercises.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cashFlowPerUnit** | **java.math.BigDecimal** | The cashflow per unit | [optional] [default to java.math.BigDecimal]
+**cashFlowPerUnit** | **java.math.BigDecimal** | The cash amount settled for each unit of the option held. This is a cash amount, not a rate:  it is taken as supplied and multiplied by the units held, with no further scaling and no  discounting applied.     For an interest rate swaption the strike is a rate, so the caller computes the settlement  themselves and passes the result, for example  notional x (marketRate - strikeRate) x annuity. Supplying the raw rate instead yields a  settlement smaller than intended by a factor of the notional. | [optional] [default to java.math.BigDecimal]
 **exerciseDate** | [**OffsetDateTime**](OffsetDateTime.md) | The exercise date of the option. | [optional] [default to OffsetDateTime]
 **deliveryDate** | [**OffsetDateTime**](OffsetDateTime.md) | The delivery date of the option. | [optional] [default to OffsetDateTime]
 **exerciseType** | **String** | The optionality type of the underlying option. Available values: None, European, Bermudan, American. | [default to String]

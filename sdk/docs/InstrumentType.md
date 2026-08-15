@@ -62,6 +62,8 @@ InstrumentType method = InstrumentType.VOLATILITYSWAP;
 InstrumentType method = InstrumentType.TOBEANNOUNCEDOPTION;
 InstrumentType method = InstrumentType.COMMODITYFORWARD;
 InstrumentType method = InstrumentType.BONDOPTION;
+InstrumentType method = InstrumentType.CDSOPTION;
+InstrumentType method = InstrumentType.COMMODITYCALENDARSWAP;
 ```
 
 

@@ -23,6 +23,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -117,6 +118,14 @@ public class ApplicableInstrumentEvent {
   public static final String SERIALIZED_NAME_ELIGIBLE_BALANCE = "eligibleBalance";
   @SerializedName(SERIALIZED_NAME_ELIGIBLE_BALANCE)
   private java.math.BigDecimal eligibleBalance;
+
+  public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_STATUS = "instrumentEventStatus";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_STATUS)
+  private String instrumentEventStatus;
+
+  public static final String SERIALIZED_NAME_ACCOUNTING_DATE = "accountingDate";
+  @SerializedName(SERIALIZED_NAME_ACCOUNTING_DATE)
+  private OffsetDateTime accountingDate;
 
   public ApplicableInstrumentEvent() {
   }
@@ -444,6 +453,48 @@ public class ApplicableInstrumentEvent {
   }
 
 
+  public ApplicableInstrumentEvent instrumentEventStatus(String instrumentEventStatus) {
+    
+    this.instrumentEventStatus = instrumentEventStatus;
+    return this;
+  }
+
+   /**
+   * Available values: Active, ActiveReversal, ActiveTrueUp.
+   * @return instrumentEventStatus
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentEventStatus() {
+    return instrumentEventStatus;
+  }
+
+
+  public void setInstrumentEventStatus(String instrumentEventStatus) {
+    this.instrumentEventStatus = instrumentEventStatus;
+  }
+
+
+  public ApplicableInstrumentEvent accountingDate(OffsetDateTime accountingDate) {
+    
+    this.accountingDate = accountingDate;
+    return this;
+  }
+
+   /**
+   * Get accountingDate
+   * @return accountingDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAccountingDate() {
+    return accountingDate;
+  }
+
+
+  public void setAccountingDate(OffsetDateTime accountingDate) {
+    this.accountingDate = accountingDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -468,7 +519,9 @@ public class ApplicableInstrumentEvent {
         Objects.equals(this.transactions, applicableInstrumentEvent.transactions) &&
         Objects.equals(this.transactionDiagnostics, applicableInstrumentEvent.transactionDiagnostics) &&
         Objects.equals(this.appliedInstrumentEventInstruction, applicableInstrumentEvent.appliedInstrumentEventInstruction) &&
-        (this.eligibleBalance.compareTo(applicableInstrumentEvent.getEligibleBalance()) == 0);
+        (this.eligibleBalance.compareTo(applicableInstrumentEvent.getEligibleBalance()) == 0) &&
+        Objects.equals(this.instrumentEventStatus, applicableInstrumentEvent.instrumentEventStatus) &&
+        Objects.equals(this.accountingDate, applicableInstrumentEvent.accountingDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -477,7 +530,7 @@ public class ApplicableInstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, generatedEventDiagnostics, loadedEvent, appliedInstrumentEventInstructionId, transactions, transactionDiagnostics, appliedInstrumentEventInstruction, eligibleBalance);
+    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, generatedEventDiagnostics, loadedEvent, appliedInstrumentEventInstructionId, transactions, transactionDiagnostics, appliedInstrumentEventInstruction, eligibleBalance, instrumentEventStatus, accountingDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -506,6 +559,8 @@ public class ApplicableInstrumentEvent {
     sb.append("    transactionDiagnostics: ").append(toIndentedString(transactionDiagnostics)).append("\n");
     sb.append("    appliedInstrumentEventInstruction: ").append(toIndentedString(appliedInstrumentEventInstruction)).append("\n");
     sb.append("    eligibleBalance: ").append(toIndentedString(eligibleBalance)).append("\n");
+    sb.append("    instrumentEventStatus: ").append(toIndentedString(instrumentEventStatus)).append("\n");
+    sb.append("    accountingDate: ").append(toIndentedString(accountingDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -543,6 +598,8 @@ public class ApplicableInstrumentEvent {
     openapiFields.add("transactionDiagnostics");
     openapiFields.add("appliedInstrumentEventInstruction");
     openapiFields.add("eligibleBalance");
+    openapiFields.add("instrumentEventStatus");
+    openapiFields.add("accountingDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -628,6 +685,9 @@ public class ApplicableInstrumentEvent {
       // validate the optional field `appliedInstrumentEventInstruction`
       if (jsonObj.get("appliedInstrumentEventInstruction") != null && !jsonObj.get("appliedInstrumentEventInstruction").isJsonNull()) {
         InstrumentEventInstruction.validateJsonElement(jsonObj.get("appliedInstrumentEventInstruction"));
+      }
+      if ((jsonObj.get("instrumentEventStatus") != null && !jsonObj.get("instrumentEventStatus").isJsonNull()) && !jsonObj.get("instrumentEventStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentEventStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventStatus").toString()));
       }
   }
 

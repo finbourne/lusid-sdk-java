@@ -114,7 +114,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
   }
 
    /**
-   * The cashflow per unit
+   * The cash amount settled for each unit of the option held. This is a cash amount, not a rate:  it is taken as supplied and multiplied by the units held, with no further scaling and no  discounting applied.     For an interest rate swaption the strike is a rate, so the caller computes the settlement  themselves and passes the result, for example  notional x (marketRate - strikeRate) x annuity. Supplying the raw rate instead yields a  settlement smaller than intended by a factor of the notional.
    * @return cashFlowPerUnit
   **/
   @jakarta.annotation.Nullable

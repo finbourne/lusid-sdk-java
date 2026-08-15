@@ -43,6 +43,8 @@ public enum ScheduleType {
   
   PIKSCHEDULE("PikSchedule"),
   
+  COMMODITYCALENDARSCHEDULE("CommodityCalendarSchedule"),
+  
   INVALID("Invalid"),
   
   CANCELSCHEDULE("CancelSchedule");

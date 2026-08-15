@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **transactionDiagnostics** | [**TransactionDiagnostics**](TransactionDiagnostics.md) |  | [optional] [default to TransactionDiagnostics]
 **appliedInstrumentEventInstruction** | [**InstrumentEventInstruction**](InstrumentEventInstruction.md) |  | [optional] [default to InstrumentEventInstruction]
 **eligibleBalance** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
+**instrumentEventStatus** | **String** | Available values: Active, ActiveReversal, ActiveTrueUp. | [optional] [default to String]
+**accountingDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.ApplicableInstrumentEvent;
@@ -42,6 +44,8 @@ InstrumentEventHolder LoadedEvent = new InstrumentEventHolder();
 TransactionDiagnostics TransactionDiagnostics = new TransactionDiagnostics();
 InstrumentEventInstruction AppliedInstrumentEventInstruction = new InstrumentEventInstruction();
 @jakarta.annotation.Nullable java.math.BigDecimal EligibleBalance = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String InstrumentEventStatus = "example InstrumentEventStatus";
+@jakarta.annotation.Nullable OffsetDateTime AccountingDate = OffsetDateTime.now();
 
 
 ApplicableInstrumentEvent applicableInstrumentEventInstance = new ApplicableInstrumentEvent()
@@ -59,7 +63,9 @@ ApplicableInstrumentEvent applicableInstrumentEventInstance = new ApplicableInst
     .Transactions(Transactions)
     .TransactionDiagnostics(TransactionDiagnostics)
     .AppliedInstrumentEventInstruction(AppliedInstrumentEventInstruction)
-    .EligibleBalance(EligibleBalance);
+    .EligibleBalance(EligibleBalance)
+    .InstrumentEventStatus(InstrumentEventStatus)
+    .AccountingDate(AccountingDate);
 ```
 
 

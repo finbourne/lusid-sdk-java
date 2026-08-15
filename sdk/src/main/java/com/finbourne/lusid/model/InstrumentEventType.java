@@ -217,7 +217,9 @@ public enum InstrumentEventType {
   
   COMMODITYFORWARDCASHSETTLEMENTEVENT("CommodityForwardCashSettlementEvent"),
   
-  PAYMENTINKINDEVENT("PaymentInKindEvent");
+  PAYMENTINKINDEVENT("PaymentInKindEvent"),
+  
+  COMMODITYFORWARDPHYSICALSETTLEMENTEVENT("CommodityForwardPhysicalSettlementEvent");
 
   private String value;
 
