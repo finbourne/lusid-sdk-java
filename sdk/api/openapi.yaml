@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9690
+  version: 0.11.9694
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -15150,6 +15150,133 @@ paths:
                     lineage: Some-market-data-provider-or-other
                     volatility: 0.15
                     marketDataType: ConstantVolatilitySurface
+                - scope: ExampleScope
+                  marketDataId:
+                    provider: Lusid
+                    effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                    marketAsset: InflationCurve/HICPxT
+                  marketData:
+                    buildDate: 2021-01-20T00:00:00.0000000+00:00
+                    instruments:
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    quotes:
+                    - quoteType: Rate
+                      value: 0.02
+                    - quoteType: Rate
+                      value: 0.021
+                    lineage: Some-market-data-provider-or-other
+                    marketDataType: InflationCurveData
                 href: https://lusid.com/api/
                 links:
                 - relation: RequestLogs
@@ -15244,6 +15371,133 @@ paths:
                     lineage: Some-market-data-provider-or-other
                     volatility: 0.15
                     marketDataType: ConstantVolatilitySurface
+                - scope: ExampleScope
+                  marketDataId:
+                    provider: Lusid
+                    effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                    marketAsset: InflationCurve/HICPxT
+                  marketData:
+                    buildDate: 2021-01-20T00:00:00.0000000+00:00
+                    instruments:
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    quotes:
+                    - quoteType: Rate
+                      value: 0.02
+                    - quoteType: Rate
+                      value: 0.021
+                    lineage: Some-market-data-provider-or-other
+                    marketDataType: InflationCurveData
                 href: https://lusid.com/api/
                 links:
                 - relation: RequestLogs
@@ -15338,6 +15592,133 @@ paths:
                     lineage: Some-market-data-provider-or-other
                     volatility: 0.15
                     marketDataType: ConstantVolatilitySurface
+                - scope: ExampleScope
+                  marketDataId:
+                    provider: Lusid
+                    effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                    marketAsset: InflationCurve/HICPxT
+                  marketData:
+                    buildDate: 2021-01-20T00:00:00.0000000+00:00
+                    instruments:
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    - startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      inflationLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        flowConventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        calculationType: ZeroCoupon
+                        inflationIndexConventions:
+                          inflationIndexName: HICPxT
+                          currency: EUR
+                          observationLag: 3M
+                          inflationInterpolation: Flat
+                          inflationFrequency: 1M
+                          inflationRollDay: 1
+                        notional: 1000000
+                        payReceive: Pay
+                        instrumentType: InflationLeg
+                      fixedLeg:
+                        startDate: 2021-01-20T00:00:00.0000000+00:00
+                        maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                        legDefinition:
+                          conventions:
+                            currency: EUR
+                            paymentFrequency: 1T
+                            dayCountConvention: OneOne
+                            rollConvention: None
+                            paymentCalendars: []
+                            resetCalendars: []
+                            settleDays: 0
+                            resetDays: 0
+                            leapDaysIncluded: true
+                            accrualDateAdjustment: Adjusted
+                            businessDayConvention: None
+                            accrualDayCountConvention: OneOne
+                          notionalExchangeType: None
+                          payReceive: Receive
+                          rateOrSpread: 0.02
+                          resetConvention: InAdvance
+                          stubType: ShortFront
+                        notional: 1000000
+                        overrides: {}
+                        instrumentType: FixedLeg
+                      additionalPayments: []
+                      instrumentType: InflationSwap
+                    quotes:
+                    - quoteType: Rate
+                      value: 0.02
+                    - quoteType: Rate
+                      value: 0.021
+                    lineage: Some-market-data-provider-or-other
+                    marketDataType: InflationCurveData
                 href: https://lusid.com/api/
                 links:
                 - relation: RequestLogs
@@ -15485,6 +15866,133 @@ paths:
                   lineage: Some-market-data-provider-or-other
                   volatility: 0.15
                   marketDataType: ConstantVolatilitySurface
+              fourth-item:
+                marketDataId:
+                  provider: Lusid
+                  effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                  marketAsset: InflationCurve/HICPxT
+                marketData:
+                  buildDate: 2021-01-20T00:00:00.0000000+00:00
+                  instruments:
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  quotes:
+                  - quoteType: Rate
+                    value: 0.02
+                  - quoteType: Rate
+                    value: 0.021
+                  lineage: Some-market-data-provider-or-other
+                  marketDataType: InflationCurveData
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/UpsertComplexMarketDataRequest'
@@ -15573,6 +16081,133 @@ paths:
                   lineage: Some-market-data-provider-or-other
                   volatility: 0.15
                   marketDataType: ConstantVolatilitySurface
+              fourth-item:
+                marketDataId:
+                  provider: Lusid
+                  effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                  marketAsset: InflationCurve/HICPxT
+                marketData:
+                  buildDate: 2021-01-20T00:00:00.0000000+00:00
+                  instruments:
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  quotes:
+                  - quoteType: Rate
+                    value: 0.02
+                  - quoteType: Rate
+                    value: 0.021
+                  lineage: Some-market-data-provider-or-other
+                  marketDataType: InflationCurveData
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/UpsertComplexMarketDataRequest'
@@ -15661,6 +16296,133 @@ paths:
                   lineage: Some-market-data-provider-or-other
                   volatility: 0.15
                   marketDataType: ConstantVolatilitySurface
+              fourth-item:
+                marketDataId:
+                  provider: Lusid
+                  effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                  marketAsset: InflationCurve/HICPxT
+                marketData:
+                  buildDate: 2021-01-20T00:00:00.0000000+00:00
+                  instruments:
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  quotes:
+                  - quoteType: Rate
+                    value: 0.02
+                  - quoteType: Rate
+                    value: 0.021
+                  lineage: Some-market-data-provider-or-other
+                  marketDataType: InflationCurveData
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/UpsertComplexMarketDataRequest'
@@ -15749,6 +16511,133 @@ paths:
                   lineage: Some-market-data-provider-or-other
                   volatility: 0.15
                   marketDataType: ConstantVolatilitySurface
+              fourth-item:
+                marketDataId:
+                  provider: Lusid
+                  effectiveAt: 2021-01-20T00:00:00.0000000+00:00
+                  marketAsset: InflationCurve/HICPxT
+                marketData:
+                  buildDate: 2021-01-20T00:00:00.0000000+00:00
+                  instruments:
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2022-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  - startDate: 2021-01-20T00:00:00.0000000+00:00
+                    maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                    inflationLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      flowConventions:
+                        currency: EUR
+                        paymentFrequency: 1T
+                        dayCountConvention: OneOne
+                        rollConvention: None
+                        paymentCalendars: []
+                        resetCalendars: []
+                        settleDays: 0
+                        resetDays: 0
+                        leapDaysIncluded: true
+                        accrualDateAdjustment: Adjusted
+                        businessDayConvention: None
+                        accrualDayCountConvention: OneOne
+                      calculationType: ZeroCoupon
+                      inflationIndexConventions:
+                        inflationIndexName: HICPxT
+                        currency: EUR
+                        observationLag: 3M
+                        inflationInterpolation: Flat
+                        inflationFrequency: 1M
+                        inflationRollDay: 1
+                      notional: 1000000
+                      payReceive: Pay
+                      instrumentType: InflationLeg
+                    fixedLeg:
+                      startDate: 2021-01-20T00:00:00.0000000+00:00
+                      maturityDate: 2023-01-20T00:00:00.0000000+00:00
+                      legDefinition:
+                        conventions:
+                          currency: EUR
+                          paymentFrequency: 1T
+                          dayCountConvention: OneOne
+                          rollConvention: None
+                          paymentCalendars: []
+                          resetCalendars: []
+                          settleDays: 0
+                          resetDays: 0
+                          leapDaysIncluded: true
+                          accrualDateAdjustment: Adjusted
+                          businessDayConvention: None
+                          accrualDayCountConvention: OneOne
+                        notionalExchangeType: None
+                        payReceive: Receive
+                        rateOrSpread: 0.02
+                        resetConvention: InAdvance
+                        stubType: ShortFront
+                      notional: 1000000
+                      overrides: {}
+                      instrumentType: FixedLeg
+                    additionalPayments: []
+                    instrumentType: InflationSwap
+                  quotes:
+                  - quoteType: Rate
+                    value: 0.02
+                  - quoteType: Rate
+                    value: 0.021
+                  lineage: Some-market-data-provider-or-other
+                  marketDataType: InflationCurveData
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/UpsertComplexMarketDataRequest'
@@ -177544,7 +178433,7 @@ components:
             \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,\
             \ FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,\
             \ FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData,\
-            \ ConstantVolatilitySurface."
+            \ ConstantVolatilitySurface, InflationCurveData."
           enum:
           - DiscountFactorCurveData
           - EquityVolSurfaceData
@@ -177560,6 +178449,7 @@ components:
           - CreditSpreadCurveData
           - EquityCurveByPricesData
           - ConstantVolatilitySurface
+          - InflationCurveData
           type: string
       required:
       - marketDataType
@@ -180620,7 +181510,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -180636,6 +181526,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - assetType
@@ -185837,7 +186728,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -185853,6 +186744,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -191756,7 +192648,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -191772,6 +192664,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -193589,7 +194482,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -193605,6 +194498,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -194114,7 +195008,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -194130,6 +195024,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -205115,7 +206010,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -205131,6 +206026,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - domCcy
@@ -205183,7 +206079,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -205199,6 +206095,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -205306,7 +206203,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -205322,6 +206219,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -205651,7 +206549,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -205667,6 +206565,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -205733,7 +206632,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -205749,6 +206648,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -206273,7 +207173,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -206289,6 +207189,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -211470,6 +212371,83 @@ components:
       - classificationCode
       - classificationSystemName
       type: object
+    InflationCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - properties:
+          buildDate:
+            description: Build date of the curve - this is the reference date for
+              resolution of the swap constituents.
+            format: date-time
+            type: string
+          instruments:
+            description: "The set of instruments that define the curve.\r\nThe only\
+              \ supported instrument type is: [InflationSwap]."
+            items:
+              $ref: '#/components/schemas/LusidInstrument'
+            type: array
+          quotes:
+            description: The market quotes corresponding to the the instruments used
+              to define the curve
+            items:
+              $ref: '#/components/schemas/MarketQuote'
+            type: array
+          seasonalFactors:
+            description: "Optional multiplicative seasonal adjustment factors, one\
+              \ per calendar month starting from January.\r\nIf provided there must\
+              \ be exactly 12 factors."
+            items:
+              format: double
+              type: number
+            nullable: true
+            type: array
+          outputType:
+            description: "What the values of the built curve represent.\r\nSupported\
+              \ string (enumeration) values are: [Level, Ratio].\r\nDefaults to \"\
+              Level\" if not provided."
+            nullable: true
+            type: string
+          lineage:
+            description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+            maxLength: 1024
+            minLength: 0
+            nullable: true
+            type: string
+          marketDataOptions:
+            $ref: '#/components/schemas/MarketDataOptions'
+          version:
+            $ref: '#/components/schemas/Version'
+          marketDataType:
+            description: "Available values: DiscountFactorCurveData, EquityVolSurfaceData,\
+              \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
+              \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
+              \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
+            enum:
+            - DiscountFactorCurveData
+            - EquityVolSurfaceData
+            - FxVolSurfaceData
+            - IrVolCubeData
+            - OpaqueMarketData
+            - YieldCurveData
+            - FxForwardCurveData
+            - FxForwardPipsCurveData
+            - FxForwardTenorCurveData
+            - FxForwardTenorPipsCurveData
+            - FxForwardCurveByQuoteReference
+            - CreditSpreadCurveData
+            - EquityCurveByPricesData
+            - ConstantVolatilitySurface
+            - InflationCurveData
+            type: string
+        required:
+        - buildDate
+        - instruments
+        - marketDataType
+        - quotes
+        type: object
+      description: "Market data for an inflation curve, represented by a list of zero-coupon\
+        \ inflation swap\r\ninstruments and corresponding market quotes."
     InflationFixingDependency:
       allOf:
       - $ref: '#/components/schemas/EconomicDependency'
@@ -219680,7 +220658,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -219696,6 +220674,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate
@@ -223377,6 +224356,7 @@ components:
       - CreditSpreadCurveData
       - EquityCurveByPricesData
       - ConstantVolatilitySurface
+      - InflationCurveData
       type: string
     MarketObservableType:
       enum:
@@ -226184,7 +227164,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -226200,6 +227180,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - document
@@ -337329,7 +338310,7 @@ components:
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
               \ FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData,\
               \ FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData,\
-              \ EquityCurveByPricesData, ConstantVolatilitySurface."
+              \ EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData."
             enum:
             - DiscountFactorCurveData
             - EquityVolSurfaceData
@@ -337345,6 +338326,7 @@ components:
             - CreditSpreadCurveData
             - EquityCurveByPricesData
             - ConstantVolatilitySurface
+            - InflationCurveData
             type: string
         required:
         - baseDate

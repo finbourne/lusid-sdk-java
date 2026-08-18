@@ -28,6 +28,7 @@ MarketDataType method = MarketDataType.FXFORWARDCURVEBYQUOTEREFERENCE;
 MarketDataType method = MarketDataType.CREDITSPREADCURVEDATA;
 MarketDataType method = MarketDataType.EQUITYCURVEBYPRICESDATA;
 MarketDataType method = MarketDataType.CONSTANTVOLATILITYSURFACE;
+MarketDataType method = MarketDataType.INFLATIONCURVEDATA;
 ```
 
 

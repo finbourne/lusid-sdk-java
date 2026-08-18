@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplexMarketData {
   /**
-   * Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface.
+   * Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData.
    */
   @JsonAdapter(MarketDataTypeEnum.Adapter.class)
   public enum MarketDataTypeEnum {
@@ -80,7 +80,9 @@ public class ComplexMarketData {
     
     EQUITYCURVEBYPRICESDATA("EquityCurveByPricesData"),
     
-    CONSTANTVOLATILITYSURFACE("ConstantVolatilitySurface");
+    CONSTANTVOLATILITYSURFACE("ConstantVolatilitySurface"),
+    
+    INFLATIONCURVEDATA("InflationCurveData");
 
     private String value;
 
@@ -134,7 +136,7 @@ public class ComplexMarketData {
   }
 
    /**
-   * Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface.
+   * Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData.
    * @return marketDataType
   **/
   @jakarta.annotation.Nonnull
@@ -247,6 +249,9 @@ public class ComplexMarketData {
           break;
         case "FxVolSurfaceData":
           FxVolSurfaceData.validateJsonElement(jsonElement);
+          break;
+        case "InflationCurveData":
+          InflationCurveData.validateJsonElement(jsonElement);
           break;
         case "IrVolCubeData":
           IrVolCubeData.validateJsonElement(jsonElement);

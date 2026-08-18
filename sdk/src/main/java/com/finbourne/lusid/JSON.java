@@ -588,6 +588,7 @@ public class JSON {
                         classByDiscriminatorValue.put("FxForwardTenorCurveData", com.finbourne.lusid.model.FxForwardTenorCurveData.class);
                         classByDiscriminatorValue.put("FxForwardTenorPipsCurveData", com.finbourne.lusid.model.FxForwardTenorPipsCurveData.class);
                         classByDiscriminatorValue.put("FxVolSurfaceData", com.finbourne.lusid.model.FxVolSurfaceData.class);
+                        classByDiscriminatorValue.put("InflationCurveData", com.finbourne.lusid.model.InflationCurveData.class);
                         classByDiscriminatorValue.put("IrVolCubeData", com.finbourne.lusid.model.IrVolCubeData.class);
                         classByDiscriminatorValue.put("OpaqueMarketData", com.finbourne.lusid.model.OpaqueMarketData.class);
                         classByDiscriminatorValue.put("YieldCurveData", com.finbourne.lusid.model.YieldCurveData.class);
@@ -1566,6 +1567,15 @@ public class JSON {
                         classByDiscriminatorValue.put("IndexProjectionDependency", com.finbourne.lusid.model.IndexProjectionDependency.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "dependencyType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.InflationCurveData.class, new TypeSelector<com.finbourne.lusid.model.InflationCurveData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.InflationCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InflationCurveData", com.finbourne.lusid.model.InflationCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.InflationFixingDependency.class, new TypeSelector<com.finbourne.lusid.model.InflationFixingDependency>() {
@@ -3701,6 +3711,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndexModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndexProjectionDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndustryClassifier.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationCurveData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationFixingDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationIndexConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationLeg.CustomTypeAdapterFactory());
