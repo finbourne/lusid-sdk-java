@@ -112,6 +112,8 @@ InstrumentEventType method = InstrumentEventType.PIKBONDINTERESTEVENT;
 InstrumentEventType method = InstrumentEventType.COMMODITYFORWARDCASHSETTLEMENTEVENT;
 InstrumentEventType method = InstrumentEventType.PAYMENTINKINDEVENT;
 InstrumentEventType method = InstrumentEventType.COMMODITYFORWARDPHYSICALSETTLEMENTEVENT;
+InstrumentEventType method = InstrumentEventType.CANCELSWAPEVENT;
+InstrumentEventType method = InstrumentEventType.BONDOPTIONTERMINATIONEVENT;
 ```
 
 

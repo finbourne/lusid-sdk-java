@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | Possible SecurityElections for this Bonus Issue event, if any. | [optional] [default to List<SecurityOfferElection>]
 **cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | Possible CashOfferElections for this Bonus Issue event, if any. | [optional] [default to List<CashOfferElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | Possible LapseElections for this Bonus Issue event, if any. | [optional] [default to List<LapseElection>]
+**mixedLotConstituentsElections** | [**List&lt;MixedLotConstituentsElection&gt;**](MixedLotConstituentsElection.md) | Possible MixedLotConstituentsElections for this Bonus Issue event, if any. Each election carries one or more  new securities credited alongside the retained original position (retain-and-add). | [optional] [default to List<MixedLotConstituentsElection>]
 
 ```java
 import com.finbourne.lusid.model.BonusIssueEvent;
@@ -34,6 +35,7 @@ OffsetDateTime PaymentDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<MixedLotConstituentsElection> MixedLotConstituentsElections = new List<MixedLotConstituentsElection>();
 
 
 BonusIssueEvent bonusIssueEventInstance = new BonusIssueEvent()
@@ -47,7 +49,8 @@ BonusIssueEvent bonusIssueEventInstance = new BonusIssueEvent()
     .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
     .SecurityOfferElections(SecurityOfferElections)
     .CashOfferElections(CashOfferElections)
-    .LapseElections(LapseElections);
+    .LapseElections(LapseElections)
+    .MixedLotConstituentsElections(MixedLotConstituentsElections);
 ```
 
 
