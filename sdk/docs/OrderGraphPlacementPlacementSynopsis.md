@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **details** | [**List&lt;OrderGraphPlacementChildPlacementDetail&gt;**](OrderGraphPlacementChildPlacementDetail.md) | Identifiers for each child placement for this placement. | [default to List<OrderGraphPlacementChildPlacementDetail>]
-**quantity** | **java.math.BigDecimal** | Total number of units placed. | [optional] [default to java.math.BigDecimal]
-**amount** | **java.math.BigDecimal** | Total monetary value placed, in the block currency. | [optional] [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | Total number of units placed. Null where the placement is sized by amount. | [optional] [default to java.math.BigDecimal]
+**amount** | **java.math.BigDecimal** | Total monetary value placed, in the block currency. Null where the placement has no amount. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.OrderGraphPlacementPlacementSynopsis;

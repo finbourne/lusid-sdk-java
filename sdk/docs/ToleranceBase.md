@@ -1,5 +1,5 @@
-# com.finbourne.lusid.model.CoreToleranceBase
-Abstract base for tolerances that apply to core matching rules. Distinguishes core tolerances from  aggregate tolerances at the type level (both share a common tolerance base).
+# com.finbourne.lusid.model.ToleranceBase
+Base class for the tolerances that relax how strictly a matching rule compares its two sides. Polymorphic  by ToleranceType; each supported type has a corresponding inherited class.
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ruleName** | **String** | The reference name of the rule that this tolerance relaxes. | [default to String]
 
 ```java
-import com.finbourne.lusid.model.CoreToleranceBase;
+import com.finbourne.lusid.model.ToleranceBase;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -18,7 +18,7 @@ String ToleranceType = "example ToleranceType";
 String RuleName = "example RuleName";
 
 
-CoreToleranceBase coreToleranceBaseInstance = new CoreToleranceBase()
+ToleranceBase toleranceBaseInstance = new ToleranceBase()
     .ToleranceType(ToleranceType)
     .RuleName(RuleName);
 ```

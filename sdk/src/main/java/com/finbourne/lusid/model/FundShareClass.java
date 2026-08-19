@@ -68,6 +68,10 @@ public class FundShareClass extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_DISTRIBUTION_PAYMENT_TYPE)
   private String distributionPaymentType;
 
+  public static final String SERIALIZED_NAME_DISTRIBUTION_TYPE = "distributionType";
+  @SerializedName(SERIALIZED_NAME_DISTRIBUTION_TYPE)
+  private String distributionType;
+
   public static final String SERIALIZED_NAME_HEDGING = "hedging";
   @SerializedName(SERIALIZED_NAME_HEDGING)
   private String hedging;
@@ -79,6 +83,10 @@ public class FundShareClass extends LusidInstrument {
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
   private List<SimpleRoundingConvention> roundingConventions;
+
+  public static final String SERIALIZED_NAME_ROUNDING_CONVENTION_UNITS = "roundingConventionUnits";
+  @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTION_UNITS)
+  private List<SimpleRoundingConvention> roundingConventionUnits;
 
   public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
@@ -123,7 +131,7 @@ public class FundShareClass extends LusidInstrument {
    * The type of distribution that the ShareClass will calculate. Can be either &#39;Income&#39; or &#39;Accumulation&#39; - Income classes will pay out and Accumulation classes will retain their ShareClass attributable income. Available values: Income, Accumulation.
    * @return fundShareClassType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getFundShareClassType() {
     return fundShareClassType;
   }
@@ -144,7 +152,7 @@ public class FundShareClass extends LusidInstrument {
    * The tax treatment applied to any distributions calculated within the ShareClass. Can be either &#39;Net&#39; (Distribution Calculated net of tax) or &#39;Gross&#39; (Distribution calculated gross of tax). Available values: Invalid, Gross, Net.
    * @return distributionPaymentType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDistributionPaymentType() {
     return distributionPaymentType;
   }
@@ -152,6 +160,27 @@ public class FundShareClass extends LusidInstrument {
 
   public void setDistributionPaymentType(String distributionPaymentType) {
     this.distributionPaymentType = distributionPaymentType;
+  }
+
+
+  public FundShareClass distributionType(String distributionType) {
+    
+    this.distributionType = distributionType;
+    return this;
+  }
+
+   /**
+   * The type of distribution calculated for the ShareClass. Can be either &#39;Income&#39; or &#39;Accumulation&#39;. Available values: Income, Accumulation.
+   * @return distributionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getDistributionType() {
+    return distributionType;
+  }
+
+
+  public void setDistributionType(String distributionType) {
+    this.distributionType = distributionType;
   }
 
 
@@ -165,7 +194,7 @@ public class FundShareClass extends LusidInstrument {
    * A flag to indicate the ShareClass is operating currency hedging as a means to limit currency risk as part of its investment strategy. Available values: Invalid, None, ApplyHedging.
    * @return hedging
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getHedging() {
     return hedging;
   }
@@ -226,6 +255,35 @@ public class FundShareClass extends LusidInstrument {
   }
 
 
+  public FundShareClass roundingConventionUnits(List<SimpleRoundingConvention> roundingConventionUnits) {
+    
+    this.roundingConventionUnits = roundingConventionUnits;
+    return this;
+  }
+
+  public FundShareClass addRoundingConventionUnitsItem(SimpleRoundingConvention roundingConventionUnitsItem) {
+    if (this.roundingConventionUnits == null) {
+      this.roundingConventionUnits = new ArrayList<>();
+    }
+    this.roundingConventionUnits.add(roundingConventionUnitsItem);
+    return this;
+  }
+
+   /**
+   * Rounding Conventions used for the FundShareClass units
+   * @return roundingConventionUnits
+  **/
+  @jakarta.annotation.Nullable
+  public List<SimpleRoundingConvention> getRoundingConventionUnits() {
+    return roundingConventionUnits;
+  }
+
+
+  public void setRoundingConventionUnits(List<SimpleRoundingConvention> roundingConventionUnits) {
+    this.roundingConventionUnits = roundingConventionUnits;
+  }
+
+
   public FundShareClass tradingConventions(TradingConventions tradingConventions) {
     
     this.tradingConventions = tradingConventions;
@@ -281,9 +339,11 @@ public class FundShareClass extends LusidInstrument {
     return Objects.equals(this.shortCode, fundShareClass.shortCode) &&
         Objects.equals(this.fundShareClassType, fundShareClass.fundShareClassType) &&
         Objects.equals(this.distributionPaymentType, fundShareClass.distributionPaymentType) &&
+        Objects.equals(this.distributionType, fundShareClass.distributionType) &&
         Objects.equals(this.hedging, fundShareClass.hedging) &&
         Objects.equals(this.domCcy, fundShareClass.domCcy) &&
         Objects.equals(this.roundingConventions, fundShareClass.roundingConventions) &&
+        Objects.equals(this.roundingConventionUnits, fundShareClass.roundingConventionUnits) &&
         Objects.equals(this.tradingConventions, fundShareClass.tradingConventions) &&
         Objects.equals(this.timeZoneConventions, fundShareClass.timeZoneConventions) &&
         super.equals(o);
@@ -295,7 +355,7 @@ public class FundShareClass extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shortCode, fundShareClassType, distributionPaymentType, hedging, domCcy, roundingConventions, tradingConventions, timeZoneConventions, super.hashCode());
+    return Objects.hash(shortCode, fundShareClassType, distributionPaymentType, distributionType, hedging, domCcy, roundingConventions, roundingConventionUnits, tradingConventions, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -313,9 +373,11 @@ public class FundShareClass extends LusidInstrument {
     sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("    fundShareClassType: ").append(toIndentedString(fundShareClassType)).append("\n");
     sb.append("    distributionPaymentType: ").append(toIndentedString(distributionPaymentType)).append("\n");
+    sb.append("    distributionType: ").append(toIndentedString(distributionType)).append("\n");
     sb.append("    hedging: ").append(toIndentedString(hedging)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
+    sb.append("    roundingConventionUnits: ").append(toIndentedString(roundingConventionUnits)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
@@ -344,18 +406,17 @@ public class FundShareClass extends LusidInstrument {
     openapiFields.add("shortCode");
     openapiFields.add("fundShareClassType");
     openapiFields.add("distributionPaymentType");
+    openapiFields.add("distributionType");
     openapiFields.add("hedging");
     openapiFields.add("domCcy");
     openapiFields.add("roundingConventions");
+    openapiFields.add("roundingConventionUnits");
     openapiFields.add("tradingConventions");
     openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("shortCode");
-    openapiRequiredFields.add("fundShareClassType");
-    openapiRequiredFields.add("distributionPaymentType");
-    openapiRequiredFields.add("hedging");
     openapiRequiredFields.add("domCcy");
     openapiRequiredFields.add("instrumentType");
   }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **leftValue** | **String** | The left-side value. | [optional] [default to String]
 **rightValue** | **String** | The right-side value. | [optional] [default to String]
 **difference** | **String** | The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). | [default to String]
-**appliedTolerance** | [**AggregateToleranceBase**](AggregateToleranceBase.md) |  | [optional] [default to AggregateToleranceBase]
+**appliedTolerance** | [**ToleranceBase**](ToleranceBase.md) |  | [optional] [default to ToleranceBase]
 
 ```java
 import com.finbourne.lusid.model.AggregateRuleValues;
@@ -21,7 +21,7 @@ String RuleName = "example RuleName";
 @jakarta.annotation.Nullable String LeftValue = "example LeftValue";
 @jakarta.annotation.Nullable String RightValue = "example RightValue";
 String Difference = "example Difference";
-AggregateToleranceBase AppliedTolerance = new AggregateToleranceBase();
+ToleranceBase AppliedTolerance = new ToleranceBase();
 
 
 AggregateRuleValues aggregateRuleValuesInstance = new AggregateRuleValues()

@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,6 +62,10 @@ public class OrderGraphBlockAllocationDetail {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private java.math.BigDecimal quantity;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private java.math.BigDecimal amount;
 
   public OrderGraphBlockAllocationDetail() {
   }
@@ -128,6 +133,27 @@ public class OrderGraphBlockAllocationDetail {
   }
 
 
+  public OrderGraphBlockAllocationDetail amount(java.math.BigDecimal amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * The amount of this allocation, derived from the quantity and price of the allocation.
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(java.math.BigDecimal amount) {
+    this.amount = amount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,12 +166,24 @@ public class OrderGraphBlockAllocationDetail {
     OrderGraphBlockAllocationDetail orderGraphBlockAllocationDetail = (OrderGraphBlockAllocationDetail) o;
     return Objects.equals(this.id, orderGraphBlockAllocationDetail.id) &&
         Objects.equals(this.allocatedOrderId, orderGraphBlockAllocationDetail.allocatedOrderId) &&
-        (this.quantity.compareTo(orderGraphBlockAllocationDetail.getQuantity()) == 0);
+        (this.quantity.compareTo(orderGraphBlockAllocationDetail.getQuantity()) == 0) &&
+        (this.amount.compareTo(orderGraphBlockAllocationDetail.getAmount()) == 0);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, allocatedOrderId, quantity);
+    return Objects.hash(id, allocatedOrderId, quantity, amount);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -155,6 +193,7 @@ public class OrderGraphBlockAllocationDetail {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    allocatedOrderId: ").append(toIndentedString(allocatedOrderId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +219,7 @@ public class OrderGraphBlockAllocationDetail {
     openapiFields.add("id");
     openapiFields.add("allocatedOrderId");
     openapiFields.add("quantity");
+    openapiFields.add("amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

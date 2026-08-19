@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9694
+  version: 0.11.9702
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1357,7 +1357,7 @@ tags:
   name: Quotes
 - description: Endpoints for performing reconciliations
   name: Reconciliations
-- description: Endpoints for advanced reconciliation instances and results.
+- description: Endpoints for advanced reconciliation instances and result sets.
   name: Recs
 - description: "A reference portfolio stores a weighted set of instruments rather\
     \ than transactions, enabling entities such as indices to be represented. Note\
@@ -72672,6 +72672,7 @@ paths:
                       quantity: 400
                   booked:
                     quantity: 100
+                    amount: 0
                     details:
                     - id: txn1
                     - id: txn2
@@ -72786,6 +72787,7 @@ paths:
                       quantity: 400
                   booked:
                     quantity: 100
+                    amount: 0
                     details:
                     - id: txn1
                     - id: txn2
@@ -72900,6 +72902,7 @@ paths:
                       quantity: 400
                   booked:
                     quantity: 100
+                    amount: 0
                     details:
                     - id: txn1
                     - id: txn2
@@ -73092,8 +73095,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73103,6 +73108,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73180,8 +73186,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73191,6 +73199,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73268,8 +73277,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73279,6 +73290,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73466,8 +73478,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73477,6 +73491,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73554,8 +73569,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73565,6 +73582,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73642,8 +73660,10 @@ paths:
                         scope: MyScope
                         code: PLAC0000456
                     quantity: 1250
+                    amount: 0
                   executed:
                     quantity: 1100
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -73653,6 +73673,7 @@ paths:
                         code: EXEC0000456
                   allocated:
                     quantity: 800
+                    amount: 0
                     details:
                     - id:
                         scope: MyScope
@@ -109259,6 +109280,990 @@ paths:
       - Group Reconciliations
       x-fbn-apistatus: Experimental
       x-accepts: application/json
+  /api/recs/definitions:
+    get:
+      description: "List rec definitions, optionally filtered and sorted. Supports\
+        \ pagination."
+      operationId: ListRecDefinitions
+      parameters:
+      - description: The asAt datetime at which to list the rec definitions. Defaults
+          to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing rec definitions\
+          \ from a previous call. This value is\r\n returned from the previous call.\
+          \ If a pagination token is provided the sortBy, filter and asAt fields must\
+          \ not have\r\n changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "A list of field names to sort by, each suffixed by \" ASC\"\
+          \ or \" DESC\"."
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "When paginating, limit the number of returned results to this\
+          \ many per page."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set. Read more about filtering\
+          \ results from LUSID here\r\n https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecDefinition'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecDefinition'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecDefinition'
+          description: The requested list of rec definitions.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    post:
+      description: "Create a rec definition, describing the two sides to reconcile\
+        \ and the rules to reconcile them with."
+      operationId: CreateRecDefinition
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyDaily
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/CreateRecDefinitionRequest'
+          application/json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyDaily
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/CreateRecDefinitionRequest'
+          text/json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyDaily
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/CreateRecDefinitionRequest'
+          application/*+json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyDaily
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/CreateRecDefinitionRequest'
+        description: The rec definition to create.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+          description: The newly created rec definition.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] CreateRecDefinition: CreateRecDefinition"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/definitions/{scope}/{code}:
+    delete:
+      description: "Delete a rec definition identified by scope and code. The deletion\
+        \ takes effect from the deletion datetime,\r\ni.e. the rec definition will\
+        \ no longer exist at any asAt datetime after the asAt datetime of deletion."
+      operationId: DeleteRecDefinition
+      parameters:
+      - description: The scope of the rec definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the rec definition. Together with the scope this
+          uniquely identifies the rec definition.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The deleted entity metadata.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteRecDefinition: DeleteRecDefinition"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    get:
+      description: Retrieve a single rec definition by scope and code.
+      operationId: GetRecDefinition
+      parameters:
+      - description: The scope of the rec definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the rec definition. Together with the scope this
+          uniquely identifies the rec definition.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the rec definition. Defaults
+          to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+          description: The requested rec definition.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRecDefinition: GetRecDefinition"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    put:
+      description: "Overwrite an existing rec definition identified by scope and code.\r\
+        \nThe update request has the same required fields as create, apart from the\
+        \ identifier."
+      operationId: UpdateRecDefinition
+      parameters:
+      - description: The scope of the rec definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the rec definition. Together with the scope this
+          uniquely identifies the rec definition.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/UpdateRecDefinitionRequest'
+          application/json:
+            example:
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/UpdateRecDefinitionRequest'
+          text/json:
+            example:
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/UpdateRecDefinitionRequest'
+          application/*+json:
+            example:
+              displayName: Daily Custody Reconciliation
+              description: Daily reconciliation of UK equity fund holdings against
+                custodian positions.
+              definitionType: PortfolioContents
+              sideNames:
+                left: Investment Portfolios
+                right: Custodian
+              leftPortfolioSources:
+              - sourceType: PortfolioGroup
+                id:
+                  scope: Funds
+                  code: UKEquityFunds
+              rightPortfolioSources: []
+              valuationRecipes:
+                left:
+                  scope: Recipes
+                  code: Default
+                right:
+                  scope: Recipes
+                  code: Default
+              currencies:
+                left: GBP
+                right: USD
+              rulesets:
+              - recType: Holding
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                relationalDataFilter: custodian eq 'NT'
+            schema:
+              $ref: '#/components/schemas/UpdateRecDefinitionRequest'
+        description: The updated rec definition values.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyDaily
+                displayName: Daily Custody Reconciliation
+                description: Daily reconciliation of UK equity fund holdings against
+                  custodian positions.
+                definitionType: PortfolioContents
+                sideNames:
+                  left: Investment Portfolios
+                  right: Custodian
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/RecDefinition'
+          description: The updated rec definition.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/recs/instances:
     get:
       description: List rec instances.
@@ -109604,6 +110609,1102 @@ paths:
       security:
       - oauth2: []
       summary: "[EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/matchingrulesets:
+    get:
+      description: "List matching rulesets, optionally filtered and sorted. Supports\
+        \ pagination."
+      operationId: ListMatchingRulesets
+      parameters:
+      - description: The asAt datetime at which to list the matching rulesets. Defaults
+          to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing matching rulesets\
+          \ from a previous call. This value is\r\n returned from the previous call.\
+          \ If a pagination token is provided the sortBy, filter and asAt fields must\
+          \ not have\r\n changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "A list of field names to sort by, each suffixed by \" ASC\"\
+          \ or \" DESC\"."
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "When paginating, limit the number of returned results to this\
+          \ many per page."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set. Read more about filtering\
+          \ results from LUSID here\r\n https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfMatchingRuleset'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfMatchingRuleset'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfMatchingRuleset'
+          description: The requested list of matching rulesets.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    post:
+      description: "Create a matching ruleset, describing the core and aggregate rules\
+        \ used to match a reconciliation's two sides."
+      operationId: CreateMatchingRuleset
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyHoldingRules
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/CreateMatchingRulesetRequest'
+          application/json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyHoldingRules
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/CreateMatchingRulesetRequest'
+          text/json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyHoldingRules
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/CreateMatchingRulesetRequest'
+          application/*+json:
+            example:
+              id:
+                scope: Recs
+                code: CustodyHoldingRules
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/CreateMatchingRulesetRequest'
+        description: The matching ruleset to create.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+          description: The newly created matching ruleset.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] CreateMatchingRuleset: CreateMatchingRuleset"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/matchingrulesets/{scope}/{code}:
+    delete:
+      description: "Delete a matching ruleset identified by scope and code. The deletion\
+        \ takes effect from the deletion datetime,\r\ni.e. the matching ruleset will\
+        \ no longer exist at any asAt datetime after the asAt datetime of deletion."
+      operationId: DeleteMatchingRuleset
+      parameters:
+      - description: The scope of the matching ruleset.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the matching ruleset. Together with the scope this
+          uniquely identifies the matching ruleset.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The deleted entity metadata.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteMatchingRuleset: DeleteMatchingRuleset"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    get:
+      description: Retrieve a single matching ruleset by scope and code.
+      operationId: GetMatchingRuleset
+      parameters:
+      - description: The scope of the matching ruleset.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the matching ruleset. Together with the scope this
+          uniquely identifies the matching ruleset.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the matching ruleset.
+          Defaults to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+          description: The requested matching ruleset.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    put:
+      description: "Overwrite an existing matching ruleset identified by scope and\
+        \ code.\r\nThe update request has the same required fields as create, apart\
+        \ from the identifier."
+      operationId: UpdateMatchingRuleset
+      parameters:
+      - description: The scope of the matching ruleset.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the matching ruleset. Together with the scope this
+          uniquely identifies the matching ruleset.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
+          application/json:
+            example:
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
+          text/json:
+            example:
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
+          application/*+json:
+            example:
+              displayName: Custody Holding Rules
+              recType: Holding
+              datasetSchemas:
+                right:
+                  type: RelationalData
+                  relationalDatasetDefinitionId:
+                    scope: Custody
+                    code: CustodianPositions
+              filters:
+                left: holdingType eq 'P'
+                right: positionType eq 'STOCK'
+              coreRules:
+              - ruleName: Instrument
+                leftFormula: "Properties[Instrument/default/Isin]"
+                rightFormula: isin
+                isCaseSensitive: false
+              aggregateRules:
+              - ruleName: Units
+                leftFormula: units
+                leftOperation: Sum
+                rightFormula: quantity
+                rightOperation: Sum
+              aggregateTolerances:
+              - referenceSide: Left
+                relativeThreshold: 0.01
+                thresholdPriority: GreaterOf
+                offset: Either
+                toleranceType: Numeric
+                ruleName: Units
+              allowPartialMatching: true
+              supplementalAttributes:
+              - attributeName: Custodian
+                leftFormula: "Properties[Custody/default/CustodianCode]"
+                rightFormula: custodian
+            schema:
+              $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
+        description: The updated matching ruleset values.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            application/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+            text/json:
+              example:
+                id:
+                  scope: Recs
+                  code: CustodyHoldingRules
+                displayName: Custody Holding Rules
+                recType: Holding
+                datasetSchemas:
+                  left:
+                    type: PortfolioContents
+                    entityType: Holding
+                  right:
+                    type: RelationalData
+                    relationalDatasetDefinitionId:
+                      scope: Custody
+                      code: CustodianPositions
+                filters:
+                  left: holdingType eq 'P'
+                  right: positionType eq 'STOCK'
+                coreRules:
+                - ruleName: Instrument
+                  leftFormula: "Properties[Instrument/default/Isin]"
+                  rightFormula: isin
+                  isCaseSensitive: false
+                aggregateRules:
+                - ruleName: Units
+                  leftFormula: units
+                  leftOperation: Sum
+                  rightFormula: quantity
+                  rightOperation: Sum
+                aggregateTolerances:
+                - referenceSide: Left
+                  relativeThreshold: 0.01
+                  thresholdPriority: GreaterOf
+                  offset: Either
+                  toleranceType: Numeric
+                  ruleName: Units
+                allowPartialMatching: true
+                supplementalAttributes:
+                - attributeName: Custodian
+                  leftFormula: "Properties[Custody/default/CustodianCode]"
+                  rightFormula: custodian
+                href: https://example.com
+                version:
+                  effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/MatchingRuleset'
+          description: The updated matching ruleset.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset"
       tags:
       - Recs
       x-fbn-apistatus: Experimental
@@ -138937,7 +141038,9 @@ paths:
         style: form
       - description: "A list of property keys from the 'CustodianAccount' domain to\
           \ decorate onto the Custodian Account.\r\n These must have the format {domain}/{scope}/{code},\
-          \ for example 'CustodianAccount/system/Name'."
+          \ for example 'CustodianAccount/system/Name'.\r\n If no property keys are\
+          \ specified, it will return 'IsDefault' and 'RelatedAccounts' properties,\
+          \ if they exist."
         explode: true
         in: query
         name: propertyKeys
@@ -139391,8 +141494,9 @@ paths:
         x-nullable: true
       - description: "A list of property keys from the 'CustodianAccount' domain to\
           \ decorate onto the Custodian Account.\r\n These must take the format {domain}/{scope}/{code},\
-          \ for example 'CustodianAccount/Manager/Id'. If no properties are specified,\
-          \ then no properties will be returned."
+          \ for example 'CustodianAccount/system/Name'.\r\n If no property keys are\
+          \ specified, it will return 'IsDefault' and 'RelatedAccounts' properties,\
+          \ if they exist."
         explode: true
         in: query
         name: propertyKeys
@@ -159997,6 +162101,54 @@ components:
       - metrics
       - toTransactionDate
       type: object
+    AggregateMatchingRule:
+      additionalProperties: false
+      example:
+        leftOperation: leftOperation
+        leftFormula: leftFormula
+        rightFormula: rightFormula
+        ruleName: ruleName
+        rightOperation: rightOperation
+      properties:
+        ruleName:
+          description: The reference name of the rule.
+          maxLength: 256
+          minLength: 1
+          type: string
+        leftFormula:
+          description: Derivation formula evaluated against the left side of the reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        leftOperation:
+          description: "Group-level operation applied to the left side's per-item\
+            \ values during reconciliation, e.g. Sum, Average, Count. Available values:\
+            \ Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues,\
+            \ SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues,\
+            \ SumCumulativeInAdvance, SumCumulativeInArrears."
+          minLength: 1
+          type: string
+        rightFormula:
+          description: Derivation formula evaluated against the right side of the
+            reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        rightOperation:
+          description: "Group-level operation applied to the right side's per-item\
+            \ values during reconciliation, e.g. Sum, Average, Count. Available values:\
+            \ Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues,\
+            \ SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues,\
+            \ SumCumulativeInAdvance, SumCumulativeInArrears."
+          minLength: 1
+          type: string
+      required:
+      - leftFormula
+      - leftOperation
+      - rightFormula
+      - rightOperation
+      - ruleName
+      type: object
     AggregateRuleValues:
       additionalProperties: false
       description: "An aggregate matching rule and its values. The difference is the\
@@ -160028,7 +162180,7 @@ components:
           minLength: 1
           type: string
         appliedTolerance:
-          $ref: '#/components/schemas/AggregateToleranceBase'
+          $ref: '#/components/schemas/ToleranceBase'
       required:
       - difference
       - ruleName
@@ -160075,30 +162227,6 @@ components:
       required:
       - key
       - op
-      type: object
-    AggregateToleranceBase:
-      additionalProperties: false
-      description: "Abstract base for tolerances that apply to aggregate matching\
-        \ rules. Distinguishes aggregate\r\ntolerances from core tolerances at the\
-        \ type level (both share a common tolerance base)."
-      example:
-        ruleName: ruleName
-        toleranceType: toleranceType
-      properties:
-        toleranceType:
-          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
-            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
-            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
-          minLength: 1
-          type: string
-        ruleName:
-          description: The reference name of the rule that this tolerance relaxes.
-          maxLength: 256
-          minLength: 1
-          type: string
-      required:
-      - ruleName
-      - toleranceType
       type: object
     AggregationContext:
       additionalProperties: false
@@ -182183,6 +184311,39 @@ components:
       description: "Conversion Event (CONV) - Conversion of securities (generally\
         \ convertible bonds or preferred shares) into\r\nanother form of securities\
         \ (usually common shares) at a pre-stated price/ratio."
+    CoreMatchingRule:
+      additionalProperties: false
+      example:
+        isCaseSensitive: true
+        leftFormula: leftFormula
+        rightFormula: rightFormula
+        ruleName: ruleName
+      properties:
+        ruleName:
+          description: The reference name of the rule.
+          maxLength: 256
+          minLength: 1
+          type: string
+        leftFormula:
+          description: Derivation formula evaluated against the left side of the reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        rightFormula:
+          description: Derivation formula evaluated against the right side of the
+            reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        isCaseSensitive:
+          description: Whether the core rule comparison is case sensitive. Defaults
+            to false.
+          type: boolean
+      required:
+      - leftFormula
+      - rightFormula
+      - ruleName
+      type: object
     CoreRuleValues:
       additionalProperties: false
       description: "A core matching rule and the values that pin a rec result to its\
@@ -182208,33 +184369,9 @@ components:
           nullable: true
           type: string
         appliedTolerance:
-          $ref: '#/components/schemas/CoreToleranceBase'
+          $ref: '#/components/schemas/ToleranceBase'
       required:
       - ruleName
-      type: object
-    CoreToleranceBase:
-      additionalProperties: false
-      description: "Abstract base for tolerances that apply to core matching rules.\
-        \ Distinguishes core tolerances from\r\naggregate tolerances at the type level\
-        \ (both share a common tolerance base)."
-      example:
-        ruleName: ruleName
-        toleranceType: toleranceType
-      properties:
-        toleranceType:
-          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
-            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
-            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
-          minLength: 1
-          type: string
-        ruleName:
-          description: The reference name of the rule that this tolerance relaxes.
-          maxLength: 256
-          minLength: 1
-          type: string
-      required:
-      - ruleName
-      - toleranceType
       type: object
     CorporateAction:
       additionalProperties: false
@@ -184162,6 +186299,130 @@ components:
       - identifierType
       - lifeTime
       type: object
+    CreateMatchingRulesetRequest:
+      additionalProperties: false
+      example:
+        recType: recType
+        coreTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        aggregateTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        aggregateRules:
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        displayName: displayName
+        allowPartialMatching: true
+        datasetSchemas:
+          left:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+          right:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+        id:
+          code: code
+          scope: scope
+        filters:
+          left: left
+          right: right
+        coreRules:
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        supplementalAttributes:
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        displayName:
+          description: The name of the matching ruleset.
+          maxLength: 256
+          minLength: 1
+          type: string
+        recType:
+          description: "The type of reconciliation to perform. Available values: Holding,\
+            \ CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity."
+          minLength: 1
+          type: string
+        datasetSchemas:
+          $ref: '#/components/schemas/RecDatasetSchemas'
+        filters:
+          $ref: '#/components/schemas/GroupReconciliationFilters'
+        coreRules:
+          description: The core comparison rules evaluated as derivation formulae
+            against each side of the reconciliation.
+          items:
+            $ref: '#/components/schemas/CoreMatchingRule'
+          minItems: 1
+          type: array
+        aggregateRules:
+          description: The aggregate comparison rules evaluated as derivation formulae
+            against values on each side of the reconciliation and operation to aggregate
+            those values.
+          items:
+            $ref: '#/components/schemas/AggregateMatchingRule'
+          minItems: 1
+          type: array
+        coreTolerances:
+          description: "Tolerance configurations applied to core rule matching, in\
+            \ the specified order."
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        aggregateTolerances:
+          description: Tolerance configurations applied to aggregate rule matching.
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        allowPartialMatching:
+          description: Whether to permit partial matches when applying rules.
+          type: boolean
+        supplementalAttributes:
+          description: Supplemental attributes that decorate reconciliation results
+            with additional values without participating in the reconciliation itself.
+          items:
+            $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+      required:
+      - aggregateRules
+      - coreRules
+      - displayName
+      - id
+      - recType
+      type: object
     CreatePortfolioDetails:
       additionalProperties: false
       example:
@@ -184435,6 +186696,158 @@ components:
       - displayName
       - domain
       - scope
+      type: object
+    CreateRecDefinitionRequest:
+      additionalProperties: false
+      example:
+        rulesets:
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        rightPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        displayName: displayName
+        valuationRecipes:
+          left:
+            code: code
+            scope: scope
+          right:
+            code: code
+            scope: scope
+        description: description
+        id:
+          code: code
+          scope: scope
+        sideNames:
+          left: left
+          right: right
+        definitionType: definitionType
+        leftPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        currencies:
+          left: left
+          right: right
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        displayName:
+          description: The name of the rec definition.
+          maxLength: 512
+          minLength: 1
+          type: string
+        description:
+          description: A description of the rec definition.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        definitionType:
+          description: "What this definition reconciles, naming the kind of dataset\
+            \ that must be present on at least one side. One of: PortfolioContents,\
+            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
+            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+          minLength: 1
+          type: string
+        sideNames:
+          $ref: '#/components/schemas/RecDefSideNames'
+        leftPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the left side. Empty when the left side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          nullable: true
+          type: array
+        rightPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the right side. Empty when the right side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          nullable: true
+          type: array
+        valuationRecipes:
+          $ref: '#/components/schemas/RecDefRecipeIds'
+        currencies:
+          $ref: '#/components/schemas/RecDefCurrencies'
+        rulesets:
+          description: "The types of reconciliation included in the group, each naming\
+            \ the matching ruleset that drives it. At least one entry is required,\
+            \ and each rec type may appear at most once."
+          items:
+            $ref: '#/components/schemas/RecDefRuleset'
+          maxItems: 10
+          minItems: 1
+          type: array
+      required:
+      - definitionType
+      - displayName
+      - id
+      - rulesets
       type: object
     CreateRecipeRequest:
       additionalProperties: false
@@ -203174,26 +205587,38 @@ components:
               \ Can be either 'Income' or 'Accumulation' - Income classes will pay\
               \ out and Accumulation classes will retain their ShareClass attributable\
               \ income. Available values: Income, Accumulation."
-            minLength: 1
+            nullable: true
             type: string
           distributionPaymentType:
             description: "The tax treatment applied to any distributions calculated\
               \ within the ShareClass. Can be either 'Net' (Distribution Calculated\
               \ net of tax) or 'Gross' (Distribution calculated gross of tax). Available\
               \ values: Invalid, Gross, Net."
-            minLength: 1
+            nullable: true
+            type: string
+          distributionType:
+            description: "The type of distribution calculated for the ShareClass.\
+              \ Can be either 'Income' or 'Accumulation'. Available values: Income,\
+              \ Accumulation."
+            nullable: true
             type: string
           hedging:
             description: "A flag to indicate the ShareClass is operating currency\
               \ hedging as a means to limit currency risk as part of its investment\
               \ strategy. Available values: Invalid, None, ApplyHedging."
-            minLength: 1
+            nullable: true
             type: string
           domCcy:
             description: The domestic currency of the instrument.
             type: string
           roundingConventions:
             description: Rounding Convention used for the FundShareClass quotes
+            items:
+              $ref: '#/components/schemas/SimpleRoundingConvention'
+            nullable: true
+            type: array
+          roundingConventionUnits:
+            description: Rounding Conventions used for the FundShareClass units
             items:
               $ref: '#/components/schemas/SimpleRoundingConvention'
             nullable: true
@@ -203268,10 +205693,7 @@ components:
             - CommodityCalendarSwap
             type: string
         required:
-        - distributionPaymentType
         - domCcy
-        - fundShareClassType
-        - hedging
         - instrumentType
         - shortCode
         type: object
@@ -224652,6 +227074,165 @@ components:
       required:
       - criterionType
       type: object
+    MatchingRuleset:
+      additionalProperties: false
+      example:
+        aggregateTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        displayName: displayName
+        allowPartialMatching: true
+        datasetSchemas:
+          left:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+          right:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+        filters:
+          left: left
+          right: right
+        coreRules:
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        recType: recType
+        coreTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        aggregateRules:
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        href: https://openapi-generator.tech
+        supplementalAttributes:
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        displayName:
+          description: The name of the matching ruleset.
+          minLength: 1
+          type: string
+        recType:
+          description: "The type of reconciliation to perform. Available values: Holding,\
+            \ CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity."
+          minLength: 1
+          type: string
+        datasetSchemas:
+          $ref: '#/components/schemas/RecDatasetSchemas'
+        filters:
+          $ref: '#/components/schemas/GroupReconciliationFilters'
+        coreRules:
+          description: The core comparison rules evaluated as derivation formulae
+            against each side of the reconciliation.
+          items:
+            $ref: '#/components/schemas/CoreMatchingRule'
+          type: array
+        aggregateRules:
+          description: The aggregate comparison rules evaluated as derivation formulae
+            against values on each side of the reconciliation and operation to aggregate
+            those values.
+          items:
+            $ref: '#/components/schemas/AggregateMatchingRule'
+          type: array
+        coreTolerances:
+          description: "Tolerance configurations applied to core rule matching, in\
+            \ the specified order."
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        aggregateTolerances:
+          description: Tolerance configurations applied to aggregate rule matching.
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        allowPartialMatching:
+          description: Whether to permit partial matches when applying rules.
+          type: boolean
+        supplementalAttributes:
+          description: Supplemental attributes that decorate reconciliation results
+            with additional values without participating in the reconciliation itself.
+          items:
+            $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - aggregateRules
+      - coreRules
+      - datasetSchemas
+      - displayName
+      - id
+      - recType
+      type: object
     MaturityEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -228277,7 +230858,8 @@ components:
               code: code
               scope: scope
         booked:
-          quantity: 7.386281948385884
+          amount: 6.84685269835264
+          quantity: 1.4894159098541704
           details:
           - id: id
           - id: id
@@ -228366,6 +230948,7 @@ components:
               - validationFailures
               status: status
         executed:
+          amount: 2.027123023002322
           quantity: 3.616076749251911
           details:
           - id:
@@ -228376,19 +230959,22 @@ components:
               scope: scope
         derivedComplianceState: derivedComplianceState
         allocated:
-          quantity: 2.027123023002322
+          amount: 7.386281948385884
+          quantity: 4.145608029883936
           details:
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 4.145608029883936
+            amount: 1.0246457001441578
+            quantity: 1.2315135367772556
             id:
               code: code
               scope: scope
           - allocatedOrderId:
               code: code
               scope: scope
-            quantity: 4.145608029883936
+            amount: 1.0246457001441578
+            quantity: 1.2315135367772556
             id:
               code: code
               scope: scope
@@ -228438,7 +231024,8 @@ components:
         allocatedOrderId:
           code: code
           scope: scope
-        quantity: 4.145608029883936
+        amount: 1.0246457001441578
+        quantity: 1.2315135367772556
         id:
           code: code
           scope: scope
@@ -228452,6 +231039,12 @@ components:
             \ the containing block."
           format: double
           type: number
+        amount:
+          description: "The amount of this allocation, derived from the quantity and\
+            \ price of the allocation."
+          format: double
+          nullable: true
+          type: number
       required:
       - id
       - quantity
@@ -228459,19 +231052,22 @@ components:
     OrderGraphBlockAllocationSynopsis:
       additionalProperties: false
       example:
-        quantity: 2.027123023002322
+        amount: 7.386281948385884
+        quantity: 4.145608029883936
         details:
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 4.145608029883936
+          amount: 1.0246457001441578
+          quantity: 1.2315135367772556
           id:
             code: code
             scope: scope
         - allocatedOrderId:
             code: code
             scope: scope
-          quantity: 4.145608029883936
+          amount: 1.0246457001441578
+          quantity: 1.2315135367772556
           id:
             code: code
             scope: scope
@@ -228479,6 +231075,12 @@ components:
         quantity:
           description: Total number of units allocated.
           format: double
+          type: number
+        amount:
+          description: "Total monetary value allocated, derived from the quantity\
+            \ and price of each allocation."
+          format: double
+          nullable: true
           type: number
         details:
           description: Identifiers for each allocation in this block.
@@ -228504,6 +231106,7 @@ components:
     OrderGraphBlockExecutionSynopsis:
       additionalProperties: false
       example:
+        amount: 2.027123023002322
         quantity: 3.616076749251911
         details:
         - id:
@@ -228516,6 +231119,12 @@ components:
         quantity:
           description: Total number of units executed.
           format: double
+          type: number
+        amount:
+          description: "Total monetary value executed, derived from the quantity and\
+            \ price of each execution."
+          format: double
+          nullable: true
           type: number
         details:
           description: Identifiers for each execution in this block.
@@ -228774,7 +231383,8 @@ components:
     OrderGraphBlockTransactionSynopsis:
       additionalProperties: false
       example:
-        quantity: 7.386281948385884
+        amount: 6.84685269835264
+        quantity: 1.4894159098541704
         details:
         - id: id
         - id: id
@@ -228782,6 +231392,11 @@ components:
         quantity:
           description: Total number of units booked.
           format: double
+          type: number
+        amount:
+          description: "Total consideration booked, in the block currency."
+          format: double
+          nullable: true
           type: number
         details:
           description: Identifiers for each transaction in this block.
@@ -228817,8 +231432,9 @@ components:
               code: code
               scope: scope
         derivedState: derivedState
-        calculatedAveragePrice: 2.3021358869347655
+        calculatedAveragePrice: 9.301444243932576
         executed:
+          amount: 5.637376656633329
           quantity: 5.962133916683182
           details:
           - id:
@@ -228916,7 +231532,8 @@ components:
               - validationFailures
               status: status
         allocated:
-          quantity: 5.637376656633329
+          amount: 7.061401241503109
+          quantity: 2.3021358869347655
           details:
           - id:
               code: code
@@ -228970,7 +231587,8 @@ components:
     OrderGraphPlacementAllocationSynopsis:
       additionalProperties: false
       example:
-        quantity: 5.637376656633329
+        amount: 7.061401241503109
+        quantity: 2.3021358869347655
         details:
         - id:
             code: code
@@ -228982,6 +231600,14 @@ components:
         quantity:
           description: Total number of units allocated.
           format: double
+          type: number
+        amount:
+          description: "Total monetary value allocated, derived from the quantity\
+            \ and price of each allocation, in the placement's amount currency. Null\
+            \ where the placement has no amount, or where an allocation cannot be\
+            \ expressed in that currency."
+          format: double
+          nullable: true
           type: number
         details:
           description: Identifiers for each allocation in this placement.
@@ -229019,6 +231645,7 @@ components:
     OrderGraphPlacementExecutionSynopsis:
       additionalProperties: false
       example:
+        amount: 5.637376656633329
         quantity: 5.962133916683182
         details:
         - id:
@@ -229031,6 +231658,14 @@ components:
         quantity:
           description: Total number of units executed.
           format: double
+          type: number
+        amount:
+          description: "Total monetary value executed, derived from the quantity and\
+            \ price of each execution, in the placement's amount currency. Null where\
+            \ the placement has no amount, or where an execution cannot be expressed\
+            \ in that currency."
+          format: double
+          nullable: true
           type: number
         details:
           description: Identifiers info for each execution against this placement.
@@ -229091,12 +231726,14 @@ components:
             $ref: '#/components/schemas/OrderGraphPlacementChildPlacementDetail'
           type: array
         quantity:
-          description: Total number of units placed.
+          description: Total number of units placed. Null where the placement is sized
+            by amount.
           format: double
           nullable: true
           type: number
         amount:
-          description: "Total monetary value placed, in the block currency."
+          description: "Total monetary value placed, in the block currency. Null where\
+            \ the placement has no amount."
           format: double
           nullable: true
           type: number
@@ -240912,6 +243549,211 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfMatchingRuleset:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - aggregateTolerances:
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          displayName: displayName
+          allowPartialMatching: true
+          datasetSchemas:
+            left:
+              entityType: entityType
+              type: type
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+            right:
+              entityType: entityType
+              type: type
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+          filters:
+            left: left
+            right: right
+          coreRules:
+          - isCaseSensitive: true
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+          - isCaseSensitive: true
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          coreTolerances:
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          aggregateRules:
+          - leftOperation: leftOperation
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+            rightOperation: rightOperation
+          - leftOperation: leftOperation
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+            rightOperation: rightOperation
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          supplementalAttributes:
+          - leftFormula: leftFormula
+            rightFormula: rightFormula
+            attributeName: attributeName
+          - leftFormula: leftFormula
+            rightFormula: rightFormula
+            attributeName: attributeName
+        - aggregateTolerances:
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          displayName: displayName
+          allowPartialMatching: true
+          datasetSchemas:
+            left:
+              entityType: entityType
+              type: type
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+            right:
+              entityType: entityType
+              type: type
+              relationalDatasetDefinitionId:
+                code: code
+                scope: scope
+          filters:
+            left: left
+            right: right
+          coreRules:
+          - isCaseSensitive: true
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+          - isCaseSensitive: true
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          coreTolerances:
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          - ruleName: ruleName
+            toleranceType: toleranceType
+          aggregateRules:
+          - leftOperation: leftOperation
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+            rightOperation: rightOperation
+          - leftOperation: leftOperation
+            leftFormula: leftFormula
+            rightFormula: rightFormula
+            ruleName: ruleName
+            rightOperation: rightOperation
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          supplementalAttributes:
+          - leftFormula: leftFormula
+            rightFormula: rightFormula
+            attributeName: attributeName
+          - leftFormula: leftFormula
+            rightFormula: rightFormula
+            attributeName: attributeName
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/MatchingRuleset'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfOrder:
       additionalProperties: false
       example:
@@ -241301,7 +244143,8 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 7.386281948385884
+            amount: 6.84685269835264
+            quantity: 1.4894159098541704
             details:
             - id: id
             - id: id
@@ -241390,6 +244233,7 @@ components:
                 - validationFailures
                 status: status
           executed:
+            amount: 2.027123023002322
             quantity: 3.616076749251911
             details:
             - id:
@@ -241400,19 +244244,22 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 2.027123023002322
+            amount: 7.386281948385884
+            quantity: 4.145608029883936
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 4.145608029883936
+              amount: 1.0246457001441578
+              quantity: 1.2315135367772556
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 4.145608029883936
+              amount: 1.0246457001441578
+              quantity: 1.2315135367772556
               id:
                 code: code
                 scope: scope
@@ -241499,7 +244346,8 @@ components:
                 code: code
                 scope: scope
           booked:
-            quantity: 7.386281948385884
+            amount: 6.84685269835264
+            quantity: 1.4894159098541704
             details:
             - id: id
             - id: id
@@ -241588,6 +244436,7 @@ components:
                 - validationFailures
                 status: status
           executed:
+            amount: 2.027123023002322
             quantity: 3.616076749251911
             details:
             - id:
@@ -241598,19 +244447,22 @@ components:
                 scope: scope
           derivedComplianceState: derivedComplianceState
           allocated:
-            quantity: 2.027123023002322
+            amount: 7.386281948385884
+            quantity: 4.145608029883936
             details:
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 4.145608029883936
+              amount: 1.0246457001441578
+              quantity: 1.2315135367772556
               id:
                 code: code
                 scope: scope
             - allocatedOrderId:
                 code: code
                 scope: scope
-              quantity: 4.145608029883936
+              amount: 1.0246457001441578
+              quantity: 1.2315135367772556
               id:
                 code: code
                 scope: scope
@@ -241675,8 +244527,9 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 2.3021358869347655
+          calculatedAveragePrice: 9.301444243932576
           executed:
+            amount: 5.637376656633329
             quantity: 5.962133916683182
             details:
             - id:
@@ -241774,7 +244627,8 @@ components:
                 - validationFailures
                 status: status
           allocated:
-            quantity: 5.637376656633329
+            amount: 7.061401241503109
+            quantity: 2.3021358869347655
             details:
             - id:
                 code: code
@@ -241804,8 +244658,9 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 2.3021358869347655
+          calculatedAveragePrice: 9.301444243932576
           executed:
+            amount: 5.637376656633329
             quantity: 5.962133916683182
             details:
             - id:
@@ -241903,7 +244758,8 @@ components:
                 - validationFailures
                 status: status
           allocated:
-            quantity: 5.637376656633329
+            amount: 7.061401241503109
+            quantity: 2.3021358869347655
             details:
             - id:
                 code: code
@@ -244124,6 +246980,189 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfRecDefinition:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - rulesets:
+          - recType: recType
+            matchingRulesetId:
+              code: code
+              scope: scope
+            relationalDataFilter: relationalDataFilter
+          - recType: recType
+            matchingRulesetId:
+              code: code
+              scope: scope
+            relationalDataFilter: relationalDataFilter
+          displayName: displayName
+          valuationRecipes:
+            left:
+              code: code
+              scope: scope
+            right:
+              code: code
+              scope: scope
+          description: description
+          sideNames:
+            left: left
+            right: right
+          definitionType: definitionType
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          rightPortfolioSources:
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          leftPortfolioSources:
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          currencies:
+            left: left
+            right: right
+        - rulesets:
+          - recType: recType
+            matchingRulesetId:
+              code: code
+              scope: scope
+            relationalDataFilter: relationalDataFilter
+          - recType: recType
+            matchingRulesetId:
+              code: code
+              scope: scope
+            relationalDataFilter: relationalDataFilter
+          displayName: displayName
+          valuationRecipes:
+            left:
+              code: code
+              scope: scope
+            right:
+              code: code
+              scope: scope
+          description: description
+          sideNames:
+            left: left
+            right: right
+          definitionType: definitionType
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          rightPortfolioSources:
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          leftPortfolioSources:
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          - sourceType: sourceType
+            id:
+              code: code
+              scope: scope
+          currencies:
+            left: left
+            right: right
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/RecDefinition'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfRecInstance:
       additionalProperties: false
       example:
@@ -244157,12 +247196,6 @@ components:
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-          workflowTaskInstantiated:
-            id: id
-            state: state
-            taskDefinitionId:
-              code: code
-              scope: scope
           links:
           - method: method
             description: description
@@ -244229,12 +247262,6 @@ components:
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-          workflowTaskInstantiated:
-            id: id
-            state: state
-            taskDefinitionId:
-              code: code
-              scope: scope
           links:
           - method: method
             description: description
@@ -260948,6 +263975,54 @@ components:
       - left
       - right
       type: object
+    RecDatasetSchema:
+      additionalProperties: false
+      example:
+        entityType: entityType
+        type: type
+        relationalDatasetDefinitionId:
+          code: code
+          scope: scope
+      properties:
+        type:
+          description: "The kind of dataset this side draws on. One of: PortfolioContents,\
+            \ LusidEntity, RelationalData. At most one side may be RelationalData.\
+            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+          minLength: 1
+          type: string
+        entityType:
+          description: "The entity within the dataset. Required when type is PortfolioContents,\
+            \ in which case it is one of: Holding, Valuation, Transaction, OutputTransaction,\
+            \ SettlementActivity. Must be omitted when type is RelationalData. Available\
+            \ values: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity."
+          nullable: true
+          type: string
+        relationalDatasetDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - type
+      type: object
+    RecDatasetSchemas:
+      additionalProperties: false
+      example:
+        left:
+          entityType: entityType
+          type: type
+          relationalDatasetDefinitionId:
+            code: code
+            scope: scope
+        right:
+          entityType: entityType
+          type: type
+          relationalDatasetDefinitionId:
+            code: code
+            scope: scope
+      properties:
+        left:
+          $ref: '#/components/schemas/RecDatasetSchema'
+        right:
+          $ref: '#/components/schemas/RecDatasetSchema'
+      type: object
     RecDatesReconciled:
       additionalProperties: false
       description: The left and right effective and asAt dates of the data reconciled
@@ -260980,6 +264055,257 @@ components:
       - leftEffectiveAt
       - rightAsAt
       - rightEffectiveAt
+      type: object
+    RecDefCurrencies:
+      additionalProperties: false
+      example:
+        left: left
+        right: right
+      properties:
+        left:
+          description: The currency used on the left side of the reconciliation.
+          maxLength: 4
+          minLength: 0
+          type: string
+        right:
+          description: The currency used on the right side of the reconciliation.
+          maxLength: 4
+          minLength: 0
+          type: string
+      required:
+      - left
+      - right
+      type: object
+    RecDefinition:
+      additionalProperties: false
+      example:
+        rulesets:
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        displayName: displayName
+        valuationRecipes:
+          left:
+            code: code
+            scope: scope
+          right:
+            code: code
+            scope: scope
+        description: description
+        sideNames:
+          left: left
+          right: right
+        definitionType: definitionType
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        rightPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        href: https://openapi-generator.tech
+        leftPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        currencies:
+          left: left
+          right: right
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        displayName:
+          description: The name of the rec definition.
+          minLength: 1
+          type: string
+        description:
+          description: A description of the rec definition.
+          nullable: true
+          type: string
+        definitionType:
+          description: "What this definition reconciles, naming the kind of dataset\
+            \ that must be present on at least one side. One of: PortfolioContents,\
+            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
+            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+          minLength: 1
+          type: string
+        sideNames:
+          $ref: '#/components/schemas/RecDefSideNames'
+        leftPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the left side. Empty when the left side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          type: array
+        rightPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the right side. Empty when the right side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          type: array
+        valuationRecipes:
+          $ref: '#/components/schemas/RecDefRecipeIds'
+        currencies:
+          $ref: '#/components/schemas/RecDefCurrencies'
+        rulesets:
+          description: "The types of reconciliation included in the group, each naming\
+            \ the matching ruleset that drives it. At least one entry is required,\
+            \ and each rec type may appear at most once."
+          items:
+            $ref: '#/components/schemas/RecDefRuleset'
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - definitionType
+      - displayName
+      - id
+      - leftPortfolioSources
+      - rightPortfolioSources
+      - rulesets
+      type: object
+    RecDefRecipeIds:
+      additionalProperties: false
+      example:
+        left:
+          code: code
+          scope: scope
+        right:
+          code: code
+          scope: scope
+      properties:
+        left:
+          $ref: '#/components/schemas/ResourceId'
+        right:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - left
+      - right
+      type: object
+    RecDefRuleset:
+      additionalProperties: false
+      example:
+        recType: recType
+        matchingRulesetId:
+          code: code
+          scope: scope
+        relationalDataFilter: relationalDataFilter
+      properties:
+        recType:
+          description: "The type of reconciliation this entry configures. Must be\
+            \ valid for the definitionType, and must match the reconciliationType\
+            \ of the referenced matching ruleset. Available values: Holding, CashHolding,\
+            \ Valuation, InputTransaction, OutputTransaction, SettlementActivity."
+          minLength: 1
+          type: string
+        matchingRulesetId:
+          $ref: '#/components/schemas/ResourceId'
+        relationalDataFilter:
+          description: "Selects the slice of the relational dataset this definition\
+            \ draws from, e.g. \"custodian eq 'NT'\". Only permitted when the referenced\
+            \ ruleset declares a relational side, and combined with AND at run time\
+            \ with that ruleset's own filter for the side."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - matchingRulesetId
+      - recType
+      type: object
+    RecDefSideNames:
+      additionalProperties: false
+      example:
+        left: left
+        right: right
+      properties:
+        left:
+          description: The label for the left side of the reconciliation.
+          maxLength: 512
+          minLength: 1
+          type: string
+        right:
+          description: The label for the right side of the reconciliation.
+          maxLength: 512
+          minLength: 1
+          type: string
+      required:
+      - left
+      - right
+      type: object
+    RecDefSource:
+      additionalProperties: false
+      example:
+        sourceType: sourceType
+        id:
+          code: code
+          scope: scope
+      properties:
+        sourceType:
+          description: "The type of entity that this source refers to. One of: Portfolio,\
+            \ PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund."
+          minLength: 1
+          type: string
+        id:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - id
+      - sourceType
       type: object
     RecExceptionCountByClosureType:
       additionalProperties: false
@@ -261083,12 +264409,6 @@ components:
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
         asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-        workflowTaskInstantiated:
-          id: id
-          state: state
-          taskDefinitionId:
-            code: code
-            scope: scope
         links:
         - method: method
           description: description
@@ -261137,8 +264457,6 @@ components:
           description: The asAt datetime at which the instance was first created.
           format: date-time
           type: string
-        workflowTaskInstantiated:
-          $ref: '#/components/schemas/RecWorkflowTask'
         status:
           description: "The instance-level lifecycle rollup. Available values: Running,\
             \ Failures, ReviewAndApproval, AllApproved, Locked."
@@ -297826,6 +301144,34 @@ components:
       - portfolioId
       - scope
       type: object
+    SupplementalAttribute:
+      additionalProperties: false
+      example:
+        leftFormula: leftFormula
+        rightFormula: rightFormula
+        attributeName: attributeName
+      properties:
+        attributeName:
+          description: The reference name of the supplemental attribute.
+          maxLength: 256
+          minLength: 1
+          type: string
+        leftFormula:
+          description: Derivation formula evaluated against the left side of the reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        rightFormula:
+          description: Derivation formula evaluated against the right side of the
+            reconciliation.
+          maxLength: 16384
+          minLength: 0
+          type: string
+      required:
+      - attributeName
+      - leftFormula
+      - rightFormula
+      type: object
     SupplementalAttributeValues:
       additionalProperties: false
       description: A supplemental attribute value carried on a rec result for context.
@@ -299630,6 +302976,30 @@ components:
         type: object
       description: LUSID representation of an OTC option on a ToBeAnnounced (TBA)
         forward contract.
+    ToleranceBase:
+      additionalProperties: false
+      description: "Base class for the tolerances that relax how strictly a matching\
+        \ rule compares its two sides. Polymorphic\r\nby ToleranceType; each supported\
+        \ type has a corresponding inherited class."
+      example:
+        ruleName: ruleName
+        toleranceType: toleranceType
+      properties:
+        toleranceType:
+          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
+            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
+            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
+          minLength: 1
+          type: string
+        ruleName:
+          description: The reference name of the rule that this tolerance relaxes.
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - ruleName
+      - toleranceType
+      type: object
     TotalReturnSwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -310911,6 +314281,124 @@ components:
         remove:
           $ref: '#/components/schemas/MetadataFieldsToRemove'
       type: object
+    UpdateMatchingRulesetRequest:
+      additionalProperties: false
+      example:
+        recType: recType
+        coreTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        aggregateTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        aggregateRules:
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        displayName: displayName
+        allowPartialMatching: true
+        datasetSchemas:
+          left:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+          right:
+            entityType: entityType
+            type: type
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+        filters:
+          left: left
+          right: right
+        coreRules:
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        - isCaseSensitive: true
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+        supplementalAttributes:
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+        - leftFormula: leftFormula
+          rightFormula: rightFormula
+          attributeName: attributeName
+      properties:
+        displayName:
+          description: The name of the matching ruleset.
+          maxLength: 256
+          minLength: 1
+          type: string
+        recType:
+          description: "The type of reconciliation to perform. Available values: Holding,\
+            \ CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity."
+          minLength: 1
+          type: string
+        datasetSchemas:
+          $ref: '#/components/schemas/RecDatasetSchemas'
+        filters:
+          $ref: '#/components/schemas/GroupReconciliationFilters'
+        coreRules:
+          description: The core comparison rules evaluated as derivation formulae
+            against each side of the reconciliation.
+          items:
+            $ref: '#/components/schemas/CoreMatchingRule'
+          minItems: 1
+          type: array
+        aggregateRules:
+          description: The aggregate comparison rules evaluated as derivation formulae
+            against values on each side of the reconciliation and operation to aggregate
+            those values.
+          items:
+            $ref: '#/components/schemas/AggregateMatchingRule'
+          minItems: 1
+          type: array
+        coreTolerances:
+          description: "Tolerance configurations applied to core rule matching, in\
+            \ the specified order."
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        aggregateTolerances:
+          description: Tolerance configurations applied to aggregate rule matching.
+          items:
+            $ref: '#/components/schemas/ToleranceBase'
+          nullable: true
+          type: array
+        allowPartialMatching:
+          description: Whether to permit partial matches when applying rules.
+          type: boolean
+        supplementalAttributes:
+          description: Supplemental attributes that decorate reconciliation results
+            with additional values without participating in the reconciliation itself.
+          items:
+            $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+      required:
+      - aggregateRules
+      - coreRules
+      - displayName
+      - recType
+      type: object
     UpdateOrdersResponse:
       additionalProperties: false
       example:
@@ -311306,6 +314794,152 @@ components:
           type: string
       required:
       - displayName
+      type: object
+    UpdateRecDefinitionRequest:
+      additionalProperties: false
+      example:
+        rulesets:
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        - recType: recType
+          matchingRulesetId:
+            code: code
+            scope: scope
+          relationalDataFilter: relationalDataFilter
+        rightPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        displayName: displayName
+        valuationRecipes:
+          left:
+            code: code
+            scope: scope
+          right:
+            code: code
+            scope: scope
+        description: description
+        sideNames:
+          left: left
+          right: right
+        definitionType: definitionType
+        leftPortfolioSources:
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        - sourceType: sourceType
+          id:
+            code: code
+            scope: scope
+        currencies:
+          left: left
+          right: right
+      properties:
+        displayName:
+          description: The name of the rec definition.
+          maxLength: 512
+          minLength: 1
+          type: string
+        description:
+          description: A description of the rec definition.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        definitionType:
+          description: "What this definition reconciles, naming the kind of dataset\
+            \ that must be present on at least one side. One of: PortfolioContents,\
+            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
+            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+          minLength: 1
+          type: string
+        sideNames:
+          $ref: '#/components/schemas/RecDefSideNames'
+        leftPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the left side. Empty when the left side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          nullable: true
+          type: array
+        rightPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the right side. Empty when the right side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          nullable: true
+          type: array
+        valuationRecipes:
+          $ref: '#/components/schemas/RecDefRecipeIds'
+        currencies:
+          $ref: '#/components/schemas/RecDefCurrencies'
+        rulesets:
+          description: "The types of reconciliation included in the group, each naming\
+            \ the matching ruleset that drives it. At least one entry is required,\
+            \ and each rec type may appear at most once."
+          items:
+            $ref: '#/components/schemas/RecDefRuleset'
+          maxItems: 10
+          minItems: 1
+          type: array
+      required:
+      - definitionType
+      - displayName
+      - rulesets
       type: object
     UpdateReconciliationRequest:
       additionalProperties: false

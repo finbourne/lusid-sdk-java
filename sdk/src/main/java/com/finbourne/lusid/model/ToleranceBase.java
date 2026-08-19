@@ -45,10 +45,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Abstract base for tolerances that apply to aggregate matching rules. Distinguishes aggregate  tolerances from core tolerances at the type level (both share a common tolerance base).
+ * Base class for the tolerances that relax how strictly a matching rule compares its two sides. Polymorphic  by ToleranceType; each supported type has a corresponding inherited class.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class AggregateToleranceBase {
+public class ToleranceBase {
   public static final String SERIALIZED_NAME_TOLERANCE_TYPE = "toleranceType";
   @SerializedName(SERIALIZED_NAME_TOLERANCE_TYPE)
   private String toleranceType;
@@ -57,10 +57,10 @@ public class AggregateToleranceBase {
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
   private String ruleName;
 
-  public AggregateToleranceBase() {
+  public ToleranceBase() {
   }
 
-  public AggregateToleranceBase toleranceType(String toleranceType) {
+  public ToleranceBase toleranceType(String toleranceType) {
     
     this.toleranceType = toleranceType;
     return this;
@@ -81,7 +81,7 @@ public class AggregateToleranceBase {
   }
 
 
-  public AggregateToleranceBase ruleName(String ruleName) {
+  public ToleranceBase ruleName(String ruleName) {
     
     this.ruleName = ruleName;
     return this;
@@ -111,9 +111,9 @@ public class AggregateToleranceBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AggregateToleranceBase aggregateToleranceBase = (AggregateToleranceBase) o;
-    return Objects.equals(this.toleranceType, aggregateToleranceBase.toleranceType) &&
-        Objects.equals(this.ruleName, aggregateToleranceBase.ruleName);
+    ToleranceBase toleranceBase = (ToleranceBase) o;
+    return Objects.equals(this.toleranceType, toleranceBase.toleranceType) &&
+        Objects.equals(this.ruleName, toleranceBase.ruleName);
   }
 
   @Override
@@ -124,7 +124,7 @@ public class AggregateToleranceBase {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AggregateToleranceBase {\n");
+    sb.append("class ToleranceBase {\n");
     sb.append("    toleranceType: ").append(toIndentedString(toleranceType)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("}");
@@ -162,17 +162,17 @@ public class AggregateToleranceBase {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to AggregateToleranceBase
+  * @throws IOException if the JSON Element is invalid with respect to ToleranceBase
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AggregateToleranceBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AggregateToleranceBase is not found in the empty JSON string", AggregateToleranceBase.openapiRequiredFields.toString()));
+        if (!ToleranceBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ToleranceBase is not found in the empty JSON string", ToleranceBase.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AggregateToleranceBase.openapiRequiredFields) {
+      for (String requiredField : ToleranceBase.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -190,22 +190,22 @@ public class AggregateToleranceBase {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AggregateToleranceBase.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AggregateToleranceBase' and its subtypes
+       if (!ToleranceBase.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ToleranceBase' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AggregateToleranceBase> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AggregateToleranceBase.class));
+       final TypeAdapter<ToleranceBase> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ToleranceBase.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AggregateToleranceBase>() {
+       return (TypeAdapter<T>) new TypeAdapter<ToleranceBase>() {
            @Override
-           public void write(JsonWriter out, AggregateToleranceBase value) throws IOException {
+           public void write(JsonWriter out, ToleranceBase value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public AggregateToleranceBase read(JsonReader in) throws IOException {
+           public ToleranceBase read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -216,18 +216,18 @@ public class AggregateToleranceBase {
   }
 
  /**
-  * Create an instance of AggregateToleranceBase given an JSON string
+  * Create an instance of ToleranceBase given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of AggregateToleranceBase
-  * @throws IOException if the JSON string is invalid with respect to AggregateToleranceBase
+  * @return An instance of ToleranceBase
+  * @throws IOException if the JSON string is invalid with respect to ToleranceBase
   */
-  public static AggregateToleranceBase fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AggregateToleranceBase.class);
+  public static ToleranceBase fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ToleranceBase.class);
   }
 
  /**
-  * Convert an instance of AggregateToleranceBase to an JSON string
+  * Convert an instance of ToleranceBase to an JSON string
   *
   * @return JSON string
   */

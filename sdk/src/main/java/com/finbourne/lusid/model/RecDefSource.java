@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,60 +46,60 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Abstract base for tolerances that apply to core matching rules. Distinguishes core tolerances from  aggregate tolerances at the type level (both share a common tolerance base).
+ * RecDefSource
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CoreToleranceBase {
-  public static final String SERIALIZED_NAME_TOLERANCE_TYPE = "toleranceType";
-  @SerializedName(SERIALIZED_NAME_TOLERANCE_TYPE)
-  private String toleranceType;
+public class RecDefSource {
+  public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
+  @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  private String sourceType;
 
-  public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
-  @SerializedName(SERIALIZED_NAME_RULE_NAME)
-  private String ruleName;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private ResourceId id;
 
-  public CoreToleranceBase() {
+  public RecDefSource() {
   }
 
-  public CoreToleranceBase toleranceType(String toleranceType) {
+  public RecDefSource sourceType(String sourceType) {
     
-    this.toleranceType = toleranceType;
+    this.sourceType = sourceType;
     return this;
   }
 
    /**
-   * Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric.
-   * @return toleranceType
+   * The type of entity that this source refers to. One of: Portfolio, PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund.
+   * @return sourceType
   **/
   @jakarta.annotation.Nonnull
-  public String getToleranceType() {
-    return toleranceType;
+  public String getSourceType() {
+    return sourceType;
   }
 
 
-  public void setToleranceType(String toleranceType) {
-    this.toleranceType = toleranceType;
+  public void setSourceType(String sourceType) {
+    this.sourceType = sourceType;
   }
 
 
-  public CoreToleranceBase ruleName(String ruleName) {
+  public RecDefSource id(ResourceId id) {
     
-    this.ruleName = ruleName;
+    this.id = id;
     return this;
   }
 
    /**
-   * The reference name of the rule that this tolerance relaxes.
-   * @return ruleName
+   * Get id
+   * @return id
   **/
   @jakarta.annotation.Nonnull
-  public String getRuleName() {
-    return ruleName;
+  public ResourceId getId() {
+    return id;
   }
 
 
-  public void setRuleName(String ruleName) {
-    this.ruleName = ruleName;
+  public void setId(ResourceId id) {
+    this.id = id;
   }
 
 
@@ -111,22 +112,22 @@ public class CoreToleranceBase {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CoreToleranceBase coreToleranceBase = (CoreToleranceBase) o;
-    return Objects.equals(this.toleranceType, coreToleranceBase.toleranceType) &&
-        Objects.equals(this.ruleName, coreToleranceBase.ruleName);
+    RecDefSource recDefSource = (RecDefSource) o;
+    return Objects.equals(this.sourceType, recDefSource.sourceType) &&
+        Objects.equals(this.id, recDefSource.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(toleranceType, ruleName);
+    return Objects.hash(sourceType, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CoreToleranceBase {\n");
-    sb.append("    toleranceType: ").append(toIndentedString(toleranceType)).append("\n");
-    sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
+    sb.append("class RecDefSource {\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -149,63 +150,62 @@ public class CoreToleranceBase {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("toleranceType");
-    openapiFields.add("ruleName");
+    openapiFields.add("sourceType");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("toleranceType");
-    openapiRequiredFields.add("ruleName");
+    openapiRequiredFields.add("sourceType");
+    openapiRequiredFields.add("id");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to CoreToleranceBase
+  * @throws IOException if the JSON Element is invalid with respect to RecDefSource
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CoreToleranceBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CoreToleranceBase is not found in the empty JSON string", CoreToleranceBase.openapiRequiredFields.toString()));
+        if (!RecDefSource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RecDefSource is not found in the empty JSON string", RecDefSource.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CoreToleranceBase.openapiRequiredFields) {
+      for (String requiredField : RecDefSource.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("toleranceType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `toleranceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("toleranceType").toString()));
+      if (!jsonObj.get("sourceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
       }
-      if (!jsonObj.get("ruleName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ruleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleName").toString()));
-      }
+      // validate the required field `id`
+      ResourceId.validateJsonElement(jsonObj.get("id"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CoreToleranceBase.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CoreToleranceBase' and its subtypes
+       if (!RecDefSource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RecDefSource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CoreToleranceBase> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CoreToleranceBase.class));
+       final TypeAdapter<RecDefSource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RecDefSource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CoreToleranceBase>() {
+       return (TypeAdapter<T>) new TypeAdapter<RecDefSource>() {
            @Override
-           public void write(JsonWriter out, CoreToleranceBase value) throws IOException {
+           public void write(JsonWriter out, RecDefSource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CoreToleranceBase read(JsonReader in) throws IOException {
+           public RecDefSource read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -216,18 +216,18 @@ public class CoreToleranceBase {
   }
 
  /**
-  * Create an instance of CoreToleranceBase given an JSON string
+  * Create an instance of RecDefSource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CoreToleranceBase
-  * @throws IOException if the JSON string is invalid with respect to CoreToleranceBase
+  * @return An instance of RecDefSource
+  * @throws IOException if the JSON string is invalid with respect to RecDefSource
   */
-  public static CoreToleranceBase fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CoreToleranceBase.class);
+  public static RecDefSource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RecDefSource.class);
   }
 
  /**
-  * Convert an instance of CoreToleranceBase to an JSON string
+  * Convert an instance of RecDefSource to an JSON string
   *
   * @return JSON string
   */

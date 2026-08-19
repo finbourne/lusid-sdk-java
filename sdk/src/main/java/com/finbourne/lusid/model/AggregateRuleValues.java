@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.AggregateToleranceBase;
+import com.finbourne.lusid.model.ToleranceBase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,7 +69,7 @@ public class AggregateRuleValues {
 
   public static final String SERIALIZED_NAME_APPLIED_TOLERANCE = "appliedTolerance";
   @SerializedName(SERIALIZED_NAME_APPLIED_TOLERANCE)
-  private AggregateToleranceBase appliedTolerance;
+  private ToleranceBase appliedTolerance;
 
   public AggregateRuleValues() {
   }
@@ -158,7 +158,7 @@ public class AggregateRuleValues {
   }
 
 
-  public AggregateRuleValues appliedTolerance(AggregateToleranceBase appliedTolerance) {
+  public AggregateRuleValues appliedTolerance(ToleranceBase appliedTolerance) {
     
     this.appliedTolerance = appliedTolerance;
     return this;
@@ -169,12 +169,12 @@ public class AggregateRuleValues {
    * @return appliedTolerance
   **/
   @jakarta.annotation.Nullable
-  public AggregateToleranceBase getAppliedTolerance() {
+  public ToleranceBase getAppliedTolerance() {
     return appliedTolerance;
   }
 
 
-  public void setAppliedTolerance(AggregateToleranceBase appliedTolerance) {
+  public void setAppliedTolerance(ToleranceBase appliedTolerance) {
     this.appliedTolerance = appliedTolerance;
   }
 
@@ -289,7 +289,7 @@ public class AggregateRuleValues {
       }
       // validate the optional field `appliedTolerance`
       if (jsonObj.get("appliedTolerance") != null && !jsonObj.get("appliedTolerance").isJsonNull()) {
-        AggregateToleranceBase.validateJsonElement(jsonObj.get("appliedTolerance"));
+        ToleranceBase.validateJsonElement(jsonObj.get("appliedTolerance"));
       }
   }
 

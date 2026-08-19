@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.CoreToleranceBase;
+import com.finbourne.lusid.model.ToleranceBase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -65,7 +65,7 @@ public class CoreRuleValues {
 
   public static final String SERIALIZED_NAME_APPLIED_TOLERANCE = "appliedTolerance";
   @SerializedName(SERIALIZED_NAME_APPLIED_TOLERANCE)
-  private CoreToleranceBase appliedTolerance;
+  private ToleranceBase appliedTolerance;
 
   public CoreRuleValues() {
   }
@@ -133,7 +133,7 @@ public class CoreRuleValues {
   }
 
 
-  public CoreRuleValues appliedTolerance(CoreToleranceBase appliedTolerance) {
+  public CoreRuleValues appliedTolerance(ToleranceBase appliedTolerance) {
     
     this.appliedTolerance = appliedTolerance;
     return this;
@@ -144,12 +144,12 @@ public class CoreRuleValues {
    * @return appliedTolerance
   **/
   @jakarta.annotation.Nullable
-  public CoreToleranceBase getAppliedTolerance() {
+  public ToleranceBase getAppliedTolerance() {
     return appliedTolerance;
   }
 
 
-  public void setAppliedTolerance(CoreToleranceBase appliedTolerance) {
+  public void setAppliedTolerance(ToleranceBase appliedTolerance) {
     this.appliedTolerance = appliedTolerance;
   }
 
@@ -257,7 +257,7 @@ public class CoreRuleValues {
       }
       // validate the optional field `appliedTolerance`
       if (jsonObj.get("appliedTolerance") != null && !jsonObj.get("appliedTolerance").isJsonNull()) {
-        CoreToleranceBase.validateJsonElement(jsonObj.get("appliedTolerance"));
+        ToleranceBase.validateJsonElement(jsonObj.get("appliedTolerance"));
       }
   }
 

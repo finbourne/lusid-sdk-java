@@ -7,15 +7,25 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**addRecResultSetApprovalDecision**](RecsApi.md#addRecResultSetApprovalDecision) | **POST** /api/recs/resultsets/{entityUniqueId}/$decide | [EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision |
 | [**batchManageRecResultComments**](RecsApi.md#batchManageRecResultComments) | **POST** /api/recs/results/$batchManageComments | [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments |
 | [**batchReviewRecResults**](RecsApi.md#batchReviewRecResults) | **POST** /api/recs/results/$batchReview | [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults |
+| [**createMatchingRuleset**](RecsApi.md#createMatchingRuleset) | **POST** /api/recs/matchingrulesets | [EXPERIMENTAL] CreateMatchingRuleset: CreateMatchingRuleset |
+| [**createRecDefinition**](RecsApi.md#createRecDefinition) | **POST** /api/recs/definitions | [EXPERIMENTAL] CreateRecDefinition: CreateRecDefinition |
+| [**deleteMatchingRuleset**](RecsApi.md#deleteMatchingRuleset) | **DELETE** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] DeleteMatchingRuleset: DeleteMatchingRuleset |
+| [**deleteRecDefinition**](RecsApi.md#deleteRecDefinition) | **DELETE** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] DeleteRecDefinition: DeleteRecDefinition |
+| [**getMatchingRuleset**](RecsApi.md#getMatchingRuleset) | **GET** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset |
+| [**getRecDefinition**](RecsApi.md#getRecDefinition) | **GET** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition |
 | [**getRecInstance**](RecsApi.md#getRecInstance) | **GET** /api/recs/instances/{instanceIdType}/{instanceIdValue} | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
 | [**getRecResult**](RecsApi.md#getRecResult) | **GET** /api/recs/results/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**getRecResultSet**](RecsApi.md#getRecResultSet) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**instantiateRec**](RecsApi.md#instantiateRec) | **POST** /api/recs/instances | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
+| [**listMatchingRulesets**](RecsApi.md#listMatchingRulesets) | **GET** /api/recs/matchingrulesets | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
+| [**listRecDefinitions**](RecsApi.md#listRecDefinitions) | **GET** /api/recs/definitions | [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions |
 | [**listRecInstances**](RecsApi.md#listRecInstances) | **GET** /api/recs/instances | [EXPERIMENTAL] ListRecInstances: ListRecInstances |
 | [**listRecResultSets**](RecsApi.md#listRecResultSets) | **GET** /api/recs/resultsets | [EXPERIMENTAL] ListRecResultSets: ListRecResultSets |
 | [**listRecResults**](RecsApi.md#listRecResults) | **GET** /api/recs/results | [EXPERIMENTAL] ListRecResults: ListRecResults |
 | [**submitRecResultSetReview**](RecsApi.md#submitRecResultSetReview) | **POST** /api/recs/resultsets/{entityUniqueId}/$submit | [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions. |
 | [**transitionRecInstance**](RecsApi.md#transitionRecInstance) | **POST** /api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance |
+| [**updateMatchingRuleset**](RecsApi.md#updateMatchingRuleset) | **PUT** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset |
+| [**updateRecDefinition**](RecsApi.md#updateRecDefinition) | **PUT** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition |
 
 
 
@@ -292,6 +302,564 @@ public class RecsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The results affected by each batch item. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## createMatchingRuleset
+
+> MatchingRuleset createMatchingRuleset(createMatchingRulesetRequest)
+
+[EXPERIMENTAL] CreateMatchingRuleset: CreateMatchingRuleset
+
+Create a matching ruleset, describing the core and aggregate rules used to match a reconciliation&#39;s two sides.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        CreateMatchingRulesetRequest createMatchingRulesetRequest = new CreateMatchingRulesetRequest(); // CreateMatchingRulesetRequest | The matching ruleset to create.
+        try {
+            // uncomment the below to set overrides at the request level
+            // MatchingRuleset result = apiInstance.createMatchingRuleset(createMatchingRulesetRequest).execute(opts);
+
+            MatchingRuleset result = apiInstance.createMatchingRuleset(createMatchingRulesetRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#createMatchingRuleset");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createMatchingRulesetRequest** | [**CreateMatchingRulesetRequest**](CreateMatchingRulesetRequest.md)| The matching ruleset to create. | |
+
+### Return type
+
+[**MatchingRuleset**](MatchingRuleset.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## createRecDefinition
+
+> RecDefinition createRecDefinition(createRecDefinitionRequest)
+
+[EXPERIMENTAL] CreateRecDefinition: CreateRecDefinition
+
+Create a rec definition, describing the two sides to reconcile and the rules to reconcile them with.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        CreateRecDefinitionRequest createRecDefinitionRequest = new CreateRecDefinitionRequest(); // CreateRecDefinitionRequest | The rec definition to create.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RecDefinition result = apiInstance.createRecDefinition(createRecDefinitionRequest).execute(opts);
+
+            RecDefinition result = apiInstance.createRecDefinition(createRecDefinitionRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#createRecDefinition");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createRecDefinitionRequest** | [**CreateRecDefinitionRequest**](CreateRecDefinitionRequest.md)| The rec definition to create. | |
+
+### Return type
+
+[**RecDefinition**](RecDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created rec definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteMatchingRuleset
+
+> DeletedEntityResponse deleteMatchingRuleset(scope, code)
+
+[EXPERIMENTAL] DeleteMatchingRuleset: DeleteMatchingRuleset
+
+Delete a matching ruleset identified by scope and code. The deletion takes effect from the deletion datetime,  i.e. the matching ruleset will no longer exist at any asAt datetime after the asAt datetime of deletion.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the matching ruleset.
+        String code = "code_example"; // String | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteMatchingRuleset(scope, code).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteMatchingRuleset(scope, code).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#deleteMatchingRuleset");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the matching ruleset. | |
+| **code** | **String**| The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted entity metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteRecDefinition
+
+> DeletedEntityResponse deleteRecDefinition(scope, code)
+
+[EXPERIMENTAL] DeleteRecDefinition: DeleteRecDefinition
+
+Delete a rec definition identified by scope and code. The deletion takes effect from the deletion datetime,  i.e. the rec definition will no longer exist at any asAt datetime after the asAt datetime of deletion.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the rec definition.
+        String code = "code_example"; // String | The code of the rec definition. Together with the scope this uniquely identifies the rec definition.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteRecDefinition(scope, code).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteRecDefinition(scope, code).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#deleteRecDefinition");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the rec definition. | |
+| **code** | **String**| The code of the rec definition. Together with the scope this uniquely identifies the rec definition. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted entity metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getMatchingRuleset
+
+> MatchingRuleset getMatchingRuleset(scope, code, asAt)
+
+[EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset
+
+Retrieve a single matching ruleset by scope and code.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the matching ruleset.
+        String code = "code_example"; // String | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the matching ruleset. Defaults to latest if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // MatchingRuleset result = apiInstance.getMatchingRuleset(scope, code, asAt).execute(opts);
+
+            MatchingRuleset result = apiInstance.getMatchingRuleset(scope, code, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#getMatchingRuleset");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the matching ruleset. | |
+| **code** | **String**| The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the matching ruleset. Defaults to latest if not specified. | [optional] |
+
+### Return type
+
+[**MatchingRuleset**](MatchingRuleset.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getRecDefinition
+
+> RecDefinition getRecDefinition(scope, code, asAt)
+
+[EXPERIMENTAL] GetRecDefinition: GetRecDefinition
+
+Retrieve a single rec definition by scope and code.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the rec definition.
+        String code = "code_example"; // String | The code of the rec definition. Together with the scope this uniquely identifies the rec definition.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt).execute(opts);
+
+            RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#getRecDefinition");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the rec definition. | |
+| **code** | **String**| The code of the rec definition. Together with the scope this uniquely identifies the rec definition. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. | [optional] |
+
+### Return type
+
+[**RecDefinition**](RecDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested rec definition. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -668,6 +1236,204 @@ public class RecsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The instantiated rec instance, in a Running state. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listMatchingRulesets
+
+> PagedResourceListOfMatchingRuleset listMatchingRulesets(asAt, page, sortBy, limit, filter)
+
+[EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets
+
+List matching rulesets, optionally filtered and sorted. Supports pagination.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the matching rulesets. Defaults to latest if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing matching rulesets from a previous call. This value is   returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have   changed since the original request.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfMatchingRuleset result = apiInstance.listMatchingRulesets(asAt, page, sortBy, limit, filter).execute(opts);
+
+            PagedResourceListOfMatchingRuleset result = apiInstance.listMatchingRulesets(asAt, page, sortBy, limit, filter).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#listMatchingRulesets");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the matching rulesets. Defaults to latest if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing matching rulesets from a previous call. This value is   returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have   changed since the original request. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfMatchingRuleset**](PagedResourceListOfMatchingRuleset.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested list of matching rulesets. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listRecDefinitions
+
+> PagedResourceListOfRecDefinition listRecDefinitions(asAt, page, sortBy, limit, filter)
+
+[EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
+
+List rec definitions, optionally filtered and sorted. Supports pagination.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the rec definitions. Defaults to latest if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing rec definitions from a previous call. This value is   returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have   changed since the original request.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter).execute(opts);
+
+            PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#listRecDefinitions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the rec definitions. Defaults to latest if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing rec definitions from a previous call. This value is   returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have   changed since the original request. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfRecDefinition**](PagedResourceListOfRecDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested list of rec definitions. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -1157,6 +1923,196 @@ public class RecsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The rec instance in its post-transition state. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## updateMatchingRuleset
+
+> MatchingRuleset updateMatchingRuleset(scope, code, updateMatchingRulesetRequest)
+
+[EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset
+
+Overwrite an existing matching ruleset identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the matching ruleset.
+        String code = "code_example"; // String | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset.
+        UpdateMatchingRulesetRequest updateMatchingRulesetRequest = new UpdateMatchingRulesetRequest(); // UpdateMatchingRulesetRequest | The updated matching ruleset values.
+        try {
+            // uncomment the below to set overrides at the request level
+            // MatchingRuleset result = apiInstance.updateMatchingRuleset(scope, code, updateMatchingRulesetRequest).execute(opts);
+
+            MatchingRuleset result = apiInstance.updateMatchingRuleset(scope, code, updateMatchingRulesetRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#updateMatchingRuleset");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the matching ruleset. | |
+| **code** | **String**| The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. | |
+| **updateMatchingRulesetRequest** | [**UpdateMatchingRulesetRequest**](UpdateMatchingRulesetRequest.md)| The updated matching ruleset values. | |
+
+### Return type
+
+[**MatchingRuleset**](MatchingRuleset.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## updateRecDefinition
+
+> RecDefinition updateRecDefinition(scope, code, updateRecDefinitionRequest)
+
+[EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
+
+Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the rec definition.
+        String code = "code_example"; // String | The code of the rec definition. Together with the scope this uniquely identifies the rec definition.
+        UpdateRecDefinitionRequest updateRecDefinitionRequest = new UpdateRecDefinitionRequest(); // UpdateRecDefinitionRequest | The updated rec definition values.
+        try {
+            // uncomment the below to set overrides at the request level
+            // RecDefinition result = apiInstance.updateRecDefinition(scope, code, updateRecDefinitionRequest).execute(opts);
+
+            RecDefinition result = apiInstance.updateRecDefinition(scope, code, updateRecDefinitionRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#updateRecDefinition");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the rec definition. | |
+| **code** | **String**| The code of the rec definition. Together with the scope this uniquely identifies the rec definition. | |
+| **updateRecDefinitionRequest** | [**UpdateRecDefinitionRequest**](UpdateRecDefinitionRequest.md)| The updated rec definition values. | |
+
+### Return type
+
+[**RecDefinition**](RecDefinition.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated rec definition. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

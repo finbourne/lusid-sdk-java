@@ -2294,7 +2294,7 @@ public class TransactionPortfoliosApiExample {
         String custodianAccountCode = "custodianAccountCode_example"; // String | The code of the Custodian Account.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example 'CustodianAccount/Manager/Id'. If no properties are specified, then no properties will be returned.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example 'CustodianAccount/system/Name'.   If no property keys are specified, it will return 'IsDefault' and 'RelatedAccounts' properties, if they exist.
         try {
             // uncomment the below to set overrides at the request level
             // CustodianAccount result = apiInstance.getCustodianAccount(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -2322,7 +2322,7 @@ public class TransactionPortfoliosApiExample {
 | **custodianAccountCode** | **String**| The code of the Custodian Account. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;.   If no property keys are specified, it will return &#39;IsDefault&#39; and &#39;RelatedAccounts&#39; properties, if they exist. | [optional] |
 
 ### Return type
 
@@ -3809,7 +3809,7 @@ public class TransactionPortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Custodian Account type, specify \"code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example 'CustodianAccount/system/Name'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example 'CustodianAccount/system/Name'.   If no property keys are specified, it will return 'IsDefault' and 'RelatedAccounts' properties, if they exist.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfCustodianAccount result = apiInstance.listCustodianAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
@@ -3838,7 +3838,7 @@ public class TransactionPortfoliosApiExample {
 | **page** | **String**| The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;.   If no property keys are specified, it will return &#39;IsDefault&#39; and &#39;RelatedAccounts&#39; properties, if they exist. | [optional] |
 
 ### Return type
 

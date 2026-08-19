@@ -16,7 +16,6 @@ import com.finbourne.lusid.model.RecClosedPeriods;
 import com.finbourne.lusid.model.RecDatesReconciled;
 import com.finbourne.lusid.model.RecInstanceId;
 import com.finbourne.lusid.model.RecRunLogEntry;
-import com.finbourne.lusid.model.RecWorkflowTask;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -73,10 +72,6 @@ public class RecInstance {
   public static final String SERIALIZED_NAME_AS_AT_INSTANTIATED = "asAtInstantiated";
   @SerializedName(SERIALIZED_NAME_AS_AT_INSTANTIATED)
   private OffsetDateTime asAtInstantiated;
-
-  public static final String SERIALIZED_NAME_WORKFLOW_TASK_INSTANTIATED = "workflowTaskInstantiated";
-  @SerializedName(SERIALIZED_NAME_WORKFLOW_TASK_INSTANTIATED)
-  private RecWorkflowTask workflowTaskInstantiated;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -173,27 +168,6 @@ public class RecInstance {
 
   public void setAsAtInstantiated(OffsetDateTime asAtInstantiated) {
     this.asAtInstantiated = asAtInstantiated;
-  }
-
-
-  public RecInstance workflowTaskInstantiated(RecWorkflowTask workflowTaskInstantiated) {
-    
-    this.workflowTaskInstantiated = workflowTaskInstantiated;
-    return this;
-  }
-
-   /**
-   * Get workflowTaskInstantiated
-   * @return workflowTaskInstantiated
-  **/
-  @jakarta.annotation.Nullable
-  public RecWorkflowTask getWorkflowTaskInstantiated() {
-    return workflowTaskInstantiated;
-  }
-
-
-  public void setWorkflowTaskInstantiated(RecWorkflowTask workflowTaskInstantiated) {
-    this.workflowTaskInstantiated = workflowTaskInstantiated;
   }
 
 
@@ -394,7 +368,6 @@ public class RecInstance {
     return Objects.equals(this.id, recInstance.id) &&
         Objects.equals(this.recDefinitionId, recInstance.recDefinitionId) &&
         Objects.equals(this.asAtInstantiated, recInstance.asAtInstantiated) &&
-        Objects.equals(this.workflowTaskInstantiated, recInstance.workflowTaskInstantiated) &&
         Objects.equals(this.status, recInstance.status) &&
         Objects.equals(this.asAtLocked, recInstance.asAtLocked) &&
         Objects.equals(this.datesLocked, recInstance.datesLocked) &&
@@ -411,7 +384,7 @@ public class RecInstance {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recDefinitionId, asAtInstantiated, workflowTaskInstantiated, status, asAtLocked, datesLocked, closedPeriods, runLog, href, version, links);
+    return Objects.hash(id, recDefinitionId, asAtInstantiated, status, asAtLocked, datesLocked, closedPeriods, runLog, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -428,7 +401,6 @@ public class RecInstance {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    recDefinitionId: ").append(toIndentedString(recDefinitionId)).append("\n");
     sb.append("    asAtInstantiated: ").append(toIndentedString(asAtInstantiated)).append("\n");
-    sb.append("    workflowTaskInstantiated: ").append(toIndentedString(workflowTaskInstantiated)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    asAtLocked: ").append(toIndentedString(asAtLocked)).append("\n");
     sb.append("    datesLocked: ").append(toIndentedString(datesLocked)).append("\n");
@@ -462,7 +434,6 @@ public class RecInstance {
     openapiFields.add("id");
     openapiFields.add("recDefinitionId");
     openapiFields.add("asAtInstantiated");
-    openapiFields.add("workflowTaskInstantiated");
     openapiFields.add("status");
     openapiFields.add("asAtLocked");
     openapiFields.add("datesLocked");
@@ -505,10 +476,6 @@ public class RecInstance {
       RecInstanceId.validateJsonElement(jsonObj.get("id"));
       // validate the required field `recDefinitionId`
       ResourceId.validateJsonElement(jsonObj.get("recDefinitionId"));
-      // validate the optional field `workflowTaskInstantiated`
-      if (jsonObj.get("workflowTaskInstantiated") != null && !jsonObj.get("workflowTaskInstantiated").isJsonNull()) {
-        RecWorkflowTask.validateJsonElement(jsonObj.get("workflowTaskInstantiated"));
-      }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }

@@ -6539,7 +6539,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;.   If no property keys are specified, it will return &#39;IsDefault&#39; and &#39;RelatedAccounts&#39; properties, if they exist. (optional)
          * @return APIgetCustodianAccountRequest
          */
         public APIgetCustodianAccountRequest propertyKeys(List<String> propertyKeys) {
@@ -11478,7 +11478,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;.   If no property keys are specified, it will return &#39;IsDefault&#39; and &#39;RelatedAccounts&#39; properties, if they exist. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest propertyKeys(List<String> propertyKeys) {
