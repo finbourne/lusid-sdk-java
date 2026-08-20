@@ -93,6 +93,10 @@ public class CdsIndex extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_NOTIONAL)
   private java.math.BigDecimal notional;
 
+  public static final String SERIALIZED_NAME_IS_NON_STANDARD = "isNonStandard";
+  @SerializedName(SERIALIZED_NAME_IS_NON_STANDARD)
+  private Boolean isNonStandard;
+
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
   private List<AdditionalPayment> additionalPayments;
@@ -281,6 +285,27 @@ public class CdsIndex extends LusidInstrument {
   }
 
 
+  public CdsIndex isNonStandard(Boolean isNonStandard) {
+    
+    this.isNonStandard = isNonStandard;
+    return this;
+  }
+
+   /**
+   * By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates and any payment  frequency is accepted. The payment dates roll back from the maturity, so a term that is not a whole  number of payment periods has a short first period.
+   * @return isNonStandard
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsNonStandard() {
+    return isNonStandard;
+  }
+
+
+  public void setIsNonStandard(Boolean isNonStandard) {
+    this.isNonStandard = isNonStandard;
+  }
+
+
   public CdsIndex additionalPayments(List<AdditionalPayment> additionalPayments) {
     
     this.additionalPayments = additionalPayments;
@@ -349,6 +374,7 @@ public class CdsIndex extends LusidInstrument {
         Objects.equals(this.basket, cdsIndex.basket) &&
         Objects.equals(this.conventionName, cdsIndex.conventionName) &&
         (this.notional.compareTo(cdsIndex.getNotional()) == 0) &&
+        Objects.equals(this.isNonStandard, cdsIndex.isNonStandard) &&
         Objects.equals(this.additionalPayments, cdsIndex.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, cdsIndex.timeZoneConventions) &&
         super.equals(o);
@@ -360,7 +386,7 @@ public class CdsIndex extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, isNonStandard, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -383,6 +409,7 @@ public class CdsIndex extends LusidInstrument {
     sb.append("    basket: ").append(toIndentedString(basket)).append("\n");
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
+    sb.append("    isNonStandard: ").append(toIndentedString(isNonStandard)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
@@ -416,6 +443,7 @@ public class CdsIndex extends LusidInstrument {
     openapiFields.add("basket");
     openapiFields.add("conventionName");
     openapiFields.add("notional");
+    openapiFields.add("isNonStandard");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
 

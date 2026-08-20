@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **orderInstruction** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **_package** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) | [optional] [default to String]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.BlockedOrderRequest;
@@ -35,6 +36,7 @@ CurrencyAndAmount Price = new CurrencyAndAmount();
 ResourceId OrderInstruction = new ResourceId();
 ResourceId Package = new ResourceId();
 @jakarta.annotation.Nullable String Side = "example Side";
+ResourceId CustodianAccountId = new ResourceId();
 
 
 BlockedOrderRequest blockedOrderRequestInstance = new BlockedOrderRequest()
@@ -49,7 +51,8 @@ BlockedOrderRequest blockedOrderRequestInstance = new BlockedOrderRequest()
     .Price(Price)
     .OrderInstruction(OrderInstruction)
     .Package(Package)
-    .Side(Side);
+    .Side(Side)
+    .CustodianAccountId(CustodianAccountId);
 ```
 
 

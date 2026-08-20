@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResultAxisDefinition;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -56,7 +59,7 @@ public class AddressDefinition {
   private String displayName;
 
   /**
-   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
+   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -73,6 +76,10 @@ public class AddressDefinition {
     RESULTVALUE("ResultValue"),
     
     RESULT0D("Result0D"),
+    
+    RESULT1D("Result1D"),
+    
+    RESULT2D("Result2D"),
     
     JSON("Json");
 
@@ -134,6 +141,10 @@ public class AddressDefinition {
   @SerializedName(SERIALIZED_NAME_DOCUMENTATION_LINK)
   private String documentationLink;
 
+  public static final String SERIALIZED_NAME_AXES = "axes";
+  @SerializedName(SERIALIZED_NAME_AXES)
+  private List<ResultAxisDefinition> axes;
+
   public AddressDefinition() {
   }
 
@@ -165,7 +176,7 @@ public class AddressDefinition {
   }
 
    /**
-   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
+   * Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -263,6 +274,35 @@ public class AddressDefinition {
   }
 
 
+  public AddressDefinition axes(List<ResultAxisDefinition> axes) {
+    
+    this.axes = axes;
+    return this;
+  }
+
+  public AddressDefinition addAxesItem(ResultAxisDefinition axesItem) {
+    if (this.axes == null) {
+      this.axes = new ArrayList<>();
+    }
+    this.axes.add(axesItem);
+    return this;
+  }
+
+   /**
+   * For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described.
+   * @return axes
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResultAxisDefinition> getAxes() {
+    return axes;
+  }
+
+
+  public void setAxes(List<ResultAxisDefinition> axes) {
+    this.axes = axes;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -278,7 +318,8 @@ public class AddressDefinition {
         Objects.equals(this.description, addressDefinition.description) &&
         Objects.equals(this.lifeCycleStatus, addressDefinition.lifeCycleStatus) &&
         Objects.equals(this.removalDate, addressDefinition.removalDate) &&
-        Objects.equals(this.documentationLink, addressDefinition.documentationLink);
+        Objects.equals(this.documentationLink, addressDefinition.documentationLink) &&
+        Objects.equals(this.axes, addressDefinition.axes);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -287,7 +328,7 @@ public class AddressDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, type, description, lifeCycleStatus, removalDate, documentationLink);
+    return Objects.hash(displayName, type, description, lifeCycleStatus, removalDate, documentationLink, axes);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -307,6 +348,7 @@ public class AddressDefinition {
     sb.append("    lifeCycleStatus: ").append(toIndentedString(lifeCycleStatus)).append("\n");
     sb.append("    removalDate: ").append(toIndentedString(removalDate)).append("\n");
     sb.append("    documentationLink: ").append(toIndentedString(documentationLink)).append("\n");
+    sb.append("    axes: ").append(toIndentedString(axes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -335,6 +377,7 @@ public class AddressDefinition {
     openapiFields.add("lifeCycleStatus");
     openapiFields.add("removalDate");
     openapiFields.add("documentationLink");
+    openapiFields.add("axes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -367,6 +410,20 @@ public class AddressDefinition {
       }
       if ((jsonObj.get("documentationLink") != null && !jsonObj.get("documentationLink").isJsonNull()) && !jsonObj.get("documentationLink").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentationLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentationLink").toString()));
+      }
+      if (jsonObj.get("axes") != null && !jsonObj.get("axes").isJsonNull()) {
+        JsonArray jsonArrayaxes = jsonObj.getAsJsonArray("axes");
+        if (jsonArrayaxes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("axes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `axes` to be an array in the JSON string but got `%s`", jsonObj.get("axes").toString()));
+          }
+
+          // validate the optional field `axes` (array)
+          for (int i = 0; i < jsonArrayaxes.size(); i++) {
+            ResultAxisDefinition.validateJsonElement(jsonArrayaxes.get(i));
+          };
+        }
       }
   }
 

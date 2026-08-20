@@ -145,6 +145,10 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private CurrencyAndAmount amount;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
+
   public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
@@ -621,6 +625,27 @@ public class Order {
   }
 
 
+  public Order custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
   public Order dataModelMembership(DataModelMembership dataModelMembership) {
     
     this.dataModelMembership = dataModelMembership;
@@ -744,6 +769,7 @@ public class Order {
         Objects.equals(this.packageId, order.packageId) &&
         (this.weight.compareTo(order.getWeight()) == 0) &&
         Objects.equals(this.amount, order.amount) &&
+        Objects.equals(this.custodianAccountId, order.custodianAccountId) &&
         Objects.equals(this.dataModelMembership, order.dataModelMembership) &&
         Objects.equals(this.derivedComplianceState, order.derivedComplianceState) &&
         Objects.equals(this.derivedApprovalState, order.derivedApprovalState) &&
@@ -756,7 +782,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, dataModelMembership, derivedComplianceState, derivedApprovalState, links);
+    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, custodianAccountId, dataModelMembership, derivedComplianceState, derivedApprovalState, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -791,6 +817,7 @@ public class Order {
     sb.append("    packageId: ").append(toIndentedString(packageId)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
     sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
@@ -838,6 +865,7 @@ public class Order {
     openapiFields.add("packageId");
     openapiFields.add("weight");
     openapiFields.add("amount");
+    openapiFields.add("custodianAccountId");
     openapiFields.add("dataModelMembership");
     openapiFields.add("derivedComplianceState");
     openapiFields.add("derivedApprovalState");
@@ -926,6 +954,10 @@ public class Order {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {

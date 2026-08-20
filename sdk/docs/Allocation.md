@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **settlementCurrencyFxRate** | **java.math.BigDecimal** | The settlement currency to allocation currency FX rate. | [optional] [default to java.math.BigDecimal]
 **counterparty** | **String** | The counterparty for this allocation. | [optional] [default to String]
 **executionIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The executions associated with this allocation | [optional] [default to List<ResourceId>]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -54,6 +55,7 @@ CurrencyAndAmount Price = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal SettlementCurrencyFxRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String Counterparty = "example Counterparty";
 @jakarta.annotation.Nullable List<ResourceId> ExecutionIds = new List<ResourceId>();
+ResourceId CustodianAccountId = new ResourceId();
 DataModelMembership DataModelMembership = new DataModelMembership();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -79,6 +81,7 @@ Allocation allocationInstance = new Allocation()
     .SettlementCurrencyFxRate(SettlementCurrencyFxRate)
     .Counterparty(Counterparty)
     .ExecutionIds(ExecutionIds)
+    .CustodianAccountId(CustodianAccountId)
     .DataModelMembership(DataModelMembership)
     .Links(Links);
 ```

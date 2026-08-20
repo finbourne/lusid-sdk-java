@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -57,10 +56,6 @@ public class RecResultItem {
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
   private String itemType;
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private ResourceId portfolioId;
-
   public static final String SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES = "ruleAndAttributeValues";
   @SerializedName(SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES)
   private Map<String, String> ruleAndAttributeValues;
@@ -97,27 +92,6 @@ public class RecResultItem {
   }
 
 
-  public RecResultItem portfolioId(ResourceId portfolioId) {
-    
-    this.portfolioId = portfolioId;
-    return this;
-  }
-
-   /**
-   * Get portfolioId
-   * @return portfolioId
-  **/
-  @jakarta.annotation.Nonnull
-  public ResourceId getPortfolioId() {
-    return portfolioId;
-  }
-
-
-  public void setPortfolioId(ResourceId portfolioId) {
-    this.portfolioId = portfolioId;
-  }
-
-
    /**
    * The core rule, aggregate rule and supplemental attribute values for the item, keyed by name.
    * @return ruleAndAttributeValues
@@ -141,7 +115,6 @@ public class RecResultItem {
     }
     RecResultItem recResultItem = (RecResultItem) o;
     return Objects.equals(this.itemType, recResultItem.itemType) &&
-        Objects.equals(this.portfolioId, recResultItem.portfolioId) &&
         Objects.equals(this.ruleAndAttributeValues, recResultItem.ruleAndAttributeValues);
   }
 
@@ -151,7 +124,7 @@ public class RecResultItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(itemType, portfolioId, ruleAndAttributeValues);
+    return Objects.hash(itemType, ruleAndAttributeValues);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,7 +139,6 @@ public class RecResultItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultItem {\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -191,13 +163,11 @@ public class RecResultItem {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("itemType");
-    openapiFields.add("portfolioId");
     openapiFields.add("ruleAndAttributeValues");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("itemType");
-    openapiRequiredFields.add("portfolioId");
   }
 
  /**
@@ -223,8 +193,6 @@ public class RecResultItem {
       if (!jsonObj.get("itemType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
       }
-      // validate the required field `portfolioId`
-      ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

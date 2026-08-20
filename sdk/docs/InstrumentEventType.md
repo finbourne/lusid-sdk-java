@@ -114,6 +114,7 @@ InstrumentEventType method = InstrumentEventType.PAYMENTINKINDEVENT;
 InstrumentEventType method = InstrumentEventType.COMMODITYFORWARDPHYSICALSETTLEMENTEVENT;
 InstrumentEventType method = InstrumentEventType.CANCELSWAPEVENT;
 InstrumentEventType method = InstrumentEventType.BONDOPTIONTERMINATIONEVENT;
+InstrumentEventType method = InstrumentEventType.TERMINATIONEVENT;
 ```
 
 

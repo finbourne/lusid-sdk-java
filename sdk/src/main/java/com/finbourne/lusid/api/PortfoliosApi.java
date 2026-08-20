@@ -4790,7 +4790,7 @@ public class PortfoliosApi {
     }
 
     /**
-     * [BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
+     * GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
      * Show the complete time series (history) for multiple portfolio properties at once, grouped by property key.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)

@@ -104,6 +104,10 @@ public class BlockedOrderRequest {
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
+
   public BlockedOrderRequest() {
   }
 
@@ -367,6 +371,27 @@ public class BlockedOrderRequest {
   }
 
 
+  public BlockedOrderRequest custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -388,7 +413,8 @@ public class BlockedOrderRequest {
         Objects.equals(this.price, blockedOrderRequest.price) &&
         Objects.equals(this.orderInstruction, blockedOrderRequest.orderInstruction) &&
         Objects.equals(this._package, blockedOrderRequest._package) &&
-        Objects.equals(this.side, blockedOrderRequest.side);
+        Objects.equals(this.side, blockedOrderRequest.side) &&
+        Objects.equals(this.custodianAccountId, blockedOrderRequest.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -397,7 +423,7 @@ public class BlockedOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, quantity, amount, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package, side);
+    return Objects.hash(properties, quantity, amount, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package, side, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -423,6 +449,7 @@ public class BlockedOrderRequest {
     sb.append("    orderInstruction: ").append(toIndentedString(orderInstruction)).append("\n");
     sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -457,6 +484,7 @@ public class BlockedOrderRequest {
     openapiFields.add("orderInstruction");
     openapiFields.add("package");
     openapiFields.add("side");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -514,6 +542,10 @@ public class BlockedOrderRequest {
       }
       if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

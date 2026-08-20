@@ -141,6 +141,10 @@ public class Allocation {
   @SerializedName(SERIALIZED_NAME_EXECUTION_IDS)
   private List<ResourceId> executionIds;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
+
   public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
@@ -604,6 +608,27 @@ public class Allocation {
   }
 
 
+  public Allocation custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
   public Allocation dataModelMembership(DataModelMembership dataModelMembership) {
     
     this.dataModelMembership = dataModelMembership;
@@ -684,6 +709,7 @@ public class Allocation {
         (this.settlementCurrencyFxRate.compareTo(allocation.getSettlementCurrencyFxRate()) == 0) &&
         Objects.equals(this.counterparty, allocation.counterparty) &&
         Objects.equals(this.executionIds, allocation.executionIds) &&
+        Objects.equals(this.custodianAccountId, allocation.custodianAccountId) &&
         Objects.equals(this.dataModelMembership, allocation.dataModelMembership) &&
         Objects.equals(this.links, allocation.links);
   }
@@ -694,7 +720,7 @@ public class Allocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, allocatedOrderId, portfolioId, quantity, instrumentIdentifiers, version, properties, instrumentScope, lusidInstrumentId, placementIds, state, side, type, settlementDate, date, price, settlementCurrency, settlementCurrencyFxRate, counterparty, executionIds, dataModelMembership, links);
+    return Objects.hash(id, allocatedOrderId, portfolioId, quantity, instrumentIdentifiers, version, properties, instrumentScope, lusidInstrumentId, placementIds, state, side, type, settlementDate, date, price, settlementCurrency, settlementCurrencyFxRate, counterparty, executionIds, custodianAccountId, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -728,6 +754,7 @@ public class Allocation {
     sb.append("    settlementCurrencyFxRate: ").append(toIndentedString(settlementCurrencyFxRate)).append("\n");
     sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    executionIds: ").append(toIndentedString(executionIds)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -772,6 +799,7 @@ public class Allocation {
     openapiFields.add("settlementCurrencyFxRate");
     openapiFields.add("counterparty");
     openapiFields.add("executionIds");
+    openapiFields.add("custodianAccountId");
     openapiFields.add("dataModelMembership");
     openapiFields.add("links");
 
@@ -867,6 +895,10 @@ public class Allocation {
             ResourceId.validateJsonElement(jsonArrayexecutionIds.get(i));
           };
         }
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {

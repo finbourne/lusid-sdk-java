@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **basket** | [**Basket**](Basket.md) |  | [optional] [default to Basket]
 **conventionName** | [**FlowConventionName**](FlowConventionName.md) |  | [optional] [default to FlowConventionName]
 **notional** | **java.math.BigDecimal** | The notional quantity that applies to both the premium and protection legs. | [default to java.math.BigDecimal]
+**isNonStandard** | **Boolean** | By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates and any payment  frequency is accepted. The payment dates roll back from the maturity, so a term that is not a whole  number of payment periods has a short first period. | [optional] [default to Boolean]
 **additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. | [optional] [default to List<AdditionalPayment>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 
@@ -30,6 +31,7 @@ Map<String, String> Identifiers = new Map<String, String>();
 Basket Basket = new Basket();
 FlowConventionName ConventionName = new FlowConventionName();
 java.math.BigDecimal Notional = new java.math.BigDecimal("100.00");
+Boolean IsNonStandard = true;
 @jakarta.annotation.Nullable List<AdditionalPayment> AdditionalPayments = new List<AdditionalPayment>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 
@@ -43,6 +45,7 @@ CdsIndex cdsIndexInstance = new CdsIndex()
     .Basket(Basket)
     .ConventionName(ConventionName)
     .Notional(Notional)
+    .IsNonStandard(IsNonStandard)
     .AdditionalPayments(AdditionalPayments)
     .TimeZoneConventions(TimeZoneConventions);
 ```

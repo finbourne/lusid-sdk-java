@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **packageId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. | [optional] [default to java.math.BigDecimal]
 **amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
 **derivedComplianceState** | **String** | The compliance state of the order, derived from pre-trade compliance runs. | [optional] [default to String]
 **derivedApprovalState** | **String** | The approval state of the order. | [optional] [default to String]
@@ -58,6 +59,7 @@ ResourceId OrderInstructionId = new ResourceId();
 ResourceId PackageId = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal Weight = new java.math.BigDecimal("100.00");
 CurrencyAndAmount Amount = new CurrencyAndAmount();
+ResourceId CustodianAccountId = new ResourceId();
 DataModelMembership DataModelMembership = new DataModelMembership();
 @jakarta.annotation.Nullable String DerivedComplianceState = "example DerivedComplianceState";
 @jakarta.annotation.Nullable String DerivedApprovalState = "example DerivedApprovalState";
@@ -86,6 +88,7 @@ Order orderInstance = new Order()
     .PackageId(PackageId)
     .Weight(Weight)
     .Amount(Amount)
+    .CustodianAccountId(CustodianAccountId)
     .DataModelMembership(DataModelMembership)
     .DerivedComplianceState(DerivedComplianceState)
     .DerivedApprovalState(DerivedApprovalState)

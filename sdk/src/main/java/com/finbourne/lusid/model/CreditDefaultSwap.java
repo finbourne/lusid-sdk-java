@@ -87,6 +87,10 @@ public class CreditDefaultSwap extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_NOTIONAL)
   private java.math.BigDecimal notional;
 
+  public static final String SERIALIZED_NAME_IS_NON_STANDARD = "isNonStandard";
+  @SerializedName(SERIALIZED_NAME_IS_NON_STANDARD)
+  private Boolean isNonStandard;
+
   public static final String SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION = "protectionDetailSpecification";
   @SerializedName(SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION)
   private CdsProtectionDetailSpecification protectionDetailSpecification;
@@ -250,6 +254,27 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
 
+  public CreditDefaultSwap isNonStandard(Boolean isNonStandard) {
+    
+    this.isNonStandard = isNonStandard;
+    return this;
+  }
+
+   /**
+   * By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates and any payment  frequency is accepted. The payment dates roll back from the maturity, so a term that is not a whole  number of payment periods has a short first period.
+   * @return isNonStandard
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsNonStandard() {
+    return isNonStandard;
+  }
+
+
+  public void setIsNonStandard(Boolean isNonStandard) {
+    this.isNonStandard = isNonStandard;
+  }
+
+
   public CreditDefaultSwap protectionDetailSpecification(CdsProtectionDetailSpecification protectionDetailSpecification) {
     
     this.protectionDetailSpecification = protectionDetailSpecification;
@@ -338,6 +363,7 @@ public class CreditDefaultSwap extends LusidInstrument {
         (this.couponRate.compareTo(creditDefaultSwap.getCouponRate()) == 0) &&
         Objects.equals(this.conventionName, creditDefaultSwap.conventionName) &&
         (this.notional.compareTo(creditDefaultSwap.getNotional()) == 0) &&
+        Objects.equals(this.isNonStandard, creditDefaultSwap.isNonStandard) &&
         Objects.equals(this.protectionDetailSpecification, creditDefaultSwap.protectionDetailSpecification) &&
         Objects.equals(this.additionalPayments, creditDefaultSwap.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, creditDefaultSwap.timeZoneConventions) &&
@@ -350,7 +376,7 @@ public class CreditDefaultSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, isNonStandard, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -372,6 +398,7 @@ public class CreditDefaultSwap extends LusidInstrument {
     sb.append("    couponRate: ").append(toIndentedString(couponRate)).append("\n");
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
+    sb.append("    isNonStandard: ").append(toIndentedString(isNonStandard)).append("\n");
     sb.append("    protectionDetailSpecification: ").append(toIndentedString(protectionDetailSpecification)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
@@ -405,6 +432,7 @@ public class CreditDefaultSwap extends LusidInstrument {
     openapiFields.add("couponRate");
     openapiFields.add("conventionName");
     openapiFields.add("notional");
+    openapiFields.add("isNonStandard");
     openapiFields.add("protectionDetailSpecification");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");

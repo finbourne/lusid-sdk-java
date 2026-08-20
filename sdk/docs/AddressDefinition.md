@@ -5,11 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** | The display name of the address key. | [optional] [default to String]
-**type** | **String** | Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json. | [optional] [default to String]
+**type** | **String** | Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json. | [optional] [default to String]
 **description** | **String** | The description for this result. | [optional] [default to String]
 **lifeCycleStatus** | **String** | What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any. | [optional] [default to String]
 **removalDate** | [**OffsetDateTime**](OffsetDateTime.md) | If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints. | [optional] [default to OffsetDateTime]
 **documentationLink** | **String** | Contains a link to the documentation for this AddressDefinition in KnowledgeBase. | [optional] [default to String]
+**axes** | [**List&lt;ResultAxisDefinition&gt;**](ResultAxisDefinition.md) | For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described. | [optional] [default to List<ResultAxisDefinition>]
 
 ```java
 import com.finbourne.lusid.model.AddressDefinition;
@@ -23,6 +24,7 @@ String Type = "example Type";
 @jakarta.annotation.Nullable String LifeCycleStatus = "example LifeCycleStatus";
 @jakarta.annotation.Nullable OffsetDateTime RemovalDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable String DocumentationLink = "example DocumentationLink";
+@jakarta.annotation.Nullable List<ResultAxisDefinition> Axes = new List<ResultAxisDefinition>();
 
 
 AddressDefinition addressDefinitionInstance = new AddressDefinition()
@@ -31,7 +33,8 @@ AddressDefinition addressDefinitionInstance = new AddressDefinition()
     .Description(Description)
     .LifeCycleStatus(LifeCycleStatus)
     .RemovalDate(RemovalDate)
-    .DocumentationLink(DocumentationLink);
+    .DocumentationLink(DocumentationLink)
+    .Axes(Axes);
 ```
 
 

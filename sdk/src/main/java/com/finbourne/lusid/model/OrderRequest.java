@@ -128,6 +128,10 @@ public class OrderRequest {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private CurrencyAndAmount amount;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
+
   public OrderRequest() {
   }
 
@@ -525,6 +529,27 @@ public class OrderRequest {
   }
 
 
+  public OrderRequest custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -552,7 +577,8 @@ public class OrderRequest {
         Objects.equals(this.orderInstruction, orderRequest.orderInstruction) &&
         Objects.equals(this._package, orderRequest._package) &&
         (this.weight.compareTo(orderRequest.getWeight()) == 0) &&
-        Objects.equals(this.amount, orderRequest.amount);
+        Objects.equals(this.amount, orderRequest.amount) &&
+        Objects.equals(this.custodianAccountId, orderRequest.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -561,7 +587,7 @@ public class OrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstruction, _package, weight, amount);
+    return Objects.hash(properties, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstruction, _package, weight, amount, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -593,6 +619,7 @@ public class OrderRequest {
     sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -633,6 +660,7 @@ public class OrderRequest {
     openapiFields.add("package");
     openapiFields.add("weight");
     openapiFields.add("amount");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -706,6 +734,10 @@ public class OrderRequest {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 
