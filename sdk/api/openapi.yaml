@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9723
+  version: 0.11.9728
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -247420,6 +247420,7 @@ components:
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          recDefinitionDisplayName: recDefinitionDisplayName
           links:
           - method: method
             description: description
@@ -247486,6 +247487,7 @@ components:
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          recDefinitionDisplayName: recDefinitionDisplayName
           links:
           - method: method
             description: description
@@ -264608,6 +264610,7 @@ components:
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
         asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+        recDefinitionDisplayName: recDefinitionDisplayName
         links:
         - method: method
           description: description
@@ -264652,6 +264655,12 @@ components:
           $ref: '#/components/schemas/RecInstanceId'
         recDefinitionId:
           $ref: '#/components/schemas/ResourceId'
+        recDefinitionDisplayName:
+          description: "The display name of the rec definition the rec was instantiated\
+            \ for, as it stood as-at instantiation. Not re-synchronised if the definition\
+            \ is later renamed."
+          minLength: 1
+          type: string
         asAtInstantiated:
           description: The asAt datetime at which the instance was first created.
           format: date-time
@@ -264693,6 +264702,7 @@ components:
       required:
       - asAtInstantiated
       - id
+      - recDefinitionDisplayName
       - recDefinitionId
       - runLog
       - status
