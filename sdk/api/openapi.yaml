@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9716
+  version: 0.11.9723
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -248373,12 +248373,6 @@ components:
               scope: scope
             asAtLocked: 2000-01-23T04:56:07.000+00:00
             asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-            workflowTaskInstantiated:
-              id: id
-              state: state
-              taskDefinitionId:
-                code: code
-                scope: scope
             id:
               instanceIdType: instanceIdType
               instanceIdValue: instanceIdValue
@@ -248642,12 +248636,6 @@ components:
               scope: scope
             asAtLocked: 2000-01-23T04:56:07.000+00:00
             asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-            workflowTaskInstantiated:
-              id: id
-              state: state
-              taskDefinitionId:
-                code: code
-                scope: scope
             id:
               instanceIdType: instanceIdType
               instanceIdValue: instanceIdValue
@@ -251715,8 +251703,8 @@ components:
           minLength: 0
           type: string
         entityScope:
-          description: The scope of the entity. Optional — required depends on the
-            entity type.
+          description: "The scope of the entity. Optional, and narrows the match when\
+            \ supplied. Required for a Portfolio."
           maxLength: 64
           minLength: 0
           nullable: true
@@ -251727,8 +251715,8 @@ components:
           minLength: 0
           type: string
         identifierScope:
-          description: The scope of the identifier used to identify the entity. Optional
-            — null for native LUSID identifiers such as code.
+          description: "The scope of the identifier used to identify the entity. Optional,\
+            \ and narrows the match when supplied."
           maxLength: 64
           minLength: 0
           nullable: true
@@ -251856,8 +251844,7 @@ components:
         paymentType: paymentType
       properties:
         paymentType:
-          description: "The type of payment series. One of \"Dividend\", \"Fee\",\
-            \ \"Rebate\", \"Redemption\", \"Subscription\"."
+          description: The type of payment series.
           maxLength: 64
           minLength: 0
           type: string
@@ -264743,12 +264730,6 @@ components:
           scope: scope
         asAtLocked: 2000-01-23T04:56:07.000+00:00
         asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-        workflowTaskInstantiated:
-          id: id
-          state: state
-          taskDefinitionId:
-            code: code
-            scope: scope
         id:
           instanceIdType: instanceIdType
           instanceIdValue: instanceIdValue
@@ -264762,8 +264743,6 @@ components:
           description: The asAt datetime at which the instance was first created.
           format: date-time
           type: string
-        workflowTaskInstantiated:
-          $ref: '#/components/schemas/RecWorkflowTask'
         status:
           description: "The instance-level lifecycle rollup. Available values: Running,\
             \ Failures, ReviewAndApproval, AllApproved, Locked."
@@ -267513,12 +267492,6 @@ components:
             scope: scope
           asAtLocked: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
-          workflowTaskInstantiated:
-            id: id
-            state: state
-            taskDefinitionId:
-              code: code
-              scope: scope
           id:
             instanceIdType: instanceIdType
             instanceIdValue: instanceIdValue
@@ -267672,9 +267645,9 @@ components:
           description: "Reviewed / (Reviewed + Required). Is 1.0 when the denominator\
             \ is zero, and null when execution failed."
           format: double
+          nullable: true
           type: number
       required:
-      - completionRatio
       - countNotRequired
       - countRequired
       - countReviewed
@@ -267924,28 +267897,6 @@ components:
       - commentId
       - commentText
       - userId
-      type: object
-    RecWorkflowTask:
-      additionalProperties: false
-      description: "The workflow service task that instantiated a rec instance.\r\n\
-        Minimal placeholder until the full workflow service task DTO is available."
-      example:
-        id: id
-        state: state
-        taskDefinitionId:
-          code: code
-          scope: scope
-      properties:
-        id:
-          description: The identifier of the workflow service task.
-          nullable: true
-          type: string
-        taskDefinitionId:
-          $ref: '#/components/schemas/ResourceId'
-        state:
-          description: The current state of the workflow service task.
-          nullable: true
-          type: string
       type: object
     ReferenceData:
       additionalProperties: false

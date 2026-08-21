@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **id** | [**RecInstanceId**](RecInstanceId.md) |  | [default to RecInstanceId]
 **recDefinitionId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **asAtInstantiated** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime at which the instance was first created. | [default to OffsetDateTime]
-**workflowTaskInstantiated** | [**RecWorkflowTask**](RecWorkflowTask.md) |  | [optional] [default to RecWorkflowTask]
 **status** | **String** | The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked. | [default to String]
 **asAtLocked** | [**OffsetDateTime**](OffsetDateTime.md) | The wall-clock time the lock action was performed. Null when the instance has not been locked. | [optional] [default to OffsetDateTime]
 
@@ -21,7 +20,6 @@ import java.net.URI;
 RecInstanceId Id = new RecInstanceId();
 ResourceId RecDefinitionId = new ResourceId();
 OffsetDateTime AsAtInstantiated = OffsetDateTime.now();
-RecWorkflowTask WorkflowTaskInstantiated = new RecWorkflowTask();
 String Status = "example Status";
 @jakarta.annotation.Nullable OffsetDateTime AsAtLocked = OffsetDateTime.now();
 
@@ -30,7 +28,6 @@ RecInstanceSummary recInstanceSummaryInstance = new RecInstanceSummary()
     .Id(Id)
     .RecDefinitionId(RecDefinitionId)
     .AsAtInstantiated(AsAtInstantiated)
-    .WorkflowTaskInstantiated(WorkflowTaskInstantiated)
     .Status(Status)
     .AsAtLocked(AsAtLocked);
 ```

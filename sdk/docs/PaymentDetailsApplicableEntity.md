@@ -6,9 +6,9 @@ Identifies the LUSID entity that holds the payment details (e.g. an InvestorReco
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entityType** | **String** | The type of the LUSID entity holding the payment details. e.g. \&quot;InvestorRecord\&quot;, \&quot;InvestmentAccount\&quot;, \&quot;Portfolio\&quot;. | [default to String]
-**entityScope** | **String** | The scope of the entity. Optional — required depends on the entity type. | [optional] [default to String]
+**entityScope** | **String** | The scope of the entity. Optional, and narrows the match when supplied. Required for a Portfolio. | [optional] [default to String]
 **identifierType** | **String** | The identifier type used to identify the entity. e.g. \&quot;lusidInvestmentAccountId\&quot;. | [default to String]
-**identifierScope** | **String** | The scope of the identifier used to identify the entity. Optional — null for native LUSID identifiers such as code. | [optional] [default to String]
+**identifierScope** | **String** | The scope of the identifier used to identify the entity. Optional, and narrows the match when supplied. | [optional] [default to String]
 **identifierValue** | **String** | The identifier value for the entity. e.g. \&quot;LUID_00003DNL\&quot;. | [default to String]
 
 ```java

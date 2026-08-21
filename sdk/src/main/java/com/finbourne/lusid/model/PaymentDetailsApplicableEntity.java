@@ -101,7 +101,7 @@ public class PaymentDetailsApplicableEntity {
   }
 
    /**
-   * The scope of the entity. Optional — required depends on the entity type.
+   * The scope of the entity. Optional, and narrows the match when supplied. Required for a Portfolio.
    * @return entityScope
   **/
   @jakarta.annotation.Nullable
@@ -143,7 +143,7 @@ public class PaymentDetailsApplicableEntity {
   }
 
    /**
-   * The scope of the identifier used to identify the entity. Optional — null for native LUSID identifiers such as code.
+   * The scope of the identifier used to identify the entity. Optional, and narrows the match when supplied.
    * @return identifierScope
   **/
   @jakarta.annotation.Nullable

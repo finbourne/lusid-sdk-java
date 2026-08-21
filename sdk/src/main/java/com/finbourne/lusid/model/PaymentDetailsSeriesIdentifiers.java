@@ -76,7 +76,7 @@ public class PaymentDetailsSeriesIdentifiers {
   }
 
    /**
-   * The type of payment series. One of \&quot;Dividend\&quot;, \&quot;Fee\&quot;, \&quot;Rebate\&quot;, \&quot;Redemption\&quot;, \&quot;Subscription\&quot;.
+   * The type of payment series.
    * @return paymentType
   **/
   @jakarta.annotation.Nonnull
