@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9728
+  version: 0.11.9732
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -51953,6 +51953,7 @@ paths:
                 to:
                   node: MasterFundNode
                   shareClassShortCode: B
+              properties: {}
             schema:
               $ref: '#/components/schemas/FundStructureRequest'
           application/json:
@@ -52051,6 +52052,7 @@ paths:
                 to:
                   node: MasterFundNode
                   shareClassShortCode: B
+              properties: {}
             schema:
               $ref: '#/components/schemas/FundStructureRequest'
           text/json:
@@ -52149,6 +52151,7 @@ paths:
                 to:
                   node: MasterFundNode
                   shareClassShortCode: B
+              properties: {}
             schema:
               $ref: '#/components/schemas/FundStructureRequest'
           application/*+json:
@@ -52247,6 +52250,7 @@ paths:
                 to:
                   node: MasterFundNode
                   shareClassShortCode: B
+              properties: {}
             schema:
               $ref: '#/components/schemas/FundStructureRequest'
         description: The definition of the Fund Structure.
@@ -53715,9 +53719,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -53762,6 +53766,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -53895,9 +53900,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -53942,6 +53947,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -54178,9 +54184,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -54225,6 +54231,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -88701,6 +88708,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -88756,6 +88769,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -88811,6 +88830,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -89090,6 +89115,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -89239,6 +89265,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -89285,6 +89317,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -89346,6 +89383,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -89495,6 +89533,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -89541,6 +89585,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -89602,6 +89651,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -89751,6 +89801,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -89797,6 +89853,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -91020,6 +91081,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -91057,6 +91123,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -91156,6 +91227,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -91193,6 +91269,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -91292,6 +91373,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -91329,6 +91415,11 @@ paths:
                       scope: default
                       source: default
                       type: BUY
+                      movementConditionMatches:
+                      - side: Side1
+                        conditionMatched: true
+                      - side: Side2
+                        conditionMatched: true
                     version:
                       effectiveFrom: 2019-04-02T12:00:00.0000000+00:00
                       asAtDate: 2019-08-08T13:20:45.0000000+00:00
@@ -100127,9 +100218,9 @@ paths:
           \ InvestmentAccount, Placement, Execution, Block, Participation, Package,\
           \ OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -100174,6 +100265,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -100459,9 +100551,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -100506,6 +100598,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -100637,9 +100730,9 @@ paths:
           \ InvestmentAccount, Placement, Execution, Block, Participation, Package,\
           \ OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -100684,6 +100777,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -100935,9 +101029,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -100982,6 +101076,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -101239,9 +101334,9 @@ paths:
           \ InvestmentAccount, Placement, Execution, Block, Participation, Package,\
           \ OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -101286,6 +101381,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -101547,9 +101643,9 @@ paths:
           \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
           \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
           \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-          \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-          \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-          \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+          \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
+          \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+          \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -101594,6 +101690,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -101787,10 +101884,10 @@ paths:
           \ Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution,\
           \ Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent,\
           \ Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration,\
-          \ Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance,\
-          \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
-          \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-          \ PaymentInstruction."
+          \ Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition,\
+          \ Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod,\
+          \ TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction,\
+          \ TransactionFeeType, PaymentInstruction."
         explode: false
         in: path
         name: domain
@@ -101835,6 +101932,7 @@ paths:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -147882,6 +147980,7 @@ paths:
                       scope: scopeA
                       source: sourceB
                       type: Buy
+                      movementConditionMatches: []
                     grossTransactionAmount: 80800
                     accountingDate: 2018-08-04T00:00:00.0000000+00:00
                     version:
@@ -148001,6 +148100,7 @@ paths:
                       scope: scopeA
                       source: sourceB
                       type: Buy
+                      movementConditionMatches: []
                     grossTransactionAmount: 80800
                     accountingDate: 2018-08-04T00:00:00.0000000+00:00
                     version:
@@ -148120,6 +148220,7 @@ paths:
                       scope: scopeA
                       source: sourceB
                       type: Buy
+                      movementConditionMatches: []
                     grossTransactionAmount: 80800
                     accountingDate: 2018-08-04T00:00:00.0000000+00:00
                     version:
@@ -148508,6 +148609,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -148563,6 +148670,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -148618,6 +148731,12 @@ paths:
                     scope: default
                     source: default
                     type: Buy
+                    movementConditionMatches:
+                    - movementName: BuyStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: false
                   version:
                     effectiveFrom: 2018-08-04T00:00:00.0000000+00:00
                     asAtDate: 2018-03-04T23:50:00.0000000+00:00
@@ -149605,6 +149724,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -149754,6 +149874,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -149800,6 +149926,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -149861,6 +149992,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -150010,6 +150142,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -150056,6 +150194,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -150117,6 +150260,7 @@ paths:
                     scope: scopeA
                     source: sourceB
                     type: Buy
+                    movementConditionMatches: []
                   grossTransactionAmount: 80800
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -150266,6 +150410,12 @@ paths:
                     scope: default
                     source: default
                     type: Sell
+                    movementConditionMatches:
+                    - movementName: SellStock
+                      side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 1070100
                   accountingDate: 2018-08-07T00:00:00.0000000+00:00
                   version:
@@ -150312,6 +150462,11 @@ paths:
                     scope: default
                     source: default
                     type: BondCoupon
+                    movementConditionMatches:
+                    - side: Side1
+                      conditionMatched: true
+                    - side: Side2
+                      conditionMatched: true
                   grossTransactionAmount: 650
                   accountingDate: 2018-08-04T00:00:00.0000000+00:00
                   version:
@@ -159291,6 +159446,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -163992,6 +164154,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -164370,6 +164539,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -167242,6 +167418,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -167639,6 +167822,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -172054,6 +172244,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -185693,10 +185890,10 @@ components:
             \ Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount,\
             \ Placement, Execution, Block, Participation, Package, OrderInstruction,\
             \ CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount,\
-            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
-            \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
-            \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure,\
+            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
+            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -185736,6 +185933,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -186240,10 +186438,10 @@ components:
             \ Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount,\
             \ Placement, Execution, Block, Participation, Package, OrderInstruction,\
             \ CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount,\
-            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
-            \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
-            \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure,\
+            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
+            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -186283,6 +186481,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -186644,9 +186843,10 @@ components:
             \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
             \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
+            \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
+            \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
+            \ PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -186686,6 +186886,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -207328,6 +207529,24 @@ components:
             node: node
             shareClassShortCode: shareClassShortCode
         description: description
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
       properties:
         code:
           description: The code of the Fund Structure.
@@ -207381,6 +207600,12 @@ components:
           items:
             $ref: '#/components/schemas/FundStructureEdge'
           type: array
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: A set of properties to decorate onto the Fund Structure.
+          nullable: true
+          type: object
       required:
       - code
       - edges
@@ -213691,6 +213916,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -214488,10 +214720,10 @@ components:
             \ Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount,\
             \ Placement, Execution, Block, Participation, Package, OrderInstruction,\
             \ CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount,\
-            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee,\
-            \ Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation,\
-            \ Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition,\
-            \ SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure,\
+            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
+            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
+            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -214531,6 +214763,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -229241,6 +229474,31 @@ components:
         sourceBlockId:
           $ref: '#/components/schemas/ResourceId'
       type: object
+    MovementConditionMatch:
+      additionalProperties: false
+      description: "The outcome of one movement's condition for a transaction. Reported\
+        \ per movement rather than keyed by\r\nmovement, because a transaction type\
+        \ may configure several movements that share a side and have no name."
+      example:
+        conditionMatched: true
+        movementName: movementName
+        side: side
+      properties:
+        movementName:
+          description: "The name of the movement, or null if the movement is unnamed."
+          nullable: true
+          type: string
+        side:
+          description: The side the movement is configured against.
+          minLength: 1
+          type: string
+        conditionMatched:
+          description: Whether the movement's condition was satisfied by this transaction.
+            A movement with no condition always matches.
+          type: boolean
+      required:
+      - side
+      type: object
     MovementSettlementSummary:
       additionalProperties: false
       example:
@@ -233100,6 +233358,13 @@ components:
           - idsPreviewed
         resolvedTransactionTypeDetails:
           scope: scope
+          movementConditionMatches:
+          - conditionMatched: true
+            movementName: movementName
+            side: side
+          - conditionMatched: true
+            movementName: movementName
+            side: side
           source: source
           type: type
         transactionCurrency: transactionCurrency
@@ -255263,6 +255528,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -257607,6 +257879,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -260731,9 +261010,10 @@ components:
             \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
             \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
+            \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
+            \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
+            \ PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -260773,6 +261053,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -261308,9 +261589,10 @@ components:
             \ InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation,\
             \ Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,\
             \ CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration,\
-            \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
-            \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
-            \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction."
+            \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
+            \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
+            \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
+            \ PaymentInstruction."
           enum:
           - NotDefined
           - Transaction
@@ -261350,6 +261632,7 @@ components:
           - AborConfiguration
           - Fund
           - FundConfiguration
+          - FundStructure
           - Fee
           - Reconciliation
           - PropertyDefinition
@@ -261503,6 +261786,7 @@ components:
       - AborConfiguration
       - Fund
       - FundConfiguration
+      - FundStructure
       - Fee
       - Reconciliation
       - PropertyDefinition
@@ -265035,6 +265319,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -265418,6 +265709,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -271322,6 +271620,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -271700,6 +272005,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -272241,6 +272553,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -272619,6 +272938,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -283771,6 +284097,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -284741,6 +285074,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -286750,6 +287090,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -287181,6 +287528,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -289464,6 +289818,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -289842,6 +290203,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -291626,6 +291994,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -292687,6 +293062,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -296238,6 +296620,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -297827,6 +298216,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -303699,6 +304095,13 @@ components:
           - idsPreviewed
         resolvedTransactionTypeDetails:
           scope: scope
+          movementConditionMatches:
+          - conditionMatched: true
+            movementName: movementName
+            side: side
+          - conditionMatched: true
+            movementName: movementName
+            side: side
           source: source
           type: type
         transactionCurrency: transactionCurrency
@@ -305016,6 +305419,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -305611,6 +306021,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -305990,6 +306407,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -308950,6 +309374,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -309333,6 +309764,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -309712,6 +310150,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -310095,6 +310540,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -311039,6 +311491,13 @@ components:
       additionalProperties: false
       example:
         scope: scope
+        movementConditionMatches:
+        - conditionMatched: true
+          movementName: movementName
+          side: side
+        - conditionMatched: true
+          movementName: movementName
+          side: side
         source: source
         type: type
       properties:
@@ -311057,6 +311516,15 @@ components:
             resolution can be found at https://support.lusid.com/docs/how-does-lusid-resolve-transactions-to-transaction-types
           minLength: 1
           type: string
+        movementConditionMatches:
+          description: "One entry for each movement on the resolved TransactionType,\
+            \ in the order the movements are configured, recording whether that movement's\
+            \ condition was satisfied by this transaction. Empty for transaction versions\
+            \ that generate no movements, such as cancelled and amended versions."
+          items:
+            $ref: '#/components/schemas/MovementConditionMatch'
+          nullable: true
+          type: array
       required:
       - scope
       - source
@@ -313130,6 +313598,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -325227,6 +325702,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -326209,6 +326691,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -328600,6 +329089,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -329585,6 +330081,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -332068,6 +332571,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -332469,6 +332979,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -333607,6 +334124,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -334577,6 +335101,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -335423,6 +335954,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -336108,6 +336646,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -336542,6 +337087,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -336920,6 +337472,13 @@ components:
             - idsPreviewed
           resolvedTransactionTypeDetails:
             scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
             source: source
             type: type
           transactionCurrency: transactionCurrency
@@ -338288,6 +338847,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -339325,6 +339891,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -340173,6 +340746,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency
@@ -340858,6 +341438,13 @@ components:
               - idsPreviewed
             resolvedTransactionTypeDetails:
               scope: scope
+              movementConditionMatches:
+              - conditionMatched: true
+                movementName: movementName
+                side: side
+              - conditionMatched: true
+                movementName: movementName
+                side: side
               source: source
               type: type
             transactionCurrency: transactionCurrency

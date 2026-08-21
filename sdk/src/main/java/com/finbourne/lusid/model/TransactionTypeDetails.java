@@ -11,13 +11,17 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.MovementConditionMatch;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +64,10 @@ public class TransactionTypeDetails {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
+
+  public static final String SERIALIZED_NAME_MOVEMENT_CONDITION_MATCHES = "movementConditionMatches";
+  @SerializedName(SERIALIZED_NAME_MOVEMENT_CONDITION_MATCHES)
+  private List<MovementConditionMatch> movementConditionMatches;
 
   public TransactionTypeDetails() {
   }
@@ -127,6 +135,35 @@ public class TransactionTypeDetails {
   }
 
 
+  public TransactionTypeDetails movementConditionMatches(List<MovementConditionMatch> movementConditionMatches) {
+    
+    this.movementConditionMatches = movementConditionMatches;
+    return this;
+  }
+
+  public TransactionTypeDetails addMovementConditionMatchesItem(MovementConditionMatch movementConditionMatchesItem) {
+    if (this.movementConditionMatches == null) {
+      this.movementConditionMatches = new ArrayList<>();
+    }
+    this.movementConditionMatches.add(movementConditionMatchesItem);
+    return this;
+  }
+
+   /**
+   * One entry for each movement on the resolved TransactionType, in the order the movements are configured, recording whether that movement&#39;s condition was satisfied by this transaction. Empty for transaction versions that generate no movements, such as cancelled and amended versions.
+   * @return movementConditionMatches
+  **/
+  @jakarta.annotation.Nullable
+  public List<MovementConditionMatch> getMovementConditionMatches() {
+    return movementConditionMatches;
+  }
+
+
+  public void setMovementConditionMatches(List<MovementConditionMatch> movementConditionMatches) {
+    this.movementConditionMatches = movementConditionMatches;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +176,24 @@ public class TransactionTypeDetails {
     TransactionTypeDetails transactionTypeDetails = (TransactionTypeDetails) o;
     return Objects.equals(this.scope, transactionTypeDetails.scope) &&
         Objects.equals(this.source, transactionTypeDetails.source) &&
-        Objects.equals(this.type, transactionTypeDetails.type);
+        Objects.equals(this.type, transactionTypeDetails.type) &&
+        Objects.equals(this.movementConditionMatches, transactionTypeDetails.movementConditionMatches);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, source, type);
+    return Objects.hash(scope, source, type, movementConditionMatches);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +203,7 @@ public class TransactionTypeDetails {
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    movementConditionMatches: ").append(toIndentedString(movementConditionMatches)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +229,7 @@ public class TransactionTypeDetails {
     openapiFields.add("scope");
     openapiFields.add("source");
     openapiFields.add("type");
+    openapiFields.add("movementConditionMatches");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -215,6 +266,20 @@ public class TransactionTypeDetails {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if (jsonObj.get("movementConditionMatches") != null && !jsonObj.get("movementConditionMatches").isJsonNull()) {
+        JsonArray jsonArraymovementConditionMatches = jsonObj.getAsJsonArray("movementConditionMatches");
+        if (jsonArraymovementConditionMatches != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("movementConditionMatches").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `movementConditionMatches` to be an array in the JSON string but got `%s`", jsonObj.get("movementConditionMatches").toString()));
+          }
+
+          // validate the optional field `movementConditionMatches` (array)
+          for (int i = 0; i < jsonArraymovementConditionMatches.size(); i++) {
+            MovementConditionMatch.validateJsonElement(jsonArraymovementConditionMatches.get(i));
+          };
+        }
       }
   }
 

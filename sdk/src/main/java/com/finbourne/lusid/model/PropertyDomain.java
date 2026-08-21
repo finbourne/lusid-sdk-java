@@ -101,6 +101,8 @@ public enum PropertyDomain {
   
   FUNDCONFIGURATION("FundConfiguration"),
   
+  FUNDSTRUCTURE("FundStructure"),
+  
   FEE("Fee"),
   
   RECONCILIATION("Reconciliation"),

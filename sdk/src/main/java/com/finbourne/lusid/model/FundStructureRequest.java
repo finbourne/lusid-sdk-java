@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AllocationGroup;
 import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundStructureEdge;
 import com.finbourne.lusid.model.FundStructureNode;
+import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -24,7 +25,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -88,6 +91,10 @@ public class FundStructureRequest {
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)
   private List<FundStructureEdge> edges = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public FundStructureRequest() {
   }
@@ -300,6 +307,35 @@ public class FundStructureRequest {
   }
 
 
+  public FundStructureRequest properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public FundStructureRequest putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * A set of properties to decorate onto the Fund Structure.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -317,7 +353,8 @@ public class FundStructureRequest {
         Objects.equals(this.newFunds, fundStructureRequest.newFunds) &&
         Objects.equals(this.allocationGroups, fundStructureRequest.allocationGroups) &&
         Objects.equals(this.nodes, fundStructureRequest.nodes) &&
-        Objects.equals(this.edges, fundStructureRequest.edges);
+        Objects.equals(this.edges, fundStructureRequest.edges) &&
+        Objects.equals(this.properties, fundStructureRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -326,7 +363,7 @@ public class FundStructureRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, existingFunds, newFunds, allocationGroups, nodes, edges);
+    return Objects.hash(code, name, description, existingFunds, newFunds, allocationGroups, nodes, edges, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -348,6 +385,7 @@ public class FundStructureRequest {
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -378,6 +416,7 @@ public class FundStructureRequest {
     openapiFields.add("allocationGroups");
     openapiFields.add("nodes");
     openapiFields.add("edges");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

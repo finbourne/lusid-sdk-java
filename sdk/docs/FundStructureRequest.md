@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Groups that can apply across a Fund Structure. Only classes and feeder funds linked to the master fund specified are allowed. | [optional] [default to List<AllocationGroup>]
 **nodes** | [**List&lt;FundStructureNode&gt;**](FundStructureNode.md) | The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role. | [default to List<FundStructureNode>]
 **edges** | [**List&lt;FundStructureEdge&gt;**](FundStructureEdge.md) | The list of edges that define the relationships between feeder and master nodes in the structure. | [default to List<FundStructureEdge>]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties to decorate onto the Fund Structure. | [optional] [default to Map<String, Property>]
 
 ```java
 import com.finbourne.lusid.model.FundStructureRequest;
@@ -28,6 +29,7 @@ String Name = "example Name";
 @jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
 List<FundStructureNode> Nodes = new List<FundStructureNode>();
 List<FundStructureEdge> Edges = new List<FundStructureEdge>();
+@jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 
 
 FundStructureRequest fundStructureRequestInstance = new FundStructureRequest()
@@ -38,7 +40,8 @@ FundStructureRequest fundStructureRequestInstance = new FundStructureRequest()
     .NewFunds(NewFunds)
     .AllocationGroups(AllocationGroups)
     .Nodes(Nodes)
-    .Edges(Edges);
+    .Edges(Edges)
+    .Properties(Properties);
 ```
 
 
