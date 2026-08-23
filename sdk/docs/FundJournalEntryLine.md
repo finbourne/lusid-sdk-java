@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **ledgerColumn** | **String** | Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit. | [optional] [default to String]
 **journalEntryLineType** | **String** | Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp. | [optional] [default to String]
 **shareClassBreakdowns** | [**List&lt;JournalEntryLineShareClassBreakdown&gt;**](JournalEntryLineShareClassBreakdown.md) | Share Class breakdown data for this Journal Entry Line. | [optional] [default to List<JournalEntryLineShareClassBreakdown>]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**custodianAccountType** | **String** | Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -73,6 +75,8 @@ String EconomicBucket = "example EconomicBucket";
 @jakarta.annotation.Nullable String LedgerColumn = "example LedgerColumn";
 @jakarta.annotation.Nullable String JournalEntryLineType = "example JournalEntryLineType";
 @jakarta.annotation.Nullable List<JournalEntryLineShareClassBreakdown> ShareClassBreakdowns = new List<JournalEntryLineShareClassBreakdown>();
+ResourceId CustodianAccountId = new ResourceId();
+@jakarta.annotation.Nullable String CustodianAccountType = "example CustodianAccountType";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -107,6 +111,8 @@ FundJournalEntryLine fundJournalEntryLineInstance = new FundJournalEntryLine()
     .LedgerColumn(LedgerColumn)
     .JournalEntryLineType(JournalEntryLineType)
     .ShareClassBreakdowns(ShareClassBreakdowns)
+    .CustodianAccountId(CustodianAccountId)
+    .CustodianAccountType(CustodianAccountType)
     .Links(Links);
 ```
 

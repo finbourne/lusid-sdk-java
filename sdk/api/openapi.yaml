@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9733
+  version: 0.11.9734
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -49066,6 +49066,10 @@ paths:
                     apportionmentFactor: 0.25
                     localValue: 25
                     baseValue: 25
+                  custodianAccountId:
+                    scope: Scope1
+                    code: CustodianAccountCode
+                  custodianAccountType: Custodian_Cash
                 href: http://example.com
                 links: []
               schema:
@@ -49135,6 +49139,10 @@ paths:
                     apportionmentFactor: 0.25
                     localValue: 25
                     baseValue: 25
+                  custodianAccountId:
+                    scope: Scope1
+                    code: CustodianAccountCode
+                  custodianAccountType: Custodian_Cash
                 href: http://example.com
                 links: []
               schema:
@@ -49204,6 +49212,10 @@ paths:
                     apportionmentFactor: 0.25
                     localValue: 25
                     baseValue: 25
+                  custodianAccountId:
+                    scope: Scope1
+                    code: CustodianAccountCode
+                  custodianAccountType: Custodian_Cash
                 href: http://example.com
                 links: []
               schema:
@@ -205432,11 +205444,15 @@ components:
           description: description
           href: https://openapi-generator.tech
           relation: relation
+        custodianAccountType: custodianAccountType
         generalLedgerAccountCode: generalLedgerAccountCode
         accountingDate: 2000-01-23T04:56:07.000+00:00
         economicBucket: economicBucket
         economicBucketComponent: economicBucketComponent
         holdingSign: holdingSign
+        custodianAccountId:
+          code: code
+          scope: scope
         portfolioId:
           code: code
           scope: scope
@@ -205636,6 +205652,13 @@ components:
             $ref: '#/components/schemas/JournalEntryLineShareClassBreakdown'
           nullable: true
           type: array
+        custodianAccountId:
+          $ref: '#/components/schemas/ResourceId'
+        custodianAccountType:
+          description: Indicates the Account Type of the resolved Custodian Account
+            for this Journal Entry Line.
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -327809,11 +327832,15 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          custodianAccountType: custodianAccountType
           generalLedgerAccountCode: generalLedgerAccountCode
           accountingDate: 2000-01-23T04:56:07.000+00:00
           economicBucket: economicBucket
           economicBucketComponent: economicBucketComponent
           holdingSign: holdingSign
+          custodianAccountId:
+            code: code
+            scope: scope
           portfolioId:
             code: code
             scope: scope
@@ -327898,11 +327925,15 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          custodianAccountType: custodianAccountType
           generalLedgerAccountCode: generalLedgerAccountCode
           accountingDate: 2000-01-23T04:56:07.000+00:00
           economicBucket: economicBucket
           economicBucketComponent: economicBucketComponent
           holdingSign: holdingSign
+          custodianAccountId:
+            code: code
+            scope: scope
           portfolioId:
             code: code
             scope: scope
