@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9743
+  version: 0.11.9747
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -257633,10 +257633,26 @@ components:
                 - values
                 - values
             key: key
-        variationMarginPortfolioCcy:
+        variationMargin:
           amount: 0.8008281904610115
           currency: currency
-        variationMargin:
+        instrumentScope: instrumentScope
+        units: 0.8008281904610115
+        holdingId: 1
+        amortisedCost:
+          amount: 0.8008281904610115
+          currency: currency
+        notionalCost:
+          amount: 0.8008281904610115
+          currency: currency
+        holdingType: holdingType
+        currency: currency
+        unsettledUnits: 3.616076749251911
+        costPortfolioCcy:
+          amount: 0.8008281904610115
+          currency: currency
+        settledUnits: 6.027456183070403
+        variationMarginPortfolioCcy:
           amount: 0.8008281904610115
           currency: currency
         overdueUnits: 2.027123023002322
@@ -257663,24 +257679,229 @@ components:
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 5.962133916683182
           tradeId: tradeId
-        instrumentScope: instrumentScope
-        units: 0.8008281904610115
         holdingTypeName: holdingTypeName
         custodianAccountId:
           code: code
           scope: scope
-        holdingId: 1
-        amortisedCost:
-          amount: 0.8008281904610115
-          currency: currency
-        notionalCost:
-          amount: 0.8008281904610115
-          currency: currency
-        holdingType: holdingType
         instrumentUid: instrumentUid
+        custodianAccount:
+          custodian:
+            relationships:
+            - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              traversalDirection: traversalDirection
+              relatedEntity:
+                entityType: entityType
+                displayName: displayName
+                identifiers:
+                - identifierValue: identifierValue
+                  identifierType: identifierType
+                  identifierScope: identifierScope
+                - identifierValue: identifierValue
+                  identifierType: identifierType
+                  identifierScope: identifierScope
+                scope: scope
+                entityId:
+                  key: entityId
+                lusidUniqueId:
+                  type: type
+                  value: value
+                href: https://openapi-generator.tech
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              relationshipDefinitionId:
+                code: code
+                scope: scope
+              traversalDescription: traversalDescription
+            - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              traversalDirection: traversalDirection
+              relatedEntity:
+                entityType: entityType
+                displayName: displayName
+                identifiers:
+                - identifierValue: identifierValue
+                  identifierType: identifierType
+                  identifierScope: identifierScope
+                - identifierValue: identifierValue
+                  identifierType: identifierType
+                  identifierScope: identifierScope
+                scope: scope
+                entityId:
+                  key: entityId
+                lusidUniqueId:
+                  type: type
+                  value: value
+                href: https://openapi-generator.tech
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              relationshipDefinitionId:
+                code: code
+                scope: scope
+              traversalDescription: traversalDescription
+            lusidLegalEntityId: lusidLegalEntityId
+            counterpartyRiskInformation:
+              creditRatings:
+              - rating: rating
+                ratingSource: ratingSource
+              - rating: rating
+                ratingSource: ratingSource
+              industryClassifiers:
+              - classificationCode: classificationCode
+                classificationSystemName: classificationSystemName
+              - classificationCode: classificationCode
+                classificationSystemName: classificationSystemName
+              countryOfRisk: countryOfRisk
+            displayName: displayName
+            identifiers:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            description: description
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          accountName: accountName
+          accountType: accountType
+          accountingMethod: accountingMethod
+          currency: currency
+          accountNumber: accountNumber
+          custodianAccountId:
+            code: code
+            scope: scope
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
         currentFace: 9.301444243932576
-        currency: currency
-        unsettledUnits: 3.616076749251911
         resolvedCustodianAccount:
           resolutionType: resolutionType
           custodianAccount:
@@ -257901,10 +258122,6 @@ components:
                 key: key
             status: status
           accountSelector: accountSelector
-        costPortfolioCcy:
-          amount: 0.8008281904610115
-          currency: currency
-        settledUnits: 6.027456183070403
         properties:
           key:
             referenceData:
@@ -258401,6 +258618,8 @@ components:
             their contractual settlement date.
           format: double
           type: number
+        custodianAccount:
+          $ref: '#/components/schemas/CustodianAccount'
         resolvedCustodianAccount:
           $ref: '#/components/schemas/ResolvedCustodianAccount'
       required:
@@ -335904,10 +336123,26 @@ components:
                   - values
                   - values
               key: key
-          variationMarginPortfolioCcy:
+          variationMargin:
             amount: 0.8008281904610115
             currency: currency
-          variationMargin:
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingId: 1
+          amortisedCost:
+            amount: 0.8008281904610115
+            currency: currency
+          notionalCost:
+            amount: 0.8008281904610115
+            currency: currency
+          holdingType: holdingType
+          currency: currency
+          unsettledUnits: 3.616076749251911
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          settledUnits: 6.027456183070403
+          variationMarginPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
           overdueUnits: 2.027123023002322
@@ -335934,24 +336169,229 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 5.962133916683182
             tradeId: tradeId
-          instrumentScope: instrumentScope
-          units: 0.8008281904610115
           holdingTypeName: holdingTypeName
           custodianAccountId:
             code: code
             scope: scope
-          holdingId: 1
-          amortisedCost:
-            amount: 0.8008281904610115
-            currency: currency
-          notionalCost:
-            amount: 0.8008281904610115
-            currency: currency
-          holdingType: holdingType
           instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
           currentFace: 9.301444243932576
-          currency: currency
-          unsettledUnits: 3.616076749251911
           resolvedCustodianAccount:
             resolutionType: resolutionType
             custodianAccount:
@@ -336172,10 +336612,6 @@ components:
                   key: key
               status: status
             accountSelector: accountSelector
-          costPortfolioCcy:
-            amount: 0.8008281904610115
-            currency: currency
-          settledUnits: 6.027456183070403
           properties:
             key:
               referenceData:
@@ -336596,10 +337032,26 @@ components:
                   - values
                   - values
               key: key
-          variationMarginPortfolioCcy:
+          variationMargin:
             amount: 0.8008281904610115
             currency: currency
-          variationMargin:
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingId: 1
+          amortisedCost:
+            amount: 0.8008281904610115
+            currency: currency
+          notionalCost:
+            amount: 0.8008281904610115
+            currency: currency
+          holdingType: holdingType
+          currency: currency
+          unsettledUnits: 3.616076749251911
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          settledUnits: 6.027456183070403
+          variationMarginPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
           overdueUnits: 2.027123023002322
@@ -336626,24 +337078,229 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 5.962133916683182
             tradeId: tradeId
-          instrumentScope: instrumentScope
-          units: 0.8008281904610115
           holdingTypeName: holdingTypeName
           custodianAccountId:
             code: code
             scope: scope
-          holdingId: 1
-          amortisedCost:
-            amount: 0.8008281904610115
-            currency: currency
-          notionalCost:
-            amount: 0.8008281904610115
-            currency: currency
-          holdingType: holdingType
           instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
           currentFace: 9.301444243932576
-          currency: currency
-          unsettledUnits: 3.616076749251911
           resolvedCustodianAccount:
             resolutionType: resolutionType
             custodianAccount:
@@ -336864,10 +337521,6 @@ components:
                   key: key
               status: status
             accountSelector: accountSelector
-          costPortfolioCcy:
-            amount: 0.8008281904610115
-            currency: currency
-          settledUnits: 6.027456183070403
           properties:
             key:
               referenceData:
@@ -340696,10 +341349,26 @@ components:
                   - values
                   - values
               key: key
-          variationMarginPortfolioCcy:
+          variationMargin:
             amount: 0.8008281904610115
             currency: currency
-          variationMargin:
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingId: 1
+          amortisedCost:
+            amount: 0.8008281904610115
+            currency: currency
+          notionalCost:
+            amount: 0.8008281904610115
+            currency: currency
+          holdingType: holdingType
+          currency: currency
+          unsettledUnits: 3.616076749251911
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          settledUnits: 6.027456183070403
+          variationMarginPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
           overdueUnits: 2.027123023002322
@@ -340726,24 +341395,229 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 5.962133916683182
             tradeId: tradeId
-          instrumentScope: instrumentScope
-          units: 0.8008281904610115
           holdingTypeName: holdingTypeName
           custodianAccountId:
             code: code
             scope: scope
-          holdingId: 1
-          amortisedCost:
-            amount: 0.8008281904610115
-            currency: currency
-          notionalCost:
-            amount: 0.8008281904610115
-            currency: currency
-          holdingType: holdingType
           instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
           currentFace: 9.301444243932576
-          currency: currency
-          unsettledUnits: 3.616076749251911
           resolvedCustodianAccount:
             resolutionType: resolutionType
             custodianAccount:
@@ -340964,10 +341838,6 @@ components:
                   key: key
               status: status
             accountSelector: accountSelector
-          costPortfolioCcy:
-            amount: 0.8008281904610115
-            currency: currency
-          settledUnits: 6.027456183070403
           properties:
             key:
               referenceData:
@@ -341388,10 +342258,26 @@ components:
                   - values
                   - values
               key: key
-          variationMarginPortfolioCcy:
+          variationMargin:
             amount: 0.8008281904610115
             currency: currency
-          variationMargin:
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingId: 1
+          amortisedCost:
+            amount: 0.8008281904610115
+            currency: currency
+          notionalCost:
+            amount: 0.8008281904610115
+            currency: currency
+          holdingType: holdingType
+          currency: currency
+          unsettledUnits: 3.616076749251911
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          settledUnits: 6.027456183070403
+          variationMarginPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
           overdueUnits: 2.027123023002322
@@ -341418,24 +342304,229 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 5.962133916683182
             tradeId: tradeId
-          instrumentScope: instrumentScope
-          units: 0.8008281904610115
           holdingTypeName: holdingTypeName
           custodianAccountId:
             code: code
             scope: scope
-          holdingId: 1
-          amortisedCost:
-            amount: 0.8008281904610115
-            currency: currency
-          notionalCost:
-            amount: 0.8008281904610115
-            currency: currency
-          holdingType: holdingType
           instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
           currentFace: 9.301444243932576
-          currency: currency
-          unsettledUnits: 3.616076749251911
           resolvedCustodianAccount:
             resolutionType: resolutionType
             custodianAccount:
@@ -341656,10 +342747,6 @@ components:
                   key: key
               status: status
             accountSelector: accountSelector
-          costPortfolioCcy:
-            amount: 0.8008281904610115
-            currency: currency
-          settledUnits: 6.027456183070403
           properties:
             key:
               referenceData:

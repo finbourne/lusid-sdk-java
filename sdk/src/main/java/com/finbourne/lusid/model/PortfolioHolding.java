@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.CustodianAccount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResolvedCustodianAccount;
@@ -152,6 +153,10 @@ public class PortfolioHolding {
   public static final String SERIALIZED_NAME_OVERDUE_UNITS = "overdueUnits";
   @SerializedName(SERIALIZED_NAME_OVERDUE_UNITS)
   private java.math.BigDecimal overdueUnits;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT = "custodianAccount";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT)
+  private CustodianAccount custodianAccount;
 
   public static final String SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNT = "resolvedCustodianAccount";
   @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNT)
@@ -667,6 +672,27 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding custodianAccount(CustodianAccount custodianAccount) {
+    
+    this.custodianAccount = custodianAccount;
+    return this;
+  }
+
+   /**
+   * Get custodianAccount
+   * @return custodianAccount
+  **/
+  @jakarta.annotation.Nullable
+  public CustodianAccount getCustodianAccount() {
+    return custodianAccount;
+  }
+
+
+  public void setCustodianAccount(CustodianAccount custodianAccount) {
+    this.custodianAccount = custodianAccount;
+  }
+
+
   public PortfolioHolding resolvedCustodianAccount(ResolvedCustodianAccount resolvedCustodianAccount) {
     
     this.resolvedCustodianAccount = resolvedCustodianAccount;
@@ -721,6 +747,7 @@ public class PortfolioHolding {
         Objects.equals(this.custodianAccountId, portfolioHolding.custodianAccountId) &&
         (this.unsettledUnits.compareTo(portfolioHolding.getUnsettledUnits()) == 0) &&
         (this.overdueUnits.compareTo(portfolioHolding.getOverdueUnits()) == 0) &&
+        Objects.equals(this.custodianAccount, portfolioHolding.custodianAccount) &&
         Objects.equals(this.resolvedCustodianAccount, portfolioHolding.resolvedCustodianAccount);
   }
 
@@ -730,7 +757,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, resolvedCustodianAccount);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, custodianAccount, resolvedCustodianAccount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -767,6 +794,7 @@ public class PortfolioHolding {
     sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    unsettledUnits: ").append(toIndentedString(unsettledUnits)).append("\n");
     sb.append("    overdueUnits: ").append(toIndentedString(overdueUnits)).append("\n");
+    sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
     sb.append("    resolvedCustodianAccount: ").append(toIndentedString(resolvedCustodianAccount)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -813,6 +841,7 @@ public class PortfolioHolding {
     openapiFields.add("custodianAccountId");
     openapiFields.add("unsettledUnits");
     openapiFields.add("overdueUnits");
+    openapiFields.add("custodianAccount");
     openapiFields.add("resolvedCustodianAccount");
 
     // a set of required properties/fields (JSON key names)
@@ -905,6 +934,10 @@ public class PortfolioHolding {
       // validate the optional field `custodianAccountId`
       if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
+      }
+      // validate the optional field `custodianAccount`
+      if (jsonObj.get("custodianAccount") != null && !jsonObj.get("custodianAccount").isJsonNull()) {
+        CustodianAccount.validateJsonElement(jsonObj.get("custodianAccount"));
       }
       // validate the optional field `resolvedCustodianAccount`
       if (jsonObj.get("resolvedCustodianAccount") != null && !jsonObj.get("resolvedCustodianAccount").isJsonNull()) {
