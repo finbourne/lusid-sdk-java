@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityResult;
+import com.finbourne.lusid.model.PortfolioHoldingResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -115,6 +116,10 @@ public class DataQualityCheckResult {
   public static final String SERIALIZED_NAME_RESULT_ID = "resultId";
   @SerializedName(SERIALIZED_NAME_RESULT_ID)
   private String resultId;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_HOLDING = "portfolioHolding";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_HOLDING)
+  private PortfolioHoldingResult portfolioHolding;
 
   public DataQualityCheckResult() {
   }
@@ -441,7 +446,7 @@ public class DataQualityCheckResult {
   }
 
    /**
-   * Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}
+   * Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio.
    * @return resultId
   **/
   @jakarta.annotation.Nullable
@@ -452,6 +457,27 @@ public class DataQualityCheckResult {
 
   public void setResultId(String resultId) {
     this.resultId = resultId;
+  }
+
+
+  public DataQualityCheckResult portfolioHolding(PortfolioHoldingResult portfolioHolding) {
+    
+    this.portfolioHolding = portfolioHolding;
+    return this;
+  }
+
+   /**
+   * Get portfolioHolding
+   * @return portfolioHolding
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioHoldingResult getPortfolioHolding() {
+    return portfolioHolding;
+  }
+
+
+  public void setPortfolioHolding(PortfolioHoldingResult portfolioHolding) {
+    this.portfolioHolding = portfolioHolding;
   }
 
 
@@ -480,7 +506,8 @@ public class DataQualityCheckResult {
         Objects.equals(this.lusidEntity, dataQualityCheckResult.lusidEntity) &&
         Objects.equals(this.countRuleBreaches, dataQualityCheckResult.countRuleBreaches) &&
         Objects.equals(this.errorDetail, dataQualityCheckResult.errorDetail) &&
-        Objects.equals(this.resultId, dataQualityCheckResult.resultId);
+        Objects.equals(this.resultId, dataQualityCheckResult.resultId) &&
+        Objects.equals(this.portfolioHolding, dataQualityCheckResult.portfolioHolding);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -489,7 +516,7 @@ public class DataQualityCheckResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId);
+    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId, portfolioHolding);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -519,6 +546,7 @@ public class DataQualityCheckResult {
     sb.append("    countRuleBreaches: ").append(toIndentedString(countRuleBreaches)).append("\n");
     sb.append("    errorDetail: ").append(toIndentedString(errorDetail)).append("\n");
     sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
+    sb.append("    portfolioHolding: ").append(toIndentedString(portfolioHolding)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -557,6 +585,7 @@ public class DataQualityCheckResult {
     openapiFields.add("countRuleBreaches");
     openapiFields.add("errorDetail");
     openapiFields.add("resultId");
+    openapiFields.add("portfolioHolding");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -614,6 +643,10 @@ public class DataQualityCheckResult {
       }
       if ((jsonObj.get("resultId") != null && !jsonObj.get("resultId").isJsonNull()) && !jsonObj.get("resultId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resultId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resultId").toString()));
+      }
+      // validate the optional field `portfolioHolding`
+      if (jsonObj.get("portfolioHolding") != null && !jsonObj.get("portfolioHolding").isJsonNull()) {
+        PortfolioHoldingResult.validateJsonElement(jsonObj.get("portfolioHolding"));
       }
   }
 

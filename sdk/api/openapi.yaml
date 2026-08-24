@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9734
+  version: 0.11.9743
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -192670,6 +192670,21 @@ components:
         countRuleBreaches: 6
         checkRunAsAt: 2000-01-23T04:56:07.000+00:00
         ruleDisplayName: ruleDisplayName
+        portfolioHolding:
+          entityType: entityType
+          sourcePortfolioScope: sourcePortfolioScope
+          asAt: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          holdingTypeName: holdingTypeName
+          holdingId: holdingId
+          instrumentDisplayName: instrumentDisplayName
+          subEntityId: subEntityId
+          taxlotId: taxlotId
+          sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+          currency: currency
+          sourcePortfolioDisplayName: sourcePortfolioDisplayName
+          lusidInstrumentId: lusidInstrumentId
+          sourcePortfolioCode: sourcePortfolioCode
         errorDetail: errorDetail
         resultType: resultType
         ruleFormula: ruleFormula
@@ -192750,9 +192765,13 @@ components:
           type: string
         resultId:
           description: "Unique identifier for the result in format: {{GUID of Check\
-            \ Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}"
+            \ Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.\r\
+            \nFor holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}},\
+            \ since a holding id only\r\nidentifies a holding within its own portfolio."
           nullable: true
           type: string
+        portfolioHolding:
+          $ref: '#/components/schemas/PortfolioHoldingResult'
       type: object
     DataScope:
       additionalProperties: false
@@ -208525,6 +208544,35 @@ components:
             \ value: Physical. Available values: Cash, Physical."
           nullable: true
           type: string
+        deliverableMinMaturityYears:
+          description: "For physically-delivered bond futures: the minimum remaining\
+            \ maturity, in years, measured from the first\r\nday of the delivery month,\
+            \ for a bond to be eligible for delivery against this contract.\r\nOptional:\
+            \ if not set, no lower bound is applied when matching eligible bonds."
+          format: double
+          nullable: true
+          type: number
+        deliverableMaxMaturityYears:
+          description: "For physically-delivered bond futures: the maximum remaining\
+            \ maturity, in years, measured from the first\r\nday of the delivery month,\
+            \ for a bond to be eligible for delivery against this contract.\r\nOptional:\
+            \ if not set, no upper bound is applied when matching eligible bonds."
+          format: double
+          nullable: true
+          type: number
+        excludeCallableBonds:
+          description: "For physically-delivered bond futures: whether callable bonds\
+            \ are excluded from delivery against this\r\ncontract. Optional: defaults\
+            \ to false (callable bonds are not excluded)."
+          type: boolean
+        deliverableMinAmountOutstanding:
+          description: "For physically-delivered bond futures: the minimum amount\
+            \ outstanding, in the domestic currency of the\r\ncontract, for a bond\
+            \ issue to be eligible for delivery against this contract.\r\nOptional:\
+            \ if not set, no minimum is applied when matching eligible bonds."
+          format: double
+          nullable: true
+          type: number
       required:
       - contractCode
       - contractSize
@@ -258363,6 +258411,153 @@ components:
       - settledUnits
       - units
       type: object
+    PortfolioHoldingDataset:
+      additionalProperties: false
+      description: "Contains the run-time parameters that are appropriate for check\
+        \ definitions\r\nwith datasetSchema.type = \"PortfolioContents\""
+      example:
+        holdingSelectorAttribute: holdingSelectorAttribute
+        portfolioSelectorValue: portfolioSelectorValue
+        byTaxlots: true
+        portfolioScope: portfolioScope
+        holdingSelectorValue: holdingSelectorValue
+        asAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        portfolioSelectorAttribute: portfolioSelectorAttribute
+      properties:
+        asAt:
+          description: The asAt date to fetch the data. Nullable. Defaults to latest.
+          format: date-time
+          nullable: true
+          type: string
+        effectiveAt:
+          description: The effectiveAt date to fetch the data. Nullable. Defaults
+            to latest.
+          format: date-time
+          nullable: true
+          type: string
+        portfolioScope:
+          description: The scope of the portfolios whose holdings to check. Nullable.
+            Every scope is checked if not provided.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioSelectorAttribute:
+          description: An attribute (field name or propertyKey) to use to narrow down
+            the portfolios whose holdings are checked.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        portfolioSelectorValue:
+          description: The value of the above attribute used to narrow down the portfolios.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        holdingSelectorAttribute:
+          description: "An attribute (field name, propertyKey or sub-holding key)\
+            \ to use to narrow down the holdings checked\r\nwithin those portfolios."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        holdingSelectorValue:
+          description: The value of the above attribute used to narrow down the holdings.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        byTaxlots:
+          description: Whether to expand holdings to their underlying tax lots. Defaults
+            to false.
+          type: boolean
+      type: object
+    PortfolioHoldingResult:
+      additionalProperties: false
+      description: "Represents holding details for a data quality check result, where\
+        \ LusidEntityResult represents a scope-and-code\r\nor identifier-addressed\
+        \ entity. A holding has no scope and code of its own, so it is identified\
+        \ by the portfolio\r\nit came from plus what distinguishes it within that\
+        \ portfolio."
+      example:
+        entityType: entityType
+        sourcePortfolioScope: sourcePortfolioScope
+        asAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        holdingTypeName: holdingTypeName
+        holdingId: holdingId
+        instrumentDisplayName: instrumentDisplayName
+        subEntityId: subEntityId
+        taxlotId: taxlotId
+        sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+        currency: currency
+        sourcePortfolioDisplayName: sourcePortfolioDisplayName
+        lusidInstrumentId: lusidInstrumentId
+        sourcePortfolioCode: sourcePortfolioCode
+      properties:
+        entityType:
+          description: The type of the entity. Always "Holding".
+          nullable: true
+          type: string
+        asAt:
+          description: The as-at timestamp for the holding
+          format: date-time
+          type: string
+        effectiveAt:
+          description: The effective-at timestamp for the holding
+          format: date-time
+          type: string
+        sourcePortfolioScope:
+          description: The scope of the portfolio this holding came from
+          nullable: true
+          type: string
+        sourcePortfolioCode:
+          description: The code of the portfolio this holding came from
+          nullable: true
+          type: string
+        sourcePortfolioEntityUniqueId:
+          description: The unique identifier of the portfolio this holding came from
+          nullable: true
+          type: string
+        sourcePortfolioDisplayName:
+          description: The display name of the portfolio this holding came from
+          nullable: true
+          type: string
+        holdingId:
+          description: The holding's identifier within its portfolio
+          nullable: true
+          type: string
+        taxlotId:
+          description: "The tax lot identifier, where the holding was expanded to\
+            \ tax lots. Null otherwise."
+          nullable: true
+          type: string
+        subEntityId:
+          description: "Identifies the holding to the derived property explain API:\
+            \ the holding id on its own, or the holding id\r\nand tax lot id colon-separated\
+            \ where a tax lot is present."
+          nullable: true
+          type: string
+        lusidInstrumentId:
+          description: The LUSID instrument identifier of the instrument held
+          nullable: true
+          type: string
+        instrumentDisplayName:
+          description: The name of the instrument held
+          nullable: true
+          type: string
+        holdingTypeName:
+          description: "The kind of holding, e.g. Position, Balance"
+          nullable: true
+          type: string
+        currency:
+          description: The currency of the holding
+          nullable: true
+          type: string
+      type: object
     PortfolioId:
       additionalProperties: false
       example:
@@ -294682,6 +294877,15 @@ components:
     RunCheckRequest:
       additionalProperties: false
       example:
+        portfolioHoldingDataset:
+          holdingSelectorAttribute: holdingSelectorAttribute
+          portfolioSelectorValue: portfolioSelectorValue
+          byTaxlots: true
+          portfolioScope: portfolioScope
+          holdingSelectorValue: holdingSelectorValue
+          asAt: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          portfolioSelectorAttribute: portfolioSelectorAttribute
         limitIndividualBreachesPerRule: 0
         lusidEntityDataset:
           returnIdentifierKey: returnIdentifierKey
@@ -294699,6 +294903,8 @@ components:
             Defaults to 100 if not specified.
           format: int32
           type: integer
+        portfolioHoldingDataset:
+          $ref: '#/components/schemas/PortfolioHoldingDataset'
       type: object
     RunCheckResponse:
       additionalProperties: false
@@ -294717,6 +294923,21 @@ components:
           countRuleBreaches: 6
           checkRunAsAt: 2000-01-23T04:56:07.000+00:00
           ruleDisplayName: ruleDisplayName
+          portfolioHolding:
+            entityType: entityType
+            sourcePortfolioScope: sourcePortfolioScope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            holdingTypeName: holdingTypeName
+            holdingId: holdingId
+            instrumentDisplayName: instrumentDisplayName
+            subEntityId: subEntityId
+            taxlotId: taxlotId
+            sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+            currency: currency
+            sourcePortfolioDisplayName: sourcePortfolioDisplayName
+            lusidInstrumentId: lusidInstrumentId
+            sourcePortfolioCode: sourcePortfolioCode
           errorDetail: errorDetail
           resultType: resultType
           ruleFormula: ruleFormula
@@ -294742,6 +294963,21 @@ components:
           countRuleBreaches: 6
           checkRunAsAt: 2000-01-23T04:56:07.000+00:00
           ruleDisplayName: ruleDisplayName
+          portfolioHolding:
+            entityType: entityType
+            sourcePortfolioScope: sourcePortfolioScope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            holdingTypeName: holdingTypeName
+            holdingId: holdingId
+            instrumentDisplayName: instrumentDisplayName
+            subEntityId: subEntityId
+            taxlotId: taxlotId
+            sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+            currency: currency
+            sourcePortfolioDisplayName: sourcePortfolioDisplayName
+            lusidInstrumentId: lusidInstrumentId
+            sourcePortfolioCode: sourcePortfolioCode
           errorDetail: errorDetail
           resultType: resultType
           ruleFormula: ruleFormula

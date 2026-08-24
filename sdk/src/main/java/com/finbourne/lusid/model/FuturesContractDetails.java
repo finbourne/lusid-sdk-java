@@ -112,6 +112,22 @@ public class FuturesContractDetails {
   @SerializedName(SERIALIZED_NAME_DELIVERY_TYPE)
   private String deliveryType;
 
+  public static final String SERIALIZED_NAME_DELIVERABLE_MIN_MATURITY_YEARS = "deliverableMinMaturityYears";
+  @SerializedName(SERIALIZED_NAME_DELIVERABLE_MIN_MATURITY_YEARS)
+  private java.math.BigDecimal deliverableMinMaturityYears;
+
+  public static final String SERIALIZED_NAME_DELIVERABLE_MAX_MATURITY_YEARS = "deliverableMaxMaturityYears";
+  @SerializedName(SERIALIZED_NAME_DELIVERABLE_MAX_MATURITY_YEARS)
+  private java.math.BigDecimal deliverableMaxMaturityYears;
+
+  public static final String SERIALIZED_NAME_EXCLUDE_CALLABLE_BONDS = "excludeCallableBonds";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_CALLABLE_BONDS)
+  private Boolean excludeCallableBonds;
+
+  public static final String SERIALIZED_NAME_DELIVERABLE_MIN_AMOUNT_OUTSTANDING = "deliverableMinAmountOutstanding";
+  @SerializedName(SERIALIZED_NAME_DELIVERABLE_MIN_AMOUNT_OUTSTANDING)
+  private java.math.BigDecimal deliverableMinAmountOutstanding;
+
   public FuturesContractDetails() {
   }
 
@@ -438,6 +454,90 @@ public class FuturesContractDetails {
   }
 
 
+  public FuturesContractDetails deliverableMinMaturityYears(java.math.BigDecimal deliverableMinMaturityYears) {
+    
+    this.deliverableMinMaturityYears = deliverableMinMaturityYears;
+    return this;
+  }
+
+   /**
+   * For physically-delivered bond futures: the minimum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no lower bound is applied when matching eligible bonds.
+   * @return deliverableMinMaturityYears
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getDeliverableMinMaturityYears() {
+    return deliverableMinMaturityYears;
+  }
+
+
+  public void setDeliverableMinMaturityYears(java.math.BigDecimal deliverableMinMaturityYears) {
+    this.deliverableMinMaturityYears = deliverableMinMaturityYears;
+  }
+
+
+  public FuturesContractDetails deliverableMaxMaturityYears(java.math.BigDecimal deliverableMaxMaturityYears) {
+    
+    this.deliverableMaxMaturityYears = deliverableMaxMaturityYears;
+    return this;
+  }
+
+   /**
+   * For physically-delivered bond futures: the maximum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no upper bound is applied when matching eligible bonds.
+   * @return deliverableMaxMaturityYears
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getDeliverableMaxMaturityYears() {
+    return deliverableMaxMaturityYears;
+  }
+
+
+  public void setDeliverableMaxMaturityYears(java.math.BigDecimal deliverableMaxMaturityYears) {
+    this.deliverableMaxMaturityYears = deliverableMaxMaturityYears;
+  }
+
+
+  public FuturesContractDetails excludeCallableBonds(Boolean excludeCallableBonds) {
+    
+    this.excludeCallableBonds = excludeCallableBonds;
+    return this;
+  }
+
+   /**
+   * For physically-delivered bond futures: whether callable bonds are excluded from delivery against this  contract. Optional: defaults to false (callable bonds are not excluded).
+   * @return excludeCallableBonds
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExcludeCallableBonds() {
+    return excludeCallableBonds;
+  }
+
+
+  public void setExcludeCallableBonds(Boolean excludeCallableBonds) {
+    this.excludeCallableBonds = excludeCallableBonds;
+  }
+
+
+  public FuturesContractDetails deliverableMinAmountOutstanding(java.math.BigDecimal deliverableMinAmountOutstanding) {
+    
+    this.deliverableMinAmountOutstanding = deliverableMinAmountOutstanding;
+    return this;
+  }
+
+   /**
+   * For physically-delivered bond futures: the minimum amount outstanding, in the domestic currency of the  contract, for a bond issue to be eligible for delivery against this contract.  Optional: if not set, no minimum is applied when matching eligible bonds.
+   * @return deliverableMinAmountOutstanding
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getDeliverableMinAmountOutstanding() {
+    return deliverableMinAmountOutstanding;
+  }
+
+
+  public void setDeliverableMinAmountOutstanding(java.math.BigDecimal deliverableMinAmountOutstanding) {
+    this.deliverableMinAmountOutstanding = deliverableMinAmountOutstanding;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -462,7 +562,11 @@ public class FuturesContractDetails {
         (this.tickerStep.compareTo(futuresContractDetails.getTickerStep()) == 0) &&
         (this.unitValue.compareTo(futuresContractDetails.getUnitValue()) == 0) &&
         Objects.equals(this.calendars, futuresContractDetails.calendars) &&
-        Objects.equals(this.deliveryType, futuresContractDetails.deliveryType);
+        Objects.equals(this.deliveryType, futuresContractDetails.deliveryType) &&
+        (this.deliverableMinMaturityYears.compareTo(futuresContractDetails.getDeliverableMinMaturityYears()) == 0) &&
+        (this.deliverableMaxMaturityYears.compareTo(futuresContractDetails.getDeliverableMaxMaturityYears()) == 0) &&
+        Objects.equals(this.excludeCallableBonds, futuresContractDetails.excludeCallableBonds) &&
+        (this.deliverableMinAmountOutstanding.compareTo(futuresContractDetails.getDeliverableMinAmountOutstanding()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -471,7 +575,7 @@ public class FuturesContractDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars, deliveryType);
+    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars, deliveryType, deliverableMinMaturityYears, deliverableMaxMaturityYears, excludeCallableBonds, deliverableMinAmountOutstanding);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -500,6 +604,10 @@ public class FuturesContractDetails {
     sb.append("    unitValue: ").append(toIndentedString(unitValue)).append("\n");
     sb.append("    calendars: ").append(toIndentedString(calendars)).append("\n");
     sb.append("    deliveryType: ").append(toIndentedString(deliveryType)).append("\n");
+    sb.append("    deliverableMinMaturityYears: ").append(toIndentedString(deliverableMinMaturityYears)).append("\n");
+    sb.append("    deliverableMaxMaturityYears: ").append(toIndentedString(deliverableMaxMaturityYears)).append("\n");
+    sb.append("    excludeCallableBonds: ").append(toIndentedString(excludeCallableBonds)).append("\n");
+    sb.append("    deliverableMinAmountOutstanding: ").append(toIndentedString(deliverableMinAmountOutstanding)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -537,6 +645,10 @@ public class FuturesContractDetails {
     openapiFields.add("unitValue");
     openapiFields.add("calendars");
     openapiFields.add("deliveryType");
+    openapiFields.add("deliverableMinMaturityYears");
+    openapiFields.add("deliverableMaxMaturityYears");
+    openapiFields.add("excludeCallableBonds");
+    openapiFields.add("deliverableMinAmountOutstanding");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

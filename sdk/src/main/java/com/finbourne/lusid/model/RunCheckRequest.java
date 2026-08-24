@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityDataset;
+import com.finbourne.lusid.model.PortfolioHoldingDataset;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,6 +59,10 @@ public class RunCheckRequest {
   @SerializedName(SERIALIZED_NAME_LIMIT_INDIVIDUAL_BREACHES_PER_RULE)
   private Integer limitIndividualBreachesPerRule;
 
+  public static final String SERIALIZED_NAME_PORTFOLIO_HOLDING_DATASET = "portfolioHoldingDataset";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_HOLDING_DATASET)
+  private PortfolioHoldingDataset portfolioHoldingDataset;
+
   public RunCheckRequest() {
   }
 
@@ -103,6 +108,27 @@ public class RunCheckRequest {
   }
 
 
+  public RunCheckRequest portfolioHoldingDataset(PortfolioHoldingDataset portfolioHoldingDataset) {
+    
+    this.portfolioHoldingDataset = portfolioHoldingDataset;
+    return this;
+  }
+
+   /**
+   * Get portfolioHoldingDataset
+   * @return portfolioHoldingDataset
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioHoldingDataset getPortfolioHoldingDataset() {
+    return portfolioHoldingDataset;
+  }
+
+
+  public void setPortfolioHoldingDataset(PortfolioHoldingDataset portfolioHoldingDataset) {
+    this.portfolioHoldingDataset = portfolioHoldingDataset;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +140,13 @@ public class RunCheckRequest {
     }
     RunCheckRequest runCheckRequest = (RunCheckRequest) o;
     return Objects.equals(this.lusidEntityDataset, runCheckRequest.lusidEntityDataset) &&
-        Objects.equals(this.limitIndividualBreachesPerRule, runCheckRequest.limitIndividualBreachesPerRule);
+        Objects.equals(this.limitIndividualBreachesPerRule, runCheckRequest.limitIndividualBreachesPerRule) &&
+        Objects.equals(this.portfolioHoldingDataset, runCheckRequest.portfolioHoldingDataset);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule);
+    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule, portfolioHoldingDataset);
   }
 
   @Override
@@ -128,6 +155,7 @@ public class RunCheckRequest {
     sb.append("class RunCheckRequest {\n");
     sb.append("    lusidEntityDataset: ").append(toIndentedString(lusidEntityDataset)).append("\n");
     sb.append("    limitIndividualBreachesPerRule: ").append(toIndentedString(limitIndividualBreachesPerRule)).append("\n");
+    sb.append("    portfolioHoldingDataset: ").append(toIndentedString(portfolioHoldingDataset)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +180,7 @@ public class RunCheckRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("lusidEntityDataset");
     openapiFields.add("limitIndividualBreachesPerRule");
+    openapiFields.add("portfolioHoldingDataset");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -173,6 +202,10 @@ public class RunCheckRequest {
       // validate the optional field `lusidEntityDataset`
       if (jsonObj.get("lusidEntityDataset") != null && !jsonObj.get("lusidEntityDataset").isJsonNull()) {
         LusidEntityDataset.validateJsonElement(jsonObj.get("lusidEntityDataset"));
+      }
+      // validate the optional field `portfolioHoldingDataset`
+      if (jsonObj.get("portfolioHoldingDataset") != null && !jsonObj.get("portfolioHoldingDataset").isJsonNull()) {
+        PortfolioHoldingDataset.validateJsonElement(jsonObj.get("portfolioHoldingDataset"));
       }
   }
 
