@@ -176,6 +176,14 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_JOURNAL_ENTRY_LINE_TYPE)
   private String journalEntryLineType;
 
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE = "custodianAccountType";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE)
+  private String custodianAccountType;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -824,6 +832,48 @@ public class JournalEntryLine {
   }
 
 
+  public JournalEntryLine custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
+  public JournalEntryLine custodianAccountType(String custodianAccountType) {
+    
+    this.custodianAccountType = custodianAccountType;
+    return this;
+  }
+
+   /**
+   * Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line.
+   * @return custodianAccountType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCustodianAccountType() {
+    return custodianAccountType;
+  }
+
+
+  public void setCustodianAccountType(String custodianAccountType) {
+    this.custodianAccountType = custodianAccountType;
+  }
+
+
   public JournalEntryLine links(List<Link> links) {
     
     this.links = links;
@@ -892,6 +942,8 @@ public class JournalEntryLine {
         Objects.equals(this.holdingSign, journalEntryLine.holdingSign) &&
         Objects.equals(this.ledgerColumn, journalEntryLine.ledgerColumn) &&
         Objects.equals(this.journalEntryLineType, journalEntryLine.journalEntryLineType) &&
+        Objects.equals(this.custodianAccountId, journalEntryLine.custodianAccountId) &&
+        Objects.equals(this.custodianAccountType, journalEntryLine.custodianAccountType) &&
         Objects.equals(this.links, journalEntryLine.links);
   }
 
@@ -901,7 +953,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, custodianAccountId, custodianAccountType, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -944,6 +996,8 @@ public class JournalEntryLine {
     sb.append("    holdingSign: ").append(toIndentedString(holdingSign)).append("\n");
     sb.append("    ledgerColumn: ").append(toIndentedString(ledgerColumn)).append("\n");
     sb.append("    journalEntryLineType: ").append(toIndentedString(journalEntryLineType)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
+    sb.append("    custodianAccountType: ").append(toIndentedString(custodianAccountType)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -996,6 +1050,8 @@ public class JournalEntryLine {
     openapiFields.add("holdingSign");
     openapiFields.add("ledgerColumn");
     openapiFields.add("journalEntryLineType");
+    openapiFields.add("custodianAccountId");
+    openapiFields.add("custodianAccountType");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1104,6 +1160,13 @@ public class JournalEntryLine {
       }
       if ((jsonObj.get("journalEntryLineType") != null && !jsonObj.get("journalEntryLineType").isJsonNull()) && !jsonObj.get("journalEntryLineType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `journalEntryLineType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("journalEntryLineType").toString()));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
+      }
+      if ((jsonObj.get("custodianAccountType") != null && !jsonObj.get("custodianAccountType").isJsonNull()) && !jsonObj.get("custodianAccountType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custodianAccountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custodianAccountType").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
