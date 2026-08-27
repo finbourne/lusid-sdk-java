@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument ordered. | [default to String]
 **quantity** | **java.math.BigDecimal** | The total quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
 **amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**basis** | **String** | The measure in which the block was instructed. Expected values are &#39;Quantity&#39; or &#39;Amount&#39;; null when the block carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount. | [optional] [readonly] [default to String]
 **side** | **String** | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc) | [default to String]
 **type** | **String** | The block order&#39;s type (examples: Limit, Market, ...) | [optional] [default to String]
 **timeInForce** | **String** | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) | [optional] [default to String]
@@ -36,6 +37,7 @@ Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 String LusidInstrumentId = "example LusidInstrumentId";
 @jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
 CurrencyAndAmount Amount = new CurrencyAndAmount();
+@jakarta.annotation.Nullable String Basis = "example Basis";
 String Side = "example Side";
 @jakarta.annotation.Nullable String Type = "example Type";
 @jakarta.annotation.Nullable String TimeInForce = "example TimeInForce";
@@ -56,6 +58,7 @@ Block blockInstance = new Block()
     .LusidInstrumentId(LusidInstrumentId)
     .Quantity(Quantity)
     .Amount(Amount)
+    .Basis(Basis)
     .Side(Side)
     .Type(Type)
     .TimeInForce(TimeInForce)

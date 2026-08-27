@@ -115,6 +115,7 @@ InstrumentEventType method = InstrumentEventType.COMMODITYFORWARDPHYSICALSETTLEM
 InstrumentEventType method = InstrumentEventType.CANCELSWAPEVENT;
 InstrumentEventType method = InstrumentEventType.BONDOPTIONTERMINATIONEVENT;
 InstrumentEventType method = InstrumentEventType.TERMINATIONEVENT;
+InstrumentEventType method = InstrumentEventType.COMMODITYCALENDARSWAPCASHFLOWEVENT;
 ```
 
 

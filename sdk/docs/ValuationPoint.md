@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **previous** | [**PreviousValuationPoint**](PreviousValuationPoint.md) |  | [optional] [default to PreviousValuationPoint]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain. | [optional] [default to Map<String, Property>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -38,6 +39,7 @@ OffsetDateTime ValuationAsAt = OffsetDateTime.now();
 PreviousValuationPoint Previous = new PreviousValuationPoint();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Version Version = new Version();
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -55,6 +57,7 @@ ValuationPoint valuationPointInstance = new ValuationPoint()
     .Previous(Previous)
     .Properties(Properties)
     .Version(Version)
+    .StagedModifications(StagedModifications)
     .Links(Links);
 ```
 

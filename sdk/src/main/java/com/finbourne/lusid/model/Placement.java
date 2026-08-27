@@ -93,6 +93,10 @@ public class Placement {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private CurrencyAndAmount amount;
 
+  public static final String SERIALIZED_NAME_BASIS = "basis";
+  @SerializedName(SERIALIZED_NAME_BASIS)
+  private String basis;
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
@@ -146,6 +150,14 @@ public class Placement {
   private List<Link> links;
 
   public Placement() {
+  }
+
+  
+  public Placement(
+     String basis
+  ) {
+    this();
+    this.basis = basis;
   }
 
   public Placement id(ResourceId id) {
@@ -338,6 +350,18 @@ public class Placement {
   public void setAmount(CurrencyAndAmount amount) {
     this.amount = amount;
   }
+
+
+   /**
+   * The measure in which the placement was instructed. Expected values are &#39;Quantity&#39; or &#39;Amount&#39;; null when the placement carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount.
+   * @return basis
+  **/
+  @jakarta.annotation.Nullable
+  public String getBasis() {
+    return basis;
+  }
+
+
 
 
   public Placement state(String state) {
@@ -639,6 +663,7 @@ public class Placement {
         Objects.equals(this.lusidInstrumentId, placement.lusidInstrumentId) &&
         (this.quantity.compareTo(placement.getQuantity()) == 0) &&
         Objects.equals(this.amount, placement.amount) &&
+        Objects.equals(this.basis, placement.basis) &&
         Objects.equals(this.state, placement.state) &&
         Objects.equals(this.side, placement.side) &&
         Objects.equals(this.timeInForce, placement.timeInForce) &&
@@ -660,7 +685,7 @@ public class Placement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, links);
+    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, basis, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -682,6 +707,7 @@ public class Placement {
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    basis: ").append(toIndentedString(basis)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
@@ -725,6 +751,7 @@ public class Placement {
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("quantity");
     openapiFields.add("amount");
+    openapiFields.add("basis");
     openapiFields.add("state");
     openapiFields.add("side");
     openapiFields.add("timeInForce");
@@ -794,6 +821,9 @@ public class Placement {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      if ((jsonObj.get("basis") != null && !jsonObj.get("basis").isJsonNull()) && !jsonObj.get("basis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `basis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("basis").toString()));
       }
       if (!jsonObj.get("state").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));

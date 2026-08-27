@@ -347,7 +347,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * The currency the option settles in.     If not specified, the currency of the underlying swap is used. When specified it must be one of  the currencies of the underlying swap.
+   * The currency the option settles in.     Optional, and in almost all cases it should be left to default. If not specified, the currency of  the underlying swap is used, which for a cross-currency swap is the currency of its first leg.     A specified currency is taken as given and is not validated against the underlying swap, since  settling in another currency is rare but legitimate. Note that valuation of such a swaption is not  supported, as converting from the currency the swap is valued in needs an fx rate the instrument  does not define.
    * @return domCcy
   **/
   @jakarta.annotation.Nullable
@@ -368,7 +368,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * The date the option expires, and for European exercise the date it is exercised.     If not specified, the start date of the underlying swap is used.
+   * The date the option expires, and for European exercise the date it is exercised. For American  exercise it is the end of the window the option may be exercised in, so it should be set on the  instrument for the option to be exercisable up to the intended date.     If not specified, the start date of the underlying swap is used.
    * @return exerciseDate
   **/
   @jakarta.annotation.Nullable
@@ -389,7 +389,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * Type of optionality that is present; European, American.     Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set.     A European option is exercised on its exercise date, so its exercise event is generated with  that date already set. An American option may be exercised at any point in its life, so it  carries no scheduled date and the exercise date is supplied on the exercise event instead.     The swap delivered on exercise keeps the start date it was defined with, so exercising early  or late leaves it aged or forward-starting relative to the exercise. Keeping that swap  correct for the intended exercise is the responsibility of whoever defines it.
+   * Type of optionality that is present; European, American.     Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set.     A European option is exercised on its exercise date, so its exercise event is generated with  that date already set. An American option may be exercised at any point up to that date, so the  date it is actually exercised on is supplied on the exercise event; set exerciseDate on the  instrument to open the window the event may fall in.     The swap delivered on exercise keeps the start date it was defined with, so exercising early  or late leaves it aged or forward-starting relative to the exercise. Keeping that swap  correct for the intended exercise is the responsibility of whoever defines it. In particular,  for an American physically settled swaption on a cross-currency underlying, neither the swap&#39;s  start date nor its fx notionals are determined at trade time, so amending the delivered swap  position after exercise is an operational step the client must carry out.
    * @return exerciseType
   **/
   @jakarta.annotation.Nullable

@@ -89,6 +89,10 @@ public class Block {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private CurrencyAndAmount amount;
 
+  public static final String SERIALIZED_NAME_BASIS = "basis";
+  @SerializedName(SERIALIZED_NAME_BASIS)
+  private String basis;
+
   public static final String SERIALIZED_NAME_SIDE = "side";
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
@@ -130,6 +134,14 @@ public class Block {
   private List<Link> links;
 
   public Block() {
+  }
+
+  
+  public Block(
+     String basis
+  ) {
+    this();
+    this.basis = basis;
   }
 
   public Block id(ResourceId id) {
@@ -301,6 +313,18 @@ public class Block {
   public void setAmount(CurrencyAndAmount amount) {
     this.amount = amount;
   }
+
+
+   /**
+   * The measure in which the block was instructed. Expected values are &#39;Quantity&#39; or &#39;Amount&#39;; null when the block carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount.
+   * @return basis
+  **/
+  @jakarta.annotation.Nullable
+  public String getBasis() {
+    return basis;
+  }
+
+
 
 
   public Block side(String side) {
@@ -538,6 +562,7 @@ public class Block {
         Objects.equals(this.lusidInstrumentId, block.lusidInstrumentId) &&
         (this.quantity.compareTo(block.getQuantity()) == 0) &&
         Objects.equals(this.amount, block.amount) &&
+        Objects.equals(this.basis, block.basis) &&
         Objects.equals(this.side, block.side) &&
         Objects.equals(this.type, block.type) &&
         Objects.equals(this.timeInForce, block.timeInForce) &&
@@ -556,7 +581,7 @@ public class Block {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept, version, dataModelMembership, links);
+    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, basis, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept, version, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -577,6 +602,7 @@ public class Block {
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    basis: ").append(toIndentedString(basis)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
@@ -616,6 +642,7 @@ public class Block {
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("quantity");
     openapiFields.add("amount");
+    openapiFields.add("basis");
     openapiFields.add("side");
     openapiFields.add("type");
     openapiFields.add("timeInForce");
@@ -676,6 +703,9 @@ public class Block {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      if ((jsonObj.get("basis") != null && !jsonObj.get("basis").isJsonNull()) && !jsonObj.get("basis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `basis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("basis").toString()));
       }
       if (!jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));

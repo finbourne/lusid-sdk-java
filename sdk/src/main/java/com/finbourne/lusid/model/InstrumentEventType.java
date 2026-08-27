@@ -225,7 +225,9 @@ public enum InstrumentEventType {
   
   BONDOPTIONTERMINATIONEVENT("BondOptionTerminationEvent"),
   
-  TERMINATIONEVENT("TerminationEvent");
+  TERMINATIONEVENT("TerminationEvent"),
+  
+  COMMODITYCALENDARSWAPCASHFLOWEVENT("CommodityCalendarSwapCashFlowEvent");
 
   private String value;
 

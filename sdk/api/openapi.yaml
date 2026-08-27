@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9752
+  version: 0.11.9770
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -7813,6 +7813,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: LUID_1234567
                   quantity: 100.5
+                  basis: Quantity
                   side: Buy
                   type: Limit
                   timeInForce: GoodTilCancel
@@ -7858,6 +7859,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: LUID_1234567
                   quantity: 100.5
+                  basis: Quantity
                   side: Buy
                   type: Limit
                   timeInForce: GoodTilCancel
@@ -7903,6 +7905,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: LUID_1234567
                   quantity: 100.5
+                  basis: Quantity
                   side: Buy
                   type: Limit
                   timeInForce: GoodTilCancel
@@ -8101,6 +8104,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: LUID_1234567
                 quantity: 100.5
+                basis: Quantity
                 side: Buy
                 type: Limit
                 timeInForce: GoodTilCancel
@@ -8144,6 +8148,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: LUID_1234567
                 quantity: 100.5
+                basis: Quantity
                 side: Buy
                 type: Limit
                 timeInForce: GoodTilCancel
@@ -8187,6 +8192,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: LUID_1234567
                 quantity: 100.5
+                basis: Quantity
                 side: Buy
                 type: Limit
                 timeInForce: GoodTilCancel
@@ -55596,7 +55602,7 @@ paths:
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-          \ BondOptionTerminationEvent, TerminationEvent."
+          \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -55708,7 +55714,7 @@ paths:
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-          \ BondOptionTerminationEvent, TerminationEvent."
+          \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -55828,7 +55834,7 @@ paths:
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-          \ BondOptionTerminationEvent, TerminationEvent."
+          \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56054,7 +56060,7 @@ paths:
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-          \ BondOptionTerminationEvent, TerminationEvent."
+          \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56281,7 +56287,7 @@ paths:
           \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-          \ BondOptionTerminationEvent, TerminationEvent."
+          \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -72629,6 +72635,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: LUID_1234567
                     quantity: 100.5
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -72744,6 +72751,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: LUID_1234567
                     quantity: 100.5
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -72859,6 +72867,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: LUID_1234567
                     quantity: 100.5
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -73092,6 +73101,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -73183,6 +73193,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -73274,6 +73285,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -73475,6 +73487,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -73566,6 +73579,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -73657,6 +73671,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: myLusidInstrumentId
                     quantity: 100.5
+                    basis: Quantity
                     state: New
                     side: Buy
                     timeInForce: GoodTilCancel
@@ -75334,6 +75349,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75370,6 +75386,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -75410,6 +75427,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75446,6 +75464,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -75494,6 +75513,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75530,6 +75550,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -75570,6 +75591,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75606,6 +75628,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -75654,6 +75677,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75690,6 +75714,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -75730,6 +75755,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newOrder:
                       properties:
                         Order/MyScope/SomeOrderProperty:
@@ -75766,6 +75792,7 @@ paths:
                       packageId:
                         scope: MyScope
                         code: UKEQ-Package
+                      basis: Quantity
                     newBlockId:
                       scope: MyScope
                       code: Block_Rollover
@@ -76016,6 +76043,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76045,6 +76073,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   - properties:
                       Order/MyScope/SomeOrderProperty:
                         key: Order/MyScope/SomeOrderProperty
@@ -76065,6 +76094,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                 href: https://myco.lusid.com/api/api/ordermanagement/createorders
                 links: []
               schema:
@@ -76090,6 +76120,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76119,6 +76150,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   - properties:
                       Order/MyScope/SomeOrderProperty:
                         key: Order/MyScope/SomeOrderProperty
@@ -76139,6 +76171,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                 href: https://myco.lusid.com/api/api/ordermanagement/createorders
                 links: []
               schema:
@@ -76164,6 +76197,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76193,6 +76227,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   - properties:
                       Order/MyScope/SomeOrderProperty:
                         key: Order/MyScope/SomeOrderProperty
@@ -76213,6 +76248,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                 href: https://myco.lusid.com/api/api/ordermanagement/createorders
                 links: []
               schema:
@@ -76322,6 +76358,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76351,6 +76388,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   sourceBlockId:
                     scope: MyScope
                     code: BLOCK00000122
@@ -76379,6 +76417,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76408,6 +76447,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   sourceBlockId:
                     scope: MyScope
                     code: BLOCK00000122
@@ -76436,6 +76476,7 @@ paths:
                       Instrument/default/Currency: GBP
                     lusidInstrumentId: lusidInstrumentId
                     quantity: 250
+                    basis: Quantity
                     side: Buy
                     type: Limit
                     timeInForce: GoodTilCancel
@@ -76465,6 +76506,7 @@ paths:
                     limitPrice:
                       amount: 534
                       currency: USD
+                    basis: Quantity
                   sourceBlockId:
                     scope: MyScope
                     code: BLOCK00000122
@@ -76854,6 +76896,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: lusidInstrument
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -76902,6 +76945,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: lusidInstrument
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -76950,6 +76994,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: lusidInstrument
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -77319,6 +77364,7 @@ paths:
                     packageId:
                       scope: MyScope
                       code: UKEQ-Package
+                    basis: Quantity
                 failed:
                   update2:
                     id: Update2
@@ -77368,6 +77414,7 @@ paths:
                     packageId:
                       scope: MyScope
                       code: UKEQ-Package
+                    basis: Quantity
                 failed:
                   update2:
                     id: Update2
@@ -77417,6 +77464,7 @@ paths:
                     packageId:
                       scope: MyScope
                       code: UKEQ-Package
+                    basis: Quantity
                 failed:
                   update2:
                     id: Update2
@@ -77833,6 +77881,7 @@ paths:
                   packageId:
                     scope: MyScope
                     code: UKEQ-Package
+                  basis: Quantity
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -77874,6 +77923,7 @@ paths:
                   packageId:
                     scope: MyScope
                     code: UKEQ-Package
+                  basis: Quantity
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -77915,6 +77965,7 @@ paths:
                   packageId:
                     scope: MyScope
                     code: UKEQ-Package
+                  basis: Quantity
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -78120,6 +78171,7 @@ paths:
                   scope: MyScope
                   code: UKEQ-Package
                 weight: 0.5
+                basis: Quantity
               schema:
                 $ref: '#/components/schemas/Order'
             application/json:
@@ -78170,6 +78222,7 @@ paths:
                   scope: MyScope
                   code: UKEQ-Package
                 weight: 0.5
+                basis: Quantity
               schema:
                 $ref: '#/components/schemas/Order'
             text/json:
@@ -78220,6 +78273,7 @@ paths:
                   scope: MyScope
                   code: UKEQ-Package
                 weight: 0.5
+                basis: Quantity
               schema:
                 $ref: '#/components/schemas/Order'
           description: The order matching the given identifier.
@@ -83840,6 +83894,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: myLusidInstrumentId
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -83887,6 +83942,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: myLusidInstrumentId
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -83934,6 +83990,7 @@ paths:
                     Instrument/default/Currency: GBP
                   lusidInstrumentId: myLusidInstrumentId
                   quantity: 100.5
+                  basis: Quantity
                   state: New
                   side: Buy
                   timeInForce: GoodTilCancel
@@ -84137,6 +84194,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: myLusidInstrumentId
                 quantity: 100.5
+                basis: Quantity
                 state: New
                 side: Buy
                 timeInForce: GoodTilCancel
@@ -84182,6 +84240,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: myLusidInstrumentId
                 quantity: 100.5
+                basis: Quantity
                 state: New
                 side: Buy
                 timeInForce: GoodTilCancel
@@ -84227,6 +84286,7 @@ paths:
                   Instrument/default/Currency: GBP
                 lusidInstrumentId: myLusidInstrumentId
                 quantity: 100.5
+                basis: Quantity
                 state: New
                 side: Buy
                 timeInForce: GoodTilCancel
@@ -159522,6 +159582,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -160829,7 +160898,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -160932,6 +161001,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - dividendCurrency
@@ -161449,7 +161519,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -161552,6 +161622,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -163387,7 +163458,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163490,6 +163561,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amountReduced
@@ -165318,7 +165390,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -165421,6 +165493,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -168529,6 +168602,7 @@ components:
           currency: currency
         instrumentIdentifiers:
           key: instrumentIdentifiers
+        basis: basis
         type: type
         version:
           stagedModificationIdModified: stagedModificationIdModified
@@ -168631,6 +168705,14 @@ components:
           type: number
         amount:
           $ref: '#/components/schemas/CurrencyAndAmount'
+        basis:
+          description: "The measure in which the block was instructed. Expected values\
+            \ are 'Quantity' or 'Amount'; null when the block carries no size measure.\
+            \ Read-only; derived from the populated size measures, taking quantity\
+            \ first, then amount."
+          nullable: true
+          readOnly: true
+          type: string
         side:
           description: "The client's representation of the block's side (buy, sell,\
             \ short, etc)"
@@ -168707,6 +168789,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -168818,6 +168901,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -168916,6 +169000,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -170414,7 +170499,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170517,6 +170602,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -170562,7 +170648,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170665,6 +170751,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -170874,7 +170961,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -170977,6 +171064,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - callPrice
@@ -171040,7 +171128,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -171143,6 +171231,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -171253,7 +171342,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -171356,6 +171445,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -171705,6 +171795,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -171816,6 +171907,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -171914,6 +172006,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -171984,6 +172077,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -172095,6 +172189,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -172193,6 +172288,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -173854,7 +173950,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173957,6 +174053,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - exerciseCurrency
@@ -174011,6 +174108,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -174099,6 +174197,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -174228,6 +174327,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -174327,6 +174427,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -174481,6 +174582,7 @@ components:
               weight: 6.027456183070403
               instrumentIdentifiers:
                 key: instrumentIdentifiers
+              basis: basis
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -174580,6 +174682,7 @@ components:
               weight: 6.027456183070403
               instrumentIdentifiers:
                 key: instrumentIdentifiers
+              basis: basis
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -174752,6 +174855,7 @@ components:
               weight: 6.027456183070403
               instrumentIdentifiers:
                 key: instrumentIdentifiers
+              basis: basis
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -174905,6 +175009,7 @@ components:
                 scope: scope
               instrumentIdentifiers:
                 key: instrumentIdentifiers
+              basis: basis
               type: type
               version:
                 stagedModificationIdModified: stagedModificationIdModified
@@ -175181,7 +175286,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175284,6 +175389,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -175459,7 +175565,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175562,6 +175668,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashElections
@@ -175630,7 +175737,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175733,6 +175840,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -175792,7 +175900,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175895,6 +176003,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -176126,7 +176235,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -176229,6 +176338,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashElections
@@ -176448,7 +176558,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -176551,6 +176661,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashFlowValue
@@ -177026,7 +177137,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177129,6 +177240,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -177692,7 +177804,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177795,6 +177907,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - constituentWeight
@@ -177936,7 +178049,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -178039,6 +178152,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - changeType
@@ -178944,7 +179058,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179047,6 +179161,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -179494,7 +179609,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179597,6 +179712,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -179902,6 +180018,210 @@ components:
         \ no analytics for this\r\ninstrument, and it can only be priced by lookup\
         \ pricing. The periodic settlement schedule is\r\ncurrently stored and validated\
         \ only; only the maturity lifecycle event is generated."
+    CommodityCalendarSwapCashFlowEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          periodEndDate:
+            description: "The end date of the settling period, derived from the swap's\
+              \ schedule. The period settles against\r\nthe calendar average of the\
+              \ observed commodity price up to this date. Required, and the effective\r\
+              \ndate of the event."
+            format: date-time
+            type: string
+          paymentDate:
+            description: "The settlement date of the period, already adjusted for\
+              \ the schedule's business day convention,\r\npayment calendars and coupon\
+              \ lag. Required. This is when the cash moves; the event itself is\r\n\
+              effective at PeriodEndDate."
+            format: date-time
+            type: string
+          currency:
+            description: "The currency the period settles in, taken from the schedule's\
+              \ payment currency. Required."
+            type: string
+          periodNumber:
+            description: "The sequential number of the settling period, with the first\
+              \ period being 1 and the final period\r\nbeing the total number of periods\
+              \ in the schedule. Required."
+            format: int32
+            type: integer
+          quantityPerPeriod:
+            description: "The notional commodity quantity referenced by the period,\
+              \ and the number of units by which the\r\nholding is reduced when the\
+              \ period settles. Required."
+            format: double
+            type: number
+          exDate:
+            description: "The ex-dividend date of the cash flow. Always equal to PeriodEndDate,\
+              \ since entitlement is\r\ndetermined by the holding on the period end\
+              \ date. Required."
+            format: date-time
+            type: string
+          cashFlowPerUnit:
+            description: "The pre-netted settlement amount per unit for the period\
+              \ (the calendar average of the observed\r\ncommodity price minus the\
+              \ strike), supplied externally via the quote store. Optional — absent\
+              \ until\r\nthe settlement price has been resolved. Negative when the\
+              \ period settled out of the money."
+            format: double
+            nullable: true
+            type: number
+          cashFlowAmount:
+            description: "The settlement amount for the period, calculated as CashFlowPerUnit\
+              \ multiplied by\r\nQuantityPerPeriod. Optional — absent until the settlement\
+              \ price has been resolved. Carries the\r\nsign of CashFlowPerUnit."
+            format: double
+            nullable: true
+            type: number
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            type: string
+        required:
+        - currency
+        - instrumentEventType
+        - periodNumber
+        - quantityPerPeriod
+        type: object
+      description: "Cash settlement of one calendar-average period of a CommodityCalendarSwap.\
+        \ One event fires per period\r\nend date defined by the swap's schedule, including\
+        \ the final period; PeriodNumber identifies which.\r\nThe cash flow per unit\
+        \ is the pre-netted settlement price (the calendar average of the observed\r\
+        \ncommodity price minus the strike) supplied externally via the quote store\
+        \ — LUSID computes neither the\r\naverage nor the netting. A negative value\
+        \ is valid and means the period settled out of the money."
     CommodityForward:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -180081,7 +180401,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180184,6 +180504,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - domCcy
@@ -180249,7 +180570,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180352,6 +180673,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -183828,7 +184150,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -183931,6 +184253,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - consentType
@@ -184252,7 +184575,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184355,6 +184678,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - contractDetails
@@ -184536,7 +184860,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184639,6 +184963,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -189295,7 +189620,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189398,6 +189723,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -194288,7 +194614,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194391,6 +194717,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -194515,7 +194842,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194618,6 +194945,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -194668,7 +194996,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194771,6 +195099,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -194826,7 +195155,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194929,6 +195258,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -195242,6 +195572,12 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         properties:
           key:
             referenceData:
@@ -195323,6 +195659,8 @@ components:
           type: object
         version:
           $ref: '#/components/schemas/Version'
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -195579,7 +195917,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -195682,6 +196020,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashElections
@@ -195759,7 +196098,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -195862,6 +196201,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashElections
@@ -195922,7 +196262,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196025,6 +196365,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -196048,9 +196389,15 @@ components:
             format: date-time
             type: string
           affectedAmount:
-            description: Affected face amount (AFFB) — the lottery-selected portion
-              of the holding that is redeemed. Must be strictly positive.
+            description: "Affected face amount (AFFB) — the lottery-selected portion\
+              \ of the holding that is redeemed, applied uniformly\r\nto every portfolio\
+              \ holding the instrument. Optional: because the lottery selects per\
+              \ holder, AFFB is normally\r\nsupplied per portfolio via an instrument\
+              \ event instruction instead. When supplied it must be strictly positive.\r\
+              \nA portfolio with neither an instruction nor an event-level value is\
+              \ treated as unaffected (UNAF)."
             format: double
+            nullable: true
             type: number
           pricePerUnit:
             description: "Redemption price per unit (OFFR / 100). Clean price convention.\r\
@@ -196092,7 +196439,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196195,16 +196542,19 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
-        - affectedAmount
         - currency
         - instrumentEventType
         type: object
       description: "Mandatory partial bond redemption (DRAW) where the issuer lottery-selects\
         \ specific bonds for early redemption.\r\nThe affected face amount (AFFB)\
-        \ is pre-determined externally from the vendor notification and supplied on\
-        \ the event."
+        \ is the lottery-selected portion of a holding that is redeemed. Because the\r\
+        \nlottery selects per holder, AFFB genuinely differs between portfolios holding\
+        \ the same instrument, so it is\r\nsupplied per portfolio via an instrument\
+        \ event instruction rather than on the event itself. The event-level\r\nAffectedAmount\
+        \ remains available as an optional fallback applied uniformly to every holding."
     DutchAuctionEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -196345,7 +196695,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196448,6 +196798,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -196543,7 +196894,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196646,6 +196997,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - closeOutAmount
@@ -196742,7 +197094,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196845,6 +197197,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -198037,7 +198390,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198140,6 +198493,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - eventSource
@@ -198797,7 +199151,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198900,6 +199254,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - anchorDate
@@ -199256,7 +199611,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199359,6 +199714,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -201616,7 +201972,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201719,6 +202075,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -201779,7 +202136,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201882,6 +202239,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -201936,7 +202294,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202039,6 +202397,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -202099,7 +202458,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202202,6 +202561,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -202279,7 +202639,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202382,6 +202742,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -208217,7 +208578,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208320,6 +208681,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -208373,7 +208735,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208476,6 +208838,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -209259,7 +209622,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209362,6 +209725,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - domAmountPerUnit
@@ -215948,7 +216312,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216051,6 +216415,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - effectiveAt
@@ -216114,7 +216479,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216217,6 +216582,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - anchorDate
@@ -218179,7 +218545,7 @@ components:
             \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
             \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-            \ BondOptionTerminationEvent, TerminationEvent."
+            \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -218282,6 +218648,7 @@ components:
           - CancelSwapEvent
           - BondOptionTerminationEvent
           - TerminationEvent
+          - CommodityCalendarSwapCashFlowEvent
           type: string
       required:
       - instrumentEventType
@@ -218773,6 +219140,7 @@ components:
       - CancelSwapEvent
       - BondOptionTerminationEvent
       - TerminationEvent
+      - CommodityCalendarSwapCashFlowEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -219755,7 +220123,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219858,6 +220226,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashElections
@@ -220044,15 +220413,23 @@ components:
             nullable: true
             type: array
           domCcy:
-            description: "The currency the option settles in.\r\n \r\nIf not specified,\
-              \ the currency of the underlying swap is used. When specified it must\
-              \ be one of\r\nthe currencies of the underlying swap."
+            description: "The currency the option settles in.\r\n \r\nOptional, and\
+              \ in almost all cases it should be left to default. If not specified,\
+              \ the currency of\r\nthe underlying swap is used, which for a cross-currency\
+              \ swap is the currency of its first leg.\r\n \r\nA specified currency\
+              \ is taken as given and is not validated against the underlying swap,\
+              \ since\r\nsettling in another currency is rare but legitimate. Note\
+              \ that valuation of such a swaption is not\r\nsupported, as converting\
+              \ from the currency the swap is valued in needs an fx rate the instrument\r\
+              \ndoes not define."
             nullable: true
             type: string
           exerciseDate:
             description: "The date the option expires, and for European exercise the\
-              \ date it is exercised.\r\n \r\nIf not specified, the start date of\
-              \ the underlying swap is used."
+              \ date it is exercised. For American\r\nexercise it is the end of the\
+              \ window the option may be exercised in, so it should be set on the\r\
+              \ninstrument for the option to be exercisable up to the intended date.\r\
+              \n \r\nIf not specified, the start date of the underlying swap is used."
             format: date-time
             nullable: true
             type: string
@@ -220062,12 +220439,17 @@ components:
               \nDefaults to \"European\" if not set.\r\n \r\nA European option is\
               \ exercised on its exercise date, so its exercise event is generated\
               \ with\r\nthat date already set. An American option may be exercised\
-              \ at any point in its life, so it\r\ncarries no scheduled date and the\
-              \ exercise date is supplied on the exercise event instead.\r\n \r\n\
-              The swap delivered on exercise keeps the start date it was defined with,\
-              \ so exercising early\r\nor late leaves it aged or forward-starting\
-              \ relative to the exercise. Keeping that swap\r\ncorrect for the intended\
-              \ exercise is the responsibility of whoever defines it."
+              \ at any point up to that date, so the\r\ndate it is actually exercised\
+              \ on is supplied on the exercise event; set exerciseDate on the\r\n\
+              instrument to open the window the event may fall in.\r\n \r\nThe swap\
+              \ delivered on exercise keeps the start date it was defined with, so\
+              \ exercising early\r\nor late leaves it aged or forward-starting relative\
+              \ to the exercise. Keeping that swap\r\ncorrect for the intended exercise\
+              \ is the responsibility of whoever defines it. In particular,\r\nfor\
+              \ an American physically settled swaption on a cross-currency underlying,\
+              \ neither the swap's\r\nstart date nor its fx notionals are determined\
+              \ at trade time, so amending the delivered swap\r\nposition after exercise\
+              \ is an operational step the client must carry out."
             nullable: true
             type: string
           strike:
@@ -220300,7 +220682,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -220403,6 +220785,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -224680,7 +225063,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -224783,6 +225166,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashOfferElections
@@ -225338,7 +225722,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -225441,6 +225825,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -225508,7 +225893,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -225611,6 +225996,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -225686,7 +226072,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -225789,6 +226175,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -225882,7 +226269,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -225985,6 +226372,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -227793,7 +228181,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227896,6 +228284,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -227953,7 +228342,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228056,6 +228445,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -228115,7 +228505,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228218,6 +228608,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -228279,7 +228670,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228382,6 +228773,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -228443,7 +228835,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228546,6 +228938,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -228606,7 +228999,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228709,6 +229102,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -229039,7 +229433,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229142,6 +229536,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -229399,6 +229794,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -229513,6 +229909,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -230395,7 +230792,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230498,6 +230895,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -230720,7 +231118,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230823,6 +231221,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - exerciseType
@@ -230943,7 +231342,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231046,6 +231445,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - exerciseType
@@ -231100,6 +231500,7 @@ components:
         weight: 6.027456183070403
         instrumentIdentifiers:
           key: instrumentIdentifiers
+        basis: basis
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -231232,6 +231633,14 @@ components:
           type: number
         amount:
           $ref: '#/components/schemas/CurrencyAndAmount'
+        basis:
+          description: "The measure in which the order was instructed. Expected values\
+            \ are 'Quantity', 'Amount' or 'Weight'; null when the order carries no\
+            \ size measure. Read-only; derived from the populated size measures, taking\
+            \ quantity first, then amount, then weight."
+          nullable: true
+          readOnly: true
+          type: string
         custodianAccountId:
           $ref: '#/components/schemas/ResourceId'
         dataModelMembership:
@@ -231441,6 +231850,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -232025,6 +232435,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -233504,6 +233915,15 @@ components:
         holdingIds:
         - 7
         - 7
+        unresolvedCustodianAccounts:
+        - accountId:
+            code: code
+            scope: scope
+          accountSelector: accountSelector
+        - accountId:
+            code: code
+            scope: scope
+          accountSelector: accountSelector
         counterpartyId: counterpartyId
         sequence: 2
         economics:
@@ -234126,6 +234546,14 @@ components:
             Transaction.
           items:
             $ref: '#/components/schemas/ResolvedCustodianAccount'
+          nullable: true
+          type: array
+        unresolvedCustodianAccounts:
+          description: "Set of Custodian Entries on the Transaction that no movement\
+            \ was booked against, i.e. those which did not match a movement's account\
+            \ type and selector."
+          items:
+            $ref: '#/components/schemas/CustodianEntry'
           nullable: true
           type: array
         isExcluded:
@@ -235366,6 +235794,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -235447,6 +235876,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -238312,6 +238742,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -238365,6 +238801,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -244388,6 +244830,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -244486,6 +244929,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -244756,6 +245200,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -244959,6 +245404,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -245150,6 +245596,7 @@ components:
               scope: scope
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -245281,6 +245728,7 @@ components:
               scope: scope
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -246299,6 +246747,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -246386,6 +246835,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -251577,7 +252027,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251680,6 +252130,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -251814,7 +252265,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251917,6 +252368,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -252307,7 +252759,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252410,6 +252862,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -253407,7 +253860,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -253510,6 +253963,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -253566,7 +254020,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -253669,6 +254123,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -253727,7 +254182,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -253830,6 +254285,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -253951,7 +254407,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254054,6 +254510,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -254118,7 +254575,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254221,6 +254678,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -254592,6 +255050,7 @@ components:
           scope: scope
         instrumentIdentifiers:
           key: instrumentIdentifiers
+        basis: basis
         type: type
         version:
           stagedModificationIdModified: stagedModificationIdModified
@@ -254696,6 +255155,14 @@ components:
           type: number
         amount:
           $ref: '#/components/schemas/CurrencyAndAmount'
+        basis:
+          description: "The measure in which the placement was instructed. Expected\
+            \ values are 'Quantity' or 'Amount'; null when the placement carries no\
+            \ size measure. Read-only; derived from the populated size measures, taking\
+            \ quantity first, then amount."
+          nullable: true
+          readOnly: true
+          type: string
         state:
           description: "The state of this placement (typically a FIX state; Open,\
             \ Filled, etc)."
@@ -261145,7 +261612,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261248,6 +261715,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -262805,7 +263273,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262908,6 +263376,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -263017,7 +263486,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -263120,6 +263589,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashOfferElections
@@ -264610,7 +265080,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -264713,6 +265183,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - effectiveAt
@@ -270119,7 +270590,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270222,6 +270693,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -270293,7 +270765,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270396,6 +270868,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -270521,7 +270994,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270624,6 +271097,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - cashOfferElections
@@ -270706,7 +271180,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270809,6 +271283,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - fixingDate
@@ -273891,6 +274366,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -273972,6 +274448,7 @@ components:
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -274093,6 +274570,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -274204,6 +274682,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -274302,6 +274781,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -274372,6 +274852,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -274483,6 +274964,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -274581,6 +275063,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -283207,6 +283690,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -283321,6 +283805,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -283391,6 +283876,7 @@ components:
               currency: currency
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -283505,6 +283991,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -283683,6 +284170,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -283781,6 +284269,7 @@ components:
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -284613,6 +285102,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -285590,6 +286088,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -286819,6 +287326,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -286906,6 +287414,7 @@ components:
             scope: scope
           instrumentIdentifiers:
             key: instrumentIdentifiers
+          basis: basis
           type: type
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -292510,6 +293019,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -293578,6 +294096,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -294843,7 +295370,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -294946,6 +295473,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -295743,7 +296271,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -295846,6 +296374,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -296025,7 +296554,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -296128,6 +296657,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -297177,6 +297707,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -298773,6 +299312,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -299516,7 +300064,7 @@ components:
         distributionType:
           description: "The type of distribution the ShareClass will calculate. Available\
             \ values: Income, Accumulation."
-          minLength: 1
+          nullable: true
           type: string
         domCcy:
           description: The domestic currency of the ShareClass instrument.
@@ -299555,13 +300103,11 @@ components:
         hedging:
           description: "Indicates whether the ShareClass applies currency hedging.\
             \ Available values: Invalid, None, ApplyHedging."
-          minLength: 1
+          nullable: true
           type: string
       required:
-      - distributionType
       - domCcy
       - fundShareClassType
-      - hedging
       - name
       - shareClassShortCode
       type: object
@@ -299940,7 +300486,7 @@ components:
         distributionType:
           description: "The type of distribution the ShareClass will calculate. Available\
             \ values: Income, Accumulation."
-          minLength: 1
+          nullable: true
           type: string
         domCcy:
           description: The domestic currency of the ShareClass instrument.
@@ -299979,13 +300525,11 @@ components:
         hedging:
           description: "Indicates whether the ShareClass applies currency hedging.\
             \ Available values: Invalid, None, ApplyHedging."
-          minLength: 1
+          nullable: true
           type: string
       required:
-      - distributionType
       - domCcy
       - fundShareClassType
-      - hedging
       - instrumentIdentifiers
       - name
       - shareClassShortCode
@@ -300746,7 +301290,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -300849,6 +301393,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -301584,7 +302129,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -301687,6 +302232,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -301774,7 +302320,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -301877,6 +302423,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -302394,7 +302941,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -302497,6 +303044,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -302555,7 +303103,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -302658,6 +303206,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -303196,7 +303745,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -303299,6 +303848,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -303491,7 +304041,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -303594,6 +304144,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -303647,7 +304198,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -303750,6 +304301,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - currency
@@ -303806,7 +304358,8 @@ components:
               \ PikBondInterestCapitalisationEvent, PikBondPrincipalEvent, ChangeEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -303876,7 +304429,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -303979,6 +304532,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -311688,7 +312242,7 @@ components:
             \ PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent,\
             \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-            \ BondOptionTerminationEvent, TerminationEvent."
+            \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -312608,7 +313162,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312711,6 +313265,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -313365,7 +313920,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313468,6 +314023,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -314155,6 +314711,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -315131,7 +315696,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -315234,6 +315799,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - amount
@@ -315928,6 +316494,7 @@ components:
             weight: 6.027456183070403
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -316075,6 +316642,7 @@ components:
               scope: scope
             instrumentIdentifiers:
               key: instrumentIdentifiers
+            basis: basis
             type: type
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -324131,6 +324699,12 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         holdingsAsAt: 2000-01-23T04:56:07.000+00:00
         properties:
           key:
@@ -324211,6 +324785,8 @@ components:
           type: object
         version:
           $ref: '#/components/schemas/Version'
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -325388,6 +325964,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -325512,6 +326094,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -325674,6 +326262,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -326259,6 +326853,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -327248,6 +327851,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -327766,6 +328378,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -328006,6 +328624,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -328266,6 +328890,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -328566,6 +329196,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -328870,6 +329506,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -329076,6 +329718,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           properties:
             key:
               referenceData:
@@ -329662,6 +330310,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -330654,6 +331311,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -334705,6 +335371,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -335682,6 +336357,15 @@ components:
           holdingIds:
           - 7
           - 7
+          unresolvedCustodianAccounts:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
           counterpartyId: counterpartyId
           sequence: 2
           economics:
@@ -339862,6 +340546,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -340906,6 +341599,15 @@ components:
             holdingIds:
             - 7
             - 7
+            unresolvedCustodianAccounts:
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
+            - accountId:
+                code: code
+                scope: scope
+              accountSelector: accountSelector
             counterpartyId: counterpartyId
             sequence: 2
             economics:
@@ -343688,7 +344390,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -343791,6 +344493,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType
@@ -344254,7 +344957,7 @@ components:
               \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
-              \ BondOptionTerminationEvent, TerminationEvent."
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -344357,6 +345060,7 @@ components:
             - CancelSwapEvent
             - BondOptionTerminationEvent
             - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
             type: string
         required:
         - instrumentEventType

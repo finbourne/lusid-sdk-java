@@ -293,6 +293,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNTS)
   private List<ResolvedCustodianAccount> resolvedCustodianAccounts;
 
+  public static final String SERIALIZED_NAME_UNRESOLVED_CUSTODIAN_ACCOUNTS = "unresolvedCustodianAccounts";
+  @SerializedName(SERIALIZED_NAME_UNRESOLVED_CUSTODIAN_ACCOUNTS)
+  private List<CustodianEntry> unresolvedCustodianAccounts;
+
   public static final String SERIALIZED_NAME_IS_EXCLUDED = "isExcluded";
   @SerializedName(SERIALIZED_NAME_IS_EXCLUDED)
   private Boolean isExcluded;
@@ -1238,6 +1242,35 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction unresolvedCustodianAccounts(List<CustodianEntry> unresolvedCustodianAccounts) {
+    
+    this.unresolvedCustodianAccounts = unresolvedCustodianAccounts;
+    return this;
+  }
+
+  public OutputTransaction addUnresolvedCustodianAccountsItem(CustodianEntry unresolvedCustodianAccountsItem) {
+    if (this.unresolvedCustodianAccounts == null) {
+      this.unresolvedCustodianAccounts = new ArrayList<>();
+    }
+    this.unresolvedCustodianAccounts.add(unresolvedCustodianAccountsItem);
+    return this;
+  }
+
+   /**
+   * Set of Custodian Entries on the Transaction that no movement was booked against, i.e. those which did not match a movement&#39;s account type and selector.
+   * @return unresolvedCustodianAccounts
+  **/
+  @jakarta.annotation.Nullable
+  public List<CustodianEntry> getUnresolvedCustodianAccounts() {
+    return unresolvedCustodianAccounts;
+  }
+
+
+  public void setUnresolvedCustodianAccounts(List<CustodianEntry> unresolvedCustodianAccounts) {
+    this.unresolvedCustodianAccounts = unresolvedCustodianAccounts;
+  }
+
+
   public OutputTransaction isExcluded(Boolean isExcluded) {
     
     this.isExcluded = isExcluded;
@@ -1311,6 +1344,7 @@ public class OutputTransaction {
         Objects.equals(this.stagedModifications, outputTransaction.stagedModifications) &&
         Objects.equals(this.custodianEntries, outputTransaction.custodianEntries) &&
         Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts) &&
+        Objects.equals(this.unresolvedCustodianAccounts, outputTransaction.unresolvedCustodianAccounts) &&
         Objects.equals(this.isExcluded, outputTransaction.isExcluded);
   }
 
@@ -1320,7 +1354,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, isExcluded);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, unresolvedCustodianAccounts, isExcluded);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1376,6 +1410,7 @@ public class OutputTransaction {
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
     sb.append("    resolvedCustodianAccounts: ").append(toIndentedString(resolvedCustodianAccounts)).append("\n");
+    sb.append("    unresolvedCustodianAccounts: ").append(toIndentedString(unresolvedCustodianAccounts)).append("\n");
     sb.append("    isExcluded: ").append(toIndentedString(isExcluded)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1441,6 +1476,7 @@ public class OutputTransaction {
     openapiFields.add("stagedModifications");
     openapiFields.add("custodianEntries");
     openapiFields.add("resolvedCustodianAccounts");
+    openapiFields.add("unresolvedCustodianAccounts");
     openapiFields.add("isExcluded");
 
     // a set of required properties/fields (JSON key names)
@@ -1610,6 +1646,20 @@ public class OutputTransaction {
           // validate the optional field `resolvedCustodianAccounts` (array)
           for (int i = 0; i < jsonArrayresolvedCustodianAccounts.size(); i++) {
             ResolvedCustodianAccount.validateJsonElement(jsonArrayresolvedCustodianAccounts.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("unresolvedCustodianAccounts") != null && !jsonObj.get("unresolvedCustodianAccounts").isJsonNull()) {
+        JsonArray jsonArrayunresolvedCustodianAccounts = jsonObj.getAsJsonArray("unresolvedCustodianAccounts");
+        if (jsonArrayunresolvedCustodianAccounts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("unresolvedCustodianAccounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `unresolvedCustodianAccounts` to be an array in the JSON string but got `%s`", jsonObj.get("unresolvedCustodianAccounts").toString()));
+          }
+
+          // validate the optional field `unresolvedCustodianAccounts` (array)
+          for (int i = 0; i < jsonArrayunresolvedCustodianAccounts.size(); i++) {
+            CustodianEntry.validateJsonElement(jsonArrayunresolvedCustodianAccounts.get(i));
           };
         }
       }

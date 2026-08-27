@@ -328,7 +328,7 @@ public class ShareClass {
    * The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
    * @return distributionType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDistributionType() {
     return distributionType;
   }
@@ -533,7 +533,7 @@ public class ShareClass {
    * Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
    * @return hedging
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getHedging() {
     return hedging;
   }
@@ -658,9 +658,7 @@ public class ShareClass {
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("shareClassShortCode");
     openapiRequiredFields.add("fundShareClassType");
-    openapiRequiredFields.add("distributionType");
     openapiRequiredFields.add("domCcy");
-    openapiRequiredFields.add("hedging");
   }
 
  /**
@@ -695,7 +693,7 @@ public class ShareClass {
       if (!jsonObj.get("fundShareClassType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fundShareClassType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundShareClassType").toString()));
       }
-      if (!jsonObj.get("distributionType").isJsonPrimitive()) {
+      if ((jsonObj.get("distributionType") != null && !jsonObj.get("distributionType").isJsonNull()) && !jsonObj.get("distributionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `distributionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("distributionType").toString()));
       }
       if (!jsonObj.get("domCcy").isJsonPrimitive()) {
@@ -740,7 +738,7 @@ public class ShareClass {
       if ((jsonObj.get("distributionPaymentType") != null && !jsonObj.get("distributionPaymentType").isJsonNull()) && !jsonObj.get("distributionPaymentType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `distributionPaymentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("distributionPaymentType").toString()));
       }
-      if (!jsonObj.get("hedging").isJsonPrimitive()) {
+      if ((jsonObj.get("hedging") != null && !jsonObj.get("hedging").isJsonNull()) && !jsonObj.get("hedging").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hedging` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hedging").toString()));
       }
   }

@@ -537,6 +537,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent.class, new TypeSelector<com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CommodityCalendarSwapCashFlowEvent", com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CommodityForward.class, new TypeSelector<com.finbourne.lusid.model.CommodityForward>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CommodityForward> getClassForElement(JsonElement readElement) {
@@ -1675,6 +1684,7 @@ public class JSON {
                         classByDiscriminatorValue.put("ChangeEvent", com.finbourne.lusid.model.ChangeEvent.class);
                         classByDiscriminatorValue.put("ClassActionEvent", com.finbourne.lusid.model.ClassActionEvent.class);
                         classByDiscriminatorValue.put("CloseEvent", com.finbourne.lusid.model.CloseEvent.class);
+                        classByDiscriminatorValue.put("CommodityCalendarSwapCashFlowEvent", com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent.class);
                         classByDiscriminatorValue.put("CommodityForwardCashSettlementEvent", com.finbourne.lusid.model.CommodityForwardCashSettlementEvent.class);
                         classByDiscriminatorValue.put("CommodityForwardPhysicalSettlementEvent", com.finbourne.lusid.model.CommodityForwardPhysicalSettlementEvent.class);
                         classByDiscriminatorValue.put("ConsentEvent", com.finbourne.lusid.model.ConsentEvent.class);
@@ -3330,6 +3340,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CollateralInstrument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityCalendarSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityCalendarSwap.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityCalendarSwapCashFlowEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityForward.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityForwardCashSettlementEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CommodityForwardPhysicalSettlementEvent.CustomTypeAdapterFactory());
