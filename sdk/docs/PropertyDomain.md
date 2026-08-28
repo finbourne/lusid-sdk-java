@@ -105,6 +105,7 @@ PropertyDomain method = PropertyDomain.TRANSACTIONFEE;
 PropertyDomain method = PropertyDomain.SUBSCRIPTION;
 PropertyDomain method = PropertyDomain.SCENARIODEFINITION;
 PropertyDomain method = PropertyDomain.PAYMENTINSTRUCTION;
+PropertyDomain method = PropertyDomain.TRANSFER;
 ```
 
 

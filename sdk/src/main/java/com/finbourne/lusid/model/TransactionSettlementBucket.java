@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TransactionSettlementInstruction;
 import com.finbourne.lusid.model.TransactionSettlementMovement;
 import com.google.gson.TypeAdapter;
@@ -102,6 +103,10 @@ public class TransactionSettlementBucket {
   public static final String SERIALIZED_NAME_MOVEMENTS = "movements";
   @SerializedName(SERIALIZED_NAME_MOVEMENTS)
   private List<TransactionSettlementMovement> movements;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
 
   public TransactionSettlementBucket() {
   }
@@ -374,6 +379,27 @@ public class TransactionSettlementBucket {
   }
 
 
+  public TransactionSettlementBucket custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -395,7 +421,8 @@ public class TransactionSettlementBucket {
         Objects.equals(this.configuredSettlement, transactionSettlementBucket.configuredSettlement) &&
         Objects.equals(this.status, transactionSettlementBucket.status) &&
         Objects.equals(this.settlementInstructions, transactionSettlementBucket.settlementInstructions) &&
-        Objects.equals(this.movements, transactionSettlementBucket.movements);
+        Objects.equals(this.movements, transactionSettlementBucket.movements) &&
+        Objects.equals(this.custodianAccountId, transactionSettlementBucket.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -404,7 +431,7 @@ public class TransactionSettlementBucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementCategory, lusidInstrumentId, instrumentScope, contractualSettlementDate, contractedUnits, settledUnits, unsettledUnits, overdueUnits, configuredSettlement, status, settlementInstructions, movements);
+    return Objects.hash(settlementCategory, lusidInstrumentId, instrumentScope, contractualSettlementDate, contractedUnits, settledUnits, unsettledUnits, overdueUnits, configuredSettlement, status, settlementInstructions, movements, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,6 +457,7 @@ public class TransactionSettlementBucket {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    settlementInstructions: ").append(toIndentedString(settlementInstructions)).append("\n");
     sb.append("    movements: ").append(toIndentedString(movements)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -464,6 +492,7 @@ public class TransactionSettlementBucket {
     openapiFields.add("status");
     openapiFields.add("settlementInstructions");
     openapiFields.add("movements");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -535,6 +564,10 @@ public class TransactionSettlementBucket {
             TransactionSettlementMovement.validateJsonElement(jsonArraymovements.get(i));
           };
         }
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

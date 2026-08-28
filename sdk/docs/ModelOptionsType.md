@@ -22,6 +22,8 @@ ModelOptionsType method = ModelOptionsType.FUNDINGLEGMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.EQUITYMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.CDSMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.FLEXIBLELOANPRICEROPTIONS;
+ModelOptionsType method = ModelOptionsType.HULLWHITEMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.BONDLOOKUPMODELOPTIONS;
 ```
 
 

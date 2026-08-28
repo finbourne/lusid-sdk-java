@@ -37,6 +37,7 @@ PricingModel method = PricingModel.LOANFACILITYPRICER;
 PricingModel method = PricingModel.OVERRIDEONLYPRICER;
 PricingModel method = PricingModel.FLEXIBLEREPOSIMPLEPRICER;
 PricingModel method = PricingModel.INFLATIONFORWARD;
+PricingModel method = PricingModel.HULLWHITE1F;
 ```
 
 

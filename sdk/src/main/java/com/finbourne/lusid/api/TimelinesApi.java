@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.BatchCreateClosedPeriodsRequest;
 import com.finbourne.lusid.model.ClosedPeriod;
 import com.finbourne.lusid.model.CreateClosedPeriodRequest;
 import com.finbourne.lusid.model.CreateTimelineRequest;
@@ -35,6 +36,7 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfClosedPeriod;
 import com.finbourne.lusid.model.PagedResourceListOfTimeline;
 import com.finbourne.lusid.model.PostCloseActivitiesRequest;
+import com.finbourne.lusid.model.ResourceListOfClosedPeriod;
 import com.finbourne.lusid.model.Timeline;
 import com.finbourne.lusid.model.UnconfirmClosedPeriodRequest;
 import com.finbourne.lusid.model.UpdateTimelineRequest;
@@ -82,6 +84,518 @@ public class TimelinesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call batchCreateClosedPeriodCandidatesCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback) throws ApiException {
+        return batchCreateClosedPeriodCandidatesCall(scope, code, batchCreateClosedPeriodsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodCandidatesCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = batchCreateClosedPeriodsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/candidate/$batchCreate"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchCreateClosedPeriodCandidatesValidateBeforeCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchCreateClosedPeriodCandidates(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchCreateClosedPeriodCandidates(Async)");
+        }
+
+        return batchCreateClosedPeriodCandidatesCall(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfClosedPeriod> batchCreateClosedPeriodCandidatesWithHttpInfo(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest) throws ApiException {
+        okhttp3.Call localVarCall = batchCreateClosedPeriodCandidatesValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfClosedPeriod> batchCreateClosedPeriodCandidatesWithHttpInfo(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchCreateClosedPeriodCandidatesValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodCandidatesAsync(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback<ResourceListOfClosedPeriod> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchCreateClosedPeriodCandidatesValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodCandidatesAsync(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback<ResourceListOfClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchCreateClosedPeriodCandidatesValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchCreateClosedPeriodCandidatesRequest {
+        private final String scope;
+        private final String code;
+        private BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest;
+
+        private APIbatchCreateClosedPeriodCandidatesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set batchCreateClosedPeriodsRequest
+         * @param batchCreateClosedPeriodsRequest The ordered set of Closed Periods to create (optional)
+         * @return APIbatchCreateClosedPeriodCandidatesRequest
+         */
+        public APIbatchCreateClosedPeriodCandidatesRequest batchCreateClosedPeriodsRequest(BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest) {
+            this.batchCreateClosedPeriodsRequest = batchCreateClosedPeriodsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for batchCreateClosedPeriodCandidates
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchCreateClosedPeriodCandidatesCall(scope, code, batchCreateClosedPeriodsRequest, _callback);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request
+         * @return ResourceListOfClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfClosedPeriod execute() throws ApiException {
+            ApiResponse<ResourceListOfClosedPeriod> localVarResp = batchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfClosedPeriod> localVarResp = batchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfClosedPeriod> executeWithHttpInfo() throws ApiException {
+            return batchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfClosedPeriod> _callback) throws ApiException {
+            return batchCreateClosedPeriodCandidatesAsync(scope, code, batchCreateClosedPeriodsRequest, _callback);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriodCandidates request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchCreateClosedPeriodCandidatesAsync(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+     * Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+     * @param scope The scope of the specified Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. (required)
+     * @return APIbatchCreateClosedPeriodCandidatesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchCreateClosedPeriodCandidatesRequest batchCreateClosedPeriodCandidates(String scope, String code) {
+        return new APIbatchCreateClosedPeriodCandidatesRequest(scope, code);
+    }
+    private okhttp3.Call batchCreateClosedPeriodsCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback) throws ApiException {
+        return batchCreateClosedPeriodsCall(scope, code, batchCreateClosedPeriodsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodsCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = batchCreateClosedPeriodsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/$batchCreate"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchCreateClosedPeriodsValidateBeforeCall(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchCreateClosedPeriods(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchCreateClosedPeriods(Async)");
+        }
+
+        return batchCreateClosedPeriodsCall(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfClosedPeriod> batchCreateClosedPeriodsWithHttpInfo(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest) throws ApiException {
+        okhttp3.Call localVarCall = batchCreateClosedPeriodsValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfClosedPeriod> batchCreateClosedPeriodsWithHttpInfo(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchCreateClosedPeriodsValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodsAsync(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback<ResourceListOfClosedPeriod> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchCreateClosedPeriodsValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchCreateClosedPeriodsAsync(String scope, String code, BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest, final ApiCallback<ResourceListOfClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchCreateClosedPeriodsValidateBeforeCall(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfClosedPeriod>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchCreateClosedPeriodsRequest {
+        private final String scope;
+        private final String code;
+        private BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest;
+
+        private APIbatchCreateClosedPeriodsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set batchCreateClosedPeriodsRequest
+         * @param batchCreateClosedPeriodsRequest The ordered set of Closed Periods to create (optional)
+         * @return APIbatchCreateClosedPeriodsRequest
+         */
+        public APIbatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest(BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest) {
+            this.batchCreateClosedPeriodsRequest = batchCreateClosedPeriodsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for batchCreateClosedPeriods
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchCreateClosedPeriodsCall(scope, code, batchCreateClosedPeriodsRequest, _callback);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request
+         * @return ResourceListOfClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfClosedPeriod execute() throws ApiException {
+            ApiResponse<ResourceListOfClosedPeriod> localVarResp = batchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfClosedPeriod
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfClosedPeriod> localVarResp = batchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfClosedPeriod> executeWithHttpInfo() throws ApiException {
+            return batchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfClosedPeriod&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfClosedPeriod> _callback) throws ApiException {
+            return batchCreateClosedPeriodsAsync(scope, code, batchCreateClosedPeriodsRequest, _callback);
+        }
+
+        /**
+         * Execute batchCreateClosedPeriods request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchCreateClosedPeriodsAsync(scope, code, batchCreateClosedPeriodsRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+     * Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+     * @param scope The scope of the specified Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. (required)
+     * @return APIbatchCreateClosedPeriodsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The created closed periods </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchCreateClosedPeriodsRequest batchCreateClosedPeriods(String scope, String code) {
+        return new APIbatchCreateClosedPeriodsRequest(scope, code);
+    }
     private okhttp3.Call confirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback) throws ApiException {
         return confirmClosedPeriodCall(scope, code, closedPeriodId, body,  _callback, new ConfigurationOptions());
     }

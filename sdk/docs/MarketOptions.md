@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **defaultInstrumentCodeType** | **String** | When instrument quotes are searched for, what identifier should be used by default | [optional] [default to String]
 **defaultScope** | **String** | The scope in which to search for data when applying default rules. This is optional: if omitted, no default rules  are created and market data is resolved only via the explicitly specified market data key rules. | [optional] [default to String]
 **attemptToInferMissingFx** | **Boolean** | if true will calculate a missing Fx pair (e.g. THBJPY) from the inverse JPYTHB or from standardised pairs against USD, e.g. THBUSD and JPYUSD | [optional] [default to Boolean]
+**attemptToInferMissingFxOnFixings** | **Boolean** | If true, applies the same inference as AttemptToInferMissingFx to FX fixings (resets), e.g. the fixing of a  non-deliverable FX forward: a fixing quoted only in the reverse direction, or derivable by triangulation  through a standard base currency at the fixing date, is inferred rather than reported missing. This is a  separate, explicit opt-in because a fixing is a contractual historical print: with this off (the default),  a fixing must be present as the exact oriented currency pair to be used. | [optional] [default to Boolean]
 **calendarScope** | **String** | The scope in which holiday calendars stored | [optional] [default to String]
 **conventionScope** | **String** | The scope in which conventions stored | [optional] [default to String]
 
@@ -22,6 +23,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable String DefaultInstrumentCodeType = "example DefaultInstrumentCodeType";
 @jakarta.annotation.Nullable String DefaultScope = "example DefaultScope";
 Boolean AttemptToInferMissingFx = true;
+Boolean AttemptToInferMissingFxOnFixings = true;
 @jakarta.annotation.Nullable String CalendarScope = "example CalendarScope";
 @jakarta.annotation.Nullable String ConventionScope = "example ConventionScope";
 
@@ -31,6 +33,7 @@ MarketOptions marketOptionsInstance = new MarketOptions()
     .DefaultInstrumentCodeType(DefaultInstrumentCodeType)
     .DefaultScope(DefaultScope)
     .AttemptToInferMissingFx(AttemptToInferMissingFx)
+    .AttemptToInferMissingFxOnFixings(AttemptToInferMissingFxOnFixings)
     .CalendarScope(CalendarScope)
     .ConventionScope(ConventionScope);
 ```

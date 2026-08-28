@@ -205,7 +205,9 @@ public enum PropertyDomain {
   
   SCENARIODEFINITION("ScenarioDefinition"),
   
-  PAYMENTINSTRUCTION("PaymentInstruction");
+  PAYMENTINSTRUCTION("PaymentInstruction"),
+  
+  TRANSFER("Transfer");
 
   private String value;
 

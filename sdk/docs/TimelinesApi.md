@@ -4,6 +4,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchCreateClosedPeriodCandidates**](TimelinesApi.md#batchCreateClosedPeriodCandidates) | **POST** /api/timelines/{scope}/{code}/closedperiods/candidate/$batchCreate | [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity |
+| [**batchCreateClosedPeriods**](TimelinesApi.md#batchCreateClosedPeriods) | **POST** /api/timelines/{scope}/{code}/closedperiods/$batchCreate | [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity |
 | [**confirmClosedPeriod**](TimelinesApi.md#confirmClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$confirm | [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity |
 | [**createClosedPeriod**](TimelinesApi.md#createClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity |
 | [**createClosedPeriodCandidate**](TimelinesApi.md#createClosedPeriodCandidate) | **POST** /api/timelines/{scope}/{code}/closedperiods/candidate | [EXPERIMENTAL] CreateClosedPeriodCandidate: Create a new closed period candidate against a timeline entity |
@@ -17,6 +19,196 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**unconfirmClosedPeriod**](TimelinesApi.md#unconfirmClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity |
 | [**updateTimeline**](TimelinesApi.md#updateTimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code |
 
+
+
+## batchCreateClosedPeriodCandidates
+
+> ResourceListOfClosedPeriod batchCreateClosedPeriodCandidates(scope, code, batchCreateClosedPeriodsRequest)
+
+[EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+
+Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TimelinesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TimelinesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TimelinesApi apiInstance = apiFactory.build(TimelinesApi.class);
+
+        TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
+        String scope = "scope_example"; // String | The scope of the specified Timeline.
+        String code = "code_example"; // String | The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.
+        BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest = new BatchCreateClosedPeriodsRequest(); // BatchCreateClosedPeriodsRequest | The ordered set of Closed Periods to create
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfClosedPeriod result = apiInstance.batchCreateClosedPeriodCandidates(scope, code, batchCreateClosedPeriodsRequest).execute(opts);
+
+            ResourceListOfClosedPeriod result = apiInstance.batchCreateClosedPeriodCandidates(scope, code, batchCreateClosedPeriodsRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimelinesApi#batchCreateClosedPeriodCandidates");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the specified Timeline. | |
+| **code** | **String**| The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. | |
+| **batchCreateClosedPeriodsRequest** | [**BatchCreateClosedPeriodsRequest**](BatchCreateClosedPeriodsRequest.md)| The ordered set of Closed Periods to create | [optional] |
+
+### Return type
+
+[**ResourceListOfClosedPeriod**](ResourceListOfClosedPeriod.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The created closed periods |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## batchCreateClosedPeriods
+
+> ResourceListOfClosedPeriod batchCreateClosedPeriods(scope, code, batchCreateClosedPeriodsRequest)
+
+[EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+
+Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TimelinesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TimelinesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TimelinesApi apiInstance = apiFactory.build(TimelinesApi.class);
+
+        TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
+        String scope = "scope_example"; // String | The scope of the specified Timeline.
+        String code = "code_example"; // String | The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.
+        BatchCreateClosedPeriodsRequest batchCreateClosedPeriodsRequest = new BatchCreateClosedPeriodsRequest(); // BatchCreateClosedPeriodsRequest | The ordered set of Closed Periods to create
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfClosedPeriod result = apiInstance.batchCreateClosedPeriods(scope, code, batchCreateClosedPeriodsRequest).execute(opts);
+
+            ResourceListOfClosedPeriod result = apiInstance.batchCreateClosedPeriods(scope, code, batchCreateClosedPeriodsRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimelinesApi#batchCreateClosedPeriods");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the specified Timeline. | |
+| **code** | **String**| The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. | |
+| **batchCreateClosedPeriodsRequest** | [**BatchCreateClosedPeriodsRequest**](BatchCreateClosedPeriodsRequest.md)| The ordered set of Closed Periods to create | [optional] |
+
+### Return type
+
+[**ResourceListOfClosedPeriod**](ResourceListOfClosedPeriod.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The created closed periods |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## confirmClosedPeriod

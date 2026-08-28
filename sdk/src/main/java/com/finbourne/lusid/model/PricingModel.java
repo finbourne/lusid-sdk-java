@@ -71,7 +71,9 @@ public enum PricingModel {
   
   FLEXIBLEREPOSIMPLEPRICER("FlexibleRepoSimplePricer"),
   
-  INFLATIONFORWARD("InflationForward");
+  INFLATIONFORWARD("InflationForward"),
+  
+  HULLWHITE1F("HullWhite1F");
 
   private String value;
 

@@ -20,6 +20,7 @@ import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Strategy;
+import com.finbourne.lusid.model.TransactionEntityLink;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.finbourne.lusid.model.TransactionTypeDetails;
 import com.finbourne.lusid.model.Version;
@@ -237,6 +238,10 @@ public class Transaction {
   public static final String SERIALIZED_NAME_CUSTODIAN_ENTRIES = "custodianEntries";
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ENTRIES)
   private List<CustodianEntry> custodianEntries;
+
+  public static final String SERIALIZED_NAME_ENTITY_LINKS = "entityLinks";
+  @SerializedName(SERIALIZED_NAME_ENTITY_LINKS)
+  private List<TransactionEntityLink> entityLinks;
 
   public Transaction() {
   }
@@ -882,6 +887,35 @@ public class Transaction {
   }
 
 
+  public Transaction entityLinks(List<TransactionEntityLink> entityLinks) {
+    
+    this.entityLinks = entityLinks;
+    return this;
+  }
+
+  public Transaction addEntityLinksItem(TransactionEntityLink entityLinksItem) {
+    if (this.entityLinks == null) {
+      this.entityLinks = new ArrayList<>();
+    }
+    this.entityLinks.add(entityLinksItem);
+    return this;
+  }
+
+   /**
+   * Links to the entities related to this transaction.
+   * @return entityLinks
+  **/
+  @jakarta.annotation.Nullable
+  public List<TransactionEntityLink> getEntityLinks() {
+    return entityLinks;
+  }
+
+
+  public void setEntityLinks(List<TransactionEntityLink> entityLinks) {
+    this.entityLinks = entityLinks;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -920,7 +954,8 @@ public class Transaction {
         Objects.equals(this.dataModelMembership, transaction.dataModelMembership) &&
         Objects.equals(this.version, transaction.version) &&
         Objects.equals(this.stagedModifications, transaction.stagedModifications) &&
-        Objects.equals(this.custodianEntries, transaction.custodianEntries);
+        Objects.equals(this.custodianEntries, transaction.custodianEntries) &&
+        Objects.equals(this.entityLinks, transaction.entityLinks);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -929,7 +964,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications, custodianEntries);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications, custodianEntries, entityLinks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -972,6 +1007,7 @@ public class Transaction {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
+    sb.append("    entityLinks: ").append(toIndentedString(entityLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1023,6 +1059,7 @@ public class Transaction {
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
     openapiFields.add("custodianEntries");
+    openapiFields.add("entityLinks");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1145,6 +1182,20 @@ public class Transaction {
           // validate the optional field `custodianEntries` (array)
           for (int i = 0; i < jsonArraycustodianEntries.size(); i++) {
             CustodianEntry.validateJsonElement(jsonArraycustodianEntries.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("entityLinks") != null && !jsonObj.get("entityLinks").isJsonNull()) {
+        JsonArray jsonArrayentityLinks = jsonObj.getAsJsonArray("entityLinks");
+        if (jsonArrayentityLinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("entityLinks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `entityLinks` to be an array in the JSON string but got `%s`", jsonObj.get("entityLinks").toString()));
+          }
+
+          // validate the optional field `entityLinks` (array)
+          for (int i = 0; i < jsonArrayentityLinks.size(); i++) {
+            TransactionEntityLink.validateJsonElement(jsonArrayentityLinks.get(i));
           };
         }
       }
