@@ -36,6 +36,7 @@ import com.finbourne.lusid.model.PagedResourceListOfClosedPeriod;
 import com.finbourne.lusid.model.PagedResourceListOfTimeline;
 import com.finbourne.lusid.model.PostCloseActivitiesRequest;
 import com.finbourne.lusid.model.Timeline;
+import com.finbourne.lusid.model.UnconfirmClosedPeriodRequest;
 import com.finbourne.lusid.model.UpdateTimelineRequest;
 
 import java.lang.reflect.Type;
@@ -2827,11 +2828,11 @@ public class TimelinesApi {
     public APIsetPostCloseActivityRequest setPostCloseActivity(String scope, String code, String closedPeriodId) {
         return new APIsetPostCloseActivityRequest(scope, code, closedPeriodId);
     }
-    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback) throws ApiException {
-        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body,  _callback, new ConfigurationOptions());
+    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, final ApiCallback _callback) throws ApiException {
+        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call unconfirmClosedPeriodCall(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2845,7 +2846,7 @@ public class TimelinesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = body;
+        Object localVarPostBody = unconfirmClosedPeriodRequest;
 
         // create path and map variables
         String localVarPath = "/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm"
@@ -2885,7 +2886,7 @@ public class TimelinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unconfirmClosedPeriodValidateBeforeCall(String scope, String code, String closedPeriodId, Object body, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call unconfirmClosedPeriodValidateBeforeCall(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling unconfirmClosedPeriod(Async)");
@@ -2901,34 +2902,34 @@ public class TimelinesApi {
             throw new ApiException("Missing the required parameter 'closedPeriodId' when calling unconfirmClosedPeriod(Async)");
         }
 
-        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback, opts);
+        return unconfirmClosedPeriodCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body) throws ApiException {
-        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, new ConfigurationOptions());
+    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest) throws ApiException {
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, Object body, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, null, opts);
+    private ApiResponse<ClosedPeriod> unconfirmClosedPeriodWithHttpInfo(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, null, opts);
         Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback) throws ApiException {
+    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, final ApiCallback<ClosedPeriod> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, Object body, final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call unconfirmClosedPeriodAsync(String scope, String code, String closedPeriodId, UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest, final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, body, _callback, opts);
+        okhttp3.Call localVarCall = unconfirmClosedPeriodValidateBeforeCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ClosedPeriod>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2938,7 +2939,7 @@ public class TimelinesApi {
         private final String scope;
         private final String code;
         private final String closedPeriodId;
-        private Object body;
+        private UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest;
 
         private APIunconfirmClosedPeriodRequest(String scope, String code, String closedPeriodId) {
             this.scope = scope;
@@ -2947,12 +2948,12 @@ public class TimelinesApi {
         }
 
         /**
-         * Set body
-         * @param body Not in use at the moment (optional)
+         * Set unconfirmClosedPeriodRequest
+         * @param unconfirmClosedPeriodRequest Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)
          * @return APIunconfirmClosedPeriodRequest
          */
-        public APIunconfirmClosedPeriodRequest body(Object body) {
-            this.body = body;
+        public APIunconfirmClosedPeriodRequest unconfirmClosedPeriodRequest(UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest) {
+            this.unconfirmClosedPeriodRequest = unconfirmClosedPeriodRequest;
             return this;
         }
 
@@ -2970,7 +2971,7 @@ public class TimelinesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return unconfirmClosedPeriodCall(scope, code, closedPeriodId, body, _callback);
+            return unconfirmClosedPeriodCall(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback);
         }
 
         /**
@@ -2986,7 +2987,7 @@ public class TimelinesApi {
          </table>
          */
         public ClosedPeriod execute() throws ApiException {
-            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest);
             return localVarResp.getData();
         }
 
@@ -3003,7 +3004,7 @@ public class TimelinesApi {
          </table>
          */
         public ClosedPeriod execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+            ApiResponse<ClosedPeriod> localVarResp = unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, opts);
             return localVarResp.getData();
         }
 
@@ -3020,7 +3021,7 @@ public class TimelinesApi {
          </table>
          */
         public ApiResponse<ClosedPeriod> executeWithHttpInfo() throws ApiException {
-            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest);
         }
 
         /**
@@ -3036,7 +3037,7 @@ public class TimelinesApi {
          </table>
          */
         public ApiResponse<ClosedPeriod> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts);
+            return unconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, opts);
         }
 
         /**
@@ -3053,7 +3054,7 @@ public class TimelinesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback) throws ApiException {
-            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback);
+            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback);
         }
 
         /**
@@ -3070,16 +3071,16 @@ public class TimelinesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ClosedPeriod> _callback, ConfigurationOptions opts) throws ApiException {
-            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, body, _callback, opts);
+            return unconfirmClosedPeriodAsync(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
-     * Unconfirm the last confirmed Closed Period against a Timeline Entity
+     * [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
+     * Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
      * @param scope The scope of the specified Timeline. (required)
      * @param code The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. (required)
-     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline. (required)
+     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless   deleteSubsequentPeriods is set on the request body. (required)
      * @return APIunconfirmClosedPeriodRequest
      * @http.response.details
      <table summary="Response Details" border="1">

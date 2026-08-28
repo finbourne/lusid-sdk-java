@@ -52,6 +52,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BucketSetResult {
+  public static final String SERIALIZED_NAME_BUCKET_SET_CODE = "bucketSetCode";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SET_CODE)
+  private String bucketSetCode;
+
   public static final String SERIALIZED_NAME_IS_APPORTIONMENT = "isApportionment";
   @SerializedName(SERIALIZED_NAME_IS_APPORTIONMENT)
   private Boolean isApportionment;
@@ -62,6 +66,27 @@ public class BucketSetResult {
 
   public BucketSetResult() {
   }
+
+  public BucketSetResult bucketSetCode(String bucketSetCode) {
+    
+    this.bucketSetCode = bucketSetCode;
+    return this;
+  }
+
+   /**
+   * The code of the fund configuration&#39;s bucket set definition these results were produced from. Empty for a fund valued from component filters, which has no bucket set definition to name.
+   * @return bucketSetCode
+  **/
+  @jakarta.annotation.Nonnull
+  public String getBucketSetCode() {
+    return bucketSetCode;
+  }
+
+
+  public void setBucketSetCode(String bucketSetCode) {
+    this.bucketSetCode = bucketSetCode;
+  }
+
 
   public BucketSetResult isApportionment(Boolean isApportionment) {
     
@@ -123,19 +148,21 @@ public class BucketSetResult {
       return false;
     }
     BucketSetResult bucketSetResult = (BucketSetResult) o;
-    return Objects.equals(this.isApportionment, bucketSetResult.isApportionment) &&
+    return Objects.equals(this.bucketSetCode, bucketSetResult.bucketSetCode) &&
+        Objects.equals(this.isApportionment, bucketSetResult.isApportionment) &&
         Objects.equals(this.nodes, bucketSetResult.nodes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isApportionment, nodes);
+    return Objects.hash(bucketSetCode, isApportionment, nodes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BucketSetResult {\n");
+    sb.append("    bucketSetCode: ").append(toIndentedString(bucketSetCode)).append("\n");
     sb.append("    isApportionment: ").append(toIndentedString(isApportionment)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("}");
@@ -160,11 +187,13 @@ public class BucketSetResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("bucketSetCode");
     openapiFields.add("isApportionment");
     openapiFields.add("nodes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("bucketSetCode");
     openapiRequiredFields.add("isApportionment");
     openapiRequiredFields.add("nodes");
   }
@@ -189,6 +218,9 @@ public class BucketSetResult {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("bucketSetCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bucketSetCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucketSetCode").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("nodes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));

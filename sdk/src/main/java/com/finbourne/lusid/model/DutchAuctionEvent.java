@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
+import com.finbourne.lusid.model.MixedLotConstituentsElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.SecurityOfferElection;
 import com.finbourne.lusid.model.TenderOfferElection;
@@ -86,6 +87,10 @@ public class DutchAuctionEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS = "mixedLotConstituentsElections";
+  @SerializedName(SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS)
+  private List<MixedLotConstituentsElection> mixedLotConstituentsElections;
 
   public static final String SERIALIZED_NAME_RESPONSE_DEADLINE_DATE = "responseDeadlineDate";
   @SerializedName(SERIALIZED_NAME_RESPONSE_DEADLINE_DATE)
@@ -311,6 +316,35 @@ public class DutchAuctionEvent extends InstrumentEvent {
 
   public void setLapseElections(List<LapseElection> lapseElections) {
     this.lapseElections = lapseElections;
+  }
+
+
+  public DutchAuctionEvent mixedLotConstituentsElections(List<MixedLotConstituentsElection> mixedLotConstituentsElections) {
+    
+    this.mixedLotConstituentsElections = mixedLotConstituentsElections;
+    return this;
+  }
+
+  public DutchAuctionEvent addMixedLotConstituentsElectionsItem(MixedLotConstituentsElection mixedLotConstituentsElectionsItem) {
+    if (this.mixedLotConstituentsElections == null) {
+      this.mixedLotConstituentsElections = new ArrayList<>();
+    }
+    this.mixedLotConstituentsElections.add(mixedLotConstituentsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible MixedLotConstituentsElections for this event, if any. Each election settles into one or more  distinct new securities and/or cash legs of its own, in place of the single event-level NewInstrument the  SecurityOffer and CashAndSecurityOffer paths resolve to.    Several may be present: a Dutch Auction commonly offers a number of mutually exclusive destinations, and each  is described by its own election. Not applicable to the CASH path, which has no security leg to multiply.
+   * @return mixedLotConstituentsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<MixedLotConstituentsElection> getMixedLotConstituentsElections() {
+    return mixedLotConstituentsElections;
+  }
+
+
+  public void setMixedLotConstituentsElections(List<MixedLotConstituentsElection> mixedLotConstituentsElections) {
+    this.mixedLotConstituentsElections = mixedLotConstituentsElections;
   }
 
 
@@ -562,6 +596,7 @@ public class DutchAuctionEvent extends InstrumentEvent {
         Objects.equals(this.securityOfferElections, dutchAuctionEvent.securityOfferElections) &&
         Objects.equals(this.cashAndSecurityOfferElections, dutchAuctionEvent.cashAndSecurityOfferElections) &&
         Objects.equals(this.lapseElections, dutchAuctionEvent.lapseElections) &&
+        Objects.equals(this.mixedLotConstituentsElections, dutchAuctionEvent.mixedLotConstituentsElections) &&
         Objects.equals(this.responseDeadlineDate, dutchAuctionEvent.responseDeadlineDate) &&
         Objects.equals(this.earlyResponseDeadline, dutchAuctionEvent.earlyResponseDeadline) &&
         Objects.equals(this.exDate, dutchAuctionEvent.exDate) &&
@@ -582,7 +617,7 @@ public class DutchAuctionEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, marketDeadlineDate, currency, tenderOfferElections, securityOfferElections, cashAndSecurityOfferElections, lapseElections, responseDeadlineDate, earlyResponseDeadline, exDate, recordDate, announcementDate, targetQuantity, prorationRate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, bidPrice, super.hashCode());
+    return Objects.hash(paymentDate, marketDeadlineDate, currency, tenderOfferElections, securityOfferElections, cashAndSecurityOfferElections, lapseElections, mixedLotConstituentsElections, responseDeadlineDate, earlyResponseDeadline, exDate, recordDate, announcementDate, targetQuantity, prorationRate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, bidPrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -604,6 +639,7 @@ public class DutchAuctionEvent extends InstrumentEvent {
     sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
     sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    mixedLotConstituentsElections: ").append(toIndentedString(mixedLotConstituentsElections)).append("\n");
     sb.append("    responseDeadlineDate: ").append(toIndentedString(responseDeadlineDate)).append("\n");
     sb.append("    earlyResponseDeadline: ").append(toIndentedString(earlyResponseDeadline)).append("\n");
     sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
@@ -645,6 +681,7 @@ public class DutchAuctionEvent extends InstrumentEvent {
     openapiFields.add("securityOfferElections");
     openapiFields.add("cashAndSecurityOfferElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("mixedLotConstituentsElections");
     openapiFields.add("responseDeadlineDate");
     openapiFields.add("earlyResponseDeadline");
     openapiFields.add("exDate");

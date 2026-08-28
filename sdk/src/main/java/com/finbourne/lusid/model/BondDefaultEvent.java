@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BondDefaultSuppressionDetails;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -20,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +57,18 @@ public class BondDefaultEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_DATE)
   private OffsetDateTime effectiveDate;
 
+  public static final String SERIALIZED_NAME_DEFAULT_REASON = "defaultReason";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_REASON)
+  private String defaultReason;
+
+  public static final String SERIALIZED_NAME_SUPPRESSION_DETAILS = "suppressionDetails";
+  @SerializedName(SERIALIZED_NAME_SUPPRESSION_DETAILS)
+  private BondDefaultSuppressionDetails suppressionDetails;
+
+  public static final String SERIALIZED_NAME_SUPPRESSION_DETAILS_SPECIFIED = "suppressionDetailsSpecified";
+  @SerializedName(SERIALIZED_NAME_SUPPRESSION_DETAILS_SPECIFIED)
+  private Boolean suppressionDetailsSpecified;
+
   public BondDefaultEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -80,6 +94,69 @@ public class BondDefaultEvent extends InstrumentEvent {
   }
 
 
+  public BondDefaultEvent defaultReason(String defaultReason) {
+    
+    this.defaultReason = defaultReason;
+    return this;
+  }
+
+   /**
+   * Why the issuer defaulted, in the client&#39;s own words. Free text, with no effect on any calculation.  This field is optional.
+   * @return defaultReason
+  **/
+  @jakarta.annotation.Nullable
+  public String getDefaultReason() {
+    return defaultReason;
+  }
+
+
+  public void setDefaultReason(String defaultReason) {
+    this.defaultReason = defaultReason;
+  }
+
+
+  public BondDefaultEvent suppressionDetails(BondDefaultSuppressionDetails suppressionDetails) {
+    
+    this.suppressionDetails = suppressionDetails;
+    return this;
+  }
+
+   /**
+   * Get suppressionDetails
+   * @return suppressionDetails
+  **/
+  @jakarta.annotation.Nullable
+  public BondDefaultSuppressionDetails getSuppressionDetails() {
+    return suppressionDetails;
+  }
+
+
+  public void setSuppressionDetails(BondDefaultSuppressionDetails suppressionDetails) {
+    this.suppressionDetails = suppressionDetails;
+  }
+
+
+  public BondDefaultEvent suppressionDetailsSpecified(Boolean suppressionDetailsSpecified) {
+    
+    this.suppressionDetailsSpecified = suppressionDetailsSpecified;
+    return this;
+  }
+
+   /**
+   * Whether SuppressionDetails was supplied at all, which an absent section and an empty one cannot  otherwise be told apart by when the percentages are read as separate columns. An absent section  suppresses coupons and principal outright; an empty one suppresses nothing.  Setting this to false while also supplying a percentage is contradictory. The percentages win and  the section is treated as present, because honouring the false would silently discard values the  caller explicitly sent.
+   * @return suppressionDetailsSpecified
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getSuppressionDetailsSpecified() {
+    return suppressionDetailsSpecified;
+  }
+
+
+  public void setSuppressionDetailsSpecified(Boolean suppressionDetailsSpecified) {
+    this.suppressionDetailsSpecified = suppressionDetailsSpecified;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -91,12 +168,26 @@ public class BondDefaultEvent extends InstrumentEvent {
     }
     BondDefaultEvent bondDefaultEvent = (BondDefaultEvent) o;
     return Objects.equals(this.effectiveDate, bondDefaultEvent.effectiveDate) &&
+        Objects.equals(this.defaultReason, bondDefaultEvent.defaultReason) &&
+        Objects.equals(this.suppressionDetails, bondDefaultEvent.suppressionDetails) &&
+        Objects.equals(this.suppressionDetailsSpecified, bondDefaultEvent.suppressionDetailsSpecified) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, super.hashCode());
+    return Objects.hash(effectiveDate, defaultReason, suppressionDetails, suppressionDetailsSpecified, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -105,6 +196,9 @@ public class BondDefaultEvent extends InstrumentEvent {
     sb.append("class BondDefaultEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
+    sb.append("    defaultReason: ").append(toIndentedString(defaultReason)).append("\n");
+    sb.append("    suppressionDetails: ").append(toIndentedString(suppressionDetails)).append("\n");
+    sb.append("    suppressionDetailsSpecified: ").append(toIndentedString(suppressionDetailsSpecified)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -129,6 +223,9 @@ public class BondDefaultEvent extends InstrumentEvent {
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
     openapiFields.add("effectiveDate");
+    openapiFields.add("defaultReason");
+    openapiFields.add("suppressionDetails");
+    openapiFields.add("suppressionDetailsSpecified");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

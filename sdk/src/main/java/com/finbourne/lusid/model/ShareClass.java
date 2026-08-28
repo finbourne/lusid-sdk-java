@@ -87,9 +87,9 @@ public class ShareClass {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
-  public static final String SERIALIZED_NAME_FUND_SHARE_CLASS_TYPE = "fundShareClassType";
-  @SerializedName(SERIALIZED_NAME_FUND_SHARE_CLASS_TYPE)
-  private String fundShareClassType;
+  public static final String SERIALIZED_NAME_INVESTOR_TYPE = "investorType";
+  @SerializedName(SERIALIZED_NAME_INVESTOR_TYPE)
+  private String investorType;
 
   public static final String SERIALIZED_NAME_DISTRIBUTION_TYPE = "distributionType";
   @SerializedName(SERIALIZED_NAME_DISTRIBUTION_TYPE)
@@ -103,17 +103,9 @@ public class ShareClass {
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
   private TradingConventions tradingConventions;
 
-  public static final String SERIALIZED_NAME_UNITS_PRECISION = "unitsPrecision";
-  @SerializedName(SERIALIZED_NAME_UNITS_PRECISION)
-  private Integer unitsPrecision;
-
-  public static final String SERIALIZED_NAME_PRICE_PRECISION = "pricePrecision";
-  @SerializedName(SERIALIZED_NAME_PRICE_PRECISION)
-  private Integer pricePrecision;
-
-  public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
-  @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
-  private List<SimpleRoundingConvention> roundingConventions;
+  public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS_PRICE = "roundingConventionsPrice";
+  @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS_PRICE)
+  private List<SimpleRoundingConvention> roundingConventionsPrice;
 
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS_UNITS = "roundingConventionsUnits";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS_UNITS)
@@ -297,24 +289,24 @@ public class ShareClass {
   }
 
 
-  public ShareClass fundShareClassType(String fundShareClassType) {
+  public ShareClass investorType(String investorType) {
     
-    this.fundShareClassType = fundShareClassType;
+    this.investorType = investorType;
     return this;
   }
 
    /**
-   * The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership.
-   * @return fundShareClassType
+   * The Type of Share Class. Available values: Unitised.
+   * @return investorType
   **/
   @jakarta.annotation.Nonnull
-  public String getFundShareClassType() {
-    return fundShareClassType;
+  public String getInvestorType() {
+    return investorType;
   }
 
 
-  public void setFundShareClassType(String fundShareClassType) {
-    this.fundShareClassType = fundShareClassType;
+  public void setInvestorType(String investorType) {
+    this.investorType = investorType;
   }
 
 
@@ -381,74 +373,32 @@ public class ShareClass {
   }
 
 
-  public ShareClass unitsPrecision(Integer unitsPrecision) {
+  public ShareClass roundingConventionsPrice(List<SimpleRoundingConvention> roundingConventionsPrice) {
     
-    this.unitsPrecision = unitsPrecision;
+    this.roundingConventionsPrice = roundingConventionsPrice;
     return this;
   }
 
-   /**
-   * Decimal places for the share class units.
-   * @return unitsPrecision
-  **/
-  @jakarta.annotation.Nullable
-  public Integer getUnitsPrecision() {
-    return unitsPrecision;
-  }
-
-
-  public void setUnitsPrecision(Integer unitsPrecision) {
-    this.unitsPrecision = unitsPrecision;
-  }
-
-
-  public ShareClass pricePrecision(Integer pricePrecision) {
-    
-    this.pricePrecision = pricePrecision;
-    return this;
-  }
-
-   /**
-   * Decimal places for the share class price.
-   * @return pricePrecision
-  **/
-  @jakarta.annotation.Nullable
-  public Integer getPricePrecision() {
-    return pricePrecision;
-  }
-
-
-  public void setPricePrecision(Integer pricePrecision) {
-    this.pricePrecision = pricePrecision;
-  }
-
-
-  public ShareClass roundingConventions(List<SimpleRoundingConvention> roundingConventions) {
-    
-    this.roundingConventions = roundingConventions;
-    return this;
-  }
-
-  public ShareClass addRoundingConventionsItem(SimpleRoundingConvention roundingConventionsItem) {
-    if (this.roundingConventions == null) {
-      this.roundingConventions = new ArrayList<>();
+  public ShareClass addRoundingConventionsPriceItem(SimpleRoundingConvention roundingConventionsPriceItem) {
+    if (this.roundingConventionsPrice == null) {
+      this.roundingConventionsPrice = new ArrayList<>();
     }
-    this.roundingConventions.add(roundingConventionsItem);
+    this.roundingConventionsPrice.add(roundingConventionsPriceItem);
     return this;
   }
 
    /**
    * Rounding conventions used for the ShareClass quotes.
-   * @return roundingConventions
+   * @return roundingConventionsPrice
   **/
   @jakarta.annotation.Nullable
-  public List<SimpleRoundingConvention> getRoundingConventions() {
-    return roundingConventions;
+  public List<SimpleRoundingConvention> getRoundingConventionsPrice() {
+    return roundingConventionsPrice;
   }
 
 
-  public void setRoundingConventions(List<SimpleRoundingConvention> roundingConventions) {
-    this.roundingConventions = roundingConventions;
+  public void setRoundingConventionsPrice(List<SimpleRoundingConvention> roundingConventionsPrice) {
+    this.roundingConventionsPrice = roundingConventionsPrice;
   }
 
 
@@ -561,13 +511,11 @@ public class ShareClass {
         (this.launchPrice.compareTo(shareClass.getLaunchPrice()) == 0) &&
         Objects.equals(this.launchDate, shareClass.launchDate) &&
         Objects.equals(this.properties, shareClass.properties) &&
-        Objects.equals(this.fundShareClassType, shareClass.fundShareClassType) &&
+        Objects.equals(this.investorType, shareClass.investorType) &&
         Objects.equals(this.distributionType, shareClass.distributionType) &&
         Objects.equals(this.domCcy, shareClass.domCcy) &&
         Objects.equals(this.tradingConventions, shareClass.tradingConventions) &&
-        Objects.equals(this.unitsPrecision, shareClass.unitsPrecision) &&
-        Objects.equals(this.pricePrecision, shareClass.pricePrecision) &&
-        Objects.equals(this.roundingConventions, shareClass.roundingConventions) &&
+        Objects.equals(this.roundingConventionsPrice, shareClass.roundingConventionsPrice) &&
         Objects.equals(this.roundingConventionsUnits, shareClass.roundingConventionsUnits) &&
         Objects.equals(this.timeZoneConventions, shareClass.timeZoneConventions) &&
         Objects.equals(this.distributionPaymentType, shareClass.distributionPaymentType) &&
@@ -580,7 +528,7 @@ public class ShareClass {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, properties, fundShareClassType, distributionType, domCcy, tradingConventions, unitsPrecision, pricePrecision, roundingConventions, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
+    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, properties, investorType, distributionType, domCcy, tradingConventions, roundingConventionsPrice, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -601,13 +549,11 @@ public class ShareClass {
     sb.append("    launchPrice: ").append(toIndentedString(launchPrice)).append("\n");
     sb.append("    launchDate: ").append(toIndentedString(launchDate)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
-    sb.append("    fundShareClassType: ").append(toIndentedString(fundShareClassType)).append("\n");
+    sb.append("    investorType: ").append(toIndentedString(investorType)).append("\n");
     sb.append("    distributionType: ").append(toIndentedString(distributionType)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
-    sb.append("    unitsPrecision: ").append(toIndentedString(unitsPrecision)).append("\n");
-    sb.append("    pricePrecision: ").append(toIndentedString(pricePrecision)).append("\n");
-    sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
+    sb.append("    roundingConventionsPrice: ").append(toIndentedString(roundingConventionsPrice)).append("\n");
     sb.append("    roundingConventionsUnits: ").append(toIndentedString(roundingConventionsUnits)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    distributionPaymentType: ").append(toIndentedString(distributionPaymentType)).append("\n");
@@ -641,13 +587,11 @@ public class ShareClass {
     openapiFields.add("launchPrice");
     openapiFields.add("launchDate");
     openapiFields.add("properties");
-    openapiFields.add("fundShareClassType");
+    openapiFields.add("investorType");
     openapiFields.add("distributionType");
     openapiFields.add("domCcy");
     openapiFields.add("tradingConventions");
-    openapiFields.add("unitsPrecision");
-    openapiFields.add("pricePrecision");
-    openapiFields.add("roundingConventions");
+    openapiFields.add("roundingConventionsPrice");
     openapiFields.add("roundingConventionsUnits");
     openapiFields.add("timeZoneConventions");
     openapiFields.add("distributionPaymentType");
@@ -657,7 +601,7 @@ public class ShareClass {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("shareClassShortCode");
-    openapiRequiredFields.add("fundShareClassType");
+    openapiRequiredFields.add("investorType");
     openapiRequiredFields.add("domCcy");
   }
 
@@ -690,8 +634,8 @@ public class ShareClass {
       if (!jsonObj.get("shareClassShortCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shareClassShortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shareClassShortCode").toString()));
       }
-      if (!jsonObj.get("fundShareClassType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fundShareClassType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundShareClassType").toString()));
+      if (!jsonObj.get("investorType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `investorType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("investorType").toString()));
       }
       if ((jsonObj.get("distributionType") != null && !jsonObj.get("distributionType").isJsonNull()) && !jsonObj.get("distributionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `distributionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("distributionType").toString()));
@@ -703,17 +647,17 @@ public class ShareClass {
       if (jsonObj.get("tradingConventions") != null && !jsonObj.get("tradingConventions").isJsonNull()) {
         TradingConventions.validateJsonElement(jsonObj.get("tradingConventions"));
       }
-      if (jsonObj.get("roundingConventions") != null && !jsonObj.get("roundingConventions").isJsonNull()) {
-        JsonArray jsonArrayroundingConventions = jsonObj.getAsJsonArray("roundingConventions");
-        if (jsonArrayroundingConventions != null) {
+      if (jsonObj.get("roundingConventionsPrice") != null && !jsonObj.get("roundingConventionsPrice").isJsonNull()) {
+        JsonArray jsonArrayroundingConventionsPrice = jsonObj.getAsJsonArray("roundingConventionsPrice");
+        if (jsonArrayroundingConventionsPrice != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("roundingConventions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `roundingConventions` to be an array in the JSON string but got `%s`", jsonObj.get("roundingConventions").toString()));
+          if (!jsonObj.get("roundingConventionsPrice").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `roundingConventionsPrice` to be an array in the JSON string but got `%s`", jsonObj.get("roundingConventionsPrice").toString()));
           }
 
-          // validate the optional field `roundingConventions` (array)
-          for (int i = 0; i < jsonArrayroundingConventions.size(); i++) {
-            SimpleRoundingConvention.validateJsonElement(jsonArrayroundingConventions.get(i));
+          // validate the optional field `roundingConventionsPrice` (array)
+          for (int i = 0; i < jsonArrayroundingConventionsPrice.size(); i++) {
+            SimpleRoundingConvention.validateJsonElement(jsonArrayroundingConventionsPrice.get(i));
           };
         }
       }

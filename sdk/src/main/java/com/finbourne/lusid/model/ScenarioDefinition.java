@@ -69,6 +69,14 @@ public class ScenarioDefinition {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
+
+  public static final String SERIALIZED_NAME_SCENARIO_TYPE = "scenarioType";
+  @SerializedName(SERIALIZED_NAME_SCENARIO_TYPE)
+  private String scenarioType;
+
   public static final String SERIALIZED_NAME_SHIFTS = "shifts";
   @SerializedName(SERIALIZED_NAME_SHIFTS)
   private List<ScenarioShiftDefinition> shifts;
@@ -160,6 +168,48 @@ public class ScenarioDefinition {
   }
 
 
+  public ScenarioDefinition shortCode(String shortCode) {
+    
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * A short, memorable identifier for the scenario, for use in reporting. Optional on upsert:  when omitted, reads return a value inferred from the display name (falling back to the  code) rather than null; the inferred value is computed fresh on every read and is never  persisted. When supplied, the value is stored and returned verbatim. Independent of  scenarioType.
+   * @return shortCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getShortCode() {
+    return shortCode;
+  }
+
+
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
+  }
+
+
+  public ScenarioDefinition scenarioType(String scenarioType) {
+    
+    this.scenarioType = scenarioType;
+    return this;
+  }
+
+   /**
+   * Classifies the scenario. Required on upsert; supported string (enumeration) values are:  [Historical, Regulatory, Hypothetical]. Independent of shortCode. Available values: Historical, Regulatory, Hypothetical.
+   * @return scenarioType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getScenarioType() {
+    return scenarioType;
+  }
+
+
+  public void setScenarioType(String scenarioType) {
+    this.scenarioType = scenarioType;
+  }
+
+
   public ScenarioDefinition shifts(List<ScenarioShiftDefinition> shifts) {
     
     this.shifts = shifts;
@@ -203,6 +253,8 @@ public class ScenarioDefinition {
         Objects.equals(this.code, scenarioDefinition.code) &&
         Objects.equals(this.displayName, scenarioDefinition.displayName) &&
         Objects.equals(this.description, scenarioDefinition.description) &&
+        Objects.equals(this.shortCode, scenarioDefinition.shortCode) &&
+        Objects.equals(this.scenarioType, scenarioDefinition.scenarioType) &&
         Objects.equals(this.shifts, scenarioDefinition.shifts);
   }
 
@@ -212,7 +264,7 @@ public class ScenarioDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, shifts);
+    return Objects.hash(scope, code, displayName, description, shortCode, scenarioType, shifts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -230,6 +282,8 @@ public class ScenarioDefinition {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
+    sb.append("    scenarioType: ").append(toIndentedString(scenarioType)).append("\n");
     sb.append("    shifts: ").append(toIndentedString(shifts)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,12 +311,15 @@ public class ScenarioDefinition {
     openapiFields.add("code");
     openapiFields.add("displayName");
     openapiFields.add("description");
+    openapiFields.add("shortCode");
+    openapiFields.add("scenarioType");
     openapiFields.add("shifts");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("scope");
     openapiRequiredFields.add("code");
+    openapiRequiredFields.add("scenarioType");
   }
 
  /**
@@ -296,6 +353,12 @@ public class ScenarioDefinition {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("shortCode") != null && !jsonObj.get("shortCode").isJsonNull()) && !jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
+      }
+      if (!jsonObj.get("scenarioType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scenarioType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scenarioType").toString()));
       }
       if (jsonObj.get("shifts") != null && !jsonObj.get("shifts").isJsonNull()) {
         JsonArray jsonArrayshifts = jsonObj.getAsJsonArray("shifts");

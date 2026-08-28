@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9770
+  version: 0.11.9792
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1440,6 +1440,10 @@ tags:
   name: Transaction Portfolios
 - description: "."
   name: TransferAgency
+- description: "Methods for creating transfers: paired transaction legs that move\
+    \ a position between portfolios, exchange one instrument for another within a\
+    \ portfolio, or do both at once."
+  name: Transfers
 - description: Methods for translating between dialects.
   name: Translation
 - description: Methods for interacting with workspaces in LUSID.
@@ -37170,7 +37174,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -37276,7 +37280,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -37382,7 +37386,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -37666,7 +37670,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -37772,7 +37776,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -37878,7 +37882,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38150,7 +38154,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38256,7 +38260,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38362,7 +38366,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38716,7 +38720,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38822,7 +38826,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -38928,7 +38932,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -39610,7 +39614,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -39716,7 +39720,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -39822,7 +39826,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -40695,7 +40699,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -40801,7 +40805,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -40907,7 +40911,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -43383,7 +43387,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -43489,7 +43493,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -43595,7 +43599,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -43805,7 +43809,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -43911,7 +43915,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -44017,7 +44021,7 @@ paths:
                   launchPrice: 100
                   launchDate: 2024-01-01T00:00:00.0000000+00:00
                   properties: {}
-                  fundShareClassType: Unitised
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: USD
                   distributionPaymentType: Gross
@@ -44794,7 +44798,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -44814,6 +44819,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -44880,7 +44897,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -44900,6 +44918,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             application/json:
@@ -44971,7 +45001,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -44991,6 +45022,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -45057,7 +45100,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -45077,6 +45121,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             text/json:
@@ -45148,7 +45204,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -45168,6 +45225,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -45234,7 +45303,8 @@ paths:
                       baseValue: 99999.99
                       apportionmentFactor: 1
                   bucketSetResults:
-                  - isApportionment: true
+                  - bucketSetCode: BucketSetCode
+                    isApportionment: true
                     nodes:
                     - nodeType: Fund
                       nav: 99999.99
@@ -45254,6 +45324,18 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        sourceBreakdown:
+                          classSpecific: 99.99
+                          nonClassSpecific: 800
+                          AllocationGroupCode: 100
+                        perUnitValue: 0.0999
+                        unitsInIssue: 10000
+                        previousCumulativePerUnitValue: 0.9
+                        cumulativePerUnitValue: 0.9999
+                      perUnitValue: 9.9999
+                      sharesInIssue: 10000
+                      previousPerUnitValue: 9
+                      previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
           description: The Accepted Estimate point and status after being Accepted
@@ -45627,7 +45709,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -45647,6 +45730,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -45716,7 +45811,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -45736,6 +45832,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -45805,7 +45913,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -45825,6 +45934,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -46012,7 +46133,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46032,6 +46154,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -46101,7 +46235,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46121,6 +46256,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -46190,7 +46337,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46210,6 +46358,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The requested Valuation Point data for the Fund.
@@ -46376,7 +46536,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46396,6 +46557,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -46465,7 +46638,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46485,6 +46659,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -46554,7 +46740,8 @@ paths:
                     baseValue: 99999.99
                     apportionmentFactor: 1
                 bucketSetResults:
-                - isApportionment: true
+                - bucketSetCode: BucketSetCode
+                  isApportionment: true
                   nodes:
                   - nodeType: Fund
                     nav: 99999.99
@@ -46574,6 +46761,18 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      sourceBreakdown:
+                        classSpecific: 99.99
+                        nonClassSpecific: 800
+                        AllocationGroupCode: 100
+                      perUnitValue: 0.0999
+                      unitsInIssue: 10000
+                      previousCumulativePerUnitValue: 0.9
+                      cumulativePerUnitValue: 0.9999
+                    perUnitValue: 9.9999
+                    sharesInIssue: 10000
+                    previousPerUnitValue: 9
+                    previousSharesInIssue: 10000
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -51514,7 +51713,7 @@ paths:
                       launchPrice: 100
                       launchDate: 2024-01-01T00:00:00.0000000+00:00
                       properties: {}
-                      fundShareClassType: Unitised
+                      investorType: Unitised
                       distributionType: Income
                       domCcy: USD
                       distributionPaymentType: Gross
@@ -51663,7 +51862,7 @@ paths:
                       launchPrice: 100
                       launchDate: 2024-01-01T00:00:00.0000000+00:00
                       properties: {}
-                      fundShareClassType: Unitised
+                      investorType: Unitised
                       distributionType: Income
                       domCcy: USD
                       distributionPaymentType: Gross
@@ -51812,7 +52011,7 @@ paths:
                       launchPrice: 100
                       launchDate: 2024-01-01T00:00:00.0000000+00:00
                       properties: {}
-                      fundShareClassType: Unitised
+                      investorType: Unitised
                       distributionType: Income
                       domCcy: USD
                       distributionPaymentType: Gross
@@ -51957,7 +52156,7 @@ paths:
                   name: Master Class A
                   shareClassShortCode: A
                   properties: {}
-                  fundShareClassType: Series
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: GBP
                   distributionPaymentType: Net
@@ -52056,7 +52255,7 @@ paths:
                   name: Master Class A
                   shareClassShortCode: A
                   properties: {}
-                  fundShareClassType: Series
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: GBP
                   distributionPaymentType: Net
@@ -52155,7 +52354,7 @@ paths:
                   name: Master Class A
                   shareClassShortCode: A
                   properties: {}
-                  fundShareClassType: Series
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: GBP
                   distributionPaymentType: Net
@@ -52254,7 +52453,7 @@ paths:
                   name: Master Class A
                   shareClassShortCode: A
                   properties: {}
-                  fundShareClassType: Series
+                  investorType: Unitised
                   distributionType: Income
                   domCcy: GBP
                   distributionPaymentType: Net
@@ -52406,7 +52605,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -52553,7 +52752,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -52700,7 +52899,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -52933,7 +53132,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -53080,7 +53279,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -53227,7 +53426,7 @@ paths:
                     launchPrice: 100
                     launchDate: 2024-01-01T00:00:00.0000000+00:00
                     properties: {}
-                    fundShareClassType: Unitised
+                    investorType: Unitised
                     distributionType: Income
                     domCcy: USD
                     distributionPaymentType: Gross
@@ -120238,6 +120437,96 @@ paths:
       x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/scenarios:
+    get:
+      description: "List scenario definitions across all scopes at the specified date/time.\
+        \ Each item carries\r\nits scope and code. Scenarios the caller is not entitled\
+        \ to read are omitted."
+      operationId: ListScenarios
+      parameters:
+      - description: The asAt datetime at which to list the scenarios. Defaults to
+          latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set, e.g. \"scope eq 'MyScope'\"\
+          ."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: Maximum number of results to return. Defaults to 100.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Pagination token from a previous result to fetch the next page.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfGetScenarioResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfGetScenarioResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfGetScenarioResponse'
+          description: The requested scenarios
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListScenarios: List Scenarios"
+      tags:
+      - Scenarios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
     post:
       description: "Update or insert one Scenario definition. An item will be updated\
         \ if it already exists\r\nand inserted if it does not.\r\n \r\nThe response\
@@ -120253,6 +120542,8 @@ paths:
                 code: rates-up-50
                 displayName: Rates +50bps Parallel
                 description: Parallel shift of +50bps across all rate curves
+                shortCode: RTUP2024
+                scenarioType: Hypothetical
                 shifts:
                 - ccy: USD
                   amount: 50
@@ -120270,6 +120561,8 @@ paths:
                 code: rates-up-50
                 displayName: Rates +50bps Parallel
                 description: Parallel shift of +50bps across all rate curves
+                shortCode: RTUP2024
+                scenarioType: Hypothetical
                 shifts:
                 - ccy: USD
                   amount: 50
@@ -120287,6 +120580,8 @@ paths:
                 code: rates-up-50
                 displayName: Rates +50bps Parallel
                 description: Parallel shift of +50bps across all rate curves
+                shortCode: RTUP2024
+                scenarioType: Hypothetical
                 shifts:
                 - ccy: USD
                   amount: 50
@@ -120304,6 +120599,8 @@ paths:
                 code: rates-up-50
                 displayName: Rates +50bps Parallel
                 description: Parallel shift of +50bps across all rate curves
+                shortCode: RTUP2024
+                scenarioType: Hypothetical
                 shifts:
                 - ccy: USD
                   amount: 50
@@ -120473,9 +120770,9 @@ paths:
       x-accepts: application/json
   /api/scenarios/{scope}:
     get:
-      description: List the set of scenario definitions at the specified date/time
-        and scope.
-      operationId: ListScenarios
+      description: List the set of scenario definitions in a single scope at the specified
+        date/time.
+      operationId: ListScenariosForScope
       parameters:
       - description: The scope to list scenarios for.
         explode: false
@@ -120566,7 +120863,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EARLY ACCESS] ListScenarios: List the set of Scenario definitions"
+      summary: "[EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope"
       tags:
       - Scenarios
       x-fbn-apistatus: EarlyAccess
@@ -120801,7 +121098,7 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/GetScenarioResponse'
-          description: The successfully retrieved Scenario or any failure
+          description: The successfully retrieved Scenario
         "400":
           content:
             text/plain:
@@ -130704,7 +131001,11 @@ paths:
       x-accepts: application/json
   /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm:
     post:
-      description: Unconfirm the last confirmed Closed Period against a Timeline Entity
+      description: "Unconfirm a confirmed Closed Period against a Timeline Entity.\
+        \ By default only the latest confirmed\r\nClosed Period may be unconfirmed.\
+        \ Setting deleteSubsequentPeriods on the request body allows any\r\nconfirmed\
+        \ Closed Period to be unconfirmed, deleting every Closed Period after it on\
+        \ the Timeline."
       operationId: UnconfirmClosedPeriod
       parameters:
       - description: The scope of the specified Timeline.
@@ -130731,8 +131032,9 @@ paths:
           type: string
         style: simple
       - description: "The id of the Closed Period. Together with the scope and code\
-          \ of the Timeline,\r\n this uniquely identifies the ClosedPeriod. The closed\
-          \ period must be the last closed period on the Timeline."
+          \ of the Timeline,\r\n this uniquely identifies the ClosedPeriod. Must be\
+          \ the latest confirmed Closed Period unless\r\n deleteSubsequentPeriods\
+          \ is set on the request body."
         explode: false
         in: path
         name: closedPeriodId
@@ -130746,22 +131048,27 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example: {}
+            example:
+              deleteSubsequentPeriods: false
             schema:
               $ref: '#/components/schemas/UnconfirmClosedPeriodRequest'
           application/json:
-            example: {}
+            example:
+              deleteSubsequentPeriods: false
             schema:
               $ref: '#/components/schemas/UnconfirmClosedPeriodRequest'
           text/json:
-            example: {}
+            example:
+              deleteSubsequentPeriods: false
             schema:
               $ref: '#/components/schemas/UnconfirmClosedPeriodRequest'
           application/*+json:
-            example: {}
+            example:
+              deleteSubsequentPeriods: false
             schema:
               $ref: '#/components/schemas/UnconfirmClosedPeriodRequest'
-        description: Not in use at the moment
+        description: Controls whether a non-latest confirmed Closed Period may be
+          unconfirmed.
       responses:
         "200":
           content:
@@ -130885,8 +131192,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed\
-        \ Closed Period against a Timeline Entity"
+      summary: "[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed\
+        \ Period against a Timeline Entity"
       tags:
       - Timelines
       x-fbn-apistatus: Experimental
@@ -153603,6 +153910,324 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/transferagency/orders/$delete:
+    post:
+      description: "Deletes each order supplied, cancelling any cash transaction(s)\
+        \ already booked for it. Only an order in\r\n'New' or 'Pending' can be deleted.\
+        \ A priced order must be un-priced first. An order with no cash transaction\r\
+        \nbooked against it is deleted successfully and reports no cancelled transactions.\
+        \ Transaction staging rules are not applied to these\r\ncancellations.\r\n\
+        The response contains both successfully deleted orders and any failures, each\
+        \ in the form of a\r\ndictionary keyed by the request's keys. For each failure,\
+        \ a reason is provided. It is important to\r\ncheck the failed set for unsuccessful\
+        \ results."
+      operationId: DeleteTransferAgencyOrders
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              Order1:
+                orderId:
+                  scope: example-scope
+                  code: order-1
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrderRequest'
+              type: object
+          application/json:
+            example:
+              Order1:
+                orderId:
+                  scope: example-scope
+                  code: order-1
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrderRequest'
+              type: object
+          text/json:
+            example:
+              Order1:
+                orderId:
+                  scope: example-scope
+                  code: order-1
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrderRequest'
+              type: object
+          application/*+json:
+            example:
+              Order1:
+                orderId:
+                  scope: example-scope
+                  code: order-1
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrderRequest'
+              type: object
+        description: "The transfer agency orders to delete, keyed by a unique request\
+          \ identifier."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                successes:
+                  Order1:
+                    orderId:
+                      scope: example-scope
+                      code: order-1
+                    cancelledTransactionIds:
+                    - txn-0001
+                  Order2:
+                    orderId:
+                      scope: example-scope
+                      code: order-2
+                    cancelledTransactionIds: []
+                failed:
+                  Order3:
+                    id: Order3
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrdersResponse'
+            application/json:
+              example:
+                successes:
+                  Order1:
+                    orderId:
+                      scope: example-scope
+                      code: order-1
+                    cancelledTransactionIds:
+                    - txn-0001
+                  Order2:
+                    orderId:
+                      scope: example-scope
+                      code: order-2
+                    cancelledTransactionIds: []
+                failed:
+                  Order3:
+                    id: Order3
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrdersResponse'
+            text/json:
+              example:
+                successes:
+                  Order1:
+                    orderId:
+                      scope: example-scope
+                      code: order-1
+                    cancelledTransactionIds:
+                    - txn-0001
+                  Order2:
+                    orderId:
+                      scope: example-scope
+                      code: order-2
+                    cancelledTransactionIds: []
+                failed:
+                  Order3:
+                    id: Order3
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/DeleteTransferAgencyOrdersResponse'
+          description: Successfully deleted orders and any failures.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency\
+        \ orders"
+      tags:
+      - TransferAgency
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/transfers:
+    post:
+      description: "Move a position between two portfolios, exchange one instrument\
+        \ for another within a portfolio, or do\r\nboth at once.\r\n \r\nThe outgoing\
+        \ and incoming transaction legs and the Transfer entity recording them are\
+        \ written as a single\r\natomic operation: if any part of the request is rejected,\
+        \ nothing is written."
+      operationId: CreateTransfer
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+              instrumentIdentifierOut: LUID_00003D4V
+              instrumentIdentifierIn: LUID_00003D4V
+              pricingMethod: AtCost
+              taxLotStructure: Consolidate
+              unitsOut: 1000
+              unitsIn: 1000
+              tradeDateOut: 2024-03-05T00:00:00.0000000+00:00
+              tradeDateIn: 2024-03-05T00:00:00.0000000+00:00
+              settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
+              settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
+              source: default
+              properties:
+                Transaction/MyScope/TransferReference:
+                  key: Transaction/MyScope/TransferReference
+                  value:
+                    labelValue: REORG-2024-03
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+          application/json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+              instrumentIdentifierOut: LUID_00003D4V
+              instrumentIdentifierIn: LUID_00003D4V
+              pricingMethod: AtCost
+              taxLotStructure: Consolidate
+              unitsOut: 1000
+              unitsIn: 1000
+              tradeDateOut: 2024-03-05T00:00:00.0000000+00:00
+              tradeDateIn: 2024-03-05T00:00:00.0000000+00:00
+              settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
+              settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
+              source: default
+              properties:
+                Transaction/MyScope/TransferReference:
+                  key: Transaction/MyScope/TransferReference
+                  value:
+                    labelValue: REORG-2024-03
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+          text/json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+              instrumentIdentifierOut: LUID_00003D4V
+              instrumentIdentifierIn: LUID_00003D4V
+              pricingMethod: AtCost
+              taxLotStructure: Consolidate
+              unitsOut: 1000
+              unitsIn: 1000
+              tradeDateOut: 2024-03-05T00:00:00.0000000+00:00
+              tradeDateIn: 2024-03-05T00:00:00.0000000+00:00
+              settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
+              settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
+              source: default
+              properties:
+                Transaction/MyScope/TransferReference:
+                  key: Transaction/MyScope/TransferReference
+                  value:
+                    labelValue: REORG-2024-03
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+          application/*+json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+              instrumentIdentifierOut: LUID_00003D4V
+              instrumentIdentifierIn: LUID_00003D4V
+              pricingMethod: AtCost
+              taxLotStructure: Consolidate
+              unitsOut: 1000
+              unitsIn: 1000
+              tradeDateOut: 2024-03-05T00:00:00.0000000+00:00
+              tradeDateIn: 2024-03-05T00:00:00.0000000+00:00
+              settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
+              settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
+              source: default
+              properties:
+                Transaction/MyScope/TransferReference:
+                  key: Transaction/MyScope/TransferReference
+                  value:
+                    labelValue: REORG-2024-03
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+        description: The transfer to create.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateTransferResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTransferResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateTransferResponse'
+          description: The transfer that was created.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] CreateTransfer: Create a transfer."
+      tags:
+      - Transfers
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/translation/instrumentdefinitions:
     post:
       description: "Translates one or more instruments into the given target dialect.\r\
@@ -158126,67 +158751,133 @@ components:
             currency: currency
           bucketSetResults:
           - isApportionment: true
+            bucketSetCode: bucketSetCode
             nodes:
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
           - isApportionment: true
+            bucketSetCode: bucketSetCode
             nodes:
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
           previousValuationPointCode: previousValuationPointCode
@@ -158457,67 +159148,133 @@ components:
             currency: currency
           bucketSetResults:
           - isApportionment: true
+            bucketSetCode: bucketSetCode
             nodes:
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
           - isApportionment: true
+            bucketSetCode: bucketSetCode
             nodes:
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
-            - nav: 9.965781217890562
+            - sharesInIssue: 6.878052220127876
+              previousSharesInIssue: 6.704019297950036
+              nav: 9.965781217890562
               shareClassShortCode: shareClassShortCode
               buckets:
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
-              - bucketType: bucketType
+              - unitsInIssue: 6.965117697638846
+                bucketType: bucketType
+                previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
                 bucketId: bucketId
+                sourceBreakdown:
+                  key: 6.438423552598547
+                cumulativePerUnitValue: 2.8841621266687802
+                perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousPerUnitValue: 5.944895607614016
+              perUnitValue: 6.778324963048013
               nodeType: nodeType
               capitalRatio: 9.369310271410669
           previousValuationPointCode: previousValuationPointCode
@@ -170618,6 +171375,26 @@ components:
             description: The date the bond default occurred.
             format: date-time
             type: string
+          defaultReason:
+            description: "Why the issuer defaulted, in the client's own words. Free\
+              \ text, with no effect on any calculation.\r\nThis field is optional."
+            maxLength: 512
+            minLength: 0
+            nullable: true
+            type: string
+          suppressionDetails:
+            $ref: '#/components/schemas/BondDefaultSuppressionDetails'
+          suppressionDetailsSpecified:
+            description: "Whether SuppressionDetails was supplied at all, which an\
+              \ absent section and an empty one cannot\r\notherwise be told apart\
+              \ by when the percentages are read as separate columns. An absent section\r\
+              \nsuppresses coupons and principal outright; an empty one suppresses\
+              \ nothing.\r\nSetting this to false while also supplying a percentage\
+              \ is contradictory. The percentages win and\r\nthe section is treated\
+              \ as present, because honouring the false would silently discard values\
+              \ the\r\ncaller explicitly sent."
+            nullable: true
+            type: boolean
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -170758,6 +171535,33 @@ components:
         type: object
       description: "Indicates when an issuer has defaulted on an obligation due to\
         \ technical default, missed payments, or bankruptcy filing."
+    BondDefaultSuppressionDetails:
+      additionalProperties: false
+      description: "How much of each component of a bond keeps paying after a default,\
+        \ as a fraction from 0.0 (fully\r\nsuppressed) to 1.0 (unaffected). An unset\
+        \ field means 1.0. Omitting the whole section is different: that\r\nsuppresses\
+        \ coupons and principal outright and leaves interest accruing."
+      properties:
+        accrualPercentage:
+          description: "Fraction of the computed accrued interest returned from the\
+            \ default onwards, between 0.0 and 1.0.\r\nAccrued interest supplied through\
+            \ a results store is returned unchanged. Optional, defaulting to 1.0."
+          format: double
+          nullable: true
+          type: number
+        couponPercentage:
+          description: "Fraction of each coupon from the default onwards that is still\
+            \ paid, between 0.0 and 1.0. Optional,\r\ndefaulting to 1.0."
+          format: double
+          nullable: true
+          type: number
+        principalPercentage:
+          description: "Fraction of each principal repayment from the default onwards\
+            \ still paid, between 0.0 and 1.0.\r\nOptional, defaulting to 1.0."
+          format: double
+          nullable: true
+          type: number
+      type: object
     BondOption:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -173391,22 +174195,38 @@ components:
     BucketSetNode:
       additionalProperties: false
       description: "One node within a bucket set result: the fund aggregate or a single\
-        \ share class. Both carry NAV and buckets; the\r\ncapital ratio is set only\
-        \ on share class nodes."
+        \ share class. Both carry NAV and buckets; the\r\ncapital ratio, the unit\
+        \ counts and the per-unit values are set only on share class nodes."
       example:
+        sharesInIssue: 6.878052220127876
+        previousSharesInIssue: 6.704019297950036
         nav: 9.965781217890562
         shareClassShortCode: shareClassShortCode
         buckets:
-        - bucketType: bucketType
+        - unitsInIssue: 6.965117697638846
+          bucketType: bucketType
+          previousCumulativePerUnitValue: 1.284659006116532
           previousCumulativeValue: 8.762042012749001
           bucketId: bucketId
+          sourceBreakdown:
+            key: 6.438423552598547
+          cumulativePerUnitValue: 2.8841621266687802
+          perUnitValue: 3.5571952270680973
           value: 6.683562403749608
           cumulativeValue: 9.018348186070783
-        - bucketType: bucketType
+        - unitsInIssue: 6.965117697638846
+          bucketType: bucketType
+          previousCumulativePerUnitValue: 1.284659006116532
           previousCumulativeValue: 8.762042012749001
           bucketId: bucketId
+          sourceBreakdown:
+            key: 6.438423552598547
+          cumulativePerUnitValue: 2.8841621266687802
+          perUnitValue: 3.5571952270680973
           value: 6.683562403749608
           cumulativeValue: 9.018348186070783
+        previousPerUnitValue: 5.944895607614016
+        perUnitValue: 6.778324963048013
         nodeType: nodeType
         capitalRatio: 9.369310271410669
       properties:
@@ -173438,6 +174258,34 @@ components:
           items:
             $ref: '#/components/schemas/BucketSetResultBucket'
           type: array
+        perUnitValue:
+          description: "The share class's NAV per unit in issue, in the fund currency,\
+            \ rounded to the share class's PricePrecision (left unrounded where the\
+            \ share class declares none). Reported only for a share class that is\
+            \ unitised and has units in issue to divide by. The dealing price - in\
+            \ the share class currency, with its instrument's rounding convention\
+            \ applied - is on the share class breakdown's unitisation data."
+          format: double
+          nullable: true
+          type: number
+        sharesInIssue:
+          description: The share class's units in issue at the end of the period.
+            Reported only for a share class that is unitised.
+          format: double
+          nullable: true
+          type: number
+        previousPerUnitValue:
+          description: "The share class's NAV per unit at the previous valuation point,\
+            \ on the same basis as PerUnitValue."
+          format: double
+          nullable: true
+          type: number
+        previousSharesInIssue:
+          description: The share class's units in issue at the start of the period.
+            Reported only for a share class that is unitised.
+          format: double
+          nullable: true
+          type: number
       required:
       - buckets
       - nodeType
@@ -173450,38 +174298,76 @@ components:
         \ via\r\nthe apportionment results."
       example:
         isApportionment: true
+        bucketSetCode: bucketSetCode
         nodes:
-        - nav: 9.965781217890562
+        - sharesInIssue: 6.878052220127876
+          previousSharesInIssue: 6.704019297950036
+          nav: 9.965781217890562
           shareClassShortCode: shareClassShortCode
           buckets:
-          - bucketType: bucketType
+          - unitsInIssue: 6.965117697638846
+            bucketType: bucketType
+            previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
             bucketId: bucketId
+            sourceBreakdown:
+              key: 6.438423552598547
+            cumulativePerUnitValue: 2.8841621266687802
+            perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
-          - bucketType: bucketType
+          - unitsInIssue: 6.965117697638846
+            bucketType: bucketType
+            previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
             bucketId: bucketId
+            sourceBreakdown:
+              key: 6.438423552598547
+            cumulativePerUnitValue: 2.8841621266687802
+            perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
+          previousPerUnitValue: 5.944895607614016
+          perUnitValue: 6.778324963048013
           nodeType: nodeType
           capitalRatio: 9.369310271410669
-        - nav: 9.965781217890562
+        - sharesInIssue: 6.878052220127876
+          previousSharesInIssue: 6.704019297950036
+          nav: 9.965781217890562
           shareClassShortCode: shareClassShortCode
           buckets:
-          - bucketType: bucketType
+          - unitsInIssue: 6.965117697638846
+            bucketType: bucketType
+            previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
             bucketId: bucketId
+            sourceBreakdown:
+              key: 6.438423552598547
+            cumulativePerUnitValue: 2.8841621266687802
+            perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
-          - bucketType: bucketType
+          - unitsInIssue: 6.965117697638846
+            bucketType: bucketType
+            previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
             bucketId: bucketId
+            sourceBreakdown:
+              key: 6.438423552598547
+            cumulativePerUnitValue: 2.8841621266687802
+            perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
+          previousPerUnitValue: 5.944895607614016
+          perUnitValue: 6.778324963048013
           nodeType: nodeType
           capitalRatio: 9.369310271410669
       properties:
+        bucketSetCode:
+          description: "The code of the fund configuration's bucket set definition\
+            \ these results were produced from. Empty for a fund valued from component\
+            \ filters, which has no bucket set definition to name."
+          type: string
         isApportionment:
           description: Whether this bucket set is the apportionment set (apportioning
             non-class-specific P&L across share classes).
@@ -173493,6 +174379,7 @@ components:
             $ref: '#/components/schemas/BucketSetNode'
           type: array
       required:
+      - bucketSetCode
       - isApportionment
       - nodes
       type: object
@@ -173500,11 +174387,19 @@ components:
       additionalProperties: false
       description: "One bucket's values within a bucket set node: the movement in\
         \ the period plus the cumulative values before\r\nand after it (CumulativeValue\
-        \ = Value + PreviousCumulativeValue)."
+        \ = Value + PreviousCumulativeValue), and - on share class nodes - the breakdown\r\
+        \nof the movement by the source that contributed it and the same values restated\
+        \ per unit in issue."
       example:
+        unitsInIssue: 6.965117697638846
         bucketType: bucketType
+        previousCumulativePerUnitValue: 1.284659006116532
         previousCumulativeValue: 8.762042012749001
         bucketId: bucketId
+        sourceBreakdown:
+          key: 6.438423552598547
+        cumulativePerUnitValue: 2.8841621266687802
+        perUnitValue: 3.5571952270680973
         value: 6.683562403749608
         cumulativeValue: 9.018348186070783
       properties:
@@ -173528,6 +174423,47 @@ components:
           description: The cumulative value of the bucket up to the end of the period
             (Value + PreviousCumulativeValue).
           format: double
+          type: number
+        sourceBreakdown:
+          additionalProperties:
+            format: double
+            type: number
+          description: "The bucket's movement broken down by the source that contributed\
+            \ it, which always sums to Value. Set on share class nodes only. The keys\
+            \ are 'classSpecific' for amounts booked directly to the share class,\
+            \ 'nonClassSpecific' for fund-level amounts apportioned to it, and an\
+            \ allocation group's code for amounts allocated to that group and apportioned\
+            \ to the share class. Sources contributing nothing to the bucket are omitted."
+          nullable: true
+          type: object
+        perUnitValue:
+          description: "The bucket's movement over the period per unit in issue (Value\
+            \ divided by UnitsInIssue), in the fund currency, rounded to the share\
+            \ class's PricePrecision. Reported only where both the share class and\
+            \ the bucket are unitised and there are units in issue to divide by."
+          format: double
+          nullable: true
+          type: number
+        unitsInIssue:
+          description: The share class's units in issue at the end of the period.
+            Reported only where both the share class and the bucket are unitised.
+          format: double
+          nullable: true
+          type: number
+        previousCumulativePerUnitValue:
+          description: "The bucket's cumulative value at the start of the period,\
+            \ per unit in issue at that point - so it reads as it did at the previous\
+            \ valuation point rather than being restated at this period's unit count."
+          format: double
+          nullable: true
+          type: number
+        cumulativePerUnitValue:
+          description: The bucket's cumulative value at the end of the period per
+            unit in issue (CumulativeValue divided by UnitsInIssue). Reported only
+            where both the share class and the bucket are unitised and there are units
+            in issue to divide by.
+          format: double
+          nullable: true
           type: number
       required:
       - bucketId
@@ -184823,6 +185759,18 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          mixedLotConstituentsElections:
+            description: "List of possible mixed lot offers for this conversion event,\
+              \ if any. Each election converts the parent position\r\ninto one or\
+              \ more distinct new securities and/or cash legs, taking the place of\
+              \ the single event-level\r\nNewInstrument that the other security-bearing\
+              \ elections resolve to.\r\n\r\nA conversion may carry more than one\
+              \ of these, describing mutually exclusive multi-destination options.\r\
+              \nOnly supported when ConversionType is Regular."
+            items:
+              $ref: '#/components/schemas/MixedLotConstituentsElection'
+            nullable: true
+            type: array
           conversionType:
             description: "The type of conversion. Regular for standard conversions;\
               \ Exchange144A for SEC Rule 144A exchanges.\r\n \r\nSupported string\
@@ -189298,6 +190246,227 @@ components:
       - baseCurrency
       - code
       - displayName
+      type: object
+    CreateTransferRequest:
+      additionalProperties: false
+      description: "A request to create a transfer: the paired transaction legs that\
+        \ move a position, and the Transfer entity\r\nrecording them."
+      example:
+        tradeDateOut: 2000-01-23T04:56:07.000+00:00
+        counterpartyIdIn: counterpartyIdIn
+        custodianAccountIdOut:
+          code: code
+          scope: scope
+        exchangeRateIn: 2.3021358869347655
+        unitsOut: 0.8008281904610115
+        portfolioIdOut:
+          code: code
+          scope: scope
+        pricingMethod: pricingMethod
+        source: source
+        counterpartyIdOut: counterpartyIdOut
+        tradeDateIn: 2000-01-23T04:56:07.000+00:00
+        unitsIn: 6.027456183070403
+        accountingMethod: accountingMethod
+        amountOut: 1.4658129805029452
+        instrumentIdentifierOut: instrumentIdentifierOut
+        exchangeRateOut: 5.637376656633329
+        portfolioIdIn:
+          code: code
+          scope: scope
+        propertiesIn:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+        transferId:
+          code: code
+          scope: scope
+        settlementDateIn: 2000-01-23T04:56:07.000+00:00
+        taxLotStructure: taxLotStructure
+        weightOut: 5.962133916683182
+        instrumentIdentifierIn: instrumentIdentifierIn
+        transactionPriceIn: 9.301444243932576
+        transactionPriceOut: 7.061401241503109
+        settlementDateOut: 2000-01-23T04:56:07.000+00:00
+        custodianAccountIdIn:
+          code: code
+          scope: scope
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        transferId:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdOut:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdIn:
+          $ref: '#/components/schemas/ResourceId'
+        instrumentIdentifierOut:
+          maxLength: 64
+          minLength: 1
+          type: string
+        instrumentIdentifierIn:
+          maxLength: 64
+          minLength: 1
+          type: string
+        pricingMethod:
+          description: "Available values: AtCost, AtPrice."
+          minLength: 1
+          type: string
+        taxLotStructure:
+          description: "Available values: Consolidate, Preserve."
+          nullable: true
+          type: string
+        unitsOut:
+          format: double
+          type: number
+        unitsIn:
+          format: double
+          type: number
+        amountOut:
+          format: double
+          nullable: true
+          type: number
+        weightOut:
+          format: double
+          nullable: true
+          type: number
+        tradeDateOut:
+          format: date-time
+          type: string
+        tradeDateIn:
+          format: date-time
+          type: string
+        settlementDateOut:
+          format: date-time
+          type: string
+        settlementDateIn:
+          format: date-time
+          nullable: true
+          type: string
+        exchangeRateOut:
+          format: double
+          nullable: true
+          type: number
+        exchangeRateIn:
+          format: double
+          nullable: true
+          type: number
+        transactionPriceOut:
+          format: double
+          nullable: true
+          type: number
+        transactionPriceIn:
+          format: double
+          nullable: true
+          type: number
+        counterpartyIdOut:
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        counterpartyIdIn:
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        custodianAccountIdOut:
+          $ref: '#/components/schemas/ResourceId'
+        custodianAccountIdIn:
+          $ref: '#/components/schemas/ResourceId'
+        source:
+          maxLength: 64
+          minLength: 1
+          type: string
+        accountingMethod:
+          description: "Available values: AverageCost, FirstInFirstOut, LastInFirstOut,\
+            \ HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency,\
+            \ IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency,\
+            \ HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency,\
+            \ MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency."
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          nullable: true
+          type: object
+        propertiesIn:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          nullable: true
+          type: object
+      required:
+      - instrumentIdentifierIn
+      - instrumentIdentifierOut
+      - portfolioIdIn
+      - portfolioIdOut
+      - pricingMethod
+      - settlementDateOut
+      - source
+      - tradeDateIn
+      - tradeDateOut
+      - transferId
+      - unitsIn
+      - unitsOut
+      type: object
+    CreateTransferResponse:
+      additionalProperties: false
+      description: "The transfer that was created, and the transaction legs it booked."
+      example:
+        portfolioIdIn:
+          code: code
+          scope: scope
+        portfolioIdOut:
+          code: code
+          scope: scope
+        transferType: transferType
+        transferId:
+          code: code
+          scope: scope
+        transactionIdOut: transactionIdOut
+        transactionIdIn: transactionIdIn
+      properties:
+        transferId:
+          $ref: '#/components/schemas/ResourceId'
+        transferType:
+          nullable: true
+          type: string
+        portfolioIdOut:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdIn:
+          $ref: '#/components/schemas/ResourceId'
+        transactionIdOut:
+          nullable: true
+          type: string
+        transactionIdIn:
+          nullable: true
+          type: string
       type: object
     CreateUnitDefinition:
       additionalProperties: false
@@ -194568,6 +195737,85 @@ components:
       - sourceEntityId
       - targetEntityId
       type: object
+    DeleteTransferAgencyOrderRequest:
+      additionalProperties: false
+      example:
+        orderId:
+          code: code
+          scope: scope
+      properties:
+        orderId:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - orderId
+      type: object
+    DeleteTransferAgencyOrderResult:
+      additionalProperties: false
+      example:
+        cancelledTransactionIds:
+        - cancelledTransactionIds
+        - cancelledTransactionIds
+        orderId:
+          code: code
+          scope: scope
+      properties:
+        orderId:
+          $ref: '#/components/schemas/ResourceId'
+        cancelledTransactionIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    DeleteTransferAgencyOrdersResponse:
+      additionalProperties: false
+      example:
+        successes:
+          key:
+            cancelledTransactionIds:
+            - cancelledTransactionIds
+            - cancelledTransactionIds
+            orderId:
+              code: code
+              scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+      properties:
+        successes:
+          additionalProperties:
+            $ref: '#/components/schemas/DeleteTransferAgencyOrderResult'
+          description: "A dictionary of successfully deleted orders, keyed by the\
+            \ request key."
+          nullable: true
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: "A dictionary of failed order deletion attempts, keyed by the\
+            \ request key, containing error details."
+          nullable: true
+          type: object
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
     DelistingEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -196600,6 +197848,19 @@ components:
               \ the offer (NOAC)."
             items:
               $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          mixedLotConstituentsElections:
+            description: "List of possible MixedLotConstituentsElections for this\
+              \ event, if any. Each election settles into one or more\r\ndistinct\
+              \ new securities and/or cash legs of its own, in place of the single\
+              \ event-level NewInstrument the\r\nSecurityOffer and CashAndSecurityOffer\
+              \ paths resolve to.\r\n\r\nSeveral may be present: a Dutch Auction commonly\
+              \ offers a number of mutually exclusive destinations, and each\r\nis\
+              \ described by its own election. Not applicable to the CASH path, which\
+              \ has no security leg to multiply."
+            items:
+              $ref: '#/components/schemas/MixedLotConstituentsElection'
             nullable: true
             type: array
           responseDeadlineDate:
@@ -203316,6 +204577,9 @@ components:
         yearEndDate:
           month: 7
           day: 5
+        fundInstrument:
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
         fundConfigurationId:
           code: code
           scope: scope
@@ -203376,24 +204640,23 @@ components:
         baseCurrency: baseCurrency
         decimalPlaces: 18
         shareClasses:
-        - pricePrecision: 4
-          launchPrice: 2.3021358869347655
+        - launchPrice: 2.3021358869347655
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
           description: description
-          roundingConventions:
-          - precision: 7
-            roundingType: roundingType
-          - precision: 7
-            roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
-          roundingConventionsUnits:
-          - precision: 7
+          roundingConventionsPrice:
+          - precision: 2
             roundingType: roundingType
-          - precision: 7
+          - precision: 2
+            roundingType: roundingType
+          roundingConventionsUnits:
+          - precision: 2
+            roundingType: roundingType
+          - precision: 2
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -203424,26 +204687,24 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          fundShareClassType: fundShareClassType
-          unitsPrecision: 2
-        - pricePrecision: 4
-          launchPrice: 2.3021358869347655
+          investorType: investorType
+        - launchPrice: 2.3021358869347655
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
           description: description
-          roundingConventions:
-          - precision: 7
-            roundingType: roundingType
-          - precision: 7
-            roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
-          roundingConventionsUnits:
-          - precision: 7
+          roundingConventionsPrice:
+          - precision: 2
             roundingType: roundingType
-          - precision: 7
+          - precision: 2
+            roundingType: roundingType
+          roundingConventionsUnits:
+          - precision: 2
+            roundingType: roundingType
+          - precision: 2
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -203474,8 +204735,7 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          fundShareClassType: fundShareClassType
-          unitsPrecision: 2
+          investorType: investorType
         inceptionDate: 2000-01-23T04:56:07.000+00:00
         primaryNavType:
           subHoldingKeys:
@@ -203736,6 +204996,8 @@ components:
             $ref: '#/components/schemas/ShareClass'
           nullable: true
           type: array
+        fundInstrument:
+          $ref: '#/components/schemas/FundInstrument'
         version:
           $ref: '#/components/schemas/Version'
         links:
@@ -205211,24 +206473,23 @@ components:
         baseCurrency: baseCurrency
         decimalPlaces: 2
         shareClasses:
-        - pricePrecision: 5
-          launchPrice: 6.027456183070403
+        - launchPrice: 6.027456183070403
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
           description: description
-          roundingConventions:
-          - precision: 7
-            roundingType: roundingType
-          - precision: 7
-            roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
-          roundingConventionsUnits:
-          - precision: 7
+          roundingConventionsPrice:
+          - precision: 2
             roundingType: roundingType
-          - precision: 7
+          - precision: 2
+            roundingType: roundingType
+          roundingConventionsUnits:
+          - precision: 2
+            roundingType: roundingType
+          - precision: 2
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -205259,26 +206520,24 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          fundShareClassType: fundShareClassType
-          unitsPrecision: 1
-        - pricePrecision: 5
-          launchPrice: 6.027456183070403
+          investorType: investorType
+        - launchPrice: 6.027456183070403
           distributionType: distributionType
           domCcy: domCcy
           shareClassShortCode: shareClassShortCode
           description: description
-          roundingConventions:
-          - precision: 7
-            roundingType: roundingType
-          - precision: 7
-            roundingType: roundingType
           instrumentIdentifiers:
             key: instrumentIdentifiers
           launchDate: 2000-01-23T04:56:07.000+00:00
-          roundingConventionsUnits:
-          - precision: 7
+          roundingConventionsPrice:
+          - precision: 2
             roundingType: roundingType
-          - precision: 7
+          - precision: 2
+            roundingType: roundingType
+          roundingConventionsUnits:
+          - precision: 2
+            roundingType: roundingType
+          - precision: 2
             roundingType: roundingType
           distributionPaymentType: distributionPaymentType
           hedging: hedging
@@ -205309,8 +206568,7 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          fundShareClassType: fundShareClassType
-          unitsPrecision: 1
+          investorType: investorType
         shareClassInstrumentScopes:
         - shareClassInstrumentScopes
         inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -205803,6 +207061,22 @@ components:
         - expectedFundingLegNotional
         - modelOptionsType
         type: object
+    FundInstrument:
+      additionalProperties: false
+      example:
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+      properties:
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: Unique instrument identifiers. Must only point to the same
+            instrument
+          type: object
+      required:
+      - instrumentIdentifiers
+      type: object
     FundJournalEntryLine:
       additionalProperties: false
       description: A Journal Entry line entity specifically for fund valuation point
@@ -206519,6 +207793,9 @@ components:
           yearEndDate:
             month: 7
             day: 5
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
           fundConfigurationId:
             code: code
             scope: scope
@@ -206579,24 +207856,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -206627,26 +207903,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+            investorType: investorType
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -206677,8 +207951,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
+            investorType: investorType
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -206847,6 +208120,9 @@ components:
           yearEndDate:
             month: 7
             day: 5
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
           fundConfigurationId:
             code: code
             scope: scope
@@ -206907,24 +208183,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -206955,26 +208230,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+            investorType: investorType
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -207005,8 +208278,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
+            investorType: investorType
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -207411,24 +208683,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 2
           shareClasses:
-          - pricePrecision: 5
-            launchPrice: 6.027456183070403
+          - launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -207459,26 +208730,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 1
-          - pricePrecision: 5
-            launchPrice: 6.027456183070403
+            investorType: investorType
+          - launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -207509,8 +208778,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 1
+            investorType: investorType
           shareClassInstrumentScopes:
           - shareClassInstrumentScopes
           inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -207677,24 +208945,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 2
           shareClasses:
-          - pricePrecision: 5
-            launchPrice: 6.027456183070403
+          - launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -207725,26 +208992,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 1
-          - pricePrecision: 5
-            launchPrice: 6.027456183070403
+            investorType: investorType
+          - launchPrice: 6.027456183070403
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -207775,8 +209040,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 1
+            investorType: investorType
           shareClassInstrumentScopes:
           - shareClassInstrumentScopes
           inceptionDate: 2000-01-23T04:56:07.000+00:00
@@ -210697,6 +211961,13 @@ components:
       type: object
     GetAddressKeyAliasResponse:
       additionalProperties: false
+      description: "The response to a singular address key alias read. There is deliberately\
+        \ no failure block on this\r\ntype: every route returning it is a singular\
+        \ (or list-of-singular) read, never a batch keyed\r\nlookup, so there is no\
+        \ per-key error to report - an invalid entity is rejected at upsert and\r\n\
+        a failed read fails the whole request. The IGetResponse batch members below\
+        \ throw for the\r\nsame reason; do not reintroduce a Failed property when\
+        \ copying this shape."
       example:
         links:
         - method: method
@@ -210708,13 +211979,6 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
-        failed:
-          id: id
-          detail: detail
-          type: type
-          errorDetails:
-          - key: errorDetails
-          - key: errorDetails
         value:
           code: code
           aliasKey: aliasKey
@@ -210731,8 +211995,6 @@ components:
           type: string
         value:
           $ref: '#/components/schemas/AddressKeyAlias'
-        failed:
-          $ref: '#/components/schemas/ErrorDetail'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -211966,6 +213228,13 @@ components:
       type: object
     GetScenarioResponse:
       additionalProperties: false
+      description: "The response to a singular scenario read. There is deliberately\
+        \ no failure block on this\r\ntype: every route returning it is a singular\
+        \ (or list-of-singular) read, never a batch keyed\r\nlookup, so there is no\
+        \ per-key error to report - an invalid entity is rejected at upsert and\r\n\
+        a failed read fails the whole request. The IGetResponse batch members below\
+        \ throw for the\r\nsame reason; do not reintroduce a Failed property when\
+        \ copying this shape."
       example:
         links:
         - method: method
@@ -211977,15 +213246,9 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
-        failed:
-          id: id
-          detail: detail
-          type: type
-          errorDetails:
-          - key: errorDetails
-          - key: errorDetails
         value:
           code: code
+          scenarioType: scenarioType
           displayName: displayName
           scope: scope
           description: description
@@ -211995,6 +213258,7 @@ components:
           - scenarioShiftType: RateCurveShiftDefinition
           - scenarioShiftType: RateCurveShiftDefinition
           - scenarioShiftType: RateCurveShiftDefinition
+          shortCode: shortCode
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -212018,8 +213282,6 @@ components:
           $ref: '#/components/schemas/ScenarioDefinition'
         version:
           $ref: '#/components/schemas/Version'
-        failed:
-          $ref: '#/components/schemas/ErrorDetail'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -212084,6 +213346,13 @@ components:
       type: object
     GetSubscriptionResponse:
       additionalProperties: false
+      description: "The response to a singular subscription read. There is deliberately\
+        \ no failure block on this\r\ntype: every route returning it is a singular\
+        \ (or list-of-singular) read, never a batch keyed\r\nlookup, so there is no\
+        \ per-key error to report - an invalid entity is rejected at upsert and\r\n\
+        a failed read fails the whole request. The IGetResponse batch members below\
+        \ throw for the\r\nsame reason; do not reintroduce a Failed property when\
+        \ copying this shape."
       example:
         links:
         - method: method
@@ -212095,13 +213364,6 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
-        failed:
-          id: id
-          detail: detail
-          type: type
-          errorDetails:
-          - key: errorDetails
-          - key: errorDetails
         value:
           endEffectiveAt: 2000-01-23T04:56:07.000+00:00
           code: code
@@ -212130,8 +213392,6 @@ components:
           type: string
         value:
           $ref: '#/components/schemas/SubscriptionDefinition'
-        failed:
-          $ref: '#/components/schemas/ErrorDetail'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -229357,6 +230617,17 @@ components:
               $ref: '#/components/schemas/CashOfferElection'
             nullable: true
             type: array
+          mixedLotConstituentsElections:
+            description: "List of possible mixed lot offers for this merger event,\
+              \ if any. Each election replaces the parent position\r\nwith one or\
+              \ more distinct new securities and/or cash legs of its own, taking the\
+              \ place of the single\r\nevent-level NewInstrument that the other security-bearing\
+              \ elections resolve to.\r\n\r\nA merger may carry more than one of these,\
+              \ describing mutually exclusive multi-destination options."
+            items:
+              $ref: '#/components/schemas/MixedLotConstituentsElection'
+            nullable: true
+            type: array
           exDate:
             description: The first date on which the holder of record of the original
               shares has entitled ownership of the new shares.
@@ -229657,6 +230928,7 @@ components:
       additionalProperties: false
       properties:
         electionKey:
+          minLength: 1
           type: string
         isDefault:
           type: boolean
@@ -239447,6 +240719,9 @@ components:
           yearEndDate:
             month: 7
             day: 5
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
           fundConfigurationId:
             code: code
             scope: scope
@@ -239507,24 +240782,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -239555,26 +240829,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+            investorType: investorType
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -239605,8 +240877,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
+            investorType: investorType
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -239775,6 +241046,9 @@ components:
           yearEndDate:
             month: 7
             day: 5
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
           fundConfigurationId:
             code: code
             scope: scope
@@ -239835,24 +241109,23 @@ components:
           baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -239883,26 +241156,24 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
-          - pricePrecision: 4
-            launchPrice: 2.3021358869347655
+            investorType: investorType
+          - launchPrice: 2.3021358869347655
             distributionType: distributionType
             domCcy: domCcy
             shareClassShortCode: shareClassShortCode
             description: description
-            roundingConventions:
-            - precision: 7
-              roundingType: roundingType
-            - precision: 7
-              roundingType: roundingType
             instrumentIdentifiers:
               key: instrumentIdentifiers
             launchDate: 2000-01-23T04:56:07.000+00:00
-            roundingConventionsUnits:
-            - precision: 7
+            roundingConventionsPrice:
+            - precision: 2
               roundingType: roundingType
-            - precision: 7
+            - precision: 2
+              roundingType: roundingType
+            roundingConventionsUnits:
+            - precision: 2
+              roundingType: roundingType
+            - precision: 2
               roundingType: roundingType
             distributionPaymentType: distributionPaymentType
             hedging: hedging
@@ -239933,8 +241204,7 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
-            fundShareClassType: fundShareClassType
-            unitsPrecision: 2
+            investorType: investorType
           inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
@@ -240649,6 +241919,9 @@ components:
             yearEndDate:
               month: 7
               day: 5
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
             fundConfigurationId:
               code: code
               scope: scope
@@ -240709,24 +241982,23 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -240757,26 +242029,24 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+              investorType: investorType
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -240807,8 +242077,7 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
+              investorType: investorType
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -240977,6 +242246,9 @@ components:
             yearEndDate:
               month: 7
               day: 5
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
             fundConfigurationId:
               code: code
               scope: scope
@@ -241037,24 +242309,23 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241085,26 +242356,24 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+              investorType: investorType
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241135,8 +242404,7 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
+              investorType: investorType
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -241396,6 +242664,9 @@ components:
             yearEndDate:
               month: 7
               day: 5
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
             fundConfigurationId:
               code: code
               scope: scope
@@ -241456,24 +242727,23 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241504,26 +242774,24 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+              investorType: investorType
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241554,8 +242822,7 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
+              investorType: investorType
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -241724,6 +242991,9 @@ components:
             yearEndDate:
               month: 7
               day: 5
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
             fundConfigurationId:
               code: code
               scope: scope
@@ -241784,24 +243054,23 @@ components:
             baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241832,26 +243101,24 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
-            - pricePrecision: 4
-              launchPrice: 2.3021358869347655
+              investorType: investorType
+            - launchPrice: 2.3021358869347655
               distributionType: distributionType
               domCcy: domCcy
               shareClassShortCode: shareClassShortCode
               description: description
-              roundingConventions:
-              - precision: 7
-                roundingType: roundingType
-              - precision: 7
-                roundingType: roundingType
               instrumentIdentifiers:
                 key: instrumentIdentifiers
               launchDate: 2000-01-23T04:56:07.000+00:00
-              roundingConventionsUnits:
-              - precision: 7
+              roundingConventionsPrice:
+              - precision: 2
                 roundingType: roundingType
-              - precision: 7
+              - precision: 2
+                roundingType: roundingType
+              roundingConventionsUnits:
+              - precision: 2
+                roundingType: roundingType
+              - precision: 2
                 roundingType: roundingType
               distributionPaymentType: distributionPaymentType
               hedging: hedging
@@ -241882,8 +243149,7 @@ components:
                       - values
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
-              fundShareClassType: fundShareClassType
-              unitsPrecision: 2
+              investorType: investorType
             inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
@@ -242310,13 +243576,6 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             code: code
             aliasKey: aliasKey
@@ -242336,13 +243595,6 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             code: code
             aliasKey: aliasKey
@@ -242401,15 +243653,9 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             code: code
+            scenarioType: scenarioType
             displayName: displayName
             scope: scope
             description: description
@@ -242419,6 +243665,7 @@ components:
             - scenarioShiftType: RateCurveShiftDefinition
             - scenarioShiftType: RateCurveShiftDefinition
             - scenarioShiftType: RateCurveShiftDefinition
+            shortCode: shortCode
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -242443,15 +243690,9 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             code: code
+            scenarioType: scenarioType
             displayName: displayName
             scope: scope
             description: description
@@ -242461,6 +243702,7 @@ components:
             - scenarioShiftType: RateCurveShiftDefinition
             - scenarioShiftType: RateCurveShiftDefinition
             - scenarioShiftType: RateCurveShiftDefinition
+            shortCode: shortCode
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -242524,13 +243766,6 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
@@ -242562,13 +243797,6 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
-          failed:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
           value:
             endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
@@ -295795,6 +297023,7 @@ components:
       additionalProperties: false
       example:
         code: code
+        scenarioType: scenarioType
         displayName: displayName
         scope: scope
         description: description
@@ -295804,6 +297033,7 @@ components:
         - scenarioShiftType: RateCurveShiftDefinition
         - scenarioShiftType: RateCurveShiftDefinition
         - scenarioShiftType: RateCurveShiftDefinition
+        shortCode: shortCode
       properties:
         scope:
           maxLength: 64
@@ -295826,6 +297056,25 @@ components:
           nullable: true
           pattern: "^[\\s\\S]*$"
           type: string
+        shortCode:
+          description: "A short, memorable identifier for the scenario, for use in\
+            \ reporting. Optional on upsert:\r\nwhen omitted, reads return a value\
+            \ inferred from the display name (falling back to the\r\ncode) rather\
+            \ than null; the inferred value is computed fresh on every read and is\
+            \ never\r\npersisted. When supplied, the value is stored and returned\
+            \ verbatim. Independent of\r\nscenarioType."
+          maxLength: 10
+          minLength: 0
+          nullable: true
+          pattern: "^[A-Za-z0-9\\-_]*$"
+          type: string
+        scenarioType:
+          description: "Classifies the scenario. Required on upsert; supported string\
+            \ (enumeration) values are:\r\n[Historical, Regulatory, Hypothetical].\
+            \ Independent of shortCode. Available values: Historical, Regulatory,\
+            \ Hypothetical."
+          minLength: 1
+          type: string
         shifts:
           items:
             $ref: '#/components/schemas/ScenarioShiftDefinition'
@@ -295834,6 +297083,7 @@ components:
           type: array
       required:
       - code
+      - scenarioType
       - scope
       type: object
     ScenarioDiagnostics:
@@ -299960,24 +301210,23 @@ components:
     ShareClass:
       additionalProperties: false
       example:
-        pricePrecision: 4
         launchPrice: 2.3021358869347655
         distributionType: distributionType
         domCcy: domCcy
         shareClassShortCode: shareClassShortCode
         description: description
-        roundingConventions:
-        - precision: 7
-          roundingType: roundingType
-        - precision: 7
-          roundingType: roundingType
         instrumentIdentifiers:
           key: instrumentIdentifiers
         launchDate: 2000-01-23T04:56:07.000+00:00
-        roundingConventionsUnits:
-        - precision: 7
+        roundingConventionsPrice:
+        - precision: 2
           roundingType: roundingType
-        - precision: 7
+        - precision: 2
+          roundingType: roundingType
+        roundingConventionsUnits:
+        - precision: 2
+          roundingType: roundingType
+        - precision: 2
           roundingType: roundingType
         distributionPaymentType: distributionPaymentType
         hedging: hedging
@@ -300008,8 +301257,7 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
-        fundShareClassType: fundShareClassType
-        unitsPrecision: 2
+        investorType: investorType
       properties:
         instrumentIdentifiers:
           additionalProperties:
@@ -300056,9 +301304,8 @@ components:
             Instrument. Only applied when createInstrument is true.
           nullable: true
           type: object
-        fundShareClassType:
-          description: "The Type of Share Class. Available values: Unitised, Inactive,\
-            \ Series, PrivateEquity, Partnership."
+        investorType:
+          description: "The Type of Share Class. Available values: Unitised."
           minLength: 1
           type: string
         distributionType:
@@ -300071,17 +301318,7 @@ components:
           type: string
         tradingConventions:
           $ref: '#/components/schemas/TradingConventions'
-        unitsPrecision:
-          description: Decimal places for the share class units.
-          format: int32
-          nullable: true
-          type: integer
-        pricePrecision:
-          description: Decimal places for the share class price.
-          format: int32
-          nullable: true
-          type: integer
-        roundingConventions:
+        roundingConventionsPrice:
           description: Rounding conventions used for the ShareClass quotes.
           items:
             $ref: '#/components/schemas/SimpleRoundingConvention'
@@ -300107,7 +301344,7 @@ components:
           type: string
       required:
       - domCcy
-      - fundShareClassType
+      - investorType
       - name
       - shareClassShortCode
       type: object
@@ -300383,24 +301620,23 @@ components:
     ShareClassDefinition:
       additionalProperties: false
       example:
-        pricePrecision: 5
         launchPrice: 6.027456183070403
         distributionType: distributionType
         domCcy: domCcy
         shareClassShortCode: shareClassShortCode
         description: description
-        roundingConventions:
-        - precision: 7
-          roundingType: roundingType
-        - precision: 7
-          roundingType: roundingType
         instrumentIdentifiers:
           key: instrumentIdentifiers
         launchDate: 2000-01-23T04:56:07.000+00:00
-        roundingConventionsUnits:
-        - precision: 7
+        roundingConventionsPrice:
+        - precision: 2
           roundingType: roundingType
-        - precision: 7
+        - precision: 2
+          roundingType: roundingType
+        roundingConventionsUnits:
+        - precision: 2
+          roundingType: roundingType
+        - precision: 2
           roundingType: roundingType
         distributionPaymentType: distributionPaymentType
         hedging: hedging
@@ -300431,8 +301667,7 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
-        fundShareClassType: fundShareClassType
-        unitsPrecision: 1
+        investorType: investorType
       properties:
         instrumentIdentifiers:
           additionalProperties:
@@ -300478,9 +301713,8 @@ components:
             Instrument. Only applied when createInstrument is true.
           nullable: true
           type: object
-        fundShareClassType:
-          description: "The Type of Share Class. Available values: Unitised, Inactive,\
-            \ Series, PrivateEquity, Partnership."
+        investorType:
+          description: "The Type of Share Class. Available values: Unitised."
           minLength: 1
           type: string
         distributionType:
@@ -300493,17 +301727,7 @@ components:
           type: string
         tradingConventions:
           $ref: '#/components/schemas/TradingConventions'
-        unitsPrecision:
-          description: Decimal places for the share class units.
-          format: int32
-          nullable: true
-          type: integer
-        pricePrecision:
-          description: Decimal places for the share class price.
-          format: int32
-          nullable: true
-          type: integer
-        roundingConventions:
+        roundingConventionsPrice:
           description: Rounding conventions used for the ShareClass quotes.
           items:
             $ref: '#/components/schemas/SimpleRoundingConvention'
@@ -300529,8 +301753,8 @@ components:
           type: string
       required:
       - domCcy
-      - fundShareClassType
       - instrumentIdentifiers
+      - investorType
       - name
       - shareClassShortCode
       type: object
@@ -301129,7 +302353,7 @@ components:
         \ example, Thai government bonds will round accrued interest and cashflow\
         \ values 2dp, whereas for\r\nFrench government bonds, the rounding is to 7dp."
       example:
-        precision: 7
+        precision: 2
         roundingType: roundingType
       properties:
         precision:
@@ -303661,6 +304885,17 @@ components:
             description: List of possible CashOfferElections for this event.
             items:
               $ref: '#/components/schemas/CashOfferElection'
+            nullable: true
+            type: array
+          mixedLotConstituentsElections:
+            description: "List of possible mixed lot offers for this tender event,\
+              \ if any. Each election replaces the tendered\r\nposition with one or\
+              \ more distinct new securities and/or cash legs of its own, taking the\
+              \ place of the\r\nsingle event-level NewInstrument that the other security-bearing\
+              \ elections resolve to.\r\n\r\nA tender may carry more than one of these,\
+              \ describing mutually exclusive multi-destination options."
+            items:
+              $ref: '#/components/schemas/MixedLotConstituentsElection'
             nullable: true
             type: array
           offerType:
@@ -314077,6 +315312,14 @@ components:
       type: object
     UnconfirmClosedPeriodRequest:
       additionalProperties: false
+      example:
+        deleteSubsequentPeriods: true
+      properties:
+        deleteSubsequentPeriods:
+          description: Whether to delete every Closed Period that comes after the
+            requested Closed Period on the Timeline. When false (the default) only
+            the latest confirmed Closed Period may be unconfirmed.
+          type: boolean
       type: object
     UnitisationData:
       additionalProperties: false
@@ -324280,6 +325523,7 @@ components:
       example:
         scenario:
           code: code
+          scenarioType: scenarioType
           displayName: displayName
           scope: scope
           description: description
@@ -324289,6 +325533,7 @@ components:
           - scenarioShiftType: RateCurveShiftDefinition
           - scenarioShiftType: RateCurveShiftDefinition
           - scenarioShiftType: RateCurveShiftDefinition
+          shortCode: shortCode
       properties:
         scenario:
           $ref: '#/components/schemas/ScenarioDefinition'
@@ -325047,67 +326292,133 @@ components:
           currency: currency
         bucketSetResults:
         - isApportionment: true
+          bucketSetCode: bucketSetCode
           nodes:
-          - nav: 9.965781217890562
+          - sharesInIssue: 6.878052220127876
+            previousSharesInIssue: 6.704019297950036
+            nav: 9.965781217890562
             shareClassShortCode: shareClassShortCode
             buckets:
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousPerUnitValue: 5.944895607614016
+            perUnitValue: 6.778324963048013
             nodeType: nodeType
             capitalRatio: 9.369310271410669
-          - nav: 9.965781217890562
+          - sharesInIssue: 6.878052220127876
+            previousSharesInIssue: 6.704019297950036
+            nav: 9.965781217890562
             shareClassShortCode: shareClassShortCode
             buckets:
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousPerUnitValue: 5.944895607614016
+            perUnitValue: 6.778324963048013
             nodeType: nodeType
             capitalRatio: 9.369310271410669
         - isApportionment: true
+          bucketSetCode: bucketSetCode
           nodes:
-          - nav: 9.965781217890562
+          - sharesInIssue: 6.878052220127876
+            previousSharesInIssue: 6.704019297950036
+            nav: 9.965781217890562
             shareClassShortCode: shareClassShortCode
             buckets:
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousPerUnitValue: 5.944895607614016
+            perUnitValue: 6.778324963048013
             nodeType: nodeType
             capitalRatio: 9.369310271410669
-          - nav: 9.965781217890562
+          - sharesInIssue: 6.878052220127876
+            previousSharesInIssue: 6.704019297950036
+            nav: 9.965781217890562
             shareClassShortCode: shareClassShortCode
             buckets:
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
-            - bucketType: bucketType
+            - unitsInIssue: 6.965117697638846
+              bucketType: bucketType
+              previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
               bucketId: bucketId
+              sourceBreakdown:
+                key: 6.438423552598547
+              cumulativePerUnitValue: 2.8841621266687802
+              perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousPerUnitValue: 5.944895607614016
+            perUnitValue: 6.778324963048013
             nodeType: nodeType
             capitalRatio: 9.369310271410669
         previousValuationPointCode: previousValuationPointCode
@@ -345364,6 +346675,7 @@ x-tagGroups:
   - Transaction Fees
   - Transaction Portfolios
   - TransferAgency
+  - Transfers
   - Translation
   - Workspace
 x-group-parameters: true

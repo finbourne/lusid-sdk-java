@@ -14,7 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listClosedPeriods**](TimelinesApi.md#listClosedPeriods) | **GET** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] ListClosedPeriods: List ClosedPeriods for a specified Timeline. |
 | [**listTimelines**](TimelinesApi.md#listTimelines) | **GET** /api/timelines | [EXPERIMENTAL] ListTimelines: List Timelines |
 | [**setPostCloseActivity**](TimelinesApi.md#setPostCloseActivity) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity | [EXPERIMENTAL] SetPostCloseActivity: Sets post-close activities to a Closed Period. |
-| [**unconfirmClosedPeriod**](TimelinesApi.md#unconfirmClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity |
+| [**unconfirmClosedPeriod**](TimelinesApi.md#unconfirmClosedPeriod) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity |
 | [**updateTimeline**](TimelinesApi.md#updateTimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code |
 
 
@@ -995,11 +995,11 @@ public class TimelinesApiExample {
 
 ## unconfirmClosedPeriod
 
-> ClosedPeriod unconfirmClosedPeriod(scope, code, closedPeriodId, body)
+> ClosedPeriod unconfirmClosedPeriod(scope, code, closedPeriodId, unconfirmClosedPeriodRequest)
 
-[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
 
-Unconfirm the last confirmed Closed Period against a Timeline Entity
+Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
 
 ### Example
 
@@ -1042,13 +1042,13 @@ public class TimelinesApiExample {
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the specified Timeline.
         String code = "code_example"; // String | The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.
-        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.
-        Object body = {}; // Object | Not in use at the moment
+        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless   deleteSubsequentPeriods is set on the request body.
+        UnconfirmClosedPeriodRequest unconfirmClosedPeriodRequest = new UnconfirmClosedPeriodRequest(); // UnconfirmClosedPeriodRequest | Controls whether a non-latest confirmed Closed Period may be unconfirmed.
         try {
             // uncomment the below to set overrides at the request level
-            // ClosedPeriod result = apiInstance.unconfirmClosedPeriod(scope, code, closedPeriodId, body).execute(opts);
+            // ClosedPeriod result = apiInstance.unconfirmClosedPeriod(scope, code, closedPeriodId, unconfirmClosedPeriodRequest).execute(opts);
 
-            ClosedPeriod result = apiInstance.unconfirmClosedPeriod(scope, code, closedPeriodId, body).execute();
+            ClosedPeriod result = apiInstance.unconfirmClosedPeriod(scope, code, closedPeriodId, unconfirmClosedPeriodRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TimelinesApi#unconfirmClosedPeriod");
@@ -1067,8 +1067,8 @@ public class TimelinesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified Timeline. | |
 | **code** | **String**| The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. | |
-| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline. | |
-| **body** | **Object**| Not in use at the moment | [optional] |
+| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless   deleteSubsequentPeriods is set on the request body. | |
+| **unconfirmClosedPeriodRequest** | [**UnconfirmClosedPeriodRequest**](UnconfirmClosedPeriodRequest.md)| Controls whether a non-latest confirmed Closed Period may be unconfirmed. | [optional] |
 
 ### Return type
 

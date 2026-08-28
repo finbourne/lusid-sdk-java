@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **createInstrument** | **Boolean** | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. | [optional] [default to Boolean]
 **allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Group definitions for the Fund. | [optional] [default to List<AllocationGroup>]
 **shareClasses** | [**List&lt;ShareClass&gt;**](ShareClass.md) | An optional list of Share Class definitions for the Fund. | [optional] [default to List<ShareClass>]
+**fundInstrument** | [**FundInstrument**](FundInstrument.md) |  | [optional] [default to FundInstrument]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -54,6 +55,7 @@ NavType PrimaryNavType = new NavType();
 Boolean CreateInstrument = true;
 @jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
 @jakarta.annotation.Nullable List<ShareClass> ShareClasses = new List<ShareClass>();
+FundInstrument FundInstrument = new FundInstrument();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -79,6 +81,7 @@ Fund fundInstance = new Fund()
     .CreateInstrument(CreateInstrument)
     .AllocationGroups(AllocationGroups)
     .ShareClasses(ShareClasses)
+    .FundInstrument(FundInstrument)
     .Version(Version)
     .Links(Links);
 ```

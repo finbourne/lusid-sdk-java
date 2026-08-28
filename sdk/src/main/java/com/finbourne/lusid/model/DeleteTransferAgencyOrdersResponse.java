@@ -11,7 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.AddressKeyAlias;
+import com.finbourne.lusid.model.DeleteTransferAgencyOrderResult;
+import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,10 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -51,74 +53,90 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The response to a singular address key alias read. There is deliberately no failure block on this  type: every route returning it is a singular (or list-of-singular) read, never a batch keyed  lookup, so there is no per-key error to report - an invalid entity is rejected at upsert and  a failed read fails the whole request. The IGetResponse batch members below throw for the  same reason; do not reintroduce a Failed property when copying this shape.
+ * DeleteTransferAgencyOrdersResponse
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class GetAddressKeyAliasResponse {
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
+public class DeleteTransferAgencyOrdersResponse {
+  public static final String SERIALIZED_NAME_SUCCESSES = "successes";
+  @SerializedName(SERIALIZED_NAME_SUCCESSES)
+  private Map<String, DeleteTransferAgencyOrderResult> successes;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private AddressKeyAlias value;
+  public static final String SERIALIZED_NAME_FAILED = "failed";
+  @SerializedName(SERIALIZED_NAME_FAILED)
+  private Map<String, ErrorDetail> failed;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public GetAddressKeyAliasResponse() {
+  public DeleteTransferAgencyOrdersResponse() {
   }
 
-  public GetAddressKeyAliasResponse href(URI href) {
+  public DeleteTransferAgencyOrdersResponse successes(Map<String, DeleteTransferAgencyOrderResult> successes) {
     
-    this.href = href;
+    this.successes = successes;
+    return this;
+  }
+
+  public DeleteTransferAgencyOrdersResponse putSuccessesItem(String key, DeleteTransferAgencyOrderResult successesItem) {
+    if (this.successes == null) {
+      this.successes = new HashMap<>();
+    }
+    this.successes.put(key, successesItem);
     return this;
   }
 
    /**
-   * Get href
-   * @return href
+   * A dictionary of successfully deleted orders, keyed by the request key.
+   * @return successes
   **/
   @jakarta.annotation.Nullable
-  public URI getHref() {
-    return href;
+  public Map<String, DeleteTransferAgencyOrderResult> getSuccesses() {
+    return successes;
   }
 
 
-  public void setHref(URI href) {
-    this.href = href;
+  public void setSuccesses(Map<String, DeleteTransferAgencyOrderResult> successes) {
+    this.successes = successes;
   }
 
 
-  public GetAddressKeyAliasResponse value(AddressKeyAlias value) {
+  public DeleteTransferAgencyOrdersResponse failed(Map<String, ErrorDetail> failed) {
     
-    this.value = value;
+    this.failed = failed;
+    return this;
+  }
+
+  public DeleteTransferAgencyOrdersResponse putFailedItem(String key, ErrorDetail failedItem) {
+    if (this.failed == null) {
+      this.failed = new HashMap<>();
+    }
+    this.failed.put(key, failedItem);
     return this;
   }
 
    /**
-   * Get value
-   * @return value
+   * A dictionary of failed order deletion attempts, keyed by the request key, containing error details.
+   * @return failed
   **/
   @jakarta.annotation.Nullable
-  public AddressKeyAlias getValue() {
-    return value;
+  public Map<String, ErrorDetail> getFailed() {
+    return failed;
   }
 
 
-  public void setValue(AddressKeyAlias value) {
-    this.value = value;
+  public void setFailed(Map<String, ErrorDetail> failed) {
+    this.failed = failed;
   }
 
 
-  public GetAddressKeyAliasResponse links(List<Link> links) {
+  public DeleteTransferAgencyOrdersResponse links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public GetAddressKeyAliasResponse addLinksItem(Link linksItem) {
+  public DeleteTransferAgencyOrdersResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -150,10 +168,10 @@ public class GetAddressKeyAliasResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetAddressKeyAliasResponse getAddressKeyAliasResponse = (GetAddressKeyAliasResponse) o;
-    return Objects.equals(this.href, getAddressKeyAliasResponse.href) &&
-        Objects.equals(this.value, getAddressKeyAliasResponse.value) &&
-        Objects.equals(this.links, getAddressKeyAliasResponse.links);
+    DeleteTransferAgencyOrdersResponse deleteTransferAgencyOrdersResponse = (DeleteTransferAgencyOrdersResponse) o;
+    return Objects.equals(this.successes, deleteTransferAgencyOrdersResponse.successes) &&
+        Objects.equals(this.failed, deleteTransferAgencyOrdersResponse.failed) &&
+        Objects.equals(this.links, deleteTransferAgencyOrdersResponse.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -162,7 +180,7 @@ public class GetAddressKeyAliasResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, value, links);
+    return Objects.hash(successes, failed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -175,9 +193,9 @@ public class GetAddressKeyAliasResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetAddressKeyAliasResponse {\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class DeleteTransferAgencyOrdersResponse {\n");
+    sb.append("    successes: ").append(toIndentedString(successes)).append("\n");
+    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -201,8 +219,8 @@ public class GetAddressKeyAliasResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("href");
-    openapiFields.add("value");
+    openapiFields.add("successes");
+    openapiFields.add("failed");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -213,22 +231,15 @@ public class GetAddressKeyAliasResponse {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetAddressKeyAliasResponse
+  * @throws IOException if the JSON Element is invalid with respect to DeleteTransferAgencyOrdersResponse
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetAddressKeyAliasResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetAddressKeyAliasResponse is not found in the empty JSON string", GetAddressKeyAliasResponse.openapiRequiredFields.toString()));
+        if (!DeleteTransferAgencyOrdersResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteTransferAgencyOrdersResponse is not found in the empty JSON string", DeleteTransferAgencyOrdersResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
-      // validate the optional field `value`
-      if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
-        AddressKeyAlias.validateJsonElement(jsonObj.get("value"));
-      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {
@@ -249,22 +260,22 @@ public class GetAddressKeyAliasResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetAddressKeyAliasResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetAddressKeyAliasResponse' and its subtypes
+       if (!DeleteTransferAgencyOrdersResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeleteTransferAgencyOrdersResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetAddressKeyAliasResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetAddressKeyAliasResponse.class));
+       final TypeAdapter<DeleteTransferAgencyOrdersResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteTransferAgencyOrdersResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetAddressKeyAliasResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<DeleteTransferAgencyOrdersResponse>() {
            @Override
-           public void write(JsonWriter out, GetAddressKeyAliasResponse value) throws IOException {
+           public void write(JsonWriter out, DeleteTransferAgencyOrdersResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetAddressKeyAliasResponse read(JsonReader in) throws IOException {
+           public DeleteTransferAgencyOrdersResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -275,18 +286,18 @@ public class GetAddressKeyAliasResponse {
   }
 
  /**
-  * Create an instance of GetAddressKeyAliasResponse given an JSON string
+  * Create an instance of DeleteTransferAgencyOrdersResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetAddressKeyAliasResponse
-  * @throws IOException if the JSON string is invalid with respect to GetAddressKeyAliasResponse
+  * @return An instance of DeleteTransferAgencyOrdersResponse
+  * @throws IOException if the JSON string is invalid with respect to DeleteTransferAgencyOrdersResponse
   */
-  public static GetAddressKeyAliasResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetAddressKeyAliasResponse.class);
+  public static DeleteTransferAgencyOrdersResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeleteTransferAgencyOrdersResponse.class);
   }
 
  /**
-  * Convert an instance of GetAddressKeyAliasResponse to an JSON string
+  * Convert an instance of DeleteTransferAgencyOrdersResponse to an JSON string
   *
   * @return JSON string
   */

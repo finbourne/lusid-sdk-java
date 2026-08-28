@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationGroup;
 import com.finbourne.lusid.model.DayMonth;
+import com.finbourne.lusid.model.FundInstrument;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.NavType;
@@ -145,6 +146,10 @@ public class Fund {
   public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
   private List<ShareClass> shareClasses;
+
+  public static final String SERIALIZED_NAME_FUND_INSTRUMENT = "fundInstrument";
+  @SerializedName(SERIALIZED_NAME_FUND_INSTRUMENT)
+  private FundInstrument fundInstrument;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -627,6 +632,27 @@ public class Fund {
   }
 
 
+  public Fund fundInstrument(FundInstrument fundInstrument) {
+    
+    this.fundInstrument = fundInstrument;
+    return this;
+  }
+
+   /**
+   * Get fundInstrument
+   * @return fundInstrument
+  **/
+  @jakarta.annotation.Nullable
+  public FundInstrument getFundInstrument() {
+    return fundInstrument;
+  }
+
+
+  public void setFundInstrument(FundInstrument fundInstrument) {
+    this.fundInstrument = fundInstrument;
+  }
+
+
   public Fund version(Version version) {
     
     this.version = version;
@@ -707,6 +733,7 @@ public class Fund {
         Objects.equals(this.createInstrument, fund.createInstrument) &&
         Objects.equals(this.allocationGroups, fund.allocationGroups) &&
         Objects.equals(this.shareClasses, fund.shareClasses) &&
+        Objects.equals(this.fundInstrument, fund.fundInstrument) &&
         Objects.equals(this.version, fund.version) &&
         Objects.equals(this.links, fund.links);
   }
@@ -717,7 +744,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -751,6 +778,7 @@ public class Fund {
     sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
+    sb.append("    fundInstrument: ").append(toIndentedString(fundInstrument)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -795,6 +823,7 @@ public class Fund {
     openapiFields.add("createInstrument");
     openapiFields.add("allocationGroups");
     openapiFields.add("shareClasses");
+    openapiFields.add("fundInstrument");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -930,6 +959,10 @@ public class Fund {
             ShareClass.validateJsonElement(jsonArrayshareClasses.get(i));
           };
         }
+      }
+      // validate the optional field `fundInstrument`
+      if (jsonObj.get("fundInstrument") != null && !jsonObj.get("fundInstrument").isJsonNull()) {
+        FundInstrument.validateJsonElement(jsonObj.get("fundInstrument"));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

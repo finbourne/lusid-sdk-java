@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ScenarioDefinition;
 import com.finbourne.lusid.model.Version;
@@ -53,7 +52,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * GetScenarioResponse
+ * The response to a singular scenario read. There is deliberately no failure block on this  type: every route returning it is a singular (or list-of-singular) read, never a batch keyed  lookup, so there is no per-key error to report - an invalid entity is rejected at upsert and  a failed read fails the whole request. The IGetResponse batch members below throw for the  same reason; do not reintroduce a Failed property when copying this shape.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GetScenarioResponse {
@@ -68,10 +67,6 @@ public class GetScenarioResponse {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
-
-  public static final String SERIALIZED_NAME_FAILED = "failed";
-  @SerializedName(SERIALIZED_NAME_FAILED)
-  private ErrorDetail failed;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -143,27 +138,6 @@ public class GetScenarioResponse {
   }
 
 
-  public GetScenarioResponse failed(ErrorDetail failed) {
-    
-    this.failed = failed;
-    return this;
-  }
-
-   /**
-   * Get failed
-   * @return failed
-  **/
-  @jakarta.annotation.Nullable
-  public ErrorDetail getFailed() {
-    return failed;
-  }
-
-
-  public void setFailed(ErrorDetail failed) {
-    this.failed = failed;
-  }
-
-
   public GetScenarioResponse links(List<Link> links) {
     
     this.links = links;
@@ -206,7 +180,6 @@ public class GetScenarioResponse {
     return Objects.equals(this.href, getScenarioResponse.href) &&
         Objects.equals(this.value, getScenarioResponse.value) &&
         Objects.equals(this.version, getScenarioResponse.version) &&
-        Objects.equals(this.failed, getScenarioResponse.failed) &&
         Objects.equals(this.links, getScenarioResponse.links);
   }
 
@@ -216,7 +189,7 @@ public class GetScenarioResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, value, version, failed, links);
+    return Objects.hash(href, value, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -233,7 +206,6 @@ public class GetScenarioResponse {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -260,7 +232,6 @@ public class GetScenarioResponse {
     openapiFields.add("href");
     openapiFields.add("value");
     openapiFields.add("version");
-    openapiFields.add("failed");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -290,10 +261,6 @@ public class GetScenarioResponse {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
-      }
-      // validate the optional field `failed`
-      if (jsonObj.get("failed") != null && !jsonObj.get("failed").isJsonNull()) {
-        ErrorDetail.validateJsonElement(jsonObj.get("failed"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
