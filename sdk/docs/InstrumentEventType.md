@@ -116,6 +116,7 @@ InstrumentEventType method = InstrumentEventType.CANCELSWAPEVENT;
 InstrumentEventType method = InstrumentEventType.BONDOPTIONTERMINATIONEVENT;
 InstrumentEventType method = InstrumentEventType.TERMINATIONEVENT;
 InstrumentEventType method = InstrumentEventType.COMMODITYCALENDARSWAPCASHFLOWEVENT;
+InstrumentEventType method = InstrumentEventType.DEPOSITSWEEPEVENT;
 ```
 
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
 **fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
-**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [default to NewInstrument]
+**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the merger takes place. | [optional] [default to OffsetDateTime]
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. Date you have to be the holder of record of the original shares in order to receive the new shares. | [optional] [default to OffsetDateTime]
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible SecurityOfferElections for this merger event | [optional] [default to List<SecurityOfferElection>]

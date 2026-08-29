@@ -338,7 +338,7 @@ public class MergerEvent extends InstrumentEvent {
    * Get newInstrument
    * @return newInstrument
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public NewInstrument getNewInstrument() {
     return newInstrument;
   }
@@ -519,7 +519,6 @@ public class MergerEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("newInstrument");
     openapiRequiredFields.add("instrumentEventType");
   }
 

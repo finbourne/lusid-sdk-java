@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date for both the security and cash legs of the auction. | [optional] [default to OffsetDateTime]
 **marketDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Issuer or acquirer instruction deadline. | [optional] [default to OffsetDateTime]
-**currency** | **String** | Event settlement currency (ISO 4217). | [default to String]
+**currency** | **String** | Event settlement currency (ISO 4217). Optional: when absent the settlement currency is  taken from the elected path (TenderOfferCurrency, CashOfferCurrency or  FractionalUnitsCashCurrency as applicable). | [optional] [default to String]
 **tenderOfferElections** | [**List&lt;TenderOfferElection&gt;**](TenderOfferElection.md) | List of possible TenderOfferElections for this event. Populated on the CASH path (Count &#x3D;&#x3D; 1);  empty on the SECU and CASE paths. | [optional] [default to List<TenderOfferElection>]
 **securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible SecurityOfferElections for this event. Populated on the SECU path (Count &#x3D;&#x3D; 1);  empty on the CASH and CASE paths. | [optional] [default to List<SecurityOfferElection>]
 **cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible CashAndSecurityOfferElections for this event. Populated on the CASE path  (Count &#x3D;&#x3D; 1); empty on the CASH and SECU paths. | [optional] [default to List<CashAndSecurityOfferElection>]
@@ -33,7 +33,7 @@ import java.net.URI;
 
 OffsetDateTime PaymentDate = OffsetDateTime.now();
 OffsetDateTime MarketDeadlineDate = OffsetDateTime.now();
-String Currency = "example Currency";
+@jakarta.annotation.Nullable String Currency = "example Currency";
 @jakarta.annotation.Nullable List<TenderOfferElection> TenderOfferElections = new List<TenderOfferElection>();
 @jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashAndSecurityOfferElection> CashAndSecurityOfferElections = new List<CashAndSecurityOfferElection>();

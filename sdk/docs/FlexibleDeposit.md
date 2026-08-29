@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the instrument. This is normally synonymous with the trade-date. | [default to OffsetDateTime]
 **maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it. | [default to OffsetDateTime]
 **domCcy** | **String** | The domestic currency of the instrument. | [default to String]
+**isStifSweep** | **Boolean** | Indicates this FlexibleDeposit represents a Short Term Investment Fund (STIF) sweep vehicle.  Its balance is derived daily from the portfolio&#39;s eligible cash rather than loaded via manual  events. | [optional] [default to Boolean]
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the deposit instrument. | [default to List<Schedule>]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
@@ -21,6 +22,7 @@ import java.net.URI;
 OffsetDateTime StartDate = OffsetDateTime.now();
 OffsetDateTime MaturityDate = OffsetDateTime.now();
 String DomCcy = "example DomCcy";
+@jakarta.annotation.Nullable Boolean IsStifSweep = true;
 List<Schedule> Schedules = new List<Schedule>();
 TradingConventions TradingConventions = new TradingConventions();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
@@ -30,6 +32,7 @@ FlexibleDeposit flexibleDepositInstance = new FlexibleDeposit()
     .StartDate(StartDate)
     .MaturityDate(MaturityDate)
     .DomCcy(DomCcy)
+    .IsStifSweep(IsStifSweep)
     .Schedules(Schedules)
     .TradingConventions(TradingConventions)
     .TimeZoneConventions(TimeZoneConventions);

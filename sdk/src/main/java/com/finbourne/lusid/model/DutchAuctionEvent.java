@@ -189,10 +189,10 @@ public class DutchAuctionEvent extends InstrumentEvent {
   }
 
    /**
-   * Event settlement currency (ISO 4217).
+   * Event settlement currency (ISO 4217). Optional: when absent the settlement currency is  taken from the elected path (TenderOfferCurrency, CashOfferCurrency or  FractionalUnitsCashCurrency as applicable).
    * @return currency
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getCurrency() {
     return currency;
   }
@@ -696,7 +696,6 @@ public class DutchAuctionEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }
 
