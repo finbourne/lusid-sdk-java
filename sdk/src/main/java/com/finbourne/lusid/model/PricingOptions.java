@@ -72,6 +72,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_RISK_ENGINE)
   private String riskEngine;
 
+  public static final String SERIALIZED_NAME_FIND_OR_CALCULATE = "findOrCalculate";
+  @SerializedName(SERIALIZED_NAME_FIND_OR_CALCULATE)
+  private String findOrCalculate;
+
   public static final String SERIALIZED_NAME_PRODUCE_SEPARATE_RESULT_FOR_LINEAR_OTC_LEGS = "produceSeparateResultForLinearOtcLegs";
   @SerializedName(SERIALIZED_NAME_PRODUCE_SEPARATE_RESULT_FOR_LINEAR_OTC_LEGS)
   private Boolean produceSeparateResultForLinearOtcLegs;
@@ -233,6 +237,27 @@ public class PricingOptions {
 
   public void setRiskEngine(String riskEngine) {
     this.riskEngine = riskEngine;
+  }
+
+
+  public PricingOptions findOrCalculate(String findOrCalculate) {
+    
+    this.findOrCalculate = findOrCalculate;
+    return this;
+  }
+
+   /**
+   * Whether Risk/_* measures may be served from stored results instead of being recomputed.  A stored result is used only when the identity it was computed under (instrument version,  recipe, model and bump configuration, measure options, analytics version, and the content  of every market data dependency) exactly matches the identity computed fresh for this  request - a stale stored result is simply never matched. One of \&quot;Off\&quot; (default: compute  everything - the historical behaviour, used when this is absent), \&quot;Parity\&quot; (look up and  verify stored results but still compute everything, logging any divergence between stored  and computed values - the recommended enablement gate), or \&quot;Enabled\&quot; (serve verified  stored values and recompute only the measures with no verified stored result). Available values: Off, Parity, Enabled.
+   * @return findOrCalculate
+  **/
+  @jakarta.annotation.Nullable
+  public String getFindOrCalculate() {
+    return findOrCalculate;
+  }
+
+
+  public void setFindOrCalculate(String findOrCalculate) {
+    this.findOrCalculate = findOrCalculate;
   }
 
 
@@ -545,6 +570,7 @@ public class PricingOptions {
         Objects.equals(this.allowAnyInstrumentsWithSecUidToPriceOffLookup, pricingOptions.allowAnyInstrumentsWithSecUidToPriceOffLookup) &&
         Objects.equals(this.allowPartiallySuccessfulEvaluation, pricingOptions.allowPartiallySuccessfulEvaluation) &&
         Objects.equals(this.riskEngine, pricingOptions.riskEngine) &&
+        Objects.equals(this.findOrCalculate, pricingOptions.findOrCalculate) &&
         Objects.equals(this.produceSeparateResultForLinearOtcLegs, pricingOptions.produceSeparateResultForLinearOtcLegs) &&
         Objects.equals(this.fxForwardContractsAsUnitsInBothLegs, pricingOptions.fxForwardContractsAsUnitsInBothLegs) &&
         Objects.equals(this.enableUseOfCachedUnitResults, pricingOptions.enableUseOfCachedUnitResults) &&
@@ -567,7 +593,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -586,6 +612,7 @@ public class PricingOptions {
     sb.append("    allowAnyInstrumentsWithSecUidToPriceOffLookup: ").append(toIndentedString(allowAnyInstrumentsWithSecUidToPriceOffLookup)).append("\n");
     sb.append("    allowPartiallySuccessfulEvaluation: ").append(toIndentedString(allowPartiallySuccessfulEvaluation)).append("\n");
     sb.append("    riskEngine: ").append(toIndentedString(riskEngine)).append("\n");
+    sb.append("    findOrCalculate: ").append(toIndentedString(findOrCalculate)).append("\n");
     sb.append("    produceSeparateResultForLinearOtcLegs: ").append(toIndentedString(produceSeparateResultForLinearOtcLegs)).append("\n");
     sb.append("    fxForwardContractsAsUnitsInBothLegs: ").append(toIndentedString(fxForwardContractsAsUnitsInBothLegs)).append("\n");
     sb.append("    enableUseOfCachedUnitResults: ").append(toIndentedString(enableUseOfCachedUnitResults)).append("\n");
@@ -627,6 +654,7 @@ public class PricingOptions {
     openapiFields.add("allowAnyInstrumentsWithSecUidToPriceOffLookup");
     openapiFields.add("allowPartiallySuccessfulEvaluation");
     openapiFields.add("riskEngine");
+    openapiFields.add("findOrCalculate");
     openapiFields.add("produceSeparateResultForLinearOtcLegs");
     openapiFields.add("fxForwardContractsAsUnitsInBothLegs");
     openapiFields.add("enableUseOfCachedUnitResults");
@@ -665,6 +693,9 @@ public class PricingOptions {
       }
       if ((jsonObj.get("riskEngine") != null && !jsonObj.get("riskEngine").isJsonNull()) && !jsonObj.get("riskEngine").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `riskEngine` to be a primitive type in the JSON string but got `%s`", jsonObj.get("riskEngine").toString()));
+      }
+      if ((jsonObj.get("findOrCalculate") != null && !jsonObj.get("findOrCalculate").isJsonNull()) && !jsonObj.get("findOrCalculate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `findOrCalculate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("findOrCalculate").toString()));
       }
       if ((jsonObj.get("conservedQuantityForLookthroughExpansion") != null && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonNull()) && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conservedQuantityForLookthroughExpansion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conservedQuantityForLookthroughExpansion").toString()));

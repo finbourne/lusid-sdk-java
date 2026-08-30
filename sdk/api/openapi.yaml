@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9806
+  version: 0.11.9812
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -103287,6 +103287,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103351,6 +103352,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103435,6 +103437,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103499,6 +103502,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103583,6 +103587,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103647,6 +103652,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -103757,6 +103763,7 @@ paths:
                     allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                     allowPartiallySuccessfulEvaluation: false
                     riskEngine: Bump
+                    findOrCalculate: "Off"
                     produceSeparateResultForLinearOtcLegs: false
                     fxForwardContractsAsUnitsInBothLegs: false
                     enableUseOfCachedUnitResults: false
@@ -103825,6 +103832,7 @@ paths:
                     allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                     allowPartiallySuccessfulEvaluation: false
                     riskEngine: Bump
+                    findOrCalculate: "Off"
                     produceSeparateResultForLinearOtcLegs: false
                     fxForwardContractsAsUnitsInBothLegs: false
                     enableUseOfCachedUnitResults: false
@@ -103893,6 +103901,7 @@ paths:
                     allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                     allowPartiallySuccessfulEvaluation: false
                     riskEngine: Bump
+                    findOrCalculate: "Off"
                     produceSeparateResultForLinearOtcLegs: false
                     fxForwardContractsAsUnitsInBothLegs: false
                     enableUseOfCachedUnitResults: false
@@ -103961,6 +103970,7 @@ paths:
                     allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                     allowPartiallySuccessfulEvaluation: false
                     riskEngine: Bump
+                    findOrCalculate: "Off"
                     produceSeparateResultForLinearOtcLegs: false
                     fxForwardContractsAsUnitsInBothLegs: false
                     enableUseOfCachedUnitResults: false
@@ -104505,6 +104515,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -104581,6 +104592,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -104657,6 +104669,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -104998,6 +105011,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105062,6 +105076,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105146,6 +105161,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105210,6 +105226,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105294,6 +105311,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105358,6 +105376,7 @@ paths:
                         allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                         allowPartiallySuccessfulEvaluation: false
                         riskEngine: Bump
+                        findOrCalculate: "Off"
                         produceSeparateResultForLinearOtcLegs: false
                         fxForwardContractsAsUnitsInBothLegs: false
                         enableUseOfCachedUnitResults: false
@@ -105511,6 +105530,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -105587,6 +105607,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -105663,6 +105684,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -105878,6 +105900,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -105954,6 +105977,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -106030,6 +106054,7 @@ paths:
                       allowAnyInstrumentsWithSecUidToPriceOffLookup: false
                       allowPartiallySuccessfulEvaluation: false
                       riskEngine: Bump
+                      findOrCalculate: "Off"
                       produceSeparateResultForLinearOtcLegs: false
                       fxForwardContractsAsUnitsInBothLegs: false
                       enableUseOfCachedUnitResults: false
@@ -166713,6 +166738,19 @@ components:
       properties:
         asset:
           $ref: '#/components/schemas/LusidInstrument'
+        assetSwapStructure:
+          description: "The relationship between the funding leg's notional and the\
+            \ asset's principal, for a bond-family Asset.\r\nPar (and absent) requires\
+            \ the funding leg's notional to equal the asset's principal; Proceeds\
+            \ allows the\r\nfunding leg's notional to be the market proceeds of the\
+            \ asset instead, sizing the two legs on independent\r\nbases. Optional\
+            \ and absent by default; absence is distinct from Par so that behaviour\
+            \ keyed to the field\r\nbeing supplied fires only when it is.\r\n \r\n\
+            Supported string (enumeration) values are: [Par, Proceeds]."
+          maxLength: 32
+          minLength: 0
+          nullable: true
+          type: string
         incomePolicy:
           description: "Controls what happens to income (coupons, dividends) generated\
             \ by the Asset.\r\nDefaults to PassThrough, preserving today's behaviour\
@@ -185677,6 +185715,7 @@ components:
             mbsValuationUsingHoldingCurrentFace: true
             fxForwardContractsAsUnitsInBothLegs: true
             scaleInstrumentAccruedOverrideByContractSize: true
+            findOrCalculate: findOrCalculate
             convertSrsCashFlowsToPortfolioCurrency: true
             modelSelection:
               library: Lusid
@@ -189472,6 +189511,7 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid
@@ -196857,7 +196897,7 @@ components:
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
             \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-            \ Unknown."
+            \ CapitalInterest, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -214045,6 +214085,7 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid
@@ -263600,6 +263641,7 @@ components:
           mbsValuationUsingHoldingCurrentFace: true
           fxForwardContractsAsUnitsInBothLegs: true
           scaleInstrumentAccruedOverrideByContractSize: true
+          findOrCalculate: findOrCalculate
           convertSrsCashFlowsToPortfolioCurrency: true
           modelSelection:
             library: Lusid
@@ -263796,6 +263838,7 @@ components:
         mbsValuationUsingHoldingCurrentFace: true
         fxForwardContractsAsUnitsInBothLegs: true
         scaleInstrumentAccruedOverrideByContractSize: true
+        findOrCalculate: findOrCalculate
         convertSrsCashFlowsToPortfolioCurrency: true
         modelSelection:
           library: Lusid
@@ -263845,6 +263888,22 @@ components:
             \ where an evaluator exists,\r\nwith silent fallback to Bump elsewhere\
             \ - selecting it can never reduce coverage). Available values: Bump, Adjoint,\
             \ Parity."
+          nullable: true
+          type: string
+        findOrCalculate:
+          description: "Whether Risk/* measures may be served from stored results\
+            \ instead of being recomputed.\r\nA stored result is used only when the\
+            \ identity it was computed under (instrument version,\r\nrecipe, model\
+            \ and bump configuration, measure options, analytics version, and the\
+            \ content\r\nof every market data dependency) exactly matches the identity\
+            \ computed fresh for this\r\nrequest - a stale stored result is simply\
+            \ never matched. One of \"Off\" (default: compute\r\neverything - the\
+            \ historical behaviour, used when this is absent), \"Parity\" (look up\
+            \ and\r\nverify stored results but still compute everything, logging any\
+            \ divergence between stored\r\nand computed values - the recommended enablement\
+            \ gate), or \"Enabled\" (serve verified\r\nstored values and recompute\
+            \ only the measures with no verified stored result). Available values:\
+            \ Off, Parity, Enabled."
           nullable: true
           type: string
         produceSeparateResultForLinearOtcLegs:
@@ -280319,6 +280378,7 @@ components:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
+                findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
                   library: Lusid
@@ -280614,6 +280674,7 @@ components:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
+                findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
                   library: Lusid
@@ -307130,7 +307191,8 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ AmendCommitmentEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -326633,6 +326695,7 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
                 library: Lusid

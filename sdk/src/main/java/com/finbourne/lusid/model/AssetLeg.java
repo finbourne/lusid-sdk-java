@@ -56,6 +56,10 @@ public class AssetLeg {
   @SerializedName(SERIALIZED_NAME_ASSET)
   private LusidInstrument asset;
 
+  public static final String SERIALIZED_NAME_ASSET_SWAP_STRUCTURE = "assetSwapStructure";
+  @SerializedName(SERIALIZED_NAME_ASSET_SWAP_STRUCTURE)
+  private String assetSwapStructure;
+
   public static final String SERIALIZED_NAME_INCOME_POLICY = "incomePolicy";
   @SerializedName(SERIALIZED_NAME_INCOME_POLICY)
   private String incomePolicy;
@@ -93,6 +97,27 @@ public class AssetLeg {
 
   public void setAsset(LusidInstrument asset) {
     this.asset = asset;
+  }
+
+
+  public AssetLeg assetSwapStructure(String assetSwapStructure) {
+    
+    this.assetSwapStructure = assetSwapStructure;
+    return this;
+  }
+
+   /**
+   * The relationship between the funding leg&#39;s notional and the asset&#39;s principal, for a bond-family Asset.  Par (and absent) requires the funding leg&#39;s notional to equal the asset&#39;s principal; Proceeds allows the  funding leg&#39;s notional to be the market proceeds of the asset instead, sizing the two legs on independent  bases. Optional and absent by default; absence is distinct from Par so that behaviour keyed to the field  being supplied fires only when it is.     Supported string (enumeration) values are: [Par, Proceeds].
+   * @return assetSwapStructure
+  **/
+  @jakarta.annotation.Nullable
+  public String getAssetSwapStructure() {
+    return assetSwapStructure;
+  }
+
+
+  public void setAssetSwapStructure(String assetSwapStructure) {
+    this.assetSwapStructure = assetSwapStructure;
   }
 
 
@@ -191,6 +216,7 @@ public class AssetLeg {
     }
     AssetLeg assetLeg = (AssetLeg) o;
     return Objects.equals(this.asset, assetLeg.asset) &&
+        Objects.equals(this.assetSwapStructure, assetLeg.assetSwapStructure) &&
         Objects.equals(this.incomePolicy, assetLeg.incomePolicy) &&
         (this.initialPrice.compareTo(assetLeg.getInitialPrice()) == 0) &&
         Objects.equals(this.payReceive, assetLeg.payReceive) &&
@@ -203,7 +229,7 @@ public class AssetLeg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asset, incomePolicy, initialPrice, payReceive, resetSchedule);
+    return Objects.hash(asset, assetSwapStructure, incomePolicy, initialPrice, payReceive, resetSchedule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -218,6 +244,7 @@ public class AssetLeg {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetLeg {\n");
     sb.append("    asset: ").append(toIndentedString(asset)).append("\n");
+    sb.append("    assetSwapStructure: ").append(toIndentedString(assetSwapStructure)).append("\n");
     sb.append("    incomePolicy: ").append(toIndentedString(incomePolicy)).append("\n");
     sb.append("    initialPrice: ").append(toIndentedString(initialPrice)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
@@ -245,6 +272,7 @@ public class AssetLeg {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("asset");
+    openapiFields.add("assetSwapStructure");
     openapiFields.add("incomePolicy");
     openapiFields.add("initialPrice");
     openapiFields.add("payReceive");
@@ -278,6 +306,9 @@ public class AssetLeg {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `asset`
       LusidInstrument.validateJsonElement(jsonObj.get("asset"));
+      if ((jsonObj.get("assetSwapStructure") != null && !jsonObj.get("assetSwapStructure").isJsonNull()) && !jsonObj.get("assetSwapStructure").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `assetSwapStructure` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assetSwapStructure").toString()));
+      }
       if ((jsonObj.get("incomePolicy") != null && !jsonObj.get("incomePolicy").isJsonNull()) && !jsonObj.get("incomePolicy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `incomePolicy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("incomePolicy").toString()));
       }
