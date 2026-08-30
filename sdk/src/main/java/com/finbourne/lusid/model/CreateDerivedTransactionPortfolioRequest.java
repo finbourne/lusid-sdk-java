@@ -199,6 +199,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
   private String transactionExclusionFilter;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
+  private String taxLotSelectionCostBasis;
+
   public CreateDerivedTransactionPortfolioRequest() {
   }
 
@@ -575,6 +579,27 @@ public class CreateDerivedTransactionPortfolioRequest {
   }
 
 
+  public CreateDerivedTransactionPortfolioRequest taxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+    return this;
+  }
+
+   /**
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost.
+   * @return taxLotSelectionCostBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotSelectionCostBasis() {
+    return taxLotSelectionCostBasis;
+  }
+
+
+  public void setTaxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -601,7 +626,8 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.amortisationRuleSetId, createDerivedTransactionPortfolioRequest.amortisationRuleSetId) &&
         Objects.equals(this.instrumentEventConfiguration, createDerivedTransactionPortfolioRequest.instrumentEventConfiguration) &&
         Objects.equals(this.settlementConfiguration, createDerivedTransactionPortfolioRequest.settlementConfiguration) &&
-        Objects.equals(this.transactionExclusionFilter, createDerivedTransactionPortfolioRequest.transactionExclusionFilter);
+        Objects.equals(this.transactionExclusionFilter, createDerivedTransactionPortfolioRequest.transactionExclusionFilter) &&
+        Objects.equals(this.taxLotSelectionCostBasis, createDerivedTransactionPortfolioRequest.taxLotSelectionCostBasis);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -610,7 +636,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter);
+    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -641,6 +667,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
+    sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -680,6 +707,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("settlementConfiguration");
     openapiFields.add("transactionExclusionFilter");
+    openapiFields.add("taxLotSelectionCostBasis");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -757,6 +785,9 @@ public class CreateDerivedTransactionPortfolioRequest {
       }
       if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
+      }
+      if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
       }
   }
 

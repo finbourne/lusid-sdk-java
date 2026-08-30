@@ -286,6 +286,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
   private String transactionExclusionFilter;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
+  private String taxLotSelectionCostBasis;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -821,6 +825,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio taxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+    return this;
+  }
+
+   /**
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost.
+   * @return taxLotSelectionCostBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotSelectionCostBasis() {
+    return taxLotSelectionCostBasis;
+  }
+
+
+  public void setTaxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -884,6 +909,7 @@ public class Portfolio {
         Objects.equals(this.taxRuleSetScope, portfolio.taxRuleSetScope) &&
         Objects.equals(this.settlementConfiguration, portfolio.settlementConfiguration) &&
         Objects.equals(this.transactionExclusionFilter, portfolio.transactionExclusionFilter) &&
+        Objects.equals(this.taxLotSelectionCostBasis, portfolio.taxLotSelectionCostBasis) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -893,7 +919,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, links);
+    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -931,6 +957,7 @@ public class Portfolio {
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
+    sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -978,6 +1005,7 @@ public class Portfolio {
     openapiFields.add("taxRuleSetScope");
     openapiFields.add("settlementConfiguration");
     openapiFields.add("transactionExclusionFilter");
+    openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1084,6 +1112,9 @@ public class Portfolio {
       }
       if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
+      }
+      if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

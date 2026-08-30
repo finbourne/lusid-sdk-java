@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9812
+  version: 0.11.9814
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -143059,7 +143059,8 @@ paths:
         \ for data already stored.\r\nThe behaviour is defined by the JSON Patch specification.\r\
         \n\r\nCurrently supported fields are: BaseCurrency, AccountingMethod, SubHoldingKeys,\
         \ AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration,\
-        \ AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter."
+        \ AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter,\
+        \ TaxLotSelectionCostBasis."
       operationId: PatchPortfolioDetails
       parameters:
       - description: The scope of the transaction portfolio.
@@ -160638,6 +160639,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -160857,6 +160859,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -161309,6 +161312,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -165930,6 +165934,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -166324,6 +166329,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -169294,6 +169300,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -169707,6 +169714,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -174256,6 +174264,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -188271,6 +188280,7 @@ components:
           code: code
           scope: scope
         enablementDate: 2000-01-23T04:56:07.000+00:00
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         instrumentEventConfiguration:
           transactionTemplateScopes:
           - transactionTemplateScopes
@@ -188396,6 +188406,12 @@ components:
           minLength: 0
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+          nullable: true
           type: string
       required:
       - code
@@ -188916,9 +188932,17 @@ components:
         corporateActionSourceId:
           code: code
           scope: scope
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
       properties:
         corporateActionSourceId:
           $ref: '#/components/schemas/ResourceId'
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ If not supplied, the portfolio's current value is left unchanged; supply\
+            \ Default to reset it. Available values: Cost, AmortisedCost."
+          nullable: true
+          type: string
       type: object
     CreatePortfolioGroupRequest:
       additionalProperties: false
@@ -190291,6 +190315,7 @@ components:
           code: code
           scope: scope
         enablementDate: 2000-01-23T04:56:07.000+00:00
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         properties:
           key:
             referenceData:
@@ -190435,6 +190460,12 @@ components:
           $ref: '#/components/schemas/InstrumentEventConfiguration'
         amortisationRuleSetId:
           $ref: '#/components/schemas/ResourceId'
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+          nullable: true
+          type: string
       required:
       - baseCurrency
       - code
@@ -190965,6 +190996,7 @@ components:
           code: code
           scope: scope
         enablementDate: 2000-01-23T04:56:07.000+00:00
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         properties:
           key:
             referenceData:
@@ -191120,6 +191152,12 @@ components:
           minLength: 0
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+          nullable: true
           type: string
       required:
       - baseCurrency
@@ -192251,6 +192289,7 @@ components:
         custodianAccountId:
           code: code
           scope: scope
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         properties:
           key:
             referenceData:
@@ -192315,6 +192354,14 @@ components:
           minLength: 1
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for disposals from this account. This can be:\
+            \ Cost or AmortisedCost. If not specified, resolution falls through to\
+            \ the transaction type and then the portfolio's default. Available values:\
+            \ Cost, AmortisedCost."
+          nullable: true
           type: string
       required:
       - accountName
@@ -192402,6 +192449,7 @@ components:
         accountingMethod: accountingMethod
         currency: currency
         accountNumber: accountNumber
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         properties:
           key:
             referenceData:
@@ -192484,6 +192532,14 @@ components:
           minLength: 1
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for disposals from this account. This can be:\
+            \ Cost or AmortisedCost. If not specified, resolution falls through to\
+            \ the transaction type and then the portfolio's default. Available values:\
+            \ Cost, AmortisedCost."
+          nullable: true
           type: string
       required:
       - accountName
@@ -192695,6 +192751,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -192911,6 +192968,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -216994,6 +217052,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -223439,6 +223498,7 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             isDerived: true
             amortisationRuleSetId:
               code: code
@@ -223661,6 +223721,7 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             isDerived: true
             amortisationRuleSetId:
               code: code
@@ -225221,6 +225282,7 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           isDerived: true
           amortisationRuleSetId:
             code: code
@@ -231836,7 +231898,11 @@ components:
             nullable: true
             type: array
           cashOfferElections:
-            description: List of possible CashOfferElections for this merger event
+            description: "List of possible CashOfferElections for this merger event.\
+              \ Under ParticipationType.Mandatory\r\na single CashOfferElection may\
+              \ be the event's only election — a cash-only merger — in which\r\ncase\
+              \ no NewInstrument is required. Under ParticipationType.MandatoryWithChoices\
+              \ cash offers\r\nare provided alongside the other elections on the event."
             items:
               $ref: '#/components/schemas/CashOfferElection'
             nullable: true
@@ -236074,6 +236140,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -236293,6 +236360,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -236745,6 +236813,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -240035,6 +240104,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -240251,6 +240321,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -258320,6 +258391,7 @@ components:
           idsPreviewed:
           - idsPreviewed
           - idsPreviewed
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         isDerived: true
         amortisationRuleSetId:
           code: code
@@ -258494,6 +258566,12 @@ components:
           description: A filter expression that identifies transactions to exclude
             when building the transaction portfolio's transactions and holdings. Transactions
             matching this filter are flagged as excluded.
+          nullable: true
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
           nullable: true
           type: string
         links:
@@ -258844,6 +258922,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -259188,6 +259267,7 @@ components:
           idsPreviewed:
           - idsPreviewed
           - idsPreviewed
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
         instrumentEventConfiguration:
           transactionTemplateScopes:
           - transactionTemplateScopes
@@ -259285,6 +259365,12 @@ components:
           nullable: true
           pattern: "^[\\s\\S]*$"
           type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -259302,12 +259388,7 @@ components:
         asAtDeleted: 2000-01-23T04:56:07.000+00:00
         deletedPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -259315,23 +259396,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -259446,7 +259511,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -259491,6 +259555,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -259523,12 +259610,7 @@ components:
         asAtVersionNumber: 0
         prevailingPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -259536,23 +259618,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -259667,7 +259733,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -259712,6 +259777,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -259751,12 +259839,7 @@ components:
         status: status
         previewedPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -259764,23 +259847,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -259895,7 +259962,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -259940,6 +260006,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -260882,6 +260971,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -261102,6 +261192,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -261421,6 +261512,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -262670,12 +262762,7 @@ components:
       description: A list of portfolios.
       example:
         transactionExclusionFilter: transactionExclusionFilter
-        isDerived: true
-        amortisationRuleSetId:
-          code: code
-          scope: scope
         displayName: displayName
-        created: 2000-01-23T04:56:07.000+00:00
         instrumentScopes:
         - instrumentScopes
         - instrumentScopes
@@ -262683,23 +262770,7 @@ components:
         parentPortfolioId:
           code: code
           scope: scope
-        taxRuleSetScope: taxRuleSetScope
         type: Transaction
-        version:
-          stagedModificationIdModified: stagedModificationIdModified
-          reasonModified: reasonModified
-          entityUniqueId: entityUniqueId
-          requestIdModified: requestIdModified
-          reasonCreated: reasonCreated
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 1
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          requestIdCreated: requestIdCreated
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-        transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
         relationships:
         - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -262814,7 +262885,6 @@ components:
             code: code
             scope: scope
           traversalDescription: traversalDescription
-        amortisationMethod: amortisationMethod
         settlementConfiguration:
           cashSettlement:
             calculateInstructionToPortfolioRate: true
@@ -262859,6 +262929,29 @@ components:
           idsPreviewed:
           - idsPreviewed
           - idsPreviewed
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
+        isDerived: true
+        amortisationRuleSetId:
+          code: code
+          scope: scope
+        created: 2000-01-23T04:56:07.000+00:00
+        taxRuleSetScope: taxRuleSetScope
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        transactionTypeScope: transactionTypeScope
+        amortisationMethod: amortisationMethod
         enablementDate: 2000-01-23T04:56:07.000+00:00
         properties:
           key:
@@ -263005,6 +263098,12 @@ components:
           description: A filter expression that identifies transactions to exclude
             when building the transaction portfolio's transactions and holdings. Transactions
             matching this filter are flagged as excluded.
+          nullable: true
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
           nullable: true
           type: string
         links:
@@ -269061,6 +269160,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -269460,6 +269560,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -274092,6 +274193,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -275393,6 +275495,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -275787,6 +275890,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -276344,6 +276448,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -276738,6 +276843,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -281370,6 +281476,7 @@ components:
                 idsPreviewed:
                 - idsPreviewed
                 - idsPreviewed
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               isDerived: true
               amortisationRuleSetId:
                 code: code
@@ -281592,6 +281699,7 @@ components:
                 idsPreviewed:
                 - idsPreviewed
                 - idsPreviewed
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               isDerived: true
               amortisationRuleSetId:
                 code: code
@@ -283102,6 +283210,7 @@ components:
                 idsPreviewed:
                 - idsPreviewed
                 - idsPreviewed
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               isDerived: true
               amortisationRuleSetId:
                 code: code
@@ -283324,6 +283433,7 @@ components:
                 idsPreviewed:
                 - idsPreviewed
                 - idsPreviewed
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               isDerived: true
               amortisationRuleSetId:
                 code: code
@@ -287517,6 +287627,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -287736,6 +287847,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -288188,6 +288300,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -288503,6 +288616,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -288722,6 +288836,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -289174,6 +289289,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -290461,6 +290577,7 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           isDerived: true
           amortisationRuleSetId:
             code: code
@@ -290677,6 +290794,7 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           isDerived: true
           amortisationRuleSetId:
             code: code
@@ -291096,6 +291214,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -291543,6 +291662,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -293842,6 +293962,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -294236,6 +294357,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -295470,6 +295592,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -295689,6 +295812,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -296141,6 +296265,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -296547,6 +296672,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -296766,6 +296892,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -297218,6 +297345,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -300186,6 +300314,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -300405,6 +300534,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -300857,6 +300987,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -301791,6 +301922,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -302010,6 +302142,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -302462,6 +302595,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -308255,6 +308389,7 @@ components:
           custodianAccountId:
             code: code
             scope: scope
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
           properties:
             key:
               referenceData:
@@ -309095,12 +309230,7 @@ components:
         asAtDeleted: 2000-01-23T04:56:07.000+00:00
         deletedPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -309108,23 +309238,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -309239,7 +309353,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -309284,6 +309397,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -309594,6 +309730,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -309710,12 +309847,7 @@ components:
               status: status
         prevailingPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -309723,23 +309855,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -309854,7 +309970,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -309899,6 +310014,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -310205,6 +310343,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -310600,6 +310739,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -310728,12 +310868,7 @@ components:
         status: status
         previewedPortfolio:
           transactionExclusionFilter: transactionExclusionFilter
-          isDerived: true
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
           instrumentScopes:
           - instrumentScopes
           - instrumentScopes
@@ -310741,23 +310876,7 @@ components:
           parentPortfolioId:
             code: code
             scope: scope
-          taxRuleSetScope: taxRuleSetScope
           type: Transaction
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -310872,7 +310991,6 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -310917,6 +311035,29 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
           enablementDate: 2000-01-23T04:56:07.000+00:00
           properties:
             key:
@@ -313624,6 +313765,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -314023,6 +314165,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -314418,6 +314561,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -314817,6 +314961,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -317333,6 +317478,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -317552,6 +317698,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -318004,6 +318151,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -323313,6 +323461,7 @@ components:
                   idsPreviewed:
                   - idsPreviewed
                   - idsPreviewed
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 isDerived: true
                 amortisationRuleSetId:
                   code: code
@@ -323535,6 +323684,7 @@ components:
                   idsPreviewed:
                   - idsPreviewed
                   - idsPreviewed
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 isDerived: true
                 amortisationRuleSetId:
                   code: code
@@ -329547,6 +329697,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -329766,6 +329917,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -330218,6 +330370,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -330545,6 +330698,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -330764,6 +330918,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -331216,6 +331371,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -333004,6 +333160,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -333223,6 +333380,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -333675,6 +333833,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -334005,6 +334164,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -334224,6 +334384,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -334676,6 +334837,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -337070,6 +337232,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -337487,6 +337650,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -338083,6 +338247,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -338302,6 +338467,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -338754,6 +338920,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -339069,6 +339236,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -339288,6 +339456,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -339740,6 +339909,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -340175,6 +340345,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -340395,6 +340566,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -340714,6 +340886,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -341093,6 +341266,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -341313,6 +341487,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -341632,6 +341807,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -342082,6 +342258,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -342476,6 +342653,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -343294,6 +343472,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -343513,6 +343692,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -343965,6 +344145,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -344347,6 +344528,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -344566,6 +344748,7 @@ components:
                 custodianAccountId:
                   code: code
                   scope: scope
+                taxLotSelectionCostBasis: taxLotSelectionCostBasis
                 properties:
                   key:
                     referenceData:
@@ -345018,6 +345201,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -345455,6 +345639,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -345675,6 +345860,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -345994,6 +346180,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -346373,6 +346560,7 @@ components:
             custodianAccountId:
               code: code
               scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
             properties:
               key:
                 referenceData:
@@ -346593,6 +346781,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:
@@ -346912,6 +347101,7 @@ components:
               custodianAccountId:
                 code: code
                 scope: scope
+              taxLotSelectionCostBasis: taxLotSelectionCostBasis
               properties:
                 key:
                   referenceData:

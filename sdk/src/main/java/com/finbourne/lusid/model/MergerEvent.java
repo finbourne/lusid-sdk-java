@@ -180,7 +180,7 @@ public class MergerEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible CashOfferElections for this merger event
+   * List of possible CashOfferElections for this merger event. Under ParticipationType.Mandatory  a single CashOfferElection may be the event&#39;s only election — a cash-only merger — in which  case no NewInstrument is required. Under ParticipationType.MandatoryWithChoices cash offers  are provided alongside the other elections on the event.
    * @return cashOfferElections
   **/
   @jakarta.annotation.Nullable

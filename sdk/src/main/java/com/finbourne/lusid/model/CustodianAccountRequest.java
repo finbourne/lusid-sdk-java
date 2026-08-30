@@ -94,6 +94,10 @@ public class CustodianAccountRequest {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
   private String accountType;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
+  private String taxLotSelectionCostBasis;
+
   public CustodianAccountRequest() {
   }
 
@@ -315,6 +319,27 @@ public class CustodianAccountRequest {
   }
 
 
+  public CustodianAccountRequest taxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+    return this;
+  }
+
+   /**
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for disposals from this account. This can be: Cost or AmortisedCost. If not specified, resolution falls through to the transaction type and then the portfolio&#39;s default. Available values: Cost, AmortisedCost.
+   * @return taxLotSelectionCostBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotSelectionCostBasis() {
+    return taxLotSelectionCostBasis;
+  }
+
+
+  public void setTaxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -334,7 +359,8 @@ public class CustodianAccountRequest {
         Objects.equals(this.currency, custodianAccountRequest.currency) &&
         Objects.equals(this.properties, custodianAccountRequest.properties) &&
         Objects.equals(this.custodianIdentifier, custodianAccountRequest.custodianIdentifier) &&
-        Objects.equals(this.accountType, custodianAccountRequest.accountType);
+        Objects.equals(this.accountType, custodianAccountRequest.accountType) &&
+        Objects.equals(this.taxLotSelectionCostBasis, custodianAccountRequest.taxLotSelectionCostBasis);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -343,7 +369,7 @@ public class CustodianAccountRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, status, accountNumber, accountName, accountingMethod, currency, properties, custodianIdentifier, accountType);
+    return Objects.hash(scope, code, status, accountNumber, accountName, accountingMethod, currency, properties, custodianIdentifier, accountType, taxLotSelectionCostBasis);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -367,6 +393,7 @@ public class CustodianAccountRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    custodianIdentifier: ").append(toIndentedString(custodianIdentifier)).append("\n");
     sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
+    sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -399,6 +426,7 @@ public class CustodianAccountRequest {
     openapiFields.add("properties");
     openapiFields.add("custodianIdentifier");
     openapiFields.add("accountType");
+    openapiFields.add("taxLotSelectionCostBasis");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -455,6 +483,9 @@ public class CustodianAccountRequest {
       TypedResourceId.validateJsonElement(jsonObj.get("custodianIdentifier"));
       if ((jsonObj.get("accountType") != null && !jsonObj.get("accountType").isJsonNull()) && !jsonObj.get("accountType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountType").toString()));
+      }
+      if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
       }
   }
 

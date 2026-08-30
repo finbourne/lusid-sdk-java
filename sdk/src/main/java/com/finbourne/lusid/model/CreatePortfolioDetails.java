@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class CreatePortfolioDetails {
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
   private ResourceId corporateActionSourceId;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
+  private String taxLotSelectionCostBasis;
+
   public CreatePortfolioDetails() {
   }
 
@@ -78,6 +83,27 @@ public class CreatePortfolioDetails {
   }
 
 
+  public CreatePortfolioDetails taxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+    return this;
+  }
+
+   /**
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. Available values: Cost, AmortisedCost.
+   * @return taxLotSelectionCostBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotSelectionCostBasis() {
+    return taxLotSelectionCostBasis;
+  }
+
+
+  public void setTaxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,12 +114,24 @@ public class CreatePortfolioDetails {
       return false;
     }
     CreatePortfolioDetails createPortfolioDetails = (CreatePortfolioDetails) o;
-    return Objects.equals(this.corporateActionSourceId, createPortfolioDetails.corporateActionSourceId);
+    return Objects.equals(this.corporateActionSourceId, createPortfolioDetails.corporateActionSourceId) &&
+        Objects.equals(this.taxLotSelectionCostBasis, createPortfolioDetails.taxLotSelectionCostBasis);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(corporateActionSourceId);
+    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -101,6 +139,7 @@ public class CreatePortfolioDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreatePortfolioDetails {\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
+    sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,6 +163,7 @@ public class CreatePortfolioDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("corporateActionSourceId");
+    openapiFields.add("taxLotSelectionCostBasis");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -145,6 +185,9 @@ public class CreatePortfolioDetails {
       // validate the optional field `corporateActionSourceId`
       if (jsonObj.get("corporateActionSourceId") != null && !jsonObj.get("corporateActionSourceId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("corporateActionSourceId"));
+      }
+      if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
       }
   }
 

@@ -197,6 +197,10 @@ public class CreateSimplePositionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
   private ResourceId amortisationRuleSetId;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
+  private String taxLotSelectionCostBasis;
+
   public CreateSimplePositionPortfolioRequest() {
   }
 
@@ -560,6 +564,27 @@ public class CreateSimplePositionPortfolioRequest {
   }
 
 
+  public CreateSimplePositionPortfolioRequest taxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+    return this;
+  }
+
+   /**
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost.
+   * @return taxLotSelectionCostBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotSelectionCostBasis() {
+    return taxLotSelectionCostBasis;
+  }
+
+
+  public void setTaxLotSelectionCostBasis(String taxLotSelectionCostBasis) {
+    this.taxLotSelectionCostBasis = taxLotSelectionCostBasis;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -585,7 +610,8 @@ public class CreateSimplePositionPortfolioRequest {
         Objects.equals(this.transactionTypeScope, createSimplePositionPortfolioRequest.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, createSimplePositionPortfolioRequest.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, createSimplePositionPortfolioRequest.instrumentEventConfiguration) &&
-        Objects.equals(this.amortisationRuleSetId, createSimplePositionPortfolioRequest.amortisationRuleSetId);
+        Objects.equals(this.amortisationRuleSetId, createSimplePositionPortfolioRequest.amortisationRuleSetId) &&
+        Objects.equals(this.taxLotSelectionCostBasis, createSimplePositionPortfolioRequest.taxLotSelectionCostBasis);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -594,7 +620,7 @@ public class CreateSimplePositionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, enablementDate, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId);
+    return Objects.hash(displayName, description, code, created, enablementDate, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxLotSelectionCostBasis);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -624,6 +650,7 @@ public class CreateSimplePositionPortfolioRequest {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
+    sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -662,6 +689,7 @@ public class CreateSimplePositionPortfolioRequest {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
+    openapiFields.add("taxLotSelectionCostBasis");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -733,6 +761,9 @@ public class CreateSimplePositionPortfolioRequest {
       // validate the optional field `amortisationRuleSetId`
       if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
+      }
+      if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
       }
   }
 

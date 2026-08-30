@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **cashGainLossCalculationDate** | **String** | The option when the Cash Gain Loss to be calulated. Default value: SettlementDate. Available values: Default, SettlementDate, TransactionDate. | [optional] [default to String]
 **instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  | [optional] [default to InstrumentEventConfiguration]
 **amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**taxLotSelectionCostBasis** | **String** | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateSimplePositionPortfolioRequest;
@@ -43,6 +44,7 @@ String AccountingMethod = "example AccountingMethod";
 @jakarta.annotation.Nullable String CashGainLossCalculationDate = "example CashGainLossCalculationDate";
 InstrumentEventConfiguration InstrumentEventConfiguration = new InstrumentEventConfiguration();
 ResourceId AmortisationRuleSetId = new ResourceId();
+@jakarta.annotation.Nullable String TaxLotSelectionCostBasis = "example TaxLotSelectionCostBasis";
 
 
 CreateSimplePositionPortfolioRequest createSimplePositionPortfolioRequestInstance = new CreateSimplePositionPortfolioRequest()
@@ -61,7 +63,8 @@ CreateSimplePositionPortfolioRequest createSimplePositionPortfolioRequestInstanc
     .TransactionTypeScope(TransactionTypeScope)
     .CashGainLossCalculationDate(CashGainLossCalculationDate)
     .InstrumentEventConfiguration(InstrumentEventConfiguration)
-    .AmortisationRuleSetId(AmortisationRuleSetId);
+    .AmortisationRuleSetId(AmortisationRuleSetId)
+    .TaxLotSelectionCostBasis(TaxLotSelectionCostBasis);
 ```
 
 

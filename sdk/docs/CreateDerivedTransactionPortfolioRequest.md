@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  | [optional] [default to InstrumentEventConfiguration]
 **settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  | [optional] [default to PortfolioSettlementConfiguration]
 **transactionExclusionFilter** | **String** | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. | [optional] [default to String]
+**taxLotSelectionCostBasis** | **String** | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateDerivedTransactionPortfolioRequest;
@@ -45,6 +46,7 @@ ResourceId AmortisationRuleSetId = new ResourceId();
 InstrumentEventConfiguration InstrumentEventConfiguration = new InstrumentEventConfiguration();
 PortfolioSettlementConfiguration SettlementConfiguration = new PortfolioSettlementConfiguration();
 @jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
+@jakarta.annotation.Nullable String TaxLotSelectionCostBasis = "example TaxLotSelectionCostBasis";
 
 
 CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequestInstance = new CreateDerivedTransactionPortfolioRequest()
@@ -64,7 +66,8 @@ CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioReques
     .AmortisationRuleSetId(AmortisationRuleSetId)
     .InstrumentEventConfiguration(InstrumentEventConfiguration)
     .SettlementConfiguration(SettlementConfiguration)
-    .TransactionExclusionFilter(TransactionExclusionFilter);
+    .TransactionExclusionFilter(TransactionExclusionFilter)
+    .TaxLotSelectionCostBasis(TaxLotSelectionCostBasis);
 ```
 
 
