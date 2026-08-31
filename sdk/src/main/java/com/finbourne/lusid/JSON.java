@@ -222,6 +222,33 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.BondForward.class, new TypeSelector<com.finbourne.lusid.model.BondForward>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BondForward> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondForward", com.finbourne.lusid.model.BondForward.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.BondForwardCashSettlementEvent.class, new TypeSelector<com.finbourne.lusid.model.BondForwardCashSettlementEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BondForwardCashSettlementEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondForwardCashSettlementEvent", com.finbourne.lusid.model.BondForwardCashSettlementEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.BondForwardTerminationEvent.class, new TypeSelector<com.finbourne.lusid.model.BondForwardTerminationEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.BondForwardTerminationEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("BondForwardTerminationEvent", com.finbourne.lusid.model.BondForwardTerminationEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.BondLookupModelOptions.class, new TypeSelector<com.finbourne.lusid.model.BondLookupModelOptions>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.BondLookupModelOptions> getClassForElement(JsonElement readElement) {
@@ -1696,6 +1723,8 @@ public class JSON {
                         classByDiscriminatorValue.put("BankruptcyEvent", com.finbourne.lusid.model.BankruptcyEvent.class);
                         classByDiscriminatorValue.put("BondCouponEvent", com.finbourne.lusid.model.BondCouponEvent.class);
                         classByDiscriminatorValue.put("BondDefaultEvent", com.finbourne.lusid.model.BondDefaultEvent.class);
+                        classByDiscriminatorValue.put("BondForwardCashSettlementEvent", com.finbourne.lusid.model.BondForwardCashSettlementEvent.class);
+                        classByDiscriminatorValue.put("BondForwardTerminationEvent", com.finbourne.lusid.model.BondForwardTerminationEvent.class);
                         classByDiscriminatorValue.put("BondOptionTerminationEvent", com.finbourne.lusid.model.BondOptionTerminationEvent.class);
                         classByDiscriminatorValue.put("BondPrincipalEvent", com.finbourne.lusid.model.BondPrincipalEvent.class);
                         classByDiscriminatorValue.put("BonusIssueEvent", com.finbourne.lusid.model.BonusIssueEvent.class);
@@ -1969,6 +1998,7 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("Basket", com.finbourne.lusid.model.Basket.class);
                         classByDiscriminatorValue.put("Bond", com.finbourne.lusid.model.Bond.class);
+                        classByDiscriminatorValue.put("BondForward", com.finbourne.lusid.model.BondForward.class);
                         classByDiscriminatorValue.put("BondOption", com.finbourne.lusid.model.BondOption.class);
                         classByDiscriminatorValue.put("CapFloor", com.finbourne.lusid.model.CapFloor.class);
                         classByDiscriminatorValue.put("Cash", com.finbourne.lusid.model.Cash.class);
@@ -3276,6 +3306,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondCouponEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondDefaultEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondDefaultSuppressionDetails.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondForward.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondForwardCashSettlementEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondForwardTerminationEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondLookupModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondOption.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.BondOptionTerminationEvent.CustomTypeAdapterFactory());

@@ -64,6 +64,7 @@ InstrumentType method = InstrumentType.COMMODITYFORWARD;
 InstrumentType method = InstrumentType.BONDOPTION;
 InstrumentType method = InstrumentType.CDSOPTION;
 InstrumentType method = InstrumentType.COMMODITYCALENDARSWAP;
+InstrumentType method = InstrumentType.BONDFORWARD;
 ```
 
 

@@ -117,6 +117,8 @@ InstrumentEventType method = InstrumentEventType.BONDOPTIONTERMINATIONEVENT;
 InstrumentEventType method = InstrumentEventType.TERMINATIONEVENT;
 InstrumentEventType method = InstrumentEventType.COMMODITYCALENDARSWAPCASHFLOWEVENT;
 InstrumentEventType method = InstrumentEventType.DEPOSITSWEEPEVENT;
+InstrumentEventType method = InstrumentEventType.BONDFORWARDCASHSETTLEMENTEVENT;
+InstrumentEventType method = InstrumentEventType.BONDFORWARDTERMINATIONEVENT;
 ```
 
 

@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9814
+  version: 0.11.9816
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -55821,7 +55821,7 @@ paths:
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-          \ DepositSweepEvent."
+          \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -55840,7 +55840,8 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap."
+          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
+          \ BondForward."
         explode: false
         in: path
         name: instrumentType
@@ -55934,7 +55935,7 @@ paths:
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-          \ DepositSweepEvent."
+          \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -55953,7 +55954,8 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap."
+          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
+          \ BondForward."
         explode: false
         in: path
         name: instrumentType
@@ -56055,7 +56057,7 @@ paths:
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-          \ DepositSweepEvent."
+          \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56074,7 +56076,8 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap."
+          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
+          \ BondForward."
         explode: false
         in: path
         name: instrumentType
@@ -56282,7 +56285,7 @@ paths:
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-          \ DepositSweepEvent."
+          \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56301,7 +56304,8 @@ paths:
           \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap,\
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
-          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap."
+          \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
+          \ BondForward."
         explode: false
         in: path
         name: instrumentType
@@ -56510,7 +56514,7 @@ paths:
           \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-          \ DepositSweepEvent."
+          \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -162311,7 +162315,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -162416,6 +162420,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - dividendCurrency
@@ -162934,7 +162940,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163039,6 +163045,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -164875,7 +164883,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164980,6 +164988,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amountReduced
@@ -166842,7 +166852,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166947,6 +166957,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -167008,7 +167020,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -167061,6 +167073,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - basketName
@@ -171798,7 +171811,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -171851,6 +171864,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - couponRate
@@ -172039,7 +172053,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -172144,6 +172158,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -172210,7 +172226,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -172315,6 +172331,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -172348,6 +172366,569 @@ components:
           nullable: true
           type: number
       type: object
+    BondForward:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - properties:
+          startDate:
+            description: The start date of the instrument. This is normally synonymous
+              with the trade-date.
+            format: date-time
+            type: string
+          maturityDate:
+            description: "The contractual settlement date, on which cash settlement\
+              \ takes place. Named MaturityDate because\r\nIDefinition requires it\
+              \ and every other forward uses it. Supplied as an agreed business day\
+              \ on the\r\nsettlement currency's own calendar; LUSID does not adjust\
+              \ it."
+            format: date-time
+            type: string
+          domCcy:
+            description: The domestic currency of the instrument.
+            type: string
+          agreedCleanPrice:
+            description: "The agreed price, percent of par. Named agreedCleanPrice\
+              \ rather than strike because the contract\r\ncarries no optionality,\
+              \ and a percent-of-par price would read as an option strike under that\
+              \ name."
+            format: double
+            type: number
+          contractSize:
+            description: "Face amount of the underlying per unit. Together with the\
+              \ per-100 price this converts price into\r\nmoney: pricePerUnit = agreedCleanPrice\
+              \ / 100 generate justfile test_sdk contractSize. Set 1 to make one unit\
+              \ equal one\r\ncurrency unit of face."
+            format: double
+            type: number
+          deliveryType:
+            description: "How the forward settles. Only Cash is accepted in the current\
+              \ scope: physical delivery of a bond by\r\na wrapper instrument has\
+              \ no shipped mechanism for opening the delivered position with purchased\r\
+              \naccrued. The field is required rather than defaulted so that a physically-settling\
+              \ contract is\r\nrefused explicitly rather than silently cash-settled.\r\
+              \n \r\nSupported string (enumeration) values are: [Cash, Physical].\
+              \ Available values: Cash, Physical."
+            minLength: 1
+            type: string
+          priceBasis:
+            description: "Whether the agreed price is quoted clean or dirty. Only\
+              \ Clean is accepted: a dirty forward price is\r\nan invoice price for\
+              \ value at settlement, and nothing downstream carries the clean-and-accrued\
+              \ split,\r\nso a Dirty value is rejected at upsert with the conversion\
+              \ instruction. The field is required so that\r\na dirty price supplied\
+              \ as clean is declared rather than silently mispriced.\r\n \r\nSupported\
+              \ string (enumeration) values are: [Clean, Dirty]. Available values:\
+              \ Clean, Dirty."
+            minLength: 1
+            type: string
+          timeZoneConventions:
+            $ref: '#/components/schemas/TimeZoneConventions'
+          tradingConventions:
+            $ref: '#/components/schemas/TradingConventions'
+          underlying:
+            $ref: '#/components/schemas/LusidInstrument'
+          instrumentType:
+            description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
+              \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
+              \ Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,\
+              \ TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,\
+              \ CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,\
+              \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
+              \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
+              \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
+              \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+            enum:
+            - QuotedSecurity
+            - InterestRateSwap
+            - FxForward
+            - Future
+            - ExoticInstrument
+            - FxOption
+            - CreditDefaultSwap
+            - InterestRateSwaption
+            - Bond
+            - EquityOption
+            - FixedLeg
+            - FloatingLeg
+            - BespokeCashFlowsLeg
+            - Unknown
+            - TermDeposit
+            - ContractForDifference
+            - EquitySwap
+            - CashPerpetual
+            - CapFloor
+            - CashSettled
+            - CdsIndex
+            - Basket
+            - FundingLeg
+            - FxSwap
+            - ForwardRateAgreement
+            - SimpleInstrument
+            - Repo
+            - Equity
+            - ExchangeTradedOption
+            - ReferenceInstrument
+            - ComplexBond
+            - InflationLinkedBond
+            - InflationSwap
+            - SimpleCashFlowLoan
+            - TotalReturnSwap
+            - InflationLeg
+            - FundShareClass
+            - FlexibleLoan
+            - UnsettledCash
+            - Cash
+            - MasteredInstrument
+            - LoanFacility
+            - FlexibleDeposit
+            - FlexibleRepo
+            - ToBeAnnounced
+            - VolatilitySwap
+            - ToBeAnnouncedOption
+            - CommodityForward
+            - BondOption
+            - CdsOption
+            - CommodityCalendarSwap
+            - BondForward
+            type: string
+        required:
+        - agreedCleanPrice
+        - contractSize
+        - deliveryType
+        - domCcy
+        - instrumentType
+        - maturityDate
+        - priceBasis
+        - startDate
+        - underlying
+        type: object
+      description: "LUSID representation of an OTC bilateral forward contract to buy\
+        \ or sell a specified, already-mastered\r\ndebt security (Bond or ComplexBond)\
+        \ at an agreed clean price on a settlement date beyond the market's\r\nstandard\
+        \ settlement cycle. No cash moves at trade date, there is no premium, and\
+        \ both parties are\r\nunconditionally obliged. Quote-driven valuation; cash\
+        \ settlement only in the current scope (physical\r\ndelivery is future work).\
+        \ Direction is the sign of the holding's units and size is the holding's units,\r\
+        \nneither is on the definition, so a partial unwind or novation is an ordinary\
+        \ change in units."
+    BondForwardCashSettlementEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          agreedCleanPrice:
+            description: "The agreed price, percent of par, carried from the definition."
+            format: double
+            type: number
+          contractSize:
+            description: "Face amount per unit, carried from the definition. It scales\
+              \ the payoff, so it is rejected where it\r\ndiffers from the instrument's\
+              \ own value."
+            format: double
+            type: number
+          maturityDate:
+            description: "The forward's contractual settlement date, on which the\
+              \ price difference fixes."
+            format: date-time
+            type: string
+          referencePrice:
+            description: "The underlying's clean price, percent of par, at the settlement\
+              \ date. Null resolves from the\r\nunderlying's quote; a supplied value\
+              \ wins and the quote is not consulted."
+            format: double
+            nullable: true
+            type: number
+          settlementAmountPerUnit:
+            description: "Output only: the net settlement per unit, computed from\
+              \ the reference price, the agreed price and\r\nthe contract size. A\
+              \ supplied value is overwritten. Negative is valid and means the holder\
+              \ pays."
+            format: double
+            nullable: true
+            type: number
+          settlementCurrency:
+            description: "Currency the net amount settles in, being the forward's\
+              \ domestic currency."
+            type: string
+          settlementDate:
+            description: "The date the net payment settles. Null means the maturity\
+              \ date; cash-settled forwards commonly pay\r\na day or two after the\
+              \ price fixes. Rejected where earlier than the maturity date."
+            format: date-time
+            nullable: true
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            type: string
+        required:
+        - agreedCleanPrice
+        - contractSize
+        - instrumentEventType
+        - settlementCurrency
+        type: object
+      description: "Cash settlement of a BondForward at its settlement date:\r\nthe\
+        \ forward closes against a single net payment of the clean price difference,\
+        \ and no bond changes\r\nhands. Unlike a commodity forward the underlying\
+        \ is a mastered, quoted instrument, so LUSID computes\r\nthe settlement amount\
+        \ from the underlying's quote rather than taking a pre-netted figure; a supplied\r\
+        \nreferencePrice wins and the quote is not consulted.\r\nAccrued does not\
+        \ enter the payoff, by cancellation rather than entitlement: both sides of\
+        \ the\r\ndifference accrue to the same date, so the accrued is identical on\
+        \ each and drops out."
+    BondForwardTerminationEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          agreedCleanPrice:
+            description: "The agreed price, percent of par, carried from the definition;\
+              \ rejected where it differs from the\r\ninstrument's own value."
+            format: double
+            type: number
+          contractSize:
+            description: "Face amount per unit, carried from the definition; rejected\
+              \ where it differs from the instrument's\r\nown value."
+            format: double
+            type: number
+          redemptionAccrued:
+            description: "Accrued paid on the underlying's redemption, percent of\
+              \ par, at full precision. Required, not\r\nresolved: the forward cannot\
+              \ read the underlying's accrual. Nullable so that absence is detectable,\r\
+              \nzero staying a legitimate supplied value (a bond trading flat); null\
+              \ is rejected."
+            format: double
+            nullable: true
+            type: number
+          redemptionPrice:
+            description: "The price the underlying was redeemed at, percent of par.\
+              \ Must be supplied: it comes from the\r\nunderlying's own redemption.\
+              \ Nullable so that absence is detectable; null is rejected, and zero\
+              \ is\r\nlegal (a write-off or liquidation may recover nothing)."
+            format: double
+            nullable: true
+            type: number
+          settlementAccrued:
+            description: "Accrued the buyer would have paid at the forward's own maturity\
+              \ date - the invoice date it escaped,\r\nnot this event's settlement\
+              \ date. Nullable so that absence is detectable; null is rejected."
+            format: double
+            nullable: true
+            type: number
+          settlementAmountPerUnit:
+            description: "The net termination amount per unit. A supplied value wins;\
+              \ null is computed as\r\n((redemptionPrice + redemptionAccrued) - (agreedCleanPrice\
+              \ + settlementAccrued)) / 100 x contractSize,\r\nwhich is undiscounted\
+              \ - where the confirmation nets on a discounted basis, supply the agreed\
+              \ figure.\r\nNegative is valid and means the holder pays; it must not\
+              \ be floored."
+            format: double
+            nullable: true
+            type: number
+          settlementCurrency:
+            description: Currency the net amount settles in.
+            type: string
+          settlementDate:
+            description: The date the net termination amount settles.
+            format: date-time
+            type: string
+          terminationDate:
+            description: "The date the termination takes effect, being the effective\
+              \ date of the underlying's redemption.\r\nRequired, not defaulted: the\
+              \ forward cannot read the underlying's redemption."
+            format: date-time
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            type: string
+        required:
+        - agreedCleanPrice
+        - contractSize
+        - instrumentEventType
+        - settlementCurrency
+        type: object
+      description: "Termination of a BondForward because its underlying bond\r\nwas\
+        \ redeemed early: the deliverable ceases to exist, so the forward terminates\
+        \ against the proceeds\r\nthe underlying was actually redeemed for.\r\nThe\
+        \ event is posted against the forward's own LusidInstrumentId by the feed\
+        \ or orchestration layer.\r\nThe corporate-action dependency graph is self-keyed\
+        \ by LUID and a MasteredInstrument reference links\r\nprice, not events, so\
+        \ the underlying's own EarlyRedemptionEvent does not propagate here and neither\r\
+        \nthe redemption price nor either accrued figure can be derived on the forward.\r\
+        \nUnlike cash settlement, both accrued figures appear and neither cancels:\
+        \ the redemption accrues to the\r\nredemption date and the forward's obligation\
+        \ accrued to its own settlement date, so the two differ."
     BondLookupModelOptions:
       allOf:
       - $ref: '#/components/schemas/ModelOptions'
@@ -172459,7 +173040,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -172512,6 +173093,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - contractSize
@@ -172590,7 +173172,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -172695,6 +173277,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - callPrice
@@ -172759,7 +173343,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -172864,6 +173448,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -172975,7 +173561,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173080,6 +173666,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -175727,7 +176315,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175832,6 +176420,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - exerciseCurrency
@@ -177065,7 +177655,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177170,6 +177760,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -177224,7 +177816,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -177277,6 +177869,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - capFloorType
@@ -177346,7 +177939,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177451,6 +178044,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashElections
@@ -177520,7 +178115,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177625,6 +178220,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -177685,7 +178282,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -177790,6 +178387,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -177820,7 +178419,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -177873,6 +178472,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - amount
@@ -178022,7 +178622,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -178127,6 +178727,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashElections
@@ -178347,7 +178949,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -178452,6 +179054,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashFlowValue
@@ -178784,7 +179388,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -178837,6 +179441,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -178928,7 +179533,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179033,6 +179638,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -179236,7 +179843,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -179289,6 +179896,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - couponRate
@@ -179435,7 +180043,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -179488,6 +180096,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - deliveryType
@@ -179600,7 +180209,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179705,6 +180314,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - constituentWeight
@@ -179847,7 +180458,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179952,6 +180563,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - changeType
@@ -180858,7 +181471,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180963,6 +181576,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -181411,7 +182026,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181516,6 +182131,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -181751,7 +182368,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -181804,6 +182421,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - commodityCalendarSchedule
@@ -181908,7 +182526,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182013,6 +182631,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -182075,7 +182695,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -182128,6 +182748,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - deliveryType
@@ -182207,7 +182828,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182312,6 +182933,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - domCcy
@@ -182378,7 +183001,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182483,6 +183106,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -182948,7 +183573,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -183001,6 +183626,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -185962,7 +186588,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186067,6 +186693,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - consentType
@@ -186283,7 +186911,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -186336,6 +186964,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -186389,7 +187018,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186494,6 +187123,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - contractDetails
@@ -186688,7 +187319,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -186793,6 +187424,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -191587,7 +192220,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -191640,6 +192273,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - couponRate
@@ -191707,7 +192341,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191812,6 +192446,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -196802,7 +197438,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196907,6 +197543,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -196955,7 +197593,7 @@ components:
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
             \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-            \ CapitalInterest, Unknown."
+            \ CapitalInterest, BondForward, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -197032,7 +197670,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197137,6 +197775,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -197188,7 +197828,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197293,6 +197933,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -197349,7 +197991,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197454,6 +198096,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -197503,7 +198147,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197608,6 +198252,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -198268,7 +198914,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198373,6 +199019,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashElections
@@ -198451,7 +199099,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198556,6 +199204,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashElections
@@ -198617,7 +199267,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198722,6 +199372,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -198796,7 +199448,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198901,6 +199553,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -199070,7 +199724,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199175,6 +199829,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -199270,7 +199926,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199375,6 +200031,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - closeOutAmount
@@ -199472,7 +200130,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199577,6 +200235,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -199914,7 +200574,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -199967,6 +200627,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -200233,7 +200894,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200286,6 +200947,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - deliveryType
@@ -200375,7 +201037,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200428,6 +201090,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - code
@@ -200776,7 +201439,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200881,6 +201544,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - eventSource
@@ -200921,7 +201586,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200974,6 +201639,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - contractDetails
@@ -201539,7 +202205,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201644,6 +202310,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - anchorDate
@@ -201679,7 +202347,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -201732,6 +202400,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - content
@@ -202001,7 +202670,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202106,6 +202775,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -203702,7 +204373,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -203755,6 +204426,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -203910,7 +204582,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -203963,6 +204635,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -204022,7 +204695,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204075,6 +204748,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -204253,7 +204927,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204306,6 +204980,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - buyerOrSeller
@@ -204373,7 +205048,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204478,6 +205153,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -204539,7 +205216,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204644,6 +205321,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -204699,7 +205378,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204804,6 +205483,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -204865,7 +205546,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204970,6 +205651,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -205048,7 +205731,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205153,6 +205836,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -205223,7 +205908,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -205276,6 +205961,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -205638,7 +206324,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -205691,6 +206377,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -208113,7 +208800,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -208166,6 +208853,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -208825,7 +209513,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -208878,6 +209566,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -210884,7 +211573,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -210937,6 +211626,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - contractDetails
@@ -210995,7 +211685,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211100,6 +211790,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -211154,7 +211846,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211259,6 +211951,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -211542,7 +212236,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -211595,6 +212289,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domAmount
@@ -212046,7 +212741,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -212151,6 +212846,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - domAmountPerUnit
@@ -212474,7 +213171,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -212527,6 +213224,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -212662,7 +213360,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -212715,6 +213413,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - farFxForward
@@ -218377,7 +219076,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -218430,6 +219129,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - calculationType
@@ -218586,7 +219286,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -218639,6 +219339,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - couponRate
@@ -218694,7 +219395,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -218747,6 +219448,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - fixedLeg
@@ -218812,7 +219514,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218917,6 +219619,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - effectiveAt
@@ -218981,7 +219685,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219086,6 +219790,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - anchorDate
@@ -221049,7 +221755,7 @@ components:
             \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-            \ DepositSweepEvent."
+            \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -221154,6 +221860,8 @@ components:
           - TerminationEvent
           - CommodityCalendarSwapCashFlowEvent
           - DepositSweepEvent
+          - BondForwardCashSettlementEvent
+          - BondForwardTerminationEvent
           type: string
       required:
       - instrumentEventType
@@ -221647,6 +222355,8 @@ components:
       - TerminationEvent
       - CommodityCalendarSwapCashFlowEvent
       - DepositSweepEvent
+      - BondForwardCashSettlementEvent
+      - BondForwardTerminationEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -221704,7 +222414,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -221757,6 +222467,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -222557,6 +223268,7 @@ components:
       - BondOption
       - CdsOption
       - CommodityCalendarSwap
+      - BondForward
       type: string
     InterestPaymentEvent:
       allOf:
@@ -222630,7 +223342,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222735,6 +223447,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashElections
@@ -222802,7 +223516,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -222855,6 +223569,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentType
@@ -222982,7 +223697,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223035,6 +223750,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - deliveryMethod
@@ -223191,7 +223907,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223296,6 +224012,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -227577,7 +228295,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227682,6 +228400,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashOfferElections
@@ -228114,7 +228834,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -228167,6 +228887,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -228238,7 +228959,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228343,6 +229064,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -228411,7 +229134,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228516,6 +229239,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -228592,7 +229317,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228697,6 +229422,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -228791,7 +229518,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228896,6 +229623,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -229061,7 +229790,7 @@ components:
             \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
             \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
             \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-            \ BondOption, CdsOption, CommodityCalendarSwap."
+            \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -229114,6 +229843,7 @@ components:
           - BondOption
           - CdsOption
           - CommodityCalendarSwap
+          - BondForward
           type: string
       required:
       - instrumentType
@@ -230439,7 +231169,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -230492,6 +231222,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - identifiers
@@ -230716,7 +231447,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230821,6 +231552,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -230879,7 +231612,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230984,6 +231717,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -231044,7 +231779,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231149,6 +231884,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -231211,7 +231948,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231316,6 +232053,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -231378,7 +232117,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231483,6 +232222,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -231544,7 +232285,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231649,6 +232390,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -231995,7 +232738,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232100,6 +232843,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -233364,7 +234109,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -233469,6 +234214,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -233692,7 +234439,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -233797,6 +234544,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - exerciseType
@@ -233918,7 +234667,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234023,6 +234772,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - exerciseType
@@ -254568,7 +255319,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254673,6 +255424,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -254808,7 +255561,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254913,6 +255666,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -255304,7 +256059,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -255409,6 +256164,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -256407,7 +257164,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -256512,6 +257269,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -256569,7 +257328,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -256674,6 +257433,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -256733,7 +257494,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -256838,6 +257599,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -256960,7 +257723,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257065,6 +257828,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -257130,7 +257895,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257235,6 +258000,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -264234,7 +265001,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -264339,6 +265106,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -265900,7 +266669,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -266005,6 +266774,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -266115,7 +266886,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -266220,6 +266991,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashOfferElections
@@ -267711,7 +268484,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -267816,6 +268589,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - effectiveAt
@@ -271877,7 +272652,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -271930,6 +272705,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - instrumentId
@@ -273132,7 +273908,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -273185,6 +273961,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - accrualBasis
@@ -273252,7 +274029,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273357,6 +274134,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -273429,7 +274208,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273534,6 +274313,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -273660,7 +274441,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273765,6 +274546,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - cashOfferElections
@@ -273848,7 +274631,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273953,6 +274736,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - fixingDate
@@ -298302,7 +299087,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -298407,6 +299192,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -299227,7 +300014,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -299332,6 +300119,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -299512,7 +300301,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -299617,6 +300406,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -303875,7 +304666,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -303928,6 +304719,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -304000,7 +304792,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -304053,6 +304845,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - assetClass
@@ -304230,7 +305023,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304335,6 +305128,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -305071,7 +305866,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305176,6 +305971,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -305264,7 +306061,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305369,6 +306166,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -305887,7 +306686,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305992,6 +306791,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -306051,7 +306852,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -306156,6 +306957,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -306706,7 +307509,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -306811,6 +307614,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -306894,7 +307699,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -306947,6 +307752,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - contractSize
@@ -307004,7 +307810,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -307109,6 +307915,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -307163,7 +307971,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -307268,6 +308076,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - currency
@@ -307326,7 +308136,7 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ AmendCommitmentEvent."
+              \ AmendCommitmentEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -307397,7 +308207,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -307502,6 +308312,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -307683,7 +308495,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -307736,6 +308548,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -307820,7 +308633,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -307873,6 +308686,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - deliveryType
@@ -307956,7 +308770,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -308009,6 +308823,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - assetLeg
@@ -315349,7 +316164,7 @@ components:
             \ PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-            \ DepositSweepEvent."
+            \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -316270,7 +317085,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -316375,6 +317190,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -317030,7 +317847,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -317135,6 +317952,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -318819,7 +319638,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -318924,6 +319743,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - amount
@@ -347463,7 +348284,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -347516,6 +348337,7 @@ components:
             - BondOption
             - CdsOption
             - CommodityCalendarSwap
+            - BondForward
             type: string
         required:
         - domCcy
@@ -347699,7 +348521,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -347804,6 +348626,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType
@@ -348268,7 +349092,7 @@ components:
               \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
-              \ DepositSweepEvent."
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -348373,6 +349197,8 @@ components:
             - TerminationEvent
             - CommodityCalendarSwapCashFlowEvent
             - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
             type: string
         required:
         - instrumentEventType

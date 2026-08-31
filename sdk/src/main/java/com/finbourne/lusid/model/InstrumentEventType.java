@@ -229,7 +229,11 @@ public enum InstrumentEventType {
   
   COMMODITYCALENDARSWAPCASHFLOWEVENT("CommodityCalendarSwapCashFlowEvent"),
   
-  DEPOSITSWEEPEVENT("DepositSweepEvent");
+  DEPOSITSWEEPEVENT("DepositSweepEvent"),
+  
+  BONDFORWARDCASHSETTLEMENTEVENT("BondForwardCashSettlementEvent"),
+  
+  BONDFORWARDTERMINATIONEVENT("BondForwardTerminationEvent");
 
   private String value;
 
