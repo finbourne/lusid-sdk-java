@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9816
+  version: 0.11.9820
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -229683,8 +229683,8 @@ components:
           type: string
         scope:
           description: "The scope of the entities to check. Required for scoped entity\
-            \ types (Instrument, Portfolio).\r\nMust not be provided for unscoped\
-            \ entity types (LegalEntity)."
+            \ types (Instrument, Portfolio, InvestmentAccount).\r\nMust not be provided\
+            \ for unscoped entity types (LegalEntity)."
           maxLength: 64
           minLength: 1
           nullable: true
