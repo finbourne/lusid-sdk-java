@@ -65,6 +65,10 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_LATTICE_STEPS)
   private Integer latticeSteps;
 
+  public static final String SERIALIZED_NAME_EFFECTIVE_RATE_BUMP_SIZE = "effectiveRateBumpSize";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_RATE_BUMP_SIZE)
+  private java.math.BigDecimal effectiveRateBumpSize;
+
   public static final String SERIALIZED_NAME_MEAN_REVERSION_BY_CURRENCY = "meanReversionByCurrency";
   @SerializedName(SERIALIZED_NAME_MEAN_REVERSION_BY_CURRENCY)
   private Map<String, java.math.BigDecimal> meanReversionByCurrency;
@@ -140,6 +144,27 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions effectiveRateBumpSize(java.math.BigDecimal effectiveRateBumpSize) {
+    
+    this.effectiveRateBumpSize = effectiveRateBumpSize;
+    return this;
+  }
+
+   /**
+   * The parallel curve shift, as an absolute rate, used for the central-difference effective  duration and convexity, e.g. 0.0001 for a 1bp bump. Must be strictly positive.  Defaults to 0.0025 (25bp, the market convention for option-adjusted risk) when not supplied.
+   * @return effectiveRateBumpSize
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getEffectiveRateBumpSize() {
+    return effectiveRateBumpSize;
+  }
+
+
+  public void setEffectiveRateBumpSize(java.math.BigDecimal effectiveRateBumpSize) {
+    this.effectiveRateBumpSize = effectiveRateBumpSize;
+  }
+
+
   public HullWhiteModelOptions meanReversionByCurrency(Map<String, java.math.BigDecimal> meanReversionByCurrency) {
     
     this.meanReversionByCurrency = meanReversionByCurrency;
@@ -211,6 +236,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     return (this.meanReversion.compareTo(hullWhiteModelOptions.getMeanReversion()) == 0) &&
         (this.volatility.compareTo(hullWhiteModelOptions.getVolatility()) == 0) &&
         Objects.equals(this.latticeSteps, hullWhiteModelOptions.latticeSteps) &&
+        (this.effectiveRateBumpSize.compareTo(hullWhiteModelOptions.getEffectiveRateBumpSize()) == 0) &&
         Objects.equals(this.meanReversionByCurrency, hullWhiteModelOptions.meanReversionByCurrency) &&
         Objects.equals(this.volatilityByCurrency, hullWhiteModelOptions.volatilityByCurrency) &&
         super.equals(o);
@@ -222,7 +248,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, meanReversionByCurrency, volatilityByCurrency, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -240,6 +266,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    meanReversion: ").append(toIndentedString(meanReversion)).append("\n");
     sb.append("    volatility: ").append(toIndentedString(volatility)).append("\n");
     sb.append("    latticeSteps: ").append(toIndentedString(latticeSteps)).append("\n");
+    sb.append("    effectiveRateBumpSize: ").append(toIndentedString(effectiveRateBumpSize)).append("\n");
     sb.append("    meanReversionByCurrency: ").append(toIndentedString(meanReversionByCurrency)).append("\n");
     sb.append("    volatilityByCurrency: ").append(toIndentedString(volatilityByCurrency)).append("\n");
     sb.append("}");
@@ -268,6 +295,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("meanReversion");
     openapiFields.add("volatility");
     openapiFields.add("latticeSteps");
+    openapiFields.add("effectiveRateBumpSize");
     openapiFields.add("meanReversionByCurrency");
     openapiFields.add("volatilityByCurrency");
 

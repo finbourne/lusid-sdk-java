@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9822
+  version: 0.11.9824
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -218273,6 +218273,14 @@ components:
               \ computational cost. Defaults to 200."
             format: int32
             type: integer
+          effectiveRateBumpSize:
+            description: "The parallel curve shift, as an absolute rate, used for\
+              \ the central-difference effective\r\nduration and convexity, e.g. 0.0001\
+              \ for a 1bp bump. Must be strictly positive.\r\nDefaults to 0.0025 (25bp,\
+              \ the market convention for option-adjusted risk) when not supplied."
+            format: double
+            nullable: true
+            type: number
           meanReversionByCurrency:
             additionalProperties:
               format: double
@@ -268389,17 +268397,6 @@ components:
             - Twist
             - Tent
             type: string
-          pivotTenor:
-            description: "The tenor the Tent shift peaks at. The shift applies with\
-              \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
-              \ and EndTenor - the key-rate triangle shape, whose\r\nasymmetry matters\
-              \ because key-rate buckets are rarely evenly spaced. Only valid with\r\
-              \nShiftType Tent; omitted, a Tent peaks at the midpoint of the window."
-            maxLength: 10
-            minLength: 2
-            nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
-            type: string
           scale:
             description: "Available values: Bps, Percentage."
             enum:
@@ -268420,6 +268417,20 @@ components:
             maxLength: 2000
             minLength: 1
             nullable: true
+            type: string
+          pivotTenor:
+            description: "The tenor the Tent shift peaks at. The shift applies with\
+              \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
+              \ and EndTenor - the key-rate triangle shape, whose\r\nasymmetry matters\
+              \ because key-rate buckets are rarely evenly spaced. Only valid with\r\
+              \nShiftType Tent; omitted, a Tent peaks at the midpoint of the window.\
+              \ Declared last on\r\npurpose: generated SDKs emit their positional\
+              \ constructor in property-declaration order,\r\nand this property must\
+              \ not shift the parameters of the ones before it."
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
@@ -299583,7 +299594,7 @@ components:
         shifts:
           items:
             $ref: '#/components/schemas/ScenarioShiftDefinition'
-          maxItems: 100
+          maxItems: 1000
           nullable: true
           type: array
       required:
@@ -299745,7 +299756,7 @@ components:
             \ exclusive with supplying a stored scenario reference."
           items:
             $ref: '#/components/schemas/ScenarioShiftDefinition'
-          maxItems: 100
+          maxItems: 1000
           nullable: true
           type: array
       required:

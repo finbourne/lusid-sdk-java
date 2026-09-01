@@ -124,10 +124,6 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_SHIFT_TYPE)
   private ShiftTypeEnum shiftType;
 
-  public static final String SERIALIZED_NAME_PIVOT_TENOR = "pivotTenor";
-  @SerializedName(SERIALIZED_NAME_PIVOT_TENOR)
-  private String pivotTenor;
-
   /**
    * Available values: Bps, Percentage.
    */
@@ -182,6 +178,10 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   public static final String SERIALIZED_NAME_APPLY_TO = "applyTo";
   @SerializedName(SERIALIZED_NAME_APPLY_TO)
   private String applyTo;
+
+  public static final String SERIALIZED_NAME_PIVOT_TENOR = "pivotTenor";
+  @SerializedName(SERIALIZED_NAME_PIVOT_TENOR)
+  private String pivotTenor;
 
   public RateCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
@@ -294,27 +294,6 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition pivotTenor(String pivotTenor) {
-    
-    this.pivotTenor = pivotTenor;
-    return this;
-  }
-
-   /**
-   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window.
-   * @return pivotTenor
-  **/
-  @jakarta.annotation.Nullable
-  public String getPivotTenor() {
-    return pivotTenor;
-  }
-
-
-  public void setPivotTenor(String pivotTenor) {
-    this.pivotTenor = pivotTenor;
-  }
-
-
   public RateCurveShiftDefinition scale(ScaleEnum scale) {
     
     this.scale = scale;
@@ -357,6 +336,27 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public RateCurveShiftDefinition pivotTenor(String pivotTenor) {
+    
+    this.pivotTenor = pivotTenor;
+    return this;
+  }
+
+   /**
+   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared last on  purpose: generated SDKs emit their positional constructor in property-declaration order,  and this property must not shift the parameters of the ones before it.
+   * @return pivotTenor
+  **/
+  @jakarta.annotation.Nullable
+  public String getPivotTenor() {
+    return pivotTenor;
+  }
+
+
+  public void setPivotTenor(String pivotTenor) {
+    this.pivotTenor = pivotTenor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -372,9 +372,9 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
         Objects.equals(this.startTenor, rateCurveShiftDefinition.startTenor) &&
         Objects.equals(this.endTenor, rateCurveShiftDefinition.endTenor) &&
         Objects.equals(this.shiftType, rateCurveShiftDefinition.shiftType) &&
-        Objects.equals(this.pivotTenor, rateCurveShiftDefinition.pivotTenor) &&
         Objects.equals(this.scale, rateCurveShiftDefinition.scale) &&
         Objects.equals(this.applyTo, rateCurveShiftDefinition.applyTo) &&
+        Objects.equals(this.pivotTenor, rateCurveShiftDefinition.pivotTenor) &&
         super.equals(o);
   }
 
@@ -384,7 +384,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, pivotTenor, scale, applyTo, super.hashCode());
+    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, applyTo, pivotTenor, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -404,9 +404,9 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     sb.append("    startTenor: ").append(toIndentedString(startTenor)).append("\n");
     sb.append("    endTenor: ").append(toIndentedString(endTenor)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
-    sb.append("    pivotTenor: ").append(toIndentedString(pivotTenor)).append("\n");
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("    applyTo: ").append(toIndentedString(applyTo)).append("\n");
+    sb.append("    pivotTenor: ").append(toIndentedString(pivotTenor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -435,9 +435,9 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("startTenor");
     openapiFields.add("endTenor");
     openapiFields.add("shiftType");
-    openapiFields.add("pivotTenor");
     openapiFields.add("scale");
     openapiFields.add("applyTo");
+    openapiFields.add("pivotTenor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

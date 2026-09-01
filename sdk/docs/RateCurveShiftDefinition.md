@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **startTenor** | **String** |  | [optional] [default to String]
 **endTenor** | **String** |  | [optional] [default to String]
 **shiftType** | **String** | Available values: Parallel, Steepen, Flatten, Twist, Tent. | [default to String]
-**pivotTenor** | **String** | The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. | [optional] [default to String]
 **scale** | **String** | Available values: Bps, Percentage. | [optional] [default to String]
 **applyTo** | **String** | A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column. Note that with a scope set, the base and scenario columns cover different  instrument populations: an aggregate (e.g. Sum) of the scenario column totals only the matching  instruments, so it is not directly comparable to the same aggregate of the base column. | [optional] [default to String]
+**pivotTenor** | **String** | The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared last on  purpose: generated SDKs emit their positional constructor in property-declaration order,  and this property must not shift the parameters of the ones before it. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.RateCurveShiftDefinition;
@@ -24,9 +24,9 @@ String Ccy = "example Ccy";
 @jakarta.annotation.Nullable String StartTenor = "example StartTenor";
 @jakarta.annotation.Nullable String EndTenor = "example EndTenor";
 String ShiftType = "example ShiftType";
-@jakarta.annotation.Nullable String PivotTenor = "example PivotTenor";
 String Scale = "example Scale";
 @jakarta.annotation.Nullable String ApplyTo = "example ApplyTo";
+@jakarta.annotation.Nullable String PivotTenor = "example PivotTenor";
 
 
 RateCurveShiftDefinition rateCurveShiftDefinitionInstance = new RateCurveShiftDefinition()
@@ -35,9 +35,9 @@ RateCurveShiftDefinition rateCurveShiftDefinitionInstance = new RateCurveShiftDe
     .StartTenor(StartTenor)
     .EndTenor(EndTenor)
     .ShiftType(ShiftType)
-    .PivotTenor(PivotTenor)
     .Scale(Scale)
-    .ApplyTo(ApplyTo);
+    .ApplyTo(ApplyTo)
+    .PivotTenor(PivotTenor);
 ```
 
 
