@@ -47,13 +47,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * RateCurveShiftDefinition
+ * A shift of an inflation curve, targeted by inflation index name. The shift applies to the  zero-coupon inflation swap quotes the curve was solved from and the curve re-solves with  the same seasonal factors and resolved fixings, so seasonality and the historic index path  survive the shift. Shift shapes, tenor windows, scales and the Tent pivot behave exactly  as they do on a rate curve shift.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
-  public static final String SERIALIZED_NAME_CCY = "ccy";
-  @SerializedName(SERIALIZED_NAME_CCY)
-  private String ccy;
+public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
+  public static final String SERIALIZED_NAME_INDEX = "index";
+  @SerializedName(SERIALIZED_NAME_INDEX)
+  private String index;
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -175,47 +175,43 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_SCALE)
   private ScaleEnum scale;
 
-  public static final String SERIALIZED_NAME_APPLY_TO = "applyTo";
-  @SerializedName(SERIALIZED_NAME_APPLY_TO)
-  private String applyTo;
-
   public static final String SERIALIZED_NAME_PIVOT_TENOR = "pivotTenor";
   @SerializedName(SERIALIZED_NAME_PIVOT_TENOR)
   private String pivotTenor;
 
-  public RateCurveShiftDefinition() {
+  public InflationCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
 
-  public RateCurveShiftDefinition ccy(String ccy) {
+  public InflationCurveShiftDefinition index(String index) {
     
-    this.ccy = ccy;
+    this.index = index;
     return this;
   }
 
    /**
-   * Get ccy
-   * @return ccy
+   * The inflation index name the curve is keyed by, e.g. UKRPI or EUHICPXT.
+   * @return index
   **/
   @jakarta.annotation.Nonnull
-  public String getCcy() {
-    return ccy;
+  public String getIndex() {
+    return index;
   }
 
 
-  public void setCcy(String ccy) {
-    this.ccy = ccy;
+  public void setIndex(String index) {
+    this.index = index;
   }
 
 
-  public RateCurveShiftDefinition amount(java.math.BigDecimal amount) {
+  public InflationCurveShiftDefinition amount(java.math.BigDecimal amount) {
     
     this.amount = amount;
     return this;
   }
 
    /**
-   * The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01).
+   * The size of the shift, in the units given by Scale: basis points on the zero-coupon  rates by default (50 means +50bps), or a percentage of each rate when Scale is  Percentage (1 means rates scaled by 1.01).
    * minimum: -1000000
    * maximum: 1000000
    * @return amount
@@ -231,7 +227,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition startTenor(String startTenor) {
+  public InflationCurveShiftDefinition startTenor(String startTenor) {
     
     this.startTenor = startTenor;
     return this;
@@ -252,7 +248,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition endTenor(String endTenor) {
+  public InflationCurveShiftDefinition endTenor(String endTenor) {
     
     this.endTenor = endTenor;
     return this;
@@ -273,7 +269,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition shiftType(ShiftTypeEnum shiftType) {
+  public InflationCurveShiftDefinition shiftType(ShiftTypeEnum shiftType) {
     
     this.shiftType = shiftType;
     return this;
@@ -294,7 +290,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition scale(ScaleEnum scale) {
+  public InflationCurveShiftDefinition scale(ScaleEnum scale) {
     
     this.scale = scale;
     return this;
@@ -315,35 +311,14 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
-  public RateCurveShiftDefinition applyTo(String applyTo) {
-    
-    this.applyTo = applyTo;
-    return this;
-  }
-
-   /**
-   * A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column. Note that with a scope set, the base and scenario columns cover different  instrument populations: an aggregate (e.g. Sum) of the scenario column totals only the matching  instruments, so it is not directly comparable to the same aggregate of the base column.
-   * @return applyTo
-  **/
-  @jakarta.annotation.Nullable
-  public String getApplyTo() {
-    return applyTo;
-  }
-
-
-  public void setApplyTo(String applyTo) {
-    this.applyTo = applyTo;
-  }
-
-
-  public RateCurveShiftDefinition pivotTenor(String pivotTenor) {
+  public InflationCurveShiftDefinition pivotTenor(String pivotTenor) {
     
     this.pivotTenor = pivotTenor;
     return this;
   }
 
    /**
-   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared last on  purpose: generated SDKs emit their positional constructor in property-declaration order,  and this property must not shift the parameters of the ones before it.  Over a window containing a single curve point, that point takes the full Amount regardless  of where the pivot lands: a one-point window has no slope to express, and every shift  shape degenerates the same way there.
+   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape. Only  valid with ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared  last on purpose: generated SDKs emit their positional constructor in property-declaration  order, and this property must not shift the parameters of the ones before it.
    * @return pivotTenor
   **/
   @jakarta.annotation.Nullable
@@ -366,15 +341,14 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RateCurveShiftDefinition rateCurveShiftDefinition = (RateCurveShiftDefinition) o;
-    return Objects.equals(this.ccy, rateCurveShiftDefinition.ccy) &&
-        (this.amount.compareTo(rateCurveShiftDefinition.getAmount()) == 0) &&
-        Objects.equals(this.startTenor, rateCurveShiftDefinition.startTenor) &&
-        Objects.equals(this.endTenor, rateCurveShiftDefinition.endTenor) &&
-        Objects.equals(this.shiftType, rateCurveShiftDefinition.shiftType) &&
-        Objects.equals(this.scale, rateCurveShiftDefinition.scale) &&
-        Objects.equals(this.applyTo, rateCurveShiftDefinition.applyTo) &&
-        Objects.equals(this.pivotTenor, rateCurveShiftDefinition.pivotTenor) &&
+    InflationCurveShiftDefinition inflationCurveShiftDefinition = (InflationCurveShiftDefinition) o;
+    return Objects.equals(this.index, inflationCurveShiftDefinition.index) &&
+        (this.amount.compareTo(inflationCurveShiftDefinition.getAmount()) == 0) &&
+        Objects.equals(this.startTenor, inflationCurveShiftDefinition.startTenor) &&
+        Objects.equals(this.endTenor, inflationCurveShiftDefinition.endTenor) &&
+        Objects.equals(this.shiftType, inflationCurveShiftDefinition.shiftType) &&
+        Objects.equals(this.scale, inflationCurveShiftDefinition.scale) &&
+        Objects.equals(this.pivotTenor, inflationCurveShiftDefinition.pivotTenor) &&
         super.equals(o);
   }
 
@@ -384,7 +358,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, applyTo, pivotTenor, super.hashCode());
+    return Objects.hash(index, amount, startTenor, endTenor, shiftType, scale, pivotTenor, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -397,15 +371,14 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RateCurveShiftDefinition {\n");
+    sb.append("class InflationCurveShiftDefinition {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    ccy: ").append(toIndentedString(ccy)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    startTenor: ").append(toIndentedString(startTenor)).append("\n");
     sb.append("    endTenor: ").append(toIndentedString(endTenor)).append("\n");
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
-    sb.append("    applyTo: ").append(toIndentedString(applyTo)).append("\n");
     sb.append("    pivotTenor: ").append(toIndentedString(pivotTenor)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -430,18 +403,17 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("scenarioShiftType");
-    openapiFields.add("ccy");
+    openapiFields.add("index");
     openapiFields.add("amount");
     openapiFields.add("startTenor");
     openapiFields.add("endTenor");
     openapiFields.add("shiftType");
     openapiFields.add("scale");
-    openapiFields.add("applyTo");
     openapiFields.add("pivotTenor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ccy");
+    openapiRequiredFields.add("index");
     openapiRequiredFields.add("shiftType");
     openapiRequiredFields.add("scenarioShiftType");
   }
@@ -450,17 +422,17 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RateCurveShiftDefinition
+  * @throws IOException if the JSON Element is invalid with respect to InflationCurveShiftDefinition
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RateCurveShiftDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RateCurveShiftDefinition is not found in the empty JSON string", RateCurveShiftDefinition.openapiRequiredFields.toString()));
+        if (!InflationCurveShiftDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in InflationCurveShiftDefinition is not found in the empty JSON string", InflationCurveShiftDefinition.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RateCurveShiftDefinition.openapiRequiredFields) {
+      for (String requiredField : InflationCurveShiftDefinition.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -471,22 +443,22 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RateCurveShiftDefinition.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RateCurveShiftDefinition' and its subtypes
+       if (!InflationCurveShiftDefinition.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'InflationCurveShiftDefinition' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RateCurveShiftDefinition> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RateCurveShiftDefinition.class));
+       final TypeAdapter<InflationCurveShiftDefinition> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(InflationCurveShiftDefinition.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RateCurveShiftDefinition>() {
+       return (TypeAdapter<T>) new TypeAdapter<InflationCurveShiftDefinition>() {
            @Override
-           public void write(JsonWriter out, RateCurveShiftDefinition value) throws IOException {
+           public void write(JsonWriter out, InflationCurveShiftDefinition value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RateCurveShiftDefinition read(JsonReader in) throws IOException {
+           public InflationCurveShiftDefinition read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -497,18 +469,18 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
  /**
-  * Create an instance of RateCurveShiftDefinition given an JSON string
+  * Create an instance of InflationCurveShiftDefinition given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RateCurveShiftDefinition
-  * @throws IOException if the JSON string is invalid with respect to RateCurveShiftDefinition
+  * @return An instance of InflationCurveShiftDefinition
+  * @throws IOException if the JSON string is invalid with respect to InflationCurveShiftDefinition
   */
-  public static RateCurveShiftDefinition fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RateCurveShiftDefinition.class);
+  public static InflationCurveShiftDefinition fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, InflationCurveShiftDefinition.class);
   }
 
  /**
-  * Convert an instance of RateCurveShiftDefinition to an JSON string
+  * Convert an instance of InflationCurveShiftDefinition to an JSON string
   *
   * @return JSON string
   */

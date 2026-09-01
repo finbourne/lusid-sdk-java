@@ -18,6 +18,7 @@ ScenarioShiftType method = ScenarioShiftType.FXSHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.PRICESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.VOLSURFACESHIFTDEFINITION;
 ScenarioShiftType method = ScenarioShiftType.MDKRGROUPSHIFTDEFINITION;
+ScenarioShiftType method = ScenarioShiftType.INFLATIONCURVESHIFTDEFINITION;
 ```
 
 

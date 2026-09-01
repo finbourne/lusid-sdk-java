@@ -1641,6 +1641,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "marketDataType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.InflationCurveShiftDefinition.class, new TypeSelector<com.finbourne.lusid.model.InflationCurveShiftDefinition>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.InflationCurveShiftDefinition> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InflationCurveShiftDefinition", com.finbourne.lusid.model.InflationCurveShiftDefinition.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scenarioShiftType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.InflationFixingDependency.class, new TypeSelector<com.finbourne.lusid.model.InflationFixingDependency>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.InflationFixingDependency> getClassForElement(JsonElement readElement) {
@@ -2841,6 +2850,7 @@ public class JSON {
                     public Class<? extends com.finbourne.lusid.model.ScenarioShiftDefinition> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("FxShiftDefinition", com.finbourne.lusid.model.FxShiftDefinition.class);
+                        classByDiscriminatorValue.put("InflationCurveShiftDefinition", com.finbourne.lusid.model.InflationCurveShiftDefinition.class);
                         classByDiscriminatorValue.put("MdkrGroupShiftDefinition", com.finbourne.lusid.model.MdkrGroupShiftDefinition.class);
                         classByDiscriminatorValue.put("PriceShiftDefinition", com.finbourne.lusid.model.PriceShiftDefinition.class);
                         classByDiscriminatorValue.put("RateCurveShiftDefinition", com.finbourne.lusid.model.RateCurveShiftDefinition.class);
@@ -3809,6 +3819,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndexProjectionDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndustryClassifier.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationCurveData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationCurveShiftDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationFixingDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationIndexConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationLeg.CustomTypeAdapterFactory());

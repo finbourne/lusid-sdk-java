@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9824
+  version: 0.11.9829
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -213310,13 +213310,15 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
             type: string
         required:
         - currencyPair
@@ -218904,6 +218906,89 @@ components:
         type: object
       description: "Market data for an inflation curve, represented by a list of zero-coupon\
         \ inflation swap\r\ninstruments and corresponding market quotes."
+    InflationCurveShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          index:
+            description: "The inflation index name the curve is keyed by, e.g. UKRPI\
+              \ or EUHICPXT."
+            maxLength: 50
+            minLength: 1
+            type: string
+          amount:
+            description: "The size of the shift, in the units given by Scale: basis\
+              \ points on the zero-coupon\r\nrates by default (50 means +50bps), or\
+              \ a percentage of each rate when Scale is\r\nPercentage (1 means rates\
+              \ scaled by 1.01)."
+            format: double
+            maximum: 1000000
+            minimum: -1000000
+            nullable: true
+            type: number
+          startTenor:
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          endTenor:
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          shiftType:
+            description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
+            enum:
+            - Parallel
+            - Steepen
+            - Flatten
+            - Twist
+            - Tent
+            type: string
+          scale:
+            description: "Available values: Bps, Percentage."
+            enum:
+            - Bps
+            - Percentage
+            type: string
+          pivotTenor:
+            description: "The tenor the Tent shift peaks at. The shift applies with\
+              \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
+              \ and EndTenor - the key-rate triangle shape. Only\r\nvalid with ShiftType\
+              \ Tent; omitted, a Tent peaks at the midpoint of the window. Declared\r\
+              \nlast on purpose: generated SDKs emit their positional constructor\
+              \ in property-declaration\r\norder, and this property must not shift\
+              \ the parameters of the ones before it."
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - PriceShiftDefinition
+            - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
+            type: string
+        required:
+        - index
+        - scenarioShiftType
+        - shiftType
+        type: object
+      description: "A shift of an inflation curve, targeted by inflation index name.\
+        \ The shift applies to the\r\nzero-coupon inflation swap quotes the curve\
+        \ was solved from and the curve re-solves with\r\nthe same seasonal factors\
+        \ and resolved fixings, so seasonality and the historic index path\r\nsurvive\
+        \ the shift. Shift shapes, tenor windows, scales and the Tent pivot behave\
+        \ exactly\r\nas they do on a rate curve shift."
     InflationFixingDependency:
       allOf:
       - $ref: '#/components/schemas/EconomicDependency'
@@ -229691,8 +229776,8 @@ components:
           type: string
         scope:
           description: "The scope of the entities to check. Required for scoped entity\
-            \ types (Instrument, Portfolio, InvestmentAccount).\r\nMust not be provided\
-            \ for unscoped entity types (LegalEntity)."
+            \ types (Instrument, Portfolio, InvestorRecord, InvestmentAccount).\r\n\
+            Must not be provided for unscoped entity types (LegalEntity)."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -232422,13 +232507,15 @@ components:
             type: array
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
             type: string
         required:
         - rules
@@ -264462,13 +264549,15 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
             type: string
         required:
         - scenarioShiftType
@@ -268426,7 +268515,10 @@ components:
               \nShiftType Tent; omitted, a Tent peaks at the midpoint of the window.\
               \ Declared last on\r\npurpose: generated SDKs emit their positional\
               \ constructor in property-declaration order,\r\nand this property must\
-              \ not shift the parameters of the ones before it."
+              \ not shift the parameters of the ones before it.\r\nOver a window containing\
+              \ a single curve point, that point takes the full Amount regardless\r\
+              \nof where the pivot lands: a one-point window has no slope to express,\
+              \ and every shift\r\nshape degenerates the same way there."
             maxLength: 10
             minLength: 2
             nullable: true
@@ -268434,13 +268526,15 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
             type: string
         required:
         - ccy
@@ -299841,13 +299935,15 @@ components:
       properties:
         scenarioShiftType:
           description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-            \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+            \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+            \ InflationCurveShiftDefinition."
           enum:
           - RateCurveShiftDefinition
           - FxShiftDefinition
           - PriceShiftDefinition
           - VolSurfaceShiftDefinition
           - MdkrGroupShiftDefinition
+          - InflationCurveShiftDefinition
           type: string
       required:
       - scenarioShiftType
@@ -299859,6 +299955,7 @@ components:
       - PriceShiftDefinition
       - VolSurfaceShiftDefinition
       - MdkrGroupShiftDefinition
+      - InflationCurveShiftDefinition
       type: string
     Schedule:
       additionalProperties: false
@@ -348411,13 +348508,15 @@ components:
             type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
-              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition."
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
             - PriceShiftDefinition
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
             type: string
         required:
         - instrument

@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScenarioShiftDefinition {
   /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
    */
   @JsonAdapter(ScenarioShiftTypeEnum.Adapter.class)
   public enum ScenarioShiftTypeEnum {
@@ -62,7 +62,9 @@ public class ScenarioShiftDefinition {
     
     VOLSURFACESHIFTDEFINITION("VolSurfaceShiftDefinition"),
     
-    MDKRGROUPSHIFTDEFINITION("MdkrGroupShiftDefinition");
+    MDKRGROUPSHIFTDEFINITION("MdkrGroupShiftDefinition"),
+    
+    INFLATIONCURVESHIFTDEFINITION("InflationCurveShiftDefinition");
 
     private String value;
 
@@ -116,7 +118,7 @@ public class ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
    * @return scenarioShiftType
   **/
   @jakarta.annotation.Nonnull
@@ -199,6 +201,9 @@ public class ScenarioShiftDefinition {
       switch (discriminatorValue) {
         case "FxShiftDefinition":
           FxShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "InflationCurveShiftDefinition":
+          InflationCurveShiftDefinition.validateJsonElement(jsonElement);
           break;
         case "MdkrGroupShiftDefinition":
           MdkrGroupShiftDefinition.validateJsonElement(jsonElement);
