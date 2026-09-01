@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9820
+  version: 0.11.9822
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -268381,12 +268381,24 @@ components:
             pattern: "^\\d+[mywdMYWD]$"
             type: string
           shiftType:
-            description: "Available values: Parallel, Steepen, Flatten, Twist."
+            description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
             enum:
             - Parallel
             - Steepen
             - Flatten
             - Twist
+            - Tent
+            type: string
+          pivotTenor:
+            description: "The tenor the Tent shift peaks at. The shift applies with\
+              \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
+              \ and EndTenor - the key-rate triangle shape, whose\r\nasymmetry matters\
+              \ because key-rate buckets are rarely evenly spaced. Only valid with\r\
+              \nShiftType Tent; omitted, a Tent peaks at the midpoint of the window."
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
             type: string
           scale:
             description: "Available values: Bps, Percentage."
@@ -268430,6 +268442,7 @@ components:
       - steepen
       - flatten
       - twist
+      - tent
       type: string
     RateCurveShiftScale:
       description: "The units of a rate curve shift's amount: basis points for absolute\

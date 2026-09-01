@@ -31,7 +31,9 @@ public enum RateCurveShiftMode {
   
   FLATTEN("flatten"),
   
-  TWIST("twist");
+  TWIST("twist"),
+  
+  TENT("tent");
 
   private String value;
 

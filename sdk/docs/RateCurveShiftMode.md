@@ -17,6 +17,7 @@ RateCurveShiftMode method = RateCurveShiftMode.PARALLEL;
 RateCurveShiftMode method = RateCurveShiftMode.STEEPEN;
 RateCurveShiftMode method = RateCurveShiftMode.FLATTEN;
 RateCurveShiftMode method = RateCurveShiftMode.TWIST;
+RateCurveShiftMode method = RateCurveShiftMode.TENT;
 ```
 
 
