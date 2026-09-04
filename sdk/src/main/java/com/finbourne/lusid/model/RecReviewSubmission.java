@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ModelOptions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,36 +45,62 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * FundingLegOptions
+ * When the reviewer is allowed to submit their work for approval. Omit it to let them submit at any time.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class FundingLegOptions extends ModelOptions {
-  public static final String SERIALIZED_NAME_EXPECTED_FUNDING_LEG_NOTIONAL = "expectedFundingLegNotional";
-  @SerializedName(SERIALIZED_NAME_EXPECTED_FUNDING_LEG_NOTIONAL)
-  private String expectedFundingLegNotional;
+public class RecReviewSubmission {
+  public static final String SERIALIZED_NAME_COMPLETION_RATIO_THRESHOLD = "completionRatioThreshold";
+  @SerializedName(SERIALIZED_NAME_COMPLETION_RATIO_THRESHOLD)
+  private java.math.BigDecimal completionRatioThreshold;
 
-  public FundingLegOptions() {
-    // this.modelOptionsType = this.getClass().getSimpleName();
+  public static final String SERIALIZED_NAME_AUTO_SUBMIT = "autoSubmit";
+  @SerializedName(SERIALIZED_NAME_AUTO_SUBMIT)
+  private Boolean autoSubmit;
+
+  public RecReviewSubmission() {
   }
 
-  public FundingLegOptions expectedFundingLegNotional(String expectedFundingLegNotional) {
+  public RecReviewSubmission completionRatioThreshold(java.math.BigDecimal completionRatioThreshold) {
     
-    this.expectedFundingLegNotional = expectedFundingLegNotional;
+    this.completionRatioThreshold = completionRatioThreshold;
     return this;
   }
 
    /**
-   * Assumption made on future expected notional of the funding leg.
-   * @return expectedFundingLegNotional
+   * The review completion ratio a result set has to reach before it can be submitted, between 0.0 and 1.0 inclusive.
+   * minimum: 0
+   * maximum: 1
+   * @return completionRatioThreshold
   **/
   @jakarta.annotation.Nonnull
-  public String getExpectedFundingLegNotional() {
-    return expectedFundingLegNotional;
+  public java.math.BigDecimal getCompletionRatioThreshold() {
+    return completionRatioThreshold;
   }
 
 
-  public void setExpectedFundingLegNotional(String expectedFundingLegNotional) {
-    this.expectedFundingLegNotional = expectedFundingLegNotional;
+  public void setCompletionRatioThreshold(java.math.BigDecimal completionRatioThreshold) {
+    this.completionRatioThreshold = completionRatioThreshold;
+  }
+
+
+  public RecReviewSubmission autoSubmit(Boolean autoSubmit) {
+    
+    this.autoSubmit = autoSubmit;
+    return this;
+  }
+
+   /**
+   * Whether the system submits on the reviewer&#39;s behalf as soon as the completion ratio threshold is met, rather than waiting to be asked.
+   * @return autoSubmit
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getAutoSubmit() {
+    return autoSubmit;
+  }
+
+
+  public void setAutoSubmit(Boolean autoSubmit) {
+    this.autoSubmit = autoSubmit;
   }
 
 
@@ -88,22 +113,22 @@ public class FundingLegOptions extends ModelOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FundingLegOptions fundingLegOptions = (FundingLegOptions) o;
-    return Objects.equals(this.expectedFundingLegNotional, fundingLegOptions.expectedFundingLegNotional) &&
-        super.equals(o);
+    RecReviewSubmission recReviewSubmission = (RecReviewSubmission) o;
+    return (this.completionRatioThreshold.compareTo(recReviewSubmission.getCompletionRatioThreshold()) == 0) &&
+        Objects.equals(this.autoSubmit, recReviewSubmission.autoSubmit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(expectedFundingLegNotional, super.hashCode());
+    return Objects.hash(completionRatioThreshold, autoSubmit);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FundingLegOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    expectedFundingLegNotional: ").append(toIndentedString(expectedFundingLegNotional)).append("\n");
+    sb.append("class RecReviewSubmission {\n");
+    sb.append("    completionRatioThreshold: ").append(toIndentedString(completionRatioThreshold)).append("\n");
+    sb.append("    autoSubmit: ").append(toIndentedString(autoSubmit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -126,56 +151,56 @@ public class FundingLegOptions extends ModelOptions {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("modelOptionsType");
-    openapiFields.add("expectedFundingLegNotional");
+    openapiFields.add("completionRatioThreshold");
+    openapiFields.add("autoSubmit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("expectedFundingLegNotional");
-    openapiRequiredFields.add("modelOptionsType");
+    openapiRequiredFields.add("completionRatioThreshold");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to FundingLegOptions
+  * @throws IOException if the JSON Element is invalid with respect to RecReviewSubmission
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!FundingLegOptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FundingLegOptions is not found in the empty JSON string", FundingLegOptions.openapiRequiredFields.toString()));
+        if (!RecReviewSubmission.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RecReviewSubmission is not found in the empty JSON string", RecReviewSubmission.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FundingLegOptions.openapiRequiredFields) {
+      for (String requiredField : RecReviewSubmission.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FundingLegOptions.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FundingLegOptions' and its subtypes
+       if (!RecReviewSubmission.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RecReviewSubmission' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FundingLegOptions> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FundingLegOptions.class));
+       final TypeAdapter<RecReviewSubmission> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RecReviewSubmission.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<FundingLegOptions>() {
+       return (TypeAdapter<T>) new TypeAdapter<RecReviewSubmission>() {
            @Override
-           public void write(JsonWriter out, FundingLegOptions value) throws IOException {
+           public void write(JsonWriter out, RecReviewSubmission value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public FundingLegOptions read(JsonReader in) throws IOException {
+           public RecReviewSubmission read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -186,18 +211,18 @@ public class FundingLegOptions extends ModelOptions {
   }
 
  /**
-  * Create an instance of FundingLegOptions given an JSON string
+  * Create an instance of RecReviewSubmission given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of FundingLegOptions
-  * @throws IOException if the JSON string is invalid with respect to FundingLegOptions
+  * @return An instance of RecReviewSubmission
+  * @throws IOException if the JSON string is invalid with respect to RecReviewSubmission
   */
-  public static FundingLegOptions fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FundingLegOptions.class);
+  public static RecReviewSubmission fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RecReviewSubmission.class);
   }
 
  /**
-  * Convert an instance of FundingLegOptions to an JSON string
+  * Convert an instance of RecReviewSubmission to an JSON string
   *
   * @return JSON string
   */

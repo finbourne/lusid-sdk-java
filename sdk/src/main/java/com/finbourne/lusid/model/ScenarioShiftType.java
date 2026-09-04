@@ -35,7 +35,11 @@ public enum ScenarioShiftType {
   
   MDKRGROUPSHIFTDEFINITION("MdkrGroupShiftDefinition"),
   
-  INFLATIONCURVESHIFTDEFINITION("InflationCurveShiftDefinition");
+  INFLATIONCURVESHIFTDEFINITION("InflationCurveShiftDefinition"),
+  
+  CREDITSPREADSHIFTDEFINITION("CreditSpreadShiftDefinition"),
+  
+  MODELOPTIONSHIFTDEFINITION("ModelOptionShiftDefinition");
 
   private String value;
 

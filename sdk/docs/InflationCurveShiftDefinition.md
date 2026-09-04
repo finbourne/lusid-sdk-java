@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **shiftType** | **String** | Available values: Parallel, Steepen, Flatten, Twist, Tent. | [default to String]
 **scale** | **String** | Available values: Bps, Percentage. | [optional] [default to String]
 **pivotTenor** | **String** | The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape. Only  valid with ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared  last on purpose: generated SDKs emit their positional constructor in property-declaration  order, and this property must not shift the parameters of the ones before it. | [optional] [default to String]
+**windowBounds** | **String** | Available values: Inclusive, StartExclusive, EndExclusive, Exclusive. | [optional] [default to String]
+**minimumAmountBps** | **java.math.BigDecimal** | The smallest magnitude, in basis points, of the shift finally applied at each curve point,  evaluated per point AFTER the shape weight, in the direction the shift acts there. Exactly  the rate curve shift&#39;s MinimumAmountBps - see that field for the full semantics; the two  curve shifts keep one vocabulary. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there. | [optional] [default to java.math.BigDecimal]
+**applyWhenValue** | **String** | Available values: Any, Positive, Negative. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.InflationCurveShiftDefinition;
@@ -26,6 +29,9 @@ String Index = "example Index";
 String ShiftType = "example ShiftType";
 String Scale = "example Scale";
 @jakarta.annotation.Nullable String PivotTenor = "example PivotTenor";
+String WindowBounds = "example WindowBounds";
+@jakarta.annotation.Nullable java.math.BigDecimal MinimumAmountBps = new java.math.BigDecimal("100.00");
+String ApplyWhenValue = "example ApplyWhenValue";
 
 
 InflationCurveShiftDefinition inflationCurveShiftDefinitionInstance = new InflationCurveShiftDefinition()
@@ -35,7 +41,10 @@ InflationCurveShiftDefinition inflationCurveShiftDefinitionInstance = new Inflat
     .EndTenor(EndTenor)
     .ShiftType(ShiftType)
     .Scale(Scale)
-    .PivotTenor(PivotTenor);
+    .PivotTenor(PivotTenor)
+    .WindowBounds(WindowBounds)
+    .MinimumAmountBps(MinimumAmountBps)
+    .ApplyWhenValue(ApplyWhenValue);
 ```
 
 

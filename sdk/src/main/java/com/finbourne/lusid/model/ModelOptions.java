@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ModelOptions {
   /**
-   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.
+   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions.
    */
   @JsonAdapter(ModelOptionsTypeEnum.Adapter.class)
   public enum ModelOptionsTypeEnum {
@@ -74,7 +74,9 @@ public class ModelOptions {
     
     HULLWHITEMODELOPTIONS("HullWhiteModelOptions"),
     
-    BONDLOOKUPMODELOPTIONS("BondLookupModelOptions");
+    BONDLOOKUPMODELOPTIONS("BondLookupModelOptions"),
+    
+    BONDFORWARDMODELOPTIONS("BondForwardModelOptions");
 
     private String value;
 
@@ -128,7 +130,7 @@ public class ModelOptions {
   }
 
    /**
-   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.
+   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions.
    * @return modelOptionsType
   **/
   @jakarta.annotation.Nonnull
@@ -209,6 +211,9 @@ public class ModelOptions {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("modelOptionsType").getAsString();
       switch (discriminatorValue) {
+        case "BondForwardModelOptions":
+          BondForwardModelOptions.validateJsonElement(jsonElement);
+          break;
         case "BondLookupModelOptions":
           BondLookupModelOptions.validateJsonElement(jsonElement);
           break;
@@ -224,8 +229,8 @@ public class ModelOptions {
         case "FlexibleLoanPricerOptions":
           FlexibleLoanPricerOptions.validateJsonElement(jsonElement);
           break;
-        case "FundingLegOptions":
-          FundingLegOptions.validateJsonElement(jsonElement);
+        case "FundingLegModelOptions":
+          FundingLegModelOptions.validateJsonElement(jsonElement);
           break;
         case "FxForwardModelOptions":
           FxForwardModelOptions.validateJsonElement(jsonElement);

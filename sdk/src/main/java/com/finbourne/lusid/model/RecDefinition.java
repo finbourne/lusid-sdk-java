@@ -17,6 +17,7 @@ import com.finbourne.lusid.model.RecDefRecipeIds;
 import com.finbourne.lusid.model.RecDefRuleset;
 import com.finbourne.lusid.model.RecDefSideNames;
 import com.finbourne.lusid.model.RecDefSource;
+import com.finbourne.lusid.model.RecReviewConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -100,6 +101,10 @@ public class RecDefinition {
   public static final String SERIALIZED_NAME_RULESETS = "rulesets";
   @SerializedName(SERIALIZED_NAME_RULESETS)
   private List<RecDefRuleset> rulesets = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_REVIEW_CONFIGURATION = "reviewConfiguration";
+  @SerializedName(SERIALIZED_NAME_REVIEW_CONFIGURATION)
+  private RecReviewConfiguration reviewConfiguration;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -350,6 +355,27 @@ public class RecDefinition {
   }
 
 
+  public RecDefinition reviewConfiguration(RecReviewConfiguration reviewConfiguration) {
+    
+    this.reviewConfiguration = reviewConfiguration;
+    return this;
+  }
+
+   /**
+   * Get reviewConfiguration
+   * @return reviewConfiguration
+  **/
+  @jakarta.annotation.Nonnull
+  public RecReviewConfiguration getReviewConfiguration() {
+    return reviewConfiguration;
+  }
+
+
+  public void setReviewConfiguration(RecReviewConfiguration reviewConfiguration) {
+    this.reviewConfiguration = reviewConfiguration;
+  }
+
+
   public RecDefinition href(URI href) {
     
     this.href = href;
@@ -441,6 +467,7 @@ public class RecDefinition {
         Objects.equals(this.valuationRecipes, recDefinition.valuationRecipes) &&
         Objects.equals(this.currencies, recDefinition.currencies) &&
         Objects.equals(this.rulesets, recDefinition.rulesets) &&
+        Objects.equals(this.reviewConfiguration, recDefinition.reviewConfiguration) &&
         Objects.equals(this.href, recDefinition.href) &&
         Objects.equals(this.version, recDefinition.version) &&
         Objects.equals(this.links, recDefinition.links);
@@ -452,7 +479,7 @@ public class RecDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, href, version, links);
+    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -476,6 +503,7 @@ public class RecDefinition {
     sb.append("    valuationRecipes: ").append(toIndentedString(valuationRecipes)).append("\n");
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
     sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
+    sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -511,6 +539,7 @@ public class RecDefinition {
     openapiFields.add("valuationRecipes");
     openapiFields.add("currencies");
     openapiFields.add("rulesets");
+    openapiFields.add("reviewConfiguration");
     openapiFields.add("href");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -523,6 +552,7 @@ public class RecDefinition {
     openapiRequiredFields.add("leftPortfolioSources");
     openapiRequiredFields.add("rightPortfolioSources");
     openapiRequiredFields.add("rulesets");
+    openapiRequiredFields.add("reviewConfiguration");
   }
 
  /**
@@ -598,6 +628,8 @@ public class RecDefinition {
       for (int i = 0; i < jsonArrayrulesets.size(); i++) {
         RecDefRuleset.validateJsonElement(jsonArrayrulesets.get(i));
       };
+      // validate the required field `reviewConfiguration`
+      RecReviewConfiguration.validateJsonElement(jsonObj.get("reviewConfiguration"));
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }

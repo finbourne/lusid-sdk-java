@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.RecDefRecipeIds;
 import com.finbourne.lusid.model.RecDefRuleset;
 import com.finbourne.lusid.model.RecDefSideNames;
 import com.finbourne.lusid.model.RecDefSource;
+import com.finbourne.lusid.model.RecReviewConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -97,6 +98,10 @@ public class CreateRecDefinitionRequest {
   public static final String SERIALIZED_NAME_RULESETS = "rulesets";
   @SerializedName(SERIALIZED_NAME_RULESETS)
   private List<RecDefRuleset> rulesets = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_REVIEW_CONFIGURATION = "reviewConfiguration";
+  @SerializedName(SERIALIZED_NAME_REVIEW_CONFIGURATION)
+  private RecReviewConfiguration reviewConfiguration;
 
   public CreateRecDefinitionRequest() {
   }
@@ -335,6 +340,27 @@ public class CreateRecDefinitionRequest {
   }
 
 
+  public CreateRecDefinitionRequest reviewConfiguration(RecReviewConfiguration reviewConfiguration) {
+    
+    this.reviewConfiguration = reviewConfiguration;
+    return this;
+  }
+
+   /**
+   * Get reviewConfiguration
+   * @return reviewConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public RecReviewConfiguration getReviewConfiguration() {
+    return reviewConfiguration;
+  }
+
+
+  public void setReviewConfiguration(RecReviewConfiguration reviewConfiguration) {
+    this.reviewConfiguration = reviewConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -354,7 +380,8 @@ public class CreateRecDefinitionRequest {
         Objects.equals(this.rightPortfolioSources, createRecDefinitionRequest.rightPortfolioSources) &&
         Objects.equals(this.valuationRecipes, createRecDefinitionRequest.valuationRecipes) &&
         Objects.equals(this.currencies, createRecDefinitionRequest.currencies) &&
-        Objects.equals(this.rulesets, createRecDefinitionRequest.rulesets);
+        Objects.equals(this.rulesets, createRecDefinitionRequest.rulesets) &&
+        Objects.equals(this.reviewConfiguration, createRecDefinitionRequest.reviewConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -363,7 +390,7 @@ public class CreateRecDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets);
+    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +414,7 @@ public class CreateRecDefinitionRequest {
     sb.append("    valuationRecipes: ").append(toIndentedString(valuationRecipes)).append("\n");
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
     sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
+    sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -419,6 +447,7 @@ public class CreateRecDefinitionRequest {
     openapiFields.add("valuationRecipes");
     openapiFields.add("currencies");
     openapiFields.add("rulesets");
+    openapiFields.add("reviewConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -509,6 +538,10 @@ public class CreateRecDefinitionRequest {
       for (int i = 0; i < jsonArrayrulesets.size(); i++) {
         RecDefRuleset.validateJsonElement(jsonArrayrulesets.get(i));
       };
+      // validate the optional field `reviewConfiguration`
+      if (jsonObj.get("reviewConfiguration") != null && !jsonObj.get("reviewConfiguration").isJsonNull()) {
+        RecReviewConfiguration.validateJsonElement(jsonObj.get("reviewConfiguration"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

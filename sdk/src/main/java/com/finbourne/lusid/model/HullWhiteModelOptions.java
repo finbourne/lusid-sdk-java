@@ -77,6 +77,10 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_VOLATILITY_BY_CURRENCY)
   private Map<String, java.math.BigDecimal> volatilityByCurrency;
 
+  public static final String SERIALIZED_NAME_VOLATILITY_MULTIPLIER = "volatilityMultiplier";
+  @SerializedName(SERIALIZED_NAME_VOLATILITY_MULTIPLIER)
+  private java.math.BigDecimal volatilityMultiplier;
+
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -109,7 +113,7 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
    /**
-   * The normal (absolute) volatility of the short rate, e.g. 0.008 for 80bp per year. Defaults to 0.008.
+   * The normal (absolute) volatility of the short rate, e.g. 0.008 for 80bp per year. Must not  be negative; zero is allowed and prices with a deterministic short rate. Defaults to 0.008.
    * @return volatility
   **/
   @jakarta.annotation.Nullable
@@ -223,6 +227,27 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions volatilityMultiplier(java.math.BigDecimal volatilityMultiplier) {
+    
+    this.volatilityMultiplier = volatilityMultiplier;
+    return this;
+  }
+
+   /**
+   * A multiplicative scaling applied to the resolved short-rate volatility - the scalar  Volatility or its per-currency override, whichever applies - at the point of use, e.g. 1.1  prices with the configured volatility raised by ten percent. A single multiplier scales  every per-currency calibration coherently, so a shocked set of options can differ from its  base by this one field rather than a hand-rebuilt volatility (or map of volatilities).  Must not be negative; zero is allowed and prices with a deterministic short rate.  Defaults to 1, which reproduces the configured volatility exactly, when not supplied.
+   * @return volatilityMultiplier
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getVolatilityMultiplier() {
+    return volatilityMultiplier;
+  }
+
+
+  public void setVolatilityMultiplier(java.math.BigDecimal volatilityMultiplier) {
+    this.volatilityMultiplier = volatilityMultiplier;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,6 +264,7 @@ public class HullWhiteModelOptions extends ModelOptions {
         (this.effectiveRateBumpSize.compareTo(hullWhiteModelOptions.getEffectiveRateBumpSize()) == 0) &&
         Objects.equals(this.meanReversionByCurrency, hullWhiteModelOptions.meanReversionByCurrency) &&
         Objects.equals(this.volatilityByCurrency, hullWhiteModelOptions.volatilityByCurrency) &&
+        (this.volatilityMultiplier.compareTo(hullWhiteModelOptions.getVolatilityMultiplier()) == 0) &&
         super.equals(o);
   }
 
@@ -248,7 +274,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -269,6 +295,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    effectiveRateBumpSize: ").append(toIndentedString(effectiveRateBumpSize)).append("\n");
     sb.append("    meanReversionByCurrency: ").append(toIndentedString(meanReversionByCurrency)).append("\n");
     sb.append("    volatilityByCurrency: ").append(toIndentedString(volatilityByCurrency)).append("\n");
+    sb.append("    volatilityMultiplier: ").append(toIndentedString(volatilityMultiplier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -298,6 +325,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("effectiveRateBumpSize");
     openapiFields.add("meanReversionByCurrency");
     openapiFields.add("volatilityByCurrency");
+    openapiFields.add("volatilityMultiplier");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

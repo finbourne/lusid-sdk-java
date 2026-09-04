@@ -183,6 +183,122 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_PIVOT_TENOR)
   private String pivotTenor;
 
+  /**
+   * Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+   */
+  @JsonAdapter(WindowBoundsEnum.Adapter.class)
+  public enum WindowBoundsEnum {
+    INCLUSIVE("Inclusive"),
+    
+    STARTEXCLUSIVE("StartExclusive"),
+    
+    ENDEXCLUSIVE("EndExclusive"),
+    
+    EXCLUSIVE("Exclusive");
+
+    private String value;
+
+    WindowBoundsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WindowBoundsEnum fromValue(String value) {
+      for (WindowBoundsEnum b : WindowBoundsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<WindowBoundsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WindowBoundsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WindowBoundsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return WindowBoundsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_WINDOW_BOUNDS = "windowBounds";
+  @SerializedName(SERIALIZED_NAME_WINDOW_BOUNDS)
+  private WindowBoundsEnum windowBounds;
+
+  public static final String SERIALIZED_NAME_CURVE_NAME = "curveName";
+  @SerializedName(SERIALIZED_NAME_CURVE_NAME)
+  private String curveName;
+
+  public static final String SERIALIZED_NAME_MINIMUM_AMOUNT_BPS = "minimumAmountBps";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_AMOUNT_BPS)
+  private java.math.BigDecimal minimumAmountBps;
+
+  /**
+   * Available values: Any, Positive, Negative.
+   */
+  @JsonAdapter(ApplyWhenValueEnum.Adapter.class)
+  public enum ApplyWhenValueEnum {
+    ANY("Any"),
+    
+    POSITIVE("Positive"),
+    
+    NEGATIVE("Negative");
+
+    private String value;
+
+    ApplyWhenValueEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ApplyWhenValueEnum fromValue(String value) {
+      for (ApplyWhenValueEnum b : ApplyWhenValueEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ApplyWhenValueEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ApplyWhenValueEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ApplyWhenValueEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ApplyWhenValueEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_APPLY_WHEN_VALUE = "applyWhenValue";
+  @SerializedName(SERIALIZED_NAME_APPLY_WHEN_VALUE)
+  private ApplyWhenValueEnum applyWhenValue;
+
   public RateCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
@@ -357,6 +473,92 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public RateCurveShiftDefinition windowBounds(WindowBoundsEnum windowBounds) {
+    
+    this.windowBounds = windowBounds;
+    return this;
+  }
+
+   /**
+   * Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+   * @return windowBounds
+  **/
+  @jakarta.annotation.Nullable
+  public WindowBoundsEnum getWindowBounds() {
+    return windowBounds;
+  }
+
+
+  public void setWindowBounds(WindowBoundsEnum windowBounds) {
+    this.windowBounds = windowBounds;
+  }
+
+
+  public RateCurveShiftDefinition curveName(String curveName) {
+    
+    this.curveName = curveName;
+    return this;
+  }
+
+   /**
+   * The funding identifier of the one curve in the currency this shift targets, letting a  scenario shock a named curve (say, an issuer discounting curve) without also moving the  risk-free curve mastered in the same currency. Omitted - as on every scenario stored  before this field existed - the shift matches every rate curve in the currency, exactly  as before. Declared last on purpose: generated SDKs emit their positional constructor in  property-declaration order, and this property must not shift the parameters of the ones  before it.
+   * @return curveName
+  **/
+  @jakarta.annotation.Nullable
+  public String getCurveName() {
+    return curveName;
+  }
+
+
+  public void setCurveName(String curveName) {
+    this.curveName = curveName;
+  }
+
+
+  public RateCurveShiftDefinition minimumAmountBps(java.math.BigDecimal minimumAmountBps) {
+    
+    this.minimumAmountBps = minimumAmountBps;
+    return this;
+  }
+
+   /**
+   * The smallest magnitude, in basis points, of the shift finally applied at each curve point.  Evaluated per point AFTER the shape weight, in the direction the shift acts there (the sign  of Amount times the shape weight): the applied move becomes at least the minimum in that  direction, even where a Percentage shift on a negative rate would have pointed the other  way - the Solvency II up-shock&#39;s \&quot;at least one percentage point at any maturity\&quot; is  MinimumAmountBps &#x3D; 100 on the relative shift the regulation states. A point whose shape  weight is exactly zero stays unshifted: the floor strengthens a shock where the shape  applies one, it does not extend the shock to points the shape excludes (a Tent&#39;s window  ends remain unmoved). Deliberately in basis points rather than in Scale units, because the  floor and the shift are in different units by construction: the regulation states a  relative shock with an absolute floor. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there.
+   * minimum: 0
+   * maximum: 1000000
+   * @return minimumAmountBps
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinimumAmountBps() {
+    return minimumAmountBps;
+  }
+
+
+  public void setMinimumAmountBps(java.math.BigDecimal minimumAmountBps) {
+    this.minimumAmountBps = minimumAmountBps;
+  }
+
+
+  public RateCurveShiftDefinition applyWhenValue(ApplyWhenValueEnum applyWhenValue) {
+    
+    this.applyWhenValue = applyWhenValue;
+    return this;
+  }
+
+   /**
+   * Available values: Any, Positive, Negative.
+   * @return applyWhenValue
+  **/
+  @jakarta.annotation.Nullable
+  public ApplyWhenValueEnum getApplyWhenValue() {
+    return applyWhenValue;
+  }
+
+
+  public void setApplyWhenValue(ApplyWhenValueEnum applyWhenValue) {
+    this.applyWhenValue = applyWhenValue;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -375,6 +577,10 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
         Objects.equals(this.scale, rateCurveShiftDefinition.scale) &&
         Objects.equals(this.applyTo, rateCurveShiftDefinition.applyTo) &&
         Objects.equals(this.pivotTenor, rateCurveShiftDefinition.pivotTenor) &&
+        Objects.equals(this.windowBounds, rateCurveShiftDefinition.windowBounds) &&
+        Objects.equals(this.curveName, rateCurveShiftDefinition.curveName) &&
+        (this.minimumAmountBps.compareTo(rateCurveShiftDefinition.getMinimumAmountBps()) == 0) &&
+        Objects.equals(this.applyWhenValue, rateCurveShiftDefinition.applyWhenValue) &&
         super.equals(o);
   }
 
@@ -384,7 +590,7 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, applyTo, pivotTenor, super.hashCode());
+    return Objects.hash(ccy, amount, startTenor, endTenor, shiftType, scale, applyTo, pivotTenor, windowBounds, curveName, minimumAmountBps, applyWhenValue, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -407,6 +613,10 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("    applyTo: ").append(toIndentedString(applyTo)).append("\n");
     sb.append("    pivotTenor: ").append(toIndentedString(pivotTenor)).append("\n");
+    sb.append("    windowBounds: ").append(toIndentedString(windowBounds)).append("\n");
+    sb.append("    curveName: ").append(toIndentedString(curveName)).append("\n");
+    sb.append("    minimumAmountBps: ").append(toIndentedString(minimumAmountBps)).append("\n");
+    sb.append("    applyWhenValue: ").append(toIndentedString(applyWhenValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -438,6 +648,10 @@ public class RateCurveShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("scale");
     openapiFields.add("applyTo");
     openapiFields.add("pivotTenor");
+    openapiFields.add("windowBounds");
+    openapiFields.add("curveName");
+    openapiFields.add("minimumAmountBps");
+    openapiFields.add("applyWhenValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

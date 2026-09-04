@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9829
+  version: 0.11.9853
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -15107,6 +15107,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Linear
                       backExtrapolationType: None
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     marketDataType: DiscountFactorCurveData
                 - scope: ExampleScope
@@ -15157,6 +15159,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Flat
                       backExtrapolationType: Flat
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     calendars: []
                     spotDaysCalculationType: SingleCalendar
@@ -15328,6 +15332,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Linear
                       backExtrapolationType: None
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     marketDataType: DiscountFactorCurveData
                 - scope: ExampleScope
@@ -15378,6 +15384,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Flat
                       backExtrapolationType: Flat
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     calendars: []
                     spotDaysCalculationType: SingleCalendar
@@ -15549,6 +15557,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Linear
                       backExtrapolationType: None
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     marketDataType: DiscountFactorCurveData
                 - scope: ExampleScope
@@ -15599,6 +15609,8 @@ paths:
                       dayCountConvention: Actual365
                       frontExtrapolationType: Flat
                       backExtrapolationType: Flat
+                      interpolationType: LinearOnRates
+                      originAnchor: ZeroRate
                       marketDataOptionsType: CurveOptions
                     calendars: []
                     spotDaysCalculationType: SingleCalendar
@@ -15823,6 +15835,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Linear
                     backExtrapolationType: None
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   marketDataType: DiscountFactorCurveData
               second-item:
@@ -15873,6 +15887,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Flat
                     backExtrapolationType: Flat
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   calendars: []
                   spotDaysCalculationType: SingleCalendar
@@ -16038,6 +16054,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Linear
                     backExtrapolationType: None
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   marketDataType: DiscountFactorCurveData
               second-item:
@@ -16088,6 +16106,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Flat
                     backExtrapolationType: Flat
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   calendars: []
                   spotDaysCalculationType: SingleCalendar
@@ -16253,6 +16273,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Linear
                     backExtrapolationType: None
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   marketDataType: DiscountFactorCurveData
               second-item:
@@ -16303,6 +16325,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Flat
                     backExtrapolationType: Flat
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   calendars: []
                   spotDaysCalculationType: SingleCalendar
@@ -16468,6 +16492,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Linear
                     backExtrapolationType: None
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   marketDataType: DiscountFactorCurveData
               second-item:
@@ -16518,6 +16544,8 @@ paths:
                     dayCountConvention: Actual365
                     frontExtrapolationType: Flat
                     backExtrapolationType: Flat
+                    interpolationType: LinearOnRates
+                    originAnchor: ZeroRate
                     marketDataOptionsType: CurveOptions
                   calendars: []
                   spotDaysCalculationType: SingleCalendar
@@ -55841,7 +55869,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward."
+          \ BondForward, PreferredShare."
         explode: false
         in: path
         name: instrumentType
@@ -55955,7 +55983,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward."
+          \ BondForward, PreferredShare."
         explode: false
         in: path
         name: instrumentType
@@ -56077,7 +56105,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward."
+          \ BondForward, PreferredShare."
         explode: false
         in: path
         name: instrumentType
@@ -56305,7 +56333,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward."
+          \ BondForward, PreferredShare."
         explode: false
         in: path
         name: instrumentType
@@ -79832,13 +79860,88 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EARLY ACCESS] UpsertPaymentInstructions: Upsert Payment Instructions"
+      summary: "[EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions"
       tags:
       - Payment Instructions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/paymentinstructions/{scope}/{code}:
+    delete:
+      description: "Delete a Payment Instruction. Deletion will be valid from the\
+        \ payment instruction's creation datetime.\r\nThis means that the payment\
+        \ instruction will no longer exist at any effective datetime from the asAt\
+        \ datetime\r\nof deletion. Any payment records the instruction owns are released\
+        \ and become available to another instruction.\r\nA payment instruction that\
+        \ has been released, instructed, sent, cancelled or failed cannot be deleted."
+      operationId: DeletePaymentInstruction
+      parameters:
+      - description: The scope of the payment instruction.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the payment instruction.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The response from deleting the payment instruction
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction"
+      tags:
+      - Payment Instructions
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
     get:
       description: Retrieve a single Payment Instruction.
       operationId: GetPaymentInstruction
@@ -79939,10 +80042,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EARLY ACCESS] GetPaymentInstruction: Get Payment Instruction"
+      summary: "[EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction"
       tags:
       - Payment Instructions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/persons:
     get:
@@ -109909,6 +110012,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/json:
@@ -109945,6 +110066,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           text/json:
@@ -109981,6 +110120,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/*+json:
@@ -110017,6 +110174,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
         description: The rec definition to create.
@@ -110058,6 +110233,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110098,6 +110291,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110138,6 +110349,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110320,6 +110549,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110360,6 +110607,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110400,6 +110665,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110494,6 +110777,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/json:
@@ -110527,6 +110828,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           text/json:
@@ -110560,6 +110879,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/*+json:
@@ -110593,6 +110930,24 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              reviewConfiguration:
+                openExceptions:
+                  reviewRequirement: Required
+                closedExceptions:
+                  reviewRequirement: NotRequired
+                matches:
+                  reviewRequirement: NotRequired
+                  overrideCondition: resultType eq 'CrossMatch'
+                reviewSubmission:
+                  completionRatioThreshold: 0.8
+                  autoSubmit: false
+                requiredApprovals:
+                - approvalCode: Desk
+                  description: Desk sign-off
+                  decidingUser: role.Code eq 'DeskHead'
+                - approvalCode: Risk
+                  description: Risk sign-off
+                  decidingUser: role.Code eq 'RiskOfficer'
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
         description: The updated rec definition values.
@@ -110634,6 +110989,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110674,6 +111047,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -110714,6 +111105,24 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                reviewConfiguration:
+                  openExceptions:
+                    reviewRequirement: Required
+                  closedExceptions:
+                    reviewRequirement: NotRequired
+                  matches:
+                    reviewRequirement: NotRequired
+                    overrideCondition: resultType eq 'CrossMatch'
+                  reviewSubmission:
+                    completionRatioThreshold: 0.8
+                    autoSubmit: false
+                  requiredApprovals:
+                  - approvalCode: Desk
+                    description: Desk sign-off
+                    decidingUser: role.Code eq 'DeskHead'
+                  - approvalCode: Risk
+                    description: Risk sign-off
+                    decidingUser: role.Code eq 'RiskOfficer'
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -120642,6 +121051,8 @@ paths:
                   endTenor: 30y
                   shiftType: parallel
                   scale: Bps
+                  windowBounds: Inclusive
+                  applyWhenValue: Any
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -120661,6 +121072,8 @@ paths:
                   endTenor: 30y
                   shiftType: parallel
                   scale: Bps
+                  windowBounds: Inclusive
+                  applyWhenValue: Any
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -120680,6 +121093,8 @@ paths:
                   endTenor: 30y
                   shiftType: parallel
                   scale: Bps
+                  windowBounds: Inclusive
+                  applyWhenValue: Any
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -120699,6 +121114,8 @@ paths:
                   endTenor: 30y
                   shiftType: parallel
                   scale: Bps
+                  windowBounds: Inclusive
+                  applyWhenValue: Any
                   scenarioShiftType: RateCurveShiftDefinition
             schema:
               $ref: '#/components/schemas/UpsertScenarioRequest'
@@ -120859,6 +121276,43 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/scenarios/$templates:
+    get:
+      description: "Lists every template CreateScenarioFromTemplate accepts, with\
+        \ each template's parameters: the\r\nparameter's name (case-sensitive), whether\
+        \ it is required, what it means, the default used when\r\nit is omitted and\
+        \ the unit a numeric value is read in. The units differ between templates\
+        \ -\r\nbasis points, percentage points or a fraction - so read them per template\
+        \ rather than assuming\r\none convention. The list is static application metadata:\
+        \ it does not vary by tenant, scope or\r\ndate, so the endpoint takes no parameters."
+      operationId: ListScenarioTemplates
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfScenarioTemplateDefinition'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfScenarioTemplateDefinition'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfScenarioTemplateDefinition'
+          description: The available scenario templates
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListScenarioTemplates: [EARLY ACCESS] ListScenarioTemplates:\
+        \ List the pre-built scenario templates."
+      tags:
+      - Scenarios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/scenarios/{scope}:
     get:
       description: List the set of scenario definitions in a single scope at the specified
@@ -120966,9 +121420,10 @@ paths:
         \ template determines the scenario's shifts; the\r\nparameters supply the\
         \ targets (e.g. currency or instrument) and optionally override the default\r\
         \nshift size. The created scenario is stored in the given scope and behaves\
-        \ exactly like a\r\nhand-built scenario.\r\n \r\nAvailable templates: RatesUp,\
-        \ RatesDown, CurveSteepener, CurveFlattener, VolSpike, EquityCrash,\r\nFxShock,\
-        \ RiskOff."
+        \ exactly like a\r\nhand-built scenario.\r\n \r\nUse ListScenarioTemplates\
+        \ to discover the available templates and, for each, the parameters it\r\n\
+        accepts, their defaults and their units. A parameter the template does not\
+        \ read is rejected\r\nrather than ignored, and parameter names are case-sensitive."
       operationId: CreateScenarioFromTemplate
       parameters:
       - description: The scope in which to create the scenario
@@ -167020,7 +167475,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -167074,6 +167529,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - basketName
@@ -171796,6 +172252,17 @@ components:
             format: double
             nullable: true
             type: number
+          parPerUnit:
+            description: "Optional value used to scale accrued interest and coupon\
+              \ amounts only (not CleanPV), in addition to\r\ncurrentNotional and\
+              \ units. If you do not set this field, the value is 1 and no amount\
+              \ changes.\r\nA model that calculates the price from the cash flows,\
+              \ for example Discounting, includes the scaled coupons\r\nin the PV\
+              \ and thus in the CleanPV. The CleanPV exclusion applies to a quoted\
+              \ price."
+            format: double
+            nullable: true
+            type: number
           tradingConventions:
             $ref: '#/components/schemas/TradingConventions'
           timeZoneConventions:
@@ -171811,7 +172278,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -171865,6 +172332,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - couponRate
@@ -172438,7 +172906,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -172492,6 +172960,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - agreedCleanPrice
@@ -172712,6 +173181,42 @@ components:
         \ enter the payoff, by cancellation rather than entitlement: both sides of\
         \ the\r\ndifference accrue to the same date, so the accrued is identical on\
         \ each and drops out."
+    BondForwardModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - properties:
+          bondForwardProjectionType:
+            description: "Determines how the forward price of the deliverable bond\
+              \ is projected to the settlement date.\r\n \r\nSupported string (enumeration)\
+              \ values are: [QuotedContractPrice, ForwardProjectedFromFundingCurve].\r\
+              \nDefaults to QuotedContractPrice - the original quote-driven behaviour\
+              \ - when not supplied, so\r\noptions persisted before this property\
+              \ existed keep the behaviour they were saved under."
+            nullable: true
+            type: string
+          modelOptionsType:
+            description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
+              \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
+              \ BondLookupModelOptions, BondForwardModelOptions."
+            enum:
+            - Invalid
+            - OpaqueModelOptions
+            - EmptyModelOptions
+            - IndexModelOptions
+            - FxForwardModelOptions
+            - FundingLegModelOptions
+            - EquityModelOptions
+            - CdsModelOptions
+            - FlexibleLoanPricerOptions
+            - HullWhiteModelOptions
+            - BondLookupModelOptions
+            - BondForwardModelOptions
+            type: string
+        required:
+        - modelOptionsType
+        type: object
+      description: Model options for bond forward pricing.
     BondForwardTerminationEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -172944,11 +173449,22 @@ components:
               \ default, as the mode changes both the declared dependencies and where\
               \ the price\r\ncomes from."
             type: boolean
+          cs01BumpWidth:
+            description: "The TOTAL width of the central-difference stencil behind\
+              \ the CS01/Central measure: the\r\ninstrument's own z-spread is repriced\
+              \ at spread ± width/2, so a width of 0.0001 means\r\n±0.5bp reprice\
+              \ points. The width is the whole distance between the two reprice points,\r\
+              \nNOT the half-shift. The reported measure is always per one basis point\
+              \ of widening\r\nwhatever width is configured. Must be strictly positive.\r\
+              \nDefaults to 0.0001 (1bp, repriced at ±0.5bp) when not supplied."
+            format: double
+            nullable: true
+            type: number
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -172961,6 +173477,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -173040,7 +173557,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -173094,6 +173611,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - contractSize
@@ -177816,7 +178334,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -177870,6 +178388,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - capFloorType
@@ -178419,7 +178938,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -178473,6 +178992,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - amount
@@ -179388,7 +179908,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -179442,6 +179962,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -179843,7 +180364,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -179897,6 +180418,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - couponRate
@@ -179927,7 +180449,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -179940,6 +180462,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -180043,7 +180566,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -180097,6 +180620,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - deliveryType
@@ -180425,6 +180949,17 @@ components:
             type: string
           additionalInformation:
             description: Free-text additional information describing the change.
+            nullable: true
+            type: string
+          carryRelationships:
+            description: "Whether, and in which direction, the old instrument's Relationships\
+              \ are carried onto the new\r\ninstrument. One of \"None\", \"Outward\"\
+              \ or \"Both\"; defaults to \"Outward\" when omitted.\r\n \r\nRelationships\
+              \ resolve to the instrument entity, so nothing pointing at the old instrument\r\
+              \napplies to the new one. This is a caller choice because relationship\
+              \ meaning is client-authored:\r\nan index-to-constituent link should\
+              \ usually follow a rename, a historical order-to-instrument\r\nlink\
+              \ should not. Available values: None, Outward, Both."
             nullable: true
             type: string
           instrumentEventType:
@@ -182368,7 +182903,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -182422,6 +182957,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - commodityCalendarSchedule
@@ -182695,7 +183231,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -182749,6 +183285,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - deliveryType
@@ -183521,6 +184058,17 @@ components:
             format: double
             nullable: true
             type: number
+          parPerUnit:
+            description: "Optional value used to scale accrued interest and coupon\
+              \ amounts only (not CleanPV), in addition to\r\ncurrentNotional and\
+              \ units. If you do not set this field, the value is 1 and no amount\
+              \ changes.\r\nA model that calculates the price from the cash flows,\
+              \ for example Discounting, includes the scaled coupons \r\nin the PV\
+              \ and thus in the CleanPV. The CleanPV exclusion applies to a quoted\
+              \ price."
+            format: double
+            nullable: true
+            type: number
           issueDate:
             description: "The date the bond was issued to the market. This may be\
               \ after the StartDate (dated date) from which interest accrues, for\
@@ -183573,7 +184121,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -183627,6 +184175,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -186350,6 +186899,8 @@ components:
             mbsValuationUsingHoldingCurrentFace: true
             fxForwardContractsAsUnitsInBothLegs: true
             scaleInstrumentAccruedOverrideByContractSize: true
+            fundingCurveByCurrency:
+              key: fundingCurveByCurrency
             findOrCalculate: findOrCalculate
             convertSrsCashFlowsToPortfolioCurrency: true
             modelSelection:
@@ -186357,6 +186908,16 @@ components:
               model: SimpleStatic
             allowPartiallySuccessfulEvaluation: true
             useInstrumentScaleFactorAsDefault: true
+            riskBumpOptions:
+              deltaShift: 0.8008281904610115
+              resultSensitivity: 6.027456183070403
+              ladderShiftOverrides:
+                key:
+                - 5.962133916683182
+                - 5.962133916683182
+              deltaShiftOverrides:
+                key: 1.4658129805029452
+              parityRelativeTolerance: 5.637376656633329
             conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
             returnZeroPv:
               instrumentMatured: true
@@ -186911,7 +187472,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -186965,6 +187526,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -189043,7 +189605,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       required:
@@ -189573,7 +190137,8 @@ components:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
             \ If not supplied, the portfolio's current value is left unchanged; supply\
-            \ Default to reset it. Available values: Cost, AmortisedCost."
+            \ Default to reset it. A reset or never-configured basis reads back as\
+            \ absent. Available values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       type: object
@@ -189873,6 +190438,35 @@ components:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+        reviewConfiguration:
+          requiredApprovals:
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          closedExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          openExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          matches:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          reviewSubmission:
+            completionRatioThreshold: 0.08008281904610115
+            autoSubmit: true
         rightPortfolioSources:
         - sourceType: sourceType
           id:
@@ -189990,6 +190584,8 @@ components:
           maxItems: 10
           minItems: 1
           type: array
+        reviewConfiguration:
+          $ref: '#/components/schemas/RecReviewConfiguration'
       required:
       - definitionType
       - displayName
@@ -190168,6 +190764,8 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
@@ -190175,6 +190773,16 @@ components:
                 model: SimpleStatic
               allowPartiallySuccessfulEvaluation: true
               useInstrumentScaleFactorAsDefault: true
+              riskBumpOptions:
+                deltaShift: 0.8008281904610115
+                resultSensitivity: 6.027456183070403
+                ladderShiftOverrides:
+                  key:
+                  - 5.962133916683182
+                  - 5.962133916683182
+                deltaShiftOverrides:
+                  key: 1.4658129805029452
+                parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               returnZeroPv:
                 instrumentMatured: true
@@ -190793,9 +191401,8 @@ components:
           key: parameters
       properties:
         template:
-          description: "The template to build the scenario from. Available templates:\
-            \ RatesUp, RatesDown, CurveSteepener,\r\nCurveFlattener, VolSpike, EquityCrash,\
-            \ FxShock, RiskOff."
+          description: "The template to build the scenario from. Use ListScenarioTemplates\
+            \ to discover the available\r\ntemplates and the parameters each accepts."
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
@@ -190825,11 +191432,10 @@ components:
           additionalProperties:
             nullable: true
             type: string
-          description: "Template parameters. Which parameters are required depends\
-            \ on the template: 'ccy' for rate curve\r\ntemplates, 'instrument' for\
-            \ equity and vol templates, 'currencyPair' for FX templates; RiskOff\r\
-            \nrequires 'ccy' and 'instrument'. All templates accept an optional 'amount'\
-            \ override of the\r\ntemplate's default shift size."
+          description: "Template parameters. Which parameters each template requires\
+            \ and accepts - with defaults and\r\nunits for the numeric ones - is listed\
+            \ by ListScenarioTemplates. A parameter the template does\r\nnot read\
+            \ is rejected rather than ignored, and parameter names are case-sensitive."
           nullable: true
           type: object
       required:
@@ -191096,7 +191702,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       required:
@@ -191789,7 +192397,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       required:
@@ -192220,7 +192830,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192274,6 +192884,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - couponRate
@@ -192569,6 +193180,119 @@ components:
         - tenors
         type: object
       description: A credit spread curve matching tenors against par spread quotes
+    CreditSpreadShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          ticker:
+            description: The ticker of the reference entity whose spread curve is
+              shifted.
+            maxLength: 50
+            minLength: 1
+            type: string
+          ccy:
+            description: "The currency the curve is quoted in; disambiguates a ticker\
+              \ quoted in more than one\r\ncurrency. Omitted, the shift matches the\
+              \ ticker in every currency."
+            maxLength: 3
+            minLength: 3
+            nullable: true
+            type: string
+          amount:
+            description: "The size of the shift, in the units given by Scale: basis\
+              \ points of spread by default\r\n(50 means +50bps), or a percentage\
+              \ of each spread when Scale is Percentage (1 means\r\nspreads scaled\
+              \ by 1.01)."
+            format: double
+            maximum: 1000000
+            minimum: -1000000
+            nullable: true
+            type: number
+          startTenor:
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          endTenor:
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          shiftType:
+            description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
+            enum:
+            - Parallel
+            - Steepen
+            - Flatten
+            - Twist
+            - Tent
+            type: string
+          scale:
+            description: "Available values: Bps, Percentage."
+            enum:
+            - Bps
+            - Percentage
+            type: string
+          pivotTenor:
+            description: "The tenor the Tent shift peaks at. The shift applies with\
+              \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
+              \ and EndTenor - the key-rate triangle shape. Only\r\nvalid with ShiftType\
+              \ Tent; omitted, a Tent peaks at the midpoint of the window. Declared\r\
+              \nlast on purpose: generated SDKs emit their positional constructor\
+              \ in property-declaration\r\norder, and this property must not shift\
+              \ the parameters of the ones before it."
+            maxLength: 10
+            minLength: 2
+            nullable: true
+            pattern: "^\\d+[mywdMYWD]$"
+            type: string
+          minimumAmountBps:
+            description: "The smallest magnitude, in basis points, of the shift finally\
+              \ applied at each curve point,\r\nevaluated per point AFTER the shape\
+              \ weight, in the direction the shift acts there. Exactly\r\nthe rate\
+              \ curve shift's MinimumAmountBps - see that field for the full semantics;\
+              \ the\r\ncurve shifts keep one vocabulary. Omitted, no floor applies\
+              \ - today's behaviour.\r\nDeclared after PivotTenor on purpose, for\
+              \ the constructor-ordering reason given there."
+            format: double
+            maximum: 1000000
+            minimum: 0
+            nullable: true
+            type: number
+          applyWhenValue:
+            description: "Available values: Any, Positive, Negative."
+            enum:
+            - Any
+            - Positive
+            - Negative
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - PriceShiftDefinition
+            - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
+            type: string
+        required:
+        - scenarioShiftType
+        - shiftType
+        - ticker
+        type: object
+      description: "A shift of a credit spread curve, targeted by the ticker of the\
+        \ reference entity and,\r\noptionally, the currency the curve is quoted in.\
+        \ The shift applies to the par spread quotes\r\nthe curve carries, so a basis-point\
+        \ amount means basis points of spread - the units a spread\r\nshock is quoted\
+        \ in. Shift shapes, tenor windows, scales and the Tent pivot behave exactly\
+        \ as\r\nthey do on a rate curve shift."
     CreditSupportAnnex:
       additionalProperties: false
       description: "Entity to capture the calculable and queryable methods and practices\
@@ -192715,6 +193439,25 @@ components:
             minLength: 0
             nullable: true
             type: string
+          interpolationType:
+            description: "What type of interpolation is used to build the curve. Default\
+              \ value: LinearOnRates. Available values: LinearOnRates, LinearOnLogOfRates,\
+              \ LinearOnDiscountFactors, LinearOnLogDiscountFactors, PiecewiseLinearForward,\
+              \ MonotoneConvex, LinearOnLogProbability."
+            maxLength: 50
+            minLength: 0
+            nullable: true
+            type: string
+          originAnchor:
+            description: "How the curve builder anchors the origin of a bootstrapped\
+              \ curve, i.e. the value the curve\r\ncarries in front of its shortest\
+              \ calibration instrument. Default value: ZeroRate, the\r\nhistorical\
+              \ anchor, under which existing curves are unchanged. Available values:\
+              \ ZeroRate, FirstInstrumentRate."
+            maxLength: 50
+            minLength: 0
+            nullable: true
+            type: string
           marketDataOptionsType:
             description: "Available values: CurveOptions. Available values: CurveOptions."
             enum:
@@ -192725,6 +193468,21 @@ components:
         type: object
       description: Options for configuring how ComplexMarketData representing a 'curve'
         is interpreted.
+    CurveShiftWindowBounds:
+      description: "Which bounds of a curve shift's tenor window admit a pillar sitting\
+        \ exactly on them.\r\nInclusive - the closed window [StartTenor, EndTenor],\
+        \ and the behaviour of every scenario\r\nstored before this field existed\
+        \ - is the default. An exclusive bound rejects the pillar\r\nsitting exactly\
+        \ on it, which is what lets two adjacent windows share a boundary tenor\r\n\
+        without both shifting that pillar: a shift over [A, B) composed with one over\
+        \ [B, C]\r\nmoves the pillar at B exactly once, where two inclusive windows\
+        \ would both match it and\r\ntheir amounts would add."
+      enum:
+      - Inclusive
+      - StartExclusive
+      - EndExclusive
+      - Exclusive
+      type: string
     CustodianAccount:
       additionalProperties: false
       example:
@@ -192994,9 +193752,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for disposals from this account. This can be:\
-            \ Cost or AmortisedCost. If not specified, resolution falls through to\
-            \ the transaction type and then the portfolio's default. Available values:\
-            \ Cost, AmortisedCost."
+            \ Cost or AmortisedCost. If not specified or reset with Default, resolution\
+            \ falls through to the transaction type and then the portfolio's default.\
+            \ Available values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       required:
@@ -193172,9 +193930,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for disposals from this account. This can be:\
-            \ Cost or AmortisedCost. If not specified, resolution falls through to\
-            \ the transaction type and then the portfolio's default. Available values:\
-            \ Cost, AmortisedCost."
+            \ Cost or AmortisedCost. If not specified or reset with Default, resolution\
+            \ falls through to the transaction type and then the portfolio's default.\
+            \ Available values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
       required:
@@ -197593,7 +198351,7 @@ components:
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
             \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-            \ CapitalInterest, BondForward, Unknown."
+            \ CapitalInterest, BondForward, PreferredShare, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -200503,7 +201261,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -200516,6 +201274,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -200574,7 +201333,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200628,6 +201387,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -200771,7 +201531,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -200784,6 +201544,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - equityForwardProjectionType
@@ -200894,7 +201655,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -200948,6 +201709,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - deliveryType
@@ -201037,7 +201799,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -201091,6 +201853,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - code
@@ -201586,7 +202349,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -201640,6 +202403,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - contractDetails
@@ -202347,7 +203111,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -202401,6 +203165,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - content
@@ -204373,7 +205138,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204427,6 +205192,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -204582,7 +205348,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204636,6 +205402,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -204695,7 +205462,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204749,6 +205516,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -204772,7 +205540,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -204785,6 +205553,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -204927,7 +205696,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -204981,6 +205750,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - buyerOrSeller
@@ -205908,7 +206678,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -205962,6 +206732,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -206324,7 +207095,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -206378,6 +207149,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -208800,7 +209572,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -208854,6 +209626,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -208870,7 +209643,7 @@ components:
         \n\r\nThe actual notional history is stored in the FundingLegHistory object.\r\
         \n \r\nThe main analytic calculated for this instrument is Accrual rather\
         \ than PV."
-    FundingLegOptions:
+    FundingLegModelOptions:
       allOf:
       - $ref: '#/components/schemas/ModelOptions'
       - properties:
@@ -208883,7 +209656,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -208896,6 +209669,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - expectedFundingLegNotional
@@ -209513,7 +210287,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -209567,6 +210341,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -211573,7 +212348,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -211627,6 +212402,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - contractDetails
@@ -212236,7 +213012,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -212290,6 +213066,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domAmount
@@ -212499,7 +213276,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -212512,6 +213289,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - convertToReportCcy
@@ -213171,7 +213949,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -213225,6 +214003,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -213311,7 +214090,7 @@ components:
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -213319,6 +214098,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - currencyPair
@@ -213362,7 +214143,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -213416,6 +214197,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - farFxForward
@@ -214844,6 +215626,8 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
@@ -214851,6 +215635,16 @@ components:
                 model: SimpleStatic
               allowPartiallySuccessfulEvaluation: true
               useInstrumentScaleFactorAsDefault: true
+              riskBumpOptions:
+                deltaShift: 0.8008281904610115
+                resultSensitivity: 6.027456183070403
+                ladderShiftOverrides:
+                  key:
+                  - 5.962133916683182
+                  - 5.962133916683182
+                deltaShiftOverrides:
+                  key: 1.4658129805029452
+                parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               returnZeroPv:
                 instrumentMatured: true
@@ -218266,7 +219060,8 @@ components:
             type: number
           volatility:
             description: "The normal (absolute) volatility of the short rate, e.g.\
-              \ 0.008 for 80bp per year. Defaults to 0.008."
+              \ 0.008 for 80bp per year. Must not\r\nbe negative; zero is allowed\
+              \ and prices with a deterministic short rate. Defaults to 0.008."
             format: double
             type: number
           latticeSteps:
@@ -218302,11 +219097,25 @@ components:
               separately instead of sharing a single global figure."
             nullable: true
             type: object
+          volatilityMultiplier:
+            description: "A multiplicative scaling applied to the resolved short-rate\
+              \ volatility - the scalar\r\nVolatility or its per-currency override,\
+              \ whichever applies - at the point of use, e.g. 1.1\r\nprices with the\
+              \ configured volatility raised by ten percent. A single multiplier scales\r\
+              \nevery per-currency calibration coherently, so a shocked set of options\
+              \ can differ from its\r\nbase by this one field rather than a hand-rebuilt\
+              \ volatility (or map of volatilities).\r\nMust not be negative; zero\
+              \ is allowed and prices with a deterministic short rate.\r\nDefaults\
+              \ to 1, which reproduces the configured volatility exactly, when not\
+              \ supplied."
+            format: double
+            nullable: true
+            type: number
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -218319,6 +219128,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -218728,7 +219538,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -218741,6 +219551,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - modelOptionsType
@@ -218966,10 +219777,39 @@ components:
             nullable: true
             pattern: "^\\d+[mywdMYWD]$"
             type: string
+          windowBounds:
+            description: "Available values: Inclusive, StartExclusive, EndExclusive,\
+              \ Exclusive."
+            enum:
+            - Inclusive
+            - StartExclusive
+            - EndExclusive
+            - Exclusive
+            type: string
+          minimumAmountBps:
+            description: "The smallest magnitude, in basis points, of the shift finally\
+              \ applied at each curve point,\r\nevaluated per point AFTER the shape\
+              \ weight, in the direction the shift acts there. Exactly\r\nthe rate\
+              \ curve shift's MinimumAmountBps - see that field for the full semantics;\
+              \ the two\r\ncurve shifts keep one vocabulary. Omitted, no floor applies\
+              \ - today's behaviour.\r\nDeclared after PivotTenor on purpose, for\
+              \ the constructor-ordering reason given there."
+            format: double
+            maximum: 1000000
+            minimum: 0
+            nullable: true
+            type: number
+          applyWhenValue:
+            description: "Available values: Any, Positive, Negative."
+            enum:
+            - Any
+            - Positive
+            - Negative
+            type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -218977,6 +219817,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - index
@@ -219169,7 +220011,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -219223,6 +220065,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - calculationType
@@ -219364,6 +220207,17 @@ components:
             format: double
             nullable: true
             type: number
+          parPerUnit:
+            description: "Optional value used to scale accrued interest and coupon\
+              \ amounts only (not CleanPV), in addition to\r\ncurrentNotional and\
+              \ units. If you do not set this field, the value is 1 and no amount\
+              \ changes.\r\nA model that calculates the price from the cash flows,\
+              \ for example InflationForward, includes the scaled\r\ncoupons in the\
+              \ PV and thus in the CleanPV. The CleanPV exclusion applies to a quoted\
+              \ price."
+            format: double
+            nullable: true
+            type: number
           timeZoneConventions:
             $ref: '#/components/schemas/TimeZoneConventions'
           amortisationSchedule:
@@ -219379,7 +220233,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -219433,6 +220287,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - couponRate
@@ -219488,7 +220343,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -219542,6 +220397,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - fixedLeg
@@ -222507,7 +223363,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -222561,6 +223417,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -223362,6 +224219,7 @@ components:
       - CdsOption
       - CommodityCalendarSwap
       - BondForward
+      - PreferredShare
       type: string
     InterestPaymentEvent:
       allOf:
@@ -223609,7 +224467,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223663,6 +224521,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentType
@@ -223790,7 +224649,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223844,6 +224703,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - deliveryMethod
@@ -228927,7 +229787,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -228981,6 +229841,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -229883,7 +230744,7 @@ components:
             \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
             \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
             \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-            \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+            \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -229937,6 +230798,7 @@ components:
           - CdsOption
           - CommodityCalendarSwap
           - BondForward
+          - PreferredShare
           type: string
       required:
       - instrumentType
@@ -231262,7 +232124,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -231316,6 +232178,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - identifiers
@@ -232508,7 +233371,7 @@ components:
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -232516,6 +233379,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - rules
@@ -233096,7 +233961,8 @@ components:
         modelOptionsType:
           description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
             \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions,\
-            \ CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions."
+            \ CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions,\
+            \ BondForwardModelOptions."
           enum:
           - Invalid
           - OpaqueModelOptions
@@ -233109,10 +233975,106 @@ components:
           - FlexibleLoanPricerOptions
           - HullWhiteModelOptions
           - BondLookupModelOptions
+          - BondForwardModelOptions
           type: string
       required:
       - modelOptionsType
       type: object
+    ModelOptionShiftDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ScenarioShiftDefinition'
+      - properties:
+          modelName:
+            description: "The pricing model whose options this shift targets, exactly\
+              \ as named on the recipe's model\r\nrule, e.g. \"HullWhite1F\". Only\
+              \ models with shiftable options are accepted; an unknown or\r\nunsupported\
+              \ model name is rejected when the scenario is stored."
+            maxLength: 50
+            minLength: 1
+            type: string
+          instrumentType:
+            description: "The instrument type narrowing which of the model's rules\
+              \ the shift applies to, matching the\r\ninstrument-type addressing of\
+              \ model rules in the recipe, e.g. \"ComplexBond\". Omitted, the\r\n\
+              shift applies to every instrument the named model prices."
+            maxLength: 50
+            minLength: 1
+            nullable: true
+            type: string
+          optionName:
+            description: "The model option field the shift moves, e.g. \"Volatility\"\
+              \ or \"MeanReversion\" for\r\nHullWhite1F. Only a whitelisted set of\
+              \ options per model is shiftable; an unknown option\r\nname is rejected\
+              \ when the scenario is stored."
+            maxLength: 50
+            minLength: 1
+            type: string
+          ccy:
+            description: "For options carrying per-currency overrides (e.g. HullWhite1F's\
+              \ VolatilityByCurrency): the\r\nISO currency code whose effective value\
+              \ the shift moves. The shifted entry starts from the\r\nexisting override\
+              \ for that currency, or from the scalar option where no override exists.\r\
+              \nOmitted, the shift moves the scalar option and every per-currency\
+              \ override together, so the\r\neffective value moves for every instrument\
+              \ regardless of which level supplies it."
+            maxLength: 3
+            minLength: 3
+            nullable: true
+            type: string
+          amount:
+            description: "The size of the shift, in the units given by ShiftType:\
+              \ the option's own units for Absolute\r\n(0.0010 on a volatility of\
+              \ 0.008 is ten basis points of annualised volatility), or a\r\nfraction\
+              \ of the configured value for Relative (0.1 raises it by ten percent)."
+            format: double
+            maximum: 1000000
+            minimum: -1000000
+            nullable: true
+            type: number
+          shiftType:
+            description: "Available values: Absolute, Relative."
+            enum:
+            - Absolute
+            - Relative
+            type: string
+          scenarioShiftType:
+            description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
+              \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
+            enum:
+            - RateCurveShiftDefinition
+            - FxShiftDefinition
+            - PriceShiftDefinition
+            - VolSurfaceShiftDefinition
+            - MdkrGroupShiftDefinition
+            - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
+            type: string
+        required:
+        - modelName
+        - optionName
+        - scenarioShiftType
+        - shiftType
+        type: object
+      description: "A shift of a pricing model option for the duration of the scenario.\
+        \ Unlike every other shift\r\ntype, the target is not a piece of market data:\
+        \ it is a field of the model options carried by\r\nthe recipe's model rule\
+        \ (for example the short-rate volatility of the Hull-White one-factor\r\n\
+        lattice), which no market data shift can reach because a model option is configuration,\
+        \ not a\r\nresolved market element. The shift is scoped to a model rule by\
+        \ the model's name, optionally\r\nnarrowed to one instrument type, and applies\
+        \ to every instrument that rule prices."
+    ModelOptionShiftMode:
+      description: "How a model option shift's amount is applied to the option's configured\
+        \ value:\r\nAbsolute adds the amount in the option's own units (0.0010 moves\
+        \ a volatility of\r\n0.008 to 0.009 - ten basis points of annualised volatility),\
+        \ Relative adds the\r\nconfigured value times the amount (0.1 raises the value\
+        \ by ten percent)."
+      enum:
+      - Absolute
+      - Relative
+      type: string
     ModelOptionsType:
       enum:
       - Invalid
@@ -233126,6 +234088,7 @@ components:
       - FlexibleLoanPricerOptions
       - HullWhiteModelOptions
       - BondLookupModelOptions
+      - BondForwardModelOptions
       type: string
     ModelSelection:
       additionalProperties: false
@@ -234147,7 +235110,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -234160,6 +235123,7 @@ components:
             - FlexibleLoanPricerOptions
             - HullWhiteModelOptions
             - BondLookupModelOptions
+            - BondForwardModelOptions
             type: string
         required:
         - data
@@ -251453,6 +252417,35 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          reviewConfiguration:
+            requiredApprovals:
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            closedExceptions:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            openExceptions:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            matches:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            reviewSubmission:
+              completionRatioThreshold: 0.08008281904610115
+              autoSubmit: true
           rightPortfolioSources:
           - sourceType: sourceType
             id:
@@ -251525,6 +252518,35 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          reviewConfiguration:
+            requiredApprovals:
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            - approvalCode: approvalCode
+              decidingUser: decidingUser
+              description: description
+            closedExceptions:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            openExceptions:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            matches:
+              overrideCondition: overrideCondition
+              reviewRequirement: reviewRequirement
+            reviewSubmission:
+              completionRatioThreshold: 0.08008281904610115
+              autoSubmit: true
           rightPortfolioSources:
           - sourceType: sourceType
             id:
@@ -256687,7 +257709,7 @@ components:
       properties:
         currentValue:
           description: "The current status value. One of: Created, Staged, Released,\
-            \ Instructed, Sent, Cancelled."
+            \ Instructed, Sent, Cancelled, Failed."
           minLength: 1
           type: string
         asAtLastTransition:
@@ -259433,7 +260455,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
         links:
@@ -260230,7 +261254,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
         links:
@@ -263965,7 +264991,9 @@ components:
         taxLotSelectionCostBasis:
           description: "The cost figure that cost-referencing accounting methods evaluate\
             \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
-            \ Defaults to Cost if not specified. Available values: Cost, AmortisedCost."
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
         links:
@@ -264310,6 +265338,154 @@ components:
           nullable: true
           type: array
       type: object
+    PreferredShare:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - properties:
+          startDate:
+            description: The start date of the instrument. This is the first dividend
+              accrual start date.
+            format: date-time
+            type: string
+          maturityDate:
+            description: "The redemption date of a dated series. Omit it for a perpetual,\
+              \ which is the default: there is\r\nno sentinel date for the client\
+              \ to supply, and a distant date such as one in the year 9999 is\r\n\
+              taken literally and schedules a par redemption on it."
+            format: date-time
+            type: string
+          flowConventions:
+            $ref: '#/components/schemas/FlowConventions'
+          identifiers:
+            $ref: '#/components/schemas/PreferredShare_allOf_identifiers'
+          domCcy:
+            description: The domestic currency of the instrument. It is the currency
+              of the dividends and of ParValue.
+            type: string
+          callSchedule:
+            $ref: '#/components/schemas/OptionalitySchedule'
+          cfiCode:
+            description: "The ISO 10962 CFI code, if the client stores one. Free text,\
+              \ not validated against the standard."
+            maxLength: 50
+            minLength: 0
+            nullable: true
+            type: string
+          conversionSchedule:
+            $ref: '#/components/schemas/BondConversionSchedule'
+          dividendRate:
+            description: "The fixed annualised dividend rate applied to ParValue,\
+              \ so 0.06 is 6%. A scalar for the life of\r\nthe share: there is no\
+              \ rate reset, so a fixed-to-floating preferred carries the rate for\
+              \ the\r\ncurrent period and is re-upserted at each reset."
+            format: double
+            type: number
+          firstDividendDate:
+            description: Anchors a short or long first dividend period. Omitted means
+              no stub.
+            format: date-time
+            nullable: true
+            type: string
+          isCumulative:
+            description: "Whether a missed dividend accumulates as arrears rather\
+              \ than being forfeited. The client must\r\nstate it; there is no default."
+            type: boolean
+          lotSize:
+            description: "The minimum number of shares that can be traded at once.\
+              \ Microstructure only: it has no effect\r\non valuation or on cash flows.\
+              \ Defaults to 1."
+            format: int32
+            type: integer
+          parValue:
+            description: "The liquidation preference per share. It is the base for\
+              \ the dividend, for the call strike and\r\nfor the redemption amount.\
+              \ It is not a price multiplier."
+            format: double
+            type: number
+          instrumentType:
+            description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
+              \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
+              \ Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,\
+              \ TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,\
+              \ CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,\
+              \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
+              \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
+              \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
+              \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
+            enum:
+            - QuotedSecurity
+            - InterestRateSwap
+            - FxForward
+            - Future
+            - ExoticInstrument
+            - FxOption
+            - CreditDefaultSwap
+            - InterestRateSwaption
+            - Bond
+            - EquityOption
+            - FixedLeg
+            - FloatingLeg
+            - BespokeCashFlowsLeg
+            - Unknown
+            - TermDeposit
+            - ContractForDifference
+            - EquitySwap
+            - CashPerpetual
+            - CapFloor
+            - CashSettled
+            - CdsIndex
+            - Basket
+            - FundingLeg
+            - FxSwap
+            - ForwardRateAgreement
+            - SimpleInstrument
+            - Repo
+            - Equity
+            - ExchangeTradedOption
+            - ReferenceInstrument
+            - ComplexBond
+            - InflationLinkedBond
+            - InflationSwap
+            - SimpleCashFlowLoan
+            - TotalReturnSwap
+            - InflationLeg
+            - FundShareClass
+            - FlexibleLoan
+            - UnsettledCash
+            - Cash
+            - MasteredInstrument
+            - LoanFacility
+            - FlexibleDeposit
+            - FlexibleRepo
+            - ToBeAnnounced
+            - VolatilitySwap
+            - ToBeAnnouncedOption
+            - CommodityForward
+            - BondOption
+            - CdsOption
+            - CommodityCalendarSwap
+            - BondForward
+            - PreferredShare
+            type: string
+        required:
+        - dividendRate
+        - domCcy
+        - flowConventions
+        - instrumentType
+        - isCumulative
+        - parValue
+        - startDate
+        type: object
+      description: "LUSID representation of a preferred (preference) share: an equity-classified\
+        \ security that pays an\r\nintrinsic, schedule-driven dividend of DividendRate\
+        \ x ParValue. The schedule is perpetual unless a\r\nMaturityDate is supplied,\
+        \ in which case the share redeems at par on that date.\r\nIt carries Bond's\
+        \ shape rather than Equity's - StartDate, MaturityDate and FlowConventions\
+        \ are real,\r\nsettable properties - but its dividend is a flat amount per\
+        \ period rather than a day-count-weighted\r\ncoupon, and its schedule can\
+        \ be open ended."
     Premium:
       additionalProperties: false
       description: A class containing information for a given premium payment.
@@ -264550,7 +265726,7 @@ components:
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -264558,6 +265734,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - scenarioShiftType
@@ -264604,6 +265782,8 @@ components:
           mbsValuationUsingHoldingCurrentFace: true
           fxForwardContractsAsUnitsInBothLegs: true
           scaleInstrumentAccruedOverrideByContractSize: true
+          fundingCurveByCurrency:
+            key: fundingCurveByCurrency
           findOrCalculate: findOrCalculate
           convertSrsCashFlowsToPortfolioCurrency: true
           modelSelection:
@@ -264611,6 +265791,16 @@ components:
             model: SimpleStatic
           allowPartiallySuccessfulEvaluation: true
           useInstrumentScaleFactorAsDefault: true
+          riskBumpOptions:
+            deltaShift: 0.8008281904610115
+            resultSensitivity: 6.027456183070403
+            ladderShiftOverrides:
+              key:
+              - 5.962133916683182
+              - 5.962133916683182
+            deltaShiftOverrides:
+              key: 1.4658129805029452
+            parityRelativeTolerance: 5.637376656633329
           conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
           returnZeroPv:
             instrumentMatured: true
@@ -264801,6 +265991,8 @@ components:
         mbsValuationUsingHoldingCurrentFace: true
         fxForwardContractsAsUnitsInBothLegs: true
         scaleInstrumentAccruedOverrideByContractSize: true
+        fundingCurveByCurrency:
+          key: fundingCurveByCurrency
         findOrCalculate: findOrCalculate
         convertSrsCashFlowsToPortfolioCurrency: true
         modelSelection:
@@ -264808,6 +266000,16 @@ components:
           model: SimpleStatic
         allowPartiallySuccessfulEvaluation: true
         useInstrumentScaleFactorAsDefault: true
+        riskBumpOptions:
+          deltaShift: 0.8008281904610115
+          resultSensitivity: 6.027456183070403
+          ladderShiftOverrides:
+            key:
+            - 5.962133916683182
+            - 5.962133916683182
+          deltaShiftOverrides:
+            key: 1.4658129805029452
+          parityRelativeTolerance: 5.637376656633329
         conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
         returnZeroPv:
           instrumentMatured: true
@@ -264952,6 +266154,19 @@ components:
             \ is disabled, and the override is treated as the accrued for a single\
             \ unit, keeping the\r\nholding-level identity PV = CleanPv + Accrued consistent."
           type: boolean
+        riskBumpOptions:
+          $ref: '#/components/schemas/RiskBumpOptions'
+        fundingCurveByCurrency:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Names the funding curve each currency discounts on, keyed\
+            \ by ISO 4217 currency code\r\n(e.g. \"GBP\" -> \"GBPOIS-USDCOLL\"). Keys\
+            \ are case-insensitive. A currency absent from\r\nthe map keeps the default\
+            \ funding curve, {CCY}OIS, so an absent or empty map leaves\r\nevery valuation\
+            \ unchanged."
+          nullable: true
+          type: object
       type: object
     PrimarySchedule:
       additionalProperties: false
@@ -268524,10 +269739,62 @@ components:
             nullable: true
             pattern: "^\\d+[mywdMYWD]$"
             type: string
+          windowBounds:
+            description: "Available values: Inclusive, StartExclusive, EndExclusive,\
+              \ Exclusive."
+            enum:
+            - Inclusive
+            - StartExclusive
+            - EndExclusive
+            - Exclusive
+            type: string
+          curveName:
+            description: "The funding identifier of the one curve in the currency\
+              \ this shift targets, letting a\r\nscenario shock a named curve (say,\
+              \ an issuer discounting curve) without also moving the\r\nrisk-free\
+              \ curve mastered in the same currency. Omitted - as on every scenario\
+              \ stored\r\nbefore this field existed - the shift matches every rate\
+              \ curve in the currency, exactly\r\nas before. Declared last on purpose:\
+              \ generated SDKs emit their positional constructor in\r\nproperty-declaration\
+              \ order, and this property must not shift the parameters of the ones\r\
+              \nbefore it."
+            maxLength: 50
+            minLength: 1
+            nullable: true
+            type: string
+          minimumAmountBps:
+            description: "The smallest magnitude, in basis points, of the shift finally\
+              \ applied at each curve point.\r\nEvaluated per point AFTER the shape\
+              \ weight, in the direction the shift acts there (the sign\r\nof Amount\
+              \ times the shape weight): the applied move becomes at least the minimum\
+              \ in that\r\ndirection, even where a Percentage shift on a negative\
+              \ rate would have pointed the other\r\nway - the Solvency II up-shock's\
+              \ \"at least one percentage point at any maturity\" is\r\nMinimumAmountBps\
+              \ = 100 on the relative shift the regulation states. A point whose shape\r\
+              \nweight is exactly zero stays unshifted: the floor strengthens a shock\
+              \ where the shape\r\napplies one, it does not extend the shock to points\
+              \ the shape excludes (a Tent's window\r\nends remain unmoved). Deliberately\
+              \ in basis points rather than in Scale units, because the\r\nfloor and\
+              \ the shift are in different units by construction: the regulation states\
+              \ a\r\nrelative shock with an absolute floor. Omitted, no floor applies\
+              \ - today's behaviour.\r\nDeclared after PivotTenor on purpose, for\
+              \ the constructor-ordering reason given there."
+            format: double
+            maximum: 1000000
+            minimum: 0
+            nullable: true
+            type: number
+          applyWhenValue:
+            description: "Available values: Any, Positive, Negative."
+            enum:
+            - Any
+            - Positive
+            - Negative
+            type: string
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -268535,6 +269802,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - ccy
@@ -269074,6 +270343,35 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        reviewConfiguration:
+          requiredApprovals:
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          closedExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          openExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          matches:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          reviewSubmission:
+            completionRatioThreshold: 0.08008281904610115
+            autoSubmit: true
         rightPortfolioSources:
         - sourceType: sourceType
           id:
@@ -269155,6 +270453,8 @@ components:
           items:
             $ref: '#/components/schemas/RecDefRuleset'
           type: array
+        reviewConfiguration:
+          $ref: '#/components/schemas/RecReviewConfiguration'
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
             at the requested effective and asAt datetime.
@@ -269173,6 +270473,7 @@ components:
       - displayName
       - id
       - leftPortfolioSources
+      - reviewConfiguration
       - rightPortfolioSources
       - rulesets
       type: object
@@ -272461,6 +273762,142 @@ components:
       - countRequired
       - countReviewed
       type: object
+    RecReviewConfiguration:
+      additionalProperties: false
+      description: "How the results of a rec definition's runs are reviewed and approved:\
+        \ what needs reviewing, when the\r\nreviewer may submit, and who has to approve\
+        \ the submission."
+      example:
+        requiredApprovals:
+        - approvalCode: approvalCode
+          decidingUser: decidingUser
+          description: description
+        - approvalCode: approvalCode
+          decidingUser: decidingUser
+          description: description
+        - approvalCode: approvalCode
+          decidingUser: decidingUser
+          description: description
+        - approvalCode: approvalCode
+          decidingUser: decidingUser
+          description: description
+        - approvalCode: approvalCode
+          decidingUser: decidingUser
+          description: description
+        closedExceptions:
+          overrideCondition: overrideCondition
+          reviewRequirement: reviewRequirement
+        openExceptions:
+          overrideCondition: overrideCondition
+          reviewRequirement: reviewRequirement
+        matches:
+          overrideCondition: overrideCondition
+          reviewRequirement: reviewRequirement
+        reviewSubmission:
+          completionRatioThreshold: 0.08008281904610115
+          autoSubmit: true
+      properties:
+        openExceptions:
+          $ref: '#/components/schemas/RecReviewRequirementRule'
+        closedExceptions:
+          $ref: '#/components/schemas/RecReviewRequirementRule'
+        matches:
+          $ref: '#/components/schemas/RecReviewRequirementRule'
+        reviewSubmission:
+          $ref: '#/components/schemas/RecReviewSubmission'
+        requiredApprovals:
+          description: "The approvals a submitted review has to collect. All are required\
+            \ and may be given in any order, and no user may give more than one of\
+            \ them. Empty means no approvals are required and the reviewer self-approves\
+            \ on submission."
+          items:
+            $ref: '#/components/schemas/RecReviewRequiredApproval'
+          maxItems: 10
+          nullable: true
+          type: array
+      type: object
+    RecReviewRequiredApproval:
+      additionalProperties: false
+      description: "One approval a submitted review has to collect, and who may give\
+        \ it. All of a configuration's approvals are\r\nrequired, they may be given\
+        \ in any order, and no user may give more than one of them."
+      example:
+        approvalCode: approvalCode
+        decidingUser: decidingUser
+        description: description
+      properties:
+        approvalCode:
+          description: "The client-defined identifier for the approval, e.g. \"Desk\"\
+            \ or \"Risk\". Each may appear at most once."
+          maxLength: 512
+          minLength: 1
+          type: string
+        description:
+          description: A human-readable label for the approval.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        decidingUser:
+          description: "A boolean expression over the user attempting the approval,\
+            \ which has to hold for them to give it. They must also hold the entitlement\
+            \ for the decide action."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - approvalCode
+      type: object
+    RecReviewRequirementRule:
+      additionalProperties: false
+      description: "What the results of one structural category need by way of review:\
+        \ the requirement they carry by default,\r\nand an optional condition that\
+        \ flips it for the results it selects."
+      example:
+        overrideCondition: overrideCondition
+        reviewRequirement: reviewRequirement
+      properties:
+        reviewRequirement:
+          description: "Whether this category's results need reviewing. One of: Required,\
+            \ NotRequired. Available values: Required, NotRequired."
+          minLength: 1
+          type: string
+        overrideCondition:
+          description: "A boolean expression over a rec result, e.g. \"resultType\
+            \ eq 'Cross'\". Where it holds for a result, that result is treated as\
+            \ the opposite of the category's reviewRequirement. Null means the requirement\
+            \ applies to every result in the category."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - reviewRequirement
+      type: object
+    RecReviewSubmission:
+      additionalProperties: false
+      description: When the reviewer is allowed to submit their work for approval.
+        Omit it to let them submit at any time.
+      example:
+        completionRatioThreshold: 0.08008281904610115
+        autoSubmit: true
+      properties:
+        completionRatioThreshold:
+          description: "The review completion ratio a result set has to reach before\
+            \ it can be submitted, between 0.0 and 1.0 inclusive."
+          format: double
+          maximum: 1
+          minimum: 0
+          type: number
+        autoSubmit:
+          description: "Whether the system submits on the reviewer's behalf as soon\
+            \ as the completion ratio threshold is met, rather than waiting to be\
+            \ asked."
+          type: boolean
+      required:
+      - completionRatioThreshold
+      type: object
     RecRunLogEntry:
       additionalProperties: false
       description: "A single run within an instance's run log. All runs share the\
@@ -272770,7 +274207,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -272824,6 +274261,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - instrumentId
@@ -274026,7 +275464,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -274080,6 +275518,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - accrualBasis
@@ -281387,6 +282826,8 @@ components:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
+                fundingCurveByCurrency:
+                  key: fundingCurveByCurrency
                 findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
@@ -281394,6 +282835,16 @@ components:
                   model: SimpleStatic
                 allowPartiallySuccessfulEvaluation: true
                 useInstrumentScaleFactorAsDefault: true
+                riskBumpOptions:
+                  deltaShift: 0.8008281904610115
+                  resultSensitivity: 6.027456183070403
+                  ladderShiftOverrides:
+                    key:
+                    - 5.962133916683182
+                    - 5.962133916683182
+                  deltaShiftOverrides:
+                    key: 1.4658129805029452
+                  parityRelativeTolerance: 5.637376656633329
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
                 returnZeroPv:
                   instrumentMatured: true
@@ -281683,6 +283134,8 @@ components:
                 mbsValuationUsingHoldingCurrentFace: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
+                fundingCurveByCurrency:
+                  key: fundingCurveByCurrency
                 findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
                 modelSelection:
@@ -281690,6 +283143,16 @@ components:
                   model: SimpleStatic
                 allowPartiallySuccessfulEvaluation: true
                 useInstrumentScaleFactorAsDefault: true
+                riskBumpOptions:
+                  deltaShift: 0.8008281904610115
+                  resultSensitivity: 6.027456183070403
+                  ladderShiftOverrides:
+                    key:
+                    - 5.962133916683182
+                    - 5.962133916683182
+                  deltaShiftOverrides:
+                    key: 1.4658129805029452
+                  parityRelativeTolerance: 5.637376656633329
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
                 returnZeroPv:
                   instrumentMatured: true
@@ -294233,6 +295696,75 @@ components:
       required:
       - values
       type: object
+    ResourceListOfScenarioTemplateDefinition:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - name: name
+          description: description
+          parameters:
+          - unit: unit
+            defaultValue: defaultValue
+            name: name
+            description: description
+            exclusiveGroup: exclusiveGroup
+            required: true
+          - unit: unit
+            defaultValue: defaultValue
+            name: name
+            description: description
+            exclusiveGroup: exclusiveGroup
+            required: true
+        - name: name
+          description: description
+          parameters:
+          - unit: unit
+            defaultValue: defaultValue
+            name: name
+            description: description
+            exclusiveGroup: exclusiveGroup
+            required: true
+          - unit: unit
+            defaultValue: defaultValue
+            name: name
+            description: description
+            exclusiveGroup: exclusiveGroup
+            required: true
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/ScenarioTemplateDefinition'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfScopeDefinition:
       additionalProperties: false
       example:
@@ -299334,6 +300866,70 @@ components:
       required:
       - diaryEntryCode
       type: object
+    RiskBumpOptions:
+      additionalProperties: false
+      description: "Per-recipe configuration of the bump sizes used by the finite-difference\
+        \ Risk/* measures.\r\nResults are always reported per ResultSensitivity regardless\
+        \ of the shift used to compute\r\nthem: the calculators divide by shift/resultSensitivity,\
+        \ so choosing a wider shift (e.g.\r\n10bp for a market element with coarse\
+        \ quote precision) changes the estimator, not the unit.\r\nEvery member is\
+        \ optional and an absent member keeps the historical default."
+      example:
+        deltaShift: 0.8008281904610115
+        resultSensitivity: 6.027456183070403
+        ladderShiftOverrides:
+          key:
+          - 5.962133916683182
+          - 5.962133916683182
+        deltaShiftOverrides:
+          key: 1.4658129805029452
+        parityRelativeTolerance: 5.637376656633329
+      properties:
+        deltaShift:
+          description: "The shift applied for delta/gamma bumps on any asset type\
+            \ without an explicit override.\r\nMust be strictly positive. Defaults\
+            \ to 0.0001 (1bp) when not supplied."
+          format: double
+          nullable: true
+          type: number
+        resultSensitivity:
+          description: "The move the reported sensitivity is normalised to. Must be\
+            \ strictly positive.\r\nDefaults to 0.0001 (results per 1bp move) when\
+            \ not supplied."
+          format: double
+          nullable: true
+          type: number
+        deltaShiftOverrides:
+          additionalProperties:
+            format: double
+            type: number
+          description: "Per-asset-type overrides of the delta shift, keyed by asset\
+            \ type (e.g. \"Rates\", \"Credit\",\r\n\"Fx\"). Values must be strictly\
+            \ positive. Asset types without an override use DeltaShift."
+          nullable: true
+          type: object
+        ladderShiftOverrides:
+          additionalProperties:
+            items:
+              format: double
+              type: number
+            nullable: true
+            type: array
+          description: "Per-asset-type overrides of the shift grid used by ladder\
+            \ measures, keyed by asset type\r\n(e.g. \"Rates\", \"Fx\"). Each grid\
+            \ must be non-empty and strictly increasing; zero is a\r\nlegitimate rung,\
+            \ as the default grids include the base scenario. Asset types without\
+            \ an\r\noverride use the standard grids."
+          nullable: true
+          type: object
+        parityRelativeTolerance:
+          description: "The relative tolerance for RiskEngine \"Parity\" checks, applied\
+            \ as\r\n|bump - adjoint| <= max(absolute floor, |bump| generate justfile\
+            \ test_sdk tolerance). Defaults to 0.001."
+          format: double
+          nullable: true
+          type: number
+      type: object
     RollInterestUpdates:
       additionalProperties: false
       description: "Describes changes to the interest of a FlexibleDeposit instrument\
@@ -299936,7 +301532,7 @@ components:
         scenarioShiftType:
           description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
             \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-            \ InflationCurveShiftDefinition."
+            \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
           enum:
           - RateCurveShiftDefinition
           - FxShiftDefinition
@@ -299944,6 +301540,8 @@ components:
           - VolSurfaceShiftDefinition
           - MdkrGroupShiftDefinition
           - InflationCurveShiftDefinition
+          - CreditSpreadShiftDefinition
+          - ModelOptionShiftDefinition
           type: string
       required:
       - scenarioShiftType
@@ -299956,7 +301554,92 @@ components:
       - VolSurfaceShiftDefinition
       - MdkrGroupShiftDefinition
       - InflationCurveShiftDefinition
+      - CreditSpreadShiftDefinition
+      - ModelOptionShiftDefinition
       type: string
+    ScenarioTemplateDefinition:
+      additionalProperties: false
+      description: "One pre-built scenario template: the name to pass to CreateScenarioFromTemplate,\
+        \ what the\r\ntemplate does, and the parameters it accepts. A parameter not\
+        \ listed here is rejected by\r\nthe create call, not ignored."
+      example:
+        name: name
+        description: description
+        parameters:
+        - unit: unit
+          defaultValue: defaultValue
+          name: name
+          description: description
+          exclusiveGroup: exclusiveGroup
+          required: true
+        - unit: unit
+          defaultValue: defaultValue
+          name: name
+          description: description
+          exclusiveGroup: exclusiveGroup
+          required: true
+      properties:
+        name:
+          description: "The template name, as accepted by CreateScenarioFromTemplate."
+          nullable: true
+          type: string
+        description:
+          description: What the template's scenario does.
+          nullable: true
+          type: string
+        parameters:
+          description: "The parameters the template accepts, in the order they are\
+            \ documented. Parameter names are\r\ncase-sensitive; supplying one not\
+            \ in this list fails the create call."
+          items:
+            $ref: '#/components/schemas/ScenarioTemplateParameter'
+          nullable: true
+          type: array
+      type: object
+    ScenarioTemplateParameter:
+      additionalProperties: false
+      description: "One parameter of a scenario template: its name (case-sensitive),\
+        \ whether it must be supplied,\r\nwhat it means, and - for optional numeric\
+        \ parameters - the default used when omitted and the\r\nunit the value is\
+        \ read in."
+      example:
+        unit: unit
+        defaultValue: defaultValue
+        name: name
+        description: description
+        exclusiveGroup: exclusiveGroup
+        required: true
+      properties:
+        name:
+          description: "The parameter name, as supplied in the create request's Parameters\
+            \ dictionary. Case-sensitive."
+          nullable: true
+          type: string
+        required:
+          description: Whether the parameter must be supplied.
+          type: boolean
+        description:
+          description: What the parameter means to this template.
+          nullable: true
+          type: string
+        defaultValue:
+          description: The value used when the parameter is omitted. Null for required
+            parameters.
+          nullable: true
+          type: string
+        unit:
+          description: "The unit a numeric value is read in: 'BasisPoints', 'PercentagePoints'\
+            \ or 'Fraction'\r\n(0.20 meaning +20%). The templates do NOT share one\
+            \ unit - read this per template.\r\nNull for non-numeric parameters."
+          nullable: true
+          type: string
+        exclusiveGroup:
+          description: "Parameters of a template sharing an ExclusiveGroup are alternatives:\
+            \ exactly one of them must\r\nbe supplied. Group members are not individually\
+            \ Required and carry no default. Null for\r\nparameters that stand alone."
+          nullable: true
+          type: string
+      type: object
     Schedule:
       additionalProperties: false
       description: "Base class for representing schedules in LUSID.\r\nThis base class\
@@ -304477,6 +306160,16 @@ components:
       - groupApportionedPnl
       - totalPnl
       type: object
+    ShiftValueCondition:
+      description: "A condition on a curve point's own unshifted value gating whether\
+        \ a curve shift applies\r\nthere. A point that fails the condition is left\
+        \ exactly as it is. Kept open-ended: further\r\nconditions (bounds other than\
+        \ zero, say) extend this enum rather than adding fields."
+      enum:
+      - Any
+      - Positive
+      - Negative
+      type: string
     SideConfigurationData:
       additionalProperties: false
       description: "Configuration needed to define a side. Sides are referenced by\
@@ -304787,7 +306480,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -304841,6 +306534,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -304913,7 +306607,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -304967,6 +306661,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - assetClass
@@ -307820,7 +309515,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -307874,6 +309569,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - contractSize
@@ -308616,7 +310312,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -308670,6 +310366,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -308754,7 +310451,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -308808,6 +310505,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - deliveryType
@@ -308891,7 +310589,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -308945,6 +310643,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - assetLeg
@@ -320932,6 +322631,35 @@ components:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+        reviewConfiguration:
+          requiredApprovals:
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          - approvalCode: approvalCode
+            decidingUser: decidingUser
+            description: description
+          closedExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          openExceptions:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          matches:
+            overrideCondition: overrideCondition
+            reviewRequirement: reviewRequirement
+          reviewSubmission:
+            completionRatioThreshold: 0.08008281904610115
+            autoSubmit: true
         rightPortfolioSources:
         - sourceType: sourceType
           id:
@@ -321044,6 +322772,8 @@ components:
           maxItems: 10
           minItems: 1
           type: array
+        reviewConfiguration:
+          $ref: '#/components/schemas/RecReviewConfiguration'
       required:
       - definitionType
       - displayName
@@ -327787,6 +329517,8 @@ components:
               mbsValuationUsingHoldingCurrentFace: true
               fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
               modelSelection:
@@ -327794,6 +329526,16 @@ components:
                 model: SimpleStatic
               allowPartiallySuccessfulEvaluation: true
               useInstrumentScaleFactorAsDefault: true
+              riskBumpOptions:
+                deltaShift: 0.8008281904610115
+                resultSensitivity: 6.027456183070403
+                ladderShiftOverrides:
+                  key:
+                  - 5.962133916683182
+                  - 5.962133916683182
+                deltaShiftOverrides:
+                  key: 1.4658129805029452
+                parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               returnZeroPv:
                 instrumentMatured: true
@@ -348405,7 +350147,7 @@ components:
               \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
-              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward."
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -348459,6 +350201,7 @@ components:
             - CdsOption
             - CommodityCalendarSwap
             - BondForward
+            - PreferredShare
             type: string
         required:
         - domCcy
@@ -348509,7 +350252,7 @@ components:
           scenarioShiftType:
             description: "Available values: RateCurveShiftDefinition, FxShiftDefinition,\
               \ PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition,\
-              \ InflationCurveShiftDefinition."
+              \ InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition."
             enum:
             - RateCurveShiftDefinition
             - FxShiftDefinition
@@ -348517,6 +350260,8 @@ components:
             - VolSurfaceShiftDefinition
             - MdkrGroupShiftDefinition
             - InflationCurveShiftDefinition
+            - CreditSpreadShiftDefinition
+            - ModelOptionShiftDefinition
             type: string
         required:
         - instrument
@@ -349384,6 +351129,19 @@ components:
             $ref: '#/components/schemas/MarketDataOptions'
           version:
             $ref: '#/components/schemas/Version'
+          fundingCurveName:
+            description: "Optional name of the funding curve under which the calibration\
+              \ instruments are discounted,\r\nfor projection curves that are bootstrapped\
+              \ under a separate discount curve. This is the\r\nfunding identifier\
+              \ of the rates dependency for the calibration instruments' domestic\
+              \ currency,\r\nso a value of 'EUROIS' names the discounting dependency\
+              \ Rates/EUR/EUROIS. When omitted the\r\ncalibration instruments are\
+              \ discounted on the curve being built, which is the classic\r\nsingle-curve\
+              \ bootstrap."
+            maxLength: 256
+            minLength: 0
+            nullable: true
+            type: string
           marketDataType:
             description: "Available values: DiscountFactorCurveData, EquityVolSurfaceData,\
               \ FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData,\
@@ -349485,6 +351243,36 @@ components:
         Rates:
           type: string
       type: object
+    PreferredShare_allOf_identifiers:
+      description: "External market codes and identifiers for the share, e.g. its\
+        \ ISIN. A series is mastered once\r\nper distinct security and shared across\
+        \ every holder."
+      nullable: true
+      properties:
+        LusidInstrumentId:
+          type: string
+        Isin:
+          type: string
+        Sedol:
+          type: string
+        Cusip:
+          type: string
+        ClientInternal:
+          type: string
+        Figi:
+          type: string
+        RIC:
+          type: string
+        QuotePermId:
+          type: string
+        REDCode:
+          type: string
+        BBGId:
+          type: string
+        ICECode:
+          type: string
+      type: object
+      example: null
     WeightedInstrument_inLineLookupIdentifiers:
       additionalProperties: false
       description: "External market codes and identifiers for the equity, e.g. IBM.\r\

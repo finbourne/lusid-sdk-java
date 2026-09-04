@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **enableLegLevelInferenceForCustomSrsColumns** | **Boolean** | When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence. | [optional] [default to Boolean]
 **useInstrumentScaleFactorAsDefault** | **Boolean** | When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes. | [optional] [default to Boolean]
 **scaleInstrumentAccruedOverrideByContractSize** | **Boolean** | When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent. | [optional] [default to Boolean]
+**riskBumpOptions** | [**RiskBumpOptions**](RiskBumpOptions.md) |  | [optional] [default to RiskBumpOptions]
+**fundingCurveByCurrency** | **Map&lt;String, String&gt;** | Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged. | [optional] [default to Map<String, String>]
 
 ```java
 import com.finbourne.lusid.model.PricingOptions;
@@ -52,6 +54,8 @@ ReturnZeroPvOptions ReturnZeroPv = new ReturnZeroPvOptions();
 Boolean EnableLegLevelInferenceForCustomSrsColumns = true;
 Boolean UseInstrumentScaleFactorAsDefault = true;
 Boolean ScaleInstrumentAccruedOverrideByContractSize = true;
+RiskBumpOptions RiskBumpOptions = new RiskBumpOptions();
+@jakarta.annotation.Nullable Map<String, String> FundingCurveByCurrency = new Map<String, String>();
 
 
 PricingOptions pricingOptionsInstance = new PricingOptions()
@@ -74,7 +78,9 @@ PricingOptions pricingOptionsInstance = new PricingOptions()
     .ReturnZeroPv(ReturnZeroPv)
     .EnableLegLevelInferenceForCustomSrsColumns(EnableLegLevelInferenceForCustomSrsColumns)
     .UseInstrumentScaleFactorAsDefault(UseInstrumentScaleFactorAsDefault)
-    .ScaleInstrumentAccruedOverrideByContractSize(ScaleInstrumentAccruedOverrideByContractSize);
+    .ScaleInstrumentAccruedOverrideByContractSize(ScaleInstrumentAccruedOverrideByContractSize)
+    .RiskBumpOptions(RiskBumpOptions)
+    .FundingCurveByCurrency(FundingCurveByCurrency);
 ```
 
 

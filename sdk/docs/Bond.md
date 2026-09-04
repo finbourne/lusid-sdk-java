@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **roundingConventions** | [**List&lt;RoundingConvention&gt;**](RoundingConvention.md) | Rounding conventions for analytics, if any. | [optional] [default to List<RoundingConvention>]
 **exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  | [optional] [default to ExDividendConfiguration]
 **originalIssuePrice** | **java.math.BigDecimal** | The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
+**parPerUnit** | **java.math.BigDecimal** | Optional value used to scale accrued interest and coupon amounts only (not CleanPV), in addition to  currentNotional and units. If you do not set this field, the value is 1 and no amount changes.  A model that calculates the price from the cash flows, for example Discounting, includes the scaled coupons  in the PV and thus in the CleanPV. The CleanPV exclusion applies to a quoted price. | [optional] [default to java.math.BigDecimal]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 
@@ -42,6 +43,7 @@ java.math.BigDecimal CouponRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<RoundingConvention> RoundingConventions = new List<RoundingConvention>();
 ExDividendConfiguration ExDividendConfiguration = new ExDividendConfiguration();
 @jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ParPerUnit = new java.math.BigDecimal("100.00");
 TradingConventions TradingConventions = new TradingConventions();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 
@@ -61,6 +63,7 @@ Bond bondInstance = new Bond()
     .RoundingConventions(RoundingConventions)
     .ExDividendConfiguration(ExDividendConfiguration)
     .OriginalIssuePrice(OriginalIssuePrice)
+    .ParPerUnit(ParPerUnit)
     .TradingConventions(TradingConventions)
     .TimeZoneConventions(TimeZoneConventions);
 ```

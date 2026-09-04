@@ -432,8 +432,9 @@ Class | Method | HTTP request | Description
 *ParticipationsApi* | [**getParticipation**](docs/ParticipationsApi.md#getparticipation) | **GET** /api/participations/{scope}/{code} | [EARLY ACCESS] GetParticipation: Get Participation
 *ParticipationsApi* | [**listParticipations**](docs/ParticipationsApi.md#listparticipations) | **GET** /api/participations | [EARLY ACCESS] ListParticipations: List Participations
 *ParticipationsApi* | [**upsertParticipations**](docs/ParticipationsApi.md#upsertparticipations) | **POST** /api/participations | [EARLY ACCESS] UpsertParticipations: Upsert Participation
-*PaymentInstructionsApi* | [**getPaymentInstruction**](docs/PaymentInstructionsApi.md#getpaymentinstruction) | **GET** /api/paymentinstructions/{scope}/{code} | [EARLY ACCESS] GetPaymentInstruction: Get Payment Instruction
-*PaymentInstructionsApi* | [**upsertPaymentInstructions**](docs/PaymentInstructionsApi.md#upsertpaymentinstructions) | **POST** /api/paymentinstructions | [EARLY ACCESS] UpsertPaymentInstructions: Upsert Payment Instructions
+*PaymentInstructionsApi* | [**deletePaymentInstruction**](docs/PaymentInstructionsApi.md#deletepaymentinstruction) | **DELETE** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction
+*PaymentInstructionsApi* | [**getPaymentInstruction**](docs/PaymentInstructionsApi.md#getpaymentinstruction) | **GET** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction
+*PaymentInstructionsApi* | [**upsertPaymentInstructions**](docs/PaymentInstructionsApi.md#upsertpaymentinstructions) | **POST** /api/paymentinstructions | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions
 *PersonsApi* | [**deletePerson**](docs/PersonsApi.md#deleteperson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | DeletePerson: Delete person
 *PersonsApi* | [**deletePersonAccessMetadata**](docs/PersonsApi.md#deletepersonaccessmetadata) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
 *PersonsApi* | [**deletePersonIdentifiers**](docs/PersonsApi.md#deletepersonidentifiers) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers
@@ -614,6 +615,7 @@ Class | Method | HTTP request | Description
 *ScenariosApi* | [**createScenarioFromTemplate**](docs/ScenariosApi.md#createscenariofromtemplate) | **POST** /api/scenarios/{scope}/$fromTemplate | [EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template.
 *ScenariosApi* | [**deleteScenario**](docs/ScenariosApi.md#deletescenario) | **DELETE** /api/scenarios/{scope}/{code} | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present.
 *ScenariosApi* | [**getScenario**](docs/ScenariosApi.md#getscenario) | **GET** /api/scenarios/{scope}/{code} | [EARLY ACCESS] GetScenario: Get Scenario
+*ScenariosApi* | [**listScenarioTemplates**](docs/ScenariosApi.md#listscenariotemplates) | **GET** /api/scenarios/$templates | [EARLY ACCESS] ListScenarioTemplates: [EARLY ACCESS] ListScenarioTemplates: List the pre-built scenario templates.
 *ScenariosApi* | [**listScenarioVersions**](docs/ScenariosApi.md#listscenarioversions) | **GET** /api/scenarios/{scope}/{code}/versions | [EARLY ACCESS] ListScenarioVersions: List the versions of a Scenario
 *ScenariosApi* | [**listScenarios**](docs/ScenariosApi.md#listscenarios) | **GET** /api/scenarios | [EARLY ACCESS] ListScenarios: List Scenarios
 *ScenariosApi* | [**listScenariosForScope**](docs/ScenariosApi.md#listscenariosforscope) | **GET** /api/scenarios/{scope} | [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
@@ -916,6 +918,7 @@ Class | Method | HTTP request | Description
  - [BondDefaultSuppressionDetails](docs/BondDefaultSuppressionDetails.md)
  - [BondForward](docs/BondForward.md)
  - [BondForwardCashSettlementEvent](docs/BondForwardCashSettlementEvent.md)
+ - [BondForwardModelOptions](docs/BondForwardModelOptions.md)
  - [BondForwardTerminationEvent](docs/BondForwardTerminationEvent.md)
  - [BondLookupModelOptions](docs/BondLookupModelOptions.md)
  - [BondOption](docs/BondOption.md)
@@ -1133,10 +1136,12 @@ Class | Method | HTTP request | Description
  - [CreditPremiumCashFlowEvent](docs/CreditPremiumCashFlowEvent.md)
  - [CreditRating](docs/CreditRating.md)
  - [CreditSpreadCurveData](docs/CreditSpreadCurveData.md)
+ - [CreditSpreadShiftDefinition](docs/CreditSpreadShiftDefinition.md)
  - [CreditSupportAnnex](docs/CreditSupportAnnex.md)
  - [CriterionType](docs/CriterionType.md)
  - [CurrencyAndAmount](docs/CurrencyAndAmount.md)
  - [CurveOptions](docs/CurveOptions.md)
+ - [CurveShiftWindowBounds](docs/CurveShiftWindowBounds.md)
  - [CustodianAccount](docs/CustodianAccount.md)
  - [CustodianAccountProperties](docs/CustodianAccountProperties.md)
  - [CustodianAccountRequest](docs/CustodianAccountRequest.md)
@@ -1332,7 +1337,7 @@ Class | Method | HTTP request | Description
  - [FundValuationRequest](docs/FundValuationRequest.md)
  - [FundValuationSchedule](docs/FundValuationSchedule.md)
  - [FundingLeg](docs/FundingLeg.md)
- - [FundingLegOptions](docs/FundingLegOptions.md)
+ - [FundingLegModelOptions](docs/FundingLegModelOptions.md)
  - [Future](docs/Future.md)
  - [FutureExpiryEvent](docs/FutureExpiryEvent.md)
  - [FutureMarkToMarketEvent](docs/FutureMarkToMarketEvent.md)
@@ -1564,6 +1569,8 @@ Class | Method | HTTP request | Description
  - [MetadataFieldsToUpdate](docs/MetadataFieldsToUpdate.md)
  - [MetricValue](docs/MetricValue.md)
  - [MixedLotConstituentsElection](docs/MixedLotConstituentsElection.md)
+ - [ModelOptionShiftDefinition](docs/ModelOptionShiftDefinition.md)
+ - [ModelOptionShiftMode](docs/ModelOptionShiftMode.md)
  - [ModelOptions](docs/ModelOptions.md)
  - [ModelOptionsType](docs/ModelOptionsType.md)
  - [ModelPackage](docs/ModelPackage.md)
@@ -1804,6 +1811,8 @@ Class | Method | HTTP request | Description
  - [PostingModuleRule](docs/PostingModuleRule.md)
  - [PostingModuleRulesUpdatedResponse](docs/PostingModuleRulesUpdatedResponse.md)
  - [PreTradeConfiguration](docs/PreTradeConfiguration.md)
+ - [PreferredShare](docs/PreferredShare.md)
+ - [PreferredShareAllOfIdentifiers](docs/PreferredShareAllOfIdentifiers.md)
  - [Premium](docs/Premium.md)
  - [PreviousFundCalendarEntry](docs/PreviousFundCalendarEntry.md)
  - [PreviousFundValuationPointData](docs/PreviousFundValuationPointData.md)
@@ -1904,6 +1913,10 @@ Class | Method | HTTP request | Description
  - [RecResultSet](docs/RecResultSet.md)
  - [RecResultSetApprovalDecisionRequest](docs/RecResultSetApprovalDecisionRequest.md)
  - [RecReview](docs/RecReview.md)
+ - [RecReviewConfiguration](docs/RecReviewConfiguration.md)
+ - [RecReviewRequiredApproval](docs/RecReviewRequiredApproval.md)
+ - [RecReviewRequirementRule](docs/RecReviewRequirementRule.md)
+ - [RecReviewSubmission](docs/RecReviewSubmission.md)
  - [RecRunLogEntry](docs/RecRunLogEntry.md)
  - [RecSubmission](docs/RecSubmission.md)
  - [RecSupersededRun](docs/RecSupersededRun.md)
@@ -2032,6 +2045,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfRelation](docs/ResourceListOfRelation.md)
  - [ResourceListOfRelationship](docs/ResourceListOfRelationship.md)
  - [ResourceListOfReturnsEntity](docs/ResourceListOfReturnsEntity.md)
+ - [ResourceListOfScenarioTemplateDefinition](docs/ResourceListOfScenarioTemplateDefinition.md)
  - [ResourceListOfScopeDefinition](docs/ResourceListOfScopeDefinition.md)
  - [ResourceListOfSideDefinition](docs/ResourceListOfSideDefinition.md)
  - [ResourceListOfString](docs/ResourceListOfString.md)
@@ -2064,6 +2078,7 @@ Class | Method | HTTP request | Description
  - [ReturnsMetric](docs/ReturnsMetric.md)
  - [ReverseStockSplitEvent](docs/ReverseStockSplitEvent.md)
  - [RevertValuationPointDataRequest](docs/RevertValuationPointDataRequest.md)
+ - [RiskBumpOptions](docs/RiskBumpOptions.md)
  - [RollInterestUpdates](docs/RollInterestUpdates.md)
  - [RollPrincipalUpdates](docs/RollPrincipalUpdates.md)
  - [RolloverConstituent](docs/RolloverConstituent.md)
@@ -2082,6 +2097,8 @@ Class | Method | HTTP request | Description
  - [ScenarioReference](docs/ScenarioReference.md)
  - [ScenarioShiftDefinition](docs/ScenarioShiftDefinition.md)
  - [ScenarioShiftType](docs/ScenarioShiftType.md)
+ - [ScenarioTemplateDefinition](docs/ScenarioTemplateDefinition.md)
+ - [ScenarioTemplateParameter](docs/ScenarioTemplateParameter.md)
  - [Schedule](docs/Schedule.md)
  - [ScheduleType](docs/ScheduleType.md)
  - [Schema](docs/Schema.md)
@@ -2123,6 +2140,7 @@ Class | Method | HTTP request | Description
  - [ShareClassDefinition](docs/ShareClassDefinition.md)
  - [ShareClassDetails](docs/ShareClassDetails.md)
  - [ShareClassPnlBreakdown](docs/ShareClassPnlBreakdown.md)
+ - [ShiftValueCondition](docs/ShiftValueCondition.md)
  - [SideConfigurationData](docs/SideConfigurationData.md)
  - [SideConfigurationDataRequest](docs/SideConfigurationDataRequest.md)
  - [SideDefinition](docs/SideDefinition.md)

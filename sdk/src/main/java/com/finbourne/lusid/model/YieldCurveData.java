@@ -82,6 +82,10 @@ public class YieldCurveData extends ComplexMarketData {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_FUNDING_CURVE_NAME = "fundingCurveName";
+  @SerializedName(SERIALIZED_NAME_FUNDING_CURVE_NAME)
+  private String fundingCurveName;
+
   public YieldCurveData() {
     // this.marketDataType = this.getClass().getSimpleName();
   }
@@ -228,6 +232,27 @@ public class YieldCurveData extends ComplexMarketData {
   }
 
 
+  public YieldCurveData fundingCurveName(String fundingCurveName) {
+    
+    this.fundingCurveName = fundingCurveName;
+    return this;
+  }
+
+   /**
+   * Optional name of the funding curve under which the calibration instruments are discounted,  for projection curves that are bootstrapped under a separate discount curve. This is the  funding identifier of the rates dependency for the calibration instruments&#39; domestic currency,  so a value of &#39;EUROIS&#39; names the discounting dependency Rates/EUR/EUROIS. When omitted the  calibration instruments are discounted on the curve being built, which is the classic  single-curve bootstrap.
+   * @return fundingCurveName
+  **/
+  @jakarta.annotation.Nullable
+  public String getFundingCurveName() {
+    return fundingCurveName;
+  }
+
+
+  public void setFundingCurveName(String fundingCurveName) {
+    this.fundingCurveName = fundingCurveName;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -244,6 +269,7 @@ public class YieldCurveData extends ComplexMarketData {
         Objects.equals(this.lineage, yieldCurveData.lineage) &&
         Objects.equals(this.marketDataOptions, yieldCurveData.marketDataOptions) &&
         Objects.equals(this.version, yieldCurveData.version) &&
+        Objects.equals(this.fundingCurveName, yieldCurveData.fundingCurveName) &&
         super.equals(o);
   }
 
@@ -253,7 +279,7 @@ public class YieldCurveData extends ComplexMarketData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseDate, instruments, quotes, lineage, marketDataOptions, version, super.hashCode());
+    return Objects.hash(baseDate, instruments, quotes, lineage, marketDataOptions, version, fundingCurveName, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -274,6 +300,7 @@ public class YieldCurveData extends ComplexMarketData {
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
     sb.append("    marketDataOptions: ").append(toIndentedString(marketDataOptions)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    fundingCurveName: ").append(toIndentedString(fundingCurveName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -303,6 +330,7 @@ public class YieldCurveData extends ComplexMarketData {
     openapiFields.add("lineage");
     openapiFields.add("marketDataOptions");
     openapiFields.add("version");
+    openapiFields.add("fundingCurveName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

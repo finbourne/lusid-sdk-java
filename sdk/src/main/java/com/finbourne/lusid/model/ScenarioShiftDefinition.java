@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ScenarioShiftDefinition {
   /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition.
    */
   @JsonAdapter(ScenarioShiftTypeEnum.Adapter.class)
   public enum ScenarioShiftTypeEnum {
@@ -64,7 +64,11 @@ public class ScenarioShiftDefinition {
     
     MDKRGROUPSHIFTDEFINITION("MdkrGroupShiftDefinition"),
     
-    INFLATIONCURVESHIFTDEFINITION("InflationCurveShiftDefinition");
+    INFLATIONCURVESHIFTDEFINITION("InflationCurveShiftDefinition"),
+    
+    CREDITSPREADSHIFTDEFINITION("CreditSpreadShiftDefinition"),
+    
+    MODELOPTIONSHIFTDEFINITION("ModelOptionShiftDefinition");
 
     private String value;
 
@@ -118,7 +122,7 @@ public class ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
+   * Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition.
    * @return scenarioShiftType
   **/
   @jakarta.annotation.Nonnull
@@ -199,6 +203,9 @@ public class ScenarioShiftDefinition {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("scenarioShiftType").getAsString();
       switch (discriminatorValue) {
+        case "CreditSpreadShiftDefinition":
+          CreditSpreadShiftDefinition.validateJsonElement(jsonElement);
+          break;
         case "FxShiftDefinition":
           FxShiftDefinition.validateJsonElement(jsonElement);
           break;
@@ -207,6 +214,9 @@ public class ScenarioShiftDefinition {
           break;
         case "MdkrGroupShiftDefinition":
           MdkrGroupShiftDefinition.validateJsonElement(jsonElement);
+          break;
+        case "ModelOptionShiftDefinition":
+          ModelOptionShiftDefinition.validateJsonElement(jsonElement);
           break;
         case "PriceShiftDefinition":
           PriceShiftDefinition.validateJsonElement(jsonElement);

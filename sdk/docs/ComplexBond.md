@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **calculationType** | **String** | The calculation type applied to the bond coupon amount. This is required for bonds that have a particular type of computing the period coupon, such as simple compounding,  irregular coupons etc.  The default CalculationType is &#x60;Standard&#x60;, which returns a coupon amount equal to Principal generate justfile test_sdk Coupon Rate / Coupon Frequency. Coupon Frequency is 12M / Payment Frequency.  Payment Frequency can be 1M, 3M, 6M, 12M etc. So Coupon Frequency can be 12, 4, 2, 1 respectively.    Supported string (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater, BrazilFixedCoupon, StandardWithCappedAccruedInterest]. | [optional] [default to String]
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | schedules. | [optional] [default to List<Schedule>]
 **originalIssuePrice** | **java.math.BigDecimal** | The price the complex bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
+**parPerUnit** | **java.math.BigDecimal** | Optional value used to scale accrued interest and coupon amounts only (not CleanPV), in addition to  currentNotional and units. If you do not set this field, the value is 1 and no amount changes.  A model that calculates the price from the cash flows, for example Discounting, includes the scaled coupons   in the PV and thus in the CleanPV. The CleanPV exclusion applies to a quoted price. | [optional] [default to java.math.BigDecimal]
 **issueDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the bond was issued to the market. This may be after the StartDate (dated date) from which interest accrues, for example for agency mortgage-backed securities. The payment schedule is unchanged, but no coupon entitlement (ex-dividend) date can fall before this date: a buyer settling on the issue date is entitled to the first coupon, and accrued interest includes completed-but-unpaid coupons until their entitlement passes. | [optional] [default to OffsetDateTime]
 **roundingConventions** | [**List&lt;RoundingConvention&gt;**](RoundingConvention.md) | Rounding conventions for analytics, if any. | [optional] [default to List<RoundingConvention>]
 **assetBacked** | **Boolean** | If this flag is set to true, then the outstanding notional and principal repayments will be calculated based  on pool factors in the quote store. Usually AssetBacked bonds also require a RollConvention setting of   within the FlowConventions any given rates schedule (to ensure payment dates always happen on the same day  of the month) and US Agency MBSs with Pay Delay features also require their rates schedules to include an  ExDividendConfiguration to drive the lag between interest accrual and payment. | [optional] [default to Boolean]
@@ -26,6 +27,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable String CalculationType = "example CalculationType";
 @jakarta.annotation.Nullable List<Schedule> Schedules = new List<Schedule>();
 @jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ParPerUnit = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable OffsetDateTime IssueDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<RoundingConvention> RoundingConventions = new List<RoundingConvention>();
 @jakarta.annotation.Nullable Boolean AssetBacked = true;
@@ -39,6 +41,7 @@ ComplexBond complexBondInstance = new ComplexBond()
     .CalculationType(CalculationType)
     .Schedules(Schedules)
     .OriginalIssuePrice(OriginalIssuePrice)
+    .ParPerUnit(ParPerUnit)
     .IssueDate(IssueDate)
     .RoundingConventions(RoundingConventions)
     .AssetBacked(AssetBacked)

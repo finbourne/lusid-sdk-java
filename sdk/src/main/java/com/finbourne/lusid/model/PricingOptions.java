@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ModelSelection;
 import com.finbourne.lusid.model.ReturnZeroPvOptions;
+import com.finbourne.lusid.model.RiskBumpOptions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -131,6 +134,14 @@ public class PricingOptions {
   public static final String SERIALIZED_NAME_SCALE_INSTRUMENT_ACCRUED_OVERRIDE_BY_CONTRACT_SIZE = "scaleInstrumentAccruedOverrideByContractSize";
   @SerializedName(SERIALIZED_NAME_SCALE_INSTRUMENT_ACCRUED_OVERRIDE_BY_CONTRACT_SIZE)
   private Boolean scaleInstrumentAccruedOverrideByContractSize;
+
+  public static final String SERIALIZED_NAME_RISK_BUMP_OPTIONS = "riskBumpOptions";
+  @SerializedName(SERIALIZED_NAME_RISK_BUMP_OPTIONS)
+  private RiskBumpOptions riskBumpOptions;
+
+  public static final String SERIALIZED_NAME_FUNDING_CURVE_BY_CURRENCY = "fundingCurveByCurrency";
+  @SerializedName(SERIALIZED_NAME_FUNDING_CURVE_BY_CURRENCY)
+  private Map<String, String> fundingCurveByCurrency;
 
   public PricingOptions() {
   }
@@ -555,6 +566,56 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions riskBumpOptions(RiskBumpOptions riskBumpOptions) {
+    
+    this.riskBumpOptions = riskBumpOptions;
+    return this;
+  }
+
+   /**
+   * Get riskBumpOptions
+   * @return riskBumpOptions
+  **/
+  @jakarta.annotation.Nullable
+  public RiskBumpOptions getRiskBumpOptions() {
+    return riskBumpOptions;
+  }
+
+
+  public void setRiskBumpOptions(RiskBumpOptions riskBumpOptions) {
+    this.riskBumpOptions = riskBumpOptions;
+  }
+
+
+  public PricingOptions fundingCurveByCurrency(Map<String, String> fundingCurveByCurrency) {
+    
+    this.fundingCurveByCurrency = fundingCurveByCurrency;
+    return this;
+  }
+
+  public PricingOptions putFundingCurveByCurrencyItem(String key, String fundingCurveByCurrencyItem) {
+    if (this.fundingCurveByCurrency == null) {
+      this.fundingCurveByCurrency = new HashMap<>();
+    }
+    this.fundingCurveByCurrency.put(key, fundingCurveByCurrencyItem);
+    return this;
+  }
+
+   /**
+   * Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged.
+   * @return fundingCurveByCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, String> getFundingCurveByCurrency() {
+    return fundingCurveByCurrency;
+  }
+
+
+  public void setFundingCurveByCurrency(Map<String, String> fundingCurveByCurrency) {
+    this.fundingCurveByCurrency = fundingCurveByCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -584,7 +645,9 @@ public class PricingOptions {
         Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv) &&
         Objects.equals(this.enableLegLevelInferenceForCustomSrsColumns, pricingOptions.enableLegLevelInferenceForCustomSrsColumns) &&
         Objects.equals(this.useInstrumentScaleFactorAsDefault, pricingOptions.useInstrumentScaleFactorAsDefault) &&
-        Objects.equals(this.scaleInstrumentAccruedOverrideByContractSize, pricingOptions.scaleInstrumentAccruedOverrideByContractSize);
+        Objects.equals(this.scaleInstrumentAccruedOverrideByContractSize, pricingOptions.scaleInstrumentAccruedOverrideByContractSize) &&
+        Objects.equals(this.riskBumpOptions, pricingOptions.riskBumpOptions) &&
+        Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -593,7 +656,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -627,6 +690,8 @@ public class PricingOptions {
     sb.append("    enableLegLevelInferenceForCustomSrsColumns: ").append(toIndentedString(enableLegLevelInferenceForCustomSrsColumns)).append("\n");
     sb.append("    useInstrumentScaleFactorAsDefault: ").append(toIndentedString(useInstrumentScaleFactorAsDefault)).append("\n");
     sb.append("    scaleInstrumentAccruedOverrideByContractSize: ").append(toIndentedString(scaleInstrumentAccruedOverrideByContractSize)).append("\n");
+    sb.append("    riskBumpOptions: ").append(toIndentedString(riskBumpOptions)).append("\n");
+    sb.append("    fundingCurveByCurrency: ").append(toIndentedString(fundingCurveByCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -669,6 +734,8 @@ public class PricingOptions {
     openapiFields.add("enableLegLevelInferenceForCustomSrsColumns");
     openapiFields.add("useInstrumentScaleFactorAsDefault");
     openapiFields.add("scaleInstrumentAccruedOverrideByContractSize");
+    openapiFields.add("riskBumpOptions");
+    openapiFields.add("fundingCurveByCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -703,6 +770,10 @@ public class PricingOptions {
       // validate the optional field `returnZeroPv`
       if (jsonObj.get("returnZeroPv") != null && !jsonObj.get("returnZeroPv").isJsonNull()) {
         ReturnZeroPvOptions.validateJsonElement(jsonObj.get("returnZeroPv"));
+      }
+      // validate the optional field `riskBumpOptions`
+      if (jsonObj.get("riskBumpOptions") != null && !jsonObj.get("riskBumpOptions").isJsonNull()) {
+        RiskBumpOptions.validateJsonElement(jsonObj.get("riskBumpOptions"));
       }
   }
 

@@ -179,6 +179,118 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
   @SerializedName(SERIALIZED_NAME_PIVOT_TENOR)
   private String pivotTenor;
 
+  /**
+   * Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+   */
+  @JsonAdapter(WindowBoundsEnum.Adapter.class)
+  public enum WindowBoundsEnum {
+    INCLUSIVE("Inclusive"),
+    
+    STARTEXCLUSIVE("StartExclusive"),
+    
+    ENDEXCLUSIVE("EndExclusive"),
+    
+    EXCLUSIVE("Exclusive");
+
+    private String value;
+
+    WindowBoundsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WindowBoundsEnum fromValue(String value) {
+      for (WindowBoundsEnum b : WindowBoundsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<WindowBoundsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WindowBoundsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WindowBoundsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return WindowBoundsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_WINDOW_BOUNDS = "windowBounds";
+  @SerializedName(SERIALIZED_NAME_WINDOW_BOUNDS)
+  private WindowBoundsEnum windowBounds;
+
+  public static final String SERIALIZED_NAME_MINIMUM_AMOUNT_BPS = "minimumAmountBps";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_AMOUNT_BPS)
+  private java.math.BigDecimal minimumAmountBps;
+
+  /**
+   * Available values: Any, Positive, Negative.
+   */
+  @JsonAdapter(ApplyWhenValueEnum.Adapter.class)
+  public enum ApplyWhenValueEnum {
+    ANY("Any"),
+    
+    POSITIVE("Positive"),
+    
+    NEGATIVE("Negative");
+
+    private String value;
+
+    ApplyWhenValueEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ApplyWhenValueEnum fromValue(String value) {
+      for (ApplyWhenValueEnum b : ApplyWhenValueEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ApplyWhenValueEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ApplyWhenValueEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ApplyWhenValueEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ApplyWhenValueEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_APPLY_WHEN_VALUE = "applyWhenValue";
+  @SerializedName(SERIALIZED_NAME_APPLY_WHEN_VALUE)
+  private ApplyWhenValueEnum applyWhenValue;
+
   public InflationCurveShiftDefinition() {
     // this.scenarioShiftType = this.getClass().getSimpleName();
   }
@@ -332,6 +444,71 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
   }
 
 
+  public InflationCurveShiftDefinition windowBounds(WindowBoundsEnum windowBounds) {
+    
+    this.windowBounds = windowBounds;
+    return this;
+  }
+
+   /**
+   * Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+   * @return windowBounds
+  **/
+  @jakarta.annotation.Nullable
+  public WindowBoundsEnum getWindowBounds() {
+    return windowBounds;
+  }
+
+
+  public void setWindowBounds(WindowBoundsEnum windowBounds) {
+    this.windowBounds = windowBounds;
+  }
+
+
+  public InflationCurveShiftDefinition minimumAmountBps(java.math.BigDecimal minimumAmountBps) {
+    
+    this.minimumAmountBps = minimumAmountBps;
+    return this;
+  }
+
+   /**
+   * The smallest magnitude, in basis points, of the shift finally applied at each curve point,  evaluated per point AFTER the shape weight, in the direction the shift acts there. Exactly  the rate curve shift&#39;s MinimumAmountBps - see that field for the full semantics; the two  curve shifts keep one vocabulary. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there.
+   * minimum: 0
+   * maximum: 1000000
+   * @return minimumAmountBps
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinimumAmountBps() {
+    return minimumAmountBps;
+  }
+
+
+  public void setMinimumAmountBps(java.math.BigDecimal minimumAmountBps) {
+    this.minimumAmountBps = minimumAmountBps;
+  }
+
+
+  public InflationCurveShiftDefinition applyWhenValue(ApplyWhenValueEnum applyWhenValue) {
+    
+    this.applyWhenValue = applyWhenValue;
+    return this;
+  }
+
+   /**
+   * Available values: Any, Positive, Negative.
+   * @return applyWhenValue
+  **/
+  @jakarta.annotation.Nullable
+  public ApplyWhenValueEnum getApplyWhenValue() {
+    return applyWhenValue;
+  }
+
+
+  public void setApplyWhenValue(ApplyWhenValueEnum applyWhenValue) {
+    this.applyWhenValue = applyWhenValue;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -349,6 +526,9 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
         Objects.equals(this.shiftType, inflationCurveShiftDefinition.shiftType) &&
         Objects.equals(this.scale, inflationCurveShiftDefinition.scale) &&
         Objects.equals(this.pivotTenor, inflationCurveShiftDefinition.pivotTenor) &&
+        Objects.equals(this.windowBounds, inflationCurveShiftDefinition.windowBounds) &&
+        (this.minimumAmountBps.compareTo(inflationCurveShiftDefinition.getMinimumAmountBps()) == 0) &&
+        Objects.equals(this.applyWhenValue, inflationCurveShiftDefinition.applyWhenValue) &&
         super.equals(o);
   }
 
@@ -358,7 +538,7 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(index, amount, startTenor, endTenor, shiftType, scale, pivotTenor, super.hashCode());
+    return Objects.hash(index, amount, startTenor, endTenor, shiftType, scale, pivotTenor, windowBounds, minimumAmountBps, applyWhenValue, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -380,6 +560,9 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
     sb.append("    shiftType: ").append(toIndentedString(shiftType)).append("\n");
     sb.append("    scale: ").append(toIndentedString(scale)).append("\n");
     sb.append("    pivotTenor: ").append(toIndentedString(pivotTenor)).append("\n");
+    sb.append("    windowBounds: ").append(toIndentedString(windowBounds)).append("\n");
+    sb.append("    minimumAmountBps: ").append(toIndentedString(minimumAmountBps)).append("\n");
+    sb.append("    applyWhenValue: ").append(toIndentedString(applyWhenValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -410,6 +593,9 @@ public class InflationCurveShiftDefinition extends ScenarioShiftDefinition {
     openapiFields.add("shiftType");
     openapiFields.add("scale");
     openapiFields.add("pivotTenor");
+    openapiFields.add("windowBounds");
+    openapiFields.add("minimumAmountBps");
+    openapiFields.add("applyWhenValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

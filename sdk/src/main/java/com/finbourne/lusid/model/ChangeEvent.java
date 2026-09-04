@@ -86,6 +86,10 @@ public class ChangeEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_INFORMATION)
   private String additionalInformation;
 
+  public static final String SERIALIZED_NAME_CARRY_RELATIONSHIPS = "carryRelationships";
+  @SerializedName(SERIALIZED_NAME_CARRY_RELATIONSHIPS)
+  private String carryRelationships;
+
   public ChangeEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -258,6 +262,27 @@ public class ChangeEvent extends InstrumentEvent {
   }
 
 
+  public ChangeEvent carryRelationships(String carryRelationships) {
+    
+    this.carryRelationships = carryRelationships;
+    return this;
+  }
+
+   /**
+   * Whether, and in which direction, the old instrument&#39;s Relationships are carried onto the new  instrument. One of \&quot;None\&quot;, \&quot;Outward\&quot; or \&quot;Both\&quot;; defaults to \&quot;Outward\&quot; when omitted.     Relationships resolve to the instrument entity, so nothing pointing at the old instrument  applies to the new one. This is a caller choice because relationship meaning is client-authored:  an index-to-constituent link should usually follow a rename, a historical order-to-instrument  link should not. Available values: None, Outward, Both.
+   * @return carryRelationships
+  **/
+  @jakarta.annotation.Nullable
+  public String getCarryRelationships() {
+    return carryRelationships;
+  }
+
+
+  public void setCarryRelationships(String carryRelationships) {
+    this.carryRelationships = carryRelationships;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -276,6 +301,7 @@ public class ChangeEvent extends InstrumentEvent {
         Objects.equals(this.termTarget, changeEvent.termTarget) &&
         Objects.equals(this.termTargetIdentifier, changeEvent.termTargetIdentifier) &&
         Objects.equals(this.additionalInformation, changeEvent.additionalInformation) &&
+        Objects.equals(this.carryRelationships, changeEvent.carryRelationships) &&
         super.equals(o);
   }
 
@@ -285,7 +311,7 @@ public class ChangeEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recordDate, paymentDate, newInstrument, unitsRatio, changeType, termTarget, termTargetIdentifier, additionalInformation, super.hashCode());
+    return Objects.hash(recordDate, paymentDate, newInstrument, unitsRatio, changeType, termTarget, termTargetIdentifier, additionalInformation, carryRelationships, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -308,6 +334,7 @@ public class ChangeEvent extends InstrumentEvent {
     sb.append("    termTarget: ").append(toIndentedString(termTarget)).append("\n");
     sb.append("    termTargetIdentifier: ").append(toIndentedString(termTargetIdentifier)).append("\n");
     sb.append("    additionalInformation: ").append(toIndentedString(additionalInformation)).append("\n");
+    sb.append("    carryRelationships: ").append(toIndentedString(carryRelationships)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -339,6 +366,7 @@ public class ChangeEvent extends InstrumentEvent {
     openapiFields.add("termTarget");
     openapiFields.add("termTargetIdentifier");
     openapiFields.add("additionalInformation");
+    openapiFields.add("carryRelationships");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

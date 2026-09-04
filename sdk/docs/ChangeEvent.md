@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **termTarget** | **String** | The target of a terms change — one of \&quot;InstrumentDefinitionField\&quot; or  \&quot;InstrumentProperty\&quot;. Only applicable when ChangeType is \&quot;Terms\&quot;. Available values: InstrumentDefinitionField, InstrumentProperty. | [optional] [default to String]
 **termTargetIdentifier** | **String** | The identifier of the term target being changed. Must be paired with TermTarget. | [optional] [default to String]
 **additionalInformation** | **String** | Free-text additional information describing the change. | [optional] [default to String]
+**carryRelationships** | **String** | Whether, and in which direction, the old instrument&#39;s Relationships are carried onto the new  instrument. One of \&quot;None\&quot;, \&quot;Outward\&quot; or \&quot;Both\&quot;; defaults to \&quot;Outward\&quot; when omitted.     Relationships resolve to the instrument entity, so nothing pointing at the old instrument  applies to the new one. This is a caller choice because relationship meaning is client-authored:  an index-to-constituent link should usually follow a rename, a historical order-to-instrument  link should not. Available values: None, Outward, Both. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.ChangeEvent;
@@ -28,6 +29,7 @@ String ChangeType = "example ChangeType";
 @jakarta.annotation.Nullable String TermTarget = "example TermTarget";
 @jakarta.annotation.Nullable String TermTargetIdentifier = "example TermTargetIdentifier";
 @jakarta.annotation.Nullable String AdditionalInformation = "example AdditionalInformation";
+@jakarta.annotation.Nullable String CarryRelationships = "example CarryRelationships";
 
 
 ChangeEvent changeEventInstance = new ChangeEvent()
@@ -38,7 +40,8 @@ ChangeEvent changeEventInstance = new ChangeEvent()
     .ChangeType(ChangeType)
     .TermTarget(TermTarget)
     .TermTargetIdentifier(TermTargetIdentifier)
-    .AdditionalInformation(AdditionalInformation);
+    .AdditionalInformation(AdditionalInformation)
+    .CarryRelationships(CarryRelationships);
 ```
 
 

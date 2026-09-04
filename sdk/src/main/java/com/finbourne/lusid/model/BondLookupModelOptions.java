@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class BondLookupModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_SPREAD_ANCHORED_RISK)
   private Boolean spreadAnchoredRisk;
 
+  public static final String SERIALIZED_NAME_CS01_BUMP_WIDTH = "cs01BumpWidth";
+  @SerializedName(SERIALIZED_NAME_CS01_BUMP_WIDTH)
+  private java.math.BigDecimal cs01BumpWidth;
+
   public BondLookupModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -79,6 +84,27 @@ public class BondLookupModelOptions extends ModelOptions {
   }
 
 
+  public BondLookupModelOptions cs01BumpWidth(java.math.BigDecimal cs01BumpWidth) {
+    
+    this.cs01BumpWidth = cs01BumpWidth;
+    return this;
+  }
+
+   /**
+   * The TOTAL width of the central-difference stencil behind the CS01/Central measure: the  instrument&#39;s own z-spread is repriced at spread ± width/2, so a width of 0.0001 means  ±0.5bp reprice points. The width is the whole distance between the two reprice points,  NOT the half-shift. The reported measure is always per one basis point of widening  whatever width is configured. Must be strictly positive.  Defaults to 0.0001 (1bp, repriced at ±0.5bp) when not supplied.
+   * @return cs01BumpWidth
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCs01BumpWidth() {
+    return cs01BumpWidth;
+  }
+
+
+  public void setCs01BumpWidth(java.math.BigDecimal cs01BumpWidth) {
+    this.cs01BumpWidth = cs01BumpWidth;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,12 +116,24 @@ public class BondLookupModelOptions extends ModelOptions {
     }
     BondLookupModelOptions bondLookupModelOptions = (BondLookupModelOptions) o;
     return Objects.equals(this.spreadAnchoredRisk, bondLookupModelOptions.spreadAnchoredRisk) &&
+        (this.cs01BumpWidth.compareTo(bondLookupModelOptions.getCs01BumpWidth()) == 0) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(spreadAnchoredRisk, super.hashCode());
+    return Objects.hash(spreadAnchoredRisk, cs01BumpWidth, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -104,6 +142,7 @@ public class BondLookupModelOptions extends ModelOptions {
     sb.append("class BondLookupModelOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    spreadAnchoredRisk: ").append(toIndentedString(spreadAnchoredRisk)).append("\n");
+    sb.append("    cs01BumpWidth: ").append(toIndentedString(cs01BumpWidth)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -128,6 +167,7 @@ public class BondLookupModelOptions extends ModelOptions {
     openapiFields = new HashSet<String>();
     openapiFields.add("modelOptionsType");
     openapiFields.add("spreadAnchoredRisk");
+    openapiFields.add("cs01BumpWidth");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

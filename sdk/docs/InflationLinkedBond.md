@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **roundingConventions** | [**List&lt;RoundingConvention&gt;**](RoundingConvention.md) | Rounding conventions for analytics, if any. | [optional] [default to List<RoundingConvention>]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 **originalIssuePrice** | **java.math.BigDecimal** | The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
+**parPerUnit** | **java.math.BigDecimal** | Optional value used to scale accrued interest and coupon amounts only (not CleanPV), in addition to  currentNotional and units. If you do not set this field, the value is 1 and no amount changes.  A model that calculates the price from the cash flows, for example InflationForward, includes the scaled  coupons in the PV and thus in the CleanPV. The CleanPV exclusion applies to a quoted price. | [optional] [default to java.math.BigDecimal]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 **amortisationSchedule** | [**StepSchedule**](StepSchedule.md) |  | [optional] [default to StepSchedule]
 
@@ -48,6 +49,7 @@ Boolean PrincipalProtection = true;
 @jakarta.annotation.Nullable List<RoundingConvention> RoundingConventions = new List<RoundingConvention>();
 TradingConventions TradingConventions = new TradingConventions();
 @jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ParPerUnit = new java.math.BigDecimal("100.00");
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 StepSchedule AmortisationSchedule = new StepSchedule();
 
@@ -70,6 +72,7 @@ InflationLinkedBond inflationLinkedBondInstance = new InflationLinkedBond()
     .RoundingConventions(RoundingConventions)
     .TradingConventions(TradingConventions)
     .OriginalIssuePrice(OriginalIssuePrice)
+    .ParPerUnit(ParPerUnit)
     .TimeZoneConventions(TimeZoneConventions)
     .AmortisationSchedule(AmortisationSchedule);
 ```

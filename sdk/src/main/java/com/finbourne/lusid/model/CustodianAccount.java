@@ -302,7 +302,7 @@ public class CustodianAccount {
   }
 
    /**
-   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for disposals from this account. This can be: Cost or AmortisedCost. If not specified, resolution falls through to the transaction type and then the portfolio&#39;s default. Available values: Cost, AmortisedCost.
+   * The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for disposals from this account. This can be: Cost or AmortisedCost. If not specified or reset with Default, resolution falls through to the transaction type and then the portfolio&#39;s default. Available values: Default, Cost, AmortisedCost.
    * @return taxLotSelectionCostBasis
   **/
   @jakarta.annotation.Nullable

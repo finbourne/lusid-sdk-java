@@ -63,6 +63,14 @@ public class CurveOptions extends MarketDataOptions {
   @SerializedName(SERIALIZED_NAME_BACK_EXTRAPOLATION_TYPE)
   private String backExtrapolationType;
 
+  public static final String SERIALIZED_NAME_INTERPOLATION_TYPE = "interpolationType";
+  @SerializedName(SERIALIZED_NAME_INTERPOLATION_TYPE)
+  private String interpolationType;
+
+  public static final String SERIALIZED_NAME_ORIGIN_ANCHOR = "originAnchor";
+  @SerializedName(SERIALIZED_NAME_ORIGIN_ANCHOR)
+  private String originAnchor;
+
   public CurveOptions() {
     // this.marketDataOptionsType = this.getClass().getSimpleName();
   }
@@ -130,6 +138,48 @@ public class CurveOptions extends MarketDataOptions {
   }
 
 
+  public CurveOptions interpolationType(String interpolationType) {
+    
+    this.interpolationType = interpolationType;
+    return this;
+  }
+
+   /**
+   * What type of interpolation is used to build the curve. Default value: LinearOnRates. Available values: LinearOnRates, LinearOnLogOfRates, LinearOnDiscountFactors, LinearOnLogDiscountFactors, PiecewiseLinearForward, MonotoneConvex, LinearOnLogProbability.
+   * @return interpolationType
+  **/
+  @jakarta.annotation.Nullable
+  public String getInterpolationType() {
+    return interpolationType;
+  }
+
+
+  public void setInterpolationType(String interpolationType) {
+    this.interpolationType = interpolationType;
+  }
+
+
+  public CurveOptions originAnchor(String originAnchor) {
+    
+    this.originAnchor = originAnchor;
+    return this;
+  }
+
+   /**
+   * How the curve builder anchors the origin of a bootstrapped curve, i.e. the value the curve  carries in front of its shortest calibration instrument. Default value: ZeroRate, the  historical anchor, under which existing curves are unchanged. Available values: ZeroRate, FirstInstrumentRate.
+   * @return originAnchor
+  **/
+  @jakarta.annotation.Nullable
+  public String getOriginAnchor() {
+    return originAnchor;
+  }
+
+
+  public void setOriginAnchor(String originAnchor) {
+    this.originAnchor = originAnchor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,6 +193,8 @@ public class CurveOptions extends MarketDataOptions {
     return Objects.equals(this.dayCountConvention, curveOptions.dayCountConvention) &&
         Objects.equals(this.frontExtrapolationType, curveOptions.frontExtrapolationType) &&
         Objects.equals(this.backExtrapolationType, curveOptions.backExtrapolationType) &&
+        Objects.equals(this.interpolationType, curveOptions.interpolationType) &&
+        Objects.equals(this.originAnchor, curveOptions.originAnchor) &&
         super.equals(o);
   }
 
@@ -152,7 +204,7 @@ public class CurveOptions extends MarketDataOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dayCountConvention, frontExtrapolationType, backExtrapolationType, super.hashCode());
+    return Objects.hash(dayCountConvention, frontExtrapolationType, backExtrapolationType, interpolationType, originAnchor, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -170,6 +222,8 @@ public class CurveOptions extends MarketDataOptions {
     sb.append("    dayCountConvention: ").append(toIndentedString(dayCountConvention)).append("\n");
     sb.append("    frontExtrapolationType: ").append(toIndentedString(frontExtrapolationType)).append("\n");
     sb.append("    backExtrapolationType: ").append(toIndentedString(backExtrapolationType)).append("\n");
+    sb.append("    interpolationType: ").append(toIndentedString(interpolationType)).append("\n");
+    sb.append("    originAnchor: ").append(toIndentedString(originAnchor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,6 +250,8 @@ public class CurveOptions extends MarketDataOptions {
     openapiFields.add("dayCountConvention");
     openapiFields.add("frontExtrapolationType");
     openapiFields.add("backExtrapolationType");
+    openapiFields.add("interpolationType");
+    openapiFields.add("originAnchor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

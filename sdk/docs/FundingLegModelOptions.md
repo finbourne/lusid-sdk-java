@@ -1,4 +1,4 @@
-# com.finbourne.lusid.model.FundingLegOptions
+# com.finbourne.lusid.model.FundingLegModelOptions
 
 ## Properties
 
@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **expectedFundingLegNotional** | **String** | Assumption made on future expected notional of the funding leg. | [default to String]
 
 ```java
-import com.finbourne.lusid.model.FundingLegOptions;
+import com.finbourne.lusid.model.FundingLegModelOptions;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -15,7 +15,7 @@ import java.net.URI;
 String ExpectedFundingLegNotional = "example ExpectedFundingLegNotional";
 
 
-FundingLegOptions fundingLegOptionsInstance = new FundingLegOptions()
+FundingLegModelOptions fundingLegModelOptionsInstance = new FundingLegModelOptions()
     .ExpectedFundingLegNotional(ExpectedFundingLegNotional);
 ```
 

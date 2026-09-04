@@ -127,7 +127,9 @@ public enum InstrumentType {
   
   COMMODITYCALENDARSWAP("CommodityCalendarSwap"),
   
-  BONDFORWARD("BondForward");
+  BONDFORWARD("BondForward"),
+  
+  PREFERREDSHARE("PreferredShare");
 
   private String value;
 
