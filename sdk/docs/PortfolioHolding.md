@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **overdueUnits** | **java.math.BigDecimal** | The number of unsettled units for the holding that are beyond their contractual settlement date. | [optional] [default to java.math.BigDecimal]
 **custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  | [optional] [default to CustodianAccount]
 **resolvedCustodianAccount** | [**ResolvedCustodianAccount**](ResolvedCustodianAccount.md) |  | [optional] [default to ResolvedCustodianAccount]
+**holdingPropertyBalances** | **Map&lt;String, java.math.BigDecimal&gt;** | The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance. | [optional] [default to Map<String, java.math.BigDecimal>]
 
 ```java
 import com.finbourne.lusid.model.PortfolioHolding;
@@ -62,6 +63,7 @@ java.math.BigDecimal UnsettledUnits = new java.math.BigDecimal("100.00");
 java.math.BigDecimal OverdueUnits = new java.math.BigDecimal("100.00");
 CustodianAccount CustodianAccount = new CustodianAccount();
 ResolvedCustodianAccount ResolvedCustodianAccount = new ResolvedCustodianAccount();
+@jakarta.annotation.Nullable Map<String, java.math.BigDecimal> HoldingPropertyBalances = new Map<String, java.math.BigDecimal>();
 
 
 PortfolioHolding portfolioHoldingInstance = new PortfolioHolding()
@@ -89,7 +91,8 @@ PortfolioHolding portfolioHoldingInstance = new PortfolioHolding()
     .UnsettledUnits(UnsettledUnits)
     .OverdueUnits(OverdueUnits)
     .CustodianAccount(CustodianAccount)
-    .ResolvedCustodianAccount(ResolvedCustodianAccount);
+    .ResolvedCustodianAccount(ResolvedCustodianAccount)
+    .HoldingPropertyBalances(HoldingPropertyBalances);
 ```
 
 

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **calculateTradeDateToSettlementFxPnL** | **Boolean** | Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement. | [optional] [default to Boolean]
 **custodianAccountType** | **String** | The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional. | [optional] [default to String]
 **accountSelector** | **String** | An optional selector expression used to identify the specific account this movement targets. Available values: From, To. | [optional] [default to String]
+**holdingPropertyDeltas** | [**List&lt;HoldingPropertyDelta&gt;**](HoldingPropertyDelta.md) | An optional list of running balances on the holding that this movement adjusts, for example the committed, funded and unfunded capital balances maintained by the private equity transaction types. Each delta names the balance to adjust, the transaction field that sources the adjustment amount, and the direction in which to apply it. | [optional] [default to List<HoldingPropertyDelta>]
 
 ```java
 import com.finbourne.lusid.model.TransactionTypeMovement;
@@ -37,6 +38,7 @@ Integer Direction = new Integer("100.00");
 @jakarta.annotation.Nullable Boolean CalculateTradeDateToSettlementFxPnL = true;
 @jakarta.annotation.Nullable String CustodianAccountType = "example CustodianAccountType";
 @jakarta.annotation.Nullable String AccountSelector = "example AccountSelector";
+@jakarta.annotation.Nullable List<HoldingPropertyDelta> HoldingPropertyDeltas = new List<HoldingPropertyDelta>();
 
 
 TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMovement()
@@ -52,7 +54,8 @@ TransactionTypeMovement transactionTypeMovementInstance = new TransactionTypeMov
     .SettlementMode(SettlementMode)
     .CalculateTradeDateToSettlementFxPnL(CalculateTradeDateToSettlementFxPnL)
     .CustodianAccountType(CustodianAccountType)
-    .AccountSelector(AccountSelector);
+    .AccountSelector(AccountSelector)
+    .HoldingPropertyDeltas(HoldingPropertyDeltas);
 ```
 
 

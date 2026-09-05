@@ -66,6 +66,7 @@ InstrumentType method = InstrumentType.CDSOPTION;
 InstrumentType method = InstrumentType.COMMODITYCALENDARSWAP;
 InstrumentType method = InstrumentType.BONDFORWARD;
 InstrumentType method = InstrumentType.PREFERREDSHARE;
+InstrumentType method = InstrumentType.CAPITALINTEREST;
 ```
 
 

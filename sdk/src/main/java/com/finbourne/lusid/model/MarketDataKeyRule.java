@@ -64,7 +64,7 @@ public class MarketDataKeyRule {
   private String dataScope;
 
   /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -102,7 +102,11 @@ public class MarketDataKeyRule {
     
     INTERESTSHORTFALL("InterestShortfall"),
     
-    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor");
+    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor"),
+    
+    FORWARDPRICE("ForwardPrice"),
+    
+    DISCOUNTFACTOR("DiscountFactor");
 
     private String value;
 
@@ -247,7 +251,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

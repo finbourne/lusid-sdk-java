@@ -119,6 +119,10 @@ InstrumentEventType method = InstrumentEventType.COMMODITYCALENDARSWAPCASHFLOWEV
 InstrumentEventType method = InstrumentEventType.DEPOSITSWEEPEVENT;
 InstrumentEventType method = InstrumentEventType.BONDFORWARDCASHSETTLEMENTEVENT;
 InstrumentEventType method = InstrumentEventType.BONDFORWARDTERMINATIONEVENT;
+InstrumentEventType method = InstrumentEventType.AMENDCOMMITMENTEVENT;
+InstrumentEventType method = InstrumentEventType.CAPITALCALLEVENT;
+InstrumentEventType method = InstrumentEventType.FUNDDISTRIBUTIONEVENT;
+InstrumentEventType method = InstrumentEventType.NAVREPORTEVENT;
 ```
 
 

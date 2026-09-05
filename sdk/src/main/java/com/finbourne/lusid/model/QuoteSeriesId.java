@@ -128,7 +128,7 @@ public class QuoteSeriesId {
   private InstrumentIdTypeEnum instrumentIdType;
 
   /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -166,7 +166,11 @@ public class QuoteSeriesId {
     
     INTERESTSHORTFALL("InterestShortfall"),
     
-    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor");
+    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor"),
+    
+    FORWARDPRICE("ForwardPrice"),
+    
+    DISCOUNTFACTOR("DiscountFactor");
 
     private String value;
 
@@ -320,7 +324,7 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

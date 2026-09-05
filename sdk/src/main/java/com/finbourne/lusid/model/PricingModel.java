@@ -73,7 +73,9 @@ public enum PricingModel {
   
   INFLATIONFORWARD("InflationForward"),
   
-  HULLWHITE1F("HullWhite1F");
+  HULLWHITE1F("HullWhite1F"),
+  
+  CAPITALINTERESTPRICER("CapitalInterestPricer");
 
   private String value;
 

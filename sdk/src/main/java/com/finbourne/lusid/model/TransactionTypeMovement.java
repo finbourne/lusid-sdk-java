@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.HoldingPropertyDelta;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.TransactionTypePropertyMapping;
 import com.google.gson.TypeAdapter;
@@ -107,6 +108,10 @@ public class TransactionTypeMovement {
   public static final String SERIALIZED_NAME_ACCOUNT_SELECTOR = "accountSelector";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_SELECTOR)
   private String accountSelector;
+
+  public static final String SERIALIZED_NAME_HOLDING_PROPERTY_DELTAS = "holdingPropertyDeltas";
+  @SerializedName(SERIALIZED_NAME_HOLDING_PROPERTY_DELTAS)
+  private List<HoldingPropertyDelta> holdingPropertyDeltas;
 
   public TransactionTypeMovement() {
   }
@@ -408,6 +413,35 @@ public class TransactionTypeMovement {
   }
 
 
+  public TransactionTypeMovement holdingPropertyDeltas(List<HoldingPropertyDelta> holdingPropertyDeltas) {
+    
+    this.holdingPropertyDeltas = holdingPropertyDeltas;
+    return this;
+  }
+
+  public TransactionTypeMovement addHoldingPropertyDeltasItem(HoldingPropertyDelta holdingPropertyDeltasItem) {
+    if (this.holdingPropertyDeltas == null) {
+      this.holdingPropertyDeltas = new ArrayList<>();
+    }
+    this.holdingPropertyDeltas.add(holdingPropertyDeltasItem);
+    return this;
+  }
+
+   /**
+   * An optional list of running balances on the holding that this movement adjusts, for example the committed, funded and unfunded capital balances maintained by the private equity transaction types. Each delta names the balance to adjust, the transaction field that sources the adjustment amount, and the direction in which to apply it.
+   * @return holdingPropertyDeltas
+  **/
+  @jakarta.annotation.Nullable
+  public List<HoldingPropertyDelta> getHoldingPropertyDeltas() {
+    return holdingPropertyDeltas;
+  }
+
+
+  public void setHoldingPropertyDeltas(List<HoldingPropertyDelta> holdingPropertyDeltas) {
+    this.holdingPropertyDeltas = holdingPropertyDeltas;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -430,7 +464,8 @@ public class TransactionTypeMovement {
         Objects.equals(this.settlementMode, transactionTypeMovement.settlementMode) &&
         Objects.equals(this.calculateTradeDateToSettlementFxPnL, transactionTypeMovement.calculateTradeDateToSettlementFxPnL) &&
         Objects.equals(this.custodianAccountType, transactionTypeMovement.custodianAccountType) &&
-        Objects.equals(this.accountSelector, transactionTypeMovement.accountSelector);
+        Objects.equals(this.accountSelector, transactionTypeMovement.accountSelector) &&
+        Objects.equals(this.holdingPropertyDeltas, transactionTypeMovement.holdingPropertyDeltas);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -439,7 +474,7 @@ public class TransactionTypeMovement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode, calculateTradeDateToSettlementFxPnL, custodianAccountType, accountSelector);
+    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode, calculateTradeDateToSettlementFxPnL, custodianAccountType, accountSelector, holdingPropertyDeltas);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -466,6 +501,7 @@ public class TransactionTypeMovement {
     sb.append("    calculateTradeDateToSettlementFxPnL: ").append(toIndentedString(calculateTradeDateToSettlementFxPnL)).append("\n");
     sb.append("    custodianAccountType: ").append(toIndentedString(custodianAccountType)).append("\n");
     sb.append("    accountSelector: ").append(toIndentedString(accountSelector)).append("\n");
+    sb.append("    holdingPropertyDeltas: ").append(toIndentedString(holdingPropertyDeltas)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -501,6 +537,7 @@ public class TransactionTypeMovement {
     openapiFields.add("calculateTradeDateToSettlementFxPnL");
     openapiFields.add("custodianAccountType");
     openapiFields.add("accountSelector");
+    openapiFields.add("holdingPropertyDeltas");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -570,6 +607,20 @@ public class TransactionTypeMovement {
       }
       if ((jsonObj.get("accountSelector") != null && !jsonObj.get("accountSelector").isJsonNull()) && !jsonObj.get("accountSelector").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountSelector` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountSelector").toString()));
+      }
+      if (jsonObj.get("holdingPropertyDeltas") != null && !jsonObj.get("holdingPropertyDeltas").isJsonNull()) {
+        JsonArray jsonArrayholdingPropertyDeltas = jsonObj.getAsJsonArray("holdingPropertyDeltas");
+        if (jsonArrayholdingPropertyDeltas != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("holdingPropertyDeltas").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `holdingPropertyDeltas` to be an array in the JSON string but got `%s`", jsonObj.get("holdingPropertyDeltas").toString()));
+          }
+
+          // validate the optional field `holdingPropertyDeltas` (array)
+          for (int i = 0; i < jsonArrayholdingPropertyDeltas.size(); i++) {
+            HoldingPropertyDelta.validateJsonElement(jsonArrayholdingPropertyDeltas.get(i));
+          };
+        }
       }
   }
 

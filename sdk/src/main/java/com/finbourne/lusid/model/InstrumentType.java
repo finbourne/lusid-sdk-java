@@ -129,7 +129,9 @@ public enum InstrumentType {
   
   BONDFORWARD("BondForward"),
   
-  PREFERREDSHARE("PreferredShare");
+  PREFERREDSHARE("PreferredShare"),
+  
+  CAPITALINTEREST("CapitalInterest");
 
   private String value;
 

@@ -29,6 +29,8 @@ import com.finbourne.lusid.model.CalculateOrderDatesRequest;
 import com.finbourne.lusid.model.CalculateOrderDatesResponse;
 import com.finbourne.lusid.model.DeleteTransferAgencyOrderRequest;
 import com.finbourne.lusid.model.DeleteTransferAgencyOrdersResponse;
+import com.finbourne.lusid.model.EstimateTransferAgencyOrderRequest;
+import com.finbourne.lusid.model.EstimateTransferAgencyOrdersResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.TransferAgencyOrdersResponse;
@@ -546,6 +548,241 @@ public class TransferAgencyApi {
      */
     public APIdeleteTransferAgencyOrdersRequest deleteTransferAgencyOrders(Map<String, DeleteTransferAgencyOrderRequest> requestBody) {
         return new APIdeleteTransferAgencyOrdersRequest(requestBody);
+    }
+    private okhttp3.Call estimateTransferAgencyOrdersCall(Map<String, EstimateTransferAgencyOrderRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return estimateTransferAgencyOrdersCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call estimateTransferAgencyOrdersCall(Map<String, EstimateTransferAgencyOrderRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transferagency/orders/$estimate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call estimateTransferAgencyOrdersValidateBeforeCall(Map<String, EstimateTransferAgencyOrderRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling estimateTransferAgencyOrders(Async)");
+        }
+
+        return estimateTransferAgencyOrdersCall(requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<EstimateTransferAgencyOrdersResponse> estimateTransferAgencyOrdersWithHttpInfo(Map<String, EstimateTransferAgencyOrderRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = estimateTransferAgencyOrdersValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<EstimateTransferAgencyOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<EstimateTransferAgencyOrdersResponse> estimateTransferAgencyOrdersWithHttpInfo(Map<String, EstimateTransferAgencyOrderRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = estimateTransferAgencyOrdersValidateBeforeCall(requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<EstimateTransferAgencyOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call estimateTransferAgencyOrdersAsync(Map<String, EstimateTransferAgencyOrderRequest> requestBody, final ApiCallback<EstimateTransferAgencyOrdersResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = estimateTransferAgencyOrdersValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<EstimateTransferAgencyOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call estimateTransferAgencyOrdersAsync(Map<String, EstimateTransferAgencyOrderRequest> requestBody, final ApiCallback<EstimateTransferAgencyOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = estimateTransferAgencyOrdersValidateBeforeCall(requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<EstimateTransferAgencyOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIestimateTransferAgencyOrdersRequest {
+        private final Map<String, EstimateTransferAgencyOrderRequest> requestBody;
+
+        private APIestimateTransferAgencyOrdersRequest(Map<String, EstimateTransferAgencyOrderRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for estimateTransferAgencyOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return estimateTransferAgencyOrdersCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request
+         * @return EstimateTransferAgencyOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public EstimateTransferAgencyOrdersResponse execute() throws ApiException {
+            ApiResponse<EstimateTransferAgencyOrdersResponse> localVarResp = estimateTransferAgencyOrdersWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return EstimateTransferAgencyOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public EstimateTransferAgencyOrdersResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<EstimateTransferAgencyOrdersResponse> localVarResp = estimateTransferAgencyOrdersWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request with HTTP info returned
+         * @return ApiResponse&lt;EstimateTransferAgencyOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<EstimateTransferAgencyOrdersResponse> executeWithHttpInfo() throws ApiException {
+            return estimateTransferAgencyOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;EstimateTransferAgencyOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<EstimateTransferAgencyOrdersResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return estimateTransferAgencyOrdersWithHttpInfo(requestBody, opts);
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<EstimateTransferAgencyOrdersResponse> _callback) throws ApiException {
+            return estimateTransferAgencyOrdersAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute estimateTransferAgencyOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<EstimateTransferAgencyOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return estimateTransferAgencyOrdersAsync(requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders
+     * Estimates the units and the cash each order supplied would move, from the share class&#39;s most recent price.  Nothing is written.     An order may be named by its identifier, to estimate it as it stands, or supplied whole, to estimate values  that have not been saved yet. Both forms may appear in the same request. Where an order is supplied whole,  those values are estimated in place of the saved order&#39;s.     A switch or a transfer is two orders, and each leg is estimated independently.     The price is reported in the currency the share class is quoted in, which is not necessarily the order&#39;s  currency, so it is returned alongside that currency and the rate used.     The response contains both the successful estimates and any failures, each in the form of a dictionary  keyed by the request&#39;s keys. A share class with no price available fails only its own orders. It is  important to check the failed set for unsuccessful results.
+     * @param requestBody The transfer agency orders to estimate, keyed by a unique request identifier. (required)
+     * @return APIestimateTransferAgencyOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully estimated orders and any failures. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIestimateTransferAgencyOrdersRequest estimateTransferAgencyOrders(Map<String, EstimateTransferAgencyOrderRequest> requestBody) {
+        return new APIestimateTransferAgencyOrdersRequest(requestBody);
     }
     private okhttp3.Call upsertTransferAgencyOrdersCall(Map<String, UpsertTransferAgencyOrderRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertTransferAgencyOrdersCall(requestBody,  _callback, new ConfigurationOptions());

@@ -31,6 +31,8 @@ QuoteType method = QuoteType.PRINCIPALWRITEOFF;
 QuoteType method = QuoteType.INTERESTDEFERRED;
 QuoteType method = QuoteType.INTERESTSHORTFALL;
 QuoteType method = QuoteType.CONSTITUENTWEIGHTFACTOR;
+QuoteType method = QuoteType.FORWARDPRICE;
+QuoteType method = QuoteType.DISCOUNTFACTOR;
 ```
 
 

@@ -38,6 +38,7 @@ PricingModel method = PricingModel.OVERRIDEONLYPRICER;
 PricingModel method = PricingModel.FLEXIBLEREPOSIMPLEPRICER;
 PricingModel method = PricingModel.INFLATIONFORWARD;
 PricingModel method = PricingModel.HULLWHITE1F;
+PricingModel method = PricingModel.CAPITALINTERESTPRICER;
 ```
 
 

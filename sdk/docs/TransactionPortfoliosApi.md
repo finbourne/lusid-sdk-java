@@ -2560,7 +2560,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getHoldings
 
-> VersionedResourceListOfPortfolioHolding getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments)
+> VersionedResourceListWithWarningsOfPortfolioHolding getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments)
 
 GetHoldings: Get holdings
 
@@ -2619,9 +2619,9 @@ public class TransactionPortfoliosApiExample {
         Boolean aggregateCashCommitments = true; // Boolean | When true, collapses cash-commitment rows that share a sub-holding key   into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the   settlement schedule. Ignored when byTaxlots is true. Defaults to False.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments).execute(opts);
+            // VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments).execute(opts);
 
-            VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments).execute();
+            VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getHoldings");
@@ -2653,7 +2653,7 @@ public class TransactionPortfoliosApiExample {
 
 ### Return type
 
-[**VersionedResourceListOfPortfolioHolding**](VersionedResourceListOfPortfolioHolding.md)
+[**VersionedResourceListWithWarningsOfPortfolioHolding**](VersionedResourceListWithWarningsOfPortfolioHolding.md)
 
 ### HTTP request headers
 

@@ -162,6 +162,10 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNT)
   private ResolvedCustodianAccount resolvedCustodianAccount;
 
+  public static final String SERIALIZED_NAME_HOLDING_PROPERTY_BALANCES = "holdingPropertyBalances";
+  @SerializedName(SERIALIZED_NAME_HOLDING_PROPERTY_BALANCES)
+  private Map<String, java.math.BigDecimal> holdingPropertyBalances;
+
   public PortfolioHolding() {
   }
 
@@ -714,6 +718,35 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding holdingPropertyBalances(Map<String, java.math.BigDecimal> holdingPropertyBalances) {
+    
+    this.holdingPropertyBalances = holdingPropertyBalances;
+    return this;
+  }
+
+  public PortfolioHolding putHoldingPropertyBalancesItem(String key, java.math.BigDecimal holdingPropertyBalancesItem) {
+    if (this.holdingPropertyBalances == null) {
+      this.holdingPropertyBalances = new HashMap<>();
+    }
+    this.holdingPropertyBalances.put(key, holdingPropertyBalancesItem);
+    return this;
+  }
+
+   /**
+   * The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.
+   * @return holdingPropertyBalances
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, java.math.BigDecimal> getHoldingPropertyBalances() {
+    return holdingPropertyBalances;
+  }
+
+
+  public void setHoldingPropertyBalances(Map<String, java.math.BigDecimal> holdingPropertyBalances) {
+    this.holdingPropertyBalances = holdingPropertyBalances;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -748,7 +781,8 @@ public class PortfolioHolding {
         (this.unsettledUnits.compareTo(portfolioHolding.getUnsettledUnits()) == 0) &&
         (this.overdueUnits.compareTo(portfolioHolding.getOverdueUnits()) == 0) &&
         Objects.equals(this.custodianAccount, portfolioHolding.custodianAccount) &&
-        Objects.equals(this.resolvedCustodianAccount, portfolioHolding.resolvedCustodianAccount);
+        Objects.equals(this.resolvedCustodianAccount, portfolioHolding.resolvedCustodianAccount) &&
+        Objects.equals(this.holdingPropertyBalances, portfolioHolding.holdingPropertyBalances);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -757,7 +791,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, custodianAccount, resolvedCustodianAccount);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, custodianAccount, resolvedCustodianAccount, holdingPropertyBalances);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -796,6 +830,7 @@ public class PortfolioHolding {
     sb.append("    overdueUnits: ").append(toIndentedString(overdueUnits)).append("\n");
     sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
     sb.append("    resolvedCustodianAccount: ").append(toIndentedString(resolvedCustodianAccount)).append("\n");
+    sb.append("    holdingPropertyBalances: ").append(toIndentedString(holdingPropertyBalances)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -843,6 +878,7 @@ public class PortfolioHolding {
     openapiFields.add("overdueUnits");
     openapiFields.add("custodianAccount");
     openapiFields.add("resolvedCustodianAccount");
+    openapiFields.add("holdingPropertyBalances");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

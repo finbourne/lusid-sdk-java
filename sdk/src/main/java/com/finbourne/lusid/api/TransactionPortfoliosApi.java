@@ -78,7 +78,6 @@ import com.finbourne.lusid.model.VersionedResourceListOfA2BDataRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfA2BMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfHoldingContributor;
 import com.finbourne.lusid.model.VersionedResourceListOfOutputTransaction;
-import com.finbourne.lusid.model.VersionedResourceListOfPortfolioHolding;
 import com.finbourne.lusid.model.VersionedResourceListOfTransaction;
 import com.finbourne.lusid.model.VersionedResourceListOfTransactionSettlementInstruction;
 import com.finbourne.lusid.model.VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery;
@@ -7479,30 +7478,30 @@ public class TransactionPortfoliosApi {
     }
 
 
-    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments) throws ApiException {
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments) throws ApiException {
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, null, opts);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, String timelineScope, String timelineCode, String closedPeriodId, Boolean aggregateCashCommitments, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, opts);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7645,7 +7644,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Execute getHoldings request
-         * @return VersionedResourceListOfPortfolioHolding
+         * @return VersionedResourceListWithWarningsOfPortfolioHolding
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -7655,14 +7654,14 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
+        public VersionedResourceListWithWarningsOfPortfolioHolding execute() throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
             return localVarResp.getData();
         }
 
         /**
          * Execute getHoldings request. Use any specified configuration options to override any other configuration for this request only.
-         * @return VersionedResourceListOfPortfolioHolding
+         * @return VersionedResourceListWithWarningsOfPortfolioHolding
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -7672,14 +7671,14 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public VersionedResourceListOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts);
+        public VersionedResourceListWithWarningsOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute getHoldings request with HTTP info returned
-         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -7689,13 +7688,13 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
             return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
         }
 
         /**
          * Execute getHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -7705,7 +7704,7 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts);
         }
 
@@ -7722,7 +7721,7 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
             return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback);
         }
 
@@ -7739,7 +7738,7 @@ public class TransactionPortfoliosApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
             return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, _callback, opts);
         }
     }
