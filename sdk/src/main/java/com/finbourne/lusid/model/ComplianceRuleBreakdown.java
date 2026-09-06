@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,6 +63,10 @@ public class ComplianceRuleBreakdown {
   public static final String SERIALIZED_NAME_RESULTS_USED = "resultsUsed";
   @SerializedName(SERIALIZED_NAME_RESULTS_USED)
   private Map<String, java.math.BigDecimal> resultsUsed = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_FORMULA_VALUES = "formulaValues";
+  @SerializedName(SERIALIZED_NAME_FORMULA_VALUES)
+  private Map<String, java.math.BigDecimal> formulaValues;
 
   public static final String SERIALIZED_NAME_PROPERTIES_USED = "propertiesUsed";
   @SerializedName(SERIALIZED_NAME_PROPERTIES_USED)
@@ -125,6 +130,35 @@ public class ComplianceRuleBreakdown {
 
   public void setResultsUsed(Map<String, java.math.BigDecimal> resultsUsed) {
     this.resultsUsed = resultsUsed;
+  }
+
+
+  public ComplianceRuleBreakdown formulaValues(Map<String, java.math.BigDecimal> formulaValues) {
+    
+    this.formulaValues = formulaValues;
+    return this;
+  }
+
+  public ComplianceRuleBreakdown putFormulaValuesItem(String key, java.math.BigDecimal formulaValuesItem) {
+    if (this.formulaValues == null) {
+      this.formulaValues = new HashMap<>();
+    }
+    this.formulaValues.put(key, formulaValuesItem);
+    return this;
+  }
+
+   /**
+   * The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those.
+   * @return formulaValues
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, java.math.BigDecimal> getFormulaValues() {
+    return formulaValues;
+  }
+
+
+  public void setFormulaValues(Map<String, java.math.BigDecimal> formulaValues) {
+    this.formulaValues = formulaValues;
   }
 
 
@@ -227,14 +261,26 @@ public class ComplianceRuleBreakdown {
     ComplianceRuleBreakdown complianceRuleBreakdown = (ComplianceRuleBreakdown) o;
     return Objects.equals(this.groupStatus, complianceRuleBreakdown.groupStatus) &&
         Objects.equals(this.resultsUsed, complianceRuleBreakdown.resultsUsed) &&
+        Objects.equals(this.formulaValues, complianceRuleBreakdown.formulaValues) &&
         Objects.equals(this.propertiesUsed, complianceRuleBreakdown.propertiesUsed) &&
         Objects.equals(this.missingDataInformation, complianceRuleBreakdown.missingDataInformation) &&
         Objects.equals(this.lineage, complianceRuleBreakdown.lineage);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(groupStatus, resultsUsed, propertiesUsed, missingDataInformation, lineage);
+    return Objects.hash(groupStatus, resultsUsed, formulaValues, propertiesUsed, missingDataInformation, lineage);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -243,6 +289,7 @@ public class ComplianceRuleBreakdown {
     sb.append("class ComplianceRuleBreakdown {\n");
     sb.append("    groupStatus: ").append(toIndentedString(groupStatus)).append("\n");
     sb.append("    resultsUsed: ").append(toIndentedString(resultsUsed)).append("\n");
+    sb.append("    formulaValues: ").append(toIndentedString(formulaValues)).append("\n");
     sb.append("    propertiesUsed: ").append(toIndentedString(propertiesUsed)).append("\n");
     sb.append("    missingDataInformation: ").append(toIndentedString(missingDataInformation)).append("\n");
     sb.append("    lineage: ").append(toIndentedString(lineage)).append("\n");
@@ -270,6 +317,7 @@ public class ComplianceRuleBreakdown {
     openapiFields = new HashSet<String>();
     openapiFields.add("groupStatus");
     openapiFields.add("resultsUsed");
+    openapiFields.add("formulaValues");
     openapiFields.add("propertiesUsed");
     openapiFields.add("missingDataInformation");
     openapiFields.add("lineage");

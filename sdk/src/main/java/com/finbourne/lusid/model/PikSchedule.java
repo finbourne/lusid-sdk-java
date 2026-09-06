@@ -68,6 +68,10 @@ public class PikSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_PIK_FRACTION)
   private java.math.BigDecimal pikFraction;
 
+  public static final String SERIALIZED_NAME_PIK_MARGIN = "pikMargin";
+  @SerializedName(SERIALIZED_NAME_PIK_MARGIN)
+  private java.math.BigDecimal pikMargin;
+
   public static final String SERIALIZED_NAME_PIK_PAYMENT_TYPE = "pikPaymentType";
   @SerializedName(SERIALIZED_NAME_PIK_PAYMENT_TYPE)
   private String pikPaymentType;
@@ -168,6 +172,27 @@ public class PikSchedule extends Schedule {
   }
 
 
+  public PikSchedule pikMargin(java.math.BigDecimal pikMargin) {
+    
+    this.pikMargin = pikMargin;
+    return this;
+  }
+
+   /**
+   * The portion of the coupon that is paid in kind, stated in the leg&#39;s own rate units (an annualised  rate on the notional) rather than as a fraction of the coupon. The in-kind leg accrues at this flat  rate and the cash leg accrues the remainder of the coupon, so on a floating leg the in-kind portion  stays constant across fixings — the shape of a loan quoted as \&quot;index + 700bp, of which 250bp paid  in kind\&quot;. On a fixed leg it is equivalent to pikFraction &#x3D; pikMargin / couponRate. Should the  period&#39;s whole coupon fall below the margin, the in-kind portion is capped at the whole  (non-negative) coupon and the cash leg floors at zero.  Mutually exclusive with pikFraction, pikRate, pikSpread and isPikFractionElectable.  Must be greater than or equal to zero. null indicates the split is stated by pikFraction instead.
+   * @return pikMargin
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPikMargin() {
+    return pikMargin;
+  }
+
+
+  public void setPikMargin(java.math.BigDecimal pikMargin) {
+    this.pikMargin = pikMargin;
+  }
+
+
   public PikSchedule pikPaymentType(String pikPaymentType) {
     
     this.pikPaymentType = pikPaymentType;
@@ -245,6 +270,7 @@ public class PikSchedule extends Schedule {
         Objects.equals(this.maturityDate, pikSchedule.maturityDate) &&
         Objects.equals(this.isPikFractionElectable, pikSchedule.isPikFractionElectable) &&
         (this.pikFraction.compareTo(pikSchedule.getPikFraction()) == 0) &&
+        (this.pikMargin.compareTo(pikSchedule.getPikMargin()) == 0) &&
         Objects.equals(this.pikPaymentType, pikSchedule.pikPaymentType) &&
         (this.pikRate.compareTo(pikSchedule.getPikRate()) == 0) &&
         (this.pikSpread.compareTo(pikSchedule.getPikSpread()) == 0) &&
@@ -257,7 +283,7 @@ public class PikSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, isPikFractionElectable, pikFraction, pikPaymentType, pikRate, pikSpread, super.hashCode());
+    return Objects.hash(startDate, maturityDate, isPikFractionElectable, pikFraction, pikMargin, pikPaymentType, pikRate, pikSpread, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -276,6 +302,7 @@ public class PikSchedule extends Schedule {
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    isPikFractionElectable: ").append(toIndentedString(isPikFractionElectable)).append("\n");
     sb.append("    pikFraction: ").append(toIndentedString(pikFraction)).append("\n");
+    sb.append("    pikMargin: ").append(toIndentedString(pikMargin)).append("\n");
     sb.append("    pikPaymentType: ").append(toIndentedString(pikPaymentType)).append("\n");
     sb.append("    pikRate: ").append(toIndentedString(pikRate)).append("\n");
     sb.append("    pikSpread: ").append(toIndentedString(pikSpread)).append("\n");
@@ -306,6 +333,7 @@ public class PikSchedule extends Schedule {
     openapiFields.add("maturityDate");
     openapiFields.add("isPikFractionElectable");
     openapiFields.add("pikFraction");
+    openapiFields.add("pikMargin");
     openapiFields.add("pikPaymentType");
     openapiFields.add("pikRate");
     openapiFields.add("pikSpread");

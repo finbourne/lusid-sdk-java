@@ -161,7 +161,7 @@ public class ReferencePortfolioConstituentRequest {
    * 
    * @return currency
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getCurrency() {
     return currency;
   }
@@ -243,6 +243,7 @@ public class ReferencePortfolioConstituentRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("weight");
+    openapiRequiredFields.add("currency");
   }
 
  /**
@@ -265,7 +266,7 @@ public class ReferencePortfolioConstituentRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+      if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
   }

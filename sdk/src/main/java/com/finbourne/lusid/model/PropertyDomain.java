@@ -207,7 +207,9 @@ public enum PropertyDomain {
   
   PAYMENTINSTRUCTION("PaymentInstruction"),
   
-  TRANSFER("Transfer");
+  TRANSFER("Transfer"),
+  
+  CURRENCYGROUP("CurrencyGroup");
 
   private String value;
 

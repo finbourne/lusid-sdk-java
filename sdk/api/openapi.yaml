@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9869
+  version: 0.11.9878
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -19105,6 +19105,8 @@ paths:
                   resultsUsed:
                     Valuation/PV: 650
                     Exposure/PV: 650
+                  formulaValues:
+                    sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                   propertiesUsed:
                     Instrument/data/Issuer:
                     - key: Instrument/data/Issuer
@@ -19161,6 +19163,8 @@ paths:
                   resultsUsed:
                     Valuation/PV: 650
                     Exposure/PV: 650
+                  formulaValues:
+                    sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                   propertiesUsed:
                     Instrument/data/Issuer:
                     - key: Instrument/data/Issuer
@@ -19217,6 +19221,8 @@ paths:
                   resultsUsed:
                     Valuation/PV: 650
                     Exposure/PV: 650
+                  formulaValues:
+                    sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                   propertiesUsed:
                     Instrument/data/Issuer:
                     - key: Instrument/data/Issuer
@@ -19273,6 +19279,8 @@ paths:
                   resultsUsed:
                     Valuation/PV: 650
                     Exposure/PV: 650
+                  formulaValues:
+                    sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                   propertiesUsed:
                     Instrument/data/Issuer:
                     - key: Instrument/data/Issuer
@@ -19332,6 +19340,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -19388,6 +19398,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -19444,6 +19456,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -19582,6 +19596,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -19638,6 +19654,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -19694,6 +19712,8 @@ paths:
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
+                    formulaValues:
+                      sum(Results[Valuation/PV]) / sum(Results[Exposure/PV]): 1
                     propertiesUsed:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
@@ -54103,6 +54123,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -54286,6 +54307,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -54572,6 +54594,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -100751,6 +100774,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: Scope of the property definition
@@ -101086,6 +101110,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -101267,6 +101292,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -101568,6 +101594,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -101875,6 +101902,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -102186,6 +102214,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -102429,6 +102458,7 @@ paths:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -185494,12 +185524,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 1
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 1
           information: information
           label: label
         missingDataInformation:
@@ -185542,6 +185572,8 @@ components:
         groupStatus: groupStatus
         resultsUsed:
           key: 0.8008281904610115
+        formulaValues:
+          key: 6.027456183070403
       properties:
         groupStatus:
           description: The status of this subset of results.
@@ -185553,6 +185585,16 @@ components:
             type: number
           description: "Dictionary of AddressKey (as string) and their corresponding\
             \ decimal values, that were used in this rule."
+          type: object
+        formulaValues:
+          additionalProperties:
+            format: double
+            type: number
+          description: "The value each formula within the check criterion evaluated\
+            \ to for this group. Empty where the criterion\r\ncompares a single value\
+            \ or is not numerical, since the operand values already recorded describe\
+            \ those."
+          nullable: true
           type: object
         propertiesUsed:
           additionalProperties:
@@ -185586,12 +185628,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 1
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 1
           information: information
           label: label
         missingDataInformation:
@@ -185634,6 +185676,8 @@ components:
         groupStatus: groupStatus
         resultsUsed:
           key: 0.8008281904610115
+        formulaValues:
+          key: 6.027456183070403
       properties:
         groupStatus:
           maxLength: 6000
@@ -185643,6 +185687,12 @@ components:
           additionalProperties:
             format: double
             type: number
+          type: object
+        formulaValues:
+          additionalProperties:
+            format: double
+            type: number
+          nullable: true
           type: object
         propertiesUsed:
           additionalProperties:
@@ -185927,12 +185977,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -185975,15 +186025,17 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -186026,6 +186078,8 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           affectedPortfolios:
           - code: code
             scope: scope
@@ -186481,12 +186535,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           missingDataInformation:
@@ -186529,15 +186583,17 @@ components:
           groupStatus: groupStatus
           resultsUsed:
             key: 0.8008281904610115
+          formulaValues:
+            key: 6.027456183070403
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           missingDataInformation:
@@ -186580,6 +186636,8 @@ components:
           groupStatus: groupStatus
           resultsUsed:
             key: 0.8008281904610115
+          formulaValues:
+            key: 6.027456183070403
         affectedPortfolios:
         - code: code
           scope: scope
@@ -186645,12 +186703,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           missingDataInformation:
@@ -186693,15 +186751,17 @@ components:
           groupStatus: groupStatus
           resultsUsed:
             key: 0.8008281904610115
+          formulaValues:
+            key: 6.027456183070403
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 1
             information: information
             label: label
           missingDataInformation:
@@ -186744,6 +186804,8 @@ components:
           groupStatus: groupStatus
           resultsUsed:
             key: 0.8008281904610115
+          formulaValues:
+            key: 6.027456183070403
         affectedPortfolios:
         - code: code
           scope: scope
@@ -190310,6 +190372,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         scope:
           description: The scope that the property exists in.
@@ -190869,6 +190932,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -191284,6 +191348,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         scope:
           description: The scope that the property exists in.
@@ -220669,6 +220734,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -230544,7 +230610,7 @@ components:
       example:
         subLabel: subLabel
         infoType: infoType
-        index: 6
+        index: 1
         information: information
         label: label
       properties:
@@ -260882,6 +260948,23 @@ components:
             format: double
             nullable: true
             type: number
+          pikMargin:
+            description: "The portion of the coupon that is paid in kind, stated in\
+              \ the leg's own rate units (an annualised\r\nrate on the notional) rather\
+              \ than as a fraction of the coupon. The in-kind leg accrues at this\
+              \ flat\r\nrate and the cash leg accrues the remainder of the coupon,\
+              \ so on a floating leg the in-kind portion\r\nstays constant across\
+              \ fixings — the shape of a loan quoted as \"index + 700bp, of which\
+              \ 250bp paid\r\nin kind\". On a fixed leg it is equivalent to pikFraction\
+              \ = pikMargin / couponRate. Should the\r\nperiod's whole coupon fall\
+              \ below the margin, the in-kind portion is capped at the whole\r\n(non-negative)\
+              \ coupon and the cash leg floors at zero.\r\nMutually exclusive with\
+              \ pikFraction, pikRate, pikSpread and isPikFractionElectable.\r\nMust\
+              \ be greater than or equal to zero. null indicates the split is stated\
+              \ by pikFraction instead."
+            format: double
+            nullable: true
+            type: number
           pikPaymentType:
             description: "The type of PIK payment to be used for the duration of this\
               \ schedule.\r\nInterestCapitalisation adds the paid-in-kind portion\
@@ -268489,6 +268572,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         scope:
           description: The scope that the property exists in.
@@ -269069,6 +269153,7 @@ components:
           - ScenarioDefinition
           - PaymentInstruction
           - Transfer
+          - CurrencyGroup
           type: string
         scope:
           description: The scope that the property exists in.
@@ -269224,6 +269309,7 @@ components:
       - ScenarioDefinition
       - PaymentInstruction
       - Transfer
+      - CurrencyGroup
       type: string
     PropertyFilter:
       additionalProperties: false
@@ -276276,9 +276362,9 @@ components:
           type: number
         currency:
           description: ""
-          nullable: true
           type: string
       required:
+      - currency
       - instrumentIdentifiers
       - weight
       type: object
@@ -312637,10 +312723,13 @@ components:
       properties:
         priceScaleFactor:
           description: "The factor used to scale prices for the instrument. Currently\
-            \ used by LUSID when calculating cost\r\nand notional amounts on transactions.\
-            \ Note this factor does not yet impact Valuation, PV, exposure,\r\nall\
-            \ of which use the scale factor attached to the price quotes in the QuoteStore.\r\
-            \nMust be positive and defaults to 1 if not set."
+            \ used by LUSID when calculating cost\r\nand notional amounts on transactions,\
+            \ and in Valuation, PV and exposure when the recipe's\r\nUseInstrumentScaleFactorAsDefault\
+            \ pricing option is set: a lookup-priced instrument whose price\r\nquote\
+            \ declares no scale factor of its own is then scaled by this factor. When\
+            \ that option is not\r\nset, only the scale factor attached to the price\
+            \ quotes in the QuoteStore is used.\r\nMust be positive and defaults to\
+            \ 1 if not set."
           format: double
           type: number
         minimumOrderSize:
@@ -325776,12 +325865,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -325824,15 +325913,17 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -325875,6 +325966,8 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           affectedPortfolios:
           - code: code
             scope: scope
@@ -325899,12 +325992,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -325947,15 +326040,17 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -325998,6 +326093,8 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           affectedPortfolios:
           - code: code
             scope: scope
@@ -326056,12 +326153,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -326104,15 +326201,17 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -326155,6 +326254,8 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           affectedPortfolios:
           - code: code
             scope: scope
@@ -326179,12 +326280,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -326227,15 +326328,17 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 1
               information: information
               label: label
             missingDataInformation:
@@ -326278,6 +326381,8 @@ components:
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
+            formulaValues:
+              key: 6.027456183070403
           affectedPortfolios:
           - code: code
             scope: scope

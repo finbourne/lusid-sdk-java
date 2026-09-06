@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers | [default to Map<String, String>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
 **weight** | **java.math.BigDecimal** |  | [default to java.math.BigDecimal]
-**currency** | **String** |  | [optional] [default to String]
+**currency** | **String** |  | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ReferencePortfolioConstituentRequest;
@@ -18,7 +18,7 @@ import java.net.URI;
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 java.math.BigDecimal Weight = new java.math.BigDecimal("100.00");
-@jakarta.annotation.Nullable String Currency = "example Currency";
+String Currency = "example Currency";
 
 
 ReferencePortfolioConstituentRequest referencePortfolioConstituentRequestInstance = new ReferencePortfolioConstituentRequest()
