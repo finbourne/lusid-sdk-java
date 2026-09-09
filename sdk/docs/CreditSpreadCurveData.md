@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **baseDate** | [**OffsetDateTime**](OffsetDateTime.md) | EffectiveAt date of the quoted rates | [default to OffsetDateTime]
 **domCcy** | **String** | Domestic currency of the curve | [default to String]
-**tenors** | **List&lt;String&gt;** | The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) | [default to List<String>]
+**tenors** | **List&lt;String&gt;** | The tenors for which the rates apply  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) | [default to List<String>]
 **spreads** | **List&lt;java.math.BigDecimal&gt;** | Par spread quotes corresponding to the tenors. | [default to List<java.math.BigDecimal>]
 **recoveryRate** | **java.math.BigDecimal** | The recovery rate in default. | [default to java.math.BigDecimal]
 **referenceDate** | [**OffsetDateTime**](OffsetDateTime.md) | If tenors are provided, this is the date against which the tenors will be resolved.  This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date.  In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid.  If not provided, this defaults to the BaseDate of the curve. | [optional] [default to OffsetDateTime]

@@ -336,7 +336,7 @@ public class CustomEntityTypesApiExample {
         CustomEntityTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntityTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version   of each Custom Entity Type if not specified.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         String page = "page_example"; // String | The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,   and asAt fields must not have changed since the original request.
         try {
@@ -362,7 +362,7 @@ public class CustomEntityTypesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version   of each Custom Entity Type if not specified. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **page** | **String**| The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,   and asAt fields must not have changed since the original request. | [optional] |
 

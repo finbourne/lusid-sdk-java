@@ -57,12 +57,12 @@ public class OrderGraphApiExample {
         // OrderGraphApi apiInstance = apiFactory.build(OrderGraphApi.class);
 
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/knowledgebase/article/KA-01832/
-        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/knowledgebase/article/KA-01915/
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/docs/what-is-the-asat-timestamp
+        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        Integer limit = 56; // Integer | See https://support.lusid.com/knowledgebase/article/KA-01915/
-        String filter = ""; // String | See https://support.lusid.com/knowledgebase/article/KA-01914/
-        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
+        Integer limit = 56; // Integer | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
+        String filter = ""; // String | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid
+        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be block-level properties. See https://support.lusid.com/docs/properties
         Boolean useComplianceV2 = false; // Boolean | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false)
         try {
             // uncomment the below to set overrides at the request level
@@ -85,12 +85,12 @@ public class OrderGraphApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| See https://support.lusid.com/knowledgebase/article/KA-01832/ | [optional] |
-| **paginationToken** | **String**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
+| **asAt** | **OffsetDateTime**| See https://support.lusid.com/docs/what-is-the-asat-timestamp | [optional] |
+| **paginationToken** | **String**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **limit** | **Integer**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
-| **filter** | **String**| See https://support.lusid.com/knowledgebase/article/KA-01914/ | [optional] [default to ] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ | [optional] |
+| **limit** | **Integer**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
+| **filter** | **String**| See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid | [optional] [default to ] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be block-level properties. See https://support.lusid.com/docs/properties | [optional] |
 | **useComplianceV2** | **Boolean**| Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) | [optional] [default to false] |
 
 ### Return type
@@ -162,11 +162,11 @@ public class OrderGraphApiExample {
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
         String scope = "scope_example"; // String | The parent placement's scope
         String code = "code_example"; // String | The parent placement's code
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/knowledgebase/article/KA-01832/
-        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/knowledgebase/article/KA-01915/
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/docs/what-is-the-asat-timestamp
+        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
         List<String> sortBy = Arrays.asList(); // List<String> | Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName.
-        Integer limit = 56; // Integer | See https://support.lusid.com/knowledgebase/article/KA-01915/
-        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
+        Integer limit = 56; // Integer | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
+        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/docs/properties
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys).execute(opts);
@@ -190,11 +190,11 @@ public class OrderGraphApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The parent placement&#39;s scope | |
 | **code** | **String**| The parent placement&#39;s code | |
-| **asAt** | **OffsetDateTime**| See https://support.lusid.com/knowledgebase/article/KA-01832/ | [optional] |
-| **paginationToken** | **String**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
+| **asAt** | **OffsetDateTime**| See https://support.lusid.com/docs/what-is-the-asat-timestamp | [optional] |
+| **paginationToken** | **String**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. | [optional] |
-| **limit** | **Integer**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ | [optional] |
+| **limit** | **Integer**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be placement properties. See https://support.lusid.com/docs/properties | [optional] |
 
 ### Return type
 
@@ -263,12 +263,12 @@ public class OrderGraphApiExample {
         // OrderGraphApi apiInstance = apiFactory.build(OrderGraphApi.class);
 
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/knowledgebase/article/KA-01832/
-        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/knowledgebase/article/KA-01915/
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/docs/what-is-the-asat-timestamp
+        String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        Integer limit = 56; // Integer | See https://support.lusid.com/knowledgebase/article/KA-01915/
-        String filter = ""; // String | See https://support.lusid.com/knowledgebase/article/KA-01914/
-        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
+        Integer limit = 56; // Integer | See https://support.lusid.com/docs/paging-and-limiting-an-api-request
+        String filter = ""; // String | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid
+        List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/docs/properties
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys).execute(opts);
@@ -290,12 +290,12 @@ public class OrderGraphApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| See https://support.lusid.com/knowledgebase/article/KA-01832/ | [optional] |
-| **paginationToken** | **String**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
+| **asAt** | **OffsetDateTime**| See https://support.lusid.com/docs/what-is-the-asat-timestamp | [optional] |
+| **paginationToken** | **String**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **limit** | **Integer**| See https://support.lusid.com/knowledgebase/article/KA-01915/ | [optional] |
-| **filter** | **String**| See https://support.lusid.com/knowledgebase/article/KA-01914/ | [optional] [default to ] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ | [optional] |
+| **limit** | **Integer**| See https://support.lusid.com/docs/paging-and-limiting-an-api-request | [optional] |
+| **filter** | **String**| See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid | [optional] [default to ] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be placement properties. See https://support.lusid.com/docs/properties | [optional] |
 
 ### Return type
 

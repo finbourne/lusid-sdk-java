@@ -96,7 +96,7 @@ public class QueryRelationalDatasetRequest {
   }
 
    /**
-   * Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+   * Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
    * @return filter
   **/
   @jakarta.annotation.Nullable

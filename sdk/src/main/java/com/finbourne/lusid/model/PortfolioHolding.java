@@ -15,7 +15,6 @@ import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Property;
-import com.finbourne.lusid.model.ResolvedCustodianAccount;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SettlementSchedule;
 import com.finbourne.lusid.model.Transaction;
@@ -157,14 +156,6 @@ public class PortfolioHolding {
   public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT = "custodianAccount";
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT)
   private CustodianAccount custodianAccount;
-
-  public static final String SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNT = "resolvedCustodianAccount";
-  @SerializedName(SERIALIZED_NAME_RESOLVED_CUSTODIAN_ACCOUNT)
-  private ResolvedCustodianAccount resolvedCustodianAccount;
-
-  public static final String SERIALIZED_NAME_HOLDING_PROPERTY_BALANCES = "holdingPropertyBalances";
-  @SerializedName(SERIALIZED_NAME_HOLDING_PROPERTY_BALANCES)
-  private Map<String, java.math.BigDecimal> holdingPropertyBalances;
 
   public PortfolioHolding() {
   }
@@ -697,56 +688,6 @@ public class PortfolioHolding {
   }
 
 
-  public PortfolioHolding resolvedCustodianAccount(ResolvedCustodianAccount resolvedCustodianAccount) {
-    
-    this.resolvedCustodianAccount = resolvedCustodianAccount;
-    return this;
-  }
-
-   /**
-   * Get resolvedCustodianAccount
-   * @return resolvedCustodianAccount
-  **/
-  @jakarta.annotation.Nullable
-  public ResolvedCustodianAccount getResolvedCustodianAccount() {
-    return resolvedCustodianAccount;
-  }
-
-
-  public void setResolvedCustodianAccount(ResolvedCustodianAccount resolvedCustodianAccount) {
-    this.resolvedCustodianAccount = resolvedCustodianAccount;
-  }
-
-
-  public PortfolioHolding holdingPropertyBalances(Map<String, java.math.BigDecimal> holdingPropertyBalances) {
-    
-    this.holdingPropertyBalances = holdingPropertyBalances;
-    return this;
-  }
-
-  public PortfolioHolding putHoldingPropertyBalancesItem(String key, java.math.BigDecimal holdingPropertyBalancesItem) {
-    if (this.holdingPropertyBalances == null) {
-      this.holdingPropertyBalances = new HashMap<>();
-    }
-    this.holdingPropertyBalances.put(key, holdingPropertyBalancesItem);
-    return this;
-  }
-
-   /**
-   * The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.
-   * @return holdingPropertyBalances
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, java.math.BigDecimal> getHoldingPropertyBalances() {
-    return holdingPropertyBalances;
-  }
-
-
-  public void setHoldingPropertyBalances(Map<String, java.math.BigDecimal> holdingPropertyBalances) {
-    this.holdingPropertyBalances = holdingPropertyBalances;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -780,9 +721,7 @@ public class PortfolioHolding {
         Objects.equals(this.custodianAccountId, portfolioHolding.custodianAccountId) &&
         (this.unsettledUnits.compareTo(portfolioHolding.getUnsettledUnits()) == 0) &&
         (this.overdueUnits.compareTo(portfolioHolding.getOverdueUnits()) == 0) &&
-        Objects.equals(this.custodianAccount, portfolioHolding.custodianAccount) &&
-        Objects.equals(this.resolvedCustodianAccount, portfolioHolding.resolvedCustodianAccount) &&
-        Objects.equals(this.holdingPropertyBalances, portfolioHolding.holdingPropertyBalances);
+        Objects.equals(this.custodianAccount, portfolioHolding.custodianAccount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -791,7 +730,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, custodianAccount, resolvedCustodianAccount, holdingPropertyBalances);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits, custodianAccount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -829,8 +768,6 @@ public class PortfolioHolding {
     sb.append("    unsettledUnits: ").append(toIndentedString(unsettledUnits)).append("\n");
     sb.append("    overdueUnits: ").append(toIndentedString(overdueUnits)).append("\n");
     sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
-    sb.append("    resolvedCustodianAccount: ").append(toIndentedString(resolvedCustodianAccount)).append("\n");
-    sb.append("    holdingPropertyBalances: ").append(toIndentedString(holdingPropertyBalances)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -877,8 +814,6 @@ public class PortfolioHolding {
     openapiFields.add("unsettledUnits");
     openapiFields.add("overdueUnits");
     openapiFields.add("custodianAccount");
-    openapiFields.add("resolvedCustodianAccount");
-    openapiFields.add("holdingPropertyBalances");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -974,10 +909,6 @@ public class PortfolioHolding {
       // validate the optional field `custodianAccount`
       if (jsonObj.get("custodianAccount") != null && !jsonObj.get("custodianAccount").isJsonNull()) {
         CustodianAccount.validateJsonElement(jsonObj.get("custodianAccount"));
-      }
-      // validate the optional field `resolvedCustodianAccount`
-      if (jsonObj.get("resolvedCustodianAccount") != null && !jsonObj.get("resolvedCustodianAccount").isJsonNull()) {
-        ResolvedCustodianAccount.validateJsonElement(jsonObj.get("resolvedCustodianAccount"));
       }
   }
 

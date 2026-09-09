@@ -212,7 +212,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/2.1.225/java");
+        setUserAgent("OpenAPI-Generator/2.1.226/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -756,6 +756,19 @@ public class ApiClient {
 
         // preconditions
         if (name == null || name.isEmpty() || value == null || value instanceof Collection) {
+            return params;
+        }
+
+        // A Map is flattened to one pair per entry, keyed by the entry key rather than the
+        // parameter name, because that is the form the API binds. Left to fall through it would
+        // reach parameterToString and be sent as the Java toString, e.g. "{abc=Alpha, xyz=10}".
+        if (value instanceof Map) {
+            for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
+                if (entry.getKey() == null || entry.getValue() == null) {
+                    continue;
+                }
+                params.add(new Pair(parameterToString(entry.getKey()), parameterToString(entry.getValue())));
+            }
             return params;
         }
 

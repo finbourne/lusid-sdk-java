@@ -8406,7 +8406,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest filter(String filter) {
@@ -9159,7 +9159,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest filter(String filter) {
@@ -9490,7 +9490,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest filter(String filter) {
@@ -9821,7 +9821,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistFundCalendarEntriesRequest
          */
         public APIlistFundCalendarEntriesRequest filter(String filter) {
@@ -10151,7 +10151,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest filter(String filter) {
@@ -11524,7 +11524,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest filter(String filter) {

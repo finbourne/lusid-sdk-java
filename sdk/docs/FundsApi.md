@@ -2905,7 +2905,7 @@ public class FundsApiExample {
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for generating the Trial Balance.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the TrialBalance.
@@ -2937,7 +2937,7 @@ public class FundsApiExample {
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for generating the Trial Balance. | |
 | **generalLedgerProfileCode** | **String**| The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the TrialBalance. | [optional] |
@@ -3128,7 +3128,7 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Fees. Defaults to returning the latest version of each Fee if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the treatment, specify \"treatment eq 'Monthly'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the treatment, specify \"treatment eq 'Monthly'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'.
         try {
@@ -3158,7 +3158,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Fees. Defaults to returning the latest version of each Fee if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. | [optional] |
 
@@ -3234,7 +3234,7 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Calendar Entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto each item.
         try {
@@ -3263,7 +3263,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Calendar Entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each item. | [optional] |
 
@@ -3339,7 +3339,7 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Calendar Entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each item.
         try {
@@ -3368,7 +3368,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Calendar Entries; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each item. | [optional] |
 
@@ -3443,7 +3443,7 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Funds. Defaults to returning the latest version of each Fund if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Funds; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Fund code, specify \"id.Code eq 'Fund1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Fund code, specify \"id.Code eq 'Fund1'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fund' domain to decorate onto each Fund.   These must take the format {domain}/{scope}/{code}, for example 'Fund/Manager/Id'.
         try {
@@ -3471,7 +3471,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Funds. Defaults to returning the latest version of each Fund if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Funds; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.   These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. | [optional] |
 
@@ -3869,7 +3869,7 @@ public class FundsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Valuation Points. Defaults to returning the latest version of each Valuation Point if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results by.   For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/ValuationPoint/Id'.
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
         try {
@@ -3899,7 +3899,7 @@ public class FundsApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Valuation Points. Defaults to returning the latest version of each Valuation Point if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. | [optional] |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
 

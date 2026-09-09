@@ -541,7 +541,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EXPERIMENTAL] CreateSideDefinition: Create side definition
-     * Create a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+     * Create a new side definition for use in a transaction type. For more information, see https://support.lusid.com/docs/what-is-a-side.
      * @return APIcreateSideDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1258,7 +1258,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EARLY ACCESS] ListConfigurationTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/docs/what-built-in-transaction-types-and-sides-are-provided-with-lusid.
      * @return APIlistConfigurationTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">

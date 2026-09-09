@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **String** | Currency of the flow convention name. | [default to String]
 **indexName** | **String** | The index, if present, that is required. e.g. \&quot;IBOR\&quot;, \&quot;OIS\&quot; or \&quot;SONIA\&quot;. | [optional] [default to String]
-**tenor** | **String** | Tenor for the convention name.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) | [default to String]
+**tenor** | **String** | Tenor for the convention name.    For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) | [default to String]
 
 ```java
 import com.finbourne.lusid.model.FlowConventionName;

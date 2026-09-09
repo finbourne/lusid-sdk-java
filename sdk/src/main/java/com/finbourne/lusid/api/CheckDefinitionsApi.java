@@ -1269,7 +1269,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the displayName, specify \&quot;displayName eq &#39;MyCheckDefinition&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the displayName, specify \&quot;displayName eq &#39;MyCheckDefinition&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistCheckDefinitionsRequest
          */
         public APIlistCheckDefinitionsRequest filter(String filter) {

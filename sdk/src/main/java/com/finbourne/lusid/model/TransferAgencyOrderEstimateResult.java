@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.TransferAgencyExcludedOrder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +20,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -83,6 +86,10 @@ public class TransferAgencyOrderEstimateResult {
   public static final String SERIALIZED_NAME_FX_RATE_USED = "fxRateUsed";
   @SerializedName(SERIALIZED_NAME_FX_RATE_USED)
   private java.math.BigDecimal fxRateUsed;
+
+  public static final String SERIALIZED_NAME_EXCLUDED_ORDERS = "excludedOrders";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_ORDERS)
+  private List<TransferAgencyExcludedOrder> excludedOrders;
 
   public TransferAgencyOrderEstimateResult() {
   }
@@ -255,6 +262,35 @@ public class TransferAgencyOrderEstimateResult {
   }
 
 
+  public TransferAgencyOrderEstimateResult excludedOrders(List<TransferAgencyExcludedOrder> excludedOrders) {
+    
+    this.excludedOrders = excludedOrders;
+    return this;
+  }
+
+  public TransferAgencyOrderEstimateResult addExcludedOrdersItem(TransferAgencyExcludedOrder excludedOrdersItem) {
+    if (this.excludedOrders == null) {
+      this.excludedOrders = new ArrayList<>();
+    }
+    this.excludedOrders.add(excludedOrdersItem);
+    return this;
+  }
+
+   /**
+   * Get excludedOrders
+   * @return excludedOrders
+  **/
+  @jakarta.annotation.Nullable
+  public List<TransferAgencyExcludedOrder> getExcludedOrders() {
+    return excludedOrders;
+  }
+
+
+  public void setExcludedOrders(List<TransferAgencyExcludedOrder> excludedOrders) {
+    this.excludedOrders = excludedOrders;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -272,7 +308,8 @@ public class TransferAgencyOrderEstimateResult {
         (this.estimatedUnits.compareTo(transferAgencyOrderEstimateResult.getEstimatedUnits()) == 0) &&
         (this.estimatedAmount.compareTo(transferAgencyOrderEstimateResult.getEstimatedAmount()) == 0) &&
         Objects.equals(this.estimatedAmountCurrency, transferAgencyOrderEstimateResult.estimatedAmountCurrency) &&
-        (this.fxRateUsed.compareTo(transferAgencyOrderEstimateResult.getFxRateUsed()) == 0);
+        (this.fxRateUsed.compareTo(transferAgencyOrderEstimateResult.getFxRateUsed()) == 0) &&
+        Objects.equals(this.excludedOrders, transferAgencyOrderEstimateResult.excludedOrders);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -281,7 +318,7 @@ public class TransferAgencyOrderEstimateResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, mostRecentValuationDate, pricePerShare, priceCurrency, estimatedUnits, estimatedAmount, estimatedAmountCurrency, fxRateUsed);
+    return Objects.hash(orderId, mostRecentValuationDate, pricePerShare, priceCurrency, estimatedUnits, estimatedAmount, estimatedAmountCurrency, fxRateUsed, excludedOrders);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -303,6 +340,7 @@ public class TransferAgencyOrderEstimateResult {
     sb.append("    estimatedAmount: ").append(toIndentedString(estimatedAmount)).append("\n");
     sb.append("    estimatedAmountCurrency: ").append(toIndentedString(estimatedAmountCurrency)).append("\n");
     sb.append("    fxRateUsed: ").append(toIndentedString(fxRateUsed)).append("\n");
+    sb.append("    excludedOrders: ").append(toIndentedString(excludedOrders)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -333,6 +371,7 @@ public class TransferAgencyOrderEstimateResult {
     openapiFields.add("estimatedAmount");
     openapiFields.add("estimatedAmountCurrency");
     openapiFields.add("fxRateUsed");
+    openapiFields.add("excludedOrders");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -360,6 +399,20 @@ public class TransferAgencyOrderEstimateResult {
       }
       if ((jsonObj.get("estimatedAmountCurrency") != null && !jsonObj.get("estimatedAmountCurrency").isJsonNull()) && !jsonObj.get("estimatedAmountCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `estimatedAmountCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("estimatedAmountCurrency").toString()));
+      }
+      if (jsonObj.get("excludedOrders") != null && !jsonObj.get("excludedOrders").isJsonNull()) {
+        JsonArray jsonArrayexcludedOrders = jsonObj.getAsJsonArray("excludedOrders");
+        if (jsonArrayexcludedOrders != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("excludedOrders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `excludedOrders` to be an array in the JSON string but got `%s`", jsonObj.get("excludedOrders").toString()));
+          }
+
+          // validate the optional field `excludedOrders` (array)
+          for (int i = 0; i < jsonArrayexcludedOrders.size(); i++) {
+            TransferAgencyExcludedOrder.validateJsonElement(jsonArrayexcludedOrders.get(i));
+          };
+        }
       }
   }
 

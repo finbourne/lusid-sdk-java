@@ -154,7 +154,7 @@ public class Relationship {
   }
 
    /**
-   * Direction of relationship between the requested entity and related entity. This can be &#39;In&#39; or &#39;Out&#39;. Read more about relationships traversal direction in LUSID Knowledge Base here https://support.lusid.com/knowledgebase/article/KA-01679.
+   * Direction of relationship between the requested entity and related entity. This can be &#39;In&#39; or &#39;Out&#39;. Read more about relationships traversal direction in LUSID Knowledge Base here https://support.lusid.com/docs/creating-relationships-between-certain-types-of-entity.
    * @return traversalDirection
   **/
   @jakarta.annotation.Nonnull

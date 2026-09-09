@@ -143,6 +143,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_FUNDING_CURVE_BY_CURRENCY)
   private Map<String, String> fundingCurveByCurrency;
 
+  public static final String SERIALIZED_NAME_DEFAULT_POOL_FACTORS_TO_UNITY = "defaultPoolFactorsToUnity";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_POOL_FACTORS_TO_UNITY)
+  private Boolean defaultPoolFactorsToUnity;
+
   public PricingOptions() {
   }
 
@@ -616,6 +620,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions defaultPoolFactorsToUnity(Boolean defaultPoolFactorsToUnity) {
+    
+    this.defaultPoolFactorsToUnity = defaultPoolFactorsToUnity;
+    return this;
+  }
+
+   /**
+   * When true, an asset-backed instrument with no pool-factor history defaults the pool  factor to 1.0 (the full original face) instead of 0. When false (default), the factor  defaults to 0 as before, preserving current behaviour.
+   * @return defaultPoolFactorsToUnity
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDefaultPoolFactorsToUnity() {
+    return defaultPoolFactorsToUnity;
+  }
+
+
+  public void setDefaultPoolFactorsToUnity(Boolean defaultPoolFactorsToUnity) {
+    this.defaultPoolFactorsToUnity = defaultPoolFactorsToUnity;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -647,7 +672,8 @@ public class PricingOptions {
         Objects.equals(this.useInstrumentScaleFactorAsDefault, pricingOptions.useInstrumentScaleFactorAsDefault) &&
         Objects.equals(this.scaleInstrumentAccruedOverrideByContractSize, pricingOptions.scaleInstrumentAccruedOverrideByContractSize) &&
         Objects.equals(this.riskBumpOptions, pricingOptions.riskBumpOptions) &&
-        Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency);
+        Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency) &&
+        Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -656,7 +682,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -692,6 +718,7 @@ public class PricingOptions {
     sb.append("    scaleInstrumentAccruedOverrideByContractSize: ").append(toIndentedString(scaleInstrumentAccruedOverrideByContractSize)).append("\n");
     sb.append("    riskBumpOptions: ").append(toIndentedString(riskBumpOptions)).append("\n");
     sb.append("    fundingCurveByCurrency: ").append(toIndentedString(fundingCurveByCurrency)).append("\n");
+    sb.append("    defaultPoolFactorsToUnity: ").append(toIndentedString(defaultPoolFactorsToUnity)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -736,6 +763,7 @@ public class PricingOptions {
     openapiFields.add("scaleInstrumentAccruedOverrideByContractSize");
     openapiFields.add("riskBumpOptions");
     openapiFields.add("fundingCurveByCurrency");
+    openapiFields.add("defaultPoolFactorsToUnity");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

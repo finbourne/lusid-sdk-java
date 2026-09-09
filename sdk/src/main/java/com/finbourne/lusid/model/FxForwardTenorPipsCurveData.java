@@ -179,7 +179,7 @@ public class FxForwardTenorPipsCurveData extends ComplexMarketData {
   }
 
    /**
-   * Tenors for which the forward rates apply.  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+   * Tenors for which the forward rates apply.  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
    * @return tenors
   **/
   @jakarta.annotation.Nonnull

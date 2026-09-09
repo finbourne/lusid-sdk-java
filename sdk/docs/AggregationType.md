@@ -24,6 +24,7 @@ AggregationType method = AggregationType.RESULT0D;
 AggregationType method = AggregationType.RESULT1D;
 AggregationType method = AggregationType.RESULT2D;
 AggregationType method = AggregationType.JSON;
+AggregationType method = AggregationType.RESULTND;
 ```
 
 

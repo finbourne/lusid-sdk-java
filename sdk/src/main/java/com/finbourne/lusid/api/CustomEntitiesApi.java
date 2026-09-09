@@ -2364,7 +2364,7 @@ public class CustomEntitiesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistCustomEntitiesRequest
          */
         public APIlistCustomEntitiesRequest filter(String filter) {

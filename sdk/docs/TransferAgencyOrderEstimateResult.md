@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **estimatedAmount** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **estimatedAmountCurrency** | **String** |  | [optional] [default to String]
 **fxRateUsed** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
+**excludedOrders** | [**List&lt;TransferAgencyExcludedOrder&gt;**](TransferAgencyExcludedOrder.md) |  | [optional] [default to List<TransferAgencyExcludedOrder>]
 
 ```java
 import com.finbourne.lusid.model.TransferAgencyOrderEstimateResult;
@@ -28,6 +29,7 @@ java.math.BigDecimal EstimatedUnits = new java.math.BigDecimal("100.00");
 java.math.BigDecimal EstimatedAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String EstimatedAmountCurrency = "example EstimatedAmountCurrency";
 java.math.BigDecimal FxRateUsed = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<TransferAgencyExcludedOrder> ExcludedOrders = new List<TransferAgencyExcludedOrder>();
 
 
 TransferAgencyOrderEstimateResult transferAgencyOrderEstimateResultInstance = new TransferAgencyOrderEstimateResult()
@@ -38,7 +40,8 @@ TransferAgencyOrderEstimateResult transferAgencyOrderEstimateResultInstance = ne
     .EstimatedUnits(EstimatedUnits)
     .EstimatedAmount(EstimatedAmount)
     .EstimatedAmountCurrency(EstimatedAmountCurrency)
-    .FxRateUsed(FxRateUsed);
+    .FxRateUsed(FxRateUsed)
+    .ExcludedOrders(ExcludedOrders);
 ```
 
 

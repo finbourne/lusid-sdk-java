@@ -201,7 +201,7 @@ public class OrderGraphApi {
 
         /**
          * Set asAt
-         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @param asAt See https://support.lusid.com/docs/what-is-the-asat-timestamp (optional)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest asAt(OffsetDateTime asAt) {
@@ -211,7 +211,7 @@ public class OrderGraphApi {
 
         /**
          * Set paginationToken
-         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param paginationToken See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest paginationToken(String paginationToken) {
@@ -231,7 +231,7 @@ public class OrderGraphApi {
 
         /**
          * Set limit
-         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param limit See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest limit(Integer limit) {
@@ -241,7 +241,7 @@ public class OrderGraphApi {
 
         /**
          * Set filter
-         * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
+         * @param filter See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid (optional, default to )
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest filter(String filter) {
@@ -251,7 +251,7 @@ public class OrderGraphApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @param propertyKeys Must be block-level properties. See https://support.lusid.com/docs/properties (optional)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest propertyKeys(List<String> propertyKeys) {
@@ -535,7 +535,7 @@ public class OrderGraphApi {
 
         /**
          * Set asAt
-         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @param asAt See https://support.lusid.com/docs/what-is-the-asat-timestamp (optional)
          * @return APIlistOrderGraphPlacementChildrenRequest
          */
         public APIlistOrderGraphPlacementChildrenRequest asAt(OffsetDateTime asAt) {
@@ -545,7 +545,7 @@ public class OrderGraphApi {
 
         /**
          * Set paginationToken
-         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param paginationToken See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphPlacementChildrenRequest
          */
         public APIlistOrderGraphPlacementChildrenRequest paginationToken(String paginationToken) {
@@ -565,7 +565,7 @@ public class OrderGraphApi {
 
         /**
          * Set limit
-         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param limit See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphPlacementChildrenRequest
          */
         public APIlistOrderGraphPlacementChildrenRequest limit(Integer limit) {
@@ -575,7 +575,7 @@ public class OrderGraphApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @param propertyKeys Must be placement properties. See https://support.lusid.com/docs/properties (optional)
          * @return APIlistOrderGraphPlacementChildrenRequest
          */
         public APIlistOrderGraphPlacementChildrenRequest propertyKeys(List<String> propertyKeys) {
@@ -840,7 +840,7 @@ public class OrderGraphApi {
 
         /**
          * Set asAt
-         * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
+         * @param asAt See https://support.lusid.com/docs/what-is-the-asat-timestamp (optional)
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest asAt(OffsetDateTime asAt) {
@@ -850,7 +850,7 @@ public class OrderGraphApi {
 
         /**
          * Set paginationToken
-         * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param paginationToken See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest paginationToken(String paginationToken) {
@@ -870,7 +870,7 @@ public class OrderGraphApi {
 
         /**
          * Set limit
-         * @param limit See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
+         * @param limit See https://support.lusid.com/docs/paging-and-limiting-an-api-request (optional)
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest limit(Integer limit) {
@@ -880,7 +880,7 @@ public class OrderGraphApi {
 
         /**
          * Set filter
-         * @param filter See https://support.lusid.com/knowledgebase/article/KA-01914/ (optional, default to )
+         * @param filter See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid (optional, default to )
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest filter(String filter) {
@@ -890,7 +890,7 @@ public class OrderGraphApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ (optional)
+         * @param propertyKeys Must be placement properties. See https://support.lusid.com/docs/properties (optional)
          * @return APIlistOrderGraphPlacementsRequest
          */
         public APIlistOrderGraphPlacementsRequest propertyKeys(List<String> propertyKeys) {

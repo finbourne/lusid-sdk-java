@@ -113,7 +113,7 @@ public class PostingModuleRule {
   }
 
    /**
-   * The filter syntax for the Posting Rule. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax.
+   * The filter syntax for the Posting Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax.
    * @return ruleFilter
   **/
   @jakarta.annotation.Nonnull

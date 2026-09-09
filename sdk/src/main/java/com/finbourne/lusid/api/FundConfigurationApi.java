@@ -1017,7 +1017,7 @@ public class FundConfigurationApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the FundConfiguration type, specify \&quot;id.Code eq &#39;FundConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the FundConfiguration type, specify \&quot;id.Code eq &#39;FundConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistFundConfigurationsRequest
          */
         public APIlistFundConfigurationsRequest filter(String filter) {

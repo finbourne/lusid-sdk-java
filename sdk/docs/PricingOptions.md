@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **scaleInstrumentAccruedOverrideByContractSize** | **Boolean** | When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent. | [optional] [default to Boolean]
 **riskBumpOptions** | [**RiskBumpOptions**](RiskBumpOptions.md) |  | [optional] [default to RiskBumpOptions]
 **fundingCurveByCurrency** | **Map&lt;String, String&gt;** | Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged. | [optional] [default to Map<String, String>]
+**defaultPoolFactorsToUnity** | **Boolean** | When true, an asset-backed instrument with no pool-factor history defaults the pool  factor to 1.0 (the full original face) instead of 0. When false (default), the factor  defaults to 0 as before, preserving current behaviour. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.PricingOptions;
@@ -56,6 +57,7 @@ Boolean UseInstrumentScaleFactorAsDefault = true;
 Boolean ScaleInstrumentAccruedOverrideByContractSize = true;
 RiskBumpOptions RiskBumpOptions = new RiskBumpOptions();
 @jakarta.annotation.Nullable Map<String, String> FundingCurveByCurrency = new Map<String, String>();
+Boolean DefaultPoolFactorsToUnity = true;
 
 
 PricingOptions pricingOptionsInstance = new PricingOptions()
@@ -80,7 +82,8 @@ PricingOptions pricingOptionsInstance = new PricingOptions()
     .UseInstrumentScaleFactorAsDefault(UseInstrumentScaleFactorAsDefault)
     .ScaleInstrumentAccruedOverrideByContractSize(ScaleInstrumentAccruedOverrideByContractSize)
     .RiskBumpOptions(RiskBumpOptions)
-    .FundingCurveByCurrency(FundingCurveByCurrency);
+    .FundingCurveByCurrency(FundingCurveByCurrency)
+    .DefaultPoolFactorsToUnity(DefaultPoolFactorsToUnity);
 ```
 
 

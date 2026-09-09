@@ -843,7 +843,7 @@ public class PropertyDefinitionsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Property Definition' domain to decorate onto   property definitions. These must take the format   {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
         String page = "page_example"; // String | The pagination token to use to continue listing property definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the display name, specify \"DisplayName eq 'DisplayName'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the display name, specify \"DisplayName eq 'DisplayName'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -871,7 +871,7 @@ public class PropertyDefinitionsApiExample {
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Property Definition&#39; domain to decorate onto   property definitions. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing property definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type

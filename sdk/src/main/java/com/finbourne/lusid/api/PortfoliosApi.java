@@ -3158,7 +3158,7 @@ public class PortfoliosApi {
 
         /**
          * Set metrics
-         * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)
+         * @param metrics Determines what type of returns should be calculated, see https://support.lusid.com/docs/aggregating-performance-returns-for-a-portfolio for a list of available metrics. (optional)
          * @return APIgetPortfolioAggregateReturnsRequest
          */
         public APIgetPortfolioAggregateReturnsRequest metrics(List<String> metrics) {
@@ -3774,7 +3774,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.   For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.   For more information about filtering, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioCommandsRequest
          */
         public APIgetPortfolioCommandsRequest filter(String filter) {
@@ -4643,7 +4643,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioPropertiesTimeSeriesRequest
          */
         public APIgetPortfolioPropertiesTimeSeriesRequest filter(String filter) {
@@ -4971,7 +4971,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioPropertyTimeSeriesRequest
          */
         public APIgetPortfolioPropertyTimeSeriesRequest filter(String filter) {
@@ -6529,7 +6529,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistInstrumentEventInstructionsRequest
          */
         public APIlistInstrumentEventInstructionsRequest filter(String filter) {
@@ -7190,7 +7190,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest filter(String filter) {
@@ -7551,7 +7551,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest filter(String filter) {

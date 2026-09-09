@@ -157,7 +157,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   }
 
    /**
-   * The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+   * The tenors for which the rates apply  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
    * @return tenors
   **/
   @jakarta.annotation.Nonnull

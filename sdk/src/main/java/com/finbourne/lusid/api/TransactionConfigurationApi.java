@@ -1856,7 +1856,7 @@ public class TransactionConfigurationApi {
 
     /**
      * ListTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/docs/what-built-in-transaction-types-and-sides-are-provided-with-lusid.
      * @return APIlistTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2113,7 +2113,7 @@ public class TransactionConfigurationApi {
 
     /**
      * SetSideDefinition: Set a side definition
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/docs/what-is-a-side.
      * @param side The label to uniquely identify the side. (required)
      * @param sideDefinitionRequest The side definition to create or replace. (required)
      * @return APIsetSideDefinitionRequest
@@ -2364,7 +2364,7 @@ public class TransactionConfigurationApi {
 
     /**
      * SetSideDefinitions: Set the given side definitions
-     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+     * Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/docs/what-is-a-side.
      * @param sidesDefinitionRequest The list of side definitions to create, or replace. (required)
      * @return APIsetSideDefinitionsRequest
      * @http.response.details

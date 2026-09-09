@@ -847,7 +847,7 @@ public class TransactionPortfoliosApiExample {
 
 ## buildTransactions
 
-> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions)
+> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType)
 
 BuildTransactions: Build transactions
 
@@ -896,19 +896,18 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         TransactionQueryParameters transactionQueryParameters = new TransactionQueryParameters(); // TransactionQueryParameters | The query queryParameters which control how the output transactions are built.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
-        Boolean returnExcludedTransactions = false; // Boolean | Whether to include transactions that the portfolio's transaction exclusion filter marks as excluded. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute(opts);
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute(opts);
 
-            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions).execute();
+            VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#buildTransactions");
@@ -929,14 +928,13 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **transactionQueryParameters** | [**TransactionQueryParameters**](TransactionQueryParameters.md)| The query queryParameters which control how the output transactions are built. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to BuildTransactions. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
-| **returnExcludedTransactions** | **Boolean**| Whether to include transactions that the portfolio&#39;s transaction exclusion filter marks as excluded. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -2609,7 +2607,7 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\", \"Custodian Account\", \"Legal Entity\" or \"Portfolio\" domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \"Instrument/system/Name\" or \"Holding/system/Cost\".
         Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
@@ -2642,7 +2640,7 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot;, \&quot;Legal Entity\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
 | **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
@@ -2723,7 +2721,7 @@ public class TransactionPortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label of the holdings adjustment.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.   Note that properties from the 'Holding' domain are automatically returned.
-        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys, filter).execute(opts);
@@ -2750,7 +2748,7 @@ public class TransactionPortfoliosApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label of the holdings adjustment. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding&#39; domain are automatically returned. | [optional] |
-| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 
 ### Return type
 
@@ -2823,7 +2821,7 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version of the holdings if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\"   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\"   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
         Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
@@ -2855,7 +2853,7 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version of the holdings if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
 | **byTaxlots** | **Boolean**| Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
@@ -3053,7 +3051,7 @@ public class TransactionPortfoliosApiExample {
         String windowStart = "windowStart_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. it is the minimum date.
         String windowEnd = "windowEnd_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to 'max date' if it is not specified
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the data. Defaults to returning the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = false; // Boolean | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
@@ -3085,7 +3083,7 @@ public class TransactionPortfoliosApiExample {
 | **windowStart** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. it is the minimum date. | [optional] |
 | **windowEnd** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the data. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeID | [optional] |
 | **excludeUnsettledTrades** | **Boolean**| If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. | [optional] [default to false] |
@@ -3164,7 +3162,7 @@ public class TransactionPortfoliosApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified.
         String effectiveAt = "effectiveAt_example"; // String | The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = false; // Boolean | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
@@ -3196,7 +3194,7 @@ public class TransactionPortfoliosApiExample {
 | **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. | |
 | **effectiveAt** | **String**| The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeID | [optional] |
 | **excludeUnsettledTrades** | **Boolean**| If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. | [optional] [default to false] |
@@ -3274,7 +3272,7 @@ public class TransactionPortfoliosApiExample {
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto   the cash flows' transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
@@ -3304,7 +3302,7 @@ public class TransactionPortfoliosApiExample {
 | **fromEffectiveAt** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. | |
 | **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeID | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
@@ -3579,7 +3577,7 @@ public class TransactionPortfoliosApiExample {
         String fromTransactionDate = "fromTransactionDate_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no lower bound if this is not specified.
         String toTransactionDate = "toTransactionDate_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression with which to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression with which to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\"   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', \"LegalEntity\" or \"CustodianAccount\" domain to decorate onto   transactions. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or   'Transaction/strategy/quantsignal'.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetTransactions.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination.
@@ -3614,7 +3612,7 @@ public class TransactionPortfoliosApiExample {
 | **fromTransactionDate** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no lower bound if this is not specified. | [optional] |
 | **toTransactionDate** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or   &#39;Transaction/strategy/quantsignal&#39;. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetTransactions. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination. | [optional] |
@@ -3697,7 +3695,7 @@ public class TransactionPortfoliosApiExample {
         String windowStart = "windowStart_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. uses minimum date-time
         String windowEnd = "windowEnd_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to 'max date' if it is not specified
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = true; // Boolean | If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results.
@@ -3729,7 +3727,7 @@ public class TransactionPortfoliosApiExample {
 | **windowStart** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. uses minimum date-time | [optional] |
 | **windowEnd** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeID | [optional] |
 | **excludeUnsettledTrades** | **Boolean**| If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. | [optional] [default to true] |
@@ -3808,7 +3806,7 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Custodian Account type, specify \"code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Custodian Account type, specify \"code eq '001'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example 'CustodianAccount/system/Name'.   If no property keys are specified, it will return 'IsDefault' and 'RelatedAccounts' properties, if they exist.
         try {
             // uncomment the below to set overrides at the request level
@@ -3837,7 +3835,7 @@ public class TransactionPortfoliosApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;.   If no property keys are specified, it will return &#39;IsDefault&#39; and &#39;RelatedAccounts&#39; properties, if they exist. | [optional] |
 
 ### Return type
@@ -3912,7 +3910,7 @@ public class TransactionPortfoliosApiExample {
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified.
-        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \"InstrumentUid eq 'LUID_00003D4X'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter).execute(opts);
@@ -3939,7 +3937,7 @@ public class TransactionPortfoliosApiExample {
 | **fromEffectiveAt** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified. | [optional] |
 | **toEffectiveAt** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 
 ### Return type
 

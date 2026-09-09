@@ -2348,11 +2348,11 @@ public class TransactionPortfoliosApi {
     public APIbuildSettlementInstructionsRequest buildSettlementInstructions(String scope, String code, SettlementInstructionQuery settlementInstructionQuery) {
         return new APIbuildSettlementInstructionsRequest(scope, code, settlementInstructionQuery);
     }
-    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback) throws ApiException {
-        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions,  _callback, new ConfigurationOptions());
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback) throws ApiException {
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2411,10 +2411,6 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("membershipType", membershipType));
         }
 
-        if (returnExcludedTransactions != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("returnExcludedTransactions", returnExcludedTransactions));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2441,7 +2437,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling buildTransactions(Async)");
@@ -2457,34 +2453,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionQueryParameters' when calling buildTransactions(Async)");
         }
 
-        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback, opts);
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions) throws ApiException {
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType) throws ApiException {
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, null, opts);
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, Boolean returnExcludedTransactions, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback, opts);
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2502,7 +2498,6 @@ public class TransactionPortfoliosApi {
         private String dataModelScope;
         private String dataModelCode;
         private String membershipType;
-        private Boolean returnExcludedTransactions;
 
         private APIbuildTransactionsRequest(String scope, String code, TransactionQueryParameters transactionQueryParameters) {
             this.scope = scope;
@@ -2522,7 +2517,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIbuildTransactionsRequest
          */
         public APIbuildTransactionsRequest filter(String filter) {
@@ -2591,16 +2586,6 @@ public class TransactionPortfoliosApi {
         }
 
         /**
-         * Set returnExcludedTransactions
-         * @param returnExcludedTransactions Whether to include transactions that the portfolio&#39;s transaction exclusion filter marks as excluded. Defaults to false. (optional, default to false)
-         * @return APIbuildTransactionsRequest
-         */
-        public APIbuildTransactionsRequest returnExcludedTransactions(Boolean returnExcludedTransactions) {
-            this.returnExcludedTransactions = returnExcludedTransactions;
-            return this;
-        }
-
-        /**
          * Build call for buildTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2614,7 +2599,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback);
+            return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback);
         }
 
         /**
@@ -2630,7 +2615,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfOutputTransaction execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions);
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType);
             return localVarResp.getData();
         }
 
@@ -2647,7 +2632,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfOutputTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, opts);
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, opts);
             return localVarResp.getData();
         }
 
@@ -2664,7 +2649,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo() throws ApiException {
-            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions);
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType);
         }
 
         /**
@@ -2680,7 +2665,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, opts);
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, opts);
         }
 
         /**
@@ -2697,7 +2682,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
-            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback);
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback);
         }
 
         /**
@@ -2714,7 +2699,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, returnExcludedTransactions, _callback, opts);
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, membershipType, _callback, opts);
         }
     }
 
@@ -7547,7 +7532,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest filter(String filter) {
@@ -7911,7 +7896,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetHoldingsAdjustmentRequest
          */
         public APIgetHoldingsAdjustmentRequest filter(String filter) {
@@ -8228,7 +8213,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest filter(String filter) {
@@ -9042,7 +9027,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest filter(String filter) {
@@ -9406,7 +9391,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioCashLadderRequest
          */
         public APIgetPortfolioCashLadderRequest filter(String filter) {
@@ -9757,7 +9742,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetPortfolioCashStatementRequest
          */
         public APIgetPortfolioCashStatementRequest filter(String filter) {
@@ -10690,7 +10675,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest filter(String filter) {
@@ -11106,7 +11091,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest filter(String filter) {
@@ -11467,7 +11452,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest filter(String filter) {
@@ -11778,7 +11763,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the holding adjustments result set.   Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].   For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistHoldingsAdjustmentsRequest
          */
         public APIlistHoldingsAdjustmentsRequest filter(String filter) {

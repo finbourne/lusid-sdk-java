@@ -3756,7 +3756,7 @@ public class InstrumentsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest filter(String filter) {
@@ -3766,7 +3766,7 @@ public class InstrumentsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see   https://support.lusid.com/docs/paging-and-limiting-an-api-request. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest page(String page) {
@@ -5101,7 +5101,7 @@ public class InstrumentsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @param page The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.   For more information, see https://support.lusid.com/docs/paging-and-limiting-an-api-request. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest page(String page) {
@@ -5131,7 +5131,7 @@ public class InstrumentsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
+         * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional, default to State eq &#39;Active&#39;)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest filter(String filter) {
@@ -6176,7 +6176,7 @@ public class InstrumentsApi {
 
     /**
      * UpsertInstruments: Upsert instruments
-     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
+     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/docs/understanding-instrument-identifiers.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
      * @param requestBody The definitions of the instruments to create or update. (required)
      * @return APIupsertInstrumentsRequest
      * @http.response.details

@@ -19,7 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,6 +65,10 @@ public class QuoteDependency extends EconomicDependency {
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
   private OffsetDateTime date;
+
+  public static final String SERIALIZED_NAME_DESCRIPTOR = "descriptor";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTOR)
+  private List<String> descriptor;
 
   public QuoteDependency() {
     // this.dependencyType = this.getClass().getSimpleName();
@@ -130,6 +137,35 @@ public class QuoteDependency extends EconomicDependency {
   }
 
 
+  public QuoteDependency descriptor(List<String> descriptor) {
+    
+    this.descriptor = descriptor;
+    return this;
+  }
+
+  public QuoteDependency addDescriptorItem(String descriptorItem) {
+    if (this.descriptor == null) {
+      this.descriptor = new ArrayList<>();
+    }
+    this.descriptor.add(descriptorItem);
+    return this;
+  }
+
+   /**
+   * Optional additional description of the quote being depended upon, e.g. the model or lineage that produced it.  When matching a dependency against supplied market data overrides, the descriptor must match as well as the identifier and code.  If omitted, the dependency has no descriptor.
+   * @return descriptor
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getDescriptor() {
+    return descriptor;
+  }
+
+
+  public void setDescriptor(List<String> descriptor) {
+    this.descriptor = descriptor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +179,24 @@ public class QuoteDependency extends EconomicDependency {
     return Objects.equals(this.marketIdentifier, quoteDependency.marketIdentifier) &&
         Objects.equals(this.code, quoteDependency.code) &&
         Objects.equals(this.date, quoteDependency.date) &&
+        Objects.equals(this.descriptor, quoteDependency.descriptor) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketIdentifier, code, date, super.hashCode());
+    return Objects.hash(marketIdentifier, code, date, descriptor, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -159,6 +207,7 @@ public class QuoteDependency extends EconomicDependency {
     sb.append("    marketIdentifier: ").append(toIndentedString(marketIdentifier)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    descriptor: ").append(toIndentedString(descriptor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,6 +234,7 @@ public class QuoteDependency extends EconomicDependency {
     openapiFields.add("marketIdentifier");
     openapiFields.add("code");
     openapiFields.add("date");
+    openapiFields.add("descriptor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

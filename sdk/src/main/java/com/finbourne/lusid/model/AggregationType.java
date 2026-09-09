@@ -43,7 +43,9 @@ public enum AggregationType {
   
   RESULT2D("Result2D"),
   
-  JSON("Json");
+  JSON("Json"),
+  
+  RESULTND("ResultND");
 
   private String value;
 

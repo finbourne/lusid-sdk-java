@@ -179,6 +179,10 @@ Class | Method | HTTP request | Description
 *CounterpartiesApi* | [**listCreditSupportAnnexes**](docs/CounterpartiesApi.md#listcreditsupportannexes) | **GET** /api/counterparties/creditsupportannexes | [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
 *CounterpartiesApi* | [**upsertCounterpartyAgreement**](docs/CounterpartiesApi.md#upsertcounterpartyagreement) | **POST** /api/counterparties/counterpartyagreements | [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
 *CounterpartiesApi* | [**upsertCreditSupportAnnex**](docs/CounterpartiesApi.md#upsertcreditsupportannex) | **POST** /api/counterparties/creditsupportannexes | [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
+*CurrencyGroupsApi* | [**deleteCurrencyGroup**](docs/CurrencyGroupsApi.md#deletecurrencygroup) | **DELETE** /api/currencies/groups/{code} | [EXPERIMENTAL] DeleteCurrencyGroup: Delete a currency group.
+*CurrencyGroupsApi* | [**getCurrencyGroup**](docs/CurrencyGroupsApi.md#getcurrencygroup) | **GET** /api/currencies/groups/{code} | [EXPERIMENTAL] GetCurrencyGroup: Get a currency group.
+*CurrencyGroupsApi* | [**listCurrencyGroups**](docs/CurrencyGroupsApi.md#listcurrencygroups) | **GET** /api/currencies/groups | [EXPERIMENTAL] ListCurrencyGroups: List currency groups.
+*CurrencyGroupsApi* | [**upsertCurrencyGroup**](docs/CurrencyGroupsApi.md#upsertcurrencygroup) | **POST** /api/currencies/groups | [EXPERIMENTAL] UpsertCurrencyGroup: Upsert a currency group.
 *CustomDataModelsApi* | [**batchAmend**](docs/CustomDataModelsApi.md#batchamend) | **POST** /api/datamodel/$batchamend | [EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership.
 *CustomDataModelsApi* | [**createCustomDataModel**](docs/CustomDataModelsApi.md#createcustomdatamodel) | **POST** /api/datamodel/{entityType} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model
 *CustomDataModelsApi* | [**deleteCustomDataModel**](docs/CustomDataModelsApi.md#deletecustomdatamodel) | **DELETE** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
@@ -434,6 +438,7 @@ Class | Method | HTTP request | Description
 *ParticipationsApi* | [**upsertParticipations**](docs/ParticipationsApi.md#upsertparticipations) | **POST** /api/participations | [EARLY ACCESS] UpsertParticipations: Upsert Participation
 *PaymentInstructionsApi* | [**deletePaymentInstruction**](docs/PaymentInstructionsApi.md#deletepaymentinstruction) | **DELETE** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction
 *PaymentInstructionsApi* | [**getPaymentInstruction**](docs/PaymentInstructionsApi.md#getpaymentinstruction) | **GET** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction
+*PaymentInstructionsApi* | [**getPaymentInstructionsByPaymentRecordIds**](docs/PaymentInstructionsApi.md#getpaymentinstructionsbypaymentrecordids) | **POST** /api/paymentinstructions/$getByPaymentRecordIds | [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids
 *PaymentInstructionsApi* | [**upsertPaymentInstructions**](docs/PaymentInstructionsApi.md#upsertpaymentinstructions) | **POST** /api/paymentinstructions | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions
 *PersonsApi* | [**deletePerson**](docs/PersonsApi.md#deleteperson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | DeletePerson: Delete person
 *PersonsApi* | [**deletePersonAccessMetadata**](docs/PersonsApi.md#deletepersonaccessmetadata) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
@@ -1144,6 +1149,8 @@ Class | Method | HTTP request | Description
  - [CreditSupportAnnex](docs/CreditSupportAnnex.md)
  - [CriterionType](docs/CriterionType.md)
  - [CurrencyAndAmount](docs/CurrencyAndAmount.md)
+ - [CurrencyGroupMinorUnit](docs/CurrencyGroupMinorUnit.md)
+ - [CurrencyGroupResponse](docs/CurrencyGroupResponse.md)
  - [CurveOptions](docs/CurveOptions.md)
  - [CurveShiftWindowBounds](docs/CurveShiftWindowBounds.md)
  - [CustodianAccount](docs/CustodianAccount.md)
@@ -1382,6 +1389,7 @@ Class | Method | HTTP request | Description
  - [GetFlowConventionsResponse](docs/GetFlowConventionsResponse.md)
  - [GetIndexConventionResponse](docs/GetIndexConventionResponse.md)
  - [GetInstrumentsResponse](docs/GetInstrumentsResponse.md)
+ - [GetPaymentInstructionsResponse](docs/GetPaymentInstructionsResponse.md)
  - [GetQuotesResponse](docs/GetQuotesResponse.md)
  - [GetRecipeComposerResponse](docs/GetRecipeComposerResponse.md)
  - [GetRecipeResponse](docs/GetRecipeResponse.md)
@@ -1669,6 +1677,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfComplianceRunInfoV2](docs/PagedResourceListOfComplianceRunInfoV2.md)
  - [PagedResourceListOfComplianceTemplate](docs/PagedResourceListOfComplianceTemplate.md)
  - [PagedResourceListOfCorporateActionSource](docs/PagedResourceListOfCorporateActionSource.md)
+ - [PagedResourceListOfCurrencyGroupResponse](docs/PagedResourceListOfCurrencyGroupResponse.md)
  - [PagedResourceListOfCustodianAccount](docs/PagedResourceListOfCustodianAccount.md)
  - [PagedResourceListOfCustomEntityDefinition](docs/PagedResourceListOfCustomEntityDefinition.md)
  - [PagedResourceListOfCustomEntityResponse](docs/PagedResourceListOfCustomEntityResponse.md)
@@ -1926,6 +1935,7 @@ Class | Method | HTTP request | Description
  - [RecReviewRequiredApproval](docs/RecReviewRequiredApproval.md)
  - [RecReviewRequirementRule](docs/RecReviewRequirementRule.md)
  - [RecReviewSubmission](docs/RecReviewSubmission.md)
+ - [RecRunLog](docs/RecRunLog.md)
  - [RecRunLogEntry](docs/RecRunLogEntry.md)
  - [RecSubmission](docs/RecSubmission.md)
  - [RecSupersededRun](docs/RecSupersededRun.md)
@@ -2072,6 +2082,7 @@ Class | Method | HTTP request | Description
  - [ResultDataSchema](docs/ResultDataSchema.md)
  - [ResultKeyRule](docs/ResultKeyRule.md)
  - [ResultKeyRuleType](docs/ResultKeyRuleType.md)
+ - [ResultND](docs/ResultND.md)
  - [ResultValue](docs/ResultValue.md)
  - [ResultValue0D](docs/ResultValue0D.md)
  - [ResultValueBool](docs/ResultValueBool.md)
@@ -2263,6 +2274,7 @@ Class | Method | HTTP request | Description
  - [TransactionTypeRequest](docs/TransactionTypeRequest.md)
  - [TransactionsReconciliationsResponse](docs/TransactionsReconciliationsResponse.md)
  - [TransferAgencyDates](docs/TransferAgencyDates.md)
+ - [TransferAgencyExcludedOrder](docs/TransferAgencyExcludedOrder.md)
  - [TransferAgencyOrderEstimateResult](docs/TransferAgencyOrderEstimateResult.md)
  - [TransferAgencyOrderResult](docs/TransferAgencyOrderResult.md)
  - [TransferAgencyOrderToEstimate](docs/TransferAgencyOrderToEstimate.md)
@@ -2286,6 +2298,7 @@ Class | Method | HTTP request | Description
  - [TriggerEvent](docs/TriggerEvent.md)
  - [TypedResourceId](docs/TypedResourceId.md)
  - [UnconfirmClosedPeriodRequest](docs/UnconfirmClosedPeriodRequest.md)
+ - [UnitDimension](docs/UnitDimension.md)
  - [UnitSchema](docs/UnitSchema.md)
  - [UnitisationData](docs/UnitisationData.md)
  - [UnitsRatio](docs/UnitsRatio.md)
@@ -2339,6 +2352,7 @@ Class | Method | HTTP request | Description
  - [UpsertCorporateActionsResponse](docs/UpsertCorporateActionsResponse.md)
  - [UpsertCounterpartyAgreementRequest](docs/UpsertCounterpartyAgreementRequest.md)
  - [UpsertCreditSupportAnnexRequest](docs/UpsertCreditSupportAnnexRequest.md)
+ - [UpsertCurrencyGroupRequest](docs/UpsertCurrencyGroupRequest.md)
  - [UpsertCustomEntitiesResponse](docs/UpsertCustomEntitiesResponse.md)
  - [UpsertCustomEntityAccessMetadataRequest](docs/UpsertCustomEntityAccessMetadataRequest.md)
  - [UpsertDataQualityRule](docs/UpsertDataQualityRule.md)

@@ -4469,7 +4469,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest filter(String filter) {
@@ -4789,7 +4789,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest filter(String filter) {
@@ -5116,7 +5116,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistCleardownModuleRulesRequest
          */
         public APIlistCleardownModuleRulesRequest filter(String filter) {
@@ -5423,7 +5423,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistCleardownModulesRequest
          */
         public APIlistCleardownModulesRequest filter(String filter) {
@@ -5739,7 +5739,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistGeneralLedgerProfilesRequest
          */
         public APIlistGeneralLedgerProfilesRequest filter(String filter) {
@@ -6058,7 +6058,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistPostingModuleRulesRequest
          */
         public APIlistPostingModuleRulesRequest filter(String filter) {
@@ -6365,7 +6365,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistPostingModulesRequest
          */
         public APIlistPostingModulesRequest filter(String filter) {

@@ -400,7 +400,7 @@ public class CreateTransactionPortfolioRequest {
   }
 
    /**
-   * A set of unique transaction properties to group the transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information.
+   * A set of unique transaction properties to group the transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/docs/how-do-i-register-sub-holding-keys-shks-with-a-portfolio for more information.
    * @return subHoldingKeys
   **/
   @jakarta.annotation.Nullable

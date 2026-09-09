@@ -26,6 +26,7 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.GetPaymentInstructionsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
@@ -602,6 +603,286 @@ public class PaymentInstructionsApi {
      */
     public APIgetPaymentInstructionRequest getPaymentInstruction(String scope, String code) {
         return new APIgetPaymentInstructionRequest(scope, code);
+    }
+    private okhttp3.Call getPaymentInstructionsByPaymentRecordIdsCall(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPaymentInstructionsByPaymentRecordIdsCall(requestBody, propertyKeys, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPaymentInstructionsByPaymentRecordIdsCall(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/paymentinstructions/$getByPaymentRecordIds";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPaymentInstructionsByPaymentRecordIdsValidateBeforeCall(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling getPaymentInstructionsByPaymentRecordIds(Async)");
+        }
+
+        return getPaymentInstructionsByPaymentRecordIdsCall(requestBody, propertyKeys, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GetPaymentInstructionsResponse> getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getPaymentInstructionsByPaymentRecordIdsValidateBeforeCall(requestBody, propertyKeys, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetPaymentInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetPaymentInstructionsResponse> getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPaymentInstructionsByPaymentRecordIdsValidateBeforeCall(requestBody, propertyKeys, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<GetPaymentInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPaymentInstructionsByPaymentRecordIdsAsync(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, final ApiCallback<GetPaymentInstructionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPaymentInstructionsByPaymentRecordIdsValidateBeforeCall(requestBody, propertyKeys, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetPaymentInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPaymentInstructionsByPaymentRecordIdsAsync(List<String> requestBody, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, final ApiCallback<GetPaymentInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPaymentInstructionsByPaymentRecordIdsValidateBeforeCall(requestBody, propertyKeys, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<GetPaymentInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPaymentInstructionsByPaymentRecordIdsRequest {
+        private final List<String> requestBody;
+        private List<String> propertyKeys;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetPaymentInstructionsByPaymentRecordIdsRequest(List<String> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each   payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)
+         * @return APIgetPaymentInstructionsByPaymentRecordIdsRequest
+         */
+        public APIgetPaymentInstructionsByPaymentRecordIdsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the payment instructions.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPaymentInstructionsByPaymentRecordIdsRequest
+         */
+        public APIgetPaymentInstructionsByPaymentRecordIdsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the payment instructions. Defaults to return the latest   version of each payment instruction if not specified. (optional)
+         * @return APIgetPaymentInstructionsByPaymentRecordIdsRequest
+         */
+        public APIgetPaymentInstructionsByPaymentRecordIdsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPaymentInstructionsByPaymentRecordIds
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPaymentInstructionsByPaymentRecordIdsCall(requestBody, propertyKeys, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request
+         * @return GetPaymentInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetPaymentInstructionsResponse execute() throws ApiException {
+            ApiResponse<GetPaymentInstructionsResponse> localVarResp = getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetPaymentInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetPaymentInstructionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetPaymentInstructionsResponse> localVarResp = getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request with HTTP info returned
+         * @return ApiResponse&lt;GetPaymentInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetPaymentInstructionsResponse> executeWithHttpInfo() throws ApiException {
+            return getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetPaymentInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetPaymentInstructionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetPaymentInstructionsResponse> _callback) throws ApiException {
+            return getPaymentInstructionsByPaymentRecordIdsAsync(requestBody, propertyKeys, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPaymentInstructionsByPaymentRecordIds request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetPaymentInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPaymentInstructionsByPaymentRecordIdsAsync(requestBody, propertyKeys, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids
+     * Retrieve the Payment Instructions that reference the given Payment Records. Payment record ids are unique  across the system scope, so no scope or identifier type is required. The response contains the payment  instructions that could be found, keyed by the payment record id used to retrieve them, along with the  nature of any failures.
+     * @param requestBody A collection of payment record ids to retrieve payment instructions for.   Duplicate ids are ignored. (required)
+     * @return APIgetPaymentInstructionsByPaymentRecordIdsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The payment instructions that could be found for the supplied payment record ids, along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPaymentInstructionsByPaymentRecordIdsRequest getPaymentInstructionsByPaymentRecordIds(List<String> requestBody) {
+        return new APIgetPaymentInstructionsByPaymentRecordIdsRequest(requestBody);
     }
     private okhttp3.Call upsertPaymentInstructionsCall(Map<String, PaymentInstructionRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertPaymentInstructionsCall(requestBody,  _callback, new ConfigurationOptions());
