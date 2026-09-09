@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **riskBumpOptions** | [**RiskBumpOptions**](RiskBumpOptions.md) |  | [optional] [default to RiskBumpOptions]
 **fundingCurveByCurrency** | **Map&lt;String, String&gt;** | Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged. | [optional] [default to Map<String, String>]
 **defaultPoolFactorsToUnity** | **Boolean** | When true, an asset-backed instrument with no pool-factor history defaults the pool  factor to 1.0 (the full original face) instead of 0. When false (default), the factor  defaults to 0 as before, preserving current behaviour. | [optional] [default to Boolean]
+**findOrCalculateWriteThrough** | **Boolean** | When true, and FindOrCalculate is Enabled, results that had to be calculated because no  verified stored value existed are written back into the structured result store, so a  later identical request can serve them without recomputing. The write targets the  document selected by the same result data key rules the lookup reads. When false  (default), calculated results are never persisted.  Results are stored at unit level (per unit of holding), so a value served from the store  is rescaled by the holding&#39;s units and may differ from a freshly calculated value in the  least significant digits. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.PricingOptions;
@@ -58,6 +59,7 @@ Boolean ScaleInstrumentAccruedOverrideByContractSize = true;
 RiskBumpOptions RiskBumpOptions = new RiskBumpOptions();
 @jakarta.annotation.Nullable Map<String, String> FundingCurveByCurrency = new Map<String, String>();
 Boolean DefaultPoolFactorsToUnity = true;
+Boolean FindOrCalculateWriteThrough = true;
 
 
 PricingOptions pricingOptionsInstance = new PricingOptions()
@@ -83,7 +85,8 @@ PricingOptions pricingOptionsInstance = new PricingOptions()
     .ScaleInstrumentAccruedOverrideByContractSize(ScaleInstrumentAccruedOverrideByContractSize)
     .RiskBumpOptions(RiskBumpOptions)
     .FundingCurveByCurrency(FundingCurveByCurrency)
-    .DefaultPoolFactorsToUnity(DefaultPoolFactorsToUnity);
+    .DefaultPoolFactorsToUnity(DefaultPoolFactorsToUnity)
+    .FindOrCalculateWriteThrough(FindOrCalculateWriteThrough);
 ```
 
 

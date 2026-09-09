@@ -147,6 +147,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_DEFAULT_POOL_FACTORS_TO_UNITY)
   private Boolean defaultPoolFactorsToUnity;
 
+  public static final String SERIALIZED_NAME_FIND_OR_CALCULATE_WRITE_THROUGH = "findOrCalculateWriteThrough";
+  @SerializedName(SERIALIZED_NAME_FIND_OR_CALCULATE_WRITE_THROUGH)
+  private Boolean findOrCalculateWriteThrough;
+
   public PricingOptions() {
   }
 
@@ -641,6 +645,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions findOrCalculateWriteThrough(Boolean findOrCalculateWriteThrough) {
+    
+    this.findOrCalculateWriteThrough = findOrCalculateWriteThrough;
+    return this;
+  }
+
+   /**
+   * When true, and FindOrCalculate is Enabled, results that had to be calculated because no  verified stored value existed are written back into the structured result store, so a  later identical request can serve them without recomputing. The write targets the  document selected by the same result data key rules the lookup reads. When false  (default), calculated results are never persisted.  Results are stored at unit level (per unit of holding), so a value served from the store  is rescaled by the holding&#39;s units and may differ from a freshly calculated value in the  least significant digits.
+   * @return findOrCalculateWriteThrough
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFindOrCalculateWriteThrough() {
+    return findOrCalculateWriteThrough;
+  }
+
+
+  public void setFindOrCalculateWriteThrough(Boolean findOrCalculateWriteThrough) {
+    this.findOrCalculateWriteThrough = findOrCalculateWriteThrough;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -673,7 +698,8 @@ public class PricingOptions {
         Objects.equals(this.scaleInstrumentAccruedOverrideByContractSize, pricingOptions.scaleInstrumentAccruedOverrideByContractSize) &&
         Objects.equals(this.riskBumpOptions, pricingOptions.riskBumpOptions) &&
         Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency) &&
-        Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity);
+        Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity) &&
+        Objects.equals(this.findOrCalculateWriteThrough, pricingOptions.findOrCalculateWriteThrough);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -682,7 +708,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -719,6 +745,7 @@ public class PricingOptions {
     sb.append("    riskBumpOptions: ").append(toIndentedString(riskBumpOptions)).append("\n");
     sb.append("    fundingCurveByCurrency: ").append(toIndentedString(fundingCurveByCurrency)).append("\n");
     sb.append("    defaultPoolFactorsToUnity: ").append(toIndentedString(defaultPoolFactorsToUnity)).append("\n");
+    sb.append("    findOrCalculateWriteThrough: ").append(toIndentedString(findOrCalculateWriteThrough)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -764,6 +791,7 @@ public class PricingOptions {
     openapiFields.add("riskBumpOptions");
     openapiFields.add("fundingCurveByCurrency");
     openapiFields.add("defaultPoolFactorsToUnity");
+    openapiFields.add("findOrCalculateWriteThrough");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
