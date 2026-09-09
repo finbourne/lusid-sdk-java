@@ -316,7 +316,7 @@ public class CreditSpreadShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Get startTenor
+   * The near end of the tenor window the shift applies over, resolved against the valuation  date. A whole number of units, in any case: BD (business day), D, W, M, Q or Qtr, SA  (semi-annual), Y or A - for example \&quot;1BD\&quot;, \&quot;3m\&quot;, \&quot;6M\&quot;, \&quot;1Qtr\&quot;, \&quot;5y\&quot;. Omitted, the window  is open at this end and every point up to EndTenor is in it.
    * @return startTenor
   **/
   @jakarta.annotation.Nullable
@@ -337,7 +337,7 @@ public class CreditSpreadShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Get endTenor
+   * The far end of the tenor window, in the same units as StartTenor. Omitted, the window is  open at this end.
    * @return endTenor
   **/
   @jakarta.annotation.Nullable
@@ -400,7 +400,7 @@ public class CreditSpreadShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape. Only  valid with ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared  last on purpose: generated SDKs emit their positional constructor in property-declaration  order, and this property must not shift the parameters of the ones before it.
+   * The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape. Only  valid with ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. In the  same units as StartTenor. Declared last on purpose: generated SDKs emit their positional  constructor in property-declaration order, and this property must not shift the parameters  of the ones before it.
    * @return pivotTenor
   **/
   @jakarta.annotation.Nullable

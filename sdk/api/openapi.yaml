@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9904
+  version: 0.11.9907
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -194833,16 +194833,24 @@ components:
             nullable: true
             type: number
           startTenor:
+            description: "The near end of the tenor window the shift applies over,\
+              \ resolved against the valuation\r\ndate. A whole number of units, in\
+              \ any case: BD (business day), D, W, M, Q or Qtr, SA\r\n(semi-annual),\
+              \ Y or A - for example \"1BD\", \"3m\", \"6M\", \"1Qtr\", \"5y\". Omitted,\
+              \ the window\r\nis open at this end and every point up to EndTenor is\
+              \ in it."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           endTenor:
+            description: "The far end of the tenor window, in the same units as StartTenor.\
+              \ Omitted, the window is\r\nopen at this end."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           shiftType:
             description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
@@ -194863,14 +194871,15 @@ components:
             description: "The tenor the Tent shift peaks at. The shift applies with\
               \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
               \ and EndTenor - the key-rate triangle shape. Only\r\nvalid with ShiftType\
-              \ Tent; omitted, a Tent peaks at the midpoint of the window. Declared\r\
-              \nlast on purpose: generated SDKs emit their positional constructor\
-              \ in property-declaration\r\norder, and this property must not shift\
-              \ the parameters of the ones before it."
+              \ Tent; omitted, a Tent peaks at the midpoint of the window. In the\r\
+              \nsame units as StartTenor. Declared last on purpose: generated SDKs\
+              \ emit their positional\r\nconstructor in property-declaration order,\
+              \ and this property must not shift the parameters\r\nof the ones before\
+              \ it."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           minimumAmountBps:
             description: "The smallest magnitude, in basis points, of the shift finally\
@@ -222059,16 +222068,24 @@ components:
             nullable: true
             type: number
           startTenor:
+            description: "The near end of the tenor window the shift applies over,\
+              \ resolved against the valuation\r\ndate. A whole number of units, in\
+              \ any case: BD (business day), D, W, M, Q or Qtr, SA\r\n(semi-annual),\
+              \ Y or A - for example \"1BD\", \"3m\", \"6M\", \"1Qtr\", \"5y\". Omitted,\
+              \ the window\r\nis open at this end and every point up to EndTenor is\
+              \ in it."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           endTenor:
+            description: "The far end of the tenor window, in the same units as StartTenor.\
+              \ Omitted, the window is\r\nopen at this end."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           shiftType:
             description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
@@ -222089,14 +222106,15 @@ components:
             description: "The tenor the Tent shift peaks at. The shift applies with\
               \ the full Amount at this tenor,\r\nfalling linearly to zero at StartTenor\
               \ and EndTenor - the key-rate triangle shape. Only\r\nvalid with ShiftType\
-              \ Tent; omitted, a Tent peaks at the midpoint of the window. Declared\r\
-              \nlast on purpose: generated SDKs emit their positional constructor\
-              \ in property-declaration\r\norder, and this property must not shift\
-              \ the parameters of the ones before it."
+              \ Tent; omitted, a Tent peaks at the midpoint of the window. In the\r\
+              \nsame units as StartTenor. Declared last on purpose: generated SDKs\
+              \ emit their positional\r\nconstructor in property-declaration order,\
+              \ and this property must not shift the parameters\r\nof the ones before\
+              \ it."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           windowBounds:
             description: "Available values: Inclusive, StartExclusive, EndExclusive,\
@@ -272449,16 +272467,24 @@ components:
             nullable: true
             type: number
           startTenor:
+            description: "The near end of the tenor window the shift applies over,\
+              \ resolved against the valuation\r\ndate. A whole number of units, in\
+              \ any case: BD (business day), D, W, M, Q or Qtr, SA\r\n(semi-annual),\
+              \ Y or A - for example \"1BD\", \"3m\", \"6M\", \"1Qtr\", \"5y\". Omitted,\
+              \ the window\r\nis open at this end and every point up to EndTenor is\
+              \ in it."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           endTenor:
+            description: "The far end of the tenor window, in the same units as StartTenor.\
+              \ Omitted, the window is\r\nopen at this end."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           shiftType:
             description: "Available values: Parallel, Steepen, Flatten, Twist, Tent."
@@ -272496,16 +272522,17 @@ components:
               \ and EndTenor - the key-rate triangle shape, whose\r\nasymmetry matters\
               \ because key-rate buckets are rarely evenly spaced. Only valid with\r\
               \nShiftType Tent; omitted, a Tent peaks at the midpoint of the window.\
-              \ Declared last on\r\npurpose: generated SDKs emit their positional\
-              \ constructor in property-declaration order,\r\nand this property must\
-              \ not shift the parameters of the ones before it.\r\nOver a window containing\
-              \ a single curve point, that point takes the full Amount regardless\r\
-              \nof where the pivot lands: a one-point window has no slope to express,\
-              \ and every shift\r\nshape degenerates the same way there."
+              \ In the same units as\r\nStartTenor. Declared last on purpose: generated\
+              \ SDKs emit their positional constructor in\r\nproperty-declaration\
+              \ order, and this property must not shift the parameters of the ones\r\
+              \nbefore it.\r\nOver a window containing a single curve point, that\
+              \ point takes the full Amount regardless\r\nof where the pivot lands:\
+              \ a one-point window has no slope to express, and every shift\r\nshape\
+              \ degenerates the same way there."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           windowBounds:
             description: "Available values: Inclusive, StartExclusive, EndExclusive,\
@@ -303381,8 +303408,13 @@ components:
       additionalProperties: false
       description: "A single result-value shape whose structure is derived from `dimension`,\
         \ replacing one\r\nhand-maintained type per rank (Result0D/Result1D/Result2D).\
-        \ Additive and opt-in: existing\r\nconsumers of those types see no change\
-        \ to their response bytes."
+        \ Risk measures of dimension 1, 2\r\nor 3 - the ladders, the surfaces and\
+        \ the IR vol cubes - now report this shape rather than\r\nResult1D/Result2D,\
+        \ so their response bytes change: the values arrive nested and dense here\r\
+        \n(see `values`), where the legacy types carried a flat \"(row,column)\"-keyed\
+        \ map that\r\nelided unquoted coordinates, and the units arrive as one flat\
+        \ list rather than the doubled\r\n`{ units: { units: [] } }` wrapper. Dimension\
+        \ 0 measures are untouched and stay on the\r\nlegacy shapes."
       properties:
         resultValueType:
           description: The discriminator for this result shape. Always "ResultND".
@@ -303410,18 +303442,11 @@ components:
           nullable: true
           type: number
         values:
-          description: "The values, flattened row-major with axis 0 outermost and\
-            \ dense - a coordinate the legacy\r\nformat would have elided is materialised\
-            \ as 0. The shape is read off `labels`: position\r\n(i0, i1, ..., ik)\
-            \ is at offset i0 generate justfile test_sdk len(labels[1]) generate justfile\
-            \ test_sdk ... generate justfile test_sdk len(labels[k]) + i1 generate\
-            \ justfile test_sdk ... + ik.\r\nPresent if and only if `dimension` is\
+          description: "The values, nested exactly `dimension` deep (axis 0 outermost)\
+            \ and dense - a coordinate\r\nthe legacy format would have elided is null,\
+            \ never a fabricated number. Present if and only\r\nif `dimension` is\
             \ at least 1."
-          items:
-            format: double
-            type: number
           nullable: true
-          type: array
         hasAnnotation:
           description: Unchanged from Result0D/1D/2D.
           type: boolean
@@ -352993,10 +353018,15 @@ components:
             nullable: true
             type: number
           expiry:
+            description: "The expiry of the surface points the shift applies to, resolved\
+              \ against the valuation\r\ndate. A whole number of units, in any case:\
+              \ BD (business day), D, W, M, Q or Qtr, SA\r\n(semi-annual), Y or A\
+              \ - for example \"1BD\", \"3m\", \"6M\", \"1Qtr\", \"5y\". Omitted,\
+              \ every\r\nexpiry on the surface is shifted."
             maxLength: 10
             minLength: 2
             nullable: true
-            pattern: "^\\d+[mywdMYWD]$"
+            pattern: "^\\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$"
             type: string
           shiftType:
             description: "Available values: Absolute, Relative."

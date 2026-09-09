@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A single result-value shape whose structure is derived from &#x60;dimension&#x60;, replacing one  hand-maintained type per rank (Result0D/Result1D/Result2D). Additive and opt-in: existing  consumers of those types see no change to their response bytes.
+ * A single result-value shape whose structure is derived from &#x60;dimension&#x60;, replacing one  hand-maintained type per rank (Result0D/Result1D/Result2D). Risk measures of dimension 1, 2  or 3 - the ladders, the surfaces and the IR vol cubes - now report this shape rather than  Result1D/Result2D, so their response bytes change: the values arrive nested and dense here  (see &#x60;values&#x60;), where the legacy types carried a flat \&quot;(row,column)\&quot;-keyed map that  elided unquoted coordinates, and the units arrive as one flat list rather than the doubled  &#x60;{ units: { units: [] } }&#x60; wrapper. Dimension 0 measures are untouched and stay on the  legacy shapes.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResultND {
@@ -71,7 +71,7 @@ public class ResultND {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<java.math.BigDecimal> values;
+  private Object values = null;
 
   public static final String SERIALIZED_NAME_HAS_ANNOTATION = "hasAnnotation";
   @SerializedName(SERIALIZED_NAME_HAS_ANNOTATION)
@@ -175,31 +175,23 @@ public class ResultND {
   }
 
 
-  public ResultND values(List<java.math.BigDecimal> values) {
+  public ResultND values(Object values) {
     
     this.values = values;
     return this;
   }
 
-  public ResultND addValuesItem(java.math.BigDecimal valuesItem) {
-    if (this.values == null) {
-      this.values = new ArrayList<>();
-    }
-    this.values.add(valuesItem);
-    return this;
-  }
-
    /**
-   * The values, flattened row-major with axis 0 outermost and dense - a coordinate the legacy  format would have elided is materialised as 0. The shape is read off &#x60;labels&#x60;: position  (i0, i1, ..., ik) is at offset i0 generate justfile test_sdk len(labels[1]) generate justfile test_sdk ... generate justfile test_sdk len(labels[k]) + i1 generate justfile test_sdk ... + ik.  Present if and only if &#x60;dimension&#x60; is at least 1.
+   * The values, nested exactly &#x60;dimension&#x60; deep (axis 0 outermost) and dense - a coordinate  the legacy format would have elided is null, never a fabricated number. Present if and only  if &#x60;dimension&#x60; is at least 1.
    * @return values
   **/
   @jakarta.annotation.Nullable
-  public List<java.math.BigDecimal> getValues() {
+  public Object getValues() {
     return values;
   }
 
 
-  public void setValues(List<java.math.BigDecimal> values) {
+  public void setValues(Object values) {
     this.values = values;
   }
 
@@ -353,10 +345,6 @@ public class ResultND {
       // ensure the optional json data is an array if present
       if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull() && !jsonObj.get("labels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull() && !jsonObj.get("values").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
       }
       if (jsonObj.get("units") != null && !jsonObj.get("units").isJsonNull()) {
         JsonArray jsonArrayunits = jsonObj.getAsJsonArray("units");

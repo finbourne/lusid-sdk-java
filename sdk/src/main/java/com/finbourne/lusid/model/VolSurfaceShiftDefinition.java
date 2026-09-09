@@ -194,7 +194,7 @@ public class VolSurfaceShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Get expiry
+   * The expiry of the surface points the shift applies to, resolved against the valuation  date. A whole number of units, in any case: BD (business day), D, W, M, Q or Qtr, SA  (semi-annual), Y or A - for example \&quot;1BD\&quot;, \&quot;3m\&quot;, \&quot;6M\&quot;, \&quot;1Qtr\&quot;, \&quot;5y\&quot;. Omitted, every  expiry on the surface is shifted.
    * @return expiry
   **/
   @jakarta.annotation.Nullable
