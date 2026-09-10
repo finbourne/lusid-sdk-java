@@ -241,7 +241,9 @@ public enum InstrumentEventType {
   
   FUNDDISTRIBUTIONEVENT("FundDistributionEvent"),
   
-  NAVREPORTEVENT("NavReportEvent");
+  NAVREPORTEVENT("NavReportEvent"),
+  
+  DIVIDENDSUSPENSIONEVENT("DividendSuspensionEvent");
 
   private String value;
 

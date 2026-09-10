@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **quantity** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **amount** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **weight** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
-**transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **exchangeRate** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 
 ```java
@@ -32,7 +31,6 @@ String Currency = "example Currency";
 @jakarta.annotation.Nullable java.math.BigDecimal Quantity = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal Weight = new java.math.BigDecimal("100.00");
-@jakarta.annotation.Nullable OffsetDateTime TransactionDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable java.math.BigDecimal ExchangeRate = new java.math.BigDecimal("100.00");
 
 
@@ -46,7 +44,6 @@ TransferAgencyOrderToEstimate transferAgencyOrderToEstimateInstance = new Transf
     .Quantity(Quantity)
     .Amount(Amount)
     .Weight(Weight)
-    .TransactionDate(TransactionDate)
     .ExchangeRate(ExchangeRate);
 ```
 

@@ -19,7 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,6 +60,10 @@ public class EstimateTransferAgencyOrderRequest {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   private TransferAgencyOrderToEstimate order;
+
+  public static final String SERIALIZED_NAME_PRICE_DATE = "priceDate";
+  @SerializedName(SERIALIZED_NAME_PRICE_DATE)
+  private OffsetDateTime priceDate;
 
   public EstimateTransferAgencyOrderRequest() {
   }
@@ -104,6 +110,27 @@ public class EstimateTransferAgencyOrderRequest {
   }
 
 
+  public EstimateTransferAgencyOrderRequest priceDate(OffsetDateTime priceDate) {
+    
+    this.priceDate = priceDate;
+    return this;
+  }
+
+   /**
+   * Get priceDate
+   * @return priceDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPriceDate() {
+    return priceDate;
+  }
+
+
+  public void setPriceDate(OffsetDateTime priceDate) {
+    this.priceDate = priceDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,12 +142,24 @@ public class EstimateTransferAgencyOrderRequest {
     }
     EstimateTransferAgencyOrderRequest estimateTransferAgencyOrderRequest = (EstimateTransferAgencyOrderRequest) o;
     return Objects.equals(this.orderId, estimateTransferAgencyOrderRequest.orderId) &&
-        Objects.equals(this.order, estimateTransferAgencyOrderRequest.order);
+        Objects.equals(this.order, estimateTransferAgencyOrderRequest.order) &&
+        Objects.equals(this.priceDate, estimateTransferAgencyOrderRequest.priceDate);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, order);
+    return Objects.hash(orderId, order, priceDate);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -129,6 +168,7 @@ public class EstimateTransferAgencyOrderRequest {
     sb.append("class EstimateTransferAgencyOrderRequest {\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    priceDate: ").append(toIndentedString(priceDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,6 +193,7 @@ public class EstimateTransferAgencyOrderRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("orderId");
     openapiFields.add("order");
+    openapiFields.add("priceDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

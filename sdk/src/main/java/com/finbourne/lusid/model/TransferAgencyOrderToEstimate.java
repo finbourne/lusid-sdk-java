@@ -18,7 +18,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -87,10 +86,6 @@ public class TransferAgencyOrderToEstimate {
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private java.math.BigDecimal weight;
-
-  public static final String SERIALIZED_NAME_TRANSACTION_DATE = "transactionDate";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_DATE)
-  private OffsetDateTime transactionDate;
 
   public static final String SERIALIZED_NAME_EXCHANGE_RATE = "exchangeRate";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATE)
@@ -288,27 +283,6 @@ public class TransferAgencyOrderToEstimate {
   }
 
 
-  public TransferAgencyOrderToEstimate transactionDate(OffsetDateTime transactionDate) {
-    
-    this.transactionDate = transactionDate;
-    return this;
-  }
-
-   /**
-   * Get transactionDate
-   * @return transactionDate
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getTransactionDate() {
-    return transactionDate;
-  }
-
-
-  public void setTransactionDate(OffsetDateTime transactionDate) {
-    this.transactionDate = transactionDate;
-  }
-
-
   public TransferAgencyOrderToEstimate exchangeRate(java.math.BigDecimal exchangeRate) {
     
     this.exchangeRate = exchangeRate;
@@ -349,7 +323,6 @@ public class TransferAgencyOrderToEstimate {
         (this.quantity.compareTo(transferAgencyOrderToEstimate.getQuantity()) == 0) &&
         (this.amount.compareTo(transferAgencyOrderToEstimate.getAmount()) == 0) &&
         (this.weight.compareTo(transferAgencyOrderToEstimate.getWeight()) == 0) &&
-        Objects.equals(this.transactionDate, transferAgencyOrderToEstimate.transactionDate) &&
         (this.exchangeRate.compareTo(transferAgencyOrderToEstimate.getExchangeRate()) == 0);
   }
 
@@ -359,7 +332,7 @@ public class TransferAgencyOrderToEstimate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, instrumentIdentifierType, instrumentIdentifier, instrumentScope, transactionCategory, currency, quantity, amount, weight, transactionDate, exchangeRate);
+    return Objects.hash(portfolioId, instrumentIdentifierType, instrumentIdentifier, instrumentScope, transactionCategory, currency, quantity, amount, weight, exchangeRate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -382,7 +355,6 @@ public class TransferAgencyOrderToEstimate {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
-    sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
     sb.append("    exchangeRate: ").append(toIndentedString(exchangeRate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -415,7 +387,6 @@ public class TransferAgencyOrderToEstimate {
     openapiFields.add("quantity");
     openapiFields.add("amount");
     openapiFields.add("weight");
-    openapiFields.add("transactionDate");
     openapiFields.add("exchangeRate");
 
     // a set of required properties/fields (JSON key names)

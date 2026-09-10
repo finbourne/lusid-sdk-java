@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **order** | [**TransferAgencyOrderToEstimate**](TransferAgencyOrderToEstimate.md) |  | [optional] [default to TransferAgencyOrderToEstimate]
+**priceDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.EstimateTransferAgencyOrderRequest;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 ResourceId OrderId = new ResourceId();
 TransferAgencyOrderToEstimate Order = new TransferAgencyOrderToEstimate();
+@jakarta.annotation.Nullable OffsetDateTime PriceDate = OffsetDateTime.now();
 
 
 EstimateTransferAgencyOrderRequest estimateTransferAgencyOrderRequestInstance = new EstimateTransferAgencyOrderRequest()
     .OrderId(OrderId)
-    .Order(Order);
+    .Order(Order)
+    .PriceDate(PriceDate);
 ```
 
 

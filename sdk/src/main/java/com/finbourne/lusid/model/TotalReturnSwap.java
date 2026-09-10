@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.AssetLeg;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -81,6 +82,10 @@ public class TotalReturnSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public TotalReturnSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -220,6 +225,27 @@ public class TotalReturnSwap extends LusidInstrument {
   }
 
 
+  public TotalReturnSwap tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -236,6 +262,7 @@ public class TotalReturnSwap extends LusidInstrument {
         Objects.equals(this.fundingLeg, totalReturnSwap.fundingLeg) &&
         Objects.equals(this.additionalPayments, totalReturnSwap.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, totalReturnSwap.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, totalReturnSwap.tradingConventions) &&
         super.equals(o);
   }
 
@@ -245,7 +272,7 @@ public class TotalReturnSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, assetLeg, fundingLeg, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, assetLeg, fundingLeg, additionalPayments, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -266,6 +293,7 @@ public class TotalReturnSwap extends LusidInstrument {
     sb.append("    fundingLeg: ").append(toIndentedString(fundingLeg)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -295,6 +323,7 @@ public class TotalReturnSwap extends LusidInstrument {
     openapiFields.add("fundingLeg");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

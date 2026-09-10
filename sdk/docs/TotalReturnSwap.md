@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **fundingLeg** | [**InstrumentLeg**](InstrumentLeg.md) |  | [default to InstrumentLeg]
 **additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven total return swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. | [optional] [default to List<AdditionalPayment>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 
 ```java
 import com.finbourne.lusid.model.TotalReturnSwap;
@@ -24,6 +25,7 @@ AssetLeg AssetLeg = new AssetLeg();
 InstrumentLeg FundingLeg = new InstrumentLeg();
 @jakarta.annotation.Nullable List<AdditionalPayment> AdditionalPayments = new List<AdditionalPayment>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+TradingConventions TradingConventions = new TradingConventions();
 
 
 TotalReturnSwap totalReturnSwapInstance = new TotalReturnSwap()
@@ -32,7 +34,8 @@ TotalReturnSwap totalReturnSwapInstance = new TotalReturnSwap()
     .AssetLeg(AssetLeg)
     .FundingLeg(FundingLeg)
     .AdditionalPayments(AdditionalPayments)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .TradingConventions(TradingConventions);
 ```
 
 

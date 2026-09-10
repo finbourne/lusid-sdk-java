@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9908
+  version: 0.11.9915
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -56317,7 +56317,8 @@ paths:
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+          \ DividendSuspensionEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56432,7 +56433,8 @@ paths:
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+          \ DividendSuspensionEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56555,7 +56557,8 @@ paths:
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+          \ DividendSuspensionEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56784,7 +56787,8 @@ paths:
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+          \ DividendSuspensionEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -57014,7 +57018,8 @@ paths:
           \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+          \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+          \ DividendSuspensionEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -155864,10 +155869,10 @@ paths:
                     code: investor-1
                   instrumentIdentifierType: LusidInstrumentId
                   instrumentIdentifier: LUID_00000000
+                  instrumentScope: default
                   transactionCategory: Subscription
                   currency: GBP
                   amount: 10000
-                  transactionDate: 2026-08-26T00:00:00.0000000+00:00
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/EstimateTransferAgencyOrderRequest'
@@ -155888,10 +155893,10 @@ paths:
                     code: investor-1
                   instrumentIdentifierType: LusidInstrumentId
                   instrumentIdentifier: LUID_00000000
+                  instrumentScope: default
                   transactionCategory: Subscription
                   currency: GBP
                   amount: 10000
-                  transactionDate: 2026-08-26T00:00:00.0000000+00:00
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/EstimateTransferAgencyOrderRequest'
@@ -155912,10 +155917,10 @@ paths:
                     code: investor-1
                   instrumentIdentifierType: LusidInstrumentId
                   instrumentIdentifier: LUID_00000000
+                  instrumentScope: default
                   transactionCategory: Subscription
                   currency: GBP
                   amount: 10000
-                  transactionDate: 2026-08-26T00:00:00.0000000+00:00
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/EstimateTransferAgencyOrderRequest'
@@ -155936,10 +155941,10 @@ paths:
                     code: investor-1
                   instrumentIdentifierType: LusidInstrumentId
                   instrumentIdentifier: LUID_00000000
+                  instrumentScope: default
                   transactionCategory: Subscription
                   currency: GBP
                   amount: 10000
-                  transactionDate: 2026-08-26T00:00:00.0000000+00:00
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/EstimateTransferAgencyOrderRequest'
@@ -163697,7 +163702,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163808,6 +163814,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - dividendCurrency
@@ -164330,7 +164337,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164441,6 +164449,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -166288,7 +166297,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166399,6 +166409,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -166459,7 +166470,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166570,6 +166582,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amountReduced
@@ -168433,7 +168446,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168544,6 +168558,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -173656,7 +173671,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173767,6 +173783,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -173834,7 +173851,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173945,6 +173963,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -174205,7 +174224,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174316,6 +174336,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - agreedCleanPrice
@@ -174461,7 +174482,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174572,6 +174594,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - agreedCleanPrice
@@ -174849,7 +174872,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174960,6 +174984,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - callPrice
@@ -175025,7 +175050,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175136,6 +175162,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -175248,7 +175275,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175359,6 +175387,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -178007,7 +178036,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -178118,6 +178148,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - exerciseCurrency
@@ -179352,7 +179383,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179463,6 +179495,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -179626,7 +179659,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179737,6 +179771,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -179807,7 +179842,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179918,6 +179954,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashElections
@@ -179988,7 +180025,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180099,6 +180137,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -180336,7 +180375,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180447,6 +180487,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -180684,7 +180725,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180795,6 +180837,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashElections
@@ -181016,7 +181059,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181127,6 +181171,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashFlowValue
@@ -181608,7 +181653,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181719,6 +181765,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -182296,7 +182343,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182407,6 +182455,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - constituentWeight
@@ -182561,7 +182610,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182672,6 +182722,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - changeType
@@ -183579,7 +183630,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -183690,6 +183742,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -184139,7 +184192,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184250,6 +184304,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -184647,7 +184702,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184758,6 +184814,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -184957,7 +185014,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185068,6 +185126,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - domCcy
@@ -185135,7 +185194,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185246,6 +185306,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -188787,7 +188848,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188898,6 +188960,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - consentType
@@ -189225,7 +189288,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189336,6 +189400,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - contractDetails
@@ -189531,7 +189596,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189642,6 +189708,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -194614,7 +194681,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194725,6 +194793,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -199980,7 +200049,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200091,6 +200161,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -200217,7 +200288,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200328,6 +200400,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -200380,7 +200453,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200491,6 +200565,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -200548,7 +200623,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200659,6 +200735,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -200709,7 +200786,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200820,6 +200898,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -201481,7 +201560,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201592,6 +201672,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashElections
@@ -201671,7 +201752,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201782,6 +201864,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashElections
@@ -201790,6 +201873,174 @@ components:
         type: object
       description: Event for dividend reinvestments. Elections for cash or the associated
         security.
+    DividendSuspensionEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          targetPaymentDate:
+            description: "The intrinsically-scheduled dividend payment date this event\
+              \ suppresses. A date the instrument's\r\nown schedule does not pay on\
+              \ leaves the event with no observable effect."
+            format: date-time
+            type: string
+          announcementDate:
+            description: "The date the issuer disclosed the suspension. Optional —\
+              \ null when not recorded. When populated,\r\nmust be <= TargetPaymentDate."
+            format: date-time
+            nullable: true
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            type: string
+        required:
+        - instrumentEventType
+        type: object
+      description: "An issuer's decision to skip one scheduled preferred dividend\
+        \ without defaulting. Suppresses the\r\nintrinsic dividend for the targeted\
+        \ payment date only; the schedule and every other payment continue."
     DrawdownEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -201844,7 +202095,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201955,6 +202207,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -202030,7 +202283,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202141,6 +202395,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -202311,7 +202566,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202422,6 +202678,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -202518,7 +202775,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202629,6 +202887,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - closeOutAmount
@@ -202727,7 +202986,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202838,6 +203098,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -203880,6 +204141,7 @@ components:
         \ estimate is returned against. Supply `Order` to estimate values\r\nthat\
         \ differ from - or do not yet exist in - the saved order."
       example:
+        priceDate: 2000-01-23T04:56:07.000+00:00
         orderId:
           code: code
           scope: scope
@@ -203896,12 +204158,15 @@ components:
           weight: 1.4658129805029452
           instrumentIdentifierType: instrumentIdentifierType
           currency: currency
-          transactionDate: 2000-01-23T04:56:07.000+00:00
       properties:
         orderId:
           $ref: '#/components/schemas/ResourceId'
         order:
           $ref: '#/components/schemas/TransferAgencyOrderToEstimate'
+        priceDate:
+          format: date-time
+          nullable: true
+          type: string
       required:
       - orderId
       type: object
@@ -204146,7 +204411,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204257,6 +204523,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - eventSource
@@ -204920,7 +205187,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205031,6 +205299,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - anchorDate
@@ -205393,7 +205662,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205504,6 +205774,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -207789,7 +208060,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207900,6 +208172,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -207962,7 +208235,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208073,6 +208347,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -208129,7 +208404,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208240,6 +208516,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -208302,7 +208579,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208413,6 +208691,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -208492,7 +208771,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208603,6 +208883,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -211481,7 +211762,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211592,6 +211874,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -214637,7 +214920,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214748,6 +215032,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -214803,7 +215088,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214914,6 +215200,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -215707,7 +215994,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215818,6 +216106,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - domAmountPerUnit
@@ -216783,7 +217072,7 @@ components:
           type: string
         type:
           description: "Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure,\
-            \ RepodOutHolding, ScheduleFailure."
+            \ RepodOutHolding, ScheduleFailure, ModelSubstitution."
           minLength: 1
           type: string
         detail:
@@ -222854,7 +223143,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222965,6 +223255,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - effectiveAt
@@ -223030,7 +223321,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223141,6 +223433,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - anchorDate
@@ -225111,7 +225404,8 @@ components:
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
             \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-            \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+            \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+            \ DividendSuspensionEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -225222,6 +225516,7 @@ components:
           - CapitalCallEvent
           - FundDistributionEvent
           - NavReportEvent
+          - DividendSuspensionEvent
           type: string
       required:
       - instrumentEventType
@@ -225721,6 +226016,7 @@ components:
       - CapitalCallEvent
       - FundDistributionEvent
       - NavReportEvent
+      - DividendSuspensionEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -226712,7 +227008,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -226823,6 +227120,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashElections
@@ -227289,7 +227587,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227400,6 +227699,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -231682,7 +231982,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231793,6 +232094,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashOfferElections
@@ -232354,7 +232656,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232465,6 +232768,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -232534,7 +232838,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232645,6 +232950,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -232722,7 +233028,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232833,6 +233140,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -232928,7 +233236,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -233039,6 +233348,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -234874,7 +235184,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234985,6 +235296,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -235044,7 +235356,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235155,6 +235468,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -235216,7 +235530,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235327,6 +235642,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -235390,7 +235706,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235501,6 +235818,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -235564,7 +235882,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235675,6 +235994,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -235737,7 +236057,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235848,6 +236169,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -236199,7 +236521,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236310,6 +236633,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -237115,7 +237439,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237226,6 +237551,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -237838,7 +238164,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237949,6 +238276,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -238173,7 +238501,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238284,6 +238613,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - exerciseType
@@ -238406,7 +238736,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238517,6 +238848,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - exerciseType
@@ -259394,7 +259726,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -259505,6 +259838,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -259641,7 +259975,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -259752,6 +260087,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -260144,7 +260480,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -260255,6 +260592,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -261254,7 +261592,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261365,6 +261704,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -261423,7 +261763,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261534,6 +261875,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -261594,7 +261936,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261705,6 +262048,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -261828,7 +262172,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261939,6 +262284,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -262005,7 +262351,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262116,6 +262463,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -269131,7 +269479,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -269242,6 +269591,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -270807,7 +271157,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270918,6 +271269,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -271029,7 +271381,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271140,6 +271493,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashOfferElections
@@ -272731,7 +273085,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -272842,6 +273197,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - effectiveAt
@@ -278729,7 +279085,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278840,6 +279197,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -278913,7 +279271,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279024,6 +279383,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -279151,7 +279511,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279262,6 +279623,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - cashOfferElections
@@ -279346,7 +279708,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279457,6 +279820,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - fixingDate
@@ -304024,7 +304388,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304135,6 +304500,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -305110,7 +305476,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305221,6 +305588,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -305402,7 +305770,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305513,6 +305882,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -310145,7 +310515,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -310256,6 +310627,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -310993,7 +311365,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311104,6 +311477,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -311193,7 +311567,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311304,6 +311679,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -311823,7 +312199,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311934,6 +312311,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -311994,7 +312372,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312105,6 +312484,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -312656,7 +313036,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312767,6 +313148,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -312965,7 +313347,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313076,6 +313459,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -313131,7 +313515,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313242,6 +313627,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - currency
@@ -313300,7 +313686,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ AmendCommitmentEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent."
+              \ AmendCommitmentEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ DividendSuspensionEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -313372,7 +313759,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313483,6 +313871,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -313934,6 +314323,8 @@ components:
             type: array
           timeZoneConventions:
             $ref: '#/components/schemas/TimeZoneConventions'
+          tradingConventions:
+            $ref: '#/components/schemas/TradingConventions'
           instrumentType:
             description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
               \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
@@ -321357,7 +321748,8 @@ components:
             \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
             \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-            \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+            \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+            \ DividendSuspensionEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -322399,7 +322791,6 @@ components:
         weight: 1.4658129805029452
         instrumentIdentifierType: instrumentIdentifierType
         currency: currency
-        transactionDate: 2000-01-23T04:56:07.000+00:00
       properties:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
@@ -322441,10 +322832,6 @@ components:
           format: double
           nullable: true
           type: number
-        transactionDate:
-          format: date-time
-          nullable: true
-          type: string
         exchangeRate:
           format: double
           nullable: true
@@ -322515,7 +322902,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -322626,6 +323014,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -323282,7 +323671,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323393,6 +323783,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -325106,7 +325497,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -325217,6 +325609,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - amount
@@ -353256,7 +353649,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -353367,6 +353761,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
@@ -353832,7 +354227,8 @@ components:
               \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent."
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -353943,6 +354339,7 @@ components:
             - CapitalCallEvent
             - FundDistributionEvent
             - NavReportEvent
+            - DividendSuspensionEvent
             type: string
         required:
         - instrumentEventType
