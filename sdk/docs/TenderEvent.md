@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **exDate** | [**OffsetDateTime**](OffsetDateTime.md) | The ex date (entitlement date) of the event. | [optional] [default to OffsetDateTime]
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date you have to be the holder of record in order to participate in the tender. | [optional] [default to OffsetDateTime]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | The payment date of the event. | [optional] [default to OffsetDateTime]
-**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [default to NewInstrument]
+**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. | [optional] [default to String]
 **fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
@@ -26,6 +26,11 @@ Name | Type | Description | Notes
 **responseDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Account-servicer SLA deadline for holder instruction. Optional at the DTO layer;  required under Voluntary participation on bond instrument types. | [optional] [default to OffsetDateTime]
 **marketDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Offeror&#39;s-agent deadline for holder instruction. Optional at the DTO layer;  required under Voluntary participation on bond instrument types. | [optional] [default to OffsetDateTime]
 **earlyResponseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | Optional early-tender deadline. When set, must be on or before ResponseDeadlineDate. | [optional] [default to OffsetDateTime]
+**lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this tender event (NOAC). | [optional] [default to List<LapseElection>]
+**consentAndTenderElections** | [**List&lt;ConsentAndTenderElection&gt;**](ConsentAndTenderElection.md) | List of possible consent-and-tender elections for this tender event (CTEN). | [optional] [default to List<ConsentAndTenderElection>]
+**consentDeniedElections** | [**List&lt;ConsentDeniedElection&gt;**](ConsentDeniedElection.md) | List of possible consent-denied elections for this tender event (CONN). | [optional] [default to List<ConsentDeniedElection>]
+**abstainElections** | [**List&lt;AbstainElection&gt;**](AbstainElection.md) | List of possible abstain elections for this tender event (ABST). | [optional] [default to List<AbstainElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this tender event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 
 ```java
 import com.finbourne.lusid.model.TenderEvent;
@@ -54,6 +59,11 @@ java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable OffsetDateTime ResponseDeadlineDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime MarketDeadlineDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EarlyResponseDeadline = OffsetDateTime.now();
+@jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<ConsentAndTenderElection> ConsentAndTenderElections = new List<ConsentAndTenderElection>();
+@jakarta.annotation.Nullable List<ConsentDeniedElection> ConsentDeniedElections = new List<ConsentDeniedElection>();
+@jakarta.annotation.Nullable List<AbstainElection> AbstainElections = new List<AbstainElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 
 
 TenderEvent tenderEventInstance = new TenderEvent()
@@ -77,7 +87,12 @@ TenderEvent tenderEventInstance = new TenderEvent()
     .ProrationRate(ProrationRate)
     .ResponseDeadlineDate(ResponseDeadlineDate)
     .MarketDeadlineDate(MarketDeadlineDate)
-    .EarlyResponseDeadline(EarlyResponseDeadline);
+    .EarlyResponseDeadline(EarlyResponseDeadline)
+    .LapseElections(LapseElections)
+    .ConsentAndTenderElections(ConsentAndTenderElections)
+    .ConsentDeniedElections(ConsentDeniedElections)
+    .AbstainElections(AbstainElections)
+    .UnknownProceedsElections(UnknownProceedsElections);
 ```
 
 

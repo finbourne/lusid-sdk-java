@@ -11,12 +11,17 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AbstainElection;
 import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.CashOfferElection;
+import com.finbourne.lusid.model.ConsentAndTenderElection;
+import com.finbourne.lusid.model.ConsentDeniedElection;
 import com.finbourne.lusid.model.InstrumentEvent;
+import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.MixedLotConstituentsElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.SecurityOfferElection;
+import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -143,6 +148,26 @@ public class TenderEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EARLY_RESPONSE_DEADLINE)
   private OffsetDateTime earlyResponseDeadline;
 
+  public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
+  @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
+  private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_CONSENT_AND_TENDER_ELECTIONS = "consentAndTenderElections";
+  @SerializedName(SERIALIZED_NAME_CONSENT_AND_TENDER_ELECTIONS)
+  private List<ConsentAndTenderElection> consentAndTenderElections;
+
+  public static final String SERIALIZED_NAME_CONSENT_DENIED_ELECTIONS = "consentDeniedElections";
+  @SerializedName(SERIALIZED_NAME_CONSENT_DENIED_ELECTIONS)
+  private List<ConsentDeniedElection> consentDeniedElections;
+
+  public static final String SERIALIZED_NAME_ABSTAIN_ELECTIONS = "abstainElections";
+  @SerializedName(SERIALIZED_NAME_ABSTAIN_ELECTIONS)
+  private List<AbstainElection> abstainElections;
+
+  public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
+  private List<UnknownProceedsElection> unknownProceedsElections;
+
   public TenderEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -241,7 +266,7 @@ public class TenderEvent extends InstrumentEvent {
    * Get newInstrument
    * @return newInstrument
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public NewInstrument getNewInstrument() {
     return newInstrument;
   }
@@ -620,6 +645,151 @@ public class TenderEvent extends InstrumentEvent {
   }
 
 
+  public TenderEvent lapseElections(List<LapseElection> lapseElections) {
+    
+    this.lapseElections = lapseElections;
+    return this;
+  }
+
+  public TenderEvent addLapseElectionsItem(LapseElection lapseElectionsItem) {
+    if (this.lapseElections == null) {
+      this.lapseElections = new ArrayList<>();
+    }
+    this.lapseElections.add(lapseElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible lapse elections for this tender event (NOAC).
+   * @return lapseElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<LapseElection> getLapseElections() {
+    return lapseElections;
+  }
+
+
+  public void setLapseElections(List<LapseElection> lapseElections) {
+    this.lapseElections = lapseElections;
+  }
+
+
+  public TenderEvent consentAndTenderElections(List<ConsentAndTenderElection> consentAndTenderElections) {
+    
+    this.consentAndTenderElections = consentAndTenderElections;
+    return this;
+  }
+
+  public TenderEvent addConsentAndTenderElectionsItem(ConsentAndTenderElection consentAndTenderElectionsItem) {
+    if (this.consentAndTenderElections == null) {
+      this.consentAndTenderElections = new ArrayList<>();
+    }
+    this.consentAndTenderElections.add(consentAndTenderElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible consent-and-tender elections for this tender event (CTEN).
+   * @return consentAndTenderElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<ConsentAndTenderElection> getConsentAndTenderElections() {
+    return consentAndTenderElections;
+  }
+
+
+  public void setConsentAndTenderElections(List<ConsentAndTenderElection> consentAndTenderElections) {
+    this.consentAndTenderElections = consentAndTenderElections;
+  }
+
+
+  public TenderEvent consentDeniedElections(List<ConsentDeniedElection> consentDeniedElections) {
+    
+    this.consentDeniedElections = consentDeniedElections;
+    return this;
+  }
+
+  public TenderEvent addConsentDeniedElectionsItem(ConsentDeniedElection consentDeniedElectionsItem) {
+    if (this.consentDeniedElections == null) {
+      this.consentDeniedElections = new ArrayList<>();
+    }
+    this.consentDeniedElections.add(consentDeniedElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible consent-denied elections for this tender event (CONN).
+   * @return consentDeniedElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<ConsentDeniedElection> getConsentDeniedElections() {
+    return consentDeniedElections;
+  }
+
+
+  public void setConsentDeniedElections(List<ConsentDeniedElection> consentDeniedElections) {
+    this.consentDeniedElections = consentDeniedElections;
+  }
+
+
+  public TenderEvent abstainElections(List<AbstainElection> abstainElections) {
+    
+    this.abstainElections = abstainElections;
+    return this;
+  }
+
+  public TenderEvent addAbstainElectionsItem(AbstainElection abstainElectionsItem) {
+    if (this.abstainElections == null) {
+      this.abstainElections = new ArrayList<>();
+    }
+    this.abstainElections.add(abstainElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible abstain elections for this tender event (ABST).
+   * @return abstainElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<AbstainElection> getAbstainElections() {
+    return abstainElections;
+  }
+
+
+  public void setAbstainElections(List<AbstainElection> abstainElections) {
+    this.abstainElections = abstainElections;
+  }
+
+
+  public TenderEvent unknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    
+    this.unknownProceedsElections = unknownProceedsElections;
+    return this;
+  }
+
+  public TenderEvent addUnknownProceedsElectionsItem(UnknownProceedsElection unknownProceedsElectionsItem) {
+    if (this.unknownProceedsElections == null) {
+      this.unknownProceedsElections = new ArrayList<>();
+    }
+    this.unknownProceedsElections.add(unknownProceedsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible unknown-proceeds elections for this tender event (UNKNOWN) — the outturn is not yet known.
+   * @return unknownProceedsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<UnknownProceedsElection> getUnknownProceedsElections() {
+    return unknownProceedsElections;
+  }
+
+
+  public void setUnknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    this.unknownProceedsElections = unknownProceedsElections;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -651,6 +821,11 @@ public class TenderEvent extends InstrumentEvent {
         Objects.equals(this.responseDeadlineDate, tenderEvent.responseDeadlineDate) &&
         Objects.equals(this.marketDeadlineDate, tenderEvent.marketDeadlineDate) &&
         Objects.equals(this.earlyResponseDeadline, tenderEvent.earlyResponseDeadline) &&
+        Objects.equals(this.lapseElections, tenderEvent.lapseElections) &&
+        Objects.equals(this.consentAndTenderElections, tenderEvent.consentAndTenderElections) &&
+        Objects.equals(this.consentDeniedElections, tenderEvent.consentDeniedElections) &&
+        Objects.equals(this.abstainElections, tenderEvent.abstainElections) &&
+        Objects.equals(this.unknownProceedsElections, tenderEvent.unknownProceedsElections) &&
         super.equals(o);
   }
 
@@ -660,7 +835,7 @@ public class TenderEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, mixedLotConstituentsElections, offerType, accruedInterestPerUnit, minPieceSize, minIncrement, prorationRate, responseDeadlineDate, marketDeadlineDate, earlyResponseDeadline, super.hashCode());
+    return Objects.hash(announcementDate, exDate, recordDate, paymentDate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, securityOfferElections, cashAndSecurityOfferElections, cashOfferElections, mixedLotConstituentsElections, offerType, accruedInterestPerUnit, minPieceSize, minIncrement, prorationRate, responseDeadlineDate, marketDeadlineDate, earlyResponseDeadline, lapseElections, consentAndTenderElections, consentDeniedElections, abstainElections, unknownProceedsElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -696,6 +871,11 @@ public class TenderEvent extends InstrumentEvent {
     sb.append("    responseDeadlineDate: ").append(toIndentedString(responseDeadlineDate)).append("\n");
     sb.append("    marketDeadlineDate: ").append(toIndentedString(marketDeadlineDate)).append("\n");
     sb.append("    earlyResponseDeadline: ").append(toIndentedString(earlyResponseDeadline)).append("\n");
+    sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    consentAndTenderElections: ").append(toIndentedString(consentAndTenderElections)).append("\n");
+    sb.append("    consentDeniedElections: ").append(toIndentedString(consentDeniedElections)).append("\n");
+    sb.append("    abstainElections: ").append(toIndentedString(abstainElections)).append("\n");
+    sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -740,10 +920,14 @@ public class TenderEvent extends InstrumentEvent {
     openapiFields.add("responseDeadlineDate");
     openapiFields.add("marketDeadlineDate");
     openapiFields.add("earlyResponseDeadline");
+    openapiFields.add("lapseElections");
+    openapiFields.add("consentAndTenderElections");
+    openapiFields.add("consentDeniedElections");
+    openapiFields.add("abstainElections");
+    openapiFields.add("unknownProceedsElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("newInstrument");
     openapiRequiredFields.add("instrumentEventType");
   }
 

@@ -14,9 +14,11 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.CashOfferElection;
 import com.finbourne.lusid.model.InstrumentEvent;
+import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.MixedLotConstituentsElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.SecurityOfferElection;
+import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,6 +76,14 @@ public class MergerEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS = "mixedLotConstituentsElections";
   @SerializedName(SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS)
   private List<MixedLotConstituentsElection> mixedLotConstituentsElections;
+
+  public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
+  @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
+  private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
+  private List<UnknownProceedsElection> unknownProceedsElections;
 
   public static final String SERIALIZED_NAME_EX_DATE = "exDate";
   @SerializedName(SERIALIZED_NAME_EX_DATE)
@@ -220,6 +230,64 @@ public class MergerEvent extends InstrumentEvent {
 
   public void setMixedLotConstituentsElections(List<MixedLotConstituentsElection> mixedLotConstituentsElections) {
     this.mixedLotConstituentsElections = mixedLotConstituentsElections;
+  }
+
+
+  public MergerEvent lapseElections(List<LapseElection> lapseElections) {
+    
+    this.lapseElections = lapseElections;
+    return this;
+  }
+
+  public MergerEvent addLapseElectionsItem(LapseElection lapseElectionsItem) {
+    if (this.lapseElections == null) {
+      this.lapseElections = new ArrayList<>();
+    }
+    this.lapseElections.add(lapseElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible lapse elections for this merger event (NOAC).
+   * @return lapseElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<LapseElection> getLapseElections() {
+    return lapseElections;
+  }
+
+
+  public void setLapseElections(List<LapseElection> lapseElections) {
+    this.lapseElections = lapseElections;
+  }
+
+
+  public MergerEvent unknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    
+    this.unknownProceedsElections = unknownProceedsElections;
+    return this;
+  }
+
+  public MergerEvent addUnknownProceedsElectionsItem(UnknownProceedsElection unknownProceedsElectionsItem) {
+    if (this.unknownProceedsElections == null) {
+      this.unknownProceedsElections = new ArrayList<>();
+    }
+    this.unknownProceedsElections.add(unknownProceedsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible unknown-proceeds elections for this merger event (UNKNOWN) — the outturn is not yet known.
+   * @return unknownProceedsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<UnknownProceedsElection> getUnknownProceedsElections() {
+    return unknownProceedsElections;
+  }
+
+
+  public void setUnknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    this.unknownProceedsElections = unknownProceedsElections;
   }
 
 
@@ -434,6 +502,8 @@ public class MergerEvent extends InstrumentEvent {
         Objects.equals(this.cashAndSecurityOfferElections, mergerEvent.cashAndSecurityOfferElections) &&
         Objects.equals(this.cashOfferElections, mergerEvent.cashOfferElections) &&
         Objects.equals(this.mixedLotConstituentsElections, mergerEvent.mixedLotConstituentsElections) &&
+        Objects.equals(this.lapseElections, mergerEvent.lapseElections) &&
+        Objects.equals(this.unknownProceedsElections, mergerEvent.unknownProceedsElections) &&
         Objects.equals(this.exDate, mergerEvent.exDate) &&
         Objects.equals(this.fractionalUnitsCashCurrency, mergerEvent.fractionalUnitsCashCurrency) &&
         (this.fractionalUnitsCashPrice.compareTo(mergerEvent.getFractionalUnitsCashPrice()) == 0) &&
@@ -452,7 +522,7 @@ public class MergerEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, cashAndSecurityOfferElections, cashOfferElections, mixedLotConstituentsElections, exDate, fractionalUnitsCashCurrency, fractionalUnitsCashPrice, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, newInstrument, paymentDate, recordDate, securityOfferElections, super.hashCode());
+    return Objects.hash(announcementDate, cashAndSecurityOfferElections, cashOfferElections, mixedLotConstituentsElections, lapseElections, unknownProceedsElections, exDate, fractionalUnitsCashCurrency, fractionalUnitsCashPrice, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, newInstrument, paymentDate, recordDate, securityOfferElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -471,6 +541,8 @@ public class MergerEvent extends InstrumentEvent {
     sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
     sb.append("    cashOfferElections: ").append(toIndentedString(cashOfferElections)).append("\n");
     sb.append("    mixedLotConstituentsElections: ").append(toIndentedString(mixedLotConstituentsElections)).append("\n");
+    sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
     sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
@@ -507,6 +579,8 @@ public class MergerEvent extends InstrumentEvent {
     openapiFields.add("cashAndSecurityOfferElections");
     openapiFields.add("cashOfferElections");
     openapiFields.add("mixedLotConstituentsElections");
+    openapiFields.add("lapseElections");
+    openapiFields.add("unknownProceedsElections");
     openapiFields.add("exDate");
     openapiFields.add("fractionalUnitsCashCurrency");
     openapiFields.add("fractionalUnitsCashPrice");

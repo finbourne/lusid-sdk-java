@@ -15,7 +15,10 @@ import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.OptionExerciseElection;
+import com.finbourne.lusid.model.OversubscribeElection;
+import com.finbourne.lusid.model.SellEntitlementElection;
 import com.finbourne.lusid.model.UnitsRatio;
+import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -89,6 +92,18 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_OVERSUBSCRIBE_ELECTIONS = "oversubscribeElections";
+  @SerializedName(SERIALIZED_NAME_OVERSUBSCRIBE_ELECTIONS)
+  private List<OversubscribeElection> oversubscribeElections;
+
+  public static final String SERIALIZED_NAME_SELL_ENTITLEMENT_ELECTIONS = "sellEntitlementElections";
+  @SerializedName(SERIALIZED_NAME_SELL_ENTITLEMENT_ELECTIONS)
+  private List<SellEntitlementElection> sellEntitlementElections;
+
+  public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
+  private List<UnknownProceedsElection> unknownProceedsElections;
 
   public CallOnIntermediateSecuritiesEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -278,6 +293,93 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
   }
 
 
+  public CallOnIntermediateSecuritiesEvent oversubscribeElections(List<OversubscribeElection> oversubscribeElections) {
+    
+    this.oversubscribeElections = oversubscribeElections;
+    return this;
+  }
+
+  public CallOnIntermediateSecuritiesEvent addOversubscribeElectionsItem(OversubscribeElection oversubscribeElectionsItem) {
+    if (this.oversubscribeElections == null) {
+      this.oversubscribeElections = new ArrayList<>();
+    }
+    this.oversubscribeElections.add(oversubscribeElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible oversubscribe elections for this event (OVER) — subscribe for more than the entitled amount.
+   * @return oversubscribeElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<OversubscribeElection> getOversubscribeElections() {
+    return oversubscribeElections;
+  }
+
+
+  public void setOversubscribeElections(List<OversubscribeElection> oversubscribeElections) {
+    this.oversubscribeElections = oversubscribeElections;
+  }
+
+
+  public CallOnIntermediateSecuritiesEvent sellEntitlementElections(List<SellEntitlementElection> sellEntitlementElections) {
+    
+    this.sellEntitlementElections = sellEntitlementElections;
+    return this;
+  }
+
+  public CallOnIntermediateSecuritiesEvent addSellEntitlementElectionsItem(SellEntitlementElection sellEntitlementElectionsItem) {
+    if (this.sellEntitlementElections == null) {
+      this.sellEntitlementElections = new ArrayList<>();
+    }
+    this.sellEntitlementElections.add(sellEntitlementElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible sell-entitlement elections for this event (SLLE) — sell the intermediate securities rather than exercise.
+   * @return sellEntitlementElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<SellEntitlementElection> getSellEntitlementElections() {
+    return sellEntitlementElections;
+  }
+
+
+  public void setSellEntitlementElections(List<SellEntitlementElection> sellEntitlementElections) {
+    this.sellEntitlementElections = sellEntitlementElections;
+  }
+
+
+  public CallOnIntermediateSecuritiesEvent unknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    
+    this.unknownProceedsElections = unknownProceedsElections;
+    return this;
+  }
+
+  public CallOnIntermediateSecuritiesEvent addUnknownProceedsElectionsItem(UnknownProceedsElection unknownProceedsElectionsItem) {
+    if (this.unknownProceedsElections == null) {
+      this.unknownProceedsElections = new ArrayList<>();
+    }
+    this.unknownProceedsElections.add(unknownProceedsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.
+   * @return unknownProceedsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<UnknownProceedsElection> getUnknownProceedsElections() {
+    return unknownProceedsElections;
+  }
+
+
+  public void setUnknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    this.unknownProceedsElections = unknownProceedsElections;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -296,6 +398,9 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
         Objects.equals(this.exerciseCurrency, callOnIntermediateSecuritiesEvent.exerciseCurrency) &&
         Objects.equals(this.optionExerciseElections, callOnIntermediateSecuritiesEvent.optionExerciseElections) &&
         Objects.equals(this.lapseElections, callOnIntermediateSecuritiesEvent.lapseElections) &&
+        Objects.equals(this.oversubscribeElections, callOnIntermediateSecuritiesEvent.oversubscribeElections) &&
+        Objects.equals(this.sellEntitlementElections, callOnIntermediateSecuritiesEvent.sellEntitlementElections) &&
+        Objects.equals(this.unknownProceedsElections, callOnIntermediateSecuritiesEvent.unknownProceedsElections) &&
         super.equals(o);
   }
 
@@ -305,7 +410,7 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiryDate, paymentDate, newInstrument, unitsRatio, price, exerciseCurrency, optionExerciseElections, lapseElections, super.hashCode());
+    return Objects.hash(expiryDate, paymentDate, newInstrument, unitsRatio, price, exerciseCurrency, optionExerciseElections, lapseElections, oversubscribeElections, sellEntitlementElections, unknownProceedsElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -328,6 +433,9 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
     sb.append("    exerciseCurrency: ").append(toIndentedString(exerciseCurrency)).append("\n");
     sb.append("    optionExerciseElections: ").append(toIndentedString(optionExerciseElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    oversubscribeElections: ").append(toIndentedString(oversubscribeElections)).append("\n");
+    sb.append("    sellEntitlementElections: ").append(toIndentedString(sellEntitlementElections)).append("\n");
+    sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -359,6 +467,9 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
     openapiFields.add("exerciseCurrency");
     openapiFields.add("optionExerciseElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("oversubscribeElections");
+    openapiFields.add("sellEntitlementElections");
+    openapiFields.add("unknownProceedsElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

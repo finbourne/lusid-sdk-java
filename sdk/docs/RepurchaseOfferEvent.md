@@ -17,6 +17,11 @@ Name | Type | Description | Notes
 **minPieceSize** | **java.math.BigDecimal** | Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set. | [optional] [default to java.math.BigDecimal]
 **minIncrement** | **java.math.BigDecimal** | Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive. | [optional] [default to java.math.BigDecimal]
 **accruedInterestPerUnit** | **java.math.BigDecimal** | Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data. | [optional] [default to java.math.BigDecimal]
+**consentAndTenderElections** | [**List&lt;ConsentAndTenderElection&gt;**](ConsentAndTenderElection.md) | List of possible consent-and-tender elections for this event (CTEN) — tender the holding and grant consent together. | [optional] [default to List<ConsentAndTenderElection>]
+**consentGrantedElections** | [**List&lt;ConsentGrantedElection&gt;**](ConsentGrantedElection.md) | List of possible consent-granted elections for this event (CONY) — vote in favour, optionally attracting a consent fee. | [optional] [default to List<ConsentGrantedElection>]
+**consentDeniedElections** | [**List&lt;ConsentDeniedElection&gt;**](ConsentDeniedElection.md) | List of possible consent-denied elections for this event (CONN) — vote against the proposal. | [optional] [default to List<ConsentDeniedElection>]
+**abstainElections** | [**List&lt;AbstainElection&gt;**](AbstainElection.md) | List of possible abstain elections for this event (ABST) — decline to vote on the consent. | [optional] [default to List<AbstainElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 
 ```java
 import com.finbourne.lusid.model.RepurchaseOfferEvent;
@@ -36,6 +41,11 @@ java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal MinPieceSize = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal MinIncrement = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal AccruedInterestPerUnit = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<ConsentAndTenderElection> ConsentAndTenderElections = new List<ConsentAndTenderElection>();
+@jakarta.annotation.Nullable List<ConsentGrantedElection> ConsentGrantedElections = new List<ConsentGrantedElection>();
+@jakarta.annotation.Nullable List<ConsentDeniedElection> ConsentDeniedElections = new List<ConsentDeniedElection>();
+@jakarta.annotation.Nullable List<AbstainElection> AbstainElections = new List<AbstainElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 
 
 RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
@@ -50,7 +60,12 @@ RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
     .EarlyResponseDeadline(EarlyResponseDeadline)
     .MinPieceSize(MinPieceSize)
     .MinIncrement(MinIncrement)
-    .AccruedInterestPerUnit(AccruedInterestPerUnit);
+    .AccruedInterestPerUnit(AccruedInterestPerUnit)
+    .ConsentAndTenderElections(ConsentAndTenderElections)
+    .ConsentGrantedElections(ConsentGrantedElections)
+    .ConsentDeniedElections(ConsentDeniedElections)
+    .AbstainElections(AbstainElections)
+    .UnknownProceedsElections(UnknownProceedsElections);
 ```
 
 

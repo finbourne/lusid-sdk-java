@@ -75,7 +75,9 @@ public enum PricingModel {
   
   HULLWHITE1F("HullWhite1F"),
   
-  CAPITALINTERESTPRICER("CapitalInterestPricer");
+  CAPITALINTERESTPRICER("CapitalInterestPricer"),
+  
+  DISCOUNTEDFORWARD("DiscountedForward");
 
   private String value;
 

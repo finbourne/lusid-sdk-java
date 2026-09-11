@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9916
+  version: 0.11.9924
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -56318,7 +56318,7 @@ paths:
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
           \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-          \ DividendSuspensionEvent."
+          \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56434,7 +56434,7 @@ paths:
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
           \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-          \ DividendSuspensionEvent."
+          \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56558,7 +56558,7 @@ paths:
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
           \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-          \ DividendSuspensionEvent."
+          \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -56788,7 +56788,7 @@ paths:
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
           \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-          \ DividendSuspensionEvent."
+          \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -57019,7 +57019,7 @@ paths:
           \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
           \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
           \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-          \ DividendSuspensionEvent."
+          \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -72904,11 +72904,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata\
-        \ rule"
+      summary: "GetQuotesAccessMetadataRule: Get a quote access metadata rule"
       tags:
       - Quotes
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/metadata/quotes/rules/{scope}:
     delete:
@@ -73020,11 +73019,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access\
-        \ Metadata Rule"
+      summary: "DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule"
       tags:
       - Quotes
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
       description: Get all the quote access metadata rules in the specified scope
@@ -73085,11 +73083,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access\
-        \ metadata rules in a scope"
+      summary: "ListQuotesAccessMetadataRules: List all quote access metadata rules\
+        \ in a scope"
       tags:
       - Quotes
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
       description: "Update or insert one Quote Access Metadata Rule in a single scope.\
@@ -73219,11 +73217,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access\
-        \ Metadata Rule. This creates or updates the data in LUSID."
+      summary: "UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule.\
+        \ This creates or updates the data in LUSID."
       tags:
       - Quotes
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/metadata/versions:
@@ -160591,6 +160589,26 @@ components:
       - displayName
       - portfolioIds
       type: object
+    AbstainElection:
+      additionalProperties: false
+      description: Election to abstain from voting on the proposed action (ABST).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
+      type: object
     AcceptEstimateValuationPointResponse:
       additionalProperties: false
       description: The Valuation Point Data Response for AcceptEstimate called on
@@ -163703,7 +163721,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -163815,6 +163833,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - dividendCurrency
@@ -164338,7 +164357,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -164450,6 +164469,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -164548,7 +164568,8 @@ components:
                 - values
             key: key
         taxLots:
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -164559,7 +164580,8 @@ components:
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -164662,7 +164684,8 @@ components:
                 - values
             key: key
         taxLots:
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -164673,7 +164696,8 @@ components:
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -165295,12 +165319,11 @@ components:
         difference:
           description: "The measured magnitude of the difference, ToString(ABS(leftValue\
             \ - rightValue))."
-          minLength: 1
+          nullable: true
           type: string
         appliedTolerance:
           $ref: '#/components/schemas/ToleranceBase'
       required:
-      - difference
       - ruleName
       type: object
     AggregateSpec:
@@ -166298,7 +166321,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166410,6 +166433,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -166471,7 +166495,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -166583,6 +166607,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amountReduced
@@ -168447,7 +168472,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -168559,6 +168584,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -168748,7 +168774,8 @@ components:
                 key: key
             instrumentScope: instrumentScope
             taxLots:
-            - variationMarginPortfolioCcy: 2.3021358869347655
+            - amortisedCost: 7.061401241503109
+              variationMarginPortfolioCcy: 2.3021358869347655
               purchaseDate: 2000-01-23T04:56:07.000+00:00
               notionalCost: 5.962133916683182
               variationMargin: 5.637376656633329
@@ -168759,7 +168786,8 @@ components:
               units: 0.8008281904610115
               settlementDate: 2000-01-23T04:56:07.000+00:00
               portfolioCost: 6.027456183070403
-            - variationMarginPortfolioCcy: 2.3021358869347655
+            - amortisedCost: 7.061401241503109
+              variationMarginPortfolioCcy: 2.3021358869347655
               purchaseDate: 2000-01-23T04:56:07.000+00:00
               notionalCost: 5.962133916683182
               variationMargin: 5.637376656633329
@@ -173672,7 +173700,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173784,6 +173812,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -173852,7 +173881,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -173964,6 +173993,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -174225,7 +174255,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174337,6 +174367,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -174360,10 +174391,19 @@ components:
           bondForwardProjectionType:
             description: "Determines how the forward price of the deliverable bond\
               \ is projected to the settlement date.\r\n \r\nSupported string (enumeration)\
-              \ values are: [QuotedContractPrice, ForwardProjectedFromFundingCurve].\r\
-              \nDefaults to QuotedContractPrice - the original quote-driven behaviour\
-              \ - when not supplied, so\r\noptions persisted before this property\
-              \ existed keep the behaviour they were saved under."
+              \ values are: [QuotedContractPrice, ForwardProjectedFromFundingCurve,\r\
+              \nDeliverableSpreadAnchoredToQuote].\r\nDefaults to QuotedContractPrice\
+              \ - the original quote-driven behaviour - when not supplied, so\r\n\
+              options persisted before this property existed keep the behaviour they\
+              \ were saved under.\r\n \r\nForwardProjectedFromFundingCurve carries\
+              \ the deliverable's quoted dirty spot to settlement on the\r\ndiscount\
+              \ curve. DeliverableSpreadAnchoredToQuote does the same carry but models\
+              \ that spot as well,\r\noff the spread anchored for the deliverable\
+              \ in the base market, which is what gives the forward\r\nthe deliverable's\
+              \ own curve delta rather than only the carry's - the larger of the two\
+              \ terms. It\r\nrequires the deliverable to be a mastered Bond or ComplexBond\
+              \ settling in the forward's own\r\ncurrency, and a credit-spread curve\
+              \ or ZSpread quote to be resolvable for it."
             nullable: true
             type: string
           modelOptionsType:
@@ -174483,7 +174523,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174595,6 +174635,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -174873,7 +174914,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -174985,6 +175026,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - callPrice
@@ -175051,7 +175093,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175163,6 +175205,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -175276,7 +175319,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -175388,6 +175431,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -178004,6 +178048,27 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          oversubscribeElections:
+            description: List of possible oversubscribe elections for this event (OVER)
+              — subscribe for more than the entitled amount.
+            items:
+              $ref: '#/components/schemas/OversubscribeElection'
+            nullable: true
+            type: array
+          sellEntitlementElections:
+            description: List of possible sell-entitlement elections for this event
+              (SLLE) — sell the intermediate securities rather than exercise.
+            items:
+              $ref: '#/components/schemas/SellEntitlementElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -178037,7 +178102,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -178149,6 +178214,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - exerciseCurrency
@@ -179384,7 +179450,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179496,6 +179562,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -179660,7 +179727,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179772,6 +179839,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -179843,7 +179911,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -179955,6 +180023,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -180026,7 +180095,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180138,6 +180207,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -180376,7 +180446,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180488,6 +180558,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -180726,7 +180797,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -180838,6 +180909,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -181060,7 +181132,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181172,6 +181244,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashFlowValue
@@ -181654,7 +181727,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -181766,6 +181839,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -182344,7 +182418,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182456,6 +182530,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - constituentWeight
@@ -182611,7 +182686,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -182723,6 +182798,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - changeType
@@ -183631,7 +183707,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -183743,6 +183819,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -184193,7 +184270,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184305,6 +184382,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -184703,7 +184781,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184815,6 +184893,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -185015,7 +185094,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185127,6 +185206,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - domCcy
@@ -185195,7 +185275,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -185307,6 +185387,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -188592,18 +188673,14 @@ components:
           - resultKeyRuleType: Invalid
           - resultKeyRuleType: Invalid
           options:
-            mbsValuationUsingHoldingCurrentFace: true
-            fxForwardContractsAsUnitsInBothLegs: true
             scaleInstrumentAccruedOverrideByContractSize: true
-            fundingCurveByCurrency:
-              key: fundingCurveByCurrency
             findOrCalculate: findOrCalculate
             convertSrsCashFlowsToPortfolioCurrency: true
-            modelSelection:
-              library: Lusid
-              model: SimpleStatic
-            allowPartiallySuccessfulEvaluation: true
-            findOrCalculateWriteThrough: true
+            inflationConvexity:
+              nominalIndexCorrelation: 2.3021358869347655
+              indexVolatility: 7.061401241503109
+              nominalMeanReversion: 3.616076749251911
+              nominalVolatility: 9.301444243932576
             useInstrumentScaleFactorAsDefault: true
             riskBumpOptions:
               deltaShift: 0.8008281904610115
@@ -188616,19 +188693,28 @@ components:
                 key: 1.4658129805029452
               parityRelativeTolerance: 5.637376656633329
             conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-            returnZeroPv:
-              instrumentMatured: true
             enableUseOfCachedUnitResults: true
-            windowValuationOnInstrumentStartEnd: true
             useInstrumentTypeToDeterminePricer: true
-            validateDomesticAndQuoteCurrenciesAreConsistent: true
             riskEngine: riskEngine
-            enableLegLevelInferenceForCustomSrsColumns: true
-            defaultPoolFactorsToUnity: true
             produceSeparateResultForLinearOtcLegs: true
-            removeContingentCashflowsInPaymentDiary: true
             useChildSubHoldingKeysForPortfolioExpansion: true
             allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+            mbsValuationUsingHoldingCurrentFace: true
+            fxForwardContractsAsUnitsInBothLegs: true
+            fundingCurveByCurrency:
+              key: fundingCurveByCurrency
+            modelSelection:
+              library: Lusid
+              model: SimpleStatic
+            allowPartiallySuccessfulEvaluation: true
+            findOrCalculateWriteThrough: true
+            returnZeroPv:
+              instrumentMatured: true
+            windowValuationOnInstrumentStartEnd: true
+            validateDomesticAndQuoteCurrenciesAreConsistent: true
+            enableLegLevelInferenceForCustomSrsColumns: true
+            defaultPoolFactorsToUnity: true
+            removeContingentCashflowsInPaymentDiary: true
           accrualDefinition: accrualDefinition
           holdingPricingInfo:
             fallbackField: fallbackField
@@ -188767,6 +188853,91 @@ components:
     ConfirmClosedPeriodRequest:
       additionalProperties: false
       type: object
+    ConsentAndExchangeElection:
+      additionalProperties: false
+      description: "Election to both grant consent and exchange the holding (CEXC),\
+        \ at a given units ratio."
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+        unitsRatio:
+          $ref: '#/components/schemas/UnitsRatio'
+      required:
+      - electionKey
+      - unitsRatio
+      type: object
+    ConsentAndTenderElection:
+      additionalProperties: false
+      description: "Election to both grant consent and tender the holding (CTEN),\
+        \ optionally for a tender offer price and consent fee."
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+        tenderOfferPrice:
+          description: Optional. Price per unit offered for the tendered holding.
+          format: double
+          nullable: true
+          type: number
+        tenderOfferCurrency:
+          description: Optional. Currency of the tender offer. Required if a tender
+            offer price is provided.
+          nullable: true
+          type: string
+        consentFeePrice:
+          description: Optional. The consent fee paid per unit for granting consent.
+          format: double
+          nullable: true
+          type: number
+        consentFeeCurrency:
+          description: Optional. Currency of the consent fee. Required if a consent
+            fee price is provided.
+          nullable: true
+          type: string
+      required:
+      - electionKey
+      type: object
+    ConsentDeniedElection:
+      additionalProperties: false
+      description: Election to deny consent to the proposed action (CONN).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
+      type: object
     ConsentEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -188810,10 +188981,29 @@ components:
             nullable: true
             type: array
           lapseElections:
-            description: "List of possible lapse elections for this event (NOAC, CONN,\
-              \ ABST)."
+            description: List of possible lapse elections for this event (NOAC).
             items:
               $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          consentGrantedElections:
+            description: "List of possible consent-granted elections for this event\
+              \ (CONY), each optionally carrying a consent fee."
+            items:
+              $ref: '#/components/schemas/ConsentGrantedElection'
+            nullable: true
+            type: array
+          consentDeniedElections:
+            description: List of possible consent-denied elections for this event
+              (CONN).
+            items:
+              $ref: '#/components/schemas/ConsentDeniedElection'
+            nullable: true
+            type: array
+          abstainElections:
+            description: List of possible abstain elections for this event (ABST).
+            items:
+              $ref: '#/components/schemas/AbstainElection'
             nullable: true
             type: array
           instrumentEventType:
@@ -188849,7 +189039,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188961,6 +189151,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - consentType
@@ -188969,6 +189160,37 @@ components:
       description: "Consent Event (CONS) — a voluntary corporate action where an issuer\
         \ seeks approval\r\nfrom security holders to amend the terms of an outstanding\
         \ instrument."
+    ConsentGrantedElection:
+      additionalProperties: false
+      description: "Election to grant consent to the proposed action (CONY), optionally\
+        \ in return for a consent fee."
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+        consentFeePrice:
+          description: Optional. The consent fee paid per unit for granting consent.
+          format: double
+          nullable: true
+          type: number
+        consentFeeCurrency:
+          description: Optional. Currency of the consent fee. Required if a consent
+            fee price is provided.
+          nullable: true
+          type: string
+      required:
+      - electionKey
+      type: object
     ConstantVolatilitySurface:
       allOf:
       - $ref: '#/components/schemas/ComplexMarketData'
@@ -189289,7 +189511,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189401,6 +189623,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - contractDetails
@@ -189545,6 +189768,13 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           mixedLotConstituentsElections:
             description: "List of possible mixed lot offers for this conversion event,\
               \ if any. Each election converts the parent position\r\ninto one or\
@@ -189597,7 +189827,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189709,6 +189939,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -192485,18 +192716,14 @@ components:
             - resultKeyRuleType: Invalid
             - resultKeyRuleType: Invalid
             options:
-              mbsValuationUsingHoldingCurrentFace: true
-              fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
-              fundingCurveByCurrency:
-                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
-              modelSelection:
-                library: Lusid
-                model: SimpleStatic
-              allowPartiallySuccessfulEvaluation: true
-              findOrCalculateWriteThrough: true
+              inflationConvexity:
+                nominalIndexCorrelation: 2.3021358869347655
+                indexVolatility: 7.061401241503109
+                nominalMeanReversion: 3.616076749251911
+                nominalVolatility: 9.301444243932576
               useInstrumentScaleFactorAsDefault: true
               riskBumpOptions:
                 deltaShift: 0.8008281904610115
@@ -192509,19 +192736,28 @@ components:
                   key: 1.4658129805029452
                 parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-              returnZeroPv:
-                instrumentMatured: true
               enableUseOfCachedUnitResults: true
-              windowValuationOnInstrumentStartEnd: true
               useInstrumentTypeToDeterminePricer: true
-              validateDomesticAndQuoteCurrenciesAreConsistent: true
               riskEngine: riskEngine
-              enableLegLevelInferenceForCustomSrsColumns: true
-              defaultPoolFactorsToUnity: true
               produceSeparateResultForLinearOtcLegs: true
-              removeContingentCashflowsInPaymentDiary: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+              mbsValuationUsingHoldingCurrentFace: true
+              fxForwardContractsAsUnitsInBothLegs: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
+              modelSelection:
+                library: Lusid
+                model: SimpleStatic
+              allowPartiallySuccessfulEvaluation: true
+              findOrCalculateWriteThrough: true
+              returnZeroPv:
+                instrumentMatured: true
+              windowValuationOnInstrumentStartEnd: true
+              validateDomesticAndQuoteCurrenciesAreConsistent: true
+              enableLegLevelInferenceForCustomSrsColumns: true
+              defaultPoolFactorsToUnity: true
+              removeContingentCashflowsInPaymentDiary: true
             accrualDefinition: accrualDefinition
             holdingPricingInfo:
               fallbackField: fallbackField
@@ -194682,7 +194918,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194794,6 +195030,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -200050,7 +200287,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200162,6 +200399,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -200289,7 +200527,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200401,6 +200639,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -200454,7 +200693,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200566,6 +200805,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -200624,7 +200864,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200736,6 +200976,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -200787,7 +201028,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -200899,6 +201140,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -201561,7 +201803,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201673,6 +201915,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -201753,7 +201996,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -201865,6 +202108,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -201922,7 +202166,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202034,6 +202278,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -202096,7 +202341,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202208,6 +202453,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -202284,7 +202530,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202396,6 +202642,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -202469,6 +202716,13 @@ components:
               \ has no security leg to multiply."
             items:
               $ref: '#/components/schemas/MixedLotConstituentsElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
             nullable: true
             type: array
           responseDeadlineDate:
@@ -202567,7 +202821,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202679,6 +202933,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -202776,7 +203031,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202888,6 +203143,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - closeOutAmount
@@ -202987,7 +203243,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -203099,6 +203355,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -203320,7 +203577,9 @@ components:
           description: "Available values: CashElection, CashAndSecurityOfferElection,\
             \ CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection,\
             \ SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection,\
-            \ SubscribeElection."
+            \ SubscribeElection, ConsentGrantedElection, ConsentDeniedElection, AbstainElection,\
+            \ ConsentAndTenderElection, ConsentAndExchangeElection, RetainElection,\
+            \ OversubscribeElection, SellEntitlementElection, UnknownProceedsElection."
           minLength: 1
           type: string
         cardinality:
@@ -204349,6 +204608,34 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          cashAndSecurityOfferElections:
+            description: List of possible CashAndSecurityOfferElections for this exchange
+              offer event.
+            items:
+              $ref: '#/components/schemas/CashAndSecurityOfferElection'
+            nullable: true
+            type: array
+          consentAndExchangeElections:
+            description: List of possible consent-and-exchange elections for this
+              event (CTEN-style consent paired with the exchange).
+            items:
+              $ref: '#/components/schemas/ConsentAndExchangeElection'
+            nullable: true
+            type: array
+          abstainElections:
+            description: List of possible abstain elections for this event (ABST)
+              — decline to vote on the consent.
+            items:
+              $ref: '#/components/schemas/AbstainElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           minPieceSize:
             format: double
             nullable: true
@@ -204412,7 +204699,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204524,6 +204811,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - eventSource
@@ -205188,7 +205476,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205300,6 +205588,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -205663,7 +205952,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205775,6 +206064,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -208061,7 +208351,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208173,6 +208463,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -208236,7 +208527,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208348,6 +208639,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -208405,7 +208697,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208517,6 +208809,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -208580,7 +208873,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208692,6 +208985,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -208772,7 +209066,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208884,6 +209178,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -211763,7 +212058,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211875,6 +212170,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -214921,7 +215217,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215033,6 +215329,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -215089,7 +215386,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215201,6 +215498,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -215995,7 +216293,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216107,6 +216405,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - domAmountPerUnit
@@ -218251,18 +218550,14 @@ components:
             - resultKeyRuleType: Invalid
             - resultKeyRuleType: Invalid
             options:
-              mbsValuationUsingHoldingCurrentFace: true
-              fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
-              fundingCurveByCurrency:
-                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
-              modelSelection:
-                library: Lusid
-                model: SimpleStatic
-              allowPartiallySuccessfulEvaluation: true
-              findOrCalculateWriteThrough: true
+              inflationConvexity:
+                nominalIndexCorrelation: 2.3021358869347655
+                indexVolatility: 7.061401241503109
+                nominalMeanReversion: 3.616076749251911
+                nominalVolatility: 9.301444243932576
               useInstrumentScaleFactorAsDefault: true
               riskBumpOptions:
                 deltaShift: 0.8008281904610115
@@ -218275,19 +218570,28 @@ components:
                   key: 1.4658129805029452
                 parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-              returnZeroPv:
-                instrumentMatured: true
               enableUseOfCachedUnitResults: true
-              windowValuationOnInstrumentStartEnd: true
               useInstrumentTypeToDeterminePricer: true
-              validateDomesticAndQuoteCurrenciesAreConsistent: true
               riskEngine: riskEngine
-              enableLegLevelInferenceForCustomSrsColumns: true
-              defaultPoolFactorsToUnity: true
               produceSeparateResultForLinearOtcLegs: true
-              removeContingentCashflowsInPaymentDiary: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+              mbsValuationUsingHoldingCurrentFace: true
+              fxForwardContractsAsUnitsInBothLegs: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
+              modelSelection:
+                library: Lusid
+                model: SimpleStatic
+              allowPartiallySuccessfulEvaluation: true
+              findOrCalculateWriteThrough: true
+              returnZeroPv:
+                instrumentMatured: true
+              windowValuationOnInstrumentStartEnd: true
+              validateDomesticAndQuoteCurrenciesAreConsistent: true
+              enableLegLevelInferenceForCustomSrsColumns: true
+              defaultPoolFactorsToUnity: true
+              removeContingentCashflowsInPaymentDiary: true
             accrualDefinition: accrualDefinition
             holdingPricingInfo:
               fallbackField: fallbackField
@@ -220643,7 +220947,8 @@ components:
             key: key
         instrumentScope: instrumentScope
         taxLots:
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -220654,7 +220959,8 @@ components:
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -220759,7 +221065,8 @@ components:
             key: key
         instrumentScope: instrumentScope
         taxLots:
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -220770,7 +221077,8 @@ components:
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
-        - variationMarginPortfolioCcy: 2.3021358869347655
+        - amortisedCost: 7.061401241503109
+          variationMarginPortfolioCcy: 2.3021358869347655
           purchaseDate: 2000-01-23T04:56:07.000+00:00
           notionalCost: 5.962133916683182
           variationMargin: 5.637376656633329
@@ -221489,7 +221797,8 @@ components:
               key: key
           instrumentScope: instrumentScope
           taxLots:
-          - variationMarginPortfolioCcy: 2.3021358869347655
+          - amortisedCost: 7.061401241503109
+            variationMarginPortfolioCcy: 2.3021358869347655
             purchaseDate: 2000-01-23T04:56:07.000+00:00
             notionalCost: 5.962133916683182
             variationMargin: 5.637376656633329
@@ -221500,7 +221809,8 @@ components:
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
-          - variationMarginPortfolioCcy: 2.3021358869347655
+          - amortisedCost: 7.061401241503109
+            variationMarginPortfolioCcy: 2.3021358869347655
             purchaseDate: 2000-01-23T04:56:07.000+00:00
             notionalCost: 5.962133916683182
             variationMargin: 5.637376656633329
@@ -221552,7 +221862,8 @@ components:
               key: key
           instrumentScope: instrumentScope
           taxLots:
-          - variationMarginPortfolioCcy: 2.3021358869347655
+          - amortisedCost: 7.061401241503109
+            variationMarginPortfolioCcy: 2.3021358869347655
             purchaseDate: 2000-01-23T04:56:07.000+00:00
             notionalCost: 5.962133916683182
             variationMargin: 5.637376656633329
@@ -221563,7 +221874,8 @@ components:
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
-          - variationMarginPortfolioCcy: 2.3021358869347655
+          - amortisedCost: 7.061401241503109
+            variationMarginPortfolioCcy: 2.3021358869347655
             purchaseDate: 2000-01-23T04:56:07.000+00:00
             notionalCost: 5.962133916683182
             variationMargin: 5.637376656633329
@@ -222303,6 +222615,49 @@ components:
       required:
       - classificationCode
       - classificationSystemName
+      type: object
+    InflationConvexityOptions:
+      additionalProperties: false
+      description: "Parameters of the Jarrow-Yildirim convexity correction applied\
+        \ to projected inflation index\r\nvalues. Unlike most option blocks there\
+        \ is no defaulting here: nothing in the pricing chain\r\ninfers an index volatility,\
+        \ a nominal volatility or a correlation from market data, so an armed\r\n\
+        correction is entirely the caller's stated view and every member must be supplied."
+      example:
+        nominalIndexCorrelation: 2.3021358869347655
+        indexVolatility: 7.061401241503109
+        nominalMeanReversion: 3.616076749251911
+        nominalVolatility: 9.301444243932576
+      properties:
+        nominalIndexCorrelation:
+          description: "Correlation between the inflation index and the nominal short\
+            \ rate, in [-1, 1]. A positive\r\ncorrelation makes the factor greater\
+            \ than one for a projection funded later than the curve's\r\nown observation\
+            \ basis."
+          format: double
+          nullable: true
+          type: number
+        indexVolatility:
+          description: "Lognormal volatility of the inflation index, as a decimal\
+            \ (0.0095 is 0.95%). Must be\r\nstrictly positive - a zero volatility\
+            \ disarms the correction arithmetically, which is what\r\nomitting the\
+            \ whole block already expresses."
+          format: double
+          nullable: true
+          type: number
+        nominalVolatility:
+          description: "Volatility of the nominal short rate in the Hull-White dynamics\
+            \ the correction assumes, as a\r\ndecimal (0.008 is 80bp). Must be strictly\
+            \ positive."
+          format: double
+          nullable: true
+          type: number
+        nominalMeanReversion:
+          description: "Mean reversion speed of the nominal short rate, per year.\
+            \ Must be strictly positive: the\r\nclosed form divides by it."
+          format: double
+          nullable: true
+          type: number
       type: object
     InflationCurveData:
       allOf:
@@ -223144,7 +223499,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223256,6 +223611,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -223322,7 +223678,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223434,6 +223790,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -225405,7 +225762,7 @@ components:
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
             \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
             \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-            \ DividendSuspensionEvent."
+            \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -225517,6 +225874,7 @@ components:
           - FundDistributionEvent
           - NavReportEvent
           - DividendSuspensionEvent
+          - LoanInterestCapitalisationEvent
           type: string
       required:
       - instrumentEventType
@@ -226017,6 +226375,7 @@ components:
       - FundDistributionEvent
       - NavReportEvent
       - DividendSuspensionEvent
+      - LoanInterestCapitalisationEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -227009,7 +227368,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227121,6 +227480,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -227588,7 +227948,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227700,6 +228060,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -231983,7 +232344,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232095,6 +232456,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -232657,7 +233019,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232769,6 +233131,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -232839,7 +233202,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232951,6 +233314,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -232969,6 +233333,191 @@ components:
         \ wire. Buyer-vs-seller sign is applied downstream by the transaction-template\r\
         \nspecification, mirroring how BuyFacility / SellFacility already invert their\
         \ cash legs against the same payload."
+    LoanInterestCapitalisationEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          paymentDate:
+            description: "Date that the capitalisation is effective. Capitalisation\
+              \ has no cash to settle, so nothing can lag\r\nthe accrual it capitalises\
+              \ and this is the ex-date."
+            format: date-time
+            type: string
+          exDate:
+            description: Date that the in-kind accrued interest is calculated up until.
+            format: date-time
+            type: string
+          currency:
+            description: Currency of the capitalised amount.
+            type: string
+          fraction:
+            description: "Fraction of the in-kind accrued on the holding to be capitalised.\
+              \ Must be between 0 and 1, inclusive.\r\nDefaults to 1 if not set. The\
+              \ accrual is reset in full whatever this is: an issuer who elects to\r\
+              \ncapitalise part of the in-kind leg has still settled the period."
+            format: double
+            type: number
+          lapseElections:
+            description: "Election for controlling whether the interest is capitalised\
+              \ automatically or not.\r\nExactly one election must be provided."
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
+            type: string
+        required:
+        - currency
+        - instrumentEventType
+        type: object
+      description: "Event to signify that interest accrued against a loan holding\
+        \ is settled in kind: the amount is\r\ncapitalised into the loan's balance\
+        \ instead of being paid in cash."
     LoanInterestRepaymentEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -233029,7 +233578,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -233141,6 +233690,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -233237,7 +233787,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -233349,6 +233899,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -235185,7 +235736,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235297,6 +235848,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -235357,7 +235909,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235469,6 +236021,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -235531,7 +236084,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235643,6 +236196,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -235707,7 +236261,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235819,6 +236373,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -235883,7 +236438,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235995,6 +236550,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -236058,7 +236614,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236170,6 +236726,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -236443,6 +237000,19 @@ components:
               $ref: '#/components/schemas/MixedLotConstituentsElection'
             nullable: true
             type: array
+          lapseElections:
+            description: List of possible lapse elections for this merger event (NOAC).
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this merger
+              event (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           exDate:
             description: The first date on which the holder of record of the original
               shares has entitled ownership of the new shares.
@@ -236522,7 +237092,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236634,6 +237204,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -236948,7 +237519,7 @@ components:
             \ IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted,\
             \ BlackScholesDigital, BjerksundStensland1993, BondLookupPricer, FlexibleLoanPricer,\
             \ CdsLookupPricer, LoanFacilityPricer, OverrideOnlyPricer, FlexibleRepoSimplePricer,\
-            \ InflationForward, HullWhite1F, CapitalInterestPricer."
+            \ InflationForward, HullWhite1F, CapitalInterestPricer, DiscountedForward."
           enum:
           - SimpleStatic
           - Discounting
@@ -236976,6 +237547,7 @@ components:
           - InflationForward
           - HullWhite1F
           - CapitalInterestPricer
+          - DiscountedForward
           type: string
       required:
       - library
@@ -237440,7 +238012,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237552,6 +238124,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -238165,7 +238738,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238277,6 +238850,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -238502,7 +239076,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238614,6 +239188,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -238737,7 +239312,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -238849,6 +239424,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -242091,6 +242667,26 @@ components:
       - cancelInstructionId
       - instrumentEventId
       - version
+      type: object
+    OversubscribeElection:
+      additionalProperties: false
+      description: Election to request more than the guaranteed entitlement (OVER).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
       type: object
     Package:
       additionalProperties: false
@@ -259727,7 +260323,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -259839,6 +260435,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -259976,7 +260573,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -260088,6 +260685,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -260481,7 +261079,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -260593,6 +261191,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -261593,7 +262192,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261705,6 +262304,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -261764,7 +262364,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261876,6 +262476,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -261937,7 +262538,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262049,6 +262650,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -262173,7 +262775,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262285,6 +262887,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -262352,7 +262955,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262464,6 +263067,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -262554,6 +263158,37 @@ components:
             format: double
             nullable: true
             type: number
+          pikTravelsFree:
+            description: "Whether the in-kind entitlement travels with the traded\
+              \ position for the whole period, the way bond\r\ninterest does, rather\
+              \ than being earned from settlement the way loan cash interest is. When\
+              \ true, a\r\nholder who buys before the period end takes the full-period\
+              \ in-kind amount on the amount bought even\r\nif the trade settles after\
+              \ the ex-date. When false, the in-kind amount is day-weighted on the\
+              \ settled\r\nbalance path and the settled holder keeps it. Defaults\
+              \ to true. Bank debt only: a ComplexBond's\r\nin-kind entitlement already\
+              \ follows the record date.\r\n \r\nNullable in the constructor and initialised\
+              \ here, unlike the generated shape: Newtonsoft passes\r\ndefault(bool)\
+              \ for a value-type constructor parameter the payload omits, so a plain\r\
+              \n`bool pikTravelsFree = true` would come back false for every client\
+              \ that did not state it."
+            type: boolean
+          pikInterestBasis:
+            description: "Whether the in-kind leg stands in place of the cash leg\
+              \ or is paid on top of it.\r\n \r\nAlternative, the default, is the\
+              \ toggling structure: one period's interest settled partly in cash\r\
+              \nand partly in kind, so the cash leg settles the complement of PikFraction\
+              \ and the period's\r\ninterest is the weighted sum of the two accruals,\
+              \ lying between them. Additional makes the two\r\nseparate legs of one\
+              \ loan, each settled in full, so the period's interest is their sum\
+              \ and\r\nPikFraction weights only the in-kind leg.\r\n \r\nThe two accruals\
+              \ cannot be told apart without this: 500 accrued in cash against 600\
+              \ in kind is\r\n560 of interest on one reading and 1,100 on the other.\
+              \ A PikMargin schedule is Additional\r\nwhichever is stated, because\
+              \ the margin is already carved out of the coupon.\r\n \r\nDefaulted\
+              \ here as well as in the constructor for the reason PikTravelsFree is."
+            nullable: true
+            type: string
           scheduleType:
             description: "Available values: FixedSchedule, FloatSchedule, OptionalitySchedule,\
               \ StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule,\
@@ -262578,9 +263213,10 @@ components:
         - scheduleType
         - startDate
         type: object
-      description: "A PikSchedule represents Payment-in-Kind features for a ComplexBond.\r\
-        \nIt works in conjunction with existing FixedSchedules or FloatSchedules to\
-        \ define\r\nhow interest is paid during duration of the schedule."
+      description: "A PikSchedule represents Payment-in-Kind features for a ComplexBond,\
+        \ a FlexibleLoan or a LoanFacility.\r\nIt works in conjunction with existing\
+        \ FixedSchedules or FloatSchedules to define\r\nhow interest is paid during\
+        \ duration of the schedule."
     PlaceBlocksRequest:
       additionalProperties: false
       example:
@@ -268922,18 +269558,14 @@ components:
         - resultKeyRuleType: Invalid
         - resultKeyRuleType: Invalid
         options:
-          mbsValuationUsingHoldingCurrentFace: true
-          fxForwardContractsAsUnitsInBothLegs: true
           scaleInstrumentAccruedOverrideByContractSize: true
-          fundingCurveByCurrency:
-            key: fundingCurveByCurrency
           findOrCalculate: findOrCalculate
           convertSrsCashFlowsToPortfolioCurrency: true
-          modelSelection:
-            library: Lusid
-            model: SimpleStatic
-          allowPartiallySuccessfulEvaluation: true
-          findOrCalculateWriteThrough: true
+          inflationConvexity:
+            nominalIndexCorrelation: 2.3021358869347655
+            indexVolatility: 7.061401241503109
+            nominalMeanReversion: 3.616076749251911
+            nominalVolatility: 9.301444243932576
           useInstrumentScaleFactorAsDefault: true
           riskBumpOptions:
             deltaShift: 0.8008281904610115
@@ -268946,19 +269578,28 @@ components:
               key: 1.4658129805029452
             parityRelativeTolerance: 5.637376656633329
           conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-          returnZeroPv:
-            instrumentMatured: true
           enableUseOfCachedUnitResults: true
-          windowValuationOnInstrumentStartEnd: true
           useInstrumentTypeToDeterminePricer: true
-          validateDomesticAndQuoteCurrenciesAreConsistent: true
           riskEngine: riskEngine
-          enableLegLevelInferenceForCustomSrsColumns: true
-          defaultPoolFactorsToUnity: true
           produceSeparateResultForLinearOtcLegs: true
-          removeContingentCashflowsInPaymentDiary: true
           useChildSubHoldingKeysForPortfolioExpansion: true
           allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+          mbsValuationUsingHoldingCurrentFace: true
+          fxForwardContractsAsUnitsInBothLegs: true
+          fundingCurveByCurrency:
+            key: fundingCurveByCurrency
+          modelSelection:
+            library: Lusid
+            model: SimpleStatic
+          allowPartiallySuccessfulEvaluation: true
+          findOrCalculateWriteThrough: true
+          returnZeroPv:
+            instrumentMatured: true
+          windowValuationOnInstrumentStartEnd: true
+          validateDomesticAndQuoteCurrenciesAreConsistent: true
+          enableLegLevelInferenceForCustomSrsColumns: true
+          defaultPoolFactorsToUnity: true
+          removeContingentCashflowsInPaymentDiary: true
         accrualDefinition: accrualDefinition
         holdingPricingInfo:
           fallbackField: fallbackField
@@ -269128,24 +269769,21 @@ components:
       - InflationForward
       - HullWhite1F
       - CapitalInterestPricer
+      - DiscountedForward
       type: string
     PricingOptions:
       additionalProperties: false
       description: Options for controlling the default aspects and behaviour of the
         pricing engine.
       example:
-        mbsValuationUsingHoldingCurrentFace: true
-        fxForwardContractsAsUnitsInBothLegs: true
         scaleInstrumentAccruedOverrideByContractSize: true
-        fundingCurveByCurrency:
-          key: fundingCurveByCurrency
         findOrCalculate: findOrCalculate
         convertSrsCashFlowsToPortfolioCurrency: true
-        modelSelection:
-          library: Lusid
-          model: SimpleStatic
-        allowPartiallySuccessfulEvaluation: true
-        findOrCalculateWriteThrough: true
+        inflationConvexity:
+          nominalIndexCorrelation: 2.3021358869347655
+          indexVolatility: 7.061401241503109
+          nominalMeanReversion: 3.616076749251911
+          nominalVolatility: 9.301444243932576
         useInstrumentScaleFactorAsDefault: true
         riskBumpOptions:
           deltaShift: 0.8008281904610115
@@ -269158,19 +269796,28 @@ components:
             key: 1.4658129805029452
           parityRelativeTolerance: 5.637376656633329
         conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-        returnZeroPv:
-          instrumentMatured: true
         enableUseOfCachedUnitResults: true
-        windowValuationOnInstrumentStartEnd: true
         useInstrumentTypeToDeterminePricer: true
-        validateDomesticAndQuoteCurrenciesAreConsistent: true
         riskEngine: riskEngine
-        enableLegLevelInferenceForCustomSrsColumns: true
-        defaultPoolFactorsToUnity: true
         produceSeparateResultForLinearOtcLegs: true
-        removeContingentCashflowsInPaymentDiary: true
         useChildSubHoldingKeysForPortfolioExpansion: true
         allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+        mbsValuationUsingHoldingCurrentFace: true
+        fxForwardContractsAsUnitsInBothLegs: true
+        fundingCurveByCurrency:
+          key: fundingCurveByCurrency
+        modelSelection:
+          library: Lusid
+          model: SimpleStatic
+        allowPartiallySuccessfulEvaluation: true
+        findOrCalculateWriteThrough: true
+        returnZeroPv:
+          instrumentMatured: true
+        windowValuationOnInstrumentStartEnd: true
+        validateDomesticAndQuoteCurrenciesAreConsistent: true
+        enableLegLevelInferenceForCustomSrsColumns: true
+        defaultPoolFactorsToUnity: true
+        removeContingentCashflowsInPaymentDiary: true
       properties:
         modelSelection:
           $ref: '#/components/schemas/ModelSelection'
@@ -269332,6 +269979,8 @@ components:
             \nis rescaled by the holding's units and may differ from a freshly calculated\
             \ value in the\r\nleast significant digits."
           type: boolean
+        inflationConvexity:
+          $ref: '#/components/schemas/InflationConvexityOptions'
       type: object
     PrimarySchedule:
       additionalProperties: false
@@ -269480,7 +270129,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -269592,6 +270241,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -271158,7 +271808,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271270,6 +271920,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -271349,6 +272000,20 @@ components:
               \ 1.0; range (0, 1]."
             format: double
             type: number
+          retainElections:
+            description: List of possible retain elections for this event (PROX) —
+              keep the holding rather than redeem.
+            items:
+              $ref: '#/components/schemas/RetainElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -271382,7 +272047,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271494,6 +272159,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -273086,7 +273752,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273198,6 +273864,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -279086,7 +279753,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279198,6 +279865,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -279272,7 +279940,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279384,6 +280052,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -279479,6 +280148,41 @@ components:
             format: double
             nullable: true
             type: number
+          consentAndTenderElections:
+            description: List of possible consent-and-tender elections for this event
+              (CTEN) — tender the holding and grant consent together.
+            items:
+              $ref: '#/components/schemas/ConsentAndTenderElection'
+            nullable: true
+            type: array
+          consentGrantedElections:
+            description: "List of possible consent-granted elections for this event\
+              \ (CONY) — vote in favour, optionally attracting a consent fee."
+            items:
+              $ref: '#/components/schemas/ConsentGrantedElection'
+            nullable: true
+            type: array
+          consentDeniedElections:
+            description: List of possible consent-denied elections for this event
+              (CONN) — vote against the proposal.
+            items:
+              $ref: '#/components/schemas/ConsentDeniedElection'
+            nullable: true
+            type: array
+          abstainElections:
+            description: List of possible abstain elections for this event (ABST)
+              — decline to vote on the consent.
+            items:
+              $ref: '#/components/schemas/AbstainElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -279512,7 +280216,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279624,6 +280328,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -279709,7 +280414,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279821,6 +280526,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - fixingDate
@@ -286349,18 +287055,14 @@ components:
               - resultKeyRuleType: Invalid
               - resultKeyRuleType: Invalid
               options:
-                mbsValuationUsingHoldingCurrentFace: true
-                fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
-                fundingCurveByCurrency:
-                  key: fundingCurveByCurrency
                 findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
-                modelSelection:
-                  library: Lusid
-                  model: SimpleStatic
-                allowPartiallySuccessfulEvaluation: true
-                findOrCalculateWriteThrough: true
+                inflationConvexity:
+                  nominalIndexCorrelation: 2.3021358869347655
+                  indexVolatility: 7.061401241503109
+                  nominalMeanReversion: 3.616076749251911
+                  nominalVolatility: 9.301444243932576
                 useInstrumentScaleFactorAsDefault: true
                 riskBumpOptions:
                   deltaShift: 0.8008281904610115
@@ -286373,19 +287075,28 @@ components:
                     key: 1.4658129805029452
                   parityRelativeTolerance: 5.637376656633329
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-                returnZeroPv:
-                  instrumentMatured: true
                 enableUseOfCachedUnitResults: true
-                windowValuationOnInstrumentStartEnd: true
                 useInstrumentTypeToDeterminePricer: true
-                validateDomesticAndQuoteCurrenciesAreConsistent: true
                 riskEngine: riskEngine
-                enableLegLevelInferenceForCustomSrsColumns: true
-                defaultPoolFactorsToUnity: true
                 produceSeparateResultForLinearOtcLegs: true
-                removeContingentCashflowsInPaymentDiary: true
                 useChildSubHoldingKeysForPortfolioExpansion: true
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+                mbsValuationUsingHoldingCurrentFace: true
+                fxForwardContractsAsUnitsInBothLegs: true
+                fundingCurveByCurrency:
+                  key: fundingCurveByCurrency
+                modelSelection:
+                  library: Lusid
+                  model: SimpleStatic
+                allowPartiallySuccessfulEvaluation: true
+                findOrCalculateWriteThrough: true
+                returnZeroPv:
+                  instrumentMatured: true
+                windowValuationOnInstrumentStartEnd: true
+                validateDomesticAndQuoteCurrenciesAreConsistent: true
+                enableLegLevelInferenceForCustomSrsColumns: true
+                defaultPoolFactorsToUnity: true
+                removeContingentCashflowsInPaymentDiary: true
               accrualDefinition: accrualDefinition
               holdingPricingInfo:
                 fallbackField: fallbackField
@@ -286659,18 +287370,14 @@ components:
               - resultKeyRuleType: Invalid
               - resultKeyRuleType: Invalid
               options:
-                mbsValuationUsingHoldingCurrentFace: true
-                fxForwardContractsAsUnitsInBothLegs: true
                 scaleInstrumentAccruedOverrideByContractSize: true
-                fundingCurveByCurrency:
-                  key: fundingCurveByCurrency
                 findOrCalculate: findOrCalculate
                 convertSrsCashFlowsToPortfolioCurrency: true
-                modelSelection:
-                  library: Lusid
-                  model: SimpleStatic
-                allowPartiallySuccessfulEvaluation: true
-                findOrCalculateWriteThrough: true
+                inflationConvexity:
+                  nominalIndexCorrelation: 2.3021358869347655
+                  indexVolatility: 7.061401241503109
+                  nominalMeanReversion: 3.616076749251911
+                  nominalVolatility: 9.301444243932576
                 useInstrumentScaleFactorAsDefault: true
                 riskBumpOptions:
                   deltaShift: 0.8008281904610115
@@ -286683,19 +287390,28 @@ components:
                     key: 1.4658129805029452
                   parityRelativeTolerance: 5.637376656633329
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-                returnZeroPv:
-                  instrumentMatured: true
                 enableUseOfCachedUnitResults: true
-                windowValuationOnInstrumentStartEnd: true
                 useInstrumentTypeToDeterminePricer: true
-                validateDomesticAndQuoteCurrenciesAreConsistent: true
                 riskEngine: riskEngine
-                enableLegLevelInferenceForCustomSrsColumns: true
-                defaultPoolFactorsToUnity: true
                 produceSeparateResultForLinearOtcLegs: true
-                removeContingentCashflowsInPaymentDiary: true
                 useChildSubHoldingKeysForPortfolioExpansion: true
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+                mbsValuationUsingHoldingCurrentFace: true
+                fxForwardContractsAsUnitsInBothLegs: true
+                fundingCurveByCurrency:
+                  key: fundingCurveByCurrency
+                modelSelection:
+                  library: Lusid
+                  model: SimpleStatic
+                allowPartiallySuccessfulEvaluation: true
+                findOrCalculateWriteThrough: true
+                returnZeroPv:
+                  instrumentMatured: true
+                windowValuationOnInstrumentStartEnd: true
+                validateDomesticAndQuoteCurrenciesAreConsistent: true
+                enableLegLevelInferenceForCustomSrsColumns: true
+                defaultPoolFactorsToUnity: true
+                removeContingentCashflowsInPaymentDiary: true
               accrualDefinition: accrualDefinition
               holdingPricingInfo:
                 fallbackField: fallbackField
@@ -304226,6 +304942,26 @@ components:
       - ResultValueLifeCycleEventValue
       - ResultValueDateTimeOffset
       type: string
+    RetainElection:
+      additionalProperties: false
+      description: Election to retain the existing holding rather than redeem (PROX).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
+      type: object
     ReturnsEntity:
       additionalProperties: false
       description: "Returns entity, used for configuring the calculation of aggregated\
@@ -304389,7 +305125,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304501,6 +305237,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -305477,7 +306214,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305589,6 +306326,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -305771,7 +306509,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -305883,6 +306621,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -305893,6 +306632,27 @@ components:
         no cash is received and no new security is credited. Supports Mandatory and\
         \ Voluntary participation; on the\r\nVoluntary path the holder submits a SubscribeElection\
         \ to recognise (apply) the write-off."
+    SellEntitlementElection:
+      additionalProperties: false
+      description: Election to sell the entitlement in the market rather than exercise
+        it (SLLE).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
+      type: object
     SequenceDefinition:
       additionalProperties: false
       example:
@@ -310516,7 +311276,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -310628,6 +311388,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -311366,7 +312127,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311478,6 +312239,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -311568,7 +312330,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311680,6 +312442,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -312200,7 +312963,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312312,6 +313075,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -312373,7 +313137,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312485,6 +313249,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -312552,6 +313317,7 @@ components:
       additionalProperties: false
       description: Used to specify holdings target amounts at the tax-lot level
       example:
+        amortisedCost: 7.061401241503109
         variationMarginPortfolioCcy: 2.3021358869347655
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         notionalCost: 5.962133916683182
@@ -312606,6 +313372,15 @@ components:
         variationMarginPortfolioCcy:
           description: The variation margin in portfolio currency of the tax-lot's
             opening transaction.
+          format: double
+          nullable: true
+          type: number
+        amortisedCost:
+          description: "The amortised cost of the tax-lot in the settlement currency,\
+            \ for example a supplied amortised cost at migration. If supplied, this\
+            \ value seeds the tax-lot's amortised cost at the adjustment date and\
+            \ amortisation continues forward from it; if not supplied, the amortised\
+            \ cost defaults to the cost of the tax-lot."
           format: double
           nullable: true
           type: number
@@ -312615,6 +313390,7 @@ components:
     TargetTaxLotRequest:
       additionalProperties: false
       example:
+        amortisedCost: 7.061401241503109
         variationMarginPortfolioCcy: 2.3021358869347655
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         notionalCost: 5.962133916683182
@@ -312669,6 +313445,15 @@ components:
         variationMarginPortfolioCcy:
           description: The variation margin in portfolio currency of the tax-lot's
             opening transaction.
+          format: double
+          nullable: true
+          type: number
+        amortisedCost:
+          description: "The amortised cost of the tax-lot in the settlement currency,\
+            \ for example a supplied amortised cost at migration. If supplied, this\
+            \ value seeds the tax-lot's amortised cost at the adjustment date and\
+            \ amortisation continues forward from it; if not supplied, the amortised\
+            \ cost defaults to the cost of the tax-lot."
           format: double
           nullable: true
           type: number
@@ -313004,6 +313789,40 @@ components:
             format: date-time
             nullable: true
             type: string
+          lapseElections:
+            description: List of possible lapse elections for this tender event (NOAC).
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          consentAndTenderElections:
+            description: List of possible consent-and-tender elections for this tender
+              event (CTEN).
+            items:
+              $ref: '#/components/schemas/ConsentAndTenderElection'
+            nullable: true
+            type: array
+          consentDeniedElections:
+            description: List of possible consent-denied elections for this tender
+              event (CONN).
+            items:
+              $ref: '#/components/schemas/ConsentDeniedElection'
+            nullable: true
+            type: array
+          abstainElections:
+            description: List of possible abstain elections for this tender event
+              (ABST).
+            items:
+              $ref: '#/components/schemas/AbstainElection'
+            nullable: true
+            type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this tender
+              event (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -313037,7 +313856,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313149,10 +313968,10 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
-        - newInstrument
         type: object
       description: Tender Event (TEND).
     TenderOfferElection:
@@ -313348,7 +314167,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313460,6 +314279,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -313516,7 +314336,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313628,6 +314448,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -313687,7 +314508,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
               \ AmendCommitmentEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -313760,7 +314581,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -313872,6 +314693,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -321749,7 +322571,7 @@ components:
             \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
             \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
             \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-            \ DividendSuspensionEvent."
+            \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -322903,7 +323725,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323015,6 +323837,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -323672,7 +324495,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323784,6 +324607,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -323927,6 +324751,27 @@ components:
       required:
       - input
       - output
+      type: object
+    UnknownProceedsElection:
+      additionalProperties: false
+      description: Election representing an outturn whose proceeds are not yet known
+        (UNKNOWN).
+      properties:
+        electionKey:
+          description: Unique key associated to this election.
+          minLength: 1
+          type: string
+        isDefault:
+          description: "Is this election automatically applied in the absence of an\
+            \ election having been made.\r\nMay only be true for one election if multiple\
+            \ are provided."
+          type: boolean
+        isChosen:
+          description: Is this the election that has been explicitly chosen from multiple
+            options.
+          type: boolean
+      required:
+      - electionKey
       type: object
     UnmatchedHoldingMethod:
       description: "When holdings adjustments are specified for a single effective\
@@ -325498,7 +326343,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -325610,6 +326455,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -333633,18 +334479,14 @@ components:
             - resultKeyRuleType: Invalid
             - resultKeyRuleType: Invalid
             options:
-              mbsValuationUsingHoldingCurrentFace: true
-              fxForwardContractsAsUnitsInBothLegs: true
               scaleInstrumentAccruedOverrideByContractSize: true
-              fundingCurveByCurrency:
-                key: fundingCurveByCurrency
               findOrCalculate: findOrCalculate
               convertSrsCashFlowsToPortfolioCurrency: true
-              modelSelection:
-                library: Lusid
-                model: SimpleStatic
-              allowPartiallySuccessfulEvaluation: true
-              findOrCalculateWriteThrough: true
+              inflationConvexity:
+                nominalIndexCorrelation: 2.3021358869347655
+                indexVolatility: 7.061401241503109
+                nominalMeanReversion: 3.616076749251911
+                nominalVolatility: 9.301444243932576
               useInstrumentScaleFactorAsDefault: true
               riskBumpOptions:
                 deltaShift: 0.8008281904610115
@@ -333657,19 +334499,28 @@ components:
                   key: 1.4658129805029452
                 parityRelativeTolerance: 5.637376656633329
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
-              returnZeroPv:
-                instrumentMatured: true
               enableUseOfCachedUnitResults: true
-              windowValuationOnInstrumentStartEnd: true
               useInstrumentTypeToDeterminePricer: true
-              validateDomesticAndQuoteCurrenciesAreConsistent: true
               riskEngine: riskEngine
-              enableLegLevelInferenceForCustomSrsColumns: true
-              defaultPoolFactorsToUnity: true
               produceSeparateResultForLinearOtcLegs: true
-              removeContingentCashflowsInPaymentDiary: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
+              mbsValuationUsingHoldingCurrentFace: true
+              fxForwardContractsAsUnitsInBothLegs: true
+              fundingCurveByCurrency:
+                key: fundingCurveByCurrency
+              modelSelection:
+                library: Lusid
+                model: SimpleStatic
+              allowPartiallySuccessfulEvaluation: true
+              findOrCalculateWriteThrough: true
+              returnZeroPv:
+                instrumentMatured: true
+              windowValuationOnInstrumentStartEnd: true
+              validateDomesticAndQuoteCurrenciesAreConsistent: true
+              enableLegLevelInferenceForCustomSrsColumns: true
+              defaultPoolFactorsToUnity: true
+              removeContingentCashflowsInPaymentDiary: true
             accrualDefinition: accrualDefinition
             holdingPricingInfo:
               fallbackField: fallbackField
@@ -353617,6 +354468,13 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          unknownProceedsElections:
+            description: List of possible unknown-proceeds elections for this event
+              (UNKNOWN) — the outturn is not yet known.
+            items:
+              $ref: '#/components/schemas/UnknownProceedsElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -353650,7 +354508,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -353762,6 +354620,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -354228,7 +355087,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
               \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
-              \ DividendSuspensionEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -354340,6 +355199,7 @@ components:
             - FundDistributionEvent
             - NavReportEvent
             - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType

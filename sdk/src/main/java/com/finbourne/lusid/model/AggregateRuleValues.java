@@ -147,7 +147,7 @@ public class AggregateRuleValues {
    * The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
    * @return difference
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDifference() {
     return difference;
   }
@@ -252,7 +252,6 @@ public class AggregateRuleValues {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("ruleName");
-    openapiRequiredFields.add("difference");
   }
 
  /**
@@ -284,7 +283,7 @@ public class AggregateRuleValues {
       if ((jsonObj.get("rightValue") != null && !jsonObj.get("rightValue").isJsonNull()) && !jsonObj.get("rightValue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rightValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rightValue").toString()));
       }
-      if (!jsonObj.get("difference").isJsonPrimitive()) {
+      if ((jsonObj.get("difference") != null && !jsonObj.get("difference").isJsonNull()) && !jsonObj.get("difference").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `difference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("difference").toString()));
       }
       // validate the optional field `appliedTolerance`

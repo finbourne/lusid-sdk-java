@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **announcementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Public announcement date. If set, must be on or before ExDate. | [optional] [default to OffsetDateTime]
 **accruedInterestPerUnit** | **java.math.BigDecimal** | Per-unit accrued interest. Optional — loader / post-processor derives from the bond&#39;s coupon  schedule and day-count when not supplied. EconomicallyComplete enforces non-null for  accrual-bearing instruments via InstrumentTypeAccruesInterest. | [optional] [default to java.math.BigDecimal]
 **prorationRate** | **java.math.BigDecimal** | Issuer-side aggregate proration cap (AMI-SeCo PROR). Default 1.0; range (0, 1]. | [optional] [default to java.math.BigDecimal]
+**retainElections** | [**List&lt;RetainElection&gt;**](RetainElection.md) | List of possible retain elections for this event (PROX) — keep the holding rather than redeem. | [optional] [default to List<RetainElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 
 ```java
 import com.finbourne.lusid.model.PutRedemptionEvent;
@@ -36,6 +38,8 @@ List<LapseElection> LapseElections = new List<LapseElection>();
 @jakarta.annotation.Nullable OffsetDateTime AnnouncementDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable java.math.BigDecimal AccruedInterestPerUnit = new java.math.BigDecimal("100.00");
 java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<RetainElection> RetainElections = new List<RetainElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 
 
 PutRedemptionEvent putRedemptionEventInstance = new PutRedemptionEvent()
@@ -50,7 +54,9 @@ PutRedemptionEvent putRedemptionEventInstance = new PutRedemptionEvent()
     .ExDate(ExDate)
     .AnnouncementDate(AnnouncementDate)
     .AccruedInterestPerUnit(AccruedInterestPerUnit)
-    .ProrationRate(ProrationRate);
+    .ProrationRate(ProrationRate)
+    .RetainElections(RetainElections)
+    .UnknownProceedsElections(UnknownProceedsElections);
 ```
 
 

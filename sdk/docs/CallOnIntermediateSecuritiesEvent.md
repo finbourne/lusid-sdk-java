@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **exerciseCurrency** | **String** | The currency of the exercise. | [default to String]
 **optionExerciseElections** | [**List&lt;OptionExerciseElection&gt;**](OptionExerciseElection.md) | Option exercise election for this event. | [optional] [default to List<OptionExerciseElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | Lapse election for this event. | [optional] [default to List<LapseElection>]
+**oversubscribeElections** | [**List&lt;OversubscribeElection&gt;**](OversubscribeElection.md) | List of possible oversubscribe elections for this event (OVER) — subscribe for more than the entitled amount. | [optional] [default to List<OversubscribeElection>]
+**sellEntitlementElections** | [**List&lt;SellEntitlementElection&gt;**](SellEntitlementElection.md) | List of possible sell-entitlement elections for this event (SLLE) — sell the intermediate securities rather than exercise. | [optional] [default to List<SellEntitlementElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 
 ```java
 import com.finbourne.lusid.model.CallOnIntermediateSecuritiesEvent;
@@ -28,6 +31,9 @@ java.math.BigDecimal Price = new java.math.BigDecimal("100.00");
 String ExerciseCurrency = "example ExerciseCurrency";
 @jakarta.annotation.Nullable List<OptionExerciseElection> OptionExerciseElections = new List<OptionExerciseElection>();
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<OversubscribeElection> OversubscribeElections = new List<OversubscribeElection>();
+@jakarta.annotation.Nullable List<SellEntitlementElection> SellEntitlementElections = new List<SellEntitlementElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 
 
 CallOnIntermediateSecuritiesEvent callOnIntermediateSecuritiesEventInstance = new CallOnIntermediateSecuritiesEvent()
@@ -38,7 +44,10 @@ CallOnIntermediateSecuritiesEvent callOnIntermediateSecuritiesEventInstance = ne
     .Price(Price)
     .ExerciseCurrency(ExerciseCurrency)
     .OptionExerciseElections(OptionExerciseElections)
-    .LapseElections(LapseElections);
+    .LapseElections(LapseElections)
+    .OversubscribeElections(OversubscribeElections)
+    .SellEntitlementElections(SellEntitlementElections)
+    .UnknownProceedsElections(UnknownProceedsElections);
 ```
 
 

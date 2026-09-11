@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible CashAndSecurityOfferElections for this merger event | [optional] [default to List<CashAndSecurityOfferElection>]
 **cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible CashOfferElections for this merger event. Under ParticipationType.Mandatory  a single CashOfferElection may be the event&#39;s only election — a cash-only merger — in which  case no NewInstrument is required. Under ParticipationType.MandatoryWithChoices cash offers  are provided alongside the other elections on the event. | [optional] [default to List<CashOfferElection>]
 **mixedLotConstituentsElections** | [**List&lt;MixedLotConstituentsElection&gt;**](MixedLotConstituentsElection.md) | List of possible mixed lot offers for this merger event, if any. Each election replaces the parent position  with one or more distinct new securities and/or cash legs of its own, taking the place of the single  event-level NewInstrument that the other security-bearing elections resolve to.    A merger may carry more than one of these, describing mutually exclusive multi-destination options. | [optional] [default to List<MixedLotConstituentsElection>]
+**lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this merger event (NOAC). | [optional] [default to List<LapseElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this merger event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 **exDate** | [**OffsetDateTime**](OffsetDateTime.md) | The first date on which the holder of record of the original shares has entitled ownership of the new shares. | [optional] [default to OffsetDateTime]
 **fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to String]
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. | [optional] [default to java.math.BigDecimal]
@@ -29,6 +31,8 @@ import java.net.URI;
 @jakarta.annotation.Nullable List<CashAndSecurityOfferElection> CashAndSecurityOfferElections = new List<CashAndSecurityOfferElection>();
 @jakarta.annotation.Nullable List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
 @jakarta.annotation.Nullable List<MixedLotConstituentsElection> MixedLotConstituentsElections = new List<MixedLotConstituentsElection>();
+@jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 OffsetDateTime ExDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
@@ -45,6 +49,8 @@ MergerEvent mergerEventInstance = new MergerEvent()
     .CashAndSecurityOfferElections(CashAndSecurityOfferElections)
     .CashOfferElections(CashOfferElections)
     .MixedLotConstituentsElections(MixedLotConstituentsElections)
+    .LapseElections(LapseElections)
+    .UnknownProceedsElections(UnknownProceedsElections)
     .ExDate(ExDate)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)

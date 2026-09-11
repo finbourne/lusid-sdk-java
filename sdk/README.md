@@ -534,14 +534,14 @@ Class | Method | HTTP request | Description
 *PropertyDefinitionsApi* | [**updatePropertyDefinition**](docs/PropertyDefinitionsApi.md#updatepropertydefinition) | **PUT** /api/propertydefinitions/{domain}/{scope}/{code} | UpdatePropertyDefinition: Update property definition
 *PropertyDefinitionsApi* | [**upsertPropertyDefinitionProperties**](docs/PropertyDefinitionsApi.md#upsertpropertydefinitionproperties) | **POST** /api/propertydefinitions/{domain}/{scope}/{code}/properties | UpsertPropertyDefinitionProperties: Upsert properties to a property definition
 *QueryableKeysApi* | [**getAllQueryableKeys**](docs/QueryableKeysApi.md#getallqueryablekeys) | **GET** /api/queryablekeys | [EARLY ACCESS] GetAllQueryableKeys: Query the set of supported \"addresses\" that can be queried from all endpoints.
-*QuotesApi* | [**deleteQuoteAccessMetadataRule**](docs/QuotesApi.md#deletequoteaccessmetadatarule) | **DELETE** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
+*QuotesApi* | [**deleteQuoteAccessMetadataRule**](docs/QuotesApi.md#deletequoteaccessmetadatarule) | **DELETE** /api/metadata/quotes/rules/{scope} | DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
 *QuotesApi* | [**deleteQuotes**](docs/QuotesApi.md#deletequotes) | **POST** /api/quotes/{scope}/$delete | DeleteQuotes: Delete quotes
 *QuotesApi* | [**getQuotes**](docs/QuotesApi.md#getquotes) | **POST** /api/quotes/{scope}/$get | GetQuotes: Get quotes
-*QuotesApi* | [**getQuotesAccessMetadataRule**](docs/QuotesApi.md#getquotesaccessmetadatarule) | **GET** /api/metadata/quotes/rules | [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
+*QuotesApi* | [**getQuotesAccessMetadataRule**](docs/QuotesApi.md#getquotesaccessmetadatarule) | **GET** /api/metadata/quotes/rules | GetQuotesAccessMetadataRule: Get a quote access metadata rule
 *QuotesApi* | [**listQuotes**](docs/QuotesApi.md#listquotes) | **GET** /api/quotes/{scope}/$deprecated | [DEPRECATED] ListQuotes: List quotes
-*QuotesApi* | [**listQuotesAccessMetadataRules**](docs/QuotesApi.md#listquotesaccessmetadatarules) | **GET** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
+*QuotesApi* | [**listQuotesAccessMetadataRules**](docs/QuotesApi.md#listquotesaccessmetadatarules) | **GET** /api/metadata/quotes/rules/{scope} | ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
 *QuotesApi* | [**listQuotesForScope**](docs/QuotesApi.md#listquotesforscope) | **GET** /api/quotes/{scope} | ListQuotesForScope: List quotes for scope
-*QuotesApi* | [**upsertQuoteAccessMetadataRule**](docs/QuotesApi.md#upsertquoteaccessmetadatarule) | **POST** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
+*QuotesApi* | [**upsertQuoteAccessMetadataRule**](docs/QuotesApi.md#upsertquoteaccessmetadatarule) | **POST** /api/metadata/quotes/rules/{scope} | UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
 *QuotesApi* | [**upsertQuotes**](docs/QuotesApi.md#upsertquotes) | **POST** /api/quotes/{scope} | UpsertQuotes: Upsert quotes
 *ReconciliationsApi* | [**createScheduledReconciliation**](docs/ReconciliationsApi.md#createscheduledreconciliation) | **POST** /api/portfolios/$scheduledReconciliations/{scope} | [EXPERIMENTAL] CreateScheduledReconciliation: Create a scheduled reconciliation
 *ReconciliationsApi* | [**deleteReconciliation**](docs/ReconciliationsApi.md#deletereconciliation) | **DELETE** /api/portfolios/$scheduledReconciliations/{scope}/{code} | [EXPERIMENTAL] DeleteReconciliation: Delete scheduled reconciliation
@@ -803,6 +803,7 @@ Class | Method | HTTP request | Description
  - [AborConfigurationRequest](docs/AborConfigurationRequest.md)
  - [AborProperties](docs/AborProperties.md)
  - [AborRequest](docs/AborRequest.md)
+ - [AbstainElection](docs/AbstainElection.md)
  - [AcceptEstimateValuationPointResponse](docs/AcceptEstimateValuationPointResponse.md)
  - [AccessControlledAction](docs/AccessControlledAction.md)
  - [AccessControlledResource](docs/AccessControlledResource.md)
@@ -1077,7 +1078,11 @@ Class | Method | HTTP request | Description
  - [CompositeDispersionResponse](docs/CompositeDispersionResponse.md)
  - [Compounding](docs/Compounding.md)
  - [ConfigurationRecipe](docs/ConfigurationRecipe.md)
+ - [ConsentAndExchangeElection](docs/ConsentAndExchangeElection.md)
+ - [ConsentAndTenderElection](docs/ConsentAndTenderElection.md)
+ - [ConsentDeniedElection](docs/ConsentDeniedElection.md)
  - [ConsentEvent](docs/ConsentEvent.md)
+ - [ConsentGrantedElection](docs/ConsentGrantedElection.md)
  - [ConstantVolatilitySurface](docs/ConstantVolatilitySurface.md)
  - [ConstituentsAdjustmentHeader](docs/ConstituentsAdjustmentHeader.md)
  - [ContractDetails](docs/ContractDetails.md)
@@ -1458,6 +1463,7 @@ Class | Method | HTTP request | Description
  - [IndexModelOptions](docs/IndexModelOptions.md)
  - [IndexProjectionDependency](docs/IndexProjectionDependency.md)
  - [IndustryClassifier](docs/IndustryClassifier.md)
+ - [InflationConvexityOptions](docs/InflationConvexityOptions.md)
  - [InflationCurveData](docs/InflationCurveData.md)
  - [InflationCurveShiftDefinition](docs/InflationCurveShiftDefinition.md)
  - [InflationFixingDependency](docs/InflationFixingDependency.md)
@@ -1538,6 +1544,7 @@ Class | Method | HTTP request | Description
  - [LoanFacility](docs/LoanFacility.md)
  - [LoanFacilityContractRolloverEvent](docs/LoanFacilityContractRolloverEvent.md)
  - [LoanFacilityDelayedCompensationPaymentEvent](docs/LoanFacilityDelayedCompensationPaymentEvent.md)
+ - [LoanInterestCapitalisationEvent](docs/LoanInterestCapitalisationEvent.md)
  - [LoanInterestRepaymentEvent](docs/LoanInterestRepaymentEvent.md)
  - [LoanPeriod](docs/LoanPeriod.md)
  - [LoanPrincipalRepaymentEvent](docs/LoanPrincipalRepaymentEvent.md)
@@ -1659,6 +1666,7 @@ Class | Method | HTTP request | Description
  - [OutputTransaction](docs/OutputTransaction.md)
  - [OutputTransition](docs/OutputTransition.md)
  - [OverrideVirtualTransactionsResponse](docs/OverrideVirtualTransactionsResponse.md)
+ - [OversubscribeElection](docs/OversubscribeElection.md)
  - [PackageRequest](docs/PackageRequest.md)
  - [PackageSetRequest](docs/PackageSetRequest.md)
  - [PagedResourceListOfAbor](docs/PagedResourceListOfAbor.md)
@@ -2094,6 +2102,7 @@ Class | Method | HTTP request | Description
  - [ResultValueInt](docs/ResultValueInt.md)
  - [ResultValueString](docs/ResultValueString.md)
  - [ResultValueType](docs/ResultValueType.md)
+ - [RetainElection](docs/RetainElection.md)
  - [ReturnZeroPvOptions](docs/ReturnZeroPvOptions.md)
  - [ReturnsEntity](docs/ReturnsEntity.md)
  - [ReturnsMetric](docs/ReturnsMetric.md)
@@ -2130,6 +2139,7 @@ Class | Method | HTTP request | Description
  - [SecurityOfferConstituent](docs/SecurityOfferConstituent.md)
  - [SecurityOfferElection](docs/SecurityOfferElection.md)
  - [SecurityWriteOffEvent](docs/SecurityWriteOffEvent.md)
+ - [SellEntitlementElection](docs/SellEntitlementElection.md)
  - [SequenceDefinition](docs/SequenceDefinition.md)
  - [SeriesDefinition](docs/SeriesDefinition.md)
  - [SeriesDefinitionRequest](docs/SeriesDefinitionRequest.md)
@@ -2303,6 +2313,7 @@ Class | Method | HTTP request | Description
  - [UnitSchema](docs/UnitSchema.md)
  - [UnitisationData](docs/UnitisationData.md)
  - [UnitsRatio](docs/UnitsRatio.md)
+ - [UnknownProceedsElection](docs/UnknownProceedsElection.md)
  - [UnmatchedHoldingMethod](docs/UnmatchedHoldingMethod.md)
  - [UnsettledTransaction](docs/UnsettledTransaction.md)
  - [UpdateAmortisationRuleSetDetailsRequest](docs/UpdateAmortisationRuleSetDetailsRequest.md)

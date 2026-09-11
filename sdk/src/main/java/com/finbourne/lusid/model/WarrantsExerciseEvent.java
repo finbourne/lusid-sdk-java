@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.OptionExerciseElection;
 import com.finbourne.lusid.model.UnitsRatio;
+import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -109,6 +110,10 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
+  private List<UnknownProceedsElection> unknownProceedsElections;
 
   public WarrantsExerciseEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -403,6 +408,35 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
   }
 
 
+  public WarrantsExerciseEvent unknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    
+    this.unknownProceedsElections = unknownProceedsElections;
+    return this;
+  }
+
+  public WarrantsExerciseEvent addUnknownProceedsElectionsItem(UnknownProceedsElection unknownProceedsElectionsItem) {
+    if (this.unknownProceedsElections == null) {
+      this.unknownProceedsElections = new ArrayList<>();
+    }
+    this.unknownProceedsElections.add(unknownProceedsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.
+   * @return unknownProceedsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<UnknownProceedsElection> getUnknownProceedsElections() {
+    return unknownProceedsElections;
+  }
+
+
+  public void setUnknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    this.unknownProceedsElections = unknownProceedsElections;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -426,6 +460,7 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
         Objects.equals(this.fractionDisposition, warrantsExerciseEvent.fractionDisposition) &&
         Objects.equals(this.optionExerciseElections, warrantsExerciseEvent.optionExerciseElections) &&
         Objects.equals(this.lapseElections, warrantsExerciseEvent.lapseElections) &&
+        Objects.equals(this.unknownProceedsElections, warrantsExerciseEvent.unknownProceedsElections) &&
         super.equals(o);
   }
 
@@ -435,7 +470,7 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, periodOfActionStart, periodOfActionEnd, responseDeadlineDate, marketDeadlineDate, earlyResponseDeadline, strikePerUnit, strikeCurrency, unitsRatio, newInstrument, fractionDisposition, optionExerciseElections, lapseElections, super.hashCode());
+    return Objects.hash(paymentDate, periodOfActionStart, periodOfActionEnd, responseDeadlineDate, marketDeadlineDate, earlyResponseDeadline, strikePerUnit, strikeCurrency, unitsRatio, newInstrument, fractionDisposition, optionExerciseElections, lapseElections, unknownProceedsElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -463,6 +498,7 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
     sb.append("    fractionDisposition: ").append(toIndentedString(fractionDisposition)).append("\n");
     sb.append("    optionExerciseElections: ").append(toIndentedString(optionExerciseElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -499,6 +535,7 @@ public class WarrantsExerciseEvent extends InstrumentEvent {
     openapiFields.add("fractionDisposition");
     openapiFields.add("optionExerciseElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("unknownProceedsElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

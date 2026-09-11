@@ -12,7 +12,10 @@ Name | Type | Description | Notes
 **earlyResponseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | Deadline for early consent. Required when a CONY-early CashOfferElection is offered.  Must be earlier than ResponseDeadline. | [optional] [default to OffsetDateTime]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the consent fee is paid. Required when any CashOfferElection is offered. | [optional] [default to OffsetDateTime]
 **cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible cash offer elections for this event. Each tier (CONY-standard, CONY-early)  is modelled as a separate entry; the election carries the per-unit fee rate and currency. | [optional] [default to List<CashOfferElection>]
-**lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this event (NOAC, CONN, ABST). | [optional] [default to List<LapseElection>]
+**lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this event (NOAC). | [optional] [default to List<LapseElection>]
+**consentGrantedElections** | [**List&lt;ConsentGrantedElection&gt;**](ConsentGrantedElection.md) | List of possible consent-granted elections for this event (CONY), each optionally carrying a consent fee. | [optional] [default to List<ConsentGrantedElection>]
+**consentDeniedElections** | [**List&lt;ConsentDeniedElection&gt;**](ConsentDeniedElection.md) | List of possible consent-denied elections for this event (CONN). | [optional] [default to List<ConsentDeniedElection>]
+**abstainElections** | [**List&lt;AbstainElection&gt;**](AbstainElection.md) | List of possible abstain elections for this event (ABST). | [optional] [default to List<AbstainElection>]
 
 ```java
 import com.finbourne.lusid.model.ConsentEvent;
@@ -28,6 +31,9 @@ OffsetDateTime MarketDeadline = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime PaymentDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<ConsentGrantedElection> ConsentGrantedElections = new List<ConsentGrantedElection>();
+@jakarta.annotation.Nullable List<ConsentDeniedElection> ConsentDeniedElections = new List<ConsentDeniedElection>();
+@jakarta.annotation.Nullable List<AbstainElection> AbstainElections = new List<AbstainElection>();
 
 
 ConsentEvent consentEventInstance = new ConsentEvent()
@@ -38,7 +44,10 @@ ConsentEvent consentEventInstance = new ConsentEvent()
     .EarlyResponseDeadline(EarlyResponseDeadline)
     .PaymentDate(PaymentDate)
     .CashOfferElections(CashOfferElections)
-    .LapseElections(LapseElections);
+    .LapseElections(LapseElections)
+    .ConsentGrantedElections(ConsentGrantedElections)
+    .ConsentDeniedElections(ConsentDeniedElections)
+    .AbstainElections(AbstainElections);
 ```
 
 

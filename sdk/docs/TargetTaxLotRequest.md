@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **notionalCost** | **java.math.BigDecimal** | The notional cost of the tax-lot&#39;s opening transaction. | [optional] [default to java.math.BigDecimal]
 **variationMargin** | **java.math.BigDecimal** | The variation margin of the tax-lot&#39;s opening transaction. | [optional] [default to java.math.BigDecimal]
 **variationMarginPortfolioCcy** | **java.math.BigDecimal** | The variation margin in portfolio currency of the tax-lot&#39;s opening transaction. | [optional] [default to java.math.BigDecimal]
+**amortisedCost** | **java.math.BigDecimal** | The amortised cost of the tax-lot in the settlement currency, for example a supplied amortised cost at migration. If supplied, this value seeds the tax-lot&#39;s amortised cost at the adjustment date and amortisation continues forward from it; if not supplied, the amortised cost defaults to the cost of the tax-lot. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.TargetTaxLotRequest;
@@ -29,6 +30,7 @@ CurrencyAndAmount Cost = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal NotionalCost = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal VariationMargin = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal VariationMarginPortfolioCcy = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal AmortisedCost = new java.math.BigDecimal("100.00");
 
 
 TargetTaxLotRequest targetTaxLotRequestInstance = new TargetTaxLotRequest()
@@ -40,7 +42,8 @@ TargetTaxLotRequest targetTaxLotRequestInstance = new TargetTaxLotRequest()
     .SettlementDate(SettlementDate)
     .NotionalCost(NotionalCost)
     .VariationMargin(VariationMargin)
-    .VariationMarginPortfolioCcy(VariationMarginPortfolioCcy);
+    .VariationMarginPortfolioCcy(VariationMarginPortfolioCcy)
+    .AmortisedCost(AmortisedCost);
 ```
 
 

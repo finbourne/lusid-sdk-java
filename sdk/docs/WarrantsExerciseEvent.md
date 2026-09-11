@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **fractionDisposition** | **String** | Handling of fractional underlying units. Defaults to round-down (RDDN) in the holdings engine when null.     Supported string (enumeration) values are: [RDDN, CINL]. Available values: RDDN, CINL. | [optional] [default to String]
 **optionExerciseElections** | [**List&lt;OptionExerciseElection&gt;**](OptionExerciseElection.md) | Option exercise elections for this event. At least one entry. | [optional] [default to List<OptionExerciseElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | Lapse elections for this event. Required when participation is MandatoryWithChoices or when the  issuer publishes a no-action default. | [optional] [default to List<LapseElection>]
+**unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known. | [optional] [default to List<UnknownProceedsElection>]
 
 ```java
 import com.finbourne.lusid.model.WarrantsExerciseEvent;
@@ -38,6 +39,7 @@ NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable String FractionDisposition = "example FractionDisposition";
 @jakarta.annotation.Nullable List<OptionExerciseElection> OptionExerciseElections = new List<OptionExerciseElection>();
 @jakarta.annotation.Nullable List<LapseElection> LapseElections = new List<LapseElection>();
+@jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
 
 
 WarrantsExerciseEvent warrantsExerciseEventInstance = new WarrantsExerciseEvent()
@@ -53,7 +55,8 @@ WarrantsExerciseEvent warrantsExerciseEventInstance = new WarrantsExerciseEvent(
     .NewInstrument(NewInstrument)
     .FractionDisposition(FractionDisposition)
     .OptionExerciseElections(OptionExerciseElections)
-    .LapseElections(LapseElections);
+    .LapseElections(LapseElections)
+    .UnknownProceedsElections(UnknownProceedsElections);
 ```
 
 

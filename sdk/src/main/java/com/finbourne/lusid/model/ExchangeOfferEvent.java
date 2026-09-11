@@ -11,12 +11,16 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AbstainElection;
+import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.CashOfferElection;
+import com.finbourne.lusid.model.ConsentAndExchangeElection;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.MixedLotConstituentsElection;
 import com.finbourne.lusid.model.NewInstrument;
 import com.finbourne.lusid.model.SecurityOfferElection;
+import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -90,6 +94,22 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_CASH_AND_SECURITY_OFFER_ELECTIONS = "cashAndSecurityOfferElections";
+  @SerializedName(SERIALIZED_NAME_CASH_AND_SECURITY_OFFER_ELECTIONS)
+  private List<CashAndSecurityOfferElection> cashAndSecurityOfferElections;
+
+  public static final String SERIALIZED_NAME_CONSENT_AND_EXCHANGE_ELECTIONS = "consentAndExchangeElections";
+  @SerializedName(SERIALIZED_NAME_CONSENT_AND_EXCHANGE_ELECTIONS)
+  private List<ConsentAndExchangeElection> consentAndExchangeElections;
+
+  public static final String SERIALIZED_NAME_ABSTAIN_ELECTIONS = "abstainElections";
+  @SerializedName(SERIALIZED_NAME_ABSTAIN_ELECTIONS)
+  private List<AbstainElection> abstainElections;
+
+  public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
+  @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
+  private List<UnknownProceedsElection> unknownProceedsElections;
 
   public static final String SERIALIZED_NAME_MIN_PIECE_SIZE = "minPieceSize";
   @SerializedName(SERIALIZED_NAME_MIN_PIECE_SIZE)
@@ -323,6 +343,122 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
 
+  public ExchangeOfferEvent cashAndSecurityOfferElections(List<CashAndSecurityOfferElection> cashAndSecurityOfferElections) {
+    
+    this.cashAndSecurityOfferElections = cashAndSecurityOfferElections;
+    return this;
+  }
+
+  public ExchangeOfferEvent addCashAndSecurityOfferElectionsItem(CashAndSecurityOfferElection cashAndSecurityOfferElectionsItem) {
+    if (this.cashAndSecurityOfferElections == null) {
+      this.cashAndSecurityOfferElections = new ArrayList<>();
+    }
+    this.cashAndSecurityOfferElections.add(cashAndSecurityOfferElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible CashAndSecurityOfferElections for this exchange offer event.
+   * @return cashAndSecurityOfferElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<CashAndSecurityOfferElection> getCashAndSecurityOfferElections() {
+    return cashAndSecurityOfferElections;
+  }
+
+
+  public void setCashAndSecurityOfferElections(List<CashAndSecurityOfferElection> cashAndSecurityOfferElections) {
+    this.cashAndSecurityOfferElections = cashAndSecurityOfferElections;
+  }
+
+
+  public ExchangeOfferEvent consentAndExchangeElections(List<ConsentAndExchangeElection> consentAndExchangeElections) {
+    
+    this.consentAndExchangeElections = consentAndExchangeElections;
+    return this;
+  }
+
+  public ExchangeOfferEvent addConsentAndExchangeElectionsItem(ConsentAndExchangeElection consentAndExchangeElectionsItem) {
+    if (this.consentAndExchangeElections == null) {
+      this.consentAndExchangeElections = new ArrayList<>();
+    }
+    this.consentAndExchangeElections.add(consentAndExchangeElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible consent-and-exchange elections for this event (CTEN-style consent paired with the exchange).
+   * @return consentAndExchangeElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<ConsentAndExchangeElection> getConsentAndExchangeElections() {
+    return consentAndExchangeElections;
+  }
+
+
+  public void setConsentAndExchangeElections(List<ConsentAndExchangeElection> consentAndExchangeElections) {
+    this.consentAndExchangeElections = consentAndExchangeElections;
+  }
+
+
+  public ExchangeOfferEvent abstainElections(List<AbstainElection> abstainElections) {
+    
+    this.abstainElections = abstainElections;
+    return this;
+  }
+
+  public ExchangeOfferEvent addAbstainElectionsItem(AbstainElection abstainElectionsItem) {
+    if (this.abstainElections == null) {
+      this.abstainElections = new ArrayList<>();
+    }
+    this.abstainElections.add(abstainElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible abstain elections for this event (ABST) — decline to vote on the consent.
+   * @return abstainElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<AbstainElection> getAbstainElections() {
+    return abstainElections;
+  }
+
+
+  public void setAbstainElections(List<AbstainElection> abstainElections) {
+    this.abstainElections = abstainElections;
+  }
+
+
+  public ExchangeOfferEvent unknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    
+    this.unknownProceedsElections = unknownProceedsElections;
+    return this;
+  }
+
+  public ExchangeOfferEvent addUnknownProceedsElectionsItem(UnknownProceedsElection unknownProceedsElectionsItem) {
+    if (this.unknownProceedsElections == null) {
+      this.unknownProceedsElections = new ArrayList<>();
+    }
+    this.unknownProceedsElections.add(unknownProceedsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.
+   * @return unknownProceedsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<UnknownProceedsElection> getUnknownProceedsElections() {
+    return unknownProceedsElections;
+  }
+
+
+  public void setUnknownProceedsElections(List<UnknownProceedsElection> unknownProceedsElections) {
+    this.unknownProceedsElections = unknownProceedsElections;
+  }
+
+
   public ExchangeOfferEvent minPieceSize(java.math.BigDecimal minPieceSize) {
     
     this.minPieceSize = minPieceSize;
@@ -488,6 +624,10 @@ public class ExchangeOfferEvent extends InstrumentEvent {
         Objects.equals(this.securityOfferElections, exchangeOfferEvent.securityOfferElections) &&
         Objects.equals(this.mixedLotConstituentsElections, exchangeOfferEvent.mixedLotConstituentsElections) &&
         Objects.equals(this.lapseElections, exchangeOfferEvent.lapseElections) &&
+        Objects.equals(this.cashAndSecurityOfferElections, exchangeOfferEvent.cashAndSecurityOfferElections) &&
+        Objects.equals(this.consentAndExchangeElections, exchangeOfferEvent.consentAndExchangeElections) &&
+        Objects.equals(this.abstainElections, exchangeOfferEvent.abstainElections) &&
+        Objects.equals(this.unknownProceedsElections, exchangeOfferEvent.unknownProceedsElections) &&
         (this.minPieceSize.compareTo(exchangeOfferEvent.getMinPieceSize()) == 0) &&
         (this.minIncrement.compareTo(exchangeOfferEvent.getMinIncrement()) == 0) &&
         (this.fractionalUnitsCashPrice.compareTo(exchangeOfferEvent.getFractionalUnitsCashPrice()) == 0) &&
@@ -504,7 +644,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, instructionReference, super.hashCode());
+    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, cashAndSecurityOfferElections, consentAndExchangeElections, abstainElections, unknownProceedsElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, instructionReference, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -527,6 +667,10 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
     sb.append("    mixedLotConstituentsElections: ").append(toIndentedString(mixedLotConstituentsElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
+    sb.append("    consentAndExchangeElections: ").append(toIndentedString(consentAndExchangeElections)).append("\n");
+    sb.append("    abstainElections: ").append(toIndentedString(abstainElections)).append("\n");
+    sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
     sb.append("    minPieceSize: ").append(toIndentedString(minPieceSize)).append("\n");
     sb.append("    minIncrement: ").append(toIndentedString(minIncrement)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
@@ -565,6 +709,10 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     openapiFields.add("securityOfferElections");
     openapiFields.add("mixedLotConstituentsElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("cashAndSecurityOfferElections");
+    openapiFields.add("consentAndExchangeElections");
+    openapiFields.add("abstainElections");
+    openapiFields.add("unknownProceedsElections");
     openapiFields.add("minPieceSize");
     openapiFields.add("minIncrement");
     openapiFields.add("fractionalUnitsCashPrice");

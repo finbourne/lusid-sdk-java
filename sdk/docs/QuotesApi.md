@@ -4,14 +4,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteQuoteAccessMetadataRule**](QuotesApi.md#deleteQuoteAccessMetadataRule) | **DELETE** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule |
+| [**deleteQuoteAccessMetadataRule**](QuotesApi.md#deleteQuoteAccessMetadataRule) | **DELETE** /api/metadata/quotes/rules/{scope} | DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule |
 | [**deleteQuotes**](QuotesApi.md#deleteQuotes) | **POST** /api/quotes/{scope}/$delete | DeleteQuotes: Delete quotes |
 | [**getQuotes**](QuotesApi.md#getQuotes) | **POST** /api/quotes/{scope}/$get | GetQuotes: Get quotes |
-| [**getQuotesAccessMetadataRule**](QuotesApi.md#getQuotesAccessMetadataRule) | **GET** /api/metadata/quotes/rules | [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule |
+| [**getQuotesAccessMetadataRule**](QuotesApi.md#getQuotesAccessMetadataRule) | **GET** /api/metadata/quotes/rules | GetQuotesAccessMetadataRule: Get a quote access metadata rule |
 | [**listQuotes**](QuotesApi.md#listQuotes) | **GET** /api/quotes/{scope}/$deprecated | [DEPRECATED] ListQuotes: List quotes |
-| [**listQuotesAccessMetadataRules**](QuotesApi.md#listQuotesAccessMetadataRules) | **GET** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope |
+| [**listQuotesAccessMetadataRules**](QuotesApi.md#listQuotesAccessMetadataRules) | **GET** /api/metadata/quotes/rules/{scope} | ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope |
 | [**listQuotesForScope**](QuotesApi.md#listQuotesForScope) | **GET** /api/quotes/{scope} | ListQuotesForScope: List quotes for scope |
-| [**upsertQuoteAccessMetadataRule**](QuotesApi.md#upsertQuoteAccessMetadataRule) | **POST** /api/metadata/quotes/rules/{scope} | [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID. |
+| [**upsertQuoteAccessMetadataRule**](QuotesApi.md#upsertQuoteAccessMetadataRule) | **POST** /api/metadata/quotes/rules/{scope} | UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID. |
 | [**upsertQuotes**](QuotesApi.md#upsertQuotes) | **POST** /api/quotes/{scope} | UpsertQuotes: Upsert quotes |
 
 
@@ -20,7 +20,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > QuoteAccessMetadataRule deleteQuoteAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt)
 
-[EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
+DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
 
 Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
 
@@ -317,7 +317,7 @@ public class QuotesApiExample {
 
 > QuoteAccessMetadataRule getQuotesAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
+GetQuotesAccessMetadataRule: Get a quote access metadata rule
 
 Get a specific quote access metadata rule by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
 
@@ -523,7 +523,7 @@ public class QuotesApiExample {
 
 > ResourceListOfQuoteAccessMetadataRule listQuotesAccessMetadataRules(scope, asAt)
 
-[EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
+ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
 
 Get all the quote access metadata rules in the specified scope
 
@@ -715,7 +715,7 @@ public class QuotesApiExample {
 
 > QuoteAccessMetadataRule upsertQuoteAccessMetadataRule(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil)
 
-[EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
+UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
 
 Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
 

@@ -88,6 +88,10 @@ public class TargetTaxLot {
   @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY)
   private java.math.BigDecimal variationMarginPortfolioCcy;
 
+  public static final String SERIALIZED_NAME_AMORTISED_COST = "amortisedCost";
+  @SerializedName(SERIALIZED_NAME_AMORTISED_COST)
+  private java.math.BigDecimal amortisedCost;
+
   public TargetTaxLot() {
   }
 
@@ -280,6 +284,27 @@ public class TargetTaxLot {
   }
 
 
+  public TargetTaxLot amortisedCost(java.math.BigDecimal amortisedCost) {
+    
+    this.amortisedCost = amortisedCost;
+    return this;
+  }
+
+   /**
+   * The amortised cost of the tax-lot in the settlement currency, for example a supplied amortised cost at migration. If supplied, this value seeds the tax-lot&#39;s amortised cost at the adjustment date and amortisation continues forward from it; if not supplied, the amortised cost defaults to the cost of the tax-lot.
+   * @return amortisedCost
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAmortisedCost() {
+    return amortisedCost;
+  }
+
+
+  public void setAmortisedCost(java.math.BigDecimal amortisedCost) {
+    this.amortisedCost = amortisedCost;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -298,7 +323,8 @@ public class TargetTaxLot {
         Objects.equals(this.settlementDate, targetTaxLot.settlementDate) &&
         (this.notionalCost.compareTo(targetTaxLot.getNotionalCost()) == 0) &&
         (this.variationMargin.compareTo(targetTaxLot.getVariationMargin()) == 0) &&
-        (this.variationMarginPortfolioCcy.compareTo(targetTaxLot.getVariationMarginPortfolioCcy()) == 0);
+        (this.variationMarginPortfolioCcy.compareTo(targetTaxLot.getVariationMarginPortfolioCcy()) == 0) &&
+        (this.amortisedCost.compareTo(targetTaxLot.getAmortisedCost()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -307,7 +333,7 @@ public class TargetTaxLot {
 
   @Override
   public int hashCode() {
-    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy);
+    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy, amortisedCost);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -330,6 +356,7 @@ public class TargetTaxLot {
     sb.append("    notionalCost: ").append(toIndentedString(notionalCost)).append("\n");
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
+    sb.append("    amortisedCost: ").append(toIndentedString(amortisedCost)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -361,6 +388,7 @@ public class TargetTaxLot {
     openapiFields.add("notionalCost");
     openapiFields.add("variationMargin");
     openapiFields.add("variationMarginPortfolioCcy");
+    openapiFields.add("amortisedCost");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

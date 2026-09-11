@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.PikSchedule
-A PikSchedule represents Payment-in-Kind features for a ComplexBond.  It works in conjunction with existing FixedSchedules or FloatSchedules to define  how interest is paid during duration of the schedule.
+A PikSchedule represents Payment-in-Kind features for a ComplexBond, a FlexibleLoan or a LoanFacility.  It works in conjunction with existing FixedSchedules or FloatSchedules to define  how interest is paid during duration of the schedule.
 
 ## Properties
 
@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **pikPaymentType** | **String** | The type of PIK payment to be used for the duration of this schedule.  InterestCapitalisation adds the paid-in-kind portion to the bond&#39;s current face;  AdditionalSecurities settles it by delivering units of another instrument, named on each  period&#39;s PikBondInterestEvent; Electable leaves the choice to a per-period election.     Supported string (enumeration) values are: [Electable, InterestCapitalisation, AdditionalSecurities]. | [optional] [default to String]
 **pikRate** | **java.math.BigDecimal** | The PIK interest rate. Must be greater than or equal to zero.  null indicates no override PIK interest rate. | [optional] [default to java.math.BigDecimal]
 **pikSpread** | **java.math.BigDecimal** | The PIK spread to be added to the base rate for the final PIK rate.  null indicates no spread on base rate. | [optional] [default to java.math.BigDecimal]
+**pikTravelsFree** | **Boolean** | Whether the in-kind entitlement travels with the traded position for the whole period, the way bond  interest does, rather than being earned from settlement the way loan cash interest is. When true, a  holder who buys before the period end takes the full-period in-kind amount on the amount bought even  if the trade settles after the ex-date. When false, the in-kind amount is day-weighted on the settled  balance path and the settled holder keeps it. Defaults to true. Bank debt only: a ComplexBond&#39;s  in-kind entitlement already follows the record date.     Nullable in the constructor and initialised here, unlike the generated shape: Newtonsoft passes  default(bool) for a value-type constructor parameter the payload omits, so a plain  &#x60;bool pikTravelsFree &#x3D; true&#x60; would come back false for every client that did not state it. | [optional] [default to Boolean]
+**pikInterestBasis** | **String** | Whether the in-kind leg stands in place of the cash leg or is paid on top of it.     Alternative, the default, is the toggling structure: one period&#39;s interest settled partly in cash  and partly in kind, so the cash leg settles the complement of PikFraction and the period&#39;s  interest is the weighted sum of the two accruals, lying between them. Additional makes the two  separate legs of one loan, each settled in full, so the period&#39;s interest is their sum and  PikFraction weights only the in-kind leg.     The two accruals cannot be told apart without this: 500 accrued in cash against 600 in kind is  560 of interest on one reading and 1,100 on the other. A PikMargin schedule is Additional  whichever is stated, because the margin is already carved out of the coupon.     Defaulted here as well as in the constructor for the reason PikTravelsFree is. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.PikSchedule;
@@ -28,6 +30,8 @@ Boolean IsPikFractionElectable = true;
 @jakarta.annotation.Nullable String PikPaymentType = "example PikPaymentType";
 @jakarta.annotation.Nullable java.math.BigDecimal PikRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PikSpread = new java.math.BigDecimal("100.00");
+Boolean PikTravelsFree = true;
+@jakarta.annotation.Nullable String PikInterestBasis = "example PikInterestBasis";
 
 
 PikSchedule pikScheduleInstance = new PikSchedule()
@@ -38,7 +42,9 @@ PikSchedule pikScheduleInstance = new PikSchedule()
     .PikMargin(PikMargin)
     .PikPaymentType(PikPaymentType)
     .PikRate(PikRate)
-    .PikSpread(PikSpread);
+    .PikSpread(PikSpread)
+    .PikTravelsFree(PikTravelsFree)
+    .PikInterestBasis(PikInterestBasis);
 ```
 
 

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.InflationConvexityOptions;
 import com.finbourne.lusid.model.ModelSelection;
 import com.finbourne.lusid.model.ReturnZeroPvOptions;
 import com.finbourne.lusid.model.RiskBumpOptions;
@@ -150,6 +151,10 @@ public class PricingOptions {
   public static final String SERIALIZED_NAME_FIND_OR_CALCULATE_WRITE_THROUGH = "findOrCalculateWriteThrough";
   @SerializedName(SERIALIZED_NAME_FIND_OR_CALCULATE_WRITE_THROUGH)
   private Boolean findOrCalculateWriteThrough;
+
+  public static final String SERIALIZED_NAME_INFLATION_CONVEXITY = "inflationConvexity";
+  @SerializedName(SERIALIZED_NAME_INFLATION_CONVEXITY)
+  private InflationConvexityOptions inflationConvexity;
 
   public PricingOptions() {
   }
@@ -666,6 +671,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions inflationConvexity(InflationConvexityOptions inflationConvexity) {
+    
+    this.inflationConvexity = inflationConvexity;
+    return this;
+  }
+
+   /**
+   * Get inflationConvexity
+   * @return inflationConvexity
+  **/
+  @jakarta.annotation.Nullable
+  public InflationConvexityOptions getInflationConvexity() {
+    return inflationConvexity;
+  }
+
+
+  public void setInflationConvexity(InflationConvexityOptions inflationConvexity) {
+    this.inflationConvexity = inflationConvexity;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -699,7 +725,8 @@ public class PricingOptions {
         Objects.equals(this.riskBumpOptions, pricingOptions.riskBumpOptions) &&
         Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency) &&
         Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity) &&
-        Objects.equals(this.findOrCalculateWriteThrough, pricingOptions.findOrCalculateWriteThrough);
+        Objects.equals(this.findOrCalculateWriteThrough, pricingOptions.findOrCalculateWriteThrough) &&
+        Objects.equals(this.inflationConvexity, pricingOptions.inflationConvexity);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -708,7 +735,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -746,6 +773,7 @@ public class PricingOptions {
     sb.append("    fundingCurveByCurrency: ").append(toIndentedString(fundingCurveByCurrency)).append("\n");
     sb.append("    defaultPoolFactorsToUnity: ").append(toIndentedString(defaultPoolFactorsToUnity)).append("\n");
     sb.append("    findOrCalculateWriteThrough: ").append(toIndentedString(findOrCalculateWriteThrough)).append("\n");
+    sb.append("    inflationConvexity: ").append(toIndentedString(inflationConvexity)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -792,6 +820,7 @@ public class PricingOptions {
     openapiFields.add("fundingCurveByCurrency");
     openapiFields.add("defaultPoolFactorsToUnity");
     openapiFields.add("findOrCalculateWriteThrough");
+    openapiFields.add("inflationConvexity");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -830,6 +859,10 @@ public class PricingOptions {
       // validate the optional field `riskBumpOptions`
       if (jsonObj.get("riskBumpOptions") != null && !jsonObj.get("riskBumpOptions").isJsonNull()) {
         RiskBumpOptions.validateJsonElement(jsonObj.get("riskBumpOptions"));
+      }
+      // validate the optional field `inflationConvexity`
+      if (jsonObj.get("inflationConvexity") != null && !jsonObj.get("inflationConvexity").isJsonNull()) {
+        InflationConvexityOptions.validateJsonElement(jsonObj.get("inflationConvexity"));
       }
   }
 
