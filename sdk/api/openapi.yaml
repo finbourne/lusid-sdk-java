@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9924
+  version: 0.11.9932
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -49675,6 +49675,19 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: "When provided, each line's bucketMemberships report only this\
+          \ bucket set's classification of it.\r\n Otherwise, every bucket set covering\
+          \ the NAV Type is reported."
+        explode: true
+        in: query
+        name: bucketSetCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -49779,6 +49792,9 @@ paths:
                     scope: Scope1
                     code: CustodianAccountCode
                   custodianAccountType: Custodian_Cash
+                  bucketMemberships:
+                  - bucketSetCode: byActivity
+                    bucketId: RealisedGainLoss
                 href: http://example.com
                 links: []
               schema:
@@ -49852,6 +49868,9 @@ paths:
                     scope: Scope1
                     code: CustodianAccountCode
                   custodianAccountType: Custodian_Cash
+                  bucketMemberships:
+                  - bucketSetCode: byActivity
+                    bucketId: RealisedGainLoss
                 href: http://example.com
                 links: []
               schema:
@@ -49925,6 +49944,9 @@ paths:
                     scope: Scope1
                     code: CustodianAccountCode
                   custodianAccountType: Custodian_Cash
+                  bucketMemberships:
+                  - bucketSetCode: byActivity
+                    bucketId: RealisedGainLoss
                 href: http://example.com
                 links: []
               schema:
@@ -104015,6 +104037,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104082,6 +104105,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104169,6 +104193,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104236,6 +104261,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104323,6 +104349,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104390,6 +104417,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -104503,6 +104531,7 @@ paths:
                     scaleInstrumentAccruedOverrideByContractSize: false
                     defaultPoolFactorsToUnity: false
                     findOrCalculateWriteThrough: false
+                    allowFallbackOnModelDecline: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -104574,6 +104603,7 @@ paths:
                     scaleInstrumentAccruedOverrideByContractSize: false
                     defaultPoolFactorsToUnity: false
                     findOrCalculateWriteThrough: false
+                    allowFallbackOnModelDecline: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -104645,6 +104675,7 @@ paths:
                     scaleInstrumentAccruedOverrideByContractSize: false
                     defaultPoolFactorsToUnity: false
                     findOrCalculateWriteThrough: false
+                    allowFallbackOnModelDecline: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -104716,6 +104747,7 @@ paths:
                     scaleInstrumentAccruedOverrideByContractSize: false
                     defaultPoolFactorsToUnity: false
                     findOrCalculateWriteThrough: false
+                    allowFallbackOnModelDecline: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -105263,6 +105295,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -105342,6 +105375,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -105421,6 +105455,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -105765,6 +105800,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -105832,6 +105868,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -105919,6 +105956,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -105986,6 +106024,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -106073,6 +106112,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -106140,6 +106180,7 @@ paths:
                         scaleInstrumentAccruedOverrideByContractSize: false
                         defaultPoolFactorsToUnity: false
                         findOrCalculateWriteThrough: false
+                        allowFallbackOnModelDecline: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -106296,6 +106337,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -106375,6 +106417,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -106454,6 +106497,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -106672,6 +106716,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -106751,6 +106796,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -106830,6 +106876,7 @@ paths:
                       scaleInstrumentAccruedOverrideByContractSize: false
                       defaultPoolFactorsToUnity: false
                       findOrCalculateWriteThrough: false
+                      allowFallbackOnModelDecline: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -177338,6 +177385,27 @@ components:
           nullable: true
           type: string
       type: object
+    BucketMembership:
+      additionalProperties: false
+      description: "The bucket a Journal Entry Line was assigned to within one of\
+        \ a Fund Configuration's bucket sets.\r\nComputed when the lines are read,\
+        \ from the bucket set definitions in force at that point."
+      example:
+        bucketSetCode: bucketSetCode
+        bucketId: bucketId
+      properties:
+        bucketSetCode:
+          description: The code of the bucket set that produced this classification.
+          nullable: true
+          type: string
+        bucketId:
+          description: "The id of the bucket within that bucket set the line was assigned\
+            \ to, following the same first-match-wins waterfall used at valuation.\
+            \ One of the reserved '_unmatched_dealing', '_unmatched_fees' or '_unmatched_pnl'\
+            \ ids when the line matched no bucket's filter in the set."
+          nullable: true
+          type: string
+      type: object
     BucketSetDefinition:
       additionalProperties: false
       example:
@@ -188696,6 +188764,7 @@ components:
             enableUseOfCachedUnitResults: true
             useInstrumentTypeToDeterminePricer: true
             riskEngine: riskEngine
+            allowFallbackOnModelDecline: true
             produceSeparateResultForLinearOtcLegs: true
             useChildSubHoldingKeysForPortfolioExpansion: true
             allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -192739,6 +192808,7 @@ components:
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
               riskEngine: riskEngine
+              allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -212537,6 +212607,11 @@ components:
           amount: 0.8008281904610115
           currency: currency
         asAtDate: 2000-01-23T04:56:07.000+00:00
+        bucketMemberships:
+        - bucketSetCode: bucketSetCode
+          bucketId: bucketId
+        - bucketSetCode: bucketSetCode
+          bucketId: bucketId
       properties:
         accountingDate:
           description: The Journal Entry Line accounting date.
@@ -212699,6 +212774,15 @@ components:
             for this Journal Entry Line.
           nullable: true
           type: string
+        bucketMemberships:
+          description: "The bucket this Journal Entry Line is assigned to in each\
+            \ of the Fund Configuration's bucket sets that covers the NAV type, in\
+            \ bucket set definition order. Each bucket set classifies the line independently,\
+            \ so a line normally carries one entry per bucket set."
+          items:
+            $ref: '#/components/schemas/BucketMembership'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -218573,6 +218657,7 @@ components:
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
               riskEngine: riskEngine
+              allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -262501,10 +262586,28 @@ components:
             type: string
           couponPerUnit:
             description: The capitalised coupon amount per unit of the held bond's
-              current face
+              current face. Never rounded.
             format: double
             nullable: true
             type: number
+          faceRoundingConvention:
+            description: "How the face credited to a holding is rounded once CouponPerUnit\
+              \ has been scaled by the holding's\r\ncurrent face. Defaults to null,\
+              \ which leaves it unrounded. Carried from the bond's PikSchedule; the\r\
+              \nper-unit coupon itself is never rounded. BuyUp is one of the available\
+              \ values but is rejected for\r\nthis event: a capitalisation has no\
+              \ cash leg to fund the next whole unit from. Available values: Floor,\
+              \ Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp,\
+              \ BankerRounding."
+            nullable: true
+            type: string
+          faceRoundingDecimalPlaces:
+            description: "The number of decimal places the credited face is rounded\
+              \ to. Required when\r\nFaceRoundingConvention is RoundToDecimalPlaces\
+              \ and not permitted otherwise."
+            format: int32
+            nullable: true
+            type: integer
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -263108,6 +263211,25 @@ components:
             description: The end date of the PIK schedule period.
             format: date-time
             type: string
+          faceRoundingConvention:
+            description: "How the face credited by an interest capitalisation is rounded.\
+              \ A PIK indenture typically increases\r\nthe note's principal by the\
+              \ interest payable rounded to a whole currency unit, and which way it\r\
+              \nrounds varies by issuer. Defaults to null, which leaves the credited\
+              \ face unrounded. BuyUp is one\r\nof the available values but is rejected:\
+              \ a capitalisation has no cash leg to fund the next whole\r\nunit from.\
+              \ The per-unit coupon itself is never rounded. Available values: Floor,\
+              \ Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp,\
+              \ BankerRounding."
+            nullable: true
+            type: string
+          faceRoundingDecimalPlaces:
+            description: "The number of decimal places the credited face is rounded\
+              \ to. Required when\r\nFaceRoundingConvention is RoundToDecimalPlaces\
+              \ and not permitted otherwise."
+            format: int32
+            nullable: true
+            type: integer
           isPikFractionElectable:
             description: "If true, the PIK fraction is electable at each payment date.\r\
               \nDefaults to false."
@@ -269581,6 +269703,7 @@ components:
           enableUseOfCachedUnitResults: true
           useInstrumentTypeToDeterminePricer: true
           riskEngine: riskEngine
+          allowFallbackOnModelDecline: true
           produceSeparateResultForLinearOtcLegs: true
           useChildSubHoldingKeysForPortfolioExpansion: true
           allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -269799,6 +269922,7 @@ components:
         enableUseOfCachedUnitResults: true
         useInstrumentTypeToDeterminePricer: true
         riskEngine: riskEngine
+        allowFallbackOnModelDecline: true
         produceSeparateResultForLinearOtcLegs: true
         useChildSubHoldingKeysForPortfolioExpansion: true
         allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -269981,6 +270105,22 @@ components:
           type: boolean
         inflationConvexity:
           $ref: '#/components/schemas/InflationConvexityOptions'
+        allowFallbackOnModelDecline:
+          description: "When true, a model that refuses an instrument outright - because\
+            \ the instrument is outside\r\nwhat that model can represent, not because\
+            \ data was missing - hands the instrument to the\r\nnext model this recipe's\
+            \ rules offer for it, and to the default model for its type after\r\n\
+            those. The row is then priced by the first model that accepts it, and\
+            \ carries a diagnostic\r\nnaming the model that stood down, its objection,\
+            \ and the model that served it. The caller\r\nmust be entitled to the\
+            \ model that serves the row; where none of the alternatives is both\r\n\
+            licensed and willing, the row keeps the original refusal.\r\nWhen false\
+            \ (default), a refusal ends the row however many other models the recipe\
+            \ offers.\r\nA failure that is not a refusal - a missing curve, an unresolved\
+            \ fixing, a malformed model\r\noption - always ends the row, whatever\
+            \ this is set to, because another model's number would\r\nhide the gap\
+            \ rather than close it."
+          type: boolean
       type: object
     PrimarySchedule:
       additionalProperties: false
@@ -287078,6 +287218,7 @@ components:
                 enableUseOfCachedUnitResults: true
                 useInstrumentTypeToDeterminePricer: true
                 riskEngine: riskEngine
+                allowFallbackOnModelDecline: true
                 produceSeparateResultForLinearOtcLegs: true
                 useChildSubHoldingKeysForPortfolioExpansion: true
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -287393,6 +287534,7 @@ components:
                 enableUseOfCachedUnitResults: true
                 useInstrumentTypeToDeterminePricer: true
                 riskEngine: riskEngine
+                allowFallbackOnModelDecline: true
                 produceSeparateResultForLinearOtcLegs: true
                 useChildSubHoldingKeysForPortfolioExpansion: true
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -314522,8 +314664,9 @@ components:
             description: "The basis on which the asset-side settlement amount is computed,\
               \ determined by the trigger. Required.\r\n \r\nSupported string (enumeration)\
               \ values are: [CurrentNotionalPlusAccrued, CashOfferPlusAccrued, CashOfferPlusRealAccrued,\
-              \ FairValue, CashOffer]. Available values: CurrentNotionalPlusAccrued,\
-              \ CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer."
+              \ FairValue, CashOffer, PriceReturn]. Available values: CurrentNotionalPlusAccrued,\
+              \ CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer,\
+              \ PriceReturn."
             minLength: 1
             type: string
           assetSettlementAmount:
@@ -334502,6 +334645,7 @@ components:
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
               riskEngine: riskEngine
+              allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
               useChildSubHoldingKeysForPortfolioExpansion: true
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
@@ -339867,6 +340011,11 @@ components:
             amount: 0.8008281904610115
             currency: currency
           asAtDate: 2000-01-23T04:56:07.000+00:00
+          bucketMemberships:
+          - bucketSetCode: bucketSetCode
+            bucketId: bucketId
+          - bucketSetCode: bucketSetCode
+            bucketId: bucketId
         - sourceId: sourceId
           subHoldingKeys:
             key:
@@ -339960,6 +340109,11 @@ components:
             amount: 0.8008281904610115
             currency: currency
           asAtDate: 2000-01-23T04:56:07.000+00:00
+          bucketMemberships:
+          - bucketSetCode: bucketSetCode
+            bucketId: bucketId
+          - bucketSetCode: bucketSetCode
+            bucketId: bucketId
         links:
         - method: method
           description: description

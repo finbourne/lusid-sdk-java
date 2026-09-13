@@ -156,6 +156,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_INFLATION_CONVEXITY)
   private InflationConvexityOptions inflationConvexity;
 
+  public static final String SERIALIZED_NAME_ALLOW_FALLBACK_ON_MODEL_DECLINE = "allowFallbackOnModelDecline";
+  @SerializedName(SERIALIZED_NAME_ALLOW_FALLBACK_ON_MODEL_DECLINE)
+  private Boolean allowFallbackOnModelDecline;
+
   public PricingOptions() {
   }
 
@@ -692,6 +696,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions allowFallbackOnModelDecline(Boolean allowFallbackOnModelDecline) {
+    
+    this.allowFallbackOnModelDecline = allowFallbackOnModelDecline;
+    return this;
+  }
+
+   /**
+   * When true, a model that refuses an instrument outright - because the instrument is outside  what that model can represent, not because data was missing - hands the instrument to the  next model this recipe&#39;s rules offer for it, and to the default model for its type after  those. The row is then priced by the first model that accepts it, and carries a diagnostic  naming the model that stood down, its objection, and the model that served it. The caller  must be entitled to the model that serves the row; where none of the alternatives is both  licensed and willing, the row keeps the original refusal.  When false (default), a refusal ends the row however many other models the recipe offers.  A failure that is not a refusal - a missing curve, an unresolved fixing, a malformed model  option - always ends the row, whatever this is set to, because another model&#39;s number would  hide the gap rather than close it.
+   * @return allowFallbackOnModelDecline
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getAllowFallbackOnModelDecline() {
+    return allowFallbackOnModelDecline;
+  }
+
+
+  public void setAllowFallbackOnModelDecline(Boolean allowFallbackOnModelDecline) {
+    this.allowFallbackOnModelDecline = allowFallbackOnModelDecline;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -726,7 +751,8 @@ public class PricingOptions {
         Objects.equals(this.fundingCurveByCurrency, pricingOptions.fundingCurveByCurrency) &&
         Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity) &&
         Objects.equals(this.findOrCalculateWriteThrough, pricingOptions.findOrCalculateWriteThrough) &&
-        Objects.equals(this.inflationConvexity, pricingOptions.inflationConvexity);
+        Objects.equals(this.inflationConvexity, pricingOptions.inflationConvexity) &&
+        Objects.equals(this.allowFallbackOnModelDecline, pricingOptions.allowFallbackOnModelDecline);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -735,7 +761,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity, allowFallbackOnModelDecline);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -774,6 +800,7 @@ public class PricingOptions {
     sb.append("    defaultPoolFactorsToUnity: ").append(toIndentedString(defaultPoolFactorsToUnity)).append("\n");
     sb.append("    findOrCalculateWriteThrough: ").append(toIndentedString(findOrCalculateWriteThrough)).append("\n");
     sb.append("    inflationConvexity: ").append(toIndentedString(inflationConvexity)).append("\n");
+    sb.append("    allowFallbackOnModelDecline: ").append(toIndentedString(allowFallbackOnModelDecline)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -821,6 +848,7 @@ public class PricingOptions {
     openapiFields.add("defaultPoolFactorsToUnity");
     openapiFields.add("findOrCalculateWriteThrough");
     openapiFields.add("inflationConvexity");
+    openapiFields.add("allowFallbackOnModelDecline");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

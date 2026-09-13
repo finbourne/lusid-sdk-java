@@ -60,6 +60,14 @@ public class PikSchedule extends Schedule {
   @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
   private OffsetDateTime maturityDate;
 
+  public static final String SERIALIZED_NAME_FACE_ROUNDING_CONVENTION = "faceRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FACE_ROUNDING_CONVENTION)
+  private String faceRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FACE_ROUNDING_DECIMAL_PLACES = "faceRoundingDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FACE_ROUNDING_DECIMAL_PLACES)
+  private Integer faceRoundingDecimalPlaces;
+
   public static final String SERIALIZED_NAME_IS_PIK_FRACTION_ELECTABLE = "isPikFractionElectable";
   @SerializedName(SERIALIZED_NAME_IS_PIK_FRACTION_ELECTABLE)
   private Boolean isPikFractionElectable;
@@ -135,6 +143,48 @@ public class PikSchedule extends Schedule {
 
   public void setMaturityDate(OffsetDateTime maturityDate) {
     this.maturityDate = maturityDate;
+  }
+
+
+  public PikSchedule faceRoundingConvention(String faceRoundingConvention) {
+    
+    this.faceRoundingConvention = faceRoundingConvention;
+    return this;
+  }
+
+   /**
+   * How the face credited by an interest capitalisation is rounded. A PIK indenture typically increases  the note&#39;s principal by the interest payable rounded to a whole currency unit, and which way it  rounds varies by issuer. Defaults to null, which leaves the credited face unrounded. BuyUp is one  of the available values but is rejected: a capitalisation has no cash leg to fund the next whole  unit from. The per-unit coupon itself is never rounded. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return faceRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFaceRoundingConvention() {
+    return faceRoundingConvention;
+  }
+
+
+  public void setFaceRoundingConvention(String faceRoundingConvention) {
+    this.faceRoundingConvention = faceRoundingConvention;
+  }
+
+
+  public PikSchedule faceRoundingDecimalPlaces(Integer faceRoundingDecimalPlaces) {
+    
+    this.faceRoundingDecimalPlaces = faceRoundingDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise.
+   * @return faceRoundingDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFaceRoundingDecimalPlaces() {
+    return faceRoundingDecimalPlaces;
+  }
+
+
+  public void setFaceRoundingDecimalPlaces(Integer faceRoundingDecimalPlaces) {
+    this.faceRoundingDecimalPlaces = faceRoundingDecimalPlaces;
   }
 
 
@@ -318,6 +368,8 @@ public class PikSchedule extends Schedule {
     PikSchedule pikSchedule = (PikSchedule) o;
     return Objects.equals(this.startDate, pikSchedule.startDate) &&
         Objects.equals(this.maturityDate, pikSchedule.maturityDate) &&
+        Objects.equals(this.faceRoundingConvention, pikSchedule.faceRoundingConvention) &&
+        Objects.equals(this.faceRoundingDecimalPlaces, pikSchedule.faceRoundingDecimalPlaces) &&
         Objects.equals(this.isPikFractionElectable, pikSchedule.isPikFractionElectable) &&
         (this.pikFraction.compareTo(pikSchedule.getPikFraction()) == 0) &&
         (this.pikMargin.compareTo(pikSchedule.getPikMargin()) == 0) &&
@@ -335,7 +387,7 @@ public class PikSchedule extends Schedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, isPikFractionElectable, pikFraction, pikMargin, pikPaymentType, pikRate, pikSpread, pikTravelsFree, pikInterestBasis, super.hashCode());
+    return Objects.hash(startDate, maturityDate, faceRoundingConvention, faceRoundingDecimalPlaces, isPikFractionElectable, pikFraction, pikMargin, pikPaymentType, pikRate, pikSpread, pikTravelsFree, pikInterestBasis, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -352,6 +404,8 @@ public class PikSchedule extends Schedule {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
+    sb.append("    faceRoundingConvention: ").append(toIndentedString(faceRoundingConvention)).append("\n");
+    sb.append("    faceRoundingDecimalPlaces: ").append(toIndentedString(faceRoundingDecimalPlaces)).append("\n");
     sb.append("    isPikFractionElectable: ").append(toIndentedString(isPikFractionElectable)).append("\n");
     sb.append("    pikFraction: ").append(toIndentedString(pikFraction)).append("\n");
     sb.append("    pikMargin: ").append(toIndentedString(pikMargin)).append("\n");
@@ -385,6 +439,8 @@ public class PikSchedule extends Schedule {
     openapiFields.add("scheduleType");
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
+    openapiFields.add("faceRoundingConvention");
+    openapiFields.add("faceRoundingDecimalPlaces");
     openapiFields.add("isPikFractionElectable");
     openapiFields.add("pikFraction");
     openapiFields.add("pikMargin");

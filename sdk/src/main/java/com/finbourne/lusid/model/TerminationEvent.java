@@ -204,7 +204,7 @@ public class TerminationEvent extends InstrumentEvent {
   }
 
    /**
-   * The basis on which the asset-side settlement amount is computed, determined by the trigger. Required.     Supported string (enumeration) values are: [CurrentNotionalPlusAccrued, CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer]. Available values: CurrentNotionalPlusAccrued, CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer.
+   * The basis on which the asset-side settlement amount is computed, determined by the trigger. Required.     Supported string (enumeration) values are: [CurrentNotionalPlusAccrued, CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer, PriceReturn]. Available values: CurrentNotionalPlusAccrued, CashOfferPlusAccrued, CashOfferPlusRealAccrued, FairValue, CashOffer, PriceReturn.
    * @return settlementMethod
   **/
   @jakarta.annotation.Nonnull

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketMembership;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.JournalEntryLineShareClassBreakdown;
 import com.finbourne.lusid.model.Link;
@@ -188,6 +189,10 @@ public class FundJournalEntryLine {
   public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE = "custodianAccountType";
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_TYPE)
   private String custodianAccountType;
+
+  public static final String SERIALIZED_NAME_BUCKET_MEMBERSHIPS = "bucketMemberships";
+  @SerializedName(SERIALIZED_NAME_BUCKET_MEMBERSHIPS)
+  private List<BucketMembership> bucketMemberships;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -908,6 +913,35 @@ public class FundJournalEntryLine {
   }
 
 
+  public FundJournalEntryLine bucketMemberships(List<BucketMembership> bucketMemberships) {
+    
+    this.bucketMemberships = bucketMemberships;
+    return this;
+  }
+
+  public FundJournalEntryLine addBucketMembershipsItem(BucketMembership bucketMembershipsItem) {
+    if (this.bucketMemberships == null) {
+      this.bucketMemberships = new ArrayList<>();
+    }
+    this.bucketMemberships.add(bucketMembershipsItem);
+    return this;
+  }
+
+   /**
+   * The bucket this Journal Entry Line is assigned to in each of the Fund Configuration&#39;s bucket sets that covers the NAV type, in bucket set definition order. Each bucket set classifies the line independently, so a line normally carries one entry per bucket set.
+   * @return bucketMemberships
+  **/
+  @jakarta.annotation.Nullable
+  public List<BucketMembership> getBucketMemberships() {
+    return bucketMemberships;
+  }
+
+
+  public void setBucketMemberships(List<BucketMembership> bucketMemberships) {
+    this.bucketMemberships = bucketMemberships;
+  }
+
+
   public FundJournalEntryLine links(List<Link> links) {
     
     this.links = links;
@@ -979,6 +1013,7 @@ public class FundJournalEntryLine {
         Objects.equals(this.shareClassBreakdowns, fundJournalEntryLine.shareClassBreakdowns) &&
         Objects.equals(this.custodianAccountId, fundJournalEntryLine.custodianAccountId) &&
         Objects.equals(this.custodianAccountType, fundJournalEntryLine.custodianAccountType) &&
+        Objects.equals(this.bucketMemberships, fundJournalEntryLine.bucketMemberships) &&
         Objects.equals(this.links, fundJournalEntryLine.links);
   }
 
@@ -988,7 +1023,7 @@ public class FundJournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, shareClassBreakdowns, custodianAccountId, custodianAccountType, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, shareClassBreakdowns, custodianAccountId, custodianAccountType, bucketMemberships, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1034,6 +1069,7 @@ public class FundJournalEntryLine {
     sb.append("    shareClassBreakdowns: ").append(toIndentedString(shareClassBreakdowns)).append("\n");
     sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    custodianAccountType: ").append(toIndentedString(custodianAccountType)).append("\n");
+    sb.append("    bucketMemberships: ").append(toIndentedString(bucketMemberships)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1089,6 +1125,7 @@ public class FundJournalEntryLine {
     openapiFields.add("shareClassBreakdowns");
     openapiFields.add("custodianAccountId");
     openapiFields.add("custodianAccountType");
+    openapiFields.add("bucketMemberships");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1218,6 +1255,20 @@ public class FundJournalEntryLine {
       }
       if ((jsonObj.get("custodianAccountType") != null && !jsonObj.get("custodianAccountType").isJsonNull()) && !jsonObj.get("custodianAccountType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custodianAccountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custodianAccountType").toString()));
+      }
+      if (jsonObj.get("bucketMemberships") != null && !jsonObj.get("bucketMemberships").isJsonNull()) {
+        JsonArray jsonArraybucketMemberships = jsonObj.getAsJsonArray("bucketMemberships");
+        if (jsonArraybucketMemberships != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bucketMemberships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bucketMemberships` to be an array in the JSON string but got `%s`", jsonObj.get("bucketMemberships").toString()));
+          }
+
+          // validate the optional field `bucketMemberships` (array)
+          for (int i = 0; i < jsonArraybucketMemberships.size(); i++) {
+            BucketMembership.validateJsonElement(jsonArraybucketMemberships.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

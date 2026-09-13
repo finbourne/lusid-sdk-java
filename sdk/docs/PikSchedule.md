@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The start date of the PIK schedule period. | [default to OffsetDateTime]
 **maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The end date of the PIK schedule period. | [default to OffsetDateTime]
+**faceRoundingConvention** | **String** | How the face credited by an interest capitalisation is rounded. A PIK indenture typically increases  the note&#39;s principal by the interest payable rounded to a whole currency unit, and which way it  rounds varies by issuer. Defaults to null, which leaves the credited face unrounded. BuyUp is one  of the available values but is rejected: a capitalisation has no cash leg to fund the next whole  unit from. The per-unit coupon itself is never rounded. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**faceRoundingDecimalPlaces** | **Integer** | The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise. | [optional] [default to Integer]
 **isPikFractionElectable** | **Boolean** | If true, the PIK fraction is electable at each payment date.  Defaults to false. | [optional] [default to Boolean]
 **pikFraction** | **java.math.BigDecimal** | The fraction of the coupon that is paid in kind, where 0 means fully cash and 1 means fully PIK.  Required if IsPikFractionElectable is false or null. Must satisfy 0 &lt;&#x3D; pikFraction &lt;&#x3D; 1. | [optional] [default to java.math.BigDecimal]
 **pikMargin** | **java.math.BigDecimal** | The portion of the coupon that is paid in kind, stated in the leg&#39;s own rate units (an annualised  rate on the notional) rather than as a fraction of the coupon. The in-kind leg accrues at this flat  rate and the cash leg accrues the remainder of the coupon, so on a floating leg the in-kind portion  stays constant across fixings — the shape of a loan quoted as \&quot;index + 700bp, of which 250bp paid  in kind\&quot;. On a fixed leg it is equivalent to pikFraction &#x3D; pikMargin / couponRate. Should the  period&#39;s whole coupon fall below the margin, the in-kind portion is capped at the whole  (non-negative) coupon and the cash leg floors at zero.  Mutually exclusive with pikFraction, pikRate, pikSpread and isPikFractionElectable.  Must be greater than or equal to zero. null indicates the split is stated by pikFraction instead. | [optional] [default to java.math.BigDecimal]
@@ -24,6 +26,8 @@ import java.net.URI;
 
 OffsetDateTime StartDate = OffsetDateTime.now();
 OffsetDateTime MaturityDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable String FaceRoundingConvention = "example FaceRoundingConvention";
+@jakarta.annotation.Nullable Integer FaceRoundingDecimalPlaces = new Integer("100.00");
 Boolean IsPikFractionElectable = true;
 @jakarta.annotation.Nullable java.math.BigDecimal PikFraction = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PikMargin = new java.math.BigDecimal("100.00");
@@ -37,6 +41,8 @@ Boolean PikTravelsFree = true;
 PikSchedule pikScheduleInstance = new PikSchedule()
     .StartDate(StartDate)
     .MaturityDate(MaturityDate)
+    .FaceRoundingConvention(FaceRoundingConvention)
+    .FaceRoundingDecimalPlaces(FaceRoundingDecimalPlaces)
     .IsPikFractionElectable(IsPikFractionElectable)
     .PikFraction(PikFraction)
     .PikMargin(PikMargin)

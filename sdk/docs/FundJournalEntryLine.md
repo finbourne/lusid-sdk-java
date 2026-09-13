@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **shareClassBreakdowns** | [**List&lt;JournalEntryLineShareClassBreakdown&gt;**](JournalEntryLineShareClassBreakdown.md) | Share Class breakdown data for this Journal Entry Line. | [optional] [default to List<JournalEntryLineShareClassBreakdown>]
 **custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **custodianAccountType** | **String** | Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line. | [optional] [default to String]
+**bucketMemberships** | [**List&lt;BucketMembership&gt;**](BucketMembership.md) | The bucket this Journal Entry Line is assigned to in each of the Fund Configuration&#39;s bucket sets that covers the NAV type, in bucket set definition order. Each bucket set classifies the line independently, so a line normally carries one entry per bucket set. | [optional] [default to List<BucketMembership>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -77,6 +78,7 @@ String EconomicBucket = "example EconomicBucket";
 @jakarta.annotation.Nullable List<JournalEntryLineShareClassBreakdown> ShareClassBreakdowns = new List<JournalEntryLineShareClassBreakdown>();
 ResourceId CustodianAccountId = new ResourceId();
 @jakarta.annotation.Nullable String CustodianAccountType = "example CustodianAccountType";
+@jakarta.annotation.Nullable List<BucketMembership> BucketMemberships = new List<BucketMembership>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -113,6 +115,7 @@ FundJournalEntryLine fundJournalEntryLineInstance = new FundJournalEntryLine()
     .ShareClassBreakdowns(ShareClassBreakdowns)
     .CustodianAccountId(CustodianAccountId)
     .CustodianAccountType(CustodianAccountType)
+    .BucketMemberships(BucketMemberships)
     .Links(Links);
 ```
 

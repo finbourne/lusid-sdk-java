@@ -68,6 +68,14 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_COUPON_PER_UNIT)
   private java.math.BigDecimal couponPerUnit;
 
+  public static final String SERIALIZED_NAME_FACE_ROUNDING_CONVENTION = "faceRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FACE_ROUNDING_CONVENTION)
+  private String faceRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FACE_ROUNDING_DECIMAL_PLACES = "faceRoundingDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FACE_ROUNDING_DECIMAL_PLACES)
+  private Integer faceRoundingDecimalPlaces;
+
   public PikBondInterestCapitalisationEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -142,7 +150,7 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
   }
 
    /**
-   * The capitalised coupon amount per unit of the held bond&#39;s current face
+   * The capitalised coupon amount per unit of the held bond&#39;s current face. Never rounded.
    * @return couponPerUnit
   **/
   @jakarta.annotation.Nullable
@@ -153,6 +161,48 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
 
   public void setCouponPerUnit(java.math.BigDecimal couponPerUnit) {
     this.couponPerUnit = couponPerUnit;
+  }
+
+
+  public PikBondInterestCapitalisationEvent faceRoundingConvention(String faceRoundingConvention) {
+    
+    this.faceRoundingConvention = faceRoundingConvention;
+    return this;
+  }
+
+   /**
+   * How the face credited to a holding is rounded once CouponPerUnit has been scaled by the holding&#39;s  current face. Defaults to null, which leaves it unrounded. Carried from the bond&#39;s PikSchedule; the  per-unit coupon itself is never rounded. BuyUp is one of the available values but is rejected for  this event: a capitalisation has no cash leg to fund the next whole unit from. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return faceRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFaceRoundingConvention() {
+    return faceRoundingConvention;
+  }
+
+
+  public void setFaceRoundingConvention(String faceRoundingConvention) {
+    this.faceRoundingConvention = faceRoundingConvention;
+  }
+
+
+  public PikBondInterestCapitalisationEvent faceRoundingDecimalPlaces(Integer faceRoundingDecimalPlaces) {
+    
+    this.faceRoundingDecimalPlaces = faceRoundingDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise.
+   * @return faceRoundingDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFaceRoundingDecimalPlaces() {
+    return faceRoundingDecimalPlaces;
+  }
+
+
+  public void setFaceRoundingDecimalPlaces(Integer faceRoundingDecimalPlaces) {
+    this.faceRoundingDecimalPlaces = faceRoundingDecimalPlaces;
   }
 
 
@@ -170,6 +220,8 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
         Objects.equals(this.paymentDate, pikBondInterestCapitalisationEvent.paymentDate) &&
         Objects.equals(this.currency, pikBondInterestCapitalisationEvent.currency) &&
         (this.couponPerUnit.compareTo(pikBondInterestCapitalisationEvent.getCouponPerUnit()) == 0) &&
+        Objects.equals(this.faceRoundingConvention, pikBondInterestCapitalisationEvent.faceRoundingConvention) &&
+        Objects.equals(this.faceRoundingDecimalPlaces, pikBondInterestCapitalisationEvent.faceRoundingDecimalPlaces) &&
         super.equals(o);
   }
 
@@ -179,7 +231,7 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(exDate, paymentDate, currency, couponPerUnit, super.hashCode());
+    return Objects.hash(exDate, paymentDate, currency, couponPerUnit, faceRoundingConvention, faceRoundingDecimalPlaces, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -198,6 +250,8 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    couponPerUnit: ").append(toIndentedString(couponPerUnit)).append("\n");
+    sb.append("    faceRoundingConvention: ").append(toIndentedString(faceRoundingConvention)).append("\n");
+    sb.append("    faceRoundingDecimalPlaces: ").append(toIndentedString(faceRoundingDecimalPlaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,6 +279,8 @@ public class PikBondInterestCapitalisationEvent extends InstrumentEvent {
     openapiFields.add("paymentDate");
     openapiFields.add("currency");
     openapiFields.add("couponPerUnit");
+    openapiFields.add("faceRoundingConvention");
+    openapiFields.add("faceRoundingDecimalPlaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
