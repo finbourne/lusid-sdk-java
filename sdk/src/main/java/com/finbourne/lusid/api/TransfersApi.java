@@ -27,8 +27,11 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.CreateTransferRequest;
 import com.finbourne.lusid.model.CreateTransferResponse;
+import com.finbourne.lusid.model.GetTransferRequest;
+import com.finbourne.lusid.model.GetTransferResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import java.time.OffsetDateTime;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -294,7 +297,7 @@ public class TransfersApi {
 
     /**
      * [EXPERIMENTAL] CreateTransfer: Create a transfer.
-     * Move a position between two portfolios, exchange one instrument for another within a portfolio, or do  both at once.     The outgoing and incoming transaction legs and the Transfer entity recording them are written as a single  atomic operation: if any part of the request is rejected, nothing is written.
+     * Move a position between two portfolios, exchange one instrument for another within a portfolio, or do  both at once.  The outgoing and incoming transaction legs and the Transfer entity recording them are written as a single  atomic operation: if any part of the request is rejected, nothing is written.
      * @param createTransferRequest The transfer to create. (required)
      * @return APIcreateTransferRequest
      * @http.response.details
@@ -307,5 +310,263 @@ public class TransfersApi {
      */
     public APIcreateTransferRequest createTransfer(CreateTransferRequest createTransferRequest) {
         return new APIcreateTransferRequest(createTransferRequest);
+    }
+    private okhttp3.Call getTransferCall(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransferCall(getTransferRequest, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransferCall(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = getTransferRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transfers/$get";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTransferValidateBeforeCall(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'getTransferRequest' is set
+        if (getTransferRequest == null) {
+            throw new ApiException("Missing the required parameter 'getTransferRequest' when calling getTransfer(Async)");
+        }
+
+        return getTransferCall(getTransferRequest, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GetTransferResponse> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetTransferResponse> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<GetTransferResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<GetTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetTransferRequest {
+        private final GetTransferRequest getTransferRequest;
+        private OffsetDateTime asAt;
+
+        private APIgetTransferRequest(GetTransferRequest getTransferRequest) {
+            this.getTransferRequest = getTransferRequest;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transfer. Defaults to latest   version if not specified. (optional)
+         * @return APIgetTransferRequest
+         */
+        public APIgetTransferRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTransfer
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransferCall(getTransferRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransfer request
+         * @return GetTransferResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetTransferResponse execute() throws ApiException {
+            ApiResponse<GetTransferResponse> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransfer request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetTransferResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetTransferResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetTransferResponse> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransfer request with HTTP info returned
+         * @return ApiResponse&lt;GetTransferResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetTransferResponse> executeWithHttpInfo() throws ApiException {
+            return getTransferWithHttpInfo(getTransferRequest, asAt);
+        }
+
+        /**
+         * Execute getTransfer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetTransferResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetTransferResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransferWithHttpInfo(getTransferRequest, asAt, opts);
+        }
+
+        /**
+         * Execute getTransfer request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetTransferResponse> _callback) throws ApiException {
+            return getTransferAsync(getTransferRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransfer request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransferAsync(getTransferRequest, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetTransfer: Get a transfer
+     * Retrieve a transfer and both of the transactions it booked.  A transfer is identified by its scope, its code and both of its portfolios, so all four are supplied in  the request body rather than in the path.
+     * @param getTransferRequest The transfer to retrieve. (required)
+     * @return APIgetTransferRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested transfer and both of its transactions. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No transfer exists with the requested scope, code and portfolios. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetTransferRequest getTransfer(GetTransferRequest getTransferRequest) {
+        return new APIgetTransferRequest(getTransferRequest);
     }
 }

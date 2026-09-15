@@ -155,9 +155,9 @@ public class CreateTransferRequest {
   @SerializedName(SERIALIZED_NAME_ACCOUNTING_METHOD)
   private String accountingMethod;
 
-  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
-  @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties;
+  public static final String SERIALIZED_NAME_PROPERTIES_OUT = "propertiesOut";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES_OUT)
+  private Map<String, PerpetualProperty> propertiesOut;
 
   public static final String SERIALIZED_NAME_PROPERTIES_IN = "propertiesIn";
   @SerializedName(SERIALIZED_NAME_PROPERTIES_IN)
@@ -691,32 +691,32 @@ public class CreateTransferRequest {
   }
 
 
-  public CreateTransferRequest properties(Map<String, PerpetualProperty> properties) {
+  public CreateTransferRequest propertiesOut(Map<String, PerpetualProperty> propertiesOut) {
     
-    this.properties = properties;
+    this.propertiesOut = propertiesOut;
     return this;
   }
 
-  public CreateTransferRequest putPropertiesItem(String key, PerpetualProperty propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
+  public CreateTransferRequest putPropertiesOutItem(String key, PerpetualProperty propertiesOutItem) {
+    if (this.propertiesOut == null) {
+      this.propertiesOut = new HashMap<>();
     }
-    this.properties.put(key, propertiesItem);
+    this.propertiesOut.put(key, propertiesOutItem);
     return this;
   }
 
    /**
-   * Get properties
-   * @return properties
+   * Get propertiesOut
+   * @return propertiesOut
   **/
   @jakarta.annotation.Nullable
-  public Map<String, PerpetualProperty> getProperties() {
-    return properties;
+  public Map<String, PerpetualProperty> getPropertiesOut() {
+    return propertiesOut;
   }
 
 
-  public void setProperties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+  public void setPropertiesOut(Map<String, PerpetualProperty> propertiesOut) {
+    this.propertiesOut = propertiesOut;
   }
 
 
@@ -784,7 +784,7 @@ public class CreateTransferRequest {
         Objects.equals(this.custodianAccountIdIn, createTransferRequest.custodianAccountIdIn) &&
         Objects.equals(this.source, createTransferRequest.source) &&
         Objects.equals(this.accountingMethod, createTransferRequest.accountingMethod) &&
-        Objects.equals(this.properties, createTransferRequest.properties) &&
+        Objects.equals(this.propertiesOut, createTransferRequest.propertiesOut) &&
         Objects.equals(this.propertiesIn, createTransferRequest.propertiesIn);
   }
 
@@ -794,7 +794,7 @@ public class CreateTransferRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, properties, propertiesIn);
+    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -833,7 +833,7 @@ public class CreateTransferRequest {
     sb.append("    custodianAccountIdIn: ").append(toIndentedString(custodianAccountIdIn)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    propertiesOut: ").append(toIndentedString(propertiesOut)).append("\n");
     sb.append("    propertiesIn: ").append(toIndentedString(propertiesIn)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -882,7 +882,7 @@ public class CreateTransferRequest {
     openapiFields.add("custodianAccountIdIn");
     openapiFields.add("source");
     openapiFields.add("accountingMethod");
-    openapiFields.add("properties");
+    openapiFields.add("propertiesOut");
     openapiFields.add("propertiesIn");
 
     // a set of required properties/fields (JSON key names)

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ruleName** | **String** |  | [default to String]
 **ruleDescription** | **String** |  | [default to String]
 **outcome** | **String** |  | [default to String]
+**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
 
 ```java
 import com.finbourne.lusid.model.ComplianceRuleResultDetail;
@@ -31,6 +32,7 @@ String Status = "example Status";
 String RuleName = "example RuleName";
 String RuleDescription = "example RuleDescription";
 String Outcome = "example Outcome";
+@jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 
 
 ComplianceRuleResultDetail complianceRuleResultDetailInstance = new ComplianceRuleResultDetail()
@@ -43,7 +45,8 @@ ComplianceRuleResultDetail complianceRuleResultDetailInstance = new ComplianceRu
     .Status(Status)
     .RuleName(RuleName)
     .RuleDescription(RuleDescription)
-    .Outcome(Outcome);
+    .Outcome(Outcome)
+    .Properties(Properties);
 ```
 
 

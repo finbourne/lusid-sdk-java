@@ -775,6 +775,7 @@ Class | Method | HTTP request | Description
 *TransferAgencyApi* | [**estimateTransferAgencyOrders**](docs/TransferAgencyApi.md#estimatetransferagencyorders) | **POST** /api/transferagency/orders/$estimate | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders
 *TransferAgencyApi* | [**upsertTransferAgencyOrders**](docs/TransferAgencyApi.md#upserttransferagencyorders) | **POST** /api/transferagency/orders | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders
 *TransfersApi* | [**createTransfer**](docs/TransfersApi.md#createtransfer) | **POST** /api/transfers | [EXPERIMENTAL] CreateTransfer: Create a transfer.
+*TransfersApi* | [**getTransfer**](docs/TransfersApi.md#gettransfer) | **POST** /api/transfers/$get | [EXPERIMENTAL] GetTransfer: Get a transfer
 *TranslationApi* | [**translateInstrumentDefinitions**](docs/TranslationApi.md#translateinstrumentdefinitions) | **POST** /api/translation/instrumentdefinitions | [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
 *TranslationApi* | [**translateTradeTickets**](docs/TranslationApi.md#translatetradetickets) | **POST** /api/translation/tradetickets | [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
 *WorkspaceApi* | [**createItem**](docs/WorkspaceApi.md#createitem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] CreateItem: Create a new item in a workspace.
@@ -949,6 +950,7 @@ Class | Method | HTTP request | Description
  - [BucketSetNode](docs/BucketSetNode.md)
  - [BucketSetResult](docs/BucketSetResult.md)
  - [BucketSetResultBucket](docs/BucketSetResultBucket.md)
+ - [BucketSetShareClassDetails](docs/BucketSetShareClassDetails.md)
  - [BucketedCashFlowRequest](docs/BucketedCashFlowRequest.md)
  - [BucketedCashFlowResponse](docs/BucketedCashFlowResponse.md)
  - [BucketingSchedule](docs/BucketingSchedule.md)
@@ -1404,6 +1406,8 @@ Class | Method | HTTP request | Description
  - [GetScenarioResponse](docs/GetScenarioResponse.md)
  - [GetStructuredResultDataResponse](docs/GetStructuredResultDataResponse.md)
  - [GetSubscriptionResponse](docs/GetSubscriptionResponse.md)
+ - [GetTransferRequest](docs/GetTransferRequest.md)
+ - [GetTransferResponse](docs/GetTransferResponse.md)
  - [GetVirtualDocumentResponse](docs/GetVirtualDocumentResponse.md)
  - [GroupBySelectorComplianceParameter](docs/GroupBySelectorComplianceParameter.md)
  - [GroupByStep](docs/GroupByStep.md)

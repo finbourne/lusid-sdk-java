@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **custodianAccountIdIn** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **source** | **String** |  | [default to String]
 **accountingMethod** | **String** | Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [optional] [default to String]
-**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
+**propertiesOut** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
 **propertiesIn** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | [optional] [default to Map<String, PerpetualProperty>]
 
 ```java
@@ -64,7 +64,7 @@ ResourceId CustodianAccountIdOut = new ResourceId();
 ResourceId CustodianAccountIdIn = new ResourceId();
 String Source = "example Source";
 @jakarta.annotation.Nullable String AccountingMethod = "example AccountingMethod";
-@jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+@jakarta.annotation.Nullable Map<String, PerpetualProperty> PropertiesOut = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> PropertiesIn = new Map<String, PerpetualProperty>();
 
 
@@ -94,7 +94,7 @@ CreateTransferRequest createTransferRequestInstance = new CreateTransferRequest(
     .CustodianAccountIdIn(CustodianAccountIdIn)
     .Source(Source)
     .AccountingMethod(AccountingMethod)
-    .Properties(Properties)
+    .PropertiesOut(PropertiesOut)
     .PropertiesIn(PropertiesIn);
 ```
 

@@ -209,7 +209,9 @@ public enum PropertyDomain {
   
   TRANSFER("Transfer"),
   
-  CURRENCYGROUP("CurrencyGroup");
+  CURRENCYGROUP("CurrencyGroup"),
+  
+  RECDEFINITION("RecDefinition");
 
   private String value;
 

@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.BucketSetResultBucket;
+import com.finbourne.lusid.model.BucketSetShareClassDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -88,6 +89,22 @@ public class BucketSetNode {
   public static final String SERIALIZED_NAME_PREVIOUS_SHARES_IN_ISSUE = "previousSharesInIssue";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_SHARES_IN_ISSUE)
   private java.math.BigDecimal previousSharesInIssue;
+
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
+  private String label;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_NAV = "previousNav";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_NAV)
+  private java.math.BigDecimal previousNav;
+
+  public static final String SERIALIZED_NAME_NET_DEALING_UNITS = "netDealingUnits";
+  @SerializedName(SERIALIZED_NAME_NET_DEALING_UNITS)
+  private java.math.BigDecimal netDealingUnits;
+
+  public static final String SERIALIZED_NAME_SHARE_CLASS_DETAILS = "shareClassDetails";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_DETAILS)
+  private BucketSetShareClassDetails shareClassDetails;
 
   public BucketSetNode() {
   }
@@ -289,6 +306,90 @@ public class BucketSetNode {
   }
 
 
+  public BucketSetNode label(String label) {
+    
+    this.label = label;
+    return this;
+  }
+
+   /**
+   * A display label for the node: the fund&#39;s display name on the fund node, the share class&#39;s name on a share class node.
+   * @return label
+  **/
+  @jakarta.annotation.Nullable
+  public String getLabel() {
+    return label;
+  }
+
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+
+  public BucketSetNode previousNav(java.math.BigDecimal previousNav) {
+    
+    this.previousNav = previousNav;
+    return this;
+  }
+
+   /**
+   * The net asset value this node carried at the previous valuation point, in the fund currency. Zero at the fund&#39;s first valuation point.
+   * @return previousNav
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPreviousNav() {
+    return previousNav;
+  }
+
+
+  public void setPreviousNav(java.math.BigDecimal previousNav) {
+    this.previousNav = previousNav;
+  }
+
+
+  public BucketSetNode netDealingUnits(java.math.BigDecimal netDealingUnits) {
+    
+    this.netDealingUnits = netDealingUnits;
+    return this;
+  }
+
+   /**
+   * The net units dealt for the share class over the period, so that the shares in issue are the previous shares in issue plus this. Set only on share class nodes, and only where the bucket set is unitised.
+   * @return netDealingUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getNetDealingUnits() {
+    return netDealingUnits;
+  }
+
+
+  public void setNetDealingUnits(java.math.BigDecimal netDealingUnits) {
+    this.netDealingUnits = netDealingUnits;
+  }
+
+
+  public BucketSetNode shareClassDetails(BucketSetShareClassDetails shareClassDetails) {
+    
+    this.shareClassDetails = shareClassDetails;
+    return this;
+  }
+
+   /**
+   * Get shareClassDetails
+   * @return shareClassDetails
+  **/
+  @jakarta.annotation.Nullable
+  public BucketSetShareClassDetails getShareClassDetails() {
+    return shareClassDetails;
+  }
+
+
+  public void setShareClassDetails(BucketSetShareClassDetails shareClassDetails) {
+    this.shareClassDetails = shareClassDetails;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -307,7 +408,11 @@ public class BucketSetNode {
         (this.perUnitValue.compareTo(bucketSetNode.getPerUnitValue()) == 0) &&
         (this.sharesInIssue.compareTo(bucketSetNode.getSharesInIssue()) == 0) &&
         (this.previousPerUnitValue.compareTo(bucketSetNode.getPreviousPerUnitValue()) == 0) &&
-        (this.previousSharesInIssue.compareTo(bucketSetNode.getPreviousSharesInIssue()) == 0);
+        (this.previousSharesInIssue.compareTo(bucketSetNode.getPreviousSharesInIssue()) == 0) &&
+        Objects.equals(this.label, bucketSetNode.label) &&
+        (this.previousNav.compareTo(bucketSetNode.getPreviousNav()) == 0) &&
+        (this.netDealingUnits.compareTo(bucketSetNode.getNetDealingUnits()) == 0) &&
+        Objects.equals(this.shareClassDetails, bucketSetNode.shareClassDetails);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -316,7 +421,7 @@ public class BucketSetNode {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nodeType, shareClassShortCode, nav, capitalRatio, buckets, perUnitValue, sharesInIssue, previousPerUnitValue, previousSharesInIssue);
+    return Objects.hash(nodeType, shareClassShortCode, nav, capitalRatio, buckets, perUnitValue, sharesInIssue, previousPerUnitValue, previousSharesInIssue, label, previousNav, netDealingUnits, shareClassDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -339,6 +444,10 @@ public class BucketSetNode {
     sb.append("    sharesInIssue: ").append(toIndentedString(sharesInIssue)).append("\n");
     sb.append("    previousPerUnitValue: ").append(toIndentedString(previousPerUnitValue)).append("\n");
     sb.append("    previousSharesInIssue: ").append(toIndentedString(previousSharesInIssue)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    previousNav: ").append(toIndentedString(previousNav)).append("\n");
+    sb.append("    netDealingUnits: ").append(toIndentedString(netDealingUnits)).append("\n");
+    sb.append("    shareClassDetails: ").append(toIndentedString(shareClassDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -370,6 +479,10 @@ public class BucketSetNode {
     openapiFields.add("sharesInIssue");
     openapiFields.add("previousPerUnitValue");
     openapiFields.add("previousSharesInIssue");
+    openapiFields.add("label");
+    openapiFields.add("previousNav");
+    openapiFields.add("netDealingUnits");
+    openapiFields.add("shareClassDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -413,6 +526,13 @@ public class BucketSetNode {
       for (int i = 0; i < jsonArraybuckets.size(); i++) {
         BucketSetResultBucket.validateJsonElement(jsonArraybuckets.get(i));
       };
+      if ((jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull()) && !jsonObj.get("label").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("label").toString()));
+      }
+      // validate the optional field `shareClassDetails`
+      if (jsonObj.get("shareClassDetails") != null && !jsonObj.get("shareClassDetails").isJsonNull()) {
+        BucketSetShareClassDetails.validateJsonElement(jsonObj.get("shareClassDetails"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

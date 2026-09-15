@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **sharesInIssue** | **java.math.BigDecimal** | The share class&#39;s units in issue at the end of the period. Reported only for a share class that is unitised. | [optional] [default to java.math.BigDecimal]
 **previousPerUnitValue** | **java.math.BigDecimal** | The share class&#39;s NAV per unit at the previous valuation point, on the same basis as PerUnitValue. | [optional] [default to java.math.BigDecimal]
 **previousSharesInIssue** | **java.math.BigDecimal** | The share class&#39;s units in issue at the start of the period. Reported only for a share class that is unitised. | [optional] [default to java.math.BigDecimal]
+**label** | **String** | A display label for the node: the fund&#39;s display name on the fund node, the share class&#39;s name on a share class node. | [optional] [default to String]
+**previousNav** | **java.math.BigDecimal** | The net asset value this node carried at the previous valuation point, in the fund currency. Zero at the fund&#39;s first valuation point. | [optional] [default to java.math.BigDecimal]
+**netDealingUnits** | **java.math.BigDecimal** | The net units dealt for the share class over the period, so that the shares in issue are the previous shares in issue plus this. Set only on share class nodes, and only where the bucket set is unitised. | [optional] [default to java.math.BigDecimal]
+**shareClassDetails** | [**BucketSetShareClassDetails**](BucketSetShareClassDetails.md) |  | [optional] [default to BucketSetShareClassDetails]
 
 ```java
 import com.finbourne.lusid.model.BucketSetNode;
@@ -30,6 +34,10 @@ List<BucketSetResultBucket> Buckets = new List<BucketSetResultBucket>();
 @jakarta.annotation.Nullable java.math.BigDecimal SharesInIssue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PreviousPerUnitValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PreviousSharesInIssue = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String Label = "example Label";
+@jakarta.annotation.Nullable java.math.BigDecimal PreviousNav = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal NetDealingUnits = new java.math.BigDecimal("100.00");
+BucketSetShareClassDetails ShareClassDetails = new BucketSetShareClassDetails();
 
 
 BucketSetNode bucketSetNodeInstance = new BucketSetNode()
@@ -41,7 +49,11 @@ BucketSetNode bucketSetNodeInstance = new BucketSetNode()
     .PerUnitValue(PerUnitValue)
     .SharesInIssue(SharesInIssue)
     .PreviousPerUnitValue(PreviousPerUnitValue)
-    .PreviousSharesInIssue(PreviousSharesInIssue);
+    .PreviousSharesInIssue(PreviousSharesInIssue)
+    .Label(Label)
+    .PreviousNav(PreviousNav)
+    .NetDealingUnits(NetDealingUnits)
+    .ShareClassDetails(ShareClassDetails);
 ```
 
 

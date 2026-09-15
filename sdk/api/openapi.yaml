@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9936
+  version: 0.11.9950
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -19797,6 +19797,21 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
+      - description: "A list of property keys from the 'Compliance' domain to decorate\
+          \ onto each rule result.\r\n These must take the format {domain}/{scope}/{code},\
+          \ for example 'Compliance/live/UCITS'."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -45301,6 +45316,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45319,10 +45337,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -45400,6 +45429,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45418,10 +45450,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             application/json:
@@ -45504,6 +45547,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45522,10 +45568,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -45603,6 +45660,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45621,10 +45681,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
             text/json:
@@ -45707,6 +45778,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45725,10 +45799,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
                 latestValuationPoint:
                   href: http://finbourne.com
                   type: ValuationPoint
@@ -45806,6 +45891,9 @@ paths:
                         value: 999.99
                         previousCumulativeValue: 9000
                         cumulativeValue: 9999.99
+                        displayName: Profit and Loss
+                      label: Fund Display Name
+                      previousNav: 89999.99
                     - nodeType: Class
                       shareClassShortCode: ShareClassShortCode
                       nav: 99999.99
@@ -45824,10 +45912,21 @@ paths:
                         unitsInIssue: 10000
                         previousCumulativePerUnitValue: 0.9
                         cumulativePerUnitValue: 0.9999
+                        displayName: Profit and Loss
                       perUnitValue: 9.9999
                       sharesInIssue: 10000
                       previousPerUnitValue: 9
                       previousSharesInIssue: 10000
+                      label: Share Class Name
+                      previousNav: 89999.99
+                      netDealingUnits: 0
+                      shareClassDetails:
+                        lusidInstrumentId: LUID_12345678
+                        instrumentScope: default
+                        shortCode: ShareClassShortCode
+                        domCurrency: USD
+                        instrumentActive: true
+                    displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/AcceptEstimateValuationPointResponse'
           description: The Accepted Estimate point and status after being Accepted
@@ -46212,6 +46311,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46230,10 +46332,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -46314,6 +46427,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46332,10 +46448,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -46416,6 +46543,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46434,10 +46564,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -46636,6 +46777,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46654,10 +46798,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -46738,6 +46893,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46756,10 +46914,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -46840,6 +47009,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -46858,10 +47030,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The requested Valuation Point data for the Fund.
@@ -47039,6 +47222,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -47057,10 +47243,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             application/json:
@@ -47141,6 +47338,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -47159,10 +47359,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
             text/json:
@@ -47243,6 +47454,9 @@ paths:
                       value: 999.99
                       previousCumulativeValue: 9000
                       cumulativeValue: 9999.99
+                      displayName: Profit and Loss
+                    label: Fund Display Name
+                    previousNav: 89999.99
                   - nodeType: Class
                     shareClassShortCode: ShareClassShortCode
                     nav: 99999.99
@@ -47261,10 +47475,21 @@ paths:
                       unitsInIssue: 10000
                       previousCumulativePerUnitValue: 0.9
                       cumulativePerUnitValue: 0.9999
+                      displayName: Profit and Loss
                     perUnitValue: 9.9999
                     sharesInIssue: 10000
                     previousPerUnitValue: 9
                     previousSharesInIssue: 10000
+                    label: Share Class Name
+                    previousNav: 89999.99
+                    netDealingUnits: 0
+                    shareClassDetails:
+                      lusidInstrumentId: LUID_12345678
+                      instrumentScope: default
+                      shortCode: ShareClassShortCode
+                      domCurrency: USD
+                      instrumentActive: true
+                  displayName: Bucket Set Display Name
               schema:
                 $ref: '#/components/schemas/ValuationPointDataResponse'
           description: The updated Valuation Point response as a result of it be marked
@@ -54490,7 +54715,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -54590,6 +54815,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -54674,7 +54900,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -54774,6 +55000,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -54961,7 +55188,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -55061,6 +55288,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -101265,7 +101493,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -101365,6 +101593,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: Scope of the property definition
@@ -101601,7 +101830,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -101701,6 +101930,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -101783,7 +102013,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -101883,6 +102113,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -102085,7 +102316,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -102185,6 +102416,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -102393,7 +102625,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -102493,6 +102725,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -102705,7 +102938,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer."
+          \ Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -102805,6 +103038,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -102949,7 +103183,7 @@ paths:
           \ Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition,\
           \ Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod,\
           \ TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction,\
-          \ TransactionFeeType, PaymentInstruction, Transfer."
+          \ TransactionFeeType, PaymentInstruction, Transfer, RecDefinition."
         explode: false
         in: path
         name: domain
@@ -103049,6 +103283,7 @@ paths:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -156151,9 +156386,9 @@ paths:
   /api/transfers:
     post:
       description: "Move a position between two portfolios, exchange one instrument\
-        \ for another within a portfolio, or do\r\nboth at once.\r\n \r\nThe outgoing\
-        \ and incoming transaction legs and the Transfer entity recording them are\
-        \ written as a single\r\natomic operation: if any part of the request is rejected,\
+        \ for another within a portfolio, or do\r\nboth at once.\r\nThe outgoing and\
+        \ incoming transaction legs and the Transfer entity recording them are written\
+        \ as a single\r\natomic operation: if any part of the request is rejected,\
         \ nothing is written."
       operationId: CreateTransfer
       requestBody:
@@ -156180,7 +156415,7 @@ paths:
               settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
               settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
               source: default
-              properties:
+              propertiesOut:
                 Transaction/MyScope/TransferReference:
                   key: Transaction/MyScope/TransferReference
                   value:
@@ -156209,7 +156444,7 @@ paths:
               settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
               settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
               source: default
-              properties:
+              propertiesOut:
                 Transaction/MyScope/TransferReference:
                   key: Transaction/MyScope/TransferReference
                   value:
@@ -156238,7 +156473,7 @@ paths:
               settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
               settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
               source: default
-              properties:
+              propertiesOut:
                 Transaction/MyScope/TransferReference:
                   key: Transaction/MyScope/TransferReference
                   value:
@@ -156267,7 +156502,7 @@ paths:
               settlementDateOut: 2024-03-07T00:00:00.0000000+00:00
               settlementDateIn: 2024-03-07T00:00:00.0000000+00:00
               source: default
-              properties:
+              propertiesOut:
                 Transaction/MyScope/TransferReference:
                   key: Transaction/MyScope/TransferReference
                   value:
@@ -156310,6 +156545,131 @@ paths:
       security:
       - oauth2: []
       summary: "[EXPERIMENTAL] CreateTransfer: Create a transfer."
+      tags:
+      - Transfers
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/transfers/$get:
+    post:
+      description: "Retrieve a transfer and both of the transactions it booked.\r\n\
+        A transfer is identified by its scope, its code and both of its portfolios,\
+        \ so all four are supplied in\r\nthe request body rather than in the path."
+      operationId: GetTransfer
+      parameters:
+      - description: "The asAt datetime at which to retrieve the transfer. Defaults\
+          \ to latest\r\n version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+            schema:
+              $ref: '#/components/schemas/GetTransferRequest'
+          application/json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+            schema:
+              $ref: '#/components/schemas/GetTransferRequest'
+          text/json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+            schema:
+              $ref: '#/components/schemas/GetTransferRequest'
+          application/*+json:
+            example:
+              transferId:
+                scope: MyScope
+                code: Transfer-0001
+              portfolioIdOut:
+                scope: MyScope
+                code: UkEquityFund
+              portfolioIdIn:
+                scope: MyScope
+                code: GlobalEquityFund
+            schema:
+              $ref: '#/components/schemas/GetTransferRequest'
+        description: The transfer to retrieve.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetTransferResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransferResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetTransferResponse'
+          description: The requested transfer and both of its transactions.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: "No transfer exists with the requested scope, code and portfolios."
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetTransfer: Get a transfer"
       tags:
       - Transfers
       x-fbn-apistatus: Experimental
@@ -160863,12 +161223,19 @@ components:
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160880,6 +161247,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160887,19 +161255,29 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160911,6 +161289,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160918,22 +161297,33 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
+            displayName: displayName
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160945,6 +161335,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160952,19 +161343,29 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160976,6 +161377,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -160983,10 +161385,14 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
+            displayName: displayName
           previousValuationPointCode: previousValuationPointCode
           valuationPointCode: valuationPointCode
           links:
@@ -161260,12 +161666,19 @@ components:
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161277,6 +161690,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161284,19 +161698,29 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161308,6 +161732,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161315,22 +161740,33 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
+            displayName: displayName
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161342,6 +161778,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161349,19 +161786,29 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
             - sharesInIssue: 6.878052220127876
               previousSharesInIssue: 6.704019297950036
               nav: 9.965781217890562
+              shareClassDetails:
+                domCurrency: domCurrency
+                instrumentScope: instrumentScope
+                instrumentActive: true
+                lusidInstrumentId: lusidInstrumentId
+                shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
               - unitsInIssue: 6.965117697638846
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161373,6 +161820,7 @@ components:
                 bucketType: bucketType
                 previousCumulativePerUnitValue: 1.284659006116532
                 previousCumulativeValue: 8.762042012749001
+                displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
                   key: 6.438423552598547
@@ -161380,10 +161828,14 @@ components:
                 perUnitValue: 3.5571952270680973
                 value: 6.683562403749608
                 cumulativeValue: 9.018348186070783
+              previousNav: 3.353193347011243
+              netDealingUnits: 3.0937452626664474
               previousPerUnitValue: 5.944895607614016
-              perUnitValue: 6.778324963048013
+              label: label
               nodeType: nodeType
               capitalRatio: 9.369310271410669
+              perUnitValue: 6.778324963048013
+            displayName: displayName
           previousValuationPointCode: previousValuationPointCode
           valuationPointCode: valuationPointCode
           links:
@@ -177461,12 +177913,19 @@ components:
         sharesInIssue: 6.878052220127876
         previousSharesInIssue: 6.704019297950036
         nav: 9.965781217890562
+        shareClassDetails:
+          domCurrency: domCurrency
+          instrumentScope: instrumentScope
+          instrumentActive: true
+          lusidInstrumentId: lusidInstrumentId
+          shortCode: shortCode
         shareClassShortCode: shareClassShortCode
         buckets:
         - unitsInIssue: 6.965117697638846
           bucketType: bucketType
           previousCumulativePerUnitValue: 1.284659006116532
           previousCumulativeValue: 8.762042012749001
+          displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
             key: 6.438423552598547
@@ -177478,6 +177937,7 @@ components:
           bucketType: bucketType
           previousCumulativePerUnitValue: 1.284659006116532
           previousCumulativeValue: 8.762042012749001
+          displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
             key: 6.438423552598547
@@ -177485,10 +177945,13 @@ components:
           perUnitValue: 3.5571952270680973
           value: 6.683562403749608
           cumulativeValue: 9.018348186070783
+        previousNav: 3.353193347011243
+        netDealingUnits: 3.0937452626664474
         previousPerUnitValue: 5.944895607614016
-        perUnitValue: 6.778324963048013
+        label: label
         nodeType: nodeType
         capitalRatio: 9.369310271410669
+        perUnitValue: 6.778324963048013
       properties:
         nodeType:
           description: "The kind of node: the fund aggregate or a single share class.\
@@ -177546,6 +178009,26 @@ components:
           format: double
           nullable: true
           type: number
+        label:
+          description: "A display label for the node: the fund's display name on the\
+            \ fund node, the share class's name on a share class node."
+          nullable: true
+          type: string
+        previousNav:
+          description: "The net asset value this node carried at the previous valuation\
+            \ point, in the fund currency. Zero at the fund's first valuation point."
+          format: double
+          nullable: true
+          type: number
+        netDealingUnits:
+          description: "The net units dealt for the share class over the period, so\
+            \ that the shares in issue are the previous shares in issue plus this.\
+            \ Set only on share class nodes, and only where the bucket set is unitised."
+          format: double
+          nullable: true
+          type: number
+        shareClassDetails:
+          $ref: '#/components/schemas/BucketSetShareClassDetails'
       required:
       - buckets
       - nodeType
@@ -177563,12 +178046,19 @@ components:
         - sharesInIssue: 6.878052220127876
           previousSharesInIssue: 6.704019297950036
           nav: 9.965781217890562
+          shareClassDetails:
+            domCurrency: domCurrency
+            instrumentScope: instrumentScope
+            instrumentActive: true
+            lusidInstrumentId: lusidInstrumentId
+            shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
           - unitsInIssue: 6.965117697638846
             bucketType: bucketType
             previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
+            displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
               key: 6.438423552598547
@@ -177580,6 +178070,7 @@ components:
             bucketType: bucketType
             previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
+            displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
               key: 6.438423552598547
@@ -177587,19 +178078,29 @@ components:
             perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
+          previousNav: 3.353193347011243
+          netDealingUnits: 3.0937452626664474
           previousPerUnitValue: 5.944895607614016
-          perUnitValue: 6.778324963048013
+          label: label
           nodeType: nodeType
           capitalRatio: 9.369310271410669
+          perUnitValue: 6.778324963048013
         - sharesInIssue: 6.878052220127876
           previousSharesInIssue: 6.704019297950036
           nav: 9.965781217890562
+          shareClassDetails:
+            domCurrency: domCurrency
+            instrumentScope: instrumentScope
+            instrumentActive: true
+            lusidInstrumentId: lusidInstrumentId
+            shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
           - unitsInIssue: 6.965117697638846
             bucketType: bucketType
             previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
+            displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
               key: 6.438423552598547
@@ -177611,6 +178112,7 @@ components:
             bucketType: bucketType
             previousCumulativePerUnitValue: 1.284659006116532
             previousCumulativeValue: 8.762042012749001
+            displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
               key: 6.438423552598547
@@ -177618,10 +178120,14 @@ components:
             perUnitValue: 3.5571952270680973
             value: 6.683562403749608
             cumulativeValue: 9.018348186070783
+          previousNav: 3.353193347011243
+          netDealingUnits: 3.0937452626664474
           previousPerUnitValue: 5.944895607614016
-          perUnitValue: 6.778324963048013
+          label: label
           nodeType: nodeType
           capitalRatio: 9.369310271410669
+          perUnitValue: 6.778324963048013
+        displayName: displayName
       properties:
         bucketSetCode:
           description: "The code of the fund configuration's bucket set definition\
@@ -177638,6 +178144,11 @@ components:
           items:
             $ref: '#/components/schemas/BucketSetNode'
           type: array
+        displayName:
+          description: "The display name of the bucket set, as configured on the fund\
+            \ configuration."
+          nullable: true
+          type: string
       required:
       - bucketSetCode
       - isApportionment
@@ -177655,6 +178166,7 @@ components:
         bucketType: bucketType
         previousCumulativePerUnitValue: 1.284659006116532
         previousCumulativeValue: 8.762042012749001
+        displayName: displayName
         bucketId: bucketId
         sourceBreakdown:
           key: 6.438423552598547
@@ -177725,12 +178237,60 @@ components:
           format: double
           nullable: true
           type: number
+        displayName:
+          description: "The display name of the bucket, as configured on the fund\
+            \ configuration."
+          nullable: true
+          type: string
       required:
       - bucketId
       - bucketType
       - cumulativeValue
       - previousCumulativeValue
       - value
+      type: object
+    BucketSetShareClassDetails:
+      additionalProperties: false
+      description: Identifying detail for the share class a bucket set node is for.
+      example:
+        domCurrency: domCurrency
+        instrumentScope: instrumentScope
+        instrumentActive: true
+        lusidInstrumentId: lusidInstrumentId
+        shortCode: shortCode
+      properties:
+        lusidInstrumentId:
+          description: LUSID's internal unique instrument identifier for the share
+            class' instrument. Absent where the instrument has not been resolved.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentScope:
+          description: The scope in which the share class instrument lies. Absent
+            where the instrument has not been resolved.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        shortCode:
+          description: The unique code within the fund for the share class.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        domCurrency:
+          description: The domestic currency declared for the share class.
+          nullable: true
+          type: string
+        instrumentActive:
+          description: Whether the share class' instrument is active.
+          type: boolean
+      required:
+      - instrumentActive
+      - shortCode
       type: object
     CalculateOrderDatesRequest:
       additionalProperties: false
@@ -186766,6 +187326,22 @@ components:
           scope: scope
         ruleDescription: ruleDescription
         outcome: outcome
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         status: status
       properties:
         ruleId:
@@ -186798,6 +187374,11 @@ components:
         outcome:
           minLength: 1
           type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          nullable: true
+          type: object
       required:
       - affectedOrders
       - affectedPortfoliosDetails
@@ -191300,7 +191881,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer."
+            \ Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -191395,6 +191976,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -191860,7 +192442,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer."
+            \ Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -191955,6 +192537,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -192276,7 +192859,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer."
+            \ PaymentInstruction, Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -192371,6 +192954,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -194459,6 +195043,22 @@ components:
         counterpartyIdOut: counterpartyIdOut
         tradeDateIn: 2000-01-23T04:56:07.000+00:00
         unitsIn: 6.027456183070403
+        propertiesOut:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         accountingMethod: accountingMethod
         amountOut: 1.4658129805029452
         instrumentIdentifierOut: instrumentIdentifierOut
@@ -194495,22 +195095,6 @@ components:
         custodianAccountIdIn:
           code: code
           scope: scope
-        properties:
-          key:
-            referenceData:
-              key:
-                stringValue: stringValue
-                numericValue: 6.027456183070403
-            value:
-              metricValue:
-                unit: unit
-                value: 0.8008281904610115
-              labelValue: labelValue
-              labelValueSet:
-                values:
-                - values
-                - values
-            key: key
       properties:
         transferId:
           $ref: '#/components/schemas/ResourceId'
@@ -194603,7 +195187,7 @@ components:
             \ MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency."
           nullable: true
           type: string
-        properties:
+        propertiesOut:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           nullable: true
@@ -199773,6 +200357,22 @@ components:
             scope: scope
           ruleDescription: ruleDescription
           outcome: outcome
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           status: status
         - templateVariation: templateVariation
           affectedPortfoliosDetails:
@@ -199799,6 +200399,22 @@ components:
             scope: scope
           ruleDescription: ruleDescription
           outcome: outcome
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           status: status
         runId:
           code: code
@@ -219075,6 +219691,887 @@ components:
           nullable: true
           type: array
       type: object
+    GetTransferRequest:
+      additionalProperties: false
+      description: "The transfer to read. Every part of its identity is required:\
+        \ a transfer is identified by its scope, its code\r\nand the two portfolios\
+        \ its in and out transaction are booked into."
+      example:
+        portfolioIdIn:
+          code: code
+          scope: scope
+        portfolioIdOut:
+          code: code
+          scope: scope
+        transferId:
+          code: code
+          scope: scope
+        propertyKeys:
+        - propertyKeys
+        - propertyKeys
+      properties:
+        transferId:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdOut:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdIn:
+          $ref: '#/components/schemas/ResourceId'
+        propertyKeys:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          nullable: true
+          type: array
+      required:
+      - portfolioIdIn
+      - portfolioIdOut
+      - transferId
+      type: object
+    GetTransferResponse:
+      additionalProperties: false
+      description: A transfer and both of the transactions it booked.
+      example:
+        portfolioIdIn:
+          code: code
+          scope: scope
+        transactionIn:
+          entityLinks:
+          - entityType: entityType
+            restrictEditing: true
+            entityIdName: entityIdName
+            entityIdValue: entityIdValue
+          - entityType: entityType
+            restrictEditing: true
+            entityIdName: entityIdName
+            entityIdValue: entityIdValue
+          otcConfirmation:
+            counterpartyAgreementId:
+              code: code
+              scope: scope
+          instrumentScope: instrumentScope
+          orderId:
+            code: code
+            scope: scope
+          entryDateTime: 2000-01-23T04:56:07.000+00:00
+          transactionPrice:
+            price: 1.4658129805029452
+            type: Price
+          units: 6.027456183070403
+          source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
+          type: type
+          exchangeRate: 5.962133916683182
+          transactionGroupId: transactionGroupId
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          resolvedTransactionTypeDetails:
+            scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            source: source
+            type: type
+          transactionCurrency: transactionCurrency
+          transactionStatus: Active
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          allocationId:
+            code: code
+            scope: scope
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          transactionDate: 2000-01-23T04:56:07.000+00:00
+          totalConsideration:
+            amount: 0.8008281904610115
+            currency: currency
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          custodianEntries:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
+          strategyTag:
+          - keys:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            valueType: valueType
+            value: 5.637376656633329
+          - keys:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            valueType: valueType
+            value: 5.637376656633329
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          dataModelMembership:
+            membership:
+            - code: code
+              displayName: displayName
+              scope: scope
+            - code: code
+              displayName: displayName
+              scope: scope
+            currentModel:
+              code: code
+              displayName: displayName
+              scope: scope
+              validationFailures:
+              - validationFailures
+              - validationFailures
+              status: status
+        portfolioIdOut:
+          code: code
+          scope: scope
+        transferType: transferType
+        transferId:
+          code: code
+          scope: scope
+        transactionOut:
+          entityLinks:
+          - entityType: entityType
+            restrictEditing: true
+            entityIdName: entityIdName
+            entityIdValue: entityIdValue
+          - entityType: entityType
+            restrictEditing: true
+            entityIdName: entityIdName
+            entityIdValue: entityIdValue
+          otcConfirmation:
+            counterpartyAgreementId:
+              code: code
+              scope: scope
+          instrumentScope: instrumentScope
+          orderId:
+            code: code
+            scope: scope
+          entryDateTime: 2000-01-23T04:56:07.000+00:00
+          transactionPrice:
+            price: 1.4658129805029452
+            type: Price
+          units: 6.027456183070403
+          source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
+          type: type
+          exchangeRate: 5.962133916683182
+          transactionGroupId: transactionGroupId
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          resolvedTransactionTypeDetails:
+            scope: scope
+            movementConditionMatches:
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            - conditionMatched: true
+              movementName: movementName
+              side: side
+            source: source
+            type: type
+          transactionCurrency: transactionCurrency
+          transactionStatus: Active
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          allocationId:
+            code: code
+            scope: scope
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          transactionDate: 2000-01-23T04:56:07.000+00:00
+          totalConsideration:
+            amount: 0.8008281904610115
+            currency: currency
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          custodianEntries:
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          - accountId:
+              code: code
+              scope: scope
+            accountSelector: accountSelector
+          instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      referenceData:
+                        key:
+                          stringValue: stringValue
+                          numericValue: 6.027456183070403
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  stagedModificationIdModified: stagedModificationIdModified
+                  reasonModified: reasonModified
+                  entityUniqueId: entityUniqueId
+                  requestIdModified: requestIdModified
+                  reasonCreated: reasonCreated
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 1
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  requestIdCreated: requestIdCreated
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                stagedModificationIdModified: stagedModificationIdModified
+                reasonModified: reasonModified
+                entityUniqueId: entityUniqueId
+                requestIdModified: requestIdModified
+                reasonCreated: reasonCreated
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 1
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                requestIdCreated: requestIdCreated
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountType: accountType
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            taxLotSelectionCostBasis: taxLotSelectionCostBasis
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
+          strategyTag:
+          - keys:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            valueType: valueType
+            value: 5.637376656633329
+          - keys:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            valueType: valueType
+            value: 5.637376656633329
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          dataModelMembership:
+            membership:
+            - code: code
+              displayName: displayName
+              scope: scope
+            - code: code
+              displayName: displayName
+              scope: scope
+            currentModel:
+              code: code
+              displayName: displayName
+              scope: scope
+              validationFailures:
+              - validationFailures
+              - validationFailures
+              status: status
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+      properties:
+        transferId:
+          $ref: '#/components/schemas/ResourceId'
+        transferType:
+          nullable: true
+          type: string
+        portfolioIdOut:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioIdIn:
+          $ref: '#/components/schemas/ResourceId'
+        transactionOut:
+          $ref: '#/components/schemas/Transaction'
+        transactionIn:
+          $ref: '#/components/schemas/Transaction'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          nullable: true
+          type: object
+      type: object
     GetVirtualDocumentResponse:
       additionalProperties: false
       example:
@@ -222256,7 +223753,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer."
+            \ Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -222351,6 +223848,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -270623,7 +272121,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer."
+            \ PaymentInstruction, Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -270718,6 +272216,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -271204,7 +272703,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer."
+            \ PaymentInstruction, Transfer, RecDefinition."
           enum:
           - NotDefined
           - Transaction
@@ -271299,6 +272798,7 @@ components:
           - PaymentInstruction
           - Transfer
           - CurrencyGroup
+          - RecDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -271455,6 +272955,7 @@ components:
       - PaymentInstruction
       - Transfer
       - CurrencyGroup
+      - RecDefinition
       type: string
     PropertyFilter:
       additionalProperties: false
@@ -318520,7 +320021,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer."
+            \ Transfer, RecDefinition."
           minLength: 1
           type: string
         entityIdName:
@@ -335982,12 +337483,19 @@ components:
           - sharesInIssue: 6.878052220127876
             previousSharesInIssue: 6.704019297950036
             nav: 9.965781217890562
+            shareClassDetails:
+              domCurrency: domCurrency
+              instrumentScope: instrumentScope
+              instrumentActive: true
+              lusidInstrumentId: lusidInstrumentId
+              shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
             - unitsInIssue: 6.965117697638846
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -335999,6 +337507,7 @@ components:
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336006,19 +337515,29 @@ components:
               perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousNav: 3.353193347011243
+            netDealingUnits: 3.0937452626664474
             previousPerUnitValue: 5.944895607614016
-            perUnitValue: 6.778324963048013
+            label: label
             nodeType: nodeType
             capitalRatio: 9.369310271410669
+            perUnitValue: 6.778324963048013
           - sharesInIssue: 6.878052220127876
             previousSharesInIssue: 6.704019297950036
             nav: 9.965781217890562
+            shareClassDetails:
+              domCurrency: domCurrency
+              instrumentScope: instrumentScope
+              instrumentActive: true
+              lusidInstrumentId: lusidInstrumentId
+              shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
             - unitsInIssue: 6.965117697638846
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336030,6 +337549,7 @@ components:
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336037,22 +337557,33 @@ components:
               perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousNav: 3.353193347011243
+            netDealingUnits: 3.0937452626664474
             previousPerUnitValue: 5.944895607614016
-            perUnitValue: 6.778324963048013
+            label: label
             nodeType: nodeType
             capitalRatio: 9.369310271410669
+            perUnitValue: 6.778324963048013
+          displayName: displayName
         - isApportionment: true
           bucketSetCode: bucketSetCode
           nodes:
           - sharesInIssue: 6.878052220127876
             previousSharesInIssue: 6.704019297950036
             nav: 9.965781217890562
+            shareClassDetails:
+              domCurrency: domCurrency
+              instrumentScope: instrumentScope
+              instrumentActive: true
+              lusidInstrumentId: lusidInstrumentId
+              shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
             - unitsInIssue: 6.965117697638846
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336064,6 +337595,7 @@ components:
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336071,19 +337603,29 @@ components:
               perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousNav: 3.353193347011243
+            netDealingUnits: 3.0937452626664474
             previousPerUnitValue: 5.944895607614016
-            perUnitValue: 6.778324963048013
+            label: label
             nodeType: nodeType
             capitalRatio: 9.369310271410669
+            perUnitValue: 6.778324963048013
           - sharesInIssue: 6.878052220127876
             previousSharesInIssue: 6.704019297950036
             nav: 9.965781217890562
+            shareClassDetails:
+              domCurrency: domCurrency
+              instrumentScope: instrumentScope
+              instrumentActive: true
+              lusidInstrumentId: lusidInstrumentId
+              shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
             - unitsInIssue: 6.965117697638846
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336095,6 +337637,7 @@ components:
               bucketType: bucketType
               previousCumulativePerUnitValue: 1.284659006116532
               previousCumulativeValue: 8.762042012749001
+              displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
                 key: 6.438423552598547
@@ -336102,10 +337645,14 @@ components:
               perUnitValue: 3.5571952270680973
               value: 6.683562403749608
               cumulativeValue: 9.018348186070783
+            previousNav: 3.353193347011243
+            netDealingUnits: 3.0937452626664474
             previousPerUnitValue: 5.944895607614016
-            perUnitValue: 6.778324963048013
+            label: label
             nodeType: nodeType
             capitalRatio: 9.369310271410669
+            perUnitValue: 6.778324963048013
+          displayName: displayName
         previousValuationPointCode: previousValuationPointCode
         valuationPointCode: valuationPointCode
         links:

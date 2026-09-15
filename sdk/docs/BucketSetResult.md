@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **bucketSetCode** | **String** | The code of the fund configuration&#39;s bucket set definition these results were produced from. Empty for a fund valued from component filters, which has no bucket set definition to name. | [default to String]
 **isApportionment** | **Boolean** | Whether this bucket set is the apportionment set (apportioning non-class-specific P&amp;L across share classes). | [default to Boolean]
 **nodes** | [**List&lt;BucketSetNode&gt;**](BucketSetNode.md) | The nodes making up the bucket set: the fund aggregate and one per share class. | [default to List<BucketSetNode>]
+**displayName** | **String** | The display name of the bucket set, as configured on the fund configuration. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.BucketSetResult;
@@ -18,12 +19,14 @@ import java.net.URI;
 String BucketSetCode = "example BucketSetCode";
 Boolean IsApportionment = true;
 List<BucketSetNode> Nodes = new List<BucketSetNode>();
+@jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 
 
 BucketSetResult bucketSetResultInstance = new BucketSetResult()
     .BucketSetCode(BucketSetCode)
     .IsApportionment(IsApportionment)
-    .Nodes(Nodes);
+    .Nodes(Nodes)
+    .DisplayName(DisplayName);
 ```
 
 

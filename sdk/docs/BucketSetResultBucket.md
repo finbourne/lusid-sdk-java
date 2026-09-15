@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **unitsInIssue** | **java.math.BigDecimal** | The share class&#39;s units in issue at the end of the period. Reported only where both the share class and the bucket are unitised. | [optional] [default to java.math.BigDecimal]
 **previousCumulativePerUnitValue** | **java.math.BigDecimal** | The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count. | [optional] [default to java.math.BigDecimal]
 **cumulativePerUnitValue** | **java.math.BigDecimal** | The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue). Reported only where both the share class and the bucket are unitised and there are units in issue to divide by. | [optional] [default to java.math.BigDecimal]
+**displayName** | **String** | The display name of the bucket, as configured on the fund configuration. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.BucketSetResultBucket;
@@ -32,6 +33,7 @@ java.math.BigDecimal CumulativeValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal UnitsInIssue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PreviousCumulativePerUnitValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal CumulativePerUnitValue = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 
 
 BucketSetResultBucket bucketSetResultBucketInstance = new BucketSetResultBucket()
@@ -44,7 +46,8 @@ BucketSetResultBucket bucketSetResultBucketInstance = new BucketSetResultBucket(
     .PerUnitValue(PerUnitValue)
     .UnitsInIssue(UnitsInIssue)
     .PreviousCumulativePerUnitValue(PreviousCumulativePerUnitValue)
-    .CumulativePerUnitValue(CumulativePerUnitValue);
+    .CumulativePerUnitValue(CumulativePerUnitValue)
+    .DisplayName(DisplayName);
 ```
 
 

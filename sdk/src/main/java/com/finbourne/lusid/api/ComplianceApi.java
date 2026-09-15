@@ -1601,11 +1601,11 @@ public class ComplianceApi {
     public APIgetComplianceTemplateRequest getComplianceTemplate(String scope, String code) {
         return new APIgetComplianceTemplateRequest(scope, code);
     }
-    private okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        return getDecoratedComplianceRunSummaryCall(scope, code,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getDecoratedComplianceRunSummaryCall(scope, code, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDecoratedComplianceRunSummaryCall(String scope, String code, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1632,6 +1632,10 @@ public class ComplianceApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1654,7 +1658,7 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDecoratedComplianceRunSummaryValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDecoratedComplianceRunSummaryValidateBeforeCall(String scope, String code, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDecoratedComplianceRunSummary(Async)");
@@ -1665,34 +1669,34 @@ public class ComplianceApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDecoratedComplianceRunSummary(Async)");
         }
 
-        return getDecoratedComplianceRunSummaryCall(scope, code, _callback, opts);
+        return getDecoratedComplianceRunSummaryCall(scope, code, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+    private ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, null, opts);
+    private ApiResponse<DecoratedComplianceRunSummary> getDecoratedComplianceRunSummaryWithHttpInfo(String scope, String code, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
+    private okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, List<String> propertyKeys, final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, final ApiCallback<DecoratedComplianceRunSummary> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDecoratedComplianceRunSummaryAsync(String scope, String code, List<String> propertyKeys, final ApiCallback<DecoratedComplianceRunSummary> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, _callback, opts);
+        okhttp3.Call localVarCall = getDecoratedComplianceRunSummaryValidateBeforeCall(scope, code, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1701,10 +1705,21 @@ public class ComplianceApi {
     public class APIgetDecoratedComplianceRunSummaryRequest {
         private final String scope;
         private final String code;
+        private List<String> propertyKeys;
 
         private APIgetDecoratedComplianceRunSummaryRequest(String scope, String code) {
             this.scope = scope;
             this.code = code;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule result.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
+         * @return APIgetDecoratedComplianceRunSummaryRequest
+         */
+        public APIgetDecoratedComplianceRunSummaryRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
         }
 
         /**
@@ -1721,7 +1736,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getDecoratedComplianceRunSummaryCall(scope, code, _callback);
+            return getDecoratedComplianceRunSummaryCall(scope, code, propertyKeys, _callback);
         }
 
         /**
@@ -1737,7 +1752,7 @@ public class ComplianceApi {
          </table>
          */
         public DecoratedComplianceRunSummary execute() throws ApiException {
-            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
+            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -1754,7 +1769,7 @@ public class ComplianceApi {
          </table>
          */
         public DecoratedComplianceRunSummary execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, opts);
+            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -1771,7 +1786,7 @@ public class ComplianceApi {
          </table>
          */
         public ApiResponse<DecoratedComplianceRunSummary> executeWithHttpInfo() throws ApiException {
-            return getDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
+            return getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys);
         }
 
         /**
@@ -1787,7 +1802,7 @@ public class ComplianceApi {
          </table>
          */
         public ApiResponse<DecoratedComplianceRunSummary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, opts);
+            return getDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys, opts);
         }
 
         /**
@@ -1804,7 +1819,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
-            return getDecoratedComplianceRunSummaryAsync(scope, code, _callback);
+            return getDecoratedComplianceRunSummaryAsync(scope, code, propertyKeys, _callback);
         }
 
         /**
@@ -1821,7 +1836,7 @@ public class ComplianceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DecoratedComplianceRunSummary> _callback, ConfigurationOptions opts) throws ApiException {
-            return getDecoratedComplianceRunSummaryAsync(scope, code, _callback, opts);
+            return getDecoratedComplianceRunSummaryAsync(scope, code, propertyKeys, _callback, opts);
         }
     }
 

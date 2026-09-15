@@ -593,7 +593,7 @@ public class ComplianceApiExample {
 
 ## getDecoratedComplianceRunSummary
 
-> DecoratedComplianceRunSummary getDecoratedComplianceRunSummary(scope, code)
+> DecoratedComplianceRunSummary getDecoratedComplianceRunSummary(scope, code, propertyKeys)
 
 [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
 
@@ -640,11 +640,12 @@ public class ComplianceApiExample {
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | Required: Run Scope.
         String code = "code_example"; // String | Required: Run Code.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule result.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
         try {
             // uncomment the below to set overrides at the request level
-            // DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code).execute(opts);
+            // DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code, propertyKeys).execute(opts);
 
-            DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code).execute();
+            DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplianceApi#getDecoratedComplianceRunSummary");
@@ -663,6 +664,7 @@ public class ComplianceApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Required: Run Scope. | |
 | **code** | **String**| Required: Run Code. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule result.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
 
 ### Return type
 

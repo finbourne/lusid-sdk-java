@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ComplianceRuleResultPortfolioDetail;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +22,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -92,6 +96,10 @@ public class ComplianceRuleResultDetail {
   public static final String SERIALIZED_NAME_OUTCOME = "outcome";
   @SerializedName(SERIALIZED_NAME_OUTCOME)
   private String outcome;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, PerpetualProperty> properties;
 
   public ComplianceRuleResultDetail() {
   }
@@ -322,6 +330,35 @@ public class ComplianceRuleResultDetail {
   }
 
 
+  public ComplianceRuleResultDetail properties(Map<String, PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public ComplianceRuleResultDetail putPropertiesItem(String key, PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Get properties
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -341,12 +378,24 @@ public class ComplianceRuleResultDetail {
         Objects.equals(this.status, complianceRuleResultDetail.status) &&
         Objects.equals(this.ruleName, complianceRuleResultDetail.ruleName) &&
         Objects.equals(this.ruleDescription, complianceRuleResultDetail.ruleDescription) &&
-        Objects.equals(this.outcome, complianceRuleResultDetail.outcome);
+        Objects.equals(this.outcome, complianceRuleResultDetail.outcome) &&
+        Objects.equals(this.properties, complianceRuleResultDetail.properties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, affectedPortfoliosDetails, affectedOrders, templateId, templateDescription, templateVariation, status, ruleName, ruleDescription, outcome);
+    return Objects.hash(ruleId, affectedPortfoliosDetails, affectedOrders, templateId, templateDescription, templateVariation, status, ruleName, ruleDescription, outcome, properties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -363,6 +412,7 @@ public class ComplianceRuleResultDetail {
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    ruleDescription: ").append(toIndentedString(ruleDescription)).append("\n");
     sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -395,6 +445,7 @@ public class ComplianceRuleResultDetail {
     openapiFields.add("ruleName");
     openapiFields.add("ruleDescription");
     openapiFields.add("outcome");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
