@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **byTaxLots** | **Boolean** |  | [optional] [default to Boolean]
 **subscriptionType** | **String** | The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions. | [optional] [default to String]
 **startEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
-**endEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
+**endEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping. | [optional] [default to OffsetDateTime]
+**effectiveForwardDays** | **Integer** | How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.SubscriptionDefinition;
@@ -33,6 +34,7 @@ Boolean ByTaxLots = true;
 @jakarta.annotation.Nullable String SubscriptionType = "example SubscriptionType";
 @jakarta.annotation.Nullable OffsetDateTime StartEffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EndEffectiveAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable Integer EffectiveForwardDays = new Integer("100.00");
 
 
 SubscriptionDefinition subscriptionDefinitionInstance = new SubscriptionDefinition()
@@ -46,7 +48,8 @@ SubscriptionDefinition subscriptionDefinitionInstance = new SubscriptionDefiniti
     .ByTaxLots(ByTaxLots)
     .SubscriptionType(SubscriptionType)
     .StartEffectiveAt(StartEffectiveAt)
-    .EndEffectiveAt(EndEffectiveAt);
+    .EndEffectiveAt(EndEffectiveAt)
+    .EffectiveForwardDays(EffectiveForwardDays);
 ```
 
 

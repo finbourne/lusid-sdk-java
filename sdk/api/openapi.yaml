@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9950
+  version: 0.11.9953
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -128080,6 +128080,7 @@ paths:
                 - Holding/default/PV
                 byTaxLots: false
                 subscriptionType: Holdings
+                effectiveForwardDays: 90
             schema:
               $ref: '#/components/schemas/UpsertSubscriptionRequest'
           application/json:
@@ -128101,6 +128102,7 @@ paths:
                 - Holding/default/PV
                 byTaxLots: false
                 subscriptionType: Holdings
+                effectiveForwardDays: 90
             schema:
               $ref: '#/components/schemas/UpsertSubscriptionRequest'
           text/json:
@@ -128122,6 +128124,7 @@ paths:
                 - Holding/default/PV
                 byTaxLots: false
                 subscriptionType: Holdings
+                effectiveForwardDays: 90
             schema:
               $ref: '#/components/schemas/UpsertSubscriptionRequest'
           application/*+json:
@@ -128143,6 +128146,7 @@ paths:
                 - Holding/default/PV
                 byTaxLots: false
                 subscriptionType: Holdings
+                effectiveForwardDays: 90
             schema:
               $ref: '#/components/schemas/UpsertSubscriptionRequest'
         description: The Subscription to update or insert
@@ -219658,6 +219662,7 @@ components:
           relation: relation
         href: https://openapi-generator.tech
         value:
+          effectiveForwardDays: 293
           endEffectiveAt: 2000-01-23T04:56:07.000+00:00
           code: code
           portfolioId:
@@ -252189,6 +252194,7 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           value:
+            effectiveForwardDays: 293
             endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
             portfolioId:
@@ -252220,6 +252226,7 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           value:
+            effectiveForwardDays: 293
             endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
             portfolioId:
@@ -314426,6 +314433,7 @@ components:
     SubscriptionDefinition:
       additionalProperties: false
       example:
+        effectiveForwardDays: 293
         endEffectiveAt: 2000-01-23T04:56:07.000+00:00
         code: code
         portfolioId:
@@ -314493,9 +314501,22 @@ components:
           nullable: true
           type: string
         endEffectiveAt:
+          description: "Deprecated and no longer honoured: a fixed forward date stops\
+            \ being a forward view once\r\nthe live edge passes it. Use effectiveForwardDays\
+            \ instead. Still accepted and echoed back\r\nso existing subscriptions\
+            \ keep round-tripping."
           format: date-time
           nullable: true
           type: string
+        effectiveForwardDays:
+          description: "How far forward the subscription reports, as a number of calendar\
+            \ days past the live\r\nedge — a rolling forward view that advances as\
+            \ time passes."
+          format: int32
+          maximum: 3650
+          minimum: 1
+          nullable: true
+          type: integer
       required:
       - code
       - portfolioId
@@ -336839,6 +336860,7 @@ components:
       additionalProperties: false
       example:
         subscription:
+          effectiveForwardDays: 293
           endEffectiveAt: 2000-01-23T04:56:07.000+00:00
           code: code
           portfolioId:
