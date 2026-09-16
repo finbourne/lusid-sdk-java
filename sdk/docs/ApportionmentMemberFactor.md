@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **fundCode** | **String** | The code of the fund the member share class belongs to. | [optional] [default to String]
 **baseValue** | **java.math.BigDecimal** | The base value the method produced for the member, or null for the SetFactor method. | [optional] [default to java.math.BigDecimal]
 **apportionmentFactor** | **java.math.BigDecimal** | The member&#39;s apportionment factor: its base value over the total across the group or fund. | [default to java.math.BigDecimal]
+**inputs** | [**List&lt;ApportionmentInput&gt;**](ApportionmentInput.md) | The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown. | [optional] [default to List<ApportionmentInput>]
 
 ```java
 import com.finbourne.lusid.model.ApportionmentMemberFactor;
@@ -22,6 +23,7 @@ String MemberIdentifier = "example MemberIdentifier";
 @jakarta.annotation.Nullable String FundCode = "example FundCode";
 @jakarta.annotation.Nullable java.math.BigDecimal BaseValue = new java.math.BigDecimal("100.00");
 java.math.BigDecimal ApportionmentFactor = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<ApportionmentInput> Inputs = new List<ApportionmentInput>();
 
 
 ApportionmentMemberFactor apportionmentMemberFactorInstance = new ApportionmentMemberFactor()
@@ -29,7 +31,8 @@ ApportionmentMemberFactor apportionmentMemberFactorInstance = new ApportionmentM
     .FundScope(FundScope)
     .FundCode(FundCode)
     .BaseValue(BaseValue)
-    .ApportionmentFactor(ApportionmentFactor);
+    .ApportionmentFactor(ApportionmentFactor)
+    .Inputs(Inputs);
 ```
 
 

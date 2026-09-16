@@ -11,13 +11,16 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ApportionmentInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -69,6 +72,10 @@ public class ApportionmentMemberFactor {
   public static final String SERIALIZED_NAME_APPORTIONMENT_FACTOR = "apportionmentFactor";
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_FACTOR)
   private java.math.BigDecimal apportionmentFactor;
+
+  public static final String SERIALIZED_NAME_INPUTS = "inputs";
+  @SerializedName(SERIALIZED_NAME_INPUTS)
+  private List<ApportionmentInput> inputs;
 
   public ApportionmentMemberFactor() {
   }
@@ -178,6 +185,35 @@ public class ApportionmentMemberFactor {
   }
 
 
+  public ApportionmentMemberFactor inputs(List<ApportionmentInput> inputs) {
+    
+    this.inputs = inputs;
+    return this;
+  }
+
+  public ApportionmentMemberFactor addInputsItem(ApportionmentInput inputsItem) {
+    if (this.inputs == null) {
+      this.inputs = new ArrayList<>();
+    }
+    this.inputs.add(inputsItem);
+    return this;
+  }
+
+   /**
+   * The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown.
+   * @return inputs
+  **/
+  @jakarta.annotation.Nullable
+  public List<ApportionmentInput> getInputs() {
+    return inputs;
+  }
+
+
+  public void setInputs(List<ApportionmentInput> inputs) {
+    this.inputs = inputs;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +228,8 @@ public class ApportionmentMemberFactor {
         Objects.equals(this.fundScope, apportionmentMemberFactor.fundScope) &&
         Objects.equals(this.fundCode, apportionmentMemberFactor.fundCode) &&
         (this.baseValue.compareTo(apportionmentMemberFactor.getBaseValue()) == 0) &&
-        (this.apportionmentFactor.compareTo(apportionmentMemberFactor.getApportionmentFactor()) == 0);
+        (this.apportionmentFactor.compareTo(apportionmentMemberFactor.getApportionmentFactor()) == 0) &&
+        Objects.equals(this.inputs, apportionmentMemberFactor.inputs);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +238,7 @@ public class ApportionmentMemberFactor {
 
   @Override
   public int hashCode() {
-    return Objects.hash(memberIdentifier, fundScope, fundCode, baseValue, apportionmentFactor);
+    return Objects.hash(memberIdentifier, fundScope, fundCode, baseValue, apportionmentFactor, inputs);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +257,7 @@ public class ApportionmentMemberFactor {
     sb.append("    fundCode: ").append(toIndentedString(fundCode)).append("\n");
     sb.append("    baseValue: ").append(toIndentedString(baseValue)).append("\n");
     sb.append("    apportionmentFactor: ").append(toIndentedString(apportionmentFactor)).append("\n");
+    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +285,7 @@ public class ApportionmentMemberFactor {
     openapiFields.add("fundCode");
     openapiFields.add("baseValue");
     openapiFields.add("apportionmentFactor");
+    openapiFields.add("inputs");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -282,6 +321,20 @@ public class ApportionmentMemberFactor {
       }
       if ((jsonObj.get("fundCode") != null && !jsonObj.get("fundCode").isJsonNull()) && !jsonObj.get("fundCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fundCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fundCode").toString()));
+      }
+      if (jsonObj.get("inputs") != null && !jsonObj.get("inputs").isJsonNull()) {
+        JsonArray jsonArrayinputs = jsonObj.getAsJsonArray("inputs");
+        if (jsonArrayinputs != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("inputs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `inputs` to be an array in the JSON string but got `%s`", jsonObj.get("inputs").toString()));
+          }
+
+          // validate the optional field `inputs` (array)
+          for (int i = 0; i < jsonArrayinputs.size(); i++) {
+            ApportionmentInput.validateJsonElement(jsonArrayinputs.get(i));
+          };
+        }
       }
   }
 

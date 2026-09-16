@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9958
+  version: 0.11.9972
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5710,6 +5710,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 inLineLookupIdentifiers: {}
             schema:
@@ -5750,6 +5751,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 inLineLookupIdentifiers: {}
             schema:
@@ -5790,6 +5792,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 inLineLookupIdentifiers: {}
             schema:
@@ -5830,6 +5833,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 inLineLookupIdentifiers: {}
             schema:
@@ -33551,6 +33555,85 @@ paths:
       - Entities
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/entities/compliancerules/{entityUniqueId}:
+    get:
+      description: "Retrieve the definition of a particular compliance rule.\r\n\r\
+        \nIf the compliance rule is deleted, this will return the state of the rule\
+        \ immediately prior to deletion."
+      operationId: GetComplianceRuleByEntityUniqueId
+      parameters:
+      - description: The universally unique identifier of the compliance rule.
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the compliance rule. Defaults
+          to returning the latest version of the compliance rule if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids of the staged modifications to be previewed in the response.
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleEntity'
+          description: The requested compliance rule entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetComplianceRuleByEntityUniqueId: Get compliance rule\
+        \ by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/entities/customentities/{entityUniqueId}:
     get:
       description: "Retrieve a particular Custom Entity instance.\r\nIf the Custom\
@@ -45304,6 +45387,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -45417,6 +45507,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -45535,6 +45632,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -45648,6 +45752,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -45766,6 +45877,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -45879,6 +45997,13 @@ paths:
                       fundCode: FundCode
                       baseValue: 99999.99
                       apportionmentFactor: 1
+                      inputs:
+                      - code: openingNav
+                        displayName: Opening NAV
+                        value: 89999.99
+                      - code: netDealing
+                        displayName: Net dealing
+                        value: 10000
                   bucketSetResults:
                   - bucketSetCode: BucketSetCode
                     isApportionment: true
@@ -46299,6 +46424,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -46415,6 +46547,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -46531,6 +46670,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -46765,6 +46911,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -46881,6 +47034,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -46997,6 +47157,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -47210,6 +47377,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -47326,6 +47500,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -47442,6 +47623,13 @@ paths:
                     fundCode: FundCode
                     baseValue: 99999.99
                     apportionmentFactor: 1
+                    inputs:
+                    - code: openingNav
+                      displayName: Opening NAV
+                      value: 89999.99
+                    - code: netDealing
+                      displayName: Net dealing
+                      value: 10000
                 bucketSetResults:
                 - bucketSetCode: BucketSetCode
                   isApportionment: true
@@ -91875,6 +92063,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               right:
@@ -91912,6 +92101,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               leftToRightMapping: []
@@ -91955,6 +92145,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               right:
@@ -91992,6 +92183,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               leftToRightMapping: []
@@ -92035,6 +92227,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               right:
@@ -92072,6 +92265,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               leftToRightMapping: []
@@ -92115,6 +92309,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               right:
@@ -92152,6 +92347,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   inLineLookupIdentifiers: {}
               leftToRightMapping: []
@@ -122211,6 +122407,153 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/scenarios/$reversestress:
+    post:
+      description: "Solve for how far the market has to move to produce a given change\
+        \ in portfolio value.\r\n \r\nA scenario supplies the direction the market\
+        \ moves in: which risk factors move, and in what\r\nproportion to each other.\
+        \ The solve is over a single factor its shifts are multiplied by, so the\r\
+        \nanswer is a multiple of the scenario rather than a set of shifts in its\
+        \ own right - a factor of\r\ntwo means twice every shift the scenario states.\r\
+        \n \r\nA ladder of factors is valued first, all in one valuation so the rungs\
+        \ share market data\r\nresolution, then the bracketing pair is interpolated\
+        \ and the interpolated factor valued again to\r\nconfirm it. The whole ladder\
+        \ is returned: a reverse stress is only meaningful where the change in\r\n\
+        value moves in one direction with the factor, and the ladder is what shows\
+        \ whether it does.\r\n \r\nThe solve is refused rather than approximated where\
+        \ it cannot be trusted: a scenario carrying a\r\nshift with no size to scale\
+        \ (a model option, or a market data routing override), a measure that\r\n\
+        cannot be computed under a scenario, or a valuation that could not price every\
+        \ holding."
+      operationId: SolveReverseStress
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+              targetPnl: -1000000
+              reportCurrency: USD
+              maxScale: 5
+              ladderPoints: 5
+              tolerance: 1.0E-4
+              maxIterations: 3
+            schema:
+              $ref: '#/components/schemas/ReverseStressRequest'
+          application/json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+              targetPnl: -1000000
+              reportCurrency: USD
+              maxScale: 5
+              ladderPoints: 5
+              tolerance: 1.0E-4
+              maxIterations: 3
+            schema:
+              $ref: '#/components/schemas/ReverseStressRequest'
+          text/json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+              targetPnl: -1000000
+              reportCurrency: USD
+              maxScale: 5
+              ladderPoints: 5
+              tolerance: 1.0E-4
+              maxIterations: 3
+            schema:
+              $ref: '#/components/schemas/ReverseStressRequest'
+          application/*+json:
+            example:
+              recipeId:
+                scope: live
+                code: default
+              portfolioEntityIds:
+              - scope: fund-a
+                code: main
+                portfolioEntityType: SinglePortfolio
+              effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+              scenario:
+                scope: stress-tests
+                code: rates-up-50
+              targetPnl: -1000000
+              reportCurrency: USD
+              maxScale: 5
+              ladderPoints: 5
+              tolerance: 1.0E-4
+              maxIterations: 3
+            schema:
+              $ref: '#/components/schemas/ReverseStressRequest'
+        description: "The recipe, portfolios, effective date, scenario direction and\
+          \ target change in value"
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReverseStressResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReverseStressResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReverseStressResponse'
+          description: "The solved scale with the evaluated ladder, or any failure"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] SolveReverseStress: Solve a reverse stress test"
+      tags:
+      - Scenarios
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/scenarios/$templates:
     get:
       description: "Lists every template CreateScenarioFromTemplate accepts, with\
@@ -135341,6 +135684,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135376,6 +135720,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135411,6 +135756,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135446,6 +135792,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135745,6 +136092,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135778,6 +136126,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135811,6 +136160,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135844,6 +136194,7 @@ paths:
                 isNdf: false
                 fixingDate: 0001-01-01T00:00:00.0000000+00:00
                 bookedAsSpot: false
+                isPooled: false
                 instrumentType: FxForward
               counterpartyAgreementId:
                 scope: demoScope
@@ -135881,6 +136232,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 counterpartyAgreementId:
                   scope: demoScope
@@ -135914,6 +136266,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 counterpartyAgreementId:
                   scope: demoScope
@@ -135947,6 +136300,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
                 counterpartyAgreementId:
                   scope: demoScope
@@ -156715,6 +157069,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
               dialect: targetDialect
             schema:
@@ -156741,6 +157096,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
               dialect: targetDialect
             schema:
@@ -156767,6 +157123,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
               dialect: targetDialect
             schema:
@@ -156793,6 +157150,7 @@ paths:
                   isNdf: false
                   fixingDate: 0001-01-01T00:00:00.0000000+00:00
                   bookedAsSpot: false
+                  isPooled: false
                   instrumentType: FxForward
               dialect: targetDialect
             schema:
@@ -156880,6 +157238,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   counterpartyAgreementId:
                     scope: demoScope
@@ -156916,6 +157275,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   counterpartyAgreementId:
                     scope: demoScope
@@ -156952,6 +157312,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   counterpartyAgreementId:
                     scope: demoScope
@@ -156988,6 +157349,7 @@ paths:
                     isNdf: false
                     fixingDate: 0001-01-01T00:00:00.0000000+00:00
                     bookedAsSpot: false
+                    isPooled: false
                     instrumentType: FxForward
                   counterpartyAgreementId:
                     scope: demoScope
@@ -161196,11 +161558,25 @@ components:
             factors:
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
@@ -161210,11 +161586,25 @@ components:
             factors:
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
@@ -161224,9 +161614,9 @@ components:
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161235,40 +161625,40 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161277,44 +161667,44 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
             displayName: displayName
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161323,40 +161713,40 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161365,37 +161755,37 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
             displayName: displayName
           previousValuationPointCode: previousValuationPointCode
           valuationPointCode: valuationPointCode
@@ -161639,11 +162029,25 @@ components:
             factors:
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
@@ -161653,11 +162057,25 @@ components:
             factors:
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
             - baseValue: 4.965218492984954
               fundCode: fundCode
+              inputs:
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
+              - code: code
+                displayName: displayName
+                value: 9.965781217890562
               apportionmentFactor: 5.025004791520295
               memberIdentifier: memberIdentifier
               fundScope: fundScope
@@ -161667,9 +162085,9 @@ components:
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161678,40 +162096,40 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161720,44 +162138,44 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
             displayName: displayName
           - isApportionment: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161766,40 +162184,40 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
-            - sharesInIssue: 6.878052220127876
-              previousSharesInIssue: 6.704019297950036
-              nav: 9.965781217890562
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
+            - sharesInIssue: 5.944895607614016
+              previousSharesInIssue: 3.353193347011243
+              nav: 9.369310271410669
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -161808,37 +162226,37 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.965117697638846
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              - unitsInIssue: 6.965117697638846
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              - unitsInIssue: 1.284659006116532
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 1.284659006116532
-                previousCumulativeValue: 8.762042012749001
+                previousCumulativePerUnitValue: 2.8841621266687802
+                previousCumulativeValue: 9.018348186070783
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 6.438423552598547
-                cumulativePerUnitValue: 2.8841621266687802
-                perUnitValue: 3.5571952270680973
-                value: 6.683562403749608
-                cumulativeValue: 9.018348186070783
-              previousNav: 3.353193347011243
-              netDealingUnits: 3.0937452626664474
-              previousPerUnitValue: 5.944895607614016
+                  key: 3.5571952270680973
+                cumulativePerUnitValue: 6.778324963048013
+                perUnitValue: 6.965117697638846
+                value: 8.762042012749001
+                cumulativeValue: 6.438423552598547
+              previousNav: 3.0937452626664474
+              netDealingUnits: 7.143538047012306
+              previousPerUnitValue: 6.704019297950036
               label: label
               nodeType: nodeType
-              capitalRatio: 9.369310271410669
-              perUnitValue: 6.778324963048013
+              capitalRatio: 6.683562403749608
+              perUnitValue: 6.878052220127876
             displayName: displayName
           previousValuationPointCode: previousValuationPointCode
           valuationPointCode: valuationPointCode
@@ -168759,11 +169177,25 @@ components:
         factors:
         - baseValue: 4.965218492984954
           fundCode: fundCode
+          inputs:
+          - code: code
+            displayName: displayName
+            value: 9.965781217890562
+          - code: code
+            displayName: displayName
+            value: 9.965781217890562
           apportionmentFactor: 5.025004791520295
           memberIdentifier: memberIdentifier
           fundScope: fundScope
         - baseValue: 4.965218492984954
           fundCode: fundCode
+          inputs:
+          - code: code
+            displayName: displayName
+            value: 9.965781217890562
+          - code: code
+            displayName: displayName
+            value: 9.965781217890562
           apportionmentFactor: 5.025004791520295
           memberIdentifier: memberIdentifier
           fundScope: fundScope
@@ -168794,6 +169226,34 @@ components:
       - apportionmentMethodPropertyKey
       - factors
       type: object
+    ApportionmentInput:
+      additionalProperties: false
+      description: "One named amount that contributed to a member share class's apportionment\
+        \ base value - the workings behind\r\nthe figure rather than the figure alone.\
+        \ A member's inputs always sum to its base value."
+      example:
+        code: code
+        displayName: displayName
+        value: 9.965781217890562
+      properties:
+        code:
+          description: "The input's identifier within its apportionment method, for\
+            \ example 'openingNav'."
+          minLength: 1
+          type: string
+        displayName:
+          description: "The input's human-readable name, for example 'Opening NAV'."
+          minLength: 1
+          type: string
+        value:
+          description: "The input's contribution to the base value, signed as it contributes."
+          format: double
+          type: number
+      required:
+      - code
+      - displayName
+      - value
+      type: object
     ApportionmentMemberFactor:
       additionalProperties: false
       description: "One member share class's outcome within an apportionment result:\
@@ -168802,6 +169262,13 @@ components:
       example:
         baseValue: 4.965218492984954
         fundCode: fundCode
+        inputs:
+        - code: code
+          displayName: displayName
+          value: 9.965781217890562
+        - code: code
+          displayName: displayName
+          value: 9.965781217890562
         apportionmentFactor: 5.025004791520295
         memberIdentifier: memberIdentifier
         fundScope: fundScope
@@ -168829,6 +169296,14 @@ components:
             \ total across the group or fund."
           format: double
           type: number
+        inputs:
+          description: "The named amounts the apportionment method summed to reach\
+            \ the base value, always summing to it. Absent where the method defines\
+            \ no such breakdown."
+          items:
+            $ref: '#/components/schemas/ApportionmentInput'
+          nullable: true
+          type: array
       required:
       - apportionmentFactor
       - memberIdentifier
@@ -177914,9 +178389,9 @@ components:
         \ share class. Both carry NAV and buckets; the\r\ncapital ratio, the unit\
         \ counts and the per-unit values are set only on share class nodes."
       example:
-        sharesInIssue: 6.878052220127876
-        previousSharesInIssue: 6.704019297950036
-        nav: 9.965781217890562
+        sharesInIssue: 5.944895607614016
+        previousSharesInIssue: 3.353193347011243
+        nav: 9.369310271410669
         shareClassDetails:
           domCurrency: domCurrency
           instrumentScope: instrumentScope
@@ -177925,37 +178400,37 @@ components:
           shortCode: shortCode
         shareClassShortCode: shareClassShortCode
         buckets:
-        - unitsInIssue: 6.965117697638846
+        - unitsInIssue: 1.284659006116532
           bucketType: bucketType
-          previousCumulativePerUnitValue: 1.284659006116532
-          previousCumulativeValue: 8.762042012749001
+          previousCumulativePerUnitValue: 2.8841621266687802
+          previousCumulativeValue: 9.018348186070783
           displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
-            key: 6.438423552598547
-          cumulativePerUnitValue: 2.8841621266687802
-          perUnitValue: 3.5571952270680973
-          value: 6.683562403749608
-          cumulativeValue: 9.018348186070783
-        - unitsInIssue: 6.965117697638846
+            key: 3.5571952270680973
+          cumulativePerUnitValue: 6.778324963048013
+          perUnitValue: 6.965117697638846
+          value: 8.762042012749001
+          cumulativeValue: 6.438423552598547
+        - unitsInIssue: 1.284659006116532
           bucketType: bucketType
-          previousCumulativePerUnitValue: 1.284659006116532
-          previousCumulativeValue: 8.762042012749001
+          previousCumulativePerUnitValue: 2.8841621266687802
+          previousCumulativeValue: 9.018348186070783
           displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
-            key: 6.438423552598547
-          cumulativePerUnitValue: 2.8841621266687802
-          perUnitValue: 3.5571952270680973
-          value: 6.683562403749608
-          cumulativeValue: 9.018348186070783
-        previousNav: 3.353193347011243
-        netDealingUnits: 3.0937452626664474
-        previousPerUnitValue: 5.944895607614016
+            key: 3.5571952270680973
+          cumulativePerUnitValue: 6.778324963048013
+          perUnitValue: 6.965117697638846
+          value: 8.762042012749001
+          cumulativeValue: 6.438423552598547
+        previousNav: 3.0937452626664474
+        netDealingUnits: 7.143538047012306
+        previousPerUnitValue: 6.704019297950036
         label: label
         nodeType: nodeType
-        capitalRatio: 9.369310271410669
-        perUnitValue: 6.778324963048013
+        capitalRatio: 6.683562403749608
+        perUnitValue: 6.878052220127876
       properties:
         nodeType:
           description: "The kind of node: the fund aggregate or a single share class.\
@@ -178047,9 +178522,9 @@ components:
         isApportionment: true
         bucketSetCode: bucketSetCode
         nodes:
-        - sharesInIssue: 6.878052220127876
-          previousSharesInIssue: 6.704019297950036
-          nav: 9.965781217890562
+        - sharesInIssue: 5.944895607614016
+          previousSharesInIssue: 3.353193347011243
+          nav: 9.369310271410669
           shareClassDetails:
             domCurrency: domCurrency
             instrumentScope: instrumentScope
@@ -178058,40 +178533,40 @@ components:
             shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
-          - unitsInIssue: 6.965117697638846
+          - unitsInIssue: 1.284659006116532
             bucketType: bucketType
-            previousCumulativePerUnitValue: 1.284659006116532
-            previousCumulativeValue: 8.762042012749001
+            previousCumulativePerUnitValue: 2.8841621266687802
+            previousCumulativeValue: 9.018348186070783
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 6.438423552598547
-            cumulativePerUnitValue: 2.8841621266687802
-            perUnitValue: 3.5571952270680973
-            value: 6.683562403749608
-            cumulativeValue: 9.018348186070783
-          - unitsInIssue: 6.965117697638846
+              key: 3.5571952270680973
+            cumulativePerUnitValue: 6.778324963048013
+            perUnitValue: 6.965117697638846
+            value: 8.762042012749001
+            cumulativeValue: 6.438423552598547
+          - unitsInIssue: 1.284659006116532
             bucketType: bucketType
-            previousCumulativePerUnitValue: 1.284659006116532
-            previousCumulativeValue: 8.762042012749001
+            previousCumulativePerUnitValue: 2.8841621266687802
+            previousCumulativeValue: 9.018348186070783
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 6.438423552598547
-            cumulativePerUnitValue: 2.8841621266687802
-            perUnitValue: 3.5571952270680973
-            value: 6.683562403749608
-            cumulativeValue: 9.018348186070783
-          previousNav: 3.353193347011243
-          netDealingUnits: 3.0937452626664474
-          previousPerUnitValue: 5.944895607614016
+              key: 3.5571952270680973
+            cumulativePerUnitValue: 6.778324963048013
+            perUnitValue: 6.965117697638846
+            value: 8.762042012749001
+            cumulativeValue: 6.438423552598547
+          previousNav: 3.0937452626664474
+          netDealingUnits: 7.143538047012306
+          previousPerUnitValue: 6.704019297950036
           label: label
           nodeType: nodeType
-          capitalRatio: 9.369310271410669
-          perUnitValue: 6.778324963048013
-        - sharesInIssue: 6.878052220127876
-          previousSharesInIssue: 6.704019297950036
-          nav: 9.965781217890562
+          capitalRatio: 6.683562403749608
+          perUnitValue: 6.878052220127876
+        - sharesInIssue: 5.944895607614016
+          previousSharesInIssue: 3.353193347011243
+          nav: 9.369310271410669
           shareClassDetails:
             domCurrency: domCurrency
             instrumentScope: instrumentScope
@@ -178100,37 +178575,37 @@ components:
             shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
-          - unitsInIssue: 6.965117697638846
+          - unitsInIssue: 1.284659006116532
             bucketType: bucketType
-            previousCumulativePerUnitValue: 1.284659006116532
-            previousCumulativeValue: 8.762042012749001
+            previousCumulativePerUnitValue: 2.8841621266687802
+            previousCumulativeValue: 9.018348186070783
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 6.438423552598547
-            cumulativePerUnitValue: 2.8841621266687802
-            perUnitValue: 3.5571952270680973
-            value: 6.683562403749608
-            cumulativeValue: 9.018348186070783
-          - unitsInIssue: 6.965117697638846
+              key: 3.5571952270680973
+            cumulativePerUnitValue: 6.778324963048013
+            perUnitValue: 6.965117697638846
+            value: 8.762042012749001
+            cumulativeValue: 6.438423552598547
+          - unitsInIssue: 1.284659006116532
             bucketType: bucketType
-            previousCumulativePerUnitValue: 1.284659006116532
-            previousCumulativeValue: 8.762042012749001
+            previousCumulativePerUnitValue: 2.8841621266687802
+            previousCumulativeValue: 9.018348186070783
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 6.438423552598547
-            cumulativePerUnitValue: 2.8841621266687802
-            perUnitValue: 3.5571952270680973
-            value: 6.683562403749608
-            cumulativeValue: 9.018348186070783
-          previousNav: 3.353193347011243
-          netDealingUnits: 3.0937452626664474
-          previousPerUnitValue: 5.944895607614016
+              key: 3.5571952270680973
+            cumulativePerUnitValue: 6.778324963048013
+            perUnitValue: 6.965117697638846
+            value: 8.762042012749001
+            cumulativeValue: 6.438423552598547
+          previousNav: 3.0937452626664474
+          netDealingUnits: 7.143538047012306
+          previousPerUnitValue: 6.704019297950036
           label: label
           nodeType: nodeType
-          capitalRatio: 9.369310271410669
-          perUnitValue: 6.778324963048013
+          capitalRatio: 6.683562403749608
+          perUnitValue: 6.878052220127876
         displayName: displayName
       properties:
         bucketSetCode:
@@ -178166,18 +178641,18 @@ components:
         \nof the movement by the source that contributed it and the same values restated\
         \ per unit in issue."
       example:
-        unitsInIssue: 6.965117697638846
+        unitsInIssue: 1.284659006116532
         bucketType: bucketType
-        previousCumulativePerUnitValue: 1.284659006116532
-        previousCumulativeValue: 8.762042012749001
+        previousCumulativePerUnitValue: 2.8841621266687802
+        previousCumulativeValue: 9.018348186070783
         displayName: displayName
         bucketId: bucketId
         sourceBreakdown:
-          key: 6.438423552598547
-        cumulativePerUnitValue: 2.8841621266687802
-        perUnitValue: 3.5571952270680973
-        value: 6.683562403749608
-        cumulativeValue: 9.018348186070783
+          key: 3.5571952270680973
+        cumulativePerUnitValue: 6.778324963048013
+        perUnitValue: 6.965117697638846
+        value: 8.762042012749001
+        cumulativeValue: 6.438423552598547
       properties:
         bucketId:
           description: The identifier of the bucket.
@@ -187143,6 +187618,274 @@ components:
       - propertiesUsed
       - resultsUsed
       type: object
+    ComplianceRuleEntity:
+      additionalProperties: false
+      example:
+        prevailingComplianceRule:
+          name: name
+          description: description
+          active: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          parameters:
+            key:
+              complianceParameterType: BoolComplianceParameter
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          variation: variation
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          portfolioGroupId:
+            code: code
+            scope: scope
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        previewedComplianceRule:
+          name: name
+          description: description
+          active: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          parameters:
+            key:
+              complianceParameterType: BoolComplianceParameter
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          variation: variation
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          portfolioGroupId:
+            code: code
+            scope: scope
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        requestIdDeleted: requestIdDeleted
+        effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
+        deletedComplianceRule:
+          name: name
+          description: description
+          active: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          parameters:
+            key:
+              complianceParameterType: BoolComplianceParameter
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          variation: variation
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          portfolioGroupId:
+            code: code
+            scope: scope
+        asAtVersionNumber: 0
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        previewedStatus: previewedStatus
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        effectiveAtCreated:
+          description: "The EffectiveAt this Entity is created, if entity does not\
+            \ currently exist in EffectiveAt."
+          format: date-time
+          nullable: true
+          type: string
+        prevailingComplianceRule:
+          $ref: '#/components/schemas/ComplianceRuleResponse'
+        deletedComplianceRule:
+          $ref: '#/components/schemas/ComplianceRuleResponse'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedComplianceRule:
+          $ref: '#/components/schemas/ComplianceRuleResponse'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
+      type: object
     ComplianceRuleResponse:
       additionalProperties: false
       example:
@@ -187164,6 +187907,12 @@ components:
         templateId:
           code: code
           scope: scope
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         parameters:
           key:
             complianceParameterType: BoolComplianceParameter
@@ -187231,6 +187980,8 @@ components:
           type: object
         version:
           $ref: '#/components/schemas/Version'
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -216429,16 +217180,21 @@ components:
             format: date-time
             type: string
           domAmount:
-            description: The amount that is to be paid in the domestic currency on
-              the maturity date.
+            description: "The amount that is to be paid in the domestic currency on\
+              \ the maturity date.\r\nRequired unless isPooled is set. On a pooled\
+              \ FX forward the domestic amount is the contract size and\r\nnot a traded\
+              \ amount: leave it absent and it is populated as one, so that holding\
+              \ units are amounts of\r\nthe domestic currency."
             format: double
             type: number
           domCcy:
             description: The domestic currency of the instrument.
             type: string
           fgnAmount:
-            description: The amount that is to be paid in the foreign currency on
-              the maturity date.
+            description: "The amount that is to be paid in the foreign currency on\
+              \ the maturity date.\r\nRequired unless isPooled is set. On a pooled\
+              \ FX forward it must be absent or zero, because the whole\r\nforeign\
+              \ consideration is carried by the transactions booked against the pool."
             format: double
             type: number
           fgnCcy:
@@ -216475,6 +217231,23 @@ components:
             type: boolean
           timeZoneConventions:
             $ref: '#/components/schemas/TimeZoneConventions'
+          isPooled:
+            description: "Declares the contract to be a pool, carrying no traded amounts\
+              \ of its own. A pool is defined once for a\r\ncurrency pair and maturity\
+              \ date and traded repeatedly at different rates, so the traded amounts\
+              \ are carried\r\nby the transactions booked against it rather than by\
+              \ the instrument. The domestic amount of a pool is\r\ntherefore the\
+              \ contract size and not a traded amount, and is pinned to one so that\
+              \ holding units are amounts\r\nof the domestic currency; the foreign\
+              \ amount and the reference spot rate must be absent, because the whole\r\
+              \nforeign consideration is carried by the transaction.\r\n \r\nOrientation\
+              \ is part of a pool's identity: the domestic currency is the unit currency\
+              \ and the foreign\r\ncurrency the consideration currency, so a USD/JPY\
+              \ pool and a JPY/USD pool are distinct instruments, and\r\ntransactions\
+              \ must be booked in the pool's own direction (transaction currency equal\
+              \ to the domestic\r\ncurrency, settlement currency equal to the foreign\
+              \ currency). This will default to False if not provided."
+            type: boolean
           instrumentType:
             description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
               \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
@@ -216545,9 +217318,7 @@ components:
             - CapitalInterest
             type: string
         required:
-        - domAmount
         - domCcy
-        - fgnAmount
         - fgnCcy
         - instrumentType
         - maturityDate
@@ -246421,6 +247192,12 @@ components:
           templateId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           parameters:
             key:
               complianceParameterType: BoolComplianceParameter
@@ -246476,6 +247253,12 @@ components:
           templateId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           parameters:
             key:
               complianceParameterType: BoolComplianceParameter
@@ -306895,6 +307678,260 @@ components:
         type: object
       description: A reverse split in the company's shares. Shareholders have their
         number of shares reduced based on the terms of the stock split.
+    ReverseStressRequest:
+      additionalProperties: false
+      description: "Request to solve a reverse stress test: instead of asking what\
+        \ a given market move does to a\r\nportfolio, it asks how far the market has\
+        \ to move along a given direction to produce a given\r\nloss. The direction\
+        \ is a stored scenario; the answer is the factor its shifts are multiplied\
+        \ by.\r\n \r\nA single effective date is solved, not a schedule. \"How far\
+        \ must the market move to lose this\r\nmuch\" has one answer per date, and\
+        \ returning a factor per date under one target would invite the\r\nanswer\
+        \ being read as a single portfolio-wide number when it is not."
+      example:
+        maxIterations: 6
+        portfolioEntityIds:
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        - code: code
+          scope: scope
+          portfolioEntityType: portfolioEntityType
+        maxScale: 602.7456580324784
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        filters:
+        - left: left
+          rightOperandType: Absolute
+          right: ""
+          operator: Equals
+        - left: left
+          rightOperandType: Absolute
+          right: ""
+          operator: Equals
+        recipeId:
+          code: code
+          scope: scope
+        reportCurrency: reportCurrency
+        scenario:
+          code: code
+          scope: scope
+          asAt: 2000-01-23T04:56:07.000+00:00
+        metric: metric
+        ladderPoints: 9
+        targetPnl: 0.8008281904610115
+        tolerance: 0.2981066958341591
+      properties:
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioEntityIds:
+          description: The portfolios or portfolio groups whose value the target loss
+            is measured against.
+          items:
+            $ref: '#/components/schemas/PortfolioEntityId'
+          maxItems: 100
+          type: array
+        effectiveAt:
+          description: The effective date to value at.
+          format: date-time
+          type: string
+        asAt:
+          description: "The as-at time to read portfolios, instruments, market data\
+            \ and the scenario definition at.\r\nDefaults to the latest."
+          format: date-time
+          nullable: true
+          type: string
+        scenario:
+          $ref: '#/components/schemas/ScenarioReference'
+        targetPnl:
+          description: "The change in value to solve for, signed and in the report\
+            \ currency: negative for a loss.\r\nExpressed as an amount rather than\
+            \ a percentage so that the same target can be stated against\r\na portfolio\
+            \ whose base value is not known to the caller."
+          format: double
+          type: number
+        metric:
+          description: "The measure the target is expressed in. Defaults to Valuation/PV.\
+            \ Must be a measure that\r\nsupports scenario decoration, which the request\
+            \ is rejected for if it is not."
+          nullable: true
+          type: string
+        reportCurrency:
+          description: "Three letter ISO currency string to report in. If absent the\
+            \ portfolio's own currency is used,\r\nwhich makes the target ambiguous\
+            \ across a multi-currency portfolio group - supply it there."
+          maxLength: 3
+          minLength: 0
+          nullable: true
+          type: string
+        filters:
+          description: "Filters reducing the holdings the target is measured over,\
+            \ matching the valuation endpoint's."
+          items:
+            $ref: '#/components/schemas/PropertyFilter'
+          nullable: true
+          type: array
+        maxScale:
+          description: "The largest factor to evaluate. A target beyond the loss reached\
+            \ at this factor is reported as\r\nout of reach rather than extrapolated\
+            \ to: extrapolating past the evaluated range is exactly\r\nwhere a locally\
+            \ linear P&L stops being linear."
+          format: double
+          maximum: 1000
+          minimum: 0.00010
+          type: number
+        ladderPoints:
+          description: "How many factors to evaluate between zero and MaxScale. All\
+            \ of them are valued in\r\none request - the rungs share market data resolution\
+            \ - so a finer ladder costs far less than\r\nits rung count suggests,\
+            \ and a coarse one is the main source of a missed bracket."
+          format: int32
+          maximum: 50
+          minimum: 2
+          type: integer
+        tolerance:
+          description: "How close the achieved loss must be to the target, relative\
+            \ to the target's own size. Relative\r\nrather than absolute because the\
+            \ same reverse stress is asked of books whose value differs by\r\norders\
+            \ of magnitude."
+          format: double
+          maximum: 0.5
+          type: number
+        maxIterations:
+          description: "How many refinement rounds are allowed after the opening ladder.\
+            \ Each round costs one\r\nvaluation; on a near-linear P&L the first interpolation\
+            \ is usually already inside tolerance,\r\nso the default exists for the\
+            \ mildly curved case rather than the normal one."
+          format: int32
+          maximum: 10
+          minimum: 1
+          type: integer
+      required:
+      - effectiveAt
+      - portfolioEntityIds
+      - recipeId
+      - scenario
+      - targetPnl
+      type: object
+    ReverseStressResponse:
+      additionalProperties: false
+      description: "The result of a reverse stress solve: the factor the scenario's\
+        \ shifts must be multiplied by to\r\nreach the target loss, together with\
+        \ the whole evaluated ladder so the answer can be checked\r\nrather than taken\
+        \ on trust.\r\n \r\nThe ladder is part of the answer, not diagnostics. A reverse\
+        \ stress is only meaningful where the\r\nloss moves in one direction with\
+        \ the factor, and the ladder is what shows that it does."
+      example:
+        converged: true
+        ladder:
+        - scale: 7.061401241503109
+          value: 9.301444243932576
+          pnl: 3.616076749251911
+        - scale: 7.061401241503109
+          value: 9.301444243932576
+          pnl: 3.616076749251911
+        baseValue: 5.962133916683182
+        method: method
+        warnings:
+        - warnings
+        - warnings
+        valuations: 2
+        scale: 0.8008281904610115
+        stressedValue: 5.637376656633329
+        achievedPnl: 1.4658129805029452
+        targetPnl: 6.027456183070403
+      properties:
+        scale:
+          description: "The solved factor: the multiple of the scenario's shifts that\
+            \ reaches the target. Null when no\r\nfactor within the evaluated range\
+            \ reaches it, in which case Converged is false and the\r\nwarnings say\
+            \ so."
+          format: double
+          nullable: true
+          type: number
+        targetPnl:
+          description: "The change in value that was asked for, echoed back."
+          format: double
+          type: number
+        achievedPnl:
+          description: "The change in value actually produced at the solved scale,\
+            \ measured by a valuation at that\r\nfactor rather than interpolated.\
+            \ The gap to the target is the honest error of the solve."
+          format: double
+          nullable: true
+          type: number
+        baseValue:
+          description: The unstressed value of the measure over the filtered holdings.
+          format: double
+          type: number
+        stressedValue:
+          description: The value of the measure at the solved scale.
+          format: double
+          nullable: true
+          type: number
+        converged:
+          description: "Whether the achieved change is within the requested tolerance\
+            \ of the target. False means the\r\nreported scale is the best reached,\
+            \ not an answer to rely on."
+          type: boolean
+        method:
+          description: "How the bracketing factor was turned into the reported one:\
+            \ \"Interpolation\" on a monotone\r\nladder, \"Bisection\" where the ladder\
+            \ turned back on itself and interpolating between one\r\nbracketing pair\
+            \ would have hidden the others."
+          nullable: true
+          type: string
+        valuations:
+          description: "How many valuations the solve ran, the opening ladder counting\
+            \ as one."
+          format: int32
+          type: integer
+        ladder:
+          description: "Every factor evaluated, in increasing order, including the\
+            \ confirming valuations."
+          items:
+            $ref: '#/components/schemas/ReverseStressRung'
+          nullable: true
+          type: array
+        warnings:
+          description: "Anything the caller has to know to read the scale correctly:\
+            \ a non-monotone ladder, a target\r\nout of reach, a solve stopped at\
+            \ the iteration limit."
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    ReverseStressRung:
+      additionalProperties: false
+      description: One evaluated factor and what the portfolio was worth under it.
+      example:
+        scale: 7.061401241503109
+        value: 9.301444243932576
+        pnl: 3.616076749251911
+      properties:
+        scale:
+          description: The factor the scenario's shifts were multiplied by.
+          format: double
+          type: number
+        value:
+          description: The value of the measure under the scaled scenario.
+          format: double
+          type: number
+        pnl:
+          description: The change from the unstressed value.
+          format: double
+          type: number
+      type: object
     RevertValuationPointDataRequest:
       additionalProperties: false
       description: The RevertValuationPointDataRequest.
@@ -337474,11 +338511,25 @@ components:
           factors:
           - baseValue: 4.965218492984954
             fundCode: fundCode
+            inputs:
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
             apportionmentFactor: 5.025004791520295
             memberIdentifier: memberIdentifier
             fundScope: fundScope
           - baseValue: 4.965218492984954
             fundCode: fundCode
+            inputs:
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
             apportionmentFactor: 5.025004791520295
             memberIdentifier: memberIdentifier
             fundScope: fundScope
@@ -337488,11 +338539,25 @@ components:
           factors:
           - baseValue: 4.965218492984954
             fundCode: fundCode
+            inputs:
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
             apportionmentFactor: 5.025004791520295
             memberIdentifier: memberIdentifier
             fundScope: fundScope
           - baseValue: 4.965218492984954
             fundCode: fundCode
+            inputs:
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
+            - code: code
+              displayName: displayName
+              value: 9.965781217890562
             apportionmentFactor: 5.025004791520295
             memberIdentifier: memberIdentifier
             fundScope: fundScope
@@ -337502,9 +338567,9 @@ components:
         - isApportionment: true
           bucketSetCode: bucketSetCode
           nodes:
-          - sharesInIssue: 6.878052220127876
-            previousSharesInIssue: 6.704019297950036
-            nav: 9.965781217890562
+          - sharesInIssue: 5.944895607614016
+            previousSharesInIssue: 3.353193347011243
+            nav: 9.369310271410669
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -337513,40 +338578,40 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.965117697638846
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            - unitsInIssue: 6.965117697638846
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            previousNav: 3.353193347011243
-            netDealingUnits: 3.0937452626664474
-            previousPerUnitValue: 5.944895607614016
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            previousNav: 3.0937452626664474
+            netDealingUnits: 7.143538047012306
+            previousPerUnitValue: 6.704019297950036
             label: label
             nodeType: nodeType
-            capitalRatio: 9.369310271410669
-            perUnitValue: 6.778324963048013
-          - sharesInIssue: 6.878052220127876
-            previousSharesInIssue: 6.704019297950036
-            nav: 9.965781217890562
+            capitalRatio: 6.683562403749608
+            perUnitValue: 6.878052220127876
+          - sharesInIssue: 5.944895607614016
+            previousSharesInIssue: 3.353193347011243
+            nav: 9.369310271410669
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -337555,44 +338620,44 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.965117697638846
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            - unitsInIssue: 6.965117697638846
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            previousNav: 3.353193347011243
-            netDealingUnits: 3.0937452626664474
-            previousPerUnitValue: 5.944895607614016
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            previousNav: 3.0937452626664474
+            netDealingUnits: 7.143538047012306
+            previousPerUnitValue: 6.704019297950036
             label: label
             nodeType: nodeType
-            capitalRatio: 9.369310271410669
-            perUnitValue: 6.778324963048013
+            capitalRatio: 6.683562403749608
+            perUnitValue: 6.878052220127876
           displayName: displayName
         - isApportionment: true
           bucketSetCode: bucketSetCode
           nodes:
-          - sharesInIssue: 6.878052220127876
-            previousSharesInIssue: 6.704019297950036
-            nav: 9.965781217890562
+          - sharesInIssue: 5.944895607614016
+            previousSharesInIssue: 3.353193347011243
+            nav: 9.369310271410669
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -337601,40 +338666,40 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.965117697638846
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            - unitsInIssue: 6.965117697638846
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            previousNav: 3.353193347011243
-            netDealingUnits: 3.0937452626664474
-            previousPerUnitValue: 5.944895607614016
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            previousNav: 3.0937452626664474
+            netDealingUnits: 7.143538047012306
+            previousPerUnitValue: 6.704019297950036
             label: label
             nodeType: nodeType
-            capitalRatio: 9.369310271410669
-            perUnitValue: 6.778324963048013
-          - sharesInIssue: 6.878052220127876
-            previousSharesInIssue: 6.704019297950036
-            nav: 9.965781217890562
+            capitalRatio: 6.683562403749608
+            perUnitValue: 6.878052220127876
+          - sharesInIssue: 5.944895607614016
+            previousSharesInIssue: 3.353193347011243
+            nav: 9.369310271410669
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -337643,37 +338708,37 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.965117697638846
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            - unitsInIssue: 6.965117697638846
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            - unitsInIssue: 1.284659006116532
               bucketType: bucketType
-              previousCumulativePerUnitValue: 1.284659006116532
-              previousCumulativeValue: 8.762042012749001
+              previousCumulativePerUnitValue: 2.8841621266687802
+              previousCumulativeValue: 9.018348186070783
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 6.438423552598547
-              cumulativePerUnitValue: 2.8841621266687802
-              perUnitValue: 3.5571952270680973
-              value: 6.683562403749608
-              cumulativeValue: 9.018348186070783
-            previousNav: 3.353193347011243
-            netDealingUnits: 3.0937452626664474
-            previousPerUnitValue: 5.944895607614016
+                key: 3.5571952270680973
+              cumulativePerUnitValue: 6.778324963048013
+              perUnitValue: 6.965117697638846
+              value: 8.762042012749001
+              cumulativeValue: 6.438423552598547
+            previousNav: 3.0937452626664474
+            netDealingUnits: 7.143538047012306
+            previousPerUnitValue: 6.704019297950036
             label: label
             nodeType: nodeType
-            capitalRatio: 9.369310271410669
-            perUnitValue: 6.778324963048013
+            capitalRatio: 6.683562403749608
+            perUnitValue: 6.878052220127876
           displayName: displayName
         previousValuationPointCode: previousValuationPointCode
         valuationPointCode: valuationPointCode
