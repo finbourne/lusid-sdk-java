@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **previousValuationPointCode** | **String** | The code of the previous valuation point. | [optional] [default to String]
 **apportionmentResults** | [**List&lt;ApportionmentBreakdown&gt;**](ApportionmentBreakdown.md) | The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. | [optional] [default to List<ApportionmentBreakdown>]
 **bucketSetResults** | [**List&lt;BucketSetResult&gt;**](BucketSetResult.md) | The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV. | [optional] [default to List<BucketSetResult>]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -33,6 +34,7 @@ List<ShareClassData> ShareClassData = new List<ShareClassData>();
 @jakarta.annotation.Nullable String PreviousValuationPointCode = "example PreviousValuationPointCode";
 @jakarta.annotation.Nullable List<ApportionmentBreakdown> ApportionmentResults = new List<ApportionmentBreakdown>();
 @jakarta.annotation.Nullable List<BucketSetResult> BucketSetResults = new List<BucketSetResult>();
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -47,6 +49,7 @@ ValuationPointDataResponse valuationPointDataResponseInstance = new ValuationPoi
     .PreviousValuationPointCode(PreviousValuationPointCode)
     .ApportionmentResults(ApportionmentResults)
     .BucketSetResults(BucketSetResults)
+    .StagedModifications(StagedModifications)
     .Links(Links);
 ```
 

@@ -758,9 +758,11 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**getTransactionSettlementStatus**](docs/TransactionPortfoliosApi.md#gettransactionsettlementstatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status
 *TransactionPortfoliosApi* | [**getTransactions**](docs/TransactionPortfoliosApi.md#gettransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions
 *TransactionPortfoliosApi* | [**getUpsertablePortfolioCashFlows**](docs/TransactionPortfoliosApi.md#getupsertableportfoliocashflows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
+*TransactionPortfoliosApi* | [**getVirtualTransactionOverride**](docs/TransactionPortfoliosApi.md#getvirtualtransactionoverride) | **GET** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual transaction overrides and suppressions for an instrument event
 *TransactionPortfoliosApi* | [**listCustodianAccounts**](docs/TransactionPortfoliosApi.md#listcustodianaccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts
 *TransactionPortfoliosApi* | [**listHoldingsAdjustments**](docs/TransactionPortfoliosApi.md#listholdingsadjustments) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments | ListHoldingsAdjustments: List holdings adjustments
 *TransactionPortfoliosApi* | [**listSettlementInstructions**](docs/TransactionPortfoliosApi.md#listsettlementinstructions) | **GET** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
+*TransactionPortfoliosApi* | [**listVirtualTransactionOverrides**](docs/TransactionPortfoliosApi.md#listvirtualtransactionoverrides) | **GET** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions/$list | [EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List virtual transaction overrides and suppressions
 *TransactionPortfoliosApi* | [**patchPortfolioDetails**](docs/TransactionPortfoliosApi.md#patchportfoliodetails) | **PATCH** /api/transactionportfolios/{scope}/{code}/details | PatchPortfolioDetails: Patch portfolio details
 *TransactionPortfoliosApi* | [**previewTransaction**](docs/TransactionPortfoliosApi.md#previewtransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | PreviewTransaction: Preview a transaction
 *TransactionPortfoliosApi* | [**resolveInstrument**](docs/TransactionPortfoliosApi.md#resolveinstrument) | **POST** /api/transactionportfolios/{scope}/{code}/$resolve | ResolveInstrument: Resolve instrument
@@ -771,7 +773,7 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**upsertSettlementInstructions**](docs/TransactionPortfoliosApi.md#upsertsettlementinstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions.
 *TransactionPortfoliosApi* | [**upsertTransactionProperties**](docs/TransactionPortfoliosApi.md#upserttransactionproperties) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | UpsertTransactionProperties: Upsert transaction properties
 *TransactionPortfoliosApi* | [**upsertTransactions**](docs/TransactionPortfoliosApi.md#upserttransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions
-*TransactionPortfoliosApi* | [**upsertVirtualTransactionOverride**](docs/TransactionPortfoliosApi.md#upsertvirtualtransactionoverride) | **POST** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert a virtual transaction override
+*TransactionPortfoliosApi* | [**upsertVirtualTransactionOverride**](docs/TransactionPortfoliosApi.md#upsertvirtualtransactionoverride) | **POST** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert virtual transaction overrides and suppressions
 *TransferAgencyApi* | [**calculateOrderDates**](docs/TransferAgencyApi.md#calculateorderdates) | **POST** /api/transferagency/orderdates | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders
 *TransferAgencyApi* | [**deleteTransferAgencyOrders**](docs/TransferAgencyApi.md#deletetransferagencyorders) | **POST** /api/transferagency/orders/$delete | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders
 *TransferAgencyApi* | [**estimateTransferAgencyOrders**](docs/TransferAgencyApi.md#estimatetransferagencyorders) | **POST** /api/transferagency/orders/$estimate | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders
@@ -1674,7 +1676,10 @@ Class | Method | HTTP request | Description
  - [OtcConfirmation](docs/OtcConfirmation.md)
  - [OutputTransaction](docs/OutputTransaction.md)
  - [OutputTransition](docs/OutputTransition.md)
- - [OverrideVirtualTransactionsResponse](docs/OverrideVirtualTransactionsResponse.md)
+ - [OverrideDefinitionRequest](docs/OverrideDefinitionRequest.md)
+ - [OverrideDefinitionResponse](docs/OverrideDefinitionResponse.md)
+ - [OverrideEntryResponse](docs/OverrideEntryResponse.md)
+ - [OverrideVirtualTransactionsRequest](docs/OverrideVirtualTransactionsRequest.md)
  - [OversubscribeElection](docs/OversubscribeElection.md)
  - [PackageRequest](docs/PackageRequest.md)
  - [PackageSetRequest](docs/PackageSetRequest.md)
@@ -1912,12 +1917,15 @@ Class | Method | HTTP request | Description
  - [RawVendorEvent](docs/RawVendorEvent.md)
  - [ReOpenPeriodDiaryEntryRequest](docs/ReOpenPeriodDiaryEntryRequest.md)
  - [RealisedGainLoss](docs/RealisedGainLoss.md)
+ - [RecActivityWindow](docs/RecActivityWindow.md)
  - [RecApprovalDecision](docs/RecApprovalDecision.md)
+ - [RecAsAtPolicy](docs/RecAsAtPolicy.md)
  - [RecClosedExceptionCounts](docs/RecClosedExceptionCounts.md)
  - [RecClosedPeriodReference](docs/RecClosedPeriodReference.md)
  - [RecClosedPeriods](docs/RecClosedPeriods.md)
  - [RecDatasetSchema](docs/RecDatasetSchema.md)
  - [RecDatasetSchemas](docs/RecDatasetSchemas.md)
+ - [RecDatePolicy](docs/RecDatePolicy.md)
  - [RecDatesReconciled](docs/RecDatesReconciled.md)
  - [RecDefCurrencies](docs/RecDefCurrencies.md)
  - [RecDefRecipeIds](docs/RecDefRecipeIds.md)
@@ -2092,6 +2100,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfTransactionSettlementInstruction](docs/ResourceListOfTransactionSettlementInstruction.md)
  - [ResourceListOfTransactionType](docs/ResourceListOfTransactionType.md)
  - [ResourceListOfValueType](docs/ResourceListOfValueType.md)
+ - [ResourceListOfVirtualTransactionOverrideRecord](docs/ResourceListOfVirtualTransactionOverrideRecord.md)
  - [ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery](docs/ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery.md)
  - [ResourceRecord](docs/ResourceRecord.md)
  - [ResponseMetaData](docs/ResponseMetaData.md)
@@ -2212,6 +2221,7 @@ Class | Method | HTTP request | Description
  - [StepSchedule](docs/StepSchedule.md)
  - [StockDividendEvent](docs/StockDividendEvent.md)
  - [StockSplitEvent](docs/StockSplitEvent.md)
+ - [StoredOverrideDefinition](docs/StoredOverrideDefinition.md)
  - [Strategy](docs/Strategy.md)
  - [StringComparisonType](docs/StringComparisonType.md)
  - [StringComplianceParameter](docs/StringComplianceParameter.md)
@@ -2225,6 +2235,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionDefinition](docs/SubscriptionDefinition.md)
  - [SupplementalAttribute](docs/SupplementalAttribute.md)
  - [SupplementalAttributeValues](docs/SupplementalAttributeValues.md)
+ - [SuppressionEntryResponse](docs/SuppressionEntryResponse.md)
  - [SwapCashFlowEvent](docs/SwapCashFlowEvent.md)
  - [SwapPrincipalEvent](docs/SwapPrincipalEvent.md)
  - [SweepBlocksRequest](docs/SweepBlocksRequest.md)
@@ -2424,6 +2435,7 @@ Class | Method | HTTP request | Description
  - [UpsertTransferAgencyOrderRequest](docs/UpsertTransferAgencyOrderRequest.md)
  - [UpsertTranslationScriptRequest](docs/UpsertTranslationScriptRequest.md)
  - [UpsertValuationPointRequest](docs/UpsertValuationPointRequest.md)
+ - [UpsertVirtualTransactionOverrideResponse](docs/UpsertVirtualTransactionOverrideResponse.md)
  - [User](docs/User.md)
  - [ValuationPoint](docs/ValuationPoint.md)
  - [ValuationPointDataQueryParameters](docs/ValuationPointDataQueryParameters.md)
@@ -2466,6 +2478,8 @@ Class | Method | HTTP request | Description
  - [VirtualDocument](docs/VirtualDocument.md)
  - [VirtualDocumentRow](docs/VirtualDocumentRow.md)
  - [VirtualRow](docs/VirtualRow.md)
+ - [VirtualTransactionOverrideRecord](docs/VirtualTransactionOverrideRecord.md)
+ - [VirtualTransactionOverridesResponse](docs/VirtualTransactionOverridesResponse.md)
  - [VolSurfaceShiftDefinition](docs/VolSurfaceShiftDefinition.md)
  - [VolSurfaceShiftMode](docs/VolSurfaceShiftMode.md)
  - [VolatilitySwap](docs/VolatilitySwap.md)

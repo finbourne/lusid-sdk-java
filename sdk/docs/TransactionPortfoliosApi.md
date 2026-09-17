@@ -40,9 +40,11 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getTransactionSettlementStatus**](TransactionPortfoliosApi.md#getTransactionSettlementStatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status |
 | [**getTransactions**](TransactionPortfoliosApi.md#getTransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions |
 | [**getUpsertablePortfolioCashFlows**](TransactionPortfoliosApi.md#getUpsertablePortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
+| [**getVirtualTransactionOverride**](TransactionPortfoliosApi.md#getVirtualTransactionOverride) | **GET** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual transaction overrides and suppressions for an instrument event |
 | [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts |
 | [**listHoldingsAdjustments**](TransactionPortfoliosApi.md#listHoldingsAdjustments) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments | ListHoldingsAdjustments: List holdings adjustments |
 | [**listSettlementInstructions**](TransactionPortfoliosApi.md#listSettlementInstructions) | **GET** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. |
+| [**listVirtualTransactionOverrides**](TransactionPortfoliosApi.md#listVirtualTransactionOverrides) | **GET** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions/$list | [EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List virtual transaction overrides and suppressions |
 | [**patchPortfolioDetails**](TransactionPortfoliosApi.md#patchPortfolioDetails) | **PATCH** /api/transactionportfolios/{scope}/{code}/details | PatchPortfolioDetails: Patch portfolio details |
 | [**previewTransaction**](TransactionPortfoliosApi.md#previewTransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | PreviewTransaction: Preview a transaction |
 | [**resolveInstrument**](TransactionPortfoliosApi.md#resolveInstrument) | **POST** /api/transactionportfolios/{scope}/{code}/$resolve | ResolveInstrument: Resolve instrument |
@@ -53,7 +55,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**upsertSettlementInstructions**](TransactionPortfoliosApi.md#upsertSettlementInstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions. |
 | [**upsertTransactionProperties**](TransactionPortfoliosApi.md#upsertTransactionProperties) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | UpsertTransactionProperties: Upsert transaction properties |
 | [**upsertTransactions**](TransactionPortfoliosApi.md#upsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions |
-| [**upsertVirtualTransactionOverride**](TransactionPortfoliosApi.md#upsertVirtualTransactionOverride) | **POST** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert a virtual transaction override |
+| [**upsertVirtualTransactionOverride**](TransactionPortfoliosApi.md#upsertVirtualTransactionOverride) | **POST** /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert virtual transaction overrides and suppressions |
 
 
 
@@ -3753,6 +3755,105 @@ public class TransactionPortfoliosApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getVirtualTransactionOverride
+
+> VirtualTransactionOverridesResponse getVirtualTransactionOverride(scope, code, instrumentEventId, portfolioEffectiveAt, asAt)
+
+[EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual transaction overrides and suppressions for an instrument event
+
+Returns the overrides and suppressions affecting this portfolio for the specified instrument event,  each entry&#39;s status, and the virtual transaction ids the event currently generates that none of them  target. A derived portfolio is affected by its own record and by every record held by an ancestor, so  one record is returned per holding portfolio, nearest first, each carrying the portfolio that holds  it. An entry&#39;s map key is the virtual transaction id as it appears in the portfolio holding the  record, which is the id to override or suppress against that portfolio.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the transaction portfolio.
+        String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio.
+        String instrumentEventId = "instrumentEventId_example"; // String | The ID of the instrument event whose overrides and suppressions should be returned.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // VirtualTransactionOverridesResponse result = apiInstance.getVirtualTransactionOverride(scope, code, instrumentEventId, portfolioEffectiveAt, asAt).execute(opts);
+
+            VirtualTransactionOverridesResponse result = apiInstance.getVirtualTransactionOverride(scope, code, instrumentEventId, portfolioEffectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#getVirtualTransactionOverride");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the transaction portfolio. | |
+| **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. | |
+| **instrumentEventId** | **String**| The ID of the instrument event whose overrides and suppressions should be returned. | |
+| **portfolioEffectiveAt** | **String**| The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**VirtualTransactionOverridesResponse**](VirtualTransactionOverridesResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The overrides and suppressions affecting this portfolio for the requested instrument event |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## listCustodianAccounts
 
 > PagedResourceListOfCustodianAccount listCustodianAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
@@ -4066,6 +4167,107 @@ public class TransactionPortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Requested settlement instructions from the specified portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listVirtualTransactionOverrides
+
+> ResourceListOfVirtualTransactionOverrideRecord listVirtualTransactionOverrides(scope, code, portfolioEffectiveAt, asAt, overrideMatchStatus, overrideApplicationStatus)
+
+[EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List virtual transaction overrides and suppressions
+
+Returns every override and suppression record affecting this portfolio, across every instrument  event, optionally restricted to the given match and application statuses. Filtering to the orphaned  and partially-applied statuses gives a reconciliation worklist of records whose targets no longer  generate. A derived portfolio is affected by its own records and by every record held by an ancestor,  so each returned record carries the portfolio that holds it.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the transaction portfolio.
+        String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified.
+        List<String> overrideMatchStatus = Arrays.asList(); // List<String> | Restrict the records returned to those with one of these match statuses. May be specified more than once. Available values: Matched, Orphaned.
+        List<String> overrideApplicationStatus = Arrays.asList(); // List<String> | Restrict the records returned to those with one of these application statuses. May be specified more than once. Available values: Full, Partial, Orphaned.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfVirtualTransactionOverrideRecord result = apiInstance.listVirtualTransactionOverrides(scope, code, portfolioEffectiveAt, asAt, overrideMatchStatus, overrideApplicationStatus).execute(opts);
+
+            ResourceListOfVirtualTransactionOverrideRecord result = apiInstance.listVirtualTransactionOverrides(scope, code, portfolioEffectiveAt, asAt, overrideMatchStatus, overrideApplicationStatus).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#listVirtualTransactionOverrides");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the transaction portfolio. | |
+| **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. | |
+| **portfolioEffectiveAt** | **String**| The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified. | [optional] |
+| **overrideMatchStatus** | [**List&lt;String&gt;**](String.md)| Restrict the records returned to those with one of these match statuses. May be specified more than once. Available values: Matched, Orphaned. | [optional] |
+| **overrideApplicationStatus** | [**List&lt;String&gt;**](String.md)| Restrict the records returned to those with one of these application statuses. May be specified more than once. Available values: Full, Partial, Orphaned. | [optional] |
+
+### Return type
+
+[**ResourceListOfVirtualTransactionOverrideRecord**](ResourceListOfVirtualTransactionOverrideRecord.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The override and suppression records affecting this portfolio |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -5066,11 +5268,11 @@ public class TransactionPortfoliosApiExample {
 
 ## upsertVirtualTransactionOverride
 
-> OverrideVirtualTransactionsResponse upsertVirtualTransactionOverride(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode)
+> UpsertVirtualTransactionOverrideResponse upsertVirtualTransactionOverride(scope, code, instrumentEventId, overrideVirtualTransactionsRequest, portfolioEffectiveAt, preserveProperties)
 
-[EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert a virtual transaction override
+[EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert virtual transaction overrides and suppressions
 
-Creates or updates virtual transaction overrides for an instrument event with manually provided input transactions.  This will cancel the specified instrument event and upsert the provided transactions as replacements.  The replacement transactions will have the OverrideOfInstrumentEvent system property set and a source type of OverriddenVirtualTransaction.  Calling this endpoint again with the same transaction IDs will update the existing overrides in place.
+Creates or updates overrides and suppressions of virtual transactions generated by a single instrument  event. Overrides and suppressions are each keyed by the virtual transaction id they target. This is a  full replace of the previously stored overrides and suppressions for the targeted instrument event -  any previously stored entry not present in this request is removed.  Calling this endpoint again with the same virtual transaction id will replace the existing override or  suppression in place.
 
 ### Example
 
@@ -5113,17 +5315,15 @@ public class TransactionPortfoliosApiExample {
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
-        String instrumentEventId = "instrumentEventId_example"; // String | The ID of the instrument event whose virtual transactions should be overridden.
-        List<TransactionRequest> transactionRequest = Arrays.asList(); // List<TransactionRequest> | A list of transactions to replace the virtual transactions generated by the instrument event.
+        String instrumentEventId = "instrumentEventId_example"; // String | The ID of the instrument event whose virtual transactions should be overridden or suppressed.
+        OverrideVirtualTransactionsRequest overrideVirtualTransactionsRequest = new OverrideVirtualTransactionsRequest(); // OverrideVirtualTransactionsRequest | The overrides and suppressions to upsert, keyed by the virtual transaction id being overridden or suppressed.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified.
-        Boolean preserveProperties = true; // Boolean | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
+        Boolean preserveProperties = true; // Boolean | If set to false, the entire property set of an updated override entry will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated.
         try {
             // uncomment the below to set overrides at the request level
-            // OverrideVirtualTransactionsResponse result = apiInstance.upsertVirtualTransactionOverride(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode).execute(opts);
+            // UpsertVirtualTransactionOverrideResponse result = apiInstance.upsertVirtualTransactionOverride(scope, code, instrumentEventId, overrideVirtualTransactionsRequest, portfolioEffectiveAt, preserveProperties).execute(opts);
 
-            OverrideVirtualTransactionsResponse result = apiInstance.upsertVirtualTransactionOverride(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode).execute();
+            UpsertVirtualTransactionOverrideResponse result = apiInstance.upsertVirtualTransactionOverride(scope, code, instrumentEventId, overrideVirtualTransactionsRequest, portfolioEffectiveAt, preserveProperties).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#upsertVirtualTransactionOverride");
@@ -5142,16 +5342,14 @@ public class TransactionPortfoliosApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the transaction portfolio. | |
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
-| **instrumentEventId** | **String**| The ID of the instrument event whose virtual transactions should be overridden. | |
-| **transactionRequest** | [**List&lt;TransactionRequest&gt;**](TransactionRequest.md)| A list of transactions to replace the virtual transactions generated by the instrument event. | |
+| **instrumentEventId** | **String**| The ID of the instrument event whose virtual transactions should be overridden or suppressed. | |
+| **overrideVirtualTransactionsRequest** | [**OverrideVirtualTransactionsRequest**](OverrideVirtualTransactionsRequest.md)| The overrides and suppressions to upsert, keyed by the virtual transaction id being overridden or suppressed. | |
 | **portfolioEffectiveAt** | **String**| The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **preserveProperties** | **Boolean**| If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. | [optional] [default to true] |
-| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
+| **preserveProperties** | **Boolean**| If set to false, the entire property set of an updated override entry will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. | [optional] [default to true] |
 
 ### Return type
 
-[**OverrideVirtualTransactionsResponse**](OverrideVirtualTransactionsResponse.md)
+[**UpsertVirtualTransactionOverrideResponse**](UpsertVirtualTransactionOverrideResponse.md)
 
 ### HTTP request headers
 
@@ -5162,7 +5360,7 @@ public class TransactionPortfoliosApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The result of the upsert including the cancel instruction and instrument event details |  -  |
+| **200** | The result of the upsert including the persisted overrides, suppressions, and instrument event details |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

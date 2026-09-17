@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9972
+  version: 0.11.9985
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -52152,8 +52152,8 @@ paths:
         \ Valuation Point for a Fund,\r\nlooking back from inception. Settlement status\
         \ is point-in-time: post-cutoff settlement\r\nactivity does not alter the\
         \ result.\r\nThe Valuation Point must be identified either by the date or\
-        \ diaryEntry query parameters or by the 'End' parameter in the\r\nrequest\
-        \ body; when both are supplied the query parameters are used."
+        \ diaryEntry query parameters or by the\r\n'dateOrDiaryEntry' parameter in\
+        \ the request body; when both are supplied the query parameters are used."
       operationId: GetValuationPointUnsettledTransactions
       parameters:
       - description: The scope of the Fund.
@@ -52282,32 +52282,28 @@ paths:
         content:
           application/json-patch+json:
             example:
-              end:
+              dateOrDiaryEntry:
                 diaryEntry: DiaryEntryCode
-              variant: Variant
             schema:
-              $ref: '#/components/schemas/ValuationPointDataQueryParameters'
+              $ref: '#/components/schemas/SingleValuationPointQueryParameters'
           application/json:
             example:
-              end:
+              dateOrDiaryEntry:
                 diaryEntry: DiaryEntryCode
-              variant: Variant
             schema:
-              $ref: '#/components/schemas/ValuationPointDataQueryParameters'
+              $ref: '#/components/schemas/SingleValuationPointQueryParameters'
           text/json:
             example:
-              end:
+              dateOrDiaryEntry:
                 diaryEntry: DiaryEntryCode
-              variant: Variant
             schema:
-              $ref: '#/components/schemas/ValuationPointDataQueryParameters'
+              $ref: '#/components/schemas/SingleValuationPointQueryParameters'
           application/*+json:
             example:
-              end:
+              dateOrDiaryEntry:
                 diaryEntry: DiaryEntryCode
-              variant: Variant
             schema:
-              $ref: '#/components/schemas/ValuationPointDataQueryParameters'
+              $ref: '#/components/schemas/SingleValuationPointQueryParameters'
         description: "The optional arguments to use for querying the unsettled transactions.\
           \ Can be\r\n omitted when the Valuation Point is identified by the date\
           \ or diaryEntry query parameters."
@@ -111143,6 +111139,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111161,6 +111162,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/json:
@@ -111197,6 +111208,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111215,6 +111231,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           text/json:
@@ -111251,6 +111277,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111269,6 +111300,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/*+json:
@@ -111305,6 +111346,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111323,6 +111369,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
         description: The rec definition to create.
@@ -111364,6 +111420,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111382,6 +111443,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111422,6 +111493,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111440,6 +111516,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111480,6 +111566,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111498,6 +111589,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111680,6 +111781,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111698,6 +111804,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111738,6 +111854,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111756,6 +111877,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111796,6 +111927,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -111814,6 +111950,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -111908,6 +112054,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111926,6 +112077,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/json:
@@ -111959,6 +112120,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -111977,6 +112143,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           text/json:
@@ -112010,6 +112186,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -112028,6 +112209,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/*+json:
@@ -112061,6 +112252,11 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+              - recType: InputTransaction
+                matchingRulesetId:
+                  scope: Recs
+                  code: CustodyTransactionRules
+                relationalDataFilter: custodian eq 'NT'
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -112079,6 +112275,16 @@ paths:
                 - approvalCode: Risk
                   description: Risk sign-off
                   decidingUser: role.Code eq 'RiskOfficer'
+              datePolicy:
+                effectiveAtProgression: Series
+                asAtPolicy:
+                  left: Latest
+                  right: Latest
+                activityWindow:
+                  initialActivitySinceEffectiveAt:
+                    left: 2024-05-31T00:00:00.0000000+00:00
+                    right: 2024-05-31T00:00:00.0000000+00:00
+                  windowType: Contiguous
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
         description: The updated rec definition values.
@@ -112120,6 +112326,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -112138,6 +112349,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -112178,6 +112399,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -112196,6 +112422,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -112236,6 +112472,11 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -112254,6 +112495,16 @@ paths:
                   - approvalCode: Risk
                     description: Risk sign-off
                     decidingUser: role.Code eq 'RiskOfficer'
+                datePolicy:
+                  effectiveAtProgression: Series
+                  asAtPolicy:
+                    left: Latest
+                    right: Latest
+                  activityWindow:
+                    initialActivitySinceEffectiveAt:
+                      left: 2024-05-31T00:00:00.0000000+00:00
+                      right: 2024-05-31T00:00:00.0000000+00:00
+                    windowType: Contiguous
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -148759,9 +149010,9 @@ paths:
         name: instrumentEventId
         required: true
         schema:
-          maxLength: 64
+          maxLength: 256
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
+          pattern: "^[^\\\\<>&\\\"]+$"
           type: string
         style: form
       - description: The effective datetime used to resolve the portfolio. Defaults
@@ -148818,14 +149069,120 @@ paths:
       - Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+    get:
+      description: "Returns the overrides and suppressions affecting this portfolio\
+        \ for the specified instrument event,\r\neach entry's status, and the virtual\
+        \ transaction ids the event currently generates that none of them\r\ntarget.\
+        \ A derived portfolio is affected by its own record and by every record held\
+        \ by an ancestor, so\r\none record is returned per holding portfolio, nearest\
+        \ first, each carrying the portfolio that holds\r\nit. An entry's map key\
+        \ is the virtual transaction id as it appears in the portfolio holding the\r\
+        \nrecord, which is the id to override or suppress against that portfolio."
+      operationId: GetVirtualTransactionOverride
+      parameters:
+      - description: The scope of the transaction portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the transaction portfolio. Together with the scope
+          this uniquely identifies the transaction portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The ID of the instrument event whose overrides and suppressions
+          should be returned.
+        explode: true
+        in: query
+        name: instrumentEventId
+        required: true
+        schema:
+          maxLength: 256
+          minLength: 1
+          pattern: "^[^\\\\<>&\\\"]+$"
+          type: string
+        style: form
+      - description: The effective datetime used to resolve the portfolio. Defaults
+          to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: portfolioEffectiveAt
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the overrides and suppressions.
+          Defaults to returning the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VirtualTransactionOverridesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTransactionOverridesResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VirtualTransactionOverridesResponse'
+          description: The overrides and suppressions affecting this portfolio for
+            the requested instrument event
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual\
+        \ transaction overrides and suppressions for an instrument event"
+      tags:
+      - Transaction Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
     post:
-      description: "Creates or updates virtual transaction overrides for an instrument\
-        \ event with manually provided input transactions.\r\nThis will cancel the\
-        \ specified instrument event and upsert the provided transactions as replacements.\r\
-        \nThe replacement transactions will have the OverrideOfInstrumentEvent system\
-        \ property set and a source type of OverriddenVirtualTransaction.\r\nCalling\
-        \ this endpoint again with the same transaction IDs will update the existing\
-        \ overrides in place."
+      description: "Creates or updates overrides and suppressions of virtual transactions\
+        \ generated by a single instrument\r\nevent. Overrides and suppressions are\
+        \ each keyed by the virtual transaction id they target. This is a\r\nfull\
+        \ replace of the previously stored overrides and suppressions for the targeted\
+        \ instrument event -\r\nany previously stored entry not present in this request\
+        \ is removed.\r\nCalling this endpoint again with the same virtual transaction\
+        \ id will replace the existing override or\r\nsuppression in place."
       operationId: UpsertVirtualTransactionOverride
       parameters:
       - description: The scope of the transaction portfolio.
@@ -148852,15 +149209,15 @@ paths:
           type: string
         style: simple
       - description: The ID of the instrument event whose virtual transactions should
-          be overridden.
+          be overridden or suppressed.
         explode: true
         in: query
         name: instrumentEventId
         required: true
         schema:
-          maxLength: 64
+          maxLength: 256
           minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
+          pattern: "^[^\\\\<>&\\\"]+$"
           type: string
         style: form
       - description: The effective datetime used to resolve the portfolio. Defaults
@@ -148872,9 +149229,9 @@ paths:
         schema:
           type: string
         style: form
-      - description: "If set to false, the entire property set will be overwritten\
-          \ by the provided properties. If not specified or set to true, only the\
-          \ properties provided will be updated."
+      - description: "If set to false, the entire property set of an updated override\
+          \ entry will be overwritten by the provided properties. If not specified\
+          \ or set to true, only the properties provided will be updated."
         explode: true
         in: query
         name: preserveProperties
@@ -148884,184 +149241,110 @@ paths:
           type: boolean
         style: form
         x-nullable: true
-      - description: The optional scope of a Custom Data Model to use
-        explode: true
-        in: query
-        name: dataModelScope
-        required: false
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: form
-      - description: The optional code of a Custom Data Model to use
-        explode: true
-        in: query
-        name: dataModelCode
-        required: false
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: form
       requestBody:
         content:
           application/json-patch+json:
             example:
-            - transactionId: TransactionId-111111
-              type: StockIn
-              instrumentIdentifiers:
-                Instrument/default/Figi: BBG000C6K6G9
-                Instrument/default/Isin: GB00BH4HKS39
-              transactionDate: 2018-03-05T00:00:00.0000000+00:00
-              settlementDate: 2018-03-08T00:00:00.0000000+00:00
-              units: 1000
-              transactionPrice:
-                price: 123
-                type: Price
-              totalConsideration:
-                amount: 123000
-                currency: GBP
-              transactionCurrency: GBP
-              properties:
-                Transaction/Algo/Name:
-                  key: Transaction/Algo/Name
-                  value:
-                    labelValue: Algo1
-              counterpartyId: CounterpartyId-118263
-              source: ""
-              otcConfirmation:
-                counterpartyAgreementId:
-                  scope: someScope
-                  code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
+              overrides:
+                LUID_00000000_BondCouponEvent_20200701-holding001:
+                - transactionId: Override-001
+                  type: StockIn
+                  instrumentIdentifiers:
+                    Instrument/default/Figi: BBG000C6K6G9
+                    Instrument/default/Isin: GB00BH4HKS39
+                  tradeDate: 2020-07-01T00:00:00.0000000+00:00
+                  settlementDate: 2020-07-03T00:00:00.0000000+00:00
+                  units: 1000
+                  tradePrice:
+                    price: 123
+                    type: Price
+                  totalConsideration:
+                    amount: 123000
+                    currency: GBP
+                  tradeCurrency: GBP
+                  counterpartyId: CounterpartyId-118263
+                  source: ""
+              suppressions:
+              - LUID_00000000_BondCouponEvent_20200701-holding002
             schema:
-              items:
-                $ref: '#/components/schemas/TransactionRequest'
-              type: array
+              $ref: '#/components/schemas/OverrideVirtualTransactionsRequest'
           application/json:
             example:
-            - transactionId: TransactionId-111111
-              type: StockIn
-              instrumentIdentifiers:
-                Instrument/default/Figi: BBG000C6K6G9
-                Instrument/default/Isin: GB00BH4HKS39
-              transactionDate: 2018-03-05T00:00:00.0000000+00:00
-              settlementDate: 2018-03-08T00:00:00.0000000+00:00
-              units: 1000
-              transactionPrice:
-                price: 123
-                type: Price
-              totalConsideration:
-                amount: 123000
-                currency: GBP
-              transactionCurrency: GBP
-              properties:
-                Transaction/Algo/Name:
-                  key: Transaction/Algo/Name
-                  value:
-                    labelValue: Algo1
-              counterpartyId: CounterpartyId-118263
-              source: ""
-              otcConfirmation:
-                counterpartyAgreementId:
-                  scope: someScope
-                  code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
+              overrides:
+                LUID_00000000_BondCouponEvent_20200701-holding001:
+                - transactionId: Override-001
+                  type: StockIn
+                  instrumentIdentifiers:
+                    Instrument/default/Figi: BBG000C6K6G9
+                    Instrument/default/Isin: GB00BH4HKS39
+                  tradeDate: 2020-07-01T00:00:00.0000000+00:00
+                  settlementDate: 2020-07-03T00:00:00.0000000+00:00
+                  units: 1000
+                  tradePrice:
+                    price: 123
+                    type: Price
+                  totalConsideration:
+                    amount: 123000
+                    currency: GBP
+                  tradeCurrency: GBP
+                  counterpartyId: CounterpartyId-118263
+                  source: ""
+              suppressions:
+              - LUID_00000000_BondCouponEvent_20200701-holding002
             schema:
-              items:
-                $ref: '#/components/schemas/TransactionRequest'
-              type: array
+              $ref: '#/components/schemas/OverrideVirtualTransactionsRequest'
           text/json:
             example:
-            - transactionId: TransactionId-111111
-              type: StockIn
-              instrumentIdentifiers:
-                Instrument/default/Figi: BBG000C6K6G9
-                Instrument/default/Isin: GB00BH4HKS39
-              transactionDate: 2018-03-05T00:00:00.0000000+00:00
-              settlementDate: 2018-03-08T00:00:00.0000000+00:00
-              units: 1000
-              transactionPrice:
-                price: 123
-                type: Price
-              totalConsideration:
-                amount: 123000
-                currency: GBP
-              transactionCurrency: GBP
-              properties:
-                Transaction/Algo/Name:
-                  key: Transaction/Algo/Name
-                  value:
-                    labelValue: Algo1
-              counterpartyId: CounterpartyId-118263
-              source: ""
-              otcConfirmation:
-                counterpartyAgreementId:
-                  scope: someScope
-                  code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
+              overrides:
+                LUID_00000000_BondCouponEvent_20200701-holding001:
+                - transactionId: Override-001
+                  type: StockIn
+                  instrumentIdentifiers:
+                    Instrument/default/Figi: BBG000C6K6G9
+                    Instrument/default/Isin: GB00BH4HKS39
+                  tradeDate: 2020-07-01T00:00:00.0000000+00:00
+                  settlementDate: 2020-07-03T00:00:00.0000000+00:00
+                  units: 1000
+                  tradePrice:
+                    price: 123
+                    type: Price
+                  totalConsideration:
+                    amount: 123000
+                    currency: GBP
+                  tradeCurrency: GBP
+                  counterpartyId: CounterpartyId-118263
+                  source: ""
+              suppressions:
+              - LUID_00000000_BondCouponEvent_20200701-holding002
             schema:
-              items:
-                $ref: '#/components/schemas/TransactionRequest'
-              type: array
+              $ref: '#/components/schemas/OverrideVirtualTransactionsRequest'
           application/*+json:
             example:
-            - transactionId: TransactionId-111111
-              type: StockIn
-              instrumentIdentifiers:
-                Instrument/default/Figi: BBG000C6K6G9
-                Instrument/default/Isin: GB00BH4HKS39
-              transactionDate: 2018-03-05T00:00:00.0000000+00:00
-              settlementDate: 2018-03-08T00:00:00.0000000+00:00
-              units: 1000
-              transactionPrice:
-                price: 123
-                type: Price
-              totalConsideration:
-                amount: 123000
-                currency: GBP
-              transactionCurrency: GBP
-              properties:
-                Transaction/Algo/Name:
-                  key: Transaction/Algo/Name
-                  value:
-                    labelValue: Algo1
-              counterpartyId: CounterpartyId-118263
-              source: ""
-              otcConfirmation:
-                counterpartyAgreementId:
-                  scope: someScope
-                  code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
+              overrides:
+                LUID_00000000_BondCouponEvent_20200701-holding001:
+                - transactionId: Override-001
+                  type: StockIn
+                  instrumentIdentifiers:
+                    Instrument/default/Figi: BBG000C6K6G9
+                    Instrument/default/Isin: GB00BH4HKS39
+                  tradeDate: 2020-07-01T00:00:00.0000000+00:00
+                  settlementDate: 2020-07-03T00:00:00.0000000+00:00
+                  units: 1000
+                  tradePrice:
+                    price: 123
+                    type: Price
+                  totalConsideration:
+                    amount: 123000
+                    currency: GBP
+                  tradeCurrency: GBP
+                  counterpartyId: CounterpartyId-118263
+                  source: ""
+              suppressions:
+              - LUID_00000000_BondCouponEvent_20200701-holding002
             schema:
-              items:
-                $ref: '#/components/schemas/TransactionRequest'
-              type: array
-        description: A list of transactions to replace the virtual transactions generated
-          by the instrument event.
+              $ref: '#/components/schemas/OverrideVirtualTransactionsRequest'
+        description: "The overrides and suppressions to upsert, keyed by the virtual\
+          \ transaction id being overridden or suppressed."
         required: true
       responses:
         "200":
@@ -149081,9 +149364,11 @@ paths:
                     - Transaction-001
                     - Transaction-123
                 instrumentEventId: LUID_00000000_BondCouponEvent_20200701
-                cancelInstructionId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                overrides: {}
+                suppressions:
+                - LUID_00000000_BondCouponEvent_20200701-holding002
               schema:
-                $ref: '#/components/schemas/OverrideVirtualTransactionsResponse'
+                $ref: '#/components/schemas/UpsertVirtualTransactionOverrideResponse'
             application/json:
               example:
                 version:
@@ -149099,9 +149384,11 @@ paths:
                     - Transaction-001
                     - Transaction-123
                 instrumentEventId: LUID_00000000_BondCouponEvent_20200701
-                cancelInstructionId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                overrides: {}
+                suppressions:
+                - LUID_00000000_BondCouponEvent_20200701-holding002
               schema:
-                $ref: '#/components/schemas/OverrideVirtualTransactionsResponse'
+                $ref: '#/components/schemas/UpsertVirtualTransactionOverrideResponse'
             text/json:
               example:
                 version:
@@ -149117,11 +149404,13 @@ paths:
                     - Transaction-001
                     - Transaction-123
                 instrumentEventId: LUID_00000000_BondCouponEvent_20200701
-                cancelInstructionId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                overrides: {}
+                suppressions:
+                - LUID_00000000_BondCouponEvent_20200701-holding002
               schema:
-                $ref: '#/components/schemas/OverrideVirtualTransactionsResponse'
-          description: The result of the upsert including the cancel instruction and
-            instrument event details
+                $ref: '#/components/schemas/UpsertVirtualTransactionOverrideResponse'
+          description: "The result of the upsert including the persisted overrides,\
+            \ suppressions, and instrument event details"
         "400":
           content:
             text/plain:
@@ -149143,11 +149432,130 @@ paths:
       security:
       - oauth2: []
       summary: "[EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert\
-        \ a virtual transaction override"
+        \ virtual transaction overrides and suppressions"
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/transactionportfolios/{scope}/{code}/overridevirtualtransactions/$list:
+    get:
+      description: "Returns every override and suppression record affecting this portfolio,\
+        \ across every instrument\r\nevent, optionally restricted to the given match\
+        \ and application statuses. Filtering to the orphaned\r\nand partially-applied\
+        \ statuses gives a reconciliation worklist of records whose targets no longer\r\
+        \ngenerate. A derived portfolio is affected by its own records and by every\
+        \ record held by an ancestor,\r\nso each returned record carries the portfolio\
+        \ that holds it."
+      operationId: ListVirtualTransactionOverrides
+      parameters:
+      - description: The scope of the transaction portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the transaction portfolio. Together with the scope
+          this uniquely identifies the transaction portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime used to resolve the portfolio. Defaults
+          to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: portfolioEffectiveAt
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the overrides and suppressions.
+          Defaults to returning the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Restrict the records returned to those with one of these match\
+          \ statuses. May be specified more than once. Available values: Matched,\
+          \ Orphaned."
+        explode: true
+        in: query
+        name: overrideMatchStatus
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "Restrict the records returned to those with one of these application\
+          \ statuses. May be specified more than once. Available values: Full, Partial,\
+          \ Orphaned."
+        explode: true
+        in: query
+        name: overrideApplicationStatus
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfVirtualTransactionOverrideRecord'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfVirtualTransactionOverrideRecord'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfVirtualTransactionOverrideRecord'
+          description: The override and suppression records affecting this portfolio
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List\
+        \ virtual transaction overrides and suppressions"
+      tags:
+      - Transaction Portfolios
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/transactionportfolios/{scope}/{code}/previewTransaction:
     post:
@@ -161800,6 +162208,12 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           type: type
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           status: status
           fundValuationPointData:
             fees:
@@ -162271,6 +162685,12 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           type: type
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           status: status
           fundValuationPointData:
             fees:
@@ -193888,6 +194308,13 @@ components:
           id:
             code: code
             scope: scope
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         currencies:
           left: left
           right: right
@@ -193949,6 +194376,8 @@ components:
           type: array
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
+        datePolicy:
+          $ref: '#/components/schemas/RecDatePolicy'
       required:
       - definitionType
       - displayName
@@ -244946,86 +245375,425 @@ components:
       - instrumentIdentifiers
       - unitsFactor
       type: object
-    OverrideVirtualTransactionsResponse:
+    OverrideDefinitionRequest:
       additionalProperties: false
+      description: "A single replacement transaction definition that overrides a virtual\
+        \ transaction generated by an\r\ninstrument event."
       example:
-        metadata:
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        tradeDate: tradeDate
+        settlementDate: settlementDate
+        units: 0.8008281904610115
+        source: source
+        type: type
+        totalConsideration:
+          amount: 0.8008281904610115
+          currency: currency
+        tradeCurrency: tradeCurrency
+        transactionId: transactionId
+        counterpartyId: counterpartyId
+        exchangeRate: 6.027456183070403
+        tradePrice:
+          price: 1.4658129805029452
+          type: Price
+        properties:
           key:
-          - identifiers:
-            - identifiers
-            - identifiers
-            description: description
-            identifierType: identifierType
-            type: type
-          - identifiers:
-            - identifiers
-            - identifiers
-            description: description
-            identifierType: identifierType
-            type: type
-        instrumentEventId: instrumentEventId
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-        version:
-          stagedModificationIdModified: stagedModificationIdModified
-          reasonModified: reasonModified
-          entityUniqueId: entityUniqueId
-          requestIdModified: requestIdModified
-          reasonCreated: reasonCreated
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 1
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          requestIdCreated: requestIdCreated
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-        cancelInstructionId: cancelInstructionId
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
       properties:
-        version:
-          $ref: '#/components/schemas/Version'
-        href:
-          description: The specific Uniform Resource Identifier (URI) for this resource
-            at the requested effective and asAt datetime.
-          format: uri
+        transactionId:
+          description: The unique identifier of the replacement transaction.
+          maxLength: 256
+          minLength: 1
+          type: string
+        type:
+          description: "The type of the replacement transaction, for example 'Buy'\
+            \ or 'Sell'."
+          maxLength: 256
+          minLength: 1
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: A set of instrument identifiers that can resolve the replacement
+            transaction to a unique instrument.
+          type: object
+        tradeDate:
+          description: The trade date of the replacement transaction.
+          format: dateorcutlabel
+          minLength: 1
+          type: string
+        settlementDate:
+          description: The settlement date of the replacement transaction.
+          format: dateorcutlabel
+          minLength: 1
+          type: string
+        units:
+          description: The number of units of the transacted instrument.
+          format: double
+          type: number
+        tradePrice:
+          $ref: '#/components/schemas/TransactionPrice'
+        totalConsideration:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        exchangeRate:
+          description: The exchange rate between the trade and settlement currency.
+          format: double
+          nullable: true
+          type: number
+        tradeCurrency:
+          description: The trade currency of the replacement transaction.
           nullable: true
           type: string
-        metadata:
+        properties:
           additionalProperties:
-            items:
-              $ref: '#/components/schemas/ResponseMetaData'
-            nullable: true
-            type: array
-          description: Contains warnings related to unresolved instruments or non-existent
-            transaction types for the override transactions.
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: A list of unique transaction properties and associated values
+            to store for the replacement transaction. Each property must be from the
+            'Transaction' domain.
           nullable: true
           type: object
-        instrumentEventId:
-          description: The identifier of the instrument event that was overridden.
+        counterpartyId:
+          description: The identifier for the counterparty of the replacement transaction.
+          maxLength: 256
           minLength: 1
+          nullable: true
           type: string
-        cancelInstructionId:
-          description: The identifier of the cancel instruction that was created for
-            the overridden instrument event.
+        source:
+          description: The source of the replacement transaction. This is used to
+            look up the appropriate transaction group set in the transaction type
+            configuration.
+          maxLength: 256
           minLength: 1
+          nullable: true
           type: string
-        links:
+      required:
+      - instrumentIdentifiers
+      - settlementDate
+      - totalConsideration
+      - tradeDate
+      - transactionId
+      - type
+      - units
+      type: object
+    OverrideDefinitionResponse:
+      additionalProperties: false
+      description: "A single replacement transaction definition that overrides a virtual\
+        \ transaction generated by an\r\ninstrument event, as returned on a response.\
+        \ Distinct from the request-side definition type so that a\r\ntype named \"\
+        ...Request\" does not appear in the payload of a response."
+      example:
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        tradeDate: tradeDate
+        settlementDate: settlementDate
+        units: 0.8008281904610115
+        source: source
+        type: type
+        totalConsideration:
+          amount: 0.8008281904610115
+          currency: currency
+        tradeCurrency: tradeCurrency
+        transactionId: transactionId
+        counterpartyId: counterpartyId
+        exchangeRate: 6.027456183070403
+        precedesEvent: true
+        tradePrice:
+          price: 1.4658129805029452
+          type: Price
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        transactionId:
+          description: The unique identifier of the replacement transaction.
+          nullable: true
+          type: string
+        type:
+          description: "The type of the replacement transaction, for example 'Buy'\
+            \ or 'Sell'."
+          nullable: true
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: A set of instrument identifiers that resolve the replacement
+            transaction to a unique instrument.
+          nullable: true
+          type: object
+        tradeDate:
+          description: The trade date of the replacement transaction.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        settlementDate:
+          description: The settlement date of the replacement transaction.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        units:
+          description: The number of units of the transacted instrument.
+          format: double
+          type: number
+        tradePrice:
+          $ref: '#/components/schemas/TransactionPrice'
+        totalConsideration:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        exchangeRate:
+          description: The exchange rate between the trade and settlement currency.
+          format: double
+          nullable: true
+          type: number
+        tradeCurrency:
+          description: The trade currency of the replacement transaction.
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: The transaction properties stored for the replacement transaction.
+          nullable: true
+          type: object
+        counterpartyId:
+          description: The identifier for the counterparty of the replacement transaction.
+          nullable: true
+          type: string
+        source:
+          description: The source of the replacement transaction.
+          nullable: true
+          type: string
+        precedesEvent:
+          description: "True when this replacement's trade date is earlier than the\
+            \ target instrument event's current effective date, which orphans the\
+            \ entry it belongs to."
+          nullable: true
+          type: boolean
+      type: object
+    OverrideEntryResponse:
+      additionalProperties: false
+      description: "A single overrides entry on a virtual transaction override record:\
+        \ the replacement transaction(s) that\r\nstand in for the overridden virtual\
+        \ transaction, plus its status and diagnostics."
+      example:
+        virtualTransactionId: virtualTransactionId
+        replacements:
+        - instrumentIdentifiers:
+            key: instrumentIdentifiers
+          tradeDate: tradeDate
+          settlementDate: settlementDate
+          units: 0.8008281904610115
+          source: source
+          type: type
+          totalConsideration:
+            amount: 0.8008281904610115
+            currency: currency
+          tradeCurrency: tradeCurrency
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          exchangeRate: 6.027456183070403
+          precedesEvent: true
+          tradePrice:
+            price: 1.4658129805029452
+            type: Price
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - instrumentIdentifiers:
+            key: instrumentIdentifiers
+          tradeDate: tradeDate
+          settlementDate: settlementDate
+          units: 0.8008281904610115
+          source: source
+          type: type
+          totalConsideration:
+            amount: 0.8008281904610115
+            currency: currency
+          tradeCurrency: tradeCurrency
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          exchangeRate: 6.027456183070403
+          precedesEvent: true
+          tradePrice:
+            price: 1.4658129805029452
+            type: Price
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        status: status
+      properties:
+        replacements:
+          description: The replacement transactions that stand in for the overridden
+            virtual transaction.
           items:
-            $ref: '#/components/schemas/Link'
+            $ref: '#/components/schemas/OverrideDefinitionResponse'
           nullable: true
           type: array
-      required:
-      - cancelInstructionId
-      - instrumentEventId
-      - version
+        status:
+          description: "Whether this entry's target virtual transaction id still matches\
+            \ one the event currently generates. Available values: Applied, Orphaned,\
+            \ Superseded."
+          nullable: true
+          type: string
+        virtualTransactionId:
+          description: "The id of the virtual transaction this entry targets, as it\
+            \ appears in the requested portfolio. Null when the entry targets no virtual\
+            \ transaction the requested portfolio currently generates."
+          nullable: true
+          type: string
+      type: object
+    OverrideVirtualTransactionsRequest:
+      additionalProperties: false
+      description: "Upserts overrides and suppressions of virtual transactions generated\
+        \ by a single instrument event.\r\nOverrides are keyed by the virtual transaction\
+        \ id being overridden; suppressions are the list of virtual\r\ntransaction\
+        \ ids being suppressed. A virtual transaction id must not appear in both.\
+        \ This is a full\r\nreplace of the previously stored overrides and suppressions\
+        \ for the targeted instrument event - any\r\npreviously stored entry not present\
+        \ in this request is removed."
+      example:
+        suppressions:
+        - suppressions
+        - suppressions
+        overrides:
+          key:
+          - instrumentIdentifiers:
+              key: instrumentIdentifiers
+            tradeDate: tradeDate
+            settlementDate: settlementDate
+            units: 0.8008281904610115
+            source: source
+            type: type
+            totalConsideration:
+              amount: 0.8008281904610115
+              currency: currency
+            tradeCurrency: tradeCurrency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 6.027456183070403
+            tradePrice:
+              price: 1.4658129805029452
+              type: Price
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          - instrumentIdentifiers:
+              key: instrumentIdentifiers
+            tradeDate: tradeDate
+            settlementDate: settlementDate
+            units: 0.8008281904610115
+            source: source
+            type: type
+            totalConsideration:
+              amount: 0.8008281904610115
+              currency: currency
+            tradeCurrency: tradeCurrency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 6.027456183070403
+            tradePrice:
+              price: 1.4658129805029452
+              type: Price
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+      properties:
+        overrides:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/OverrideDefinitionRequest'
+            nullable: true
+            type: array
+          description: A map of virtual transaction id to one or more replacement
+            transactions. A virtual transaction id cannot also appear in Suppressions.
+          nullable: true
+          type: object
+        suppressions:
+          description: The virtual transaction ids to suppress. A virtual transaction
+            id cannot also appear in Overrides.
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     OversubscribeElection:
       additionalProperties: false
@@ -258509,6 +259277,13 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          datePolicy:
+            effectiveAtProgression: effectiveAtProgression
+            asAtPolicy:
+              left: left
+              right: right
+            activityWindow:
+              windowType: windowType
           reviewConfiguration:
             requiredApprovals:
             - approvalCode: approvalCode
@@ -258610,6 +259385,13 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          datePolicy:
+            effectiveAtProgression: effectiveAtProgression
+            asAtPolicy:
+              left: left
+              right: right
+            activityWindow:
+              windowType: windowType
           reviewConfiguration:
             requiredApprovals:
             - approvalCode: approvalCode
@@ -276404,6 +277186,23 @@ components:
       - realisedTradeCcy
       - units
       type: object
+    RecActivityWindow:
+      additionalProperties: false
+      description: "Base class for the activity windows that give the date range a\
+        \ rec definition's activity-based\r\nreconciliations cover. Polymorphic by\
+        \ windowType; each supported type has a corresponding inherited class."
+      example:
+        windowType: windowType
+      properties:
+        windowType:
+          description: "Polymorphic discriminator. Supported types: Contiguous. Contiguous\
+            \ requires effectiveAtProgression Series. Available values: Contiguous,\
+            \ FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt."
+          minLength: 1
+          type: string
+      required:
+      - windowType
+      type: object
     RecApprovalDecision:
       additionalProperties: false
       description: An entry in the append-only log of approver decisions.
@@ -276447,6 +277246,35 @@ components:
       - asAtDecided
       - decision
       - userId
+      type: object
+    RecAsAtPolicy:
+      additionalProperties: false
+      description: "The knowledge-date policy of each side of a rec definition. Optional\
+        \ as a whole, defaulting to Latest on both\r\nsides, but both sides are required\
+        \ when it is supplied."
+      example:
+        left: left
+        right: right
+      properties:
+        left:
+          description: "The left side's policy. Latest: the left asAt may not be supplied\
+            \ at instantiation, is stamped as the latest at run time and advances\
+            \ on re-run. Explicit: the left asAt is the caller's, defaulting to the\
+            \ current date-time, and is pinned on the instance. Available values:\
+            \ Latest, Explicit."
+          minLength: 1
+          type: string
+        right:
+          description: "The right side's policy. Latest: the right asAt may not be\
+            \ supplied at instantiation, is stamped as the latest at run time and\
+            \ advances on re-run. Explicit: the right asAt is the caller's, defaulting\
+            \ to the current date-time, and is pinned on the instance. Available values:\
+            \ Latest, Explicit."
+          minLength: 1
+          type: string
+      required:
+      - left
+      - right
       type: object
     RecClosedExceptionCounts:
       additionalProperties: false
@@ -276567,6 +277395,33 @@ components:
         right:
           $ref: '#/components/schemas/RecDatasetSchema'
       type: object
+    RecDatePolicy:
+      additionalProperties: false
+      description: "The date policy of a rec definition: how the effective dates of\
+        \ successive instances may progress, whether each\r\nside reconciles at the\
+        \ latest knowledge or at a pinned asAt, and — for activity-based rec types\
+        \ — how the\r\nactivity window is bounded."
+      example:
+        effectiveAtProgression: effectiveAtProgression
+        asAtPolicy:
+          left: left
+          right: right
+        activityWindow:
+          windowType: windowType
+      properties:
+        effectiveAtProgression:
+          description: "How the effective dates of successive instances may progress.\
+            \ Series (the default): each instance's leftEffectiveAt and rightEffectiveAt\
+            \ must be strictly after the previous instance's. Unconstrained: no relationship\
+            \ between instances. Immutable once the definition has instances. Available\
+            \ values: Series, Unconstrained."
+          nullable: true
+          type: string
+        asAtPolicy:
+          $ref: '#/components/schemas/RecAsAtPolicy'
+        activityWindow:
+          $ref: '#/components/schemas/RecActivityWindow'
+      type: object
     RecDatesReconciled:
       additionalProperties: false
       description: The left and right effective and asAt dates of the data reconciled
@@ -276661,6 +277516,13 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -276773,6 +277635,8 @@ components:
           type: array
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
+        datePolicy:
+          $ref: '#/components/schemas/RecDatePolicy'
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
             at the requested effective and asAt datetime.
@@ -276787,6 +277651,7 @@ components:
           nullable: true
           type: array
       required:
+      - datePolicy
       - definitionType
       - displayName
       - id
@@ -304409,6 +305274,241 @@ components:
       required:
       - values
       type: object
+    ResourceListOfVirtualTransactionOverrideRecord:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - suppressions:
+            key:
+              virtualTransactionId: virtualTransactionId
+              status: status
+          overrideMatchStatus: overrideMatchStatus
+          instrumentEventId: instrumentEventId
+          overrides:
+            key:
+              virtualTransactionId: virtualTransactionId
+              replacements:
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              status: status
+          cancelActive: true
+          sourcePortfolioId:
+            code: code
+            scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          overrideApplicationStatus: overrideApplicationStatus
+        - suppressions:
+            key:
+              virtualTransactionId: virtualTransactionId
+              status: status
+          overrideMatchStatus: overrideMatchStatus
+          instrumentEventId: instrumentEventId
+          overrides:
+            key:
+              virtualTransactionId: virtualTransactionId
+              replacements:
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              status: status
+          cancelActive: true
+          sourcePortfolioId:
+            code: code
+            scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          overrideApplicationStatus: overrideApplicationStatus
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/VirtualTransactionOverrideRecord'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery:
       additionalProperties: false
       description: "A version of the resource list for use with list endpoints that\
@@ -315137,6 +316237,104 @@ components:
         type: object
       description: A split in the company's shares. Shareholders are given additional
         company shares based on the terms of the stock split.
+    StoredOverrideDefinition:
+      additionalProperties: false
+      description: A single replacement transaction definition as it was persisted
+        against a virtual transaction.
+      example:
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        tradeDate: tradeDate
+        settlementDate: settlementDate
+        units: 0.8008281904610115
+        source: source
+        type: type
+        totalConsideration:
+          amount: 0.8008281904610115
+          currency: currency
+        tradeCurrency: tradeCurrency
+        transactionId: transactionId
+        counterpartyId: counterpartyId
+        exchangeRate: 6.027456183070403
+        tradePrice:
+          price: 1.4658129805029452
+          type: Price
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        transactionId:
+          description: The unique identifier of the replacement transaction.
+          nullable: true
+          type: string
+        type:
+          description: "The type of the replacement transaction, for example 'Buy'\
+            \ or 'Sell'."
+          nullable: true
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: A set of instrument identifiers that resolve the replacement
+            transaction to a unique instrument.
+          nullable: true
+          type: object
+        tradeDate:
+          description: The trade date of the replacement transaction.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        settlementDate:
+          description: The settlement date of the replacement transaction.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        units:
+          description: The number of units of the transacted instrument.
+          format: double
+          type: number
+        tradePrice:
+          $ref: '#/components/schemas/TransactionPrice'
+        totalConsideration:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        exchangeRate:
+          description: The exchange rate between the trade and settlement currency.
+          format: double
+          nullable: true
+          type: number
+        tradeCurrency:
+          description: The trade currency of the replacement transaction.
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: The transaction properties stored for the replacement transaction.
+          nullable: true
+          type: object
+        counterpartyId:
+          description: The identifier for the counterparty of the replacement transaction.
+          nullable: true
+          type: string
+        source:
+          description: The source of the replacement transaction.
+          nullable: true
+          type: string
+      type: object
     Strategy:
       additionalProperties: false
       example:
@@ -315610,6 +316808,27 @@ components:
           type: string
       required:
       - attributeName
+      type: object
+    SuppressionEntryResponse:
+      additionalProperties: false
+      description: "A single suppressions entry on a virtual transaction override\
+        \ record: the status of the suppression."
+      example:
+        virtualTransactionId: virtualTransactionId
+        status: status
+      properties:
+        status:
+          description: "Whether this entry's target virtual transaction id still matches\
+            \ one the event currently generates. Available values: Applied, Orphaned,\
+            \ Superseded."
+          nullable: true
+          type: string
+        virtualTransactionId:
+          description: "The id of the virtual transaction this entry targets, as it\
+            \ appears in the requested portfolio. Null when the entry targets no virtual\
+            \ transaction the requested portfolio currently generates."
+          nullable: true
+          type: string
       type: object
     SwapCashFlowEvent:
       allOf:
@@ -317250,6 +318469,15 @@ components:
             format: double
             nullable: true
             type: number
+          terminationPrice:
+            description: "The per-unit price of the underlying the asset side settled\
+              \ at, for a price-return termination:\r\nthe triggering event's chosen\
+              \ cash-offer price when it has one, otherwise the underlying's last\r\
+              \navailable quote on or before the effective date. Optional — absent\
+              \ for formula-based settlements\r\nand until enriched by post-processing."
+            format: double
+            nullable: true
+            type: number
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -317405,11 +318633,11 @@ components:
         type: object
       description: "Termination of a derivative at fair settlement value before or\
         \ at its own maturity, triggered by the\r\neconomic life of a referenced underlying\
-        \ ending first (redemption, tender, repurchase offer, spin-off,\r\nconversion,\
-        \ exchange offer), or by the derivative maturing while the underlying still\
-        \ has remaining\r\nvalue. Synthesised by the instrument itself; the settlement\
-        \ amounts are painted on by post-processing\r\nand the resulting transaction\
-        \ closes the holding and settles the net amount."
+        \ ending first (a bond's redemption, tender, repurchase offer or\r\nconversion;\
+        \ an equity's merger, spin-off or exchange offer), or by the derivative maturing\
+        \ while the\r\nunderlying still has remaining value. Synthesised by the instrument\
+        \ itself; the settlement amounts are\r\npainted on by post-processing and\
+        \ the resulting transaction closes the holding and settles the net amount."
     Timeline:
       additionalProperties: false
       example:
@@ -330308,6 +331536,13 @@ components:
           id:
             code: code
             scope: scope
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         currencies:
           left: left
           right: right
@@ -330367,6 +331602,8 @@ components:
           type: array
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
+        datePolicy:
+          $ref: '#/components/schemas/RecDatePolicy'
       required:
       - definitionType
       - displayName
@@ -338137,6 +339374,179 @@ components:
       - diaryEntryCode
       - effectiveAt
       type: object
+    UpsertVirtualTransactionOverrideResponse:
+      additionalProperties: false
+      description: "The result of upserting overrides and suppressions of virtual\
+        \ transactions for a single instrument event.\r\nReturns the record as it\
+        \ was persisted and the new version of the record. Whether each entry currently\r\
+        \napplies, and which virtual transactions the event still generates unmodified."
+      example:
+        metadata:
+          key:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+        suppressions:
+        - suppressions
+        - suppressions
+        instrumentEventId: instrumentEventId
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        overrides:
+          key:
+          - instrumentIdentifiers:
+              key: instrumentIdentifiers
+            tradeDate: tradeDate
+            settlementDate: settlementDate
+            units: 0.8008281904610115
+            source: source
+            type: type
+            totalConsideration:
+              amount: 0.8008281904610115
+              currency: currency
+            tradeCurrency: tradeCurrency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 6.027456183070403
+            tradePrice:
+              price: 1.4658129805029452
+              type: Price
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          - instrumentIdentifiers:
+              key: instrumentIdentifiers
+            tradeDate: tradeDate
+            settlementDate: settlementDate
+            units: 0.8008281904610115
+            source: source
+            type: type
+            totalConsideration:
+              amount: 0.8008281904610115
+              currency: currency
+            tradeCurrency: tradeCurrency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 6.027456183070403
+            tradePrice:
+              price: 1.4658129805029452
+              type: Price
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+        cancelActive: true
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        metadata:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ResponseMetaData'
+            nullable: true
+            type: array
+          description: "Contains warnings related to unresolved instruments, non-existent\
+            \ transaction types, sub-holding key mismatches, or closed accounting\
+            \ periods for the override transactions."
+          nullable: true
+          type: object
+        instrumentEventId:
+          description: The identifier of the instrument event that was overridden.
+          minLength: 1
+          type: string
+        overrides:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/StoredOverrideDefinition'
+            nullable: true
+            type: array
+          description: "The replacement transactions persisted for the instrument\
+            \ event, keyed by the virtual transaction id being overridden."
+          nullable: true
+          type: object
+        suppressions:
+          description: The virtual transaction ids suppressed for the instrument event.
+          items:
+            type: string
+          nullable: true
+          type: array
+        cancelActive:
+          description: "True when an active event-level Cancel instruction also exists\
+            \ for this instrument event, taking precedence over the entries in this\
+            \ record."
+          nullable: true
+          type: boolean
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - instrumentEventId
+      - version
+      type: object
     User:
       additionalProperties: false
       description: The unique id of the user that issued the command.
@@ -338753,6 +340163,12 @@ components:
           relation: relation
         href: https://openapi-generator.tech
         type: type
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         status: status
         fundValuationPointData:
           fees:
@@ -338855,6 +340271,8 @@ components:
             $ref: '#/components/schemas/BucketSetResult'
           nullable: true
           type: array
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -356966,6 +358384,425 @@ components:
           description: The data for the particular row
           nullable: true
           type: object
+      type: object
+    VirtualTransactionOverrideRecord:
+      additionalProperties: false
+      description: "The overrides and suppressions stored against a single instrument\
+        \ event in a single portfolio, together\r\nwith their statuses as resolved\
+        \ against the requested portfolio's currently generated virtual\r\ntransactions."
+      example:
+        suppressions:
+          key:
+            virtualTransactionId: virtualTransactionId
+            status: status
+        overrideMatchStatus: overrideMatchStatus
+        instrumentEventId: instrumentEventId
+        overrides:
+          key:
+            virtualTransactionId: virtualTransactionId
+            replacements:
+            - instrumentIdentifiers:
+                key: instrumentIdentifiers
+              tradeDate: tradeDate
+              settlementDate: settlementDate
+              units: 0.8008281904610115
+              source: source
+              type: type
+              totalConsideration:
+                amount: 0.8008281904610115
+                currency: currency
+              tradeCurrency: tradeCurrency
+              transactionId: transactionId
+              counterpartyId: counterpartyId
+              exchangeRate: 6.027456183070403
+              precedesEvent: true
+              tradePrice:
+                price: 1.4658129805029452
+                type: Price
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
+            - instrumentIdentifiers:
+                key: instrumentIdentifiers
+              tradeDate: tradeDate
+              settlementDate: settlementDate
+              units: 0.8008281904610115
+              source: source
+              type: type
+              totalConsideration:
+                amount: 0.8008281904610115
+                currency: currency
+              tradeCurrency: tradeCurrency
+              transactionId: transactionId
+              counterpartyId: counterpartyId
+              exchangeRate: 6.027456183070403
+              precedesEvent: true
+              tradePrice:
+                price: 1.4658129805029452
+                type: Price
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
+            status: status
+        cancelActive: true
+        sourcePortfolioId:
+          code: code
+          scope: scope
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        overrideApplicationStatus: overrideApplicationStatus
+      properties:
+        instrumentEventId:
+          description: The identifier of the instrument event this record is stored
+            against.
+          nullable: true
+          type: string
+        sourcePortfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        overrides:
+          additionalProperties:
+            $ref: '#/components/schemas/OverrideEntryResponse'
+          description: "The overrides stored in this record, keyed by the virtual\
+            \ transaction id being overridden as it appears in the portfolio holding\
+            \ the record."
+          nullable: true
+          type: object
+        suppressions:
+          additionalProperties:
+            $ref: '#/components/schemas/SuppressionEntryResponse'
+          description: "The suppressions stored in this record, keyed by the virtual\
+            \ transaction id being suppressed as it appears in the portfolio holding\
+            \ the record."
+          nullable: true
+          type: object
+        overrideMatchStatus:
+          description: "Whether every override and suppression entry in this record\
+            \ still matches a virtual transaction the event currently generates. Available\
+            \ values: Matched, Orphaned."
+          nullable: true
+          type: string
+        overrideApplicationStatus:
+          description: "Whether all, some, or none of this record's override and suppression\
+            \ entries are currently applied. Available values: Full, Partial, Orphaned."
+          nullable: true
+          type: string
+        cancelActive:
+          description: "True when an active event-level Cancel instruction also exists\
+            \ for this instrument event, taking precedence over the entries in this\
+            \ record."
+          nullable: true
+          type: boolean
+        version:
+          $ref: '#/components/schemas/Version'
+      type: object
+    VirtualTransactionOverridesResponse:
+      additionalProperties: false
+      description: "The overrides and suppressions affecting a single instrument event\
+        \ in the requested portfolio. A derived\r\nportfolio is affected by its own\
+        \ record and by every record held by an ancestor, so one record per\r\nholding\
+        \ portfolio is returned, nearest first."
+      example:
+        records:
+        - suppressions:
+            key:
+              virtualTransactionId: virtualTransactionId
+              status: status
+          overrideMatchStatus: overrideMatchStatus
+          instrumentEventId: instrumentEventId
+          overrides:
+            key:
+              virtualTransactionId: virtualTransactionId
+              replacements:
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              status: status
+          cancelActive: true
+          sourcePortfolioId:
+            code: code
+            scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          overrideApplicationStatus: overrideApplicationStatus
+        - suppressions:
+            key:
+              virtualTransactionId: virtualTransactionId
+              status: status
+          overrideMatchStatus: overrideMatchStatus
+          instrumentEventId: instrumentEventId
+          overrides:
+            key:
+              virtualTransactionId: virtualTransactionId
+              replacements:
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              - instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                tradeDate: tradeDate
+                settlementDate: settlementDate
+                units: 0.8008281904610115
+                source: source
+                type: type
+                totalConsideration:
+                  amount: 0.8008281904610115
+                  currency: currency
+                tradeCurrency: tradeCurrency
+                transactionId: transactionId
+                counterpartyId: counterpartyId
+                exchangeRate: 6.027456183070403
+                precedesEvent: true
+                tradePrice:
+                  price: 1.4658129805029452
+                  type: Price
+                properties:
+                  key:
+                    referenceData:
+                      key:
+                        stringValue: stringValue
+                        numericValue: 6.027456183070403
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    key: key
+              status: status
+          cancelActive: true
+          sourcePortfolioId:
+            code: code
+            scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          overrideApplicationStatus: overrideApplicationStatus
+        instrumentEventId: instrumentEventId
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        live:
+        - live
+        - live
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        instrumentEventId:
+          description: The identifier of the instrument event whose overrides and
+            suppressions are returned.
+          minLength: 1
+          type: string
+        records:
+          description: "The override and suppression records affecting the requested\
+            \ portfolio for this instrument event, nearest first. A derived portfolio\
+            \ is affected by its own record and by every record held by an ancestor."
+          items:
+            $ref: '#/components/schemas/VirtualTransactionOverrideRecord'
+          nullable: true
+          type: array
+        live:
+          description: "The virtual transaction ids the event currently generates\
+            \ in the requested portfolio that no returned record targets, and so keep\
+            \ generating unmodified."
+          items:
+            type: string
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - instrumentEventId
+      - version
       type: object
     VolatilitySwap:
       allOf:

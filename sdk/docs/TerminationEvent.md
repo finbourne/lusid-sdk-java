@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.TerminationEvent
-Termination of a derivative at fair settlement value before or at its own maturity, triggered by the  economic life of a referenced underlying ending first (redemption, tender, repurchase offer, spin-off,  conversion, exchange offer), or by the derivative maturing while the underlying still has remaining  value. Synthesised by the instrument itself; the settlement amounts are painted on by post-processing  and the resulting transaction closes the holding and settles the net amount.
+Termination of a derivative at fair settlement value before or at its own maturity, triggered by the  economic life of a referenced underlying ending first (a bond's redemption, tender, repurchase offer or  conversion; an equity's merger, spin-off or exchange offer), or by the derivative maturing while the  underlying still has remaining value. Synthesised by the instrument itself; the settlement amounts are  painted on by post-processing and the resulting transaction closes the holding and settles the net amount.
 
 ## Properties
 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **assetSettlementAmount** | **java.math.BigDecimal** | The asset-side settlement value per the settlement method, unsigned by leg direction.  Optional — populated by post-processing from market data; absent until enriched. | [optional] [default to java.math.BigDecimal]
 **fundingAccruedAmount** | **java.math.BigDecimal** | The funding leg&#39;s financing accrued to the effective date, signed by the funding leg&#39;s own  direction. Optional — populated by post-processing from market data; absent until enriched. | [optional] [default to java.math.BigDecimal]
 **terminationAmount** | **java.math.BigDecimal** | The net amount settled on termination: the asset settlement amount signed by the asset leg&#39;s  direction, netted with the funding accrued. Optional — populated by post-processing; absent  until enriched. | [optional] [default to java.math.BigDecimal]
+**terminationPrice** | **java.math.BigDecimal** | The per-unit price of the underlying the asset side settled at, for a price-return termination:  the triggering event&#39;s chosen cash-offer price when it has one, otherwise the underlying&#39;s last  available quote on or before the effective date. Optional — absent for formula-based settlements  and until enriched by post-processing. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.TerminationEvent;
@@ -30,6 +31,7 @@ String SettlementMethod = "example SettlementMethod";
 @jakarta.annotation.Nullable java.math.BigDecimal AssetSettlementAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FundingAccruedAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal TerminationAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal TerminationPrice = new java.math.BigDecimal("100.00");
 
 
 TerminationEvent terminationEventInstance = new TerminationEvent()
@@ -41,7 +43,8 @@ TerminationEvent terminationEventInstance = new TerminationEvent()
     .SettlementMethod(SettlementMethod)
     .AssetSettlementAmount(AssetSettlementAmount)
     .FundingAccruedAmount(FundingAccruedAmount)
-    .TerminationAmount(TerminationAmount);
+    .TerminationAmount(TerminationAmount)
+    .TerminationPrice(TerminationPrice);
 ```
 
 

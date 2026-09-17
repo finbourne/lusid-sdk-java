@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.RecDatePolicy;
 import com.finbourne.lusid.model.RecDefCurrencies;
 import com.finbourne.lusid.model.RecDefRecipeIds;
 import com.finbourne.lusid.model.RecDefRuleset;
@@ -105,6 +106,10 @@ public class RecDefinition {
   public static final String SERIALIZED_NAME_REVIEW_CONFIGURATION = "reviewConfiguration";
   @SerializedName(SERIALIZED_NAME_REVIEW_CONFIGURATION)
   private RecReviewConfiguration reviewConfiguration;
+
+  public static final String SERIALIZED_NAME_DATE_POLICY = "datePolicy";
+  @SerializedName(SERIALIZED_NAME_DATE_POLICY)
+  private RecDatePolicy datePolicy;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -376,6 +381,27 @@ public class RecDefinition {
   }
 
 
+  public RecDefinition datePolicy(RecDatePolicy datePolicy) {
+    
+    this.datePolicy = datePolicy;
+    return this;
+  }
+
+   /**
+   * Get datePolicy
+   * @return datePolicy
+  **/
+  @jakarta.annotation.Nonnull
+  public RecDatePolicy getDatePolicy() {
+    return datePolicy;
+  }
+
+
+  public void setDatePolicy(RecDatePolicy datePolicy) {
+    this.datePolicy = datePolicy;
+  }
+
+
   public RecDefinition href(URI href) {
     
     this.href = href;
@@ -468,6 +494,7 @@ public class RecDefinition {
         Objects.equals(this.currencies, recDefinition.currencies) &&
         Objects.equals(this.rulesets, recDefinition.rulesets) &&
         Objects.equals(this.reviewConfiguration, recDefinition.reviewConfiguration) &&
+        Objects.equals(this.datePolicy, recDefinition.datePolicy) &&
         Objects.equals(this.href, recDefinition.href) &&
         Objects.equals(this.version, recDefinition.version) &&
         Objects.equals(this.links, recDefinition.links);
@@ -479,7 +506,7 @@ public class RecDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, href, version, links);
+    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, datePolicy, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -504,6 +531,7 @@ public class RecDefinition {
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
     sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
     sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
+    sb.append("    datePolicy: ").append(toIndentedString(datePolicy)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -540,6 +568,7 @@ public class RecDefinition {
     openapiFields.add("currencies");
     openapiFields.add("rulesets");
     openapiFields.add("reviewConfiguration");
+    openapiFields.add("datePolicy");
     openapiFields.add("href");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -553,6 +582,7 @@ public class RecDefinition {
     openapiRequiredFields.add("rightPortfolioSources");
     openapiRequiredFields.add("rulesets");
     openapiRequiredFields.add("reviewConfiguration");
+    openapiRequiredFields.add("datePolicy");
   }
 
  /**
@@ -630,6 +660,8 @@ public class RecDefinition {
       };
       // validate the required field `reviewConfiguration`
       RecReviewConfiguration.validateJsonElement(jsonObj.get("reviewConfiguration"));
+      // validate the required field `datePolicy`
+      RecDatePolicy.validateJsonElement(jsonObj.get("datePolicy"));
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }

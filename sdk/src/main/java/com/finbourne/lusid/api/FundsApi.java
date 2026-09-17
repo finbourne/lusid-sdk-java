@@ -8615,11 +8615,11 @@ public class FundsApi {
     public APIgetValuationPointTrialBalanceRequest getValuationPointTrialBalance(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointTrialBalanceRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, final ApiCallback _callback) throws ApiException {
-        return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, final ApiCallback _callback) throws ApiException {
+        return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8633,7 +8633,7 @@ public class FundsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = valuationPointDataQueryParameters;
+        Object localVarPostBody = singleValuationPointQueryParameters;
 
         // create path and map variables
         String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query"
@@ -8704,7 +8704,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointUnsettledTransactionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointUnsettledTransactions(Async)");
@@ -8715,34 +8715,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getValuationPointUnsettledTransactions(Async)");
         }
 
-        return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback, opts);
+        return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, null, opts);
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, ValuationPointDataQueryParameters valuationPointDataQueryParameters, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String date, String diaryEntry, String variant, SingleValuationPointQueryParameters singleValuationPointQueryParameters, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8759,7 +8759,7 @@ public class FundsApi {
         private String date;
         private String diaryEntry;
         private String variant;
-        private ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private SingleValuationPointQueryParameters singleValuationPointQueryParameters;
 
         private APIgetValuationPointUnsettledTransactionsRequest(String scope, String code) {
             this.scope = scope;
@@ -8847,12 +8847,12 @@ public class FundsApi {
         }
 
         /**
-         * Set valuationPointDataQueryParameters
-         * @param valuationPointDataQueryParameters The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)
+         * Set singleValuationPointQueryParameters
+         * @param singleValuationPointQueryParameters The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)
          * @return APIgetValuationPointUnsettledTransactionsRequest
          */
-        public APIgetValuationPointUnsettledTransactionsRequest valuationPointDataQueryParameters(ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
-            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        public APIgetValuationPointUnsettledTransactionsRequest singleValuationPointQueryParameters(SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
+            this.singleValuationPointQueryParameters = singleValuationPointQueryParameters;
             return this;
         }
 
@@ -8870,7 +8870,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback);
+            return getValuationPointUnsettledTransactionsCall(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback);
         }
 
         /**
@@ -8886,7 +8886,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfUnsettledTransaction execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters);
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters);
             return localVarResp.getData();
         }
 
@@ -8903,7 +8903,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfUnsettledTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, opts);
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, opts);
             return localVarResp.getData();
         }
 
@@ -8920,7 +8920,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo() throws ApiException {
-            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters);
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters);
         }
 
         /**
@@ -8936,7 +8936,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, opts);
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, opts);
         }
 
         /**
@@ -8953,7 +8953,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
-            return getValuationPointUnsettledTransactionsAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback);
+            return getValuationPointUnsettledTransactionsAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback);
         }
 
         /**
@@ -8970,13 +8970,13 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointUnsettledTransactionsAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, _callback, opts);
+            return getValuationPointUnsettledTransactionsAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, _callback, opts);
         }
     }
 
     /**
      * [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
-     * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+     * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIgetValuationPointUnsettledTransactionsRequest

@@ -2968,11 +2968,11 @@ public class FundsApiExample {
 
 ## getValuationPointUnsettledTransactions
 
-> ValuationPointResourceListOfUnsettledTransaction getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters)
+> ValuationPointResourceListOfUnsettledTransaction getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters)
 
 [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
-Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
 
 ### Example
 
@@ -3023,12 +3023,12 @@ public class FundsApiExample {
         String date = "date_example"; // String | The optional date of the Valuation Point to report against, as an alternative to supplying   it in the request body. Must not be supplied together with diaryEntry.
         String diaryEntry = "diaryEntry_example"; // String | The optional diary entry code of the Valuation Point to report against, as an   alternative to supplying it in the request body. Must not be supplied together with date.
         String variant = "variant_example"; // String | The optional variant code of the Valuation Point to report against, as an alternative to   supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple   estimates.
-        ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters.
+        SingleValuationPointQueryParameters singleValuationPointQueryParameters = new SingleValuationPointQueryParameters(); // SingleValuationPointQueryParameters | The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters).execute(opts);
+            // ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters).execute(opts);
 
-            ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters).execute();
+            ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointUnsettledTransactions");
@@ -3055,7 +3055,7 @@ public class FundsApiExample {
 | **date** | **String**| The optional date of the Valuation Point to report against, as an alternative to supplying   it in the request body. Must not be supplied together with diaryEntry. | [optional] |
 | **diaryEntry** | **String**| The optional diary entry code of the Valuation Point to report against, as an   alternative to supplying it in the request body. Must not be supplied together with date. | [optional] |
 | **variant** | **String**| The optional variant code of the Valuation Point to report against, as an alternative to   supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple   estimates. | [optional] |
-| **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters. | [optional] |
+| **singleValuationPointQueryParameters** | [**SingleValuationPointQueryParameters**](SingleValuationPointQueryParameters.md)| The optional arguments to use for querying the unsettled transactions. Can be   omitted when the Valuation Point is identified by the date or diaryEntry query parameters. | [optional] |
 
 ### Return type
 

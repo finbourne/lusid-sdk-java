@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RecDatePolicy;
 import com.finbourne.lusid.model.RecDefCurrencies;
 import com.finbourne.lusid.model.RecDefRecipeIds;
 import com.finbourne.lusid.model.RecDefRuleset;
@@ -102,6 +103,10 @@ public class CreateRecDefinitionRequest {
   public static final String SERIALIZED_NAME_REVIEW_CONFIGURATION = "reviewConfiguration";
   @SerializedName(SERIALIZED_NAME_REVIEW_CONFIGURATION)
   private RecReviewConfiguration reviewConfiguration;
+
+  public static final String SERIALIZED_NAME_DATE_POLICY = "datePolicy";
+  @SerializedName(SERIALIZED_NAME_DATE_POLICY)
+  private RecDatePolicy datePolicy;
 
   public CreateRecDefinitionRequest() {
   }
@@ -361,6 +366,27 @@ public class CreateRecDefinitionRequest {
   }
 
 
+  public CreateRecDefinitionRequest datePolicy(RecDatePolicy datePolicy) {
+    
+    this.datePolicy = datePolicy;
+    return this;
+  }
+
+   /**
+   * Get datePolicy
+   * @return datePolicy
+  **/
+  @jakarta.annotation.Nullable
+  public RecDatePolicy getDatePolicy() {
+    return datePolicy;
+  }
+
+
+  public void setDatePolicy(RecDatePolicy datePolicy) {
+    this.datePolicy = datePolicy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -381,7 +407,8 @@ public class CreateRecDefinitionRequest {
         Objects.equals(this.valuationRecipes, createRecDefinitionRequest.valuationRecipes) &&
         Objects.equals(this.currencies, createRecDefinitionRequest.currencies) &&
         Objects.equals(this.rulesets, createRecDefinitionRequest.rulesets) &&
-        Objects.equals(this.reviewConfiguration, createRecDefinitionRequest.reviewConfiguration);
+        Objects.equals(this.reviewConfiguration, createRecDefinitionRequest.reviewConfiguration) &&
+        Objects.equals(this.datePolicy, createRecDefinitionRequest.datePolicy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -390,7 +417,7 @@ public class CreateRecDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration);
+    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, datePolicy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -415,6 +442,7 @@ public class CreateRecDefinitionRequest {
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
     sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
     sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
+    sb.append("    datePolicy: ").append(toIndentedString(datePolicy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -448,6 +476,7 @@ public class CreateRecDefinitionRequest {
     openapiFields.add("currencies");
     openapiFields.add("rulesets");
     openapiFields.add("reviewConfiguration");
+    openapiFields.add("datePolicy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -541,6 +570,10 @@ public class CreateRecDefinitionRequest {
       // validate the optional field `reviewConfiguration`
       if (jsonObj.get("reviewConfiguration") != null && !jsonObj.get("reviewConfiguration").isJsonNull()) {
         RecReviewConfiguration.validateJsonElement(jsonObj.get("reviewConfiguration"));
+      }
+      // validate the optional field `datePolicy`
+      if (jsonObj.get("datePolicy") != null && !jsonObj.get("datePolicy").isJsonNull()) {
+        RecDatePolicy.validateJsonElement(jsonObj.get("datePolicy"));
       }
   }
 

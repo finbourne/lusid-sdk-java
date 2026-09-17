@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResponseMetaData;
+import com.finbourne.lusid.model.StoredOverrideDefinition;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -54,10 +55,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * OverrideVirtualTransactionsResponse
+ * The result of upserting overrides and suppressions of virtual transactions for a single instrument event.  Returns the record as it was persisted and the new version of the record. Whether each entry currently  applies, and which virtual transactions the event still generates unmodified.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class OverrideVirtualTransactionsResponse {
+public class UpsertVirtualTransactionOverrideResponse {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -74,18 +75,26 @@ public class OverrideVirtualTransactionsResponse {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_ID)
   private String instrumentEventId;
 
-  public static final String SERIALIZED_NAME_CANCEL_INSTRUCTION_ID = "cancelInstructionId";
-  @SerializedName(SERIALIZED_NAME_CANCEL_INSTRUCTION_ID)
-  private String cancelInstructionId;
+  public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
+  @SerializedName(SERIALIZED_NAME_OVERRIDES)
+  private Map<String, List<StoredOverrideDefinition>> overrides;
+
+  public static final String SERIALIZED_NAME_SUPPRESSIONS = "suppressions";
+  @SerializedName(SERIALIZED_NAME_SUPPRESSIONS)
+  private List<String> suppressions;
+
+  public static final String SERIALIZED_NAME_CANCEL_ACTIVE = "cancelActive";
+  @SerializedName(SERIALIZED_NAME_CANCEL_ACTIVE)
+  private Boolean cancelActive;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public OverrideVirtualTransactionsResponse() {
+  public UpsertVirtualTransactionOverrideResponse() {
   }
 
-  public OverrideVirtualTransactionsResponse version(Version version) {
+  public UpsertVirtualTransactionOverrideResponse version(Version version) {
     
     this.version = version;
     return this;
@@ -106,7 +115,7 @@ public class OverrideVirtualTransactionsResponse {
   }
 
 
-  public OverrideVirtualTransactionsResponse href(URI href) {
+  public UpsertVirtualTransactionOverrideResponse href(URI href) {
     
     this.href = href;
     return this;
@@ -127,13 +136,13 @@ public class OverrideVirtualTransactionsResponse {
   }
 
 
-  public OverrideVirtualTransactionsResponse metadata(Map<String, List<ResponseMetaData>> metadata) {
+  public UpsertVirtualTransactionOverrideResponse metadata(Map<String, List<ResponseMetaData>> metadata) {
     
     this.metadata = metadata;
     return this;
   }
 
-  public OverrideVirtualTransactionsResponse putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
+  public UpsertVirtualTransactionOverrideResponse putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
     if (this.metadata == null) {
       this.metadata = new HashMap<>();
     }
@@ -142,7 +151,7 @@ public class OverrideVirtualTransactionsResponse {
   }
 
    /**
-   * Contains warnings related to unresolved instruments or non-existent transaction types for the override transactions.
+   * Contains warnings related to unresolved instruments, non-existent transaction types, sub-holding key mismatches, or closed accounting periods for the override transactions.
    * @return metadata
   **/
   @jakarta.annotation.Nullable
@@ -156,7 +165,7 @@ public class OverrideVirtualTransactionsResponse {
   }
 
 
-  public OverrideVirtualTransactionsResponse instrumentEventId(String instrumentEventId) {
+  public UpsertVirtualTransactionOverrideResponse instrumentEventId(String instrumentEventId) {
     
     this.instrumentEventId = instrumentEventId;
     return this;
@@ -177,34 +186,92 @@ public class OverrideVirtualTransactionsResponse {
   }
 
 
-  public OverrideVirtualTransactionsResponse cancelInstructionId(String cancelInstructionId) {
+  public UpsertVirtualTransactionOverrideResponse overrides(Map<String, List<StoredOverrideDefinition>> overrides) {
     
-    this.cancelInstructionId = cancelInstructionId;
+    this.overrides = overrides;
+    return this;
+  }
+
+  public UpsertVirtualTransactionOverrideResponse putOverridesItem(String key, List<StoredOverrideDefinition> overridesItem) {
+    if (this.overrides == null) {
+      this.overrides = new HashMap<>();
+    }
+    this.overrides.put(key, overridesItem);
     return this;
   }
 
    /**
-   * The identifier of the cancel instruction that was created for the overridden instrument event.
-   * @return cancelInstructionId
+   * The replacement transactions persisted for the instrument event, keyed by the virtual transaction id being overridden.
+   * @return overrides
   **/
-  @jakarta.annotation.Nonnull
-  public String getCancelInstructionId() {
-    return cancelInstructionId;
+  @jakarta.annotation.Nullable
+  public Map<String, List<StoredOverrideDefinition>> getOverrides() {
+    return overrides;
   }
 
 
-  public void setCancelInstructionId(String cancelInstructionId) {
-    this.cancelInstructionId = cancelInstructionId;
+  public void setOverrides(Map<String, List<StoredOverrideDefinition>> overrides) {
+    this.overrides = overrides;
   }
 
 
-  public OverrideVirtualTransactionsResponse links(List<Link> links) {
+  public UpsertVirtualTransactionOverrideResponse suppressions(List<String> suppressions) {
+    
+    this.suppressions = suppressions;
+    return this;
+  }
+
+  public UpsertVirtualTransactionOverrideResponse addSuppressionsItem(String suppressionsItem) {
+    if (this.suppressions == null) {
+      this.suppressions = new ArrayList<>();
+    }
+    this.suppressions.add(suppressionsItem);
+    return this;
+  }
+
+   /**
+   * The virtual transaction ids suppressed for the instrument event.
+   * @return suppressions
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getSuppressions() {
+    return suppressions;
+  }
+
+
+  public void setSuppressions(List<String> suppressions) {
+    this.suppressions = suppressions;
+  }
+
+
+  public UpsertVirtualTransactionOverrideResponse cancelActive(Boolean cancelActive) {
+    
+    this.cancelActive = cancelActive;
+    return this;
+  }
+
+   /**
+   * True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record.
+   * @return cancelActive
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCancelActive() {
+    return cancelActive;
+  }
+
+
+  public void setCancelActive(Boolean cancelActive) {
+    this.cancelActive = cancelActive;
+  }
+
+
+  public UpsertVirtualTransactionOverrideResponse links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public OverrideVirtualTransactionsResponse addLinksItem(Link linksItem) {
+  public UpsertVirtualTransactionOverrideResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -236,13 +303,15 @@ public class OverrideVirtualTransactionsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OverrideVirtualTransactionsResponse overrideVirtualTransactionsResponse = (OverrideVirtualTransactionsResponse) o;
-    return Objects.equals(this.version, overrideVirtualTransactionsResponse.version) &&
-        Objects.equals(this.href, overrideVirtualTransactionsResponse.href) &&
-        Objects.equals(this.metadata, overrideVirtualTransactionsResponse.metadata) &&
-        Objects.equals(this.instrumentEventId, overrideVirtualTransactionsResponse.instrumentEventId) &&
-        Objects.equals(this.cancelInstructionId, overrideVirtualTransactionsResponse.cancelInstructionId) &&
-        Objects.equals(this.links, overrideVirtualTransactionsResponse.links);
+    UpsertVirtualTransactionOverrideResponse upsertVirtualTransactionOverrideResponse = (UpsertVirtualTransactionOverrideResponse) o;
+    return Objects.equals(this.version, upsertVirtualTransactionOverrideResponse.version) &&
+        Objects.equals(this.href, upsertVirtualTransactionOverrideResponse.href) &&
+        Objects.equals(this.metadata, upsertVirtualTransactionOverrideResponse.metadata) &&
+        Objects.equals(this.instrumentEventId, upsertVirtualTransactionOverrideResponse.instrumentEventId) &&
+        Objects.equals(this.overrides, upsertVirtualTransactionOverrideResponse.overrides) &&
+        Objects.equals(this.suppressions, upsertVirtualTransactionOverrideResponse.suppressions) &&
+        Objects.equals(this.cancelActive, upsertVirtualTransactionOverrideResponse.cancelActive) &&
+        Objects.equals(this.links, upsertVirtualTransactionOverrideResponse.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -251,7 +320,7 @@ public class OverrideVirtualTransactionsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, href, metadata, instrumentEventId, cancelInstructionId, links);
+    return Objects.hash(version, href, metadata, instrumentEventId, overrides, suppressions, cancelActive, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -264,12 +333,14 @@ public class OverrideVirtualTransactionsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OverrideVirtualTransactionsResponse {\n");
+    sb.append("class UpsertVirtualTransactionOverrideResponse {\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    instrumentEventId: ").append(toIndentedString(instrumentEventId)).append("\n");
-    sb.append("    cancelInstructionId: ").append(toIndentedString(cancelInstructionId)).append("\n");
+    sb.append("    overrides: ").append(toIndentedString(overrides)).append("\n");
+    sb.append("    suppressions: ").append(toIndentedString(suppressions)).append("\n");
+    sb.append("    cancelActive: ").append(toIndentedString(cancelActive)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,31 +368,32 @@ public class OverrideVirtualTransactionsResponse {
     openapiFields.add("href");
     openapiFields.add("metadata");
     openapiFields.add("instrumentEventId");
-    openapiFields.add("cancelInstructionId");
+    openapiFields.add("overrides");
+    openapiFields.add("suppressions");
+    openapiFields.add("cancelActive");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("version");
     openapiRequiredFields.add("instrumentEventId");
-    openapiRequiredFields.add("cancelInstructionId");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to OverrideVirtualTransactionsResponse
+  * @throws IOException if the JSON Element is invalid with respect to UpsertVirtualTransactionOverrideResponse
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!OverrideVirtualTransactionsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OverrideVirtualTransactionsResponse is not found in the empty JSON string", OverrideVirtualTransactionsResponse.openapiRequiredFields.toString()));
+        if (!UpsertVirtualTransactionOverrideResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertVirtualTransactionOverrideResponse is not found in the empty JSON string", UpsertVirtualTransactionOverrideResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : OverrideVirtualTransactionsResponse.openapiRequiredFields) {
+      for (String requiredField : UpsertVirtualTransactionOverrideResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -335,8 +407,9 @@ public class OverrideVirtualTransactionsResponse {
       if (!jsonObj.get("instrumentEventId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentEventId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentEventId").toString()));
       }
-      if (!jsonObj.get("cancelInstructionId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cancelInstructionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cancelInstructionId").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("suppressions") != null && !jsonObj.get("suppressions").isJsonNull() && !jsonObj.get("suppressions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `suppressions` to be an array in the JSON string but got `%s`", jsonObj.get("suppressions").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -358,22 +431,22 @@ public class OverrideVirtualTransactionsResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OverrideVirtualTransactionsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OverrideVirtualTransactionsResponse' and its subtypes
+       if (!UpsertVirtualTransactionOverrideResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpsertVirtualTransactionOverrideResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OverrideVirtualTransactionsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OverrideVirtualTransactionsResponse.class));
+       final TypeAdapter<UpsertVirtualTransactionOverrideResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertVirtualTransactionOverrideResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<OverrideVirtualTransactionsResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<UpsertVirtualTransactionOverrideResponse>() {
            @Override
-           public void write(JsonWriter out, OverrideVirtualTransactionsResponse value) throws IOException {
+           public void write(JsonWriter out, UpsertVirtualTransactionOverrideResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public OverrideVirtualTransactionsResponse read(JsonReader in) throws IOException {
+           public UpsertVirtualTransactionOverrideResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -384,18 +457,18 @@ public class OverrideVirtualTransactionsResponse {
   }
 
  /**
-  * Create an instance of OverrideVirtualTransactionsResponse given an JSON string
+  * Create an instance of UpsertVirtualTransactionOverrideResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of OverrideVirtualTransactionsResponse
-  * @throws IOException if the JSON string is invalid with respect to OverrideVirtualTransactionsResponse
+  * @return An instance of UpsertVirtualTransactionOverrideResponse
+  * @throws IOException if the JSON string is invalid with respect to UpsertVirtualTransactionOverrideResponse
   */
-  public static OverrideVirtualTransactionsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OverrideVirtualTransactionsResponse.class);
+  public static UpsertVirtualTransactionOverrideResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpsertVirtualTransactionOverrideResponse.class);
   }
 
  /**
-  * Convert an instance of OverrideVirtualTransactionsResponse to an JSON string
+  * Convert an instance of UpsertVirtualTransactionOverrideResponse to an JSON string
   *
   * @return JSON string
   */

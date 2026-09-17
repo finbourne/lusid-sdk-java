@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Termination of a derivative at fair settlement value before or at its own maturity, triggered by the  economic life of a referenced underlying ending first (redemption, tender, repurchase offer, spin-off,  conversion, exchange offer), or by the derivative maturing while the underlying still has remaining  value. Synthesised by the instrument itself; the settlement amounts are painted on by post-processing  and the resulting transaction closes the holding and settles the net amount.
+ * Termination of a derivative at fair settlement value before or at its own maturity, triggered by the  economic life of a referenced underlying ending first (a bond&#39;s redemption, tender, repurchase offer or  conversion; an equity&#39;s merger, spin-off or exchange offer), or by the derivative maturing while the  underlying still has remaining value. Synthesised by the instrument itself; the settlement amounts are  painted on by post-processing and the resulting transaction closes the holding and settles the net amount.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TerminationEvent extends InstrumentEvent {
@@ -87,6 +87,10 @@ public class TerminationEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_TERMINATION_AMOUNT = "terminationAmount";
   @SerializedName(SERIALIZED_NAME_TERMINATION_AMOUNT)
   private java.math.BigDecimal terminationAmount;
+
+  public static final String SERIALIZED_NAME_TERMINATION_PRICE = "terminationPrice";
+  @SerializedName(SERIALIZED_NAME_TERMINATION_PRICE)
+  private java.math.BigDecimal terminationPrice;
 
   public TerminationEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -281,6 +285,27 @@ public class TerminationEvent extends InstrumentEvent {
   }
 
 
+  public TerminationEvent terminationPrice(java.math.BigDecimal terminationPrice) {
+    
+    this.terminationPrice = terminationPrice;
+    return this;
+  }
+
+   /**
+   * The per-unit price of the underlying the asset side settled at, for a price-return termination:  the triggering event&#39;s chosen cash-offer price when it has one, otherwise the underlying&#39;s last  available quote on or before the effective date. Optional — absent for formula-based settlements  and until enriched by post-processing.
+   * @return terminationPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getTerminationPrice() {
+    return terminationPrice;
+  }
+
+
+  public void setTerminationPrice(java.math.BigDecimal terminationPrice) {
+    this.terminationPrice = terminationPrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -300,6 +325,7 @@ public class TerminationEvent extends InstrumentEvent {
         (this.assetSettlementAmount.compareTo(terminationEvent.getAssetSettlementAmount()) == 0) &&
         (this.fundingAccruedAmount.compareTo(terminationEvent.getFundingAccruedAmount()) == 0) &&
         (this.terminationAmount.compareTo(terminationEvent.getTerminationAmount()) == 0) &&
+        (this.terminationPrice.compareTo(terminationEvent.getTerminationPrice()) == 0) &&
         super.equals(o);
   }
 
@@ -309,7 +335,7 @@ public class TerminationEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, settlementDate, settlementCurrency, triggeringEventType, triggeringEventId, settlementMethod, assetSettlementAmount, fundingAccruedAmount, terminationAmount, super.hashCode());
+    return Objects.hash(effectiveDate, settlementDate, settlementCurrency, triggeringEventType, triggeringEventId, settlementMethod, assetSettlementAmount, fundingAccruedAmount, terminationAmount, terminationPrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -333,6 +359,7 @@ public class TerminationEvent extends InstrumentEvent {
     sb.append("    assetSettlementAmount: ").append(toIndentedString(assetSettlementAmount)).append("\n");
     sb.append("    fundingAccruedAmount: ").append(toIndentedString(fundingAccruedAmount)).append("\n");
     sb.append("    terminationAmount: ").append(toIndentedString(terminationAmount)).append("\n");
+    sb.append("    terminationPrice: ").append(toIndentedString(terminationPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -365,6 +392,7 @@ public class TerminationEvent extends InstrumentEvent {
     openapiFields.add("assetSettlementAmount");
     openapiFields.add("fundingAccruedAmount");
     openapiFields.add("terminationAmount");
+    openapiFields.add("terminationPrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

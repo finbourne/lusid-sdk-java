@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **currencies** | [**RecDefCurrencies**](RecDefCurrencies.md) |  | [optional] [default to RecDefCurrencies]
 **rulesets** | [**List&lt;RecDefRuleset&gt;**](RecDefRuleset.md) | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. | [default to List<RecDefRuleset>]
 **reviewConfiguration** | [**RecReviewConfiguration**](RecReviewConfiguration.md) |  | [optional] [default to RecReviewConfiguration]
+**datePolicy** | [**RecDatePolicy**](RecDatePolicy.md) |  | [optional] [default to RecDatePolicy]
 
 ```java
 import com.finbourne.lusid.model.UpdateRecDefinitionRequest;
@@ -31,6 +32,7 @@ RecDefRecipeIds ValuationRecipes = new RecDefRecipeIds();
 RecDefCurrencies Currencies = new RecDefCurrencies();
 List<RecDefRuleset> Rulesets = new List<RecDefRuleset>();
 RecReviewConfiguration ReviewConfiguration = new RecReviewConfiguration();
+RecDatePolicy DatePolicy = new RecDatePolicy();
 
 
 UpdateRecDefinitionRequest updateRecDefinitionRequestInstance = new UpdateRecDefinitionRequest()
@@ -43,7 +45,8 @@ UpdateRecDefinitionRequest updateRecDefinitionRequestInstance = new UpdateRecDef
     .ValuationRecipes(ValuationRecipes)
     .Currencies(Currencies)
     .Rulesets(Rulesets)
-    .ReviewConfiguration(ReviewConfiguration);
+    .ReviewConfiguration(ReviewConfiguration)
+    .DatePolicy(DatePolicy);
 ```
 
 
