@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The left and right effective and asAt dates of the data reconciled in a run.
+ * The left and right effective and asAt dates of the data reconciled in a run, plus the exclusive lower bound of each side&#39;s activity window on activity-based rec types.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecDatesReconciled {
@@ -65,6 +66,14 @@ public class RecDatesReconciled {
   public static final String SERIALIZED_NAME_RIGHT_AS_AT = "rightAsAt";
   @SerializedName(SERIALIZED_NAME_RIGHT_AS_AT)
   private OffsetDateTime rightAsAt;
+
+  public static final String SERIALIZED_NAME_LEFT_ACTIVITY_SINCE_EFFECTIVE_AT = "leftActivitySinceEffectiveAt";
+  @SerializedName(SERIALIZED_NAME_LEFT_ACTIVITY_SINCE_EFFECTIVE_AT)
+  private OffsetDateTime leftActivitySinceEffectiveAt;
+
+  public static final String SERIALIZED_NAME_RIGHT_ACTIVITY_SINCE_EFFECTIVE_AT = "rightActivitySinceEffectiveAt";
+  @SerializedName(SERIALIZED_NAME_RIGHT_ACTIVITY_SINCE_EFFECTIVE_AT)
+  private OffsetDateTime rightActivitySinceEffectiveAt;
 
   public RecDatesReconciled() {
   }
@@ -153,6 +162,48 @@ public class RecDatesReconciled {
   }
 
 
+  public RecDatesReconciled leftActivitySinceEffectiveAt(OffsetDateTime leftActivitySinceEffectiveAt) {
+    
+    this.leftActivitySinceEffectiveAt = leftActivitySinceEffectiveAt;
+    return this;
+  }
+
+   /**
+   * The exclusive lower bound of the left side&#39;s activity window, so the window is (leftActivitySinceEffectiveAt, leftEffectiveAt]. Populated only on activity-based rec types; null on point-in-time rec types and when the definition has no activity window.
+   * @return leftActivitySinceEffectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getLeftActivitySinceEffectiveAt() {
+    return leftActivitySinceEffectiveAt;
+  }
+
+
+  public void setLeftActivitySinceEffectiveAt(OffsetDateTime leftActivitySinceEffectiveAt) {
+    this.leftActivitySinceEffectiveAt = leftActivitySinceEffectiveAt;
+  }
+
+
+  public RecDatesReconciled rightActivitySinceEffectiveAt(OffsetDateTime rightActivitySinceEffectiveAt) {
+    
+    this.rightActivitySinceEffectiveAt = rightActivitySinceEffectiveAt;
+    return this;
+  }
+
+   /**
+   * The exclusive lower bound of the right side&#39;s activity window, so the window is (rightActivitySinceEffectiveAt, rightEffectiveAt]. Populated only on activity-based rec types; null on point-in-time rec types and when the definition has no activity window.
+   * @return rightActivitySinceEffectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getRightActivitySinceEffectiveAt() {
+    return rightActivitySinceEffectiveAt;
+  }
+
+
+  public void setRightActivitySinceEffectiveAt(OffsetDateTime rightActivitySinceEffectiveAt) {
+    this.rightActivitySinceEffectiveAt = rightActivitySinceEffectiveAt;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,12 +217,25 @@ public class RecDatesReconciled {
     return Objects.equals(this.leftEffectiveAt, recDatesReconciled.leftEffectiveAt) &&
         Objects.equals(this.leftAsAt, recDatesReconciled.leftAsAt) &&
         Objects.equals(this.rightEffectiveAt, recDatesReconciled.rightEffectiveAt) &&
-        Objects.equals(this.rightAsAt, recDatesReconciled.rightAsAt);
+        Objects.equals(this.rightAsAt, recDatesReconciled.rightAsAt) &&
+        Objects.equals(this.leftActivitySinceEffectiveAt, recDatesReconciled.leftActivitySinceEffectiveAt) &&
+        Objects.equals(this.rightActivitySinceEffectiveAt, recDatesReconciled.rightActivitySinceEffectiveAt);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(leftEffectiveAt, leftAsAt, rightEffectiveAt, rightAsAt);
+    return Objects.hash(leftEffectiveAt, leftAsAt, rightEffectiveAt, rightAsAt, leftActivitySinceEffectiveAt, rightActivitySinceEffectiveAt);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -182,6 +246,8 @@ public class RecDatesReconciled {
     sb.append("    leftAsAt: ").append(toIndentedString(leftAsAt)).append("\n");
     sb.append("    rightEffectiveAt: ").append(toIndentedString(rightEffectiveAt)).append("\n");
     sb.append("    rightAsAt: ").append(toIndentedString(rightAsAt)).append("\n");
+    sb.append("    leftActivitySinceEffectiveAt: ").append(toIndentedString(leftActivitySinceEffectiveAt)).append("\n");
+    sb.append("    rightActivitySinceEffectiveAt: ").append(toIndentedString(rightActivitySinceEffectiveAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,6 +274,8 @@ public class RecDatesReconciled {
     openapiFields.add("leftAsAt");
     openapiFields.add("rightEffectiveAt");
     openapiFields.add("rightAsAt");
+    openapiFields.add("leftActivitySinceEffectiveAt");
+    openapiFields.add("rightActivitySinceEffectiveAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

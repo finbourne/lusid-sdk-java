@@ -211,7 +211,9 @@ public enum PropertyDomain {
   
   CURRENCYGROUP("CurrencyGroup"),
   
-  RECDEFINITION("RecDefinition");
+  RECDEFINITION("RecDefinition"),
+  
+  RECRESULT("RecResult");
 
   private String value;
 

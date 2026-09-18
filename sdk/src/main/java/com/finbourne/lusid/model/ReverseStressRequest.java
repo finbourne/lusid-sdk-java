@@ -274,7 +274,7 @@ public class ReverseStressRequest {
   }
 
    /**
-   * Three letter ISO currency string to report in. If absent the portfolio&#39;s own currency is used,  which makes the target ambiguous across a multi-currency portfolio group - supply it there.
+   * Three to five letter currency string to report in. If absent the portfolio&#39;s own currency is used,  which makes the target ambiguous across a multi-currency portfolio group - supply it there.
    * @return reportCurrency
   **/
   @jakarta.annotation.Nullable

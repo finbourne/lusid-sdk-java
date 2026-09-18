@@ -434,7 +434,7 @@ public class Placement {
   }
 
    /**
-   * The type of this placement (Market, Limit, etc).
+   * The type of this placement (Market, Limit, Stop, StopLimit, etc). A Limit placement must specify a limit price, a Stop placement a stop price, and a StopLimit placement both.
    * @return type
   **/
   @jakarta.annotation.Nonnull

@@ -26,6 +26,7 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.CreateReferencePortfolioRequest;
+import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.GetReferencePortfolioConstituentsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -323,6 +324,259 @@ public class ReferencePortfolioApi {
      */
     public APIcreateReferencePortfolioRequest createReferencePortfolio(String scope, CreateReferencePortfolioRequest createReferencePortfolioRequest) {
         return new APIcreateReferencePortfolioRequest(scope, createReferencePortfolioRequest);
+    }
+    private okhttp3.Call deleteReferencePortfolioConstituentAdjustmentCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteReferencePortfolioConstituentAdjustmentCall(scope, code, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteReferencePortfolioConstituentAdjustmentCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/referenceportfolios/{scope}/{code}/constituentsadjustment"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteReferencePortfolioConstituentAdjustmentValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteReferencePortfolioConstituentAdjustment(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteReferencePortfolioConstituentAdjustment(Async)");
+        }
+
+        // verify the required parameter 'effectiveAt' is set
+        if (effectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'effectiveAt' when calling deleteReferencePortfolioConstituentAdjustment(Async)");
+        }
+
+        return deleteReferencePortfolioConstituentAdjustmentCall(scope, code, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = deleteReferencePortfolioConstituentAdjustmentValidateBeforeCall(scope, code, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteReferencePortfolioConstituentAdjustmentValidateBeforeCall(scope, code, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteReferencePortfolioConstituentAdjustmentAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReferencePortfolioConstituentAdjustmentValidateBeforeCall(scope, code, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteReferencePortfolioConstituentAdjustmentAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReferencePortfolioConstituentAdjustmentValidateBeforeCall(scope, code, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteReferencePortfolioConstituentAdjustmentRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+
+        private APIdeleteReferencePortfolioConstituentAdjustmentRequest(String scope, String code, String effectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+        }
+
+        /**
+         * Build call for deleteReferencePortfolioConstituentAdjustment
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReferencePortfolioConstituentAdjustmentCall(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(scope, code, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(scope, code, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteReferencePortfolioConstituentAdjustmentWithHttpInfo(scope, code, effectiveAt, opts);
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteReferencePortfolioConstituentAdjustmentAsync(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteReferencePortfolioConstituentAdjustment request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteReferencePortfolioConstituentAdjustmentAsync(scope, code, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * DeleteReferencePortfolioConstituentAdjustment: Delete constituents adjustment
+     * Delete the constituents adjustment made to a reference portfolio at the specified effective  datetime. After deletion the constituents in effect revert to the previous effective-dated  adjustment, or to none if there is no earlier adjustment.
+     * @param scope The scope of the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely   identifies the reference portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label at which the constituents adjustment was made. (required)
+     * @return APIdeleteReferencePortfolioConstituentAdjustmentRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the constituents adjustment was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteReferencePortfolioConstituentAdjustmentRequest deleteReferencePortfolioConstituentAdjustment(String scope, String code, String effectiveAt) {
+        return new APIdeleteReferencePortfolioConstituentAdjustmentRequest(scope, code, effectiveAt);
     }
     private okhttp3.Call getReferencePortfolioConstituentsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return getReferencePortfolioConstituentsCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());

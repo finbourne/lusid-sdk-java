@@ -5,7 +5,7 @@ A minor unit currency within a currency group.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currency** | **String** | The three-letter, case-sensitive currency code of the minor unit, e.g. GBX. | [default to String]
+**currency** | **String** | The three to five letter, case-sensitive currency code of the minor unit, e.g. GBX. | [default to String]
 **fractionOfMajor** | **java.math.BigDecimal** | The fraction of the major unit that one minor unit is worth, greater than zero and no more than one, e.g. 0.01 for GBX against GBP. | [default to java.math.BigDecimal]
 
 ```java

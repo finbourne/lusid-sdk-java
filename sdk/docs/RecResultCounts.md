@@ -5,6 +5,7 @@ Counts of results broken down by the structural categories that align with the r
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**total** | **Integer** | The total number of results in this result set, across all categories. | [default to Integer]
 **openExceptions** | [**RecOpenExceptionCounts**](RecOpenExceptionCounts.md) |  | [default to RecOpenExceptionCounts]
 **closedExceptions** | [**RecClosedExceptionCounts**](RecClosedExceptionCounts.md) |  | [default to RecClosedExceptionCounts]
 **matches** | [**RecMatchCounts**](RecMatchCounts.md) |  | [default to RecMatchCounts]
@@ -15,12 +16,14 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
+Integer Total = new Integer("100.00");
 RecOpenExceptionCounts OpenExceptions = new RecOpenExceptionCounts();
 RecClosedExceptionCounts ClosedExceptions = new RecClosedExceptionCounts();
 RecMatchCounts Matches = new RecMatchCounts();
 
 
 RecResultCounts recResultCountsInstance = new RecResultCounts()
+    .Total(Total)
     .OpenExceptions(OpenExceptions)
     .ClosedExceptions(ClosedExceptions)
     .Matches(Matches);

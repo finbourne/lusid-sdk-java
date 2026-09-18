@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityResult;
 import com.finbourne.lusid.model.PortfolioHoldingResult;
+import com.finbourne.lusid.model.PortfolioTransactionResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -120,6 +121,10 @@ public class DataQualityCheckResult {
   public static final String SERIALIZED_NAME_PORTFOLIO_HOLDING = "portfolioHolding";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_HOLDING)
   private PortfolioHoldingResult portfolioHolding;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_TRANSACTION = "portfolioTransaction";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_TRANSACTION)
+  private PortfolioTransactionResult portfolioTransaction;
 
   public DataQualityCheckResult() {
   }
@@ -446,7 +451,7 @@ public class DataQualityCheckResult {
   }
 
    /**
-   * Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio.
+   * Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
    * @return resultId
   **/
   @jakarta.annotation.Nullable
@@ -481,6 +486,27 @@ public class DataQualityCheckResult {
   }
 
 
+  public DataQualityCheckResult portfolioTransaction(PortfolioTransactionResult portfolioTransaction) {
+    
+    this.portfolioTransaction = portfolioTransaction;
+    return this;
+  }
+
+   /**
+   * Get portfolioTransaction
+   * @return portfolioTransaction
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioTransactionResult getPortfolioTransaction() {
+    return portfolioTransaction;
+  }
+
+
+  public void setPortfolioTransaction(PortfolioTransactionResult portfolioTransaction) {
+    this.portfolioTransaction = portfolioTransaction;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -507,7 +533,8 @@ public class DataQualityCheckResult {
         Objects.equals(this.countRuleBreaches, dataQualityCheckResult.countRuleBreaches) &&
         Objects.equals(this.errorDetail, dataQualityCheckResult.errorDetail) &&
         Objects.equals(this.resultId, dataQualityCheckResult.resultId) &&
-        Objects.equals(this.portfolioHolding, dataQualityCheckResult.portfolioHolding);
+        Objects.equals(this.portfolioHolding, dataQualityCheckResult.portfolioHolding) &&
+        Objects.equals(this.portfolioTransaction, dataQualityCheckResult.portfolioTransaction);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -516,7 +543,7 @@ public class DataQualityCheckResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId, portfolioHolding);
+    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId, portfolioHolding, portfolioTransaction);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -547,6 +574,7 @@ public class DataQualityCheckResult {
     sb.append("    errorDetail: ").append(toIndentedString(errorDetail)).append("\n");
     sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
     sb.append("    portfolioHolding: ").append(toIndentedString(portfolioHolding)).append("\n");
+    sb.append("    portfolioTransaction: ").append(toIndentedString(portfolioTransaction)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -586,6 +614,7 @@ public class DataQualityCheckResult {
     openapiFields.add("errorDetail");
     openapiFields.add("resultId");
     openapiFields.add("portfolioHolding");
+    openapiFields.add("portfolioTransaction");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -647,6 +676,10 @@ public class DataQualityCheckResult {
       // validate the optional field `portfolioHolding`
       if (jsonObj.get("portfolioHolding") != null && !jsonObj.get("portfolioHolding").isJsonNull()) {
         PortfolioHoldingResult.validateJsonElement(jsonObj.get("portfolioHolding"));
+      }
+      // validate the optional field `portfolioTransaction`
+      if (jsonObj.get("portfolioTransaction") != null && !jsonObj.get("portfolioTransaction").isJsonNull()) {
+        PortfolioTransactionResult.validateJsonElement(jsonObj.get("portfolioTransaction"));
       }
   }
 

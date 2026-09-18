@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.9985
+  version: 0.11.10003
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -54899,7 +54899,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -55000,6 +55000,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -55084,7 +55085,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -55185,6 +55186,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -55372,7 +55374,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -55473,6 +55475,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -75623,9 +75626,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75644,9 +75647,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75665,9 +75668,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75686,9 +75689,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -101685,7 +101688,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -101786,6 +101789,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: Scope of the property definition
@@ -102022,7 +102026,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -102123,6 +102127,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -102205,7 +102210,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -102306,6 +102311,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -102508,7 +102514,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -102609,6 +102615,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -102817,7 +102824,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -102918,6 +102925,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -103130,7 +103138,7 @@ paths:
           \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry,\
           \ Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
           \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-          \ Transfer, RecDefinition."
+          \ Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -103231,6 +103239,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -103375,7 +103384,7 @@ paths:
           \ Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition,\
           \ Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod,\
           \ TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction,\
-          \ TransactionFeeType, PaymentInstruction, Transfer, RecDefinition."
+          \ TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult."
         explode: false
         in: path
         name: domain
@@ -103476,6 +103485,7 @@ paths:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -116333,6 +116343,92 @@ paths:
       - Reference Portfolio
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/referenceportfolios/{scope}/{code}/constituentsadjustment:
+    delete:
+      description: "Delete the constituents adjustment made to a reference portfolio\
+        \ at the specified effective\r\ndatetime. After deletion the constituents\
+        \ in effect revert to the previous effective-dated\r\nadjustment, or to none\
+        \ if there is no earlier adjustment."
+      operationId: DeleteReferencePortfolioConstituentAdjustment
+      parameters:
+      - description: The scope of the reference portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The code of the reference portfolio. Together with the scope\
+          \ this uniquely\r\n identifies the reference portfolio."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which the constituents
+          adjustment was made.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: true
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime that the constituents adjustment was deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "DeleteReferencePortfolioConstituentAdjustment: Delete constituents\
+        \ adjustment"
+      tags:
+      - Reference Portfolio
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/referenceportfolios/{scope}/{code}/constituentsadjustments:
     get:
@@ -170713,8 +170809,10 @@ components:
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -170912,8 +171010,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -171048,8 +171148,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -171293,8 +171395,10 @@ components:
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                 leftAsAt: 2000-01-23T04:56:07.000+00:00
                 rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -171429,8 +171533,10 @@ components:
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                 leftAsAt: 2000-01-23T04:56:07.000+00:00
                 rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -193056,7 +193162,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer, RecDefinition."
+            \ Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -193152,6 +193258,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         scope:
           description: The scope that the property exists in.
@@ -193617,7 +193724,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer, RecDefinition."
+            \ Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -193713,6 +193820,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -194034,7 +194142,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer, RecDefinition."
+            \ PaymentInstruction, Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -194130,6 +194238,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         scope:
           description: The scope that the property exists in.
@@ -197004,9 +197113,10 @@ components:
             description: "The currency the curve is quoted in; disambiguates a ticker\
               \ quoted in more than one\r\ncurrency. Omitted, the shift matches the\
               \ ticker in every currency."
-            maxLength: 3
+            maxLength: 5
             minLength: 3
             nullable: true
+            pattern: "^[a-zA-Z]*$"
             type: string
           amount:
             description: "The size of the shift, in the units given by Scale: basis\
@@ -197230,9 +197340,9 @@ components:
         fractionOfMajor: 0.08008281904610115
       properties:
         currency:
-          description: "The three-letter, case-sensitive currency code of the minor\
-            \ unit, e.g. GBX."
-          maxLength: 3
+          description: "The three to five letter, case-sensitive currency code of\
+            \ the minor unit, e.g. GBX."
+          maxLength: 5
           minLength: 3
           pattern: "^[a-zA-Z]*$"
           type: string
@@ -197302,8 +197412,8 @@ components:
           nullable: true
           type: string
         majorUnitCurrency:
-          description: "The three-letter, case-sensitive currency code of the group's\
-            \ major unit, e.g. GBP for the sterling group."
+          description: "The three to five letter, case-sensitive currency code of\
+            \ the group's major unit, e.g. GBP for the sterling group."
           nullable: true
           type: string
         circulationDomain:
@@ -200441,6 +200551,20 @@ components:
         checkDefinitionCode: checkDefinitionCode
         resultId: resultId
         ruleSetDisplayName: ruleSetDisplayName
+        portfolioTransaction:
+          entityType: entityType
+          sourcePortfolioScope: sourcePortfolioScope
+          asAt: 2000-01-23T04:56:07.000+00:00
+          entityUniqueId: entityUniqueId
+          transactionView: transactionView
+          transactionDate: 2000-01-23T04:56:07.000+00:00
+          transactionId: transactionId
+          instrumentDisplayName: instrumentDisplayName
+          transactionType: transactionType
+          sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+          sourcePortfolioDisplayName: sourcePortfolioDisplayName
+          lusidInstrumentId: lusidInstrumentId
+          sourcePortfolioCode: sourcePortfolioCode
         checkDefinitionDisplayName: checkDefinitionDisplayName
         ruleKey: ruleKey
         ruleDescription: ruleDescription
@@ -200543,14 +200667,15 @@ components:
           nullable: true
           type: string
         resultId:
-          description: "Unique identifier for the result in format: {{GUID of Check\
-            \ Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.\r\
-            \nFor holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}},\
-            \ since a holding id only\r\nidentifies a holding within its own portfolio."
+          description: "Unique, stable identifier for this result, scoped to the check\
+            \ definition, ruleset, rule and breaching\r\nentity. Treat as opaque —\
+            \ composition varies by entityType."
           nullable: true
           type: string
         portfolioHolding:
           $ref: '#/components/schemas/PortfolioHoldingResult'
+        portfolioTransaction:
+          $ref: '#/components/schemas/PortfolioTransactionResult'
       type: object
     DataScope:
       additionalProperties: false
@@ -208091,8 +208216,9 @@ components:
           type: string
         accrualCurrency:
           description: The accrual currency.
-          maxLength: 3
+          maxLength: 5
           minLength: 0
+          pattern: "^[a-zA-Z]*$"
           type: string
         treatment:
           description: "The accrual period of the Fee. Available values: Daily, Monthly."
@@ -208403,8 +208529,9 @@ components:
           type: string
         accrualCurrency:
           description: The accrual currency.
-          maxLength: 3
+          maxLength: 5
           minLength: 0
+          pattern: "^[a-zA-Z]*$"
           type: string
         treatment:
           description: "The accrual period of the Fee. Available values: Daily, Monthly."
@@ -218758,7 +218885,7 @@ components:
       - properties:
           currencyPair:
             minLength: 1
-            pattern: "^[A-Z]{3}/[A-Z]{3}$"
+            pattern: "^[A-Z]{3,5}/[A-Z]{3,5}$"
             type: string
           amount:
             format: double
@@ -222855,13 +222982,13 @@ components:
       properties:
         left:
           description: Currency for the left side of a reconciliation
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           pattern: "^[a-zA-Z]*$"
           type: string
         right:
           description: Currency for the right side of a reconciliation
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           pattern: "^[a-zA-Z]*$"
           type: string
@@ -224958,7 +225085,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer, RecDefinition."
+            \ Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -225054,6 +225181,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -226752,12 +226880,13 @@ components:
           nullable: true
           type: array
         reportCurrency:
-          description: "Three letter ISO currency string indicating what currency\
+          description: "Three to five letter currency string indicating what currency\
             \ to report in for ReportCurrency denominated queries.\r\nIf not present,\
             \ then the currency of the relevant portfolio will be used in its place."
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           nullable: true
+          pattern: "^[a-zA-Z]*$"
           type: string
         equipWithSubtotals:
           description: Flag directing the Valuation call to populate the results with
@@ -227106,25 +227235,33 @@ components:
           $ref: '#/components/schemas/ResourceId'
         leftEffectiveAt:
           description: "The left effective datetime, as a date-time or a LUSID cut\
-            \ label. Defaults to the current date-time."
+            \ label. Defaults to the current date-time. When the definition's datePolicy.effectiveAtProgression\
+            \ is Series, must be strictly after the previous instance's leftEffectiveAt."
           format: dateorcutlabel
           nullable: true
           type: string
         leftAsAt:
           description: "The left asAt datetime, as a date-time or a LUSID cut label.\
-            \ Defaults to the current date-time."
+            \ Must be omitted when the definition's datePolicy.asAtPolicy.left is\
+            \ Latest, as the system reconciles at the latest knowledge on every run.\
+            \ When it is Explicit, defaults to the current date-time and is pinned\
+            \ on the instance."
           format: dateorcutlabel
           nullable: true
           type: string
         rightEffectiveAt:
           description: "The right effective datetime, as a date-time or a LUSID cut\
-            \ label. Defaults to the current date-time."
+            \ label. Defaults to the current date-time. When the definition's datePolicy.effectiveAtProgression\
+            \ is Series, must be strictly after the previous instance's rightEffectiveAt."
           format: dateorcutlabel
           nullable: true
           type: string
         rightAsAt:
           description: "The right asAt datetime, as a date-time or a LUSID cut label.\
-            \ Defaults to the current date-time."
+            \ Must be omitted when the definition's datePolicy.asAtPolicy.right is\
+            \ Latest, as the system reconciles at the latest knowledge on every run.\
+            \ When it is Explicit, defaults to the current date-time and is pinned\
+            \ on the instance."
           format: dateorcutlabel
           nullable: true
           type: string
@@ -240199,15 +240336,16 @@ components:
             type: string
           ccy:
             description: "For options carrying per-currency overrides (e.g. HullWhite1F's\
-              \ VolatilityByCurrency): the\r\nISO currency code whose effective value\
-              \ the shift moves. The shifted entry starts from the\r\nexisting override\
-              \ for that currency, or from the scalar option where no override exists.\r\
-              \nOmitted, the shift moves the scalar option and every per-currency\
-              \ override together, so the\r\neffective value moves for every instrument\
-              \ regardless of which level supplies it."
-            maxLength: 3
+              \ VolatilityByCurrency): the\r\nthree to five letter currency code whose\
+              \ effective value the shift moves. The shifted entry starts from the\r\
+              \nexisting override for that currency, or from the scalar option where\
+              \ no override exists.\r\nOmitted, the shift moves the scalar option\
+              \ and every per-currency override together, so the\r\neffective value\
+              \ moves for every instrument regardless of which level supplies it."
+            maxLength: 5
             minLength: 3
             nullable: true
+            pattern: "^[a-zA-Z]*$"
             type: string
           amount:
             description: "The size of the shift, in the units given by ShiftType:\
@@ -259501,8 +259639,10 @@ components:
           datesLocked:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           runLogs:
             key:
               runCount: 0
@@ -259514,47 +259654,50 @@ components:
                   outcome: outcome
                 supersededAsAt: 2000-01-23T04:56:07.000+00:00
                 resultCounts:
+                  total: 1
                   closedExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 2
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 4
                     byClosureType:
                       forceMatched: 1
-                      accepted: 7
-                      cleared: 4
+                      accepted: 1
+                      cleared: 7
                   openExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 1
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 5
                     byResultType:
-                      partialMatch: 5
-                      partialCross: 2
+                      partialMatch: 2
+                      partialCross: 7
                       break: 5
                   matches:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
                     total: 1
                     byResultType:
-                      match: 1
-                      cross: 6
+                      match: 6
+                      cross: 7
                 review:
-                  countReviewed: 7
-                  countRequired: 1
-                  countNotRequired: 4
-                  completionRatio: 5.025004791520295
+                  countReviewed: 1
+                  countRequired: 4
+                  countNotRequired: 5
+                  completionRatio: 9.965781217890562
                 runNumber: 6
                 runAsAt: 2000-01-23T04:56:07.000+00:00
                 datesReconciled:
                   rightAsAt: 2000-01-23T04:56:07.000+00:00
                   leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                   leftAsAt: 2000-01-23T04:56:07.000+00:00
                   rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               - approvalStatus: approvalStatus
                 recResultSetHref: https://openapi-generator.tech
                 execution:
@@ -259562,47 +259705,50 @@ components:
                   outcome: outcome
                 supersededAsAt: 2000-01-23T04:56:07.000+00:00
                 resultCounts:
+                  total: 1
                   closedExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 2
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 4
                     byClosureType:
                       forceMatched: 1
-                      accepted: 7
-                      cleared: 4
+                      accepted: 1
+                      cleared: 7
                   openExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 1
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 5
                     byResultType:
-                      partialMatch: 5
-                      partialCross: 2
+                      partialMatch: 2
+                      partialCross: 7
                       break: 5
                   matches:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
                     total: 1
                     byResultType:
-                      match: 1
-                      cross: 6
+                      match: 6
+                      cross: 7
                 review:
-                  countReviewed: 7
-                  countRequired: 1
-                  countNotRequired: 4
-                  completionRatio: 5.025004791520295
+                  countReviewed: 1
+                  countRequired: 4
+                  countNotRequired: 5
+                  completionRatio: 9.965781217890562
                 runNumber: 6
                 runAsAt: 2000-01-23T04:56:07.000+00:00
                 datesReconciled:
                   rightAsAt: 2000-01-23T04:56:07.000+00:00
                   leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                   leftAsAt: 2000-01-23T04:56:07.000+00:00
                   rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           recDefinitionDisplayName: recDefinitionDisplayName
           links:
@@ -259651,8 +259797,10 @@ components:
           datesLocked:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           runLogs:
             key:
               runCount: 0
@@ -259664,47 +259812,50 @@ components:
                   outcome: outcome
                 supersededAsAt: 2000-01-23T04:56:07.000+00:00
                 resultCounts:
+                  total: 1
                   closedExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 2
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 4
                     byClosureType:
                       forceMatched: 1
-                      accepted: 7
-                      cleared: 4
+                      accepted: 1
+                      cleared: 7
                   openExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 1
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 5
                     byResultType:
-                      partialMatch: 5
-                      partialCross: 2
+                      partialMatch: 2
+                      partialCross: 7
                       break: 5
                   matches:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
                     total: 1
                     byResultType:
-                      match: 1
-                      cross: 6
+                      match: 6
+                      cross: 7
                 review:
-                  countReviewed: 7
-                  countRequired: 1
-                  countNotRequired: 4
-                  completionRatio: 5.025004791520295
+                  countReviewed: 1
+                  countRequired: 4
+                  countNotRequired: 5
+                  completionRatio: 9.965781217890562
                 runNumber: 6
                 runAsAt: 2000-01-23T04:56:07.000+00:00
                 datesReconciled:
                   rightAsAt: 2000-01-23T04:56:07.000+00:00
                   leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                   leftAsAt: 2000-01-23T04:56:07.000+00:00
                   rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               - approvalStatus: approvalStatus
                 recResultSetHref: https://openapi-generator.tech
                 execution:
@@ -259712,47 +259863,50 @@ components:
                   outcome: outcome
                 supersededAsAt: 2000-01-23T04:56:07.000+00:00
                 resultCounts:
+                  total: 1
                   closedExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 2
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 4
                     byClosureType:
                       forceMatched: 1
-                      accepted: 7
-                      cleared: 4
+                      accepted: 1
+                      cleared: 7
                   openExceptions:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
-                    total: 1
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
+                    total: 5
                     byResultType:
-                      partialMatch: 5
-                      partialCross: 2
+                      partialMatch: 2
+                      partialCross: 7
                       break: 5
                   matches:
                     byReviewStatus:
-                      notRequired: 9
-                      reviewed: 3
-                      required: 7
+                      notRequired: 3
+                      reviewed: 2
+                      required: 9
                     total: 1
                     byResultType:
-                      match: 1
-                      cross: 6
+                      match: 6
+                      cross: 7
                 review:
-                  countReviewed: 7
-                  countRequired: 1
-                  countNotRequired: 4
-                  completionRatio: 5.025004791520295
+                  countReviewed: 1
+                  countRequired: 4
+                  countNotRequired: 5
+                  completionRatio: 9.965781217890562
                 runNumber: 6
                 runAsAt: 2000-01-23T04:56:07.000+00:00
                 datesReconciled:
                   rightAsAt: 2000-01-23T04:56:07.000+00:00
                   leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                   leftAsAt: 2000-01-23T04:56:07.000+00:00
                   rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           recDefinitionDisplayName: recDefinitionDisplayName
           links:
@@ -260110,8 +260264,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -260246,8 +260402,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -260391,8 +260549,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -260416,40 +260576,41 @@ components:
             currentUserCanDecide: true
             description: description
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           submissions:
           - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260473,40 +260634,41 @@ components:
               currentUserCanDecide: true
               description: description
             resultCounts:
+              total: 1
               closedExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 2
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 4
                 byClosureType:
                   forceMatched: 1
-                  accepted: 7
-                  cleared: 4
+                  accepted: 1
+                  cleared: 7
               openExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 1
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 5
                 byResultType:
-                  partialMatch: 5
-                  partialCross: 2
+                  partialMatch: 2
+                  partialCross: 7
                   break: 5
               matches:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
                 total: 1
                 byResultType:
-                  match: 1
-                  cross: 6
+                  match: 6
+                  cross: 7
             review:
-              countReviewed: 7
-              countRequired: 1
-              countNotRequired: 4
-              completionRatio: 5.025004791520295
+              countReviewed: 1
+              countRequired: 4
+              countNotRequired: 5
+              completionRatio: 9.965781217890562
             submissions:
             - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
               asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260534,8 +260696,10 @@ components:
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           - approvalStatus: approvalStatus
             execution:
               errorDetail: errorDetail
@@ -260549,40 +260713,41 @@ components:
               currentUserCanDecide: true
               description: description
             resultCounts:
+              total: 1
               closedExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 2
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 4
                 byClosureType:
                   forceMatched: 1
-                  accepted: 7
-                  cleared: 4
+                  accepted: 1
+                  cleared: 7
               openExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 1
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 5
                 byResultType:
-                  partialMatch: 5
-                  partialCross: 2
+                  partialMatch: 2
+                  partialCross: 7
                   break: 5
               matches:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
                 total: 1
                 byResultType:
-                  match: 1
-                  cross: 6
+                  match: 6
+                  cross: 7
             review:
-              countReviewed: 7
-              countRequired: 1
-              countNotRequired: 4
-              completionRatio: 5.025004791520295
+              countReviewed: 1
+              countRequired: 4
+              countNotRequired: 5
+              completionRatio: 9.965781217890562
             submissions:
             - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
               asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260610,8 +260775,10 @@ components:
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           runNumber: 0
           decisions:
           - reason: reason
@@ -260655,8 +260822,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -260680,40 +260849,41 @@ components:
             currentUserCanDecide: true
             description: description
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           submissions:
           - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260737,40 +260907,41 @@ components:
               currentUserCanDecide: true
               description: description
             resultCounts:
+              total: 1
               closedExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 2
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 4
                 byClosureType:
                   forceMatched: 1
-                  accepted: 7
-                  cleared: 4
+                  accepted: 1
+                  cleared: 7
               openExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 1
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 5
                 byResultType:
-                  partialMatch: 5
-                  partialCross: 2
+                  partialMatch: 2
+                  partialCross: 7
                   break: 5
               matches:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
                 total: 1
                 byResultType:
-                  match: 1
-                  cross: 6
+                  match: 6
+                  cross: 7
             review:
-              countReviewed: 7
-              countRequired: 1
-              countNotRequired: 4
-              completionRatio: 5.025004791520295
+              countReviewed: 1
+              countRequired: 4
+              countNotRequired: 5
+              completionRatio: 9.965781217890562
             submissions:
             - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
               asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260798,8 +260969,10 @@ components:
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           - approvalStatus: approvalStatus
             execution:
               errorDetail: errorDetail
@@ -260813,40 +260986,41 @@ components:
               currentUserCanDecide: true
               description: description
             resultCounts:
+              total: 1
               closedExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 2
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 4
                 byClosureType:
                   forceMatched: 1
-                  accepted: 7
-                  cleared: 4
+                  accepted: 1
+                  cleared: 7
               openExceptions:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
-                total: 1
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
+                total: 5
                 byResultType:
-                  partialMatch: 5
-                  partialCross: 2
+                  partialMatch: 2
+                  partialCross: 7
                   break: 5
               matches:
                 byReviewStatus:
-                  notRequired: 9
-                  reviewed: 3
-                  required: 7
+                  notRequired: 3
+                  reviewed: 2
+                  required: 9
                 total: 1
                 byResultType:
-                  match: 1
-                  cross: 6
+                  match: 6
+                  cross: 7
             review:
-              countReviewed: 7
-              countRequired: 1
-              countNotRequired: 4
-              completionRatio: 5.025004791520295
+              countReviewed: 1
+              countRequired: 4
+              countNotRequired: 5
+              completionRatio: 9.965781217890562
             submissions:
             - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
               asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -260874,8 +261048,10 @@ components:
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
               leftAsAt: 2000-01-23T04:56:07.000+00:00
               rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           runNumber: 0
           decisions:
           - reason: reason
@@ -264148,7 +264324,7 @@ components:
         currency:
           description: ISO 4217 currency code identifying the currency-specific series
             row. Must match the top-level currency field.
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           type: string
         custodianAccountScope:
@@ -266808,7 +266984,9 @@ components:
           minLength: 1
           type: string
         type:
-          description: "The type of this placement (Market, Limit, etc)."
+          description: "The type of this placement (Market, Limit, Stop, StopLimit,\
+            \ etc). A Limit placement must specify a limit price, a Stop placement\
+            \ a stop price, and a StopLimit placement both."
           minLength: 1
           type: string
         createdDate:
@@ -266947,7 +267125,9 @@ components:
           minLength: 1
           type: string
         type:
-          description: "The type of this placement (Market, Limit, etc)."
+          description: "The type of this placement (Market, Limit, Stop, StopLimit,\
+            \ etc). A Limit placement must specify a limit price, a Stop placement\
+            \ a stop price, and a StopLimit placement both."
           minLength: 1
           type: string
         createdDate:
@@ -267094,7 +267274,7 @@ components:
       type: object
     PlacementUpdateRequest:
       additionalProperties: false
-      description: A request to create or update a Placement.
+      description: A request to update a Placement.
       example:
         entryType: entryType
         amount:
@@ -267104,6 +267284,7 @@ components:
         quantity: 0.8008281904610115
         limitPrice: 6.027456183070403
         counterparty: counterparty
+        currency: currency
         id:
           code: code
           scope: scope
@@ -267142,20 +267323,31 @@ components:
           nullable: true
           type: object
         type:
-          description: "The type of this placement (Market, Limit, etc)."
+          description: "Optionally changes the type of this placement (Market, Limit,\
+            \ Stop, StopLimit). A type may only be tightened: a Market placement may\
+            \ become Limit, Stop or StopLimit, and any placement may become StopLimit.\
+            \ A placement may be relaxed to Market only when the associated block\
+            \ is of type 'Market'. Changing to a priced type requires a currency and\
+            \ the price(s) that type carries; a price the new type does not carry\
+            \ is cleared. Changing to Market clears both prices and may not be combined\
+            \ with a price update. A change to or from any other type is not subject\
+            \ to these rules, leaves both prices as they are, and is permitted only\
+            \ when the associated block is of type 'Market'."
           maxLength: 256
           minLength: 1
           nullable: true
           type: string
         limitPrice:
-          description: "The optional price, as currency and amount, associated with\
-            \ this placement."
+          description: "Optionally updates the limit price of this placement, in the\
+            \ placement's limit price currency unless a currency is also specified.\
+            \ A currency is required if the placement has no limit price currency."
           format: double
           nullable: true
           type: number
         stopPrice:
-          description: "The optional price, as currency and amount, associated with\
-            \ this placement."
+          description: "Optionally updates the stop price of this placement, in the\
+            \ placement's stop price currency unless a currency is also specified.\
+            \ A currency is required if the placement has no stop price currency."
           format: double
           nullable: true
           type: number
@@ -267175,6 +267367,17 @@ components:
             \ values: Undecided, Manual, Direct, Ems, External."
           maxLength: 256
           minLength: 1
+          nullable: true
+          type: string
+        currency:
+          description: "The ISO currency code of the stop and/or limit price carried\
+            \ by the placement's type. Required when the type is changed to Stop,\
+            \ Limit or StopLimit, or when a price is set that the placement has no\
+            \ currency for; not permitted for a Market placement. For a value placement\
+            \ it must match the currency of the amount exactly, whether that amount\
+            \ is on the placement or in the update."
+          maxLength: 3
+          minLength: 0
           nullable: true
           type: string
       required:
@@ -271584,6 +271787,153 @@ components:
         - portfolioScope
         - transactionId
         type: object
+    PortfolioTransactionDataset:
+      additionalProperties: false
+      description: "Contains the run-time parameters that are appropriate for check\
+        \ definitions\r\nwith datasetSchema.type = \"PortfolioContents\" and datasetSchema.entityType\
+        \ = \"Transaction\""
+      example:
+        transactionSelectorValue: transactionSelectorValue
+        fromEffectiveDate: 2000-01-23T04:56:07.000+00:00
+        portfolioSelectorValue: portfolioSelectorValue
+        portfolioScope: portfolioScope
+        asAt: 2000-01-23T04:56:07.000+00:00
+        toEffectiveDate: 2000-01-23T04:56:07.000+00:00
+        portfolioSelectorAttribute: portfolioSelectorAttribute
+        transactionSelectorAttribute: transactionSelectorAttribute
+      properties:
+        asAt:
+          description: The asAt date to fetch the data. Nullable. Defaults to latest.
+          format: date-time
+          nullable: true
+          type: string
+        fromEffectiveDate:
+          description: "The earliest transaction date to check, inclusive. Nullable.\
+            \ Unbounded if not provided."
+          format: date-time
+          nullable: true
+          type: string
+        toEffectiveDate:
+          description: "The latest transaction date to check, inclusive. Nullable\
+            \ — the window is unbounded above if not\r\nprovided. This value also\
+            \ resolves as the run's effectiveAt, so portfolios are resolved and transactions\r\
+            \ndecorated as of it; when not provided, that defaults to latest. Must\
+            \ be on or after fromEffectiveDate\r\nwhen both are provided."
+          format: date-time
+          nullable: true
+          type: string
+        portfolioScope:
+          description: The scope of the portfolios whose transactions to check. Nullable.
+            Every scope is checked if not provided.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioSelectorAttribute:
+          description: "An attribute (field name or propertyKey) to use to narrow\
+            \ down the portfolios whose transactions are\r\nchecked. Cannot be provided\
+            \ without portfolioSelectorValue, and vice versa."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        portfolioSelectorValue:
+          description: "The value of the above attribute used to narrow down the portfolios.\
+            \ Cannot be provided without\r\nportfolioSelectorAttribute, and vice versa."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        transactionSelectorAttribute:
+          description: "An attribute (field name or propertyKey) to use to narrow\
+            \ down the transactions checked within those\r\nportfolios. Cannot be\
+            \ provided without transactionSelectorValue, and vice versa."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        transactionSelectorValue:
+          description: "The value of the above attribute used to narrow down the transactions.\
+            \ Cannot be provided without\r\ntransactionSelectorAttribute, and vice\
+            \ versa."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
+    PortfolioTransactionResult:
+      additionalProperties: false
+      description: Represents transaction details for a data quality check result.
+      example:
+        entityType: entityType
+        sourcePortfolioScope: sourcePortfolioScope
+        asAt: 2000-01-23T04:56:07.000+00:00
+        entityUniqueId: entityUniqueId
+        transactionView: transactionView
+        transactionDate: 2000-01-23T04:56:07.000+00:00
+        transactionId: transactionId
+        instrumentDisplayName: instrumentDisplayName
+        transactionType: transactionType
+        sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+        sourcePortfolioDisplayName: sourcePortfolioDisplayName
+        lusidInstrumentId: lusidInstrumentId
+        sourcePortfolioCode: sourcePortfolioCode
+      properties:
+        entityType:
+          description: The type of the entity. Always "Transaction".
+          nullable: true
+          type: string
+        transactionView:
+          description: Whether this is an input or an output transaction
+          nullable: true
+          type: string
+        asAt:
+          description: The as-at timestamp for the transaction
+          format: date-time
+          type: string
+        transactionDate:
+          description: The transaction date
+          format: date-time
+          type: string
+        transactionId:
+          description: The transaction's identifier within its portfolio
+          nullable: true
+          type: string
+        entityUniqueId:
+          description: The transaction's unique identifier across portfolios
+          nullable: true
+          type: string
+        sourcePortfolioScope:
+          description: The scope of the portfolio this transaction came from
+          nullable: true
+          type: string
+        sourcePortfolioCode:
+          description: The code of the portfolio this transaction came from
+          nullable: true
+          type: string
+        sourcePortfolioEntityUniqueId:
+          description: The unique identifier of the portfolio this transaction came
+            from
+          nullable: true
+          type: string
+        sourcePortfolioDisplayName:
+          description: The display name of the portfolio this transaction came from
+          nullable: true
+          type: string
+        lusidInstrumentId:
+          description: The LUSID instrument identifier of the instrument transacted
+          nullable: true
+          type: string
+        instrumentDisplayName:
+          description: The name of the instrument transacted
+          nullable: true
+          type: string
+        transactionType:
+          description: "The transaction type, e.g. Buy, Sell"
+          nullable: true
+          type: string
+      type: object
     PortfolioType:
       enum:
       - Transaction
@@ -273693,7 +274043,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer, RecDefinition."
+            \ PaymentInstruction, Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -273789,6 +274139,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         scope:
           description: The scope that the property exists in.
@@ -274275,7 +274626,7 @@ components:
             \ FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance,\
             \ DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition,\
             \ Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType,\
-            \ PaymentInstruction, Transfer, RecDefinition."
+            \ PaymentInstruction, Transfer, RecDefinition, RecResult."
           enum:
           - NotDefined
           - Transaction
@@ -274371,6 +274722,7 @@ components:
           - Transfer
           - CurrencyGroup
           - RecDefinition
+          - RecResult
           type: string
         scope:
           description: The scope that the property exists in.
@@ -274528,6 +274880,7 @@ components:
       - Transfer
       - CurrencyGroup
       - RecDefinition
+      - RecResult
       type: string
     PropertyFilter:
       additionalProperties: false
@@ -276751,8 +277104,9 @@ components:
       - $ref: '#/components/schemas/ScenarioShiftDefinition'
       - properties:
           ccy:
-            maxLength: 3
+            maxLength: 5
             minLength: 3
+            pattern: "^[a-zA-Z]*$"
             type: string
           amount:
             description: "The size of the shift, in the units given by Scale: basis\
@@ -277281,14 +277635,14 @@ components:
       description: Counts for results that are exceptions with a Closed status.
       example:
         byReviewStatus:
-          notRequired: 9
-          reviewed: 3
-          required: 7
-        total: 2
+          notRequired: 3
+          reviewed: 2
+          required: 9
+        total: 4
         byClosureType:
           forceMatched: 1
-          accepted: 7
-          cleared: 4
+          accepted: 1
+          cleared: 7
       properties:
         total:
           description: The total number of results in this category.
@@ -277424,13 +277778,16 @@ components:
       type: object
     RecDatesReconciled:
       additionalProperties: false
-      description: The left and right effective and asAt dates of the data reconciled
-        in a run.
+      description: "The left and right effective and asAt dates of the data reconciled\
+        \ in a run, plus the exclusive lower bound of each side's activity window\
+        \ on activity-based rec types."
       example:
         rightAsAt: 2000-01-23T04:56:07.000+00:00
         leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         leftAsAt: 2000-01-23T04:56:07.000+00:00
         rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
       properties:
         leftEffectiveAt:
           description: The effective datetime of the data reconciled on the left side.
@@ -277448,6 +277805,22 @@ components:
         rightAsAt:
           description: The asAt datetime of the data reconciled on the right side.
           format: date-time
+          type: string
+        leftActivitySinceEffectiveAt:
+          description: "The exclusive lower bound of the left side's activity window,\
+            \ so the window is (leftActivitySinceEffectiveAt, leftEffectiveAt]. Populated\
+            \ only on activity-based rec types; null on point-in-time rec types and\
+            \ when the definition has no activity window."
+          format: date-time
+          nullable: true
+          type: string
+        rightActivitySinceEffectiveAt:
+          description: "The exclusive lower bound of the right side's activity window,\
+            \ so the window is (rightActivitySinceEffectiveAt, rightEffectiveAt].\
+            \ Populated only on activity-based rec types; null on point-in-time rec\
+            \ types and when the definition has no activity window."
+          format: date-time
+          nullable: true
           type: string
       required:
       - leftAsAt
@@ -277753,8 +278126,8 @@ components:
       description: Closed exception result counts broken down by closure type.
       example:
         forceMatched: 1
-        accepted: 7
-        cleared: 4
+        accepted: 1
+        cleared: 7
       properties:
         cleared:
           description: The number of Cleared results.
@@ -277777,8 +278150,8 @@ components:
       additionalProperties: false
       description: Exception result counts broken down by result type.
       example:
-        partialMatch: 5
-        partialCross: 2
+        partialMatch: 2
+        partialCross: 7
         break: 5
       properties:
         break:
@@ -277830,8 +278203,10 @@ components:
         datesLocked:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           leftAsAt: 2000-01-23T04:56:07.000+00:00
           rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         runLogs:
           key:
             runCount: 0
@@ -277843,47 +278218,50 @@ components:
                 outcome: outcome
               supersededAsAt: 2000-01-23T04:56:07.000+00:00
               resultCounts:
+                total: 1
                 closedExceptions:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
-                  total: 2
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
+                  total: 4
                   byClosureType:
                     forceMatched: 1
-                    accepted: 7
-                    cleared: 4
+                    accepted: 1
+                    cleared: 7
                 openExceptions:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
-                  total: 1
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
+                  total: 5
                   byResultType:
-                    partialMatch: 5
-                    partialCross: 2
+                    partialMatch: 2
+                    partialCross: 7
                     break: 5
                 matches:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
                   total: 1
                   byResultType:
-                    match: 1
-                    cross: 6
+                    match: 6
+                    cross: 7
               review:
-                countReviewed: 7
-                countRequired: 1
-                countNotRequired: 4
-                completionRatio: 5.025004791520295
+                countReviewed: 1
+                countRequired: 4
+                countNotRequired: 5
+                completionRatio: 9.965781217890562
               runNumber: 6
               runAsAt: 2000-01-23T04:56:07.000+00:00
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                 leftAsAt: 2000-01-23T04:56:07.000+00:00
                 rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             - approvalStatus: approvalStatus
               recResultSetHref: https://openapi-generator.tech
               execution:
@@ -277891,47 +278269,50 @@ components:
                 outcome: outcome
               supersededAsAt: 2000-01-23T04:56:07.000+00:00
               resultCounts:
+                total: 1
                 closedExceptions:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
-                  total: 2
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
+                  total: 4
                   byClosureType:
                     forceMatched: 1
-                    accepted: 7
-                    cleared: 4
+                    accepted: 1
+                    cleared: 7
                 openExceptions:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
-                  total: 1
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
+                  total: 5
                   byResultType:
-                    partialMatch: 5
-                    partialCross: 2
+                    partialMatch: 2
+                    partialCross: 7
                     break: 5
                 matches:
                   byReviewStatus:
-                    notRequired: 9
-                    reviewed: 3
-                    required: 7
+                    notRequired: 3
+                    reviewed: 2
+                    required: 9
                   total: 1
                   byResultType:
-                    match: 1
-                    cross: 6
+                    match: 6
+                    cross: 7
               review:
-                countReviewed: 7
-                countRequired: 1
-                countNotRequired: 4
-                completionRatio: 5.025004791520295
+                countReviewed: 1
+                countRequired: 4
+                countNotRequired: 5
+                completionRatio: 9.965781217890562
               runNumber: 6
               runAsAt: 2000-01-23T04:56:07.000+00:00
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
                 leftAsAt: 2000-01-23T04:56:07.000+00:00
                 rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         asAtInstantiated: 2000-01-23T04:56:07.000+00:00
         recDefinitionDisplayName: recDefinitionDisplayName
         links:
@@ -278205,8 +278586,8 @@ components:
       additionalProperties: false
       description: Match result counts broken down by result type.
       example:
-        match: 1
-        cross: 6
+        match: 6
+        cross: 7
       properties:
         match:
           description: The number of Match results.
@@ -278225,13 +278606,13 @@ components:
       description: "Counts for non-exception results (Match, Cross)."
       example:
         byReviewStatus:
-          notRequired: 9
-          reviewed: 3
-          required: 7
+          notRequired: 3
+          reviewed: 2
+          required: 9
         total: 1
         byResultType:
-          match: 1
-          cross: 6
+          match: 6
+          cross: 7
       properties:
         total:
           description: The total number of results in this category.
@@ -280001,13 +280382,13 @@ components:
       description: Counts for results that are exceptions with an Open status.
       example:
         byReviewStatus:
-          notRequired: 9
-          reviewed: 3
-          required: 7
-        total: 1
+          notRequired: 3
+          reviewed: 2
+          required: 9
+        total: 5
         byResultType:
-          partialMatch: 5
-          partialCross: 2
+          partialMatch: 2
+          partialCross: 7
           break: 5
       properties:
         total:
@@ -280114,8 +280495,10 @@ components:
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           leftAsAt: 2000-01-23T04:56:07.000+00:00
           rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -280349,9 +280732,9 @@ components:
       additionalProperties: false
       description: Result counts broken down by review status.
       example:
-        notRequired: 9
-        reviewed: 3
-        required: 7
+        notRequired: 3
+        reviewed: 2
+        required: 9
       properties:
         required:
           description: The number of results with review status Required.
@@ -280375,36 +280758,42 @@ components:
       description: Counts of results broken down by the structural categories that
         align with the review configuration.
       example:
+        total: 1
         closedExceptions:
           byReviewStatus:
-            notRequired: 9
-            reviewed: 3
-            required: 7
-          total: 2
+            notRequired: 3
+            reviewed: 2
+            required: 9
+          total: 4
           byClosureType:
             forceMatched: 1
-            accepted: 7
-            cleared: 4
+            accepted: 1
+            cleared: 7
         openExceptions:
           byReviewStatus:
-            notRequired: 9
-            reviewed: 3
-            required: 7
-          total: 1
+            notRequired: 3
+            reviewed: 2
+            required: 9
+          total: 5
           byResultType:
-            partialMatch: 5
-            partialCross: 2
+            partialMatch: 2
+            partialCross: 7
             break: 5
         matches:
           byReviewStatus:
-            notRequired: 9
-            reviewed: 3
-            required: 7
+            notRequired: 3
+            reviewed: 2
+            required: 9
           total: 1
           byResultType:
-            match: 1
-            cross: 6
+            match: 6
+            cross: 7
       properties:
+        total:
+          description: "The total number of results in this result set, across all\
+            \ categories."
+          format: int32
+          type: integer
         openExceptions:
           $ref: '#/components/schemas/RecOpenExceptionCounts'
         closedExceptions:
@@ -280415,6 +280804,7 @@ components:
       - closedExceptions
       - matches
       - openExceptions
+      - total
       type: object
     RecResultDecisionGroup:
       additionalProperties: false
@@ -280622,8 +281012,10 @@ components:
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           leftAsAt: 2000-01-23T04:56:07.000+00:00
           rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -280647,40 +281039,41 @@ components:
           currentUserCanDecide: true
           description: description
         resultCounts:
+          total: 1
           closedExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 2
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 4
             byClosureType:
               forceMatched: 1
-              accepted: 7
-              cleared: 4
+              accepted: 1
+              cleared: 7
           openExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 1
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 5
             byResultType:
-              partialMatch: 5
-              partialCross: 2
+              partialMatch: 2
+              partialCross: 7
               break: 5
           matches:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
+              notRequired: 3
+              reviewed: 2
+              required: 9
             total: 1
             byResultType:
-              match: 1
-              cross: 6
+              match: 6
+              cross: 7
         review:
-          countReviewed: 7
-          countRequired: 1
-          countNotRequired: 4
-          completionRatio: 5.025004791520295
+          countReviewed: 1
+          countRequired: 4
+          countNotRequired: 5
+          completionRatio: 9.965781217890562
         submissions:
         - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
           asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -280704,40 +281097,41 @@ components:
             currentUserCanDecide: true
             description: description
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           submissions:
           - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -280765,8 +281159,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         - approvalStatus: approvalStatus
           execution:
             errorDetail: errorDetail
@@ -280780,40 +281176,41 @@ components:
             currentUserCanDecide: true
             description: description
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           submissions:
           - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -280841,8 +281238,10 @@ components:
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         runNumber: 0
         decisions:
         - reason: reason
@@ -281006,10 +281405,10 @@ components:
       additionalProperties: false
       description: A summary of the per-result review state across the result set.
       example:
-        countReviewed: 7
-        countRequired: 1
-        countNotRequired: 4
-        completionRatio: 5.025004791520295
+        countReviewed: 1
+        countRequired: 4
+        countNotRequired: 5
+        completionRatio: 9.965781217890562
       properties:
         countReviewed:
           description: The number of results with review status Reviewed.
@@ -281184,47 +281583,50 @@ components:
             outcome: outcome
           supersededAsAt: 2000-01-23T04:56:07.000+00:00
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           runNumber: 6
           runAsAt: 2000-01-23T04:56:07.000+00:00
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
         - approvalStatus: approvalStatus
           recResultSetHref: https://openapi-generator.tech
           execution:
@@ -281232,47 +281634,50 @@ components:
             outcome: outcome
           supersededAsAt: 2000-01-23T04:56:07.000+00:00
           resultCounts:
+            total: 1
             closedExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 2
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 4
               byClosureType:
                 forceMatched: 1
-                accepted: 7
-                cleared: 4
+                accepted: 1
+                cleared: 7
             openExceptions:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
-              total: 1
+                notRequired: 3
+                reviewed: 2
+                required: 9
+              total: 5
               byResultType:
-                partialMatch: 5
-                partialCross: 2
+                partialMatch: 2
+                partialCross: 7
                 break: 5
             matches:
               byReviewStatus:
-                notRequired: 9
-                reviewed: 3
-                required: 7
+                notRequired: 3
+                reviewed: 2
+                required: 9
               total: 1
               byResultType:
-                match: 1
-                cross: 6
+                match: 6
+                cross: 7
           review:
-            countReviewed: 7
-            countRequired: 1
-            countNotRequired: 4
-            completionRatio: 5.025004791520295
+            countReviewed: 1
+            countRequired: 4
+            countNotRequired: 5
+            completionRatio: 9.965781217890562
           runNumber: 6
           runAsAt: 2000-01-23T04:56:07.000+00:00
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
             leftAsAt: 2000-01-23T04:56:07.000+00:00
             rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
       properties:
         runCount:
           description: "The total number of runs of this rec type, which is not necessarily\
@@ -281307,47 +281712,50 @@ components:
           outcome: outcome
         supersededAsAt: 2000-01-23T04:56:07.000+00:00
         resultCounts:
+          total: 1
           closedExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 2
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 4
             byClosureType:
               forceMatched: 1
-              accepted: 7
-              cleared: 4
+              accepted: 1
+              cleared: 7
           openExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 1
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 5
             byResultType:
-              partialMatch: 5
-              partialCross: 2
+              partialMatch: 2
+              partialCross: 7
               break: 5
           matches:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
+              notRequired: 3
+              reviewed: 2
+              required: 9
             total: 1
             byResultType:
-              match: 1
-              cross: 6
+              match: 6
+              cross: 7
         review:
-          countReviewed: 7
-          countRequired: 1
-          countNotRequired: 4
-          completionRatio: 5.025004791520295
+          countReviewed: 1
+          countRequired: 4
+          countNotRequired: 5
+          completionRatio: 9.965781217890562
         runNumber: 6
         runAsAt: 2000-01-23T04:56:07.000+00:00
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           leftAsAt: 2000-01-23T04:56:07.000+00:00
           rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
       properties:
         runNumber:
           description: The run number within the instance. Increments with each re-run.
@@ -281440,40 +281848,41 @@ components:
           currentUserCanDecide: true
           description: description
         resultCounts:
+          total: 1
           closedExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 2
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 4
             byClosureType:
               forceMatched: 1
-              accepted: 7
-              cleared: 4
+              accepted: 1
+              cleared: 7
           openExceptions:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
-            total: 1
+              notRequired: 3
+              reviewed: 2
+              required: 9
+            total: 5
             byResultType:
-              partialMatch: 5
-              partialCross: 2
+              partialMatch: 2
+              partialCross: 7
               break: 5
           matches:
             byReviewStatus:
-              notRequired: 9
-              reviewed: 3
-              required: 7
+              notRequired: 3
+              reviewed: 2
+              required: 9
             total: 1
             byResultType:
-              match: 1
-              cross: 6
+              match: 6
+              cross: 7
         review:
-          countReviewed: 7
-          countRequired: 1
-          countNotRequired: 4
-          completionRatio: 5.025004791520295
+          countReviewed: 1
+          countRequired: 4
+          countNotRequired: 5
+          completionRatio: 9.965781217890562
         submissions:
         - asAtSubmitted: 2000-01-23T04:56:07.000+00:00
           asAtSuperseded: 2000-01-23T04:56:07.000+00:00
@@ -281501,8 +281910,10 @@ components:
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
           leftAsAt: 2000-01-23T04:56:07.000+00:00
           rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
       properties:
         runNumber:
           description: The run number within the instance. Increments with each re-run.
@@ -308866,12 +309277,13 @@ components:
           nullable: true
           type: string
         reportCurrency:
-          description: "Three letter ISO currency string to report in. If absent the\
-            \ portfolio's own currency is used,\r\nwhich makes the target ambiguous\
+          description: "Three to five letter currency string to report in. If absent\
+            \ the portfolio's own currency is used,\r\nwhich makes the target ambiguous\
             \ across a multi-currency portfolio group - supply it there."
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           nullable: true
+          pattern: "^[a-zA-Z]*$"
           type: string
         filters:
           description: "Filters reducing the holdings the target is measured over,\
@@ -309277,6 +309689,8 @@ components:
       type: object
     RunCheckRequest:
       additionalProperties: false
+      description: "Exactly one dataset must be provided, matching the check definition's\
+        \ datasetSchema."
       example:
         portfolioHoldingDataset:
           holdingSelectorAttribute: holdingSelectorAttribute
@@ -309288,6 +309702,15 @@ components:
           effectiveAt: 2000-01-23T04:56:07.000+00:00
           portfolioSelectorAttribute: portfolioSelectorAttribute
         limitIndividualBreachesPerRule: 0
+        portfolioTransactionDataset:
+          transactionSelectorValue: transactionSelectorValue
+          fromEffectiveDate: 2000-01-23T04:56:07.000+00:00
+          portfolioSelectorValue: portfolioSelectorValue
+          portfolioScope: portfolioScope
+          asAt: 2000-01-23T04:56:07.000+00:00
+          toEffectiveDate: 2000-01-23T04:56:07.000+00:00
+          portfolioSelectorAttribute: portfolioSelectorAttribute
+          transactionSelectorAttribute: transactionSelectorAttribute
         lusidEntityDataset:
           returnIdentifierKey: returnIdentifierKey
           selectorAttribute: selectorAttribute
@@ -309306,6 +309729,8 @@ components:
           type: integer
         portfolioHoldingDataset:
           $ref: '#/components/schemas/PortfolioHoldingDataset'
+        portfolioTransactionDataset:
+          $ref: '#/components/schemas/PortfolioTransactionDataset'
       type: object
     RunCheckResponse:
       additionalProperties: false
@@ -309316,6 +309741,20 @@ components:
           checkDefinitionCode: checkDefinitionCode
           resultId: resultId
           ruleSetDisplayName: ruleSetDisplayName
+          portfolioTransaction:
+            entityType: entityType
+            sourcePortfolioScope: sourcePortfolioScope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            entityUniqueId: entityUniqueId
+            transactionView: transactionView
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            transactionId: transactionId
+            instrumentDisplayName: instrumentDisplayName
+            transactionType: transactionType
+            sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+            sourcePortfolioDisplayName: sourcePortfolioDisplayName
+            lusidInstrumentId: lusidInstrumentId
+            sourcePortfolioCode: sourcePortfolioCode
           checkDefinitionDisplayName: checkDefinitionDisplayName
           ruleKey: ruleKey
           ruleDescription: ruleDescription
@@ -309356,6 +309795,20 @@ components:
           checkDefinitionCode: checkDefinitionCode
           resultId: resultId
           ruleSetDisplayName: ruleSetDisplayName
+          portfolioTransaction:
+            entityType: entityType
+            sourcePortfolioScope: sourcePortfolioScope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            entityUniqueId: entityUniqueId
+            transactionView: transactionView
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            transactionId: transactionId
+            instrumentDisplayName: instrumentDisplayName
+            transactionType: transactionType
+            sourcePortfolioEntityUniqueId: sourcePortfolioEntityUniqueId
+            sourcePortfolioDisplayName: sourcePortfolioDisplayName
+            lusidInstrumentId: lusidInstrumentId
+            sourcePortfolioCode: sourcePortfolioCode
           checkDefinitionDisplayName: checkDefinitionDisplayName
           ruleKey: ruleKey
           ruleDescription: ruleDescription
@@ -322307,7 +322760,7 @@ components:
             \ Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg,\
             \ DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow,\
             \ IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction,\
-            \ Transfer, RecDefinition."
+            \ Transfer, RecDefinition, RecResult."
           minLength: 1
           type: string
         entityIdName:
@@ -333296,9 +333749,9 @@ components:
           nullable: true
           type: string
         majorUnitCurrency:
-          description: "The three-letter, case-sensitive currency code of the group's\
-            \ major unit, e.g. GBP for the sterling group."
-          maxLength: 3
+          description: "The three to five letter, case-sensitive currency code of\
+            \ the group's major unit, e.g. GBP for the sterling group."
+          maxLength: 5
           minLength: 3
           pattern: "^[a-zA-Z]*$"
           type: string
@@ -347006,12 +347459,13 @@ components:
           nullable: true
           type: array
         reportCurrency:
-          description: "Three letter ISO currency string indicating what currency\
+          description: "Three to five letter currency string indicating what currency\
             \ to report in for ReportCurrency denominated queries.\r\nIf not present,\
             \ then the currency of the relevant portfolio will be used in its place."
-          maxLength: 3
+          maxLength: 5
           minLength: 0
           nullable: true
+          pattern: "^[a-zA-Z]*$"
           type: string
         equipWithSubtotals:
           description: Flag directing the Valuation call to populate the results with

@@ -196,7 +196,7 @@ public class ModelOptionShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * For options carrying per-currency overrides (e.g. HullWhite1F&#39;s VolatilityByCurrency): the  ISO currency code whose effective value the shift moves. The shifted entry starts from the  existing override for that currency, or from the scalar option where no override exists.  Omitted, the shift moves the scalar option and every per-currency override together, so the  effective value moves for every instrument regardless of which level supplies it.
+   * For options carrying per-currency overrides (e.g. HullWhite1F&#39;s VolatilityByCurrency): the  three to five letter currency code whose effective value the shift moves. The shifted entry starts from the  existing override for that currency, or from the scalar option where no override exists.  Omitted, the shift moves the scalar option and every per-currency override together, so the  effective value moves for every instrument regardless of which level supplies it.
    * @return ccy
   **/
   @jakarta.annotation.Nullable

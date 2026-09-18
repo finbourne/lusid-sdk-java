@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityDataset;
 import com.finbourne.lusid.model.PortfolioHoldingDataset;
+import com.finbourne.lusid.model.PortfolioTransactionDataset;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * RunCheckRequest
+ * Exactly one dataset must be provided, matching the check definition&#39;s datasetSchema.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RunCheckRequest {
@@ -62,6 +63,10 @@ public class RunCheckRequest {
   public static final String SERIALIZED_NAME_PORTFOLIO_HOLDING_DATASET = "portfolioHoldingDataset";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_HOLDING_DATASET)
   private PortfolioHoldingDataset portfolioHoldingDataset;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_TRANSACTION_DATASET = "portfolioTransactionDataset";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_TRANSACTION_DATASET)
+  private PortfolioTransactionDataset portfolioTransactionDataset;
 
   public RunCheckRequest() {
   }
@@ -129,6 +134,27 @@ public class RunCheckRequest {
   }
 
 
+  public RunCheckRequest portfolioTransactionDataset(PortfolioTransactionDataset portfolioTransactionDataset) {
+    
+    this.portfolioTransactionDataset = portfolioTransactionDataset;
+    return this;
+  }
+
+   /**
+   * Get portfolioTransactionDataset
+   * @return portfolioTransactionDataset
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioTransactionDataset getPortfolioTransactionDataset() {
+    return portfolioTransactionDataset;
+  }
+
+
+  public void setPortfolioTransactionDataset(PortfolioTransactionDataset portfolioTransactionDataset) {
+    this.portfolioTransactionDataset = portfolioTransactionDataset;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,12 +167,13 @@ public class RunCheckRequest {
     RunCheckRequest runCheckRequest = (RunCheckRequest) o;
     return Objects.equals(this.lusidEntityDataset, runCheckRequest.lusidEntityDataset) &&
         Objects.equals(this.limitIndividualBreachesPerRule, runCheckRequest.limitIndividualBreachesPerRule) &&
-        Objects.equals(this.portfolioHoldingDataset, runCheckRequest.portfolioHoldingDataset);
+        Objects.equals(this.portfolioHoldingDataset, runCheckRequest.portfolioHoldingDataset) &&
+        Objects.equals(this.portfolioTransactionDataset, runCheckRequest.portfolioTransactionDataset);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule, portfolioHoldingDataset);
+    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule, portfolioHoldingDataset, portfolioTransactionDataset);
   }
 
   @Override
@@ -156,6 +183,7 @@ public class RunCheckRequest {
     sb.append("    lusidEntityDataset: ").append(toIndentedString(lusidEntityDataset)).append("\n");
     sb.append("    limitIndividualBreachesPerRule: ").append(toIndentedString(limitIndividualBreachesPerRule)).append("\n");
     sb.append("    portfolioHoldingDataset: ").append(toIndentedString(portfolioHoldingDataset)).append("\n");
+    sb.append("    portfolioTransactionDataset: ").append(toIndentedString(portfolioTransactionDataset)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -181,6 +209,7 @@ public class RunCheckRequest {
     openapiFields.add("lusidEntityDataset");
     openapiFields.add("limitIndividualBreachesPerRule");
     openapiFields.add("portfolioHoldingDataset");
+    openapiFields.add("portfolioTransactionDataset");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -206,6 +235,10 @@ public class RunCheckRequest {
       // validate the optional field `portfolioHoldingDataset`
       if (jsonObj.get("portfolioHoldingDataset") != null && !jsonObj.get("portfolioHoldingDataset").isJsonNull()) {
         PortfolioHoldingDataset.validateJsonElement(jsonObj.get("portfolioHoldingDataset"));
+      }
+      // validate the optional field `portfolioTransactionDataset`
+      if (jsonObj.get("portfolioTransactionDataset") != null && !jsonObj.get("portfolioTransactionDataset").isJsonNull()) {
+        PortfolioTransactionDataset.validateJsonElement(jsonObj.get("portfolioTransactionDataset"));
       }
   }
 

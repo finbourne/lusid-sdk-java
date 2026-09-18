@@ -150,7 +150,7 @@ public class UpsertCurrencyGroupRequest {
   }
 
    /**
-   * The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
+   * The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
    * @return majorUnitCurrency
   **/
   @jakarta.annotation.Nonnull

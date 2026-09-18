@@ -52,6 +52,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultCounts {
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
+  private Integer total;
+
   public static final String SERIALIZED_NAME_OPEN_EXCEPTIONS = "openExceptions";
   @SerializedName(SERIALIZED_NAME_OPEN_EXCEPTIONS)
   private RecOpenExceptionCounts openExceptions;
@@ -66,6 +70,27 @@ public class RecResultCounts {
 
   public RecResultCounts() {
   }
+
+  public RecResultCounts total(Integer total) {
+    
+    this.total = total;
+    return this;
+  }
+
+   /**
+   * The total number of results in this result set, across all categories.
+   * @return total
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getTotal() {
+    return total;
+  }
+
+
+  public void setTotal(Integer total) {
+    this.total = total;
+  }
+
 
   public RecResultCounts openExceptions(RecOpenExceptionCounts openExceptions) {
     
@@ -140,20 +165,22 @@ public class RecResultCounts {
       return false;
     }
     RecResultCounts recResultCounts = (RecResultCounts) o;
-    return Objects.equals(this.openExceptions, recResultCounts.openExceptions) &&
+    return Objects.equals(this.total, recResultCounts.total) &&
+        Objects.equals(this.openExceptions, recResultCounts.openExceptions) &&
         Objects.equals(this.closedExceptions, recResultCounts.closedExceptions) &&
         Objects.equals(this.matches, recResultCounts.matches);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(openExceptions, closedExceptions, matches);
+    return Objects.hash(total, openExceptions, closedExceptions, matches);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultCounts {\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    openExceptions: ").append(toIndentedString(openExceptions)).append("\n");
     sb.append("    closedExceptions: ").append(toIndentedString(closedExceptions)).append("\n");
     sb.append("    matches: ").append(toIndentedString(matches)).append("\n");
@@ -179,12 +206,14 @@ public class RecResultCounts {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("total");
     openapiFields.add("openExceptions");
     openapiFields.add("closedExceptions");
     openapiFields.add("matches");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("total");
     openapiRequiredFields.add("openExceptions");
     openapiRequiredFields.add("closedExceptions");
     openapiRequiredFields.add("matches");

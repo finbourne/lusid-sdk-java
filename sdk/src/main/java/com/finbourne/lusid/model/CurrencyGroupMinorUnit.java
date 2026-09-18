@@ -67,7 +67,7 @@ public class CurrencyGroupMinorUnit {
   }
 
    /**
-   * The three-letter, case-sensitive currency code of the minor unit, e.g. GBX.
+   * The three to five letter, case-sensitive currency code of the minor unit, e.g. GBX.
    * @return currency
   **/
   @jakarta.annotation.Nonnull

@@ -285,7 +285,7 @@ public class InlineValuationRequest {
   }
 
    /**
-   * Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries.  If not present, then the currency of the relevant portfolio will be used in its place.
+   * Three to five letter currency string indicating what currency to report in for ReportCurrency denominated queries.  If not present, then the currency of the relevant portfolio will be used in its place.
    * @return reportCurrency
   **/
   @jakarta.annotation.Nullable

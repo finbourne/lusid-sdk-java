@@ -20,8 +20,9 @@ Name | Type | Description | Notes
 **lusidEntity** | [**LusidEntityResult**](LusidEntityResult.md) |  | [optional] [default to LusidEntityResult]
 **countRuleBreaches** | **Integer** | The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit) | [optional] [default to Integer]
 **errorDetail** | **String** | Error details (for RulesetInvalid, RuleInvalid) | [optional] [default to String]
-**resultId** | **String** | Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio. | [optional] [default to String]
+**resultId** | **String** | Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType. | [optional] [default to String]
 **portfolioHolding** | [**PortfolioHoldingResult**](PortfolioHoldingResult.md) |  | [optional] [default to PortfolioHoldingResult]
+**portfolioTransaction** | [**PortfolioTransactionResult**](PortfolioTransactionResult.md) |  | [optional] [default to PortfolioTransactionResult]
 
 ```java
 import com.finbourne.lusid.model.DataQualityCheckResult;
@@ -46,6 +47,7 @@ LusidEntityResult LusidEntity = new LusidEntityResult();
 @jakarta.annotation.Nullable String ErrorDetail = "example ErrorDetail";
 @jakarta.annotation.Nullable String ResultId = "example ResultId";
 PortfolioHoldingResult PortfolioHolding = new PortfolioHoldingResult();
+PortfolioTransactionResult PortfolioTransaction = new PortfolioTransactionResult();
 
 
 DataQualityCheckResult dataQualityCheckResultInstance = new DataQualityCheckResult()
@@ -65,7 +67,8 @@ DataQualityCheckResult dataQualityCheckResultInstance = new DataQualityCheckResu
     .CountRuleBreaches(CountRuleBreaches)
     .ErrorDetail(ErrorDetail)
     .ResultId(ResultId)
-    .PortfolioHolding(PortfolioHolding);
+    .PortfolioHolding(PortfolioHolding)
+    .PortfolioTransaction(PortfolioTransaction);
 ```
 
 
