@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **variations** | [**List&lt;ComplianceTemplateVariationDto&gt;**](ComplianceTemplateVariationDto.md) | Variation details of a Compliance Template | [optional] [default to List<ComplianceTemplateVariationDto>]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. | [optional] [default to URI]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -24,6 +25,7 @@ ResourceId Id = new ResourceId();
 @jakarta.annotation.Nullable List<ComplianceTemplateVariationDto> Variations = new List<ComplianceTemplateVariationDto>();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 Version Version = new Version();
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -34,6 +36,7 @@ ComplianceRuleTemplate complianceRuleTemplateInstance = new ComplianceRuleTempla
     .Variations(Variations)
     .Href(Href)
     .Version(Version)
+    .StagedModifications(StagedModifications)
     .Links(Links);
 ```
 

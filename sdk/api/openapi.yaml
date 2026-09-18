@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10003
+  version: 0.11.10005
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -33630,6 +33630,86 @@ paths:
       - oauth2: []
       summary: "[EARLY ACCESS] GetComplianceRuleByEntityUniqueId: Get compliance rule\
         \ by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/entities/complianceruletemplates/{entityUniqueId}:
+    get:
+      description: "Retrieve the definition of a particular compliance rule template.\r\
+        \n\r\nIf the compliance rule template is deleted, this will return the state\
+        \ of the template immediately prior to\r\ndeletion."
+      operationId: GetComplianceRuleTemplateByEntityUniqueId
+      parameters:
+      - description: The universally unique identifier of the compliance rule template.
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the compliance rule template.
+          Defaults to returning the latest version of the compliance rule template
+          if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids of the staged modifications to be previewed in the response.
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleTemplateEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleTemplateEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleTemplateEntity'
+          description: The requested compliance rule template entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetComplianceRuleTemplateByEntityUniqueId: Get compliance\
+        \ rule template by EntityUniqueId"
       tags:
       - Entities
       x-fbn-apistatus: EarlyAccess
@@ -188880,6 +188960,12 @@ components:
           code: code
           scope: scope
         href: https://openapi-generator.tech
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -188942,11 +189028,299 @@ components:
           type: string
         version:
           $ref: '#/components/schemas/Version'
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
+      type: object
+    ComplianceRuleTemplateEntity:
+      additionalProperties: false
+      example:
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        prevailingComplianceRuleTemplate:
+          variations:
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        requestIdDeleted: requestIdDeleted
+        effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
+        deletedComplianceRuleTemplate:
+          variations:
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        asAtVersionNumber: 0
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        previewedStatus: previewedStatus
+        previewedComplianceRuleTemplate:
+          variations:
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          - outcomeDescription: outcomeDescription
+            description: description
+            referencedGroupLabel: referencedGroupLabel
+            label: label
+            steps:
+            - complianceStepType: FilterStep
+            - complianceStepType: FilterStep
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        effectiveAtCreated:
+          description: "The EffectiveAt this Entity is created, if entity does not\
+            \ currently exist in EffectiveAt."
+          format: date-time
+          nullable: true
+          type: string
+        prevailingComplianceRuleTemplate:
+          $ref: '#/components/schemas/ComplianceRuleTemplate'
+        deletedComplianceRuleTemplate:
+          $ref: '#/components/schemas/ComplianceRuleTemplate'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedComplianceRuleTemplate:
+          $ref: '#/components/schemas/ComplianceRuleTemplate'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
       type: object
     ComplianceRuleUpsertRequest:
       additionalProperties: false
