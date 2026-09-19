@@ -290,6 +290,10 @@ public class PortfolioWithoutHref {
   @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION)
   private FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_FUNGIBILITY = "holdingsFungibility";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
+  private String holdingsFungibility;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -846,6 +850,27 @@ public class PortfolioWithoutHref {
   }
 
 
+  public PortfolioWithoutHref holdingsFungibility(String holdingsFungibility) {
+    
+    this.holdingsFungibility = holdingsFungibility;
+    return this;
+  }
+
+   /**
+   * Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
+   * @return holdingsFungibility
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingsFungibility() {
+    return holdingsFungibility;
+  }
+
+
+  public void setHoldingsFungibility(String holdingsFungibility) {
+    this.holdingsFungibility = holdingsFungibility;
+  }
+
+
   public PortfolioWithoutHref links(List<Link> links) {
     
     this.links = links;
@@ -910,6 +935,7 @@ public class PortfolioWithoutHref {
         Objects.equals(this.transactionExclusionFilter, portfolioWithoutHref.transactionExclusionFilter) &&
         Objects.equals(this.taxLotSelectionCostBasis, portfolioWithoutHref.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, portfolioWithoutHref.fractionalUnitsTrueUpConfiguration) &&
+        Objects.equals(this.holdingsFungibility, portfolioWithoutHref.holdingsFungibility) &&
         Objects.equals(this.links, portfolioWithoutHref.links);
   }
 
@@ -919,7 +945,7 @@ public class PortfolioWithoutHref {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, links);
+    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -958,6 +984,7 @@ public class PortfolioWithoutHref {
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
+    sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1006,6 +1033,7 @@ public class PortfolioWithoutHref {
     openapiFields.add("transactionExclusionFilter");
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
+    openapiFields.add("holdingsFungibility");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1116,6 +1144,9 @@ public class PortfolioWithoutHref {
       // validate the optional field `fractionalUnitsTrueUpConfiguration`
       if (jsonObj.get("fractionalUnitsTrueUpConfiguration") != null && !jsonObj.get("fractionalUnitsTrueUpConfiguration").isJsonNull()) {
         FractionalUnitsTrueUpConfiguration.validateJsonElement(jsonObj.get("fractionalUnitsTrueUpConfiguration"));
+      }
+      if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

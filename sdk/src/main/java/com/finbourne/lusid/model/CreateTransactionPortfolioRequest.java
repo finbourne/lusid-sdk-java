@@ -219,6 +219,10 @@ public class CreateTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION)
   private FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_FUNGIBILITY = "holdingsFungibility";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
+  private String holdingsFungibility;
+
   public CreateTransactionPortfolioRequest() {
   }
 
@@ -687,6 +691,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest holdingsFungibility(String holdingsFungibility) {
+    
+    this.holdingsFungibility = holdingsFungibility;
+    return this;
+  }
+
+   /**
+   * Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
+   * @return holdingsFungibility
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingsFungibility() {
+    return holdingsFungibility;
+  }
+
+
+  public void setHoldingsFungibility(String holdingsFungibility) {
+    this.holdingsFungibility = holdingsFungibility;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -717,7 +742,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.settlementConfiguration, createTransactionPortfolioRequest.settlementConfiguration) &&
         Objects.equals(this.transactionExclusionFilter, createTransactionPortfolioRequest.transactionExclusionFilter) &&
         Objects.equals(this.taxLotSelectionCostBasis, createTransactionPortfolioRequest.taxLotSelectionCostBasis) &&
-        Objects.equals(this.fractionalUnitsTrueUpConfiguration, createTransactionPortfolioRequest.fractionalUnitsTrueUpConfiguration);
+        Objects.equals(this.fractionalUnitsTrueUpConfiguration, createTransactionPortfolioRequest.fractionalUnitsTrueUpConfiguration) &&
+        Objects.equals(this.holdingsFungibility, createTransactionPortfolioRequest.holdingsFungibility);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -726,7 +752,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, enablementDate, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration);
+    return Objects.hash(displayName, description, code, created, enablementDate, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -761,6 +787,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
+    sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -804,6 +831,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("transactionExclusionFilter");
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
+    openapiFields.add("holdingsFungibility");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -892,6 +920,9 @@ public class CreateTransactionPortfolioRequest {
       // validate the optional field `fractionalUnitsTrueUpConfiguration`
       if (jsonObj.get("fractionalUnitsTrueUpConfiguration") != null && !jsonObj.get("fractionalUnitsTrueUpConfiguration").isJsonNull()) {
         FractionalUnitsTrueUpConfiguration.validateJsonElement(jsonObj.get("fractionalUnitsTrueUpConfiguration"));
+      }
+      if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
       }
   }
 

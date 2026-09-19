@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10024
+  version: 0.11.10025
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -145273,7 +145273,7 @@ paths:
         \n\r\nCurrently supported fields are: BaseCurrency, AccountingMethod, SubHoldingKeys,\
         \ AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration,\
         \ AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter,\
-        \ TaxLotSelectionCostBasis, FractionalUnitsTrueUpConfiguration."
+        \ TaxLotSelectionCostBasis, FractionalUnitsTrueUpConfiguration, HoldingsFungibility."
       operationId: PatchPortfolioDetails
       parameters:
       - description: The scope of the transaction portfolio.
@@ -193910,6 +193910,7 @@ components:
           code: code
           scope: scope
         transactionTypeScope: transactionTypeScope
+        holdingsFungibility: holdingsFungibility
         amortisationMethod: amortisationMethod
         settlementConfiguration:
           cashSettlement:
@@ -194078,6 +194079,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
       required:
       - code
       - displayName
@@ -194597,6 +194606,7 @@ components:
     CreatePortfolioDetails:
       additionalProperties: false
       example:
+        holdingsFungibility: holdingsFungibility
         fractionalUnitsTrueUpConfiguration:
           nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
           fractionalUnitsHandling: fractionalUnitsHandling
@@ -194618,6 +194628,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. If not supplied,\
+            \ the portfolio's current value is left unchanged; supply Default to reset\
+            \ it. A reset or never-configured flag reads back as absent. Available\
+            \ values: Default, Enabled."
+          nullable: true
+          type: string
       type: object
     CreatePortfolioGroupRequest:
       additionalProperties: false
@@ -196708,6 +196726,7 @@ components:
         taxRuleSetScope: taxRuleSetScope
         transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
+        holdingsFungibility: holdingsFungibility
         amortisationMethod: amortisationMethod
         settlementConfiguration:
           cashSettlement:
@@ -196906,6 +196925,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
       required:
       - baseCurrency
       - code
@@ -231797,6 +231824,7 @@ components:
                 code: code
                 scope: scope
               traversalDescription: traversalDescription
+            holdingsFungibility: holdingsFungibility
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -232024,6 +232052,7 @@ components:
                 code: code
                 scope: scope
               traversalDescription: traversalDescription
+            holdingsFungibility: holdingsFungibility
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -233589,6 +233618,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -268324,6 +268354,7 @@ components:
             code: code
             scope: scope
           traversalDescription: traversalDescription
+        holdingsFungibility: holdingsFungibility
         settlementConfiguration:
           cashSettlement:
             calculateInstructionToPortfolioRate: true
@@ -268560,6 +268591,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -269208,6 +269247,7 @@ components:
           asAtDate: 2000-01-23T04:56:07.000+00:00
         transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
+        holdingsFungibility: holdingsFungibility
         amortisationMethod: amortisationMethod
         settlementConfiguration:
           cashSettlement:
@@ -269365,6 +269405,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -269505,6 +269553,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -269731,6 +269780,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -269964,6 +270014,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -272815,6 +272866,7 @@ components:
             code: code
             scope: scope
           traversalDescription: traversalDescription
+        holdingsFungibility: holdingsFungibility
         settlementConfiguration:
           cashSettlement:
             calculateInstructionToPortfolioRate: true
@@ -273044,6 +273096,14 @@ components:
           type: string
         fractionalUnitsTrueUpConfiguration:
           $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -292634,6 +292694,7 @@ components:
                   code: code
                   scope: scope
                 traversalDescription: traversalDescription
+              holdingsFungibility: holdingsFungibility
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -292861,6 +292922,7 @@ components:
                   code: code
                   scope: scope
                 traversalDescription: traversalDescription
+              holdingsFungibility: holdingsFungibility
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -294376,6 +294438,7 @@ components:
                   code: code
                   scope: scope
                 traversalDescription: traversalDescription
+              holdingsFungibility: holdingsFungibility
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -294603,6 +294666,7 @@ components:
                   code: code
                   scope: scope
                 traversalDescription: traversalDescription
+              holdingsFungibility: holdingsFungibility
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -301751,6 +301815,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -301972,6 +302037,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -321851,6 +321917,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -322472,6 +322539,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -323497,6 +323565,7 @@ components:
               code: code
               scope: scope
             traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -336363,6 +336432,7 @@ components:
                     code: code
                     scope: scope
                   traversalDescription: traversalDescription
+                holdingsFungibility: holdingsFungibility
                 settlementConfiguration:
                   cashSettlement:
                     calculateInstructionToPortfolioRate: true
@@ -336590,6 +336660,7 @@ components:
                     code: code
                     scope: scope
                   traversalDescription: traversalDescription
+                holdingsFungibility: holdingsFungibility
                 settlementConfiguration:
                   cashSettlement:
                     calculateInstructionToPortfolioRate: true
