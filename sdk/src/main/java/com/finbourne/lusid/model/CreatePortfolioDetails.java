@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,6 +60,10 @@ public class CreatePortfolioDetails {
   @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
   private String taxLotSelectionCostBasis;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION = "fractionalUnitsTrueUpConfiguration";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION)
+  private FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration;
+
   public CreatePortfolioDetails() {
   }
 
@@ -104,6 +109,27 @@ public class CreatePortfolioDetails {
   }
 
 
+  public CreatePortfolioDetails fractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+    return this;
+  }
+
+   /**
+   * Get fractionalUnitsTrueUpConfiguration
+   * @return fractionalUnitsTrueUpConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public FractionalUnitsTrueUpConfiguration getFractionalUnitsTrueUpConfiguration() {
+    return fractionalUnitsTrueUpConfiguration;
+  }
+
+
+  public void setFractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,7 +141,8 @@ public class CreatePortfolioDetails {
     }
     CreatePortfolioDetails createPortfolioDetails = (CreatePortfolioDetails) o;
     return Objects.equals(this.corporateActionSourceId, createPortfolioDetails.corporateActionSourceId) &&
-        Objects.equals(this.taxLotSelectionCostBasis, createPortfolioDetails.taxLotSelectionCostBasis);
+        Objects.equals(this.taxLotSelectionCostBasis, createPortfolioDetails.taxLotSelectionCostBasis) &&
+        Objects.equals(this.fractionalUnitsTrueUpConfiguration, createPortfolioDetails.fractionalUnitsTrueUpConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +151,7 @@ public class CreatePortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis);
+    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -140,6 +167,7 @@ public class CreatePortfolioDetails {
     sb.append("class CreatePortfolioDetails {\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
+    sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,6 +192,7 @@ public class CreatePortfolioDetails {
     openapiFields = new HashSet<String>();
     openapiFields.add("corporateActionSourceId");
     openapiFields.add("taxLotSelectionCostBasis");
+    openapiFields.add("fractionalUnitsTrueUpConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -188,6 +217,10 @@ public class CreatePortfolioDetails {
       }
       if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
+      }
+      // validate the optional field `fractionalUnitsTrueUpConfiguration`
+      if (jsonObj.get("fractionalUnitsTrueUpConfiguration") != null && !jsonObj.get("fractionalUnitsTrueUpConfiguration").isJsonNull()) {
+        FractionalUnitsTrueUpConfiguration.validateJsonElement(jsonObj.get("fractionalUnitsTrueUpConfiguration"));
       }
   }
 

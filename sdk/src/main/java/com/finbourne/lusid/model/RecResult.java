@@ -17,6 +17,7 @@ import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RecDatesReconciled;
 import com.finbourne.lusid.model.RecInstanceId;
+import com.finbourne.lusid.model.RecLinkedResult;
 import com.finbourne.lusid.model.RecResultException;
 import com.finbourne.lusid.model.RecResultItemDetails;
 import com.finbourne.lusid.model.RecResultReview;
@@ -132,6 +133,10 @@ public class RecResult {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private RecResultItemDetails items;
+
+  public static final String SERIALIZED_NAME_LINKED_RESULTS = "linkedResults";
+  @SerializedName(SERIALIZED_NAME_LINKED_RESULTS)
+  private List<RecLinkedResult> linkedResults = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
@@ -524,6 +529,35 @@ public class RecResult {
   }
 
 
+  public RecResult linkedResults(List<RecLinkedResult> linkedResults) {
+    
+    this.linkedResults = linkedResults;
+    return this;
+  }
+
+  public RecResult addLinkedResultsItem(RecLinkedResult linkedResultsItem) {
+    if (this.linkedResults == null) {
+      this.linkedResults = new ArrayList<>();
+    }
+    this.linkedResults.add(linkedResultsItem);
+    return this;
+  }
+
+   /**
+   * Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then.
+   * @return linkedResults
+  **/
+  @jakarta.annotation.Nonnull
+  public List<RecLinkedResult> getLinkedResults() {
+    return linkedResults;
+  }
+
+
+  public void setLinkedResults(List<RecLinkedResult> linkedResults) {
+    this.linkedResults = linkedResults;
+  }
+
+
   public RecResult comments(List<RecUserComment> comments) {
     
     this.comments = comments;
@@ -721,6 +755,7 @@ public class RecResult {
         Objects.equals(this.aggregateRules, recResult.aggregateRules) &&
         Objects.equals(this.supplementalAttributes, recResult.supplementalAttributes) &&
         Objects.equals(this.items, recResult.items) &&
+        Objects.equals(this.linkedResults, recResult.linkedResults) &&
         Objects.equals(this.comments, recResult.comments) &&
         Objects.equals(this.properties, recResult.properties) &&
         Objects.equals(this.assignedUser, recResult.assignedUser) &&
@@ -736,7 +771,7 @@ public class RecResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recType, instanceId, recDefinitionId, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, comments, properties, assignedUser, assignedRole, href, version, links);
+    return Objects.hash(id, recType, instanceId, recDefinitionId, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -766,6 +801,7 @@ public class RecResult {
     sb.append("    aggregateRules: ").append(toIndentedString(aggregateRules)).append("\n");
     sb.append("    supplementalAttributes: ").append(toIndentedString(supplementalAttributes)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    linkedResults: ").append(toIndentedString(linkedResults)).append("\n");
     sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    assignedUser: ").append(toIndentedString(assignedUser)).append("\n");
@@ -811,6 +847,7 @@ public class RecResult {
     openapiFields.add("aggregateRules");
     openapiFields.add("supplementalAttributes");
     openapiFields.add("items");
+    openapiFields.add("linkedResults");
     openapiFields.add("comments");
     openapiFields.add("properties");
     openapiFields.add("assignedUser");
@@ -836,6 +873,7 @@ public class RecResult {
     openapiRequiredFields.add("aggregateRules");
     openapiRequiredFields.add("supplementalAttributes");
     openapiRequiredFields.add("items");
+    openapiRequiredFields.add("linkedResults");
     openapiRequiredFields.add("comments");
   }
 
@@ -918,6 +956,16 @@ public class RecResult {
       };
       // validate the required field `items`
       RecResultItemDetails.validateJsonElement(jsonObj.get("items"));
+      // ensure the json data is an array
+      if (!jsonObj.get("linkedResults").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `linkedResults` to be an array in the JSON string but got `%s`", jsonObj.get("linkedResults").toString()));
+      }
+
+      JsonArray jsonArraylinkedResults = jsonObj.getAsJsonArray("linkedResults");
+      // validate the required field `linkedResults` (array)
+      for (int i = 0; i < jsonArraylinkedResults.size(); i++) {
+        RecLinkedResult.validateJsonElement(jsonArraylinkedResults.get(i));
+      };
       // ensure the json data is an array
       if (!jsonObj.get("comments").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `comments` to be an array in the JSON string but got `%s`", jsonObj.get("comments").toString()));

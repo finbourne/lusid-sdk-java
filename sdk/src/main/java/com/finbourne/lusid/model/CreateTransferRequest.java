@@ -163,6 +163,10 @@ public class CreateTransferRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES_IN)
   private Map<String, PerpetualProperty> propertiesIn;
 
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, PerpetualProperty> properties;
+
   public CreateTransferRequest() {
   }
 
@@ -749,6 +753,35 @@ public class CreateTransferRequest {
   }
 
 
+  public CreateTransferRequest properties(Map<String, PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public CreateTransferRequest putPropertiesItem(String key, PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Get properties
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -785,7 +818,8 @@ public class CreateTransferRequest {
         Objects.equals(this.source, createTransferRequest.source) &&
         Objects.equals(this.accountingMethod, createTransferRequest.accountingMethod) &&
         Objects.equals(this.propertiesOut, createTransferRequest.propertiesOut) &&
-        Objects.equals(this.propertiesIn, createTransferRequest.propertiesIn);
+        Objects.equals(this.propertiesIn, createTransferRequest.propertiesIn) &&
+        Objects.equals(this.properties, createTransferRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -794,7 +828,7 @@ public class CreateTransferRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn);
+    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -835,6 +869,7 @@ public class CreateTransferRequest {
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    propertiesOut: ").append(toIndentedString(propertiesOut)).append("\n");
     sb.append("    propertiesIn: ").append(toIndentedString(propertiesIn)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -884,6 +919,7 @@ public class CreateTransferRequest {
     openapiFields.add("accountingMethod");
     openapiFields.add("propertiesOut");
     openapiFields.add("propertiesIn");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

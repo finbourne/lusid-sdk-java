@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10005
+  version: 0.11.10024
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -3077,6 +3077,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -3124,6 +3125,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -3171,6 +3173,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -50264,6 +50267,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -50340,6 +50344,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -50416,6 +50421,7 @@ paths:
                   sourceId: Txn1
                   properties: {}
                   movementName: Open
+                  txnType: Buy
                   holdingType: C
                   economicBucket: NA_Cost
                   economicBucketComponent: Premium
@@ -50656,6 +50662,7 @@ paths:
                     sourceId: Txn1
                     properties: {}
                     movementName: Open
+                    txnType: Buy
                     holdingType: C
                     economicBucket: NA_Cost
                     economicBucketComponent: Premium
@@ -50721,6 +50728,7 @@ paths:
                     sourceId: Txn1
                     properties: {}
                     movementName: Open
+                    txnType: Buy
                     holdingType: C
                     economicBucket: NA_Cost
                     economicBucketComponent: Premium
@@ -50786,6 +50794,7 @@ paths:
                     sourceId: Txn1
                     properties: {}
                     movementName: Open
+                    txnType: Buy
                     holdingType: C
                     economicBucket: NA_Cost
                     economicBucketComponent: Premium
@@ -75706,9 +75715,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
+                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
-                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75727,9 +75736,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
+                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
-                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75748,9 +75757,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
+                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
-                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75769,9 +75778,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
+                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
-                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -104545,6 +104554,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -104613,6 +104623,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -104701,6 +104712,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -104769,6 +104781,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -104857,6 +104870,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -104925,6 +104939,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -105039,6 +105054,7 @@ paths:
                     useChildSubHoldingKeysForPortfolioExpansion: false
                     validateDomesticAndQuoteCurrenciesAreConsistent: false
                     mbsValuationUsingHoldingCurrentFace: false
+                    fixedIncomeValuationsUsingCurrentFace: false
                     convertSrsCashFlowsToPortfolioCurrency: false
                     conservedQuantityForLookthroughExpansion: PV
                     returnZeroPv:
@@ -105111,6 +105127,7 @@ paths:
                     useChildSubHoldingKeysForPortfolioExpansion: false
                     validateDomesticAndQuoteCurrenciesAreConsistent: false
                     mbsValuationUsingHoldingCurrentFace: false
+                    fixedIncomeValuationsUsingCurrentFace: false
                     convertSrsCashFlowsToPortfolioCurrency: false
                     conservedQuantityForLookthroughExpansion: PV
                     returnZeroPv:
@@ -105183,6 +105200,7 @@ paths:
                     useChildSubHoldingKeysForPortfolioExpansion: false
                     validateDomesticAndQuoteCurrenciesAreConsistent: false
                     mbsValuationUsingHoldingCurrentFace: false
+                    fixedIncomeValuationsUsingCurrentFace: false
                     convertSrsCashFlowsToPortfolioCurrency: false
                     conservedQuantityForLookthroughExpansion: PV
                     returnZeroPv:
@@ -105255,6 +105273,7 @@ paths:
                     useChildSubHoldingKeysForPortfolioExpansion: false
                     validateDomesticAndQuoteCurrenciesAreConsistent: false
                     mbsValuationUsingHoldingCurrentFace: false
+                    fixedIncomeValuationsUsingCurrentFace: false
                     convertSrsCashFlowsToPortfolioCurrency: false
                     conservedQuantityForLookthroughExpansion: PV
                     returnZeroPv:
@@ -105803,6 +105822,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -105883,6 +105903,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -105963,6 +105984,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -106308,6 +106330,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106376,6 +106399,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106464,6 +106488,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106532,6 +106557,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106620,6 +106646,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106688,6 +106715,7 @@ paths:
                         useChildSubHoldingKeysForPortfolioExpansion: false
                         validateDomesticAndQuoteCurrenciesAreConsistent: false
                         mbsValuationUsingHoldingCurrentFace: false
+                        fixedIncomeValuationsUsingCurrentFace: false
                         convertSrsCashFlowsToPortfolioCurrency: false
                         conservedQuantityForLookthroughExpansion: PV
                         returnZeroPv:
@@ -106845,6 +106873,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -106925,6 +106954,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -107005,6 +107035,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -107224,6 +107255,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -107304,6 +107336,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -107384,6 +107417,7 @@ paths:
                       useChildSubHoldingKeysForPortfolioExpansion: false
                       validateDomesticAndQuoteCurrenciesAreConsistent: false
                       mbsValuationUsingHoldingCurrentFace: false
+                      fixedIncomeValuationsUsingCurrentFace: false
                       convertSrsCashFlowsToPortfolioCurrency: false
                       conservedQuantityForLookthroughExpansion: PV
                       returnZeroPv:
@@ -145239,7 +145273,7 @@ paths:
         \n\r\nCurrently supported fields are: BaseCurrency, AccountingMethod, SubHoldingKeys,\
         \ AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration,\
         \ AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter,\
-        \ TaxLotSelectionCostBasis."
+        \ TaxLotSelectionCostBasis, FractionalUnitsTrueUpConfiguration."
       operationId: PatchPortfolioDetails
       parameters:
       - description: The scope of the transaction portfolio.
@@ -157362,6 +157396,11 @@ paths:
                   key: Transaction/MyScope/TransferReference
                   value:
                     labelValue: REORG-2024-03
+              properties:
+                Transfer/MyScope/TransferReason:
+                  key: Transfer/MyScope/TransferReason
+                  value:
+                    labelValue: Reorganisation
             schema:
               $ref: '#/components/schemas/CreateTransferRequest'
           application/json:
@@ -157391,6 +157430,11 @@ paths:
                   key: Transaction/MyScope/TransferReference
                   value:
                     labelValue: REORG-2024-03
+              properties:
+                Transfer/MyScope/TransferReason:
+                  key: Transfer/MyScope/TransferReason
+                  value:
+                    labelValue: Reorganisation
             schema:
               $ref: '#/components/schemas/CreateTransferRequest'
           text/json:
@@ -157420,6 +157464,11 @@ paths:
                   key: Transaction/MyScope/TransferReference
                   value:
                     labelValue: REORG-2024-03
+              properties:
+                Transfer/MyScope/TransferReason:
+                  key: Transfer/MyScope/TransferReason
+                  value:
+                    labelValue: Reorganisation
             schema:
               $ref: '#/components/schemas/CreateTransferRequest'
           application/*+json:
@@ -157449,6 +157498,11 @@ paths:
                   key: Transaction/MyScope/TransferReference
                   value:
                     labelValue: REORG-2024-03
+              properties:
+                Transfer/MyScope/TransferReason:
+                  key: Transfer/MyScope/TransferReason
+                  value:
+                    labelValue: Reorganisation
             schema:
               $ref: '#/components/schemas/CreateTransferRequest'
         description: The transfer to create.
@@ -170907,6 +170961,33 @@ components:
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               asAtDate: 2000-01-23T04:56:07.000+00:00
+            linkedResults:
+            - recType: recType
+              linkedBy:
+                left:
+                - value: value
+                  key: key
+                - value: value
+                  key: key
+                right:
+                - value: value
+                  key: key
+                - value: value
+                  key: key
+              id: id
+            - recType: recType
+              linkedBy:
+                left:
+                - value: value
+                  key: key
+                - value: value
+                  key: key
+                right:
+                - value: value
+                  key: key
+                - value: value
+                  key: key
+              id: id
             recType: recType
             instanceId:
               instanceIdType: instanceIdType
@@ -171108,6 +171189,33 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          linkedResults:
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
           recType: recType
           instanceId:
             instanceIdType: instanceIdType
@@ -171246,6 +171354,33 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          linkedResults:
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
           recType: recType
           instanceId:
             instanceIdType: instanceIdType
@@ -171493,6 +171628,33 @@ components:
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 asAtDate: 2000-01-23T04:56:07.000+00:00
+              linkedResults:
+              - recType: recType
+                linkedBy:
+                  left:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                  right:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                id: id
+              - recType: recType
+                linkedBy:
+                  left:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                  right:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                id: id
               recType: recType
               instanceId:
                 instanceIdType: instanceIdType
@@ -171631,6 +171793,33 @@ components:
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 asAtDate: 2000-01-23T04:56:07.000+00:00
+              linkedResults:
+              - recType: recType
+                linkedBy:
+                  left:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                  right:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                id: id
+              - recType: recType
+                linkedBy:
+                  left:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                  right:
+                  - value: value
+                    key: key
+                  - value: value
+                    key: key
+                id: id
               recType: recType
               instanceId:
                 instanceIdType: instanceIdType
@@ -178993,7 +179182,8 @@ components:
       additionalProperties: false
       description: "One node within a bucket set result: the fund aggregate or a single\
         \ share class. Both carry NAV and buckets; the\r\ncapital ratio, the unit\
-        \ counts and the per-unit values are set only on share class nodes."
+        \ counts and the per-unit values belong to share class nodes and are omitted\
+        \ on the fund node."
       example:
         sharesInIssue: 5.944895607614016
         previousSharesInIssue: 3.353193347011243
@@ -179044,19 +179234,18 @@ components:
           minLength: 1
           type: string
         shareClassShortCode:
-          description: "The short code of the share class this node is for, or null\
-            \ for the fund node."
+          description: The short code of the share class this node is for. Omitted
+            on the fund node.
           nullable: true
           type: string
         nav:
-          description: "The net asset value at this node, in the fund currency, or\
-            \ null where it does not apply to the node type."
+          description: "The net asset value at this node, in the fund currency."
           format: double
           nullable: true
           type: number
         capitalRatio:
-          description: "The share class's capital ratio (its share of the fund NAV),\
-            \ set only on share class nodes."
+          description: The share class's capital ratio (its share of the fund NAV).
+            Omitted on the fund node.
           format: double
           nullable: true
           type: number
@@ -179069,28 +179258,33 @@ components:
         perUnitValue:
           description: "The share class's NAV per unit in issue, in the fund currency,\
             \ rounded to the share class's PricePrecision (left unrounded where the\
-            \ share class declares none). Reported only for a share class that is\
-            \ unitised and has units in issue to divide by. The dealing price - in\
-            \ the share class currency, with its instrument's rounding convention\
-            \ applied - is on the share class breakdown's unitisation data."
+            \ share class declares none). Omitted on the fund node, for a share class\
+            \ that is not unitised, and for a unitised share class with no units in\
+            \ issue to divide by (SharesInIssue is then reported as zero). The dealing\
+            \ price - in the share class currency, with its instrument's rounding\
+            \ convention applied - is on the share class breakdown's unitisation data."
           format: double
           nullable: true
           type: number
         sharesInIssue:
           description: The share class's units in issue at the end of the period.
-            Reported only for a share class that is unitised.
+            Omitted on the fund node and for a share class that is not unitised.
           format: double
           nullable: true
           type: number
         previousPerUnitValue:
           description: "The share class's NAV per unit at the previous valuation point,\
-            \ on the same basis as PerUnitValue."
+            \ on the same basis as PerUnitValue. Omitted on the fund node, for a share\
+            \ class that is not unitised, and where the share class had no units in\
+            \ issue at the previous valuation point (including the fund's first valuation\
+            \ point)."
           format: double
           nullable: true
           type: number
         previousSharesInIssue:
           description: The share class's units in issue at the start of the period.
-            Reported only for a share class that is unitised.
+            Omitted on the fund node and for a share class that is not unitised; zero
+            at the fund's first valuation point.
           format: double
           nullable: true
           type: number
@@ -179108,7 +179302,7 @@ components:
         netDealingUnits:
           description: "The net units dealt for the share class over the period, so\
             \ that the shares in issue are the previous shares in issue plus this.\
-            \ Set only on share class nodes, and only where the bucket set is unitised."
+            \ Omitted on the fund node and where the bucket set is not unitised."
           format: double
           nullable: true
           type: number
@@ -179286,39 +179480,46 @@ components:
             format: double
             type: number
           description: "The bucket's movement broken down by the source that contributed\
-            \ it, which always sums to Value. Set on share class nodes only. The keys\
-            \ are 'classSpecific' for amounts booked directly to the share class,\
-            \ 'nonClassSpecific' for fund-level amounts apportioned to it, and an\
-            \ allocation group's code for amounts allocated to that group and apportioned\
-            \ to the share class. Sources contributing nothing to the bucket are omitted."
+            \ it, which always sums to Value. Reported on share class nodes and omitted\
+            \ on the fund node; on a share class node it is present even when nothing\
+            \ contributed in the period, as an empty map. The keys are 'classSpecific'\
+            \ for amounts booked directly to the share class, 'nonClassSpecific' for\
+            \ fund-level amounts apportioned to it, and an allocation group's code\
+            \ for amounts allocated to that group and apportioned to the share class.\
+            \ Sources contributing nothing to the bucket are omitted."
           nullable: true
           type: object
         perUnitValue:
           description: "The bucket's movement over the period per unit in issue (Value\
             \ divided by UnitsInIssue), in the fund currency, rounded to the share\
-            \ class's PricePrecision. Reported only where both the share class and\
-            \ the bucket are unitised and there are units in issue to divide by."
+            \ class's PricePrecision. Omitted where either the share class or the\
+            \ bucket is not unitised, and where a unitised share class has no units\
+            \ in issue to divide by (UnitsInIssue is then reported as zero)."
           format: double
           nullable: true
           type: number
         unitsInIssue:
           description: The share class's units in issue at the end of the period.
-            Reported only where both the share class and the bucket are unitised.
+            Omitted where either the share class or the bucket is not unitised.
           format: double
           nullable: true
           type: number
         previousCumulativePerUnitValue:
           description: "The bucket's cumulative value at the start of the period,\
             \ per unit in issue at that point - so it reads as it did at the previous\
-            \ valuation point rather than being restated at this period's unit count."
+            \ valuation point rather than being restated at this period's unit count.\
+            \ Omitted where the bucket had no per-unit value at the previous valuation\
+            \ point: on the fund node, where the share class or the bucket is not\
+            \ unitised, where the share class then had no units in issue, and at the\
+            \ fund's first valuation point."
           format: double
           nullable: true
           type: number
         cumulativePerUnitValue:
-          description: The bucket's cumulative value at the end of the period per
-            unit in issue (CumulativeValue divided by UnitsInIssue). Reported only
-            where both the share class and the bucket are unitised and there are units
-            in issue to divide by.
+          description: "The bucket's cumulative value at the end of the period per\
+            \ unit in issue (CumulativeValue divided by UnitsInIssue). Omitted where\
+            \ either the share class or the bucket is not unitised, and where a unitised\
+            \ share class has no units in issue to divide by."
           format: double
           nullable: true
           type: number
@@ -190999,6 +191200,7 @@ components:
             conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
             enableUseOfCachedUnitResults: true
             useInstrumentTypeToDeterminePricer: true
+            fixedIncomeValuationsUsingCurrentFace: true
             riskEngine: riskEngine
             allowFallbackOnModelDecline: true
             produceSeparateResultForLinearOtcLegs: true
@@ -193699,6 +193901,10 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         instrumentScopes:
         - instrumentScopes
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         description: description
         parentPortfolioId:
           code: code
@@ -193870,6 +194076,8 @@ components:
             \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
       required:
       - code
       - displayName
@@ -194389,6 +194597,10 @@ components:
     CreatePortfolioDetails:
       additionalProperties: false
       example:
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         corporateActionSourceId:
           code: code
           scope: scope
@@ -194404,6 +194616,8 @@ components:
             \ absent. Available values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
       type: object
     CreatePortfolioGroupRequest:
       additionalProperties: false
@@ -195058,6 +195272,7 @@ components:
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
+              fixedIncomeValuationsUsingCurrentFace: true
               riskEngine: riskEngine
               allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
@@ -196485,6 +196700,10 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         instrumentScopes:
         - instrumentScopes
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         description: description
         taxRuleSetScope: taxRuleSetScope
         transactionTypeScope: transactionTypeScope
@@ -196685,6 +196904,8 @@ components:
             \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
       required:
       - baseCurrency
       - code
@@ -196762,6 +196983,22 @@ components:
         custodianAccountIdIn:
           code: code
           scope: scope
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
       properties:
         transferId:
           $ref: '#/components/schemas/ResourceId'
@@ -196860,6 +197097,11 @@ components:
           nullable: true
           type: object
         propertiesIn:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          nullable: true
+          type: object
+        properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           nullable: true
@@ -212107,6 +212349,36 @@ components:
         - startDate
         type: object
       description: LUSID representation of a Forward Rate Agreement.
+    FractionalUnitsTrueUpConfiguration:
+      additionalProperties: false
+      example:
+        nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+        fractionalUnitsHandling: fractionalUnitsHandling
+        nominatedSubHoldingKey: nominatedSubHoldingKey
+      properties:
+        fractionalUnitsHandling:
+          description: "The fractional-units handling scheme for the portfolio's corporate-action\
+            \ processing. This can be: LotLevelRounding or CustodianLevelTrueUp. Defaults\
+            \ to LotLevelRounding, today's per-lot-only processing, if not specified.\
+            \ Available values: LotLevelRounding, CustodianLevelTrueUp."
+          nullable: true
+          type: string
+        nominatedSubHoldingKey:
+          description: "The sub-holding key (from the 'Transaction' domain) that custodian-level\
+            \ fractional-units true-ups are booked to. The key must be one of the\
+            \ portfolio's sub-holding keys, must have a pre-defined property definition,\
+            \ and event processing never creates it."
+          nullable: true
+          type: string
+        nominatedSubHoldingKeyValue:
+          description: "The value of the nominated sub-holding key under which the\
+            \ true-up holding is booked, for example the bucket that quarantines fractional\
+            \ rounding true-ups."
+          maxLength: 512
+          minLength: 1
+          nullable: true
+          type: string
+      type: object
     FromRecipe:
       additionalProperties: false
       example:
@@ -214835,6 +215107,7 @@ components:
         movementName: movementName
         instrumentScope: instrumentScope
         instrumentId: instrumentId
+        txnType: txnType
         units: 0.8008281904610115
         sourceLevels:
         - sourceLevels
@@ -215000,6 +215273,12 @@ components:
           description: "If the JE Line is generated from a transaction, the name of\
             \ the side in the transaction type's movement. If from a valuation, this\
             \ is 'MarkToMarket'."
+          nullable: true
+          type: string
+        txnType:
+          description: "If the JE Line is generated from a transaction, the type of\
+            \ that transaction. Null where the line is not linked to a transaction,\
+            \ such as a valuation line."
           nullable: true
           type: string
         holdingType:
@@ -220977,6 +221256,7 @@ components:
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
+              fixedIncomeValuationsUsingCurrentFace: true
               riskEngine: riskEngine
               allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
@@ -231568,6 +231848,10 @@ components:
               code: code
               scope: scope
             created: 2000-01-23T04:56:07.000+00:00
+            fractionalUnitsTrueUpConfiguration:
+              nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+              fractionalUnitsHandling: fractionalUnitsHandling
+              nominatedSubHoldingKey: nominatedSubHoldingKey
             taxRuleSetScope: taxRuleSetScope
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -231791,6 +232075,10 @@ components:
               code: code
               scope: scope
             created: 2000-01-23T04:56:07.000+00:00
+            fractionalUnitsTrueUpConfiguration:
+              nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+              fractionalUnitsHandling: fractionalUnitsHandling
+              nominatedSubHoldingKey: nominatedSubHoldingKey
             taxRuleSetScope: taxRuleSetScope
             version:
               stagedModificationIdModified: stagedModificationIdModified
@@ -233352,6 +233640,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -234699,6 +234991,7 @@ components:
         movementName: movementName
         instrumentScope: instrumentScope
         instrumentId: instrumentId
+        txnType: txnType
         units: 6.027456183070403
         sourceLevels:
         - sourceLevels
@@ -234850,6 +235143,12 @@ components:
           description: "If the JE Line is generated from a transaction, the name of\
             \ the side in the transaction type's movement. If from a valuation, this\
             \ is 'MarkToMarket'."
+          nullable: true
+          type: string
+        txnType:
+          description: "If the JE Line is generated from a transaction, the type of\
+            \ that transaction. Null where the line is not linked to a transaction,\
+            \ such as a valuation line."
           nullable: true
           type: string
         holdingType:
@@ -260656,6 +260955,33 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          linkedResults:
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
           recType: recType
           instanceId:
             instanceIdType: instanceIdType
@@ -260794,6 +261120,33 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          linkedResults:
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
+          - recType: recType
+            linkedBy:
+              left:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              right:
+              - value: value
+                key: key
+              - value: value
+                key: key
+            id: id
           recType: recType
           instanceId:
             instanceIdType: instanceIdType
@@ -267358,9 +267711,7 @@ components:
           minLength: 1
           type: string
         type:
-          description: "The type of this placement (Market, Limit, Stop, StopLimit,\
-            \ etc). A Limit placement must specify a limit price, a Stop placement\
-            \ a stop price, and a StopLimit placement both."
+          description: "The type of this placement (Market, Limit, etc)."
           minLength: 1
           type: string
         createdDate:
@@ -267499,9 +267850,7 @@ components:
           minLength: 1
           type: string
         type:
-          description: "The type of this placement (Market, Limit, Stop, StopLimit,\
-            \ etc). A Limit placement must specify a limit price, a Stop placement\
-            \ a stop price, and a StopLimit placement both."
+          description: "The type of this placement (Market, Limit, etc)."
           minLength: 1
           type: string
         createdDate:
@@ -267648,7 +267997,7 @@ components:
       type: object
     PlacementUpdateRequest:
       additionalProperties: false
-      description: A request to update a Placement.
+      description: A request to create or update a Placement.
       example:
         entryType: entryType
         amount:
@@ -267658,7 +268007,6 @@ components:
         quantity: 0.8008281904610115
         limitPrice: 6.027456183070403
         counterparty: counterparty
-        currency: currency
         id:
           code: code
           scope: scope
@@ -267697,31 +268045,20 @@ components:
           nullable: true
           type: object
         type:
-          description: "Optionally changes the type of this placement (Market, Limit,\
-            \ Stop, StopLimit). A type may only be tightened: a Market placement may\
-            \ become Limit, Stop or StopLimit, and any placement may become StopLimit.\
-            \ A placement may be relaxed to Market only when the associated block\
-            \ is of type 'Market'. Changing to a priced type requires a currency and\
-            \ the price(s) that type carries; a price the new type does not carry\
-            \ is cleared. Changing to Market clears both prices and may not be combined\
-            \ with a price update. A change to or from any other type is not subject\
-            \ to these rules, leaves both prices as they are, and is permitted only\
-            \ when the associated block is of type 'Market'."
+          description: "The type of this placement (Market, Limit, etc)."
           maxLength: 256
           minLength: 1
           nullable: true
           type: string
         limitPrice:
-          description: "Optionally updates the limit price of this placement, in the\
-            \ placement's limit price currency unless a currency is also specified.\
-            \ A currency is required if the placement has no limit price currency."
+          description: "The optional price, as currency and amount, associated with\
+            \ this placement."
           format: double
           nullable: true
           type: number
         stopPrice:
-          description: "Optionally updates the stop price of this placement, in the\
-            \ placement's stop price currency unless a currency is also specified.\
-            \ A currency is required if the placement has no stop price currency."
+          description: "The optional price, as currency and amount, associated with\
+            \ this placement."
           format: double
           nullable: true
           type: number
@@ -267741,17 +268078,6 @@ components:
             \ values: Undecided, Manual, Direct, Ems, External."
           maxLength: 256
           minLength: 1
-          nullable: true
-          type: string
-        currency:
-          description: "The ISO currency code of the stop and/or limit price carried\
-            \ by the placement's type. Required when the type is changed to Stop,\
-            \ Limit or StopLimit, or when a price is set that the placement has no\
-            \ currency for; not permitted for a Market placement. For a value placement\
-            \ it must match the currency of the amount exactly, whether that amount\
-            \ is on the placement or in the update."
-          maxLength: 3
-          minLength: 0
           nullable: true
           type: string
       required:
@@ -267791,6 +268117,7 @@ components:
           movementName: movementName
           instrumentScope: instrumentScope
           instrumentId: instrumentId
+          txnType: txnType
           units: 6.027456183070403
           sourceLevels:
           - sourceLevels
@@ -268048,6 +268375,10 @@ components:
           code: code
           scope: scope
         created: 2000-01-23T04:56:07.000+00:00
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         taxRuleSetScope: taxRuleSetScope
         version:
           stagedModificationIdModified: stagedModificationIdModified
@@ -268227,6 +268558,8 @@ components:
             \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -268854,6 +269187,10 @@ components:
         instrumentScopes:
         - instrumentScopes
         - instrumentScopes
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         taxRuleSetScope: taxRuleSetScope
         version:
           stagedModificationIdModified: stagedModificationIdModified
@@ -269026,6 +269363,8 @@ components:
             \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -269216,6 +269555,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -269438,6 +269781,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -269667,6 +270014,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -272514,6 +272865,10 @@ components:
           code: code
           scope: scope
         created: 2000-01-23T04:56:07.000+00:00
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
         taxRuleSetScope: taxRuleSetScope
         version:
           stagedModificationIdModified: stagedModificationIdModified
@@ -272687,6 +273042,8 @@ components:
             \ values: Default, Cost, AmortisedCost."
           nullable: true
           type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -273496,6 +273853,7 @@ components:
           conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
           enableUseOfCachedUnitResults: true
           useInstrumentTypeToDeterminePricer: true
+          fixedIncomeValuationsUsingCurrentFace: true
           riskEngine: riskEngine
           allowFallbackOnModelDecline: true
           produceSeparateResultForLinearOtcLegs: true
@@ -273715,6 +274073,7 @@ components:
         conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
         enableUseOfCachedUnitResults: true
         useInstrumentTypeToDeterminePricer: true
+        fixedIncomeValuationsUsingCurrentFace: true
         riskEngine: riskEngine
         allowFallbackOnModelDecline: true
         produceSeparateResultForLinearOtcLegs: true
@@ -273823,6 +274182,22 @@ components:
             the quote currency (unless unknown/zzz) when using lookup pricing.
           type: boolean
         mbsValuationUsingHoldingCurrentFace:
+          type: boolean
+        fixedIncomeValuationsUsingCurrentFace:
+          description: "Scale holding-level fixed-income results by the holding's\
+            \ current face over the instrument's\r\nface per unit, rather than by\
+            \ the holding's traded units. Applies to Bond, ComplexBond and\r\nInflationLinkedBond.\
+            \ Defaults to false.\r\n \r\nGoverns scaling basis only, and only for\
+            \ bonds outside the asset-backed family. An asset-backed\r\nbond keeps\
+            \ its own machinery and its own option, MbsValuationUsingHoldingCurrentFace:\
+            \ because a\r\ncurrent face is defined as poolFactor x contractSize x\
+            \ units, the two are the same arithmetic at\r\nthe contract size of 1\
+            \ that convention recommends, so there is nothing for this option to add\r\
+            \nthere. Neither option implies the other.\r\n \r\nTurning this on without\
+            \ supplying current-face data changes no published number: a holding with\r\
+            \nno current face scales by a quantity equal to its unit count. Numbers\
+            \ move only where a current\r\nface has been supplied, whether on a transaction\
+            \ or by a face-moving instrument event."
           type: boolean
         convertSrsCashFlowsToPortfolioCurrency:
           description: "In the case upserted structured result store (SRS) cashflows\
@@ -278956,6 +279331,99 @@ components:
         fromRecipe:
           $ref: '#/components/schemas/FromRecipe'
       type: object
+    RecLinkedBy:
+      additionalProperties: false
+      description: "The item keys a link between two rec results was established on,\
+        \ per side."
+      example:
+        left:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        right:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        left:
+          description: The keys shared by the two results' left-side items. May be
+            empty.
+          items:
+            $ref: '#/components/schemas/RecLinkKey'
+          type: array
+        right:
+          description: The keys shared by the two results' right-side items. May be
+            empty.
+          items:
+            $ref: '#/components/schemas/RecLinkKey'
+          type: array
+      required:
+      - left
+      - right
+      type: object
+    RecLinkedResult:
+      additionalProperties: false
+      description: "A rec result of a different rec type in the same rec instance\
+        \ whose items share an identifier with this\r\nresult's items, and the keys\
+        \ that established the link. Links are symmetric: the linked result carries\
+        \ one back."
+      example:
+        recType: recType
+        linkedBy:
+          left:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          right:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        id: id
+      properties:
+        id:
+          description: "The id of the linked result, as carried in that result's own\
+            \ id field."
+          minLength: 1
+          type: string
+        recType:
+          description: "The rec type of the linked result. Always differs from this\
+            \ result's rec type. Available values: Holding, CashHolding, Valuation,\
+            \ InputTransaction, OutputTransaction, SettlementActivity."
+          minLength: 1
+          type: string
+        linkedBy:
+          $ref: '#/components/schemas/RecLinkedBy'
+      required:
+      - id
+      - linkedBy
+      - recType
+      type: object
+    RecLinkKey:
+      additionalProperties: false
+      description: "One item key that established a link between two rec results:\
+        \ the key name and the identifier value both\r\nresults' items carried for\
+        \ it."
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          description: "The key name: holdingId or transactionId."
+          minLength: 1
+          type: string
+        value:
+          description: The identifier value both results' items carried under the
+            key.
+          minLength: 1
+          type: string
+      required:
+      - key
+      - value
+      type: object
     RecMatchCountByResultType:
       additionalProperties: false
       description: Match result counts broken down by result type.
@@ -280887,6 +281355,33 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        linkedResults:
+        - recType: recType
+          linkedBy:
+            left:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            right:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          id: id
+        - recType: recType
+          linkedBy:
+            left:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            right:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          id: id
         recType: recType
         instanceId:
           instanceIdType: instanceIdType
@@ -281036,11 +281531,21 @@ components:
           type: array
         items:
           $ref: '#/components/schemas/RecResultItemDetails'
+        linkedResults:
+          description: "Results of other rec types in the same rec instance run whose\
+            \ items share an identifier with this result's items. Only exceptions\
+            \ link, and only to exceptions; symmetric. Set by the linking pass once\
+            \ every rec type of the run has completed, so empty until then."
+          items:
+            $ref: '#/components/schemas/RecLinkedResult'
+          minItems: 0
+          type: array
         comments:
           description: User-authored comments attached to the result. Carried forward
             across runs.
           items:
             $ref: '#/components/schemas/RecUserComment'
+          minItems: 0
           type: array
         properties:
           additionalProperties:
@@ -281077,6 +281582,7 @@ components:
       - id
       - instanceId
       - items
+      - linkedResults
       - recDefinitionId
       - recType
       - resultCardinality
@@ -291158,6 +291664,7 @@ components:
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
                 enableUseOfCachedUnitResults: true
                 useInstrumentTypeToDeterminePricer: true
+                fixedIncomeValuationsUsingCurrentFace: true
                 riskEngine: riskEngine
                 allowFallbackOnModelDecline: true
                 produceSeparateResultForLinearOtcLegs: true
@@ -291474,6 +291981,7 @@ components:
                 conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
                 enableUseOfCachedUnitResults: true
                 useInstrumentTypeToDeterminePricer: true
+                fixedIncomeValuationsUsingCurrentFace: true
                 riskEngine: riskEngine
                 allowFallbackOnModelDecline: true
                 produceSeparateResultForLinearOtcLegs: true
@@ -292177,6 +292685,10 @@ components:
                 code: code
                 scope: scope
               created: 2000-01-23T04:56:07.000+00:00
+              fractionalUnitsTrueUpConfiguration:
+                nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                fractionalUnitsHandling: fractionalUnitsHandling
+                nominatedSubHoldingKey: nominatedSubHoldingKey
               taxRuleSetScope: taxRuleSetScope
               version:
                 stagedModificationIdModified: stagedModificationIdModified
@@ -292400,6 +292912,10 @@ components:
                 code: code
                 scope: scope
               created: 2000-01-23T04:56:07.000+00:00
+              fractionalUnitsTrueUpConfiguration:
+                nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                fractionalUnitsHandling: fractionalUnitsHandling
+                nominatedSubHoldingKey: nominatedSubHoldingKey
               taxRuleSetScope: taxRuleSetScope
               version:
                 stagedModificationIdModified: stagedModificationIdModified
@@ -293911,6 +294427,10 @@ components:
                 code: code
                 scope: scope
               created: 2000-01-23T04:56:07.000+00:00
+              fractionalUnitsTrueUpConfiguration:
+                nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                fractionalUnitsHandling: fractionalUnitsHandling
+                nominatedSubHoldingKey: nominatedSubHoldingKey
               taxRuleSetScope: taxRuleSetScope
               version:
                 stagedModificationIdModified: stagedModificationIdModified
@@ -294134,6 +294654,10 @@ components:
                 code: code
                 scope: scope
               created: 2000-01-23T04:56:07.000+00:00
+              fractionalUnitsTrueUpConfiguration:
+                nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                fractionalUnitsHandling: fractionalUnitsHandling
+                nominatedSubHoldingKey: nominatedSubHoldingKey
               taxRuleSetScope: taxRuleSetScope
               version:
                 stagedModificationIdModified: stagedModificationIdModified
@@ -301278,6 +301802,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -301495,6 +302023,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -321369,6 +321901,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -321986,6 +322522,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -323007,6 +323547,10 @@ components:
             code: code
             scope: scope
           created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
           taxRuleSetScope: taxRuleSetScope
           version:
             stagedModificationIdModified: stagedModificationIdModified
@@ -335870,6 +336414,10 @@ components:
                   code: code
                   scope: scope
                 created: 2000-01-23T04:56:07.000+00:00
+                fractionalUnitsTrueUpConfiguration:
+                  nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                  fractionalUnitsHandling: fractionalUnitsHandling
+                  nominatedSubHoldingKey: nominatedSubHoldingKey
                 taxRuleSetScope: taxRuleSetScope
                 version:
                   stagedModificationIdModified: stagedModificationIdModified
@@ -336093,6 +336641,10 @@ components:
                   code: code
                   scope: scope
                 created: 2000-01-23T04:56:07.000+00:00
+                fractionalUnitsTrueUpConfiguration:
+                  nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+                  fractionalUnitsHandling: fractionalUnitsHandling
+                  nominatedSubHoldingKey: nominatedSubHoldingKey
                 taxRuleSetScope: taxRuleSetScope
                 version:
                   stagedModificationIdModified: stagedModificationIdModified
@@ -339267,6 +339819,7 @@ components:
               conservedQuantityForLookthroughExpansion: conservedQuantityForLookthroughExpansion
               enableUseOfCachedUnitResults: true
               useInstrumentTypeToDeterminePricer: true
+              fixedIncomeValuationsUsingCurrentFace: true
               riskEngine: riskEngine
               allowFallbackOnModelDecline: true
               produceSeparateResultForLinearOtcLegs: true
@@ -344817,6 +345370,7 @@ components:
           movementName: movementName
           instrumentScope: instrumentScope
           instrumentId: instrumentId
+          txnType: txnType
           units: 0.8008281904610115
           sourceLevels:
           - sourceLevels
@@ -344915,6 +345469,7 @@ components:
           movementName: movementName
           instrumentScope: instrumentScope
           instrumentId: instrumentId
+          txnType: txnType
           units: 0.8008281904610115
           sourceLevels:
           - sourceLevels
@@ -345144,6 +345699,7 @@ components:
             movementName: movementName
             instrumentScope: instrumentScope
             instrumentId: instrumentId
+            txnType: txnType
             units: 6.027456183070403
             sourceLevels:
             - sourceLevels
@@ -345239,6 +345795,7 @@ components:
             movementName: movementName
             instrumentScope: instrumentScope
             instrumentId: instrumentId
+            txnType: txnType
             units: 6.027456183070403
             sourceLevels:
             - sourceLevels
@@ -350538,6 +351095,7 @@ components:
           movementName: movementName
           instrumentScope: instrumentScope
           instrumentId: instrumentId
+          txnType: txnType
           units: 6.027456183070403
           sourceLevels:
           - sourceLevels
@@ -350622,6 +351180,7 @@ components:
           movementName: movementName
           instrumentScope: instrumentScope
           instrumentId: instrumentId
+          txnType: txnType
           units: 6.027456183070403
           sourceLevels:
           - sourceLevels

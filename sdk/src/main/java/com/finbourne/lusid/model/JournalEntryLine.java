@@ -136,6 +136,10 @@ public class JournalEntryLine {
   @SerializedName(SERIALIZED_NAME_MOVEMENT_NAME)
   private String movementName;
 
+  public static final String SERIALIZED_NAME_TXN_TYPE = "txnType";
+  @SerializedName(SERIALIZED_NAME_TXN_TYPE)
+  private String txnType;
+
   public static final String SERIALIZED_NAME_HOLDING_TYPE = "holdingType";
   @SerializedName(SERIALIZED_NAME_HOLDING_TYPE)
   private String holdingType;
@@ -606,6 +610,27 @@ public class JournalEntryLine {
   }
 
 
+  public JournalEntryLine txnType(String txnType) {
+    
+    this.txnType = txnType;
+    return this;
+  }
+
+   /**
+   * If the JE Line is generated from a transaction, the type of that transaction. Null where the line is not linked to a transaction, such as a valuation line.
+   * @return txnType
+  **/
+  @jakarta.annotation.Nullable
+  public String getTxnType() {
+    return txnType;
+  }
+
+
+  public void setTxnType(String txnType) {
+    this.txnType = txnType;
+  }
+
+
   public JournalEntryLine holdingType(String holdingType) {
     
     this.holdingType = holdingType;
@@ -932,6 +957,7 @@ public class JournalEntryLine {
         Objects.equals(this.sourceId, journalEntryLine.sourceId) &&
         Objects.equals(this.properties, journalEntryLine.properties) &&
         Objects.equals(this.movementName, journalEntryLine.movementName) &&
+        Objects.equals(this.txnType, journalEntryLine.txnType) &&
         Objects.equals(this.holdingType, journalEntryLine.holdingType) &&
         Objects.equals(this.economicBucket, journalEntryLine.economicBucket) &&
         Objects.equals(this.economicBucketComponent, journalEntryLine.economicBucketComponent) &&
@@ -953,7 +979,7 @@ public class JournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, custodianAccountId, custodianAccountType, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, txnType, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, custodianAccountId, custodianAccountType, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -986,6 +1012,7 @@ public class JournalEntryLine {
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    movementName: ").append(toIndentedString(movementName)).append("\n");
+    sb.append("    txnType: ").append(toIndentedString(txnType)).append("\n");
     sb.append("    holdingType: ").append(toIndentedString(holdingType)).append("\n");
     sb.append("    economicBucket: ").append(toIndentedString(economicBucket)).append("\n");
     sb.append("    economicBucketComponent: ").append(toIndentedString(economicBucketComponent)).append("\n");
@@ -1040,6 +1067,7 @@ public class JournalEntryLine {
     openapiFields.add("sourceId");
     openapiFields.add("properties");
     openapiFields.add("movementName");
+    openapiFields.add("txnType");
     openapiFields.add("holdingType");
     openapiFields.add("economicBucket");
     openapiFields.add("economicBucketComponent");
@@ -1128,6 +1156,9 @@ public class JournalEntryLine {
       }
       if ((jsonObj.get("movementName") != null && !jsonObj.get("movementName").isJsonNull()) && !jsonObj.get("movementName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
+      }
+      if ((jsonObj.get("txnType") != null && !jsonObj.get("txnType").isJsonNull()) && !jsonObj.get("txnType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `txnType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("txnType").toString()));
       }
       if (!jsonObj.get("holdingType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingType").toString()));

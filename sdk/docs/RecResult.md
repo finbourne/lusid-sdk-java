@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **aggregateRules** | [**List&lt;AggregateRuleValues&gt;**](AggregateRuleValues.md) | The aggregate matching rules and their measured values. | [default to List<AggregateRuleValues>]
 **supplementalAttributes** | [**List&lt;SupplementalAttributeValues&gt;**](SupplementalAttributeValues.md) | Additional attribute values carried on the result for context. Do not contribute to matching or the result id. | [default to List<SupplementalAttributeValues>]
 **items** | [**RecResultItemDetails**](RecResultItemDetails.md) |  | [default to RecResultItemDetails]
+**linkedResults** | [**List&lt;RecLinkedResult&gt;**](RecLinkedResult.md) | Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then. | [default to List<RecLinkedResult>]
 **comments** | [**List&lt;RecUserComment&gt;**](RecUserComment.md) | User-authored comments attached to the result. Carried forward across runs. | [default to List<RecUserComment>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecResult domain. Filterable and sortable. | [optional] [default to Map<String, PerpetualProperty>]
 **assignedUser** | **String** | The LUSID user id assigned to the result. | [optional] [default to String]
@@ -51,6 +52,7 @@ List<CoreRuleValues> CoreRules = new List<CoreRuleValues>();
 List<AggregateRuleValues> AggregateRules = new List<AggregateRuleValues>();
 List<SupplementalAttributeValues> SupplementalAttributes = new List<SupplementalAttributeValues>();
 RecResultItemDetails Items = new RecResultItemDetails();
+List<RecLinkedResult> LinkedResults = new List<RecLinkedResult>();
 List<RecUserComment> Comments = new List<RecUserComment>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable String AssignedUser = "example AssignedUser";
@@ -77,6 +79,7 @@ RecResult recResultInstance = new RecResult()
     .AggregateRules(AggregateRules)
     .SupplementalAttributes(SupplementalAttributes)
     .Items(Items)
+    .LinkedResults(LinkedResults)
     .Comments(Comments)
     .Properties(Properties)
     .AssignedUser(AssignedUser)

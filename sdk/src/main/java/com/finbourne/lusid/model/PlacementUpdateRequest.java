@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A request to update a Placement.
+ * A request to create or update a Placement.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlacementUpdateRequest {
@@ -94,10 +94,6 @@ public class PlacementUpdateRequest {
   public static final String SERIALIZED_NAME_ENTRY_TYPE = "entryType";
   @SerializedName(SERIALIZED_NAME_ENTRY_TYPE)
   private String entryType;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
 
   public PlacementUpdateRequest() {
   }
@@ -201,7 +197,7 @@ public class PlacementUpdateRequest {
   }
 
    /**
-   * Optionally changes the type of this placement (Market, Limit, Stop, StopLimit). A type may only be tightened: a Market placement may become Limit, Stop or StopLimit, and any placement may become StopLimit. A placement may be relaxed to Market only when the associated block is of type &#39;Market&#39;. Changing to a priced type requires a currency and the price(s) that type carries; a price the new type does not carry is cleared. Changing to Market clears both prices and may not be combined with a price update. A change to or from any other type is not subject to these rules, leaves both prices as they are, and is permitted only when the associated block is of type &#39;Market&#39;.
+   * The type of this placement (Market, Limit, etc).
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -222,7 +218,7 @@ public class PlacementUpdateRequest {
   }
 
    /**
-   * Optionally updates the limit price of this placement, in the placement&#39;s limit price currency unless a currency is also specified. A currency is required if the placement has no limit price currency.
+   * The optional price, as currency and amount, associated with this placement.
    * @return limitPrice
   **/
   @jakarta.annotation.Nullable
@@ -243,7 +239,7 @@ public class PlacementUpdateRequest {
   }
 
    /**
-   * Optionally updates the stop price of this placement, in the placement&#39;s stop price currency unless a currency is also specified. A currency is required if the placement has no stop price currency.
+   * The optional price, as currency and amount, associated with this placement.
    * @return stopPrice
   **/
   @jakarta.annotation.Nullable
@@ -320,27 +316,6 @@ public class PlacementUpdateRequest {
   }
 
 
-  public PlacementUpdateRequest currency(String currency) {
-    
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The ISO currency code of the stop and/or limit price carried by the placement&#39;s type. Required when the type is changed to Stop, Limit or StopLimit, or when a price is set that the placement has no currency for; not permitted for a Market placement. For a value placement it must match the currency of the amount exactly, whether that amount is on the placement or in the update.
-   * @return currency
-  **/
-  @jakarta.annotation.Nullable
-  public String getCurrency() {
-    return currency;
-  }
-
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -360,8 +335,7 @@ public class PlacementUpdateRequest {
         (this.stopPrice.compareTo(placementUpdateRequest.getStopPrice()) == 0) &&
         Objects.equals(this.counterparty, placementUpdateRequest.counterparty) &&
         Objects.equals(this.executionSystem, placementUpdateRequest.executionSystem) &&
-        Objects.equals(this.entryType, placementUpdateRequest.entryType) &&
-        Objects.equals(this.currency, placementUpdateRequest.currency);
+        Objects.equals(this.entryType, placementUpdateRequest.entryType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -370,7 +344,7 @@ public class PlacementUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, amount, properties, type, limitPrice, stopPrice, counterparty, executionSystem, entryType, currency);
+    return Objects.hash(id, quantity, amount, properties, type, limitPrice, stopPrice, counterparty, executionSystem, entryType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -394,7 +368,6 @@ public class PlacementUpdateRequest {
     sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    executionSystem: ").append(toIndentedString(executionSystem)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -427,7 +400,6 @@ public class PlacementUpdateRequest {
     openapiFields.add("counterparty");
     openapiFields.add("executionSystem");
     openapiFields.add("entryType");
-    openapiFields.add("currency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -471,9 +443,6 @@ public class PlacementUpdateRequest {
       }
       if ((jsonObj.get("entryType") != null && !jsonObj.get("entryType").isJsonNull()) && !jsonObj.get("entryType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entryType").toString()));
-      }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
   }
 

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **transactionExclusionFilter** | **String** | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. | [optional] [default to String]
 **taxLotSelectionCostBasis** | **String** | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost. | [optional] [default to String]
+**fractionalUnitsTrueUpConfiguration** | [**FractionalUnitsTrueUpConfiguration**](FractionalUnitsTrueUpConfiguration.md) |  | [optional] [default to FractionalUnitsTrueUpConfiguration]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -48,6 +49,7 @@ PortfolioSettlementConfiguration SettlementConfiguration = new PortfolioSettleme
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
 @jakarta.annotation.Nullable String TaxLotSelectionCostBasis = "example TaxLotSelectionCostBasis";
+FractionalUnitsTrueUpConfiguration FractionalUnitsTrueUpConfiguration = new FractionalUnitsTrueUpConfiguration();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -70,6 +72,7 @@ PortfolioDetails portfolioDetailsInstance = new PortfolioDetails()
     .StagedModifications(StagedModifications)
     .TransactionExclusionFilter(TransactionExclusionFilter)
     .TaxLotSelectionCostBasis(TaxLotSelectionCostBasis)
+    .FractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration)
     .Links(Links);
 ```
 

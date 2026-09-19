@@ -370,7 +370,7 @@ public class PlacementRequest {
   }
 
    /**
-   * The type of this placement (Market, Limit, Stop, StopLimit, etc). A Limit placement must specify a limit price, a Stop placement a stop price, and a StopLimit placement both.
+   * The type of this placement (Market, Limit, etc).
    * @return type
   **/
   @jakarta.annotation.Nonnull

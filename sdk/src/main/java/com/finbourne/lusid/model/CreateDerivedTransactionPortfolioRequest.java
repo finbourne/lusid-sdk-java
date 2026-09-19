@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
@@ -202,6 +203,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
   @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
   private String taxLotSelectionCostBasis;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION = "fractionalUnitsTrueUpConfiguration";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION)
+  private FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration;
 
   public CreateDerivedTransactionPortfolioRequest() {
   }
@@ -600,6 +605,27 @@ public class CreateDerivedTransactionPortfolioRequest {
   }
 
 
+  public CreateDerivedTransactionPortfolioRequest fractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+    return this;
+  }
+
+   /**
+   * Get fractionalUnitsTrueUpConfiguration
+   * @return fractionalUnitsTrueUpConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public FractionalUnitsTrueUpConfiguration getFractionalUnitsTrueUpConfiguration() {
+    return fractionalUnitsTrueUpConfiguration;
+  }
+
+
+  public void setFractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -627,7 +653,8 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.instrumentEventConfiguration, createDerivedTransactionPortfolioRequest.instrumentEventConfiguration) &&
         Objects.equals(this.settlementConfiguration, createDerivedTransactionPortfolioRequest.settlementConfiguration) &&
         Objects.equals(this.transactionExclusionFilter, createDerivedTransactionPortfolioRequest.transactionExclusionFilter) &&
-        Objects.equals(this.taxLotSelectionCostBasis, createDerivedTransactionPortfolioRequest.taxLotSelectionCostBasis);
+        Objects.equals(this.taxLotSelectionCostBasis, createDerivedTransactionPortfolioRequest.taxLotSelectionCostBasis) &&
+        Objects.equals(this.fractionalUnitsTrueUpConfiguration, createDerivedTransactionPortfolioRequest.fractionalUnitsTrueUpConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -636,7 +663,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis);
+    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -668,6 +695,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
+    sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -708,6 +736,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("settlementConfiguration");
     openapiFields.add("transactionExclusionFilter");
     openapiFields.add("taxLotSelectionCostBasis");
+    openapiFields.add("fractionalUnitsTrueUpConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -788,6 +817,10 @@ public class CreateDerivedTransactionPortfolioRequest {
       }
       if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
+      }
+      // validate the optional field `fractionalUnitsTrueUpConfiguration`
+      if (jsonObj.get("fractionalUnitsTrueUpConfiguration") != null && !jsonObj.get("fractionalUnitsTrueUpConfiguration").isJsonNull()) {
+        FractionalUnitsTrueUpConfiguration.validateJsonElement(jsonObj.get("fractionalUnitsTrueUpConfiguration"));
       }
   }
 

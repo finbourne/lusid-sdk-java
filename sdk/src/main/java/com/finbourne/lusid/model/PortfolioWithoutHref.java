@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
@@ -284,6 +285,10 @@ public class PortfolioWithoutHref {
   public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
   @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
   private String taxLotSelectionCostBasis;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION = "fractionalUnitsTrueUpConfiguration";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_TRUE_UP_CONFIGURATION)
+  private FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -820,6 +825,27 @@ public class PortfolioWithoutHref {
   }
 
 
+  public PortfolioWithoutHref fractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+    return this;
+  }
+
+   /**
+   * Get fractionalUnitsTrueUpConfiguration
+   * @return fractionalUnitsTrueUpConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public FractionalUnitsTrueUpConfiguration getFractionalUnitsTrueUpConfiguration() {
+    return fractionalUnitsTrueUpConfiguration;
+  }
+
+
+  public void setFractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration) {
+    this.fractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+  }
+
+
   public PortfolioWithoutHref links(List<Link> links) {
     
     this.links = links;
@@ -883,6 +909,7 @@ public class PortfolioWithoutHref {
         Objects.equals(this.settlementConfiguration, portfolioWithoutHref.settlementConfiguration) &&
         Objects.equals(this.transactionExclusionFilter, portfolioWithoutHref.transactionExclusionFilter) &&
         Objects.equals(this.taxLotSelectionCostBasis, portfolioWithoutHref.taxLotSelectionCostBasis) &&
+        Objects.equals(this.fractionalUnitsTrueUpConfiguration, portfolioWithoutHref.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.links, portfolioWithoutHref.links);
   }
 
@@ -892,7 +919,7 @@ public class PortfolioWithoutHref {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, links);
+    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -930,6 +957,7 @@ public class PortfolioWithoutHref {
     sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
+    sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -977,6 +1005,7 @@ public class PortfolioWithoutHref {
     openapiFields.add("settlementConfiguration");
     openapiFields.add("transactionExclusionFilter");
     openapiFields.add("taxLotSelectionCostBasis");
+    openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1083,6 +1112,10 @@ public class PortfolioWithoutHref {
       }
       if ((jsonObj.get("taxLotSelectionCostBasis") != null && !jsonObj.get("taxLotSelectionCostBasis").isJsonNull()) && !jsonObj.get("taxLotSelectionCostBasis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotSelectionCostBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotSelectionCostBasis").toString()));
+      }
+      // validate the optional field `fractionalUnitsTrueUpConfiguration`
+      if (jsonObj.get("fractionalUnitsTrueUpConfiguration") != null && !jsonObj.get("fractionalUnitsTrueUpConfiguration").isJsonNull()) {
+        FractionalUnitsTrueUpConfiguration.validateJsonElement(jsonObj.get("fractionalUnitsTrueUpConfiguration"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

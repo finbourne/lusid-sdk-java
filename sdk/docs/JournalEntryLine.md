@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **sourceId** | **String** | For the Lusid Source Type this will be the txn Id. For the rest will be what the user populates. | [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Abor. | [optional] [default to Map<String, Property>]
 **movementName** | **String** | If the JE Line is generated from a transaction, the name of the side in the transaction type&#39;s movement. If from a valuation, this is &#39;MarkToMarket&#39;. | [optional] [default to String]
+**txnType** | **String** | If the JE Line is generated from a transaction, the type of that transaction. Null where the line is not linked to a transaction, such as a valuation line. | [optional] [default to String]
 **holdingType** | **String** | One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance. | [default to String]
 **economicBucket** | **String** | LUSID automatically categorises a JE Line into a broad economic bucket such as &#39;NA_Cost&#39; or &#39;PL_RealPriceGL&#39;. | [default to String]
 **economicBucketComponent** | **String** | Sub bucket of the economic bucket. Available values: Undefined, Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income, Expense. | [optional] [default to String]
@@ -63,6 +64,7 @@ String SourceType = "example SourceType";
 String SourceId = "example SourceId";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable String MovementName = "example MovementName";
+@jakarta.annotation.Nullable String TxnType = "example TxnType";
 String HoldingType = "example HoldingType";
 String EconomicBucket = "example EconomicBucket";
 @jakarta.annotation.Nullable String EconomicBucketComponent = "example EconomicBucketComponent";
@@ -98,6 +100,7 @@ JournalEntryLine journalEntryLineInstance = new JournalEntryLine()
     .SourceId(SourceId)
     .Properties(Properties)
     .MovementName(MovementName)
+    .TxnType(TxnType)
     .HoldingType(HoldingType)
     .EconomicBucket(EconomicBucket)
     .EconomicBucketComponent(EconomicBucketComponent)

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **useChildSubHoldingKeysForPortfolioExpansion** | **Boolean** | Should fund constituents inherit subholding keys from the parent subholding keyb | [optional] [default to Boolean]
 **validateDomesticAndQuoteCurrenciesAreConsistent** | **Boolean** | Do we validate that the instrument domestic currency matches the quote currency (unless unknown/zzz) when using lookup pricing. | [optional] [default to Boolean]
 **mbsValuationUsingHoldingCurrentFace** | **Boolean** |  | [optional] [default to Boolean]
+**fixedIncomeValuationsUsingCurrentFace** | **Boolean** | Scale holding-level fixed-income results by the holding&#39;s current face over the instrument&#39;s  face per unit, rather than by the holding&#39;s traded units. Applies to Bond, ComplexBond and  InflationLinkedBond. Defaults to false.     Governs scaling basis only, and only for bonds outside the asset-backed family. An asset-backed  bond keeps its own machinery and its own option, MbsValuationUsingHoldingCurrentFace: because a  current face is defined as poolFactor x contractSize x units, the two are the same arithmetic at  the contract size of 1 that convention recommends, so there is nothing for this option to add  there. Neither option implies the other.     Turning this on without supplying current-face data changes no published number: a holding with  no current face scales by a quantity equal to its unit count. Numbers move only where a current  face has been supplied, whether on a transaction or by a face-moving instrument event. | [optional] [default to Boolean]
 **convertSrsCashFlowsToPortfolioCurrency** | **Boolean** | In the case upserted structured result store (SRS) cashflows are not   in the portfolio currency, set this parameter to True to convert said  cashflows into the portfolio currency. By default, this flag is set   to False and Lusid will not do any FX conversion.    Please note that FX conversion is dependent on the data available in  the quote store - ensure that all relevant FX quotes have been loaded  for cashflow currency conversion. | [optional] [default to Boolean]
 **conservedQuantityForLookthroughExpansion** | **String** | When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;. Available values: PV, Exposure. | [optional] [default to String]
 **returnZeroPv** | [**ReturnZeroPvOptions**](ReturnZeroPvOptions.md) |  | [optional] [default to ReturnZeroPvOptions]
@@ -52,6 +53,7 @@ Boolean RemoveContingentCashflowsInPaymentDiary = true;
 Boolean UseChildSubHoldingKeysForPortfolioExpansion = true;
 Boolean ValidateDomesticAndQuoteCurrenciesAreConsistent = true;
 Boolean MbsValuationUsingHoldingCurrentFace = true;
+Boolean FixedIncomeValuationsUsingCurrentFace = true;
 Boolean ConvertSrsCashFlowsToPortfolioCurrency = true;
 @jakarta.annotation.Nullable String ConservedQuantityForLookthroughExpansion = "example ConservedQuantityForLookthroughExpansion";
 ReturnZeroPvOptions ReturnZeroPv = new ReturnZeroPvOptions();
@@ -81,6 +83,7 @@ PricingOptions pricingOptionsInstance = new PricingOptions()
     .UseChildSubHoldingKeysForPortfolioExpansion(UseChildSubHoldingKeysForPortfolioExpansion)
     .ValidateDomesticAndQuoteCurrenciesAreConsistent(ValidateDomesticAndQuoteCurrenciesAreConsistent)
     .MbsValuationUsingHoldingCurrentFace(MbsValuationUsingHoldingCurrentFace)
+    .FixedIncomeValuationsUsingCurrentFace(FixedIncomeValuationsUsingCurrentFace)
     .ConvertSrsCashFlowsToPortfolioCurrency(ConvertSrsCashFlowsToPortfolioCurrency)
     .ConservedQuantityForLookthroughExpansion(ConservedQuantityForLookthroughExpansion)
     .ReturnZeroPv(ReturnZeroPv)
