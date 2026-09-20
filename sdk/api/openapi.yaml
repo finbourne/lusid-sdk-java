@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10025
+  version: 0.11.10026
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -24024,7 +24024,8 @@ paths:
                   displayName: Pound Sterling
                   description: The Sterling currency group
                   majorUnitCurrency: GBP
-                  circulationDomain: GB
+                  circulationDomain:
+                  - GB
                   minorUnits:
                   - currency: GBX
                     fractionOfMajor: 0.01
@@ -24041,7 +24042,8 @@ paths:
                   displayName: Pound Sterling
                   description: The Sterling currency group
                   majorUnitCurrency: GBP
-                  circulationDomain: GB
+                  circulationDomain:
+                  - GB
                   minorUnits:
                   - currency: GBX
                     fractionOfMajor: 0.01
@@ -24058,7 +24060,8 @@ paths:
                   displayName: Pound Sterling
                   description: The Sterling currency group
                   majorUnitCurrency: GBP
-                  circulationDomain: GB
+                  circulationDomain:
+                  - GB
                   minorUnits:
                   - currency: GBX
                     fractionOfMajor: 0.01
@@ -24107,7 +24110,8 @@ paths:
               displayName: Pound Sterling
               description: The Sterling currency group
               majorUnitCurrency: GBP
-              circulationDomain: GB
+              circulationDomain:
+              - GB
               minorUnits:
               - currency: GBX
                 fractionOfMajor: 0.01
@@ -24119,7 +24123,8 @@ paths:
               displayName: Pound Sterling
               description: The Sterling currency group
               majorUnitCurrency: GBP
-              circulationDomain: GB
+              circulationDomain:
+              - GB
               minorUnits:
               - currency: GBX
                 fractionOfMajor: 0.01
@@ -24131,7 +24136,8 @@ paths:
               displayName: Pound Sterling
               description: The Sterling currency group
               majorUnitCurrency: GBP
-              circulationDomain: GB
+              circulationDomain:
+              - GB
               minorUnits:
               - currency: GBX
                 fractionOfMajor: 0.01
@@ -24143,7 +24149,8 @@ paths:
               displayName: Pound Sterling
               description: The Sterling currency group
               majorUnitCurrency: GBP
-              circulationDomain: GB
+              circulationDomain:
+              - GB
               minorUnits:
               - currency: GBX
                 fractionOfMajor: 0.01
@@ -24160,7 +24167,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -24175,7 +24183,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -24190,7 +24199,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -24322,7 +24332,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -24337,7 +24348,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -24352,7 +24364,8 @@ paths:
                 displayName: Pound Sterling
                 description: The Sterling currency group
                 majorUnitCurrency: GBP
-                circulationDomain: GB
+                circulationDomain:
+                - GB
                 minorUnits:
                 - currency: GBX
                   fractionOfMajor: 0.01
@@ -182890,12 +182903,14 @@ components:
         \ > Instrument)."
       example:
         amount: 0.8008281904610115
+        movementName: movementName
         payReceive: payReceive
         netAmount: 5.962133916683182
         instrumentId: instrumentId
         haircutRuleApplied: haircutRuleApplied
         grossAmount: 6.027456183070403
         error: error
+        instrumentDisplayName: instrumentDisplayName
         transactionId: transactionId
         haircutFraction: 1.4658129805029452
         portfolioId:
@@ -182942,6 +182957,12 @@ components:
             the cashflow.
           minLength: 1
           type: string
+        instrumentDisplayName:
+          description: "The display name of the instrument that produced the cashflow.\
+            \ Not present when the instrument cannot be resolved (e.g. deleted, no\
+            \ permission)."
+          nullable: true
+          type: string
         transactionId:
           description: "The identifier of the transaction from which the cashflow\
             \ originates, where known."
@@ -182951,6 +182972,12 @@ components:
           $ref: '#/components/schemas/ResourceId'
         flowType:
           description: "The type of the cashflow, e.g. Coupon, Principal or Premium."
+          nullable: true
+          type: string
+        movementName:
+          description: "The name of the movement that produced the cashflow (e.g.\
+            \ Coupon, Side1), falling back to the flow type when the movement is unnamed.\
+            \ Not present when the cashflow could not be valued."
           nullable: true
           type: string
         payReceive:
@@ -198009,7 +198036,9 @@ components:
         majorUnitCurrency: majorUnitCurrency
         code: code
         displayName: displayName
-        circulationDomain: circulationDomain
+        circulationDomain:
+        - circulationDomain
+        - circulationDomain
         description: description
         links:
         - method: method
@@ -198060,10 +198089,13 @@ components:
           nullable: true
           type: string
         circulationDomain:
-          description: "The domain in which the group's currencies circulate, e.g.\
-            \ an ISO 3166 country code."
+          description: "The domains in which the group's currencies circulate, e.g.\
+            \ ISO 3166 country codes or the ISO 4217 entity names of the countries\
+            \ using the major unit."
+          items:
+            type: string
           nullable: true
-          type: string
+          type: array
         minorUnits:
           description: The minor unit currencies belonging to this currency group.
           items:
@@ -249312,7 +249344,9 @@ components:
         - majorUnitCurrency: majorUnitCurrency
           code: code
           displayName: displayName
-          circulationDomain: circulationDomain
+          circulationDomain:
+          - circulationDomain
+          - circulationDomain
           description: description
           links:
           - method: method
@@ -249346,7 +249380,9 @@ components:
         - majorUnitCurrency: majorUnitCurrency
           code: code
           displayName: displayName
-          circulationDomain: circulationDomain
+          circulationDomain:
+          - circulationDomain
+          - circulationDomain
           description: description
           links:
           - method: method
@@ -289171,12 +289207,14 @@ components:
         nextPage: nextPage
         values:
         - amount: 0.8008281904610115
+          movementName: movementName
           payReceive: payReceive
           netAmount: 5.962133916683182
           instrumentId: instrumentId
           haircutRuleApplied: haircutRuleApplied
           grossAmount: 6.027456183070403
           error: error
+          instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
           portfolioId:
@@ -289196,12 +289234,14 @@ components:
           paymentDate: 2000-01-23T04:56:07.000+00:00
           flowType: flowType
         - amount: 0.8008281904610115
+          movementName: movementName
           payReceive: payReceive
           netAmount: 5.962133916683182
           instrumentId: instrumentId
           haircutRuleApplied: haircutRuleApplied
           grossAmount: 6.027456183070403
           error: error
+          instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
           portfolioId:
@@ -334709,7 +334749,9 @@ components:
         majorUnitCurrency: majorUnitCurrency
         code: code
         displayName: displayName
-        circulationDomain: circulationDomain
+        circulationDomain:
+        - circulationDomain
+        - circulationDomain
         description: description
         minorUnits:
         - currency: currency
@@ -334743,12 +334785,13 @@ components:
           pattern: "^[a-zA-Z]*$"
           type: string
         circulationDomain:
-          description: "The domain in which the group's currencies circulate, e.g.\
-            \ an ISO 3166 country code."
-          maxLength: 512
-          minLength: 0
+          description: "The domains in which the group's currencies circulate, e.g.\
+            \ ISO 3166 country codes or the ISO 4217 entity names of the countries\
+            \ using the major unit."
+          items:
+            type: string
           nullable: true
-          type: string
+          type: array
         minorUnits:
           description: The minor unit currencies belonging to this currency group.
           items:

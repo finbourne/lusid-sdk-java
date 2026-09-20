@@ -10,9 +10,11 @@ Name | Type | Description | Notes
 **currency** | **String** | The payment currency of the cashflow. | [default to String]
 **sourceType** | **String** | The source that produced the cashflow in the cash flow waterfall. One of &#39;Instrument&#39; (produced by the valuation engine), &#39;Transaction&#39; (produced from a booked transaction or movement) or &#39;SRS&#39; (sourced from the structured results store). | [default to String]
 **instrumentId** | **String** | The LUSID instrument identifier of the instrument that produced the cashflow. | [default to String]
+**instrumentDisplayName** | **String** | The display name of the instrument that produced the cashflow. Not present when the instrument cannot be resolved (e.g. deleted, no permission). | [optional] [default to String]
 **transactionId** | **String** | The identifier of the transaction from which the cashflow originates, where known. | [optional] [default to String]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **flowType** | **String** | The type of the cashflow, e.g. Coupon, Principal or Premium. | [optional] [default to String]
+**movementName** | **String** | The name of the movement that produced the cashflow (e.g. Coupon, Side1), falling back to the flow type when the movement is unnamed. Not present when the cashflow could not be valued. | [optional] [default to String]
 **payReceive** | **String** | Indicates whether the cashflow is paid or received. | [optional] [default to String]
 **grossAmount** | **java.math.BigDecimal** | The signed amount of the cashflow before any haircut was applied. Only populated when haircut rules were supplied on the request. | [optional] [default to java.math.BigDecimal]
 **haircutFraction** | **java.math.BigDecimal** | The fraction of the gross amount removed by the haircut, in the range [0, 1]. Zero for outflows and for cashflows no rule matched. Only populated when haircut rules were supplied on the request. | [optional] [default to java.math.BigDecimal]
@@ -32,9 +34,11 @@ OffsetDateTime PaymentDate = OffsetDateTime.now();
 String Currency = "example Currency";
 String SourceType = "example SourceType";
 String InstrumentId = "example InstrumentId";
+@jakarta.annotation.Nullable String InstrumentDisplayName = "example InstrumentDisplayName";
 @jakarta.annotation.Nullable String TransactionId = "example TransactionId";
 ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String FlowType = "example FlowType";
+@jakarta.annotation.Nullable String MovementName = "example MovementName";
 @jakarta.annotation.Nullable String PayReceive = "example PayReceive";
 @jakarta.annotation.Nullable java.math.BigDecimal GrossAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal HaircutFraction = new java.math.BigDecimal("100.00");
@@ -50,9 +54,11 @@ CashFlowDetail cashFlowDetailInstance = new CashFlowDetail()
     .Currency(Currency)
     .SourceType(SourceType)
     .InstrumentId(InstrumentId)
+    .InstrumentDisplayName(InstrumentDisplayName)
     .TransactionId(TransactionId)
     .PortfolioId(PortfolioId)
     .FlowType(FlowType)
+    .MovementName(MovementName)
     .PayReceive(PayReceive)
     .GrossAmount(GrossAmount)
     .HaircutFraction(HaircutFraction)

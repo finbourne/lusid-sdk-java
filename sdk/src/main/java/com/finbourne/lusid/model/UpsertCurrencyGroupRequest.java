@@ -71,7 +71,7 @@ public class UpsertCurrencyGroupRequest {
 
   public static final String SERIALIZED_NAME_CIRCULATION_DOMAIN = "circulationDomain";
   @SerializedName(SERIALIZED_NAME_CIRCULATION_DOMAIN)
-  private String circulationDomain;
+  private List<String> circulationDomain;
 
   public static final String SERIALIZED_NAME_MINOR_UNITS = "minorUnits";
   @SerializedName(SERIALIZED_NAME_MINOR_UNITS)
@@ -164,23 +164,31 @@ public class UpsertCurrencyGroupRequest {
   }
 
 
-  public UpsertCurrencyGroupRequest circulationDomain(String circulationDomain) {
+  public UpsertCurrencyGroupRequest circulationDomain(List<String> circulationDomain) {
     
     this.circulationDomain = circulationDomain;
     return this;
   }
 
+  public UpsertCurrencyGroupRequest addCirculationDomainItem(String circulationDomainItem) {
+    if (this.circulationDomain == null) {
+      this.circulationDomain = new ArrayList<>();
+    }
+    this.circulationDomain.add(circulationDomainItem);
+    return this;
+  }
+
    /**
-   * The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code.
+   * The domains in which the group&#39;s currencies circulate, e.g. ISO 3166 country codes or the ISO 4217 entity names of the countries using the major unit.
    * @return circulationDomain
   **/
   @jakarta.annotation.Nullable
-  public String getCirculationDomain() {
+  public List<String> getCirculationDomain() {
     return circulationDomain;
   }
 
 
-  public void setCirculationDomain(String circulationDomain) {
+  public void setCirculationDomain(List<String> circulationDomain) {
     this.circulationDomain = circulationDomain;
   }
 
@@ -326,8 +334,9 @@ public class UpsertCurrencyGroupRequest {
       if (!jsonObj.get("majorUnitCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `majorUnitCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("majorUnitCurrency").toString()));
       }
-      if ((jsonObj.get("circulationDomain") != null && !jsonObj.get("circulationDomain").isJsonNull()) && !jsonObj.get("circulationDomain").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `circulationDomain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("circulationDomain").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("circulationDomain") != null && !jsonObj.get("circulationDomain").isJsonNull() && !jsonObj.get("circulationDomain").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `circulationDomain` to be an array in the JSON string but got `%s`", jsonObj.get("circulationDomain").toString()));
       }
       if (jsonObj.get("minorUnits") != null && !jsonObj.get("minorUnits").isJsonNull()) {
         JsonArray jsonArrayminorUnits = jsonObj.getAsJsonArray("minorUnits");

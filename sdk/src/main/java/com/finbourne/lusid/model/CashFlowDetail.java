@@ -75,6 +75,10 @@ public class CashFlowDetail {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_ID)
   private String instrumentId;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_DISPLAY_NAME = "instrumentDisplayName";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_DISPLAY_NAME)
+  private String instrumentDisplayName;
+
   public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
   private String transactionId;
@@ -86,6 +90,10 @@ public class CashFlowDetail {
   public static final String SERIALIZED_NAME_FLOW_TYPE = "flowType";
   @SerializedName(SERIALIZED_NAME_FLOW_TYPE)
   private String flowType;
+
+  public static final String SERIALIZED_NAME_MOVEMENT_NAME = "movementName";
+  @SerializedName(SERIALIZED_NAME_MOVEMENT_NAME)
+  private String movementName;
 
   public static final String SERIALIZED_NAME_PAY_RECEIVE = "payReceive";
   @SerializedName(SERIALIZED_NAME_PAY_RECEIVE)
@@ -223,6 +231,27 @@ public class CashFlowDetail {
   }
 
 
+  public CashFlowDetail instrumentDisplayName(String instrumentDisplayName) {
+    
+    this.instrumentDisplayName = instrumentDisplayName;
+    return this;
+  }
+
+   /**
+   * The display name of the instrument that produced the cashflow. Not present when the instrument cannot be resolved (e.g. deleted, no permission).
+   * @return instrumentDisplayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentDisplayName() {
+    return instrumentDisplayName;
+  }
+
+
+  public void setInstrumentDisplayName(String instrumentDisplayName) {
+    this.instrumentDisplayName = instrumentDisplayName;
+  }
+
+
   public CashFlowDetail transactionId(String transactionId) {
     
     this.transactionId = transactionId;
@@ -283,6 +312,27 @@ public class CashFlowDetail {
 
   public void setFlowType(String flowType) {
     this.flowType = flowType;
+  }
+
+
+  public CashFlowDetail movementName(String movementName) {
+    
+    this.movementName = movementName;
+    return this;
+  }
+
+   /**
+   * The name of the movement that produced the cashflow (e.g. Coupon, Side1), falling back to the flow type when the movement is unnamed. Not present when the cashflow could not be valued.
+   * @return movementName
+  **/
+  @jakarta.annotation.Nullable
+  public String getMovementName() {
+    return movementName;
+  }
+
+
+  public void setMovementName(String movementName) {
+    this.movementName = movementName;
   }
 
 
@@ -456,9 +506,11 @@ public class CashFlowDetail {
         Objects.equals(this.currency, cashFlowDetail.currency) &&
         Objects.equals(this.sourceType, cashFlowDetail.sourceType) &&
         Objects.equals(this.instrumentId, cashFlowDetail.instrumentId) &&
+        Objects.equals(this.instrumentDisplayName, cashFlowDetail.instrumentDisplayName) &&
         Objects.equals(this.transactionId, cashFlowDetail.transactionId) &&
         Objects.equals(this.portfolioId, cashFlowDetail.portfolioId) &&
         Objects.equals(this.flowType, cashFlowDetail.flowType) &&
+        Objects.equals(this.movementName, cashFlowDetail.movementName) &&
         Objects.equals(this.payReceive, cashFlowDetail.payReceive) &&
         (this.grossAmount.compareTo(cashFlowDetail.getGrossAmount()) == 0) &&
         (this.haircutFraction.compareTo(cashFlowDetail.getHaircutFraction()) == 0) &&
@@ -474,7 +526,7 @@ public class CashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, transactionId, portfolioId, flowType, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, links);
+    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -493,9 +545,11 @@ public class CashFlowDetail {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    instrumentId: ").append(toIndentedString(instrumentId)).append("\n");
+    sb.append("    instrumentDisplayName: ").append(toIndentedString(instrumentDisplayName)).append("\n");
     sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    flowType: ").append(toIndentedString(flowType)).append("\n");
+    sb.append("    movementName: ").append(toIndentedString(movementName)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
     sb.append("    grossAmount: ").append(toIndentedString(grossAmount)).append("\n");
     sb.append("    haircutFraction: ").append(toIndentedString(haircutFraction)).append("\n");
@@ -530,9 +584,11 @@ public class CashFlowDetail {
     openapiFields.add("currency");
     openapiFields.add("sourceType");
     openapiFields.add("instrumentId");
+    openapiFields.add("instrumentDisplayName");
     openapiFields.add("transactionId");
     openapiFields.add("portfolioId");
     openapiFields.add("flowType");
+    openapiFields.add("movementName");
     openapiFields.add("payReceive");
     openapiFields.add("grossAmount");
     openapiFields.add("haircutFraction");
@@ -579,6 +635,9 @@ public class CashFlowDetail {
       if (!jsonObj.get("instrumentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentId").toString()));
       }
+      if ((jsonObj.get("instrumentDisplayName") != null && !jsonObj.get("instrumentDisplayName").isJsonNull()) && !jsonObj.get("instrumentDisplayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentDisplayName").toString()));
+      }
       if ((jsonObj.get("transactionId") != null && !jsonObj.get("transactionId").isJsonNull()) && !jsonObj.get("transactionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionId").toString()));
       }
@@ -586,6 +645,9 @@ public class CashFlowDetail {
       ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       if ((jsonObj.get("flowType") != null && !jsonObj.get("flowType").isJsonNull()) && !jsonObj.get("flowType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `flowType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("flowType").toString()));
+      }
+      if ((jsonObj.get("movementName") != null && !jsonObj.get("movementName").isJsonNull()) && !jsonObj.get("movementName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
       }
       if ((jsonObj.get("payReceive") != null && !jsonObj.get("payReceive").isJsonNull()) && !jsonObj.get("payReceive").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payReceive` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payReceive").toString()));

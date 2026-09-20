@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the currency group. | [default to String]
 **description** | **String** | A description for the currency group. | [optional] [default to String]
 **majorUnitCurrency** | **String** | The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group. | [default to String]
-**circulationDomain** | **String** | The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code. | [optional] [default to String]
+**circulationDomain** | **List&lt;String&gt;** | The domains in which the group&#39;s currencies circulate, e.g. ISO 3166 country codes or the ISO 4217 entity names of the countries using the major unit. | [optional] [default to List<String>]
 **minorUnits** | [**List&lt;CurrencyGroupMinorUnit&gt;**](CurrencyGroupMinorUnit.md) | The minor unit currencies belonging to this currency group. | [optional] [default to List<CurrencyGroupMinorUnit>]
 
 ```java
@@ -22,7 +22,7 @@ String Code = "example Code";
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String MajorUnitCurrency = "example MajorUnitCurrency";
-@jakarta.annotation.Nullable String CirculationDomain = "example CirculationDomain";
+@jakarta.annotation.Nullable List<String> CirculationDomain = new List<String>();
 @jakarta.annotation.Nullable List<CurrencyGroupMinorUnit> MinorUnits = new List<CurrencyGroupMinorUnit>();
 
 
