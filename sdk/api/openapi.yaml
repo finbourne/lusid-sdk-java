@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10040
+  version: 0.11.10042
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -212883,6 +212883,7 @@ components:
             minimumOrderIncrement: 3.616076749251911
             priceScaleFactor: 7.061401241503109
             minimumOrderSize: 9.301444243932576
+            priceQuotationType: priceQuotationType
           properties:
             key:
               referenceData:
@@ -212931,6 +212932,7 @@ components:
             minimumOrderIncrement: 3.616076749251911
             priceScaleFactor: 7.061401241503109
             minimumOrderSize: 9.301444243932576
+            priceQuotationType: priceQuotationType
           properties:
             key:
               referenceData:
@@ -214716,6 +214718,7 @@ components:
             minimumOrderIncrement: 3.616076749251911
             priceScaleFactor: 7.061401241503109
             minimumOrderSize: 9.301444243932576
+            priceQuotationType: priceQuotationType
           properties:
             key:
               referenceData:
@@ -214764,6 +214767,7 @@ components:
             minimumOrderIncrement: 3.616076749251911
             priceScaleFactor: 7.061401241503109
             minimumOrderSize: 9.301444243932576
+            priceQuotationType: priceQuotationType
           properties:
             key:
               referenceData:
@@ -216303,6 +216307,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -216351,6 +216356,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -216630,6 +216636,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -216678,6 +216685,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -217130,6 +217138,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -217178,6 +217187,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -217392,6 +217402,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -217440,6 +217451,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -252016,6 +252028,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -252064,6 +252077,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -252343,6 +252357,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -252391,6 +252406,7 @@ components:
               minimumOrderIncrement: 3.616076749251911
               priceScaleFactor: 7.061401241503109
               minimumOrderSize: 9.301444243932576
+              priceQuotationType: priceQuotationType
             properties:
               key:
                 referenceData:
@@ -253216,6 +253232,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -253264,6 +253281,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -253543,6 +253561,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -253591,6 +253610,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -253961,6 +253981,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -254009,6 +254030,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -254288,6 +254310,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -254336,6 +254359,7 @@ components:
                 minimumOrderIncrement: 3.616076749251911
                 priceScaleFactor: 7.061401241503109
                 minimumOrderSize: 9.301444243932576
+                priceQuotationType: priceQuotationType
               properties:
                 key:
                   referenceData:
@@ -315751,6 +315775,7 @@ components:
           minimumOrderIncrement: 3.616076749251911
           priceScaleFactor: 7.061401241503109
           minimumOrderSize: 9.301444243932576
+          priceQuotationType: priceQuotationType
         properties:
           key:
             referenceData:
@@ -316161,6 +316186,7 @@ components:
           minimumOrderIncrement: 3.616076749251911
           priceScaleFactor: 7.061401241503109
           minimumOrderSize: 9.301444243932576
+          priceQuotationType: priceQuotationType
         properties:
           key:
             referenceData:
@@ -321210,6 +321236,7 @@ components:
         minimumOrderIncrement: 3.616076749251911
         priceScaleFactor: 7.061401241503109
         minimumOrderSize: 9.301444243932576
+        priceQuotationType: priceQuotationType
       properties:
         priceScaleFactor:
           description: "The factor used to scale prices for the instrument. Currently\
@@ -321232,6 +321259,13 @@ components:
             \ to 0 if not set."
           format: double
           type: number
+        priceQuotationType:
+          description: "Conventional price quotation type of the instrument.\r\nWhether\
+            \ its quoted price excludes accrued interest (Clean) or includes it (Dirty).\r\
+            \nDefaults to Clean if not set.\r\n \r\nSupported string (enumeration)\
+            \ values are: [Clean, Dirty]. Available values: Clean, Dirty."
+          nullable: true
+          type: string
       type: object
     Transaction:
       additionalProperties: false

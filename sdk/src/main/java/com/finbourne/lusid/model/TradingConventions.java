@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,10 @@ public class TradingConventions {
   public static final String SERIALIZED_NAME_MINIMUM_ORDER_INCREMENT = "minimumOrderIncrement";
   @SerializedName(SERIALIZED_NAME_MINIMUM_ORDER_INCREMENT)
   private java.math.BigDecimal minimumOrderIncrement;
+
+  public static final String SERIALIZED_NAME_PRICE_QUOTATION_TYPE = "priceQuotationType";
+  @SerializedName(SERIALIZED_NAME_PRICE_QUOTATION_TYPE)
+  private String priceQuotationType;
 
   public TradingConventions() {
   }
@@ -127,6 +132,27 @@ public class TradingConventions {
   }
 
 
+  public TradingConventions priceQuotationType(String priceQuotationType) {
+    
+    this.priceQuotationType = priceQuotationType;
+    return this;
+  }
+
+   /**
+   * Conventional price quotation type of the instrument.  Whether its quoted price excludes accrued interest (Clean) or includes it (Dirty).  Defaults to Clean if not set.     Supported string (enumeration) values are: [Clean, Dirty]. Available values: Clean, Dirty.
+   * @return priceQuotationType
+  **/
+  @jakarta.annotation.Nullable
+  public String getPriceQuotationType() {
+    return priceQuotationType;
+  }
+
+
+  public void setPriceQuotationType(String priceQuotationType) {
+    this.priceQuotationType = priceQuotationType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,24 @@ public class TradingConventions {
     TradingConventions tradingConventions = (TradingConventions) o;
     return (this.priceScaleFactor.compareTo(tradingConventions.getPriceScaleFactor()) == 0) &&
         (this.minimumOrderSize.compareTo(tradingConventions.getMinimumOrderSize()) == 0) &&
-        (this.minimumOrderIncrement.compareTo(tradingConventions.getMinimumOrderIncrement()) == 0);
+        (this.minimumOrderIncrement.compareTo(tradingConventions.getMinimumOrderIncrement()) == 0) &&
+        Objects.equals(this.priceQuotationType, tradingConventions.priceQuotationType);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(priceScaleFactor, minimumOrderSize, minimumOrderIncrement);
+    return Objects.hash(priceScaleFactor, minimumOrderSize, minimumOrderIncrement, priceQuotationType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +192,7 @@ public class TradingConventions {
     sb.append("    priceScaleFactor: ").append(toIndentedString(priceScaleFactor)).append("\n");
     sb.append("    minimumOrderSize: ").append(toIndentedString(minimumOrderSize)).append("\n");
     sb.append("    minimumOrderIncrement: ").append(toIndentedString(minimumOrderIncrement)).append("\n");
+    sb.append("    priceQuotationType: ").append(toIndentedString(priceQuotationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +218,7 @@ public class TradingConventions {
     openapiFields.add("priceScaleFactor");
     openapiFields.add("minimumOrderSize");
     openapiFields.add("minimumOrderIncrement");
+    openapiFields.add("priceQuotationType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -197,6 +237,9 @@ public class TradingConventions {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("priceQuotationType") != null && !jsonObj.get("priceQuotationType").isJsonNull()) && !jsonObj.get("priceQuotationType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `priceQuotationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("priceQuotationType").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

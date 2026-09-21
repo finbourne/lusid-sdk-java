@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **priceScaleFactor** | **java.math.BigDecimal** | The factor used to scale prices for the instrument. Currently used by LUSID when calculating cost  and notional amounts on transactions, and in Valuation, PV and exposure when the recipe&#39;s  UseInstrumentScaleFactorAsDefault pricing option is set: a lookup-priced instrument whose price  quote declares no scale factor of its own is then scaled by this factor. When that option is not  set, only the scale factor attached to the price quotes in the QuoteStore is used.  Must be positive and defaults to 1 if not set. | [optional] [default to java.math.BigDecimal]
 **minimumOrderSize** | **java.math.BigDecimal** | The Minimum Order Size  Must be non-negative and defaults to 0 if not set. | [optional] [default to java.math.BigDecimal]
 **minimumOrderIncrement** | **java.math.BigDecimal** | The Minimum Order Increment  Must be non-negative and defaults to 0 if not set. | [optional] [default to java.math.BigDecimal]
+**priceQuotationType** | **String** | Conventional price quotation type of the instrument.  Whether its quoted price excludes accrued interest (Clean) or includes it (Dirty).  Defaults to Clean if not set.     Supported string (enumeration) values are: [Clean, Dirty]. Available values: Clean, Dirty. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TradingConventions;
@@ -18,12 +19,14 @@ import java.net.URI;
 java.math.BigDecimal PriceScaleFactor = new java.math.BigDecimal("100.00");
 java.math.BigDecimal MinimumOrderSize = new java.math.BigDecimal("100.00");
 java.math.BigDecimal MinimumOrderIncrement = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String PriceQuotationType = "example PriceQuotationType";
 
 
 TradingConventions tradingConventionsInstance = new TradingConventions()
     .PriceScaleFactor(PriceScaleFactor)
     .MinimumOrderSize(MinimumOrderSize)
-    .MinimumOrderIncrement(MinimumOrderIncrement);
+    .MinimumOrderIncrement(MinimumOrderIncrement)
+    .PriceQuotationType(PriceQuotationType);
 ```
 
 
