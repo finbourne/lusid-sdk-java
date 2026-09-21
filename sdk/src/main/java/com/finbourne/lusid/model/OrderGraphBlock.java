@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -90,6 +91,10 @@ public class OrderGraphBlock {
   public static final String SERIALIZED_NAME_DERIVED_APPROVAL_STATE = "derivedApprovalState";
   @SerializedName(SERIALIZED_NAME_DERIVED_APPROVAL_STATE)
   private String derivedApprovalState;
+
+  public static final String SERIALIZED_NAME_DERIVED_DIRECTION = "derivedDirection";
+  @SerializedName(SERIALIZED_NAME_DERIVED_DIRECTION)
+  private Integer derivedDirection;
 
   public OrderGraphBlock() {
   }
@@ -283,6 +288,27 @@ public class OrderGraphBlock {
   }
 
 
+  public OrderGraphBlock derivedDirection(Integer derivedDirection) {
+    
+    this.derivedDirection = derivedDirection;
+    return this;
+  }
+
+   /**
+   * The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks).
+   * @return derivedDirection
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getDerivedDirection() {
+    return derivedDirection;
+  }
+
+
+  public void setDerivedDirection(Integer derivedDirection) {
+    this.derivedDirection = derivedDirection;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -301,12 +327,24 @@ public class OrderGraphBlock {
         Objects.equals(this.booked, orderGraphBlock.booked) &&
         Objects.equals(this.derivedState, orderGraphBlock.derivedState) &&
         Objects.equals(this.derivedComplianceState, orderGraphBlock.derivedComplianceState) &&
-        Objects.equals(this.derivedApprovalState, orderGraphBlock.derivedApprovalState);
+        Objects.equals(this.derivedApprovalState, orderGraphBlock.derivedApprovalState) &&
+        Objects.equals(this.derivedDirection, orderGraphBlock.derivedDirection);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(block, ordered, placed, executed, allocated, booked, derivedState, derivedComplianceState, derivedApprovalState);
+    return Objects.hash(block, ordered, placed, executed, allocated, booked, derivedState, derivedComplianceState, derivedApprovalState, derivedDirection);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -322,6 +360,7 @@ public class OrderGraphBlock {
     sb.append("    derivedState: ").append(toIndentedString(derivedState)).append("\n");
     sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
     sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
+    sb.append("    derivedDirection: ").append(toIndentedString(derivedDirection)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +392,7 @@ public class OrderGraphBlock {
     openapiFields.add("derivedState");
     openapiFields.add("derivedComplianceState");
     openapiFields.add("derivedApprovalState");
+    openapiFields.add("derivedDirection");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

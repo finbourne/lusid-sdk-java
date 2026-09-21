@@ -145,6 +145,10 @@ public class Placement {
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
 
+  public static final String SERIALIZED_NAME_DIRECTION = "direction";
+  @SerializedName(SERIALIZED_NAME_DIRECTION)
+  private Integer direction;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -616,6 +620,27 @@ public class Placement {
   }
 
 
+  public Placement direction(Integer direction) {
+    
+    this.direction = direction;
+    return this;
+  }
+
+   /**
+   * The direction of the placement&#39;s side, inherited at creation from its block&#39;s orders: 1 the side increases the position (longer), -1 it decreases it (shorter), 0 the block&#39;s orders net flat, null when no direction could be resolved.
+   * @return direction
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getDirection() {
+    return direction;
+  }
+
+
+  public void setDirection(Integer direction) {
+    this.direction = direction;
+  }
+
+
   public Placement links(List<Link> links) {
     
     this.links = links;
@@ -676,6 +701,7 @@ public class Placement {
         Objects.equals(this.entryType, placement.entryType) &&
         Objects.equals(this.version, placement.version) &&
         Objects.equals(this.dataModelMembership, placement.dataModelMembership) &&
+        Objects.equals(this.direction, placement.direction) &&
         Objects.equals(this.links, placement.links);
   }
 
@@ -685,7 +711,7 @@ public class Placement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, basis, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, links);
+    return Objects.hash(id, parentPlacementId, blockIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, amount, basis, state, side, timeInForce, type, createdDate, limitPrice, stopPrice, counterparty, executionSystem, entryType, version, dataModelMembership, direction, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -720,6 +746,7 @@ public class Placement {
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
+    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -764,6 +791,7 @@ public class Placement {
     openapiFields.add("entryType");
     openapiFields.add("version");
     openapiFields.add("dataModelMembership");
+    openapiFields.add("direction");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

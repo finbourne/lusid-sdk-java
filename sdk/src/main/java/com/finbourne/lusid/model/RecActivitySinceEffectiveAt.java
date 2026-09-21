@@ -11,13 +11,13 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ComplianceParameter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -46,61 +46,60 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * DecimalComplianceParameter
+ * A per-side exclusive lower bound on an activity window&#39;s effective range.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DecimalComplianceParameter extends ComplianceParameter {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private java.math.BigDecimal value;
+public class RecActivitySinceEffectiveAt {
+  public static final String SERIALIZED_NAME_LEFT = "left";
+  @SerializedName(SERIALIZED_NAME_LEFT)
+  private OffsetDateTime left;
 
-  public static final String SERIALIZED_NAME_INCLUSIVE_BOUNDS = "inclusiveBounds";
-  @SerializedName(SERIALIZED_NAME_INCLUSIVE_BOUNDS)
-  private Boolean inclusiveBounds;
+  public static final String SERIALIZED_NAME_RIGHT = "right";
+  @SerializedName(SERIALIZED_NAME_RIGHT)
+  private OffsetDateTime right;
 
-  public DecimalComplianceParameter() {
-    // this.complianceParameterType = this.getClass().getSimpleName();
+  public RecActivitySinceEffectiveAt() {
   }
 
-  public DecimalComplianceParameter value(java.math.BigDecimal value) {
+  public RecActivitySinceEffectiveAt left(OffsetDateTime left) {
     
-    this.value = value;
+    this.left = left;
     return this;
   }
 
    /**
-   * Get value
-   * @return value
+   * The exclusive lower bound for the left side. Activity effective at exactly this datetime falls outside the window.
+   * @return left
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getValue() {
-    return value;
+  public OffsetDateTime getLeft() {
+    return left;
   }
 
 
-  public void setValue(java.math.BigDecimal value) {
-    this.value = value;
+  public void setLeft(OffsetDateTime left) {
+    this.left = left;
   }
 
 
-  public DecimalComplianceParameter inclusiveBounds(Boolean inclusiveBounds) {
+  public RecActivitySinceEffectiveAt right(OffsetDateTime right) {
     
-    this.inclusiveBounds = inclusiveBounds;
+    this.right = right;
     return this;
   }
 
    /**
-   * Whether the bound is inclusive of the value; when true a candidate landing exactly on the bound satisfies it. Defaults to false (exclusive).
-   * @return inclusiveBounds
+   * The exclusive lower bound for the right side. Activity effective at exactly this datetime falls outside the window.
+   * @return right
   **/
-  @jakarta.annotation.Nullable
-  public Boolean getInclusiveBounds() {
-    return inclusiveBounds;
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getRight() {
+    return right;
   }
 
 
-  public void setInclusiveBounds(Boolean inclusiveBounds) {
-    this.inclusiveBounds = inclusiveBounds;
+  public void setRight(OffsetDateTime right) {
+    this.right = right;
   }
 
 
@@ -113,24 +112,22 @@ public class DecimalComplianceParameter extends ComplianceParameter {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DecimalComplianceParameter decimalComplianceParameter = (DecimalComplianceParameter) o;
-    return (this.value.compareTo(decimalComplianceParameter.getValue()) == 0) &&
-        Objects.equals(this.inclusiveBounds, decimalComplianceParameter.inclusiveBounds) &&
-        super.equals(o);
+    RecActivitySinceEffectiveAt recActivitySinceEffectiveAt = (RecActivitySinceEffectiveAt) o;
+    return Objects.equals(this.left, recActivitySinceEffectiveAt.left) &&
+        Objects.equals(this.right, recActivitySinceEffectiveAt.right);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, inclusiveBounds, super.hashCode());
+    return Objects.hash(left, right);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DecimalComplianceParameter {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    inclusiveBounds: ").append(toIndentedString(inclusiveBounds)).append("\n");
+    sb.append("class RecActivitySinceEffectiveAt {\n");
+    sb.append("    left: ").append(toIndentedString(left)).append("\n");
+    sb.append("    right: ").append(toIndentedString(right)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,57 +150,57 @@ public class DecimalComplianceParameter extends ComplianceParameter {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("complianceParameterType");
-    openapiFields.add("value");
-    openapiFields.add("inclusiveBounds");
+    openapiFields.add("left");
+    openapiFields.add("right");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("value");
-    openapiRequiredFields.add("complianceParameterType");
+    openapiRequiredFields.add("left");
+    openapiRequiredFields.add("right");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DecimalComplianceParameter
+  * @throws IOException if the JSON Element is invalid with respect to RecActivitySinceEffectiveAt
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DecimalComplianceParameter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DecimalComplianceParameter is not found in the empty JSON string", DecimalComplianceParameter.openapiRequiredFields.toString()));
+        if (!RecActivitySinceEffectiveAt.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RecActivitySinceEffectiveAt is not found in the empty JSON string", RecActivitySinceEffectiveAt.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DecimalComplianceParameter.openapiRequiredFields) {
+      for (String requiredField : RecActivitySinceEffectiveAt.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DecimalComplianceParameter.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DecimalComplianceParameter' and its subtypes
+       if (!RecActivitySinceEffectiveAt.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RecActivitySinceEffectiveAt' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DecimalComplianceParameter> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DecimalComplianceParameter.class));
+       final TypeAdapter<RecActivitySinceEffectiveAt> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RecActivitySinceEffectiveAt.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DecimalComplianceParameter>() {
+       return (TypeAdapter<T>) new TypeAdapter<RecActivitySinceEffectiveAt>() {
            @Override
-           public void write(JsonWriter out, DecimalComplianceParameter value) throws IOException {
+           public void write(JsonWriter out, RecActivitySinceEffectiveAt value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DecimalComplianceParameter read(JsonReader in) throws IOException {
+           public RecActivitySinceEffectiveAt read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -214,18 +211,18 @@ public class DecimalComplianceParameter extends ComplianceParameter {
   }
 
  /**
-  * Create an instance of DecimalComplianceParameter given an JSON string
+  * Create an instance of RecActivitySinceEffectiveAt given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DecimalComplianceParameter
-  * @throws IOException if the JSON string is invalid with respect to DecimalComplianceParameter
+  * @return An instance of RecActivitySinceEffectiveAt
+  * @throws IOException if the JSON string is invalid with respect to RecActivitySinceEffectiveAt
   */
-  public static DecimalComplianceParameter fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DecimalComplianceParameter.class);
+  public static RecActivitySinceEffectiveAt fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RecActivitySinceEffectiveAt.class);
   }
 
  /**
-  * Convert an instance of DecimalComplianceParameter to an JSON string
+  * Convert an instance of RecActivitySinceEffectiveAt to an JSON string
   *
   * @return JSON string
   */

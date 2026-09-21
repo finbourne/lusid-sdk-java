@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **executionIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The executions associated with this allocation | [optional] [default to List<ResourceId>]
 **custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
+**direction** | **Integer** | The direction of the allocation&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved. | [optional] [default to Integer]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -57,6 +58,7 @@ CurrencyAndAmount Price = new CurrencyAndAmount();
 @jakarta.annotation.Nullable List<ResourceId> ExecutionIds = new List<ResourceId>();
 ResourceId CustodianAccountId = new ResourceId();
 DataModelMembership DataModelMembership = new DataModelMembership();
+@jakarta.annotation.Nullable Integer Direction = new Integer("100.00");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -83,6 +85,7 @@ Allocation allocationInstance = new Allocation()
     .ExecutionIds(ExecutionIds)
     .CustodianAccountId(CustodianAccountId)
     .DataModelMembership(DataModelMembership)
+    .Direction(Direction)
     .Links(Links);
 ```
 

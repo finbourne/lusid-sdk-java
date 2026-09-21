@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ContiguousActivityWindow;
+import com.finbourne.lusid.model.RecActivitySinceEffectiveAt;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,115 +21,165 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
+
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import com.finbourne.lusid.JSON;
 
-/**
- * Base class for the activity windows that give the date range a rec definition&#39;s activity-based  reconciliations cover. Polymorphic by windowType; each supported type has a corresponding inherited class.
- */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RecActivityWindow {
-  public static final String SERIALIZED_NAME_WINDOW_TYPE = "windowType";
-  @SerializedName(SERIALIZED_NAME_WINDOW_TYPE)
-  private String windowType;
+public class RecActivityWindow extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(RecActivityWindow.class.getName());
 
-  public RecActivityWindow() {
-  }
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RecActivityWindow.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RecActivityWindow' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContiguousActivityWindow> adapterContiguousActivityWindow = gson.getDelegateAdapter(this, TypeToken.get(ContiguousActivityWindow.class));
 
-  public RecActivityWindow windowType(String windowType) {
-    
-    this.windowType = windowType;
-    return this;
-  }
+            return (TypeAdapter<T>) new TypeAdapter<RecActivityWindow>() {
+                @Override
+                public void write(JsonWriter out, RecActivityWindow value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-   /**
-   * Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt.
-   * @return windowType
-  **/
-  @jakarta.annotation.Nonnull
-  public String getWindowType() {
-    return windowType;
-  }
+                    // check if the actual instance is of the type `ContiguousActivityWindow`
+                    if (value.getActualInstance() instanceof ContiguousActivityWindow) {
+                      JsonElement element = adapterContiguousActivityWindow.toJsonTree((ContiguousActivityWindow)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ContiguousActivityWindow");
+                }
 
+                @Override
+                public RecActivityWindow read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-  public void setWindowType(String windowType) {
-    this.windowType = windowType;
-  }
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
+                    // deserialize ContiguousActivityWindow
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      ContiguousActivityWindow.validateJsonElement(jsonElement);
+                      actualAdapter = adapterContiguousActivityWindow;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'ContiguousActivityWindow'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for ContiguousActivityWindow failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'ContiguousActivityWindow'", e);
+                    }
 
+                    if (match == 1) {
+                        RecActivityWindow ret = new RecActivityWindow();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+                    throw new IOException(String.format("Failed deserialization for RecActivityWindow: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
+        }
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public RecActivityWindow() {
+        super("oneOf", Boolean.FALSE);
     }
-    RecActivityWindow recActivityWindow = (RecActivityWindow) o;
-    return Objects.equals(this.windowType, recActivityWindow.windowType);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(windowType);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RecActivityWindow {\n");
-    sb.append("    windowType: ").append(toIndentedString(windowType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public RecActivityWindow(ContiguousActivityWindow o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    static {
+        schemas.put("ContiguousActivityWindow", ContiguousActivityWindow.class);
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return RecActivityWindow.schemas;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("windowType");
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * ContiguousActivityWindow
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof ContiguousActivityWindow) {
+            super.setActualInstance(instance);
+            return;
+        }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("windowType");
-  }
+        throw new RuntimeException("Invalid instance type. Must be ContiguousActivityWindow");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * ContiguousActivityWindow
+     *
+     * @return The actual instance (ContiguousActivityWindow)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `ContiguousActivityWindow`. If the actual instance is not `ContiguousActivityWindow`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ContiguousActivityWindow`
+     * @throws ClassCastException if the instance is not `ContiguousActivityWindow`
+     */
+    public ContiguousActivityWindow getContiguousActivityWindow() throws ClassCastException {
+        return (ContiguousActivityWindow)super.getActualInstance();
+    }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -136,50 +188,19 @@ public class RecActivityWindow {
   * @throws IOException if the JSON Element is invalid with respect to RecActivityWindow
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RecActivityWindow.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RecActivityWindow is not found in the empty JSON string", RecActivityWindow.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RecActivityWindow.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("windowType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `windowType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("windowType").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RecActivityWindow.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RecActivityWindow' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RecActivityWindow> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RecActivityWindow.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<RecActivityWindow>() {
-           @Override
-           public void write(JsonWriter out, RecActivityWindow value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public RecActivityWindow read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    // validate oneOf schemas one by one
+    int validCount = 0;
+    ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with ContiguousActivityWindow
+    try {
+      ContiguousActivityWindow.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for ContiguousActivityWindow failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    if (validCount != 1) {
+      throw new IOException(String.format("The JSON string is invalid for RecActivityWindow with oneOf schemas: ContiguousActivityWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 
@@ -203,3 +224,4 @@ public class RecActivityWindow {
     return JSON.getGson().toJson(this);
   }
 }
+

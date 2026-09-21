@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10031
+  version: 0.11.10040
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5476,6 +5476,101 @@ paths:
       tags:
       - AddressKeyDefinition
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/aggregation/$queryablekeys:
+    post:
+      description: "Describes what a valuation would return for each of the supplied\
+        \ metrics, so that a caller can\r\nprepare for the response, and render it,\
+        \ without having to ask for the valuation first. The\r\nmetrics are given\
+        \ exactly as they would be supplied to the metrics of a valuation request.\r\
+        \n \r\nEach metric is reported on individually, keyed by its normalised address\
+        \ key: those that resolve\r\nappear under metrics with their queryable key\
+        \ definition, and the rest appear under failed with the\r\nreason. A metric\
+        \ that does not exist, or that you are not entitled to read, is reported as\
+        \ failed;\r\nthe two cases are not distinguished from one another."
+      operationId: GetQueryableKeysForMetrics
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metrics:
+              - Valuation/PV
+              - Instrument/default/Name
+              recipeId:
+                scope: MyRecipeScope
+                code: default
+            schema:
+              $ref: '#/components/schemas/QueryableKeysForMetricsRequest'
+          application/json:
+            example:
+              metrics:
+              - Valuation/PV
+              - Instrument/default/Name
+              recipeId:
+                scope: MyRecipeScope
+                code: default
+            schema:
+              $ref: '#/components/schemas/QueryableKeysForMetricsRequest'
+          text/json:
+            example:
+              metrics:
+              - Valuation/PV
+              - Instrument/default/Name
+              recipeId:
+                scope: MyRecipeScope
+                code: default
+            schema:
+              $ref: '#/components/schemas/QueryableKeysForMetricsRequest'
+          application/*+json:
+            example:
+              metrics:
+              - Valuation/PV
+              - Instrument/default/Name
+              recipeId:
+                scope: MyRecipeScope
+                code: default
+            schema:
+              $ref: '#/components/schemas/QueryableKeysForMetricsRequest'
+        description: The set of metrics whose queryable keys are to be described
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/QueryableKeysForMetricsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryableKeysForMetricsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/QueryableKeysForMetricsResponse'
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys\
+        \ behind a given set of valuation metrics."
+      tags:
+      - Aggregation
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/aggregation/$valuation:
     post:
@@ -17465,6 +17560,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
@@ -17508,6 +17604,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
@@ -17551,6 +17648,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
@@ -17631,6 +17729,11 @@ paths:
                       complianceParameterType: BoolComplianceParameter
                     DecimalParameter:
                       value: 0
+                      inclusiveBounds: false
+                      complianceParameterType: DecimalComplianceParameter
+                    InclusiveDecimalParameter:
+                      value: 0
+                      inclusiveBounds: true
                       complianceParameterType: DecimalComplianceParameter
                     StringParameter:
                       value: An example string parameter
@@ -17717,15 +17820,19 @@ paths:
                   parameters:
                     UpperBound:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerBound:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     UpperWarning:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerWarning:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     Metric:
                       value: Valuation/PvInReportCcy
@@ -17784,6 +17891,11 @@ paths:
                       complianceParameterType: BoolComplianceParameter
                     DecimalParameter:
                       value: 0
+                      inclusiveBounds: false
+                      complianceParameterType: DecimalComplianceParameter
+                    InclusiveDecimalParameter:
+                      value: 0
+                      inclusiveBounds: true
                       complianceParameterType: DecimalComplianceParameter
                     StringParameter:
                       value: An example string parameter
@@ -17870,15 +17982,19 @@ paths:
                   parameters:
                     UpperBound:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerBound:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     UpperWarning:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerWarning:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     Metric:
                       value: Valuation/PvInReportCcy
@@ -17937,6 +18053,11 @@ paths:
                       complianceParameterType: BoolComplianceParameter
                     DecimalParameter:
                       value: 0
+                      inclusiveBounds: false
+                      complianceParameterType: DecimalComplianceParameter
+                    InclusiveDecimalParameter:
+                      value: 0
+                      inclusiveBounds: true
                       complianceParameterType: DecimalComplianceParameter
                     StringParameter:
                       value: An example string parameter
@@ -18023,15 +18144,19 @@ paths:
                   parameters:
                     UpperBound:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerBound:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     UpperWarning:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerWarning:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     Metric:
                       value: Valuation/PvInReportCcy
@@ -18090,6 +18215,11 @@ paths:
                       complianceParameterType: BoolComplianceParameter
                     DecimalParameter:
                       value: 0
+                      inclusiveBounds: false
+                      complianceParameterType: DecimalComplianceParameter
+                    InclusiveDecimalParameter:
+                      value: 0
+                      inclusiveBounds: true
                       complianceParameterType: DecimalComplianceParameter
                     StringParameter:
                       value: An example string parameter
@@ -18176,15 +18306,19 @@ paths:
                   parameters:
                     UpperBound:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerBound:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     UpperWarning:
                       value: 15
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     LowerWarning:
                       value: 0
+                      inclusiveBounds: false
                       complianceParameterType: DecimalComplianceParameter
                     Metric:
                       value: Valuation/PvInReportCcy
@@ -18241,6 +18375,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -18281,6 +18416,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -18321,6 +18457,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -18515,6 +18652,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -18555,6 +18693,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -18595,6 +18734,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
+                    inclusiveBounds: false
                     complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
@@ -75728,9 +75868,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75749,9 +75889,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75770,9 +75910,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -75791,9 +75931,9 @@ paths:
                       labelValue: XYZ000034567
                 type: Limit
                 limitPrice: 100
-                stopPrice: 100
                 counterparty: SomeCounterparty
                 entryType: Manual
+                currency: USD
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PlacementUpdateRequest'
@@ -166875,6 +167015,54 @@ components:
       - rightOperation
       - ruleName
       type: object
+    AggregateNumericTolerance:
+      additionalProperties: false
+      properties:
+        referenceSide:
+          description: "Reference side (source of truth). One of: Left, Right. Available\
+            \ values: Left, Right."
+          minLength: 1
+          type: string
+        absoluteThreshold:
+          description: Numeric tolerance absolute value (allowable diff compared to
+            the reference side value).
+          format: double
+          nullable: true
+          type: number
+        relativeThreshold:
+          description: Numeric tolerance value as a relative % of the reference value.
+          format: double
+          nullable: true
+          type: number
+        thresholdPriority:
+          description: "Whether to apply the GreaterOf or LesserOf the absoluteThreshold\
+            \ vs relativeThreshold. One of: GreaterOf, LesserOf. Available values:\
+            \ GreaterOf, LesserOf."
+          minLength: 1
+          type: string
+        offset:
+          description: "How the threshold should be applied to the reference side\
+            \ value. One of: Above, Below, Either. Defaults to Either. Available values:\
+            \ Above, Below, Either."
+          nullable: true
+          type: string
+        toleranceType:
+          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
+            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
+            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
+          minLength: 1
+          type: string
+        ruleName:
+          description: The reference name of the rule that this tolerance relaxes.
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - referenceSide
+      - ruleName
+      - thresholdPriority
+      - toleranceType
+      type: object
     AggregateRuleValues:
       additionalProperties: false
       description: "An aggregate matching rule and its values. The difference is the\
@@ -167324,6 +167512,7 @@ components:
             - validationFailures
             - validationFailures
             status: status
+        direction: 1
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -167411,6 +167600,13 @@ components:
           $ref: '#/components/schemas/ResourceId'
         dataModelMembership:
           $ref: '#/components/schemas/DataModelMembership'
+        direction:
+          description: "The direction of the allocation's side, derived from its transaction\
+            \ type at write time: 1 the side increases the position (longer), -1 it\
+            \ decreases it (shorter), null when no direction could be resolved."
+          format: int32
+          nullable: true
+          type: integer
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -173856,6 +174052,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -173955,6 +174152,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -177665,6 +177863,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -177764,6 +177963,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -177947,6 +178147,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -178046,6 +178247,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -180182,6 +180384,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -180357,6 +180560,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
       properties:
         placementState:
           $ref: '#/components/schemas/Placement'
@@ -180401,6 +180605,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -180501,6 +180706,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -180656,6 +180862,7 @@ components:
               orderInstructionId:
                 code: code
                 scope: scope
+              direction: 1
               side: side
               amount:
                 amount: 0.8008281904610115
@@ -180756,6 +180963,7 @@ components:
               orderInstructionId:
                 code: code
                 scope: scope
+              direction: 1
               side: side
               amount:
                 amount: 0.8008281904610115
@@ -180929,6 +181137,7 @@ components:
               orderInstructionId:
                 code: code
                 scope: scope
+              direction: 1
               side: side
               amount:
                 amount: 0.8008281904610115
@@ -181169,6 +181378,7 @@ components:
                   - validationFailures
                   - validationFailures
                   status: status
+              direction: 6
         links:
         - method: method
           description: description
@@ -191825,6 +192035,25 @@ components:
           nullable: true
           type: array
       type: object
+    ContiguousActivityWindow:
+      additionalProperties: false
+      description: "The activity window for a running series of instances: each instance's\
+        \ window starts where the previous\r\ninstance's ended, so the series tiles\
+        \ the effective timeline with no gaps and no overlap. Requires the\r\ndefinition's\
+        \ effectiveAtProgression to be Series."
+      properties:
+        initialActivitySinceEffectiveAt:
+          $ref: '#/components/schemas/RecActivitySinceEffectiveAt'
+        windowType:
+          description: "Polymorphic discriminator. Supported types: Contiguous. Contiguous\
+            \ requires effectiveAtProgression Series. Available values: Contiguous,\
+            \ FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt."
+          minLength: 1
+          type: string
+      required:
+      - initialActivitySinceEffectiveAt
+      - windowType
+      type: object
     ContractDetails:
       additionalProperties: false
       description: Set of identifiers of an existing FlexibleLoan contract.
@@ -192482,6 +192711,66 @@ components:
       description: "Conversion Event (CONV) - Conversion of securities (generally\
         \ convertible bonds or preferred shares) into\r\nanother form of securities\
         \ (usually common shares) at a pre-stated price/ratio."
+    CoreAttributeOptionalityTolerance:
+      additionalProperties: false
+      properties:
+        optionalSide:
+          description: "Which side is allowed to have no value while still attempting\
+            \ to match. One of: Left, Right, Either. Defaults to Either. Available\
+            \ values: Left, Right, Either."
+          nullable: true
+          type: string
+        toleranceType:
+          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
+            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
+            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
+          minLength: 1
+          type: string
+        ruleName:
+          description: The reference name of the rule that this tolerance relaxes.
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - ruleName
+      - toleranceType
+      type: object
+    CoreDateTolerance:
+      additionalProperties: false
+      properties:
+        referenceSide:
+          description: "Reference side (source of truth). One of: Left, Right. Available\
+            \ values: Left, Right."
+          minLength: 1
+          type: string
+        interval:
+          description: "The allowed tolerance for date time core rule values, defined\
+            \ as an ISO Period."
+          minLength: 1
+          type: string
+        offset:
+          description: "How the interval should be applied to the reference side value.\
+            \ One of: Earlier, Later, Either. Defaults to Either. Available values:\
+            \ Earlier, Later, Either."
+          nullable: true
+          type: string
+        toleranceType:
+          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
+            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
+            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
+          minLength: 1
+          type: string
+        ruleName:
+          description: The reference name of the rule that this tolerance relaxes.
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - interval
+      - referenceSide
+      - ruleName
+      - toleranceType
+      type: object
     CoreMatchingRule:
       additionalProperties: false
       example:
@@ -192543,6 +192832,41 @@ components:
           $ref: '#/components/schemas/ToleranceBase'
       required:
       - ruleName
+      type: object
+    CoreStringCrossTolerance:
+      additionalProperties: false
+      properties:
+        referenceValue:
+          description: The value for the reference side.
+          maxLength: 256
+          minLength: 1
+          type: string
+        crossValue:
+          description: The value for the side other than the reference one.
+          maxLength: 256
+          minLength: 1
+          type: string
+        referenceSide:
+          description: "Reference side (source of truth). One of: Left, Right. Available\
+            \ values: Left, Right, Either."
+          nullable: true
+          type: string
+        toleranceType:
+          description: "Polymorphic discriminator. Supported types: CoreStringCross,\
+            \ CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values:\
+            \ CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric."
+          minLength: 1
+          type: string
+        ruleName:
+          description: The reference name of the rule that this tolerance relaxes.
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - crossValue
+      - referenceValue
+      - ruleName
+      - toleranceType
       type: object
     CorporateAction:
       additionalProperties: false
@@ -202198,6 +202522,11 @@ components:
           value:
             format: double
             type: number
+          inclusiveBounds:
+            description: Whether the bound is inclusive of the value; when true a
+              candidate landing exactly on the bound satisfies it. Defaults to false
+              (exclusive).
+            type: boolean
           complianceParameterType:
             description: "The parameter type. Available values: BoolComplianceParameter,\
               \ StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,\
@@ -241329,6 +241658,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -243126,6 +243456,7 @@ components:
         orderInstructionId:
           code: code
           scope: scope
+        direction: 1
         side: side
         amount:
           amount: 0.8008281904610115
@@ -243294,6 +243625,13 @@ components:
           description: The approval state of the order.
           nullable: true
           type: string
+        direction:
+          description: "The direction of the order's side, derived from its transaction\
+            \ type at write time: 1 the side increases the position (longer), -1 it\
+            \ decreases it (shorter), null when no direction could be resolved."
+          format: int32
+          nullable: true
+          type: integer
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -243573,6 +243911,7 @@ components:
               code: code
               scope: scope
         derivedComplianceState: derivedComplianceState
+        derivedDirection: 7
         allocated:
           amount: 7.386281948385884
           quantity: 4.145608029883936
@@ -243622,6 +243961,14 @@ components:
             \ Placed."
           minLength: 1
           type: string
+        derivedDirection:
+          description: "The overall direction of a block, derived from its orders'\
+            \ transaction types: 1 the block increases the position (longer), -1 it\
+            \ decreases it (shorter), 0 its orders net flat, null when no direction\
+            \ could be resolved (including unsolicited blocks)."
+          format: int32
+          nullable: true
+          type: integer
       required:
       - allocated
       - block
@@ -244037,8 +244384,8 @@ components:
               code: code
               scope: scope
         placed:
-          amount: 1.4658129805029452
-          quantity: 6.027456183070403
+          amount: 5.962133916683182
+          quantity: 1.4658129805029452
           details:
           - id:
               code: code
@@ -244047,10 +244394,10 @@ components:
               code: code
               scope: scope
         derivedState: derivedState
-        calculatedAveragePrice: 9.301444243932576
+        calculatedAveragePrice: 3.616076749251911
         executed:
-          amount: 5.637376656633329
-          quantity: 5.962133916683182
+          amount: 2.3021358869347655
+          quantity: 5.637376656633329
           details:
           - id:
               code: code
@@ -244147,9 +244494,10 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
         allocated:
-          amount: 7.061401241503109
-          quantity: 2.3021358869347655
+          amount: 9.301444243932576
+          quantity: 7.061401241503109
           details:
           - id:
               code: code
@@ -244203,8 +244551,8 @@ components:
     OrderGraphPlacementAllocationSynopsis:
       additionalProperties: false
       example:
-        amount: 7.061401241503109
-        quantity: 2.3021358869347655
+        amount: 9.301444243932576
+        quantity: 7.061401241503109
         details:
         - id:
             code: code
@@ -244261,8 +244609,8 @@ components:
     OrderGraphPlacementExecutionSynopsis:
       additionalProperties: false
       example:
-        amount: 5.637376656633329
-        quantity: 5.962133916683182
+        amount: 2.3021358869347655
+        quantity: 5.637376656633329
         details:
         - id:
             code: code
@@ -244326,8 +244674,8 @@ components:
     OrderGraphPlacementPlacementSynopsis:
       additionalProperties: false
       example:
-        amount: 1.4658129805029452
-        quantity: 6.027456183070403
+        amount: 5.962133916683182
+        quantity: 1.4658129805029452
         details:
         - id:
             code: code
@@ -247507,6 +247855,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 1
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
           quantity: 0.8008281904610115
@@ -247600,6 +247949,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 1
         links:
         - method: method
           description: description
@@ -256901,6 +257251,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -257000,6 +257351,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -257368,6 +257720,7 @@ components:
                 code: code
                 scope: scope
           derivedComplianceState: derivedComplianceState
+          derivedDirection: 7
           allocated:
             amount: 7.386281948385884
             quantity: 4.145608029883936
@@ -257572,6 +257925,7 @@ components:
                 code: code
                 scope: scope
           derivedComplianceState: derivedComplianceState
+          derivedDirection: 7
           allocated:
             amount: 7.386281948385884
             quantity: 4.145608029883936
@@ -257643,8 +257997,8 @@ components:
                 code: code
                 scope: scope
           placed:
-            amount: 1.4658129805029452
-            quantity: 6.027456183070403
+            amount: 5.962133916683182
+            quantity: 1.4658129805029452
             details:
             - id:
                 code: code
@@ -257653,10 +258007,10 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 9.301444243932576
+          calculatedAveragePrice: 3.616076749251911
           executed:
-            amount: 5.637376656633329
-            quantity: 5.962133916683182
+            amount: 2.3021358869347655
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -257753,9 +258107,10 @@ components:
                 - validationFailures
                 - validationFailures
                 status: status
+            direction: 6
           allocated:
-            amount: 7.061401241503109
-            quantity: 2.3021358869347655
+            amount: 9.301444243932576
+            quantity: 7.061401241503109
             details:
             - id:
                 code: code
@@ -257775,8 +258130,8 @@ components:
                 code: code
                 scope: scope
           placed:
-            amount: 1.4658129805029452
-            quantity: 6.027456183070403
+            amount: 5.962133916683182
+            quantity: 1.4658129805029452
             details:
             - id:
                 code: code
@@ -257785,10 +258140,10 @@ components:
                 code: code
                 scope: scope
           derivedState: derivedState
-          calculatedAveragePrice: 9.301444243932576
+          calculatedAveragePrice: 3.616076749251911
           executed:
-            amount: 5.637376656633329
-            quantity: 5.962133916683182
+            amount: 2.3021358869347655
+            quantity: 5.637376656633329
             details:
             - id:
                 code: code
@@ -257885,9 +258240,10 @@ components:
                 - validationFailures
                 - validationFailures
                 status: status
+            direction: 6
           allocated:
-            amount: 7.061401241503109
-            quantity: 2.3021358869347655
+            amount: 9.301444243932576
+            quantity: 7.061401241503109
             details:
             - id:
                 code: code
@@ -258904,6 +259260,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
         - entryType: entryType
           amount:
             amount: 0.8008281904610115
@@ -258992,6 +259349,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
         links:
         - method: method
           description: description
@@ -267721,6 +268079,7 @@ components:
             - validationFailures
             - validationFailures
             status: status
+        direction: 6
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -267805,6 +268164,14 @@ components:
           $ref: '#/components/schemas/Version'
         dataModelMembership:
           $ref: '#/components/schemas/DataModelMembership'
+        direction:
+          description: "The direction of the placement's side, inherited at creation\
+            \ from its block's orders: 1 the side increases the position (longer),\
+            \ -1 it decreases it (shorter), 0 the block's orders net flat, null when\
+            \ no direction could be resolved."
+          format: int32
+          nullable: true
+          type: integer
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -268063,7 +268430,7 @@ components:
       type: object
     PlacementUpdateRequest:
       additionalProperties: false
-      description: A request to create or update a Placement.
+      description: A request to update a Placement.
       example:
         entryType: entryType
         amount:
@@ -268073,6 +268440,7 @@ components:
         quantity: 0.8008281904610115
         limitPrice: 6.027456183070403
         counterparty: counterparty
+        currency: currency
         id:
           code: code
           scope: scope
@@ -268111,20 +268479,27 @@ components:
           nullable: true
           type: object
         type:
-          description: "The type of this placement (Market, Limit, etc)."
+          description: "Optionally changes the type of this placement (Market, Limit,\
+            \ Stop, StopLimit, etc). A type change is permitted only when the associated\
+            \ block is of type 'Market', and leaves the placement's prices as they\
+            \ are."
           maxLength: 256
           minLength: 1
           nullable: true
           type: string
         limitPrice:
-          description: "The optional price, as currency and amount, associated with\
-            \ this placement."
+          description: "Optionally updates the limit price of this placement, in the\
+            \ placement's limit price currency unless a currency is also specified.\
+            \ A price on a placement with no limit price currency is stored but not\
+            \ returned until a currency is supplied."
           format: double
           nullable: true
           type: number
         stopPrice:
-          description: "The optional price, as currency and amount, associated with\
-            \ this placement."
+          description: "Optionally updates the stop price of this placement, in the\
+            \ placement's stop price currency unless a currency is also specified.\
+            \ A price on a placement with no stop price currency is stored but not\
+            \ returned until a currency is supplied."
           format: double
           nullable: true
           type: number
@@ -268144,6 +268519,16 @@ components:
             \ values: Undecided, Manual, Direct, Ems, External."
           maxLength: 256
           minLength: 1
+          nullable: true
+          type: string
+        currency:
+          description: "Optionally sets the ISO currency code of the placement's stop\
+            \ and/or limit price. Not permitted for a Market placement. For a value\
+            \ placement it must match the currency of the amount exactly, whether\
+            \ that amount is on the placement or in the update. When omitted, no currency\
+            \ checks are applied."
+          maxLength: 3
+          minLength: 0
           nullable: true
           type: string
       required:
@@ -276730,6 +277115,107 @@ components:
       - supportedUsages
       - type
       type: object
+    QueryableKeysForMetricsRequest:
+      additionalProperties: false
+      description: Specification of the metrics whose queryable key definitions are
+        being requested.
+      example:
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        metrics:
+        - metrics
+        - metrics
+        - metrics
+        - metrics
+        - metrics
+        recipeId:
+          code: code
+          scope: scope
+      properties:
+        metrics:
+          description: "The address keys of the metrics to describe, given exactly\
+            \ as they would be supplied as the key of\r\na valuation request's metrics,\
+            \ for example 'Valuation/PV' or 'Holding/Properties[Holding/MyScope/Rating]'."
+          items:
+            description: The key that uniquely identifies a queryable address in Lusid.
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        effectiveAt:
+          description: "The effective time to describe the metrics at, for definitions\
+            \ and entitlements that vary\r\nalong the effective timeline. Optional;\
+            \ defaults to the current time."
+          format: date-time
+          nullable: true
+          type: string
+        asAt:
+          description: The as-at time to describe the metrics at. Optional; defaults
+            to the latest.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - metrics
+      type: object
+    QueryableKeysForMetricsResponse:
+      additionalProperties: false
+      description: "The queryable key definition of each requested metric. Every requested\
+        \ metric appears in exactly one of\r\nthe two maps."
+      example:
+        metrics:
+          key:
+            derivationFormula: derivationFormula
+            flattenedType: flattenedType
+            removalDate: 2000-01-23T04:56:07.000+00:00
+            addressKey: addressKey
+            displayName: displayName
+            supportedOperations:
+            - supportedOperations
+            - supportedOperations
+            applicableOptions:
+              key:
+                defaultValue: defaultValue
+                name: name
+                description: description
+                optional: true
+                allowedValueSet:
+                - allowedValueSet
+                - allowedValueSet
+                type: type
+            description: description
+            holdingQuantityScaling: holdingQuantityScaling
+            type: type
+            supportedUsages:
+            - supportedUsages
+            - supportedUsages
+            lifeCycleStatus: lifeCycleStatus
+        failed:
+          key: failed
+      properties:
+        metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/QueryableKey'
+          description: "The definition of each metric that resolved, describing what\
+            \ a valuation returns for it and how to\r\npresent it. Keyed by the metric\
+            \ as it was requested, for example 'Valuation/PV' or\r\n'ProfitAndLoss/Realised/Market(Window=YTD)'.\
+            \ Identical requested keys appear once; different\r\nspellings of the\
+            \ same underlying key, such as a property's raw and wrapper forms, each\
+            \ appear."
+          type: object
+        failed:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Why each metric that did not resolve cannot be requested,\
+            \ keyed as for Metrics. Empty when every\r\nmetric resolved."
+          type: object
+      required:
+      - failed
+      - metrics
+      type: object
     QueryApplicableInstrumentEventsRequest:
       additionalProperties: false
       example:
@@ -278385,6 +278871,25 @@ components:
       - realisedTradeCcy
       - units
       type: object
+    RecActivitySinceEffectiveAt:
+      additionalProperties: false
+      description: A per-side exclusive lower bound on an activity window's effective
+        range.
+      properties:
+        left:
+          description: The exclusive lower bound for the left side. Activity effective
+            at exactly this datetime falls outside the window.
+          format: date-time
+          type: string
+        right:
+          description: The exclusive lower bound for the right side. Activity effective
+            at exactly this datetime falls outside the window.
+          format: date-time
+          type: string
+      required:
+      - left
+      - right
+      type: object
     RecActivityWindow:
       additionalProperties: false
       description: "Base class for the activity windows that give the date range a\
@@ -278392,6 +278897,8 @@ components:
         \ windowType; each supported type has a corresponding inherited class."
       example:
         windowType: windowType
+      oneOf:
+      - $ref: '#/components/schemas/ContiguousActivityWindow'
       properties:
         windowType:
           description: "Polymorphic discriminator. Supported types: Contiguous. Contiguous\
@@ -286246,6 +286753,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 1
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
           quantity: 0.8008281904610115
@@ -286339,6 +286847,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 1
         links:
         - method: method
           description: description
@@ -288635,6 +289144,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -288734,6 +289244,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -288917,6 +289428,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -289016,6 +289528,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -297991,6 +298504,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -298177,6 +298691,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -298356,6 +298871,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -298455,6 +298971,7 @@ components:
           orderInstructionId:
             code: code
             scope: scope
+          direction: 1
           side: side
           amount:
             amount: 0.8008281904610115
@@ -301604,6 +302121,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
         - entryType: entryType
           amount:
             amount: 0.8008281904610115
@@ -301692,6 +302210,7 @@ components:
               - validationFailures
               - validationFailures
               status: status
+          direction: 6
         links:
         - method: method
           description: description
@@ -320491,6 +321010,11 @@ components:
       example:
         ruleName: ruleName
         toleranceType: toleranceType
+      oneOf:
+      - $ref: '#/components/schemas/AggregateNumericTolerance'
+      - $ref: '#/components/schemas/CoreAttributeOptionalityTolerance'
+      - $ref: '#/components/schemas/CoreDateTolerance'
+      - $ref: '#/components/schemas/CoreStringCrossTolerance'
       properties:
         toleranceType:
           description: "Polymorphic discriminator. Supported types: CoreStringCross,\
@@ -332546,6 +333070,7 @@ components:
             orderInstructionId:
               code: code
               scope: scope
+            direction: 1
             side: side
             amount:
               amount: 0.8008281904610115
@@ -332780,6 +333305,7 @@ components:
                 - validationFailures
                 - validationFailures
                 status: status
+            direction: 6
         links:
         - method: method
           description: description

@@ -165,6 +165,10 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_DERIVED_APPROVAL_STATE)
   private String derivedApprovalState;
 
+  public static final String SERIALIZED_NAME_DIRECTION = "direction";
+  @SerializedName(SERIALIZED_NAME_DIRECTION)
+  private Integer direction;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -733,6 +737,27 @@ public class Order {
   }
 
 
+  public Order direction(Integer direction) {
+    
+    this.direction = direction;
+    return this;
+  }
+
+   /**
+   * The direction of the order&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved.
+   * @return direction
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getDirection() {
+    return direction;
+  }
+
+
+  public void setDirection(Integer direction) {
+    this.direction = direction;
+  }
+
+
   public Order links(List<Link> links) {
     
     this.links = links;
@@ -798,6 +823,7 @@ public class Order {
         Objects.equals(this.dataModelMembership, order.dataModelMembership) &&
         Objects.equals(this.derivedComplianceState, order.derivedComplianceState) &&
         Objects.equals(this.derivedApprovalState, order.derivedApprovalState) &&
+        Objects.equals(this.direction, order.direction) &&
         Objects.equals(this.links, order.links);
   }
 
@@ -807,7 +833,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, basis, custodianAccountId, dataModelMembership, derivedComplianceState, derivedApprovalState, links);
+    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, basis, custodianAccountId, dataModelMembership, derivedComplianceState, derivedApprovalState, direction, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -847,6 +873,7 @@ public class Order {
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    derivedComplianceState: ").append(toIndentedString(derivedComplianceState)).append("\n");
     sb.append("    derivedApprovalState: ").append(toIndentedString(derivedApprovalState)).append("\n");
+    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -896,6 +923,7 @@ public class Order {
     openapiFields.add("dataModelMembership");
     openapiFields.add("derivedComplianceState");
     openapiFields.add("derivedApprovalState");
+    openapiFields.add("direction");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **entryType** | **String** | Optionally specifies the entry type of this placement. | [optional] [default to String]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
+**direction** | **Integer** | The direction of the placement&#39;s side, inherited at creation from its block&#39;s orders: 1 the side increases the position (longer), -1 it decreases it (shorter), 0 the block&#39;s orders net flat, null when no direction could be resolved. | [optional] [default to Integer]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -55,6 +56,7 @@ CurrencyAndAmount StopPrice = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String EntryType = "example EntryType";
 Version Version = new Version();
 DataModelMembership DataModelMembership = new DataModelMembership();
+@jakarta.annotation.Nullable Integer Direction = new Integer("100.00");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -80,6 +82,7 @@ Placement placementInstance = new Placement()
     .EntryType(EntryType)
     .Version(Version)
     .DataModelMembership(DataModelMembership)
+    .Direction(Direction)
     .Links(Links);
 ```
 

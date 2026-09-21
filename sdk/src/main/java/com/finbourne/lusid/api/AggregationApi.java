@@ -31,6 +31,8 @@ import com.finbourne.lusid.model.InlineValuationRequest;
 import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import com.finbourne.lusid.model.QueryableKeysForMetricsRequest;
+import com.finbourne.lusid.model.QueryableKeysForMetricsResponse;
 import com.finbourne.lusid.model.ResourceListOfAggregationQuery;
 import com.finbourne.lusid.model.ValuationRequest;
 
@@ -600,6 +602,244 @@ public class AggregationApi {
      */
     public APIgetQueryableKeysRequest getQueryableKeys() {
         return new APIgetQueryableKeysRequest();
+    }
+    private okhttp3.Call getQueryableKeysForMetricsCall(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, final ApiCallback _callback) throws ApiException {
+        return getQueryableKeysForMetricsCall(queryableKeysForMetricsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getQueryableKeysForMetricsCall(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = queryableKeysForMetricsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/aggregation/$queryablekeys";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getQueryableKeysForMetricsValidateBeforeCall(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getQueryableKeysForMetricsCall(queryableKeysForMetricsRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<QueryableKeysForMetricsResponse> getQueryableKeysForMetricsWithHttpInfo(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest) throws ApiException {
+        okhttp3.Call localVarCall = getQueryableKeysForMetricsValidateBeforeCall(queryableKeysForMetricsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QueryableKeysForMetricsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<QueryableKeysForMetricsResponse> getQueryableKeysForMetricsWithHttpInfo(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getQueryableKeysForMetricsValidateBeforeCall(queryableKeysForMetricsRequest, null, opts);
+        Type localVarReturnType = new TypeToken<QueryableKeysForMetricsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getQueryableKeysForMetricsAsync(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, final ApiCallback<QueryableKeysForMetricsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getQueryableKeysForMetricsValidateBeforeCall(queryableKeysForMetricsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QueryableKeysForMetricsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getQueryableKeysForMetricsAsync(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest, final ApiCallback<QueryableKeysForMetricsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getQueryableKeysForMetricsValidateBeforeCall(queryableKeysForMetricsRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<QueryableKeysForMetricsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetQueryableKeysForMetricsRequest {
+        private QueryableKeysForMetricsRequest queryableKeysForMetricsRequest;
+
+        private APIgetQueryableKeysForMetricsRequest() {
+        }
+
+        /**
+         * Set queryableKeysForMetricsRequest
+         * @param queryableKeysForMetricsRequest The set of metrics whose queryable keys are to be described (optional)
+         * @return APIgetQueryableKeysForMetricsRequest
+         */
+        public APIgetQueryableKeysForMetricsRequest queryableKeysForMetricsRequest(QueryableKeysForMetricsRequest queryableKeysForMetricsRequest) {
+            this.queryableKeysForMetricsRequest = queryableKeysForMetricsRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getQueryableKeysForMetrics
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getQueryableKeysForMetricsCall(queryableKeysForMetricsRequest, _callback);
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request
+         * @return QueryableKeysForMetricsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QueryableKeysForMetricsResponse execute() throws ApiException {
+            ApiResponse<QueryableKeysForMetricsResponse> localVarResp = getQueryableKeysForMetricsWithHttpInfo(queryableKeysForMetricsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request. Use any specified configuration options to override any other configuration for this request only.
+         * @return QueryableKeysForMetricsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QueryableKeysForMetricsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<QueryableKeysForMetricsResponse> localVarResp = getQueryableKeysForMetricsWithHttpInfo(queryableKeysForMetricsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request with HTTP info returned
+         * @return ApiResponse&lt;QueryableKeysForMetricsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QueryableKeysForMetricsResponse> executeWithHttpInfo() throws ApiException {
+            return getQueryableKeysForMetricsWithHttpInfo(queryableKeysForMetricsRequest);
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;QueryableKeysForMetricsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QueryableKeysForMetricsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getQueryableKeysForMetricsWithHttpInfo(queryableKeysForMetricsRequest, opts);
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QueryableKeysForMetricsResponse> _callback) throws ApiException {
+            return getQueryableKeysForMetricsAsync(queryableKeysForMetricsRequest, _callback);
+        }
+
+        /**
+         * Execute getQueryableKeysForMetrics request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QueryableKeysForMetricsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getQueryableKeysForMetricsAsync(queryableKeysForMetricsRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics.
+     * Describes what a valuation would return for each of the supplied metrics, so that a caller can  prepare for the response, and render it, without having to ask for the valuation first. The  metrics are given exactly as they would be supplied to the metrics of a valuation request.     Each metric is reported on individually, keyed by its normalised address key: those that resolve  appear under metrics with their queryable key definition, and the rest appear under failed with the  reason. A metric that does not exist, or that you are not entitled to read, is reported as failed;  the two cases are not distinguished from one another.
+     * @return APIgetQueryableKeysForMetricsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetQueryableKeysForMetricsRequest getQueryableKeysForMetrics() {
+        return new APIgetQueryableKeysForMetricsRequest();
     }
     private okhttp3.Call getValuationCall(ValuationRequest valuationRequest, final ApiCallback _callback) throws ApiException {
         return getValuationCall(valuationRequest,  _callback, new ConfigurationOptions());

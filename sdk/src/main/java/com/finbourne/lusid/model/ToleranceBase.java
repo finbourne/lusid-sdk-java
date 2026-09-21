@@ -11,6 +11,10 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AggregateNumericTolerance;
+import com.finbourne.lusid.model.CoreAttributeOptionalityTolerance;
+import com.finbourne.lusid.model.CoreDateTolerance;
+import com.finbourne.lusid.model.CoreStringCrossTolerance;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,145 +22,287 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import com.finbourne.lusid.JSON;
 
-/**
- * Base class for the tolerances that relax how strictly a matching rule compares its two sides. Polymorphic  by ToleranceType; each supported type has a corresponding inherited class.
- */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ToleranceBase {
-  public static final String SERIALIZED_NAME_TOLERANCE_TYPE = "toleranceType";
-  @SerializedName(SERIALIZED_NAME_TOLERANCE_TYPE)
-  private String toleranceType;
+public class ToleranceBase extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(ToleranceBase.class.getName());
 
-  public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
-  @SerializedName(SERIALIZED_NAME_RULE_NAME)
-  private String ruleName;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ToleranceBase.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ToleranceBase' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AggregateNumericTolerance> adapterAggregateNumericTolerance = gson.getDelegateAdapter(this, TypeToken.get(AggregateNumericTolerance.class));
+            final TypeAdapter<CoreAttributeOptionalityTolerance> adapterCoreAttributeOptionalityTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreAttributeOptionalityTolerance.class));
+            final TypeAdapter<CoreDateTolerance> adapterCoreDateTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreDateTolerance.class));
+            final TypeAdapter<CoreStringCrossTolerance> adapterCoreStringCrossTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreStringCrossTolerance.class));
 
-  public ToleranceBase() {
-  }
+            return (TypeAdapter<T>) new TypeAdapter<ToleranceBase>() {
+                @Override
+                public void write(JsonWriter out, ToleranceBase value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public ToleranceBase toleranceType(String toleranceType) {
-    
-    this.toleranceType = toleranceType;
-    return this;
-  }
+                    // check if the actual instance is of the type `AggregateNumericTolerance`
+                    if (value.getActualInstance() instanceof AggregateNumericTolerance) {
+                      JsonElement element = adapterAggregateNumericTolerance.toJsonTree((AggregateNumericTolerance)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `CoreAttributeOptionalityTolerance`
+                    if (value.getActualInstance() instanceof CoreAttributeOptionalityTolerance) {
+                      JsonElement element = adapterCoreAttributeOptionalityTolerance.toJsonTree((CoreAttributeOptionalityTolerance)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `CoreDateTolerance`
+                    if (value.getActualInstance() instanceof CoreDateTolerance) {
+                      JsonElement element = adapterCoreDateTolerance.toJsonTree((CoreDateTolerance)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `CoreStringCrossTolerance`
+                    if (value.getActualInstance() instanceof CoreStringCrossTolerance) {
+                      JsonElement element = adapterCoreStringCrossTolerance.toJsonTree((CoreStringCrossTolerance)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance");
+                }
 
-   /**
-   * Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric.
-   * @return toleranceType
-  **/
-  @jakarta.annotation.Nonnull
-  public String getToleranceType() {
-    return toleranceType;
-  }
+                @Override
+                public ToleranceBase read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public void setToleranceType(String toleranceType) {
-    this.toleranceType = toleranceType;
-  }
+                    // deserialize AggregateNumericTolerance
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      AggregateNumericTolerance.validateJsonElement(jsonElement);
+                      actualAdapter = adapterAggregateNumericTolerance;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'AggregateNumericTolerance'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for AggregateNumericTolerance failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'AggregateNumericTolerance'", e);
+                    }
+                    // deserialize CoreAttributeOptionalityTolerance
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      CoreAttributeOptionalityTolerance.validateJsonElement(jsonElement);
+                      actualAdapter = adapterCoreAttributeOptionalityTolerance;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'CoreAttributeOptionalityTolerance'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for CoreAttributeOptionalityTolerance failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'CoreAttributeOptionalityTolerance'", e);
+                    }
+                    // deserialize CoreDateTolerance
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      CoreDateTolerance.validateJsonElement(jsonElement);
+                      actualAdapter = adapterCoreDateTolerance;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'CoreDateTolerance'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for CoreDateTolerance failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'CoreDateTolerance'", e);
+                    }
+                    // deserialize CoreStringCrossTolerance
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      CoreStringCrossTolerance.validateJsonElement(jsonElement);
+                      actualAdapter = adapterCoreStringCrossTolerance;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'CoreStringCrossTolerance'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for CoreStringCrossTolerance failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'CoreStringCrossTolerance'", e);
+                    }
 
+                    if (match == 1) {
+                        ToleranceBase ret = new ToleranceBase();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-  public ToleranceBase ruleName(String ruleName) {
-    
-    this.ruleName = ruleName;
-    return this;
-  }
-
-   /**
-   * The reference name of the rule that this tolerance relaxes.
-   * @return ruleName
-  **/
-  @jakarta.annotation.Nonnull
-  public String getRuleName() {
-    return ruleName;
-  }
-
-
-  public void setRuleName(String ruleName) {
-    this.ruleName = ruleName;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+                    throw new IOException(String.format("Failed deserialization for ToleranceBase: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
+        }
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public ToleranceBase() {
+        super("oneOf", Boolean.FALSE);
     }
-    ToleranceBase toleranceBase = (ToleranceBase) o;
-    return Objects.equals(this.toleranceType, toleranceBase.toleranceType) &&
-        Objects.equals(this.ruleName, toleranceBase.ruleName);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(toleranceType, ruleName);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ToleranceBase {\n");
-    sb.append("    toleranceType: ").append(toIndentedString(toleranceType)).append("\n");
-    sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public ToleranceBase(AggregateNumericTolerance o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public ToleranceBase(CoreAttributeOptionalityTolerance o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+    public ToleranceBase(CoreDateTolerance o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("toleranceType");
-    openapiFields.add("ruleName");
+    public ToleranceBase(CoreStringCrossTolerance o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("toleranceType");
-    openapiRequiredFields.add("ruleName");
-  }
+    static {
+        schemas.put("AggregateNumericTolerance", AggregateNumericTolerance.class);
+        schemas.put("CoreAttributeOptionalityTolerance", CoreAttributeOptionalityTolerance.class);
+        schemas.put("CoreDateTolerance", CoreDateTolerance.class);
+        schemas.put("CoreStringCrossTolerance", CoreStringCrossTolerance.class);
+    }
+
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return ToleranceBase.schemas;
+    }
+
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof AggregateNumericTolerance) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof CoreAttributeOptionalityTolerance) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof CoreDateTolerance) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof CoreStringCrossTolerance) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance
+     *
+     * @return The actual instance (AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `AggregateNumericTolerance`. If the actual instance is not `AggregateNumericTolerance`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `AggregateNumericTolerance`
+     * @throws ClassCastException if the instance is not `AggregateNumericTolerance`
+     */
+    public AggregateNumericTolerance getAggregateNumericTolerance() throws ClassCastException {
+        return (AggregateNumericTolerance)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `CoreAttributeOptionalityTolerance`. If the actual instance is not `CoreAttributeOptionalityTolerance`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `CoreAttributeOptionalityTolerance`
+     * @throws ClassCastException if the instance is not `CoreAttributeOptionalityTolerance`
+     */
+    public CoreAttributeOptionalityTolerance getCoreAttributeOptionalityTolerance() throws ClassCastException {
+        return (CoreAttributeOptionalityTolerance)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `CoreDateTolerance`. If the actual instance is not `CoreDateTolerance`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `CoreDateTolerance`
+     * @throws ClassCastException if the instance is not `CoreDateTolerance`
+     */
+    public CoreDateTolerance getCoreDateTolerance() throws ClassCastException {
+        return (CoreDateTolerance)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `CoreStringCrossTolerance`. If the actual instance is not `CoreStringCrossTolerance`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `CoreStringCrossTolerance`
+     * @throws ClassCastException if the instance is not `CoreStringCrossTolerance`
+     */
+    public CoreStringCrossTolerance getCoreStringCrossTolerance() throws ClassCastException {
+        return (CoreStringCrossTolerance)super.getActualInstance();
+    }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -165,53 +311,43 @@ public class ToleranceBase {
   * @throws IOException if the JSON Element is invalid with respect to ToleranceBase
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ToleranceBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ToleranceBase is not found in the empty JSON string", ToleranceBase.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ToleranceBase.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("toleranceType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `toleranceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("toleranceType").toString()));
-      }
-      if (!jsonObj.get("ruleName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ruleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleName").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ToleranceBase.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ToleranceBase' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ToleranceBase> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ToleranceBase.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ToleranceBase>() {
-           @Override
-           public void write(JsonWriter out, ToleranceBase value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ToleranceBase read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    // validate oneOf schemas one by one
+    int validCount = 0;
+    ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with AggregateNumericTolerance
+    try {
+      AggregateNumericTolerance.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for AggregateNumericTolerance failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with CoreAttributeOptionalityTolerance
+    try {
+      CoreAttributeOptionalityTolerance.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for CoreAttributeOptionalityTolerance failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with CoreDateTolerance
+    try {
+      CoreDateTolerance.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for CoreDateTolerance failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with CoreStringCrossTolerance
+    try {
+      CoreStringCrossTolerance.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for CoreStringCrossTolerance failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    if (validCount != 1) {
+      throw new IOException(String.format("The JSON string is invalid for ToleranceBase with oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 
@@ -235,3 +371,4 @@ public class ToleranceBase {
     return JSON.getGson().toJson(this);
   }
 }
+

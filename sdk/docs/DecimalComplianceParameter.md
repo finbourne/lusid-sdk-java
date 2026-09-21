@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **java.math.BigDecimal** |  | [default to java.math.BigDecimal]
+**inclusiveBounds** | **Boolean** | Whether the bound is inclusive of the value; when true a candidate landing exactly on the bound satisfies it. Defaults to false (exclusive). | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.DecimalComplianceParameter;
@@ -13,10 +14,12 @@ import java.lang.System;
 import java.net.URI;
 
 java.math.BigDecimal Value = new java.math.BigDecimal("100.00");
+Boolean InclusiveBounds = true;
 
 
 DecimalComplianceParameter decimalComplianceParameterInstance = new DecimalComplianceParameter()
-    .Value(Value);
+    .Value(Value)
+    .InclusiveBounds(InclusiveBounds);
 ```
 
 
