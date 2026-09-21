@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10028
+  version: 0.11.10029
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -319893,7 +319893,7 @@ components:
               \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
               \ DepositSweepEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
               \ AmendCommitmentEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
-              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent."
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent, TotalReturnSwapCashFlowEvent."
             minLength: 1
             type: string
           triggeringEventId:
