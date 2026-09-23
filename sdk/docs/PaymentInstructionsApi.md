@@ -7,6 +7,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deletePaymentInstruction**](PaymentInstructionsApi.md#deletePaymentInstruction) | **DELETE** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction |
 | [**getPaymentInstruction**](PaymentInstructionsApi.md#getPaymentInstruction) | **GET** /api/paymentinstructions/{scope}/{code} | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction |
 | [**getPaymentInstructionsByPaymentRecordIds**](PaymentInstructionsApi.md#getPaymentInstructionsByPaymentRecordIds) | **POST** /api/paymentinstructions/$getByPaymentRecordIds | [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids |
+| [**listPaymentInstructions**](PaymentInstructionsApi.md#listPaymentInstructions) | **GET** /api/paymentinstructions | [EXPERIMENTAL] ListPaymentInstructions: List Payment Instructions |
 | [**upsertPaymentInstructions**](PaymentInstructionsApi.md#upsertPaymentInstructions) | **POST** /api/paymentinstructions | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions |
 
 
@@ -294,6 +295,109 @@ public class PaymentInstructionsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The payment instructions that could be found for the supplied payment record ids, along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listPaymentInstructions
+
+> PagedResourceListOfPaymentInstruction listPaymentInstructions(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys)
+
+[EXPERIMENTAL] ListPaymentInstructions: List Payment Instructions
+
+List all Payment Instructions matching the given criteria.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PaymentInstructionsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PaymentInstructionsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PaymentInstructionsApi apiInstance = apiFactory.build(PaymentInstructionsApi.class);
+
+        PaymentInstructionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PaymentInstructionsApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the payment instructions. Defaults to return the latest   version of each payment instruction if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the payment instructions.   Defaults to the current LUSID system datetime if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing payment instructions from a previous call to   list payment instructions. This value is returned from the previous call. If a pagination token is provided,   the filter, limit and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
+        String filter = "filter_example"; // String | Expression to filter the results. For example, to filter on the currency, specify   \"currency eq 'GBP'\". For more information about filtering results, see   https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"PaymentInstruction\" domain to decorate onto each   payment instruction. These take the format {domain}/{scope}/{code} e.g. \"PaymentInstruction/myScope/myProperty\".
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPaymentInstruction result = apiInstance.listPaymentInstructions(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
+            PagedResourceListOfPaymentInstruction result = apiInstance.listPaymentInstructions(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PaymentInstructionsApi#listPaymentInstructions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the payment instructions. Defaults to return the latest   version of each payment instruction if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the payment instructions.   Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing payment instructions from a previous call to   list payment instructions. This value is returned from the previous call. If a pagination token is provided,   the filter, limit and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Expression to filter the results. For example, to filter on the currency, specify   \&quot;currency eq &#39;GBP&#39;\&quot;. For more information about filtering results, see   https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each   payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfPaymentInstruction**](PagedResourceListOfPaymentInstruction.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The payment instructions matching the given criteria |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

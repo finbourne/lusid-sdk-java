@@ -125,6 +125,7 @@ InstrumentEventType method = InstrumentEventType.FUNDDISTRIBUTIONEVENT;
 InstrumentEventType method = InstrumentEventType.NAVREPORTEVENT;
 InstrumentEventType method = InstrumentEventType.DIVIDENDSUSPENSIONEVENT;
 InstrumentEventType method = InstrumentEventType.LOANINTERESTCAPITALISATIONEVENT;
+InstrumentEventType method = InstrumentEventType.TOTALRETURNSWAPCASHFLOWEVENT;
 ```
 
 

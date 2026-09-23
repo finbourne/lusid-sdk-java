@@ -245,7 +245,9 @@ public enum InstrumentEventType {
   
   DIVIDENDSUSPENSIONEVENT("DividendSuspensionEvent"),
   
-  LOANINTERESTCAPITALISATIONEVENT("LoanInterestCapitalisationEvent");
+  LOANINTERESTCAPITALISATIONEVENT("LoanInterestCapitalisationEvent"),
+  
+  TOTALRETURNSWAPCASHFLOWEVENT("TotalReturnSwapCashFlowEvent");
 
   private String value;
 

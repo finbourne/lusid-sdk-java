@@ -295,7 +295,7 @@ public class CreateSimplePositionPortfolioRequest {
   }
 
    /**
-   * The effective datetime from which holdings set on the simple position portfolio begin contributing to valuations and other computed results. Holdings with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.
+   * The effective datetime from which instrument events and corporate actions are generated and applied to the simple position portfolio. Holdings set on the portfolio contribute to valuations and other computed results from the portfolio&#39;s creation date whatever the enablement date. Defaults to the portfolio&#39;s creation date if not specified.
    * @return enablementDate
   **/
   @jakarta.annotation.Nullable
