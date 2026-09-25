@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RecDefByTaxLots;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -62,6 +63,10 @@ public class RecDefRuleset {
   public static final String SERIALIZED_NAME_RELATIONAL_DATA_FILTER = "relationalDataFilter";
   @SerializedName(SERIALIZED_NAME_RELATIONAL_DATA_FILTER)
   private String relationalDataFilter;
+
+  public static final String SERIALIZED_NAME_BY_TAX_LOTS = "byTaxLots";
+  @SerializedName(SERIALIZED_NAME_BY_TAX_LOTS)
+  private RecDefByTaxLots byTaxLots;
 
   public RecDefRuleset() {
   }
@@ -129,6 +134,27 @@ public class RecDefRuleset {
   }
 
 
+  public RecDefRuleset byTaxLots(RecDefByTaxLots byTaxLots) {
+    
+    this.byTaxLots = byTaxLots;
+    return this;
+  }
+
+   /**
+   * Get byTaxLots
+   * @return byTaxLots
+  **/
+  @jakarta.annotation.Nullable
+  public RecDefByTaxLots getByTaxLots() {
+    return byTaxLots;
+  }
+
+
+  public void setByTaxLots(RecDefByTaxLots byTaxLots) {
+    this.byTaxLots = byTaxLots;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +167,8 @@ public class RecDefRuleset {
     RecDefRuleset recDefRuleset = (RecDefRuleset) o;
     return Objects.equals(this.recType, recDefRuleset.recType) &&
         Objects.equals(this.matchingRulesetId, recDefRuleset.matchingRulesetId) &&
-        Objects.equals(this.relationalDataFilter, recDefRuleset.relationalDataFilter);
+        Objects.equals(this.relationalDataFilter, recDefRuleset.relationalDataFilter) &&
+        Objects.equals(this.byTaxLots, recDefRuleset.byTaxLots);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +177,7 @@ public class RecDefRuleset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recType, matchingRulesetId, relationalDataFilter);
+    return Objects.hash(recType, matchingRulesetId, relationalDataFilter, byTaxLots);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +194,7 @@ public class RecDefRuleset {
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
     sb.append("    matchingRulesetId: ").append(toIndentedString(matchingRulesetId)).append("\n");
     sb.append("    relationalDataFilter: ").append(toIndentedString(relationalDataFilter)).append("\n");
+    sb.append("    byTaxLots: ").append(toIndentedString(byTaxLots)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +220,7 @@ public class RecDefRuleset {
     openapiFields.add("recType");
     openapiFields.add("matchingRulesetId");
     openapiFields.add("relationalDataFilter");
+    openapiFields.add("byTaxLots");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -226,6 +255,10 @@ public class RecDefRuleset {
       ResourceId.validateJsonElement(jsonObj.get("matchingRulesetId"));
       if ((jsonObj.get("relationalDataFilter") != null && !jsonObj.get("relationalDataFilter").isJsonNull()) && !jsonObj.get("relationalDataFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `relationalDataFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relationalDataFilter").toString()));
+      }
+      // validate the optional field `byTaxLots`
+      if (jsonObj.get("byTaxLots") != null && !jsonObj.get("byTaxLots").isJsonNull()) {
+        RecDefByTaxLots.validateJsonElement(jsonObj.get("byTaxLots"));
       }
   }
 

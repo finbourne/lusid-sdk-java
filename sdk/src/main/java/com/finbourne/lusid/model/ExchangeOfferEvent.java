@@ -59,7 +59,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * ExchangeOfferEvent
+ * Exchange Offer Event (EXOF).
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExchangeOfferEvent extends InstrumentEvent {
@@ -242,7 +242,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * Get cashOfferElections
+   * List of possible CashOfferElections for this exchange offer event (CASH).    - The event requires at least one election of any type.    - If ParticipationType is Mandatory, CashOfferElection is not permitted.    - If ParticipationType is MandatoryWithChoices or Voluntary, at most one CashOfferElection may be supplied.    - Exactly one election on the event must be the default, and at most one may be chosen.
    * @return cashOfferElections
   **/
   @jakarta.annotation.Nullable
@@ -271,7 +271,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * Get securityOfferElections
+   * List of possible SecurityOfferElections for this exchange offer event (SECU).    - The event requires at least one election of any type.    - Any number of SecurityOfferElections may be supplied.    - A NewInstrument is required on the event when this list is non-empty.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return securityOfferElections
   **/
   @jakarta.annotation.Nullable
@@ -300,7 +300,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * Get mixedLotConstituentsElections
+   * List of possible MixedLotConstituentsElections for this exchange offer event.    - The event requires at least one election of any type.    - Any number of MixedLotConstituentsElections may be supplied, up to a limit of 100 entries.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return mixedLotConstituentsElections
   **/
   @jakarta.annotation.Nullable
@@ -329,7 +329,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * Get lapseElections
+   * List of possible LapseElections for this exchange offer event (NOAC).    - The event requires at least one election of any type.    - If ParticipationType is Mandatory, LapseElection is not permitted.    - If ParticipationType is MandatoryWithChoices, any number of LapseElections may be supplied, but none of them may be the default.    - If ParticipationType is Voluntary, at most one LapseElection may be supplied.
    * @return lapseElections
   **/
   @jakarta.annotation.Nullable
@@ -358,7 +358,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible CashAndSecurityOfferElections for this exchange offer event.
+   * List of possible CashAndSecurityOfferElections for this exchange offer event (CASE).    - The event requires at least one election of any type.    - Any number of CashAndSecurityOfferElections may be supplied.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return cashAndSecurityOfferElections
   **/
   @jakarta.annotation.Nullable
@@ -387,7 +387,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible consent-and-exchange elections for this event (CTEN-style consent paired with the exchange).
+   * List of possible ConsentAndExchangeElections for this exchange offer event (CEXC).    - The event requires at least one election of any type.    - Any number of ConsentAndExchangeElections may be supplied.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return consentAndExchangeElections
   **/
   @jakarta.annotation.Nullable
@@ -416,7 +416,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible abstain elections for this event (ABST) — decline to vote on the consent.
+   * List of possible AbstainElections for this exchange offer event (ABST).    - The event requires at least one election of any type.    - Any number of AbstainElections may be supplied.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return abstainElections
   **/
   @jakarta.annotation.Nullable
@@ -445,7 +445,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.
+   * List of possible UnknownProceedsElections for this exchange offer event (UNKNOWN).    - The event requires at least one election of any type.    - Any number of UnknownProceedsElections may be supplied.    - Exactly one election on the event must be the default, and at most one may be chosen.    - If ParticipationType is Mandatory, the event must carry exactly one election in total; if MandatoryWithChoices, at least two.
    * @return unknownProceedsElections
   **/
   @jakarta.annotation.Nullable

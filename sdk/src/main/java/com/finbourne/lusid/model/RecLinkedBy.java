@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.RecLinkKey;
+import com.finbourne.lusid.model.RecResultLinkKey;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,28 +48,28 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The item keys a link between two rec results was established on, per side.
+ * The item pairings a link between two rec results was established on, per side.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecLinkedBy {
   public static final String SERIALIZED_NAME_LEFT = "left";
   @SerializedName(SERIALIZED_NAME_LEFT)
-  private List<RecLinkKey> left = new ArrayList<>();
+  private List<RecResultLinkKey> left = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RIGHT = "right";
   @SerializedName(SERIALIZED_NAME_RIGHT)
-  private List<RecLinkKey> right = new ArrayList<>();
+  private List<RecResultLinkKey> right = new ArrayList<>();
 
   public RecLinkedBy() {
   }
 
-  public RecLinkedBy left(List<RecLinkKey> left) {
+  public RecLinkedBy left(List<RecResultLinkKey> left) {
     
     this.left = left;
     return this;
   }
 
-  public RecLinkedBy addLeftItem(RecLinkKey leftItem) {
+  public RecLinkedBy addLeftItem(RecResultLinkKey leftItem) {
     if (this.left == null) {
       this.left = new ArrayList<>();
     }
@@ -78,27 +78,27 @@ public class RecLinkedBy {
   }
 
    /**
-   * The keys shared by the two results&#39; left-side items. May be empty.
+   * The pairings between the two results&#39; left-side items, one entry per pairing. May be empty.
    * @return left
   **/
   @jakarta.annotation.Nonnull
-  public List<RecLinkKey> getLeft() {
+  public List<RecResultLinkKey> getLeft() {
     return left;
   }
 
 
-  public void setLeft(List<RecLinkKey> left) {
+  public void setLeft(List<RecResultLinkKey> left) {
     this.left = left;
   }
 
 
-  public RecLinkedBy right(List<RecLinkKey> right) {
+  public RecLinkedBy right(List<RecResultLinkKey> right) {
     
     this.right = right;
     return this;
   }
 
-  public RecLinkedBy addRightItem(RecLinkKey rightItem) {
+  public RecLinkedBy addRightItem(RecResultLinkKey rightItem) {
     if (this.right == null) {
       this.right = new ArrayList<>();
     }
@@ -107,16 +107,16 @@ public class RecLinkedBy {
   }
 
    /**
-   * The keys shared by the two results&#39; right-side items. May be empty.
+   * The pairings between the two results&#39; right-side items, one entry per pairing. May be empty.
    * @return right
   **/
   @jakarta.annotation.Nonnull
-  public List<RecLinkKey> getRight() {
+  public List<RecResultLinkKey> getRight() {
     return right;
   }
 
 
-  public void setRight(List<RecLinkKey> right) {
+  public void setRight(List<RecResultLinkKey> right) {
     this.right = right;
   }
 
@@ -205,7 +205,7 @@ public class RecLinkedBy {
       JsonArray jsonArrayleft = jsonObj.getAsJsonArray("left");
       // validate the required field `left` (array)
       for (int i = 0; i < jsonArrayleft.size(); i++) {
-        RecLinkKey.validateJsonElement(jsonArrayleft.get(i));
+        RecResultLinkKey.validateJsonElement(jsonArrayleft.get(i));
       };
       // ensure the json data is an array
       if (!jsonObj.get("right").isJsonArray()) {
@@ -215,7 +215,7 @@ public class RecLinkedBy {
       JsonArray jsonArrayright = jsonObj.getAsJsonArray("right");
       // validate the required field `right` (array)
       for (int i = 0; i < jsonArrayright.size(); i++) {
-        RecLinkKey.validateJsonElement(jsonArrayright.get(i));
+        RecResultLinkKey.validateJsonElement(jsonArrayright.get(i));
       };
   }
 

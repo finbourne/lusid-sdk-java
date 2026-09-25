@@ -45,60 +45,35 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * One item key that established a link between two rec results: the key name and the identifier value both  results&#39; items carried for it.
+ * IdentifierForResolution
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RecLinkKey {
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
+public class IdentifierForResolution {
+  public static final String SERIALIZED_NAME_IDENTIFIER_KEY = "identifierKey";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_KEY)
+  private String identifierKey;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
-
-  public RecLinkKey() {
+  public IdentifierForResolution() {
   }
 
-  public RecLinkKey key(String key) {
+  public IdentifierForResolution identifierKey(String identifierKey) {
     
-    this.key = key;
+    this.identifierKey = identifierKey;
     return this;
   }
 
    /**
-   * The key name: holdingId or transactionId.
-   * @return key
+   * Identifier key in the format &#39;{domain}/{scope}/{code}&#39;.
+   * @return identifierKey
   **/
   @jakarta.annotation.Nonnull
-  public String getKey() {
-    return key;
+  public String getIdentifierKey() {
+    return identifierKey;
   }
 
 
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-
-  public RecLinkKey value(String value) {
-    
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The identifier value both results&#39; items carried under the key.
-   * @return value
-  **/
-  @jakarta.annotation.Nonnull
-  public String getValue() {
-    return value;
-  }
-
-
-  public void setValue(String value) {
-    this.value = value;
+  public void setIdentifierKey(String identifierKey) {
+    this.identifierKey = identifierKey;
   }
 
 
@@ -111,22 +86,20 @@ public class RecLinkKey {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecLinkKey recLinkKey = (RecLinkKey) o;
-    return Objects.equals(this.key, recLinkKey.key) &&
-        Objects.equals(this.value, recLinkKey.value);
+    IdentifierForResolution identifierForResolution = (IdentifierForResolution) o;
+    return Objects.equals(this.identifierKey, identifierForResolution.identifierKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, value);
+    return Objects.hash(identifierKey);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecLinkKey {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class IdentifierForResolution {\n");
+    sb.append("    identifierKey: ").append(toIndentedString(identifierKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -149,40 +122,35 @@ public class RecLinkKey {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("key");
-    openapiFields.add("value");
+    openapiFields.add("identifierKey");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("key");
-    openapiRequiredFields.add("value");
+    openapiRequiredFields.add("identifierKey");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to RecLinkKey
+  * @throws IOException if the JSON Element is invalid with respect to IdentifierForResolution
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RecLinkKey.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RecLinkKey is not found in the empty JSON string", RecLinkKey.openapiRequiredFields.toString()));
+        if (!IdentifierForResolution.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in IdentifierForResolution is not found in the empty JSON string", IdentifierForResolution.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RecLinkKey.openapiRequiredFields) {
+      for (String requiredField : IdentifierForResolution.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
-      }
-      if (!jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      if (!jsonObj.get("identifierKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierKey").toString()));
       }
   }
 
@@ -190,22 +158,22 @@ public class RecLinkKey {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RecLinkKey.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RecLinkKey' and its subtypes
+       if (!IdentifierForResolution.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'IdentifierForResolution' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RecLinkKey> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RecLinkKey.class));
+       final TypeAdapter<IdentifierForResolution> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(IdentifierForResolution.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RecLinkKey>() {
+       return (TypeAdapter<T>) new TypeAdapter<IdentifierForResolution>() {
            @Override
-           public void write(JsonWriter out, RecLinkKey value) throws IOException {
+           public void write(JsonWriter out, IdentifierForResolution value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RecLinkKey read(JsonReader in) throws IOException {
+           public IdentifierForResolution read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -216,18 +184,18 @@ public class RecLinkKey {
   }
 
  /**
-  * Create an instance of RecLinkKey given an JSON string
+  * Create an instance of IdentifierForResolution given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of RecLinkKey
-  * @throws IOException if the JSON string is invalid with respect to RecLinkKey
+  * @return An instance of IdentifierForResolution
+  * @throws IOException if the JSON string is invalid with respect to IdentifierForResolution
   */
-  public static RecLinkKey fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RecLinkKey.class);
+  public static IdentifierForResolution fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, IdentifierForResolution.class);
   }
 
  /**
-  * Convert an instance of RecLinkKey to an JSON string
+  * Convert an instance of IdentifierForResolution to an JSON string
   *
   * @return JSON string
   */

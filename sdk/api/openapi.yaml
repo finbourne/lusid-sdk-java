@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10053
+  version: 0.11.10068
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1272,6 +1272,9 @@ tags:
   name: Derived Transaction Portfolios
 - description: Methods for querying data about entities
   name: Entities
+- description: Endpoints for managing the order in which identifiers are matched when
+    resolving an entity
+  name: Entity Resolvers
 - description: "Methods for interacting with Executions. An Execution represents a\
     \ market's fill of a street order. Executions are treated monotemporally; any\
     \ updates are effective at the as-at time of update, and its not possible to make\
@@ -19220,6 +19223,313 @@ paths:
       - Compliance
       x-fbn-apistatus: Experimental
       x-accepts: application/json
+  /api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode}:
+    get:
+      description: "Specify a run scope and code from a previously run compliance\
+        \ check, and the scope and code of a rule within that run, to get the per-position\
+        \ contributions behind that rule's breakdown groups."
+      operationId: GetComplianceRuleBreakdown
+      parameters:
+      - description: "Required: Run Scope."
+        explode: false
+        in: path
+        name: runScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Required: Run Code."
+        explode: false
+        in: path
+        name: runCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Required: Rule Scope."
+        explode: false
+        in: path
+        name: ruleScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Required: Rule Code."
+        explode: false
+        in: path
+        name: ruleCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PreTrade
+                ruleResult:
+                  ruleId:
+                    scope: SomeScope
+                    code: rule-1
+                  templateId:
+                    scope: system
+                    code: template-1
+                  variation: standard
+                  ruleStatus: failed
+                  affectedPortfolios:
+                  - scope: PortfolioScope
+                    code: PortfolioCode
+                  affectedOrders:
+                  - scope: OrderScope
+                    code: OrderCode
+                  parametersUsed:
+                    UpperBound: "30"
+                    LowerBound: "0"
+                  ruleBreakdown:
+                  - groupStatus: failed
+                    resultsUsed:
+                      Valuation/PV: 650
+                      Exposure/PV: 650
+                    propertiesUsed:
+                      Instrument/data/Issuer:
+                      - key: Instrument/data/Issuer
+                        value:
+                          labelValue: ABC
+                    missingDataInformation:
+                    - No Missing Data
+                    lineage:
+                    - index: 0
+                      label: Initial
+                      subLabel: Initial
+                      infoType: ""
+                      information: ""
+                    - index: 1
+                      label: Step1
+                      subLabel: SomeStep1Information
+                      infoType: ""
+                      information: ""
+                    - index: 2
+                      label: Step2
+                      subLabel: Step2
+                      infoType: ""
+                      information: ""
+                    contributions:
+                    - index: 0
+                      portfolioId:
+                        scope: PortfolioScope
+                        code: PortfolioCode
+                      instrument: LUID_00003D5F
+                      instrumentType: Bond
+                      holdingType: P
+                      holdingId: "1234567890"
+                      resultValues:
+                        Valuation/PV: 650
+                      properties:
+                        Instrument/data/Issuer:
+                          key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
+                      relatedProperties:
+                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
+                  otherPositionsConsidered: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
+            application/json:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PreTrade
+                ruleResult:
+                  ruleId:
+                    scope: SomeScope
+                    code: rule-1
+                  templateId:
+                    scope: system
+                    code: template-1
+                  variation: standard
+                  ruleStatus: failed
+                  affectedPortfolios:
+                  - scope: PortfolioScope
+                    code: PortfolioCode
+                  affectedOrders:
+                  - scope: OrderScope
+                    code: OrderCode
+                  parametersUsed:
+                    UpperBound: "30"
+                    LowerBound: "0"
+                  ruleBreakdown:
+                  - groupStatus: failed
+                    resultsUsed:
+                      Valuation/PV: 650
+                      Exposure/PV: 650
+                    propertiesUsed:
+                      Instrument/data/Issuer:
+                      - key: Instrument/data/Issuer
+                        value:
+                          labelValue: ABC
+                    missingDataInformation:
+                    - No Missing Data
+                    lineage:
+                    - index: 0
+                      label: Initial
+                      subLabel: Initial
+                      infoType: ""
+                      information: ""
+                    - index: 1
+                      label: Step1
+                      subLabel: SomeStep1Information
+                      infoType: ""
+                      information: ""
+                    - index: 2
+                      label: Step2
+                      subLabel: Step2
+                      infoType: ""
+                      information: ""
+                    contributions:
+                    - index: 0
+                      portfolioId:
+                        scope: PortfolioScope
+                        code: PortfolioCode
+                      instrument: LUID_00003D5F
+                      instrumentType: Bond
+                      holdingType: P
+                      holdingId: "1234567890"
+                      resultValues:
+                        Valuation/PV: 650
+                      properties:
+                        Instrument/data/Issuer:
+                          key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
+                      relatedProperties:
+                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
+                  otherPositionsConsidered: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
+            text/json:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PreTrade
+                ruleResult:
+                  ruleId:
+                    scope: SomeScope
+                    code: rule-1
+                  templateId:
+                    scope: system
+                    code: template-1
+                  variation: standard
+                  ruleStatus: failed
+                  affectedPortfolios:
+                  - scope: PortfolioScope
+                    code: PortfolioCode
+                  affectedOrders:
+                  - scope: OrderScope
+                    code: OrderCode
+                  parametersUsed:
+                    UpperBound: "30"
+                    LowerBound: "0"
+                  ruleBreakdown:
+                  - groupStatus: failed
+                    resultsUsed:
+                      Valuation/PV: 650
+                      Exposure/PV: 650
+                    propertiesUsed:
+                      Instrument/data/Issuer:
+                      - key: Instrument/data/Issuer
+                        value:
+                          labelValue: ABC
+                    missingDataInformation:
+                    - No Missing Data
+                    lineage:
+                    - index: 0
+                      label: Initial
+                      subLabel: Initial
+                      infoType: ""
+                      information: ""
+                    - index: 1
+                      label: Step1
+                      subLabel: SomeStep1Information
+                      infoType: ""
+                      information: ""
+                    - index: 2
+                      label: Step2
+                      subLabel: Step2
+                      infoType: ""
+                      information: ""
+                    contributions:
+                    - index: 0
+                      portfolioId:
+                        scope: PortfolioScope
+                        code: PortfolioCode
+                      instrument: LUID_00003D5F
+                      instrumentType: Bond
+                      holdingType: P
+                      holdingId: "1234567890"
+                      resultValues:
+                        Valuation/PV: 650
+                      properties:
+                        Instrument/data/Issuer:
+                          key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
+                      relatedProperties:
+                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
+                  otherPositionsConsidered: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
+          description: The position-level breakdown for the requested rule of a compliance
+            run.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level\
+        \ breakdown for a single rule of a compliance run."
+      tags:
+      - Compliance
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/compliance/runs/summary:
     post:
       description: Use this endpoint to upsert a compliance run result summary.
@@ -34739,6 +35049,601 @@ paths:
       tags:
       - Entities
       x-fbn-apistatus: Stable
+      x-accepts: application/json
+  /api/entityresolvers:
+    post:
+      description: "Define a new Entity Resolver. The resolver's identifier matching\
+        \ order is the sequence of identifier\r\nproperty keys that will be tried,\
+        \ in turn, when resolving an entity of the given type in the resolver's scope."
+      operationId: CreateEntityResolver
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              id:
+                scope: MyScope
+                code: default
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/CreateEntityResolverRequest'
+          application/json:
+            example:
+              id:
+                scope: MyScope
+                code: default
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/CreateEntityResolverRequest'
+          text/json:
+            example:
+              id:
+                scope: MyScope
+                code: default
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/CreateEntityResolverRequest'
+          application/*+json:
+            example:
+              id:
+                scope: MyScope
+                code: default
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/CreateEntityResolverRequest'
+        description: The request defining the new Entity Resolver
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            application/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            text/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+          description: The created Entity Resolver
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] CreateEntityResolver: Create an Entity Resolver"
+      tags:
+      - Entity Resolvers
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/entityresolvers/{scope}/{code}:
+    delete:
+      description: "The deletion will take effect from the deletion datetime, i.e.\
+        \ the Entity Resolver will no longer exist\r\nat any asAt datetime after the\
+        \ asAt datetime of deletion. Resolution in the affected scope reverts to\r\
+        \nthe default matching order."
+      operationId: DeleteEntityResolver
+      parameters:
+      - description: The scope of the Entity Resolver
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Entity Resolver. Together with the scope this
+          uniquely identifies the Entity Resolver
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The deleted entity metadata
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteEntityResolver: Delete an Entity Resolver"
+      tags:
+      - Entity Resolvers
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    get:
+      description: "Get a single Entity Resolver by scope and code at an optional\
+        \ asAt, defaulting to latest if not specified."
+      operationId: GetEntityResolver
+      parameters:
+      - description: The scope of the Entity Resolver
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Entity Resolver. Together with the scope this
+          uniquely identifies the Entity Resolver
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The asAt datetime at which to retrieve the Entity Resolver.\
+          \ Defaults to return\r\n the latest version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            application/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            text/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+          description: The requested Entity Resolver
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetEntityResolver: Get a single Entity Resolver"
+      tags:
+      - Entity Resolvers
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    put:
+      description: Overwrites the description and identifier matching order of an
+        existing Entity Resolver.
+      operationId: UpdateEntityResolver
+      parameters:
+      - description: The scope of the Entity Resolver
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Entity Resolver. Together with the scope this
+          uniquely identifies the Entity Resolver
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/UpsertEntityResolverRequest'
+          application/json:
+            example:
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/UpsertEntityResolverRequest'
+          text/json:
+            example:
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/UpsertEntityResolverRequest'
+          application/*+json:
+            example:
+              entityType: Instrument
+              description: "Resolve instruments by Figi first, then Isin, then the\
+                \ client identifier"
+              identifierMatchingOrder:
+              - identifierKey: Instrument/default/Figi
+              - identifierKey: Instrument/default/Isin
+              - identifierKey: Instrument/MyScope/ClientInternal
+            schema:
+              $ref: '#/components/schemas/UpsertEntityResolverRequest'
+        description: The request containing the updated details of the Entity Resolver
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            application/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+            text/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: default
+                entityType: Instrument
+                description: "Resolve instruments by Figi first, then Isin, then the\
+                  \ client identifier"
+                identifierMatchingOrder:
+                - identifierKey: Instrument/default/Figi
+                - identifierKey: Instrument/default/Isin
+                - identifierKey: Instrument/MyScope/ClientInternal
+                href: http://example.lusid.com/api/entityresolvers/MyScope/default
+                version:
+                  effectiveFrom: 2024-06-01T10:30:00.0000000+00:00
+                  asAtDate: 2024-06-01T10:30:00.0000000+00:00
+                  asAtCreated: 2024-06-01T10:30:00.0000000+00:00
+                  userIdCreated: User1
+                  requestIdCreated: RequestId1
+                  reasonCreated: ""
+                  asAtModified: 2024-06-04T10:30:00.0000000+00:00
+                  userIdModified: User2
+                  requestIdModified: RequestId2
+                  reasonModified: ""
+                  asAtVersionNumber: 2
+                  entityUniqueId: 67cd5403-60d3-4744-8455-c4522a3886cb
+              schema:
+                $ref: '#/components/schemas/EntityResolver'
+          description: The updated Entity Resolver
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpdateEntityResolver: Update an Entity Resolver"
+      tags:
+      - Entity Resolvers
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/executions:
     get:
@@ -52441,9 +53346,7 @@ paths:
       description: "Gets all transactions that remain unsettled as at the specified\
         \ Valuation Point for a Fund,\r\nlooking back from inception. Settlement status\
         \ is point-in-time: post-cutoff settlement\r\nactivity does not alter the\
-        \ result.\r\nThe Valuation Point must be identified either by the date or\
-        \ diaryEntry query parameters or by the\r\n'dateOrDiaryEntry' parameter in\
-        \ the request body; when both are supplied the query parameters are used."
+        \ result."
       operationId: GetValuationPointUnsettledTransactions
       parameters:
       - description: The scope of the Fund.
@@ -52531,43 +53434,6 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
-      - description: "The optional date of the Valuation Point to report against,\
-          \ as an alternative to supplying\r\n it in the request body. Must not be\
-          \ supplied together with diaryEntry."
-        explode: true
-        in: query
-        name: date
-        required: false
-        schema:
-          format: dateorcutlabel
-          type: string
-        style: form
-      - description: "The optional diary entry code of the Valuation Point to report\
-          \ against, as an\r\n alternative to supplying it in the request body. Must\
-          \ not be supplied together with date."
-        explode: true
-        in: query
-        name: diaryEntry
-        required: false
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: form
-      - description: "The optional variant code of the Valuation Point to report against,\
-          \ as an alternative to\r\n supplying it in the request body. Only required\
-          \ when it is necessary to choose between scenarios with multiple\r\n estimates."
-        explode: true
-        in: query
-        name: variant
-        required: false
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -52594,9 +53460,8 @@ paths:
                 diaryEntry: DiaryEntryCode
             schema:
               $ref: '#/components/schemas/SingleValuationPointQueryParameters'
-        description: "The optional arguments to use for querying the unsettled transactions.\
-          \ Can be\r\n omitted when the Valuation Point is identified by the date\
-          \ or diaryEntry query parameters."
+        description: The arguments to use for querying the unsettled transactions.
+        required: true
       responses:
         "200":
           content:
@@ -111599,6 +112464,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -111668,6 +112535,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -111737,6 +112606,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -111806,6 +112677,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -111880,6 +112753,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -111953,6 +112828,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112026,6 +112903,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112241,6 +113120,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112314,6 +113195,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112387,6 +113270,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112514,6 +113399,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -112580,6 +113467,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -112646,6 +113535,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -112712,6 +113603,8 @@ paths:
                   scope: Recs
                   code: CustodyHoldingRules
                 relationalDataFilter: custodian eq 'NT'
+                byTaxLots:
+                  left: true
               - recType: InputTransaction
                 matchingRulesetId:
                   scope: Recs
@@ -112786,6 +113679,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112859,6 +113754,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -112932,6 +113829,8 @@ paths:
                     scope: Recs
                     code: CustodyHoldingRules
                   relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
                 - recType: InputTransaction
                   matchingRulesetId:
                     scope: Recs
@@ -114562,7 +115461,10 @@ paths:
       x-accepts: application/json
   /api/recs/results/$batchManageComments:
     post:
-      description: "Add, edit or delete comments on rec results in a batch."
+      description: |-
+        Add, edit or delete comments on rec results in a batch.
+
+        The batch limit per request is 2,000.
       operationId: BatchManageRecResultComments
       parameters:
       - description: "Whether the batch fails Atomically or in a Partial fashion.\
@@ -114671,8 +115573,10 @@ paths:
       x-accepts: application/json
   /api/recs/results/$batchReview:
     post:
-      description: "Apply a batch of review actions (decisions, assignments, comments,\
-        \ properties) to rec results."
+      description: |-
+        Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+
+        The batch limit per request is 2,000.
       operationId: BatchReviewRecResults
       parameters:
       - description: "Whether the batch fails Atomically or in a Partial fashion.\
@@ -172519,6 +173423,33 @@ components:
               \ Optional."
             nullable: true
             type: string
+          paymentDate:
+            description: "Settlement date of the cash leg. Required when a CashOfferElection\
+              \ is offered, and accepted\r\nbut unused otherwise — inbound ballot\
+              \ notifications populate a pay date on pure votes that\r\nsettle no\
+              \ cash."
+            format: date-time
+            nullable: true
+            type: string
+          cashOfferElections:
+            description: "One election per ballot option that pays cash, keyed \"\
+              {OptionNumber}-{OptionCode}\", for\r\nexample \"1-CASH\". Each election's\
+              \ CashOfferPrice is per eligible unit, not per 1000 of face.\r\nDefaults\
+              \ to an empty list."
+            items:
+              $ref: '#/components/schemas/CashOfferElection'
+            nullable: true
+            type: array
+          lapseElections:
+            description: "One election per ballot option that pays nothing — consent\
+              \ granted with no fee, consent\r\ndenied, abstain, or no action — keyed\
+              \ \"{OptionNumber}-{OptionCode}\", for example \"6-NOAC\".\r\nKeys are\
+              \ free-form because a real ballot carries CONY twice and CONN twice.\
+              \ Defaults to an\r\nempty list."
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -172672,8 +173603,10 @@ components:
         - notificationType
         type: object
       description: "A Bankruptcy (BRUP) event recording the legal status of a company\
-        \ unable to meet its financial\r\nobligations. Pure informational marker —\
-        \ generates no transactions and has no position impact."
+        \ unable to meet its financial\r\nobligations. With no elections it is a pure\
+        \ informational marker, generating no transactions and\r\nhaving no position\
+        \ impact. It may also carry a ballot: one CashOfferElection per option that\
+        \ pays\r\ncash and one LapseElection per option that pays nothing."
     Barrier:
       additionalProperties: false
       description: Barrier class for exotic FxOption
@@ -173418,28 +174351,36 @@ components:
             - recType: recType
               linkedBy:
                 left:
-                - value: value
-                  key: key
-                - value: value
-                  key: key
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
                 right:
-                - value: value
-                  key: key
-                - value: value
-                  key: key
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
               id: id
             - recType: recType
               linkedBy:
                 left:
-                - value: value
-                  key: key
-                - value: value
-                  key: key
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
                 right:
-                - value: value
-                  key: key
-                - value: value
-                  key: key
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
               id: id
             recType: recType
             instanceId:
@@ -173646,28 +174587,36 @@ components:
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           recType: recType
           instanceId:
@@ -173811,28 +174760,36 @@ components:
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           recType: recType
           instanceId:
@@ -174085,28 +175042,36 @@ components:
               - recType: recType
                 linkedBy:
                   left:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                   right:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                 id: id
               - recType: recType
                 linkedBy:
                   left:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                   right:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                 id: id
               recType: recType
               instanceId:
@@ -174250,28 +175215,36 @@ components:
               - recType: recType
                 linkedBy:
                   left:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                   right:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                 id: id
               - recType: recType
                 linkedBy:
                   left:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                   right:
-                  - value: value
-                    key: key
-                  - value: value
-                    key: key
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
+                  - taxLotId: taxLotId
+                    holdingId: holdingId
+                    transactionId: transactionId
                 id: id
               recType: recType
               instanceId:
@@ -190768,12 +191741,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 1
+          index: 6
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 1
+          index: 6
           information: information
           label: label
         missingDataInformation:
@@ -190872,12 +191845,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 1
+          index: 6
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 1
+          index: 6
           information: information
           label: label
         missingDataInformation:
@@ -190959,6 +191932,272 @@ components:
       - missingDataInformation
       - propertiesUsed
       - resultsUsed
+      type: object
+    ComplianceRuleBreakdownWithContributions:
+      additionalProperties: false
+      example:
+        lineage:
+        - subLabel: subLabel
+          infoType: infoType
+          index: 6
+          information: information
+          label: label
+        - subLabel: subLabel
+          infoType: infoType
+          index: 6
+          information: information
+          label: label
+        missingDataInformation:
+        - missingDataInformation
+        - missingDataInformation
+        contributions:
+        - instrumentType: instrumentType
+          portfolioId:
+            code: code
+            scope: scope
+          orderId:
+            code: code
+            scope: scope
+          holdingType: holdingType
+          resultValues:
+            key: 5.962133916683182
+          relatedProperties:
+            key: relatedProperties
+          index: 1
+          instrument: instrument
+          holdingId: holdingId
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - instrumentType: instrumentType
+          portfolioId:
+            code: code
+            scope: scope
+          orderId:
+            code: code
+            scope: scope
+          holdingType: holdingType
+          resultValues:
+            key: 5.962133916683182
+          relatedProperties:
+            key: relatedProperties
+          index: 1
+          instrument: instrument
+          holdingId: holdingId
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        propertiesUsed:
+          key:
+          - referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+        groupStatus: groupStatus
+        resultsUsed:
+          key: 0.8008281904610115
+      properties:
+        groupStatus:
+          description: The status of this subset of results.
+          minLength: 1
+          type: string
+        resultsUsed:
+          additionalProperties:
+            format: double
+            type: number
+          description: "Dictionary of AddressKey (as string) and their corresponding\
+            \ decimal values, that were used in this rule."
+          type: object
+        propertiesUsed:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/Property'
+            nullable: true
+            type: array
+          description: "Dictionary of PropertyKey (as string) and their corresponding\
+            \ Properties, that were used in this rule"
+          type: object
+        missingDataInformation:
+          description: List of string information detailing data that was missing
+            from contributions processed in this rule
+          items:
+            type: string
+          type: array
+        lineage:
+          items:
+            $ref: '#/components/schemas/LineageMember'
+          type: array
+        contributions:
+          description: "The per-position contributions aggregated into this rule breakdown\
+            \ group. Empty when the run\r\ngenuinely produced no contributions; a\
+            \ run with no recorded breakdown (e.g. one that predates\r\nthis feature)\
+            \ returns a 404 rather than this response."
+          items:
+            $ref: '#/components/schemas/ComplianceRuleContribution'
+          type: array
+      required:
+      - contributions
+      - groupStatus
+      - lineage
+      - missingDataInformation
+      - propertiesUsed
+      - resultsUsed
+      type: object
+    ComplianceRuleContribution:
+      additionalProperties: false
+      example:
+        instrumentType: instrumentType
+        portfolioId:
+          code: code
+          scope: scope
+        orderId:
+          code: code
+          scope: scope
+        holdingType: holdingType
+        resultValues:
+          key: 5.962133916683182
+        relatedProperties:
+          key: relatedProperties
+        index: 1
+        instrument: instrument
+        holdingId: holdingId
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+      properties:
+        index:
+          description: The position of this contribution within the compliance run.
+          format: int32
+          type: integer
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        orderId:
+          $ref: '#/components/schemas/ResourceId'
+        instrument:
+          description: The LUSID instrument identifier (LUID) of the instrument for
+            this contribution.
+          maxLength: 6000
+          minLength: 0
+          type: string
+        instrumentType:
+          description: Optional. The economic type of the instrument for this contribution.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+        holdingType:
+          description: Optional. The holding type of this contribution.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+        holdingId:
+          description: Optional. The internal holding identifier encoding the detail
+            of what the holding includes.
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+        resultValues:
+          additionalProperties:
+            format: double
+            type: number
+          description: Dictionary of AddressKey (as string) and their corresponding
+            decimal valuation results for this contribution.
+          type: object
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: Dictionary of PropertyKey (as string) and their corresponding
+            property for this contribution.
+          type: object
+        relatedProperties:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Dictionary of related property keys (as string) and their\
+            \ string values, read from related entities across a relationship."
+          type: object
+      required:
+      - index
+      - instrument
+      - portfolioId
+      - properties
+      - relatedProperties
+      - resultValues
       type: object
     ComplianceRuleEntity:
       additionalProperties: false
@@ -191518,12 +192757,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -191571,12 +192810,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -191657,6 +192896,362 @@ components:
           type: string
         ruleResult:
           $ref: '#/components/schemas/ComplianceSummaryRuleResult'
+      required:
+      - completedAt
+      - instigatedAt
+      - ruleResult
+      - runId
+      - schedule
+      type: object
+    ComplianceRuleResultV2WithContributions:
+      additionalProperties: false
+      example:
+        schedule: schedule
+        completedAt: 2000-01-23T04:56:07.000+00:00
+        runId:
+          code: code
+          scope: scope
+        ruleResult:
+          ruleBreakdown:
+          - lineage:
+            - subLabel: subLabel
+              infoType: infoType
+              index: 6
+              information: information
+              label: label
+            - subLabel: subLabel
+              infoType: infoType
+              index: 6
+              information: information
+              label: label
+            missingDataInformation:
+            - missingDataInformation
+            - missingDataInformation
+            contributions:
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              holdingType: holdingType
+              resultValues:
+                key: 5.962133916683182
+              relatedProperties:
+                key: relatedProperties
+              index: 1
+              instrument: instrument
+              holdingId: holdingId
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              holdingType: holdingType
+              resultValues:
+                key: 5.962133916683182
+              relatedProperties:
+                key: relatedProperties
+              index: 1
+              instrument: instrument
+              holdingId: holdingId
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            propertiesUsed:
+              key:
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            groupStatus: groupStatus
+            resultsUsed:
+              key: 0.8008281904610115
+          - lineage:
+            - subLabel: subLabel
+              infoType: infoType
+              index: 6
+              information: information
+              label: label
+            - subLabel: subLabel
+              infoType: infoType
+              index: 6
+              information: information
+              label: label
+            missingDataInformation:
+            - missingDataInformation
+            - missingDataInformation
+            contributions:
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              holdingType: holdingType
+              resultValues:
+                key: 5.962133916683182
+              relatedProperties:
+                key: relatedProperties
+              index: 1
+              instrument: instrument
+              holdingId: holdingId
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              holdingType: holdingType
+              resultValues:
+                key: 5.962133916683182
+              relatedProperties:
+                key: relatedProperties
+              index: 1
+              instrument: instrument
+              holdingId: holdingId
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            propertiesUsed:
+              key:
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            groupStatus: groupStatus
+            resultsUsed:
+              key: 0.8008281904610115
+          affectedPortfolios:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          affectedOrders:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          ruleId:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          ruleStatus: ruleStatus
+          variation: variation
+          parametersUsed:
+            key: parametersUsed
+          otherPositionsConsidered:
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+        instigatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        runId:
+          $ref: '#/components/schemas/ResourceId'
+        instigatedAt:
+          format: date-time
+          type: string
+        completedAt:
+          format: date-time
+          type: string
+        schedule:
+          description: "Available values: PreTrade, PostTrade, PreAndPostTrade."
+          minLength: 1
+          type: string
+        ruleResult:
+          $ref: '#/components/schemas/ComplianceSummaryRuleResultWithContributions'
       required:
       - completedAt
       - instigatedAt
@@ -192370,12 +193965,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           missingDataInformation:
@@ -192423,12 +194018,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           missingDataInformation:
@@ -192538,12 +194133,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           missingDataInformation:
@@ -192591,12 +194186,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 1
+            index: 6
             information: information
             label: label
           missingDataInformation:
@@ -192695,6 +194290,383 @@ components:
       required:
       - affectedOrders
       - affectedPortfolios
+      - parametersUsed
+      - ruleBreakdown
+      - ruleId
+      - ruleStatus
+      - templateId
+      - variation
+      type: object
+    ComplianceSummaryRuleResultWithContributions:
+      additionalProperties: false
+      example:
+        ruleBreakdown:
+        - lineage:
+          - subLabel: subLabel
+            infoType: infoType
+            index: 6
+            information: information
+            label: label
+          - subLabel: subLabel
+            infoType: infoType
+            index: 6
+            information: information
+            label: label
+          missingDataInformation:
+          - missingDataInformation
+          - missingDataInformation
+          contributions:
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          propertiesUsed:
+            key:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          groupStatus: groupStatus
+          resultsUsed:
+            key: 0.8008281904610115
+        - lineage:
+          - subLabel: subLabel
+            infoType: infoType
+            index: 6
+            information: information
+            label: label
+          - subLabel: subLabel
+            infoType: infoType
+            index: 6
+            information: information
+            label: label
+          missingDataInformation:
+          - missingDataInformation
+          - missingDataInformation
+          contributions:
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            holdingType: holdingType
+            resultValues:
+              key: 5.962133916683182
+            relatedProperties:
+              key: relatedProperties
+            index: 1
+            instrument: instrument
+            holdingId: holdingId
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          propertiesUsed:
+            key:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          groupStatus: groupStatus
+          resultsUsed:
+            key: 0.8008281904610115
+        affectedPortfolios:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        affectedOrders:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        ruleId:
+          code: code
+          scope: scope
+        templateId:
+          code: code
+          scope: scope
+        ruleStatus: ruleStatus
+        variation: variation
+        parametersUsed:
+          key: parametersUsed
+        otherPositionsConsidered:
+        - instrumentType: instrumentType
+          portfolioId:
+            code: code
+            scope: scope
+          orderId:
+            code: code
+            scope: scope
+          holdingType: holdingType
+          resultValues:
+            key: 5.962133916683182
+          relatedProperties:
+            key: relatedProperties
+          index: 1
+          instrument: instrument
+          holdingId: holdingId
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - instrumentType: instrumentType
+          portfolioId:
+            code: code
+            scope: scope
+          orderId:
+            code: code
+            scope: scope
+          holdingType: holdingType
+          resultValues:
+            key: 5.962133916683182
+          relatedProperties:
+            key: relatedProperties
+          index: 1
+          instrument: instrument
+          holdingId: holdingId
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+      properties:
+        ruleId:
+          $ref: '#/components/schemas/ResourceId'
+        templateId:
+          $ref: '#/components/schemas/ResourceId'
+        variation:
+          minLength: 1
+          type: string
+        ruleStatus:
+          minLength: 1
+          type: string
+        affectedPortfolios:
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          type: array
+        affectedOrders:
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          type: array
+        parametersUsed:
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
+        ruleBreakdown:
+          items:
+            $ref: '#/components/schemas/ComplianceRuleBreakdownWithContributions'
+          type: array
+        otherPositionsConsidered:
+          description: "The rest of the basis the rule was measured against but did\
+            \ not directly evaluate — the positions in\r\nthe referenced/denominator\
+            \ (or initial) group that are not in the RuleBreakdown's\r\ncontributions.\
+            \ Together with those contributions this forms the whole basis, with no\
+            \ overlap, so a\r\nbreach can be explained against the full picture (e.g.\
+            \ the non-equity remainder behind an equity limit).\r\nEmpty when the\
+            \ rule evaluated everything it considered."
+          items:
+            $ref: '#/components/schemas/ComplianceRuleContribution'
+          type: array
+      required:
+      - affectedOrders
+      - affectedPortfolios
+      - otherPositionsConsidered
       - parametersUsed
       - ruleBreakdown
       - ruleId
@@ -196744,6 +198716,43 @@ components:
       - displayName
       - parentPortfolioId
       type: object
+    CreateEntityResolverRequest:
+      additionalProperties: false
+      example:
+        entityType: entityType
+        identifierMatchingOrder:
+        - identifierKey: identifierKey
+        - identifierKey: identifierKey
+        description: description
+        id:
+          code: code
+          scope: scope
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        entityType:
+          description: The entity type that a specific resolution configuration is
+            applicable to (e.g. Instrument).
+          maxLength: 64
+          minLength: 1
+          type: string
+        description:
+          description: Describes what this specific identifier order is used for.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        identifierMatchingOrder:
+          description: Ordered collection of related identifier keys that are used
+            to define which identifier takes priority in resolving an entity.
+          items:
+            $ref: '#/components/schemas/IdentifierForResolution'
+          type: array
+      required:
+      - entityType
+      - id
+      - identifierMatchingOrder
+      type: object
     CreateGroupReconciliationComparisonRulesetRequest:
       additionalProperties: false
       example:
@@ -197568,26 +199577,41 @@ components:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -209073,6 +211097,79 @@ components:
       - identifierType
       - identifierValue
       type: object
+    EntityResolver:
+      additionalProperties: false
+      example:
+        entityType: entityType
+        identifierMatchingOrder:
+        - identifierKey: identifierKey
+        - identifierKey: identifierKey
+        description: description
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        entityType:
+          description: The entity type that a specific resolution configuration is
+            applicable to (e.g. Instrument).
+          minLength: 1
+          type: string
+        description:
+          description: Describes what this specific identifier order is used for.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        identifierMatchingOrder:
+          description: Ordered collection of related identifier keys that are used
+            to define which identifier takes priority in resolving an entity.
+          items:
+            $ref: '#/components/schemas/IdentifierForResolution'
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityType
+      - id
+      - identifierMatchingOrder
+      type: object
     Equity:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -209998,49 +212095,99 @@ components:
           newInstrument:
             $ref: '#/components/schemas/NewInstrument'
           cashOfferElections:
+            description: "List of possible CashOfferElections for this exchange offer\
+              \ event (CASH).\r\n\r\n- The event requires at least one election of\
+              \ any type.\r\n\r\n- If ParticipationType is Mandatory, CashOfferElection\
+              \ is not permitted.\r\n\r\n- If ParticipationType is MandatoryWithChoices\
+              \ or Voluntary, at most one CashOfferElection may be supplied.\r\n\r\
+              \n- Exactly one election on the event must be the default, and at most\
+              \ one may be chosen."
             items:
               $ref: '#/components/schemas/CashOfferElection'
             nullable: true
             type: array
           securityOfferElections:
+            description: "List of possible SecurityOfferElections for this exchange\
+              \ offer event (SECU).\r\n\r\n- The event requires at least one election\
+              \ of any type.\r\n\r\n- Any number of SecurityOfferElections may be\
+              \ supplied.\r\n\r\n- A NewInstrument is required on the event when this\
+              \ list is non-empty.\r\n\r\n- Exactly one election on the event must\
+              \ be the default, and at most one may be chosen.\r\n\r\n- If ParticipationType\
+              \ is Mandatory, the event must carry exactly one election in total;\
+              \ if MandatoryWithChoices, at least two."
             items:
               $ref: '#/components/schemas/SecurityOfferElection'
             nullable: true
             type: array
           mixedLotConstituentsElections:
+            description: "List of possible MixedLotConstituentsElections for this\
+              \ exchange offer event.\r\n\r\n- The event requires at least one election\
+              \ of any type.\r\n\r\n- Any number of MixedLotConstituentsElections\
+              \ may be supplied, up to a limit of 100 entries.\r\n\r\n- Exactly one\
+              \ election on the event must be the default, and at most one may be\
+              \ chosen.\r\n\r\n- If ParticipationType is Mandatory, the event must\
+              \ carry exactly one election in total; if MandatoryWithChoices, at least\
+              \ two."
             items:
               $ref: '#/components/schemas/MixedLotConstituentsElection'
             nullable: true
             type: array
           lapseElections:
+            description: "List of possible LapseElections for this exchange offer\
+              \ event (NOAC).\r\n\r\n- The event requires at least one election of\
+              \ any type.\r\n\r\n- If ParticipationType is Mandatory, LapseElection\
+              \ is not permitted.\r\n\r\n- If ParticipationType is MandatoryWithChoices,\
+              \ any number of LapseElections may be supplied, but none of them may\
+              \ be the default.\r\n\r\n- If ParticipationType is Voluntary, at most\
+              \ one LapseElection may be supplied."
             items:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
           cashAndSecurityOfferElections:
-            description: List of possible CashAndSecurityOfferElections for this exchange
-              offer event.
+            description: "List of possible CashAndSecurityOfferElections for this\
+              \ exchange offer event (CASE).\r\n\r\n- The event requires at least\
+              \ one election of any type.\r\n\r\n- Any number of CashAndSecurityOfferElections\
+              \ may be supplied.\r\n\r\n- Exactly one election on the event must be\
+              \ the default, and at most one may be chosen.\r\n\r\n- If ParticipationType\
+              \ is Mandatory, the event must carry exactly one election in total;\
+              \ if MandatoryWithChoices, at least two."
             items:
               $ref: '#/components/schemas/CashAndSecurityOfferElection'
             nullable: true
             type: array
           consentAndExchangeElections:
-            description: List of possible consent-and-exchange elections for this
-              event (CTEN-style consent paired with the exchange).
+            description: "List of possible ConsentAndExchangeElections for this exchange\
+              \ offer event (CEXC).\r\n\r\n- The event requires at least one election\
+              \ of any type.\r\n\r\n- Any number of ConsentAndExchangeElections may\
+              \ be supplied.\r\n\r\n- Exactly one election on the event must be the\
+              \ default, and at most one may be chosen.\r\n\r\n- If ParticipationType\
+              \ is Mandatory, the event must carry exactly one election in total;\
+              \ if MandatoryWithChoices, at least two."
             items:
               $ref: '#/components/schemas/ConsentAndExchangeElection'
             nullable: true
             type: array
           abstainElections:
-            description: List of possible abstain elections for this event (ABST)
-              — decline to vote on the consent.
+            description: "List of possible AbstainElections for this exchange offer\
+              \ event (ABST).\r\n\r\n- The event requires at least one election of\
+              \ any type.\r\n\r\n- Any number of AbstainElections may be supplied.\r\
+              \n\r\n- Exactly one election on the event must be the default, and at\
+              \ most one may be chosen.\r\n\r\n- If ParticipationType is Mandatory,\
+              \ the event must carry exactly one election in total; if MandatoryWithChoices,\
+              \ at least two."
             items:
               $ref: '#/components/schemas/AbstainElection'
             nullable: true
             type: array
           unknownProceedsElections:
-            description: List of possible unknown-proceeds elections for this event
-              (UNKNOWN) — the outturn is not yet known.
+            description: "List of possible UnknownProceedsElections for this exchange\
+              \ offer event (UNKNOWN).\r\n\r\n- The event requires at least one election\
+              \ of any type.\r\n\r\n- Any number of UnknownProceedsElections may be\
+              \ supplied.\r\n\r\n- Exactly one election on the event must be the default,\
+              \ and at most one may be chosen.\r\n\r\n- If ParticipationType is Mandatory,\
+              \ the event must carry exactly one election in total; if MandatoryWithChoices,\
+              \ at least two."
             items:
               $ref: '#/components/schemas/UnknownProceedsElection'
             nullable: true
@@ -210227,6 +212374,7 @@ components:
         - eventSource
         - instrumentEventType
         type: object
+      description: Exchange Offer Event (EXOF).
     ExchangeTradedOption:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -228727,6 +230875,19 @@ components:
       - identifierType
       - lifeTime
       type: object
+    IdentifierForResolution:
+      additionalProperties: false
+      example:
+        identifierKey: identifierKey
+      properties:
+        identifierKey:
+          description: "Identifier key in the format '{domain}/{scope}/{code}'."
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - identifierKey
+      type: object
     IdentifierPartSchema:
       additionalProperties: false
       example:
@@ -238646,7 +240807,7 @@ components:
       example:
         subLabel: subLabel
         infoType: infoType
-        index: 1
+        index: 6
         information: information
         label: label
       properties:
@@ -263180,11 +265341,17 @@ components:
               code: code
               scope: scope
             relationalDataFilter: relationalDataFilter
+            byTaxLots:
+              left: true
+              right: true
           - recType: recType
             matchingRulesetId:
               code: code
               scope: scope
             relationalDataFilter: relationalDataFilter
+            byTaxLots:
+              left: true
+              right: true
           displayName: displayName
           valuationRecipes:
             left:
@@ -263288,11 +265455,17 @@ components:
               code: code
               scope: scope
             relationalDataFilter: relationalDataFilter
+            byTaxLots:
+              left: true
+              right: true
           - recType: recType
             matchingRulesetId:
               code: code
               scope: scope
             relationalDataFilter: relationalDataFilter
+            byTaxLots:
+              left: true
+              right: true
           displayName: displayName
           valuationRecipes:
             left:
@@ -264083,28 +266256,36 @@ components:
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           recType: recType
           instanceId:
@@ -264248,28 +266429,36 @@ components:
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           - recType: recType
             linkedBy:
               left:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
               right:
-              - value: value
-                key: key
-              - value: value
-                key: key
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
             id: id
           recType: recType
           instanceId:
@@ -282130,6 +284319,25 @@ components:
       - rightAsAt
       - rightEffectiveAt
       type: object
+    RecDefByTaxLots:
+      additionalProperties: false
+      description: Per-side tax-lot granularity for a Holding entry of a rec definition's
+        rulesets.
+      example:
+        left: true
+        right: true
+      properties:
+        left:
+          description: "Whether the left side splits holdings by tax lot. Must be\
+            \ omitted when the left side is relational, and reads as null there."
+          nullable: true
+          type: boolean
+        right:
+          description: "Whether the right side splits holdings by tax lot. Must be\
+            \ omitted when the right side is relational, and reads as null there."
+          nullable: true
+          type: boolean
+      type: object
     RecDefCurrencies:
       additionalProperties: false
       example:
@@ -282159,11 +284367,17 @@ components:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         displayName: displayName
         valuationRecipes:
           left:
@@ -282361,6 +284575,9 @@ components:
           code: code
           scope: scope
         relationalDataFilter: relationalDataFilter
+        byTaxLots:
+          left: true
+          right: true
       properties:
         recType:
           description: "The type of reconciliation this entry configures. Must be\
@@ -282380,6 +284597,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        byTaxLots:
+          $ref: '#/components/schemas/RecDefByTaxLots'
       required:
       - matchingRulesetId
       - recType
@@ -282886,31 +285105,35 @@ components:
       type: object
     RecLinkedBy:
       additionalProperties: false
-      description: "The item keys a link between two rec results was established on,\
-        \ per side."
+      description: "The item pairings a link between two rec results was established\
+        \ on, per side."
       example:
         left:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        - taxLotId: taxLotId
+          holdingId: holdingId
+          transactionId: transactionId
+        - taxLotId: taxLotId
+          holdingId: holdingId
+          transactionId: transactionId
         right:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        - taxLotId: taxLotId
+          holdingId: holdingId
+          transactionId: transactionId
+        - taxLotId: taxLotId
+          holdingId: holdingId
+          transactionId: transactionId
       properties:
         left:
-          description: The keys shared by the two results' left-side items. May be
-            empty.
+          description: "The pairings between the two results' left-side items, one\
+            \ entry per pairing. May be empty."
           items:
-            $ref: '#/components/schemas/RecLinkKey'
+            $ref: '#/components/schemas/RecResultLinkKey'
           type: array
         right:
-          description: The keys shared by the two results' right-side items. May be
-            empty.
+          description: "The pairings between the two results' right-side items, one\
+            \ entry per pairing. May be empty."
           items:
-            $ref: '#/components/schemas/RecLinkKey'
+            $ref: '#/components/schemas/RecResultLinkKey'
           type: array
       required:
       - left
@@ -282926,15 +285149,19 @@ components:
         recType: recType
         linkedBy:
           left:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - taxLotId: taxLotId
+            holdingId: holdingId
+            transactionId: transactionId
+          - taxLotId: taxLotId
+            holdingId: holdingId
+            transactionId: transactionId
           right:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - taxLotId: taxLotId
+            holdingId: holdingId
+            transactionId: transactionId
+          - taxLotId: taxLotId
+            holdingId: holdingId
+            transactionId: transactionId
         id: id
       properties:
         id:
@@ -282954,28 +285181,6 @@ components:
       - id
       - linkedBy
       - recType
-      type: object
-    RecLinkKey:
-      additionalProperties: false
-      description: "One item key that established a link between two rec results:\
-        \ the key name and the identifier value both\r\nresults' items carried for\
-        \ it."
-      example:
-        value: value
-        key: key
-      properties:
-        key:
-          description: "The key name: holdingId or transactionId."
-          minLength: 1
-          type: string
-        value:
-          description: The identifier value both results' items carried under the
-            key.
-          minLength: 1
-          type: string
-      required:
-      - key
-      - value
       type: object
     RecMatchCountByResultType:
       additionalProperties: false
@@ -284912,28 +287117,36 @@ components:
         - recType: recType
           linkedBy:
             left:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
             right:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
           id: id
         - recType: recType
           linkedBy:
             left:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
             right:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
+            - taxLotId: taxLotId
+              holdingId: holdingId
+              transactionId: transactionId
           id: id
         recType: recType
         instanceId:
@@ -285329,19 +287542,53 @@ components:
       required:
       - status
       type: object
-    RecResultItem:
+    RecResultHoldingImpact:
       additionalProperties: false
-      description: An individual item that makes up (one side of) a rec result. Polymorphic
-        by rec type / item type.
-      example:
-        itemType: itemType
-        ruleAndAttributeValues:
-          key: ruleAndAttributeValues
+      description: "One holding, and where known the tax lot within it, that a transaction\
+        \ or settlement activity item impacted."
       properties:
+        holdingId:
+          description: "The impacted holding, at holding level: the id a holding item\
+            \ over it carries."
+          minLength: 1
+          type: string
+        taxLotId:
+          description: "The impacted tax lot within the holding, where the source\
+            \ states one; null when the impact is known at holding level only. Opaque:\
+            \ compare it whole, do not parse it."
+          nullable: true
+          type: string
+      required:
+      - holdingId
+      type: object
+    RecResultHoldingItem:
+      additionalProperties: false
+      description: "A holding-shaped item within a rec result: the holding a Holding\
+        \ or CashHolding rec reconciled\r\n(itemType Holding), or the one a Valuation\
+        \ rec valued (itemType ValuedHolding)."
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        holdingId:
+          description: "The holding identifier, at holding level: the same id whichever\
+            \ granularity the holding was read at, so that items of different rec\
+            \ types over one holding name it alike."
+          nullable: true
+          type: string
+        taxLotId:
+          description: "The tax lot the item is, where the source row was a single\
+            \ lot: a lot of a position read by tax lot, or a cash commitment. Null\
+            \ for an aggregated position and for a cash balance. Opaque: compare it\
+            \ whole, do not parse it."
+          nullable: true
+          type: string
         itemType:
-          description: "The polymorphic item-type discriminator (e.g. SettlementActivity,\
-            \ Holding, Transaction). Available values: SettlementActivity, Holding,\
-            \ Transaction."
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction or SettlementActivity. Names the item rather than the rec\
+            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
+            \ rec produces ValuedHolding items, and both transaction rec types produce\
+            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
+            \ ValuedHolding."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -285351,7 +287598,40 @@ components:
           description: "The core rule, aggregate rule and supplemental attribute values\
             \ for the item, keyed by name."
           nullable: true
-          readOnly: true
+          type: object
+      required:
+      - itemType
+      - portfolioId
+      type: object
+    RecResultItem:
+      additionalProperties: false
+      description: "An individual item that makes up (one side of) a rec result. Polymorphic\
+        \ by itemType; each value has a\r\ncorresponding inherited class."
+      example:
+        itemType: itemType
+        ruleAndAttributeValues:
+          key: ruleAndAttributeValues
+      oneOf:
+      - $ref: '#/components/schemas/RecResultHoldingItem'
+      - $ref: '#/components/schemas/RecResultSettlementActivityItem'
+      - $ref: '#/components/schemas/RecResultTransactionItem'
+      properties:
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction or SettlementActivity. Names the item rather than the rec\
+            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
+            \ rec produces ValuedHolding items, and both transaction rec types produce\
+            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
+            \ ValuedHolding."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
           type: object
       required:
       - itemType
@@ -285401,6 +287681,34 @@ components:
       required:
       - countLeft
       - countRight
+      type: object
+    RecResultLinkKey:
+      additionalProperties: false
+      description: "One item pairing that established a link between two rec results:\
+        \ the identifiers both results' items carried.\r\nExactly one of holdingId\
+        \ and transactionId is populated; taxLotId only ever accompanies a holdingId,\
+        \ and only\r\nwhere the pairing was established at tax-lot precision."
+      example:
+        taxLotId: taxLotId
+        holdingId: holdingId
+        transactionId: transactionId
+      properties:
+        holdingId:
+          description: "The holding both items carried, for a holding-keyed pairing.\
+            \ Null for a transaction-keyed one."
+          nullable: true
+          type: string
+        taxLotId:
+          description: "The tax lot both items carried within the holding, where the\
+            \ pairing was established at tax-lot precision. Null where it was established\
+            \ at holding precision, and always null for a transaction-keyed pairing."
+          nullable: true
+          type: string
+        transactionId:
+          description: "The transaction both items carried, for a transaction-keyed\
+            \ pairing. Null for a holding-keyed one."
+          nullable: true
+          type: string
       type: object
     RecResultReview:
       additionalProperties: false
@@ -285833,6 +288141,96 @@ components:
       required:
       - approvalCode
       - decision
+      type: object
+    RecResultSettlementActivityItem:
+      additionalProperties: false
+      description: A settlement-activity item within a rec result.
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        activityId:
+          description: The settlement activity identifier.
+          nullable: true
+          type: string
+        transactionId:
+          description: The transaction identifier.
+          nullable: true
+          type: string
+        settlementInstructionId:
+          description: The settlement instruction identifier.
+          nullable: true
+          type: string
+        holdingImpacts:
+          description: "The holdings, and where the source states them the tax lots,\
+            \ the item impacted. A distinct set ordered by holdingId then taxLotId;\
+            \ may be empty. An input transaction has not run the movements engine\
+            \ and impacts nothing yet."
+          items:
+            $ref: '#/components/schemas/RecResultHoldingImpact'
+          minItems: 0
+          type: array
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction or SettlementActivity. Names the item rather than the rec\
+            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
+            \ rec produces ValuedHolding items, and both transaction rec types produce\
+            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
+            \ ValuedHolding."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
+          type: object
+      required:
+      - holdingImpacts
+      - itemType
+      - portfolioId
+      type: object
+    RecResultTransactionItem:
+      additionalProperties: false
+      description: A transaction item within a rec result.
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        transactionId:
+          description: The transaction identifier.
+          nullable: true
+          type: string
+        holdingImpacts:
+          description: "The holdings, and where the source states them the tax lots,\
+            \ the item impacted. A distinct set ordered by holdingId then taxLotId;\
+            \ may be empty. An input transaction has not run the movements engine\
+            \ and impacts nothing yet."
+          items:
+            $ref: '#/components/schemas/RecResultHoldingImpact'
+          minItems: 0
+          type: array
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction or SettlementActivity. Names the item rather than the rec\
+            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
+            \ rec produces ValuedHolding items, and both transaction rec types produce\
+            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
+            \ ValuedHolding."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
+          type: object
+      required:
+      - holdingImpacts
+      - itemType
+      - portfolioId
       type: object
     RecReview:
       additionalProperties: false
@@ -288231,20 +290629,28 @@ components:
             format: double
             type: number
           cashOfferElections:
-            description: List of possible CashOfferElections for this event. Only
-              1 should be provided.
+            description: "List of possible CashOfferElections for this event.\r\n\r\
+              \n- The event requires at least one election of any type.\r\n\r\n- Any\
+              \ number of CashOfferElections may be supplied.\r\n\r\n- At most one\
+              \ election on the event may be the default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/CashOfferElection'
             type: array
           lapseElections:
-            description: "List of possible LapseElections for this event. Only 1 should\
-              \ be provided.\r\nAllows the user to opt out of the offer."
+            description: "List of possible LapseElections for this event. Allows the\
+              \ user to opt out of the offer.\r\n\r\n- The event requires at least\
+              \ one election of any type.\r\n\r\n- Any number of LapseElections may\
+              \ be supplied.\r\n\r\n- At most one election on the event may be the\
+              \ default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/LapseElection'
             type: array
           tenderOfferElections:
-            description: List of possible TenderOfferElections for this event. Only
-              1 should be provided.
+            description: "List of possible TenderOfferElections for this event.\r\n\
+              \r\n- The event requires at least one election of any type.\r\n\r\n\
+              - Any number of TenderOfferElections may be supplied.\r\n\r\n- At most\
+              \ one election on the event may be the default, and at most one may\
+              \ be chosen."
             items:
               $ref: '#/components/schemas/TenderOfferElection'
             type: array
@@ -288291,36 +290697,52 @@ components:
             nullable: true
             type: number
           consentAndTenderElections:
-            description: List of possible consent-and-tender elections for this event
-              (CTEN) — tender the holding and grant consent together.
+            description: "List of possible consent-and-tender elections for this event\
+              \ (CTEN) — tender the holding and grant consent together.\r\n\r\n- The\
+              \ event requires at least one election of any type.\r\n\r\n- Any number\
+              \ of ConsentAndTenderElections may be supplied.\r\n\r\n- At most one\
+              \ election on the event may be the default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/ConsentAndTenderElection'
             nullable: true
             type: array
           consentGrantedElections:
             description: "List of possible consent-granted elections for this event\
-              \ (CONY) — vote in favour, optionally attracting a consent fee."
+              \ (CONY) — vote in favour, optionally attracting a consent fee.\r\n\r\
+              \n- The event requires at least one election of any type.\r\n\r\n- Any\
+              \ number of ConsentGrantedElections may be supplied.\r\n\r\n- At most\
+              \ one election on the event may be the default, and at most one may\
+              \ be chosen."
             items:
               $ref: '#/components/schemas/ConsentGrantedElection'
             nullable: true
             type: array
           consentDeniedElections:
-            description: List of possible consent-denied elections for this event
-              (CONN) — vote against the proposal.
+            description: "List of possible consent-denied elections for this event\
+              \ (CONN) — vote against the proposal.\r\n\r\n- The event requires at\
+              \ least one election of any type.\r\n\r\n- Any number of ConsentDeniedElections\
+              \ may be supplied.\r\n\r\n- At most one election on the event may be\
+              \ the default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/ConsentDeniedElection'
             nullable: true
             type: array
           abstainElections:
-            description: List of possible abstain elections for this event (ABST)
-              — decline to vote on the consent.
+            description: "List of possible abstain elections for this event (ABST)\
+              \ — decline to vote on the consent.\r\n\r\n- The event requires at least\
+              \ one election of any type.\r\n\r\n- Any number of AbstainElections\
+              \ may be supplied.\r\n\r\n- At most one election on the event may be\
+              \ the default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/AbstainElection'
             nullable: true
             type: array
           unknownProceedsElections:
-            description: List of possible unknown-proceeds elections for this event
-              (UNKNOWN) — the outturn is not yet known.
+            description: "List of possible unknown-proceeds elections for this event\
+              \ (UNKNOWN) — the outturn is not yet known.\r\n\r\n- The event requires\
+              \ at least one election of any type.\r\n\r\n- Any number of UnknownProceedsElections\
+              \ may be supplied.\r\n\r\n- At most one election on the event may be\
+              \ the default, and at most one may be chosen."
             items:
               $ref: '#/components/schemas/UnknownProceedsElection'
             nullable: true
@@ -336668,26 +339090,41 @@ components:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         - recType: recType
           matchingRulesetId:
             code: code
             scope: scope
           relationalDataFilter: relationalDataFilter
+          byTaxLots:
+            left: true
+            right: true
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -337706,12 +340143,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -337759,12 +340196,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -337833,12 +340270,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -337886,12 +340323,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -337994,12 +340431,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -338047,12 +340484,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -338121,12 +340558,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -338174,12 +340611,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 1
+              index: 6
               information: information
               label: label
             missingDataInformation:
@@ -339042,6 +341479,37 @@ components:
       required:
       - id
       - schema
+      type: object
+    UpsertEntityResolverRequest:
+      additionalProperties: false
+      example:
+        entityType: entityType
+        identifierMatchingOrder:
+        - identifierKey: identifierKey
+        - identifierKey: identifierKey
+        description: description
+      properties:
+        entityType:
+          description: The entity type that a specific resolution configuration is
+            applicable to (e.g. Instrument).
+          maxLength: 64
+          minLength: 1
+          type: string
+        description:
+          description: Describes what this specific identifier order is used for.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        identifierMatchingOrder:
+          description: Ordered collection of related identifier keys that are used
+            to define which identifier takes priority in resolving an entity.
+          items:
+            $ref: '#/components/schemas/IdentifierForResolution'
+          type: array
+      required:
+      - entityType
+      - identifierMatchingOrder
       type: object
     UpsertFlowConventionsRequest:
       additionalProperties: false
@@ -365720,6 +368188,7 @@ x-tagGroups:
   - Data Types
   - Derived Transaction Portfolios
   - Entities
+  - Entity Resolvers
   - Executions
   - Fee Types
   - Fund Configuration

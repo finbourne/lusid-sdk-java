@@ -575,7 +575,7 @@ public class RecsApi {
 
     /**
      * [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
-     * Add, edit or delete comments on rec results in a batch.
+     * Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
      * @param requestBody The batch of comment operations, keyed by a client-supplied correlation key. (required)
      * @return APIbatchManageRecResultCommentsRequest
      * @http.response.details
@@ -825,7 +825,7 @@ public class RecsApi {
 
     /**
      * [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
-     * Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+     * Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
      * @param requestBody The batch of review items, keyed by a client-supplied correlation key. (required)
      * @return APIbatchReviewRecResultsRequest
      * @http.response.details

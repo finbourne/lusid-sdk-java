@@ -11,164 +11,263 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RecResultHoldingImpact;
+import com.finbourne.lusid.model.RecResultHoldingItem;
+import com.finbourne.lusid.model.RecResultSettlementActivityItem;
+import com.finbourne.lusid.model.RecResultTransactionItem;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
+
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import com.finbourne.lusid.JSON;
 
-/**
- * An individual item that makes up (one side of) a rec result. Polymorphic by rec type / item type.
- */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RecResultItem {
-  public static final String SERIALIZED_NAME_ITEM_TYPE = "itemType";
-  @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
-  private String itemType;
+public class RecResultItem extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(RecResultItem.class.getName());
 
-  public static final String SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES = "ruleAndAttributeValues";
-  @SerializedName(SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES)
-  private Map<String, String> ruleAndAttributeValues;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RecResultItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RecResultItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RecResultHoldingItem> adapterRecResultHoldingItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultHoldingItem.class));
+            final TypeAdapter<RecResultSettlementActivityItem> adapterRecResultSettlementActivityItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultSettlementActivityItem.class));
+            final TypeAdapter<RecResultTransactionItem> adapterRecResultTransactionItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultTransactionItem.class));
 
-  public RecResultItem() {
-  }
+            return (TypeAdapter<T>) new TypeAdapter<RecResultItem>() {
+                @Override
+                public void write(JsonWriter out, RecResultItem value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  
-  public RecResultItem(
-     Map<String, String> ruleAndAttributeValues
-  ) {
-    this();
-    this.ruleAndAttributeValues = ruleAndAttributeValues;
-  }
+                    // check if the actual instance is of the type `RecResultHoldingItem`
+                    if (value.getActualInstance() instanceof RecResultHoldingItem) {
+                      JsonElement element = adapterRecResultHoldingItem.toJsonTree((RecResultHoldingItem)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `RecResultSettlementActivityItem`
+                    if (value.getActualInstance() instanceof RecResultSettlementActivityItem) {
+                      JsonElement element = adapterRecResultSettlementActivityItem.toJsonTree((RecResultSettlementActivityItem)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `RecResultTransactionItem`
+                    if (value.getActualInstance() instanceof RecResultTransactionItem) {
+                      JsonElement element = adapterRecResultTransactionItem.toJsonTree((RecResultTransactionItem)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem");
+                }
 
-  public RecResultItem itemType(String itemType) {
-    
-    this.itemType = itemType;
-    return this;
-  }
+                @Override
+                public RecResultItem read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-   /**
-   * The polymorphic item-type discriminator (e.g. SettlementActivity, Holding, Transaction). Available values: SettlementActivity, Holding, Transaction.
-   * @return itemType
-  **/
-  @jakarta.annotation.Nonnull
-  public String getItemType() {
-    return itemType;
-  }
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
+                    // deserialize RecResultHoldingItem
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      RecResultHoldingItem.validateJsonElement(jsonElement);
+                      actualAdapter = adapterRecResultHoldingItem;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'RecResultHoldingItem'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for RecResultHoldingItem failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'RecResultHoldingItem'", e);
+                    }
+                    // deserialize RecResultSettlementActivityItem
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      RecResultSettlementActivityItem.validateJsonElement(jsonElement);
+                      actualAdapter = adapterRecResultSettlementActivityItem;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'RecResultSettlementActivityItem'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for RecResultSettlementActivityItem failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'RecResultSettlementActivityItem'", e);
+                    }
+                    // deserialize RecResultTransactionItem
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      RecResultTransactionItem.validateJsonElement(jsonElement);
+                      actualAdapter = adapterRecResultTransactionItem;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'RecResultTransactionItem'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for RecResultTransactionItem failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'RecResultTransactionItem'", e);
+                    }
 
-  public void setItemType(String itemType) {
-    this.itemType = itemType;
-  }
+                    if (match == 1) {
+                        RecResultItem ret = new RecResultItem();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-
-   /**
-   * The core rule, aggregate rule and supplemental attribute values for the item, keyed by name.
-   * @return ruleAndAttributeValues
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, String> getRuleAndAttributeValues() {
-    return ruleAndAttributeValues;
-  }
-
-
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+                    throw new IOException(String.format("Failed deserialization for RecResultItem: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
+        }
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public RecResultItem() {
+        super("oneOf", Boolean.FALSE);
     }
-    RecResultItem recResultItem = (RecResultItem) o;
-    return Objects.equals(this.itemType, recResultItem.itemType) &&
-        Objects.equals(this.ruleAndAttributeValues, recResultItem.ruleAndAttributeValues);
-  }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(itemType, ruleAndAttributeValues);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
+    public RecResultItem(RecResultHoldingItem o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
-  }
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RecResultItem {\n");
-    sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
-    sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public RecResultItem(RecResultSettlementActivityItem o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public RecResultItem(RecResultTransactionItem o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+    static {
+        schemas.put("RecResultHoldingItem", RecResultHoldingItem.class);
+        schemas.put("RecResultSettlementActivityItem", RecResultSettlementActivityItem.class);
+        schemas.put("RecResultTransactionItem", RecResultTransactionItem.class);
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("itemType");
-    openapiFields.add("ruleAndAttributeValues");
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return RecResultItem.schemas;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("itemType");
-  }
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof RecResultHoldingItem) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof RecResultSettlementActivityItem) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof RecResultTransactionItem) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem
+     *
+     * @return The actual instance (RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `RecResultHoldingItem`. If the actual instance is not `RecResultHoldingItem`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `RecResultHoldingItem`
+     * @throws ClassCastException if the instance is not `RecResultHoldingItem`
+     */
+    public RecResultHoldingItem getRecResultHoldingItem() throws ClassCastException {
+        return (RecResultHoldingItem)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `RecResultSettlementActivityItem`. If the actual instance is not `RecResultSettlementActivityItem`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `RecResultSettlementActivityItem`
+     * @throws ClassCastException if the instance is not `RecResultSettlementActivityItem`
+     */
+    public RecResultSettlementActivityItem getRecResultSettlementActivityItem() throws ClassCastException {
+        return (RecResultSettlementActivityItem)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `RecResultTransactionItem`. If the actual instance is not `RecResultTransactionItem`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `RecResultTransactionItem`
+     * @throws ClassCastException if the instance is not `RecResultTransactionItem`
+     */
+    public RecResultTransactionItem getRecResultTransactionItem() throws ClassCastException {
+        return (RecResultTransactionItem)super.getActualInstance();
+    }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -177,50 +276,35 @@ public class RecResultItem {
   * @throws IOException if the JSON Element is invalid with respect to RecResultItem
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!RecResultItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RecResultItem is not found in the empty JSON string", RecResultItem.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RecResultItem.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("itemType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RecResultItem.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RecResultItem' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RecResultItem> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RecResultItem.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<RecResultItem>() {
-           @Override
-           public void write(JsonWriter out, RecResultItem value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public RecResultItem read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    // validate oneOf schemas one by one
+    int validCount = 0;
+    ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with RecResultHoldingItem
+    try {
+      RecResultHoldingItem.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for RecResultHoldingItem failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with RecResultSettlementActivityItem
+    try {
+      RecResultSettlementActivityItem.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for RecResultSettlementActivityItem failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with RecResultTransactionItem
+    try {
+      RecResultTransactionItem.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for RecResultTransactionItem failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    if (validCount != 1) {
+      throw new IOException(String.format("The JSON string is invalid for RecResultItem with oneOf schemas: RecResultHoldingItem, RecResultSettlementActivityItem, RecResultTransactionItem. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 
@@ -244,3 +328,4 @@ public class RecResultItem {
     return JSON.getGson().toJson(this);
   }
 }
+

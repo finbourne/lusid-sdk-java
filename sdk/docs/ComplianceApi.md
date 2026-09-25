@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteComplianceRule**](ComplianceApi.md#deleteComplianceRule) | **DELETE** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. |
 | [**deleteComplianceTemplate**](ComplianceApi.md#deleteComplianceTemplate) | **DELETE** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] DeleteComplianceTemplate: Delete a ComplianceRuleTemplate |
 | [**getComplianceRule**](ComplianceApi.md#getComplianceRule) | **GET** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule: Get compliance rule. |
+| [**getComplianceRuleBreakdown**](ComplianceApi.md#getComplianceRuleBreakdown) | **GET** /api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run. |
 | [**getComplianceRuleResult**](ComplianceApi.md#getComplianceRuleResult) | **GET** /api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run. |
 | [**getComplianceTemplate**](ComplianceApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**getDecoratedComplianceRunSummary**](ComplianceApi.md#getDecoratedComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code}/$decorate | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
@@ -393,6 +394,103 @@ public class ComplianceApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getComplianceRuleBreakdown
+
+> ComplianceRuleResultV2WithContributions getComplianceRuleBreakdown(runScope, runCode, ruleScope, ruleCode)
+
+[EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run.
+
+Specify a run scope and code from a previously run compliance check, and the scope and code of a rule within that run, to get the per-position contributions behind that rule&#39;s breakdown groups.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ComplianceApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ComplianceApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
+        ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
+        String runScope = "runScope_example"; // String | Required: Run Scope.
+        String runCode = "runCode_example"; // String | Required: Run Code.
+        String ruleScope = "ruleScope_example"; // String | Required: Rule Scope.
+        String ruleCode = "ruleCode_example"; // String | Required: Rule Code.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleResultV2WithContributions result = apiInstance.getComplianceRuleBreakdown(runScope, runCode, ruleScope, ruleCode).execute(opts);
+
+            ComplianceRuleResultV2WithContributions result = apiInstance.getComplianceRuleBreakdown(runScope, runCode, ruleScope, ruleCode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplianceApi#getComplianceRuleBreakdown");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runScope** | **String**| Required: Run Scope. | |
+| **runCode** | **String**| Required: Run Code. | |
+| **ruleScope** | **String**| Required: Rule Scope. | |
+| **ruleCode** | **String**| Required: Rule Code. | |
+
+### Return type
+
+[**ComplianceRuleResultV2WithContributions**](ComplianceRuleResultV2WithContributions.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The position-level breakdown for the requested rule of a compliance run. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

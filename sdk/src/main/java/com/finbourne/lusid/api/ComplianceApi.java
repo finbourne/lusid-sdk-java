@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.ComplianceRuleResponse;
 import com.finbourne.lusid.model.ComplianceRuleResultV2;
+import com.finbourne.lusid.model.ComplianceRuleResultV2WithContributions;
 import com.finbourne.lusid.model.ComplianceRuleTemplate;
 import com.finbourne.lusid.model.ComplianceRunConfiguration;
 import com.finbourne.lusid.model.ComplianceRunInfoV2;
@@ -1085,6 +1086,265 @@ public class ComplianceApi {
      */
     public APIgetComplianceRuleRequest getComplianceRule(String scope, String code) {
         return new APIgetComplianceRuleRequest(scope, code);
+    }
+    private okhttp3.Call getComplianceRuleBreakdownCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback) throws ApiException {
+        return getComplianceRuleBreakdownCall(runScope, runCode, ruleScope, ruleCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getComplianceRuleBreakdownCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode}"
+            .replace("{" + "runScope" + "}", localVarApiClient.escapeString(runScope.toString()))
+            .replace("{" + "runCode" + "}", localVarApiClient.escapeString(runCode.toString()))
+            .replace("{" + "ruleScope" + "}", localVarApiClient.escapeString(ruleScope.toString()))
+            .replace("{" + "ruleCode" + "}", localVarApiClient.escapeString(ruleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getComplianceRuleBreakdownValidateBeforeCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runScope' is set
+        if (runScope == null) {
+            throw new ApiException("Missing the required parameter 'runScope' when calling getComplianceRuleBreakdown(Async)");
+        }
+
+        // verify the required parameter 'runCode' is set
+        if (runCode == null) {
+            throw new ApiException("Missing the required parameter 'runCode' when calling getComplianceRuleBreakdown(Async)");
+        }
+
+        // verify the required parameter 'ruleScope' is set
+        if (ruleScope == null) {
+            throw new ApiException("Missing the required parameter 'ruleScope' when calling getComplianceRuleBreakdown(Async)");
+        }
+
+        // verify the required parameter 'ruleCode' is set
+        if (ruleCode == null) {
+            throw new ApiException("Missing the required parameter 'ruleCode' when calling getComplianceRuleBreakdown(Async)");
+        }
+
+        return getComplianceRuleBreakdownCall(runScope, runCode, ruleScope, ruleCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ComplianceRuleResultV2WithContributions> getComplianceRuleBreakdownWithHttpInfo(String runScope, String runCode, String ruleScope, String ruleCode) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceRuleBreakdownValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRuleResultV2WithContributions>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ComplianceRuleResultV2WithContributions> getComplianceRuleBreakdownWithHttpInfo(String runScope, String runCode, String ruleScope, String ruleCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceRuleBreakdownValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, null, opts);
+        Type localVarReturnType = new TypeToken<ComplianceRuleResultV2WithContributions>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getComplianceRuleBreakdownAsync(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback<ComplianceRuleResultV2WithContributions> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getComplianceRuleBreakdownValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRuleResultV2WithContributions>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getComplianceRuleBreakdownAsync(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback<ComplianceRuleResultV2WithContributions> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getComplianceRuleBreakdownValidateBeforeCall(runScope, runCode, ruleScope, ruleCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ComplianceRuleResultV2WithContributions>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetComplianceRuleBreakdownRequest {
+        private final String runScope;
+        private final String runCode;
+        private final String ruleScope;
+        private final String ruleCode;
+
+        private APIgetComplianceRuleBreakdownRequest(String runScope, String runCode, String ruleScope, String ruleCode) {
+            this.runScope = runScope;
+            this.runCode = runCode;
+            this.ruleScope = ruleScope;
+            this.ruleCode = ruleCode;
+        }
+
+        /**
+         * Build call for getComplianceRuleBreakdown
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getComplianceRuleBreakdownCall(runScope, runCode, ruleScope, ruleCode, _callback);
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request
+         * @return ComplianceRuleResultV2WithContributions
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleResultV2WithContributions execute() throws ApiException {
+            ApiResponse<ComplianceRuleResultV2WithContributions> localVarResp = getComplianceRuleBreakdownWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ComplianceRuleResultV2WithContributions
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleResultV2WithContributions execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ComplianceRuleResultV2WithContributions> localVarResp = getComplianceRuleBreakdownWithHttpInfo(runScope, runCode, ruleScope, ruleCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRuleResultV2WithContributions&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleResultV2WithContributions> executeWithHttpInfo() throws ApiException {
+            return getComplianceRuleBreakdownWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ComplianceRuleResultV2WithContributions&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleResultV2WithContributions> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getComplianceRuleBreakdownWithHttpInfo(runScope, runCode, ruleScope, ruleCode, opts);
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleResultV2WithContributions> _callback) throws ApiException {
+            return getComplianceRuleBreakdownAsync(runScope, runCode, ruleScope, ruleCode, _callback);
+        }
+
+        /**
+         * Execute getComplianceRuleBreakdown request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleResultV2WithContributions> _callback, ConfigurationOptions opts) throws ApiException {
+            return getComplianceRuleBreakdownAsync(runScope, runCode, ruleScope, ruleCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run.
+     * Specify a run scope and code from a previously run compliance check, and the scope and code of a rule within that run, to get the per-position contributions behind that rule&#39;s breakdown groups.
+     * @param runScope Required: Run Scope. (required)
+     * @param runCode Required: Run Code. (required)
+     * @param ruleScope Required: Rule Scope. (required)
+     * @param ruleCode Required: Rule Code. (required)
+     * @return APIgetComplianceRuleBreakdownRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The position-level breakdown for the requested rule of a compliance run. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetComplianceRuleBreakdownRequest getComplianceRuleBreakdown(String runScope, String runCode, String ruleScope, String ruleCode) {
+        return new APIgetComplianceRuleBreakdownRequest(runScope, runCode, ruleScope, ruleCode);
     }
     private okhttp3.Call getComplianceRuleResultCall(String runScope, String runCode, String ruleScope, String ruleCode, final ApiCallback _callback) throws ApiException {
         return getComplianceRuleResultCall(runScope, runCode, ruleScope, ruleCode,  _callback, new ConfigurationOptions());

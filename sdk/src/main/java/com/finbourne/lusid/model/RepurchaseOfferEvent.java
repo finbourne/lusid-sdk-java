@@ -212,7 +212,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible CashOfferElections for this event. Only 1 should be provided.
+   * List of possible CashOfferElections for this event.    - The event requires at least one election of any type.    - Any number of CashOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return cashOfferElections
   **/
   @jakarta.annotation.Nonnull
@@ -241,7 +241,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible LapseElections for this event. Only 1 should be provided.  Allows the user to opt out of the offer.
+   * List of possible LapseElections for this event. Allows the user to opt out of the offer.    - The event requires at least one election of any type.    - Any number of LapseElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return lapseElections
   **/
   @jakarta.annotation.Nonnull
@@ -270,7 +270,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible TenderOfferElections for this event. Only 1 should be provided.
+   * List of possible TenderOfferElections for this event.    - The event requires at least one election of any type.    - Any number of TenderOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return tenderOfferElections
   **/
   @jakarta.annotation.Nonnull
@@ -425,7 +425,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible consent-and-tender elections for this event (CTEN) — tender the holding and grant consent together.
+   * List of possible consent-and-tender elections for this event (CTEN) — tender the holding and grant consent together.    - The event requires at least one election of any type.    - Any number of ConsentAndTenderElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return consentAndTenderElections
   **/
   @jakarta.annotation.Nullable
@@ -454,7 +454,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible consent-granted elections for this event (CONY) — vote in favour, optionally attracting a consent fee.
+   * List of possible consent-granted elections for this event (CONY) — vote in favour, optionally attracting a consent fee.    - The event requires at least one election of any type.    - Any number of ConsentGrantedElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return consentGrantedElections
   **/
   @jakarta.annotation.Nullable
@@ -483,7 +483,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible consent-denied elections for this event (CONN) — vote against the proposal.
+   * List of possible consent-denied elections for this event (CONN) — vote against the proposal.    - The event requires at least one election of any type.    - Any number of ConsentDeniedElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return consentDeniedElections
   **/
   @jakarta.annotation.Nullable
@@ -512,7 +512,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible abstain elections for this event (ABST) — decline to vote on the consent.
+   * List of possible abstain elections for this event (ABST) — decline to vote on the consent.    - The event requires at least one election of any type.    - Any number of AbstainElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return abstainElections
   **/
   @jakarta.annotation.Nullable
@@ -541,7 +541,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.
+   * List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.    - The event requires at least one election of any type.    - Any number of UnknownProceedsElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.
    * @return unknownProceedsElections
   **/
   @jakarta.annotation.Nullable
