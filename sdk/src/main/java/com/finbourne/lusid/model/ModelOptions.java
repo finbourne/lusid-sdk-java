@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ModelOptions {
   /**
-   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions.
+   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions.
    */
   @JsonAdapter(ModelOptionsTypeEnum.Adapter.class)
   public enum ModelOptionsTypeEnum {
@@ -76,7 +76,9 @@ public class ModelOptions {
     
     BONDLOOKUPMODELOPTIONS("BondLookupModelOptions"),
     
-    BONDFORWARDMODELOPTIONS("BondForwardModelOptions");
+    BONDFORWARDMODELOPTIONS("BondForwardModelOptions"),
+    
+    SIMPLEMODELOPTIONS("SimpleModelOptions");
 
     private String value;
 
@@ -130,7 +132,7 @@ public class ModelOptions {
   }
 
    /**
-   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions.
+   * Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions.
    * @return modelOptionsType
   **/
   @jakarta.annotation.Nonnull
@@ -243,6 +245,9 @@ public class ModelOptions {
           break;
         case "OpaqueModelOptions":
           OpaqueModelOptions.validateJsonElement(jsonElement);
+          break;
+        case "SimpleModelOptions":
+          SimpleModelOptions.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `modelOptionsType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

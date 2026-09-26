@@ -114,10 +114,10 @@ public class ConsentEvent extends InstrumentEvent {
   }
 
    /**
-   * The type of consent solicitation.     Supported string (enumeration) values are: [ChangeInTerms, DueAndPayable]. Available values: ChangeInTerms, DueAndPayable.
+   * The type of consent solicitation. Optional; omitting it records Unknown.     Supported string (enumeration) values are: [ChangeInTerms, DueAndPayable, Unknown]. Available values: ChangeInTerms, DueAndPayable, Unknown.
    * @return consentType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getConsentType() {
     return consentType;
   }
@@ -471,7 +471,6 @@ public class ConsentEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("consentType");
     openapiRequiredFields.add("instrumentEventType");
   }
 

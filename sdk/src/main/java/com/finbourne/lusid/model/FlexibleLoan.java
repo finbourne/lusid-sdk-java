@@ -70,6 +70,10 @@ public class FlexibleLoan extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
 
+  public static final String SERIALIZED_NAME_PARENT_FACILITY = "parentFacility";
+  @SerializedName(SERIALIZED_NAME_PARENT_FACILITY)
+  private String parentFacility;
+
   public static final String SERIALIZED_NAME_PARENT_FACILITY_DETAILS = "parentFacilityDetails";
   @SerializedName(SERIALIZED_NAME_PARENT_FACILITY_DETAILS)
   private Map<String, String> parentFacilityDetails;
@@ -88,9 +92,11 @@ public class FlexibleLoan extends LusidInstrument {
 
   
   public FlexibleLoan(
+     String parentFacility, 
      Map<String, String> parentFacilityDetails
   ) {
     this();
+    this.parentFacility = parentFacility;
     this.parentFacilityDetails = parentFacilityDetails;
   }
 
@@ -155,6 +161,18 @@ public class FlexibleLoan extends LusidInstrument {
   public void setDomCcy(String domCcy) {
     this.domCcy = domCcy;
   }
+
+
+   /**
+   * The parent loan facility of this loan if this loan is a contract on a facility.  This resolves to the facility&#39;s LusidInstrumentId, falling back to its ClientInternal identifier,  and is null when the loan is not a contract on a facility.
+   * @return parentFacility
+  **/
+  @jakarta.annotation.Nullable
+  public String getParentFacility() {
+    return parentFacility;
+  }
+
+
 
 
    /**
@@ -232,6 +250,7 @@ public class FlexibleLoan extends LusidInstrument {
     return Objects.equals(this.startDate, flexibleLoan.startDate) &&
         Objects.equals(this.maturityDate, flexibleLoan.maturityDate) &&
         Objects.equals(this.domCcy, flexibleLoan.domCcy) &&
+        Objects.equals(this.parentFacility, flexibleLoan.parentFacility) &&
         Objects.equals(this.parentFacilityDetails, flexibleLoan.parentFacilityDetails) &&
         Objects.equals(this.schedules, flexibleLoan.schedules) &&
         Objects.equals(this.timeZoneConventions, flexibleLoan.timeZoneConventions) &&
@@ -244,7 +263,7 @@ public class FlexibleLoan extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, parentFacilityDetails, schedules, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, parentFacility, parentFacilityDetails, schedules, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,6 +281,7 @@ public class FlexibleLoan extends LusidInstrument {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    parentFacility: ").append(toIndentedString(parentFacility)).append("\n");
     sb.append("    parentFacilityDetails: ").append(toIndentedString(parentFacilityDetails)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
@@ -291,6 +311,7 @@ public class FlexibleLoan extends LusidInstrument {
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
+    openapiFields.add("parentFacility");
     openapiFields.add("parentFacilityDetails");
     openapiFields.add("schedules");
     openapiFields.add("timeZoneConventions");

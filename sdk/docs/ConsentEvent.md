@@ -5,7 +5,7 @@ Consent Event (CONS) — a voluntary corporate action where an issuer seeks appr
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**consentType** | **String** | The type of consent solicitation.     Supported string (enumeration) values are: [ChangeInTerms, DueAndPayable]. Available values: ChangeInTerms, DueAndPayable. | [default to String]
+**consentType** | **String** | The type of consent solicitation. Optional; omitting it records Unknown.     Supported string (enumeration) values are: [ChangeInTerms, DueAndPayable, Unknown]. Available values: ChangeInTerms, DueAndPayable, Unknown. | [optional] [default to String]
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | The entitlement determination date. | [optional] [default to OffsetDateTime]
 **responseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The last date to submit instructions. | [optional] [default to OffsetDateTime]
 **marketDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The issuer-set outer deadline. Must be greater than or equal to ResponseDeadline. | [optional] [default to OffsetDateTime]
@@ -23,7 +23,7 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-String ConsentType = "example ConsentType";
+@jakarta.annotation.Nullable String ConsentType = "example ConsentType";
 OffsetDateTime RecordDate = OffsetDateTime.now();
 OffsetDateTime ResponseDeadline = OffsetDateTime.now();
 OffsetDateTime MarketDeadline = OffsetDateTime.now();

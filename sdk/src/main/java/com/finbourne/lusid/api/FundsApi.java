@@ -7839,11 +7839,11 @@ public class FundsApi {
     public APIgetValuationPointQuotesRequest getValuationPointQuotes(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointQuotesRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback _callback) throws ApiException {
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback) throws ApiException {
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7910,6 +7910,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("membershipType", membershipType));
         }
 
+        if (returnExcludedTransactions != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("returnExcludedTransactions", returnExcludedTransactions));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7936,7 +7940,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointTransactions(Async)");
@@ -7952,34 +7956,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointTransactions(Async)");
         }
 
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback, opts);
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, null, opts);
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String dataModelScope, String dataModelCode, Boolean showCancelledTransactions, String membershipType, Boolean returnExcludedTransactions, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7999,6 +8003,7 @@ public class FundsApi {
         private String dataModelCode;
         private Boolean showCancelledTransactions;
         private String membershipType;
+        private Boolean returnExcludedTransactions;
 
         private APIgetValuationPointTransactionsRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -8107,6 +8112,16 @@ public class FundsApi {
         }
 
         /**
+         * Set returnExcludedTransactions
+         * @param returnExcludedTransactions Option to specify whether or not to include transactions excluded by the   NavType&#39;s TransactionExclusionFilter. Defaults to False if not specified. (optional)
+         * @return APIgetValuationPointTransactionsRequest
+         */
+        public APIgetValuationPointTransactionsRequest returnExcludedTransactions(Boolean returnExcludedTransactions) {
+            this.returnExcludedTransactions = returnExcludedTransactions;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -8120,7 +8135,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback);
+            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback);
         }
 
         /**
@@ -8136,7 +8151,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions);
             return localVarResp.getData();
         }
 
@@ -8153,7 +8168,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, opts);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, opts);
             return localVarResp.getData();
         }
 
@@ -8170,7 +8185,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo() throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions);
         }
 
         /**
@@ -8186,7 +8201,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, opts);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, opts);
         }
 
         /**
@@ -8203,7 +8218,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback);
         }
 
         /**
@@ -8220,7 +8235,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, _callback, opts);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions, _callback, opts);
         }
     }
 

@@ -17,6 +17,7 @@ import com.finbourne.lusid.model.GroupReconciliationFilters;
 import com.finbourne.lusid.model.RecDatasetSchemas;
 import com.finbourne.lusid.model.SupplementalAttribute;
 import com.finbourne.lusid.model.ToleranceBase;
+import com.finbourne.lusid.model.WritebackConfiguration;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -97,6 +98,10 @@ public class UpdateMatchingRulesetRequest {
   public static final String SERIALIZED_NAME_SUPPLEMENTAL_ATTRIBUTES = "supplementalAttributes";
   @SerializedName(SERIALIZED_NAME_SUPPLEMENTAL_ATTRIBUTES)
   private List<SupplementalAttribute> supplementalAttributes;
+
+  public static final String SERIALIZED_NAME_WRITEBACK_CONFIGURATIONS = "writebackConfigurations";
+  @SerializedName(SERIALIZED_NAME_WRITEBACK_CONFIGURATIONS)
+  private List<WritebackConfiguration> writebackConfigurations;
 
   public UpdateMatchingRulesetRequest() {
   }
@@ -351,6 +356,35 @@ public class UpdateMatchingRulesetRequest {
   }
 
 
+  public UpdateMatchingRulesetRequest writebackConfigurations(List<WritebackConfiguration> writebackConfigurations) {
+    
+    this.writebackConfigurations = writebackConfigurations;
+    return this;
+  }
+
+  public UpdateMatchingRulesetRequest addWritebackConfigurationsItem(WritebackConfiguration writebackConfigurationsItem) {
+    if (this.writebackConfigurations == null) {
+      this.writebackConfigurations = new ArrayList<>();
+    }
+    this.writebackConfigurations.add(writebackConfigurationsItem);
+    return this;
+  }
+
+   /**
+   * The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
+   * @return writebackConfigurations
+  **/
+  @jakarta.annotation.Nullable
+  public List<WritebackConfiguration> getWritebackConfigurations() {
+    return writebackConfigurations;
+  }
+
+
+  public void setWritebackConfigurations(List<WritebackConfiguration> writebackConfigurations) {
+    this.writebackConfigurations = writebackConfigurations;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -370,7 +404,8 @@ public class UpdateMatchingRulesetRequest {
         Objects.equals(this.coreTolerances, updateMatchingRulesetRequest.coreTolerances) &&
         Objects.equals(this.aggregateTolerances, updateMatchingRulesetRequest.aggregateTolerances) &&
         Objects.equals(this.allowPartialMatching, updateMatchingRulesetRequest.allowPartialMatching) &&
-        Objects.equals(this.supplementalAttributes, updateMatchingRulesetRequest.supplementalAttributes);
+        Objects.equals(this.supplementalAttributes, updateMatchingRulesetRequest.supplementalAttributes) &&
+        Objects.equals(this.writebackConfigurations, updateMatchingRulesetRequest.writebackConfigurations);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -379,7 +414,7 @@ public class UpdateMatchingRulesetRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, recType, datasetSchemas, filters, coreRules, aggregateRules, coreTolerances, aggregateTolerances, allowPartialMatching, supplementalAttributes);
+    return Objects.hash(displayName, recType, datasetSchemas, filters, coreRules, aggregateRules, coreTolerances, aggregateTolerances, allowPartialMatching, supplementalAttributes, writebackConfigurations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -403,6 +438,7 @@ public class UpdateMatchingRulesetRequest {
     sb.append("    aggregateTolerances: ").append(toIndentedString(aggregateTolerances)).append("\n");
     sb.append("    allowPartialMatching: ").append(toIndentedString(allowPartialMatching)).append("\n");
     sb.append("    supplementalAttributes: ").append(toIndentedString(supplementalAttributes)).append("\n");
+    sb.append("    writebackConfigurations: ").append(toIndentedString(writebackConfigurations)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -435,6 +471,7 @@ public class UpdateMatchingRulesetRequest {
     openapiFields.add("aggregateTolerances");
     openapiFields.add("allowPartialMatching");
     openapiFields.add("supplementalAttributes");
+    openapiFields.add("writebackConfigurations");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -537,6 +574,20 @@ public class UpdateMatchingRulesetRequest {
           // validate the optional field `supplementalAttributes` (array)
           for (int i = 0; i < jsonArraysupplementalAttributes.size(); i++) {
             SupplementalAttribute.validateJsonElement(jsonArraysupplementalAttributes.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("writebackConfigurations") != null && !jsonObj.get("writebackConfigurations").isJsonNull()) {
+        JsonArray jsonArraywritebackConfigurations = jsonObj.getAsJsonArray("writebackConfigurations");
+        if (jsonArraywritebackConfigurations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("writebackConfigurations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `writebackConfigurations` to be an array in the JSON string but got `%s`", jsonObj.get("writebackConfigurations").toString()));
+          }
+
+          // validate the optional field `writebackConfigurations` (array)
+          for (int i = 0; i < jsonArraywritebackConfigurations.size(); i++) {
+            WritebackConfiguration.validateJsonElement(jsonArraywritebackConfigurations.get(i));
           };
         }
       }

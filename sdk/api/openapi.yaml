@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10068
+  version: 0.11.10084
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -52240,6 +52240,17 @@ paths:
         schema:
           type: string
         style: form
+      - description: "Option to specify whether or not to include transactions excluded\
+          \ by the\r\n NavType's TransactionExclusionFilter. Defaults to False if\
+          \ not specified."
+        explode: true
+        in: query
+        name: returnExcludedTransactions
+        required: false
+        schema:
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -179614,7 +179625,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -179628,6 +179639,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -179889,7 +179901,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -179903,6 +179915,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -187545,7 +187558,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -187559,6 +187572,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -195957,9 +195971,11 @@ components:
       - $ref: '#/components/schemas/InstrumentEvent'
       - properties:
           consentType:
-            description: "The type of consent solicitation.\r\n \r\nSupported string\
-              \ (enumeration) values are: [ChangeInTerms, DueAndPayable]. Available\
-              \ values: ChangeInTerms, DueAndPayable."
+            description: "The type of consent solicitation. Optional; omitting it\
+              \ records Unknown.\r\n \r\nSupported string (enumeration) values are:\
+              \ [ChangeInTerms, DueAndPayable, Unknown]. Available values: ChangeInTerms,\
+              \ DueAndPayable, Unknown."
+            nullable: true
             type: string
           recordDate:
             description: The entitlement determination date.
@@ -196169,7 +196185,6 @@ components:
             - TotalReturnSwapCashFlowEvent
             type: string
         required:
-        - consentType
         - instrumentEventType
         type: object
       description: "Consent Event (CONS) — a voluntary corporate action where an issuer\
@@ -199180,6 +199195,11 @@ components:
             relationalDatasetDefinitionId:
               code: code
               scope: scope
+        writebackConfigurations:
+        - writebackType: writebackType
+          targetSide: targetSide
+        - writebackType: writebackType
+          targetSide: targetSide
         id:
           code: code
           scope: scope
@@ -199255,6 +199275,15 @@ components:
             with additional values without participating in the reconciliation itself.
           items:
             $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+        writebackConfigurations:
+          description: "The writeback suggestions generated against this ruleset's\
+            \ results. Suggestions are made at item level on target-side items only,\
+            \ and are suggestions only: a user is expected to review them before acting.\
+            \ Optional, and may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackConfiguration'
           nullable: true
           type: array
       required:
@@ -211057,7 +211086,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -211071,6 +211100,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -211402,7 +211432,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -211416,6 +211446,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - equityForwardProjectionType
@@ -215524,6 +215555,14 @@ components:
           domCcy:
             description: The domestic currency of the instrument.
             type: string
+          parentFacility:
+            description: "The parent loan facility of this loan if this loan is a\
+              \ contract on a facility.\r\nThis resolves to the facility's LusidInstrumentId,\
+              \ falling back to its ClientInternal identifier,\r\nand is null when\
+              \ the loan is not a contract on a facility."
+            nullable: true
+            readOnly: true
+            type: string
           parentFacilityDetails:
             additionalProperties:
               nullable: true
@@ -215631,7 +215670,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -215645,6 +215684,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -217523,6 +217563,7 @@ components:
           subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -217605,6 +217646,7 @@ components:
         - subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -217643,6 +217685,7 @@ components:
         - subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -219360,6 +219403,7 @@ components:
           subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -219424,6 +219468,7 @@ components:
         - subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -219461,6 +219506,7 @@ components:
         - subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
+          transactionExclusionFilter: transactionExclusionFilter
           code: code
           amortisationRuleSetId:
             code: code
@@ -220006,7 +220052,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -220020,6 +220066,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - expectedFundingLegNotional
@@ -220948,6 +220995,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221030,6 +221078,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221068,6 +221117,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221277,6 +221327,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221359,6 +221410,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221397,6 +221449,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221781,6 +221834,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221845,6 +221899,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -221882,6 +221937,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -222045,6 +222101,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -222109,6 +222166,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -222146,6 +222204,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -223701,7 +223760,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -223715,6 +223774,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - convertToReportCcy
@@ -230628,7 +230688,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -230642,6 +230702,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -231067,7 +231128,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -231081,6 +231142,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - modelOptionsType
@@ -244198,6 +244260,11 @@ components:
           rightFormula: rightFormula
           ruleName: ruleName
           rightOperation: rightOperation
+        writebackConfigurations:
+        - writebackType: writebackType
+          targetSide: targetSide
+        - writebackType: writebackType
+          targetSide: targetSide
         links:
         - method: method
           description: description
@@ -244268,6 +244335,15 @@ components:
             with additional values without participating in the reconciliation itself.
           items:
             $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+        writebackConfigurations:
+          description: "The writeback suggestions generated against this ruleset's\
+            \ results. Suggestions are made at item level on target-side items only,\
+            \ and are suggestions only: a user is expected to review them before acting.\
+            \ Optional, and may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackConfiguration'
           nullable: true
           type: array
         href:
@@ -245965,7 +246041,7 @@ components:
           description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
             \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions,\
             \ CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions,\
-            \ BondForwardModelOptions."
+            \ BondForwardModelOptions, SimpleModelOptions."
           enum:
           - Invalid
           - OpaqueModelOptions
@@ -245979,6 +246055,7 @@ components:
           - HullWhiteModelOptions
           - BondLookupModelOptions
           - BondForwardModelOptions
+          - SimpleModelOptions
           type: string
       required:
       - modelOptionsType
@@ -246093,6 +246170,7 @@ components:
       - HullWhiteModelOptions
       - BondLookupModelOptions
       - BondForwardModelOptions
+      - SimpleModelOptions
       type: string
     ModelSelection:
       additionalProperties: false
@@ -246782,6 +246860,7 @@ components:
         subHoldingKeys:
         - subHoldingKeys
         - subHoldingKeys
+        transactionExclusionFilter: transactionExclusionFilter
         code: code
         amortisationRuleSetId:
           code: code
@@ -246921,6 +247000,15 @@ components:
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
+        transactionExclusionFilter:
+          description: "Optional filter expression to exclude specific transactions\
+            \ from this NavType's derived portfolios. The filter can reference Transaction,\
+            \ Portfolio, or Instrument fields and properties."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
       required:
       - accountingMethod
       - amortisationMethod
@@ -246939,6 +247027,7 @@ components:
         subHoldingKeys:
         - subHoldingKeys
         - subHoldingKeys
+        transactionExclusionFilter: transactionExclusionFilter
         code: code
         amortisationRuleSetId:
           code: code
@@ -247072,6 +247161,15 @@ components:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        transactionExclusionFilter:
+          description: "Optional filter expression to exclude specific transactions\
+            \ from this NavType's derived portfolios. The filter can reference Transaction,\
+            \ Portfolio, or Instrument fields and properties."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
           type: string
       required:
       - accountingMethod
@@ -247284,7 +247382,7 @@ components:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
               \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
-              \ BondLookupModelOptions, BondForwardModelOptions."
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
             enum:
             - Invalid
             - OpaqueModelOptions
@@ -247298,6 +247396,7 @@ components:
             - HullWhiteModelOptions
             - BondLookupModelOptions
             - BondForwardModelOptions
+            - SimpleModelOptions
             type: string
         required:
         - data
@@ -256708,6 +256807,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -256790,6 +256890,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -256828,6 +256929,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -257037,6 +257139,7 @@ components:
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -257119,6 +257222,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -257157,6 +257261,7 @@ components:
           - subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
             code: code
             amortisationRuleSetId:
               code: code
@@ -257912,6 +258017,7 @@ components:
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -257994,6 +258100,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258032,6 +258139,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258241,6 +258349,7 @@ components:
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258323,6 +258432,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258361,6 +258471,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258661,6 +258772,7 @@ components:
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258743,6 +258855,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258781,6 +258894,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -258990,6 +259104,7 @@ components:
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -259072,6 +259187,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -259110,6 +259226,7 @@ components:
             - subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
+              transactionExclusionFilter: transactionExclusionFilter
               code: code
               amortisationRuleSetId:
                 code: code
@@ -261714,6 +261831,11 @@ components:
             rightFormula: rightFormula
             ruleName: ruleName
             rightOperation: rightOperation
+          writebackConfigurations:
+          - writebackType: writebackType
+            targetSide: targetSide
+          - writebackType: writebackType
+            targetSide: targetSide
           links:
           - method: method
             description: description
@@ -261797,6 +261919,11 @@ components:
             rightFormula: rightFormula
             ruleName: ruleName
             rightOperation: rightOperation
+          writebackConfigurations:
+          - writebackType: writebackType
+            targetSide: targetSide
+          - writebackType: writebackType
+            targetSide: targetSide
           links:
           - method: method
             description: description
@@ -273616,8 +273743,8 @@ components:
         type:
           description: "Optionally changes the type of this placement (Market, Limit,\
             \ Stop, StopLimit, etc). A type change is permitted only when the associated\
-            \ block is of type 'Market', and leaves the placement's prices as they\
-            \ are."
+            \ block is of type 'Market'. Setting the type to 'Market' clears the placement's\
+            \ stop and limit prices; any other type change leaves them as they are."
           maxLength: 256
           minLength: 1
           nullable: true
@@ -318234,6 +318361,75 @@ components:
       - shareClassInstrumentScopes
       - shareClassInstruments
       type: object
+    SettleExpectedActivityRuleNames:
+      additionalProperties: false
+      description: "Names the matching rules that carry the settlement semantics a\
+        \ SettleExpectedActivity writeback depends\r\nupon. Each named rule's target-side\
+        \ formula must be the unmodified settlement activity field; the origin\r\n\
+        side is unconstrained."
+      properties:
+        activityType:
+          description: The core rule whose target-side formula is the unmodified 'activityType'.
+            Settlement instructions are suggested where the origin-side value is Settled
+            and the target-side value is Expected.
+          maxLength: 256
+          minLength: 1
+          type: string
+        activityDate:
+          description: The core rule whose target-side formula is the unmodified 'activityDate'.
+            The origin side supplies the actual settlement date.
+          maxLength: 256
+          minLength: 1
+          type: string
+        units:
+          description: "The aggregate rule whose target-side formula is the unmodified\
+            \ 'units'. The origin side supplies the units, and the tolerance on this\
+            \ rule classifies the units difference."
+          maxLength: 256
+          minLength: 1
+          type: string
+      required:
+      - activityDate
+      - activityType
+      - units
+      type: object
+    SettleExpectedActivityWritebackConfiguration:
+      additionalProperties: false
+      description: "Suggests settlement instructions where settlement on the origin\
+        \ side confirms expected settlement activity\r\non the target side. Only valid\
+        \ on a ruleset whose recType is SettlementActivity."
+      properties:
+        mandatoryRuleNames:
+          $ref: '#/components/schemas/SettleExpectedActivityRuleNames'
+        resultPatterns:
+          description: "The combinations of units difference and result cardinality\
+            \ for which writeback is suggested. A combination that is not present\
+            \ never produces a suggestion. Each combination may appear once, and the\
+            \ collection is returned in a canonical order regardless of the order\
+            \ supplied."
+          items:
+            $ref: '#/components/schemas/WritebackResultPattern'
+          minItems: 1
+          type: array
+        writebackType:
+          description: "Polymorphic discriminator, naming the change the writeback\
+            \ makes to LUSID. Supported types: SettleExpectedActivity, which is only\
+            \ valid when recType is SettlementActivity. Available values: SettleExpectedActivity."
+          minLength: 1
+          type: string
+        targetSide:
+          description: "The side the writeback changes, the other being the source\
+            \ of truth. One of: Left, Right. As the writeback changes LUSID, this\
+            \ side must draw on a native LUSID dataset rather than relational data.\
+            \ Available values: Left, Right."
+          minLength: 1
+          type: string
+      required:
+      - mandatoryRuleNames
+      - resultPatterns
+      - targetSide
+      - writebackType
+      type: object
     SettlementActivity:
       additionalProperties: false
       example:
@@ -322295,6 +322491,64 @@ components:
         type: object
       description: "LUSID representation of a Simple Instrument, used as a basic definition\
         \ of a generic instrument.\r\nNo analytics can be obtained for this."
+    SimpleModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - properties:
+          assumeAccruedIsZero:
+            description: "Disable calculation for accrued interest\r\nThe simple static\
+              \ pricer will attempt to calculate accrued interest where an instrument\
+              \ is present\r\nand the accrued is requested. This may no be what is\
+              \ desired. If the user is sure they just want lookup\r\npricing then\
+              \ they can disable the accrued interest calculation attempt.\r\nIf set,\
+              \ the override accrued will be used if given but the calculation for\
+              \ accrued will just return zero.\r\nThis will also disable requesting\
+              \ any required instrument dependencies (e.g. resets) that might be required\r\
+              \nto calculate accrued."
+            type: boolean
+          priceIsParOffset:
+            description: "Interpret the instrument's price quote as an offset from\
+              \ par rather than as a currency value for\r\none unit of notional. The\
+              \ unit value becomes (price - basis) / basis, so a quote at par gives\
+              \ a\r\nunit value of zero. The basis is taken from the quote's own scale\
+              \ factor, or 100 when the quote carries none.\r\nThis is not the treatment\
+              \ a bond price receives: a bond price is a proportion of par and scales\r\
+              \nits value, whereas here only the distance from par carries value.\r\
+              \nSupported for an interest rate swap only; setting it for any other\
+              \ instrument type fails the\r\nvaluation.\r\nQuotes provided must have\
+              \ a quote type of either Price or DirtyPrice. The resulting unit\r\n\
+              value is then the clean PV for a Price quote and the dirty PV for a\
+              \ DirtyPrice quote,\r\nwith accrued giving the other.\r\nThe quote must\
+              \ describe the swap as it is defined. The legs' pay and receive directions\
+              \ do not\r\nsign the value taken from the quote, so a swap booked the\
+              \ other way round is expected to be\r\nquoted the other side of par."
+            type: boolean
+          modelOptionsType:
+            description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
+              \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
+              \ EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions,\
+              \ BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions."
+            enum:
+            - Invalid
+            - OpaqueModelOptions
+            - EmptyModelOptions
+            - IndexModelOptions
+            - FxForwardModelOptions
+            - FundingLegModelOptions
+            - EquityModelOptions
+            - CdsModelOptions
+            - FlexibleLoanPricerOptions
+            - HullWhiteModelOptions
+            - BondLookupModelOptions
+            - BondForwardModelOptions
+            - SimpleModelOptions
+            type: string
+        required:
+        - modelOptionsType
+        type: object
+      description: "Model options for a minimal pricer, allowing accrued interest\
+        \ calculation to be disabled and\r\nthe price quote to be interpreted as an\
+        \ offset from par."
     SimpleRoundingConvention:
       additionalProperties: false
       description: "Certain bonds will follow certain rounding conventions.\r\nFor\
@@ -338600,6 +338854,11 @@ components:
             relationalDatasetDefinitionId:
               code: code
               scope: scope
+        writebackConfigurations:
+        - writebackType: writebackType
+          targetSide: targetSide
+        - writebackType: writebackType
+          targetSide: targetSide
         filters:
           left: left
           right: right
@@ -338670,6 +338929,15 @@ components:
             with additional values without participating in the reconciliation itself.
           items:
             $ref: '#/components/schemas/SupplementalAttribute'
+          nullable: true
+          type: array
+        writebackConfigurations:
+          description: "The writeback suggestions generated against this ruleset's\
+            \ results. Suggestions are made at item level on target-side items only,\
+            \ and are suggestions only: a user is expected to review them before acting.\
+            \ Optional, and may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackConfiguration'
           nullable: true
           type: array
       required:
@@ -367909,6 +368177,68 @@ components:
         \ the portfolio at zero proceeds (zero-recovery write-off, WRTH).\r\nThe full\
         \ eligible holding is debited on the PaymentDate; no cash is received and\
         \ no new security is credited."
+    WritebackConfiguration:
+      additionalProperties: false
+      description: "Base class for the configuration of a writeback a matching ruleset\
+        \ generates suggestions for against its\r\nresults. Polymorphic by WritebackType;\
+        \ each supported type has a corresponding inherited class."
+      example:
+        writebackType: writebackType
+        targetSide: targetSide
+      oneOf:
+      - $ref: '#/components/schemas/SettleExpectedActivityWritebackConfiguration'
+      properties:
+        writebackType:
+          description: "Polymorphic discriminator, naming the change the writeback\
+            \ makes to LUSID. Supported types: SettleExpectedActivity, which is only\
+            \ valid when recType is SettlementActivity. Available values: SettleExpectedActivity."
+          minLength: 1
+          type: string
+        targetSide:
+          description: "The side the writeback changes, the other being the source\
+            \ of truth. One of: Left, Right. As the writeback changes LUSID, this\
+            \ side must draw on a native LUSID dataset rather than relational data.\
+            \ Available values: Left, Right."
+          minLength: 1
+          type: string
+      required:
+      - targetSide
+      - writebackType
+      type: object
+    WritebackResultPattern:
+      additionalProperties: false
+      description: "One combination of units difference and result cardinality for\
+        \ which writeback is suggested. A combination\r\nthat is not configured never\
+        \ produces a suggestion, even where the reconciliation has crossed the items\r\
+        \nsuccessfully. The collection is a set, and is returned in a canonical order\
+        \ regardless of the order supplied."
+      properties:
+        unitsDifference:
+          description: "How the origin units compare to the target units, on a literal\
+            \ comparison rather than on the result type. One of: Exact, ShortWithinTolerance,\
+            \ ShortBeyondTolerance, LongWithinTolerance. LongBeyondTolerance is reported\
+            \ on results but cannot be configured. Available values: Exact, ShortWithinTolerance,\
+            \ ShortBeyondTolerance, LongWithinTolerance, LongBeyondTolerance."
+          minLength: 1
+          type: string
+        resultCardinality:
+          description: "The item cardinality of the result, read left to right. One\
+            \ of: OneToOne, OneToMany, ManyToOne. ManyToMany is not supported. Available\
+            \ values: OneToOne, OneToMany, ManyToOne, ManyToMany, OneToNone, ManyToNone,\
+            \ NoneToOne, NoneToMany, NoneToNone."
+          minLength: 1
+          type: string
+        useTargetUnits:
+          description: "Which side supplies the units where the two sides do not agree\
+            \ exactly. When false, the units come from the origin and any difference\
+            \ is left outstanding on the target; when true, they come from the target,\
+            \ which is written back in full. Defaults to false. Must be true for LongWithinTolerance,\
+            \ and cannot be true for ShortBeyondTolerance."
+          type: boolean
+      required:
+      - resultCardinality
+      - unitsDifference
+      type: object
     YearMonthDay:
       additionalProperties: false
       description: A date in component form.

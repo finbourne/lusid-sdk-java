@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **aggregateTolerances** | [**List&lt;ToleranceBase&gt;**](ToleranceBase.md) | Tolerance configurations applied to aggregate rule matching. | [optional] [default to List<ToleranceBase>]
 **allowPartialMatching** | **Boolean** | Whether to permit partial matches when applying rules. | [optional] [default to Boolean]
 **supplementalAttributes** | [**List&lt;SupplementalAttribute&gt;**](SupplementalAttribute.md) | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. | [optional] [default to List<SupplementalAttribute>]
+**writebackConfigurations** | [**List&lt;WritebackConfiguration&gt;**](WritebackConfiguration.md) | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. | [optional] [default to List<WritebackConfiguration>]
 
 ```java
 import com.finbourne.lusid.model.UpdateMatchingRulesetRequest;
@@ -31,6 +32,7 @@ List<AggregateMatchingRule> AggregateRules = new List<AggregateMatchingRule>();
 @jakarta.annotation.Nullable List<ToleranceBase> AggregateTolerances = new List<ToleranceBase>();
 Boolean AllowPartialMatching = true;
 @jakarta.annotation.Nullable List<SupplementalAttribute> SupplementalAttributes = new List<SupplementalAttribute>();
+@jakarta.annotation.Nullable List<WritebackConfiguration> WritebackConfigurations = new List<WritebackConfiguration>();
 
 
 UpdateMatchingRulesetRequest updateMatchingRulesetRequestInstance = new UpdateMatchingRulesetRequest()
@@ -43,7 +45,8 @@ UpdateMatchingRulesetRequest updateMatchingRulesetRequestInstance = new UpdateMa
     .CoreTolerances(CoreTolerances)
     .AggregateTolerances(AggregateTolerances)
     .AllowPartialMatching(AllowPartialMatching)
-    .SupplementalAttributes(SupplementalAttributes);
+    .SupplementalAttributes(SupplementalAttributes)
+    .WritebackConfigurations(WritebackConfigurations);
 ```
 
 

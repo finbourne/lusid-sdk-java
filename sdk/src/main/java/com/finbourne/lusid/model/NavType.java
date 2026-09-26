@@ -126,6 +126,10 @@ public class NavType {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TEMPLATE_SCOPE)
   private String transactionTemplateScope;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER = "transactionExclusionFilter";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
+  private String transactionExclusionFilter;
+
   public NavType() {
   }
 
@@ -531,6 +535,27 @@ public class NavType {
   }
 
 
+  public NavType transactionExclusionFilter(String transactionExclusionFilter) {
+    
+    this.transactionExclusionFilter = transactionExclusionFilter;
+    return this;
+  }
+
+   /**
+   * Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties.
+   * @return transactionExclusionFilter
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionExclusionFilter() {
+    return transactionExclusionFilter;
+  }
+
+
+  public void setTransactionExclusionFilter(String transactionExclusionFilter) {
+    this.transactionExclusionFilter = transactionExclusionFilter;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -558,7 +583,8 @@ public class NavType {
         Objects.equals(this.cashGainLossCalculationDate, navType.cashGainLossCalculationDate) &&
         Objects.equals(this.amortisationRuleSetId, navType.amortisationRuleSetId) &&
         Objects.equals(this.leaderNavTypeCode, navType.leaderNavTypeCode) &&
-        Objects.equals(this.transactionTemplateScope, navType.transactionTemplateScope);
+        Objects.equals(this.transactionTemplateScope, navType.transactionTemplateScope) &&
+        Objects.equals(this.transactionExclusionFilter, navType.transactionExclusionFilter);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -567,7 +593,7 @@ public class NavType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope);
+    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -599,6 +625,7 @@ public class NavType {
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
     sb.append("    transactionTemplateScope: ").append(toIndentedString(transactionTemplateScope)).append("\n");
+    sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -639,6 +666,7 @@ public class NavType {
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("leaderNavTypeCode");
     openapiFields.add("transactionTemplateScope");
+    openapiFields.add("transactionExclusionFilter");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -727,6 +755,9 @@ public class NavType {
       }
       if (!jsonObj.get("transactionTemplateScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTemplateScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTemplateScope").toString()));
+      }
+      if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
       }
   }
 
