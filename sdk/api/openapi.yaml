@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10091
+  version: 0.11.10092
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -272262,6 +272262,8 @@ components:
             format: int32
             nullable: true
             type: integer
+          pikDeliverable:
+            $ref: '#/components/schemas/MasteredInstrument'
           isPikFractionElectable:
             description: "If true, the PIK fraction is electable at each payment date.\r\
               \nDefaults to false."
@@ -272294,8 +272296,8 @@ components:
             description: "The type of PIK payment to be used for the duration of this\
               \ schedule.\r\nInterestCapitalisation adds the paid-in-kind portion\
               \ to the bond's current face;\r\nAdditionalSecurities settles it by\
-              \ delivering units of another instrument, named on each\r\nperiod's\
-              \ PikBondInterestEvent; Electable leaves the choice to a per-period\
+              \ delivering units of an instrument, named by pikDeliverable\r\nand\
+              \ by default the bond itself; Electable leaves the choice to a per-period\
               \ election.\r\n \r\nSupported string (enumeration) values are: [Electable,\
               \ InterestCapitalisation, AdditionalSecurities]."
             nullable: true
