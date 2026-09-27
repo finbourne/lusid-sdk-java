@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Groups that can apply across a Fund Structure. Only classes and feeder funds linked to the master fund specified are allowed. | [optional] [default to List<AllocationGroup>]
 **nodes** | [**List&lt;FundStructureNode&gt;**](FundStructureNode.md) | The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role. | [default to List<FundStructureNode>]
 **edges** | [**List&lt;FundStructureEdge&gt;**](FundStructureEdge.md) | The list of edges that define the relationships between feeder and master nodes in the structure. | [default to List<FundStructureEdge>]
+**effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which the Fund Structure applies. Defaults to the beginning of time if not specified, so that the structure is visible at every effective datetime. | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties to decorate onto the Fund Structure. | [optional] [default to Map<String, Property>]
 
 ```java
@@ -27,6 +28,7 @@ String Name = "example Name";
 @jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
 List<FundStructureNode> Nodes = new List<FundStructureNode>();
 List<FundStructureEdge> Edges = new List<FundStructureEdge>();
+@jakarta.annotation.Nullable OffsetDateTime EffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 
 
@@ -38,6 +40,7 @@ FundStructureRequest fundStructureRequestInstance = new FundStructureRequest()
     .AllocationGroups(AllocationGroups)
     .Nodes(Nodes)
     .Edges(Edges)
+    .EffectiveAt(EffectiveAt)
     .Properties(Properties);
 ```
 

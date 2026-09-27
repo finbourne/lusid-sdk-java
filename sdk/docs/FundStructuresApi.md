@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createFundStructure**](FundStructuresApi.md#createFundStructure) | **POST** /api/fundstructures/{scope} | [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. |
+| [**deleteFundStructure**](FundStructuresApi.md#deleteFundStructure) | **DELETE** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. |
 | [**getFundStructure**](FundStructuresApi.md#getFundStructure) | **GET** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. |
 | [**listFundStructures**](FundStructuresApi.md#listFundStructures) | **GET** /api/fundstructures | [EXPERIMENTAL] ListFundStructures: List Fund Structures. |
 
@@ -103,13 +104,108 @@ public class FundStructuresApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## deleteFundStructure
+
+> DeletedEntityResponse deleteFundStructure(scope, code, effectiveAt)
+
+[EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+
+Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundStructuresApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundStructuresApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundStructuresApi apiInstance = apiFactory.build(FundStructuresApi.class);
+
+        FundStructuresApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundStructuresApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund Structure to be deleted.
+        String code = "code_example"; // String | The code of the Fund Structure to be deleted. Together with the scope this uniquely identifies the Fund Structure.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the Fund Structure is deleted. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteFundStructure(scope, code, effectiveAt).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteFundStructure(scope, code, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundStructuresApi#deleteFundStructure");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund Structure to be deleted. | |
+| **code** | **String**| The code of the Fund Structure to be deleted. Together with the scope this uniquely identifies the Fund Structure. | |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the Fund Structure is deleted. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Fund Structure was deleted. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getFundStructure
 
-> FundStructure getFundStructure(scope, code, asAt, propertyKeys)
+> FundStructure getFundStructure(scope, code, effectiveAt, asAt, propertyKeys)
 
 [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
 
-Retrieve the definition of a particular Fund Structure, including its nodes, edges, and any inline fund definitions.
+Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
 
 ### Example
 
@@ -152,13 +248,14 @@ public class FundStructuresApiExample {
         FundStructuresApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundStructuresApi.class);
         String scope = "scope_example"; // String | The scope of the Fund Structure.
         String code = "code_example"; // String | The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Fund Structure. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Fund Structure. Defaults to returning the latest version if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'FundStructure' domain to decorate onto the Fund Structure.   These must take the format {domain}/{scope}/{code}, for example 'FundStructure/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
-            // FundStructure result = apiInstance.getFundStructure(scope, code, asAt, propertyKeys).execute(opts);
+            // FundStructure result = apiInstance.getFundStructure(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
 
-            FundStructure result = apiInstance.getFundStructure(scope, code, asAt, propertyKeys).execute();
+            FundStructure result = apiInstance.getFundStructure(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundStructuresApi#getFundStructure");
@@ -177,6 +274,7 @@ public class FundStructuresApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund Structure. | |
 | **code** | **String**| The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Fund Structure. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Fund Structure. Defaults to returning the latest version if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;FundStructure&#39; domain to decorate onto the Fund Structure.   These must take the format {domain}/{scope}/{code}, for example &#39;FundStructure/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
 
@@ -202,7 +300,7 @@ public class FundStructuresApiExample {
 
 ## listFundStructures
 
-> PagedResourceListOfFundStructure listFundStructures(asAt, page, limit, filter, sortBy, propertyKeys)
+> PagedResourceListOfFundStructure listFundStructures(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
 [EXPERIMENTAL] ListFundStructures: List Fund Structures.
 
@@ -247,6 +345,7 @@ public class FundStructuresApiExample {
         // FundStructuresApi apiInstance = apiFactory.build(FundStructuresApi.class);
 
         FundStructuresApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundStructuresApi.class);
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Fund Structures. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list Fund Structures. Defaults to returning the latest version of each Fund Structure if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Fund Structures; this value is returned from the previous call. If a pagination token is provided, the filter and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
@@ -255,9 +354,9 @@ public class FundStructuresApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'FundStructure' domain to decorate onto each Fund Structure.   These must take the format {domain}/{scope}/{code}, for example 'FundStructure/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfFundStructure result = apiInstance.listFundStructures(asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+            // PagedResourceListOfFundStructure result = apiInstance.listFundStructures(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
 
-            PagedResourceListOfFundStructure result = apiInstance.listFundStructures(asAt, page, limit, filter, sortBy, propertyKeys).execute();
+            PagedResourceListOfFundStructure result = apiInstance.listFundStructures(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundStructuresApi#listFundStructures");
@@ -274,6 +373,7 @@ public class FundStructuresApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Fund Structures. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list Fund Structures. Defaults to returning the latest version of each Fund Structure if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Fund Structures; this value is returned from the previous call. If a pagination token is provided, the filter and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |

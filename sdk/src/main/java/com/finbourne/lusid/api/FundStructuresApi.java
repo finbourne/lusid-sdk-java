@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.FundStructure;
 import com.finbourne.lusid.model.FundStructureRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -319,11 +320,11 @@ public class FundStructuresApi {
     public APIcreateFundStructureRequest createFundStructure(String scope, FundStructureRequest fundStructureRequest) {
         return new APIcreateFundStructureRequest(scope, fundStructureRequest);
     }
-    private okhttp3.Call getFundStructureCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getFundStructureCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteFundStructureCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteFundStructureCall(scope, code, effectiveAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getFundStructureCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteFundStructureCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -349,6 +350,266 @@ public class FundStructuresApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteFundStructureValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteFundStructure(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteFundStructure(Async)");
+        }
+
+        return deleteFundStructureCall(scope, code, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteFundStructureWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = deleteFundStructureValidateBeforeCall(scope, code, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFundStructureWithHttpInfo(String scope, String code, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFundStructureValidateBeforeCall(scope, code, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteFundStructureAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFundStructureValidateBeforeCall(scope, code, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFundStructureAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFundStructureValidateBeforeCall(scope, code, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteFundStructureRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+
+        private APIdeleteFundStructureRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the Fund Structure is deleted. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIdeleteFundStructureRequest
+         */
+        public APIdeleteFundStructureRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteFundStructure
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteFundStructureCall(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteFundStructure request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFundStructureWithHttpInfo(scope, code, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteFundStructure request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFundStructureWithHttpInfo(scope, code, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteFundStructure request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteFundStructureWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute deleteFundStructure request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFundStructureWithHttpInfo(scope, code, effectiveAt, opts);
+        }
+
+        /**
+         * Execute deleteFundStructure request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteFundStructureAsync(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteFundStructure request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFundStructureAsync(scope, code, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+     * Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+     * @param scope The scope of the Fund Structure to be deleted. (required)
+     * @param code The code of the Fund Structure to be deleted. Together with the scope this uniquely identifies the Fund Structure. (required)
+     * @return APIdeleteFundStructureRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Fund Structure was deleted. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteFundStructureRequest deleteFundStructure(String scope, String code) {
+        return new APIdeleteFundStructureRequest(scope, code);
+    }
+    private okhttp3.Call getFundStructureCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getFundStructureCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFundStructureCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/fundstructures/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
 
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
@@ -380,7 +641,7 @@ public class FundStructuresApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFundStructureValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getFundStructureValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFundStructure(Async)");
@@ -391,34 +652,34 @@ public class FundStructuresApi {
             throw new ApiException("Missing the required parameter 'code' when calling getFundStructure(Async)");
         }
 
-        return getFundStructureCall(scope, code, asAt, propertyKeys, _callback, opts);
+        return getFundStructureCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<FundStructure> getFundStructureWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<FundStructure> getFundStructureWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<FundStructure> getFundStructureWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
+    private ApiResponse<FundStructure> getFundStructureWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getFundStructureAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundStructure> _callback) throws ApiException {
+    private okhttp3.Call getFundStructureAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundStructure> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getFundStructureAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getFundStructureAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getFundStructureValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -427,12 +688,23 @@ public class FundStructuresApi {
     public class APIgetFundStructureRequest {
         private final String scope;
         private final String code;
+        private String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> propertyKeys;
 
         private APIgetFundStructureRequest(String scope, String code) {
             this.scope = scope;
             this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Fund Structure. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetFundStructureRequest
+         */
+        public APIgetFundStructureRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
         }
 
         /**
@@ -469,7 +741,7 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getFundStructureCall(scope, code, asAt, propertyKeys, _callback);
+            return getFundStructureCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -485,7 +757,7 @@ public class FundStructuresApi {
          </table>
          */
         public FundStructure execute() throws ApiException {
-            ApiResponse<FundStructure> localVarResp = getFundStructureWithHttpInfo(scope, code, asAt, propertyKeys);
+            ApiResponse<FundStructure> localVarResp = getFundStructureWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -502,7 +774,7 @@ public class FundStructuresApi {
          </table>
          */
         public FundStructure execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<FundStructure> localVarResp = getFundStructureWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            ApiResponse<FundStructure> localVarResp = getFundStructureWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -519,7 +791,7 @@ public class FundStructuresApi {
          </table>
          */
         public ApiResponse<FundStructure> executeWithHttpInfo() throws ApiException {
-            return getFundStructureWithHttpInfo(scope, code, asAt, propertyKeys);
+            return getFundStructureWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
         }
 
         /**
@@ -535,7 +807,7 @@ public class FundStructuresApi {
          </table>
          */
         public ApiResponse<FundStructure> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getFundStructureWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return getFundStructureWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -552,7 +824,7 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback) throws ApiException {
-            return getFundStructureAsync(scope, code, asAt, propertyKeys, _callback);
+            return getFundStructureAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -569,13 +841,13 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
-            return getFundStructureAsync(scope, code, asAt, propertyKeys, _callback, opts);
+            return getFundStructureAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
-     * Retrieve the definition of a particular Fund Structure, including its nodes, edges, and any inline fund definitions.
+     * Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
      * @param scope The scope of the Fund Structure. (required)
      * @param code The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. (required)
      * @return APIgetFundStructureRequest
@@ -590,11 +862,11 @@ public class FundStructuresApi {
     public APIgetFundStructureRequest getFundStructure(String scope, String code) {
         return new APIgetFundStructureRequest(scope, code);
     }
-    private okhttp3.Call listFundStructuresCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listFundStructuresCall(asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listFundStructuresCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listFundStructuresCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listFundStructuresCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listFundStructuresCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -618,6 +890,10 @@ public class FundStructuresApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
 
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
@@ -665,41 +941,42 @@ public class FundStructuresApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFundStructuresValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listFundStructuresCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+    private okhttp3.Call listFundStructuresValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listFundStructuresCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfFundStructure> listFundStructuresWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfFundStructure> listFundStructuresWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundStructure>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfFundStructure> listFundStructuresWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
+    private ApiResponse<PagedResourceListOfFundStructure> listFundStructuresWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundStructure>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listFundStructuresAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundStructure> _callback) throws ApiException {
+    private okhttp3.Call listFundStructuresAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundStructure> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundStructure>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listFundStructuresAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listFundStructuresAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundStructure> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = listFundStructuresValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundStructure>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIlistFundStructuresRequest {
+        private String effectiveAt;
         private OffsetDateTime asAt;
         private String page;
         private Integer limit;
@@ -708,6 +985,16 @@ public class FundStructuresApi {
         private List<String> propertyKeys;
 
         private APIlistFundStructuresRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the Fund Structures. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistFundStructuresRequest
+         */
+        public APIlistFundStructuresRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
         }
 
         /**
@@ -784,7 +1071,7 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listFundStructuresCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+            return listFundStructuresCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -800,7 +1087,7 @@ public class FundStructuresApi {
          </table>
          */
         public PagedResourceListOfFundStructure execute() throws ApiException {
-            ApiResponse<PagedResourceListOfFundStructure> localVarResp = listFundStructuresWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys);
+            ApiResponse<PagedResourceListOfFundStructure> localVarResp = listFundStructuresWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -817,7 +1104,7 @@ public class FundStructuresApi {
          </table>
          */
         public PagedResourceListOfFundStructure execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfFundStructure> localVarResp = listFundStructuresWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            ApiResponse<PagedResourceListOfFundStructure> localVarResp = listFundStructuresWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -834,7 +1121,7 @@ public class FundStructuresApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfFundStructure> executeWithHttpInfo() throws ApiException {
-            return listFundStructuresWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys);
+            return listFundStructuresWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -850,7 +1137,7 @@ public class FundStructuresApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfFundStructure> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listFundStructuresWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return listFundStructuresWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -867,7 +1154,7 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundStructure> _callback) throws ApiException {
-            return listFundStructuresAsync(asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+            return listFundStructuresAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -884,7 +1171,7 @@ public class FundStructuresApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundStructure> _callback, ConfigurationOptions opts) throws ApiException {
-            return listFundStructuresAsync(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+            return listFundStructuresAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 

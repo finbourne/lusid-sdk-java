@@ -22,6 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -86,6 +87,10 @@ public class FundStructureRequest {
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)
   private List<FundStructureEdge> edges = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
+  private OffsetDateTime effectiveAt;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -273,6 +278,27 @@ public class FundStructureRequest {
   }
 
 
+  public FundStructureRequest effectiveAt(OffsetDateTime effectiveAt) {
+    
+    this.effectiveAt = effectiveAt;
+    return this;
+  }
+
+   /**
+   * The effective datetime from which the Fund Structure applies. Defaults to the beginning of time if not specified, so that the structure is visible at every effective datetime.
+   * @return effectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveAt() {
+    return effectiveAt;
+  }
+
+
+  public void setEffectiveAt(OffsetDateTime effectiveAt) {
+    this.effectiveAt = effectiveAt;
+  }
+
+
   public FundStructureRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -319,6 +345,7 @@ public class FundStructureRequest {
         Objects.equals(this.allocationGroups, fundStructureRequest.allocationGroups) &&
         Objects.equals(this.nodes, fundStructureRequest.nodes) &&
         Objects.equals(this.edges, fundStructureRequest.edges) &&
+        Objects.equals(this.effectiveAt, fundStructureRequest.effectiveAt) &&
         Objects.equals(this.properties, fundStructureRequest.properties);
   }
 
@@ -328,7 +355,7 @@ public class FundStructureRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, existingFunds, allocationGroups, nodes, edges, properties);
+    return Objects.hash(code, name, description, existingFunds, allocationGroups, nodes, edges, effectiveAt, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -349,6 +376,7 @@ public class FundStructureRequest {
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
+    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -379,6 +407,7 @@ public class FundStructureRequest {
     openapiFields.add("allocationGroups");
     openapiFields.add("nodes");
     openapiFields.add("edges");
+    openapiFields.add("effectiveAt");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)

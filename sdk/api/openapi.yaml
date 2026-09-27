@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10090
+  version: 0.11.10091
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -53627,6 +53627,16 @@ paths:
       description: List all the Fund Structures matching the given criteria.
       operationId: ListFundStructures
       parameters:
+      - description: The effective datetime or cut label at which to list the Fund
+          Structures. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
       - description: The asAt datetime at which to list Fund Structures. Defaults
           to returning the latest version of each Fund Structure if not specified.
         explode: true
@@ -54850,9 +54860,92 @@ paths:
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/fundstructures/{scope}/{code}:
+    delete:
+      description: Delete a Fund Structure from the given effective datetime. It remains
+        retrievable at earlier effective datetimes.
+      operationId: DeleteFundStructure
+      parameters:
+      - description: The scope of the Fund Structure to be deleted.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund Structure to be deleted. Together with the
+          scope this uniquely identifies the Fund Structure.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime or cut label from which the Fund Structure
+          is deleted. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime that the Fund Structure was deleted.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure."
+      tags:
+      - Fund Structures
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
     get:
-      description: "Retrieve the definition of a particular Fund Structure, including\
-        \ its nodes, edges, and any inline fund definitions."
+      description: "Retrieve the definition of a particular Fund Structure at an effective\
+        \ and asAt datetime, including its nodes,\r\nedges, allocation groups and\
+        \ the funds its nodes refer to."
       operationId: GetFundStructure
       parameters:
       - description: The scope of the Fund Structure.
@@ -54878,6 +54971,16 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
+      - description: The effective datetime or cut label at which to retrieve the
+          Fund Structure. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
       - description: The asAt datetime at which to retrieve the Fund Structure. Defaults
           to returning the latest version if not specified.
         explode: true
@@ -221544,6 +221647,7 @@ components:
           to:
             node: node
             shareClassShortCode: shareClassShortCode
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
         description: description
         properties:
           key:
@@ -221609,6 +221713,13 @@ components:
           items:
             $ref: '#/components/schemas/FundStructureEdge'
           type: array
+        effectiveAt:
+          description: "The effective datetime from which the Fund Structure applies.\
+            \ Defaults to the beginning of time if not specified, so that the structure\
+            \ is visible at every effective datetime."
+          format: date-time
+          nullable: true
+          type: string
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
