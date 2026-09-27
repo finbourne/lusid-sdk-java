@@ -288,7 +288,7 @@ public class SubscriptionDefinition {
   }
 
    /**
-   * The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.
+   * The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
    * @return subscriptionType
   **/
   @jakarta.annotation.Nullable

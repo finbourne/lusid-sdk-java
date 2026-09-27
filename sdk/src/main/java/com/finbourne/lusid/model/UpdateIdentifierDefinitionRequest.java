@@ -65,6 +65,10 @@ public class UpdateIdentifierDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_HIERARCHY_USAGE = "hierarchyUsage";
+  @SerializedName(SERIALIZED_NAME_HIERARCHY_USAGE)
+  private String hierarchyUsage;
+
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
@@ -135,6 +139,27 @@ public class UpdateIdentifierDefinitionRequest {
   }
 
 
+  public UpdateIdentifierDefinitionRequest hierarchyUsage(String hierarchyUsage) {
+    
+    this.hierarchyUsage = hierarchyUsage;
+    return this;
+  }
+
+   /**
+   * Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier.
+   * @return hierarchyUsage
+  **/
+  @jakarta.annotation.Nullable
+  public String getHierarchyUsage() {
+    return hierarchyUsage;
+  }
+
+
+  public void setHierarchyUsage(String hierarchyUsage) {
+    this.hierarchyUsage = hierarchyUsage;
+  }
+
+
   public UpdateIdentifierDefinitionRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -177,6 +202,7 @@ public class UpdateIdentifierDefinitionRequest {
     return Objects.equals(this.hierarchyLevel, updateIdentifierDefinitionRequest.hierarchyLevel) &&
         Objects.equals(this.displayName, updateIdentifierDefinitionRequest.displayName) &&
         Objects.equals(this.description, updateIdentifierDefinitionRequest.description) &&
+        Objects.equals(this.hierarchyUsage, updateIdentifierDefinitionRequest.hierarchyUsage) &&
         Objects.equals(this.properties, updateIdentifierDefinitionRequest.properties);
   }
 
@@ -186,7 +212,7 @@ public class UpdateIdentifierDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hierarchyLevel, displayName, description, properties);
+    return Objects.hash(hierarchyLevel, displayName, description, hierarchyUsage, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -203,6 +229,7 @@ public class UpdateIdentifierDefinitionRequest {
     sb.append("    hierarchyLevel: ").append(toIndentedString(hierarchyLevel)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    hierarchyUsage: ").append(toIndentedString(hierarchyUsage)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -229,6 +256,7 @@ public class UpdateIdentifierDefinitionRequest {
     openapiFields.add("hierarchyLevel");
     openapiFields.add("displayName");
     openapiFields.add("description");
+    openapiFields.add("hierarchyUsage");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
@@ -256,6 +284,9 @@ public class UpdateIdentifierDefinitionRequest {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("hierarchyUsage") != null && !jsonObj.get("hierarchyUsage").isJsonNull()) && !jsonObj.get("hierarchyUsage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hierarchyUsage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hierarchyUsage").toString()));
       }
   }
 

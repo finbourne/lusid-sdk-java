@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10087
+  version: 0.11.10089
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -57132,6 +57132,7 @@ paths:
                 code: default
               reportCurrency: USD
               excludeUnsettledTrades: false
+              cashType: SettleDate
             schema:
               $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
           application/json:
@@ -57150,6 +57151,7 @@ paths:
                 code: default
               reportCurrency: USD
               excludeUnsettledTrades: false
+              cashType: SettleDate
             schema:
               $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
           text/json:
@@ -57168,6 +57170,7 @@ paths:
                 code: default
               reportCurrency: USD
               excludeUnsettledTrades: false
+              cashType: SettleDate
             schema:
               $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
           application/*+json:
@@ -57186,6 +57189,7 @@ paths:
                 code: default
               reportCurrency: USD
               excludeUnsettledTrades: false
+              cashType: SettleDate
             schema:
               $ref: '#/components/schemas/QueryBucketCashFlowDrillDownRequest'
         description: The Query Information.
@@ -186398,9 +186402,11 @@ components:
         instrumentDisplayName: instrumentDisplayName
         transactionId: transactionId
         haircutFraction: 1.4658129805029452
+        amountInPortfolioCcy: 5.637376656633329
         portfolioId:
           code: code
           scope: scope
+        tradeToPortfolioRate: 2.3021358869347655
         sourceType: sourceType
         currency: currency
         links:
@@ -186495,12 +186501,30 @@ components:
           nullable: true
           type: string
         error:
-          description: "Only present when the cashflow could not be valued, for example\
+          description: "Present when the cashflow could not be valued, for example\
             \ because of missing market data: the valuation error, matching the CashflowError\
-            \ diagnostic reported by the QueryCashFlows endpoint. When set, the amount\
-            \ is null rather than zero."
+            \ diagnostic reported by the QueryCashFlows endpoint. In that case the\
+            \ amount is null rather than zero. Error may also be set when only the\
+            \ portfolio-currency FX lookup failed (see AmountInPortfolioCcy), in which\
+            \ case the base Amount remains populated and only AmountInPortfolioCcy\
+            \ and TradeToPortfolioRate are null."
           nullable: true
           type: string
+        amountInPortfolioCcy:
+          description: "The signed amount of the cashflow (see Amount), converted\
+            \ into the portfolio's base currency. Not present when the FX rate used\
+            \ to convert into the portfolio currency could not be resolved; see Error."
+          format: double
+          nullable: true
+          type: number
+        tradeToPortfolioRate:
+          description: "The FX rate used to convert the cashflow amount into the portfolio's\
+            \ base currency, resolved at the cashflow's transaction (trade) date,\
+            \ not its payment date. Not present when the rate could not be resolved;\
+            \ see Error."
+          format: double
+          nullable: true
+          type: number
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -282586,6 +282610,7 @@ components:
             rate: 0.6027456183070403
           propertyValue: propertyValue
           ruleId: ruleId
+        cashType: cashType
         portfolioEntityIds:
         - code: code
           scope: scope
@@ -282666,6 +282691,13 @@ components:
             $ref: '#/components/schemas/CashFlowHaircutRule'
           nullable: true
           type: array
+        cashType:
+          description: "Which date basis buckets cash flows: TradeDate uses each cash\
+            \ flow's transaction date, SettleDate (default) uses its payment date.\
+            \ The response's CashFlowDetail.PaymentDate reflects whichever basis was\
+            \ used. Available values: TradeDate, SettleDate."
+          nullable: true
+          type: string
       required:
       - bucketEnd
       - bucketStart
@@ -295233,9 +295265,11 @@ components:
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
+          amountInPortfolioCcy: 5.637376656633329
           portfolioId:
             code: code
             scope: scope
+          tradeToPortfolioRate: 2.3021358869347655
           sourceType: sourceType
           currency: currency
           links:
@@ -295260,9 +295294,11 @@ components:
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
+          amountInPortfolioCcy: 5.637376656633329
           portfolioId:
             code: code
             scope: scope
+          tradeToPortfolioRate: 2.3021358869347655
           sourceType: sourceType
           currency: currency
           links:
@@ -324385,9 +324421,11 @@ components:
         byTaxLots:
           type: boolean
         subscriptionType:
-          description: "The kind of data the subscription streams (holdings or transactions),\
-            \ defaulting to holdings.\r\nAddress keys and byTaxLots are not valid\
-            \ for a transactions subscription. Available values: Holdings, Transactions."
+          description: "The kind of data the subscription streams, defaulting to holdings:\
+            \ before/after effects per\r\nholding (holdings), the transactions themselves\
+            \ (transactions), or each changed holding's\r\ncomplete current state\
+            \ (positions). Address keys and byTaxLots are not valid for a\r\ntransactions\
+            \ subscription. Available values: Holdings, Transactions, Positions."
           nullable: true
           type: string
         startEffectiveAt:
@@ -338694,6 +338732,7 @@ components:
     UpdateIdentifierDefinitionRequest:
       additionalProperties: false
       example:
+        hierarchyUsage: hierarchyUsage
         displayName: displayName
         hierarchyLevel: hierarchyLevel
         description: description
@@ -338736,6 +338775,14 @@ components:
           minLength: 0
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        hierarchyUsage:
+          description: "Optional. When supplied, relaxes the identifier definition\
+            \ from MasterIdentifier (unique) to ParentIdentifier (non-unique).\r\n\
+            Tightening from ParentIdentifier back to MasterIdentifier is refused.\r\
+            \nOmit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier,\
+            \ ParentIdentifier."
+          nullable: true
           type: string
         properties:
           additionalProperties:

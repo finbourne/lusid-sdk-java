@@ -100,6 +100,10 @@ public class QueryBucketCashFlowDrillDownRequest {
   @SerializedName(SERIALIZED_NAME_HAIRCUT_RULES)
   private List<CashFlowHaircutRule> haircutRules;
 
+  public static final String SERIALIZED_NAME_CASH_TYPE = "cashType";
+  @SerializedName(SERIALIZED_NAME_CASH_TYPE)
+  private String cashType;
+
   public QueryBucketCashFlowDrillDownRequest() {
   }
 
@@ -350,6 +354,27 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
 
+  public QueryBucketCashFlowDrillDownRequest cashType(String cashType) {
+    
+    this.cashType = cashType;
+    return this;
+  }
+
+   /**
+   * Which date basis buckets cash flows: TradeDate uses each cash flow&#39;s transaction date, SettleDate (default) uses its payment date. The response&#39;s CashFlowDetail.PaymentDate reflects whichever basis was used. Available values: TradeDate, SettleDate.
+   * @return cashType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashType() {
+    return cashType;
+  }
+
+
+  public void setCashType(String cashType) {
+    this.cashType = cashType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -370,7 +395,8 @@ public class QueryBucketCashFlowDrillDownRequest {
         Objects.equals(this.recipeId, queryBucketCashFlowDrillDownRequest.recipeId) &&
         Objects.equals(this.reportCurrency, queryBucketCashFlowDrillDownRequest.reportCurrency) &&
         Objects.equals(this.excludeUnsettledTrades, queryBucketCashFlowDrillDownRequest.excludeUnsettledTrades) &&
-        Objects.equals(this.haircutRules, queryBucketCashFlowDrillDownRequest.haircutRules);
+        Objects.equals(this.haircutRules, queryBucketCashFlowDrillDownRequest.haircutRules) &&
+        Objects.equals(this.cashType, queryBucketCashFlowDrillDownRequest.cashType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -379,7 +405,7 @@ public class QueryBucketCashFlowDrillDownRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, bucketStart, bucketEnd, startInclusive, endInclusive, portfolioEntityIds, effectiveAt, recipeId, reportCurrency, excludeUnsettledTrades, haircutRules);
+    return Objects.hash(asAt, bucketStart, bucketEnd, startInclusive, endInclusive, portfolioEntityIds, effectiveAt, recipeId, reportCurrency, excludeUnsettledTrades, haircutRules, cashType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -404,6 +430,7 @@ public class QueryBucketCashFlowDrillDownRequest {
     sb.append("    reportCurrency: ").append(toIndentedString(reportCurrency)).append("\n");
     sb.append("    excludeUnsettledTrades: ").append(toIndentedString(excludeUnsettledTrades)).append("\n");
     sb.append("    haircutRules: ").append(toIndentedString(haircutRules)).append("\n");
+    sb.append("    cashType: ").append(toIndentedString(cashType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -437,6 +464,7 @@ public class QueryBucketCashFlowDrillDownRequest {
     openapiFields.add("reportCurrency");
     openapiFields.add("excludeUnsettledTrades");
     openapiFields.add("haircutRules");
+    openapiFields.add("cashType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -496,6 +524,9 @@ public class QueryBucketCashFlowDrillDownRequest {
             CashFlowHaircutRule.validateJsonElement(jsonArrayhaircutRules.get(i));
           };
         }
+      }
+      if ((jsonObj.get("cashType") != null && !jsonObj.get("cashType").isJsonNull()) && !jsonObj.get("cashType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashType").toString()));
       }
   }
 
