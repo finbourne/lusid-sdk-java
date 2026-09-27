@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationGroup;
-import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundStructureEdge;
 import com.finbourne.lusid.model.FundStructureNode;
 import com.finbourne.lusid.model.Property;
@@ -75,10 +74,6 @@ public class FundStructureRequest {
   public static final String SERIALIZED_NAME_EXISTING_FUNDS = "existingFunds";
   @SerializedName(SERIALIZED_NAME_EXISTING_FUNDS)
   private List<ResourceId> existingFunds;
-
-  public static final String SERIALIZED_NAME_NEW_FUNDS = "newFunds";
-  @SerializedName(SERIALIZED_NAME_NEW_FUNDS)
-  private List<FundDefinitionRequest> newFunds;
 
   public static final String SERIALIZED_NAME_ALLOCATION_GROUPS = "allocationGroups";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_GROUPS)
@@ -188,35 +183,6 @@ public class FundStructureRequest {
 
   public void setExistingFunds(List<ResourceId> existingFunds) {
     this.existingFunds = existingFunds;
-  }
-
-
-  public FundStructureRequest newFunds(List<FundDefinitionRequest> newFunds) {
-    
-    this.newFunds = newFunds;
-    return this;
-  }
-
-  public FundStructureRequest addNewFundsItem(FundDefinitionRequest newFundsItem) {
-    if (this.newFunds == null) {
-      this.newFunds = new ArrayList<>();
-    }
-    this.newFunds.add(newFundsItem);
-    return this;
-  }
-
-   /**
-   * An optional list of Fund definitions to be created inline as part of the structure.
-   * @return newFunds
-  **/
-  @jakarta.annotation.Nullable
-  public List<FundDefinitionRequest> getNewFunds() {
-    return newFunds;
-  }
-
-
-  public void setNewFunds(List<FundDefinitionRequest> newFunds) {
-    this.newFunds = newFunds;
   }
 
 
@@ -350,7 +316,6 @@ public class FundStructureRequest {
         Objects.equals(this.name, fundStructureRequest.name) &&
         Objects.equals(this.description, fundStructureRequest.description) &&
         Objects.equals(this.existingFunds, fundStructureRequest.existingFunds) &&
-        Objects.equals(this.newFunds, fundStructureRequest.newFunds) &&
         Objects.equals(this.allocationGroups, fundStructureRequest.allocationGroups) &&
         Objects.equals(this.nodes, fundStructureRequest.nodes) &&
         Objects.equals(this.edges, fundStructureRequest.edges) &&
@@ -363,7 +328,7 @@ public class FundStructureRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, existingFunds, newFunds, allocationGroups, nodes, edges, properties);
+    return Objects.hash(code, name, description, existingFunds, allocationGroups, nodes, edges, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -381,7 +346,6 @@ public class FundStructureRequest {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    existingFunds: ").append(toIndentedString(existingFunds)).append("\n");
-    sb.append("    newFunds: ").append(toIndentedString(newFunds)).append("\n");
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
@@ -412,7 +376,6 @@ public class FundStructureRequest {
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("existingFunds");
-    openapiFields.add("newFunds");
     openapiFields.add("allocationGroups");
     openapiFields.add("nodes");
     openapiFields.add("edges");
@@ -466,20 +429,6 @@ public class FundStructureRequest {
           // validate the optional field `existingFunds` (array)
           for (int i = 0; i < jsonArrayexistingFunds.size(); i++) {
             ResourceId.validateJsonElement(jsonArrayexistingFunds.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("newFunds") != null && !jsonObj.get("newFunds").isJsonNull()) {
-        JsonArray jsonArraynewFunds = jsonObj.getAsJsonArray("newFunds");
-        if (jsonArraynewFunds != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("newFunds").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `newFunds` to be an array in the JSON string but got `%s`", jsonObj.get("newFunds").toString()));
-          }
-
-          // validate the optional field `newFunds` (array)
-          for (int i = 0; i < jsonArraynewFunds.size(); i++) {
-            FundDefinitionRequest.validateJsonElement(jsonArraynewFunds.get(i));
           };
         }
       }
