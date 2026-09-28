@@ -65,6 +65,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
+
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -150,6 +154,27 @@ public class FundDefinitionRequest {
 
   public void setCode(String code) {
     this.code = code;
+  }
+
+
+  public FundDefinitionRequest shortCode(String shortCode) {
+    
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional.
+   * @return shortCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getShortCode() {
+    return shortCode;
+  }
+
+
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
   }
 
 
@@ -352,7 +377,7 @@ public class FundDefinitionRequest {
   }
 
    /**
-   * The type of fund. Available values: Standalone, Master, Feeder.
+   * The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -550,6 +575,7 @@ public class FundDefinitionRequest {
     }
     FundDefinitionRequest fundDefinitionRequest = (FundDefinitionRequest) o;
     return Objects.equals(this.code, fundDefinitionRequest.code) &&
+        Objects.equals(this.shortCode, fundDefinitionRequest.shortCode) &&
         Objects.equals(this.displayName, fundDefinitionRequest.displayName) &&
         Objects.equals(this.description, fundDefinitionRequest.description) &&
         Objects.equals(this.baseCurrency, fundDefinitionRequest.baseCurrency) &&
@@ -574,7 +600,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -589,6 +615,7 @@ public class FundDefinitionRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundDefinitionRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
@@ -628,6 +655,7 @@ public class FundDefinitionRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("code");
+    openapiFields.add("shortCode");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("baseCurrency");
@@ -678,6 +706,9 @@ public class FundDefinitionRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("shortCode") != null && !jsonObj.get("shortCode").isJsonNull()) && !jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
       }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));

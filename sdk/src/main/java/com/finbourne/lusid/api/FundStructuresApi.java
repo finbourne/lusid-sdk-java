@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.FundStructure;
+import com.finbourne.lusid.model.FundStructureMemberRequest;
 import com.finbourne.lusid.model.FundStructureRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -76,6 +77,274 @@ public class FundStructuresApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call addFundStructureMemberCall(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return addFundStructureMemberCall(scope, code, fundStructureMemberRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addFundStructureMemberCall(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fundStructureMemberRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/fundstructures/{scope}/{code}/members"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addFundStructureMemberValidateBeforeCall(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling addFundStructureMember(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling addFundStructureMember(Async)");
+        }
+
+        // verify the required parameter 'fundStructureMemberRequest' is set
+        if (fundStructureMemberRequest == null) {
+            throw new ApiException("Missing the required parameter 'fundStructureMemberRequest' when calling addFundStructureMember(Async)");
+        }
+
+        return addFundStructureMemberCall(scope, code, fundStructureMemberRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundStructure> addFundStructureMemberWithHttpInfo(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = addFundStructureMemberValidateBeforeCall(scope, code, fundStructureMemberRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundStructure> addFundStructureMemberWithHttpInfo(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addFundStructureMemberValidateBeforeCall(scope, code, fundStructureMemberRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call addFundStructureMemberAsync(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, final ApiCallback<FundStructure> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addFundStructureMemberValidateBeforeCall(scope, code, fundStructureMemberRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addFundStructureMemberAsync(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest, String effectiveAt, final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addFundStructureMemberValidateBeforeCall(scope, code, fundStructureMemberRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIaddFundStructureMemberRequest {
+        private final String scope;
+        private final String code;
+        private final FundStructureMemberRequest fundStructureMemberRequest;
+        private String effectiveAt;
+
+        private APIaddFundStructureMemberRequest(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.fundStructureMemberRequest = fundStructureMemberRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the member is part of the structure. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIaddFundStructureMemberRequest
+         */
+        public APIaddFundStructureMemberRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for addFundStructureMember
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return addFundStructureMemberCall(scope, code, fundStructureMemberRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute addFundStructureMember request
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute() throws ApiException {
+            ApiResponse<FundStructure> localVarResp = addFundStructureMemberWithHttpInfo(scope, code, fundStructureMemberRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addFundStructureMember request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundStructure> localVarResp = addFundStructureMemberWithHttpInfo(scope, code, fundStructureMemberRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addFundStructureMember request with HTTP info returned
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo() throws ApiException {
+            return addFundStructureMemberWithHttpInfo(scope, code, fundStructureMemberRequest, effectiveAt);
+        }
+
+        /**
+         * Execute addFundStructureMember request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addFundStructureMemberWithHttpInfo(scope, code, fundStructureMemberRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute addFundStructureMember request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback) throws ApiException {
+            return addFundStructureMemberAsync(scope, code, fundStructureMemberRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute addFundStructureMember request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+            return addFundStructureMemberAsync(scope, code, fundStructureMemberRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+     * Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
+     * @param scope The scope of the Fund Structure. (required)
+     * @param code The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. (required)
+     * @param fundStructureMemberRequest The node to add and the links joining it to existing members. (required)
+     * @return APIaddFundStructureMemberRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Fund Structure with the member added. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIaddFundStructureMemberRequest addFundStructureMember(String scope, String code, FundStructureMemberRequest fundStructureMemberRequest) {
+        return new APIaddFundStructureMemberRequest(scope, code, fundStructureMemberRequest);
+    }
     private okhttp3.Call createFundStructureCall(String scope, FundStructureRequest fundStructureRequest, final ApiCallback _callback) throws ApiException {
         return createFundStructureCall(scope, fundStructureRequest,  _callback, new ConfigurationOptions());
     }
@@ -1189,5 +1458,523 @@ public class FundStructuresApi {
      */
     public APIlistFundStructuresRequest listFundStructures() {
         return new APIlistFundStructuresRequest();
+    }
+    private okhttp3.Call removeFundStructureMemberCall(String scope, String code, String nodeCode, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return removeFundStructureMemberCall(scope, code, nodeCode, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call removeFundStructureMemberCall(String scope, String code, String nodeCode, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/fundstructures/{scope}/{code}/members/{nodeCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "nodeCode" + "}", localVarApiClient.escapeString(nodeCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call removeFundStructureMemberValidateBeforeCall(String scope, String code, String nodeCode, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling removeFundStructureMember(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling removeFundStructureMember(Async)");
+        }
+
+        // verify the required parameter 'nodeCode' is set
+        if (nodeCode == null) {
+            throw new ApiException("Missing the required parameter 'nodeCode' when calling removeFundStructureMember(Async)");
+        }
+
+        return removeFundStructureMemberCall(scope, code, nodeCode, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundStructure> removeFundStructureMemberWithHttpInfo(String scope, String code, String nodeCode, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = removeFundStructureMemberValidateBeforeCall(scope, code, nodeCode, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundStructure> removeFundStructureMemberWithHttpInfo(String scope, String code, String nodeCode, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = removeFundStructureMemberValidateBeforeCall(scope, code, nodeCode, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call removeFundStructureMemberAsync(String scope, String code, String nodeCode, String effectiveAt, final ApiCallback<FundStructure> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = removeFundStructureMemberValidateBeforeCall(scope, code, nodeCode, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call removeFundStructureMemberAsync(String scope, String code, String nodeCode, String effectiveAt, final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = removeFundStructureMemberValidateBeforeCall(scope, code, nodeCode, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIremoveFundStructureMemberRequest {
+        private final String scope;
+        private final String code;
+        private final String nodeCode;
+        private String effectiveAt;
+
+        private APIremoveFundStructureMemberRequest(String scope, String code, String nodeCode) {
+            this.scope = scope;
+            this.code = code;
+            this.nodeCode = nodeCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the member is no longer part of the structure. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIremoveFundStructureMemberRequest
+         */
+        public APIremoveFundStructureMemberRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for removeFundStructureMember
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return removeFundStructureMemberCall(scope, code, nodeCode, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute removeFundStructureMember request
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute() throws ApiException {
+            ApiResponse<FundStructure> localVarResp = removeFundStructureMemberWithHttpInfo(scope, code, nodeCode, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute removeFundStructureMember request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundStructure> localVarResp = removeFundStructureMemberWithHttpInfo(scope, code, nodeCode, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute removeFundStructureMember request with HTTP info returned
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo() throws ApiException {
+            return removeFundStructureMemberWithHttpInfo(scope, code, nodeCode, effectiveAt);
+        }
+
+        /**
+         * Execute removeFundStructureMember request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return removeFundStructureMemberWithHttpInfo(scope, code, nodeCode, effectiveAt, opts);
+        }
+
+        /**
+         * Execute removeFundStructureMember request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback) throws ApiException {
+            return removeFundStructureMemberAsync(scope, code, nodeCode, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute removeFundStructureMember request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+            return removeFundStructureMemberAsync(scope, code, nodeCode, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+     * Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
+     * @param scope The scope of the Fund Structure. (required)
+     * @param code The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. (required)
+     * @param nodeCode The node code of the member to remove. (required)
+     * @return APIremoveFundStructureMemberRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Fund Structure with the member removed. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIremoveFundStructureMemberRequest removeFundStructureMember(String scope, String code, String nodeCode) {
+        return new APIremoveFundStructureMemberRequest(scope, code, nodeCode);
+    }
+    private okhttp3.Call upsertFundStructureCall(String scope, String code, FundStructureRequest fundStructureRequest, final ApiCallback _callback) throws ApiException {
+        return upsertFundStructureCall(scope, code, fundStructureRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertFundStructureCall(String scope, String code, FundStructureRequest fundStructureRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fundStructureRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/fundstructures/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertFundStructureValidateBeforeCall(String scope, String code, FundStructureRequest fundStructureRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertFundStructure(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertFundStructure(Async)");
+        }
+
+        // verify the required parameter 'fundStructureRequest' is set
+        if (fundStructureRequest == null) {
+            throw new ApiException("Missing the required parameter 'fundStructureRequest' when calling upsertFundStructure(Async)");
+        }
+
+        return upsertFundStructureCall(scope, code, fundStructureRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundStructure> upsertFundStructureWithHttpInfo(String scope, String code, FundStructureRequest fundStructureRequest) throws ApiException {
+        okhttp3.Call localVarCall = upsertFundStructureValidateBeforeCall(scope, code, fundStructureRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundStructure> upsertFundStructureWithHttpInfo(String scope, String code, FundStructureRequest fundStructureRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertFundStructureValidateBeforeCall(scope, code, fundStructureRequest, null, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertFundStructureAsync(String scope, String code, FundStructureRequest fundStructureRequest, final ApiCallback<FundStructure> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFundStructureValidateBeforeCall(scope, code, fundStructureRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertFundStructureAsync(String scope, String code, FundStructureRequest fundStructureRequest, final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFundStructureValidateBeforeCall(scope, code, fundStructureRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundStructure>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertFundStructureRequest {
+        private final String scope;
+        private final String code;
+        private final FundStructureRequest fundStructureRequest;
+
+        private APIupsertFundStructureRequest(String scope, String code, FundStructureRequest fundStructureRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.fundStructureRequest = fundStructureRequest;
+        }
+
+        /**
+         * Build call for upsertFundStructure
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertFundStructureCall(scope, code, fundStructureRequest, _callback);
+        }
+
+        /**
+         * Execute upsertFundStructure request
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute() throws ApiException {
+            ApiResponse<FundStructure> localVarResp = upsertFundStructureWithHttpInfo(scope, code, fundStructureRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertFundStructure request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundStructure
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundStructure execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundStructure> localVarResp = upsertFundStructureWithHttpInfo(scope, code, fundStructureRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertFundStructure request with HTTP info returned
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo() throws ApiException {
+            return upsertFundStructureWithHttpInfo(scope, code, fundStructureRequest);
+        }
+
+        /**
+         * Execute upsertFundStructure request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundStructure&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundStructure> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertFundStructureWithHttpInfo(scope, code, fundStructureRequest, opts);
+        }
+
+        /**
+         * Execute upsertFundStructure request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback) throws ApiException {
+            return upsertFundStructureAsync(scope, code, fundStructureRequest, _callback);
+        }
+
+        /**
+         * Execute upsertFundStructure request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundStructure> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertFundStructureAsync(scope, code, fundStructureRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+     * Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
+     * @param scope The scope of the Fund Structure. (required)
+     * @param code The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure, and must match the code in the request body. (required)
+     * @param fundStructureRequest The full definition of the Fund Structure from the effective datetime in the request, or the current LUSID system datetime if not specified. (required)
+     * @return APIupsertFundStructureRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Fund Structure as it stands from the effective datetime. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertFundStructureRequest upsertFundStructure(String scope, String code, FundStructureRequest fundStructureRequest) {
+        return new APIupsertFundStructureRequest(scope, code, fundStructureRequest);
     }
 }

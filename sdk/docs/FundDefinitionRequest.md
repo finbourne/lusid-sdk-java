@@ -6,6 +6,7 @@ The request used to create a Fund.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **String** | The code given for the Fund. | [default to String]
+**shortCode** | **String** | A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional. | [optional] [default to String]
 **displayName** | **String** | The name of the Fund. | [default to String]
 **description** | **String** | A description for the Fund. | [optional] [default to String]
 **baseCurrency** | **String** | The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency. | [default to String]
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 **fundConfigurationId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **shareClassInstrumentScopes** | **List&lt;String&gt;** | The scopes in which the instruments lie, currently limited to one. | [optional] [default to List<String>]
 **shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. | [optional] [default to List<InstrumentResolutionDetail>]
-**type** | **String** | The type of fund. Available values: Standalone, Master, Feeder. | [optional] [default to String]
+**type** | **String** | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. | [optional] [default to String]
 **inceptionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Inception date of the Fund | [default to OffsetDateTime]
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
 **primaryNavType** | [**NavTypeDefinition**](NavTypeDefinition.md) |  | [default to NavTypeDefinition]
@@ -30,6 +31,7 @@ import java.lang.System;
 import java.net.URI;
 
 String Code = "example Code";
+@jakarta.annotation.Nullable String ShortCode = "example ShortCode";
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
 String BaseCurrency = "example BaseCurrency";
@@ -50,6 +52,7 @@ Boolean CreateInstrument = true;
 
 FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest()
     .Code(Code)
+    .ShortCode(ShortCode)
     .DisplayName(DisplayName)
     .Description(Description)
     .BaseCurrency(BaseCurrency)

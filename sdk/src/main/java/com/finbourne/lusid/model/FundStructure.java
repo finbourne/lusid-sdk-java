@@ -95,6 +95,14 @@ public class FundStructure {
   @SerializedName(SERIALIZED_NAME_EDGES)
   private List<FundStructureEdge> edges = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_ROLE_DATA_TYPE_ID = "roleDataTypeId";
+  @SerializedName(SERIALIZED_NAME_ROLE_DATA_TYPE_ID)
+  private ResourceId roleDataTypeId;
+
+  public static final String SERIALIZED_NAME_NAV_TYPE_CODES = "navTypeCodes";
+  @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODES)
+  private List<String> navTypeCodes;
+
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -238,7 +246,7 @@ public class FundStructure {
   }
 
    /**
-   * An optional list of Allocation Groups that can apply across a Fund Structure. Only classes and feeder funds linked to the master fund specified are allowed.
+   * An optional list of Allocation Groups that can apply across a Fund Structure. A group may span the share classes of a member and the members that invest into it through dedicated share class links.
    * @return allocationGroups
   **/
   @jakarta.annotation.Nullable
@@ -267,7 +275,7 @@ public class FundStructure {
   }
 
    /**
-   * The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role.
+   * The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role. May be empty on create, with members added later through the members endpoint.
    * @return nodes
   **/
   @jakarta.annotation.Nonnull
@@ -296,7 +304,7 @@ public class FundStructure {
   }
 
    /**
-   * The list of edges that define the relationships between feeder and master nodes in the structure.
+   * The list of edges that define how the members of the structure are linked: a member investing into a dedicated share class of another, or holding an equity, GP, LP or carry interest in another through an instrument.
    * @return edges
   **/
   @jakarta.annotation.Nonnull
@@ -307,6 +315,56 @@ public class FundStructure {
 
   public void setEdges(List<FundStructureEdge> edges) {
     this.edges = edges;
+  }
+
+
+  public FundStructure roleDataTypeId(ResourceId roleDataTypeId) {
+    
+    this.roleDataTypeId = roleDataTypeId;
+    return this;
+  }
+
+   /**
+   * Get roleDataTypeId
+   * @return roleDataTypeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getRoleDataTypeId() {
+    return roleDataTypeId;
+  }
+
+
+  public void setRoleDataTypeId(ResourceId roleDataTypeId) {
+    this.roleDataTypeId = roleDataTypeId;
+  }
+
+
+  public FundStructure navTypeCodes(List<String> navTypeCodes) {
+    
+    this.navTypeCodes = navTypeCodes;
+    return this;
+  }
+
+  public FundStructure addNavTypeCodesItem(String navTypeCodesItem) {
+    if (this.navTypeCodes == null) {
+      this.navTypeCodes = new ArrayList<>();
+    }
+    this.navTypeCodes.add(navTypeCodesItem);
+    return this;
+  }
+
+   /**
+   * The NAV types every member of the structure produces, by code. Declaring them once here gives the structure a shared Timeline. At least one is required, and every member fund must define a NAV type with each of these codes.
+   * @return navTypeCodes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getNavTypeCodes() {
+    return navTypeCodes;
+  }
+
+
+  public void setNavTypeCodes(List<String> navTypeCodes) {
+    this.navTypeCodes = navTypeCodes;
   }
 
 
@@ -407,6 +465,8 @@ public class FundStructure {
         Objects.equals(this.allocationGroups, fundStructure.allocationGroups) &&
         Objects.equals(this.nodes, fundStructure.nodes) &&
         Objects.equals(this.edges, fundStructure.edges) &&
+        Objects.equals(this.roleDataTypeId, fundStructure.roleDataTypeId) &&
+        Objects.equals(this.navTypeCodes, fundStructure.navTypeCodes) &&
         Objects.equals(this.version, fundStructure.version) &&
         Objects.equals(this.properties, fundStructure.properties) &&
         Objects.equals(this.links, fundStructure.links);
@@ -418,7 +478,7 @@ public class FundStructure {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, name, description, funds, allocationGroups, nodes, edges, version, properties, links);
+    return Objects.hash(href, id, name, description, funds, allocationGroups, nodes, edges, roleDataTypeId, navTypeCodes, version, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -440,6 +500,8 @@ public class FundStructure {
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
+    sb.append("    roleDataTypeId: ").append(toIndentedString(roleDataTypeId)).append("\n");
+    sb.append("    navTypeCodes: ").append(toIndentedString(navTypeCodes)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -473,6 +535,8 @@ public class FundStructure {
     openapiFields.add("allocationGroups");
     openapiFields.add("nodes");
     openapiFields.add("edges");
+    openapiFields.add("roleDataTypeId");
+    openapiFields.add("navTypeCodes");
     openapiFields.add("version");
     openapiFields.add("properties");
     openapiFields.add("links");
@@ -564,6 +628,14 @@ public class FundStructure {
       for (int i = 0; i < jsonArrayedges.size(); i++) {
         FundStructureEdge.validateJsonElement(jsonArrayedges.get(i));
       };
+      // validate the optional field `roleDataTypeId`
+      if (jsonObj.get("roleDataTypeId") != null && !jsonObj.get("roleDataTypeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("roleDataTypeId"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("navTypeCodes") != null && !jsonObj.get("navTypeCodes").isJsonNull() && !jsonObj.get("navTypeCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `navTypeCodes` to be an array in the JSON string but got `%s`", jsonObj.get("navTypeCodes").toString()));
+      }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));

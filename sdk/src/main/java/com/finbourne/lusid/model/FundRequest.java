@@ -280,7 +280,7 @@ public class FundRequest {
   }
 
    /**
-   * The type of fund. Available values: Standalone, Master, Feeder.
+   * The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
    * @return type
   **/
   @jakarta.annotation.Nonnull

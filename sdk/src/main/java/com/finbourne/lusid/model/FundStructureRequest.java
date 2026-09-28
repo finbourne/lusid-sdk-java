@@ -82,15 +82,23 @@ public class FundStructureRequest {
 
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
-  private List<FundStructureNode> nodes = new ArrayList<>();
+  private List<FundStructureNode> nodes;
 
   public static final String SERIALIZED_NAME_EDGES = "edges";
   @SerializedName(SERIALIZED_NAME_EDGES)
-  private List<FundStructureEdge> edges = new ArrayList<>();
+  private List<FundStructureEdge> edges;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private OffsetDateTime effectiveAt;
+
+  public static final String SERIALIZED_NAME_ROLE_DATA_TYPE_ID = "roleDataTypeId";
+  @SerializedName(SERIALIZED_NAME_ROLE_DATA_TYPE_ID)
+  private ResourceId roleDataTypeId;
+
+  public static final String SERIALIZED_NAME_NAV_TYPE_CODES = "navTypeCodes";
+  @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODES)
+  private List<String> navTypeCodes = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -206,7 +214,7 @@ public class FundStructureRequest {
   }
 
    /**
-   * An optional list of Allocation Groups that can apply across a Fund Structure. Only classes and feeder funds linked to the master fund specified are allowed.
+   * An optional list of Allocation Groups that can apply across a Fund Structure. A group may span the share classes of a member and the members that invest into it through dedicated share class links.
    * @return allocationGroups
   **/
   @jakarta.annotation.Nullable
@@ -235,10 +243,10 @@ public class FundStructureRequest {
   }
 
    /**
-   * The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role.
+   * The list of nodes that make up the Fund Structure, each referencing a Fund and defining its role. May be empty on create, with members added later through the members endpoint.
    * @return nodes
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<FundStructureNode> getNodes() {
     return nodes;
   }
@@ -264,10 +272,10 @@ public class FundStructureRequest {
   }
 
    /**
-   * The list of edges that define the relationships between feeder and master nodes in the structure.
+   * The list of edges that define how the members of the structure are linked: a member investing into a dedicated share class of another, or holding an equity, GP, LP or carry interest in another through an instrument.
    * @return edges
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<FundStructureEdge> getEdges() {
     return edges;
   }
@@ -296,6 +304,56 @@ public class FundStructureRequest {
 
   public void setEffectiveAt(OffsetDateTime effectiveAt) {
     this.effectiveAt = effectiveAt;
+  }
+
+
+  public FundStructureRequest roleDataTypeId(ResourceId roleDataTypeId) {
+    
+    this.roleDataTypeId = roleDataTypeId;
+    return this;
+  }
+
+   /**
+   * Get roleDataTypeId
+   * @return roleDataTypeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getRoleDataTypeId() {
+    return roleDataTypeId;
+  }
+
+
+  public void setRoleDataTypeId(ResourceId roleDataTypeId) {
+    this.roleDataTypeId = roleDataTypeId;
+  }
+
+
+  public FundStructureRequest navTypeCodes(List<String> navTypeCodes) {
+    
+    this.navTypeCodes = navTypeCodes;
+    return this;
+  }
+
+  public FundStructureRequest addNavTypeCodesItem(String navTypeCodesItem) {
+    if (this.navTypeCodes == null) {
+      this.navTypeCodes = new ArrayList<>();
+    }
+    this.navTypeCodes.add(navTypeCodesItem);
+    return this;
+  }
+
+   /**
+   * The NAV types every member of the structure produces, by code. Declaring them once here gives the structure a shared Timeline. At least one is required, and every member fund must define a NAV type with each of these codes.
+   * @return navTypeCodes
+  **/
+  @jakarta.annotation.Nonnull
+  public List<String> getNavTypeCodes() {
+    return navTypeCodes;
+  }
+
+
+  public void setNavTypeCodes(List<String> navTypeCodes) {
+    this.navTypeCodes = navTypeCodes;
   }
 
 
@@ -346,6 +404,8 @@ public class FundStructureRequest {
         Objects.equals(this.nodes, fundStructureRequest.nodes) &&
         Objects.equals(this.edges, fundStructureRequest.edges) &&
         Objects.equals(this.effectiveAt, fundStructureRequest.effectiveAt) &&
+        Objects.equals(this.roleDataTypeId, fundStructureRequest.roleDataTypeId) &&
+        Objects.equals(this.navTypeCodes, fundStructureRequest.navTypeCodes) &&
         Objects.equals(this.properties, fundStructureRequest.properties);
   }
 
@@ -355,7 +415,7 @@ public class FundStructureRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, existingFunds, allocationGroups, nodes, edges, effectiveAt, properties);
+    return Objects.hash(code, name, description, existingFunds, allocationGroups, nodes, edges, effectiveAt, roleDataTypeId, navTypeCodes, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -377,6 +437,8 @@ public class FundStructureRequest {
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    roleDataTypeId: ").append(toIndentedString(roleDataTypeId)).append("\n");
+    sb.append("    navTypeCodes: ").append(toIndentedString(navTypeCodes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -408,14 +470,15 @@ public class FundStructureRequest {
     openapiFields.add("nodes");
     openapiFields.add("edges");
     openapiFields.add("effectiveAt");
+    openapiFields.add("roleDataTypeId");
+    openapiFields.add("navTypeCodes");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("nodes");
-    openapiRequiredFields.add("edges");
+    openapiRequiredFields.add("navTypeCodes");
   }
 
  /**
@@ -475,26 +538,44 @@ public class FundStructureRequest {
           };
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("nodes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
-      }
+      if (jsonObj.get("nodes") != null && !jsonObj.get("nodes").isJsonNull()) {
+        JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
+        if (jsonArraynodes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("nodes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `nodes` to be an array in the JSON string but got `%s`", jsonObj.get("nodes").toString()));
+          }
 
-      JsonArray jsonArraynodes = jsonObj.getAsJsonArray("nodes");
-      // validate the required field `nodes` (array)
-      for (int i = 0; i < jsonArraynodes.size(); i++) {
-        FundStructureNode.validateJsonElement(jsonArraynodes.get(i));
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("edges").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `edges` to be an array in the JSON string but got `%s`", jsonObj.get("edges").toString()));
+          // validate the optional field `nodes` (array)
+          for (int i = 0; i < jsonArraynodes.size(); i++) {
+            FundStructureNode.validateJsonElement(jsonArraynodes.get(i));
+          };
+        }
       }
+      if (jsonObj.get("edges") != null && !jsonObj.get("edges").isJsonNull()) {
+        JsonArray jsonArrayedges = jsonObj.getAsJsonArray("edges");
+        if (jsonArrayedges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("edges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `edges` to be an array in the JSON string but got `%s`", jsonObj.get("edges").toString()));
+          }
 
-      JsonArray jsonArrayedges = jsonObj.getAsJsonArray("edges");
-      // validate the required field `edges` (array)
-      for (int i = 0; i < jsonArrayedges.size(); i++) {
-        FundStructureEdge.validateJsonElement(jsonArrayedges.get(i));
-      };
+          // validate the optional field `edges` (array)
+          for (int i = 0; i < jsonArrayedges.size(); i++) {
+            FundStructureEdge.validateJsonElement(jsonArrayedges.get(i));
+          };
+        }
+      }
+      // validate the optional field `roleDataTypeId`
+      if (jsonObj.get("roleDataTypeId") != null && !jsonObj.get("roleDataTypeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("roleDataTypeId"));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("navTypeCodes") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("navTypeCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `navTypeCodes` to be an array in the JSON string but got `%s`", jsonObj.get("navTypeCodes").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

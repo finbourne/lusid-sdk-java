@@ -99,6 +99,10 @@ public class Fund {
   @SerializedName(SERIALIZED_NAME_FUND_CONFIGURATION_ID)
   private ResourceId fundConfigurationId;
 
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
+
   public static final String SERIALIZED_NAME_ABOR_ID = "aborId";
   @SerializedName(SERIALIZED_NAME_ABOR_ID)
   private ResourceId aborId;
@@ -338,6 +342,27 @@ public class Fund {
   }
 
 
+  public Fund shortCode(String shortCode) {
+    
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional.
+   * @return shortCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getShortCode() {
+    return shortCode;
+  }
+
+
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
+  }
+
+
   public Fund aborId(ResourceId aborId) {
     
     this.aborId = aborId;
@@ -395,7 +420,7 @@ public class Fund {
   }
 
    /**
-   * The type of fund. Available values: Standalone, Master, Feeder.
+   * The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -721,6 +746,7 @@ public class Fund {
         Objects.equals(this.investorStructure, fund.investorStructure) &&
         Objects.equals(this.portfolioIds, fund.portfolioIds) &&
         Objects.equals(this.fundConfigurationId, fund.fundConfigurationId) &&
+        Objects.equals(this.shortCode, fund.shortCode) &&
         Objects.equals(this.aborId, fund.aborId) &&
         Objects.equals(this.shareClassInstruments, fund.shareClassInstruments) &&
         Objects.equals(this.type, fund.type) &&
@@ -744,7 +770,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shortCode, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -766,6 +792,7 @@ public class Fund {
     sb.append("    investorStructure: ").append(toIndentedString(investorStructure)).append("\n");
     sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
     sb.append("    fundConfigurationId: ").append(toIndentedString(fundConfigurationId)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("    aborId: ").append(toIndentedString(aborId)).append("\n");
     sb.append("    shareClassInstruments: ").append(toIndentedString(shareClassInstruments)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -811,6 +838,7 @@ public class Fund {
     openapiFields.add("investorStructure");
     openapiFields.add("portfolioIds");
     openapiFields.add("fundConfigurationId");
+    openapiFields.add("shortCode");
     openapiFields.add("aborId");
     openapiFields.add("shareClassInstruments");
     openapiFields.add("type");
@@ -888,6 +916,9 @@ public class Fund {
       // validate the optional field `fundConfigurationId`
       if (jsonObj.get("fundConfigurationId") != null && !jsonObj.get("fundConfigurationId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("fundConfigurationId"));
+      }
+      if ((jsonObj.get("shortCode") != null && !jsonObj.get("shortCode").isJsonNull()) && !jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
       }
       // validate the optional field `aborId`
       if (jsonObj.get("aborId") != null && !jsonObj.get("aborId").isJsonNull()) {

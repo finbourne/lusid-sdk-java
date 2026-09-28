@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The target of a Fund Structure edge, identifying the master node and share class the feeder invests into.
+ * The member a link points at, and for a dedicated share class link the share class on that member.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FundStructureEdgeTarget {
@@ -67,7 +68,7 @@ public class FundStructureEdgeTarget {
   }
 
    /**
-   * The node code of the master node that is the target of this relationship.
+   * The node code of the member the link points at.
    * @return node
   **/
   @jakarta.annotation.Nonnull
@@ -88,10 +89,10 @@ public class FundStructureEdgeTarget {
   }
 
    /**
-   * The short code of the share class on the master fund that the feeder invests into.
+   * The short code of the share class on the target member that the source invests into. Required for a DedicatedShareClass link and not allowed on any other.
    * @return shareClassShortCode
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getShareClassShortCode() {
     return shareClassShortCode;
   }
@@ -116,9 +117,20 @@ public class FundStructureEdgeTarget {
         Objects.equals(this.shareClassShortCode, fundStructureEdgeTarget.shareClassShortCode);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(node, shareClassShortCode);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -155,7 +167,6 @@ public class FundStructureEdgeTarget {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("node");
-    openapiRequiredFields.add("shareClassShortCode");
   }
 
  /**
@@ -181,7 +192,7 @@ public class FundStructureEdgeTarget {
       if (!jsonObj.get("node").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `node` to be a primitive type in the JSON string but got `%s`", jsonObj.get("node").toString()));
       }
-      if (!jsonObj.get("shareClassShortCode").isJsonPrimitive()) {
+      if ((jsonObj.get("shareClassShortCode") != null && !jsonObj.get("shareClassShortCode").isJsonNull()) && !jsonObj.get("shareClassShortCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shareClassShortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shareClassShortCode").toString()));
       }
   }

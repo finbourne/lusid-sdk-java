@@ -213,7 +213,9 @@ public enum PropertyDomain {
   
   RECDEFINITION("RecDefinition"),
   
-  RECRESULT("RecResult");
+  RECRESULT("RecResult"),
+  
+  JOURNALENTRY("JournalEntry");
 
   private String value;
 

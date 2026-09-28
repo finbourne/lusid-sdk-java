@@ -1,12 +1,12 @@
 # com.finbourne.lusid.model.FundStructureEdgeTarget
-The target of a Fund Structure edge, identifying the master node and share class the feeder invests into.
+The member a link points at, and for a dedicated share class link the share class on that member.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**node** | **String** | The node code of the master node that is the target of this relationship. | [default to String]
-**shareClassShortCode** | **String** | The short code of the share class on the master fund that the feeder invests into. | [default to String]
+**node** | **String** | The node code of the member the link points at. | [default to String]
+**shareClassShortCode** | **String** | The short code of the share class on the target member that the source invests into. Required for a DedicatedShareClass link and not allowed on any other. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.FundStructureEdgeTarget;
@@ -15,7 +15,7 @@ import java.lang.System;
 import java.net.URI;
 
 String Node = "example Node";
-String ShareClassShortCode = "example ShareClassShortCode";
+@jakarta.annotation.Nullable String ShareClassShortCode = "example ShareClassShortCode";
 
 
 FundStructureEdgeTarget fundStructureEdgeTargetInstance = new FundStructureEdgeTarget()

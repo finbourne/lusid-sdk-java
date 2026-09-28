@@ -12,7 +12,7 @@ package com.finbourne.lusid;
 
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Configuration {
-    public static final String VERSION = "2.1.260";
+    public static final String VERSION = "2.1.261";
 
     private static ApiClient defaultApiClient = new ApiClient();
 

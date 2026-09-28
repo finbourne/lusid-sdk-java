@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FundStructureAllocationBasis;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,6 +67,18 @@ public class FundStructureNode {
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)
   private String role;
+
+  public static final String SERIALIZED_NAME_ALLOCATION_BASIS = "allocationBasis";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_BASIS)
+  private FundStructureAllocationBasis allocationBasis;
+
+  public static final String SERIALIZED_NAME_PNL_FLOW_MODE = "pnlFlowMode";
+  @SerializedName(SERIALIZED_NAME_PNL_FLOW_MODE)
+  private String pnlFlowMode;
+
+  public static final String SERIALIZED_NAME_ALLOCATION_MAP_ID = "allocationMapId";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_MAP_ID)
+  private ResourceId allocationMapId;
 
   public FundStructureNode() {
   }
@@ -138,7 +153,7 @@ public class FundStructureNode {
   }
 
    /**
-   * The role of this node within the structure. Available values: Master, Feeder.
+   * The role of this node within the structure. Must be one of the acceptable values of the structure&#39;s role data type.
    * @return role
   **/
   @jakarta.annotation.Nonnull
@@ -149,6 +164,69 @@ public class FundStructureNode {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+
+  public FundStructureNode allocationBasis(FundStructureAllocationBasis allocationBasis) {
+    
+    this.allocationBasis = allocationBasis;
+    return this;
+  }
+
+   /**
+   * Get allocationBasis
+   * @return allocationBasis
+  **/
+  @jakarta.annotation.Nullable
+  public FundStructureAllocationBasis getAllocationBasis() {
+    return allocationBasis;
+  }
+
+
+  public void setAllocationBasis(FundStructureAllocationBasis allocationBasis) {
+    this.allocationBasis = allocationBasis;
+  }
+
+
+  public FundStructureNode pnlFlowMode(String pnlFlowMode) {
+    
+    this.pnlFlowMode = pnlFlowMode;
+    return this;
+  }
+
+   /**
+   * How profit and loss reaches this member from the members it holds. EquityPickup (the default) revalues the position in each held member; BucketFlowThrough receives one line per economic bucket, tagged with its origin; TransactionFlowThrough receives every line, tagged with its origin and path. Available values: EquityPickup, BucketFlowThrough, TransactionFlowThrough.
+   * @return pnlFlowMode
+  **/
+  @jakarta.annotation.Nullable
+  public String getPnlFlowMode() {
+    return pnlFlowMode;
+  }
+
+
+  public void setPnlFlowMode(String pnlFlowMode) {
+    this.pnlFlowMode = pnlFlowMode;
+  }
+
+
+  public FundStructureNode allocationMapId(ResourceId allocationMapId) {
+    
+    this.allocationMapId = allocationMapId;
+    return this;
+  }
+
+   /**
+   * Get allocationMapId
+   * @return allocationMapId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAllocationMapId() {
+    return allocationMapId;
+  }
+
+
+  public void setAllocationMapId(ResourceId allocationMapId) {
+    this.allocationMapId = allocationMapId;
   }
 
 
@@ -165,12 +243,26 @@ public class FundStructureNode {
     return Objects.equals(this.nodeCode, fundStructureNode.nodeCode) &&
         Objects.equals(this.fundScope, fundStructureNode.fundScope) &&
         Objects.equals(this.fundCode, fundStructureNode.fundCode) &&
-        Objects.equals(this.role, fundStructureNode.role);
+        Objects.equals(this.role, fundStructureNode.role) &&
+        Objects.equals(this.allocationBasis, fundStructureNode.allocationBasis) &&
+        Objects.equals(this.pnlFlowMode, fundStructureNode.pnlFlowMode) &&
+        Objects.equals(this.allocationMapId, fundStructureNode.allocationMapId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nodeCode, fundScope, fundCode, role);
+    return Objects.hash(nodeCode, fundScope, fundCode, role, allocationBasis, pnlFlowMode, allocationMapId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -181,6 +273,9 @@ public class FundStructureNode {
     sb.append("    fundScope: ").append(toIndentedString(fundScope)).append("\n");
     sb.append("    fundCode: ").append(toIndentedString(fundCode)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    allocationBasis: ").append(toIndentedString(allocationBasis)).append("\n");
+    sb.append("    pnlFlowMode: ").append(toIndentedString(pnlFlowMode)).append("\n");
+    sb.append("    allocationMapId: ").append(toIndentedString(allocationMapId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,6 +302,9 @@ public class FundStructureNode {
     openapiFields.add("fundScope");
     openapiFields.add("fundCode");
     openapiFields.add("role");
+    openapiFields.add("allocationBasis");
+    openapiFields.add("pnlFlowMode");
+    openapiFields.add("allocationMapId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -247,6 +345,17 @@ public class FundStructureNode {
       }
       if (!jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
+      }
+      // validate the optional field `allocationBasis`
+      if (jsonObj.get("allocationBasis") != null && !jsonObj.get("allocationBasis").isJsonNull()) {
+        FundStructureAllocationBasis.validateJsonElement(jsonObj.get("allocationBasis"));
+      }
+      if ((jsonObj.get("pnlFlowMode") != null && !jsonObj.get("pnlFlowMode").isJsonNull()) && !jsonObj.get("pnlFlowMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pnlFlowMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pnlFlowMode").toString()));
+      }
+      // validate the optional field `allocationMapId`
+      if (jsonObj.get("allocationMapId") != null && !jsonObj.get("allocationMapId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("allocationMapId"));
       }
   }
 
