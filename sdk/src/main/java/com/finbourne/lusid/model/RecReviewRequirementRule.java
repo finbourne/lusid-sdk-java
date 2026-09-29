@@ -68,7 +68,7 @@ public class RecReviewRequirementRule {
   }
 
    /**
-   * Whether this category&#39;s results need reviewing. One of: Required, NotRequired. Available values: Required, NotRequired.
+   * Whether this category&#39;s results need reviewing. Available values: Required, NotRequired.
    * @return reviewRequirement
   **/
   @jakarta.annotation.Nonnull

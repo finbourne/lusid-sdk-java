@@ -6,7 +6,7 @@ Base class for the configuration of a writeback a matching ruleset generates sug
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **writebackType** | **String** | Polymorphic discriminator, naming the change the writeback makes to LUSID. Supported types: SettleExpectedActivity, which is only valid when recType is SettlementActivity. Available values: SettleExpectedActivity. | [default to String]
-**targetSide** | **String** | The side the writeback changes, the other being the source of truth. One of: Left, Right. As the writeback changes LUSID, this side must draw on a native LUSID dataset rather than relational data. Available values: Left, Right. | [default to String]
+**targetSide** | **String** | The side the writeback changes, the other being the source of truth. As the writeback changes LUSID, this side must draw on a native LUSID dataset rather than relational data. Available values: Left, Right. | [default to String]
 **mandatoryRuleNames** | [**SettleExpectedActivityRuleNames**](SettleExpectedActivityRuleNames.md) |  | [default to SettleExpectedActivityRuleNames]
 **resultPatterns** | [**List&lt;WritebackResultPattern&gt;**](WritebackResultPattern.md) | The combinations of units difference and result cardinality for which writeback is suggested. A combination that is not present never produces a suggestion. Each combination may appear once, and the collection is returned in a canonical order regardless of the order supplied. | [default to List<WritebackResultPattern>]
 

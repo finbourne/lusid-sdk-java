@@ -2047,11 +2047,11 @@ public class RecsApi {
     public APIgetMatchingRulesetRequest getMatchingRuleset(String scope, String code) {
         return new APIgetMatchingRulesetRequest(scope, code);
     }
-    private okhttp3.Call getRecDefinitionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getRecDefinitionCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getRecDefinitionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getRecDefinitionCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getRecDefinitionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecDefinitionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2082,6 +2082,10 @@ public class RecsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2104,7 +2108,7 @@ public class RecsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRecDefinitionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecDefinitionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getRecDefinition(Async)");
@@ -2115,34 +2119,34 @@ public class RecsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getRecDefinition(Async)");
         }
 
-        return getRecDefinitionCall(scope, code, asAt, _callback, opts);
+        return getRecDefinitionCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<RecDefinition> getRecDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<RecDefinition> getRecDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<RecDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<RecDefinition> getRecDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<RecDefinition> getRecDefinitionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<RecDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRecDefinitionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<RecDefinition> _callback) throws ApiException {
+    private okhttp3.Call getRecDefinitionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<RecDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<RecDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getRecDefinitionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<RecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecDefinitionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<RecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getRecDefinitionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<RecDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2152,6 +2156,7 @@ public class RecsApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
+        private List<String> propertyKeys;
 
         private APIgetRecDefinitionRequest(String scope, String code) {
             this.scope = scope;
@@ -2169,6 +2174,16 @@ public class RecsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec   definition. These must have the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)
+         * @return APIgetRecDefinitionRequest
+         */
+        public APIgetRecDefinitionRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for getRecDefinition
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2182,7 +2197,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRecDefinitionCall(scope, code, asAt, _callback);
+            return getRecDefinitionCall(scope, code, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -2198,7 +2213,7 @@ public class RecsApi {
          </table>
          */
         public RecDefinition execute() throws ApiException {
-            ApiResponse<RecDefinition> localVarResp = getRecDefinitionWithHttpInfo(scope, code, asAt);
+            ApiResponse<RecDefinition> localVarResp = getRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -2215,7 +2230,7 @@ public class RecsApi {
          </table>
          */
         public RecDefinition execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<RecDefinition> localVarResp = getRecDefinitionWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<RecDefinition> localVarResp = getRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -2232,7 +2247,7 @@ public class RecsApi {
          </table>
          */
         public ApiResponse<RecDefinition> executeWithHttpInfo() throws ApiException {
-            return getRecDefinitionWithHttpInfo(scope, code, asAt);
+            return getRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys);
         }
 
         /**
@@ -2248,7 +2263,7 @@ public class RecsApi {
          </table>
          */
         public ApiResponse<RecDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getRecDefinitionWithHttpInfo(scope, code, asAt, opts);
+            return getRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -2265,7 +2280,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<RecDefinition> _callback) throws ApiException {
-            return getRecDefinitionAsync(scope, code, asAt, _callback);
+            return getRecDefinitionAsync(scope, code, asAt, propertyKeys, _callback);
         }
 
         /**
@@ -2282,7 +2297,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<RecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
-            return getRecDefinitionAsync(scope, code, asAt, _callback, opts);
+            return getRecDefinitionAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -3616,11 +3631,11 @@ public class RecsApi {
     public APIlistMatchingRulesetsRequest listMatchingRulesets() {
         return new APIlistMatchingRulesetsRequest();
     }
-    private okhttp3.Call listRecDefinitionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listRecDefinitionsCall(asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listRecDefinitionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listRecDefinitionsCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listRecDefinitionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listRecDefinitionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3665,6 +3680,10 @@ public class RecsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3687,35 +3706,35 @@ public class RecsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRecDefinitionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listRecDefinitionsCall(asAt, page, sortBy, limit, filter, _callback, opts);
+    private okhttp3.Call listRecDefinitionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listRecDefinitionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfRecDefinition> listRecDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfRecDefinition> listRecDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfRecDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfRecDefinition> listRecDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfRecDefinition> listRecDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRecDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listRecDefinitionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfRecDefinition> _callback) throws ApiException {
+    private okhttp3.Call listRecDefinitionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfRecDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfRecDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listRecDefinitionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfRecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listRecDefinitionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfRecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listRecDefinitionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfRecDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3727,6 +3746,7 @@ public class RecsApi {
         private List<String> sortBy;
         private Integer limit;
         private String filter;
+        private List<String> propertyKeys;
 
         private APIlistRecDefinitionsRequest() {
         }
@@ -3782,6 +3802,16 @@ public class RecsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec   definitions. These must have the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again   with each page. (optional)
+         * @return APIlistRecDefinitionsRequest
+         */
+        public APIlistRecDefinitionsRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for listRecDefinitions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3795,7 +3825,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listRecDefinitionsCall(asAt, page, sortBy, limit, filter, _callback);
+            return listRecDefinitionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -3811,7 +3841,7 @@ public class RecsApi {
          </table>
          */
         public PagedResourceListOfRecDefinition execute() throws ApiException {
-            ApiResponse<PagedResourceListOfRecDefinition> localVarResp = listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter);
+            ApiResponse<PagedResourceListOfRecDefinition> localVarResp = listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -3828,7 +3858,7 @@ public class RecsApi {
          </table>
          */
         public PagedResourceListOfRecDefinition execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfRecDefinition> localVarResp = listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            ApiResponse<PagedResourceListOfRecDefinition> localVarResp = listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -3845,7 +3875,7 @@ public class RecsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfRecDefinition> executeWithHttpInfo() throws ApiException {
-            return listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter);
+            return listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
         }
 
         /**
@@ -3861,7 +3891,7 @@ public class RecsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfRecDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            return listRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -3878,7 +3908,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRecDefinition> _callback) throws ApiException {
-            return listRecDefinitionsAsync(asAt, page, sortBy, limit, filter, _callback);
+            return listRecDefinitionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
         }
 
         /**
@@ -3895,7 +3925,7 @@ public class RecsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRecDefinition> _callback, ConfigurationOptions opts) throws ApiException {
-            return listRecDefinitionsAsync(asAt, page, sortBy, limit, filter, _callback, opts);
+            return listRecDefinitionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -5825,7 +5855,7 @@ public class RecsApi {
 
     /**
      * [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
-     * Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+     * Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
      * @param scope The scope of the rec definition. (required)
      * @param code The code of the rec definition. Together with the scope this uniquely identifies the rec definition. (required)
      * @param updateRecDefinitionRequest The updated rec definition values. (required)

@@ -88,7 +88,7 @@ public class AggregateNumericTolerance {
   }
 
    /**
-   * Reference side (source of truth). One of: Left, Right. Available values: Left, Right.
+   * Reference side (source of truth). Available values: Left, Right.
    * @return referenceSide
   **/
   @jakarta.annotation.Nonnull
@@ -151,10 +151,10 @@ public class AggregateNumericTolerance {
   }
 
    /**
-   * Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. One of: GreaterOf, LesserOf. Available values: GreaterOf, LesserOf.
+   * Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. Required when both thresholds are provided; must be omitted when only one is. Available values: GreaterOf, LesserOf.
    * @return thresholdPriority
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getThresholdPriority() {
     return thresholdPriority;
   }
@@ -172,7 +172,7 @@ public class AggregateNumericTolerance {
   }
 
    /**
-   * How the threshold should be applied to the reference side value. One of: Above, Below, Either. Defaults to Either. Available values: Above, Below, Either.
+   * How the threshold should be applied to the reference side value. Defaults to Either. Available values: Above, Below, Either.
    * @return offset
   **/
   @jakarta.annotation.Nullable
@@ -307,7 +307,6 @@ public class AggregateNumericTolerance {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("referenceSide");
-    openapiRequiredFields.add("thresholdPriority");
     openapiRequiredFields.add("toleranceType");
     openapiRequiredFields.add("ruleName");
   }
@@ -335,7 +334,7 @@ public class AggregateNumericTolerance {
       if (!jsonObj.get("referenceSide").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `referenceSide` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referenceSide").toString()));
       }
-      if (!jsonObj.get("thresholdPriority").isJsonPrimitive()) {
+      if ((jsonObj.get("thresholdPriority") != null && !jsonObj.get("thresholdPriority").isJsonNull()) && !jsonObj.get("thresholdPriority").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `thresholdPriority` to be a primitive type in the JSON string but got `%s`", jsonObj.get("thresholdPriority").toString()));
       }
       if ((jsonObj.get("offset") != null && !jsonObj.get("offset").isJsonNull()) && !jsonObj.get("offset").isJsonPrimitive()) {

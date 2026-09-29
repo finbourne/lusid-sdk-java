@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **referenceValue** | **String** | The value for the reference side. | [default to String]
 **crossValue** | **String** | The value for the side other than the reference one. | [default to String]
-**referenceSide** | **String** | Reference side (source of truth). One of: Left, Right. Available values: Left, Right, Either. | [optional] [default to String]
+**referenceSide** | **String** | Reference side (source of truth). Available values: Left, Right, Either. | [optional] [default to String]
 **toleranceType** | **String** | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. | [default to String]
 **ruleName** | **String** | The reference name of the rule that this tolerance relaxes. | [default to String]
 

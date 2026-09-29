@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RecDatePolicy;
 import com.finbourne.lusid.model.RecDefCurrencies;
 import com.finbourne.lusid.model.RecDefRecipeIds;
@@ -30,7 +31,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -110,6 +113,10 @@ public class RecDefinition {
   public static final String SERIALIZED_NAME_DATE_POLICY = "datePolicy";
   @SerializedName(SERIALIZED_NAME_DATE_POLICY)
   private RecDatePolicy datePolicy;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, PerpetualProperty> properties;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -196,7 +203,7 @@ public class RecDefinition {
   }
 
    /**
-   * What this definition reconciles, naming the kind of dataset that must be present on at least one side. One of: PortfolioContents, LusidEntity, RelationalData. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData.
+   * What this definition reconciles, naming the kind of dataset that must be present on at least one side. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData.
    * @return definitionType
   **/
   @jakarta.annotation.Nonnull
@@ -402,6 +409,35 @@ public class RecDefinition {
   }
 
 
+  public RecDefinition properties(Map<String, PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public RecDefinition putPropertiesItem(String key, PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Properties in the RecDefinition domain. On update, a property with a null value is deleted and omitted properties are left unchanged. Filterable and sortable.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
   public RecDefinition href(URI href) {
     
     this.href = href;
@@ -495,6 +531,7 @@ public class RecDefinition {
         Objects.equals(this.rulesets, recDefinition.rulesets) &&
         Objects.equals(this.reviewConfiguration, recDefinition.reviewConfiguration) &&
         Objects.equals(this.datePolicy, recDefinition.datePolicy) &&
+        Objects.equals(this.properties, recDefinition.properties) &&
         Objects.equals(this.href, recDefinition.href) &&
         Objects.equals(this.version, recDefinition.version) &&
         Objects.equals(this.links, recDefinition.links);
@@ -506,7 +543,7 @@ public class RecDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, datePolicy, href, version, links);
+    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, datePolicy, properties, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -532,6 +569,7 @@ public class RecDefinition {
     sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
     sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
     sb.append("    datePolicy: ").append(toIndentedString(datePolicy)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -569,6 +607,7 @@ public class RecDefinition {
     openapiFields.add("rulesets");
     openapiFields.add("reviewConfiguration");
     openapiFields.add("datePolicy");
+    openapiFields.add("properties");
     openapiFields.add("href");
     openapiFields.add("version");
     openapiFields.add("links");

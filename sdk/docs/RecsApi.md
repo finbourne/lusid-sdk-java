@@ -773,7 +773,7 @@ public class RecsApiExample {
 
 ## getRecDefinition
 
-> RecDefinition getRecDefinition(scope, code, asAt)
+> RecDefinition getRecDefinition(scope, code, asAt, propertyKeys)
 
 [EXPERIMENTAL] GetRecDefinition: GetRecDefinition
 
@@ -821,11 +821,12 @@ public class RecsApiExample {
         String scope = "scope_example"; // String | The scope of the rec definition.
         String code = "code_example"; // String | The code of the rec definition. Together with the scope this uniquely identifies the rec definition.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'RecDefinition' domain to decorate onto the rec   definition. These must have the format {domain}/{scope}/{code}, for example   'RecDefinition/Workflow/WorkflowId'.
         try {
             // uncomment the below to set overrides at the request level
-            // RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt).execute(opts);
+            // RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt, propertyKeys).execute(opts);
 
-            RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt).execute();
+            RecDefinition result = apiInstance.getRecDefinition(scope, code, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling RecsApi#getRecDefinition");
@@ -845,6 +846,7 @@ public class RecsApiExample {
 | **scope** | **String**| The scope of the rec definition. | |
 | **code** | **String**| The code of the rec definition. Together with the scope this uniquely identifies the rec definition. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec   definition. These must have the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. | [optional] |
 
 ### Return type
 
@@ -1343,7 +1345,7 @@ public class RecsApiExample {
 
 ## listRecDefinitions
 
-> PagedResourceListOfRecDefinition listRecDefinitions(asAt, page, sortBy, limit, filter)
+> PagedResourceListOfRecDefinition listRecDefinitions(asAt, page, sortBy, limit, filter, propertyKeys)
 
 [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
 
@@ -1393,11 +1395,12 @@ public class RecsApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'RecDefinition' domain to decorate onto the rec   definitions. These must have the format {domain}/{scope}/{code}, for example   'RecDefinition/Workflow/WorkflowId'. They are not carried in the pagination token, so must be supplied again   with each page.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter).execute(opts);
+            // PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
 
-            PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter).execute();
+            PagedResourceListOfRecDefinition result = apiInstance.listRecDefinitions(asAt, page, sortBy, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling RecsApi#listRecDefinitions");
@@ -1419,6 +1422,7 @@ public class RecsApiExample {
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec   definitions. These must have the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again   with each page. | [optional] |
 
 ### Return type
 
@@ -2030,7 +2034,7 @@ public class RecsApiExample {
 
 [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
 
-Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
 
 ### Example
 

@@ -68,7 +68,7 @@ public class RecDefSource {
   }
 
    /**
-   * The type of entity that this source refers to. One of: Portfolio, PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund.
+   * The type of entity that this source refers to. Available values: Portfolio, PortfolioGroup, Fund.
    * @return sourceType
   **/
   @jakarta.annotation.Nonnull

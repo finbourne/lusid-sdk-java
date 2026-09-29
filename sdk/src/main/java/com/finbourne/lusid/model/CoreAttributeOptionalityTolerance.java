@@ -72,7 +72,7 @@ public class CoreAttributeOptionalityTolerance {
   }
 
    /**
-   * Which side is allowed to have no value while still attempting to match. One of: Left, Right, Either. Defaults to Either. Available values: Left, Right, Either.
+   * Which side is allowed to have no value while still attempting to match. Defaults to Either. Available values: Left, Right, Either.
    * @return optionalSide
   **/
   @jakarta.annotation.Nullable

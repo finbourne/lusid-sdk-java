@@ -73,7 +73,7 @@ public class RecDatasetSchema {
   }
 
    /**
-   * The kind of dataset this side draws on. One of: PortfolioContents, LusidEntity, RelationalData. At most one side may be RelationalData. Available values: PortfolioContents, LusidEntity, RelationalData.
+   * The kind of dataset this side draws on. At most one side may be RelationalData. Available values: PortfolioContents, LusidEntity, RelationalData.
    * @return type
   **/
   @jakarta.annotation.Nonnull

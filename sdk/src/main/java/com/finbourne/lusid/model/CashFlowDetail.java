@@ -119,13 +119,13 @@ public class CashFlowDetail {
   @SerializedName(SERIALIZED_NAME_ERROR)
   private String error;
 
-  public static final String SERIALIZED_NAME_AMOUNT_IN_PORTFOLIO_CCY = "amountInPortfolioCcy";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_IN_PORTFOLIO_CCY)
-  private java.math.BigDecimal amountInPortfolioCcy;
+  public static final String SERIALIZED_NAME_AMOUNT_IN_REPORT_CURRENCY = "amountInReportCurrency";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_IN_REPORT_CURRENCY)
+  private java.math.BigDecimal amountInReportCurrency;
 
-  public static final String SERIALIZED_NAME_TRADE_TO_PORTFOLIO_RATE = "tradeToPortfolioRate";
-  @SerializedName(SERIALIZED_NAME_TRADE_TO_PORTFOLIO_RATE)
-  private java.math.BigDecimal tradeToPortfolioRate;
+  public static final String SERIALIZED_NAME_TRADE_TO_REPORT_CURRENCY_RATE = "tradeToReportCurrencyRate";
+  @SerializedName(SERIALIZED_NAME_TRADE_TO_REPORT_CURRENCY_RATE)
+  private java.math.BigDecimal tradeToReportCurrencyRate;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -456,7 +456,7 @@ public class CashFlowDetail {
   }
 
    /**
-   * Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the portfolio-currency FX lookup failed (see AmountInPortfolioCcy), in which case the base Amount remains populated and only AmountInPortfolioCcy and TradeToPortfolioRate are null.
+   * Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the report-currency FX lookup failed (see AmountInReportCurrency), in which case the base Amount remains populated and only AmountInReportCurrency and TradeToReportCurrencyRate are null.
    * @return error
   **/
   @jakarta.annotation.Nullable
@@ -470,45 +470,45 @@ public class CashFlowDetail {
   }
 
 
-  public CashFlowDetail amountInPortfolioCcy(java.math.BigDecimal amountInPortfolioCcy) {
+  public CashFlowDetail amountInReportCurrency(java.math.BigDecimal amountInReportCurrency) {
     
-    this.amountInPortfolioCcy = amountInPortfolioCcy;
+    this.amountInReportCurrency = amountInReportCurrency;
     return this;
   }
 
    /**
-   * The signed amount of the cashflow (see Amount), converted into the portfolio&#39;s base currency. Not present when the FX rate used to convert into the portfolio currency could not be resolved; see Error.
-   * @return amountInPortfolioCcy
+   * The signed amount of the cashflow (see Amount), converted into the request&#39;s report currency (see QueryBucketCashFlowDrillDownRequest.ReportCurrency). Not present when the FX rate used to convert into the report currency could not be resolved; see Error.
+   * @return amountInReportCurrency
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getAmountInPortfolioCcy() {
-    return amountInPortfolioCcy;
+  public java.math.BigDecimal getAmountInReportCurrency() {
+    return amountInReportCurrency;
   }
 
 
-  public void setAmountInPortfolioCcy(java.math.BigDecimal amountInPortfolioCcy) {
-    this.amountInPortfolioCcy = amountInPortfolioCcy;
+  public void setAmountInReportCurrency(java.math.BigDecimal amountInReportCurrency) {
+    this.amountInReportCurrency = amountInReportCurrency;
   }
 
 
-  public CashFlowDetail tradeToPortfolioRate(java.math.BigDecimal tradeToPortfolioRate) {
+  public CashFlowDetail tradeToReportCurrencyRate(java.math.BigDecimal tradeToReportCurrencyRate) {
     
-    this.tradeToPortfolioRate = tradeToPortfolioRate;
+    this.tradeToReportCurrencyRate = tradeToReportCurrencyRate;
     return this;
   }
 
    /**
-   * The FX rate used to convert the cashflow amount into the portfolio&#39;s base currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Not present when the rate could not be resolved; see Error.
-   * @return tradeToPortfolioRate
+   * The FX rate used to convert the cashflow amount into the request&#39;s report currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Not present when the rate could not be resolved; see Error.
+   * @return tradeToReportCurrencyRate
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getTradeToPortfolioRate() {
-    return tradeToPortfolioRate;
+  public java.math.BigDecimal getTradeToReportCurrencyRate() {
+    return tradeToReportCurrencyRate;
   }
 
 
-  public void setTradeToPortfolioRate(java.math.BigDecimal tradeToPortfolioRate) {
-    this.tradeToPortfolioRate = tradeToPortfolioRate;
+  public void setTradeToReportCurrencyRate(java.math.BigDecimal tradeToReportCurrencyRate) {
+    this.tradeToReportCurrencyRate = tradeToReportCurrencyRate;
   }
 
 
@@ -567,8 +567,8 @@ public class CashFlowDetail {
         (this.netAmount.compareTo(cashFlowDetail.getNetAmount()) == 0) &&
         Objects.equals(this.haircutRuleApplied, cashFlowDetail.haircutRuleApplied) &&
         Objects.equals(this.error, cashFlowDetail.error) &&
-        (this.amountInPortfolioCcy.compareTo(cashFlowDetail.getAmountInPortfolioCcy()) == 0) &&
-        (this.tradeToPortfolioRate.compareTo(cashFlowDetail.getTradeToPortfolioRate()) == 0) &&
+        (this.amountInReportCurrency.compareTo(cashFlowDetail.getAmountInReportCurrency()) == 0) &&
+        (this.tradeToReportCurrencyRate.compareTo(cashFlowDetail.getTradeToReportCurrencyRate()) == 0) &&
         Objects.equals(this.links, cashFlowDetail.links);
   }
 
@@ -578,7 +578,7 @@ public class CashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, amountInPortfolioCcy, tradeToPortfolioRate, links);
+    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, amountInReportCurrency, tradeToReportCurrencyRate, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -608,8 +608,8 @@ public class CashFlowDetail {
     sb.append("    netAmount: ").append(toIndentedString(netAmount)).append("\n");
     sb.append("    haircutRuleApplied: ").append(toIndentedString(haircutRuleApplied)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    amountInPortfolioCcy: ").append(toIndentedString(amountInPortfolioCcy)).append("\n");
-    sb.append("    tradeToPortfolioRate: ").append(toIndentedString(tradeToPortfolioRate)).append("\n");
+    sb.append("    amountInReportCurrency: ").append(toIndentedString(amountInReportCurrency)).append("\n");
+    sb.append("    tradeToReportCurrencyRate: ").append(toIndentedString(tradeToReportCurrencyRate)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -649,8 +649,8 @@ public class CashFlowDetail {
     openapiFields.add("netAmount");
     openapiFields.add("haircutRuleApplied");
     openapiFields.add("error");
-    openapiFields.add("amountInPortfolioCcy");
-    openapiFields.add("tradeToPortfolioRate");
+    openapiFields.add("amountInReportCurrency");
+    openapiFields.add("tradeToReportCurrencyRate");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

@@ -150,7 +150,7 @@ public class SettleExpectedActivityWritebackConfiguration {
   }
 
    /**
-   * The side the writeback changes, the other being the source of truth. One of: Left, Right. As the writeback changes LUSID, this side must draw on a native LUSID dataset rather than relational data. Available values: Left, Right.
+   * The side the writeback changes, the other being the source of truth. As the writeback changes LUSID, this side must draw on a native LUSID dataset rather than relational data. Available values: Left, Right.
    * @return targetSide
   **/
   @jakarta.annotation.Nonnull

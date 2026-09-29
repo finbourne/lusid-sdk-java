@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sourceType** | **String** | The type of entity that this source refers to. One of: Portfolio, PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund. | [default to String]
+**sourceType** | **String** | The type of entity that this source refers to. Available values: Portfolio, PortfolioGroup, Fund. | [default to String]
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 
 ```java

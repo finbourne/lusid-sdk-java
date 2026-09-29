@@ -80,7 +80,7 @@ public class CoreDateTolerance {
   }
 
    /**
-   * Reference side (source of truth). One of: Left, Right. Available values: Left, Right.
+   * Reference side (source of truth). Available values: Left, Right.
    * @return referenceSide
   **/
   @jakarta.annotation.Nonnull
@@ -122,7 +122,7 @@ public class CoreDateTolerance {
   }
 
    /**
-   * How the interval should be applied to the reference side value. One of: Earlier, Later, Either. Defaults to Either. Available values: Earlier, Later, Either.
+   * How the interval should be applied to the reference side value. Defaults to Either. Available values: Earlier, Later, Either.
    * @return offset
   **/
   @jakarta.annotation.Nullable

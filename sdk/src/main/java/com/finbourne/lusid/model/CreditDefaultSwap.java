@@ -261,7 +261,7 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
    /**
-   * By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates and any payment  frequency is accepted. The payment dates roll back from the maturity, so a term that is not a whole  number of payment periods has a short first period.
+   * By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates. The payment  frequency can be any whole number of days, weeks, months, quarters, half-years or years, for example  1W, 1M or 4M. Term (T) and business-day (BD) frequencies are not accepted. The payment dates roll back  from the maturity, so a term that is not a whole number of payment periods has a short first period.
    * @return isNonStandard
   **/
   @jakarta.annotation.Nullable

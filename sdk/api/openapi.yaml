@@ -416,7 +416,7 @@ info:
     | <a name="976">976</a>|Ambiguous Scope| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10099
+  version: 0.11.10112
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -37571,6 +37571,86 @@ paths:
       - oauth2: []
       summary: "[EARLY ACCESS] GetComplianceRuleTemplateByEntityUniqueId: Get compliance\
         \ rule template by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/entities/corporateactionsources/{entityUniqueId}:
+    get:
+      description: "Retrieve the definition of a particular corporate action source.\r\
+        \n\r\nIf the corporate action source is deleted, this will return the state\
+        \ of the source immediately prior to deletion."
+      operationId: GetCorporateActionSourceByEntityUniqueId
+      parameters:
+      - description: The universally unique identifier of the corporate action source.
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the corporate action source.
+          Defaults to returning the latest version of the corporate action source
+          if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids of the staged modifications to be previewed in the response.
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSourceEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSourceEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSourceEntity'
+          description: The requested corporate action source entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetCorporateActionSourceByEntityUniqueId: Get corporate\
+        \ action source by EntityUniqueId"
       tags:
       - Entities
       x-fbn-apistatus: EarlyAccess
@@ -118011,6 +118091,22 @@ paths:
           pattern: "^[\\s\\S]*$"
           type: string
         style: form
+      - description: "A list of property keys from the 'RecDefinition' domain to decorate\
+          \ onto the rec\r\n definitions. These must have the format {domain}/{scope}/{code},\
+          \ for example\r\n 'RecDefinition/Workflow/WorkflowId'. They are not carried\
+          \ in the pagination token, so must be supplied again\r\n with each page."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -118124,6 +118220,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/json:
@@ -118195,6 +118296,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           text/json:
@@ -118266,6 +118372,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
           application/*+json:
@@ -118337,6 +118448,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/CreateRecDefinitionRequest'
         description: The rec definition to create.
@@ -118413,6 +118529,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118488,6 +118609,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118563,6 +118689,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118708,6 +118839,21 @@ paths:
           type: string
         style: form
         x-nullable: true
+      - description: "A list of property keys from the 'RecDefinition' domain to decorate\
+          \ onto the rec\r\n definition. These must have the format {domain}/{scope}/{code},\
+          \ for example\r\n 'RecDefinition/Workflow/WorkflowId'."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -118780,6 +118926,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118855,6 +119006,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118930,6 +119086,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -118965,7 +119126,9 @@ paths:
     put:
       description: "Overwrite an existing rec definition identified by scope and code.\r\
         \nThe update request has the same required fields as create, apart from the\
-        \ identifier."
+        \ identifier.\r\nProperties are merged rather than overwritten - each property\
+        \ supplied is set, a property supplied with a null\r\nvalue is deleted, and\
+        \ any property not supplied is left unchanged."
       operationId: UpdateRecDefinition
       parameters:
       - description: The scope of the rec definition.
@@ -119059,6 +119222,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/json:
@@ -119127,6 +119295,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           text/json:
@@ -119195,6 +119368,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
           application/*+json:
@@ -119263,6 +119441,11 @@ paths:
                     left: 2024-05-31T00:00:00.0000000+00:00
                     right: 2024-05-31T00:00:00.0000000+00:00
                   windowType: Contiguous
+              properties:
+                RecDefinition/Workflow/WorkflowId:
+                  key: RecDefinition/Workflow/WorkflowId
+                  value:
+                    labelValue: CustodyReviewWorkflow
             schema:
               $ref: '#/components/schemas/UpdateRecDefinitionRequest'
         description: The updated rec definition values.
@@ -119339,6 +119522,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -119414,6 +119602,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -119489,6 +119682,11 @@ paths:
                       left: 2024-05-31T00:00:00.0000000+00:00
                       right: 2024-05-31T00:00:00.0000000+00:00
                     windowType: Contiguous
+                properties:
+                  RecDefinition/Workflow/WorkflowId:
+                    key: RecDefinition/Workflow/WorkflowId
+                    value:
+                      labelValue: CustodyReviewWorkflow
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -175789,8 +175987,8 @@ components:
       additionalProperties: false
       properties:
         referenceSide:
-          description: "Reference side (source of truth). One of: Left, Right. Available\
-            \ values: Left, Right."
+          description: "Reference side (source of truth). Available values: Left,\
+            \ Right."
           minLength: 1
           type: string
         absoluteThreshold:
@@ -175806,14 +176004,13 @@ components:
           type: number
         thresholdPriority:
           description: "Whether to apply the GreaterOf or LesserOf the absoluteThreshold\
-            \ vs relativeThreshold. One of: GreaterOf, LesserOf. Available values:\
-            \ GreaterOf, LesserOf."
-          minLength: 1
+            \ vs relativeThreshold. Required when both thresholds are provided; must\
+            \ be omitted when only one is. Available values: GreaterOf, LesserOf."
+          nullable: true
           type: string
         offset:
           description: "How the threshold should be applied to the reference side\
-            \ value. One of: Above, Below, Either. Defaults to Either. Available values:\
-            \ Above, Below, Either."
+            \ value. Defaults to Either. Available values: Above, Below, Either."
           nullable: true
           type: string
         toleranceType:
@@ -175830,7 +176027,6 @@ components:
       required:
       - referenceSide
       - ruleName
-      - thresholdPriority
       - toleranceType
       type: object
     AggregateRuleValues:
@@ -192912,11 +193108,9 @@ components:
         instrumentDisplayName: instrumentDisplayName
         transactionId: transactionId
         haircutFraction: 1.4658129805029452
-        amountInPortfolioCcy: 5.637376656633329
         portfolioId:
           code: code
           scope: scope
-        tradeToPortfolioRate: 2.3021358869347655
         sourceType: sourceType
         currency: currency
         links:
@@ -192928,8 +193122,10 @@ components:
           description: description
           href: https://openapi-generator.tech
           relation: relation
+        amountInReportCurrency: 5.637376656633329
         paymentDate: 2000-01-23T04:56:07.000+00:00
         flowType: flowType
+        tradeToReportCurrencyRate: 2.3021358869347655
       properties:
         paymentDate:
           description: The date on which the cashflow is paid.
@@ -193015,21 +193211,22 @@ components:
             \ because of missing market data: the valuation error, matching the CashflowError\
             \ diagnostic reported by the QueryCashFlows endpoint. In that case the\
             \ amount is null rather than zero. Error may also be set when only the\
-            \ portfolio-currency FX lookup failed (see AmountInPortfolioCcy), in which\
-            \ case the base Amount remains populated and only AmountInPortfolioCcy\
-            \ and TradeToPortfolioRate are null."
+            \ report-currency FX lookup failed (see AmountInReportCurrency), in which\
+            \ case the base Amount remains populated and only AmountInReportCurrency\
+            \ and TradeToReportCurrencyRate are null."
           nullable: true
           type: string
-        amountInPortfolioCcy:
+        amountInReportCurrency:
           description: "The signed amount of the cashflow (see Amount), converted\
-            \ into the portfolio's base currency. Not present when the FX rate used\
-            \ to convert into the portfolio currency could not be resolved; see Error."
+            \ into the request's report currency (see QueryBucketCashFlowDrillDownRequest.ReportCurrency).\
+            \ Not present when the FX rate used to convert into the report currency\
+            \ could not be resolved; see Error."
           format: double
           nullable: true
           type: number
-        tradeToPortfolioRate:
-          description: "The FX rate used to convert the cashflow amount into the portfolio's\
-            \ base currency, resolved at the cashflow's transaction (trade) date,\
+        tradeToReportCurrencyRate:
+          description: "The FX rate used to convert the cashflow amount into the request's\
+            \ report currency, resolved at the cashflow's transaction (trade) date,\
             \ not its payment date. Not present when the rate could not be resolved;\
             \ see Error."
           format: double
@@ -193979,10 +194176,12 @@ components:
               \ the IMM convention: the roll and payment\r\nfrequencies must be 3M\
               \ or 6M, and the start and maturity dates are rolled onto IMM dates\r\
               \n(the 20th of March, June, September or December).\r\nIf IsNonStandard=true,\
-              \ the premium schedule uses the stated start and maturity dates and\
-              \ any payment\r\nfrequency is accepted. The payment dates roll back\
-              \ from the maturity, so a term that is not a whole\r\nnumber of payment\
-              \ periods has a short first period."
+              \ the premium schedule uses the stated start and maturity dates. The\
+              \ payment\r\nfrequency can be any whole number of days, weeks, months,\
+              \ quarters, half-years or years, for example\r\n1W, 1M or 4M. Term (T)\
+              \ and business-day (BD) frequencies are not accepted. The payment dates\
+              \ roll back\r\nfrom the maturity, so a term that is not a whole number\
+              \ of payment periods has a short first period."
             type: boolean
           additionalPayments:
             description: "Optional additional payments at a given date e.g. to level\
@@ -203538,8 +203737,7 @@ components:
       properties:
         optionalSide:
           description: "Which side is allowed to have no value while still attempting\
-            \ to match. One of: Left, Right, Either. Defaults to Either. Available\
-            \ values: Left, Right, Either."
+            \ to match. Defaults to Either. Available values: Left, Right, Either."
           nullable: true
           type: string
         toleranceType:
@@ -203561,8 +203759,8 @@ components:
       additionalProperties: false
       properties:
         referenceSide:
-          description: "Reference side (source of truth). One of: Left, Right. Available\
-            \ values: Left, Right."
+          description: "Reference side (source of truth). Available values: Left,\
+            \ Right."
           minLength: 1
           type: string
         interval:
@@ -203572,8 +203770,7 @@ components:
           type: string
         offset:
           description: "How the interval should be applied to the reference side value.\
-            \ One of: Earlier, Later, Either. Defaults to Either. Available values:\
-            \ Earlier, Later, Either."
+            \ Defaults to Either. Available values: Earlier, Later, Either."
           nullable: true
           type: string
         toleranceType:
@@ -203669,8 +203866,8 @@ components:
           minLength: 1
           type: string
         referenceSide:
-          description: "Reference side (source of truth). One of: Left, Right. Available\
-            \ values: Left, Right, Either."
+          description: "Reference side (source of truth). Available values: Left,\
+            \ Right, Either."
           nullable: true
           type: string
         toleranceType:
@@ -203800,6 +203997,12 @@ components:
         id:
           code: code
           scope: scope
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -203842,11 +204045,224 @@ components:
           type: array
         eventInheritance:
           $ref: '#/components/schemas/EventInheritance'
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
+      type: object
+    CorporateActionSourceEntity:
+      additionalProperties: false
+      example:
+        previewedCorporateActionSource:
+          displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          eventInheritance:
+            parentCorporateActionSourceId:
+              code: code
+              scope: scope
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        requestIdDeleted: requestIdDeleted
+        effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
+        asAtVersionNumber: 0
+        deletedCorporateActionSource:
+          displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          eventInheritance:
+            parentCorporateActionSourceId:
+              code: code
+              scope: scope
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        previewedStatus: previewedStatus
+        prevailingCorporateActionSource:
+          displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          eventInheritance:
+            parentCorporateActionSourceId:
+              code: code
+              scope: scope
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        effectiveAtCreated:
+          description: "The EffectiveAt this Entity is created, if entity does not\
+            \ currently exist in EffectiveAt."
+          format: date-time
+          nullable: true
+          type: string
+        prevailingCorporateActionSource:
+          $ref: '#/components/schemas/CorporateActionSource'
+        deletedCorporateActionSource:
+          $ref: '#/components/schemas/CorporateActionSource'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedCorporateActionSource:
+          $ref: '#/components/schemas/CorporateActionSource'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
       type: object
     CorporateActionTransition:
       additionalProperties: false
@@ -206178,6 +206594,26 @@ components:
           byTaxLots:
             left: true
             right: true
+        displayName: displayName
+        valuationRecipes:
+          left:
+            code: code
+            scope: scope
+          right:
+            code: code
+            scope: scope
+        description: description
+        sideNames:
+          left: left
+          right: right
+        definitionType: definitionType
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -206228,22 +206664,9 @@ components:
           id:
             code: code
             scope: scope
-        displayName: displayName
-        valuationRecipes:
-          left:
-            code: code
-            scope: scope
-          right:
-            code: code
-            scope: scope
-        description: description
         id:
           code: code
           scope: scope
-        sideNames:
-          left: left
-          right: right
-        definitionType: definitionType
         leftPortfolioSources:
         - sourceType: sourceType
           id:
@@ -206265,13 +206688,22 @@ components:
           id:
             code: code
             scope: scope
-        datePolicy:
-          effectiveAtProgression: effectiveAtProgression
-          asAtPolicy:
-            left: left
-            right: right
-          activityWindow:
-            windowType: windowType
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         currencies:
           left: left
           right: right
@@ -206291,9 +206723,9 @@ components:
           type: string
         definitionType:
           description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. One of: PortfolioContents,\
-            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
-            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+            \ that must be present on at least one side. Only PortfolioContents is\
+            \ currently supported. Available values: PortfolioContents, LusidEntity,\
+            \ RelationalData."
           minLength: 1
           type: string
         sideNames:
@@ -206335,6 +206767,14 @@ components:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
           $ref: '#/components/schemas/RecDatePolicy'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: "Properties in the RecDefinition domain. On update, a property\
+            \ with a null value is deleted and omitted properties are left unchanged.\
+            \ Filterable and sortable."
+          nullable: true
+          type: object
       required:
       - definitionType
       - displayName
@@ -208691,10 +209131,12 @@ components:
               \ the IMM convention: the roll and payment\r\nfrequencies must be 3M\
               \ or 6M, and the start and maturity dates are rolled onto IMM dates\r\
               \n(the 20th of March, June, September or December).\r\nIf IsNonStandard=true,\
-              \ the premium schedule uses the stated start and maturity dates and\
-              \ any payment\r\nfrequency is accepted. The payment dates roll back\
-              \ from the maturity, so a term that is not a whole\r\nnumber of payment\
-              \ periods has a short first period."
+              \ the premium schedule uses the stated start and maturity dates. The\
+              \ payment\r\nfrequency can be any whole number of days, weeks, months,\
+              \ quarters, half-years or years, for example\r\n1W, 1M or 4M. Term (T)\
+              \ and business-day (BD) frequencies are not accepted. The payment dates\
+              \ roll back\r\nfrom the maturity, so a term that is not a whole number\
+              \ of payment periods has a short first period."
             type: boolean
           protectionDetailSpecification:
             $ref: '#/components/schemas/CdsProtectionDetailSpecification'
@@ -230059,6 +230501,17 @@ components:
               format: double
               type: number
             type: array
+          pipMultiplier:
+            description: "Optional. The scaling factor applied to the pip rates to\
+              \ convert them into a forward rate adjustment,\r\nso that forwardRate\
+              \ = spotRate + pipRate generate justfile test_sdk pipMultiplier. Must\
+              \ be strictly positive when supplied.\r\nWhen omitted, the market convention\
+              \ for the currency pair is used:\r\n0.01 when the foreign (quote) currency\
+              \ is JPY, and 0.0001 (the four-decimal-place convention of the major\
+              \ pairs) otherwise."
+            format: double
+            nullable: true
+            type: number
           lineage:
             description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
             maxLength: 1024
@@ -230490,6 +230943,17 @@ components:
               format: double
               type: number
             type: array
+          pipMultiplier:
+            description: "Optional. The scaling factor applied to the pip rates to\
+              \ convert them into a forward rate adjustment,\r\nso that forwardRate\
+              \ = spotRate + pipRate generate justfile test_sdk pipMultiplier. Must\
+              \ be strictly positive when supplied.\r\nWhen omitted, the market convention\
+              \ for the currency pair is used:\r\n0.01 when the foreign (quote) currency\
+              \ is JPY, and 0.0001 (the four-decimal-place convention of the major\
+              \ pairs) otherwise."
+            format: double
+            nullable: true
+            type: number
           lineage:
             description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
             maxLength: 1024
@@ -260912,6 +261376,12 @@ components:
           id:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -260948,6 +261418,12 @@ components:
           id:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -272240,6 +272716,22 @@ components:
             id:
               code: code
               scope: scope
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           currencies:
             left: left
             right: right
@@ -272354,6 +272846,22 @@ components:
             id:
               code: code
               scope: scope
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           currencies:
             left: left
             right: right
@@ -291009,9 +291517,9 @@ components:
           scope: scope
       properties:
         type:
-          description: "The kind of dataset this side draws on. One of: PortfolioContents,\
-            \ LusidEntity, RelationalData. At most one side may be RelationalData.\
-            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+          description: "The kind of dataset this side draws on. At most one side may\
+            \ be RelationalData. Available values: PortfolioContents, LusidEntity,\
+            \ RelationalData."
           minLength: 1
           type: string
         entityType:
@@ -291153,13 +291661,15 @@ components:
       properties:
         left:
           description: The currency used on the left side of the reconciliation.
-          maxLength: 4
-          minLength: 0
+          maxLength: 5
+          minLength: 3
+          pattern: "^[a-zA-Z]*$"
           type: string
         right:
           description: The currency used on the right side of the reconciliation.
-          maxLength: 4
-          minLength: 0
+          maxLength: 5
+          minLength: 3
+          pattern: "^[a-zA-Z]*$"
           type: string
       required:
       - left
@@ -291279,6 +291789,22 @@ components:
           id:
             code: code
             scope: scope
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         currencies:
           left: left
           right: right
@@ -291295,9 +291821,9 @@ components:
           type: string
         definitionType:
           description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. One of: PortfolioContents,\
-            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
-            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+            \ that must be present on at least one side. Only PortfolioContents is\
+            \ currently supported. Available values: PortfolioContents, LusidEntity,\
+            \ RelationalData."
           minLength: 1
           type: string
         sideNames:
@@ -291333,6 +291859,14 @@ components:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
           $ref: '#/components/schemas/RecDatePolicy'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: "Properties in the RecDefinition domain. On update, a property\
+            \ with a null value is deleted and omitted properties are left unchanged.\
+            \ Filterable and sortable."
+          nullable: true
+          type: object
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
             at the requested effective and asAt datetime.
@@ -291439,8 +291973,8 @@ components:
           scope: scope
       properties:
         sourceType:
-          description: "The type of entity that this source refers to. One of: Portfolio,\
-            \ PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund."
+          description: "The type of entity that this source refers to. Available values:\
+            \ Portfolio, PortfolioGroup, Fund."
           minLength: 1
           type: string
         id:
@@ -295168,8 +295702,8 @@ components:
         reviewRequirement: reviewRequirement
       properties:
         reviewRequirement:
-          description: "Whether this category's results need reviewing. One of: Required,\
-            \ NotRequired. Available values: Required, NotRequired."
+          description: "Whether this category's results need reviewing. Available\
+            \ values: Required, NotRequired."
           minLength: 1
           type: string
         overrideCondition:
@@ -301913,11 +302447,9 @@ components:
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
-          amountInPortfolioCcy: 5.637376656633329
           portfolioId:
             code: code
             scope: scope
-          tradeToPortfolioRate: 2.3021358869347655
           sourceType: sourceType
           currency: currency
           links:
@@ -301929,8 +302461,10 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          amountInReportCurrency: 5.637376656633329
           paymentDate: 2000-01-23T04:56:07.000+00:00
           flowType: flowType
+          tradeToReportCurrencyRate: 2.3021358869347655
         - amount: 0.8008281904610115
           movementName: movementName
           payReceive: payReceive
@@ -301942,11 +302476,9 @@ components:
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
           haircutFraction: 1.4658129805029452
-          amountInPortfolioCcy: 5.637376656633329
           portfolioId:
             code: code
             scope: scope
-          tradeToPortfolioRate: 2.3021358869347655
           sourceType: sourceType
           currency: currency
           links:
@@ -301958,8 +302490,10 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          amountInReportCurrency: 5.637376656633329
           paymentDate: 2000-01-23T04:56:07.000+00:00
           flowType: flowType
+          tradeToReportCurrencyRate: 2.3021358869347655
         links:
         - method: method
           description: description
@@ -325103,9 +325637,8 @@ components:
           type: string
         targetSide:
           description: "The side the writeback changes, the other being the source\
-            \ of truth. One of: Left, Right. As the writeback changes LUSID, this\
-            \ side must draw on a native LUSID dataset rather than relational data.\
-            \ Available values: Left, Right."
+            \ of truth. As the writeback changes LUSID, this side must draw on a native\
+            \ LUSID dataset rather than relational data. Available values: Left, Right."
           minLength: 1
           type: string
       required:
@@ -333512,11 +334045,12 @@ components:
       description: "A swap in which one party makes payments based on leg rates (fixed\
         \ or floating) while the other party makes payments based on the return of\
         \ an underlying instrument.\r\nThe underlying instrument can be provided as\
-        \ an inline economic definition or as a reference instrument pointing to an\
-        \ already upserted instrument.\r\nA reference instrument in this case would\
-        \ consist of instrument scope, instrument id and instrument id type (ISIN,\
-        \ LUID etc.).\r\n \r\nThis instrument has multiple legs, to see how legs are\
-        \ used in LUSID see [How does LUSID handle instrument legs?](https://support.lusid.com/docs/how-does-lusid-handle-instrument-legs).\r\
+        \ an inline economic definition or as a MasteredInstrument pointing to an\
+        \ already upserted instrument by its identifiers.\r\nThe older ReferenceInstrument\
+        \ pointer (instrument scope, id and id type) remains accepted for existing\
+        \ definitions but is deprecated in favour of the MasteredInstrument.\r\n \r\
+        \nThis instrument has multiple legs, to see how legs are used in LUSID see\
+        \ [How does LUSID handle instrument legs?](https://support.lusid.com/docs/how-does-lusid-handle-instrument-legs).\r\
         \n \r\n| Leg Index | Leg Identifier | Description |\r\n| --------- | --------------\
         \ | ----------- |\r\n| 1 | AssetLeg | Cash flows relating to the returns generated\
         \ by the underlying instrument. |\r\n| 2 | FundingLeg | The funding leg of\
@@ -346179,6 +346713,22 @@ components:
             right: right
           activityWindow:
             windowType: windowType
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         currencies:
           left: left
           right: right
@@ -346196,9 +346746,9 @@ components:
           type: string
         definitionType:
           description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. One of: PortfolioContents,\
-            \ LusidEntity, RelationalData. Only PortfolioContents is currently supported.\
-            \ Available values: PortfolioContents, LusidEntity, RelationalData."
+            \ that must be present on at least one side. Only PortfolioContents is\
+            \ currently supported. Available values: PortfolioContents, LusidEntity,\
+            \ RelationalData."
           minLength: 1
           type: string
         sideNames:
@@ -346240,6 +346790,14 @@ components:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
           $ref: '#/components/schemas/RecDatePolicy'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: "Properties in the RecDefinition domain. On update, a property\
+            \ with a null value is deleted and omitted properties are left unchanged.\
+            \ Filterable and sortable."
+          nullable: true
+          type: object
       required:
       - definitionType
       - displayName
@@ -374891,9 +375449,8 @@ components:
           type: string
         targetSide:
           description: "The side the writeback changes, the other being the source\
-            \ of truth. One of: Left, Right. As the writeback changes LUSID, this\
-            \ side must draw on a native LUSID dataset rather than relational data.\
-            \ Available values: Left, Right."
+            \ of truth. As the writeback changes LUSID, this side must draw on a native\
+            \ LUSID dataset rather than relational data. Available values: Left, Right."
           minLength: 1
           type: string
       required:
@@ -374910,17 +375467,15 @@ components:
       properties:
         unitsDifference:
           description: "How the origin units compare to the target units, on a literal\
-            \ comparison rather than on the result type. One of: Exact, ShortWithinTolerance,\
-            \ ShortBeyondTolerance, LongWithinTolerance. LongBeyondTolerance is reported\
+            \ comparison rather than on the result type. LongBeyondTolerance is reported\
             \ on results but cannot be configured. Available values: Exact, ShortWithinTolerance,\
             \ ShortBeyondTolerance, LongWithinTolerance, LongBeyondTolerance."
           minLength: 1
           type: string
         resultCardinality:
-          description: "The item cardinality of the result, read left to right. One\
-            \ of: OneToOne, OneToMany, ManyToOne. ManyToMany is not supported. Available\
-            \ values: OneToOne, OneToMany, ManyToOne, ManyToMany, OneToNone, ManyToNone,\
-            \ NoneToOne, NoneToMany, NoneToNone."
+          description: "The item cardinality of the result, read left to right. ManyToMany\
+            \ is not supported. Available values: OneToOne, OneToMany, ManyToOne,\
+            \ ManyToMany, OneToNone, ManyToNone, NoneToOne, NoneToMany, NoneToNone."
           minLength: 1
           type: string
         useTargetUnits:

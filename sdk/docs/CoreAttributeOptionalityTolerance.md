@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**optionalSide** | **String** | Which side is allowed to have no value while still attempting to match. One of: Left, Right, Either. Defaults to Either. Available values: Left, Right, Either. | [optional] [default to String]
+**optionalSide** | **String** | Which side is allowed to have no value while still attempting to match. Defaults to Either. Available values: Left, Right, Either. | [optional] [default to String]
 **toleranceType** | **String** | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. | [default to String]
 **ruleName** | **String** | The reference name of the rule that this tolerance relaxes. | [default to String]
 
