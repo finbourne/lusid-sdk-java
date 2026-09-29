@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **taxLotId** | **String** | The tax lot the item is, where the source row was a single lot: a lot of a position read by tax lot, or a cash commitment. Null for an aggregated position and for a cash balance. Opaque: compare it whole, do not parse it. | [optional] [default to String]
 **itemType** | **String** | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction or SettlementActivity. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, and both transaction rec types produce Transaction items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding. | [default to String]
 **ruleAndAttributeValues** | **Map&lt;String, String&gt;** | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. | [optional] [default to Map<String, String>]
+**writebackSuggestions** | [**List&lt;WritebackSuggestion&gt;**](WritebackSuggestion.md) | The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty. | [readonly] [default to List<WritebackSuggestion>]
 
 ```java
 import com.finbourne.lusid.model.RecResultHoldingItem;
@@ -22,6 +23,7 @@ ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String TaxLotId = "example TaxLotId";
 String ItemType = "example ItemType";
 @jakarta.annotation.Nullable Map<String, String> RuleAndAttributeValues = new Map<String, String>();
+List<WritebackSuggestion> WritebackSuggestions = new List<WritebackSuggestion>();
 
 
 RecResultHoldingItem recResultHoldingItemInstance = new RecResultHoldingItem()
@@ -29,7 +31,8 @@ RecResultHoldingItem recResultHoldingItemInstance = new RecResultHoldingItem()
     .HoldingId(HoldingId)
     .TaxLotId(TaxLotId)
     .ItemType(ItemType)
-    .RuleAndAttributeValues(RuleAndAttributeValues);
+    .RuleAndAttributeValues(RuleAndAttributeValues)
+    .WritebackSuggestions(WritebackSuggestions);
 ```
 
 

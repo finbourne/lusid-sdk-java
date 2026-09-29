@@ -70,7 +70,7 @@ public class BondLookupModelOptions extends ModelOptions {
   }
 
    /**
-   * Price the bond by discounting its own cashflows over its discounting curve at a constant  spread, instead of marking it to its quoted price. Marking to a quote declares no curve  dependency, so a lookup-priced bond reports no curve delta at all. In this mode the pricer  declares both the discounting curve and a ZSpread quote for the instrument and prices off  them, so holding the spread fixed while the curve is perturbed produces the curve&#39;s delta.  Off by default, as the mode changes both the declared dependencies and where the price  comes from.
+   * Price the bond by discounting its own cashflows over its discounting curve at a constant  spread, instead of marking it to its quoted price. Marking to a quote declares no curve  dependency, so a lookup-priced bond reports no curve delta at all. In this mode the pricer  declares both the discounting curve and a ZSpread quote for the instrument and prices off  them, so holding the spread fixed while the curve is perturbed produces the curve&#39;s delta.  The anchor may also be served as a per-instrument CreditSpreadCurve complex market data  document (rule key Credit.CreditSpreadCurve[.IdentifierType], market asset  CreditSpreadCurve/&lt;identifier&gt;), which takes precedence over the quote when present.  Only the spread at the bond&#39;s maturity is read off it; the document&#39;s recoveryRate is not  used by this pricer.  Off by default, as the mode changes both the declared dependencies and where the price  comes from.
    * @return spreadAnchoredRisk
   **/
   @jakarta.annotation.Nonnull

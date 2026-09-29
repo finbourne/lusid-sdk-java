@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.CreateTransferRequest;
 import com.finbourne.lusid.model.CreateTransferResponse;
+import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.GetTransferRequest;
 import com.finbourne.lusid.model.GetTransferResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -310,6 +311,303 @@ public class TransfersApi {
      */
     public APIcreateTransferRequest createTransfer(CreateTransferRequest createTransferRequest) {
         return new APIcreateTransferRequest(createTransferRequest);
+    }
+    private okhttp3.Call deleteTransferCall(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, final ApiCallback _callback) throws ApiException {
+        return deleteTransferCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTransferCall(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transfers/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioScopeOut != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioScopeOut", portfolioScopeOut));
+        }
+
+        if (portfolioCodeOut != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioCodeOut", portfolioCodeOut));
+        }
+
+        if (portfolioScopeIn != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioScopeIn", portfolioScopeIn));
+        }
+
+        if (portfolioCodeIn != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioCodeIn", portfolioCodeIn));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteTransferValidateBeforeCall(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteTransfer(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteTransfer(Async)");
+        }
+
+        // verify the required parameter 'portfolioScopeOut' is set
+        if (portfolioScopeOut == null) {
+            throw new ApiException("Missing the required parameter 'portfolioScopeOut' when calling deleteTransfer(Async)");
+        }
+
+        // verify the required parameter 'portfolioCodeOut' is set
+        if (portfolioCodeOut == null) {
+            throw new ApiException("Missing the required parameter 'portfolioCodeOut' when calling deleteTransfer(Async)");
+        }
+
+        // verify the required parameter 'portfolioScopeIn' is set
+        if (portfolioScopeIn == null) {
+            throw new ApiException("Missing the required parameter 'portfolioScopeIn' when calling deleteTransfer(Async)");
+        }
+
+        // verify the required parameter 'portfolioCodeIn' is set
+        if (portfolioCodeIn == null) {
+            throw new ApiException("Missing the required parameter 'portfolioCodeIn' when calling deleteTransfer(Async)");
+        }
+
+        return deleteTransferCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteTransferWithHttpInfo(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransferValidateBeforeCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteTransferWithHttpInfo(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransferValidateBeforeCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteTransferAsync(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransferValidateBeforeCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTransferAsync(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransferValidateBeforeCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteTransferRequest {
+        private final String scope;
+        private final String code;
+        private final String portfolioScopeOut;
+        private final String portfolioCodeOut;
+        private final String portfolioScopeIn;
+        private final String portfolioCodeIn;
+
+        private APIdeleteTransferRequest(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn) {
+            this.scope = scope;
+            this.code = code;
+            this.portfolioScopeOut = portfolioScopeOut;
+            this.portfolioCodeOut = portfolioCodeOut;
+            this.portfolioScopeIn = portfolioScopeIn;
+            this.portfolioCodeIn = portfolioCodeIn;
+        }
+
+        /**
+         * Build call for deleteTransfer
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTransferCall(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback);
+        }
+
+        /**
+         * Execute deleteTransfer request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransferWithHttpInfo(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransfer request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransferWithHttpInfo(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTransfer request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTransferWithHttpInfo(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn);
+        }
+
+        /**
+         * Execute deleteTransfer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTransferWithHttpInfo(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, opts);
+        }
+
+        /**
+         * Execute deleteTransfer request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTransferAsync(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback);
+        }
+
+        /**
+         * Execute deleteTransfer request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTransferAsync(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteTransfer: Delete a transfer.
+     * Delete the Transfer entity recording a transfer and cancel the transaction legs it still has, as a single  atomic operation: if any part of the request is rejected, nothing is changed. A leg that has already gone is  skipped, so a transfer with no legs left can still be deleted to clear the record.     A transfer is identified by its scope, its code and both of its portfolios, so all four are required. Where  no transfer matches all four, the request is reported as not found.
+     * @param scope The scope of the transfer. (required)
+     * @param code The code of the transfer. Together with the scope and both portfolios this uniquely   identifies the transfer. (required)
+     * @param portfolioScopeOut The scope of the portfolio the outgoing leg is booked in. (required)
+     * @param portfolioCodeOut The code of the portfolio the outgoing leg is booked in. (required)
+     * @param portfolioScopeIn The scope of the portfolio the incoming leg is booked in. (required)
+     * @param portfolioCodeIn The code of the portfolio the incoming leg is booked in. Equal to   portfolioCodeOut for a switch between instruments within one portfolio. (required)
+     * @return APIdeleteTransferRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The asAt the deletion landed at. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> No transfer with the given scope, code and portfolios. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteTransferRequest deleteTransfer(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn) {
+        return new APIdeleteTransferRequest(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn);
     }
     private okhttp3.Call getTransferCall(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getTransferCall(getTransferRequest, asAt,  _callback, new ConfigurationOptions());

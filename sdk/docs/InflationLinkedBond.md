@@ -19,6 +19,10 @@ Name | Type | Description | Notes
 **principal** | **java.math.BigDecimal** | The face-value or principal for the bond at outset. | [default to java.math.BigDecimal]
 **principalProtection** | **Boolean** | If true then the principal is protected in that the redemption amount will be at least the face value (Principal).  This is typically set to true for inflation linked bonds issued by the United States and France (for example).  This is typically set to false for inflation linked bonds issued by the United Kingdom (post 2005).  For other sovereigns this can vary from issue to issue.  If not set this property defaults to true.  This is sometimes referred to as Deflation protection or an inflation floor of 0%. | [optional] [default to Boolean]
 **stubType** | **String** | StubType. Most Inflation linked bonds have a ShortFront stub type so this is the default, however in some cases  with a long front stub LongFront should be selected.  StubType Both is not supported for InflationLinkedBonds.    Supported string (enumeration) values are: [ShortFront, ShortBack, LongBack, LongFront, Both]. | [optional] [default to String]
+**firstCouponPayDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  If this date is an adjusted date, also set SecondPeriodStartDate. | [optional] [default to OffsetDateTime]
+**secondPeriodStartDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  Set this date together with FirstCouponPayDate when the first coupon pay date is an adjusted date. | [optional] [default to OffsetDateTime]
+**penultimateCouponPayDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  If this date is an adjusted date, also set LastPeriodStartDate. | [optional] [default to OffsetDateTime]
+**lastPeriodStartDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  Set this date together with PenultimateCouponPayDate when the penultimate coupon pay date is an adjusted date. | [optional] [default to OffsetDateTime]
 **roundingConventions** | [**List&lt;RoundingConvention&gt;**](RoundingConvention.md) | Rounding conventions for analytics, if any. | [optional] [default to List<RoundingConvention>]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 **originalIssuePrice** | **java.math.BigDecimal** | The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
@@ -46,6 +50,10 @@ Integer IndexPrecision = new Integer("100.00");
 java.math.BigDecimal Principal = new java.math.BigDecimal("100.00");
 Boolean PrincipalProtection = true;
 @jakarta.annotation.Nullable String StubType = "example StubType";
+@jakarta.annotation.Nullable OffsetDateTime FirstCouponPayDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime SecondPeriodStartDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime PenultimateCouponPayDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime LastPeriodStartDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<RoundingConvention> RoundingConventions = new List<RoundingConvention>();
 TradingConventions TradingConventions = new TradingConventions();
 @jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
@@ -69,6 +77,10 @@ InflationLinkedBond inflationLinkedBondInstance = new InflationLinkedBond()
     .Principal(Principal)
     .PrincipalProtection(PrincipalProtection)
     .StubType(StubType)
+    .FirstCouponPayDate(FirstCouponPayDate)
+    .SecondPeriodStartDate(SecondPeriodStartDate)
+    .PenultimateCouponPayDate(PenultimateCouponPayDate)
+    .LastPeriodStartDate(LastPeriodStartDate)
     .RoundingConventions(RoundingConventions)
     .TradingConventions(TradingConventions)
     .OriginalIssuePrice(OriginalIssuePrice)

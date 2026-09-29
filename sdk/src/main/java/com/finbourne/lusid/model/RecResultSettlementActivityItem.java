@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.RecResultHoldingImpact;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.WritebackSuggestion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,7 +85,19 @@ public class RecResultSettlementActivityItem {
   @SerializedName(SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES)
   private Map<String, String> ruleAndAttributeValues;
 
+  public static final String SERIALIZED_NAME_WRITEBACK_SUGGESTIONS = "writebackSuggestions";
+  @SerializedName(SERIALIZED_NAME_WRITEBACK_SUGGESTIONS)
+  private List<WritebackSuggestion> writebackSuggestions = new ArrayList<>();
+
   public RecResultSettlementActivityItem() {
+  }
+
+  
+  public RecResultSettlementActivityItem(
+     List<WritebackSuggestion> writebackSuggestions
+  ) {
+    this();
+    this.writebackSuggestions = writebackSuggestions;
   }
 
   public RecResultSettlementActivityItem portfolioId(ResourceId portfolioId) {
@@ -250,6 +263,18 @@ public class RecResultSettlementActivityItem {
   }
 
 
+   /**
+   * The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty.
+   * @return writebackSuggestions
+  **/
+  @jakarta.annotation.Nonnull
+  public List<WritebackSuggestion> getWritebackSuggestions() {
+    return writebackSuggestions;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -266,7 +291,8 @@ public class RecResultSettlementActivityItem {
         Objects.equals(this.settlementInstructionId, recResultSettlementActivityItem.settlementInstructionId) &&
         Objects.equals(this.holdingImpacts, recResultSettlementActivityItem.holdingImpacts) &&
         Objects.equals(this.itemType, recResultSettlementActivityItem.itemType) &&
-        Objects.equals(this.ruleAndAttributeValues, recResultSettlementActivityItem.ruleAndAttributeValues);
+        Objects.equals(this.ruleAndAttributeValues, recResultSettlementActivityItem.ruleAndAttributeValues) &&
+        Objects.equals(this.writebackSuggestions, recResultSettlementActivityItem.writebackSuggestions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -275,7 +301,7 @@ public class RecResultSettlementActivityItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, activityId, transactionId, settlementInstructionId, holdingImpacts, itemType, ruleAndAttributeValues);
+    return Objects.hash(portfolioId, activityId, transactionId, settlementInstructionId, holdingImpacts, itemType, ruleAndAttributeValues, writebackSuggestions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -296,6 +322,7 @@ public class RecResultSettlementActivityItem {
     sb.append("    holdingImpacts: ").append(toIndentedString(holdingImpacts)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
+    sb.append("    writebackSuggestions: ").append(toIndentedString(writebackSuggestions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -325,12 +352,14 @@ public class RecResultSettlementActivityItem {
     openapiFields.add("holdingImpacts");
     openapiFields.add("itemType");
     openapiFields.add("ruleAndAttributeValues");
+    openapiFields.add("writebackSuggestions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("holdingImpacts");
     openapiRequiredFields.add("itemType");
+    openapiRequiredFields.add("writebackSuggestions");
   }
 
  /**
@@ -377,6 +406,16 @@ public class RecResultSettlementActivityItem {
       if (!jsonObj.get("itemType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("writebackSuggestions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `writebackSuggestions` to be an array in the JSON string but got `%s`", jsonObj.get("writebackSuggestions").toString()));
+      }
+
+      JsonArray jsonArraywritebackSuggestions = jsonObj.getAsJsonArray("writebackSuggestions");
+      // validate the required field `writebackSuggestions` (array)
+      for (int i = 0; i < jsonArraywritebackSuggestions.size(); i++) {
+        WritebackSuggestion.validateJsonElement(jsonArraywritebackSuggestions.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

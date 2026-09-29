@@ -12,14 +12,17 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.WritebackSuggestion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -73,7 +76,19 @@ public class RecResultHoldingItem {
   @SerializedName(SERIALIZED_NAME_RULE_AND_ATTRIBUTE_VALUES)
   private Map<String, String> ruleAndAttributeValues;
 
+  public static final String SERIALIZED_NAME_WRITEBACK_SUGGESTIONS = "writebackSuggestions";
+  @SerializedName(SERIALIZED_NAME_WRITEBACK_SUGGESTIONS)
+  private List<WritebackSuggestion> writebackSuggestions = new ArrayList<>();
+
   public RecResultHoldingItem() {
+  }
+
+  
+  public RecResultHoldingItem(
+     List<WritebackSuggestion> writebackSuggestions
+  ) {
+    this();
+    this.writebackSuggestions = writebackSuggestions;
   }
 
   public RecResultHoldingItem portfolioId(ResourceId portfolioId) {
@@ -189,6 +204,18 @@ public class RecResultHoldingItem {
   }
 
 
+   /**
+   * The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty.
+   * @return writebackSuggestions
+  **/
+  @jakarta.annotation.Nonnull
+  public List<WritebackSuggestion> getWritebackSuggestions() {
+    return writebackSuggestions;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -203,7 +230,8 @@ public class RecResultHoldingItem {
         Objects.equals(this.holdingId, recResultHoldingItem.holdingId) &&
         Objects.equals(this.taxLotId, recResultHoldingItem.taxLotId) &&
         Objects.equals(this.itemType, recResultHoldingItem.itemType) &&
-        Objects.equals(this.ruleAndAttributeValues, recResultHoldingItem.ruleAndAttributeValues);
+        Objects.equals(this.ruleAndAttributeValues, recResultHoldingItem.ruleAndAttributeValues) &&
+        Objects.equals(this.writebackSuggestions, recResultHoldingItem.writebackSuggestions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -212,7 +240,7 @@ public class RecResultHoldingItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, taxLotId, itemType, ruleAndAttributeValues);
+    return Objects.hash(portfolioId, holdingId, taxLotId, itemType, ruleAndAttributeValues, writebackSuggestions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -231,6 +259,7 @@ public class RecResultHoldingItem {
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
+    sb.append("    writebackSuggestions: ").append(toIndentedString(writebackSuggestions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,11 +287,13 @@ public class RecResultHoldingItem {
     openapiFields.add("taxLotId");
     openapiFields.add("itemType");
     openapiFields.add("ruleAndAttributeValues");
+    openapiFields.add("writebackSuggestions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("itemType");
+    openapiRequiredFields.add("writebackSuggestions");
   }
 
  /**
@@ -296,6 +327,16 @@ public class RecResultHoldingItem {
       if (!jsonObj.get("itemType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("writebackSuggestions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `writebackSuggestions` to be an array in the JSON string but got `%s`", jsonObj.get("writebackSuggestions").toString()));
+      }
+
+      JsonArray jsonArraywritebackSuggestions = jsonObj.getAsJsonArray("writebackSuggestions");
+      // validate the required field `writebackSuggestions` (array)
+      for (int i = 0; i < jsonArraywritebackSuggestions.size(); i++) {
+        WritebackSuggestion.validateJsonElement(jsonArraywritebackSuggestions.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

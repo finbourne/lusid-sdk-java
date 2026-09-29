@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective date for which the fee accrual has been calculated. | [default to OffsetDateTime]
 **code** | **String** | The code of the fee for which the accrual has been calculated. | [default to String]
 **name** | **String** | The name of the fee for which the accrual has been calculated. | [default to String]
-**calculationBase** | **java.math.BigDecimal** | The result of the evaluating the fee&#39;s calculation base expression. | [optional] [default to java.math.BigDecimal]
+**calculationBase** | **java.math.BigDecimal** | The basis the annual accrual derives from: the result of evaluating the fee&#39;s calculation base expression, or the configured annual amount for a fixed-amount fee. | [optional] [default to java.math.BigDecimal]
 **amount** | **java.math.BigDecimal** | The result of applying the fee to the calculation base, and scaled down to a day. | [optional] [default to java.math.BigDecimal]
 **previousAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. | [optional] [default to java.math.BigDecimal]
 **previousTotalAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. | [optional] [default to java.math.BigDecimal]

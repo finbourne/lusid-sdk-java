@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.RecResultHoldingItem;
 import com.finbourne.lusid.model.RecResultSettlementActivityItem;
 import com.finbourne.lusid.model.RecResultTransactionItem;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.WritebackSuggestion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

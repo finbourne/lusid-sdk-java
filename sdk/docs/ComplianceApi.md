@@ -12,6 +12,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getComplianceRuleResult**](ComplianceApi.md#getComplianceRuleResult) | **GET** /api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run. |
 | [**getComplianceTemplate**](ComplianceApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**getDecoratedComplianceRunSummary**](ComplianceApi.md#getDecoratedComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code}/$decorate | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
+| [**getFilteredDecoratedComplianceRunSummary**](ComplianceApi.md#getFilteredDecoratedComplianceRunSummary) | **POST** /api/compliance/runs/summary/$decorate | [EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups. |
 | [**listComplianceRules**](ComplianceApi.md#listComplianceRules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
 | [**listComplianceRuns**](ComplianceApi.md#listComplianceRuns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
 | [**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
@@ -771,6 +772,97 @@ public class ComplianceApiExample {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested compliance run details. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getFilteredDecoratedComplianceRunSummary
+
+> DecoratedComplianceRunSummary getFilteredDecoratedComplianceRunSummary(decoratedComplianceRunSummaryRequest)
+
+[EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups.
+
+Specify a run scope and code from a previously run compliance check to get an overview of result details.  Supply an optional list of portfolios and/or portfolio groups to return only the rule results affecting them;  portfolio groups are expanded to their member portfolios (including nested groups). An empty or omitted list  returns the full, unfiltered summary.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ComplianceApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ComplianceApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
+        ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
+        DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest = new DecoratedComplianceRunSummaryRequest(); // DecoratedComplianceRunSummaryRequest | The run to summarise, the optional portfolio/portfolio-group filter, and the property keys to decorate.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DecoratedComplianceRunSummary result = apiInstance.getFilteredDecoratedComplianceRunSummary(decoratedComplianceRunSummaryRequest).execute(opts);
+
+            DecoratedComplianceRunSummary result = apiInstance.getFilteredDecoratedComplianceRunSummary(decoratedComplianceRunSummaryRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplianceApi#getFilteredDecoratedComplianceRunSummary");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **decoratedComplianceRunSummaryRequest** | [**DecoratedComplianceRunSummaryRequest**](DecoratedComplianceRunSummaryRequest.md)| The run to summarise, the optional portfolio/portfolio-group filter, and the property keys to decorate. | [optional] |
+
+### Return type
+
+[**DecoratedComplianceRunSummary**](DecoratedComplianceRunSummary.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
 - **Accept**: text/plain, application/json, text/json
 
 

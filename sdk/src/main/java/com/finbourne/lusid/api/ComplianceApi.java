@@ -34,6 +34,7 @@ import com.finbourne.lusid.model.ComplianceRunInfoV2;
 import com.finbourne.lusid.model.ComplianceTemplate;
 import com.finbourne.lusid.model.CreateComplianceTemplateRequest;
 import com.finbourne.lusid.model.DecoratedComplianceRunSummary;
+import com.finbourne.lusid.model.DecoratedComplianceRunSummaryRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -2116,6 +2117,244 @@ public class ComplianceApi {
      */
     public APIgetDecoratedComplianceRunSummaryRequest getDecoratedComplianceRunSummary(String scope, String code) {
         return new APIgetDecoratedComplianceRunSummaryRequest(scope, code);
+    }
+    private okhttp3.Call getFilteredDecoratedComplianceRunSummaryCall(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, final ApiCallback _callback) throws ApiException {
+        return getFilteredDecoratedComplianceRunSummaryCall(decoratedComplianceRunSummaryRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFilteredDecoratedComplianceRunSummaryCall(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = decoratedComplianceRunSummaryRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/runs/summary/$decorate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFilteredDecoratedComplianceRunSummaryValidateBeforeCall(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getFilteredDecoratedComplianceRunSummaryCall(decoratedComplianceRunSummaryRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DecoratedComplianceRunSummary> getFilteredDecoratedComplianceRunSummaryWithHttpInfo(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest) throws ApiException {
+        okhttp3.Call localVarCall = getFilteredDecoratedComplianceRunSummaryValidateBeforeCall(decoratedComplianceRunSummaryRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DecoratedComplianceRunSummary> getFilteredDecoratedComplianceRunSummaryWithHttpInfo(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFilteredDecoratedComplianceRunSummaryValidateBeforeCall(decoratedComplianceRunSummaryRequest, null, opts);
+        Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getFilteredDecoratedComplianceRunSummaryAsync(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFilteredDecoratedComplianceRunSummaryValidateBeforeCall(decoratedComplianceRunSummaryRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFilteredDecoratedComplianceRunSummaryAsync(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest, final ApiCallback<DecoratedComplianceRunSummary> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFilteredDecoratedComplianceRunSummaryValidateBeforeCall(decoratedComplianceRunSummaryRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<DecoratedComplianceRunSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetFilteredDecoratedComplianceRunSummaryRequest {
+        private DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest;
+
+        private APIgetFilteredDecoratedComplianceRunSummaryRequest() {
+        }
+
+        /**
+         * Set decoratedComplianceRunSummaryRequest
+         * @param decoratedComplianceRunSummaryRequest The run to summarise, the optional portfolio/portfolio-group filter, and the property keys to decorate. (optional)
+         * @return APIgetFilteredDecoratedComplianceRunSummaryRequest
+         */
+        public APIgetFilteredDecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest(DecoratedComplianceRunSummaryRequest decoratedComplianceRunSummaryRequest) {
+            this.decoratedComplianceRunSummaryRequest = decoratedComplianceRunSummaryRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getFilteredDecoratedComplianceRunSummary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getFilteredDecoratedComplianceRunSummaryCall(decoratedComplianceRunSummaryRequest, _callback);
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request
+         * @return DecoratedComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DecoratedComplianceRunSummary execute() throws ApiException {
+            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getFilteredDecoratedComplianceRunSummaryWithHttpInfo(decoratedComplianceRunSummaryRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DecoratedComplianceRunSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DecoratedComplianceRunSummary execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DecoratedComplianceRunSummary> localVarResp = getFilteredDecoratedComplianceRunSummaryWithHttpInfo(decoratedComplianceRunSummaryRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request with HTTP info returned
+         * @return ApiResponse&lt;DecoratedComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DecoratedComplianceRunSummary> executeWithHttpInfo() throws ApiException {
+            return getFilteredDecoratedComplianceRunSummaryWithHttpInfo(decoratedComplianceRunSummaryRequest);
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DecoratedComplianceRunSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DecoratedComplianceRunSummary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFilteredDecoratedComplianceRunSummaryWithHttpInfo(decoratedComplianceRunSummaryRequest, opts);
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DecoratedComplianceRunSummary> _callback) throws ApiException {
+            return getFilteredDecoratedComplianceRunSummaryAsync(decoratedComplianceRunSummaryRequest, _callback);
+        }
+
+        /**
+         * Execute getFilteredDecoratedComplianceRunSummary request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DecoratedComplianceRunSummary> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFilteredDecoratedComplianceRunSummaryAsync(decoratedComplianceRunSummaryRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups.
+     * Specify a run scope and code from a previously run compliance check to get an overview of result details.  Supply an optional list of portfolios and/or portfolio groups to return only the rule results affecting them;  portfolio groups are expanded to their member portfolios (including nested groups). An empty or omitted list  returns the full, unfiltered summary.
+     * @return APIgetFilteredDecoratedComplianceRunSummaryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested compliance run details. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetFilteredDecoratedComplianceRunSummaryRequest getFilteredDecoratedComplianceRunSummary() {
+        return new APIgetFilteredDecoratedComplianceRunSummaryRequest();
     }
     private okhttp3.Call listComplianceRulesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return listComplianceRulesCall(asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());

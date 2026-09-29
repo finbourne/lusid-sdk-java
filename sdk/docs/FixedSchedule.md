@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **notional** | **java.math.BigDecimal** | Scaling factor, the quantity outstanding on which the rate will be paid. | [optional] [default to java.math.BigDecimal]
 **paymentCurrency** | **String** | Payment currency. This does not have to be the same as the nominal bond or observation/reset currency. | [default to String]
 **stubType** | **String** | When a payment schedule doesn&#39;t have regular payment intervals just because of the  first and/or last coupons of the schedule, we call those irregular coupons stubs.  This configuration specifies what type of stub is used when building the schedule  Supported values are:  None &#x3D; this is a regular payment schedule with no stubs. DO NOT use it with irregular schedules or you will get incorrect and unexpected behaviour.  ShortFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is shorter than the regular payment period.  ShortBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is shorter than the regular payment period.  LongFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is longer than the regular payment period.  LongBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is longer than the regular payment period.  Both &#x3D; this is an irregular payment schedule where both the first and the last coupons are irregular, and the length of these periods is calculated based on the first coupon payment date that should have been explicitly set. | [optional] [default to String]
+**firstCouponPayDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  If this date is an adjusted date, also set SecondPeriodStartDate. | [optional] [default to OffsetDateTime]
+**secondPeriodStartDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  Set this date together with FirstCouponPayDate when the first coupon pay date is an adjusted date. | [optional] [default to OffsetDateTime]
+**penultimateCouponPayDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  If this date is an adjusted date, also set LastPeriodStartDate. | [optional] [default to OffsetDateTime]
+**lastPeriodStartDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  Set this date together with PenultimateCouponPayDate when the penultimate coupon pay date is an adjusted date. | [optional] [default to OffsetDateTime]
 **exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  | [optional] [default to ExDividendConfiguration]
 **scheduleId** | **String** | Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent. | [optional] [default to String]
 
@@ -32,6 +36,10 @@ FlowConventionName ConventionName = new FlowConventionName();
 java.math.BigDecimal Notional = new java.math.BigDecimal("100.00");
 String PaymentCurrency = "example PaymentCurrency";
 @jakarta.annotation.Nullable String StubType = "example StubType";
+@jakarta.annotation.Nullable OffsetDateTime FirstCouponPayDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime SecondPeriodStartDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime PenultimateCouponPayDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime LastPeriodStartDate = OffsetDateTime.now();
 ExDividendConfiguration ExDividendConfiguration = new ExDividendConfiguration();
 @jakarta.annotation.Nullable String ScheduleId = "example ScheduleId";
 
@@ -46,6 +54,10 @@ FixedSchedule fixedScheduleInstance = new FixedSchedule()
     .Notional(Notional)
     .PaymentCurrency(PaymentCurrency)
     .StubType(StubType)
+    .FirstCouponPayDate(FirstCouponPayDate)
+    .SecondPeriodStartDate(SecondPeriodStartDate)
+    .PenultimateCouponPayDate(PenultimateCouponPayDate)
+    .LastPeriodStartDate(LastPeriodStartDate)
     .ExDividendConfiguration(ExDividendConfiguration)
     .ScheduleId(ScheduleId);
 ```

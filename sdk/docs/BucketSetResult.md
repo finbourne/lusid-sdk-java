@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **isApportionment** | **Boolean** | Whether this bucket set is the apportionment set (apportioning non-class-specific P&amp;L across share classes). | [default to Boolean]
 **nodes** | [**List&lt;BucketSetNode&gt;**](BucketSetNode.md) | The nodes making up the bucket set: the fund aggregate and one per share class. | [default to List<BucketSetNode>]
 **displayName** | **String** | The display name of the bucket set, as configured on the fund configuration. | [optional] [default to String]
+**isBackfilled** | **Boolean** | Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.BucketSetResult;
@@ -20,13 +21,15 @@ String BucketSetCode = "example BucketSetCode";
 Boolean IsApportionment = true;
 List<BucketSetNode> Nodes = new List<BucketSetNode>();
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
+Boolean IsBackfilled = true;
 
 
 BucketSetResult bucketSetResultInstance = new BucketSetResult()
     .BucketSetCode(BucketSetCode)
     .IsApportionment(IsApportionment)
     .Nodes(Nodes)
-    .DisplayName(DisplayName);
+    .DisplayName(DisplayName)
+    .IsBackfilled(IsBackfilled);
 ```
 
 

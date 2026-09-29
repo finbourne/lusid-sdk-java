@@ -69,6 +69,10 @@ public class BucketSetResult {
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
 
+  public static final String SERIALIZED_NAME_IS_BACKFILLED = "isBackfilled";
+  @SerializedName(SERIALIZED_NAME_IS_BACKFILLED)
+  private Boolean isBackfilled;
+
   public BucketSetResult() {
   }
 
@@ -164,6 +168,27 @@ public class BucketSetResult {
   }
 
 
+  public BucketSetResult isBackfilled(Boolean isBackfilled) {
+    
+    this.isBackfilled = isBackfilled;
+    return this;
+  }
+
+   /**
+   * Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise.
+   * @return isBackfilled
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsBackfilled() {
+    return isBackfilled;
+  }
+
+
+  public void setIsBackfilled(Boolean isBackfilled) {
+    this.isBackfilled = isBackfilled;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,7 +202,8 @@ public class BucketSetResult {
     return Objects.equals(this.bucketSetCode, bucketSetResult.bucketSetCode) &&
         Objects.equals(this.isApportionment, bucketSetResult.isApportionment) &&
         Objects.equals(this.nodes, bucketSetResult.nodes) &&
-        Objects.equals(this.displayName, bucketSetResult.displayName);
+        Objects.equals(this.displayName, bucketSetResult.displayName) &&
+        Objects.equals(this.isBackfilled, bucketSetResult.isBackfilled);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -186,7 +212,7 @@ public class BucketSetResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketSetCode, isApportionment, nodes, displayName);
+    return Objects.hash(bucketSetCode, isApportionment, nodes, displayName, isBackfilled);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -204,6 +230,7 @@ public class BucketSetResult {
     sb.append("    isApportionment: ").append(toIndentedString(isApportionment)).append("\n");
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    isBackfilled: ").append(toIndentedString(isBackfilled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -230,6 +257,7 @@ public class BucketSetResult {
     openapiFields.add("isApportionment");
     openapiFields.add("nodes");
     openapiFields.add("displayName");
+    openapiFields.add("isBackfilled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -104,6 +104,10 @@ public class ValuationPointDataResponse {
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
 
+  public static final String SERIALIZED_NAME_IS_BACKFILLED = "isBackfilled";
+  @SerializedName(SERIALIZED_NAME_IS_BACKFILLED)
+  private Boolean isBackfilled;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -366,6 +370,27 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse isBackfilled(Boolean isBackfilled) {
+    
+    this.isBackfilled = isBackfilled;
+    return this;
+  }
+
+   /**
+   * Set to True if the Valuation Point has backfilled bucket set results, False otherwise.
+   * @return isBackfilled
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsBackfilled() {
+    return isBackfilled;
+  }
+
+
+  public void setIsBackfilled(Boolean isBackfilled) {
+    this.isBackfilled = isBackfilled;
+  }
+
+
   public ValuationPointDataResponse links(List<Link> links) {
     
     this.links = links;
@@ -416,6 +441,7 @@ public class ValuationPointDataResponse {
         Objects.equals(this.apportionmentResults, valuationPointDataResponse.apportionmentResults) &&
         Objects.equals(this.bucketSetResults, valuationPointDataResponse.bucketSetResults) &&
         Objects.equals(this.stagedModifications, valuationPointDataResponse.stagedModifications) &&
+        Objects.equals(this.isBackfilled, valuationPointDataResponse.isBackfilled) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -425,7 +451,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, links);
+    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, isBackfilled, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -450,6 +476,7 @@ public class ValuationPointDataResponse {
     sb.append("    apportionmentResults: ").append(toIndentedString(apportionmentResults)).append("\n");
     sb.append("    bucketSetResults: ").append(toIndentedString(bucketSetResults)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    isBackfilled: ").append(toIndentedString(isBackfilled)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -484,6 +511,7 @@ public class ValuationPointDataResponse {
     openapiFields.add("apportionmentResults");
     openapiFields.add("bucketSetResults");
     openapiFields.add("stagedModifications");
+    openapiFields.add("isBackfilled");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
