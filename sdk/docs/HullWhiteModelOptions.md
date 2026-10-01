@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **meanReversionByCurrency** | **Map&lt;String, java.math.BigDecimal&gt;** | Per-currency mean-reversion overrides, keyed by ISO currency code.  A currency absent from this map uses MeanReversion. | [optional] [default to Map<String, java.math.BigDecimal>]
 **volatilityByCurrency** | **Map&lt;String, java.math.BigDecimal&gt;** | Per-currency short-rate volatility overrides, keyed by ISO currency code.  A currency absent from this map uses Volatility. Short-rate volatility is a per-currency  quantity in practice, so a book spanning several currencies can calibrate each currency  separately instead of sharing a single global figure. | [optional] [default to Map<String, java.math.BigDecimal>]
 **volatilityMultiplier** | **java.math.BigDecimal** | A multiplicative scaling applied to the resolved short-rate volatility - the scalar  Volatility or its per-currency override, whichever applies - at the point of use, e.g. 1.1  prices with the configured volatility raised by ten percent. A single multiplier scales  every per-currency calibration coherently, so a shocked set of options can differ from its  base by this one field rather than a hand-rebuilt volatility (or map of volatilities).  Must not be negative; zero is allowed and prices with a deterministic short rate.  Defaults to 1, which reproduces the configured volatility exactly, when not supplied. | [optional] [default to java.math.BigDecimal]
+**effectiveCs01BumpWidth** | **java.math.BigDecimal** | The TOTAL width, as an absolute spread, of the central-difference stencil used for the  option-adjusted Analytic/EffectiveCS01: the two reprice points sit at the solved OAS plus  and minus half of this. The reported figure is normalised to a one-basis-point move  whatever width is configured. Must be strictly positive. Defaults to 0.0001 (1bp, the  market convention for a credit sensitivity) when not supplied. | [optional] [default to java.math.BigDecimal]
+**effectiveKeyRateBuckets** | **List&lt;String&gt;** | The maturity buckets of the Analytic/EffectiveKeyRateDuration ladder, as tenor strings  such as \&quot;1Y\&quot; or \&quot;6M\&quot;, in strictly increasing order. Each bucket is repriced under a  tent-shaped curve shift centred on its own tenor, so the ladder sums to the parallel  effective duration to first order. Buckets past an instrument&#39;s maturity report zero, so  one grid can serve a whole book. Defaults to the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y grid  when not supplied; an empty list is rejected. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.HullWhiteModelOptions;
@@ -26,6 +28,8 @@ Integer LatticeSteps = new Integer("100.00");
 @jakarta.annotation.Nullable Map<String, java.math.BigDecimal> MeanReversionByCurrency = new Map<String, java.math.BigDecimal>();
 @jakarta.annotation.Nullable Map<String, java.math.BigDecimal> VolatilityByCurrency = new Map<String, java.math.BigDecimal>();
 @jakarta.annotation.Nullable java.math.BigDecimal VolatilityMultiplier = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal EffectiveCs01BumpWidth = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<String> EffectiveKeyRateBuckets = new List<String>();
 
 
 HullWhiteModelOptions hullWhiteModelOptionsInstance = new HullWhiteModelOptions()
@@ -35,7 +39,9 @@ HullWhiteModelOptions hullWhiteModelOptionsInstance = new HullWhiteModelOptions(
     .EffectiveRateBumpSize(EffectiveRateBumpSize)
     .MeanReversionByCurrency(MeanReversionByCurrency)
     .VolatilityByCurrency(VolatilityByCurrency)
-    .VolatilityMultiplier(VolatilityMultiplier);
+    .VolatilityMultiplier(VolatilityMultiplier)
+    .EffectiveCs01BumpWidth(EffectiveCs01BumpWidth)
+    .EffectiveKeyRateBuckets(EffectiveKeyRateBuckets);
 ```
 
 

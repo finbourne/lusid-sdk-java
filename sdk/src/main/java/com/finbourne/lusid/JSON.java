@@ -2134,6 +2134,7 @@ public class JSON {
                         classByDiscriminatorValue.put("ToBeAnnouncedOption", com.finbourne.lusid.model.ToBeAnnouncedOption.class);
                         classByDiscriminatorValue.put("TotalReturnSwap", com.finbourne.lusid.model.TotalReturnSwap.class);
                         classByDiscriminatorValue.put("VolatilitySwap", com.finbourne.lusid.model.VolatilitySwap.class);
+                        classByDiscriminatorValue.put("WholeLoanFacility", com.finbourne.lusid.model.WholeLoanFacility.class);
                         classByDiscriminatorValue.put("LusidInstrument", com.finbourne.lusid.model.LusidInstrument.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentType"));
@@ -3268,6 +3269,15 @@ public class JSON {
                         classByDiscriminatorValue.put("WarrantsExerciseEvent", com.finbourne.lusid.model.WarrantsExerciseEvent.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.WholeLoanFacility.class, new TypeSelector<com.finbourne.lusid.model.WholeLoanFacility>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.WholeLoanFacility> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("WholeLoanFacility", com.finbourne.lusid.model.WholeLoanFacility.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.WorthlessEvent.class, new TypeSelector<com.finbourne.lusid.model.WorthlessEvent>() {
@@ -4914,6 +4924,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertQuoteAccessMetadataRuleRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertQuoteRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertQuotesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertRecDefinitionPropertiesResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertRecipeComposerRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertRecipeRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.UpsertReferencePortfolioConstituentPropertiesRequest.CustomTypeAdapterFactory());
@@ -4986,6 +4997,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstrument.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstrumentInLineLookupIdentifiers.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WeightedInstruments.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WholeLoanFacility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WithholdingTaxConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WithholdingTaxDataset.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.WithholdingTaxDatasetDefinitions.CustomTypeAdapterFactory());

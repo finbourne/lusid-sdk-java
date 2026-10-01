@@ -414,9 +414,12 @@ info:
     | <a name="974">974</a>|Cannot PlaceBlocks against an 'Unsolicited' Block (block containing 0 Orders).| |
     | <a name="975">975</a>|No Portfolio Group Selected| |
     | <a name="976">976</a>|Ambiguous Scope| |
+    | <a name="977">977</a>|The provided entity match request is not valid| |
+    | <a name="978">978</a>|Invalid Transfer| |
+    | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10120
+  version: 0.11.10148
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1192,6 +1195,13 @@ info:
       title: No Portfolio Group Selected
     "976":
       title: Ambiguous Scope
+    "977":
+      title: The provided entity match request is not valid
+    "978":
+      title: Invalid Transfer
+    "979":
+      title: The named series matching pattern is not usable on the dataset at the
+        requested time
   x-fbn-description: "LUSID is an API-first, SaaS-native investment data management\
     \ platform. It models entities such as instruments, portfolios, transactions and\
     \ holdings to manage and value portfolios, and supports data integrations, flexible\
@@ -64036,7 +64046,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward, PreferredShare, CapitalInterest."
+          \ BondForward, PreferredShare, CapitalInterest, WholeLoanFacility."
         explode: false
         in: path
         name: instrumentType
@@ -64152,7 +64162,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward, PreferredShare, CapitalInterest."
+          \ BondForward, PreferredShare, CapitalInterest, WholeLoanFacility."
         explode: false
         in: path
         name: instrumentType
@@ -64276,7 +64286,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward, PreferredShare, CapitalInterest."
+          \ BondForward, PreferredShare, CapitalInterest, WholeLoanFacility."
         explode: false
         in: path
         name: instrumentType
@@ -64506,7 +64516,7 @@ paths:
           \ InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument,\
           \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
           \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-          \ BondForward, PreferredShare, CapitalInterest."
+          \ BondForward, PreferredShare, CapitalInterest, WholeLoanFacility."
         explode: false
         in: path
         name: instrumentType
@@ -120124,6 +120134,126 @@ paths:
       security:
       - oauth2: []
       summary: "[EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/recs/definitions/{scope}/{code}/properties/$upsert:
+    post:
+      description: "Update or insert one or more properties onto a single rec definition.\
+        \ A property will be updated if it already\r\nexists and inserted if it does\
+        \ not. All properties must be of the domain 'RecDefinition', and are perpetual.\r\
+        \n \r\nUpserting a property that exists for a rec definition, with a null\
+        \ value, will delete the instance of the\r\nproperty for that rec definition.\
+        \ Properties not supplied are left unchanged, as is every other field of the\r\
+        \nrec definition."
+      operationId: UpsertRecDefinitionProperties
+      parameters:
+      - description: The scope of the rec definition to update or insert the properties
+          onto.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The code of the rec definition to update or insert the properties\
+          \ onto. Together with the\r\n scope this uniquely identifies the rec definition."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              RecDefinition/Workflow/WorkflowId:
+                key: RecDefinition/Workflow/WorkflowId
+                value:
+                  labelValue: CustodyReviewWorkflow
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PerpetualProperty'
+              type: object
+          application/json:
+            example:
+              RecDefinition/Workflow/WorkflowId:
+                key: RecDefinition/Workflow/WorkflowId
+                value:
+                  labelValue: CustodyReviewWorkflow
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PerpetualProperty'
+              type: object
+          text/json:
+            example:
+              RecDefinition/Workflow/WorkflowId:
+                key: RecDefinition/Workflow/WorkflowId
+                value:
+                  labelValue: CustodyReviewWorkflow
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PerpetualProperty'
+              type: object
+          application/*+json:
+            example:
+              RecDefinition/Workflow/WorkflowId:
+                key: RecDefinition/Workflow/WorkflowId
+                value:
+                  labelValue: CustodyReviewWorkflow
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/PerpetualProperty'
+              type: object
+        description: "The properties to be updated or inserted onto the rec definition.\
+          \ Each property in\r\n the request must be keyed by its unique property\
+          \ key. This has the format {domain}/{scope}/{code}, for example\r\n 'RecDefinition/Workflow/WorkflowId'."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UpsertRecDefinitionPropertiesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertRecDefinitionPropertiesResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UpsertRecDefinitionPropertiesResponse'
+          description: The updated or inserted properties.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties"
       tags:
       - Recs
       x-fbn-apistatus: Experimental
@@ -180932,7 +181062,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -180988,6 +181118,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - basketName
@@ -185986,7 +186117,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -186042,6 +186173,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - couponRate
@@ -186634,7 +186766,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -186690,6 +186822,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - agreedCleanPrice
@@ -187321,7 +187454,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -187377,6 +187510,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - contractSize
@@ -192357,7 +192491,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -192413,6 +192547,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - capFloorType
@@ -193061,7 +193196,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193117,6 +193252,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - commitmentCurrency
@@ -193333,7 +193469,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -193389,6 +193525,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - amount
@@ -193719,22 +193856,30 @@ components:
         \ the source that produced it\r\nin the cash flow waterfall (SRS > Transaction\
         \ > Instrument)."
       example:
-        amount: 0.8008281904610115
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         movementName: movementName
         payReceive: payReceive
-        netAmount: 5.962133916683182
+        netAmount:
+          amount: 0.8008281904610115
+          currency: currency
         instrumentId: instrumentId
         haircutRuleApplied: haircutRuleApplied
-        grossAmount: 6.027456183070403
+        grossAmount:
+          amount: 0.8008281904610115
+          currency: currency
         error: error
         instrumentDisplayName: instrumentDisplayName
         transactionId: transactionId
-        haircutFraction: 1.4658129805029452
+        haircutFraction: 0.8008281904610115
+        reportCurrencyAmount:
+          amount: 0.8008281904610115
+          currency: currency
         portfolioId:
           code: code
           scope: scope
         sourceType: sourceType
-        currency: currency
         links:
         - method: method
           description: description
@@ -193744,26 +193889,16 @@ components:
           description: description
           href: https://openapi-generator.tech
           relation: relation
-        amountInReportCurrency: 5.637376656633329
         paymentDate: 2000-01-23T04:56:07.000+00:00
         flowType: flowType
-        tradeToReportCurrencyRate: 2.3021358869347655
+        tradeToReportCurrencyRate: 6.027456183070403
       properties:
         paymentDate:
           description: The date on which the cashflow is paid.
           format: date-time
           type: string
         amount:
-          description: "The signed amount of the cashflow. A positive amount indicates\
-            \ money is received, a negative amount indicates money is paid. The amount\
-            \ is always the gross (pre-haircut) signed amount; when haircut rules\
-            \ are supplied the haircut and net amounts are reported separately."
-          format: double
-          nullable: true
-          type: number
-        currency:
-          description: The payment currency of the cashflow.
-          type: string
+          $ref: '#/components/schemas/CurrencyAndAmount'
         sourceType:
           description: "The source that produced the cashflow in the cash flow waterfall.\
             \ One of 'Instrument' (produced by the valuation engine), 'Transaction'\
@@ -193804,11 +193939,7 @@ components:
           nullable: true
           type: string
         grossAmount:
-          description: The signed amount of the cashflow before any haircut was applied.
-            Only populated when haircut rules were supplied on the request.
-          format: double
-          nullable: true
-          type: number
+          $ref: '#/components/schemas/CurrencyAndAmount'
         haircutFraction:
           description: "The fraction of the gross amount removed by the haircut, in\
             \ the range [0, 1]. Zero for outflows and for cashflows no rule matched.\
@@ -193817,11 +193948,7 @@ components:
           nullable: true
           type: number
         netAmount:
-          description: The signed amount of the cashflow net of the haircut. Only
-            populated when haircut rules were supplied on the request.
-          format: double
-          nullable: true
-          type: number
+          $ref: '#/components/schemas/CurrencyAndAmount'
         haircutRuleApplied:
           description: "The identifier of the haircut rule that was applied to the\
             \ cashflow, or not present when no rule matched or no haircut rules were\
@@ -193833,24 +193960,19 @@ components:
             \ because of missing market data: the valuation error, matching the CashflowError\
             \ diagnostic reported by the QueryCashFlows endpoint. In that case the\
             \ amount is null rather than zero. Error may also be set when only the\
-            \ report-currency FX lookup failed (see AmountInReportCurrency), in which\
-            \ case the base Amount remains populated and only AmountInReportCurrency\
+            \ report-currency FX lookup failed (see ReportCurrencyAmount), in which\
+            \ case the base Amount remains populated and only ReportCurrencyAmount\
             \ and TradeToReportCurrencyRate are null."
           nullable: true
           type: string
-        amountInReportCurrency:
-          description: "The signed amount of the cashflow (see Amount), converted\
-            \ into the request's report currency (see QueryBucketCashFlowDrillDownRequest.ReportCurrency).\
-            \ Not present when the FX rate used to convert into the report currency\
-            \ could not be resolved; see Error."
-          format: double
-          nullable: true
-          type: number
+        reportCurrencyAmount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
         tradeToReportCurrencyRate:
-          description: "The FX rate used to convert the cashflow amount into the request's\
-            \ report currency, resolved at the cashflow's transaction (trade) date,\
-            \ not its payment date. Not present when the rate could not be resolved;\
-            \ see Error."
+          description: "The FX rate used to convert the cashflow amount from its own\
+            \ payment currency (see Amount) into the request's report currency, resolved\
+            \ at the cashflow's transaction (trade) date, not its payment date. Only\
+            \ present when ReportCurrency was supplied on the request; not present\
+            \ when it was omitted, or when the rate could not be resolved (see Error)."
           format: double
           nullable: true
           type: number
@@ -193860,7 +193982,6 @@ components:
           nullable: true
           type: array
       required:
-      - currency
       - instrumentId
       - paymentDate
       - portfolioId
@@ -194358,7 +194479,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -194414,6 +194535,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -194827,7 +194949,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -194883,6 +195005,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - couponRate
@@ -195032,7 +195155,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -195088,6 +195211,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - deliveryType
@@ -197407,7 +197531,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -197463,6 +197587,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - commodityCalendarSchedule
@@ -197746,7 +197871,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -197802,6 +197927,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - deliveryType
@@ -198656,7 +198782,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -198712,6 +198838,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -203804,7 +203931,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -203860,6 +203987,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -209784,7 +209912,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -209840,6 +209968,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - couponRate
@@ -215535,7 +215664,7 @@ components:
             \ InflationLeg, FundShareClass, FlexibleLoan, Cash, UnsettledCash, MasteredInstrument,\
             \ LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap,\
             \ ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap,\
-            \ CapitalInterest, BondForward, PreferredShare, Unknown."
+            \ CapitalInterest, BondForward, PreferredShare, WholeLoanFacility, Unknown."
           maxLength: 32
           minLength: 0
           nullable: true
@@ -218870,7 +218999,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -218926,6 +219055,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -219195,7 +219325,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -219251,6 +219381,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - deliveryType
@@ -219341,7 +219472,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -219397,6 +219528,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - code
@@ -220079,7 +220211,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -220135,6 +220267,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - contractDetails
@@ -220852,7 +220985,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -220908,6 +221041,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - content
@@ -222894,7 +223028,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -222950,6 +223084,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -223136,7 +223271,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223192,6 +223327,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -223260,7 +223396,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223316,6 +223452,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -223497,7 +223634,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -223553,6 +223690,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - buyerOrSeller
@@ -224526,7 +224664,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -224582,6 +224720,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -224975,7 +225114,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -225031,6 +225170,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -227693,7 +227833,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -227749,6 +227889,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -228024,19 +228165,33 @@ components:
           minLength: 1
           type: string
         economicBucketComponent:
-          description: "Sub bucket of the economic bucket. Available values: Undefined,\
-            \ Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss,\
-            \ TradedInterest, Income, Expense."
+          description: "Sub bucket of the economic bucket. Premium/OID/MarketDiscount/AcquisitionPremium:\
+            \ the element of amortised cost realised on the line. CoreMarket: the\
+            \ realised price gain/loss in the local currency. CrossGainLoss: the realised\
+            \ gain/loss from the interaction of the price and FX movements. TradedInterest:\
+            \ interest bought or sold with the position, with variant 'Bought' or\
+            \ 'Sold'. Income/Expense: the line is the income or expense declared on\
+            \ the movement that produced it. Fee/Tax: the kind of charge declared\
+            \ on the movement, where the charge is a slice of a wider bucket such\
+            \ as 'CA_Capital'. Available values: Undefined, Premium, OID, MarketDiscount,\
+            \ AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income,\
+            \ Expense, Fee, Tax."
           nullable: true
           type: string
         economicBucketVariant:
           description: "Further categorisation of a journal entry line. LongTerm/ShortTerm:\
             \ based on whether the ActivityDate is more than a year after the purchase\
-            \ trade date. TradeDateToSettlementDate: FX gain/loss between trade date\
-            \ and settlement date. InLieuSubstitution: FX gain/loss from settling\
-            \ in a different currency when the original settlement currency is the\
-            \ portfolio base currency. Available values: Undefined, ShortTerm, LongTerm,\
-            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution."
+            \ trade date. Bought/Sold: the direction of traded interest. Rounding:\
+            \ a cost normalisation line that removes a rounding difference. TradeDateToSettlementDate:\
+            \ FX gain/loss between trade date and settlement date. InLieuSubstitution:\
+            \ FX gain/loss from settling in a different currency when the original\
+            \ settlement currency is the portfolio base currency. Coupon/Dividend:\
+            \ the kind of income declared on the movement that produced the line.\
+            \ Fee/Tax: the kind of charge declared on the movement that produced the\
+            \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
+            \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
+            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution,\
+            \ Coupon, Dividend, Fee, Tax."
           nullable: true
           type: string
         levels:
@@ -228437,7 +228592,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -228493,6 +228648,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -228534,6 +228690,7 @@ components:
           formula: formula
         edges:
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -228542,6 +228699,7 @@ components:
             code: code
             scope: scope
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -229412,6 +229570,7 @@ components:
         \ that link is held."
       example:
         linkageType: linkageType
+        sharingPercentage: 0.08008281904610115
         from: from
         to:
           node: node
@@ -229440,6 +229599,26 @@ components:
           type: string
         viaInstrumentId:
           $ref: '#/components/schemas/ResourceId'
+        sharingPercentage:
+          description: "The holder's ILPA sharing percentage in the target member,\
+            \ adjusted for transfers and equalisation but not reduced by ordinary\
+            \ distributions. Between 0 and 1 inclusive; the percentages declared into\
+            \ any one member must sum to no more than 1. Defaults to 1 (sole ownership)\
+            \ when not supplied. A value of 0 records a full exit: keep the edge and\
+            \ set it to 0 from the date the interest ended, so that the change in\
+            \ percentage from one version of the structure to the next tells the P&L\
+            \ flow what was disposed of. Each disposal or acquisition trade of the\
+            \ holder's needs its own version of the structure, effective on that trade's\
+            \ date: proceeds received on a date with no change in percentage are taken\
+            \ as a distribution on the retained interest, not a disposal. A change\
+            \ in percentage with no trade of the holder's on its date takes effect\
+            \ at the holder's next transaction on the member or period close, whichever\
+            \ comes first."
+          format: double
+          maximum: 1
+          minimum: 0
+          nullable: true
+          type: number
       required:
       - from
       - to
@@ -229492,6 +229671,7 @@ components:
             scope: scope
         edges:
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -229500,6 +229680,7 @@ components:
             code: code
             scope: scope
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -229651,6 +229832,7 @@ components:
           formula: formula
         edges:
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -229659,6 +229841,7 @@ components:
             code: code
             scope: scope
         - linkageType: linkageType
+          sharingPercentage: 0.08008281904610115
           from: from
           to:
             node: node
@@ -230203,7 +230386,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -230259,6 +230442,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - contractDetails
@@ -230909,7 +231093,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -230965,6 +231149,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -231878,7 +232063,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -231934,6 +232119,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -232074,7 +232260,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -232130,6 +232316,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - farFxForward
@@ -238118,6 +238305,30 @@ components:
             format: double
             nullable: true
             type: number
+          effectiveCs01BumpWidth:
+            description: "The TOTAL width, as an absolute spread, of the central-difference\
+              \ stencil used for the\r\noption-adjusted Analytic/EffectiveCS01: the\
+              \ two reprice points sit at the solved OAS plus\r\nand minus half of\
+              \ this. The reported figure is normalised to a one-basis-point move\r\
+              \nwhatever width is configured. Must be strictly positive. Defaults\
+              \ to 0.0001 (1bp, the\r\nmarket convention for a credit sensitivity)\
+              \ when not supplied."
+            format: double
+            nullable: true
+            type: number
+          effectiveKeyRateBuckets:
+            description: "The maturity buckets of the Analytic/EffectiveKeyRateDuration\
+              \ ladder, as tenor strings\r\nsuch as \"1Y\" or \"6M\", in strictly\
+              \ increasing order. Each bucket is repriced under a\r\ntent-shaped curve\
+              \ shift centred on its own tenor, so the ladder sums to the parallel\r\
+              \neffective duration to first order. Buckets past an instrument's maturity\
+              \ report zero, so\r\none grid can serve a whole book. Defaults to the\
+              \ 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y grid\r\nwhen not supplied; an empty\
+              \ list is rejected."
+            items:
+              type: string
+            nullable: true
+            type: array
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
@@ -239090,7 +239301,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -239146,6 +239357,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - calculationType
@@ -239344,7 +239556,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -239400,6 +239612,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - couponRate
@@ -239456,7 +239669,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -239512,6 +239725,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - fixedLeg
@@ -242527,7 +242741,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -242583,6 +242797,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -243386,6 +243601,7 @@ components:
       - BondForward
       - PreferredShare
       - CapitalInterest
+      - WholeLoanFacility
       type: string
     InterestPaymentEvent:
       allOf:
@@ -243643,7 +243859,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -243699,6 +243915,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentType
@@ -243828,7 +244045,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -243884,6 +244101,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - deliveryMethod
@@ -247681,19 +247899,33 @@ components:
           minLength: 1
           type: string
         economicBucketComponent:
-          description: "Sub bucket of the economic bucket. Available values: Undefined,\
-            \ Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss,\
-            \ TradedInterest, Income, Expense."
+          description: "Sub bucket of the economic bucket. Premium/OID/MarketDiscount/AcquisitionPremium:\
+            \ the element of amortised cost realised on the line. CoreMarket: the\
+            \ realised price gain/loss in the local currency. CrossGainLoss: the realised\
+            \ gain/loss from the interaction of the price and FX movements. TradedInterest:\
+            \ interest bought or sold with the position, with variant 'Bought' or\
+            \ 'Sold'. Income/Expense: the line is the income or expense declared on\
+            \ the movement that produced it. Fee/Tax: the kind of charge declared\
+            \ on the movement, where the charge is a slice of a wider bucket such\
+            \ as 'CA_Capital'. Available values: Undefined, Premium, OID, MarketDiscount,\
+            \ AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income,\
+            \ Expense, Fee, Tax."
           nullable: true
           type: string
         economicBucketVariant:
           description: "Further categorisation of a journal entry line. LongTerm/ShortTerm:\
             \ based on whether the ActivityDate is more than a year after the purchase\
-            \ trade date. TradeDateToSettlementDate: FX gain/loss between trade date\
-            \ and settlement date. InLieuSubstitution: FX gain/loss from settling\
-            \ in a different currency when the original settlement currency is the\
-            \ portfolio base currency. Available values: Undefined, ShortTerm, LongTerm,\
-            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution."
+            \ trade date. Bought/Sold: the direction of traded interest. Rounding:\
+            \ a cost normalisation line that removes a rounding difference. TradeDateToSettlementDate:\
+            \ FX gain/loss between trade date and settlement date. InLieuSubstitution:\
+            \ FX gain/loss from settling in a different currency when the original\
+            \ settlement currency is the portfolio base currency. Coupon/Dividend:\
+            \ the kind of income declared on the movement that produced the line.\
+            \ Fee/Tax: the kind of charge declared on the movement that produced the\
+            \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
+            \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
+            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution,\
+            \ Coupon, Dividend, Fee, Tax."
           nullable: true
           type: string
         levels:
@@ -249008,7 +249240,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -249064,6 +249296,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -250189,7 +250422,7 @@ components:
             \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
             \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
             \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-            \ CapitalInterest."
+            \ CapitalInterest, WholeLoanFacility."
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -250245,6 +250478,7 @@ components:
           - BondForward
           - PreferredShare
           - CapitalInterest
+          - WholeLoanFacility
           type: string
       required:
       - instrumentType
@@ -251577,7 +251811,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -251633,6 +251867,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - identifiers
@@ -265646,6 +265881,7 @@ components:
             formula: formula
           edges:
           - linkageType: linkageType
+            sharingPercentage: 0.08008281904610115
             from: from
             to:
               node: node
@@ -265654,6 +265890,7 @@ components:
               code: code
               scope: scope
           - linkageType: linkageType
+            sharingPercentage: 0.08008281904610115
             from: from
             to:
               node: node
@@ -266437,6 +266674,7 @@ components:
             formula: formula
           edges:
           - linkageType: linkageType
+            sharingPercentage: 0.08008281904610115
             from: from
             to:
               node: node
@@ -266445,6 +266683,7 @@ components:
               code: code
               scope: scope
           - linkageType: linkageType
+            sharingPercentage: 0.08008281904610115
             from: from
             to:
               node: node
@@ -287156,7 +287395,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -287212,6 +287451,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - dividendRate
@@ -290597,10 +290837,15 @@ components:
         recipeId:
           $ref: '#/components/schemas/ResourceId'
         reportCurrency:
-          description: Three letter ISO currency string indicating what currency to
-            report in for ReportCurrency denominated queries.
+          description: "Optional three letter ISO currency string to convert cashflow\
+            \ amounts into. When supplied, each returned cashflow additionally carries\
+            \ ReportCurrencyAmount and TradeToReportCurrencyRate, converted from its\
+            \ own payment (instrument) currency. When omitted, those two fields are\
+            \ not present on any cashflow: Amount (always in the cashflow's own payment\
+            \ currency) are unaffected either way."
           maxLength: 3
           minLength: 0
+          nullable: true
           type: string
         excludeUnsettledTrades:
           description: "If set to true, unsettled trades are excluded from the result\
@@ -290634,7 +290879,6 @@ components:
       - effectiveAt
       - portfolioEntityIds
       - recipeId
-      - reportCurrency
       type: object
     QueryBucketedCashFlowsRequest:
       additionalProperties: false
@@ -295128,9 +295372,8 @@ components:
       properties:
         recResultId:
           description: The identifier of the result to flag for re-review.
-          maxLength: 36
-          minLength: 36
-          pattern: "^[a-zA-Z0-9\\-]+$"
+          maxLength: 256
+          minLength: 1
           type: string
         commentText:
           description: An optional per-result comment added to the result's user comments.
@@ -297088,7 +297331,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -297144,6 +297387,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - instrumentId
@@ -298348,7 +298592,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -298404,6 +298648,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - accrualBasis
@@ -303277,22 +303522,30 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - amount: 0.8008281904610115
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
           movementName: movementName
           payReceive: payReceive
-          netAmount: 5.962133916683182
+          netAmount:
+            amount: 0.8008281904610115
+            currency: currency
           instrumentId: instrumentId
           haircutRuleApplied: haircutRuleApplied
-          grossAmount: 6.027456183070403
+          grossAmount:
+            amount: 0.8008281904610115
+            currency: currency
           error: error
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
-          haircutFraction: 1.4658129805029452
+          haircutFraction: 0.8008281904610115
+          reportCurrencyAmount:
+            amount: 0.8008281904610115
+            currency: currency
           portfolioId:
             code: code
             scope: scope
           sourceType: sourceType
-          currency: currency
           links:
           - method: method
             description: description
@@ -303302,26 +303555,33 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
-          amountInReportCurrency: 5.637376656633329
           paymentDate: 2000-01-23T04:56:07.000+00:00
           flowType: flowType
-          tradeToReportCurrencyRate: 2.3021358869347655
-        - amount: 0.8008281904610115
+          tradeToReportCurrencyRate: 6.027456183070403
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
           movementName: movementName
           payReceive: payReceive
-          netAmount: 5.962133916683182
+          netAmount:
+            amount: 0.8008281904610115
+            currency: currency
           instrumentId: instrumentId
           haircutRuleApplied: haircutRuleApplied
-          grossAmount: 6.027456183070403
+          grossAmount:
+            amount: 0.8008281904610115
+            currency: currency
           error: error
           instrumentDisplayName: instrumentDisplayName
           transactionId: transactionId
-          haircutFraction: 1.4658129805029452
+          haircutFraction: 0.8008281904610115
+          reportCurrencyAmount:
+            amount: 0.8008281904610115
+            currency: currency
           portfolioId:
             code: code
             scope: scope
           sourceType: sourceType
-          currency: currency
           links:
           - method: method
             description: description
@@ -303331,10 +303591,9 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
-          amountInReportCurrency: 5.637376656633329
           paymentDate: 2000-01-23T04:56:07.000+00:00
           flowType: flowType
-          tradeToReportCurrencyRate: 2.3021358869347655
+          tradeToReportCurrencyRate: 6.027456183070403
         links:
         - method: method
           description: description
@@ -330379,7 +330638,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -330435,6 +330694,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -330508,7 +330768,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -330564,6 +330824,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - assetClass
@@ -333718,7 +333979,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -333774,6 +334035,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - contractSize
@@ -334555,7 +334817,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -334611,6 +334873,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -334696,7 +334959,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -334752,6 +335015,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - deliveryType
@@ -334843,7 +335107,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -334899,6 +335163,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - assetLeg
@@ -336097,13 +336362,24 @@ components:
         movementOptions:
           description: "Allows extra specifications for the movement. The options\
             \ currently available are 'DirectAdjustment', 'IncludesTradedInterest',\
-            \ 'Virtual', 'Income' and 'Expense'. A movement type of 'StockMovement'\
-            \ with an option of 'DirectAdjusment' will allow you to adjust the units\
-            \ of a holding without affecting its cost base. You will, therefore, be\
-            \ able to reflect the impact of a stock split by loading a Transaction.\
-            \ A movement type of 'Carry' with the option as 'Expense' will not impact\
-            \ the interest accrual for cash-type holdings such loans, loan facilities\
-            \ and deposits."
+            \ 'Virtual', 'Income', 'Expense', 'Bought', 'Sold', 'Coupon', 'Dividend',\
+            \ 'Fee' and 'Tax'. More than one option may be given. A movement type\
+            \ of 'StockMovement' with an option of 'DirectAdjusment' will allow you\
+            \ to adjust the units of a holding without affecting its cost base. You\
+            \ will, therefore, be able to reflect the impact of a stock split by loading\
+            \ a Transaction. A movement type of 'Carry' with the option as 'Expense'\
+            \ will not impact the interest accrual for cash-type holdings such loans,\
+            \ loan facilities and deposits. 'Bought' and 'Sold' declare the direction\
+            \ of traded interest and are only valid alongside 'IncludesTradedInterest'\
+            \ on a 'Carry' or 'CarryAsPnl' movement; without them the direction is\
+            \ inferred from the sign of the amount. 'Coupon' and 'Dividend' declare\
+            \ the kind of income and are only valid alongside 'Income'. 'Fee' and\
+            \ 'Tax' declare the kind of charge and are valid on 'Fee', 'Capital',\
+            \ 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or 'CarryAsPnl' movement\
+            \ they must be declared alongside 'Expense', and they cannot be combined\
+            \ with 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'."
           items:
             type: string
           nullable: true
@@ -336206,13 +336482,24 @@ components:
         movementOptions:
           description: "Allows extra specifications for the movement. The options\
             \ currently available are 'DirectAdjustment', 'IncludesTradedInterest',\
-            \ 'Virtual', 'Income' and 'Expense'. A movement type of 'StockMovement'\
-            \ with an option of 'DirectAdjusment' will allow you to adjust the units\
-            \ of a holding without affecting its cost base. You will, therefore, be\
-            \ able to reflect the impact of a stock split by loading a Transaction.\
-            \ A movement type of 'Carry' with the option as 'Expense' will not impact\
-            \ the interest accrual for cash-type holdings such loans, loan facilities\
-            \ and deposits."
+            \ 'Virtual', 'Income', 'Expense', 'Bought', 'Sold', 'Coupon', 'Dividend',\
+            \ 'Fee' and 'Tax'. More than one option may be given. A movement type\
+            \ of 'StockMovement' with an option of 'DirectAdjusment' will allow you\
+            \ to adjust the units of a holding without affecting its cost base. You\
+            \ will, therefore, be able to reflect the impact of a stock split by loading\
+            \ a Transaction. A movement type of 'Carry' with the option as 'Expense'\
+            \ will not impact the interest accrual for cash-type holdings such loans,\
+            \ loan facilities and deposits. 'Bought' and 'Sold' declare the direction\
+            \ of traded interest and are only valid alongside 'IncludesTradedInterest'\
+            \ on a 'Carry' or 'CarryAsPnl' movement; without them the direction is\
+            \ inferred from the sign of the amount. 'Coupon' and 'Dividend' declare\
+            \ the kind of income and are only valid alongside 'Income'. 'Fee' and\
+            \ 'Tax' declare the kind of charge and are valid on 'Fee', 'Capital',\
+            \ 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or 'CarryAsPnl' movement\
+            \ they must be declared alongside 'Expense', and they cannot be combined\
+            \ with 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'."
           items:
             type: string
           nullable: true
@@ -343008,13 +343295,24 @@ components:
         movementOptions:
           description: "Allows extra specifications for the movement. The options\
             \ currently available are 'DirectAdjustment', 'IncludesTradedInterest',\
-            \ 'Virtual', 'Income' and 'Expense'. A movement type of 'StockMovement'\
-            \ with an option of 'DirectAdjusment' will allow you to adjust the units\
-            \ of a holding without affecting its cost base. You will, therefore, be\
-            \ able to reflect the impact of a stock split by loading a Transaction.\
-            \ A movement type of 'Carry' with the option as 'Expense' will not impact\
-            \ the interest accrual for cash-type holdings such loans, loan facilities\
-            \ and deposits."
+            \ 'Virtual', 'Income', 'Expense', 'Bought', 'Sold', 'Coupon', 'Dividend',\
+            \ 'Fee' and 'Tax'. More than one option may be given. A movement type\
+            \ of 'StockMovement' with an option of 'DirectAdjusment' will allow you\
+            \ to adjust the units of a holding without affecting its cost base. You\
+            \ will, therefore, be able to reflect the impact of a stock split by loading\
+            \ a Transaction. A movement type of 'Carry' with the option as 'Expense'\
+            \ will not impact the interest accrual for cash-type holdings such loans,\
+            \ loan facilities and deposits. 'Bought' and 'Sold' declare the direction\
+            \ of traded interest and are only valid alongside 'IncludesTradedInterest'\
+            \ on a 'Carry' or 'CarryAsPnl' movement; without them the direction is\
+            \ inferred from the sign of the amount. 'Coupon' and 'Dividend' declare\
+            \ the kind of income and are only valid alongside 'Income'. 'Fee' and\
+            \ 'Tax' declare the kind of charge and are valid on 'Fee', 'Capital',\
+            \ 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or 'CarryAsPnl' movement\
+            \ they must be declared alongside 'Expense', and they cannot be combined\
+            \ with 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'."
           items:
             type: string
           nullable: true
@@ -354317,6 +354615,73 @@ components:
             a reason for their failure.
           nullable: true
           type: object
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
+    UpsertRecDefinitionPropertiesResponse:
+      additionalProperties: false
+      description: The properties upserted onto a rec definition.
+      example:
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: The rec definition properties that were upserted. These will
+            be from the 'RecDefinition' domain. Properties deleted by the request
+            are not included.
+          nullable: true
+          type: object
+        version:
+          $ref: '#/components/schemas/Version'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -375045,7 +375410,7 @@ components:
               \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
               \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
               \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
-              \ CapitalInterest."
+              \ CapitalInterest, WholeLoanFacility."
             enum:
             - QuotedSecurity
             - InterestRateSwap
@@ -375101,6 +375466,7 @@ components:
             - BondForward
             - PreferredShare
             - CapitalInterest
+            - WholeLoanFacility
             type: string
         required:
         - domCcy
@@ -375563,6 +375929,128 @@ components:
       required:
       - instruments
       type: object
+    WholeLoanFacility:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - properties:
+          startDate:
+            description: The start date of the instrument. This is normally synonymous
+              with the trade-date.
+            format: date-time
+            type: string
+          maturityDate:
+            description: "The final maturity date of the instrument. This means the\
+              \ last date on which the instruments makes a payment of any amount.\r\
+              \nFor the avoidance of doubt, that is not necessarily prior to its last\
+              \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+              \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+              \ may well be observed or set prior to the maturity date, but refer\
+              \ to a termination date beyond it."
+            format: date-time
+            type: string
+          domCcy:
+            description: The domestic currency of the instrument.
+            type: string
+          initialCommitment:
+            description: The initial commitment for the whole loan facility.
+            format: double
+            type: number
+          loanType:
+            description: "LoanType for this facility. The facility can either be a\
+              \ revolving or a\r\nterm loan. Available values: Revolver, TermLoan."
+            minLength: 1
+            type: string
+          schedules:
+            description: Repayment schedules for the facility.
+            items:
+              $ref: '#/components/schemas/Schedule'
+            type: array
+          timeZoneConventions:
+            $ref: '#/components/schemas/TimeZoneConventions'
+          instrumentType:
+            description: "Available values: QuotedSecurity, InterestRateSwap, FxForward,\
+              \ Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,\
+              \ Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,\
+              \ TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,\
+              \ CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,\
+              \ SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,\
+              \ ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan,\
+              \ TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash,\
+              \ Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo,\
+              \ ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward,\
+              \ BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare,\
+              \ CapitalInterest, WholeLoanFacility."
+            enum:
+            - QuotedSecurity
+            - InterestRateSwap
+            - FxForward
+            - Future
+            - ExoticInstrument
+            - FxOption
+            - CreditDefaultSwap
+            - InterestRateSwaption
+            - Bond
+            - EquityOption
+            - FixedLeg
+            - FloatingLeg
+            - BespokeCashFlowsLeg
+            - Unknown
+            - TermDeposit
+            - ContractForDifference
+            - EquitySwap
+            - CashPerpetual
+            - CapFloor
+            - CashSettled
+            - CdsIndex
+            - Basket
+            - FundingLeg
+            - FxSwap
+            - ForwardRateAgreement
+            - SimpleInstrument
+            - Repo
+            - Equity
+            - ExchangeTradedOption
+            - ReferenceInstrument
+            - ComplexBond
+            - InflationLinkedBond
+            - InflationSwap
+            - SimpleCashFlowLoan
+            - TotalReturnSwap
+            - InflationLeg
+            - FundShareClass
+            - FlexibleLoan
+            - UnsettledCash
+            - Cash
+            - MasteredInstrument
+            - LoanFacility
+            - FlexibleDeposit
+            - FlexibleRepo
+            - ToBeAnnounced
+            - VolatilitySwap
+            - ToBeAnnouncedOption
+            - CommodityForward
+            - BondOption
+            - CdsOption
+            - CommodityCalendarSwap
+            - BondForward
+            - PreferredShare
+            - CapitalInterest
+            - WholeLoanFacility
+            type: string
+        required:
+        - domCcy
+        - initialCommitment
+        - instrumentType
+        - loanType
+        - maturityDate
+        - schedules
+        - startDate
+        type: object
+      description: "Whole Loan Facility. A loan facility wholly funded by a single\
+        \ lender: it shares the contractual terms of a\r\nLoanFacility, but ownership\
+        \ is not shared pro-rata across investors. Like a LoanFacility, this is a\
+        \ lightweight\r\ninstrument; the state of the facility is carried by the holding\
+        \ rather than by the instrument itself."
     WithholdingTaxConfiguration:
       additionalProperties: false
       example:
@@ -375840,17 +376328,19 @@ components:
           minLength: 1
           type: string
         source:
-          description: "The LUSID field the engine reads the dimension's value from,\
-            \ addressed in the same syntax used to filter results: a property key\
-            \ in the form Properties[{domain}/{scope}/{code}], such as Properties[Instrument/WithholdingTax/AssetClass]\
+          description: "Optional. The LUSID field the engine reads the dimension's\
+            \ value from, addressed in the same syntax used to filter results: a property\
+            \ key in the form Properties[{domain}/{scope}/{code}], such as Properties[Instrument/WithholdingTax/AssetClass]\
             \ or Properties[Transaction/WithholdingTax/Custodian]; or the name of\
-            \ a field on the entity itself, such as Transaction.SettlementCurrency."
+            \ a field on the entity itself, such as Transaction.SettlementCurrency.\
+            \ Omit it to declare that the dimension is keyed on but not resolved,\
+            \ so only rows leaving that dimension blank match."
           maxLength: 512
           minLength: 1
+          nullable: true
           type: string
       required:
       - dimension
-      - source
       type: object
     Workspace:
       additionalProperties: false

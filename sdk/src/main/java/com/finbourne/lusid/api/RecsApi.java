@@ -42,6 +42,7 @@ import com.finbourne.lusid.model.PagedResourceListOfRecDefinition;
 import com.finbourne.lusid.model.PagedResourceListOfRecInstance;
 import com.finbourne.lusid.model.PagedResourceListOfRecResult;
 import com.finbourne.lusid.model.PagedResourceListOfRecResultSet;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RecDefinition;
 import com.finbourne.lusid.model.RecInstance;
 import com.finbourne.lusid.model.RecResult;
@@ -51,6 +52,7 @@ import com.finbourne.lusid.model.SubmitRecResultSetReviewRequest;
 import com.finbourne.lusid.model.TransitionRecInstanceRequest;
 import com.finbourne.lusid.model.UpdateMatchingRulesetRequest;
 import com.finbourne.lusid.model.UpdateRecDefinitionRequest;
+import com.finbourne.lusid.model.UpsertRecDefinitionPropertiesResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -5870,5 +5872,258 @@ public class RecsApi {
      */
     public APIupdateRecDefinitionRequest updateRecDefinition(String scope, String code, UpdateRecDefinitionRequest updateRecDefinitionRequest) {
         return new APIupdateRecDefinitionRequest(scope, code, updateRecDefinitionRequest);
+    }
+    private okhttp3.Call upsertRecDefinitionPropertiesCall(String scope, String code, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertRecDefinitionPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertRecDefinitionPropertiesCall(String scope, String code, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/recs/definitions/{scope}/{code}/properties/$upsert"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertRecDefinitionPropertiesValidateBeforeCall(String scope, String code, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertRecDefinitionProperties(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertRecDefinitionProperties(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertRecDefinitionProperties(Async)");
+        }
+
+        return upsertRecDefinitionPropertiesCall(scope, code, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertRecDefinitionPropertiesResponse> upsertRecDefinitionPropertiesWithHttpInfo(String scope, String code, Map<String, PerpetualProperty> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = upsertRecDefinitionPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertRecDefinitionPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertRecDefinitionPropertiesResponse> upsertRecDefinitionPropertiesWithHttpInfo(String scope, String code, Map<String, PerpetualProperty> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertRecDefinitionPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertRecDefinitionPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertRecDefinitionPropertiesAsync(String scope, String code, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertRecDefinitionPropertiesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertRecDefinitionPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertRecDefinitionPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertRecDefinitionPropertiesAsync(String scope, String code, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertRecDefinitionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertRecDefinitionPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertRecDefinitionPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertRecDefinitionPropertiesRequest {
+        private final String scope;
+        private final String code;
+        private final Map<String, PerpetualProperty> requestBody;
+
+        private APIupsertRecDefinitionPropertiesRequest(String scope, String code, Map<String, PerpetualProperty> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertRecDefinitionProperties
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertRecDefinitionPropertiesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request
+         * @return UpsertRecDefinitionPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertRecDefinitionPropertiesResponse execute() throws ApiException {
+            ApiResponse<UpsertRecDefinitionPropertiesResponse> localVarResp = upsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertRecDefinitionPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertRecDefinitionPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertRecDefinitionPropertiesResponse> localVarResp = upsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request with HTTP info returned
+         * @return ApiResponse&lt;UpsertRecDefinitionPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertRecDefinitionPropertiesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertRecDefinitionPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertRecDefinitionPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody, opts);
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertRecDefinitionPropertiesResponse> _callback) throws ApiException {
+            return upsertRecDefinitionPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertRecDefinitionProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertRecDefinitionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertRecDefinitionPropertiesAsync(scope, code, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+     * Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.     Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+     * @param scope The scope of the rec definition to update or insert the properties onto. (required)
+     * @param code The code of the rec definition to update or insert the properties onto. Together with the   scope this uniquely identifies the rec definition. (required)
+     * @param requestBody The properties to be updated or inserted onto the rec definition. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. (required)
+     * @return APIupsertRecDefinitionPropertiesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertRecDefinitionPropertiesRequest upsertRecDefinitionProperties(String scope, String code, Map<String, PerpetualProperty> requestBody) {
+        return new APIupsertRecDefinitionPropertiesRequest(scope, code, requestBody);
     }
 }

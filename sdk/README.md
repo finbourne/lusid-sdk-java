@@ -610,6 +610,7 @@ Class | Method | HTTP request | Description
 *RecsApi* | [**transitionRecInstance**](docs/RecsApi.md#transitionrecinstance) | **POST** /api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance
 *RecsApi* | [**updateMatchingRuleset**](docs/RecsApi.md#updatematchingruleset) | **PUT** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset
 *RecsApi* | [**updateRecDefinition**](docs/RecsApi.md#updaterecdefinition) | **PUT** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
+*RecsApi* | [**upsertRecDefinitionProperties**](docs/RecsApi.md#upsertrecdefinitionproperties) | **POST** /api/recs/definitions/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
 *ReferenceListsApi* | [**deleteReferenceList**](docs/ReferenceListsApi.md#deletereferencelist) | **DELETE** /api/referencelists/{scope}/{code} | [EARLY ACCESS] DeleteReferenceList: Delete Reference List
 *ReferenceListsApi* | [**getReferenceList**](docs/ReferenceListsApi.md#getreferencelist) | **GET** /api/referencelists/{scope}/{code} | GetReferenceList: Get Reference List
 *ReferenceListsApi* | [**listReferenceLists**](docs/ReferenceListsApi.md#listreferencelists) | **GET** /api/referencelists | [EARLY ACCESS] ListReferenceLists: List Reference Lists
@@ -2516,6 +2517,7 @@ Class | Method | HTTP request | Description
  - [UpsertQuoteAccessMetadataRuleRequest](docs/UpsertQuoteAccessMetadataRuleRequest.md)
  - [UpsertQuoteRequest](docs/UpsertQuoteRequest.md)
  - [UpsertQuotesResponse](docs/UpsertQuotesResponse.md)
+ - [UpsertRecDefinitionPropertiesResponse](docs/UpsertRecDefinitionPropertiesResponse.md)
  - [UpsertRecipeComposerRequest](docs/UpsertRecipeComposerRequest.md)
  - [UpsertRecipeRequest](docs/UpsertRecipeRequest.md)
  - [UpsertReferencePortfolioConstituentPropertiesRequest](docs/UpsertReferencePortfolioConstituentPropertiesRequest.md)
@@ -2591,6 +2593,7 @@ Class | Method | HTTP request | Description
  - [WeightedInstrument](docs/WeightedInstrument.md)
  - [WeightedInstrumentInLineLookupIdentifiers](docs/WeightedInstrumentInLineLookupIdentifiers.md)
  - [WeightedInstruments](docs/WeightedInstruments.md)
+ - [WholeLoanFacility](docs/WholeLoanFacility.md)
  - [WithholdingTaxConfiguration](docs/WithholdingTaxConfiguration.md)
  - [WithholdingTaxDataset](docs/WithholdingTaxDataset.md)
  - [WithholdingTaxDatasetDefinitions](docs/WithholdingTaxDatasetDefinitions.md)

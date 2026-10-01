@@ -290,10 +290,10 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
    /**
-   * Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries.
+   * Optional three letter ISO currency string to convert cashflow amounts into. When supplied, each returned cashflow additionally carries ReportCurrencyAmount and TradeToReportCurrencyRate, converted from its own payment (instrument) currency. When omitted, those two fields are not present on any cashflow: Amount (always in the cashflow&#39;s own payment currency) are unaffected either way.
    * @return reportCurrency
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getReportCurrency() {
     return reportCurrency;
   }
@@ -473,7 +473,6 @@ public class QueryBucketCashFlowDrillDownRequest {
     openapiRequiredFields.add("portfolioEntityIds");
     openapiRequiredFields.add("effectiveAt");
     openapiRequiredFields.add("recipeId");
-    openapiRequiredFields.add("reportCurrency");
   }
 
  /**
@@ -508,7 +507,7 @@ public class QueryBucketCashFlowDrillDownRequest {
       };
       // validate the required field `recipeId`
       ResourceId.validateJsonElement(jsonObj.get("recipeId"));
-      if (!jsonObj.get("reportCurrency").isJsonPrimitive()) {
+      if ((jsonObj.get("reportCurrency") != null && !jsonObj.get("reportCurrency").isJsonNull()) && !jsonObj.get("reportCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reportCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportCurrency").toString()));
       }
       if (jsonObj.get("haircutRules") != null && !jsonObj.get("haircutRules").isJsonNull()) {

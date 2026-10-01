@@ -18,8 +18,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -80,6 +82,14 @@ public class HullWhiteModelOptions extends ModelOptions {
   public static final String SERIALIZED_NAME_VOLATILITY_MULTIPLIER = "volatilityMultiplier";
   @SerializedName(SERIALIZED_NAME_VOLATILITY_MULTIPLIER)
   private java.math.BigDecimal volatilityMultiplier;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_CS01_BUMP_WIDTH = "effectiveCs01BumpWidth";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_CS01_BUMP_WIDTH)
+  private java.math.BigDecimal effectiveCs01BumpWidth;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_KEY_RATE_BUCKETS = "effectiveKeyRateBuckets";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_KEY_RATE_BUCKETS)
+  private List<String> effectiveKeyRateBuckets;
 
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
@@ -248,6 +258,56 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions effectiveCs01BumpWidth(java.math.BigDecimal effectiveCs01BumpWidth) {
+    
+    this.effectiveCs01BumpWidth = effectiveCs01BumpWidth;
+    return this;
+  }
+
+   /**
+   * The TOTAL width, as an absolute spread, of the central-difference stencil used for the  option-adjusted Analytic/EffectiveCS01: the two reprice points sit at the solved OAS plus  and minus half of this. The reported figure is normalised to a one-basis-point move  whatever width is configured. Must be strictly positive. Defaults to 0.0001 (1bp, the  market convention for a credit sensitivity) when not supplied.
+   * @return effectiveCs01BumpWidth
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getEffectiveCs01BumpWidth() {
+    return effectiveCs01BumpWidth;
+  }
+
+
+  public void setEffectiveCs01BumpWidth(java.math.BigDecimal effectiveCs01BumpWidth) {
+    this.effectiveCs01BumpWidth = effectiveCs01BumpWidth;
+  }
+
+
+  public HullWhiteModelOptions effectiveKeyRateBuckets(List<String> effectiveKeyRateBuckets) {
+    
+    this.effectiveKeyRateBuckets = effectiveKeyRateBuckets;
+    return this;
+  }
+
+  public HullWhiteModelOptions addEffectiveKeyRateBucketsItem(String effectiveKeyRateBucketsItem) {
+    if (this.effectiveKeyRateBuckets == null) {
+      this.effectiveKeyRateBuckets = new ArrayList<>();
+    }
+    this.effectiveKeyRateBuckets.add(effectiveKeyRateBucketsItem);
+    return this;
+  }
+
+   /**
+   * The maturity buckets of the Analytic/EffectiveKeyRateDuration ladder, as tenor strings  such as \&quot;1Y\&quot; or \&quot;6M\&quot;, in strictly increasing order. Each bucket is repriced under a  tent-shaped curve shift centred on its own tenor, so the ladder sums to the parallel  effective duration to first order. Buckets past an instrument&#39;s maturity report zero, so  one grid can serve a whole book. Defaults to the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y grid  when not supplied; an empty list is rejected.
+   * @return effectiveKeyRateBuckets
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getEffectiveKeyRateBuckets() {
+    return effectiveKeyRateBuckets;
+  }
+
+
+  public void setEffectiveKeyRateBuckets(List<String> effectiveKeyRateBuckets) {
+    this.effectiveKeyRateBuckets = effectiveKeyRateBuckets;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -265,6 +325,8 @@ public class HullWhiteModelOptions extends ModelOptions {
         Objects.equals(this.meanReversionByCurrency, hullWhiteModelOptions.meanReversionByCurrency) &&
         Objects.equals(this.volatilityByCurrency, hullWhiteModelOptions.volatilityByCurrency) &&
         (this.volatilityMultiplier.compareTo(hullWhiteModelOptions.getVolatilityMultiplier()) == 0) &&
+        (this.effectiveCs01BumpWidth.compareTo(hullWhiteModelOptions.getEffectiveCs01BumpWidth()) == 0) &&
+        Objects.equals(this.effectiveKeyRateBuckets, hullWhiteModelOptions.effectiveKeyRateBuckets) &&
         super.equals(o);
   }
 
@@ -274,7 +336,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -296,6 +358,8 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    meanReversionByCurrency: ").append(toIndentedString(meanReversionByCurrency)).append("\n");
     sb.append("    volatilityByCurrency: ").append(toIndentedString(volatilityByCurrency)).append("\n");
     sb.append("    volatilityMultiplier: ").append(toIndentedString(volatilityMultiplier)).append("\n");
+    sb.append("    effectiveCs01BumpWidth: ").append(toIndentedString(effectiveCs01BumpWidth)).append("\n");
+    sb.append("    effectiveKeyRateBuckets: ").append(toIndentedString(effectiveKeyRateBuckets)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -326,6 +390,8 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("meanReversionByCurrency");
     openapiFields.add("volatilityByCurrency");
     openapiFields.add("volatilityMultiplier");
+    openapiFields.add("effectiveCs01BumpWidth");
+    openapiFields.add("effectiveKeyRateBuckets");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

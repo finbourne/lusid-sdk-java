@@ -680,7 +680,7 @@ public class JournalEntryLine {
   }
 
    /**
-   * Sub bucket of the economic bucket. Available values: Undefined, Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income, Expense.
+   * Sub bucket of the economic bucket. Premium/OID/MarketDiscount/AcquisitionPremium: the element of amortised cost realised on the line. CoreMarket: the realised price gain/loss in the local currency. CrossGainLoss: the realised gain/loss from the interaction of the price and FX movements. TradedInterest: interest bought or sold with the position, with variant &#39;Bought&#39; or &#39;Sold&#39;. Income/Expense: the line is the income or expense declared on the movement that produced it. Fee/Tax: the kind of charge declared on the movement, where the charge is a slice of a wider bucket such as &#39;CA_Capital&#39;. Available values: Undefined, Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income, Expense, Fee, Tax.
    * @return economicBucketComponent
   **/
   @jakarta.annotation.Nullable
@@ -701,7 +701,7 @@ public class JournalEntryLine {
   }
 
    /**
-   * Further categorisation of a journal entry line. LongTerm/ShortTerm: based on whether the ActivityDate is more than a year after the purchase trade date. TradeDateToSettlementDate: FX gain/loss between trade date and settlement date. InLieuSubstitution: FX gain/loss from settling in a different currency when the original settlement currency is the portfolio base currency. Available values: Undefined, ShortTerm, LongTerm, Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution.
+   * Further categorisation of a journal entry line. LongTerm/ShortTerm: based on whether the ActivityDate is more than a year after the purchase trade date. Bought/Sold: the direction of traded interest. Rounding: a cost normalisation line that removes a rounding difference. TradeDateToSettlementDate: FX gain/loss between trade date and settlement date. InLieuSubstitution: FX gain/loss from settling in a different currency when the original settlement currency is the portfolio base currency. Coupon/Dividend: the kind of income declared on the movement that produced the line. Fee/Tax: the kind of charge declared on the movement that produced the line, where the whole line is the charge (&#39;PL_Fees&#39;, or &#39;PL_Carry&#39; with component &#39;Expense&#39;). Available values: Undefined, ShortTerm, LongTerm, Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution, Coupon, Dividend, Fee, Tax.
    * @return economicBucketVariant
   **/
   @jakarta.annotation.Nullable

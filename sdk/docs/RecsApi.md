@@ -26,6 +26,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**transitionRecInstance**](RecsApi.md#transitionRecInstance) | **POST** /api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance |
 | [**updateMatchingRuleset**](RecsApi.md#updateMatchingRuleset) | **PUT** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset |
 | [**updateRecDefinition**](RecsApi.md#updateRecDefinition) | **PUT** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition |
+| [**upsertRecDefinitionProperties**](RecsApi.md#upsertRecDefinitionProperties) | **POST** /api/recs/definitions/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties |
 
 
 
@@ -2117,6 +2118,101 @@ public class RecsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated rec definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertRecDefinitionProperties
+
+> UpsertRecDefinitionPropertiesResponse upsertRecDefinitionProperties(scope, code, requestBody)
+
+[EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+
+Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.     Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String scope = "scope_example"; // String | The scope of the rec definition to update or insert the properties onto.
+        String code = "code_example"; // String | The code of the rec definition to update or insert the properties onto. Together with the   scope this uniquely identifies the rec definition.
+        Map<String, PerpetualProperty> requestBody = new HashMap(); // Map<String, PerpetualProperty> | The properties to be updated or inserted onto the rec definition. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'RecDefinition/Workflow/WorkflowId'.
+        try {
+            // uncomment the below to set overrides at the request level
+            // UpsertRecDefinitionPropertiesResponse result = apiInstance.upsertRecDefinitionProperties(scope, code, requestBody).execute(opts);
+
+            UpsertRecDefinitionPropertiesResponse result = apiInstance.upsertRecDefinitionProperties(scope, code, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#upsertRecDefinitionProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the rec definition to update or insert the properties onto. | |
+| **code** | **String**| The code of the rec definition to update or insert the properties onto. Together with the   scope this uniquely identifies the rec definition. | |
+| **requestBody** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md)| The properties to be updated or inserted onto the rec definition. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;RecDefinition/Workflow/WorkflowId&#39;. | |
+
+### Return type
+
+[**UpsertRecDefinitionPropertiesResponse**](UpsertRecDefinitionPropertiesResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted properties. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

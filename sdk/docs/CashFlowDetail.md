@@ -6,8 +6,7 @@ An individual cashflow inside a cashflow bucket, annotated with the source that 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the cashflow is paid. | [default to OffsetDateTime]
-**amount** | **java.math.BigDecimal** | The signed amount of the cashflow. A positive amount indicates money is received, a negative amount indicates money is paid. The amount is always the gross (pre-haircut) signed amount; when haircut rules are supplied the haircut and net amounts are reported separately. | [optional] [default to java.math.BigDecimal]
-**currency** | **String** | The payment currency of the cashflow. | [default to String]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **sourceType** | **String** | The source that produced the cashflow in the cash flow waterfall. One of &#39;Instrument&#39; (produced by the valuation engine), &#39;Transaction&#39; (produced from a booked transaction or movement) or &#39;SRS&#39; (sourced from the structured results store). | [default to String]
 **instrumentId** | **String** | The LUSID instrument identifier of the instrument that produced the cashflow. | [default to String]
 **instrumentDisplayName** | **String** | The display name of the instrument that produced the cashflow. Not present when the instrument cannot be resolved (e.g. deleted, no permission). | [optional] [default to String]
@@ -16,13 +15,13 @@ Name | Type | Description | Notes
 **flowType** | **String** | The type of the cashflow, e.g. Coupon, Principal or Premium. | [optional] [default to String]
 **movementName** | **String** | The name of the movement that produced the cashflow (e.g. Coupon, Side1), falling back to the flow type when the movement is unnamed. Not present when the cashflow could not be valued. | [optional] [default to String]
 **payReceive** | **String** | Indicates whether the cashflow is paid or received. | [optional] [default to String]
-**grossAmount** | **java.math.BigDecimal** | The signed amount of the cashflow before any haircut was applied. Only populated when haircut rules were supplied on the request. | [optional] [default to java.math.BigDecimal]
+**grossAmount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **haircutFraction** | **java.math.BigDecimal** | The fraction of the gross amount removed by the haircut, in the range [0, 1]. Zero for outflows and for cashflows no rule matched. Only populated when haircut rules were supplied on the request. | [optional] [default to java.math.BigDecimal]
-**netAmount** | **java.math.BigDecimal** | The signed amount of the cashflow net of the haircut. Only populated when haircut rules were supplied on the request. | [optional] [default to java.math.BigDecimal]
+**netAmount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **haircutRuleApplied** | **String** | The identifier of the haircut rule that was applied to the cashflow, or not present when no rule matched or no haircut rules were supplied on the request. | [optional] [default to String]
-**error** | **String** | Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the report-currency FX lookup failed (see AmountInReportCurrency), in which case the base Amount remains populated and only AmountInReportCurrency and TradeToReportCurrencyRate are null. | [optional] [default to String]
-**amountInReportCurrency** | **java.math.BigDecimal** | The signed amount of the cashflow (see Amount), converted into the request&#39;s report currency (see QueryBucketCashFlowDrillDownRequest.ReportCurrency). Not present when the FX rate used to convert into the report currency could not be resolved; see Error. | [optional] [default to java.math.BigDecimal]
-**tradeToReportCurrencyRate** | **java.math.BigDecimal** | The FX rate used to convert the cashflow amount into the request&#39;s report currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Not present when the rate could not be resolved; see Error. | [optional] [default to java.math.BigDecimal]
+**error** | **String** | Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the report-currency FX lookup failed (see ReportCurrencyAmount), in which case the base Amount remains populated and only ReportCurrencyAmount and TradeToReportCurrencyRate are null. | [optional] [default to String]
+**reportCurrencyAmount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**tradeToReportCurrencyRate** | **java.math.BigDecimal** | The FX rate used to convert the cashflow amount from its own payment currency (see Amount) into the request&#39;s report currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Only present when ReportCurrency was supplied on the request; not present when it was omitted, or when the rate could not be resolved (see Error). | [optional] [default to java.math.BigDecimal]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -32,8 +31,7 @@ import java.lang.System;
 import java.net.URI;
 
 OffsetDateTime PaymentDate = OffsetDateTime.now();
-@jakarta.annotation.Nullable java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
-String Currency = "example Currency";
+CurrencyAndAmount Amount = new CurrencyAndAmount();
 String SourceType = "example SourceType";
 String InstrumentId = "example InstrumentId";
 @jakarta.annotation.Nullable String InstrumentDisplayName = "example InstrumentDisplayName";
@@ -42,12 +40,12 @@ ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String FlowType = "example FlowType";
 @jakarta.annotation.Nullable String MovementName = "example MovementName";
 @jakarta.annotation.Nullable String PayReceive = "example PayReceive";
-@jakarta.annotation.Nullable java.math.BigDecimal GrossAmount = new java.math.BigDecimal("100.00");
+CurrencyAndAmount GrossAmount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal HaircutFraction = new java.math.BigDecimal("100.00");
-@jakarta.annotation.Nullable java.math.BigDecimal NetAmount = new java.math.BigDecimal("100.00");
+CurrencyAndAmount NetAmount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String HaircutRuleApplied = "example HaircutRuleApplied";
 @jakarta.annotation.Nullable String Error = "example Error";
-@jakarta.annotation.Nullable java.math.BigDecimal AmountInReportCurrency = new java.math.BigDecimal("100.00");
+CurrencyAndAmount ReportCurrencyAmount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal TradeToReportCurrencyRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -55,7 +53,6 @@ ResourceId PortfolioId = new ResourceId();
 CashFlowDetail cashFlowDetailInstance = new CashFlowDetail()
     .PaymentDate(PaymentDate)
     .Amount(Amount)
-    .Currency(Currency)
     .SourceType(SourceType)
     .InstrumentId(InstrumentId)
     .InstrumentDisplayName(InstrumentDisplayName)
@@ -69,7 +66,7 @@ CashFlowDetail cashFlowDetailInstance = new CashFlowDetail()
     .NetAmount(NetAmount)
     .HaircutRuleApplied(HaircutRuleApplied)
     .Error(Error)
-    .AmountInReportCurrency(AmountInReportCurrency)
+    .ReportCurrencyAmount(ReportCurrencyAmount)
     .TradeToReportCurrencyRate(TradeToReportCurrencyRate)
     .Links(Links);
 ```

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -61,11 +62,7 @@ public class CashFlowDetail {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private java.math.BigDecimal amount;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
+  private CurrencyAndAmount amount;
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "sourceType";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
@@ -101,7 +98,7 @@ public class CashFlowDetail {
 
   public static final String SERIALIZED_NAME_GROSS_AMOUNT = "grossAmount";
   @SerializedName(SERIALIZED_NAME_GROSS_AMOUNT)
-  private java.math.BigDecimal grossAmount;
+  private CurrencyAndAmount grossAmount;
 
   public static final String SERIALIZED_NAME_HAIRCUT_FRACTION = "haircutFraction";
   @SerializedName(SERIALIZED_NAME_HAIRCUT_FRACTION)
@@ -109,7 +106,7 @@ public class CashFlowDetail {
 
   public static final String SERIALIZED_NAME_NET_AMOUNT = "netAmount";
   @SerializedName(SERIALIZED_NAME_NET_AMOUNT)
-  private java.math.BigDecimal netAmount;
+  private CurrencyAndAmount netAmount;
 
   public static final String SERIALIZED_NAME_HAIRCUT_RULE_APPLIED = "haircutRuleApplied";
   @SerializedName(SERIALIZED_NAME_HAIRCUT_RULE_APPLIED)
@@ -119,9 +116,9 @@ public class CashFlowDetail {
   @SerializedName(SERIALIZED_NAME_ERROR)
   private String error;
 
-  public static final String SERIALIZED_NAME_AMOUNT_IN_REPORT_CURRENCY = "amountInReportCurrency";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_IN_REPORT_CURRENCY)
-  private java.math.BigDecimal amountInReportCurrency;
+  public static final String SERIALIZED_NAME_REPORT_CURRENCY_AMOUNT = "reportCurrencyAmount";
+  @SerializedName(SERIALIZED_NAME_REPORT_CURRENCY_AMOUNT)
+  private CurrencyAndAmount reportCurrencyAmount;
 
   public static final String SERIALIZED_NAME_TRADE_TO_REPORT_CURRENCY_RATE = "tradeToReportCurrencyRate";
   @SerializedName(SERIALIZED_NAME_TRADE_TO_REPORT_CURRENCY_RATE)
@@ -155,45 +152,24 @@ public class CashFlowDetail {
   }
 
 
-  public CashFlowDetail amount(java.math.BigDecimal amount) {
+  public CashFlowDetail amount(CurrencyAndAmount amount) {
     
     this.amount = amount;
     return this;
   }
 
    /**
-   * The signed amount of the cashflow. A positive amount indicates money is received, a negative amount indicates money is paid. The amount is always the gross (pre-haircut) signed amount; when haircut rules are supplied the haircut and net amounts are reported separately.
+   * Get amount
    * @return amount
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getAmount() {
+  public CurrencyAndAmount getAmount() {
     return amount;
   }
 
 
-  public void setAmount(java.math.BigDecimal amount) {
+  public void setAmount(CurrencyAndAmount amount) {
     this.amount = amount;
-  }
-
-
-  public CashFlowDetail currency(String currency) {
-    
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The payment currency of the cashflow.
-   * @return currency
-  **/
-  @jakarta.annotation.Nonnull
-  public String getCurrency() {
-    return currency;
-  }
-
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
   }
 
 
@@ -365,23 +341,23 @@ public class CashFlowDetail {
   }
 
 
-  public CashFlowDetail grossAmount(java.math.BigDecimal grossAmount) {
+  public CashFlowDetail grossAmount(CurrencyAndAmount grossAmount) {
     
     this.grossAmount = grossAmount;
     return this;
   }
 
    /**
-   * The signed amount of the cashflow before any haircut was applied. Only populated when haircut rules were supplied on the request.
+   * Get grossAmount
    * @return grossAmount
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getGrossAmount() {
+  public CurrencyAndAmount getGrossAmount() {
     return grossAmount;
   }
 
 
-  public void setGrossAmount(java.math.BigDecimal grossAmount) {
+  public void setGrossAmount(CurrencyAndAmount grossAmount) {
     this.grossAmount = grossAmount;
   }
 
@@ -407,23 +383,23 @@ public class CashFlowDetail {
   }
 
 
-  public CashFlowDetail netAmount(java.math.BigDecimal netAmount) {
+  public CashFlowDetail netAmount(CurrencyAndAmount netAmount) {
     
     this.netAmount = netAmount;
     return this;
   }
 
    /**
-   * The signed amount of the cashflow net of the haircut. Only populated when haircut rules were supplied on the request.
+   * Get netAmount
    * @return netAmount
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getNetAmount() {
+  public CurrencyAndAmount getNetAmount() {
     return netAmount;
   }
 
 
-  public void setNetAmount(java.math.BigDecimal netAmount) {
+  public void setNetAmount(CurrencyAndAmount netAmount) {
     this.netAmount = netAmount;
   }
 
@@ -456,7 +432,7 @@ public class CashFlowDetail {
   }
 
    /**
-   * Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the report-currency FX lookup failed (see AmountInReportCurrency), in which case the base Amount remains populated and only AmountInReportCurrency and TradeToReportCurrencyRate are null.
+   * Present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. In that case the amount is null rather than zero. Error may also be set when only the report-currency FX lookup failed (see ReportCurrencyAmount), in which case the base Amount remains populated and only ReportCurrencyAmount and TradeToReportCurrencyRate are null.
    * @return error
   **/
   @jakarta.annotation.Nullable
@@ -470,24 +446,24 @@ public class CashFlowDetail {
   }
 
 
-  public CashFlowDetail amountInReportCurrency(java.math.BigDecimal amountInReportCurrency) {
+  public CashFlowDetail reportCurrencyAmount(CurrencyAndAmount reportCurrencyAmount) {
     
-    this.amountInReportCurrency = amountInReportCurrency;
+    this.reportCurrencyAmount = reportCurrencyAmount;
     return this;
   }
 
    /**
-   * The signed amount of the cashflow (see Amount), converted into the request&#39;s report currency (see QueryBucketCashFlowDrillDownRequest.ReportCurrency). Not present when the FX rate used to convert into the report currency could not be resolved; see Error.
-   * @return amountInReportCurrency
+   * Get reportCurrencyAmount
+   * @return reportCurrencyAmount
   **/
   @jakarta.annotation.Nullable
-  public java.math.BigDecimal getAmountInReportCurrency() {
-    return amountInReportCurrency;
+  public CurrencyAndAmount getReportCurrencyAmount() {
+    return reportCurrencyAmount;
   }
 
 
-  public void setAmountInReportCurrency(java.math.BigDecimal amountInReportCurrency) {
-    this.amountInReportCurrency = amountInReportCurrency;
+  public void setReportCurrencyAmount(CurrencyAndAmount reportCurrencyAmount) {
+    this.reportCurrencyAmount = reportCurrencyAmount;
   }
 
 
@@ -498,7 +474,7 @@ public class CashFlowDetail {
   }
 
    /**
-   * The FX rate used to convert the cashflow amount into the request&#39;s report currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Not present when the rate could not be resolved; see Error.
+   * The FX rate used to convert the cashflow amount from its own payment currency (see Amount) into the request&#39;s report currency, resolved at the cashflow&#39;s transaction (trade) date, not its payment date. Only present when ReportCurrency was supplied on the request; not present when it was omitted, or when the rate could not be resolved (see Error).
    * @return tradeToReportCurrencyRate
   **/
   @jakarta.annotation.Nullable
@@ -552,8 +528,7 @@ public class CashFlowDetail {
     }
     CashFlowDetail cashFlowDetail = (CashFlowDetail) o;
     return Objects.equals(this.paymentDate, cashFlowDetail.paymentDate) &&
-        (this.amount.compareTo(cashFlowDetail.getAmount()) == 0) &&
-        Objects.equals(this.currency, cashFlowDetail.currency) &&
+        Objects.equals(this.amount, cashFlowDetail.amount) &&
         Objects.equals(this.sourceType, cashFlowDetail.sourceType) &&
         Objects.equals(this.instrumentId, cashFlowDetail.instrumentId) &&
         Objects.equals(this.instrumentDisplayName, cashFlowDetail.instrumentDisplayName) &&
@@ -562,12 +537,12 @@ public class CashFlowDetail {
         Objects.equals(this.flowType, cashFlowDetail.flowType) &&
         Objects.equals(this.movementName, cashFlowDetail.movementName) &&
         Objects.equals(this.payReceive, cashFlowDetail.payReceive) &&
-        (this.grossAmount.compareTo(cashFlowDetail.getGrossAmount()) == 0) &&
+        Objects.equals(this.grossAmount, cashFlowDetail.grossAmount) &&
         (this.haircutFraction.compareTo(cashFlowDetail.getHaircutFraction()) == 0) &&
-        (this.netAmount.compareTo(cashFlowDetail.getNetAmount()) == 0) &&
+        Objects.equals(this.netAmount, cashFlowDetail.netAmount) &&
         Objects.equals(this.haircutRuleApplied, cashFlowDetail.haircutRuleApplied) &&
         Objects.equals(this.error, cashFlowDetail.error) &&
-        (this.amountInReportCurrency.compareTo(cashFlowDetail.getAmountInReportCurrency()) == 0) &&
+        Objects.equals(this.reportCurrencyAmount, cashFlowDetail.reportCurrencyAmount) &&
         (this.tradeToReportCurrencyRate.compareTo(cashFlowDetail.getTradeToReportCurrencyRate()) == 0) &&
         Objects.equals(this.links, cashFlowDetail.links);
   }
@@ -578,7 +553,7 @@ public class CashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, amount, currency, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, amountInReportCurrency, tradeToReportCurrencyRate, links);
+    return Objects.hash(paymentDate, amount, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, payReceive, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, reportCurrencyAmount, tradeToReportCurrencyRate, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -594,7 +569,6 @@ public class CashFlowDetail {
     sb.append("class CashFlowDetail {\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    instrumentId: ").append(toIndentedString(instrumentId)).append("\n");
     sb.append("    instrumentDisplayName: ").append(toIndentedString(instrumentDisplayName)).append("\n");
@@ -608,7 +582,7 @@ public class CashFlowDetail {
     sb.append("    netAmount: ").append(toIndentedString(netAmount)).append("\n");
     sb.append("    haircutRuleApplied: ").append(toIndentedString(haircutRuleApplied)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    amountInReportCurrency: ").append(toIndentedString(amountInReportCurrency)).append("\n");
+    sb.append("    reportCurrencyAmount: ").append(toIndentedString(reportCurrencyAmount)).append("\n");
     sb.append("    tradeToReportCurrencyRate: ").append(toIndentedString(tradeToReportCurrencyRate)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -635,7 +609,6 @@ public class CashFlowDetail {
     openapiFields = new HashSet<String>();
     openapiFields.add("paymentDate");
     openapiFields.add("amount");
-    openapiFields.add("currency");
     openapiFields.add("sourceType");
     openapiFields.add("instrumentId");
     openapiFields.add("instrumentDisplayName");
@@ -649,14 +622,13 @@ public class CashFlowDetail {
     openapiFields.add("netAmount");
     openapiFields.add("haircutRuleApplied");
     openapiFields.add("error");
-    openapiFields.add("amountInReportCurrency");
+    openapiFields.add("reportCurrencyAmount");
     openapiFields.add("tradeToReportCurrencyRate");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("currency");
     openapiRequiredFields.add("sourceType");
     openapiRequiredFields.add("instrumentId");
     openapiRequiredFields.add("portfolioId");
@@ -682,8 +654,9 @@ public class CashFlowDetail {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
       }
       if (!jsonObj.get("sourceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceType").toString()));
@@ -708,11 +681,23 @@ public class CashFlowDetail {
       if ((jsonObj.get("payReceive") != null && !jsonObj.get("payReceive").isJsonNull()) && !jsonObj.get("payReceive").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `payReceive` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payReceive").toString()));
       }
+      // validate the optional field `grossAmount`
+      if (jsonObj.get("grossAmount") != null && !jsonObj.get("grossAmount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("grossAmount"));
+      }
+      // validate the optional field `netAmount`
+      if (jsonObj.get("netAmount") != null && !jsonObj.get("netAmount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("netAmount"));
+      }
       if ((jsonObj.get("haircutRuleApplied") != null && !jsonObj.get("haircutRuleApplied").isJsonNull()) && !jsonObj.get("haircutRuleApplied").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `haircutRuleApplied` to be a primitive type in the JSON string but got `%s`", jsonObj.get("haircutRuleApplied").toString()));
       }
       if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
+      }
+      // validate the optional field `reportCurrencyAmount`
+      if (jsonObj.get("reportCurrencyAmount") != null && !jsonObj.get("reportCurrencyAmount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("reportCurrencyAmount"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
