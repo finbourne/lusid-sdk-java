@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **volatilityMultiplier** | **java.math.BigDecimal** | A multiplicative scaling applied to the resolved short-rate volatility - the scalar  Volatility or its per-currency override, whichever applies - at the point of use, e.g. 1.1  prices with the configured volatility raised by ten percent. A single multiplier scales  every per-currency calibration coherently, so a shocked set of options can differ from its  base by this one field rather than a hand-rebuilt volatility (or map of volatilities).  Must not be negative; zero is allowed and prices with a deterministic short rate.  Defaults to 1, which reproduces the configured volatility exactly, when not supplied. | [optional] [default to java.math.BigDecimal]
 **effectiveCs01BumpWidth** | **java.math.BigDecimal** | The TOTAL width, as an absolute spread, of the central-difference stencil used for the  option-adjusted Analytic/EffectiveCS01: the two reprice points sit at the solved OAS plus  and minus half of this. The reported figure is normalised to a one-basis-point move  whatever width is configured. Must be strictly positive. Defaults to 0.0001 (1bp, the  market convention for a credit sensitivity) when not supplied. | [optional] [default to java.math.BigDecimal]
 **effectiveKeyRateBuckets** | **List&lt;String&gt;** | The maturity buckets of the Analytic/EffectiveKeyRateDuration ladder, as tenor strings  such as \&quot;1Y\&quot; or \&quot;6M\&quot;, in strictly increasing order. Each bucket is repriced under a  tent-shaped curve shift centred on its own tenor, so the ladder sums to the parallel  effective duration to first order. Buckets past an instrument&#39;s maturity report zero, so  one grid can serve a whole book. Defaults to the 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y grid  when not supplied; an empty list is rejected. | [optional] [default to List<String>]
+**priceToFirstReset** | **Boolean** | Value a fixed-to-float callable bond only to its first reset. The bond must be a  ComplexBond with one fixed schedule, one floating schedule starting on the fixed schedule&#39;s  maturity, and a call exercisable on that date; it is then valued as if called there, redeemed  at the call strike on the principal outstanding, with the fixed coupon paid on that date kept  and no floating coupon projected. Any call before that date stays live on the lattice. Bonds  of any other shape are refused by name rather than valued over their full life. Rows priced  this way carry the reset date in the Diagnostics/Model/PricingHorizon valuation key. Defaults  to false, which values the bond over its full life. | [optional] [default to Boolean]
+**latticeStepsPerYear** | **Integer** | The lattice time-step density as steps per year. When supplied, the lattice uses  ceil(horizon in years x this value) steps, raised if necessary so that one step is no longer  than the shortest gap between consecutive cashflows, so the fixed LatticeSteps is ignored and  the \&quot;lattice coarser than coupon spacing\&quot; refusal cannot fire. Must be at least 1 when  supplied. Absent, the fixed LatticeSteps count applies. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.HullWhiteModelOptions;
@@ -30,6 +32,8 @@ Integer LatticeSteps = new Integer("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal VolatilityMultiplier = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal EffectiveCs01BumpWidth = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<String> EffectiveKeyRateBuckets = new List<String>();
+@jakarta.annotation.Nullable Boolean PriceToFirstReset = true;
+@jakarta.annotation.Nullable Integer LatticeStepsPerYear = new Integer("100.00");
 
 
 HullWhiteModelOptions hullWhiteModelOptionsInstance = new HullWhiteModelOptions()
@@ -41,7 +45,9 @@ HullWhiteModelOptions hullWhiteModelOptionsInstance = new HullWhiteModelOptions(
     .VolatilityByCurrency(VolatilityByCurrency)
     .VolatilityMultiplier(VolatilityMultiplier)
     .EffectiveCs01BumpWidth(EffectiveCs01BumpWidth)
-    .EffectiveKeyRateBuckets(EffectiveKeyRateBuckets);
+    .EffectiveKeyRateBuckets(EffectiveKeyRateBuckets)
+    .PriceToFirstReset(PriceToFirstReset)
+    .LatticeStepsPerYear(LatticeStepsPerYear);
 ```
 
 

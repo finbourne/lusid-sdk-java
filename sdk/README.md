@@ -598,7 +598,7 @@ Class | Method | HTTP request | Description
 *RecsApi* | [**getMatchingRuleset**](docs/RecsApi.md#getmatchingruleset) | **GET** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset
 *RecsApi* | [**getRecDefinition**](docs/RecsApi.md#getrecdefinition) | **GET** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition
 *RecsApi* | [**getRecInstance**](docs/RecsApi.md#getrecinstance) | **GET** /api/recs/instances/{instanceIdType}/{instanceIdValue} | [EXPERIMENTAL] GetRecInstance: GetRecInstance
-*RecsApi* | [**getRecResult**](docs/RecsApi.md#getrecresult) | **GET** /api/recs/results/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult
+*RecsApi* | [**getRecResult**](docs/RecsApi.md#getrecresult) | **GET** /api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult
 *RecsApi* | [**getRecResultSet**](docs/RecsApi.md#getrecresultset) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet
 *RecsApi* | [**instantiateRec**](docs/RecsApi.md#instantiaterec) | **POST** /api/recs/instances | [EXPERIMENTAL] InstantiateRec: InstantiateRec
 *RecsApi* | [**listMatchingRulesets**](docs/RecsApi.md#listmatchingrulesets) | **GET** /api/recs/matchingrulesets | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets

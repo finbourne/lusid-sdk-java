@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RecInstanceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,6 +51,18 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BatchManageCommentRequest {
+  public static final String SERIALIZED_NAME_INSTANCE_ID = "instanceId";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
+  private RecInstanceId instanceId;
+
+  public static final String SERIALIZED_NAME_REC_TYPE = "recType";
+  @SerializedName(SERIALIZED_NAME_REC_TYPE)
+  private String recType;
+
+  public static final String SERIALIZED_NAME_RUN_NUMBER = "runNumber";
+  @SerializedName(SERIALIZED_NAME_RUN_NUMBER)
+  private Integer runNumber;
+
   public static final String SERIALIZED_NAME_REC_RESULT_ID = "recResultId";
   @SerializedName(SERIALIZED_NAME_REC_RESULT_ID)
   private String recResultId;
@@ -64,6 +77,71 @@ public class BatchManageCommentRequest {
 
   public BatchManageCommentRequest() {
   }
+
+  public BatchManageCommentRequest instanceId(RecInstanceId instanceId) {
+    
+    this.instanceId = instanceId;
+    return this;
+  }
+
+   /**
+   * Get instanceId
+   * @return instanceId
+  **/
+  @jakarta.annotation.Nonnull
+  public RecInstanceId getInstanceId() {
+    return instanceId;
+  }
+
+
+  public void setInstanceId(RecInstanceId instanceId) {
+    this.instanceId = instanceId;
+  }
+
+
+  public BatchManageCommentRequest recType(String recType) {
+    
+    this.recType = recType;
+    return this;
+  }
+
+   /**
+   * The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+   * @return recType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getRecType() {
+    return recType;
+  }
+
+
+  public void setRecType(String recType) {
+    this.recType = recType;
+  }
+
+
+  public BatchManageCommentRequest runNumber(Integer runNumber) {
+    
+    this.runNumber = runNumber;
+    return this;
+  }
+
+   /**
+   * The run of the instance whose results this item targets.
+   * minimum: 1
+   * maximum: 2147483647
+   * @return runNumber
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getRunNumber() {
+    return runNumber;
+  }
+
+
+  public void setRunNumber(Integer runNumber) {
+    this.runNumber = runNumber;
+  }
+
 
   public BatchManageCommentRequest recResultId(String recResultId) {
     
@@ -138,7 +216,10 @@ public class BatchManageCommentRequest {
       return false;
     }
     BatchManageCommentRequest batchManageCommentRequest = (BatchManageCommentRequest) o;
-    return Objects.equals(this.recResultId, batchManageCommentRequest.recResultId) &&
+    return Objects.equals(this.instanceId, batchManageCommentRequest.instanceId) &&
+        Objects.equals(this.recType, batchManageCommentRequest.recType) &&
+        Objects.equals(this.runNumber, batchManageCommentRequest.runNumber) &&
+        Objects.equals(this.recResultId, batchManageCommentRequest.recResultId) &&
         Objects.equals(this.commentId, batchManageCommentRequest.commentId) &&
         Objects.equals(this.commentText, batchManageCommentRequest.commentText);
   }
@@ -149,7 +230,7 @@ public class BatchManageCommentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recResultId, commentId, commentText);
+    return Objects.hash(instanceId, recType, runNumber, recResultId, commentId, commentText);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -163,6 +244,9 @@ public class BatchManageCommentRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BatchManageCommentRequest {\n");
+    sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
+    sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
+    sb.append("    runNumber: ").append(toIndentedString(runNumber)).append("\n");
     sb.append("    recResultId: ").append(toIndentedString(recResultId)).append("\n");
     sb.append("    commentId: ").append(toIndentedString(commentId)).append("\n");
     sb.append("    commentText: ").append(toIndentedString(commentText)).append("\n");
@@ -188,12 +272,18 @@ public class BatchManageCommentRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("instanceId");
+    openapiFields.add("recType");
+    openapiFields.add("runNumber");
     openapiFields.add("recResultId");
     openapiFields.add("commentId");
     openapiFields.add("commentText");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("instanceId");
+    openapiRequiredFields.add("recType");
+    openapiRequiredFields.add("runNumber");
     openapiRequiredFields.add("recResultId");
   }
 
@@ -217,6 +307,11 @@ public class BatchManageCommentRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `instanceId`
+      RecInstanceId.validateJsonElement(jsonObj.get("instanceId"));
+      if (!jsonObj.get("recType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recType").toString()));
+      }
       if (!jsonObj.get("recResultId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `recResultId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recResultId").toString()));
       }

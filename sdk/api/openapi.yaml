@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10148
+  version: 0.11.10154
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -121846,10 +121846,20 @@ paths:
           application/json-patch+json:
             example:
               add-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentText: Investigating this break.
               delete-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentId: 00000000-0000-0000-0000-000000000009
             schema:
               additionalProperties:
@@ -121858,10 +121868,20 @@ paths:
           application/json:
             example:
               add-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentText: Investigating this break.
               delete-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentId: 00000000-0000-0000-0000-000000000009
             schema:
               additionalProperties:
@@ -121870,10 +121890,20 @@ paths:
           text/json:
             example:
               add-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentText: Investigating this break.
               delete-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentId: 00000000-0000-0000-0000-000000000009
             schema:
               additionalProperties:
@@ -121882,10 +121912,20 @@ paths:
           application/*+json:
             example:
               add-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentText: Investigating this break.
               delete-a-comment:
-                recResultId: rec-result-1
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
+                recResultId: break-1
                 commentId: 00000000-0000-0000-0000-000000000009
             schema:
               additionalProperties:
@@ -121958,15 +121998,25 @@ paths:
           application/json-patch+json:
             example:
               accept-a-break:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-1
+                - break-1
                 decision:
                   value: Accept
                   affirm: false
               force-match-two:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-2
-                - rec-result-3
+                - break-2
+                - break-3
                 decision:
                   value: ForceMatch
                   affirm: false
@@ -121979,15 +122029,25 @@ paths:
           application/json:
             example:
               accept-a-break:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-1
+                - break-1
                 decision:
                   value: Accept
                   affirm: false
               force-match-two:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-2
-                - rec-result-3
+                - break-2
+                - break-3
                 decision:
                   value: ForceMatch
                   affirm: false
@@ -122000,15 +122060,25 @@ paths:
           text/json:
             example:
               accept-a-break:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-1
+                - break-1
                 decision:
                   value: Accept
                   affirm: false
               force-match-two:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-2
-                - rec-result-3
+                - break-2
+                - break-3
                 decision:
                   value: ForceMatch
                   affirm: false
@@ -122021,15 +122091,25 @@ paths:
           application/*+json:
             example:
               accept-a-break:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-1
+                - break-1
                 decision:
                   value: Accept
                   affirm: false
               force-match-two:
+                instanceId:
+                  instanceIdType: Manual
+                  instanceIdValue: 00000000-0000-0000-0000-000000000001
+                recType: Holding
+                runNumber: 1
                 recResultIds:
-                - rec-result-2
-                - rec-result-3
+                - break-2
+                - break-3
                 decision:
                   value: ForceMatch
                   affirm: false
@@ -122081,18 +122161,64 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /api/recs/results/{id}:
+  /api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id}:
     get:
-      description: Retrieve a single rec result by its id.
+      description: Retrieve a single rec result by the run it belongs to and its id
+        within that run.
       operationId: GetRecResult
       parameters:
-      - description: The system-generated id of the rec result.
+      - description: "How the instance was created: \"WorkflowServiceTaskId\" or \"\
+          Manual\". Available values: WorkflowServiceTaskId, Manual."
+        explode: false
+        in: path
+        name: instanceIdType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The unique identifier of the rec instance.
+        explode: false
+        in: path
+        name: instanceIdValue
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: "The rec type the result belongs to (e.g. Holding). Available\
+          \ values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
+          \ SettlementActivity."
+        explode: false
+        in: path
+        name: recType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The run of the instance the result belongs to.
+        explode: false
+        in: path
+        name: runNumber
+        required: true
+        schema:
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: simple
+      - description: "The id of the rec result within the run, e.g. \"break-3\"."
         explode: false
         in: path
         name: id
         required: true
         schema:
-          maxLength: 256
+          maxLength: 64
           minLength: 1
           type: string
         style: simple
@@ -169034,16 +169160,17 @@ paths:
         \ own rules on what may be changed on a populated dataset.\r\n \r\nOnly the\
         \ matching dimensions the document addresses are affected; a dimension it\
         \ does not address is left as\r\nit is. Append a dimension with an add on\
-        \ \"/dimensions/-\", and amend one in place with an add on its index.\r\n\
-        \ \r\nA dimension whose name collides with a mandatory core field is rejected,\
-        \ as is any attempt to add a rate tier:\r\nthe tier set is fixed at four and\
-        \ cannot be extended by schema evolution, because the engine could never read\r\
-        \na tier it does not know by name. The mandatory core is not addressable by\
-        \ this endpoint at all.\r\n \r\nThe amended dataset is returned in the same\
-        \ shape the get and the list return: the matching dimensions alone.\r\nRead\
-        \ the full field schema from the relational dataset definition at the returned\
-        \ href.\r\nThe behaviour is defined by the JSON Patch specification.\r\n\r\
-        \nCurrently supported fields are: Dimensions."
+        \ \"/dimensions/-\", insert one at a position with an add on its index,\r\n\
+        and remove one with a remove on its index. To amend a dimension, remove it\
+        \ and add it again.\r\n \r\nA dimension whose name collides with a mandatory\
+        \ core field is rejected, as is any attempt to add a rate tier:\r\nthe tier\
+        \ set is fixed at four and cannot be extended by schema evolution, because\
+        \ the engine could never read\r\na tier it does not know by name. The mandatory\
+        \ core is not addressable by this endpoint at all.\r\n \r\nThe amended dataset\
+        \ is returned in the same shape the get and the list return: the matching\
+        \ dimensions alone.\r\nRead the full field schema from the relational dataset\
+        \ definition at the returned href.\r\nThe behaviour is defined by the JSON\
+        \ Patch specification.\r\n\r\nCurrently supported fields are: Dimensions."
       operationId: PatchWithholdingTaxDatasetDefinition
       parameters:
       - description: The scope of the dataset definition to amend.
@@ -169082,16 +169209,6 @@ paths:
                   code: string
               path: /dimensions/-
               op: add
-            - value:
-                fieldName: custodian
-                displayName: Custodian
-                description: The custodian holding the position the rate row applies
-                  to.
-                dataTypeId:
-                  scope: system
-                  code: string
-              path: /dimensions/1
-              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -169106,16 +169223,6 @@ paths:
                   scope: system
                   code: string
               path: /dimensions/-
-              op: add
-            - value:
-                fieldName: custodian
-                displayName: Custodian
-                description: The custodian holding the position the rate row applies
-                  to.
-                dataTypeId:
-                  scope: system
-                  code: string
-              path: /dimensions/1
               op: add
             schema:
               items:
@@ -169132,16 +169239,6 @@ paths:
                   code: string
               path: /dimensions/-
               op: add
-            - value:
-                fieldName: custodian
-                displayName: Custodian
-                description: The custodian holding the position the rate row applies
-                  to.
-                dataTypeId:
-                  scope: system
-                  code: string
-              path: /dimensions/1
-              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -169156,16 +169253,6 @@ paths:
                   scope: system
                   code: string
               path: /dimensions/-
-              op: add
-            - value:
-                fieldName: custodian
-                displayName: Custodian
-                description: The custodian holding the position the rate row applies
-                  to.
-                dataTypeId:
-                  scope: system
-                  code: string
-              path: /dimensions/1
               op: add
             schema:
               items:
@@ -179612,13 +179699,13 @@ components:
         transactions:
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -180007,13 +180094,13 @@ components:
               status: status
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -181646,10 +181733,30 @@ components:
       description: "One item of a batch comment request. The operation (add/edit/delete)\
         \ is inferred from the\r\ncombination of commentId and commentText."
       example:
+        recType: recType
+        instanceId:
+          instanceIdType: instanceIdType
+          instanceIdValue: instanceIdValue
         recResultId: recResultId
         commentId: commentId
+        runNumber: 171976545
         commentText: commentText
       properties:
+        instanceId:
+          $ref: '#/components/schemas/RecInstanceId'
+        recType:
+          description: "The rec type whose results this item targets (e.g. Holding).\
+            \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity."
+          maxLength: 64
+          minLength: 1
+          type: string
+        runNumber:
+          description: The run of the instance whose results this item targets.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
         recResultId:
           description: The rec result the comment operation targets.
           maxLength: 256
@@ -181669,7 +181776,10 @@ components:
           nullable: true
           type: string
       required:
+      - instanceId
       - recResultId
+      - recType
+      - runNumber
       type: object
     BatchManageCommentResponse:
       additionalProperties: false
@@ -181702,6 +181812,47 @@ components:
             recDefinitionId:
               code: code
               scope: scope
+            assignedRole: assignedRole
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            recType: recType
+            instanceId:
+              instanceIdType: instanceIdType
+              instanceIdValue: instanceIdValue
+            review:
+              decision: decision
+              decisionGroup:
+                coreRulesExcused:
+                - coreRulesExcused
+                - coreRulesExcused
+                groupNumber: 5
+              status: status
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            id: id
+            href: https://openapi-generator.tech
+            resultType: resultType
+            supplementalAttributes:
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            assignedUser: assignedUser
+            resultCardinality: resultCardinality
             comments:
             - asAtModified: 2000-01-23T04:56:07.000+00:00
               asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -181713,7 +181864,6 @@ components:
               commentId: commentId
               commentText: commentText
               userId: userId
-            assignedRole: assignedRole
             runAsAt: 2000-01-23T04:56:07.000+00:00
             coreRules:
             - leftValue: leftValue
@@ -181728,13 +181878,7 @@ components:
               appliedTolerance:
                 ruleName: ruleName
                 toleranceType: toleranceType
-            datesReconciled:
-              rightAsAt: 2000-01-23T04:56:07.000+00:00
-              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-              leftAsAt: 2000-01-23T04:56:07.000+00:00
-              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            resultNumber: 0
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -181784,10 +181928,6 @@ components:
                   holdingId: holdingId
                   transactionId: transactionId
               id: id
-            recType: recType
-            instanceId:
-              instanceIdType: instanceIdType
-              instanceIdValue: instanceIdValue
             aggregateRules:
             - leftValue: leftValue
               rightValue: rightValue
@@ -181803,34 +181943,8 @@ components:
               appliedTolerance:
                 ruleName: ruleName
                 toleranceType: toleranceType
-            review:
-              decision: decision
-              decisionGroup:
-                coreRulesExcused:
-                - coreRulesExcused
-                - coreRulesExcused
-                groupNumber: 6
-              status: status
-            runNumber: 0
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            id: id
-            href: https://openapi-generator.tech
-            resultType: resultType
-            supplementalAttributes:
-            - leftValue: leftValue
-              rightValue: rightValue
-              attributeName: attributeName
-            - leftValue: leftValue
-              rightValue: rightValue
-              attributeName: attributeName
+            runNumber: 1
+            firstRunSeen: 6
             items:
               left:
               - itemType: itemType
@@ -181845,7 +181959,7 @@ components:
                 writebackSuggestions:
                 - writebackType: writebackType
                 - writebackType: writebackType
-              countLeft: 1
+              countLeft: 5
               right:
               - itemType: itemType
                 ruleAndAttributeValues:
@@ -181859,9 +181973,7 @@ components:
                 writebackSuggestions:
                 - writebackType: writebackType
                 - writebackType: writebackType
-              countRight: 5
-            assignedUser: assignedUser
-            resultCardinality: resultCardinality
+              countRight: 2
             properties:
               key:
                 referenceData:
@@ -181950,6 +182062,47 @@ components:
           recDefinitionId:
             code: code
             scope: scope
+          assignedRole: assignedRole
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          instanceId:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          review:
+            decision: decision
+            decisionGroup:
+              coreRulesExcused:
+              - coreRulesExcused
+              - coreRulesExcused
+              groupNumber: 5
+            status: status
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id: id
+          href: https://openapi-generator.tech
+          resultType: resultType
+          supplementalAttributes:
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          assignedUser: assignedUser
+          resultCardinality: resultCardinality
           comments:
           - asAtModified: 2000-01-23T04:56:07.000+00:00
             asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -181961,7 +182114,6 @@ components:
             commentId: commentId
             commentText: commentText
             userId: userId
-          assignedRole: assignedRole
           runAsAt: 2000-01-23T04:56:07.000+00:00
           coreRules:
           - leftValue: leftValue
@@ -181976,13 +182128,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          datesReconciled:
-            rightAsAt: 2000-01-23T04:56:07.000+00:00
-            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftAsAt: 2000-01-23T04:56:07.000+00:00
-            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          resultNumber: 0
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -182032,10 +182178,6 @@ components:
                 holdingId: holdingId
                 transactionId: transactionId
             id: id
-          recType: recType
-          instanceId:
-            instanceIdType: instanceIdType
-            instanceIdValue: instanceIdValue
           aggregateRules:
           - leftValue: leftValue
             rightValue: rightValue
@@ -182051,34 +182193,8 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          review:
-            decision: decision
-            decisionGroup:
-              coreRulesExcused:
-              - coreRulesExcused
-              - coreRulesExcused
-              groupNumber: 6
-            status: status
-          runNumber: 0
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id: id
-          href: https://openapi-generator.tech
-          resultType: resultType
-          supplementalAttributes:
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
+          runNumber: 1
+          firstRunSeen: 6
           items:
             left:
             - itemType: itemType
@@ -182093,7 +182209,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countLeft: 1
+            countLeft: 5
             right:
             - itemType: itemType
               ruleAndAttributeValues:
@@ -182107,9 +182223,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countRight: 5
-          assignedUser: assignedUser
-          resultCardinality: resultCardinality
+            countRight: 2
           properties:
             key:
               referenceData:
@@ -182135,6 +182249,47 @@ components:
           recDefinitionId:
             code: code
             scope: scope
+          assignedRole: assignedRole
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          instanceId:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          review:
+            decision: decision
+            decisionGroup:
+              coreRulesExcused:
+              - coreRulesExcused
+              - coreRulesExcused
+              groupNumber: 5
+            status: status
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id: id
+          href: https://openapi-generator.tech
+          resultType: resultType
+          supplementalAttributes:
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          assignedUser: assignedUser
+          resultCardinality: resultCardinality
           comments:
           - asAtModified: 2000-01-23T04:56:07.000+00:00
             asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -182146,7 +182301,6 @@ components:
             commentId: commentId
             commentText: commentText
             userId: userId
-          assignedRole: assignedRole
           runAsAt: 2000-01-23T04:56:07.000+00:00
           coreRules:
           - leftValue: leftValue
@@ -182161,13 +182315,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          datesReconciled:
-            rightAsAt: 2000-01-23T04:56:07.000+00:00
-            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftAsAt: 2000-01-23T04:56:07.000+00:00
-            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          resultNumber: 0
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -182217,10 +182365,6 @@ components:
                 holdingId: holdingId
                 transactionId: transactionId
             id: id
-          recType: recType
-          instanceId:
-            instanceIdType: instanceIdType
-            instanceIdValue: instanceIdValue
           aggregateRules:
           - leftValue: leftValue
             rightValue: rightValue
@@ -182236,34 +182380,8 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          review:
-            decision: decision
-            decisionGroup:
-              coreRulesExcused:
-              - coreRulesExcused
-              - coreRulesExcused
-              groupNumber: 6
-            status: status
-          runNumber: 0
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id: id
-          href: https://openapi-generator.tech
-          resultType: resultType
-          supplementalAttributes:
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
+          runNumber: 1
+          firstRunSeen: 6
           items:
             left:
             - itemType: itemType
@@ -182278,7 +182396,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countLeft: 1
+            countLeft: 5
             right:
             - itemType: itemType
               ruleAndAttributeValues:
@@ -182292,9 +182410,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countRight: 5
-          assignedUser: assignedUser
-          resultCardinality: resultCardinality
+            countRight: 2
           properties:
             key:
               referenceData:
@@ -182325,11 +182441,18 @@ components:
       additionalProperties: false
       description: "One item of a batch review request: applies review content to\
         \ its targeted rec result(s). Exactly\r\none target, except FixAsGroup/ForceMatch\
-        \ which require two or more."
+        \ which require two or more. A result id identifies a result only\r\nwithin\
+        \ one run of one rec type of one instance, so every item names the run its\
+        \ targets belong to — which\r\nalso makes the same-result-set rule for group\
+        \ decisions structural."
       example:
+        recType: recType
         recResultIds:
         - recResultIds
         - recResultIds
+        instanceId:
+          instanceIdType: instanceIdType
+          instanceIdValue: instanceIdValue
         decision:
           affirm: true
           coreRulesExcused:
@@ -182338,6 +182461,7 @@ components:
           value: value
         assignedRole:
           value: value
+        runNumber: 171976545
         addCommentText: addCommentText
         assignedUser:
           value: value
@@ -182371,6 +182495,21 @@ components:
               - values
           key: key
       properties:
+        instanceId:
+          $ref: '#/components/schemas/RecInstanceId'
+        recType:
+          description: "The rec type whose results this item targets (e.g. Holding).\
+            \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity."
+          maxLength: 64
+          minLength: 1
+          type: string
+        runNumber:
+          description: The run of the instance whose results this item targets.
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
         recResultIds:
           description: "The rec results targeted by this batch item. Exactly one,\
             \ except FixAsGroup/ForceMatch which require two or more."
@@ -182396,7 +182535,10 @@ components:
           nullable: true
           type: array
       required:
+      - instanceId
       - recResultIds
+      - recType
+      - runNumber
       type: object
     BatchReviewRecResultResponse:
       additionalProperties: false
@@ -182429,6 +182571,47 @@ components:
               recDefinitionId:
                 code: code
                 scope: scope
+              assignedRole: assignedRole
+              datesReconciled:
+                rightAsAt: 2000-01-23T04:56:07.000+00:00
+                leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftAsAt: 2000-01-23T04:56:07.000+00:00
+                rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              recType: recType
+              instanceId:
+                instanceIdType: instanceIdType
+                instanceIdValue: instanceIdValue
+              review:
+                decision: decision
+                decisionGroup:
+                  coreRulesExcused:
+                  - coreRulesExcused
+                  - coreRulesExcused
+                  groupNumber: 5
+                status: status
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              id: id
+              href: https://openapi-generator.tech
+              resultType: resultType
+              supplementalAttributes:
+              - leftValue: leftValue
+                rightValue: rightValue
+                attributeName: attributeName
+              - leftValue: leftValue
+                rightValue: rightValue
+                attributeName: attributeName
+              assignedUser: assignedUser
+              resultCardinality: resultCardinality
               comments:
               - asAtModified: 2000-01-23T04:56:07.000+00:00
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -182440,7 +182623,6 @@ components:
                 commentId: commentId
                 commentText: commentText
                 userId: userId
-              assignedRole: assignedRole
               runAsAt: 2000-01-23T04:56:07.000+00:00
               coreRules:
               - leftValue: leftValue
@@ -182455,13 +182637,7 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
-              datesReconciled:
-                rightAsAt: 2000-01-23T04:56:07.000+00:00
-                leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                leftAsAt: 2000-01-23T04:56:07.000+00:00
-                rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              resultNumber: 0
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -182511,10 +182687,6 @@ components:
                     holdingId: holdingId
                     transactionId: transactionId
                 id: id
-              recType: recType
-              instanceId:
-                instanceIdType: instanceIdType
-                instanceIdValue: instanceIdValue
               aggregateRules:
               - leftValue: leftValue
                 rightValue: rightValue
@@ -182530,34 +182702,8 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
-              review:
-                decision: decision
-                decisionGroup:
-                  coreRulesExcused:
-                  - coreRulesExcused
-                  - coreRulesExcused
-                  groupNumber: 6
-                status: status
-              runNumber: 0
-              links:
-              - method: method
-                description: description
-                href: https://openapi-generator.tech
-                relation: relation
-              - method: method
-                description: description
-                href: https://openapi-generator.tech
-                relation: relation
-              id: id
-              href: https://openapi-generator.tech
-              resultType: resultType
-              supplementalAttributes:
-              - leftValue: leftValue
-                rightValue: rightValue
-                attributeName: attributeName
-              - leftValue: leftValue
-                rightValue: rightValue
-                attributeName: attributeName
+              runNumber: 1
+              firstRunSeen: 6
               items:
                 left:
                 - itemType: itemType
@@ -182572,7 +182718,7 @@ components:
                   writebackSuggestions:
                   - writebackType: writebackType
                   - writebackType: writebackType
-                countLeft: 1
+                countLeft: 5
                 right:
                 - itemType: itemType
                   ruleAndAttributeValues:
@@ -182586,9 +182732,7 @@ components:
                   writebackSuggestions:
                   - writebackType: writebackType
                   - writebackType: writebackType
-                countRight: 5
-              assignedUser: assignedUser
-              resultCardinality: resultCardinality
+                countRight: 2
               properties:
                 key:
                   referenceData:
@@ -182614,6 +182758,47 @@ components:
               recDefinitionId:
                 code: code
                 scope: scope
+              assignedRole: assignedRole
+              datesReconciled:
+                rightAsAt: 2000-01-23T04:56:07.000+00:00
+                leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftAsAt: 2000-01-23T04:56:07.000+00:00
+                rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              recType: recType
+              instanceId:
+                instanceIdType: instanceIdType
+                instanceIdValue: instanceIdValue
+              review:
+                decision: decision
+                decisionGroup:
+                  coreRulesExcused:
+                  - coreRulesExcused
+                  - coreRulesExcused
+                  groupNumber: 5
+                status: status
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              id: id
+              href: https://openapi-generator.tech
+              resultType: resultType
+              supplementalAttributes:
+              - leftValue: leftValue
+                rightValue: rightValue
+                attributeName: attributeName
+              - leftValue: leftValue
+                rightValue: rightValue
+                attributeName: attributeName
+              assignedUser: assignedUser
+              resultCardinality: resultCardinality
               comments:
               - asAtModified: 2000-01-23T04:56:07.000+00:00
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -182625,7 +182810,6 @@ components:
                 commentId: commentId
                 commentText: commentText
                 userId: userId
-              assignedRole: assignedRole
               runAsAt: 2000-01-23T04:56:07.000+00:00
               coreRules:
               - leftValue: leftValue
@@ -182640,13 +182824,7 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
-              datesReconciled:
-                rightAsAt: 2000-01-23T04:56:07.000+00:00
-                leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                leftAsAt: 2000-01-23T04:56:07.000+00:00
-                rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              resultNumber: 0
               version:
                 stagedModificationIdModified: stagedModificationIdModified
                 reasonModified: reasonModified
@@ -182696,10 +182874,6 @@ components:
                     holdingId: holdingId
                     transactionId: transactionId
                 id: id
-              recType: recType
-              instanceId:
-                instanceIdType: instanceIdType
-                instanceIdValue: instanceIdValue
               aggregateRules:
               - leftValue: leftValue
                 rightValue: rightValue
@@ -182715,34 +182889,8 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
-              review:
-                decision: decision
-                decisionGroup:
-                  coreRulesExcused:
-                  - coreRulesExcused
-                  - coreRulesExcused
-                  groupNumber: 6
-                status: status
-              runNumber: 0
-              links:
-              - method: method
-                description: description
-                href: https://openapi-generator.tech
-                relation: relation
-              - method: method
-                description: description
-                href: https://openapi-generator.tech
-                relation: relation
-              id: id
-              href: https://openapi-generator.tech
-              resultType: resultType
-              supplementalAttributes:
-              - leftValue: leftValue
-                rightValue: rightValue
-                attributeName: attributeName
-              - leftValue: leftValue
-                rightValue: rightValue
-                attributeName: attributeName
+              runNumber: 1
+              firstRunSeen: 6
               items:
                 left:
                 - itemType: itemType
@@ -182757,7 +182905,7 @@ components:
                   writebackSuggestions:
                   - writebackType: writebackType
                   - writebackType: writebackType
-                countLeft: 1
+                countLeft: 5
                 right:
                 - itemType: itemType
                   ruleAndAttributeValues:
@@ -182771,9 +182919,7 @@ components:
                   writebackSuggestions:
                   - writebackType: writebackType
                   - writebackType: writebackType
-                countRight: 5
-              assignedUser: assignedUser
-              resultCardinality: resultCardinality
+                countRight: 2
               properties:
                 key:
                   referenceData:
@@ -183327,13 +183473,13 @@ components:
           key:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -183741,13 +183887,13 @@ components:
           key:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -189022,13 +189168,13 @@ components:
           key:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -234375,13 +234521,13 @@ components:
         transactionIn:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -234778,13 +234924,13 @@ components:
         transactionOut:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -237426,13 +237572,13 @@ components:
         transaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -238329,6 +238475,31 @@ components:
               type: string
             nullable: true
             type: array
+          priceToFirstReset:
+            description: "Value a fixed-to-float callable bond only to its first reset.\
+              \ The bond must be a\r\nComplexBond with one fixed schedule, one floating\
+              \ schedule starting on the fixed schedule's\r\nmaturity, and a call\
+              \ exercisable on that date; it is then valued as if called there, redeemed\r\
+              \nat the call strike on the principal outstanding, with the fixed coupon\
+              \ paid on that date kept\r\nand no floating coupon projected. Any call\
+              \ before that date stays live on the lattice. Bonds\r\nof any other\
+              \ shape are refused by name rather than valued over their full life.\
+              \ Rows priced\r\nthis way carry the reset date in the Diagnostics/Model/PricingHorizon\
+              \ valuation key. Defaults\r\nto false, which values the bond over its\
+              \ full life."
+            nullable: true
+            type: boolean
+          latticeStepsPerYear:
+            description: "The lattice time-step density as steps per year. When supplied,\
+              \ the lattice uses\r\nceil(horizon in years x this value) steps, raised\
+              \ if necessary so that one step is no longer\r\nthan the shortest gap\
+              \ between consecutive cashflows, so the fixed LatticeSteps is ignored\
+              \ and\r\nthe \"lattice coarser than coupon spacing\" refusal cannot\
+              \ fire. Must be at least 1 when\r\nsupplied. Absent, the fixed LatticeSteps\
+              \ count applies."
+            format: int32
+            nullable: true
+            type: integer
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
@@ -274496,6 +274667,47 @@ components:
           recDefinitionId:
             code: code
             scope: scope
+          assignedRole: assignedRole
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          instanceId:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          review:
+            decision: decision
+            decisionGroup:
+              coreRulesExcused:
+              - coreRulesExcused
+              - coreRulesExcused
+              groupNumber: 5
+            status: status
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id: id
+          href: https://openapi-generator.tech
+          resultType: resultType
+          supplementalAttributes:
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          assignedUser: assignedUser
+          resultCardinality: resultCardinality
           comments:
           - asAtModified: 2000-01-23T04:56:07.000+00:00
             asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -274507,7 +274719,6 @@ components:
             commentId: commentId
             commentText: commentText
             userId: userId
-          assignedRole: assignedRole
           runAsAt: 2000-01-23T04:56:07.000+00:00
           coreRules:
           - leftValue: leftValue
@@ -274522,13 +274733,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          datesReconciled:
-            rightAsAt: 2000-01-23T04:56:07.000+00:00
-            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftAsAt: 2000-01-23T04:56:07.000+00:00
-            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          resultNumber: 0
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -274578,10 +274783,6 @@ components:
                 holdingId: holdingId
                 transactionId: transactionId
             id: id
-          recType: recType
-          instanceId:
-            instanceIdType: instanceIdType
-            instanceIdValue: instanceIdValue
           aggregateRules:
           - leftValue: leftValue
             rightValue: rightValue
@@ -274597,34 +274798,8 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          review:
-            decision: decision
-            decisionGroup:
-              coreRulesExcused:
-              - coreRulesExcused
-              - coreRulesExcused
-              groupNumber: 6
-            status: status
-          runNumber: 0
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id: id
-          href: https://openapi-generator.tech
-          resultType: resultType
-          supplementalAttributes:
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
+          runNumber: 1
+          firstRunSeen: 6
           items:
             left:
             - itemType: itemType
@@ -274639,7 +274814,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countLeft: 1
+            countLeft: 5
             right:
             - itemType: itemType
               ruleAndAttributeValues:
@@ -274653,9 +274828,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countRight: 5
-          assignedUser: assignedUser
-          resultCardinality: resultCardinality
+            countRight: 2
           properties:
             key:
               referenceData:
@@ -274681,6 +274854,47 @@ components:
           recDefinitionId:
             code: code
             scope: scope
+          assignedRole: assignedRole
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          instanceId:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          review:
+            decision: decision
+            decisionGroup:
+              coreRulesExcused:
+              - coreRulesExcused
+              - coreRulesExcused
+              groupNumber: 5
+            status: status
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id: id
+          href: https://openapi-generator.tech
+          resultType: resultType
+          supplementalAttributes:
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          assignedUser: assignedUser
+          resultCardinality: resultCardinality
           comments:
           - asAtModified: 2000-01-23T04:56:07.000+00:00
             asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -274692,7 +274906,6 @@ components:
             commentId: commentId
             commentText: commentText
             userId: userId
-          assignedRole: assignedRole
           runAsAt: 2000-01-23T04:56:07.000+00:00
           coreRules:
           - leftValue: leftValue
@@ -274707,13 +274920,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          datesReconciled:
-            rightAsAt: 2000-01-23T04:56:07.000+00:00
-            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            leftAsAt: 2000-01-23T04:56:07.000+00:00
-            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          resultNumber: 0
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -274763,10 +274970,6 @@ components:
                 holdingId: holdingId
                 transactionId: transactionId
             id: id
-          recType: recType
-          instanceId:
-            instanceIdType: instanceIdType
-            instanceIdValue: instanceIdValue
           aggregateRules:
           - leftValue: leftValue
             rightValue: rightValue
@@ -274782,34 +274985,8 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
-          review:
-            decision: decision
-            decisionGroup:
-              coreRulesExcused:
-              - coreRulesExcused
-              - coreRulesExcused
-              groupNumber: 6
-            status: status
-          runNumber: 0
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id: id
-          href: https://openapi-generator.tech
-          resultType: resultType
-          supplementalAttributes:
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
-          - leftValue: leftValue
-            rightValue: rightValue
-            attributeName: attributeName
+          runNumber: 1
+          firstRunSeen: 6
           items:
             left:
             - itemType: itemType
@@ -274824,7 +275001,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countLeft: 1
+            countLeft: 5
             right:
             - itemType: itemType
               ruleAndAttributeValues:
@@ -274838,9 +275015,7 @@ components:
               writebackSuggestions:
               - writebackType: writebackType
               - writebackType: writebackType
-            countRight: 5
-          assignedUser: assignedUser
-          resultCardinality: resultCardinality
+            countRight: 2
           properties:
             key:
               referenceData:
@@ -282542,13 +282717,13 @@ components:
         transaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -284943,13 +285118,13 @@ components:
         transaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -293524,8 +293699,9 @@ components:
         id: id
       properties:
         id:
-          description: "The id of the linked result, as carried in that result's own\
-            \ id field."
+          description: "The id of the linked result within the same run, as carried\
+            \ in that result's own id field, e.g. 'break-3'. With recType, names the\
+            \ result uniquely."
           minLength: 1
           type: string
         recType:
@@ -293684,13 +293860,13 @@ components:
         left:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -294084,13 +294260,13 @@ components:
         right:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -295371,7 +295547,9 @@ components:
         commentText: commentText
       properties:
         recResultId:
-          description: The identifier of the result to flag for re-review.
+          description: "The id of the result to flag for re-review, as carried on\
+            \ the result itself, e.g. 'break-3'. Resolved within the run this result\
+            \ set is for."
           maxLength: 256
           minLength: 1
           type: string
@@ -295424,6 +295602,47 @@ components:
         recDefinitionId:
           code: code
           scope: scope
+        assignedRole: assignedRole
+        datesReconciled:
+          rightAsAt: 2000-01-23T04:56:07.000+00:00
+          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          leftAsAt: 2000-01-23T04:56:07.000+00:00
+          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        recType: recType
+        instanceId:
+          instanceIdType: instanceIdType
+          instanceIdValue: instanceIdValue
+        review:
+          decision: decision
+          decisionGroup:
+            coreRulesExcused:
+            - coreRulesExcused
+            - coreRulesExcused
+            groupNumber: 5
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id: id
+        href: https://openapi-generator.tech
+        resultType: resultType
+        supplementalAttributes:
+        - leftValue: leftValue
+          rightValue: rightValue
+          attributeName: attributeName
+        - leftValue: leftValue
+          rightValue: rightValue
+          attributeName: attributeName
+        assignedUser: assignedUser
+        resultCardinality: resultCardinality
         comments:
         - asAtModified: 2000-01-23T04:56:07.000+00:00
           asAtCreated: 2000-01-23T04:56:07.000+00:00
@@ -295435,7 +295654,6 @@ components:
           commentId: commentId
           commentText: commentText
           userId: userId
-        assignedRole: assignedRole
         runAsAt: 2000-01-23T04:56:07.000+00:00
         coreRules:
         - leftValue: leftValue
@@ -295450,13 +295668,7 @@ components:
           appliedTolerance:
             ruleName: ruleName
             toleranceType: toleranceType
-        datesReconciled:
-          rightAsAt: 2000-01-23T04:56:07.000+00:00
-          leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
-          leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
-          leftAsAt: 2000-01-23T04:56:07.000+00:00
-          rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
-          rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        resultNumber: 0
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -295506,10 +295718,6 @@ components:
               holdingId: holdingId
               transactionId: transactionId
           id: id
-        recType: recType
-        instanceId:
-          instanceIdType: instanceIdType
-          instanceIdValue: instanceIdValue
         aggregateRules:
         - leftValue: leftValue
           rightValue: rightValue
@@ -295525,34 +295733,8 @@ components:
           appliedTolerance:
             ruleName: ruleName
             toleranceType: toleranceType
-        review:
-          decision: decision
-          decisionGroup:
-            coreRulesExcused:
-            - coreRulesExcused
-            - coreRulesExcused
-            groupNumber: 6
-          status: status
-        runNumber: 0
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        id: id
-        href: https://openapi-generator.tech
-        resultType: resultType
-        supplementalAttributes:
-        - leftValue: leftValue
-          rightValue: rightValue
-          attributeName: attributeName
-        - leftValue: leftValue
-          rightValue: rightValue
-          attributeName: attributeName
+        runNumber: 1
+        firstRunSeen: 6
         items:
           left:
           - itemType: itemType
@@ -295567,7 +295749,7 @@ components:
             writebackSuggestions:
             - writebackType: writebackType
             - writebackType: writebackType
-          countLeft: 1
+          countLeft: 5
           right:
           - itemType: itemType
             ruleAndAttributeValues:
@@ -295581,9 +295763,7 @@ components:
             writebackSuggestions:
             - writebackType: writebackType
             - writebackType: writebackType
-          countRight: 5
-        assignedUser: assignedUser
-        resultCardinality: resultCardinality
+          countRight: 2
         properties:
           key:
             referenceData:
@@ -295602,11 +295782,21 @@ components:
             key: key
       properties:
         id:
-          description: "The system-generated identifier for the rec result. Comprises\
-            \ the rec definition id, the instance id, the rec type and the core rule\
-            \ values."
+          description: "The id of the result within its run: its result type and result\
+            \ number, e.g. 'break-3'. Unique within one run of one rec type of an\
+            \ instance; the same id in another run of the instance names the same\
+            \ result, for as long as it keeps its result type."
           minLength: 1
           type: string
+        resultNumber:
+          description: The result's number within its result type. Kept across runs
+            while the result keeps its type; never reused once assigned.
+          format: int32
+          type: integer
+        firstRunSeen:
+          description: The run in which the result was first assigned its id.
+          format: int32
+          type: integer
         recType:
           description: "The type of rec that the result belongs to (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
@@ -295715,6 +295905,7 @@ components:
       - comments
       - coreRules
       - datesReconciled
+      - firstRunSeen
       - id
       - instanceId
       - items
@@ -295723,6 +295914,7 @@ components:
       - recType
       - resultCardinality
       - resultLifeCycle
+      - resultNumber
       - resultType
       - review
       - runAsAt
@@ -295830,7 +296022,7 @@ components:
         coreRulesExcused:
         - coreRulesExcused
         - coreRulesExcused
-        groupNumber: 6
+        groupNumber: 5
       properties:
         groupNumber:
           description: "Server-allocated, monotonic group number, unique within the\
@@ -296047,7 +296239,7 @@ components:
           writebackSuggestions:
           - writebackType: writebackType
           - writebackType: writebackType
-        countLeft: 1
+        countLeft: 5
         right:
         - itemType: itemType
           ruleAndAttributeValues:
@@ -296061,7 +296253,7 @@ components:
           writebackSuggestions:
           - writebackType: writebackType
           - writebackType: writebackType
-        countRight: 5
+        countRight: 2
       properties:
         countLeft:
           description: The number of items grouped on the left side.
@@ -296125,7 +296317,7 @@ components:
           coreRulesExcused:
           - coreRulesExcused
           - coreRulesExcused
-          groupNumber: 6
+          groupNumber: 5
         status: status
       properties:
         status:
@@ -300786,13 +300978,13 @@ components:
           transactions:
           - entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -301181,13 +301373,13 @@ components:
                 status: status
           - entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -301739,13 +301931,13 @@ components:
           transactions:
           - entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -302134,13 +302326,13 @@ components:
                 status: status
           - entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -316609,13 +316801,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -317057,13 +317249,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -319426,13 +319618,13 @@ components:
         values:
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -319821,13 +320013,13 @@ components:
               status: status
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -335492,13 +335684,13 @@ components:
       example:
         entityLinks:
         - entityType: entityType
+          entityId:
+            key: entityId
           restrictEditing: true
-          entityIdName: entityIdName
-          entityIdValue: entityIdValue
         - entityType: entityType
+          entityId:
+            key: entityId
           restrictEditing: true
-          entityIdName: entityIdName
-          entityIdValue: entityIdValue
         otcConfirmation:
           counterpartyAgreementId:
             code: code
@@ -336860,13 +337052,13 @@ components:
         previewedInputTransaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -337478,13 +337670,13 @@ components:
         prevailingInputTransaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -337874,13 +338066,13 @@ components:
         deletedInputTransaction:
           entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -338572,9 +338764,9 @@ components:
       additionalProperties: false
       example:
         entityType: entityType
+        entityId:
+          key: entityId
         restrictEditing: true
-        entityIdName: entityIdName
-        entityIdValue: entityIdValue
       properties:
         entityType:
           description: "Available values: Transaction, Portfolio, Holding, ReferenceHolding,\
@@ -338589,19 +338781,15 @@ components:
             \ Transfer, RecDefinition, RecResult, JournalEntry."
           minLength: 1
           type: string
-        entityIdName:
-          maxLength: 256
-          minLength: 0
-          type: string
-        entityIdValue:
-          maxLength: 256
-          minLength: 0
-          type: string
+        entityId:
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
         restrictEditing:
           type: boolean
       required:
-      - entityIdName
-      - entityIdValue
+      - entityId
       - entityType
       - restrictEditing
       type: object
@@ -340916,13 +341104,13 @@ components:
         - left:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -341316,13 +341504,13 @@ components:
           right:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -341712,13 +341900,13 @@ components:
         - left:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -342112,13 +342300,13 @@ components:
           right:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -365363,13 +365551,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -365781,13 +365969,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -368798,13 +368986,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -369498,13 +369686,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -369949,13 +370137,13 @@ components:
         values:
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -370344,13 +370532,13 @@ components:
               status: status
         - entityLinks:
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           - entityType: entityType
+            entityId:
+              key: entityId
             restrictEditing: true
-            entityIdName: entityIdName
-            entityIdValue: entityIdValue
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -373650,13 +373838,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -374350,13 +374538,13 @@ components:
           transaction:
             entityLinks:
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             - entityType: entityType
+              entityId:
+                key: entityId
               restrictEditing: true
-              entityIdName: entityIdName
-              entityIdValue: entityIdValue
             otcConfirmation:
               counterpartyAgreementId:
                 code: code

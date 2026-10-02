@@ -18,6 +18,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,13 +55,9 @@ public class TransactionEntityLink {
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
   private String entityType;
 
-  public static final String SERIALIZED_NAME_ENTITY_ID_NAME = "entityIdName";
-  @SerializedName(SERIALIZED_NAME_ENTITY_ID_NAME)
-  private String entityIdName;
-
-  public static final String SERIALIZED_NAME_ENTITY_ID_VALUE = "entityIdValue";
-  @SerializedName(SERIALIZED_NAME_ENTITY_ID_VALUE)
-  private String entityIdValue;
+  public static final String SERIALIZED_NAME_ENTITY_ID = "entityId";
+  @SerializedName(SERIALIZED_NAME_ENTITY_ID)
+  private Map<String, String> entityId = new HashMap<>();
 
   public static final String SERIALIZED_NAME_RESTRICT_EDITING = "restrictEditing";
   @SerializedName(SERIALIZED_NAME_RESTRICT_EDITING)
@@ -89,45 +87,32 @@ public class TransactionEntityLink {
   }
 
 
-  public TransactionEntityLink entityIdName(String entityIdName) {
+  public TransactionEntityLink entityId(Map<String, String> entityId) {
     
-    this.entityIdName = entityIdName;
+    this.entityId = entityId;
+    return this;
+  }
+
+  public TransactionEntityLink putEntityIdItem(String key, String entityIdItem) {
+    if (this.entityId == null) {
+      this.entityId = new HashMap<>();
+    }
+    this.entityId.put(key, entityIdItem);
     return this;
   }
 
    /**
-   * Get entityIdName
-   * @return entityIdName
+   * Get entityId
+   * @return entityId
   **/
   @jakarta.annotation.Nonnull
-  public String getEntityIdName() {
-    return entityIdName;
+  public Map<String, String> getEntityId() {
+    return entityId;
   }
 
 
-  public void setEntityIdName(String entityIdName) {
-    this.entityIdName = entityIdName;
-  }
-
-
-  public TransactionEntityLink entityIdValue(String entityIdValue) {
-    
-    this.entityIdValue = entityIdValue;
-    return this;
-  }
-
-   /**
-   * Get entityIdValue
-   * @return entityIdValue
-  **/
-  @jakarta.annotation.Nonnull
-  public String getEntityIdValue() {
-    return entityIdValue;
-  }
-
-
-  public void setEntityIdValue(String entityIdValue) {
-    this.entityIdValue = entityIdValue;
+  public void setEntityId(Map<String, String> entityId) {
+    this.entityId = entityId;
   }
 
 
@@ -163,14 +148,13 @@ public class TransactionEntityLink {
     }
     TransactionEntityLink transactionEntityLink = (TransactionEntityLink) o;
     return Objects.equals(this.entityType, transactionEntityLink.entityType) &&
-        Objects.equals(this.entityIdName, transactionEntityLink.entityIdName) &&
-        Objects.equals(this.entityIdValue, transactionEntityLink.entityIdValue) &&
+        Objects.equals(this.entityId, transactionEntityLink.entityId) &&
         Objects.equals(this.restrictEditing, transactionEntityLink.restrictEditing);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, entityIdName, entityIdValue, restrictEditing);
+    return Objects.hash(entityType, entityId, restrictEditing);
   }
 
   @Override
@@ -178,8 +162,7 @@ public class TransactionEntityLink {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionEntityLink {\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
-    sb.append("    entityIdName: ").append(toIndentedString(entityIdName)).append("\n");
-    sb.append("    entityIdValue: ").append(toIndentedString(entityIdValue)).append("\n");
+    sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    restrictEditing: ").append(toIndentedString(restrictEditing)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -204,15 +187,13 @@ public class TransactionEntityLink {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("entityType");
-    openapiFields.add("entityIdName");
-    openapiFields.add("entityIdValue");
+    openapiFields.add("entityId");
     openapiFields.add("restrictEditing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("entityType");
-    openapiRequiredFields.add("entityIdName");
-    openapiRequiredFields.add("entityIdValue");
+    openapiRequiredFields.add("entityId");
     openapiRequiredFields.add("restrictEditing");
   }
 
@@ -238,12 +219,6 @@ public class TransactionEntityLink {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("entityType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityType").toString()));
-      }
-      if (!jsonObj.get("entityIdName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entityIdName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityIdName").toString()));
-      }
-      if (!jsonObj.get("entityIdValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entityIdValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityIdValue").toString()));
       }
   }
 

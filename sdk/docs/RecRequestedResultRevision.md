@@ -5,7 +5,7 @@ A result flagged for re-review as part of a Request Revisions decision.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recResultId** | **String** | The identifier of the result to flag for re-review. | [default to String]
+**recResultId** | **String** | The id of the result to flag for re-review, as carried on the result itself, e.g. &#39;break-3&#39;. Resolved within the run this result set is for. | [default to String]
 **commentText** | **String** | An optional per-result comment added to the result&#39;s user comments. | [optional] [default to String]
 
 ```java

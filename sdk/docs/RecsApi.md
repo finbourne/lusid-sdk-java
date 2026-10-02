@@ -14,7 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getMatchingRuleset**](RecsApi.md#getMatchingRuleset) | **GET** /api/recs/matchingrulesets/{scope}/{code} | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset |
 | [**getRecDefinition**](RecsApi.md#getRecDefinition) | **GET** /api/recs/definitions/{scope}/{code} | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition |
 | [**getRecInstance**](RecsApi.md#getRecInstance) | **GET** /api/recs/instances/{instanceIdType}/{instanceIdValue} | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
-| [**getRecResult**](RecsApi.md#getRecResult) | **GET** /api/recs/results/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult |
+| [**getRecResult**](RecsApi.md#getRecResult) | **GET** /api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**getRecResultSet**](RecsApi.md#getRecResultSet) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**instantiateRec**](RecsApi.md#instantiateRec) | **POST** /api/recs/instances | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
 | [**listMatchingRulesets**](RecsApi.md#listMatchingRulesets) | **GET** /api/recs/matchingrulesets | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
@@ -966,11 +966,11 @@ public class RecsApiExample {
 
 ## getRecResult
 
-> RecResult getRecResult(id, asAt, propertyKeys)
+> RecResult getRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys)
 
 [EXPERIMENTAL] GetRecResult: GetRecResult
 
-Retrieve a single rec result by its id.
+Retrieve a single rec result by the run it belongs to and its id within that run.
 
 ### Example
 
@@ -1011,14 +1011,18 @@ public class RecsApiExample {
         // RecsApi apiInstance = apiFactory.build(RecsApi.class);
 
         RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
-        String id = "id_example"; // String | The system-generated id of the rec result.
+        String instanceIdType = "instanceIdType_example"; // String | How the instance was created: \"WorkflowServiceTaskId\" or \"Manual\". Available values: WorkflowServiceTaskId, Manual.
+        String instanceIdValue = "instanceIdValue_example"; // String | The unique identifier of the rec instance.
+        String recType = "recType_example"; // String | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+        Integer runNumber = 56; // Integer | The run of the instance the result belongs to.
+        String id = "id_example"; // String | The id of the rec result within the run, e.g. \"break-3\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the result. Defaults to latest if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto the result.
         try {
             // uncomment the below to set overrides at the request level
-            // RecResult result = apiInstance.getRecResult(id, asAt, propertyKeys).execute(opts);
+            // RecResult result = apiInstance.getRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys).execute(opts);
 
-            RecResult result = apiInstance.getRecResult(id, asAt, propertyKeys).execute();
+            RecResult result = apiInstance.getRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling RecsApi#getRecResult");
@@ -1035,7 +1039,11 @@ public class RecsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The system-generated id of the rec result. | |
+| **instanceIdType** | **String**| How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. | |
+| **instanceIdValue** | **String**| The unique identifier of the rec instance. | |
+| **recType** | **String**| The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. | |
+| **runNumber** | **Integer**| The run of the instance the result belongs to. | |
+| **id** | **String**| The id of the rec result within the run, e.g. \&quot;break-3\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the result. Defaults to latest if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto the result. | [optional] |
 

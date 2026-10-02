@@ -68,7 +68,7 @@ public class RecRequestedResultRevision {
   }
 
    /**
-   * The identifier of the result to flag for re-review.
+   * The id of the result to flag for re-review, as carried on the result itself, e.g. &#39;break-3&#39;. Resolved within the run this result set is for.
    * @return recResultId
   **/
   @jakarta.annotation.Nonnull

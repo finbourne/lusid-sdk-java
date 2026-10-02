@@ -91,6 +91,14 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_KEY_RATE_BUCKETS)
   private List<String> effectiveKeyRateBuckets;
 
+  public static final String SERIALIZED_NAME_PRICE_TO_FIRST_RESET = "priceToFirstReset";
+  @SerializedName(SERIALIZED_NAME_PRICE_TO_FIRST_RESET)
+  private Boolean priceToFirstReset;
+
+  public static final String SERIALIZED_NAME_LATTICE_STEPS_PER_YEAR = "latticeStepsPerYear";
+  @SerializedName(SERIALIZED_NAME_LATTICE_STEPS_PER_YEAR)
+  private Integer latticeStepsPerYear;
+
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -308,6 +316,48 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions priceToFirstReset(Boolean priceToFirstReset) {
+    
+    this.priceToFirstReset = priceToFirstReset;
+    return this;
+  }
+
+   /**
+   * Value a fixed-to-float callable bond only to its first reset. The bond must be a  ComplexBond with one fixed schedule, one floating schedule starting on the fixed schedule&#39;s  maturity, and a call exercisable on that date; it is then valued as if called there, redeemed  at the call strike on the principal outstanding, with the fixed coupon paid on that date kept  and no floating coupon projected. Any call before that date stays live on the lattice. Bonds  of any other shape are refused by name rather than valued over their full life. Rows priced  this way carry the reset date in the Diagnostics/Model/PricingHorizon valuation key. Defaults  to false, which values the bond over its full life.
+   * @return priceToFirstReset
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getPriceToFirstReset() {
+    return priceToFirstReset;
+  }
+
+
+  public void setPriceToFirstReset(Boolean priceToFirstReset) {
+    this.priceToFirstReset = priceToFirstReset;
+  }
+
+
+  public HullWhiteModelOptions latticeStepsPerYear(Integer latticeStepsPerYear) {
+    
+    this.latticeStepsPerYear = latticeStepsPerYear;
+    return this;
+  }
+
+   /**
+   * The lattice time-step density as steps per year. When supplied, the lattice uses  ceil(horizon in years x this value) steps, raised if necessary so that one step is no longer  than the shortest gap between consecutive cashflows, so the fixed LatticeSteps is ignored and  the \&quot;lattice coarser than coupon spacing\&quot; refusal cannot fire. Must be at least 1 when  supplied. Absent, the fixed LatticeSteps count applies.
+   * @return latticeStepsPerYear
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getLatticeStepsPerYear() {
+    return latticeStepsPerYear;
+  }
+
+
+  public void setLatticeStepsPerYear(Integer latticeStepsPerYear) {
+    this.latticeStepsPerYear = latticeStepsPerYear;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -327,6 +377,8 @@ public class HullWhiteModelOptions extends ModelOptions {
         (this.volatilityMultiplier.compareTo(hullWhiteModelOptions.getVolatilityMultiplier()) == 0) &&
         (this.effectiveCs01BumpWidth.compareTo(hullWhiteModelOptions.getEffectiveCs01BumpWidth()) == 0) &&
         Objects.equals(this.effectiveKeyRateBuckets, hullWhiteModelOptions.effectiveKeyRateBuckets) &&
+        Objects.equals(this.priceToFirstReset, hullWhiteModelOptions.priceToFirstReset) &&
+        Objects.equals(this.latticeStepsPerYear, hullWhiteModelOptions.latticeStepsPerYear) &&
         super.equals(o);
   }
 
@@ -336,7 +388,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -360,6 +412,8 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    volatilityMultiplier: ").append(toIndentedString(volatilityMultiplier)).append("\n");
     sb.append("    effectiveCs01BumpWidth: ").append(toIndentedString(effectiveCs01BumpWidth)).append("\n");
     sb.append("    effectiveKeyRateBuckets: ").append(toIndentedString(effectiveKeyRateBuckets)).append("\n");
+    sb.append("    priceToFirstReset: ").append(toIndentedString(priceToFirstReset)).append("\n");
+    sb.append("    latticeStepsPerYear: ").append(toIndentedString(latticeStepsPerYear)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -392,6 +446,8 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("volatilityMultiplier");
     openapiFields.add("effectiveCs01BumpWidth");
     openapiFields.add("effectiveKeyRateBuckets");
+    openapiFields.add("priceToFirstReset");
+    openapiFields.add("latticeStepsPerYear");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

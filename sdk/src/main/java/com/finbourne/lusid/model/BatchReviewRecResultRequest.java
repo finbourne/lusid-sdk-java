@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.RecInstanceId;
 import com.finbourne.lusid.model.RecResultAssignmentUpdate;
 import com.finbourne.lusid.model.RecResultDecisionUpdate;
 import com.google.gson.TypeAdapter;
@@ -51,10 +52,22 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more.
+ * One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id identifies a result only  within one run of one rec type of one instance, so every item names the run its targets belong to — which  also makes the same-result-set rule for group decisions structural.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BatchReviewRecResultRequest {
+  public static final String SERIALIZED_NAME_INSTANCE_ID = "instanceId";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
+  private RecInstanceId instanceId;
+
+  public static final String SERIALIZED_NAME_REC_TYPE = "recType";
+  @SerializedName(SERIALIZED_NAME_REC_TYPE)
+  private String recType;
+
+  public static final String SERIALIZED_NAME_RUN_NUMBER = "runNumber";
+  @SerializedName(SERIALIZED_NAME_RUN_NUMBER)
+  private Integer runNumber;
+
   public static final String SERIALIZED_NAME_REC_RESULT_IDS = "recResultIds";
   @SerializedName(SERIALIZED_NAME_REC_RESULT_IDS)
   private List<String> recResultIds = new ArrayList<>();
@@ -81,6 +94,71 @@ public class BatchReviewRecResultRequest {
 
   public BatchReviewRecResultRequest() {
   }
+
+  public BatchReviewRecResultRequest instanceId(RecInstanceId instanceId) {
+    
+    this.instanceId = instanceId;
+    return this;
+  }
+
+   /**
+   * Get instanceId
+   * @return instanceId
+  **/
+  @jakarta.annotation.Nonnull
+  public RecInstanceId getInstanceId() {
+    return instanceId;
+  }
+
+
+  public void setInstanceId(RecInstanceId instanceId) {
+    this.instanceId = instanceId;
+  }
+
+
+  public BatchReviewRecResultRequest recType(String recType) {
+    
+    this.recType = recType;
+    return this;
+  }
+
+   /**
+   * The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+   * @return recType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getRecType() {
+    return recType;
+  }
+
+
+  public void setRecType(String recType) {
+    this.recType = recType;
+  }
+
+
+  public BatchReviewRecResultRequest runNumber(Integer runNumber) {
+    
+    this.runNumber = runNumber;
+    return this;
+  }
+
+   /**
+   * The run of the instance whose results this item targets.
+   * minimum: 1
+   * maximum: 2147483647
+   * @return runNumber
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getRunNumber() {
+    return runNumber;
+  }
+
+
+  public void setRunNumber(Integer runNumber) {
+    this.runNumber = runNumber;
+  }
+
 
   public BatchReviewRecResultRequest recResultIds(List<String> recResultIds) {
     
@@ -234,7 +312,10 @@ public class BatchReviewRecResultRequest {
       return false;
     }
     BatchReviewRecResultRequest batchReviewRecResultRequest = (BatchReviewRecResultRequest) o;
-    return Objects.equals(this.recResultIds, batchReviewRecResultRequest.recResultIds) &&
+    return Objects.equals(this.instanceId, batchReviewRecResultRequest.instanceId) &&
+        Objects.equals(this.recType, batchReviewRecResultRequest.recType) &&
+        Objects.equals(this.runNumber, batchReviewRecResultRequest.runNumber) &&
+        Objects.equals(this.recResultIds, batchReviewRecResultRequest.recResultIds) &&
         Objects.equals(this.decision, batchReviewRecResultRequest.decision) &&
         Objects.equals(this.assignedUser, batchReviewRecResultRequest.assignedUser) &&
         Objects.equals(this.assignedRole, batchReviewRecResultRequest.assignedRole) &&
@@ -248,7 +329,7 @@ public class BatchReviewRecResultRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recResultIds, decision, assignedUser, assignedRole, addCommentText, properties);
+    return Objects.hash(instanceId, recType, runNumber, recResultIds, decision, assignedUser, assignedRole, addCommentText, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,6 +343,9 @@ public class BatchReviewRecResultRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BatchReviewRecResultRequest {\n");
+    sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
+    sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
+    sb.append("    runNumber: ").append(toIndentedString(runNumber)).append("\n");
     sb.append("    recResultIds: ").append(toIndentedString(recResultIds)).append("\n");
     sb.append("    decision: ").append(toIndentedString(decision)).append("\n");
     sb.append("    assignedUser: ").append(toIndentedString(assignedUser)).append("\n");
@@ -290,6 +374,9 @@ public class BatchReviewRecResultRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("instanceId");
+    openapiFields.add("recType");
+    openapiFields.add("runNumber");
     openapiFields.add("recResultIds");
     openapiFields.add("decision");
     openapiFields.add("assignedUser");
@@ -299,6 +386,9 @@ public class BatchReviewRecResultRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("instanceId");
+    openapiRequiredFields.add("recType");
+    openapiRequiredFields.add("runNumber");
     openapiRequiredFields.add("recResultIds");
   }
 
@@ -322,6 +412,11 @@ public class BatchReviewRecResultRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `instanceId`
+      RecInstanceId.validateJsonElement(jsonObj.get("instanceId"));
+      if (!jsonObj.get("recType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recType").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("recResultIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

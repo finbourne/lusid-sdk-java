@@ -5,7 +5,7 @@ A rec result of a different rec type in the same rec instance whose items share 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The id of the linked result, as carried in that result&#39;s own id field. | [default to String]
+**id** | **String** | The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely. | [default to String]
 **recType** | **String** | The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. | [default to String]
 **linkedBy** | [**RecLinkedBy**](RecLinkedBy.md) |  | [default to RecLinkedBy]
 
