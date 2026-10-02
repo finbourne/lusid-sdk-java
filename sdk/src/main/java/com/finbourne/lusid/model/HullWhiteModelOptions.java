@@ -99,6 +99,10 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_LATTICE_STEPS_PER_YEAR)
   private Integer latticeStepsPerYear;
 
+  public static final String SERIALIZED_NAME_MAX_LATTICE_NODES = "maxLatticeNodes";
+  @SerializedName(SERIALIZED_NAME_MAX_LATTICE_NODES)
+  private Integer maxLatticeNodes;
+
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -358,6 +362,27 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions maxLatticeNodes(Integer maxLatticeNodes) {
+    
+    this.maxLatticeNodes = maxLatticeNodes;
+    return this;
+  }
+
+   /**
+   * A ceiling on the lattice size, counted as (steps + 1) x rate levels, that the pricer may  build for one instrument. An instrument whose lattice would exceed it is declined by the  model before any allocation, so the cost of a long-dated or finely-stepped row can be  bounded. Must be at least 1 when supplied. Absent, no ceiling applies.
+   * @return maxLatticeNodes
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getMaxLatticeNodes() {
+    return maxLatticeNodes;
+  }
+
+
+  public void setMaxLatticeNodes(Integer maxLatticeNodes) {
+    this.maxLatticeNodes = maxLatticeNodes;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -379,6 +404,7 @@ public class HullWhiteModelOptions extends ModelOptions {
         Objects.equals(this.effectiveKeyRateBuckets, hullWhiteModelOptions.effectiveKeyRateBuckets) &&
         Objects.equals(this.priceToFirstReset, hullWhiteModelOptions.priceToFirstReset) &&
         Objects.equals(this.latticeStepsPerYear, hullWhiteModelOptions.latticeStepsPerYear) &&
+        Objects.equals(this.maxLatticeNodes, hullWhiteModelOptions.maxLatticeNodes) &&
         super.equals(o);
   }
 
@@ -388,7 +414,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, maxLatticeNodes, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +440,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    effectiveKeyRateBuckets: ").append(toIndentedString(effectiveKeyRateBuckets)).append("\n");
     sb.append("    priceToFirstReset: ").append(toIndentedString(priceToFirstReset)).append("\n");
     sb.append("    latticeStepsPerYear: ").append(toIndentedString(latticeStepsPerYear)).append("\n");
+    sb.append("    maxLatticeNodes: ").append(toIndentedString(maxLatticeNodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -448,6 +475,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("effectiveKeyRateBuckets");
     openapiFields.add("priceToFirstReset");
     openapiFields.add("latticeStepsPerYear");
+    openapiFields.add("maxLatticeNodes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

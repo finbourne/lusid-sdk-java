@@ -6,11 +6,11 @@ The transfer that was created, and the transaction legs it booked.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transferId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**transferType** | **String** |  | [optional] [default to String]
+**transferType** | **String** | The derived type of the transfer: &#39;Transfer&#39; when the position moves between portfolios, &#39;Switch&#39; when one instrument is exchanged for another within a portfolio, and &#39;Twitch&#39; when the position moves between portfolios and changes instrument at the same time. | [optional] [default to String]
 **portfolioIdOut** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **portfolioIdIn** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**transactionIdOut** | **String** |  | [optional] [default to String]
-**transactionIdIn** | **String** |  | [optional] [default to String]
+**transactionIdOut** | **String** | The transaction id of the created outgoing leg. | [optional] [default to String]
+**transactionIdIn** | **String** | The transaction id of the created incoming leg. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.CreateTransferResponse;

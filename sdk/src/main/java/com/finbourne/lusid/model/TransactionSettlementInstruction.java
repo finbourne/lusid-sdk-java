@@ -125,6 +125,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_PROBLEM_CODE = "problemCode";
+  @SerializedName(SERIALIZED_NAME_PROBLEM_CODE)
+  private String problemCode;
+
   public TransactionSettlementInstruction() {
   }
 
@@ -509,6 +513,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction problemCode(String problemCode) {
+    
+    this.problemCode = problemCode;
+    return this;
+  }
+
+   /**
+   * Why the settlement instruction was not applied. Set only when the status is Invalid, Orphan or Rejected.
+   * @return problemCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getProblemCode() {
+    return problemCode;
+  }
+
+
+  public void setProblemCode(String problemCode) {
+    this.problemCode = problemCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -535,7 +560,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.settlementInLieu, transactionSettlementInstruction.settlementInLieu) &&
         Objects.equals(this.isActive, transactionSettlementInstruction.isActive) &&
         Objects.equals(this.properties, transactionSettlementInstruction.properties) &&
-        Objects.equals(this.version, transactionSettlementInstruction.version);
+        Objects.equals(this.version, transactionSettlementInstruction.version) &&
+        Objects.equals(this.problemCode, transactionSettlementInstruction.problemCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -544,7 +570,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, isActive, properties, version);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate, settlementInLieu, isActive, properties, version, problemCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -575,6 +601,7 @@ public class TransactionSettlementInstruction {
     sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    problemCode: ").append(toIndentedString(problemCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -614,6 +641,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("isActive");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("problemCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -676,6 +704,9 @@ public class TransactionSettlementInstruction {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if ((jsonObj.get("problemCode") != null && !jsonObj.get("problemCode").isJsonNull()) && !jsonObj.get("problemCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `problemCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("problemCode").toString()));
       }
   }
 

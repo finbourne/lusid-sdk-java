@@ -29,10 +29,11 @@ import com.finbourne.lusid.model.CreateTransferRequest;
 import com.finbourne.lusid.model.CreateTransferResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.GetTransferRequest;
-import com.finbourne.lusid.model.GetTransferResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.ResourceListOfTransfer;
+import com.finbourne.lusid.model.Transfer;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -679,30 +680,30 @@ public class TransfersApi {
     }
 
 
-    private ApiResponse<GetTransferResponse> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt) throws ApiException {
+    private ApiResponse<Transfer> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt) throws ApiException {
         okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Transfer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetTransferResponse> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<Transfer> getTransferWithHttpInfo(GetTransferRequest getTransferRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, null, opts);
-        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Transfer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<GetTransferResponse> _callback) throws ApiException {
+    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<Transfer> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Transfer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<GetTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransferAsync(GetTransferRequest getTransferRequest, OffsetDateTime asAt, final ApiCallback<Transfer> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = getTransferValidateBeforeCall(getTransferRequest, asAt, _callback, opts);
-        Type localVarReturnType = new TypeToken<GetTransferResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<Transfer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -745,7 +746,7 @@ public class TransfersApi {
 
         /**
          * Execute getTransfer request
-         * @return GetTransferResponse
+         * @return Transfer
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -756,14 +757,14 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public GetTransferResponse execute() throws ApiException {
-            ApiResponse<GetTransferResponse> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt);
+        public Transfer execute() throws ApiException {
+            ApiResponse<Transfer> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt);
             return localVarResp.getData();
         }
 
         /**
          * Execute getTransfer request. Use any specified configuration options to override any other configuration for this request only.
-         * @return GetTransferResponse
+         * @return Transfer
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -774,14 +775,14 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public GetTransferResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetTransferResponse> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt, opts);
+        public Transfer execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Transfer> localVarResp = getTransferWithHttpInfo(getTransferRequest, asAt, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute getTransfer request with HTTP info returned
-         * @return ApiResponse&lt;GetTransferResponse&gt;
+         * @return ApiResponse&lt;Transfer&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -792,13 +793,13 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<GetTransferResponse> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<Transfer> executeWithHttpInfo() throws ApiException {
             return getTransferWithHttpInfo(getTransferRequest, asAt);
         }
 
         /**
          * Execute getTransfer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;GetTransferResponse&gt;
+         * @return ApiResponse&lt;Transfer&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -809,7 +810,7 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<GetTransferResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<Transfer> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return getTransferWithHttpInfo(getTransferRequest, asAt, opts);
         }
 
@@ -827,7 +828,7 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<GetTransferResponse> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<Transfer> _callback) throws ApiException {
             return getTransferAsync(getTransferRequest, asAt, _callback);
         }
 
@@ -845,7 +846,7 @@ public class TransfersApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<GetTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<Transfer> _callback, ConfigurationOptions opts) throws ApiException {
             return getTransferAsync(getTransferRequest, asAt, _callback, opts);
         }
     }
@@ -866,5 +867,318 @@ public class TransfersApi {
      */
     public APIgetTransferRequest getTransfer(GetTransferRequest getTransferRequest) {
         return new APIgetTransferRequest(getTransferRequest);
+    }
+    private okhttp3.Call listTransfersCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listTransfersCall(asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTransfersCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transfers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTransfersValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransfersCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfTransfer> listTransfersWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listTransfersValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransfer>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTransfer> listTransfersWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransfersValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransfer>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listTransfersAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransfer> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTransfersValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransfer>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTransfersAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<ResourceListOfTransfer> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTransfersValidateBeforeCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransfer>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistTransfersRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> propertyKeys;
+
+        private APIlistTransfersRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the transfers. Defaults to latest   version if not specified. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing transfers from a previous call. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. NOTE: Filtering on nested transaction out/in fields is not supported. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys The collection of &#x60;PropertyKey&#x60;s to decorate onto each transfer. (optional)
+         * @return APIlistTransfersRequest
+         */
+        public APIlistTransfersRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for listTransfers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTransfersCall(asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listTransfers request
+         * @return ResourceListOfTransfer
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransfer execute() throws ApiException {
+            ApiResponse<ResourceListOfTransfer> localVarResp = listTransfersWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTransfers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTransfer
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransfer execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTransfer> localVarResp = listTransfersWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTransfers request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransfer&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransfer> executeWithHttpInfo() throws ApiException {
+            return listTransfersWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listTransfers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTransfer&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransfer> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTransfersWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys, opts);
+        }
+
+        /**
+         * Execute listTransfers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransfer> _callback) throws ApiException {
+            return listTransfersAsync(asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listTransfers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransfer> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTransfersAsync(asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListTransfers: List transfers
+     * List transfers matching the specified criteria, decorated with the requested properties.
+     * @return APIlistTransfersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A collection of transfers matching the specified criteria. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistTransfersRequest listTransfers() {
+        return new APIlistTransfersRequest();
     }
 }

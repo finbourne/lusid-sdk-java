@@ -11,17 +11,22 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Transaction;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -54,7 +59,7 @@ import com.finbourne.lusid.JSON;
  * A transfer and both of the transactions it booked.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class GetTransferResponse {
+public class Transfer {
   public static final String SERIALIZED_NAME_TRANSFER_ID = "transferId";
   @SerializedName(SERIALIZED_NAME_TRANSFER_ID)
   private ResourceId transferId;
@@ -83,10 +88,22 @@ public class GetTransferResponse {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
-  public GetTransferResponse() {
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links;
+
+  public Transfer() {
   }
 
-  public GetTransferResponse transferId(ResourceId transferId) {
+  public Transfer transferId(ResourceId transferId) {
     
     this.transferId = transferId;
     return this;
@@ -107,14 +124,14 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse transferType(String transferType) {
+  public Transfer transferType(String transferType) {
     
     this.transferType = transferType;
     return this;
   }
 
    /**
-   * Get transferType
+   * The derived type of the transfer: &#39;Transfer&#39; when the position moves between portfolios, &#39;Switch&#39; when one instrument is exchanged for another within a portfolio, and &#39;Twitch&#39; when the position moves between portfolios and changes instrument at the same time.
    * @return transferType
   **/
   @jakarta.annotation.Nullable
@@ -128,7 +145,7 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse portfolioIdOut(ResourceId portfolioIdOut) {
+  public Transfer portfolioIdOut(ResourceId portfolioIdOut) {
     
     this.portfolioIdOut = portfolioIdOut;
     return this;
@@ -149,7 +166,7 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse portfolioIdIn(ResourceId portfolioIdIn) {
+  public Transfer portfolioIdIn(ResourceId portfolioIdIn) {
     
     this.portfolioIdIn = portfolioIdIn;
     return this;
@@ -170,7 +187,7 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse transactionOut(Transaction transactionOut) {
+  public Transfer transactionOut(Transaction transactionOut) {
     
     this.transactionOut = transactionOut;
     return this;
@@ -191,7 +208,7 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse transactionIn(Transaction transactionIn) {
+  public Transfer transactionIn(Transaction transactionIn) {
     
     this.transactionIn = transactionIn;
     return this;
@@ -212,13 +229,13 @@ public class GetTransferResponse {
   }
 
 
-  public GetTransferResponse properties(Map<String, Property> properties) {
+  public Transfer properties(Map<String, Property> properties) {
     
     this.properties = properties;
     return this;
   }
 
-  public GetTransferResponse putPropertiesItem(String key, Property propertiesItem) {
+  public Transfer putPropertiesItem(String key, Property propertiesItem) {
     if (this.properties == null) {
       this.properties = new HashMap<>();
     }
@@ -227,7 +244,7 @@ public class GetTransferResponse {
   }
 
    /**
-   * Get properties
+   * The properties of the transfer, for the requested PropertyKeys.
    * @return properties
   **/
   @jakarta.annotation.Nullable
@@ -241,6 +258,77 @@ public class GetTransferResponse {
   }
 
 
+  public Transfer href(URI href) {
+    
+    this.href = href;
+    return this;
+  }
+
+   /**
+   * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
+   * @return href
+  **/
+  @jakarta.annotation.Nullable
+  public URI getHref() {
+    return href;
+  }
+
+
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
+
+  public Transfer version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
+  public Transfer links(List<Link> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public Transfer addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @jakarta.annotation.Nullable
+  public List<Link> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -250,14 +338,17 @@ public class GetTransferResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetTransferResponse getTransferResponse = (GetTransferResponse) o;
-    return Objects.equals(this.transferId, getTransferResponse.transferId) &&
-        Objects.equals(this.transferType, getTransferResponse.transferType) &&
-        Objects.equals(this.portfolioIdOut, getTransferResponse.portfolioIdOut) &&
-        Objects.equals(this.portfolioIdIn, getTransferResponse.portfolioIdIn) &&
-        Objects.equals(this.transactionOut, getTransferResponse.transactionOut) &&
-        Objects.equals(this.transactionIn, getTransferResponse.transactionIn) &&
-        Objects.equals(this.properties, getTransferResponse.properties);
+    Transfer transfer = (Transfer) o;
+    return Objects.equals(this.transferId, transfer.transferId) &&
+        Objects.equals(this.transferType, transfer.transferType) &&
+        Objects.equals(this.portfolioIdOut, transfer.portfolioIdOut) &&
+        Objects.equals(this.portfolioIdIn, transfer.portfolioIdIn) &&
+        Objects.equals(this.transactionOut, transfer.transactionOut) &&
+        Objects.equals(this.transactionIn, transfer.transactionIn) &&
+        Objects.equals(this.properties, transfer.properties) &&
+        Objects.equals(this.href, transfer.href) &&
+        Objects.equals(this.version, transfer.version) &&
+        Objects.equals(this.links, transfer.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -266,7 +357,7 @@ public class GetTransferResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, transferType, portfolioIdOut, portfolioIdIn, transactionOut, transactionIn, properties);
+    return Objects.hash(transferId, transferType, portfolioIdOut, portfolioIdIn, transactionOut, transactionIn, properties, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -279,7 +370,7 @@ public class GetTransferResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetTransferResponse {\n");
+    sb.append("class Transfer {\n");
     sb.append("    transferId: ").append(toIndentedString(transferId)).append("\n");
     sb.append("    transferType: ").append(toIndentedString(transferType)).append("\n");
     sb.append("    portfolioIdOut: ").append(toIndentedString(portfolioIdOut)).append("\n");
@@ -287,6 +378,9 @@ public class GetTransferResponse {
     sb.append("    transactionOut: ").append(toIndentedString(transactionOut)).append("\n");
     sb.append("    transactionIn: ").append(toIndentedString(transactionIn)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -316,6 +410,9 @@ public class GetTransferResponse {
     openapiFields.add("transactionOut");
     openapiFields.add("transactionIn");
     openapiFields.add("properties");
+    openapiFields.add("href");
+    openapiFields.add("version");
+    openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -325,12 +422,12 @@ public class GetTransferResponse {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to GetTransferResponse
+  * @throws IOException if the JSON Element is invalid with respect to Transfer
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GetTransferResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetTransferResponse is not found in the empty JSON string", GetTransferResponse.openapiRequiredFields.toString()));
+        if (!Transfer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Transfer is not found in the empty JSON string", Transfer.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -357,28 +454,49 @@ public class GetTransferResponse {
       if (jsonObj.get("transactionIn") != null && !jsonObj.get("transactionIn").isJsonNull()) {
         Transaction.validateJsonElement(jsonObj.get("transactionIn"));
       }
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        if (jsonArraylinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+          }
+
+          // validate the optional field `links` (array)
+          for (int i = 0; i < jsonArraylinks.size(); i++) {
+            Link.validateJsonElement(jsonArraylinks.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetTransferResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetTransferResponse' and its subtypes
+       if (!Transfer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Transfer' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetTransferResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetTransferResponse.class));
+       final TypeAdapter<Transfer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Transfer.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GetTransferResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<Transfer>() {
            @Override
-           public void write(JsonWriter out, GetTransferResponse value) throws IOException {
+           public void write(JsonWriter out, Transfer value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GetTransferResponse read(JsonReader in) throws IOException {
+           public Transfer read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -389,18 +507,18 @@ public class GetTransferResponse {
   }
 
  /**
-  * Create an instance of GetTransferResponse given an JSON string
+  * Create an instance of Transfer given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of GetTransferResponse
-  * @throws IOException if the JSON string is invalid with respect to GetTransferResponse
+  * @return An instance of Transfer
+  * @throws IOException if the JSON string is invalid with respect to Transfer
   */
-  public static GetTransferResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetTransferResponse.class);
+  public static Transfer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Transfer.class);
   }
 
  /**
-  * Convert an instance of GetTransferResponse to an JSON string
+  * Convert an instance of Transfer to an JSON string
   *
   * @return JSON string
   */

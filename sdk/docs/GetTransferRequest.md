@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **transferId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **portfolioIdOut** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **portfolioIdIn** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**propertyKeys** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
+**propertyKeys** | **List&lt;String&gt;** | A list of property keys from the Transfer domain to decorate onto the transfer. These must have the format {domain}/{scope}/{code}. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.GetTransferRequest;
