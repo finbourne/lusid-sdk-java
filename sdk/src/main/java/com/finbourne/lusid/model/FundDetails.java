@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.SwingPricingDecision;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,6 +55,14 @@ public class FundDetails {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public static final String SERIALIZED_NAME_PRICING_BASIS = "pricingBasis";
+  @SerializedName(SERIALIZED_NAME_PRICING_BASIS)
+  private String pricingBasis;
+
+  public static final String SERIALIZED_NAME_SWING_PRICING = "swingPricing";
+  @SerializedName(SERIALIZED_NAME_SWING_PRICING)
+  private SwingPricingDecision swingPricing;
+
   public FundDetails() {
   }
 
@@ -78,6 +87,48 @@ public class FundDetails {
   }
 
 
+  public FundDetails pricingBasis(String pricingBasis) {
+    
+    this.pricingBasis = pricingBasis;
+    return this;
+  }
+
+   /**
+   * The side of the quote the NAV type valued the fund on: Mid, Bid or Ask. Absent when the NAV type defers to the valuation recipe&#39;s own pricing basis. When the NAV type has a swing pricing rule this is the basis the rule applied.
+   * @return pricingBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getPricingBasis() {
+    return pricingBasis;
+  }
+
+
+  public void setPricingBasis(String pricingBasis) {
+    this.pricingBasis = pricingBasis;
+  }
+
+
+  public FundDetails swingPricing(SwingPricingDecision swingPricing) {
+    
+    this.swingPricing = swingPricing;
+    return this;
+  }
+
+   /**
+   * Get swingPricing
+   * @return swingPricing
+  **/
+  @jakarta.annotation.Nullable
+  public SwingPricingDecision getSwingPricing() {
+    return swingPricing;
+  }
+
+
+  public void setSwingPricing(SwingPricingDecision swingPricing) {
+    this.swingPricing = swingPricing;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +139,9 @@ public class FundDetails {
       return false;
     }
     FundDetails fundDetails = (FundDetails) o;
-    return Objects.equals(this.currency, fundDetails.currency);
+    return Objects.equals(this.currency, fundDetails.currency) &&
+        Objects.equals(this.pricingBasis, fundDetails.pricingBasis) &&
+        Objects.equals(this.swingPricing, fundDetails.swingPricing);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -97,7 +150,7 @@ public class FundDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency);
+    return Objects.hash(currency, pricingBasis, swingPricing);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -112,6 +165,8 @@ public class FundDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundDetails {\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    pricingBasis: ").append(toIndentedString(pricingBasis)).append("\n");
+    sb.append("    swingPricing: ").append(toIndentedString(swingPricing)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,6 +190,8 @@ public class FundDetails {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("currency");
+    openapiFields.add("pricingBasis");
+    openapiFields.add("swingPricing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -155,6 +212,13 @@ public class FundDetails {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      if ((jsonObj.get("pricingBasis") != null && !jsonObj.get("pricingBasis").isJsonNull()) && !jsonObj.get("pricingBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricingBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricingBasis").toString()));
+      }
+      // validate the optional field `swingPricing`
+      if (jsonObj.get("swingPricing") != null && !jsonObj.get("swingPricing").isJsonNull()) {
+        SwingPricingDecision.validateJsonElement(jsonObj.get("swingPricing"));
       }
   }
 

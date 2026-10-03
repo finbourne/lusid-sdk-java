@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **attemptToInferMissingFxOnFixings** | **Boolean** | If true, applies the same inference as AttemptToInferMissingFx to FX fixings (resets), e.g. the fixing of a  non-deliverable FX forward: a fixing quoted only in the reverse direction, or derivable by triangulation  through a standard base currency at the fixing date, is inferred rather than reported missing. This is a  separate, explicit opt-in because a fixing is a contractual historical print: with this off (the default),  a fixing must be present as the exact oriented currency pair to be used. | [optional] [default to Boolean]
 **calendarScope** | **String** | The scope in which holiday calendars stored | [optional] [default to String]
 **conventionScope** | **String** | The scope in which conventions stored | [optional] [default to String]
+**pricingBasis** | **String** | The side of the instrument price quote the recipe values on: Mid (the default), Bid or Ask. This is a  property of the pricing methodology, not of any one column: with Bid or Ask, every instrument price rule  in the market data waterfall reads that quote field, so the same rules, scopes and fallbacks produce a  bid- or ask-struck valuation (for example a swing-priced NAV). Mid leaves each rule reading the field it  was written with (mid where none is given), which is the historical behaviour. FX, curve, spread, rate  and volatility rules are never affected. Available values: Mid, Bid, Ask. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.MarketOptions;
@@ -26,6 +27,7 @@ Boolean AttemptToInferMissingFx = true;
 Boolean AttemptToInferMissingFxOnFixings = true;
 @jakarta.annotation.Nullable String CalendarScope = "example CalendarScope";
 @jakarta.annotation.Nullable String ConventionScope = "example ConventionScope";
+@jakarta.annotation.Nullable String PricingBasis = "example PricingBasis";
 
 
 MarketOptions marketOptionsInstance = new MarketOptions()
@@ -35,7 +37,8 @@ MarketOptions marketOptionsInstance = new MarketOptions()
     .AttemptToInferMissingFx(AttemptToInferMissingFx)
     .AttemptToInferMissingFxOnFixings(AttemptToInferMissingFxOnFixings)
     .CalendarScope(CalendarScope)
-    .ConventionScope(ConventionScope);
+    .ConventionScope(ConventionScope)
+    .PricingBasis(PricingBasis);
 ```
 
 

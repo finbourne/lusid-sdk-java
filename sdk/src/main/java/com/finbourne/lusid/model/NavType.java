@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.NavSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.SwingPricingRule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -129,6 +130,14 @@ public class NavType {
   public static final String SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER = "transactionExclusionFilter";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_EXCLUSION_FILTER)
   private String transactionExclusionFilter;
+
+  public static final String SERIALIZED_NAME_PRICING_BASIS = "pricingBasis";
+  @SerializedName(SERIALIZED_NAME_PRICING_BASIS)
+  private String pricingBasis;
+
+  public static final String SERIALIZED_NAME_SWING_PRICING = "swingPricing";
+  @SerializedName(SERIALIZED_NAME_SWING_PRICING)
+  private SwingPricingRule swingPricing;
 
   public NavType() {
   }
@@ -556,6 +565,48 @@ public class NavType {
   }
 
 
+  public NavType pricingBasis(String pricingBasis) {
+    
+    this.pricingBasis = pricingBasis;
+    return this;
+  }
+
+   /**
+   * The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask.
+   * @return pricingBasis
+  **/
+  @jakarta.annotation.Nullable
+  public String getPricingBasis() {
+    return pricingBasis;
+  }
+
+
+  public void setPricingBasis(String pricingBasis) {
+    this.pricingBasis = pricingBasis;
+  }
+
+
+  public NavType swingPricing(SwingPricingRule swingPricing) {
+    
+    this.swingPricing = swingPricing;
+    return this;
+  }
+
+   /**
+   * Get swingPricing
+   * @return swingPricing
+  **/
+  @jakarta.annotation.Nullable
+  public SwingPricingRule getSwingPricing() {
+    return swingPricing;
+  }
+
+
+  public void setSwingPricing(SwingPricingRule swingPricing) {
+    this.swingPricing = swingPricing;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -584,7 +635,9 @@ public class NavType {
         Objects.equals(this.amortisationRuleSetId, navType.amortisationRuleSetId) &&
         Objects.equals(this.leaderNavTypeCode, navType.leaderNavTypeCode) &&
         Objects.equals(this.transactionTemplateScope, navType.transactionTemplateScope) &&
-        Objects.equals(this.transactionExclusionFilter, navType.transactionExclusionFilter);
+        Objects.equals(this.transactionExclusionFilter, navType.transactionExclusionFilter) &&
+        Objects.equals(this.pricingBasis, navType.pricingBasis) &&
+        Objects.equals(this.swingPricing, navType.swingPricing);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -593,7 +646,7 @@ public class NavType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter);
+    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -626,6 +679,8 @@ public class NavType {
     sb.append("    leaderNavTypeCode: ").append(toIndentedString(leaderNavTypeCode)).append("\n");
     sb.append("    transactionTemplateScope: ").append(toIndentedString(transactionTemplateScope)).append("\n");
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
+    sb.append("    pricingBasis: ").append(toIndentedString(pricingBasis)).append("\n");
+    sb.append("    swingPricing: ").append(toIndentedString(swingPricing)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -667,6 +722,8 @@ public class NavType {
     openapiFields.add("leaderNavTypeCode");
     openapiFields.add("transactionTemplateScope");
     openapiFields.add("transactionExclusionFilter");
+    openapiFields.add("pricingBasis");
+    openapiFields.add("swingPricing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -758,6 +815,13 @@ public class NavType {
       }
       if ((jsonObj.get("transactionExclusionFilter") != null && !jsonObj.get("transactionExclusionFilter").isJsonNull()) && !jsonObj.get("transactionExclusionFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionExclusionFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionExclusionFilter").toString()));
+      }
+      if ((jsonObj.get("pricingBasis") != null && !jsonObj.get("pricingBasis").isJsonNull()) && !jsonObj.get("pricingBasis").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricingBasis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricingBasis").toString()));
+      }
+      // validate the optional field `swingPricing`
+      if (jsonObj.get("swingPricing") != null && !jsonObj.get("swingPricing").isJsonNull()) {
+        SwingPricingRule.validateJsonElement(jsonObj.get("swingPricing"));
       }
   }
 
