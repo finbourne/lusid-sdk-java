@@ -19,6 +19,8 @@ TransactionStatus method = TransactionStatus.CANCELLED;
 TransactionStatus method = TransactionStatus.ACTIVEREVERSAL;
 TransactionStatus method = TransactionStatus.ACTIVETRUEUP;
 TransactionStatus method = TransactionStatus.CANCELLEDTRUEUP;
+TransactionStatus method = TransactionStatus.PENDINGREVERSAL;
+TransactionStatus method = TransactionStatus.REVERSED;
 ```
 
 

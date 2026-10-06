@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **fundConfigurationId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **shareClassInstrumentScopes** | **List&lt;String&gt;** | The scopes in which the instruments lie, currently limited to one. | [optional] [default to List<String>]
 **shareClassInstruments** | [**List&lt;InstrumentResolutionDetail&gt;**](InstrumentResolutionDetail.md) | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. | [optional] [default to List<InstrumentResolutionDetail>]
-**type** | **String** | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. | [optional] [default to String]
+**type** | **String** | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. | [optional] [default to String]
+**taxTransparency** | **String** | Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque. | [optional] [default to String]
 **inceptionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Inception date of the Fund | [default to OffsetDateTime]
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
 **primaryNavType** | [**NavTypeDefinition**](NavTypeDefinition.md) |  | [default to NavTypeDefinition]
@@ -41,6 +42,7 @@ ResourceId FundConfigurationId = new ResourceId();
 @jakarta.annotation.Nullable List<String> ShareClassInstrumentScopes = new List<String>();
 @jakarta.annotation.Nullable List<InstrumentResolutionDetail> ShareClassInstruments = new List<InstrumentResolutionDetail>();
 @jakarta.annotation.Nullable String Type = "example Type";
+@jakarta.annotation.Nullable String TaxTransparency = "example TaxTransparency";
 OffsetDateTime InceptionDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer DecimalPlaces = new Integer("100.00");
 NavTypeDefinition PrimaryNavType = new NavTypeDefinition();
@@ -62,6 +64,7 @@ FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest(
     .ShareClassInstrumentScopes(ShareClassInstrumentScopes)
     .ShareClassInstruments(ShareClassInstruments)
     .Type(Type)
+    .TaxTransparency(TaxTransparency)
     .InceptionDate(InceptionDate)
     .DecimalPlaces(DecimalPlaces)
     .PrimaryNavType(PrimaryNavType)

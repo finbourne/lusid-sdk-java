@@ -56,6 +56,7 @@ import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.QueryFundCashStatementParameters;
 import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustmentResponse;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
+import com.finbourne.lusid.model.RevertValuationPointResponse;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
@@ -8630,11 +8631,11 @@ public class FundsApi {
     public APIgetValuationPointTrialBalanceRequest getValuationPointTrialBalance(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointTrialBalanceRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
-        return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, final ApiCallback _callback) throws ApiException {
+        return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8681,6 +8682,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -8707,7 +8712,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointUnsettledTransactionsValidateBeforeCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsValidateBeforeCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointUnsettledTransactions(Async)");
@@ -8723,34 +8728,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'singleValuationPointQueryParameters' when calling getValuationPointUnsettledTransactions(Async)");
         }
 
-        return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, null, opts);
+    private ApiResponse<ValuationPointResourceListOfUnsettledTransaction> getValuationPointUnsettledTransactionsWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointUnsettledTransactionsAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, OffsetDateTime asAt, Integer limit, String page, List<String> propertyKeys, String navTypeCode, String filter, final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointUnsettledTransactionsValidateBeforeCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfUnsettledTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8765,6 +8770,7 @@ public class FundsApi {
         private String page;
         private List<String> propertyKeys;
         private String navTypeCode;
+        private String filter;
 
         private APIgetValuationPointUnsettledTransactionsRequest(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
             this.scope = scope;
@@ -8823,6 +8829,16 @@ public class FundsApi {
         }
 
         /**
+         * Set filter
+         * @param filter Expression to filter the result set. (optional)
+         * @return APIgetValuationPointUnsettledTransactionsRequest
+         */
+        public APIgetValuationPointUnsettledTransactionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointUnsettledTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -8836,7 +8852,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointUnsettledTransactionsCall(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback);
         }
 
         /**
@@ -8852,7 +8868,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfUnsettledTransaction execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter);
             return localVarResp.getData();
         }
 
@@ -8869,7 +8885,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfUnsettledTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, opts);
+            ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResp = getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, opts);
             return localVarResp.getData();
         }
 
@@ -8886,7 +8902,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo() throws ApiException {
-            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter);
         }
 
         /**
@@ -8902,7 +8918,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfUnsettledTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, opts);
+            return getValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, opts);
         }
 
         /**
@@ -8919,7 +8935,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback) throws ApiException {
-            return getValuationPointUnsettledTransactionsAsync(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback);
+            return getValuationPointUnsettledTransactionsAsync(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback);
         }
 
         /**
@@ -8936,7 +8952,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfUnsettledTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointUnsettledTransactionsAsync(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, _callback, opts);
+            return getValuationPointUnsettledTransactionsAsync(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter, _callback, opts);
         }
     }
 
@@ -12952,30 +12968,30 @@ public class FundsApi {
     }
 
 
-    private ApiResponse<ValuationPointDataResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode) throws ApiException {
+    private ApiResponse<RevertValuationPointResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode) throws ApiException {
         okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, revertValuationPointDataRequest, navTypeCode, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RevertValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointDataResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<RevertValuationPointResponse> revertValuationPointToEstimateWithHttpInfo(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, revertValuationPointDataRequest, navTypeCode, null, opts);
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RevertValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback<RevertValuationPointResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, revertValuationPointDataRequest, navTypeCode, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RevertValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call revertValuationPointToEstimateAsync(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback<RevertValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = revertValuationPointToEstimateValidateBeforeCall(scope, code, revertValuationPointDataRequest, navTypeCode, _callback, opts);
-        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RevertValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -13010,7 +13026,7 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -13021,67 +13037,67 @@ public class FundsApi {
 
         /**
          * Execute revertValuationPointToEstimate request
-         * @return ValuationPointDataResponse
+         * @return RevertValuationPointResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ValuationPointDataResponse execute() throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
+        public RevertValuationPointResponse execute() throws ApiException {
+            ApiResponse<RevertValuationPointResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
             return localVarResp.getData();
         }
 
         /**
          * Execute revertValuationPointToEstimate request. Use any specified configuration options to override any other configuration for this request only.
-         * @return ValuationPointDataResponse
+         * @return RevertValuationPointResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode, opts);
+        public RevertValuationPointResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<RevertValuationPointResponse> localVarResp = revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute revertValuationPointToEstimate request with HTTP info returned
-         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @return ApiResponse&lt;RevertValuationPointResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<RevertValuationPointResponse> executeWithHttpInfo() throws ApiException {
             return revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
         }
 
         /**
          * Execute revertValuationPointToEstimate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @return ApiResponse&lt;RevertValuationPointResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<RevertValuationPointResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return revertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode, opts);
         }
 
@@ -13093,12 +13109,12 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<RevertValuationPointResponse> _callback) throws ApiException {
             return revertValuationPointToEstimateAsync(scope, code, revertValuationPointDataRequest, navTypeCode, _callback);
         }
 
@@ -13110,19 +13126,19 @@ public class FundsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<RevertValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
             return revertValuationPointToEstimateAsync(scope, code, revertValuationPointDataRequest, navTypeCode, _callback, opts);
         }
     }
 
     /**
      * [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
-     * Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.
+     * Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.  Returns the reverted Valuation Point alongside every variant that  finalising it had rejected.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param revertValuationPointDataRequest The revertValuationPointRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. (required)
@@ -13130,7 +13146,7 @@ public class FundsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Estimate. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The reverted Estimate Valuation Point, with every variant resurrected by the revert </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

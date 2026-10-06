@@ -105,6 +105,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public static final String SERIALIZED_NAME_TAX_TRANSPARENCY = "taxTransparency";
+  @SerializedName(SERIALIZED_NAME_TAX_TRANSPARENCY)
+  private String taxTransparency;
+
   public static final String SERIALIZED_NAME_INCEPTION_DATE = "inceptionDate";
   @SerializedName(SERIALIZED_NAME_INCEPTION_DATE)
   private OffsetDateTime inceptionDate;
@@ -377,7 +381,7 @@ public class FundDefinitionRequest {
   }
 
    /**
-   * The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
+   * The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -388,6 +392,27 @@ public class FundDefinitionRequest {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+
+  public FundDefinitionRequest taxTransparency(String taxTransparency) {
+    
+    this.taxTransparency = taxTransparency;
+    return this;
+  }
+
+   /**
+   * Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque.
+   * @return taxTransparency
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxTransparency() {
+    return taxTransparency;
+  }
+
+
+  public void setTaxTransparency(String taxTransparency) {
+    this.taxTransparency = taxTransparency;
   }
 
 
@@ -585,6 +610,7 @@ public class FundDefinitionRequest {
         Objects.equals(this.shareClassInstrumentScopes, fundDefinitionRequest.shareClassInstrumentScopes) &&
         Objects.equals(this.shareClassInstruments, fundDefinitionRequest.shareClassInstruments) &&
         Objects.equals(this.type, fundDefinitionRequest.type) &&
+        Objects.equals(this.taxTransparency, fundDefinitionRequest.taxTransparency) &&
         Objects.equals(this.inceptionDate, fundDefinitionRequest.inceptionDate) &&
         Objects.equals(this.decimalPlaces, fundDefinitionRequest.decimalPlaces) &&
         Objects.equals(this.primaryNavType, fundDefinitionRequest.primaryNavType) &&
@@ -600,7 +626,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -625,6 +651,7 @@ public class FundDefinitionRequest {
     sb.append("    shareClassInstrumentScopes: ").append(toIndentedString(shareClassInstrumentScopes)).append("\n");
     sb.append("    shareClassInstruments: ").append(toIndentedString(shareClassInstruments)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    taxTransparency: ").append(toIndentedString(taxTransparency)).append("\n");
     sb.append("    inceptionDate: ").append(toIndentedString(inceptionDate)).append("\n");
     sb.append("    decimalPlaces: ").append(toIndentedString(decimalPlaces)).append("\n");
     sb.append("    primaryNavType: ").append(toIndentedString(primaryNavType)).append("\n");
@@ -665,6 +692,7 @@ public class FundDefinitionRequest {
     openapiFields.add("shareClassInstrumentScopes");
     openapiFields.add("shareClassInstruments");
     openapiFields.add("type");
+    openapiFields.add("taxTransparency");
     openapiFields.add("inceptionDate");
     openapiFields.add("decimalPlaces");
     openapiFields.add("primaryNavType");
@@ -754,6 +782,9 @@ public class FundDefinitionRequest {
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("taxTransparency") != null && !jsonObj.get("taxTransparency").isJsonNull()) && !jsonObj.get("taxTransparency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxTransparency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxTransparency").toString()));
       }
       // validate the required field `primaryNavType`
       NavTypeDefinition.validateJsonElement(jsonObj.get("primaryNavType"));

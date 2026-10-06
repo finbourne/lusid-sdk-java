@@ -59,6 +59,14 @@ public class BondLookupModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_CS01_BUMP_WIDTH)
   private java.math.BigDecimal cs01BumpWidth;
 
+  public static final String SERIALIZED_NAME_SPREAD_ANCHOR_SOURCE = "spreadAnchorSource";
+  @SerializedName(SERIALIZED_NAME_SPREAD_ANCHOR_SOURCE)
+  private String spreadAnchorSource;
+
+  public static final String SERIALIZED_NAME_SPREAD_TERM_STRUCTURE = "spreadTermStructure";
+  @SerializedName(SERIALIZED_NAME_SPREAD_TERM_STRUCTURE)
+  private Boolean spreadTermStructure;
+
   public BondLookupModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -105,6 +113,48 @@ public class BondLookupModelOptions extends ModelOptions {
   }
 
 
+  public BondLookupModelOptions spreadAnchorSource(String spreadAnchorSource) {
+    
+    this.spreadAnchorSource = spreadAnchorSource;
+    return this;
+  }
+
+   /**
+   * Where the spread anchor comes from when no CreditSpreadCurve is served for the instrument. Only  read when SpreadAnchoredRisk is true.     Supported string (enumeration) values are: [MarketData, SolvedFromPrice].  Defaults to MarketData - the original behaviour, where a ZSpread quote must be served from the  quote store or as a market data override - when not supplied.     SolvedFromPrice: a served CreditSpreadCurve or ZSpread quote still wins. When neither is served,  the bond is valued exactly as the plain lookup values it, and the anchor is the z-spread its  looked-up price implies over the discounting curve (the value Analytic/ZSpread returns). Risk  measures, carry and scenario columns solve that anchor against the unperturbed market and hold it,  so no spread has to be stored or sent.
+   * @return spreadAnchorSource
+  **/
+  @jakarta.annotation.Nullable
+  public String getSpreadAnchorSource() {
+    return spreadAnchorSource;
+  }
+
+
+  public void setSpreadAnchorSource(String spreadAnchorSource) {
+    this.spreadAnchorSource = spreadAnchorSource;
+  }
+
+
+  public BondLookupModelOptions spreadTermStructure(Boolean spreadTermStructure) {
+    
+    this.spreadTermStructure = spreadTermStructure;
+    return this;
+  }
+
+   /**
+   * In spread-anchored mode with a credit-spread curve (a served CreditSpreadCurve, or the curve the  risk engine builds from the ZSpread quote), discount each cash flow at the curve&#39;s level on its own  payment date instead of discounting every flow at the level at maturity. Pointwise and bucketed  Risk/Credit ladders then split CS01 by cash flow, and the curve built from a quote carries one pillar  per remaining payment date. The price is unchanged on a flat curve (and so on any curve built from a  quote) but not on a sloped served curve.  Defaults to false - the level at maturity - when not supplied.
+   * @return spreadTermStructure
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getSpreadTermStructure() {
+    return spreadTermStructure;
+  }
+
+
+  public void setSpreadTermStructure(Boolean spreadTermStructure) {
+    this.spreadTermStructure = spreadTermStructure;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,6 +167,8 @@ public class BondLookupModelOptions extends ModelOptions {
     BondLookupModelOptions bondLookupModelOptions = (BondLookupModelOptions) o;
     return Objects.equals(this.spreadAnchoredRisk, bondLookupModelOptions.spreadAnchoredRisk) &&
         (this.cs01BumpWidth.compareTo(bondLookupModelOptions.getCs01BumpWidth()) == 0) &&
+        Objects.equals(this.spreadAnchorSource, bondLookupModelOptions.spreadAnchorSource) &&
+        Objects.equals(this.spreadTermStructure, bondLookupModelOptions.spreadTermStructure) &&
         super.equals(o);
   }
 
@@ -126,7 +178,7 @@ public class BondLookupModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(spreadAnchoredRisk, cs01BumpWidth, super.hashCode());
+    return Objects.hash(spreadAnchoredRisk, cs01BumpWidth, spreadAnchorSource, spreadTermStructure, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -143,6 +195,8 @@ public class BondLookupModelOptions extends ModelOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    spreadAnchoredRisk: ").append(toIndentedString(spreadAnchoredRisk)).append("\n");
     sb.append("    cs01BumpWidth: ").append(toIndentedString(cs01BumpWidth)).append("\n");
+    sb.append("    spreadAnchorSource: ").append(toIndentedString(spreadAnchorSource)).append("\n");
+    sb.append("    spreadTermStructure: ").append(toIndentedString(spreadTermStructure)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -168,6 +222,8 @@ public class BondLookupModelOptions extends ModelOptions {
     openapiFields.add("modelOptionsType");
     openapiFields.add("spreadAnchoredRisk");
     openapiFields.add("cs01BumpWidth");
+    openapiFields.add("spreadAnchorSource");
+    openapiFields.add("spreadTermStructure");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

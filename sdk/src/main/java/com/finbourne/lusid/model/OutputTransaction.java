@@ -143,7 +143,7 @@ public class OutputTransaction {
   private String source;
 
   /**
-   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
+   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.
    */
   @JsonAdapter(TransactionStatusEnum.Adapter.class)
   public enum TransactionStatusEnum {
@@ -157,7 +157,11 @@ public class OutputTransaction {
     
     ACTIVETRUEUP("ActiveTrueUp"),
     
-    CANCELLEDTRUEUP("CancelledTrueUp");
+    CANCELLEDTRUEUP("CancelledTrueUp"),
+    
+    PENDINGREVERSAL("PendingReversal"),
+    
+    REVERSED("Reversed");
 
     private String value;
 
@@ -705,7 +709,7 @@ public class OutputTransaction {
   }
 
    /**
-   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
+   * The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.
    * @return transactionStatus
   **/
   @jakarta.annotation.Nullable

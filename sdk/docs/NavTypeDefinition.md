@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **transactionExclusionFilter** | **String** | Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties. | [optional] [default to String]
 **pricingBasis** | **String** | The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask. | [optional] [default to String]
 **swingPricing** | [**SwingPricingRule**](SwingPricingRule.md) |  | [optional] [default to SwingPricingRule]
+**notionalDealingCostTableId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.NavTypeDefinition;
@@ -51,6 +52,7 @@ String TransactionTemplateScope = "example TransactionTemplateScope";
 @jakarta.annotation.Nullable String TransactionExclusionFilter = "example TransactionExclusionFilter";
 @jakarta.annotation.Nullable String PricingBasis = "example PricingBasis";
 SwingPricingRule SwingPricing = new SwingPricingRule();
+ResourceId NotionalDealingCostTableId = new ResourceId();
 
 
 NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
@@ -73,7 +75,8 @@ NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
     .TransactionTemplateScope(TransactionTemplateScope)
     .TransactionExclusionFilter(TransactionExclusionFilter)
     .PricingBasis(PricingBasis)
-    .SwingPricing(SwingPricing);
+    .SwingPricing(SwingPricing)
+    .NotionalDealingCostTableId(NotionalDealingCostTableId);
 ```
 
 

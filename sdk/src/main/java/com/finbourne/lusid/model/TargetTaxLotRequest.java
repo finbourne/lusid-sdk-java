@@ -92,6 +92,10 @@ public class TargetTaxLotRequest {
   @SerializedName(SERIALIZED_NAME_AMORTISED_COST)
   private java.math.BigDecimal amortisedCost;
 
+  public static final String SERIALIZED_NAME_CURRENT_FACE = "currentFace";
+  @SerializedName(SERIALIZED_NAME_CURRENT_FACE)
+  private java.math.BigDecimal currentFace;
+
   public TargetTaxLotRequest() {
   }
 
@@ -305,6 +309,27 @@ public class TargetTaxLotRequest {
   }
 
 
+  public TargetTaxLotRequest currentFace(java.math.BigDecimal currentFace) {
+    
+    this.currentFace = currentFace;
+    return this;
+  }
+
+   /**
+   * The current face of the tax-lot, i.e. its outstanding notional after any reduction by the instrument&#39;s pool factor. If supplied, this value seeds the tax-lot&#39;s current face, so that later paydowns on an asset-backed instrument reduce the cost against it; if not supplied, a tax-lot that already has a current face keeps its pool factor as its units change.
+   * @return currentFace
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCurrentFace() {
+    return currentFace;
+  }
+
+
+  public void setCurrentFace(java.math.BigDecimal currentFace) {
+    this.currentFace = currentFace;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -324,7 +349,8 @@ public class TargetTaxLotRequest {
         (this.notionalCost.compareTo(targetTaxLotRequest.getNotionalCost()) == 0) &&
         (this.variationMargin.compareTo(targetTaxLotRequest.getVariationMargin()) == 0) &&
         (this.variationMarginPortfolioCcy.compareTo(targetTaxLotRequest.getVariationMarginPortfolioCcy()) == 0) &&
-        (this.amortisedCost.compareTo(targetTaxLotRequest.getAmortisedCost()) == 0);
+        (this.amortisedCost.compareTo(targetTaxLotRequest.getAmortisedCost()) == 0) &&
+        (this.currentFace.compareTo(targetTaxLotRequest.getCurrentFace()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -333,7 +359,7 @@ public class TargetTaxLotRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy, amortisedCost);
+    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy, amortisedCost, currentFace);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -357,6 +383,7 @@ public class TargetTaxLotRequest {
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("    amortisedCost: ").append(toIndentedString(amortisedCost)).append("\n");
+    sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,6 +416,7 @@ public class TargetTaxLotRequest {
     openapiFields.add("variationMargin");
     openapiFields.add("variationMarginPortfolioCcy");
     openapiFields.add("amortisedCost");
+    openapiFields.add("currentFace");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

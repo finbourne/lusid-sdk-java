@@ -103,6 +103,10 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_MAX_LATTICE_NODES)
   private Integer maxLatticeNodes;
 
+  public static final String SERIALIZED_NAME_PRICE_AT_QUOTE_IMPLIED_OAS = "priceAtQuoteImpliedOas";
+  @SerializedName(SERIALIZED_NAME_PRICE_AT_QUOTE_IMPLIED_OAS)
+  private Boolean priceAtQuoteImpliedOas;
+
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -383,6 +387,27 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions priceAtQuoteImpliedOas(Boolean priceAtQuoteImpliedOas) {
+    
+    this.priceAtQuoteImpliedOas = priceAtQuoteImpliedOas;
+    return this;
+  }
+
+   /**
+   * Price at the option-adjusted spread implied by the instrument&#39;s quoted price instead of at zero  spread, so the present value reproduces the quote and curve risk is measured with the spread  held. The spread is taken from an OAS quote served for the instrument (a quote with descriptor  [\&quot;OAS\&quot;] keyed by its identifiers, from a Rate-typed market data rule or a market data override)  when there is one, and is then held across every bumped valuation; otherwise it is solved  against the quote in the valuation&#39;s own market. A request for a Risk measure requires the OAS  quote, since a spread re-solved under each bump would leave the measure at zero. Also prices  compounded-in-arrears floating coupons, exercises inside an unfixed floating period and  asset-backed bonds, which are otherwise refused. For an asset-backed bond the pool is held at  its latest factor to legal final with no prepayment, so EffectiveDuration and Pv01 on those  rows are legal-final durations that ignore prepayment. A constant prepayment rate served for the  pool is not read, so the lattice, the cash flows and WeightedAverageLife all run the pool to  legal final. Rows carry the source of the spread in the Diagnostics/Model/PricingSpreadSource  valuation key. Defaults to false.
+   * @return priceAtQuoteImpliedOas
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getPriceAtQuoteImpliedOas() {
+    return priceAtQuoteImpliedOas;
+  }
+
+
+  public void setPriceAtQuoteImpliedOas(Boolean priceAtQuoteImpliedOas) {
+    this.priceAtQuoteImpliedOas = priceAtQuoteImpliedOas;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -405,6 +430,7 @@ public class HullWhiteModelOptions extends ModelOptions {
         Objects.equals(this.priceToFirstReset, hullWhiteModelOptions.priceToFirstReset) &&
         Objects.equals(this.latticeStepsPerYear, hullWhiteModelOptions.latticeStepsPerYear) &&
         Objects.equals(this.maxLatticeNodes, hullWhiteModelOptions.maxLatticeNodes) &&
+        Objects.equals(this.priceAtQuoteImpliedOas, hullWhiteModelOptions.priceAtQuoteImpliedOas) &&
         super.equals(o);
   }
 
@@ -414,7 +440,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, maxLatticeNodes, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, maxLatticeNodes, priceAtQuoteImpliedOas, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -441,6 +467,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    priceToFirstReset: ").append(toIndentedString(priceToFirstReset)).append("\n");
     sb.append("    latticeStepsPerYear: ").append(toIndentedString(latticeStepsPerYear)).append("\n");
     sb.append("    maxLatticeNodes: ").append(toIndentedString(maxLatticeNodes)).append("\n");
+    sb.append("    priceAtQuoteImpliedOas: ").append(toIndentedString(priceAtQuoteImpliedOas)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -476,6 +503,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("priceToFirstReset");
     openapiFields.add("latticeStepsPerYear");
     openapiFields.add("maxLatticeNodes");
+    openapiFields.add("priceAtQuoteImpliedOas");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

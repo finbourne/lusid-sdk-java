@@ -2970,7 +2970,7 @@ public class FundsApiExample {
 
 ## getValuationPointUnsettledTransactions
 
-> ValuationPointResourceListOfUnsettledTransaction getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode)
+> ValuationPointResourceListOfUnsettledTransaction getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter)
 
 [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
@@ -3023,11 +3023,12 @@ public class FundsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing from a previous call.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', or 'Account'   domain to decorate onto the transactions.
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        String filter = "filter_example"; // String | Expression to filter the result set.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode).execute(opts);
+            // ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter).execute(opts);
 
-            ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode).execute();
+            ValuationPointResourceListOfUnsettledTransaction result = apiInstance.getValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointUnsettledTransactions");
@@ -3052,6 +3053,7 @@ public class FundsApiExample {
 | **page** | **String**| The pagination token to use to continue listing from a previous call. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;   domain to decorate onto the transactions. | [optional] |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **filter** | **String**| Expression to filter the result set. | [optional] |
 
 ### Return type
 
@@ -4329,11 +4331,11 @@ public class FundsApiExample {
 
 ## revertValuationPointToEstimate
 
-> ValuationPointDataResponse revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode)
+> RevertValuationPointResponse revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode)
 
 [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 
-Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.
+Moves a &#39;Final&#39; status Valuation Point to status &#39;Estimate&#39;.  Returns the reverted Valuation Point alongside every variant that  finalising it had rejected.
 
 ### Example
 
@@ -4380,9 +4382,9 @@ public class FundsApiExample {
         String navTypeCode = "navTypeCode_example"; // String | When provided, sets the status of the Valuation Point of the specified NAV Type to be Estimate.   Otherwise, the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute(opts);
+            // RevertValuationPointResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute(opts);
 
-            ValuationPointDataResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute();
+            RevertValuationPointResponse result = apiInstance.revertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#revertValuationPointToEstimate");
@@ -4406,7 +4408,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**ValuationPointDataResponse**](ValuationPointDataResponse.md)
+[**RevertValuationPointResponse**](RevertValuationPointResponse.md)
 
 ### HTTP request headers
 
@@ -4417,7 +4419,7 @@ public class FundsApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated Valuation Point response as a result of it be marked as Estimate. |  -  |
+| **200** | The reverted Estimate Valuation Point, with every variant resurrected by the revert |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

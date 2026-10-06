@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.QualifierDefinition;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
@@ -664,6 +665,10 @@ public class PropertyDefinition {
   @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
   private String valueFormat;
 
+  public static final String SERIALIZED_NAME_QUALIFIER_DEFINITIONS = "qualifierDefinitions";
+  @SerializedName(SERIALIZED_NAME_QUALIFIER_DEFINITIONS)
+  private List<QualifierDefinition> qualifierDefinitions;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -1162,6 +1167,35 @@ public class PropertyDefinition {
   }
 
 
+  public PropertyDefinition qualifierDefinitions(List<QualifierDefinition> qualifierDefinitions) {
+    
+    this.qualifierDefinitions = qualifierDefinitions;
+    return this;
+  }
+
+  public PropertyDefinition addQualifierDefinitionsItem(QualifierDefinition qualifierDefinitionsItem) {
+    if (this.qualifierDefinitions == null) {
+      this.qualifierDefinitions = new ArrayList<>();
+    }
+    this.qualifierDefinitions.add(qualifierDefinitionsItem);
+    return this;
+  }
+
+   /**
+   * The qualifiers declared against this property definition, each with its value type resolved from its data type. Absent where the definition declares no qualifiers. Qualifiers are supported only on single-value properties.
+   * @return qualifierDefinitions
+  **/
+  @jakarta.annotation.Nullable
+  public List<QualifierDefinition> getQualifierDefinitions() {
+    return qualifierDefinitions;
+  }
+
+
+  public void setQualifierDefinitions(List<QualifierDefinition> qualifierDefinitions) {
+    this.qualifierDefinitions = qualifierDefinitions;
+  }
+
+
   public PropertyDefinition links(List<Link> links) {
     
     this.links = links;
@@ -1224,6 +1258,7 @@ public class PropertyDefinition {
         Objects.equals(this.isFilterable, propertyDefinition.isFilterable) &&
         Objects.equals(this.customEntityTypes, propertyDefinition.customEntityTypes) &&
         Objects.equals(this.valueFormat, propertyDefinition.valueFormat) &&
+        Objects.equals(this.qualifierDefinitions, propertyDefinition.qualifierDefinitions) &&
         Objects.equals(this.links, propertyDefinition.links);
   }
 
@@ -1233,7 +1268,7 @@ public class PropertyDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, isFilterable, customEntityTypes, valueFormat, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, isFilterable, customEntityTypes, valueFormat, qualifierDefinitions, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1270,6 +1305,7 @@ public class PropertyDefinition {
     sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
     sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
+    sb.append("    qualifierDefinitions: ").append(toIndentedString(qualifierDefinitions)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1316,6 +1352,7 @@ public class PropertyDefinition {
     openapiFields.add("isFilterable");
     openapiFields.add("customEntityTypes");
     openapiFields.add("valueFormat");
+    openapiFields.add("qualifierDefinitions");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1398,6 +1435,20 @@ public class PropertyDefinition {
       }
       if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
+      }
+      if (jsonObj.get("qualifierDefinitions") != null && !jsonObj.get("qualifierDefinitions").isJsonNull()) {
+        JsonArray jsonArrayqualifierDefinitions = jsonObj.getAsJsonArray("qualifierDefinitions");
+        if (jsonArrayqualifierDefinitions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("qualifierDefinitions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `qualifierDefinitions` to be an array in the JSON string but got `%s`", jsonObj.get("qualifierDefinitions").toString()));
+          }
+
+          // validate the optional field `qualifierDefinitions` (array)
+          for (int i = 0; i < jsonArrayqualifierDefinitions.size(); i++) {
+            QualifierDefinition.validateJsonElement(jsonArrayqualifierDefinitions.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

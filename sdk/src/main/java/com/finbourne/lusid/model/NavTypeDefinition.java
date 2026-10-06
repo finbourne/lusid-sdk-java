@@ -135,6 +135,10 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_SWING_PRICING)
   private SwingPricingRule swingPricing;
 
+  public static final String SERIALIZED_NAME_NOTIONAL_DEALING_COST_TABLE_ID = "notionalDealingCostTableId";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_DEALING_COST_TABLE_ID)
+  private ResourceId notionalDealingCostTableId;
+
   public NavTypeDefinition() {
   }
 
@@ -582,6 +586,27 @@ public class NavTypeDefinition {
   }
 
 
+  public NavTypeDefinition notionalDealingCostTableId(ResourceId notionalDealingCostTableId) {
+    
+    this.notionalDealingCostTableId = notionalDealingCostTableId;
+    return this;
+  }
+
+   /**
+   * Get notionalDealingCostTableId
+   * @return notionalDealingCostTableId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getNotionalDealingCostTableId() {
+    return notionalDealingCostTableId;
+  }
+
+
+  public void setNotionalDealingCostTableId(ResourceId notionalDealingCostTableId) {
+    this.notionalDealingCostTableId = notionalDealingCostTableId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -611,7 +636,8 @@ public class NavTypeDefinition {
         Objects.equals(this.transactionTemplateScope, navTypeDefinition.transactionTemplateScope) &&
         Objects.equals(this.transactionExclusionFilter, navTypeDefinition.transactionExclusionFilter) &&
         Objects.equals(this.pricingBasis, navTypeDefinition.pricingBasis) &&
-        Objects.equals(this.swingPricing, navTypeDefinition.swingPricing);
+        Objects.equals(this.swingPricing, navTypeDefinition.swingPricing) &&
+        Objects.equals(this.notionalDealingCostTableId, navTypeDefinition.notionalDealingCostTableId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -620,7 +646,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -654,6 +680,7 @@ public class NavTypeDefinition {
     sb.append("    transactionExclusionFilter: ").append(toIndentedString(transactionExclusionFilter)).append("\n");
     sb.append("    pricingBasis: ").append(toIndentedString(pricingBasis)).append("\n");
     sb.append("    swingPricing: ").append(toIndentedString(swingPricing)).append("\n");
+    sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -696,6 +723,7 @@ public class NavTypeDefinition {
     openapiFields.add("transactionExclusionFilter");
     openapiFields.add("pricingBasis");
     openapiFields.add("swingPricing");
+    openapiFields.add("notionalDealingCostTableId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -790,6 +818,10 @@ public class NavTypeDefinition {
       // validate the optional field `swingPricing`
       if (jsonObj.get("swingPricing") != null && !jsonObj.get("swingPricing").isJsonNull()) {
         SwingPricingRule.validateJsonElement(jsonObj.get("swingPricing"));
+      }
+      // validate the optional field `notionalDealingCostTableId`
+      if (jsonObj.get("notionalDealingCostTableId") != null && !jsonObj.get("notionalDealingCostTableId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("notionalDealingCostTableId"));
       }
   }
 

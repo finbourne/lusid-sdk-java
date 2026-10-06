@@ -4,6 +4,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchDeleteWithholdingTaxRates**](WithholdingTaxApi.md#batchDeleteWithholdingTaxRates) | **POST** /api/withholdingtax/rates/{scope}/{code}/$batchDelete | [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset. |
+| [**batchUpsertWithholdingTaxRates**](WithholdingTaxApi.md#batchUpsertWithholdingTaxRates) | **POST** /api/withholdingtax/rates/{scope}/{code}/$batchUpsert | [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. |
 | [**createWithholdingTaxDatasetDefinitions**](WithholdingTaxApi.md#createWithholdingTaxDatasetDefinitions) | **POST** /api/withholdingtax/datasetdefinitions | [EARLY ACCESS] CreateWithholdingTaxDatasetDefinitions: Create the Withholding Tax dataset definitions. |
 | [**deleteWithholdingTaxConfiguration**](WithholdingTaxApi.md#deleteWithholdingTaxConfiguration) | **DELETE** /api/withholdingtax/configurations/{scope}/{code} | [EARLY ACCESS] DeleteWithholdingTaxConfiguration: Delete a Withholding Tax Configuration. |
 | [**deleteWithholdingTaxDatasetDefinition**](WithholdingTaxApi.md#deleteWithholdingTaxDatasetDefinition) | **DELETE** /api/withholdingtax/datasetdefinitions/{scope}/{code} | [EARLY ACCESS] DeleteWithholdingTaxDatasetDefinition: Delete a Withholding Tax dataset definition. |
@@ -14,6 +16,200 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**patchWithholdingTaxDatasetDefinition**](WithholdingTaxApi.md#patchWithholdingTaxDatasetDefinition) | **PATCH** /api/withholdingtax/datasetdefinitions/{scope}/{code} | [EARLY ACCESS] PatchWithholdingTaxDatasetDefinition: Patch a Withholding Tax dataset definition. |
 | [**upsertWithholdingTaxConfiguration**](WithholdingTaxApi.md#upsertWithholdingTaxConfiguration) | **POST** /api/withholdingtax/configurations/{scope}/{code} | [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration. |
 
+
+
+## batchDeleteWithholdingTaxRates
+
+> BatchDeleteRelationalDataResponse batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode)
+
+[EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
+
+Also how a rate with no replacement is expired, there being no effectiveTo field. Deletes are  bitemporal, so rows stay readable at a prior asAt.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.WithholdingTaxApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class WithholdingTaxApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WithholdingTaxApi apiInstance = apiFactory.build(WithholdingTaxApi.class);
+
+        WithholdingTaxApi apiInstance = ApiFactoryBuilder.build(fileName).build(WithholdingTaxApi.class);
+        String scope = "scope_example"; // String | The Scope of the rate dataset's relational dataset definition.
+        String code = "code_example"; // String | The Code of the rate dataset's relational dataset definition.
+        Map<String, DeleteWithholdingTaxRateRequest> requestBody = new HashMap(); // Map<String, DeleteWithholdingTaxRateRequest> | The rate rows to delete, keyed by a correlation id echoed back in the response.
+        String successMode = "Atomic"; // String | Atomic or Partial; defaults to Atomic. In Partial mode failures are returned   in the response body with a 200 status.
+        try {
+            // uncomment the below to set overrides at the request level
+            // BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode).execute(opts);
+
+            BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WithholdingTaxApi#batchDeleteWithholdingTaxRates");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The Scope of the rate dataset&#39;s relational dataset definition. | |
+| **code** | **String**| The Code of the rate dataset&#39;s relational dataset definition. | |
+| **requestBody** | [**Map&lt;String, DeleteWithholdingTaxRateRequest&gt;**](DeleteWithholdingTaxRateRequest.md)| The rate rows to delete, keyed by a correlation id echoed back in the response. | |
+| **successMode** | **String**| Atomic or Partial; defaults to Atomic. In Partial mode failures are returned   in the response body with a 200 status. | [optional] [default to Atomic] |
+
+### Return type
+
+[**BatchDeleteRelationalDataResponse**](BatchDeleteRelationalDataResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted rate row metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## batchUpsertWithholdingTaxRates
+
+> BatchUpsertWithholdingTaxRatesResponse batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode)
+
+[EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
+
+Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.WithholdingTaxApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class WithholdingTaxApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WithholdingTaxApi apiInstance = apiFactory.build(WithholdingTaxApi.class);
+
+        WithholdingTaxApi apiInstance = ApiFactoryBuilder.build(fileName).build(WithholdingTaxApi.class);
+        String scope = "scope_example"; // String | The Scope of the rate dataset's relational dataset definition.
+        String code = "code_example"; // String | The Code of the rate dataset's relational dataset definition.
+        Map<String, UpsertWithholdingTaxRateRequest> requestBody = new HashMap(); // Map<String, UpsertWithholdingTaxRateRequest> | The rate rows to upsert, keyed by a correlation id echoed back in the response.
+        String successMode = "Atomic"; // String | Atomic or Partial; defaults to Atomic, because a partly loaded feed silently   under-withholds. In Partial mode failures are returned in the response body with a 200 status.
+        try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode).execute(opts);
+
+            BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WithholdingTaxApi#batchUpsertWithholdingTaxRates");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The Scope of the rate dataset&#39;s relational dataset definition. | |
+| **code** | **String**| The Code of the rate dataset&#39;s relational dataset definition. | |
+| **requestBody** | [**Map&lt;String, UpsertWithholdingTaxRateRequest&gt;**](UpsertWithholdingTaxRateRequest.md)| The rate rows to upsert, keyed by a correlation id echoed back in the response. | |
+| **successMode** | **String**| Atomic or Partial; defaults to Atomic, because a partly loaded feed silently   under-withholds. In Partial mode failures are returned in the response body with a 200 status. | [optional] [default to Atomic] |
+
+### Return type
+
+[**BatchUpsertWithholdingTaxRatesResponse**](BatchUpsertWithholdingTaxRatesResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Withholding Tax rate rows that were upserted. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## createWithholdingTaxDatasetDefinitions

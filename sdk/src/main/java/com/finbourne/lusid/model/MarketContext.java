@@ -77,6 +77,14 @@ public class MarketContext {
   @SerializedName(SERIALIZED_NAME_GROUPED_MARKET_RULES)
   private List<GroupOfMarketDataKeyRules> groupedMarketRules;
 
+  public static final String SERIALIZED_NAME_BID_MARKET_RULES = "bidMarketRules";
+  @SerializedName(SERIALIZED_NAME_BID_MARKET_RULES)
+  private List<MarketDataKeyRule> bidMarketRules;
+
+  public static final String SERIALIZED_NAME_OFFER_MARKET_RULES = "offerMarketRules";
+  @SerializedName(SERIALIZED_NAME_OFFER_MARKET_RULES)
+  private List<MarketDataKeyRule> offerMarketRules;
+
   public MarketContext() {
   }
 
@@ -209,6 +217,64 @@ public class MarketContext {
   }
 
 
+  public MarketContext bidMarketRules(List<MarketDataKeyRule> bidMarketRules) {
+    
+    this.bidMarketRules = bidMarketRules;
+    return this;
+  }
+
+  public MarketContext addBidMarketRulesItem(MarketDataKeyRule bidMarketRulesItem) {
+    if (this.bidMarketRules == null) {
+      this.bidMarketRules = new ArrayList<>();
+    }
+    this.bidMarketRules.add(bidMarketRulesItem);
+    return this;
+  }
+
+   /**
+   * An optional, separate set of market data key rules for the bid side of a valuation, used when a bid  result is requested (a Valuation/PV address key with the PricingBasis option set to Bid) or the recipe&#39;s  pricing basis (MarketOptions.PricingBasis) is Bid. When supplied,  instrument prices (Price, DirtyPrice and ForwardPrice quotes) are resolved from these rules only, and are  reported as missing if none of them finds the price; rates curves and volatility surfaces are taken from  these rules where one of them matches, and from the market rules otherwise; FX rates, fixings and resets  always come from the market rules. Each rule reads the quote field it is written with. When omitted, the  bid side re-targets the instrument price rules in MarketRules onto the bid field, as before.
+   * @return bidMarketRules
+  **/
+  @jakarta.annotation.Nullable
+  public List<MarketDataKeyRule> getBidMarketRules() {
+    return bidMarketRules;
+  }
+
+
+  public void setBidMarketRules(List<MarketDataKeyRule> bidMarketRules) {
+    this.bidMarketRules = bidMarketRules;
+  }
+
+
+  public MarketContext offerMarketRules(List<MarketDataKeyRule> offerMarketRules) {
+    
+    this.offerMarketRules = offerMarketRules;
+    return this;
+  }
+
+  public MarketContext addOfferMarketRulesItem(MarketDataKeyRule offerMarketRulesItem) {
+    if (this.offerMarketRules == null) {
+      this.offerMarketRules = new ArrayList<>();
+    }
+    this.offerMarketRules.add(offerMarketRulesItem);
+    return this;
+  }
+
+   /**
+   * An optional, separate set of market data key rules for the offer (ask) side of a valuation, used when an  ask result is requested (a Valuation/PV address key with the PricingBasis option set to Ask) or the recipe&#39;s  pricing basis (MarketOptions.PricingBasis) is Ask. Resolved in the  same way as BidMarketRules. When omitted, the offer side re-targets the instrument price rules in  MarketRules onto the ask field, as before.
+   * @return offerMarketRules
+  **/
+  @jakarta.annotation.Nullable
+  public List<MarketDataKeyRule> getOfferMarketRules() {
+    return offerMarketRules;
+  }
+
+
+  public void setOfferMarketRules(List<MarketDataKeyRule> offerMarketRules) {
+    this.offerMarketRules = offerMarketRules;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -223,7 +289,9 @@ public class MarketContext {
         Objects.equals(this.suppliers, marketContext.suppliers) &&
         Objects.equals(this.options, marketContext.options) &&
         Objects.equals(this.specificRules, marketContext.specificRules) &&
-        Objects.equals(this.groupedMarketRules, marketContext.groupedMarketRules);
+        Objects.equals(this.groupedMarketRules, marketContext.groupedMarketRules) &&
+        Objects.equals(this.bidMarketRules, marketContext.bidMarketRules) &&
+        Objects.equals(this.offerMarketRules, marketContext.offerMarketRules);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -232,7 +300,7 @@ public class MarketContext {
 
   @Override
   public int hashCode() {
-    return Objects.hash(marketRules, suppliers, options, specificRules, groupedMarketRules);
+    return Objects.hash(marketRules, suppliers, options, specificRules, groupedMarketRules, bidMarketRules, offerMarketRules);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -251,6 +319,8 @@ public class MarketContext {
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    specificRules: ").append(toIndentedString(specificRules)).append("\n");
     sb.append("    groupedMarketRules: ").append(toIndentedString(groupedMarketRules)).append("\n");
+    sb.append("    bidMarketRules: ").append(toIndentedString(bidMarketRules)).append("\n");
+    sb.append("    offerMarketRules: ").append(toIndentedString(offerMarketRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -278,6 +348,8 @@ public class MarketContext {
     openapiFields.add("options");
     openapiFields.add("specificRules");
     openapiFields.add("groupedMarketRules");
+    openapiFields.add("bidMarketRules");
+    openapiFields.add("offerMarketRules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -343,6 +415,34 @@ public class MarketContext {
           // validate the optional field `groupedMarketRules` (array)
           for (int i = 0; i < jsonArraygroupedMarketRules.size(); i++) {
             GroupOfMarketDataKeyRules.validateJsonElement(jsonArraygroupedMarketRules.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("bidMarketRules") != null && !jsonObj.get("bidMarketRules").isJsonNull()) {
+        JsonArray jsonArraybidMarketRules = jsonObj.getAsJsonArray("bidMarketRules");
+        if (jsonArraybidMarketRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bidMarketRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bidMarketRules` to be an array in the JSON string but got `%s`", jsonObj.get("bidMarketRules").toString()));
+          }
+
+          // validate the optional field `bidMarketRules` (array)
+          for (int i = 0; i < jsonArraybidMarketRules.size(); i++) {
+            MarketDataKeyRule.validateJsonElement(jsonArraybidMarketRules.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("offerMarketRules") != null && !jsonObj.get("offerMarketRules").isJsonNull()) {
+        JsonArray jsonArrayofferMarketRules = jsonObj.getAsJsonArray("offerMarketRules");
+        if (jsonArrayofferMarketRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("offerMarketRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `offerMarketRules` to be an array in the JSON string but got `%s`", jsonObj.get("offerMarketRules").toString()));
+          }
+
+          // validate the optional field `offerMarketRules` (array)
+          for (int i = 0; i < jsonArrayofferMarketRules.size(); i++) {
+            MarketDataKeyRule.validateJsonElement(jsonArrayofferMarketRules.get(i));
           };
         }
       }

@@ -65,7 +65,7 @@ public class AllocationMapsApiExample {
         String scope = "scope_example"; // String | The scope of the Allocation Map.
         String code = "code_example"; // String | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.
         AllocationMapException allocationMapException = new AllocationMapException(); // AllocationMapException | The exception to add.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the exception applies. Defaults to the current LUSID system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label of the map version that gains the exception. Defaults to the exception's effectiveFrom when that is earlier than the current LUSID system datetime, and to the current LUSID system datetime otherwise. Refused if the map has any version starting after that datetime, including a re-save of the same definition, or a later deletion, since neither would carry the exception. Also refused, with the reason, if the defaulted effectiveFrom is before the map's first version.
         try {
             // uncomment the below to set overrides at the request level
             // AllocationMap result = apiInstance.addAllocationMapException(scope, code, allocationMapException, effectiveAt).execute(opts);
@@ -90,7 +90,7 @@ public class AllocationMapsApiExample {
 | **scope** | **String**| The scope of the Allocation Map. | |
 | **code** | **String**| The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. | |
 | **allocationMapException** | [**AllocationMapException**](AllocationMapException.md)| The exception to add. | |
-| **effectiveAt** | **String**| The effective datetime or cut label from which the exception applies. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label of the map version that gains the exception. Defaults to the exception&#39;s effectiveFrom when that is earlier than the current LUSID system datetime, and to the current LUSID system datetime otherwise. Refused if the map has any version starting after that datetime, including a re-save of the same definition, or a later deletion, since neither would carry the exception. Also refused, with the reason, if the defaulted effectiveFrom is before the map&#39;s first version. | [optional] |
 
 ### Return type
 
@@ -548,7 +548,7 @@ public class AllocationMapsApiExample {
         String scope = "scope_example"; // String | The scope of the Allocation Map.
         String code = "code_example"; // String | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.
         String investorRecordId = "investorRecordId_example"; // String | The investor record whose exception is removed.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. Refused if the map has any version starting after that datetime, including a re-save of the same definition, which would still carry the exception, or a later deletion.
         try {
             // uncomment the below to set overrides at the request level
             // AllocationMap result = apiInstance.removeAllocationMapException(scope, code, investorRecordId, effectiveAt).execute(opts);
@@ -573,7 +573,7 @@ public class AllocationMapsApiExample {
 | **scope** | **String**| The scope of the Allocation Map. | |
 | **code** | **String**| The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. | |
 | **investorRecordId** | **String**| The investor record whose exception is removed. | |
-| **effectiveAt** | **String**| The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. Refused if the map has any version starting after that datetime, including a re-save of the same definition, which would still carry the exception, or a later deletion. | [optional] |
 
 ### Return type
 

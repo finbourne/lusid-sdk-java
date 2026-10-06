@@ -6,13 +6,13 @@ The request body for the aggregated-returns (TWR) endpoint: the entity to calcul
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entity** | [**AggregatedReturnsEntityId**](AggregatedReturnsEntityId.md) |  | [default to AggregatedReturnsEntityId]
-**returnsScope** | **String** |  | [default to String]
-**returnsCode** | **String** |  | [default to String]
+**returnsId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **metrics** | [**List&lt;ReturnsMetric&gt;**](ReturnsMetric.md) |  | [default to List<ReturnsMetric>]
 **period** | **String** | Available values: Daily, Monthly. | [optional] [default to String]
 **fromEffectiveAt** | **String** |  | [optional] [default to String]
 **toEffectiveAt** | **String** |  | [optional] [default to String]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
+**currency** | **String** |  | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.AggregatedReturnsEntityRequest;
@@ -21,24 +21,24 @@ import java.lang.System;
 import java.net.URI;
 
 AggregatedReturnsEntityId Entity = new AggregatedReturnsEntityId();
-String ReturnsScope = "example ReturnsScope";
-String ReturnsCode = "example ReturnsCode";
+ResourceId ReturnsId = new ResourceId();
 List<ReturnsMetric> Metrics = new List<ReturnsMetric>();
 @jakarta.annotation.Nullable String Period = "example Period";
 @jakarta.annotation.Nullable String FromEffectiveAt = "example FromEffectiveAt";
 @jakarta.annotation.Nullable String ToEffectiveAt = "example ToEffectiveAt";
 @jakarta.annotation.Nullable OffsetDateTime AsAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable String Currency = "example Currency";
 
 
 AggregatedReturnsEntityRequest aggregatedReturnsEntityRequestInstance = new AggregatedReturnsEntityRequest()
     .Entity(Entity)
-    .ReturnsScope(ReturnsScope)
-    .ReturnsCode(ReturnsCode)
+    .ReturnsId(ReturnsId)
     .Metrics(Metrics)
     .Period(Period)
     .FromEffectiveAt(FromEffectiveAt)
     .ToEffectiveAt(ToEffectiveAt)
-    .AsAt(AsAt);
+    .AsAt(AsAt)
+    .Currency(Currency);
 ```
 
 

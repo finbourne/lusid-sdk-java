@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **collectionType** | **String** | Describes whether a collection property should behave as a Set or as an Array. Available values: Set, Array. | [optional] [default to String]
 **customEntityTypes** | **List&lt;String&gt;** | The custom entity types that properties relating to this property definition can be applied to. | [optional] [default to List<String>]
 **valueFormat** | **String** | The format in which values for this property definition should be represented. Available values: Text, Html. | [optional] [default to String]
+**qualifierDefinitions** | [**List&lt;QualifierDefinitionRequest&gt;**](QualifierDefinitionRequest.md) | The qualifiers to declare against this property definition. A qualifier attaches an individually typed supporting fact to a value of this property, sharing that value&#39;s interval. Supported only where the constraint style is Property and no collection type is set. | [optional] [default to List<QualifierDefinitionRequest>]
 
 ```java
 import com.finbourne.lusid.model.CreatePropertyDefinitionRequest;
@@ -35,6 +36,7 @@ String LifeTime = "example LifeTime";
 @jakarta.annotation.Nullable String CollectionType = "example CollectionType";
 @jakarta.annotation.Nullable List<String> CustomEntityTypes = new List<String>();
 @jakarta.annotation.Nullable String ValueFormat = "example ValueFormat";
+@jakarta.annotation.Nullable List<QualifierDefinitionRequest> QualifierDefinitions = new List<QualifierDefinitionRequest>();
 
 
 CreatePropertyDefinitionRequest createPropertyDefinitionRequestInstance = new CreatePropertyDefinitionRequest()
@@ -49,7 +51,8 @@ CreatePropertyDefinitionRequest createPropertyDefinitionRequestInstance = new Cr
     .PropertyDescription(PropertyDescription)
     .CollectionType(CollectionType)
     .CustomEntityTypes(CustomEntityTypes)
-    .ValueFormat(ValueFormat);
+    .ValueFormat(ValueFormat)
+    .QualifierDefinitions(QualifierDefinitions);
 ```
 
 

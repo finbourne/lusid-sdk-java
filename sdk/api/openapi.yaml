@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10163
+  version: 0.11.10178
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -8828,8 +8828,14 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the exception
-          applies. Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label of the map version that\
+          \ gains the exception. Defaults to the exception's effectiveFrom when that\
+          \ is earlier than the current LUSID system datetime, and to the current\
+          \ LUSID system datetime otherwise. Refused if the map has any version starting\
+          \ after that datetime, including a re-save of the same definition, or a\
+          \ later deletion, since neither would carry the exception. Also refused,\
+          \ with the reason, if the defaulted effectiveFrom is before the map's first\
+          \ version."
         explode: true
         in: query
         name: effectiveAt
@@ -9084,9 +9090,11 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the exception
-          no longer applies. Defaults to the current LUSID system datetime if not
-          specified.
+      - description: "The effective datetime or cut label from which the exception\
+          \ no longer applies. Defaults to the current LUSID system datetime if not\
+          \ specified. Refused if the map has any version starting after that datetime,\
+          \ including a re-save of the same definition, which would still carry the\
+          \ exception, or a later deletion."
         explode: true
         in: query
         name: effectiveAt
@@ -42306,7 +42314,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               primaryNavType:
@@ -42401,7 +42409,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               primaryNavType:
@@ -42496,7 +42504,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               primaryNavType:
@@ -42591,7 +42599,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               primaryNavType:
@@ -42694,7 +42702,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -42800,7 +42808,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -42906,7 +42914,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43051,7 +43059,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               yearEndDate:
@@ -43083,7 +43091,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               yearEndDate:
@@ -43115,7 +43123,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               yearEndDate:
@@ -43147,7 +43155,7 @@ paths:
                   Instrument/default/Figi: GB0007980598
               - instrumentIdentifiers:
                   Instrument/default/ClientInternal: ShareClassA
-              type: Master
+              type: Standalone
               inceptionDate: 2024-01-01T00:00:00.0000000+00:00
               decimalPlaces: 6
               yearEndDate:
@@ -43190,7 +43198,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43296,7 +43304,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43402,7 +43410,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43674,7 +43682,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43780,7 +43788,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -43886,7 +43894,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -44240,7 +44248,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -44346,7 +44354,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -44452,7 +44460,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -45134,7 +45142,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -45240,7 +45248,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -45346,7 +45354,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -46219,7 +46227,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -46325,7 +46333,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -46431,7 +46439,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -48907,7 +48915,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -49013,7 +49021,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -49119,7 +49127,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -49329,7 +49337,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -49435,7 +49443,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -49541,7 +49549,7 @@ paths:
                     Instrument/default/Figi: GB0007980598
                   lusidInstrumentId: LUID_00000123
                   instrumentScope: MyScope
-                type: Master
+                type: Standalone
                 inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                 decimalPlaces: 6
                 primaryNavType:
@@ -52309,7 +52317,9 @@ paths:
       x-accepts: application/json
   /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate:
     post:
-      description: Moves a 'Final' status Valuation Point to status 'Estimate'.
+      description: "Moves a 'Final' status Valuation Point to status 'Estimate'.\r\
+        \nReturns the reverted Valuation Point alongside every variant that\r\nfinalising\
+        \ it had rejected."
       operationId: RevertValuationPointToEstimate
       parameters:
       - description: The scope of the Fund.
@@ -52378,390 +52388,117 @@ paths:
           content:
             text/plain:
               example:
-                href: http://finbourne.com
-                type: ValuationPoint
+                valuationPointCode: ValuationJan2024
+                navTypeCode: Primary
                 status: Estimate
-                fundDetails:
-                  currency: GBP
-                fundValuationPointData:
-                  backOut: {}
-                  dealing: {}
-                  pnL:
-                    nonClassSpecificPnl: {}
-                    aggregatedClassPnl: {}
-                    aggregatedGroupPnl: {}
-                    totalPnl: {}
-                  gav: 99999.99
-                  fees: {}
-                  nav: 99999.99
-                  miscellaneous: {}
-                  previousValuationPointData:
-                    nav:
-                      amount: 0
-                shareClassData:
-                - shareClassBreakdown:
-                    backOut: {}
-                    dealing:
-                      classDealing: {}
-                      classDealingUnits: {}
-                    pnL:
-                      apportionedNonClassSpecificPnl: {}
-                      classPnl: {}
-                      groupApportionedPnl: {}
-                      totalPnl: {}
-                    gav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    fees: {}
-                    nav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    miscellaneous: {}
-                    shareClassToFundFxRate: 1
-                    capitalRatio: 1
-                    previousShareClassBreakdown:
-                      nav:
-                        amount:
-                          fundCurrencyAmount: 0
-                          shareClassCurrencyAmount: 0
-                      shareClassToFundFxRate: 1
-                  shareClassDetails:
-                    lusidInstrumentId: LUID_12345678
-                    instrumentScope: default
-                    shortCode: ShareClassShortCode
-                    domCurrency: USD
-                    instrumentActive: true
-                valuationPointCode: FebValuationPoint
-                previousValuationPointCode: JanValuationPoint
-                apportionmentResults:
-                - apportionmentLevel: Fund
-                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
-                  factors:
-                  - memberIdentifier: ShareClassShortCode
-                    fundScope: FundScope
-                    fundCode: FundCode
-                    baseValue: 99999.99
-                    apportionmentFactor: 1
-                    inputs:
-                    - code: openingNav
-                      displayName: Opening NAV
-                      value: 89999.99
-                    - code: netDealing
-                      displayName: Net dealing
-                      value: 10000
-                bucketSetResults:
-                - bucketSetCode: BucketSetCode
-                  isApportionment: true
-                  nodes:
-                  - nodeType: Fund
-                    nav: 99999.99
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      displayName: Profit and Loss
-                    label: Fund Display Name
-                    previousNav: 89999.99
-                  - nodeType: Class
-                    shareClassShortCode: ShareClassShortCode
-                    nav: 99999.99
-                    capitalRatio: 1
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      sourceBreakdown:
-                        classSpecific: 99.99
-                        nonClassSpecific: 800
-                        AllocationGroupCode: 100
-                      perUnitValue: 0.0999
-                      unitsInIssue: 10000
-                      previousCumulativePerUnitValue: 0.9
-                      cumulativePerUnitValue: 0.9999
-                      displayName: Profit and Loss
-                    perUnitValue: 9.9999
-                    sharesInIssue: 10000
-                    previousPerUnitValue: 9
-                    previousSharesInIssue: 10000
-                    label: Share Class Name
-                    previousNav: 89999.99
-                    netDealingUnits: 0
-                    shareClassDetails:
-                      lusidInstrumentId: LUID_12345678
-                      instrumentScope: default
-                      shortCode: ShareClassShortCode
-                      domCurrency: USD
-                      instrumentActive: true
-                    navShareClassCurrency: 142857.12857142856
-                    shareClassToFundFxRate: 0.7
-                    previousNavShareClassCurrency: 179999.98
-                  displayName: Bucket Set Display Name
-                  isBackfilled: false
-                isBackfilled: false
+                applyClearDown: true
+                effectiveAt: 2024-01-31T23:59:59.0000000+00:00
+                previous:
+                  valuationPointCode: ValuationDec2023
+                  name: ValuationDec2023
+                  effectiveAt: 2023-12-31T23:59:59.0000000+00:00
+                  queryAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  holdingsAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  valuationAsAt: 2024-01-01T09:00:00.0000000+00:00
+                variants:
+                - variant: default
+                  displayName: ValuationJan2024
+                  description: Valuation Point for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties:
+                    DiaryEntry/AccountingDiary/Reports:
+                      key: DiaryEntry/AccountingDiary/Reports
+                      value:
+                        labelValue: Some comments
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
+                - variant: first
+                  displayName: ValuationJan2024
+                  description: Alternative fee accrual for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties: {}
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
               schema:
-                $ref: '#/components/schemas/ValuationPointDataResponse'
+                $ref: '#/components/schemas/RevertValuationPointResponse'
             application/json:
               example:
-                href: http://finbourne.com
-                type: ValuationPoint
+                valuationPointCode: ValuationJan2024
+                navTypeCode: Primary
                 status: Estimate
-                fundDetails:
-                  currency: GBP
-                fundValuationPointData:
-                  backOut: {}
-                  dealing: {}
-                  pnL:
-                    nonClassSpecificPnl: {}
-                    aggregatedClassPnl: {}
-                    aggregatedGroupPnl: {}
-                    totalPnl: {}
-                  gav: 99999.99
-                  fees: {}
-                  nav: 99999.99
-                  miscellaneous: {}
-                  previousValuationPointData:
-                    nav:
-                      amount: 0
-                shareClassData:
-                - shareClassBreakdown:
-                    backOut: {}
-                    dealing:
-                      classDealing: {}
-                      classDealingUnits: {}
-                    pnL:
-                      apportionedNonClassSpecificPnl: {}
-                      classPnl: {}
-                      groupApportionedPnl: {}
-                      totalPnl: {}
-                    gav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    fees: {}
-                    nav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    miscellaneous: {}
-                    shareClassToFundFxRate: 1
-                    capitalRatio: 1
-                    previousShareClassBreakdown:
-                      nav:
-                        amount:
-                          fundCurrencyAmount: 0
-                          shareClassCurrencyAmount: 0
-                      shareClassToFundFxRate: 1
-                  shareClassDetails:
-                    lusidInstrumentId: LUID_12345678
-                    instrumentScope: default
-                    shortCode: ShareClassShortCode
-                    domCurrency: USD
-                    instrumentActive: true
-                valuationPointCode: FebValuationPoint
-                previousValuationPointCode: JanValuationPoint
-                apportionmentResults:
-                - apportionmentLevel: Fund
-                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
-                  factors:
-                  - memberIdentifier: ShareClassShortCode
-                    fundScope: FundScope
-                    fundCode: FundCode
-                    baseValue: 99999.99
-                    apportionmentFactor: 1
-                    inputs:
-                    - code: openingNav
-                      displayName: Opening NAV
-                      value: 89999.99
-                    - code: netDealing
-                      displayName: Net dealing
-                      value: 10000
-                bucketSetResults:
-                - bucketSetCode: BucketSetCode
-                  isApportionment: true
-                  nodes:
-                  - nodeType: Fund
-                    nav: 99999.99
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      displayName: Profit and Loss
-                    label: Fund Display Name
-                    previousNav: 89999.99
-                  - nodeType: Class
-                    shareClassShortCode: ShareClassShortCode
-                    nav: 99999.99
-                    capitalRatio: 1
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      sourceBreakdown:
-                        classSpecific: 99.99
-                        nonClassSpecific: 800
-                        AllocationGroupCode: 100
-                      perUnitValue: 0.0999
-                      unitsInIssue: 10000
-                      previousCumulativePerUnitValue: 0.9
-                      cumulativePerUnitValue: 0.9999
-                      displayName: Profit and Loss
-                    perUnitValue: 9.9999
-                    sharesInIssue: 10000
-                    previousPerUnitValue: 9
-                    previousSharesInIssue: 10000
-                    label: Share Class Name
-                    previousNav: 89999.99
-                    netDealingUnits: 0
-                    shareClassDetails:
-                      lusidInstrumentId: LUID_12345678
-                      instrumentScope: default
-                      shortCode: ShareClassShortCode
-                      domCurrency: USD
-                      instrumentActive: true
-                    navShareClassCurrency: 142857.12857142856
-                    shareClassToFundFxRate: 0.7
-                    previousNavShareClassCurrency: 179999.98
-                  displayName: Bucket Set Display Name
-                  isBackfilled: false
-                isBackfilled: false
+                applyClearDown: true
+                effectiveAt: 2024-01-31T23:59:59.0000000+00:00
+                previous:
+                  valuationPointCode: ValuationDec2023
+                  name: ValuationDec2023
+                  effectiveAt: 2023-12-31T23:59:59.0000000+00:00
+                  queryAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  holdingsAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  valuationAsAt: 2024-01-01T09:00:00.0000000+00:00
+                variants:
+                - variant: default
+                  displayName: ValuationJan2024
+                  description: Valuation Point for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties:
+                    DiaryEntry/AccountingDiary/Reports:
+                      key: DiaryEntry/AccountingDiary/Reports
+                      value:
+                        labelValue: Some comments
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
+                - variant: first
+                  displayName: ValuationJan2024
+                  description: Alternative fee accrual for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties: {}
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
               schema:
-                $ref: '#/components/schemas/ValuationPointDataResponse'
+                $ref: '#/components/schemas/RevertValuationPointResponse'
             text/json:
               example:
-                href: http://finbourne.com
-                type: ValuationPoint
+                valuationPointCode: ValuationJan2024
+                navTypeCode: Primary
                 status: Estimate
-                fundDetails:
-                  currency: GBP
-                fundValuationPointData:
-                  backOut: {}
-                  dealing: {}
-                  pnL:
-                    nonClassSpecificPnl: {}
-                    aggregatedClassPnl: {}
-                    aggregatedGroupPnl: {}
-                    totalPnl: {}
-                  gav: 99999.99
-                  fees: {}
-                  nav: 99999.99
-                  miscellaneous: {}
-                  previousValuationPointData:
-                    nav:
-                      amount: 0
-                shareClassData:
-                - shareClassBreakdown:
-                    backOut: {}
-                    dealing:
-                      classDealing: {}
-                      classDealingUnits: {}
-                    pnL:
-                      apportionedNonClassSpecificPnl: {}
-                      classPnl: {}
-                      groupApportionedPnl: {}
-                      totalPnl: {}
-                    gav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    fees: {}
-                    nav:
-                      fundCurrencyAmount: 99999.99
-                      shareClassCurrencyAmount: 99999.99
-                    miscellaneous: {}
-                    shareClassToFundFxRate: 1
-                    capitalRatio: 1
-                    previousShareClassBreakdown:
-                      nav:
-                        amount:
-                          fundCurrencyAmount: 0
-                          shareClassCurrencyAmount: 0
-                      shareClassToFundFxRate: 1
-                  shareClassDetails:
-                    lusidInstrumentId: LUID_12345678
-                    instrumentScope: default
-                    shortCode: ShareClassShortCode
-                    domCurrency: USD
-                    instrumentActive: true
-                valuationPointCode: FebValuationPoint
-                previousValuationPointCode: JanValuationPoint
-                apportionmentResults:
-                - apportionmentLevel: Fund
-                  apportionmentMethodPropertyKey: AllocationMethod/default/PriorAdjustedNav
-                  factors:
-                  - memberIdentifier: ShareClassShortCode
-                    fundScope: FundScope
-                    fundCode: FundCode
-                    baseValue: 99999.99
-                    apportionmentFactor: 1
-                    inputs:
-                    - code: openingNav
-                      displayName: Opening NAV
-                      value: 89999.99
-                    - code: netDealing
-                      displayName: Net dealing
-                      value: 10000
-                bucketSetResults:
-                - bucketSetCode: BucketSetCode
-                  isApportionment: true
-                  nodes:
-                  - nodeType: Fund
-                    nav: 99999.99
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      displayName: Profit and Loss
-                    label: Fund Display Name
-                    previousNav: 89999.99
-                  - nodeType: Class
-                    shareClassShortCode: ShareClassShortCode
-                    nav: 99999.99
-                    capitalRatio: 1
-                    buckets:
-                    - bucketId: PnL
-                      bucketType: PnL
-                      value: 999.99
-                      previousCumulativeValue: 9000
-                      cumulativeValue: 9999.99
-                      sourceBreakdown:
-                        classSpecific: 99.99
-                        nonClassSpecific: 800
-                        AllocationGroupCode: 100
-                      perUnitValue: 0.0999
-                      unitsInIssue: 10000
-                      previousCumulativePerUnitValue: 0.9
-                      cumulativePerUnitValue: 0.9999
-                      displayName: Profit and Loss
-                    perUnitValue: 9.9999
-                    sharesInIssue: 10000
-                    previousPerUnitValue: 9
-                    previousSharesInIssue: 10000
-                    label: Share Class Name
-                    previousNav: 89999.99
-                    netDealingUnits: 0
-                    shareClassDetails:
-                      lusidInstrumentId: LUID_12345678
-                      instrumentScope: default
-                      shortCode: ShareClassShortCode
-                      domCurrency: USD
-                      instrumentActive: true
-                    navShareClassCurrency: 142857.12857142856
-                    shareClassToFundFxRate: 0.7
-                    previousNavShareClassCurrency: 179999.98
-                  displayName: Bucket Set Display Name
-                  isBackfilled: false
-                isBackfilled: false
+                applyClearDown: true
+                effectiveAt: 2024-01-31T23:59:59.0000000+00:00
+                previous:
+                  valuationPointCode: ValuationDec2023
+                  name: ValuationDec2023
+                  effectiveAt: 2023-12-31T23:59:59.0000000+00:00
+                  queryAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  holdingsAsAt: 2024-01-01T09:00:00.0000000+00:00
+                  valuationAsAt: 2024-01-01T09:00:00.0000000+00:00
+                variants:
+                - variant: default
+                  displayName: ValuationJan2024
+                  description: Valuation Point for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties:
+                    DiaryEntry/AccountingDiary/Reports:
+                      key: DiaryEntry/AccountingDiary/Reports
+                      value:
+                        labelValue: Some comments
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
+                - variant: first
+                  displayName: ValuationJan2024
+                  description: Alternative fee accrual for January 2024
+                  asAt: 2024-02-01T09:00:00.0000000+00:00
+                  properties: {}
+                  version:
+                    effectiveFrom: 2024-01-31T23:59:59.0000000+00:00
+                    asAtDate: 2024-02-01T09:00:00.0000000+00:00
               schema:
-                $ref: '#/components/schemas/ValuationPointDataResponse'
-          description: The updated Valuation Point response as a result of it be marked
-            as Estimate.
+                $ref: '#/components/schemas/RevertValuationPointResponse'
+          description: "The reverted Estimate Valuation Point, with every variant\
+            \ resurrected by the revert"
         "400":
           content:
             text/plain:
@@ -57336,6 +57073,17 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: Expression to filter the result set.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -57641,7 +57389,7 @@ paths:
                         Instrument/default/Figi: GB0007980598
                       lusidInstrumentId: LUID_00000123
                       instrumentScope: MyScope
-                    type: Master
+                    type: Standalone
                     inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                     decimalPlaces: 6
                     primaryNavType:
@@ -57791,7 +57539,7 @@ paths:
                         Instrument/default/Figi: GB0007980598
                       lusidInstrumentId: LUID_00000123
                       instrumentScope: MyScope
-                    type: Master
+                    type: Standalone
                     inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                     decimalPlaces: 6
                     primaryNavType:
@@ -57941,7 +57689,7 @@ paths:
                         Instrument/default/Figi: GB0007980598
                       lusidInstrumentId: LUID_00000123
                       instrumentScope: MyScope
-                    type: Master
+                    type: Standalone
                     inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                     decimalPlaces: 6
                     primaryNavType:
@@ -58436,7 +58184,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -58602,7 +58350,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -58768,7 +58516,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -59113,7 +58861,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -59279,7 +59027,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -59445,7 +59193,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -59972,7 +59720,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -60138,7 +59886,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -60304,7 +60052,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -60616,7 +60364,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -60782,7 +60530,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -60948,7 +60696,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -61199,7 +60947,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -61365,7 +61113,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -61531,7 +61279,7 @@ paths:
                       Instrument/default/Figi: GB0007980598
                     lusidInstrumentId: LUID_00000123
                     instrumentScope: MyScope
-                  type: Master
+                  type: Standalone
                   inceptionDate: 2024-01-01T00:00:00.0000000+00:00
                   decimalPlaces: 6
                   primaryNavType:
@@ -130003,7 +129751,7 @@ paths:
         \ request body over the\r\n effective window. Currently, supports a single\
         \ entity of type Portfolio and calculates a daily\r\n return grid. The recipe,\
         \ fee handling, and flow-discrepancy handling are taken from the persisted\r\
-        \n Returns entity identified by the supplied scope/code; the request fails\
+        \n Returns entity identified by the supplied returns id; the request fails\
         \ if no such entity exists."
       operationId: GetAggregatedReturns
       requestBody:
@@ -130014,8 +129762,9 @@ paths:
                 scope: myScope
                 code: myPortfolio
                 entityType: Portfolio
-              returnsScope: myReturnsScope
-              returnsCode: myReturnsCode
+              returnsId:
+                scope: myReturnsScope
+                code: myReturnsCode
               metrics:
               - type: Return
                 alias: return
@@ -130028,8 +129777,9 @@ paths:
                 scope: myScope
                 code: myPortfolio
                 entityType: Portfolio
-              returnsScope: myReturnsScope
-              returnsCode: myReturnsCode
+              returnsId:
+                scope: myReturnsScope
+                code: myReturnsCode
               metrics:
               - type: Return
                 alias: return
@@ -130042,8 +129792,9 @@ paths:
                 scope: myScope
                 code: myPortfolio
                 entityType: Portfolio
-              returnsScope: myReturnsScope
-              returnsCode: myReturnsCode
+              returnsId:
+                scope: myReturnsScope
+                code: myReturnsCode
               metrics:
               - type: Return
                 alias: return
@@ -130056,8 +129807,9 @@ paths:
                 scope: myScope
                 code: myPortfolio
                 entityType: Portfolio
-              returnsScope: myReturnsScope
-              returnsCode: myReturnsCode
+              returnsId:
+                scope: myReturnsScope
+                code: myReturnsCode
               metrics:
               - type: Return
                 alias: return
@@ -169544,6 +169296,427 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/withholdingtax/rates/{scope}/{code}/$batchDelete:
+    post:
+      description: "Also how a rate with no replacement is expired, there being no\
+        \ effectiveTo field. Deletes are\r\nbitemporal, so rows stay readable at a\
+        \ prior asAt."
+      operationId: BatchDeleteWithholdingTaxRates
+      parameters:
+      - description: The Scope of the rate dataset's relational dataset definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The Code of the rate dataset's relational dataset definition.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Atomic or Partial; defaults to Atomic. In Partial mode failures\
+          \ are returned\r\n in the response body with a 200 status."
+        explode: true
+        in: query
+        name: successMode
+        required: false
+        schema:
+          default: Atomic
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteWithholdingTaxRateRequest'
+              type: object
+          application/json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteWithholdingTaxRateRequest'
+              type: object
+          text/json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteWithholdingTaxRateRequest'
+              type: object
+          application/*+json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/DeleteWithholdingTaxRateRequest'
+              type: object
+        description: "The rate rows to delete, keyed by a correlation id echoed back\
+          \ in the response."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                  point1: 2025-01-01T12:00:00.0000000+00:00
+                failed:
+                  point2:
+                    id: NotFound
+                    type: The data point could not be found for deletion.
+                href: http://example.com
+              schema:
+                $ref: '#/components/schemas/BatchDeleteRelationalDataResponse'
+            application/json:
+              example:
+                values:
+                  point1: 2025-01-01T12:00:00.0000000+00:00
+                failed:
+                  point2:
+                    id: NotFound
+                    type: The data point could not be found for deletion.
+                href: http://example.com
+              schema:
+                $ref: '#/components/schemas/BatchDeleteRelationalDataResponse'
+            text/json:
+              example:
+                values:
+                  point1: 2025-01-01T12:00:00.0000000+00:00
+                failed:
+                  point2:
+                    id: NotFound
+                    type: The data point could not be found for deletion.
+                href: http://example.com
+              schema:
+                $ref: '#/components/schemas/BatchDeleteRelationalDataResponse'
+          description: The deleted rate row metadata.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding\
+        \ Tax rate rows from a rate dataset."
+      tags:
+      - Withholding Tax
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/withholdingtax/rates/{scope}/{code}/$batchUpsert:
+    post:
+      description: "Row identity is the matching dimensions plus effectiveAt; a rate\
+        \ is superseded by loading a row with a\r\nlater effectiveAt for the same\
+        \ dimensions."
+      operationId: BatchUpsertWithholdingTaxRates
+      parameters:
+      - description: The Scope of the rate dataset's relational dataset definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The Code of the rate dataset's relational dataset definition.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Atomic or Partial; defaults to Atomic, because a partly loaded\
+          \ feed silently\r\n under-withholds. In Partial mode failures are returned\
+          \ in the response body with a 200 status."
+        explode: true
+        in: query
+        name: successMode
+        required: false
+        schema:
+          default: Atomic
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.3
+                  treatyRate: 0.15
+                  treatyRAS: true
+              gb-treaty-fr:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: FR
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.25
+                  treatyRate: 0.15
+                  treatyRAS: false
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertWithholdingTaxRateRequest'
+              type: object
+          application/json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.3
+                  treatyRate: 0.15
+                  treatyRAS: true
+              gb-treaty-fr:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: FR
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.25
+                  treatyRate: 0.15
+                  treatyRAS: false
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertWithholdingTaxRateRequest'
+              type: object
+          text/json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.3
+                  treatyRate: 0.15
+                  treatyRAS: true
+              gb-treaty-fr:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: FR
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.25
+                  treatyRate: 0.15
+                  treatyRAS: false
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertWithholdingTaxRateRequest'
+              type: object
+          application/*+json:
+            example:
+              gb-treaty-us:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: US
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.3
+                  treatyRate: 0.15
+                  treatyRAS: true
+              gb-treaty-fr:
+                seriesIdentifiers:
+                  taxCountry: GB
+                  profileType: TreatyEligible
+                  instrumentDomicile: FR
+                effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                valueFields:
+                  countryRate: 0.25
+                  treatyRate: 0.15
+                  treatyRAS: false
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertWithholdingTaxRateRequest'
+              type: object
+        description: "The rate rows to upsert, keyed by a correlation id echoed back\
+          \ in the response."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                  gb-treaty-us:
+                    relationalDatasetDefinitionId:
+                      scope: WithholdingTax
+                      code: wht-main-rates
+                    seriesIdentifiers:
+                      taxCountry:
+                        value: GB
+                      profileType:
+                        value: TreatyEligible
+                      instrumentDomicile:
+                        value: US
+                    effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                    valueFields:
+                      countryRate:
+                        value: 0.3
+                      treatyRate:
+                        value: 0.15
+                      treatyRAS:
+                        value: true
+                    metaDataFields: {}
+                    effectiveAtEntered: 2026-01-01T00:00:00.0000000+00:00
+                failed: {}
+              schema:
+                $ref: '#/components/schemas/BatchUpsertWithholdingTaxRatesResponse'
+            application/json:
+              example:
+                values:
+                  gb-treaty-us:
+                    relationalDatasetDefinitionId:
+                      scope: WithholdingTax
+                      code: wht-main-rates
+                    seriesIdentifiers:
+                      taxCountry:
+                        value: GB
+                      profileType:
+                        value: TreatyEligible
+                      instrumentDomicile:
+                        value: US
+                    effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                    valueFields:
+                      countryRate:
+                        value: 0.3
+                      treatyRate:
+                        value: 0.15
+                      treatyRAS:
+                        value: true
+                    metaDataFields: {}
+                    effectiveAtEntered: 2026-01-01T00:00:00.0000000+00:00
+                failed: {}
+              schema:
+                $ref: '#/components/schemas/BatchUpsertWithholdingTaxRatesResponse'
+            text/json:
+              example:
+                values:
+                  gb-treaty-us:
+                    relationalDatasetDefinitionId:
+                      scope: WithholdingTax
+                      code: wht-main-rates
+                    seriesIdentifiers:
+                      taxCountry:
+                        value: GB
+                      profileType:
+                        value: TreatyEligible
+                      instrumentDomicile:
+                        value: US
+                    effectiveAt: 2026-01-01T00:00:00.0000000+00:00
+                    valueFields:
+                      countryRate:
+                        value: 0.3
+                      treatyRate:
+                        value: 0.15
+                      treatyRAS:
+                        value: true
+                    metaDataFields: {}
+                    effectiveAtEntered: 2026-01-01T00:00:00.0000000+00:00
+                failed: {}
+              schema:
+                $ref: '#/components/schemas/BatchUpsertWithholdingTaxRatesResponse'
+          description: The Withholding Tax rate rows that were upserted.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding\
+        \ Tax rate rows, applying the write-time gates before any row lands."
+      tags:
+      - Withholding Tax
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/workspaces/{visibility}:
     get:
       description: List workspaces.
@@ -176195,6 +176368,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -176207,6 +176381,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -176311,6 +176486,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -176323,6 +176499,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -176552,14 +176729,16 @@ components:
         \ `Return` metric and\r\na `Daily` grid."
       example:
         period: period
-        returnsScope: returnsScope
         asAt: 2000-01-23T04:56:07.000+00:00
+        returnsId:
+          code: code
+          scope: scope
+        currency: currency
         metrics:
         - alias: alias
           type: type
         - alias: alias
           type: type
-        returnsCode: returnsCode
         entity:
           code: code
           entityType: entityType
@@ -176569,16 +176748,8 @@ components:
       properties:
         entity:
           $ref: '#/components/schemas/AggregatedReturnsEntityId'
-        returnsScope:
-          maxLength: 256
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        returnsCode:
-          maxLength: 256
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
+        returnsId:
+          $ref: '#/components/schemas/ResourceId'
         metrics:
           items:
             $ref: '#/components/schemas/ReturnsMetric'
@@ -176599,11 +176770,15 @@ components:
           format: date-time
           nullable: true
           type: string
+        currency:
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - entity
       - metrics
-      - returnsCode
-      - returnsScope
+      - returnsId
       type: object
     AggregatedReturnsRequest:
       additionalProperties: false
@@ -181445,6 +181620,7 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
               price: 1.4658129805029452
+              currentFace: 9.301444243932576
               units: 0.8008281904610115
               settlementDate: 2000-01-23T04:56:07.000+00:00
               portfolioCost: 6.027456183070403
@@ -181457,6 +181633,7 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
               price: 1.4658129805029452
+              currentFace: 9.301444243932576
               units: 0.8008281904610115
               settlementDate: 2000-01-23T04:56:07.000+00:00
               portfolioCost: 6.027456183070403
@@ -184738,6 +184915,79 @@ components:
           nullable: true
           type: array
       type: object
+    BatchUpsertWithholdingTaxRatesResponse:
+      additionalProperties: false
+      example:
+        values:
+          key:
+            effectiveAtEntered: effectiveAtEntered
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            relationalDatasetDefinitionId:
+              code: code
+              scope: scope
+            valueFields:
+              key:
+                value: ""
+            seriesIdentifiers:
+              key:
+                value: ""
+            metaDataFields:
+              key:
+                value: ""
+            dataPointVersion:
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 0
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              entityUniqueId: entityUniqueId
+              userIdCreated: userIdCreated
+              requestIdModified: requestIdModified
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/WithholdingTaxRateResponse'
+          description: A list of data points that were successfully upserted.
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: "A list of data points that failed to be upserted, along with\
+            \ the associated error message."
+          nullable: true
+          type: object
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     Block:
       additionalProperties: false
       description: "A block of orders for the same instrument, intended to record\
@@ -187662,6 +187912,34 @@ components:
             format: double
             nullable: true
             type: number
+          spreadAnchorSource:
+            description: "Where the spread anchor comes from when no CreditSpreadCurve\
+              \ is served for the instrument. Only\r\nread when SpreadAnchoredRisk\
+              \ is true.\r\n \r\nSupported string (enumeration) values are: [MarketData,\
+              \ SolvedFromPrice].\r\nDefaults to MarketData - the original behaviour,\
+              \ where a ZSpread quote must be served from the\r\nquote store or as\
+              \ a market data override - when not supplied.\r\n \r\nSolvedFromPrice:\
+              \ a served CreditSpreadCurve or ZSpread quote still wins. When neither\
+              \ is served,\r\nthe bond is valued exactly as the plain lookup values\
+              \ it, and the anchor is the z-spread its\r\nlooked-up price implies\
+              \ over the discounting curve (the value Analytic/ZSpread returns). Risk\r\
+              \nmeasures, carry and scenario columns solve that anchor against the\
+              \ unperturbed market and hold it,\r\nso no spread has to be stored or\
+              \ sent."
+            nullable: true
+            type: string
+          spreadTermStructure:
+            description: "In spread-anchored mode with a credit-spread curve (a served\
+              \ CreditSpreadCurve, or the curve the\r\nrisk engine builds from the\
+              \ ZSpread quote), discount each cash flow at the curve's level on its\
+              \ own\r\npayment date instead of discounting every flow at the level\
+              \ at maturity. Pointwise and bucketed\r\nRisk/Credit ladders then split\
+              \ CS01 by cash flow, and the curve built from a quote carries one pillar\r\
+              \nper remaining payment date. The price is unchanged on a flat curve\
+              \ (and so on any curve built from a\r\nquote) but not on a sloped served\
+              \ curve.\r\nDefaults to false - the level at maturity - when not supplied."
+            nullable: true
+            type: boolean
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
@@ -203377,6 +203655,29 @@ components:
                 operator: operator
               assetClass: assetClass
             mask: mask
+          offerMarketRules:
+          - quoteInterval: quoteInterval
+            field: field
+            sourceSystem: sourceSystem
+            supplier: supplier
+            priceSource: priceSource
+            asAt: 2000-01-23T04:56:07.000+00:00
+            dataScope: dataScope
+            fallThroughOnAccessDenied: true
+            quoteType: Price
+            key: key
+            mask: mask
+          - quoteInterval: quoteInterval
+            field: field
+            sourceSystem: sourceSystem
+            supplier: supplier
+            priceSource: priceSource
+            asAt: 2000-01-23T04:56:07.000+00:00
+            dataScope: dataScope
+            fallThroughOnAccessDenied: true
+            quoteType: Price
+            key: key
+            mask: mask
           suppliers:
             Fx: Fx
             Rates: Rates
@@ -203415,6 +203716,29 @@ components:
             pricingBasis: pricingBasis
             attemptToInferMissingFxOnFixings: true
             defaultScope: defaultScope
+          bidMarketRules:
+          - quoteInterval: quoteInterval
+            field: field
+            sourceSystem: sourceSystem
+            supplier: supplier
+            priceSource: priceSource
+            asAt: 2000-01-23T04:56:07.000+00:00
+            dataScope: dataScope
+            fallThroughOnAccessDenied: true
+            quoteType: Price
+            key: key
+            mask: mask
+          - quoteInterval: quoteInterval
+            field: field
+            sourceSystem: sourceSystem
+            supplier: supplier
+            priceSource: priceSource
+            asAt: 2000-01-23T04:56:07.000+00:00
+            dataScope: dataScope
+            fallThroughOnAccessDenied: true
+            quoteType: Price
+            key: key
+            mask: mask
           groupedMarketRules:
           - marketRules:
             - quoteInterval: quoteInterval
@@ -207421,22 +207745,58 @@ components:
     CreatePropertyDefinitionRequest:
       additionalProperties: false
       example:
+        code: code
+        propertyDescription: propertyDescription
+        displayName: displayName
+        dataTypeId:
+          code: code
+          scope: scope
+        valueFormat: valueFormat
         constraintStyle: constraintStyle
         collectionType: collectionType
         customEntityTypes:
         - customEntityTypes
         - customEntityTypes
-        code: code
-        propertyDescription: propertyDescription
-        displayName: displayName
         domain: NotDefined
         scope: scope
-        dataTypeId:
-          code: code
-          scope: scope
-        valueFormat: valueFormat
         lifeTime: Perpetual
         valueRequired: true
+        qualifierDefinitions:
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
       properties:
         domain:
           description: "The domain that the property exists in. Available values:\
@@ -207601,6 +207961,16 @@ components:
           minLength: 0
           nullable: true
           type: string
+        qualifierDefinitions:
+          description: "The qualifiers to declare against this property definition.\
+            \ A qualifier attaches an individually typed supporting fact to a value\
+            \ of this property, sharing that value's interval. Supported only where\
+            \ the constraint style is Property and no collection type is set."
+          items:
+            $ref: '#/components/schemas/QualifierDefinitionRequest'
+          maxItems: 50
+          nullable: true
+          type: array
       required:
       - code
       - dataTypeId
@@ -207897,6 +208267,29 @@ components:
                   operator: operator
                 assetClass: assetClass
               mask: mask
+            offerMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             suppliers:
               Fx: Fx
               Rates: Rates
@@ -207935,6 +208328,29 @@ components:
               pricingBasis: pricingBasis
               attemptToInferMissingFxOnFixings: true
               defaultScope: defaultScope
+            bidMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             groupedMarketRules:
             - marketRules:
               - quoteInterval: quoteInterval
@@ -215810,6 +216226,27 @@ components:
           nullable: true
           type: array
       type: object
+    DeleteWithholdingTaxRateRequest:
+      additionalProperties: false
+      example:
+        effectiveAt: effectiveAt
+        seriesIdentifiers:
+          key: ""
+      properties:
+        seriesIdentifiers:
+          additionalProperties:
+            nullable: true
+          description: "The identifiers that uniquely define this DataSeries, if any,\
+            \ structured according to the FieldSchema of the parent RelationalDatasetDefinition."
+          nullable: true
+          type: object
+        effectiveAt:
+          description: The effectiveAt or cut-label datetime of the DataPoint.
+          minLength: 1
+          type: string
+      required:
+      - effectiveAt
+      type: object
     DelistingEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -220156,6 +220593,46 @@ components:
       type: object
     EstimateVariant:
       additionalProperties: false
+      example:
+        dateOfLastPcaScan: 2000-01-23T04:56:07.000+00:00
+        displayName: displayName
+        variant: variant
+        asAt: 2000-01-23T04:56:07.000+00:00
+        description: description
+        holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
       properties:
         variant:
           description: The Variant of the Calendar Entry. Together with the valuation
@@ -225586,19 +226063,10 @@ components:
       additionalProperties: false
       description: A Fund entity.
       example:
-        aborId:
-          code: code
-          scope: scope
         displayName: displayName
         yearEndDate:
           month: 7
           day: 5
-        fundInstrument:
-          instrumentIdentifiers:
-            key: instrumentIdentifiers
-        fundConfigurationId:
-          code: code
-          scope: scope
         allocationGroups:
         - apportionmentMethodProperty:
             code: code
@@ -225639,6 +226107,31 @@ components:
           launchDate: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         type: type
+        baseCurrency: baseCurrency
+        inceptionDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        id:
+          code: code
+          scope: scope
+        shortCode: shortCode
+        aborId:
+          code: code
+          scope: scope
+        fundInstrument:
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+        fundConfigurationId:
+          code: code
+          scope: scope
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -225653,7 +226146,6 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
-        baseCurrency: baseCurrency
         decimalPlaces: 18
         shareClasses:
         - launchPrice: 7.061401241503109
@@ -225754,7 +226246,6 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
           investorType: investorType
-        inceptionDate: 2000-01-23T04:56:07.000+00:00
         primaryNavType:
           subHoldingKeys:
           - subHoldingKeys
@@ -225768,6 +226259,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -225800,6 +226294,7 @@ components:
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
           status: status
+        taxTransparency: taxTransparency
         portfolioIds:
         - code: code
           displayName: displayName
@@ -225811,20 +226306,6 @@ components:
           scope: scope
           description: description
           portfolioEntityType: portfolioEntityType
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-        id:
-          code: code
-          scope: scope
-        shortCode: shortCode
         properties:
           key:
             referenceData:
@@ -225857,6 +226338,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -225901,6 +226385,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -225994,11 +226481,20 @@ components:
           type: array
         type:
           description: "The kind of vehicle the fund is, one of the values of the\
-            \ system/fundVehicleType data type. Standalone, Master and Feeder are\
-            \ retained for compatibility; the structural role of a fund now lives\
-            \ on its fund structure node. Available values: Standalone, Master, Feeder,\
-            \ SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle,\
-            \ GPInterestHolder, SMA, CTA."
+            \ system/fundVehicleType data type. Master and Feeder are deprecated:\
+            \ the structural role of a fund now lives on its fund structure node,\
+            \ and a fund with either type cannot be a member of a fund structure.\
+            \ Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker,\
+            \ CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder,\
+            \ SMA, CTA."
+          nullable: true
+          type: string
+        taxTransparency:
+          description: "Whether the Fund is looked through for tax: Transparent passes\
+            \ its income and gains to its holders as their own, Opaque is taxed in\
+            \ its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle\
+            \ or GPInterestHolder is Transparent. A fund structure requires it on\
+            \ every SPV and AIV member. Available values: Transparent, Opaque."
           nullable: true
           type: string
         inceptionDate:
@@ -227635,6 +228131,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -227666,6 +228165,7 @@ components:
           leaderNavTypeCode: leaderNavTypeCode
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
+        taxTransparency: taxTransparency
         portfolioIds:
         - code: code
           scope: scope
@@ -227706,6 +228206,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -227749,6 +228252,9 @@ components:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
             outflowBasis: outflowBasis
+          notionalDealingCostTableId:
+            code: code
+            scope: scope
           displayName: displayName
           postingModuleCodes:
           - postingModuleCodes
@@ -227845,11 +228351,20 @@ components:
           type: array
         type:
           description: "The kind of vehicle the fund is, one of the values of the\
-            \ system/fundVehicleType data type. Standalone, Master and Feeder are\
-            \ retained for compatibility; the structural role of a fund now lives\
-            \ on its fund structure node. Available values: Standalone, Master, Feeder,\
-            \ SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle,\
-            \ GPInterestHolder, SMA, CTA."
+            \ system/fundVehicleType data type. Master and Feeder are deprecated:\
+            \ the structural role of a fund now lives on its fund structure node,\
+            \ and a fund with either type cannot be a member of a fund structure.\
+            \ Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker,\
+            \ CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder,\
+            \ SMA, CTA."
+          nullable: true
+          type: string
+        taxTransparency:
+          description: "Whether the Fund is looked through for tax: Transparent passes\
+            \ its income and gains to its holders as their own, Opaque is taxed in\
+            \ its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle\
+            \ or GPInterestHolder is Transparent. A fund structure requires it on\
+            \ every SPV and AIV member. Available values: Transparent, Opaque."
           nullable: true
           type: string
         inceptionDate:
@@ -228894,11 +229409,12 @@ components:
           type: array
         type:
           description: "The kind of vehicle the fund is, one of the values of the\
-            \ system/fundVehicleType data type. Standalone, Master and Feeder are\
-            \ retained for compatibility; the structural role of a fund now lives\
-            \ on its fund structure node. Available values: Standalone, Master, Feeder,\
-            \ SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle,\
-            \ GPInterestHolder, SMA, CTA."
+            \ system/fundVehicleType data type. Master and Feeder are deprecated:\
+            \ the structural role of a fund now lives on its fund structure node,\
+            \ and a fund with either type cannot be a member of a fund structure.\
+            \ Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker,\
+            \ CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder,\
+            \ SMA, CTA."
           minLength: 1
           type: string
         inceptionDate:
@@ -229159,19 +229675,10 @@ components:
         - navTypeCodes
         - navTypeCodes
         funds:
-        - aborId:
-            code: code
-            scope: scope
-          displayName: displayName
+        - displayName: displayName
           yearEndDate:
             month: 7
             day: 5
-          fundInstrument:
-            instrumentIdentifiers:
-              key: instrumentIdentifiers
-          fundConfigurationId:
-            code: code
-            scope: scope
           allocationGroups:
           - apportionmentMethodProperty:
               code: code
@@ -229212,6 +229719,31 @@ components:
             launchDate: 2000-01-23T04:56:07.000+00:00
             lusidInstrumentId: lusidInstrumentId
           type: type
+          baseCurrency: baseCurrency
+          inceptionDate: 2000-01-23T04:56:07.000+00:00
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          shortCode: shortCode
+          aborId:
+            code: code
+            scope: scope
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+          fundConfigurationId:
+            code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -229226,7 +229758,6 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
           - launchPrice: 7.061401241503109
@@ -229327,7 +229858,6 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             investorType: investorType
-          inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
             - subHoldingKeys
@@ -229341,6 +229871,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -229373,6 +229906,7 @@ components:
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
             status: status
+          taxTransparency: taxTransparency
           portfolioIds:
           - code: code
             displayName: displayName
@@ -229384,20 +229918,6 @@ components:
             scope: scope
             description: description
             portfolioEntityType: portfolioEntityType
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          shortCode: shortCode
           properties:
             key:
               referenceData:
@@ -229430,6 +229950,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -229474,6 +229997,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -229507,19 +230033,10 @@ components:
             pricingBasis: pricingBasis
             status: status
           createInstrument: true
-        - aborId:
-            code: code
-            scope: scope
-          displayName: displayName
+        - displayName: displayName
           yearEndDate:
             month: 7
             day: 5
-          fundInstrument:
-            instrumentIdentifiers:
-              key: instrumentIdentifiers
-          fundConfigurationId:
-            code: code
-            scope: scope
           allocationGroups:
           - apportionmentMethodProperty:
               code: code
@@ -229560,6 +230077,31 @@ components:
             launchDate: 2000-01-23T04:56:07.000+00:00
             lusidInstrumentId: lusidInstrumentId
           type: type
+          baseCurrency: baseCurrency
+          inceptionDate: 2000-01-23T04:56:07.000+00:00
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          shortCode: shortCode
+          aborId:
+            code: code
+            scope: scope
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+          fundConfigurationId:
+            code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -229574,7 +230116,6 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
           - launchPrice: 7.061401241503109
@@ -229675,7 +230216,6 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             investorType: investorType
-          inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
             - subHoldingKeys
@@ -229689,6 +230229,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -229721,6 +230264,7 @@ components:
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
             status: status
+          taxTransparency: taxTransparency
           portfolioIds:
           - code: code
             displayName: displayName
@@ -229732,20 +230276,6 @@ components:
             scope: scope
             description: description
             portfolioEntityType: portfolioEntityType
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          shortCode: shortCode
           properties:
             key:
               referenceData:
@@ -229778,6 +230308,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -229822,6 +230355,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -234207,6 +234743,29 @@ components:
                   operator: operator
                 assetClass: assetClass
               mask: mask
+            offerMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             suppliers:
               Fx: Fx
               Rates: Rates
@@ -234245,6 +234804,29 @@ components:
               pricingBasis: pricingBasis
               attemptToInferMissingFxOnFixings: true
               defaultScope: defaultScope
+            bidMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             groupedMarketRules:
             - marketRules:
               - quoteInterval: quoteInterval
@@ -236767,6 +237349,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -236779,6 +237362,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -236885,6 +237469,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -236897,6 +237482,7 @@ components:
             amount: 0.8008281904610115
             currency: currency
           price: 1.4658129805029452
+          currentFace: 9.301444243932576
           units: 0.8008281904610115
           settlementDate: 2000-01-23T04:56:07.000+00:00
           portfolioCost: 6.027456183070403
@@ -237617,6 +238203,7 @@ components:
               amount: 0.8008281904610115
               currency: currency
             price: 1.4658129805029452
+            currentFace: 9.301444243932576
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
@@ -237629,6 +238216,7 @@ components:
               amount: 0.8008281904610115
               currency: currency
             price: 1.4658129805029452
+            currentFace: 9.301444243932576
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
@@ -237682,6 +238270,7 @@ components:
               amount: 0.8008281904610115
               currency: currency
             price: 1.4658129805029452
+            currentFace: 9.301444243932576
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
@@ -237694,6 +238283,7 @@ components:
               amount: 0.8008281904610115
               currency: currency
             price: 1.4658129805029452
+            currentFace: 9.301444243932576
             units: 0.8008281904610115
             settlementDate: 2000-01-23T04:56:07.000+00:00
             portfolioCost: 6.027456183070403
@@ -237956,6 +238546,28 @@ components:
             format: int32
             nullable: true
             type: integer
+          priceAtQuoteImpliedOas:
+            description: "Price at the option-adjusted spread implied by the instrument's\
+              \ quoted price instead of at zero\r\nspread, so the present value reproduces\
+              \ the quote and curve risk is measured with the spread\r\nheld. The\
+              \ spread is taken from an OAS quote served for the instrument (a quote\
+              \ with descriptor\r\n[\"OAS\"] keyed by its identifiers, from a Rate-typed\
+              \ market data rule or a market data override)\r\nwhen there is one,\
+              \ and is then held across every bumped valuation; otherwise it is solved\r\
+              \nagainst the quote in the valuation's own market. A request for a Risk\
+              \ measure requires the OAS\r\nquote, since a spread re-solved under\
+              \ each bump would leave the measure at zero. Also prices\r\ncompounded-in-arrears\
+              \ floating coupons, exercises inside an unfixed floating period and\r\
+              \nasset-backed bonds, which are otherwise refused. For an asset-backed\
+              \ bond the pool is held at\r\nits latest factor to legal final with\
+              \ no prepayment, so EffectiveDuration and Pv01 on those\r\nrows are\
+              \ legal-final durations that ignore prepayment. A constant prepayment\
+              \ rate served for the\r\npool is not read, so the lattice, the cash\
+              \ flows and WeightedAverageLife all run the pool to\r\nlegal final.\
+              \ Rows carry the source of the spread in the Diagnostics/Model/PricingSpreadSource\r\
+              \nvaluation key. Defaults to false."
+            nullable: true
+            type: boolean
           modelOptionsType:
             description: "Available values: Invalid, OpaqueModelOptions, EmptyModelOptions,\
               \ IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions,\
@@ -250601,6 +251213,29 @@ components:
               operator: operator
             assetClass: assetClass
           mask: mask
+        offerMarketRules:
+        - quoteInterval: quoteInterval
+          field: field
+          sourceSystem: sourceSystem
+          supplier: supplier
+          priceSource: priceSource
+          asAt: 2000-01-23T04:56:07.000+00:00
+          dataScope: dataScope
+          fallThroughOnAccessDenied: true
+          quoteType: Price
+          key: key
+          mask: mask
+        - quoteInterval: quoteInterval
+          field: field
+          sourceSystem: sourceSystem
+          supplier: supplier
+          priceSource: priceSource
+          asAt: 2000-01-23T04:56:07.000+00:00
+          dataScope: dataScope
+          fallThroughOnAccessDenied: true
+          quoteType: Price
+          key: key
+          mask: mask
         suppliers:
           Fx: Fx
           Rates: Rates
@@ -250639,6 +251274,29 @@ components:
           pricingBasis: pricingBasis
           attemptToInferMissingFxOnFixings: true
           defaultScope: defaultScope
+        bidMarketRules:
+        - quoteInterval: quoteInterval
+          field: field
+          sourceSystem: sourceSystem
+          supplier: supplier
+          priceSource: priceSource
+          asAt: 2000-01-23T04:56:07.000+00:00
+          dataScope: dataScope
+          fallThroughOnAccessDenied: true
+          quoteType: Price
+          key: key
+          mask: mask
+        - quoteInterval: quoteInterval
+          field: field
+          sourceSystem: sourceSystem
+          supplier: supplier
+          priceSource: priceSource
+          asAt: 2000-01-23T04:56:07.000+00:00
+          dataScope: dataScope
+          fallThroughOnAccessDenied: true
+          quoteType: Price
+          key: key
+          mask: mask
         groupedMarketRules:
         - marketRules:
           - quoteInterval: quoteInterval
@@ -250732,6 +251390,35 @@ components:
             Therefore, heuristically, rule groups should be kept as small as possible."
           items:
             $ref: '#/components/schemas/GroupOfMarketDataKeyRules'
+          nullable: true
+          type: array
+        bidMarketRules:
+          description: "An optional, separate set of market data key rules for the\
+            \ bid side of a valuation, used when a bid\r\nresult is requested (a Valuation/PV\
+            \ address key with the PricingBasis option set to Bid) or the recipe's\r\
+            \npricing basis (MarketOptions.PricingBasis) is Bid. When supplied,\r\n\
+            instrument prices (Price, DirtyPrice and ForwardPrice quotes) are resolved\
+            \ from these rules only, and are\r\nreported as missing if none of them\
+            \ finds the price; rates curves and volatility surfaces are taken from\r\
+            \nthese rules where one of them matches, and from the market rules otherwise;\
+            \ FX rates, fixings and resets\r\nalways come from the market rules. Each\
+            \ rule reads the quote field it is written with. When omitted, the\r\n\
+            bid side re-targets the instrument price rules in MarketRules onto the\
+            \ bid field, as before."
+          items:
+            $ref: '#/components/schemas/MarketDataKeyRule'
+          nullable: true
+          type: array
+        offerMarketRules:
+          description: "An optional, separate set of market data key rules for the\
+            \ offer (ask) side of a valuation, used when an\r\nask result is requested\
+            \ (a Valuation/PV address key with the PricingBasis option set to Ask)\
+            \ or the recipe's\r\npricing basis (MarketOptions.PricingBasis) is Ask.\
+            \ Resolved in the\r\nsame way as BidMarketRules. When omitted, the offer\
+            \ side re-targets the instrument price rules in\r\nMarketRules onto the\
+            \ ask field, as before."
+          items:
+            $ref: '#/components/schemas/MarketDataKeyRule'
           nullable: true
           type: array
       type: object
@@ -254210,6 +254897,9 @@ components:
           thresholdPercentageOfNav: 0.5637376656633328
           inflowBasis: inflowBasis
           outflowBasis: outflowBasis
+        notionalDealingCostTableId:
+          code: code
+          scope: scope
         displayName: displayName
         postingModuleCodes:
         - postingModuleCodes
@@ -254365,6 +255055,8 @@ components:
           type: string
         swingPricing:
           $ref: '#/components/schemas/SwingPricingRule'
+        notionalDealingCostTableId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - accountingMethod
       - amortisationMethod
@@ -254392,6 +255084,9 @@ components:
           thresholdPercentageOfNav: 0.5637376656633328
           inflowBasis: inflowBasis
           outflowBasis: outflowBasis
+        notionalDealingCostTableId:
+          code: code
+          scope: scope
         displayName: displayName
         postingModuleCodes:
         - postingModuleCodes
@@ -254542,6 +255237,8 @@ components:
           type: string
         swingPricing:
           $ref: '#/components/schemas/SwingPricingRule'
+        notionalDealingCostTableId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - accountingMethod
       - amortisationMethod
@@ -258517,7 +259214,8 @@ components:
           type: string
         transactionStatus:
           description: "The status of the transaction. Available values: Active, Amended,\
-            \ Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp."
+            \ Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal,\
+            \ Reversed."
           enum:
           - Active
           - Amended
@@ -258525,6 +259223,8 @@ components:
           - ActiveReversal
           - ActiveTrueUp
           - CancelledTrueUp
+          - PendingReversal
+          - Reversed
           type: string
         entryDateTime:
           description: The asAt datetime that the transaction was added to LUSID.
@@ -264359,19 +265059,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - aborId:
-            code: code
-            scope: scope
-          displayName: displayName
+        - displayName: displayName
           yearEndDate:
             month: 7
             day: 5
-          fundInstrument:
-            instrumentIdentifiers:
-              key: instrumentIdentifiers
-          fundConfigurationId:
-            code: code
-            scope: scope
           allocationGroups:
           - apportionmentMethodProperty:
               code: code
@@ -264412,6 +265103,31 @@ components:
             launchDate: 2000-01-23T04:56:07.000+00:00
             lusidInstrumentId: lusidInstrumentId
           type: type
+          baseCurrency: baseCurrency
+          inceptionDate: 2000-01-23T04:56:07.000+00:00
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          shortCode: shortCode
+          aborId:
+            code: code
+            scope: scope
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+          fundConfigurationId:
+            code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -264426,7 +265142,6 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
           - launchPrice: 7.061401241503109
@@ -264527,7 +265242,6 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             investorType: investorType
-          inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
             - subHoldingKeys
@@ -264541,6 +265255,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -264573,6 +265290,7 @@ components:
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
             status: status
+          taxTransparency: taxTransparency
           portfolioIds:
           - code: code
             displayName: displayName
@@ -264584,20 +265302,6 @@ components:
             scope: scope
             description: description
             portfolioEntityType: portfolioEntityType
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          shortCode: shortCode
           properties:
             key:
               referenceData:
@@ -264630,6 +265334,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -264674,6 +265381,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -264707,19 +265417,10 @@ components:
             pricingBasis: pricingBasis
             status: status
           createInstrument: true
-        - aborId:
-            code: code
-            scope: scope
-          displayName: displayName
+        - displayName: displayName
           yearEndDate:
             month: 7
             day: 5
-          fundInstrument:
-            instrumentIdentifiers:
-              key: instrumentIdentifiers
-          fundConfigurationId:
-            code: code
-            scope: scope
           allocationGroups:
           - apportionmentMethodProperty:
               code: code
@@ -264760,6 +265461,31 @@ components:
             launchDate: 2000-01-23T04:56:07.000+00:00
             lusidInstrumentId: lusidInstrumentId
           type: type
+          baseCurrency: baseCurrency
+          inceptionDate: 2000-01-23T04:56:07.000+00:00
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          shortCode: shortCode
+          aborId:
+            code: code
+            scope: scope
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+          fundConfigurationId:
+            code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -264774,7 +265500,6 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           decimalPlaces: 18
           shareClasses:
           - launchPrice: 7.061401241503109
@@ -264875,7 +265600,6 @@ components:
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
             investorType: investorType
-          inceptionDate: 2000-01-23T04:56:07.000+00:00
           primaryNavType:
             subHoldingKeys:
             - subHoldingKeys
@@ -264889,6 +265613,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -264921,6 +265648,7 @@ components:
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
             status: status
+          taxTransparency: taxTransparency
           portfolioIds:
           - code: code
             displayName: displayName
@@ -264932,20 +265660,6 @@ components:
             scope: scope
             description: description
             portfolioEntityType: portfolioEntityType
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          shortCode: shortCode
           properties:
             key:
               referenceData:
@@ -264978,6 +265692,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -265022,6 +265739,9 @@ components:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
               outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
             displayName: displayName
             postingModuleCodes:
             - postingModuleCodes
@@ -265648,19 +266368,10 @@ components:
           - navTypeCodes
           - navTypeCodes
           funds:
-          - aborId:
-              code: code
-              scope: scope
-            displayName: displayName
+          - displayName: displayName
             yearEndDate:
               month: 7
               day: 5
-            fundInstrument:
-              instrumentIdentifiers:
-                key: instrumentIdentifiers
-            fundConfigurationId:
-              code: code
-              scope: scope
             allocationGroups:
             - apportionmentMethodProperty:
                 code: code
@@ -265701,6 +266412,31 @@ components:
               launchDate: 2000-01-23T04:56:07.000+00:00
               lusidInstrumentId: lusidInstrumentId
             type: type
+            baseCurrency: baseCurrency
+            inceptionDate: 2000-01-23T04:56:07.000+00:00
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            id:
+              code: code
+              scope: scope
+            shortCode: shortCode
+            aborId:
+              code: code
+              scope: scope
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+            fundConfigurationId:
+              code: code
+              scope: scope
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -265715,7 +266451,6 @@ components:
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               asAtDate: 2000-01-23T04:56:07.000+00:00
-            baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
             - launchPrice: 7.061401241503109
@@ -265816,7 +266551,6 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               investorType: investorType
-            inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
               - subHoldingKeys
@@ -265830,6 +266564,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -265862,6 +266599,7 @@ components:
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
               status: status
+            taxTransparency: taxTransparency
             portfolioIds:
             - code: code
               displayName: displayName
@@ -265873,20 +266611,6 @@ components:
               scope: scope
               description: description
               portfolioEntityType: portfolioEntityType
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            href: https://openapi-generator.tech
-            id:
-              code: code
-              scope: scope
-            shortCode: shortCode
             properties:
               key:
                 referenceData:
@@ -265919,6 +266643,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -265963,6 +266690,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -265996,19 +266726,10 @@ components:
               pricingBasis: pricingBasis
               status: status
             createInstrument: true
-          - aborId:
-              code: code
-              scope: scope
-            displayName: displayName
+          - displayName: displayName
             yearEndDate:
               month: 7
               day: 5
-            fundInstrument:
-              instrumentIdentifiers:
-                key: instrumentIdentifiers
-            fundConfigurationId:
-              code: code
-              scope: scope
             allocationGroups:
             - apportionmentMethodProperty:
                 code: code
@@ -266049,6 +266770,31 @@ components:
               launchDate: 2000-01-23T04:56:07.000+00:00
               lusidInstrumentId: lusidInstrumentId
             type: type
+            baseCurrency: baseCurrency
+            inceptionDate: 2000-01-23T04:56:07.000+00:00
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            id:
+              code: code
+              scope: scope
+            shortCode: shortCode
+            aborId:
+              code: code
+              scope: scope
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+            fundConfigurationId:
+              code: code
+              scope: scope
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -266063,7 +266809,6 @@ components:
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               asAtDate: 2000-01-23T04:56:07.000+00:00
-            baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
             - launchPrice: 7.061401241503109
@@ -266164,7 +266909,6 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               investorType: investorType
-            inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
               - subHoldingKeys
@@ -266178,6 +266922,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266210,6 +266957,7 @@ components:
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
               status: status
+            taxTransparency: taxTransparency
             portfolioIds:
             - code: code
               displayName: displayName
@@ -266221,20 +266969,6 @@ components:
               scope: scope
               description: description
               portfolioEntityType: portfolioEntityType
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            href: https://openapi-generator.tech
-            id:
-              code: code
-              scope: scope
-            shortCode: shortCode
             properties:
               key:
                 referenceData:
@@ -266267,6 +267001,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266311,6 +267048,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266471,19 +267211,10 @@ components:
           - navTypeCodes
           - navTypeCodes
           funds:
-          - aborId:
-              code: code
-              scope: scope
-            displayName: displayName
+          - displayName: displayName
             yearEndDate:
               month: 7
               day: 5
-            fundInstrument:
-              instrumentIdentifiers:
-                key: instrumentIdentifiers
-            fundConfigurationId:
-              code: code
-              scope: scope
             allocationGroups:
             - apportionmentMethodProperty:
                 code: code
@@ -266524,6 +267255,31 @@ components:
               launchDate: 2000-01-23T04:56:07.000+00:00
               lusidInstrumentId: lusidInstrumentId
             type: type
+            baseCurrency: baseCurrency
+            inceptionDate: 2000-01-23T04:56:07.000+00:00
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            id:
+              code: code
+              scope: scope
+            shortCode: shortCode
+            aborId:
+              code: code
+              scope: scope
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+            fundConfigurationId:
+              code: code
+              scope: scope
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -266538,7 +267294,6 @@ components:
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               asAtDate: 2000-01-23T04:56:07.000+00:00
-            baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
             - launchPrice: 7.061401241503109
@@ -266639,7 +267394,6 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               investorType: investorType
-            inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
               - subHoldingKeys
@@ -266653,6 +267407,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266685,6 +267442,7 @@ components:
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
               status: status
+            taxTransparency: taxTransparency
             portfolioIds:
             - code: code
               displayName: displayName
@@ -266696,20 +267454,6 @@ components:
               scope: scope
               description: description
               portfolioEntityType: portfolioEntityType
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            href: https://openapi-generator.tech
-            id:
-              code: code
-              scope: scope
-            shortCode: shortCode
             properties:
               key:
                 referenceData:
@@ -266742,6 +267486,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266786,6 +267533,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -266819,19 +267569,10 @@ components:
               pricingBasis: pricingBasis
               status: status
             createInstrument: true
-          - aborId:
-              code: code
-              scope: scope
-            displayName: displayName
+          - displayName: displayName
             yearEndDate:
               month: 7
               day: 5
-            fundInstrument:
-              instrumentIdentifiers:
-                key: instrumentIdentifiers
-            fundConfigurationId:
-              code: code
-              scope: scope
             allocationGroups:
             - apportionmentMethodProperty:
                 code: code
@@ -266872,6 +267613,31 @@ components:
               launchDate: 2000-01-23T04:56:07.000+00:00
               lusidInstrumentId: lusidInstrumentId
             type: type
+            baseCurrency: baseCurrency
+            inceptionDate: 2000-01-23T04:56:07.000+00:00
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            id:
+              code: code
+              scope: scope
+            shortCode: shortCode
+            aborId:
+              code: code
+              scope: scope
+            fundInstrument:
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+            fundConfigurationId:
+              code: code
+              scope: scope
             version:
               stagedModificationIdModified: stagedModificationIdModified
               reasonModified: reasonModified
@@ -266886,7 +267652,6 @@ components:
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               asAtDate: 2000-01-23T04:56:07.000+00:00
-            baseCurrency: baseCurrency
             decimalPlaces: 18
             shareClasses:
             - launchPrice: 7.061401241503109
@@ -266987,7 +267752,6 @@ components:
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
                   key: key
               investorType: investorType
-            inceptionDate: 2000-01-23T04:56:07.000+00:00
             primaryNavType:
               subHoldingKeys:
               - subHoldingKeys
@@ -267001,6 +267765,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -267033,6 +267800,7 @@ components:
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
               status: status
+            taxTransparency: taxTransparency
             portfolioIds:
             - code: code
               displayName: displayName
@@ -267044,20 +267812,6 @@ components:
               scope: scope
               description: description
               portfolioEntityType: portfolioEntityType
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            href: https://openapi-generator.tech
-            id:
-              code: code
-              scope: scope
-            shortCode: shortCode
             properties:
               key:
                 referenceData:
@@ -267090,6 +267844,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -267134,6 +267891,9 @@ components:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
                 outflowBasis: outflowBasis
+              notionalDealingCostTableId:
+                code: code
+                scope: scope
               displayName: displayName
               postingModuleCodes:
               - postingModuleCodes
@@ -273079,38 +273839,11 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - derivationFormula: derivationFormula
-          isFilterable: true
+        - isFilterable: true
           code: code
-          propertyDescription: propertyDescription
           displayName: displayName
-          dataTypeId:
-            code: code
-            scope: scope
-          valueFormat: valueFormat
-          unitSchema: NoUnits
           type: Label
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          constraintStyle: constraintStyle
-          collectionType: collectionType
-          customEntityTypes:
-          - customEntityTypes
-          - customEntityTypes
           valueType: String
-          domain: NotDefined
           scope: scope
           links:
           - method: method
@@ -273131,36 +273864,14 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
           propertyDefinitionType: ValueProperty
-        - derivationFormula: derivationFormula
-          isFilterable: true
-          code: code
+          derivationFormula: derivationFormula
           propertyDescription: propertyDescription
-          displayName: displayName
           dataTypeId:
             code: code
             scope: scope
           valueFormat: valueFormat
           unitSchema: NoUnits
-          type: Label
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -273180,8 +273891,47 @@ components:
           customEntityTypes:
           - customEntityTypes
           - customEntityTypes
-          valueType: String
           domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - isFilterable: true
+          code: code
+          displayName: displayName
+          type: Label
+          valueType: String
           scope: scope
           links:
           - method: method
@@ -273202,6 +273952,51 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
+          propertyDefinitionType: ValueProperty
+          derivationFormula: derivationFormula
+          propertyDescription: propertyDescription
+          dataTypeId:
+            code: code
+            scope: scope
+          valueFormat: valueFormat
+          unitSchema: NoUnits
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          constraintStyle: constraintStyle
+          collectionType: collectionType
+          customEntityTypes:
+          - customEntityTypes
+          - customEntityTypes
+          domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
           properties:
             key:
               referenceData:
@@ -273220,7 +274015,6 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          propertyDefinitionType: ValueProperty
         links:
         - method: method
           description: description
@@ -288347,38 +289141,11 @@ components:
       additionalProperties: false
       description: A list of property definitions.
       example:
-        derivationFormula: derivationFormula
         isFilterable: true
         code: code
-        propertyDescription: propertyDescription
         displayName: displayName
-        dataTypeId:
-          code: code
-          scope: scope
-        valueFormat: valueFormat
-        unitSchema: NoUnits
         type: Label
-        version:
-          stagedModificationIdModified: stagedModificationIdModified
-          reasonModified: reasonModified
-          entityUniqueId: entityUniqueId
-          requestIdModified: requestIdModified
-          reasonCreated: reasonCreated
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 1
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          requestIdCreated: requestIdCreated
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-        constraintStyle: constraintStyle
-        collectionType: collectionType
-        customEntityTypes:
-        - customEntityTypes
-        - customEntityTypes
         valueType: String
-        domain: NotDefined
         scope: scope
         links:
         - method: method
@@ -288399,6 +289166,51 @@ components:
           - idsPreviewed
           - idsPreviewed
         key: key
+        propertyDefinitionType: ValueProperty
+        derivationFormula: derivationFormula
+        propertyDescription: propertyDescription
+        dataTypeId:
+          code: code
+          scope: scope
+        valueFormat: valueFormat
+        unitSchema: NoUnits
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        constraintStyle: constraintStyle
+        collectionType: collectionType
+        customEntityTypes:
+        - customEntityTypes
+        - customEntityTypes
+        domain: NotDefined
+        qualifierDefinitions:
+        - isRequired: true
+          displayName: displayName
+          valueType: valueType
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          valueType: valueType
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
         properties:
           key:
             referenceData:
@@ -288417,7 +289229,6 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
-        propertyDefinitionType: ValueProperty
       properties:
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
@@ -288666,6 +289477,15 @@ components:
             be represented.
           nullable: true
           type: string
+        qualifierDefinitions:
+          description: "The qualifiers declared against this property definition,\
+            \ each with its value type resolved from its data type. Absent where the\
+            \ definition declares no qualifiers. Qualifiers are supported only on\
+            \ single-value properties."
+          items:
+            $ref: '#/components/schemas/QualifierDefinition'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -288677,38 +289497,11 @@ components:
       example:
         asAtDeleted: 2000-01-23T04:56:07.000+00:00
         deletedPropertyDefinition:
-          derivationFormula: derivationFormula
           isFilterable: true
           code: code
-          propertyDescription: propertyDescription
           displayName: displayName
-          dataTypeId:
-            code: code
-            scope: scope
-          valueFormat: valueFormat
-          unitSchema: NoUnits
           type: Label
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          constraintStyle: constraintStyle
-          collectionType: collectionType
-          customEntityTypes:
-          - customEntityTypes
-          - customEntityTypes
           valueType: String
-          domain: NotDefined
           scope: scope
           links:
           - method: method
@@ -288729,6 +289522,51 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
+          propertyDefinitionType: ValueProperty
+          derivationFormula: derivationFormula
+          propertyDescription: propertyDescription
+          dataTypeId:
+            code: code
+            scope: scope
+          valueFormat: valueFormat
+          unitSchema: NoUnits
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          constraintStyle: constraintStyle
+          collectionType: collectionType
+          customEntityTypes:
+          - customEntityTypes
+          - customEntityTypes
+          domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
           properties:
             key:
               referenceData:
@@ -288747,42 +289585,14 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          propertyDefinitionType: ValueProperty
         entityUniqueId: entityUniqueId
         userIdDeleted: userIdDeleted
         previewedPropertyDefinition:
-          derivationFormula: derivationFormula
           isFilterable: true
           code: code
-          propertyDescription: propertyDescription
           displayName: displayName
-          dataTypeId:
-            code: code
-            scope: scope
-          valueFormat: valueFormat
-          unitSchema: NoUnits
           type: Label
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          constraintStyle: constraintStyle
-          collectionType: collectionType
-          customEntityTypes:
-          - customEntityTypes
-          - customEntityTypes
           valueType: String
-          domain: NotDefined
           scope: scope
           links:
           - method: method
@@ -288803,6 +289613,51 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
+          propertyDefinitionType: ValueProperty
+          derivationFormula: derivationFormula
+          propertyDescription: propertyDescription
+          dataTypeId:
+            code: code
+            scope: scope
+          valueFormat: valueFormat
+          unitSchema: NoUnits
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          constraintStyle: constraintStyle
+          collectionType: collectionType
+          customEntityTypes:
+          - customEntityTypes
+          - customEntityTypes
+          domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
           properties:
             key:
               referenceData:
@@ -288821,43 +289676,15 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          propertyDefinitionType: ValueProperty
         requestIdDeleted: requestIdDeleted
         effectiveAtCreated: 2000-01-23T04:56:07.000+00:00
         asAtVersionNumber: 0
         prevailingPropertyDefinition:
-          derivationFormula: derivationFormula
           isFilterable: true
           code: code
-          propertyDescription: propertyDescription
           displayName: displayName
-          dataTypeId:
-            code: code
-            scope: scope
-          valueFormat: valueFormat
-          unitSchema: NoUnits
           type: Label
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          constraintStyle: constraintStyle
-          collectionType: collectionType
-          customEntityTypes:
-          - customEntityTypes
-          - customEntityTypes
           valueType: String
-          domain: NotDefined
           scope: scope
           links:
           - method: method
@@ -288878,6 +289705,51 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
+          propertyDefinitionType: ValueProperty
+          derivationFormula: derivationFormula
+          propertyDescription: propertyDescription
+          dataTypeId:
+            code: code
+            scope: scope
+          valueFormat: valueFormat
+          unitSchema: NoUnits
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          constraintStyle: constraintStyle
+          collectionType: collectionType
+          customEntityTypes:
+          - customEntityTypes
+          - customEntityTypes
+          domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
           properties:
             key:
               referenceData:
@@ -288896,7 +289768,6 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          propertyDefinitionType: ValueProperty
         links:
         - method: method
           description: description
@@ -290195,6 +291066,96 @@ components:
         \ instruments. Cloned from RepurchaseOfferEvent (BIDS) and narrowed\r\nto\
         \ debt with a fixed event-level OfferPrice instead of a per-election holder-bid\
         \ price."
+    QualifierDefinition:
+      additionalProperties: false
+      description: "A qualifier as returned on read: the request shape plus the value\
+        \ type resolved from its data type."
+      example:
+        isRequired: true
+        displayName: displayName
+        valueType: valueType
+        dataTypeId:
+          code: code
+          scope: scope
+        description: description
+        key: key
+      properties:
+        key:
+          description: "The key by which the qualifier is addressed, for example 'direction'.\
+            \ Addressed in filters, sort orders and derivation formulae as Properties[{propertyKey}].Qualifiers[{qualifierKey}].\
+            \ Validated under the same rules as a property code."
+          nullable: true
+          type: string
+        displayName:
+          description: The display name of the qualifier.
+          nullable: true
+          type: string
+        description:
+          description: Describes the qualifier. Optional; null where not supplied.
+          nullable: true
+          type: string
+        dataTypeId:
+          $ref: '#/components/schemas/ResourceId'
+        valueType:
+          description: "The type of value this qualifier carries, resolved from its\
+            \ data type. Available values: String, Int, Decimal, DateTime, Boolean,\
+            \ Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount,\
+            \ TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime,\
+            \ DateOrCutLabel, UnindexedText."
+          nullable: true
+          type: string
+        isRequired:
+          description: "Whether a value for this qualifier must be supplied when a\
+            \ value of the property is written. Defaults to false, and is returned\
+            \ as a boolean rather than as null. Validated on write only, so setting\
+            \ it true does not retroactively invalidate values stored before the change."
+          type: boolean
+      type: object
+    QualifierDefinitionRequest:
+      additionalProperties: false
+      description: A qualifier to declare against a single-value property definition.
+      example:
+        isRequired: true
+        displayName: displayName
+        dataTypeId:
+          code: code
+          scope: scope
+        description: description
+        key: key
+      properties:
+        key:
+          description: "The key by which the qualifier is addressed, for example 'direction'.\
+            \ Addressed in filters, sort orders and derivation formulae as Properties[{propertyKey}].Qualifiers[{qualifierKey}].\
+            \ Validated under the same rules as a property code."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        displayName:
+          description: The display name of the qualifier.
+          maxLength: 256
+          minLength: 1
+          type: string
+        description:
+          description: Describes the qualifier. Optional; null where not supplied.
+          maxLength: 512
+          minLength: 0
+          nullable: true
+          type: string
+        dataTypeId:
+          $ref: '#/components/schemas/ResourceId'
+        isRequired:
+          description: "Whether a value for this qualifier must be supplied when a\
+            \ value of the property is written. Defaults to false, and is returned\
+            \ as a boolean rather than as null. Validated on write only, so setting\
+            \ it true does not retroactively invalidate values stored before the change."
+          nullable: true
+          type: boolean
+      required:
+      - dataTypeId
+      - displayName
+      - key
+      type: object
     QuantityInstructed:
       additionalProperties: false
       description: "The quantity of the event that was instructed, represented either\
@@ -305747,6 +306708,29 @@ components:
                     operator: operator
                   assetClass: assetClass
                 mask: mask
+              offerMarketRules:
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
               suppliers:
                 Fx: Fx
                 Rates: Rates
@@ -305785,6 +306769,29 @@ components:
                 pricingBasis: pricingBasis
                 attemptToInferMissingFxOnFixings: true
                 defaultScope: defaultScope
+              bidMarketRules:
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
               groupedMarketRules:
               - marketRules:
                 - quoteInterval: quoteInterval
@@ -306065,6 +307072,29 @@ components:
                     operator: operator
                   assetClass: assetClass
                 mask: mask
+              offerMarketRules:
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
               suppliers:
                 Fx: Fx
                 Rates: Rates
@@ -306103,6 +307133,29 @@ components:
                 pricingBasis: pricingBasis
                 attemptToInferMissingFxOnFixings: true
                 defaultScope: defaultScope
+              bidMarketRules:
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
+              - quoteInterval: quoteInterval
+                field: field
+                sourceSystem: sourceSystem
+                supplier: supplier
+                priceSource: priceSource
+                asAt: 2000-01-23T04:56:07.000+00:00
+                dataScope: dataScope
+                fallThroughOnAccessDenied: true
+                quoteType: Price
+                key: key
+                mask: mask
               groupedMarketRules:
               - marketRules:
                 - quoteInterval: quoteInterval
@@ -317741,38 +318794,11 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - derivationFormula: derivationFormula
-          isFilterable: true
+        - isFilterable: true
           code: code
-          propertyDescription: propertyDescription
           displayName: displayName
-          dataTypeId:
-            code: code
-            scope: scope
-          valueFormat: valueFormat
-          unitSchema: NoUnits
           type: Label
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          constraintStyle: constraintStyle
-          collectionType: collectionType
-          customEntityTypes:
-          - customEntityTypes
-          - customEntityTypes
           valueType: String
-          domain: NotDefined
           scope: scope
           links:
           - method: method
@@ -317793,36 +318819,14 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
           propertyDefinitionType: ValueProperty
-        - derivationFormula: derivationFormula
-          isFilterable: true
-          code: code
+          derivationFormula: derivationFormula
           propertyDescription: propertyDescription
-          displayName: displayName
           dataTypeId:
             code: code
             scope: scope
           valueFormat: valueFormat
           unitSchema: NoUnits
-          type: Label
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -317842,8 +318846,47 @@ components:
           customEntityTypes:
           - customEntityTypes
           - customEntityTypes
-          valueType: String
           domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - isFilterable: true
+          code: code
+          displayName: displayName
+          type: Label
+          valueType: String
           scope: scope
           links:
           - method: method
@@ -317864,6 +318907,51 @@ components:
             - idsPreviewed
             - idsPreviewed
           key: key
+          propertyDefinitionType: ValueProperty
+          derivationFormula: derivationFormula
+          propertyDescription: propertyDescription
+          dataTypeId:
+            code: code
+            scope: scope
+          valueFormat: valueFormat
+          unitSchema: NoUnits
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          constraintStyle: constraintStyle
+          collectionType: collectionType
+          customEntityTypes:
+          - customEntityTypes
+          - customEntityTypes
+          domain: NotDefined
+          qualifierDefinitions:
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
+          - isRequired: true
+            displayName: displayName
+            valueType: valueType
+            dataTypeId:
+              code: code
+              scope: scope
+            description: description
+            key: key
           properties:
             key:
               referenceData:
@@ -317882,7 +318970,6 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
-          propertyDefinitionType: ValueProperty
         links:
         - method: method
           description: description
@@ -326326,6 +327413,167 @@ components:
           type: string
       required:
       - diaryEntryCode
+      type: object
+    RevertValuationPointResponse:
+      additionalProperties: false
+      description: "A Valuation Point reverted to Estimate, with all of its variants.\
+        \ Any variant that finalising the Valuation Point\r\nhad rejected is brought\
+        \ back as an Estimate by the revert, and is reported here alongside it."
+      example:
+        applyClearDown: true
+        previous:
+          name: name
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          valuationPointCode: valuationPointCode
+          queryAsAt: 2000-01-23T04:56:07.000+00:00
+          valuationAsAt: 2000-01-23T04:56:07.000+00:00
+          holdingsAsAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        valuationPointCode: valuationPointCode
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        variants:
+        - dateOfLastPcaScan: 2000-01-23T04:56:07.000+00:00
+          displayName: displayName
+          variant: variant
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - dateOfLastPcaScan: 2000-01-23T04:56:07.000+00:00
+          displayName: displayName
+          variant: variant
+          asAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          holdingsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        navTypeCode: navTypeCode
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        valuationPointCode:
+          description: The code of the Valuation Point.
+          nullable: true
+          type: string
+        navTypeCode:
+          description: The navTypeCode of the Fund Calendar Entry. This is the code
+            of the NAV type that this Calendar Entry is associated with.
+          nullable: true
+          type: string
+        status:
+          description: "The status of the Valuation Point. Available values: Undefined,\
+            \ Estimate, Final, Candidate, Rejected, Unofficial."
+          minLength: 1
+          type: string
+        applyClearDown:
+          description: Indicates whether a clear down was applied when the Valuation
+            Point was created.
+          type: boolean
+        effectiveAt:
+          description: The effective time of the Valuation Point.
+          format: date-time
+          type: string
+        previous:
+          $ref: '#/components/schemas/PreviousValuationPoint'
+        variants:
+          description: 'The variants of the Estimate Valuation Point. '
+          items:
+            $ref: '#/components/schemas/EstimateVariant'
+          nullable: true
+          type: array
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - effectiveAt
+      - status
       type: object
     RiskBumpOptions:
       additionalProperties: false
@@ -334839,6 +336087,7 @@ components:
           amount: 0.8008281904610115
           currency: currency
         price: 1.4658129805029452
+        currentFace: 9.301444243932576
         units: 0.8008281904610115
         settlementDate: 2000-01-23T04:56:07.000+00:00
         portfolioCost: 6.027456183070403
@@ -334894,6 +336143,16 @@ components:
             \ value seeds the tax-lot's amortised cost at the adjustment date and\
             \ amortisation continues forward from it; if not supplied, the amortised\
             \ cost defaults to the cost of the tax-lot."
+          format: double
+          nullable: true
+          type: number
+        currentFace:
+          description: "The current face of the tax-lot, i.e. its outstanding notional\
+            \ after any reduction by the instrument's pool factor. If supplied, this\
+            \ value seeds the tax-lot's current face, so that later paydowns on an\
+            \ asset-backed instrument reduce the cost against it; if not supplied,\
+            \ a tax-lot that already has a current face keeps its pool factor as its\
+            \ units change."
           format: double
           nullable: true
           type: number
@@ -334912,6 +336171,7 @@ components:
           amount: 0.8008281904610115
           currency: currency
         price: 1.4658129805029452
+        currentFace: 9.301444243932576
         units: 0.8008281904610115
         settlementDate: 2000-01-23T04:56:07.000+00:00
         portfolioCost: 6.027456183070403
@@ -334967,6 +336227,16 @@ components:
             \ value seeds the tax-lot's amortised cost at the adjustment date and\
             \ amortisation continues forward from it; if not supplied, the amortised\
             \ cost defaults to the cost of the tax-lot."
+          format: double
+          nullable: true
+          type: number
+        currentFace:
+          description: "The current face of the tax-lot, i.e. its outstanding notional\
+            \ after any reduction by the instrument's pool factor. If supplied, this\
+            \ value seeds the tax-lot's current face, so that later paydowns on an\
+            \ asset-backed instrument reduce the cost against it; if not supplied,\
+            \ a tax-lot that already has a current face keeps its pool factor as its\
+            \ units change."
           format: double
           nullable: true
           type: number
@@ -337553,7 +338823,8 @@ components:
           $ref: '#/components/schemas/OtcConfirmation'
         transactionStatus:
           description: "The status of the transaction. Available values: Active, Amended,\
-            \ Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp."
+            \ Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal,\
+            \ Reversed."
           enum:
           - Active
           - Amended
@@ -337561,6 +338832,8 @@ components:
           - ActiveReversal
           - ActiveTrueUp
           - CancelledTrueUp
+          - PendingReversal
+          - Reversed
           type: string
         cancelDateTime:
           description: "If the transaction has been cancelled, the asAt datetime that\
@@ -344120,6 +345393,8 @@ components:
       - ActiveReversal
       - ActiveTrueUp
       - CancelledTrueUp
+      - PendingReversal
+      - Reversed
       type: string
     TransactionTemplate:
       additionalProperties: false
@@ -350197,6 +351472,42 @@ components:
         propertyDescription: propertyDescription
         displayName: displayName
         valueFormat: valueFormat
+        qualifierDefinitions:
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
+        - isRequired: true
+          displayName: displayName
+          dataTypeId:
+            code: code
+            scope: scope
+          description: description
+          key: key
       properties:
         displayName:
           description: The display name of the property.
@@ -350221,6 +351532,19 @@ components:
           minLength: 0
           nullable: true
           type: string
+        qualifierDefinitions:
+          description: "The qualifiers declared against this property definition.\
+            \ Omit this field, or supply it as null, to leave the declared qualifiers\
+            \ unchanged. Otherwise the supplied array replaces the stored array in\
+            \ full, so a qualifier omitted from it is no longer declared and can no\
+            \ longer be set, and an empty array clears every declaration. Stored qualifier\
+            \ values are retained in every case and become readable again if the same\
+            \ keys are re-declared with the same data types."
+          items:
+            $ref: '#/components/schemas/QualifierDefinitionRequest'
+          maxItems: 50
+          nullable: true
+          type: array
       required:
       - displayName
       type: object
@@ -357258,6 +358582,29 @@ components:
                   operator: operator
                 assetClass: assetClass
               mask: mask
+            offerMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             suppliers:
               Fx: Fx
               Rates: Rates
@@ -357296,6 +358643,29 @@ components:
               pricingBasis: pricingBasis
               attemptToInferMissingFxOnFixings: true
               defaultScope: defaultScope
+            bidMarketRules:
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
+            - quoteInterval: quoteInterval
+              field: field
+              sourceSystem: sourceSystem
+              supplier: supplier
+              priceSource: priceSource
+              asAt: 2000-01-23T04:56:07.000+00:00
+              dataScope: dataScope
+              fallThroughOnAccessDenied: true
+              quoteType: Price
+              key: key
+              mask: mask
             groupedMarketRules:
             - marketRules:
               - quoteInterval: quoteInterval
@@ -358547,6 +359917,45 @@ components:
       required:
       - anomalyDataset
       - mainDataset
+      type: object
+    UpsertWithholdingTaxRateRequest:
+      additionalProperties: false
+      example:
+        effectiveAt: effectiveAt
+        valueFields:
+          key: ""
+        seriesIdentifiers:
+          key: ""
+        metaDataFields:
+          key: ""
+      properties:
+        seriesIdentifiers:
+          additionalProperties:
+            nullable: true
+          description: "The identifiers that uniquely define this DataSeries, if any,\
+            \ structured according to the FieldSchema of the parent RelationalDatasetDefinition."
+          nullable: true
+          type: object
+        effectiveAt:
+          description: The effectiveAt or cut-label datetime of the DataPoint.
+          minLength: 1
+          type: string
+        valueFields:
+          additionalProperties:
+            nullable: true
+          description: "The values associated with the DataPoint, structured according\
+            \ to the FieldSchema of the parent RelationalDatasetDefinition."
+          type: object
+        metaDataFields:
+          additionalProperties:
+            nullable: true
+          description: "The metadata associated with the DataPoint, structured according\
+            \ to the FieldSchema of the parent RelationalDatasetDefinition."
+          nullable: true
+          type: object
+      required:
+      - effectiveAt
+      - valueFields
       type: object
     User:
       additionalProperties: false
@@ -378810,6 +380219,72 @@ components:
       required:
       - anomalyDataset
       - mainDataset
+      type: object
+    WithholdingTaxRateResponse:
+      additionalProperties: false
+      example:
+        effectiveAtEntered: effectiveAtEntered
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        relationalDatasetDefinitionId:
+          code: code
+          scope: scope
+        valueFields:
+          key:
+            value: ""
+        seriesIdentifiers:
+          key:
+            value: ""
+        metaDataFields:
+          key:
+            value: ""
+        dataPointVersion:
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 0
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          entityUniqueId: entityUniqueId
+          userIdCreated: userIdCreated
+          requestIdModified: requestIdModified
+      properties:
+        relationalDatasetDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        seriesIdentifiers:
+          additionalProperties:
+            $ref: '#/components/schemas/RelationalDataPointFieldValueResponse'
+          description: "The identifiers that uniquely define this DataSeries, if any,\
+            \ structured according to the FieldSchema of the parent RelationalDatasetDefinition."
+          type: object
+        effectiveAt:
+          description: The effectiveAt or cut-label datetime of the DataPoint.
+          format: date-time
+          type: string
+        valueFields:
+          additionalProperties:
+            $ref: '#/components/schemas/RelationalDataPointFieldValueResponse'
+          description: "The values associated with the DataPoint, structured according\
+            \ to the FieldSchema of the parent RelationalDatasetDefinition."
+          type: object
+        metaDataFields:
+          additionalProperties:
+            $ref: '#/components/schemas/RelationalDataPointFieldValueResponse'
+          description: "The metadata associated with the DataPoint, structured according\
+            \ to the FieldSchema of the parent RelationalDatasetDefinition."
+          type: object
+        effectiveAtEntered:
+          description: The effectiveAt datetime as entered when the DataPoint was
+            created.
+          minLength: 1
+          type: string
+        dataPointVersion:
+          $ref: '#/components/schemas/DataPointVersion'
+      required:
+      - effectiveAt
+      - effectiveAtEntered
+      - metaDataFields
+      - relationalDatasetDefinitionId
+      - seriesIdentifiers
+      - valueFields
       type: object
     WithholdingTaxValueSource:
       additionalProperties: false

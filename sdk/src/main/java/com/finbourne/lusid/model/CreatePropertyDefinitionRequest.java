@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.QualifierDefinitionRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -383,6 +384,10 @@ public class CreatePropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_VALUE_FORMAT)
   private String valueFormat;
 
+  public static final String SERIALIZED_NAME_QUALIFIER_DEFINITIONS = "qualifierDefinitions";
+  @SerializedName(SERIALIZED_NAME_QUALIFIER_DEFINITIONS)
+  private List<QualifierDefinitionRequest> qualifierDefinitions;
+
   public CreatePropertyDefinitionRequest() {
   }
 
@@ -646,6 +651,35 @@ public class CreatePropertyDefinitionRequest {
   }
 
 
+  public CreatePropertyDefinitionRequest qualifierDefinitions(List<QualifierDefinitionRequest> qualifierDefinitions) {
+    
+    this.qualifierDefinitions = qualifierDefinitions;
+    return this;
+  }
+
+  public CreatePropertyDefinitionRequest addQualifierDefinitionsItem(QualifierDefinitionRequest qualifierDefinitionsItem) {
+    if (this.qualifierDefinitions == null) {
+      this.qualifierDefinitions = new ArrayList<>();
+    }
+    this.qualifierDefinitions.add(qualifierDefinitionsItem);
+    return this;
+  }
+
+   /**
+   * The qualifiers to declare against this property definition. A qualifier attaches an individually typed supporting fact to a value of this property, sharing that value&#39;s interval. Supported only where the constraint style is Property and no collection type is set.
+   * @return qualifierDefinitions
+  **/
+  @jakarta.annotation.Nullable
+  public List<QualifierDefinitionRequest> getQualifierDefinitions() {
+    return qualifierDefinitions;
+  }
+
+
+  public void setQualifierDefinitions(List<QualifierDefinitionRequest> qualifierDefinitions) {
+    this.qualifierDefinitions = qualifierDefinitions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -667,7 +701,8 @@ public class CreatePropertyDefinitionRequest {
         Objects.equals(this.propertyDescription, createPropertyDefinitionRequest.propertyDescription) &&
         Objects.equals(this.collectionType, createPropertyDefinitionRequest.collectionType) &&
         Objects.equals(this.customEntityTypes, createPropertyDefinitionRequest.customEntityTypes) &&
-        Objects.equals(this.valueFormat, createPropertyDefinitionRequest.valueFormat);
+        Objects.equals(this.valueFormat, createPropertyDefinitionRequest.valueFormat) &&
+        Objects.equals(this.qualifierDefinitions, createPropertyDefinitionRequest.qualifierDefinitions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -676,7 +711,7 @@ public class CreatePropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription, collectionType, customEntityTypes, valueFormat);
+    return Objects.hash(domain, scope, code, valueRequired, displayName, dataTypeId, lifeTime, constraintStyle, propertyDescription, collectionType, customEntityTypes, valueFormat, qualifierDefinitions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -702,6 +737,7 @@ public class CreatePropertyDefinitionRequest {
     sb.append("    collectionType: ").append(toIndentedString(collectionType)).append("\n");
     sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
     sb.append("    valueFormat: ").append(toIndentedString(valueFormat)).append("\n");
+    sb.append("    qualifierDefinitions: ").append(toIndentedString(qualifierDefinitions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -736,6 +772,7 @@ public class CreatePropertyDefinitionRequest {
     openapiFields.add("collectionType");
     openapiFields.add("customEntityTypes");
     openapiFields.add("valueFormat");
+    openapiFields.add("qualifierDefinitions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -798,6 +835,20 @@ public class CreatePropertyDefinitionRequest {
       }
       if ((jsonObj.get("valueFormat") != null && !jsonObj.get("valueFormat").isJsonNull()) && !jsonObj.get("valueFormat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `valueFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueFormat").toString()));
+      }
+      if (jsonObj.get("qualifierDefinitions") != null && !jsonObj.get("qualifierDefinitions").isJsonNull()) {
+        JsonArray jsonArrayqualifierDefinitions = jsonObj.getAsJsonArray("qualifierDefinitions");
+        if (jsonArrayqualifierDefinitions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("qualifierDefinitions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `qualifierDefinitions` to be an array in the JSON string but got `%s`", jsonObj.get("qualifierDefinitions").toString()));
+          }
+
+          // validate the optional field `qualifierDefinitions` (array)
+          for (int i = 0; i < jsonArrayqualifierDefinitions.size(); i++) {
+            QualifierDefinitionRequest.validateJsonElement(jsonArrayqualifierDefinitions.get(i));
+          };
+        }
       }
   }
 

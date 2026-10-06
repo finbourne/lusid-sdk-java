@@ -35,7 +35,11 @@ public enum TransactionStatus {
   
   ACTIVETRUEUP("ActiveTrueUp"),
   
-  CANCELLEDTRUEUP("CancelledTrueUp");
+  CANCELLEDTRUEUP("CancelledTrueUp"),
+  
+  PENDINGREVERSAL("PendingReversal"),
+  
+  REVERSED("Reversed");
 
   private String value;
 

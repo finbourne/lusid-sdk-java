@@ -203,7 +203,7 @@ public class AllocationMapsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label from which the exception applies. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label of the map version that gains the exception. Defaults to the exception&#39;s effectiveFrom when that is earlier than the current LUSID system datetime, and to the current LUSID system datetime otherwise. Refused if the map has any version starting after that datetime, including a re-save of the same definition, or a later deletion, since neither would carry the exception. Also refused, with the reason, if the defaulted effectiveFrom is before the map&#39;s first version. (optional)
          * @return APIaddAllocationMapExceptionRequest
          */
         public APIaddAllocationMapExceptionRequest effectiveAt(String effectiveAt) {
@@ -1552,7 +1552,7 @@ public class AllocationMapsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. Refused if the map has any version starting after that datetime, including a re-save of the same definition, which would still carry the exception, or a later deletion. (optional)
          * @return APIremoveAllocationMapExceptionRequest
          */
         public APIremoveAllocationMapExceptionRequest effectiveAt(String effectiveAt) {
