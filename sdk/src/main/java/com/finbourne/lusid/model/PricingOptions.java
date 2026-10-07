@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.InflationConvexityOptions;
 import com.finbourne.lusid.model.ModelSelection;
+import com.finbourne.lusid.model.NamedPrice;
 import com.finbourne.lusid.model.ReturnZeroPvOptions;
 import com.finbourne.lusid.model.RiskBumpOptions;
 import com.google.gson.TypeAdapter;
@@ -21,8 +22,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -163,6 +166,10 @@ public class PricingOptions {
   public static final String SERIALIZED_NAME_ALLOW_FALLBACK_ON_MODEL_DECLINE = "allowFallbackOnModelDecline";
   @SerializedName(SERIALIZED_NAME_ALLOW_FALLBACK_ON_MODEL_DECLINE)
   private Boolean allowFallbackOnModelDecline;
+
+  public static final String SERIALIZED_NAME_NAMED_PRICES = "namedPrices";
+  @SerializedName(SERIALIZED_NAME_NAMED_PRICES)
+  private List<NamedPrice> namedPrices;
 
   public PricingOptions() {
   }
@@ -742,6 +749,35 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions namedPrices(List<NamedPrice> namedPrices) {
+    
+    this.namedPrices = namedPrices;
+    return this;
+  }
+
+  public PricingOptions addNamedPricesItem(NamedPrice namedPricesItem) {
+    if (this.namedPrices == null) {
+      this.namedPrices = new ArrayList<>();
+    }
+    this.namedPrices.add(namedPricesItem);
+    return this;
+  }
+
+   /**
+   * Names a valuation request can use to ask for a pricing side and a notional dealing cost  treatment in one column, as Valuation/PV(NamedPrice&#x3D;name) (and likewise PvInReportCcy and  PvInPortfolioCcy). For example a fund might define \&quot;creation\&quot; as the offer side plus the  buy-side dealing cost, \&quot;cancellation\&quot; as the bid side less the sell-side cost, and  \&quot;perfRef\&quot; as the plain mid. Each name must start with a letter, contain only letters and  digits, and be unique within the recipe ignoring case; a request must spell the name exactly as  defined. Absent or empty defines no names.
+   * @return namedPrices
+  **/
+  @jakarta.annotation.Nullable
+  public List<NamedPrice> getNamedPrices() {
+    return namedPrices;
+  }
+
+
+  public void setNamedPrices(List<NamedPrice> namedPrices) {
+    this.namedPrices = namedPrices;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -778,7 +814,8 @@ public class PricingOptions {
         Objects.equals(this.defaultPoolFactorsToUnity, pricingOptions.defaultPoolFactorsToUnity) &&
         Objects.equals(this.findOrCalculateWriteThrough, pricingOptions.findOrCalculateWriteThrough) &&
         Objects.equals(this.inflationConvexity, pricingOptions.inflationConvexity) &&
-        Objects.equals(this.allowFallbackOnModelDecline, pricingOptions.allowFallbackOnModelDecline);
+        Objects.equals(this.allowFallbackOnModelDecline, pricingOptions.allowFallbackOnModelDecline) &&
+        Objects.equals(this.namedPrices, pricingOptions.namedPrices);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -787,7 +824,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, fixedIncomeValuationsUsingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity, allowFallbackOnModelDecline);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, fixedIncomeValuationsUsingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity, allowFallbackOnModelDecline, namedPrices);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -828,6 +865,7 @@ public class PricingOptions {
     sb.append("    findOrCalculateWriteThrough: ").append(toIndentedString(findOrCalculateWriteThrough)).append("\n");
     sb.append("    inflationConvexity: ").append(toIndentedString(inflationConvexity)).append("\n");
     sb.append("    allowFallbackOnModelDecline: ").append(toIndentedString(allowFallbackOnModelDecline)).append("\n");
+    sb.append("    namedPrices: ").append(toIndentedString(namedPrices)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -877,6 +915,7 @@ public class PricingOptions {
     openapiFields.add("findOrCalculateWriteThrough");
     openapiFields.add("inflationConvexity");
     openapiFields.add("allowFallbackOnModelDecline");
+    openapiFields.add("namedPrices");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -919,6 +958,20 @@ public class PricingOptions {
       // validate the optional field `inflationConvexity`
       if (jsonObj.get("inflationConvexity") != null && !jsonObj.get("inflationConvexity").isJsonNull()) {
         InflationConvexityOptions.validateJsonElement(jsonObj.get("inflationConvexity"));
+      }
+      if (jsonObj.get("namedPrices") != null && !jsonObj.get("namedPrices").isJsonNull()) {
+        JsonArray jsonArraynamedPrices = jsonObj.getAsJsonArray("namedPrices");
+        if (jsonArraynamedPrices != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("namedPrices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `namedPrices` to be an array in the JSON string but got `%s`", jsonObj.get("namedPrices").toString()));
+          }
+
+          // validate the optional field `namedPrices` (array)
+          for (int i = 0; i < jsonArraynamedPrices.size(); i++) {
+            NamedPrice.validateJsonElement(jsonArraynamedPrices.get(i));
+          };
+        }
       }
   }
 

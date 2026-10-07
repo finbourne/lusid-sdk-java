@@ -18,6 +18,7 @@ import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ShareClassData;
 import com.finbourne.lusid.model.StagedModificationsInfo;
+import com.finbourne.lusid.model.ValuationPointDiagnostic;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -107,6 +108,14 @@ public class ValuationPointDataResponse {
   public static final String SERIALIZED_NAME_IS_BACKFILLED = "isBackfilled";
   @SerializedName(SERIALIZED_NAME_IS_BACKFILLED)
   private Boolean isBackfilled;
+
+  public static final String SERIALIZED_NAME_APPLY_CLEAR_DOWN = "applyClearDown";
+  @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
+  private Boolean applyClearDown;
+
+  public static final String SERIALIZED_NAME_DIAGNOSTICS = "diagnostics";
+  @SerializedName(SERIALIZED_NAME_DIAGNOSTICS)
+  private List<ValuationPointDiagnostic> diagnostics;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -391,6 +400,56 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse applyClearDown(Boolean applyClearDown) {
+    
+    this.applyClearDown = applyClearDown;
+    return this;
+  }
+
+   /**
+   * Set to True if the Valuation Point applies a clear down, False otherwise. The Valuation Point shows its bucket values before the clear down, and the next Valuation Point opens from the balances after it.
+   * @return applyClearDown
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getApplyClearDown() {
+    return applyClearDown;
+  }
+
+
+  public void setApplyClearDown(Boolean applyClearDown) {
+    this.applyClearDown = applyClearDown;
+  }
+
+
+  public ValuationPointDataResponse diagnostics(List<ValuationPointDiagnostic> diagnostics) {
+    
+    this.diagnostics = diagnostics;
+    return this;
+  }
+
+  public ValuationPointDataResponse addDiagnosticsItem(ValuationPointDiagnostic diagnosticsItem) {
+    if (this.diagnostics == null) {
+      this.diagnostics = new ArrayList<>();
+    }
+    this.diagnostics.add(diagnosticsItem);
+    return this;
+  }
+
+   /**
+   * Findings made while striking the valuation point that did not stop it but should be looked at, such as a fund structure holder whose declared sharing percentage in a member has drifted from the share its contributions make of that member&#39;s capital. Absent when there are none.
+   * @return diagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public List<ValuationPointDiagnostic> getDiagnostics() {
+    return diagnostics;
+  }
+
+
+  public void setDiagnostics(List<ValuationPointDiagnostic> diagnostics) {
+    this.diagnostics = diagnostics;
+  }
+
+
   public ValuationPointDataResponse links(List<Link> links) {
     
     this.links = links;
@@ -442,6 +501,8 @@ public class ValuationPointDataResponse {
         Objects.equals(this.bucketSetResults, valuationPointDataResponse.bucketSetResults) &&
         Objects.equals(this.stagedModifications, valuationPointDataResponse.stagedModifications) &&
         Objects.equals(this.isBackfilled, valuationPointDataResponse.isBackfilled) &&
+        Objects.equals(this.applyClearDown, valuationPointDataResponse.applyClearDown) &&
+        Objects.equals(this.diagnostics, valuationPointDataResponse.diagnostics) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -451,7 +512,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, isBackfilled, links);
+    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, isBackfilled, applyClearDown, diagnostics, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -477,6 +538,8 @@ public class ValuationPointDataResponse {
     sb.append("    bucketSetResults: ").append(toIndentedString(bucketSetResults)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    isBackfilled: ").append(toIndentedString(isBackfilled)).append("\n");
+    sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
+    sb.append("    diagnostics: ").append(toIndentedString(diagnostics)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -512,6 +575,8 @@ public class ValuationPointDataResponse {
     openapiFields.add("bucketSetResults");
     openapiFields.add("stagedModifications");
     openapiFields.add("isBackfilled");
+    openapiFields.add("applyClearDown");
+    openapiFields.add("diagnostics");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -603,6 +668,20 @@ public class ValuationPointDataResponse {
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
         StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
+      if (jsonObj.get("diagnostics") != null && !jsonObj.get("diagnostics").isJsonNull()) {
+        JsonArray jsonArraydiagnostics = jsonObj.getAsJsonArray("diagnostics");
+        if (jsonArraydiagnostics != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("diagnostics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `diagnostics` to be an array in the JSON string but got `%s`", jsonObj.get("diagnostics").toString()));
+          }
+
+          // validate the optional field `diagnostics` (array)
+          for (int i = 0; i < jsonArraydiagnostics.size(); i++) {
+            ValuationPointDiagnostic.validateJsonElement(jsonArraydiagnostics.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

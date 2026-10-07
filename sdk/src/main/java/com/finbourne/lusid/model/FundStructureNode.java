@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FundStructureAllocationBasis;
+import com.finbourne.lusid.model.FundStructureDriftMateriality;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -79,6 +80,10 @@ public class FundStructureNode {
   public static final String SERIALIZED_NAME_ALLOCATION_MAP_ID = "allocationMapId";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_MAP_ID)
   private ResourceId allocationMapId;
+
+  public static final String SERIALIZED_NAME_DRIFT_MATERIALITY = "driftMateriality";
+  @SerializedName(SERIALIZED_NAME_DRIFT_MATERIALITY)
+  private FundStructureDriftMateriality driftMateriality;
 
   public FundStructureNode() {
   }
@@ -230,6 +235,27 @@ public class FundStructureNode {
   }
 
 
+  public FundStructureNode driftMateriality(FundStructureDriftMateriality driftMateriality) {
+    
+    this.driftMateriality = driftMateriality;
+    return this;
+  }
+
+   /**
+   * Get driftMateriality
+   * @return driftMateriality
+  **/
+  @jakarta.annotation.Nullable
+  public FundStructureDriftMateriality getDriftMateriality() {
+    return driftMateriality;
+  }
+
+
+  public void setDriftMateriality(FundStructureDriftMateriality driftMateriality) {
+    this.driftMateriality = driftMateriality;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -246,7 +272,8 @@ public class FundStructureNode {
         Objects.equals(this.role, fundStructureNode.role) &&
         Objects.equals(this.allocationBasis, fundStructureNode.allocationBasis) &&
         Objects.equals(this.pnlFlowMode, fundStructureNode.pnlFlowMode) &&
-        Objects.equals(this.allocationMapId, fundStructureNode.allocationMapId);
+        Objects.equals(this.allocationMapId, fundStructureNode.allocationMapId) &&
+        Objects.equals(this.driftMateriality, fundStructureNode.driftMateriality);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -255,7 +282,7 @@ public class FundStructureNode {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nodeCode, fundScope, fundCode, role, allocationBasis, pnlFlowMode, allocationMapId);
+    return Objects.hash(nodeCode, fundScope, fundCode, role, allocationBasis, pnlFlowMode, allocationMapId, driftMateriality);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -276,6 +303,7 @@ public class FundStructureNode {
     sb.append("    allocationBasis: ").append(toIndentedString(allocationBasis)).append("\n");
     sb.append("    pnlFlowMode: ").append(toIndentedString(pnlFlowMode)).append("\n");
     sb.append("    allocationMapId: ").append(toIndentedString(allocationMapId)).append("\n");
+    sb.append("    driftMateriality: ").append(toIndentedString(driftMateriality)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -305,6 +333,7 @@ public class FundStructureNode {
     openapiFields.add("allocationBasis");
     openapiFields.add("pnlFlowMode");
     openapiFields.add("allocationMapId");
+    openapiFields.add("driftMateriality");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -356,6 +385,10 @@ public class FundStructureNode {
       // validate the optional field `allocationMapId`
       if (jsonObj.get("allocationMapId") != null && !jsonObj.get("allocationMapId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("allocationMapId"));
+      }
+      // validate the optional field `driftMateriality`
+      if (jsonObj.get("driftMateriality") != null && !jsonObj.get("driftMateriality").isJsonNull()) {
+        FundStructureDriftMateriality.validateJsonElement(jsonObj.get("driftMateriality"));
       }
   }
 

@@ -122,6 +122,10 @@ public class ValuationRequest {
   @SerializedName(SERIALIZED_NAME_SCENARIO)
   private ScenarioReference scenario;
 
+  public static final String SERIALIZED_NAME_NOTIONAL_DEALING_COST_TABLE_ID = "notionalDealingCostTableId";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_DEALING_COST_TABLE_ID)
+  private ResourceId notionalDealingCostTableId;
+
   public ValuationRequest() {
   }
 
@@ -480,6 +484,27 @@ public class ValuationRequest {
   }
 
 
+  public ValuationRequest notionalDealingCostTableId(ResourceId notionalDealingCostTableId) {
+    
+    this.notionalDealingCostTableId = notionalDealingCostTableId;
+    return this;
+  }
+
+   /**
+   * Get notionalDealingCostTableId
+   * @return notionalDealingCostTableId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getNotionalDealingCostTableId() {
+    return notionalDealingCostTableId;
+  }
+
+
+  public void setNotionalDealingCostTableId(ResourceId notionalDealingCostTableId) {
+    this.notionalDealingCostTableId = notionalDealingCostTableId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -504,7 +529,8 @@ public class ValuationRequest {
         Objects.equals(this.valuationSchedule, valuationRequest.valuationSchedule) &&
         Objects.equals(this.marketDataOverrides, valuationRequest.marketDataOverrides) &&
         Objects.equals(this.corporateActionSourceId, valuationRequest.corporateActionSourceId) &&
-        Objects.equals(this.scenario, valuationRequest.scenario);
+        Objects.equals(this.scenario, valuationRequest.scenario) &&
+        Objects.equals(this.notionalDealingCostTableId, valuationRequest.notionalDealingCostTableId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -513,7 +539,7 @@ public class ValuationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, portfolioEntityIds, valuationSchedule, marketDataOverrides, corporateActionSourceId, scenario);
+    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, portfolioEntityIds, valuationSchedule, marketDataOverrides, corporateActionSourceId, scenario, notionalDealingCostTableId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -542,6 +568,7 @@ public class ValuationRequest {
     sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
+    sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -579,6 +606,7 @@ public class ValuationRequest {
     openapiFields.add("marketDataOverrides");
     openapiFields.add("corporateActionSourceId");
     openapiFields.add("scenario");
+    openapiFields.add("notionalDealingCostTableId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -682,6 +710,10 @@ public class ValuationRequest {
       // validate the optional field `scenario`
       if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
         ScenarioReference.validateJsonElement(jsonObj.get("scenario"));
+      }
+      // validate the optional field `notionalDealingCostTableId`
+      if (jsonObj.get("notionalDealingCostTableId") != null && !jsonObj.get("notionalDealingCostTableId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("notionalDealingCostTableId"));
       }
   }
 

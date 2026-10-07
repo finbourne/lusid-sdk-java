@@ -70,6 +70,14 @@ public class BucketDefinition {
   @SerializedName(SERIALIZED_NAME_UNITISED)
   private Boolean unitised;
 
+  public static final String SERIALIZED_NAME_CLEARDOWN_BEHAVIOUR = "cleardownBehaviour";
+  @SerializedName(SERIALIZED_NAME_CLEARDOWN_BEHAVIOUR)
+  private String cleardownBehaviour;
+
+  public static final String SERIALIZED_NAME_CLEARS_TO = "clearsTo";
+  @SerializedName(SERIALIZED_NAME_CLEARS_TO)
+  private String clearsTo;
+
   public BucketDefinition() {
   }
 
@@ -178,6 +186,48 @@ public class BucketDefinition {
   }
 
 
+  public BucketDefinition cleardownBehaviour(String cleardownBehaviour) {
+    
+    this.cleardownBehaviour = cleardownBehaviour;
+    return this;
+  }
+
+   /**
+   * Available values: Clear, CarryForward.
+   * @return cleardownBehaviour
+  **/
+  @jakarta.annotation.Nullable
+  public String getCleardownBehaviour() {
+    return cleardownBehaviour;
+  }
+
+
+  public void setCleardownBehaviour(String cleardownBehaviour) {
+    this.cleardownBehaviour = cleardownBehaviour;
+  }
+
+
+  public BucketDefinition clearsTo(String clearsTo) {
+    
+    this.clearsTo = clearsTo;
+    return this;
+  }
+
+   /**
+   * Get clearsTo
+   * @return clearsTo
+  **/
+  @jakarta.annotation.Nullable
+  public String getClearsTo() {
+    return clearsTo;
+  }
+
+
+  public void setClearsTo(String clearsTo) {
+    this.clearsTo = clearsTo;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +242,9 @@ public class BucketDefinition {
         Objects.equals(this.displayName, bucketDefinition.displayName) &&
         Objects.equals(this.filterExpression, bucketDefinition.filterExpression) &&
         Objects.equals(this.bucketType, bucketDefinition.bucketType) &&
-        Objects.equals(this.unitised, bucketDefinition.unitised);
+        Objects.equals(this.unitised, bucketDefinition.unitised) &&
+        Objects.equals(this.cleardownBehaviour, bucketDefinition.cleardownBehaviour) &&
+        Objects.equals(this.clearsTo, bucketDefinition.clearsTo);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +253,7 @@ public class BucketDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketId, displayName, filterExpression, bucketType, unitised);
+    return Objects.hash(bucketId, displayName, filterExpression, bucketType, unitised, cleardownBehaviour, clearsTo);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +272,8 @@ public class BucketDefinition {
     sb.append("    filterExpression: ").append(toIndentedString(filterExpression)).append("\n");
     sb.append("    bucketType: ").append(toIndentedString(bucketType)).append("\n");
     sb.append("    unitised: ").append(toIndentedString(unitised)).append("\n");
+    sb.append("    cleardownBehaviour: ").append(toIndentedString(cleardownBehaviour)).append("\n");
+    sb.append("    clearsTo: ").append(toIndentedString(clearsTo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +301,8 @@ public class BucketDefinition {
     openapiFields.add("filterExpression");
     openapiFields.add("bucketType");
     openapiFields.add("unitised");
+    openapiFields.add("cleardownBehaviour");
+    openapiFields.add("clearsTo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -287,6 +343,12 @@ public class BucketDefinition {
       }
       if (!jsonObj.get("bucketType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bucketType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucketType").toString()));
+      }
+      if ((jsonObj.get("cleardownBehaviour") != null && !jsonObj.get("cleardownBehaviour").isJsonNull()) && !jsonObj.get("cleardownBehaviour").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cleardownBehaviour` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cleardownBehaviour").toString()));
+      }
+      if ((jsonObj.get("clearsTo") != null && !jsonObj.get("clearsTo").isJsonNull()) && !jsonObj.get("clearsTo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clearsTo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clearsTo").toString()));
       }
   }
 

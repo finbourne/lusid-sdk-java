@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **allocationBasis** | [**FundStructureAllocationBasis**](FundStructureAllocationBasis.md) |  | [optional] [default to FundStructureAllocationBasis]
 **pnlFlowMode** | **String** | How profit and loss reaches this member from the members it holds. EquityPickup (the default) revalues the position in each held member; BucketFlowThrough receives one line per economic bucket, tagged with its origin; TransactionFlowThrough receives every line, tagged with its origin and path. Available values: EquityPickup, BucketFlowThrough, TransactionFlowThrough. | [optional] [default to String]
 **allocationMapId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**driftMateriality** | [**FundStructureDriftMateriality**](FundStructureDriftMateriality.md) |  | [optional] [default to FundStructureDriftMateriality]
 
 ```java
 import com.finbourne.lusid.model.FundStructureNode;
@@ -26,6 +27,7 @@ String Role = "example Role";
 FundStructureAllocationBasis AllocationBasis = new FundStructureAllocationBasis();
 @jakarta.annotation.Nullable String PnlFlowMode = "example PnlFlowMode";
 ResourceId AllocationMapId = new ResourceId();
+FundStructureDriftMateriality DriftMateriality = new FundStructureDriftMateriality();
 
 
 FundStructureNode fundStructureNodeInstance = new FundStructureNode()
@@ -35,7 +37,8 @@ FundStructureNode fundStructureNodeInstance = new FundStructureNode()
     .Role(Role)
     .AllocationBasis(AllocationBasis)
     .PnlFlowMode(PnlFlowMode)
-    .AllocationMapId(AllocationMapId);
+    .AllocationMapId(AllocationMapId)
+    .DriftMateriality(DriftMateriality);
 ```
 
 

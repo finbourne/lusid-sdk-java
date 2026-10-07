@@ -247,7 +247,11 @@ public enum InstrumentEventType {
   
   LOANINTERESTCAPITALISATIONEVENT("LoanInterestCapitalisationEvent"),
   
-  TOTALRETURNSWAPCASHFLOWEVENT("TotalReturnSwapCashFlowEvent");
+  TOTALRETURNSWAPCASHFLOWEVENT("TotalReturnSwapCashFlowEvent"),
+  
+  GLOBALLOANFACILITYREINITIALISATIONEVENT("GlobalLoanFacilityReinitialisationEvent"),
+  
+  INVESTORLOANFACILITYREINITIALISATIONEVENT("InvestorLoanFacilityReinitialisationEvent");
 
   private String value;
 

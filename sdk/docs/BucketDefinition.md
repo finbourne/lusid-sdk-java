@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **filterExpression** | **String** |  | [default to String]
 **bucketType** | **String** | Available values: Dealing, PnL, Fees, BalanceSheet, Misc. | [default to String]
 **unitised** | **Boolean** |  | [optional] [default to Boolean]
+**cleardownBehaviour** | **String** | Available values: Clear, CarryForward. | [optional] [default to String]
+**clearsTo** | **String** |  | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.BucketDefinition;
@@ -21,6 +23,8 @@ String DisplayName = "example DisplayName";
 String FilterExpression = "example FilterExpression";
 String BucketType = "example BucketType";
 @jakarta.annotation.Nullable Boolean Unitised = true;
+@jakarta.annotation.Nullable String CleardownBehaviour = "example CleardownBehaviour";
+@jakarta.annotation.Nullable String ClearsTo = "example ClearsTo";
 
 
 BucketDefinition bucketDefinitionInstance = new BucketDefinition()
@@ -28,7 +32,9 @@ BucketDefinition bucketDefinitionInstance = new BucketDefinition()
     .DisplayName(DisplayName)
     .FilterExpression(FilterExpression)
     .BucketType(BucketType)
-    .Unitised(Unitised);
+    .Unitised(Unitised)
+    .CleardownBehaviour(CleardownBehaviour)
+    .ClearsTo(ClearsTo);
 ```
 
 
