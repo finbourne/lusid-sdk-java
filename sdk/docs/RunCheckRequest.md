@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **limitIndividualBreachesPerRule** | **Integer** | The maximum number of individual breaches to return per rule. Defaults to 100 if not specified. | [optional] [default to Integer]
 **portfolioHoldingDataset** | [**PortfolioHoldingDataset**](PortfolioHoldingDataset.md) |  | [optional] [default to PortfolioHoldingDataset]
 **portfolioTransactionDataset** | [**PortfolioTransactionDataset**](PortfolioTransactionDataset.md) |  | [optional] [default to PortfolioTransactionDataset]
+**structuredResultDataset** | [**StructuredResultDataset**](StructuredResultDataset.md) |  | [optional] [default to StructuredResultDataset]
 
 ```java
 import com.finbourne.lusid.model.RunCheckRequest;
@@ -20,13 +21,15 @@ LusidEntityDataset LusidEntityDataset = new LusidEntityDataset();
 Integer LimitIndividualBreachesPerRule = new Integer("100.00");
 PortfolioHoldingDataset PortfolioHoldingDataset = new PortfolioHoldingDataset();
 PortfolioTransactionDataset PortfolioTransactionDataset = new PortfolioTransactionDataset();
+StructuredResultDataset StructuredResultDataset = new StructuredResultDataset();
 
 
 RunCheckRequest runCheckRequestInstance = new RunCheckRequest()
     .LusidEntityDataset(LusidEntityDataset)
     .LimitIndividualBreachesPerRule(LimitIndividualBreachesPerRule)
     .PortfolioHoldingDataset(PortfolioHoldingDataset)
-    .PortfolioTransactionDataset(PortfolioTransactionDataset);
+    .PortfolioTransactionDataset(PortfolioTransactionDataset)
+    .StructuredResultDataset(StructuredResultDataset);
 ```
 
 

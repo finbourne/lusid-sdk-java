@@ -167,6 +167,14 @@ public class CreateTransferRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_OUT = "transactionToPortfolioRateOut";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_OUT)
+  private java.math.BigDecimal transactionToPortfolioRateOut;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_IN = "transactionToPortfolioRateIn";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_IN)
+  private java.math.BigDecimal transactionToPortfolioRateIn;
+
   public CreateTransferRequest() {
   }
 
@@ -782,6 +790,48 @@ public class CreateTransferRequest {
   }
 
 
+  public CreateTransferRequest transactionToPortfolioRateOut(java.math.BigDecimal transactionToPortfolioRateOut) {
+    
+    this.transactionToPortfolioRateOut = transactionToPortfolioRateOut;
+    return this;
+  }
+
+   /**
+   * The rate from the outgoing leg&#39;s trade currency to the outgoing portfolio&#39;s base currency, applied whenever supplied.
+   * @return transactionToPortfolioRateOut
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getTransactionToPortfolioRateOut() {
+    return transactionToPortfolioRateOut;
+  }
+
+
+  public void setTransactionToPortfolioRateOut(java.math.BigDecimal transactionToPortfolioRateOut) {
+    this.transactionToPortfolioRateOut = transactionToPortfolioRateOut;
+  }
+
+
+  public CreateTransferRequest transactionToPortfolioRateIn(java.math.BigDecimal transactionToPortfolioRateIn) {
+    
+    this.transactionToPortfolioRateIn = transactionToPortfolioRateIn;
+    return this;
+  }
+
+   /**
+   * The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied.
+   * @return transactionToPortfolioRateIn
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getTransactionToPortfolioRateIn() {
+    return transactionToPortfolioRateIn;
+  }
+
+
+  public void setTransactionToPortfolioRateIn(java.math.BigDecimal transactionToPortfolioRateIn) {
+    this.transactionToPortfolioRateIn = transactionToPortfolioRateIn;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -819,7 +869,9 @@ public class CreateTransferRequest {
         Objects.equals(this.accountingMethod, createTransferRequest.accountingMethod) &&
         Objects.equals(this.propertiesOut, createTransferRequest.propertiesOut) &&
         Objects.equals(this.propertiesIn, createTransferRequest.propertiesIn) &&
-        Objects.equals(this.properties, createTransferRequest.properties);
+        Objects.equals(this.properties, createTransferRequest.properties) &&
+        (this.transactionToPortfolioRateOut.compareTo(createTransferRequest.getTransactionToPortfolioRateOut()) == 0) &&
+        (this.transactionToPortfolioRateIn.compareTo(createTransferRequest.getTransactionToPortfolioRateIn()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -828,7 +880,7 @@ public class CreateTransferRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn, properties);
+    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn, properties, transactionToPortfolioRateOut, transactionToPortfolioRateIn);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -870,6 +922,8 @@ public class CreateTransferRequest {
     sb.append("    propertiesOut: ").append(toIndentedString(propertiesOut)).append("\n");
     sb.append("    propertiesIn: ").append(toIndentedString(propertiesIn)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    transactionToPortfolioRateOut: ").append(toIndentedString(transactionToPortfolioRateOut)).append("\n");
+    sb.append("    transactionToPortfolioRateIn: ").append(toIndentedString(transactionToPortfolioRateIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -920,6 +974,8 @@ public class CreateTransferRequest {
     openapiFields.add("propertiesOut");
     openapiFields.add("propertiesIn");
     openapiFields.add("properties");
+    openapiFields.add("transactionToPortfolioRateOut");
+    openapiFields.add("transactionToPortfolioRateIn");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

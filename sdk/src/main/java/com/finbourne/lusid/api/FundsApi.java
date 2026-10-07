@@ -11947,11 +11947,11 @@ public class FundsApi {
     public APIpatchFeeRequest patchFee(String scope, String code, String feeCode, List<Operation> operation) {
         return new APIpatchFeeRequest(scope, code, feeCode, operation);
     }
-    private okhttp3.Call patchFundCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
-        return patchFundCall(scope, code, operation,  _callback, new ConfigurationOptions());
+    private okhttp3.Call patchFundCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return patchFundCall(scope, code, operation, effectiveAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call patchFundCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call patchFundCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11977,6 +11977,10 @@ public class FundsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -12004,7 +12008,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchFundValidateBeforeCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call patchFundValidateBeforeCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchFund(Async)");
@@ -12020,34 +12024,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchFund(Async)");
         }
 
-        return patchFundCall(scope, code, operation, _callback, opts);
+        return patchFundCall(scope, code, operation, effectiveAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<Fund> patchFundWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
-        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, null, new ConfigurationOptions());
+    private ApiResponse<Fund> patchFundWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, effectiveAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Fund> patchFundWithHttpInfo(String scope, String code, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, null, opts);
+    private ApiResponse<Fund> patchFundWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call patchFundAsync(String scope, String code, List<Operation> operation, final ApiCallback<Fund> _callback) throws ApiException {
+    private okhttp3.Call patchFundAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<Fund> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, effectiveAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call patchFundAsync(String scope, String code, List<Operation> operation, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call patchFundAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, _callback, opts);
+        okhttp3.Call localVarCall = patchFundValidateBeforeCall(scope, code, operation, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12057,11 +12061,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final List<Operation> operation;
+        private String effectiveAt;
 
         private APIpatchFundRequest(String scope, String code, List<Operation> operation) {
             this.scope = scope;
             this.code = code;
             this.operation = operation;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.   Only DisplayName and Description can be patched with an effectiveAt, and the Fund is returned as at that datetime.   A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt   changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt. (optional)
+         * @return APIpatchFundRequest
+         */
+        public APIpatchFundRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
         }
 
         /**
@@ -12078,7 +12093,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return patchFundCall(scope, code, operation, _callback);
+            return patchFundCall(scope, code, operation, effectiveAt, _callback);
         }
 
         /**
@@ -12094,7 +12109,7 @@ public class FundsApi {
          </table>
          */
         public Fund execute() throws ApiException {
-            ApiResponse<Fund> localVarResp = patchFundWithHttpInfo(scope, code, operation);
+            ApiResponse<Fund> localVarResp = patchFundWithHttpInfo(scope, code, operation, effectiveAt);
             return localVarResp.getData();
         }
 
@@ -12111,7 +12126,7 @@ public class FundsApi {
          </table>
          */
         public Fund execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Fund> localVarResp = patchFundWithHttpInfo(scope, code, operation, opts);
+            ApiResponse<Fund> localVarResp = patchFundWithHttpInfo(scope, code, operation, effectiveAt, opts);
             return localVarResp.getData();
         }
 
@@ -12128,7 +12143,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
-            return patchFundWithHttpInfo(scope, code, operation);
+            return patchFundWithHttpInfo(scope, code, operation, effectiveAt);
         }
 
         /**
@@ -12144,7 +12159,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return patchFundWithHttpInfo(scope, code, operation, opts);
+            return patchFundWithHttpInfo(scope, code, operation, effectiveAt, opts);
         }
 
         /**
@@ -12161,7 +12176,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
-            return patchFundAsync(scope, code, operation, _callback);
+            return patchFundAsync(scope, code, operation, effectiveAt, _callback);
         }
 
         /**
@@ -12178,7 +12193,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
-            return patchFundAsync(scope, code, operation, _callback, opts);
+            return patchFundAsync(scope, code, operation, effectiveAt, _callback, opts);
         }
     }
 

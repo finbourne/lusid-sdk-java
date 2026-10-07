@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.EventDateRange;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -114,6 +115,10 @@ public class InstrumentEventHolder {
   public static final String SERIALIZED_NAME_GROUP_CODE = "groupCode";
   @SerializedName(SERIALIZED_NAME_GROUP_CODE)
   private String groupCode;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public InstrumentEventHolder() {
   }
@@ -420,6 +425,27 @@ public class InstrumentEventHolder {
   }
 
 
+  public InstrumentEventHolder stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -443,7 +469,8 @@ public class InstrumentEventHolder {
         Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber) &&
         Objects.equals(this.participationType, instrumentEventHolder.participationType) &&
         Objects.equals(this.asAt, instrumentEventHolder.asAt) &&
-        Objects.equals(this.groupCode, instrumentEventHolder.groupCode);
+        Objects.equals(this.groupCode, instrumentEventHolder.groupCode) &&
+        Objects.equals(this.stagedModifications, instrumentEventHolder.stagedModifications);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -452,7 +479,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType, asAt, groupCode);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType, asAt, groupCode, stagedModifications);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -480,6 +507,7 @@ public class InstrumentEventHolder {
     sb.append("    participationType: ").append(toIndentedString(participationType)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    groupCode: ").append(toIndentedString(groupCode)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -516,6 +544,7 @@ public class InstrumentEventHolder {
     openapiFields.add("participationType");
     openapiFields.add("asAt");
     openapiFields.add("groupCode");
+    openapiFields.add("stagedModifications");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -590,6 +619,10 @@ public class InstrumentEventHolder {
       }
       if ((jsonObj.get("groupCode") != null && !jsonObj.get("groupCode").isJsonNull()) && !jsonObj.get("groupCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `groupCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("groupCode").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
   }
 

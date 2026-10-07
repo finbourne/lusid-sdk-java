@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *ApplicationMetadataApi* | [**getLatestAsAt**](docs/ApplicationMetadataApi.md#getlatestasat) | **GET** /api/metadata/asat | [EXPERIMENTAL] GetLatestAsAt: Get latest AsAt
 *ApplicationMetadataApi* | [**getLusidVersions**](docs/ApplicationMetadataApi.md#getlusidversions) | **GET** /api/metadata/versions | GetLusidVersions: Get LUSID versions
 *ApplicationMetadataApi* | [**listAccessControlledResources**](docs/ApplicationMetadataApi.md#listaccesscontrolledresources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control
+*ApplicationMetadataApi* | [**listApiEndpoints**](docs/ApplicationMetadataApi.md#listapiendpoints) | **GET** /api/metadata/endpoints | ListApiEndpoints: Get the API endpoints available
 *BlocksApi* | [**deleteBlock**](docs/BlocksApi.md#deleteblock) | **DELETE** /api/blocks/{scope}/{code} | [EARLY ACCESS] DeleteBlock: Delete block
 *BlocksApi* | [**getBlock**](docs/BlocksApi.md#getblock) | **GET** /api/blocks/{scope}/{code} | [EARLY ACCESS] GetBlock: Get Block
 *BlocksApi* | [**listBlocks**](docs/BlocksApi.md#listblocks) | **GET** /api/blocks | [EARLY ACCESS] ListBlocks: List Blocks
@@ -933,6 +934,7 @@ Class | Method | HTTP request | Description
  - [AnnulQuotesResponse](docs/AnnulQuotesResponse.md)
  - [AnnulSingleStructuredDataResponse](docs/AnnulSingleStructuredDataResponse.md)
  - [AnnulStructuredDataResponse](docs/AnnulStructuredDataResponse.md)
+ - [ApiEndpoint](docs/ApiEndpoint.md)
  - [AppendComplexMarketDataRequest](docs/AppendComplexMarketDataRequest.md)
  - [AppendFxForwardCurveByQuoteReference](docs/AppendFxForwardCurveByQuoteReference.md)
  - [AppendFxForwardCurveData](docs/AppendFxForwardCurveData.md)
@@ -2274,6 +2276,7 @@ Class | Method | HTTP request | Description
  - [SeriesDefinition](docs/SeriesDefinition.md)
  - [SeriesDefinitionRequest](docs/SeriesDefinitionRequest.md)
  - [SeriesIdentifierField](docs/SeriesIdentifierField.md)
+ - [ServiceApiEndpoints](docs/ServiceApiEndpoints.md)
  - [SetAmortisationRulesRequest](docs/SetAmortisationRulesRequest.md)
  - [SetLegalEntityIdentifiersRequest](docs/SetLegalEntityIdentifiersRequest.md)
  - [SetLegalEntityPropertiesRequest](docs/SetLegalEntityPropertiesRequest.md)
@@ -2343,6 +2346,8 @@ Class | Method | HTTP request | Description
  - [StringListComplianceParameter](docs/StringListComplianceParameter.md)
  - [StructuredResultData](docs/StructuredResultData.md)
  - [StructuredResultDataId](docs/StructuredResultDataId.md)
+ - [StructuredResultDataResult](docs/StructuredResultDataResult.md)
+ - [StructuredResultDataset](docs/StructuredResultDataset.md)
  - [SubHoldingKeyValueEquals](docs/SubHoldingKeyValueEquals.md)
  - [SubmitRecResultSetReviewRequest](docs/SubmitRecResultSetReviewRequest.md)
  - [SubscribeElection](docs/SubscribeElection.md)

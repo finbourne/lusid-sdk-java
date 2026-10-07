@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **marketDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The issuer-agent deadline. | [optional] [default to OffsetDateTime]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which cash is debited and the new securities are credited. | [optional] [default to OffsetDateTime]
 **securitySettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date the security leg settles when it differs from the cash leg. Optional.  When not supplied, transaction-template generation falls back to PaymentDate | [optional] [default to OffsetDateTime]
-**subscriptionPrice** | **java.math.BigDecimal** | The subscription price per new unit. Applies to both SECU and OVER subscriptions.  Must be greater than zero. | [optional] [default to java.math.BigDecimal]
+**subscriptionPrice** | **java.math.BigDecimal** | The subscription price per new unit. Applies to both SECU and OVER subscriptions.  Must be greater than zero. For Bond and ComplexBond it is per unit of face, e.g. 0.97 for 97% of par. | [optional] [default to java.math.BigDecimal]
 **subscriptionCurrency** | **String** | Currency of the SubscriptionPrice. | [optional] [default to String]
 **newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
 **prorationRate** | **java.math.BigDecimal** | The proration rate applied to OVER subscriptions when the offer is oversubscribed.  Treated as 1 (full allocation) when not supplied. Must be greater than 0 and less than  or equal to 1. SECU basic entitlement is never prorated. | [optional] [default to java.math.BigDecimal]

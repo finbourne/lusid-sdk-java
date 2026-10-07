@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityDataset;
 import com.finbourne.lusid.model.PortfolioHoldingDataset;
 import com.finbourne.lusid.model.PortfolioTransactionDataset;
+import com.finbourne.lusid.model.StructuredResultDataset;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,6 +68,10 @@ public class RunCheckRequest {
   public static final String SERIALIZED_NAME_PORTFOLIO_TRANSACTION_DATASET = "portfolioTransactionDataset";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_TRANSACTION_DATASET)
   private PortfolioTransactionDataset portfolioTransactionDataset;
+
+  public static final String SERIALIZED_NAME_STRUCTURED_RESULT_DATASET = "structuredResultDataset";
+  @SerializedName(SERIALIZED_NAME_STRUCTURED_RESULT_DATASET)
+  private StructuredResultDataset structuredResultDataset;
 
   public RunCheckRequest() {
   }
@@ -155,6 +160,27 @@ public class RunCheckRequest {
   }
 
 
+  public RunCheckRequest structuredResultDataset(StructuredResultDataset structuredResultDataset) {
+    
+    this.structuredResultDataset = structuredResultDataset;
+    return this;
+  }
+
+   /**
+   * Get structuredResultDataset
+   * @return structuredResultDataset
+  **/
+  @jakarta.annotation.Nullable
+  public StructuredResultDataset getStructuredResultDataset() {
+    return structuredResultDataset;
+  }
+
+
+  public void setStructuredResultDataset(StructuredResultDataset structuredResultDataset) {
+    this.structuredResultDataset = structuredResultDataset;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,12 +194,13 @@ public class RunCheckRequest {
     return Objects.equals(this.lusidEntityDataset, runCheckRequest.lusidEntityDataset) &&
         Objects.equals(this.limitIndividualBreachesPerRule, runCheckRequest.limitIndividualBreachesPerRule) &&
         Objects.equals(this.portfolioHoldingDataset, runCheckRequest.portfolioHoldingDataset) &&
-        Objects.equals(this.portfolioTransactionDataset, runCheckRequest.portfolioTransactionDataset);
+        Objects.equals(this.portfolioTransactionDataset, runCheckRequest.portfolioTransactionDataset) &&
+        Objects.equals(this.structuredResultDataset, runCheckRequest.structuredResultDataset);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule, portfolioHoldingDataset, portfolioTransactionDataset);
+    return Objects.hash(lusidEntityDataset, limitIndividualBreachesPerRule, portfolioHoldingDataset, portfolioTransactionDataset, structuredResultDataset);
   }
 
   @Override
@@ -184,6 +211,7 @@ public class RunCheckRequest {
     sb.append("    limitIndividualBreachesPerRule: ").append(toIndentedString(limitIndividualBreachesPerRule)).append("\n");
     sb.append("    portfolioHoldingDataset: ").append(toIndentedString(portfolioHoldingDataset)).append("\n");
     sb.append("    portfolioTransactionDataset: ").append(toIndentedString(portfolioTransactionDataset)).append("\n");
+    sb.append("    structuredResultDataset: ").append(toIndentedString(structuredResultDataset)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,6 +238,7 @@ public class RunCheckRequest {
     openapiFields.add("limitIndividualBreachesPerRule");
     openapiFields.add("portfolioHoldingDataset");
     openapiFields.add("portfolioTransactionDataset");
+    openapiFields.add("structuredResultDataset");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -239,6 +268,10 @@ public class RunCheckRequest {
       // validate the optional field `portfolioTransactionDataset`
       if (jsonObj.get("portfolioTransactionDataset") != null && !jsonObj.get("portfolioTransactionDataset").isJsonNull()) {
         PortfolioTransactionDataset.validateJsonElement(jsonObj.get("portfolioTransactionDataset"));
+      }
+      // validate the optional field `structuredResultDataset`
+      if (jsonObj.get("structuredResultDataset") != null && !jsonObj.get("structuredResultDataset").isJsonNull()) {
+        StructuredResultDataset.validateJsonElement(jsonObj.get("structuredResultDataset"));
       }
   }
 

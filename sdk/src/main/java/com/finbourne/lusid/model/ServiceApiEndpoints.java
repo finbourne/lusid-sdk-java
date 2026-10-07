@@ -11,8 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ErrorDetail;
-import com.finbourne.lusid.model.InstrumentEventHolder;
+import com.finbourne.lusid.model.ApiEndpoint;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,9 +22,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -54,34 +51,80 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * UpsertInstrumentEventsResponse
+ * ServiceApiEndpoints
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertInstrumentEventsResponse {
+public class ServiceApiEndpoints {
+  public static final String SERIALIZED_NAME_APPLICATION = "application";
+  @SerializedName(SERIALIZED_NAME_APPLICATION)
+  private String application;
+
+  public static final String SERIALIZED_NAME_ENDPOINTS = "endpoints";
+  @SerializedName(SERIALIZED_NAME_ENDPOINTS)
+  private List<ApiEndpoint> endpoints = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
-
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private Map<String, InstrumentEventHolder> values;
-
-  public static final String SERIALIZED_NAME_FAILED = "failed";
-  @SerializedName(SERIALIZED_NAME_FAILED)
-  private Map<String, ErrorDetail> failed;
-
-  public static final String SERIALIZED_NAME_STAGED = "staged";
-  @SerializedName(SERIALIZED_NAME_STAGED)
-  private Map<String, InstrumentEventHolder> staged;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public UpsertInstrumentEventsResponse() {
+  public ServiceApiEndpoints() {
   }
 
-  public UpsertInstrumentEventsResponse href(URI href) {
+  public ServiceApiEndpoints application(String application) {
+    
+    this.application = application;
+    return this;
+  }
+
+   /**
+   * Get application
+   * @return application
+  **/
+  @jakarta.annotation.Nonnull
+  public String getApplication() {
+    return application;
+  }
+
+
+  public void setApplication(String application) {
+    this.application = application;
+  }
+
+
+  public ServiceApiEndpoints endpoints(List<ApiEndpoint> endpoints) {
+    
+    this.endpoints = endpoints;
+    return this;
+  }
+
+  public ServiceApiEndpoints addEndpointsItem(ApiEndpoint endpointsItem) {
+    if (this.endpoints == null) {
+      this.endpoints = new ArrayList<>();
+    }
+    this.endpoints.add(endpointsItem);
+    return this;
+  }
+
+   /**
+   * Get endpoints
+   * @return endpoints
+  **/
+  @jakarta.annotation.Nonnull
+  public List<ApiEndpoint> getEndpoints() {
+    return endpoints;
+  }
+
+
+  public void setEndpoints(List<ApiEndpoint> endpoints) {
+    this.endpoints = endpoints;
+  }
+
+
+  public ServiceApiEndpoints href(URI href) {
     
     this.href = href;
     return this;
@@ -102,100 +145,13 @@ public class UpsertInstrumentEventsResponse {
   }
 
 
-  public UpsertInstrumentEventsResponse values(Map<String, InstrumentEventHolder> values) {
-    
-    this.values = values;
-    return this;
-  }
-
-  public UpsertInstrumentEventsResponse putValuesItem(String key, InstrumentEventHolder valuesItem) {
-    if (this.values == null) {
-      this.values = new HashMap<>();
-    }
-    this.values.put(key, valuesItem);
-    return this;
-  }
-
-   /**
-   * The instrument events which have been successfully updated or inserted.
-   * @return values
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, InstrumentEventHolder> getValues() {
-    return values;
-  }
-
-
-  public void setValues(Map<String, InstrumentEventHolder> values) {
-    this.values = values;
-  }
-
-
-  public UpsertInstrumentEventsResponse failed(Map<String, ErrorDetail> failed) {
-    
-    this.failed = failed;
-    return this;
-  }
-
-  public UpsertInstrumentEventsResponse putFailedItem(String key, ErrorDetail failedItem) {
-    if (this.failed == null) {
-      this.failed = new HashMap<>();
-    }
-    this.failed.put(key, failedItem);
-    return this;
-  }
-
-   /**
-   * The instrument events that could not be updated or inserted along with a reason for their failure.
-   * @return failed
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, ErrorDetail> getFailed() {
-    return failed;
-  }
-
-
-  public void setFailed(Map<String, ErrorDetail> failed) {
-    this.failed = failed;
-  }
-
-
-  public UpsertInstrumentEventsResponse staged(Map<String, InstrumentEventHolder> staged) {
-    
-    this.staged = staged;
-    return this;
-  }
-
-  public UpsertInstrumentEventsResponse putStagedItem(String key, InstrumentEventHolder stagedItem) {
-    if (this.staged == null) {
-      this.staged = new HashMap<>();
-    }
-    this.staged.put(key, stagedItem);
-    return this;
-  }
-
-   /**
-   * The instrument events that have been staged pending approval.
-   * @return staged
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, InstrumentEventHolder> getStaged() {
-    return staged;
-  }
-
-
-  public void setStaged(Map<String, InstrumentEventHolder> staged) {
-    this.staged = staged;
-  }
-
-
-  public UpsertInstrumentEventsResponse links(List<Link> links) {
+  public ServiceApiEndpoints links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public UpsertInstrumentEventsResponse addLinksItem(Link linksItem) {
+  public ServiceApiEndpoints addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -227,12 +183,11 @@ public class UpsertInstrumentEventsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpsertInstrumentEventsResponse upsertInstrumentEventsResponse = (UpsertInstrumentEventsResponse) o;
-    return Objects.equals(this.href, upsertInstrumentEventsResponse.href) &&
-        Objects.equals(this.values, upsertInstrumentEventsResponse.values) &&
-        Objects.equals(this.failed, upsertInstrumentEventsResponse.failed) &&
-        Objects.equals(this.staged, upsertInstrumentEventsResponse.staged) &&
-        Objects.equals(this.links, upsertInstrumentEventsResponse.links);
+    ServiceApiEndpoints serviceApiEndpoints = (ServiceApiEndpoints) o;
+    return Objects.equals(this.application, serviceApiEndpoints.application) &&
+        Objects.equals(this.endpoints, serviceApiEndpoints.endpoints) &&
+        Objects.equals(this.href, serviceApiEndpoints.href) &&
+        Objects.equals(this.links, serviceApiEndpoints.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -241,7 +196,7 @@ public class UpsertInstrumentEventsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, values, failed, staged, links);
+    return Objects.hash(application, endpoints, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -254,11 +209,10 @@ public class UpsertInstrumentEventsResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertInstrumentEventsResponse {\n");
+    sb.append("class ServiceApiEndpoints {\n");
+    sb.append("    application: ").append(toIndentedString(application)).append("\n");
+    sb.append("    endpoints: ").append(toIndentedString(endpoints)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
-    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -282,29 +236,50 @@ public class UpsertInstrumentEventsResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("application");
+    openapiFields.add("endpoints");
     openapiFields.add("href");
-    openapiFields.add("values");
-    openapiFields.add("failed");
-    openapiFields.add("staged");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("application");
+    openapiRequiredFields.add("endpoints");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpsertInstrumentEventsResponse
+  * @throws IOException if the JSON Element is invalid with respect to ServiceApiEndpoints
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpsertInstrumentEventsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertInstrumentEventsResponse is not found in the empty JSON string", UpsertInstrumentEventsResponse.openapiRequiredFields.toString()));
+        if (!ServiceApiEndpoints.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ServiceApiEndpoints is not found in the empty JSON string", ServiceApiEndpoints.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ServiceApiEndpoints.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("application").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `application` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("endpoints").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endpoints` to be an array in the JSON string but got `%s`", jsonObj.get("endpoints").toString()));
+      }
+
+      JsonArray jsonArrayendpoints = jsonObj.getAsJsonArray("endpoints");
+      // validate the required field `endpoints` (array)
+      for (int i = 0; i < jsonArrayendpoints.size(); i++) {
+        ApiEndpoint.validateJsonElement(jsonArrayendpoints.get(i));
+      };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
@@ -328,22 +303,22 @@ public class UpsertInstrumentEventsResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpsertInstrumentEventsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpsertInstrumentEventsResponse' and its subtypes
+       if (!ServiceApiEndpoints.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ServiceApiEndpoints' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpsertInstrumentEventsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertInstrumentEventsResponse.class));
+       final TypeAdapter<ServiceApiEndpoints> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ServiceApiEndpoints.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpsertInstrumentEventsResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<ServiceApiEndpoints>() {
            @Override
-           public void write(JsonWriter out, UpsertInstrumentEventsResponse value) throws IOException {
+           public void write(JsonWriter out, ServiceApiEndpoints value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpsertInstrumentEventsResponse read(JsonReader in) throws IOException {
+           public ServiceApiEndpoints read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -354,18 +329,18 @@ public class UpsertInstrumentEventsResponse {
   }
 
  /**
-  * Create an instance of UpsertInstrumentEventsResponse given an JSON string
+  * Create an instance of ServiceApiEndpoints given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpsertInstrumentEventsResponse
-  * @throws IOException if the JSON string is invalid with respect to UpsertInstrumentEventsResponse
+  * @return An instance of ServiceApiEndpoints
+  * @throws IOException if the JSON string is invalid with respect to ServiceApiEndpoints
   */
-  public static UpsertInstrumentEventsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpsertInstrumentEventsResponse.class);
+  public static ServiceApiEndpoints fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ServiceApiEndpoints.class);
   }
 
  /**
-  * Convert an instance of UpsertInstrumentEventsResponse to an JSON string
+  * Convert an instance of ServiceApiEndpoints to an JSON string
   *
   * @return JSON string
   */

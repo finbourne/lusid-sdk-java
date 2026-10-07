@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.LusidEntityResult;
 import com.finbourne.lusid.model.PortfolioHoldingResult;
 import com.finbourne.lusid.model.PortfolioTransactionResult;
+import com.finbourne.lusid.model.StructuredResultDataResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -125,6 +126,10 @@ public class DataQualityCheckResult {
   public static final String SERIALIZED_NAME_PORTFOLIO_TRANSACTION = "portfolioTransaction";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_TRANSACTION)
   private PortfolioTransactionResult portfolioTransaction;
+
+  public static final String SERIALIZED_NAME_STRUCTURED_RESULT_DATA = "structuredResultData";
+  @SerializedName(SERIALIZED_NAME_STRUCTURED_RESULT_DATA)
+  private StructuredResultDataResult structuredResultData;
 
   public DataQualityCheckResult() {
   }
@@ -507,6 +512,27 @@ public class DataQualityCheckResult {
   }
 
 
+  public DataQualityCheckResult structuredResultData(StructuredResultDataResult structuredResultData) {
+    
+    this.structuredResultData = structuredResultData;
+    return this;
+  }
+
+   /**
+   * Get structuredResultData
+   * @return structuredResultData
+  **/
+  @jakarta.annotation.Nullable
+  public StructuredResultDataResult getStructuredResultData() {
+    return structuredResultData;
+  }
+
+
+  public void setStructuredResultData(StructuredResultDataResult structuredResultData) {
+    this.structuredResultData = structuredResultData;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -534,7 +560,8 @@ public class DataQualityCheckResult {
         Objects.equals(this.errorDetail, dataQualityCheckResult.errorDetail) &&
         Objects.equals(this.resultId, dataQualityCheckResult.resultId) &&
         Objects.equals(this.portfolioHolding, dataQualityCheckResult.portfolioHolding) &&
-        Objects.equals(this.portfolioTransaction, dataQualityCheckResult.portfolioTransaction);
+        Objects.equals(this.portfolioTransaction, dataQualityCheckResult.portfolioTransaction) &&
+        Objects.equals(this.structuredResultData, dataQualityCheckResult.structuredResultData);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -543,7 +570,7 @@ public class DataQualityCheckResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId, portfolioHolding, portfolioTransaction);
+    return Objects.hash(checkDefinitionScope, checkDefinitionCode, checkDefinitionDisplayName, checkRunAsAt, resultType, ruleSetKey, ruleSetDisplayName, ruleKey, ruleDisplayName, ruleDescription, ruleFormula, severity, lusidEntity, countRuleBreaches, errorDetail, resultId, portfolioHolding, portfolioTransaction, structuredResultData);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -575,6 +602,7 @@ public class DataQualityCheckResult {
     sb.append("    resultId: ").append(toIndentedString(resultId)).append("\n");
     sb.append("    portfolioHolding: ").append(toIndentedString(portfolioHolding)).append("\n");
     sb.append("    portfolioTransaction: ").append(toIndentedString(portfolioTransaction)).append("\n");
+    sb.append("    structuredResultData: ").append(toIndentedString(structuredResultData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -615,6 +643,7 @@ public class DataQualityCheckResult {
     openapiFields.add("resultId");
     openapiFields.add("portfolioHolding");
     openapiFields.add("portfolioTransaction");
+    openapiFields.add("structuredResultData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -680,6 +709,10 @@ public class DataQualityCheckResult {
       // validate the optional field `portfolioTransaction`
       if (jsonObj.get("portfolioTransaction") != null && !jsonObj.get("portfolioTransaction").isJsonNull()) {
         PortfolioTransactionResult.validateJsonElement(jsonObj.get("portfolioTransaction"));
+      }
+      // validate the optional field `structuredResultData`
+      if (jsonObj.get("structuredResultData") != null && !jsonObj.get("structuredResultData").isJsonNull()) {
+        StructuredResultDataResult.validateJsonElement(jsonObj.get("structuredResultData"));
       }
   }
 

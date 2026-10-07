@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10184
+  version: 0.11.10197
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -44033,6 +44033,21 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
+      - description: "The effective datetime or cut label from which the patch applies.\
+          \ If not specified, the patch applies for all time.\r\n Only DisplayName\
+          \ and Description can be patched with an effectiveAt, and the Fund is returned\
+          \ as at that datetime.\r\n A value patched with an effectiveAt stays in\
+          \ force from that datetime. A later patch of the same field without an effectiveAt\r\
+          \n changes it only before that datetime; to change it from that datetime,\
+          \ patch it again with the same effectiveAt."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -80250,6 +80265,88 @@ paths:
       security:
       - oauth2: []
       summary: "GetExcelAddin: Download Excel Addin"
+      tags:
+      - Application Metadata
+      x-fbn-apistatus: Stable
+      x-accepts: application/json
+  /api/metadata/endpoints:
+    get:
+      description: "Get the name of the application and the operation, HTTP method,\
+        \ path, status, summary and description of each of its API endpoints"
+      operationId: ListApiEndpoints
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                application: lusid
+                endpoints:
+                - operation: CreatePortfolio
+                  httpMethod: POST
+                  path: "/api/api/transactionportfolios/{scope}"
+                  status: Stable
+                  summary: Create portfolio
+                  description: Create a transaction portfolio in a particular scope.
+                - operation: ListAccessControlledResources
+                  httpMethod: GET
+                  path: /api/api/metadata/access/resources
+                  status: Stable
+                  summary: Get resources available for access control
+                  description: Get the comprehensive set of resources that are available
+                    for access control
+                href: https://example.lusid.com/api/api/metadata/endpoints
+              schema:
+                $ref: '#/components/schemas/ServiceApiEndpoints'
+            application/json:
+              example:
+                application: lusid
+                endpoints:
+                - operation: CreatePortfolio
+                  httpMethod: POST
+                  path: "/api/api/transactionportfolios/{scope}"
+                  status: Stable
+                  summary: Create portfolio
+                  description: Create a transaction portfolio in a particular scope.
+                - operation: ListAccessControlledResources
+                  httpMethod: GET
+                  path: /api/api/metadata/access/resources
+                  status: Stable
+                  summary: Get resources available for access control
+                  description: Get the comprehensive set of resources that are available
+                    for access control
+                href: https://example.lusid.com/api/api/metadata/endpoints
+              schema:
+                $ref: '#/components/schemas/ServiceApiEndpoints'
+            text/json:
+              example:
+                application: lusid
+                endpoints:
+                - operation: CreatePortfolio
+                  httpMethod: POST
+                  path: "/api/api/transactionportfolios/{scope}"
+                  status: Stable
+                  summary: Create portfolio
+                  description: Create a transaction portfolio in a particular scope.
+                - operation: ListAccessControlledResources
+                  httpMethod: GET
+                  path: /api/api/metadata/access/resources
+                  status: Stable
+                  summary: Get resources available for access control
+                  description: Get the comprehensive set of resources that are available
+                    for access control
+                href: https://example.lusid.com/api/api/metadata/endpoints
+              schema:
+                $ref: '#/components/schemas/ServiceApiEndpoints'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "ListApiEndpoints: Get the API endpoints available"
       tags:
       - Application Metadata
       x-fbn-apistatus: Stable
@@ -179693,6 +179790,38 @@ components:
           nullable: true
           type: array
       type: object
+    ApiEndpoint:
+      additionalProperties: false
+      example:
+        summary: summary
+        path: path
+        description: description
+        httpMethod: httpMethod
+        operation: operation
+        status: status
+      properties:
+        operation:
+          nullable: true
+          type: string
+        httpMethod:
+          minLength: 1
+          type: string
+        path:
+          minLength: 1
+          type: string
+        status:
+          nullable: true
+          type: string
+        summary:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+      required:
+      - httpMethod
+      - path
+      type: object
     AppendComplexMarketDataRequest:
       additionalProperties: false
       description: The details of the point to be appended to a complex market data
@@ -180043,6 +180172,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -180889,6 +181024,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -210273,6 +210414,7 @@ components:
         source: source
         counterpartyIdOut: counterpartyIdOut
         tradeDateIn: 2000-01-23T04:56:07.000+00:00
+        transactionToPortfolioRateOut: 3.616076749251911
         unitsIn: 6.027456183070403
         propertiesOut:
           key:
@@ -210323,6 +210465,7 @@ components:
         transactionPriceIn: 9.301444243932576
         transactionPriceOut: 7.061401241503109
         settlementDateOut: 2000-01-23T04:56:07.000+00:00
+        transactionToPortfolioRateIn: 2.027123023002322
         custodianAccountIdIn:
           code: code
           scope: scope
@@ -210491,6 +210634,19 @@ components:
             \ are Transaction domain and land on the legs."
           nullable: true
           type: object
+        transactionToPortfolioRateOut:
+          description: "The rate from the outgoing leg's trade currency to the outgoing\
+            \ portfolio's base currency, applied whenever supplied."
+          format: double
+          nullable: true
+          type: number
+        transactionToPortfolioRateIn:
+          description: "The rate from the incoming leg's trade currency to the incoming\
+            \ portfolio's base currency. Required when the two portfolios have different\
+            \ base currencies, and applied whenever supplied."
+          format: double
+          nullable: true
+          type: number
       required:
       - instrumentIdentifierIn
       - instrumentIdentifierOut
@@ -214685,6 +214841,17 @@ components:
         ruleSetKey: ruleSetKey
         checkDefinitionScope: checkDefinitionScope
         countRuleBreaches: 6
+        structuredResultData:
+          documentEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          code: code
+          entityType: entityType
+          scope: scope
+          asAt: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          source: source
+          resultType: resultType
+          rowIdentifiers:
+            key: rowIdentifiers
         checkRunAsAt: 2000-01-23T04:56:07.000+00:00
         ruleDisplayName: ruleDisplayName
         portfolioHolding:
@@ -214790,6 +214957,8 @@ components:
           $ref: '#/components/schemas/PortfolioHoldingResult'
         portfolioTransaction:
           $ref: '#/components/schemas/PortfolioTransactionResult'
+        structuredResultData:
+          $ref: '#/components/schemas/StructuredResultDataResult'
       type: object
     DataScope:
       additionalProperties: false
@@ -242996,6 +243165,12 @@ components:
         corporateActionSourceId:
           code: code
           scope: scope
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         lusidInstrumentId: lusidInstrumentId
         properties:
         - referenceData:
@@ -243098,6 +243273,8 @@ components:
             \ Tier3, Legacy."
           nullable: true
           type: string
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
       required:
       - description
       - eventDateRange
@@ -270638,6 +270815,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -270686,6 +270869,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -289859,7 +290048,8 @@ components:
             type: string
           subscriptionPrice:
             description: "The subscription price per new unit. Applies to both SECU\
-              \ and OVER subscriptions.\r\nMust be greater than zero."
+              \ and OVER subscriptions.\r\nMust be greater than zero. For Bond and\
+              \ ComplexBond it is per unit of face, e.g. 0.97 for 97% of par."
             format: double
             type: number
           subscriptionCurrency:
@@ -302538,6 +302728,12 @@ components:
             corporateActionSourceId:
               code: code
               scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             lusidInstrumentId: lusidInstrumentId
             properties:
             - referenceData:
@@ -303384,6 +303580,12 @@ components:
             corporateActionSourceId:
               code: code
               scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             lusidInstrumentId: lusidInstrumentId
             properties:
             - referenceData:
@@ -303491,6 +303693,12 @@ components:
             corporateActionSourceId:
               code: code
               scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             lusidInstrumentId: lusidInstrumentId
             properties:
             - referenceData:
@@ -304337,6 +304545,12 @@ components:
             corporateActionSourceId:
               code: code
               scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             lusidInstrumentId: lusidInstrumentId
             properties:
             - referenceData:
@@ -308659,6 +308873,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -308707,6 +308927,12 @@ components:
           corporateActionSourceId:
             code: code
             scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           lusidInstrumentId: lusidInstrumentId
           properties:
           - referenceData:
@@ -328883,6 +329109,15 @@ components:
           effectiveAt: 2000-01-23T04:56:07.000+00:00
           portfolioSelectorAttribute: portfolioSelectorAttribute
         limitIndividualBreachesPerRule: 0
+        structuredResultDataset:
+          code: code
+          rowSelectorValue: rowSelectorValue
+          scope: scope
+          rowSelectorAttribute: rowSelectorAttribute
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          source: source
+          resultType: resultType
         portfolioTransactionDataset:
           transactionSelectorValue: transactionSelectorValue
           fromEffectiveDate: 2000-01-23T04:56:07.000+00:00
@@ -328912,6 +329147,8 @@ components:
           $ref: '#/components/schemas/PortfolioHoldingDataset'
         portfolioTransactionDataset:
           $ref: '#/components/schemas/PortfolioTransactionDataset'
+        structuredResultDataset:
+          $ref: '#/components/schemas/StructuredResultDataset'
       type: object
     RunCheckResponse:
       additionalProperties: false
@@ -328942,6 +329179,17 @@ components:
           ruleSetKey: ruleSetKey
           checkDefinitionScope: checkDefinitionScope
           countRuleBreaches: 6
+          structuredResultData:
+            documentEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            entityType: entityType
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            source: source
+            resultType: resultType
+            rowIdentifiers:
+              key: rowIdentifiers
           checkRunAsAt: 2000-01-23T04:56:07.000+00:00
           ruleDisplayName: ruleDisplayName
           portfolioHolding:
@@ -328996,6 +329244,17 @@ components:
           ruleSetKey: ruleSetKey
           checkDefinitionScope: checkDefinitionScope
           countRuleBreaches: 6
+          structuredResultData:
+            documentEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            entityType: entityType
+            scope: scope
+            asAt: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            source: source
+            resultType: resultType
+            rowIdentifiers:
+              key: rowIdentifiers
           checkRunAsAt: 2000-01-23T04:56:07.000+00:00
           ruleDisplayName: ruleDisplayName
           portfolioHolding:
@@ -330317,6 +330576,56 @@ components:
       required:
       - dataTypeId
       - fieldName
+      type: object
+    ServiceApiEndpoints:
+      additionalProperties: false
+      example:
+        endpoints:
+        - summary: summary
+          path: path
+          description: description
+          httpMethod: httpMethod
+          operation: operation
+          status: status
+        - summary: summary
+          path: path
+          description: description
+          httpMethod: httpMethod
+          operation: operation
+          status: status
+        application: application
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        application:
+          minLength: 1
+          type: string
+        endpoints:
+          items:
+            $ref: '#/components/schemas/ApiEndpoint'
+          type: array
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - application
+      - endpoints
       type: object
     SetAmortisationRulesRequest:
       additionalProperties: false
@@ -336447,6 +336756,134 @@ components:
           type: string
       required:
       - source
+      type: object
+    StructuredResultDataResult:
+      additionalProperties: false
+      description: Represents structured result data document and row details for
+        a data quality check result.
+      example:
+        documentEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        code: code
+        entityType: entityType
+        scope: scope
+        asAt: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        source: source
+        resultType: resultType
+        rowIdentifiers:
+          key: rowIdentifiers
+      properties:
+        entityType:
+          description: "The type of the entity, e.g. \"SrsRow\"."
+          nullable: true
+          type: string
+        asAt:
+          description: The as-at timestamp the document was read at
+          format: date-time
+          type: string
+        effectiveAt:
+          description: The effective-at timestamp the document was read at
+          format: date-time
+          type: string
+        documentEffectiveAt:
+          description: "The effective date of the upload the row was read from: the\
+            \ latest upload at or before effectiveAt"
+          format: date-time
+          type: string
+        scope:
+          description: The scope of the document
+          nullable: true
+          type: string
+        code:
+          description: The code of the document
+          nullable: true
+          type: string
+        source:
+          description: The platform or vendor that provided the document
+          nullable: true
+          type: string
+        resultType:
+          description: The document's result type
+          nullable: true
+          type: string
+        rowIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The row's identifier columns, keyed by address key. Populated\
+            \ when entityType is \"SrsRow\"."
+          nullable: true
+          type: object
+      type: object
+    StructuredResultDataset:
+      additionalProperties: false
+      description: "Contains the run-time parameters that are appropriate for check\
+        \ definitions\r\nwith datasetSchema.type = \"StructuredResultData\". Names\
+        \ one structured result data document."
+      example:
+        code: code
+        rowSelectorValue: rowSelectorValue
+        scope: scope
+        rowSelectorAttribute: rowSelectorAttribute
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        source: source
+        resultType: resultType
+      properties:
+        effectiveAt:
+          description: The effectiveAt date of the document's rows to check. Required.
+          format: date-time
+          nullable: true
+          type: string
+        asAt:
+          description: The asAt date to fetch the data. Nullable. Defaults to latest.
+          format: date-time
+          nullable: true
+          type: string
+        scope:
+          description: The scope of the document. Required.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        code:
+          description: The code of the document. Required.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        source:
+          description: "The platform or vendor that provided the document, e.g. \"\
+            Client\". Required."
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        resultType:
+          description: "The document's result type, e.g. \"UnitResult/Custom\". Required."
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          type: string
+        rowSelectorAttribute:
+          description: "A row field to narrow down the rows checked, e.g. rowId['Instrument/default/LusidInstrumentId']\
+            \ or\r\nrowData['Valuation/PV'].Units. Cannot be provided without rowSelectorValue,\
+            \ and vice versa."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+        rowSelectorValue:
+          description: "The value of the above row field used to narrow down the rows.\
+            \ Cannot be provided without\r\nrowSelectorAttribute, and vice versa."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
       type: object
     SubHoldingKeyValueEquals:
       allOf:
@@ -355368,6 +355805,12 @@ components:
             corporateActionSourceId:
               code: code
               scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             lusidInstrumentId: lusidInstrumentId
             properties:
             - referenceData:
@@ -355417,6 +355860,62 @@ components:
             errorDetails:
             - key: errorDetails
             - key: errorDetails
+        staged:
+          key:
+            sequenceNumber: 0
+            instrumentScope: instrumentScope
+            instrumentEventId: instrumentEventId
+            asAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            completeness: completeness
+            eventDateRange:
+              start: 2000-01-23T04:56:07.000+00:00
+              end: 2000-01-23T04:56:07.000+00:00
+            participationType: Mandatory
+            instrumentEvent:
+              instrumentEventType: TransitionEvent
+            corporateActionSourceId:
+              code: code
+              scope: scope
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
+            lusidInstrumentId: lusidInstrumentId
+            properties:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+            groupCode: groupCode
       properties:
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
@@ -355427,15 +355926,21 @@ components:
         values:
           additionalProperties:
             $ref: '#/components/schemas/InstrumentEventHolder'
-          description: The corporate actions which have been successfully updated
+          description: The instrument events which have been successfully updated
             or inserted.
           nullable: true
           type: object
         failed:
           additionalProperties:
             $ref: '#/components/schemas/ErrorDetail'
-          description: The corporate actions that could not be updated or inserted
+          description: The instrument events that could not be updated or inserted
             along with a reason for their failure.
+          nullable: true
+          type: object
+        staged:
+          additionalProperties:
+            $ref: '#/components/schemas/InstrumentEventHolder'
+          description: The instrument events that have been staged pending approval.
           nullable: true
           type: object
         links:
