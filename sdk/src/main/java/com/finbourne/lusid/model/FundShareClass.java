@@ -110,7 +110,7 @@ public class FundShareClass extends LusidInstrument {
    * A short identifier, unique across a single fund, usually made up of the ShareClass components. Eg \&quot;A Accumulation Euro Hedged Class\&quot; could become \&quot;A Acc H EUR\&quot;.
    * @return shortCode
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getShortCode() {
     return shortCode;
   }
@@ -416,7 +416,6 @@ public class FundShareClass extends LusidInstrument {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("shortCode");
     openapiRequiredFields.add("domCcy");
     openapiRequiredFields.add("instrumentType");
   }

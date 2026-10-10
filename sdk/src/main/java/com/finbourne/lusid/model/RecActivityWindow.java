@@ -92,6 +92,28 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    RecActivityWindow newRecActivityWindow = new RecActivityWindow();
+                    if (jsonObject.get("windowType") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for RecActivityWindow as `windowType` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `windowType`
+                        switch (jsonObject.get("windowType").getAsString()) {
+                            case "Contiguous":
+                                deserialized = adapterContiguousActivityWindow.fromJsonTree(jsonObject);
+                                newRecActivityWindow.setActualInstance(deserialized);
+                                return newRecActivityWindow;
+                            case "ContiguousActivityWindow":
+                                deserialized = adapterContiguousActivityWindow.fromJsonTree(jsonObject);
+                                newRecActivityWindow.setActualInstance(deserialized);
+                                return newRecActivityWindow;
+                            default:
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecActivityWindow. Possible values: Contiguous ContiguousActivityWindow", jsonObject.get("windowType").getAsString()));
+                        }
+                    }
+
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;

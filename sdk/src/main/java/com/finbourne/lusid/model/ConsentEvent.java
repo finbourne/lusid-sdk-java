@@ -55,7 +55,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Consent Event (CONS) — a voluntary corporate action where an issuer seeks approval  from security holders to amend the terms of an outstanding instrument.
+ * A consent solicitation (CONS) or a bondholder meeting&#39;s fee (BMET): voluntary when holders respond to it, mandatory when it pays a fee to every eligible holder without an instruction.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConsentEvent extends InstrumentEvent {
@@ -198,7 +198,7 @@ public class ConsentEvent extends InstrumentEvent {
   }
 
    /**
-   * Deadline for early consent. Required when a CONY-early CashOfferElection is offered.  Must be earlier than ResponseDeadline.
+   * Deadline for instructions that qualify for an early fee. Optional. When set, must be earlier than ResponseDeadline. Must be null on a Mandatory event.
    * @return earlyResponseDeadline
   **/
   @jakarta.annotation.Nullable
@@ -219,7 +219,7 @@ public class ConsentEvent extends InstrumentEvent {
   }
 
    /**
-   * Date on which the consent fee is paid. Required when any CashOfferElection is offered.
+   * Date on which the fee is paid. Required when a CashOfferElection or a fee-bearing ConsentGrantedElection is offered; otherwise must be null.
    * @return paymentDate
   **/
   @jakarta.annotation.Nullable
@@ -248,7 +248,7 @@ public class ConsentEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible cash offer elections for this event. Each tier (CONY-standard, CONY-early)  is modelled as a separate entry; the election carries the per-unit fee rate and currency.
+   * Options that pay a cash fee to the holder who chooses them, whatever the vote: for example a fee for voting against, for a split vote or for an ineligible-holder confirmation. Keys are free-form and unique across all election lists. The price is quoted per 1,000 of face for bonds (the current notional at the record date: amortised face for a ComplexBond, inflation-adjusted face for an InflationLinkedBond) and per unit for equities and simple instruments. On a Mandatory event, exactly one, both default and chosen.
    * @return cashOfferElections
   **/
   @jakarta.annotation.Nullable

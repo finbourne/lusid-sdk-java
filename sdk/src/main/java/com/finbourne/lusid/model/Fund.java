@@ -18,7 +18,9 @@ import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.NavType;
 import com.finbourne.lusid.model.PortfolioEntityIdWithDetails;
+import com.finbourne.lusid.model.PricingMethodology;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ReportingPrice;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ShareClass;
 import com.finbourne.lusid.model.Version;
@@ -158,6 +160,14 @@ public class Fund {
   public static final String SERIALIZED_NAME_FUND_INSTRUMENT = "fundInstrument";
   @SerializedName(SERIALIZED_NAME_FUND_INSTRUMENT)
   private FundInstrument fundInstrument;
+
+  public static final String SERIALIZED_NAME_PRICING_METHODOLOGY = "pricingMethodology";
+  @SerializedName(SERIALIZED_NAME_PRICING_METHODOLOGY)
+  private PricingMethodology pricingMethodology;
+
+  public static final String SERIALIZED_NAME_REPORTING_PRICES = "reportingPrices";
+  @SerializedName(SERIALIZED_NAME_REPORTING_PRICES)
+  private List<ReportingPrice> reportingPrices;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -703,6 +713,56 @@ public class Fund {
   }
 
 
+  public Fund pricingMethodology(PricingMethodology pricingMethodology) {
+    
+    this.pricingMethodology = pricingMethodology;
+    return this;
+  }
+
+   /**
+   * Get pricingMethodology
+   * @return pricingMethodology
+  **/
+  @jakarta.annotation.Nullable
+  public PricingMethodology getPricingMethodology() {
+    return pricingMethodology;
+  }
+
+
+  public void setPricingMethodology(PricingMethodology pricingMethodology) {
+    this.pricingMethodology = pricingMethodology;
+  }
+
+
+  public Fund reportingPrices(List<ReportingPrice> reportingPrices) {
+    
+    this.reportingPrices = reportingPrices;
+    return this;
+  }
+
+  public Fund addReportingPricesItem(ReportingPrice reportingPricesItem) {
+    if (this.reportingPrices == null) {
+      this.reportingPrices = new ArrayList<>();
+    }
+    this.reportingPrices.add(reportingPricesItem);
+    return this;
+  }
+
+   /**
+   * Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
+   * @return reportingPrices
+  **/
+  @jakarta.annotation.Nullable
+  public List<ReportingPrice> getReportingPrices() {
+    return reportingPrices;
+  }
+
+
+  public void setReportingPrices(List<ReportingPrice> reportingPrices) {
+    this.reportingPrices = reportingPrices;
+  }
+
+
   public Fund version(Version version) {
     
     this.version = version;
@@ -786,6 +846,8 @@ public class Fund {
         Objects.equals(this.allocationGroups, fund.allocationGroups) &&
         Objects.equals(this.shareClasses, fund.shareClasses) &&
         Objects.equals(this.fundInstrument, fund.fundInstrument) &&
+        Objects.equals(this.pricingMethodology, fund.pricingMethodology) &&
+        Objects.equals(this.reportingPrices, fund.reportingPrices) &&
         Objects.equals(this.version, fund.version) &&
         Objects.equals(this.links, fund.links);
   }
@@ -796,7 +858,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shortCode, aborId, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shortCode, aborId, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, pricingMethodology, reportingPrices, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -833,6 +895,8 @@ public class Fund {
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    fundInstrument: ").append(toIndentedString(fundInstrument)).append("\n");
+    sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
+    sb.append("    reportingPrices: ").append(toIndentedString(reportingPrices)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -880,6 +944,8 @@ public class Fund {
     openapiFields.add("allocationGroups");
     openapiFields.add("shareClasses");
     openapiFields.add("fundInstrument");
+    openapiFields.add("pricingMethodology");
+    openapiFields.add("reportingPrices");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -1025,6 +1091,24 @@ public class Fund {
       // validate the optional field `fundInstrument`
       if (jsonObj.get("fundInstrument") != null && !jsonObj.get("fundInstrument").isJsonNull()) {
         FundInstrument.validateJsonElement(jsonObj.get("fundInstrument"));
+      }
+      // validate the optional field `pricingMethodology`
+      if (jsonObj.get("pricingMethodology") != null && !jsonObj.get("pricingMethodology").isJsonNull()) {
+        PricingMethodology.validateJsonElement(jsonObj.get("pricingMethodology"));
+      }
+      if (jsonObj.get("reportingPrices") != null && !jsonObj.get("reportingPrices").isJsonNull()) {
+        JsonArray jsonArrayreportingPrices = jsonObj.getAsJsonArray("reportingPrices");
+        if (jsonArrayreportingPrices != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("reportingPrices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `reportingPrices` to be an array in the JSON string but got `%s`", jsonObj.get("reportingPrices").toString()));
+          }
+
+          // validate the optional field `reportingPrices` (array)
+          for (int i = 0; i < jsonArrayreportingPrices.size(); i++) {
+            ReportingPrice.validateJsonElement(jsonArrayreportingPrices.get(i));
+          };
+        }
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

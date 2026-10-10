@@ -143,7 +143,7 @@ public class ConsentGrantedElection {
   }
 
    /**
-   * Optional. The consent fee paid per unit for granting consent.
+   * The consent fee, quoted per 1,000 of face for bonds (the current notional at the record date for amortising and inflation-linked bonds) and per unit otherwise.
    * @return consentFeePrice
   **/
   @jakarta.annotation.Nullable

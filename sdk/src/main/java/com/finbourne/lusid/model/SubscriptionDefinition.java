@@ -288,10 +288,10 @@ public class SubscriptionDefinition {
   }
 
    /**
-   * The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
+   * Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
    * @return subscriptionType
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getSubscriptionType() {
     return subscriptionType;
   }
@@ -463,6 +463,7 @@ public class SubscriptionDefinition {
     openapiRequiredFields.add("scope");
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("portfolioId");
+    openapiRequiredFields.add("subscriptionType");
   }
 
  /**
@@ -507,7 +508,7 @@ public class SubscriptionDefinition {
       if (jsonObj.get("addressKeys") != null && !jsonObj.get("addressKeys").isJsonNull() && !jsonObj.get("addressKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `addressKeys` to be an array in the JSON string but got `%s`", jsonObj.get("addressKeys").toString()));
       }
-      if ((jsonObj.get("subscriptionType") != null && !jsonObj.get("subscriptionType").isJsonNull()) && !jsonObj.get("subscriptionType").isJsonPrimitive()) {
+      if (!jsonObj.get("subscriptionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscriptionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscriptionType").toString()));
       }
   }

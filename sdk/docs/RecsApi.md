@@ -970,7 +970,7 @@ public class RecsApiExample {
 
 [EXPERIMENTAL] GetRecResult: GetRecResult
 
-Retrieve a single rec result by the run it belongs to and its id within that run.
+Retrieve a single rec result by its display id, as it stood in the run named.
 
 ### Example
 
@@ -1014,8 +1014,8 @@ public class RecsApiExample {
         String instanceIdType = "instanceIdType_example"; // String | How the instance was created: \"WorkflowServiceTaskId\" or \"Manual\". Available values: WorkflowServiceTaskId, Manual.
         String instanceIdValue = "instanceIdValue_example"; // String | The unique identifier of the rec instance.
         String recType = "recType_example"; // String | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
-        Integer runNumber = 56; // Integer | The run of the instance the result belongs to.
-        String id = "id_example"; // String | The id of the rec result within the run, e.g. \"break-3\".
+        Integer runNumber = 56; // Integer | The run of the instance whose view of the result is read.
+        String id = "id_example"; // String | The display id of the rec result, e.g. \"break-3\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the result. Defaults to latest if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto the result.
         try {
@@ -1042,8 +1042,8 @@ public class RecsApiExample {
 | **instanceIdType** | **String**| How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. | |
 | **instanceIdValue** | **String**| The unique identifier of the rec instance. | |
 | **recType** | **String**| The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. | |
-| **runNumber** | **Integer**| The run of the instance the result belongs to. | |
-| **id** | **String**| The id of the rec result within the run, e.g. \&quot;break-3\&quot;. | |
+| **runNumber** | **Integer**| The run of the instance whose view of the result is read. | |
+| **id** | **String**| The display id of the rec result, e.g. \&quot;break-3\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the result. Defaults to latest if not specified. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto the result. | [optional] |
 
@@ -1659,7 +1659,7 @@ public class RecsApiExample {
 
 [EXPERIMENTAL] ListRecResults: ListRecResults
 
-List rec results.
+List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
 
 ### Example
 

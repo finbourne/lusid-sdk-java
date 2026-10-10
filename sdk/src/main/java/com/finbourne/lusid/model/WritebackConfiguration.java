@@ -95,6 +95,28 @@ public class WritebackConfiguration extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    WritebackConfiguration newWritebackConfiguration = new WritebackConfiguration();
+                    if (jsonObject.get("writebackType") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for WritebackConfiguration as `writebackType` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `writebackType`
+                        switch (jsonObject.get("writebackType").getAsString()) {
+                            case "SettleExpectedActivity":
+                                deserialized = adapterSettleExpectedActivityWritebackConfiguration.fromJsonTree(jsonObject);
+                                newWritebackConfiguration.setActualInstance(deserialized);
+                                return newWritebackConfiguration;
+                            case "SettleExpectedActivityWritebackConfiguration":
+                                deserialized = adapterSettleExpectedActivityWritebackConfiguration.fromJsonTree(jsonObject);
+                                newWritebackConfiguration.setActualInstance(deserialized);
+                                return newWritebackConfiguration;
+                            default:
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for WritebackConfiguration. Possible values: SettleExpectedActivity SettleExpectedActivityWritebackConfiguration", jsonObject.get("writebackType").getAsString()));
+                        }
+                    }
+
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;

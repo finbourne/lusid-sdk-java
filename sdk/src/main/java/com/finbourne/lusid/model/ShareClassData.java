@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PricingMethodologyResult;
 import com.finbourne.lusid.model.ShareClassBreakdown;
 import com.finbourne.lusid.model.ShareClassDetails;
 import com.google.gson.TypeAdapter;
@@ -59,6 +60,10 @@ public class ShareClassData {
   @SerializedName(SERIALIZED_NAME_SHARE_CLASS_DETAILS)
   private ShareClassDetails shareClassDetails;
 
+  public static final String SERIALIZED_NAME_PRICING_METHODOLOGY = "pricingMethodology";
+  @SerializedName(SERIALIZED_NAME_PRICING_METHODOLOGY)
+  private PricingMethodologyResult pricingMethodology;
+
   public ShareClassData() {
   }
 
@@ -104,6 +109,27 @@ public class ShareClassData {
   }
 
 
+  public ShareClassData pricingMethodology(PricingMethodologyResult pricingMethodology) {
+    
+    this.pricingMethodology = pricingMethodology;
+    return this;
+  }
+
+   /**
+   * Get pricingMethodology
+   * @return pricingMethodology
+  **/
+  @jakarta.annotation.Nullable
+  public PricingMethodologyResult getPricingMethodology() {
+    return pricingMethodology;
+  }
+
+
+  public void setPricingMethodology(PricingMethodologyResult pricingMethodology) {
+    this.pricingMethodology = pricingMethodology;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,12 +141,13 @@ public class ShareClassData {
     }
     ShareClassData shareClassData = (ShareClassData) o;
     return Objects.equals(this.shareClassBreakdown, shareClassData.shareClassBreakdown) &&
-        Objects.equals(this.shareClassDetails, shareClassData.shareClassDetails);
+        Objects.equals(this.shareClassDetails, shareClassData.shareClassDetails) &&
+        Objects.equals(this.pricingMethodology, shareClassData.pricingMethodology);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shareClassBreakdown, shareClassDetails);
+    return Objects.hash(shareClassBreakdown, shareClassDetails, pricingMethodology);
   }
 
   @Override
@@ -129,6 +156,7 @@ public class ShareClassData {
     sb.append("class ShareClassData {\n");
     sb.append("    shareClassBreakdown: ").append(toIndentedString(shareClassBreakdown)).append("\n");
     sb.append("    shareClassDetails: ").append(toIndentedString(shareClassDetails)).append("\n");
+    sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,6 +181,7 @@ public class ShareClassData {
     openapiFields = new HashSet<String>();
     openapiFields.add("shareClassBreakdown");
     openapiFields.add("shareClassDetails");
+    openapiFields.add("pricingMethodology");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -184,6 +213,10 @@ public class ShareClassData {
       // validate the optional field `shareClassDetails`
       if (jsonObj.get("shareClassDetails") != null && !jsonObj.get("shareClassDetails").isJsonNull()) {
         ShareClassDetails.validateJsonElement(jsonObj.get("shareClassDetails"));
+      }
+      // validate the optional field `pricingMethodology`
+      if (jsonObj.get("pricingMethodology") != null && !jsonObj.get("pricingMethodology").isJsonNull()) {
+        PricingMethodologyResult.validateJsonElement(jsonObj.get("pricingMethodology"));
       }
   }
 

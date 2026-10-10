@@ -115,6 +115,48 @@ public class RecResultItem extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    RecResultItem newRecResultItem = new RecResultItem();
+                    if (jsonObject.get("itemType") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for RecResultItem as `itemType` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `itemType`
+                        switch (jsonObject.get("itemType").getAsString()) {
+                            case "Holding":
+                                deserialized = adapterRecResultHoldingItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "RecResultHoldingItem":
+                                deserialized = adapterRecResultHoldingItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "RecResultSettlementActivityItem":
+                                deserialized = adapterRecResultSettlementActivityItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "RecResultTransactionItem":
+                                deserialized = adapterRecResultTransactionItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "SettlementActivity":
+                                deserialized = adapterRecResultSettlementActivityItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "Transaction":
+                                deserialized = adapterRecResultTransactionItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "ValuedHolding":
+                                deserialized = adapterRecResultHoldingItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            default:
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecResultItem. Possible values: Holding RecResultHoldingItem RecResultSettlementActivityItem RecResultTransactionItem SettlementActivity Transaction ValuedHolding", jsonObject.get("itemType").getAsString()));
+                        }
+                    }
+
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;

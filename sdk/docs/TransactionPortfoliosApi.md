@@ -1928,7 +1928,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getA2BMovements
 
-> VersionedResourceListOfA2BMovementRecord getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter)
+> VersionedResourceListOfA2BMovementRecord getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, splitHeldAndTradingReturns, timelineScope, timelineCode, closedPeriodId)
 
 GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
 
@@ -1982,11 +1982,15 @@ public class TransactionPortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeId
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        Boolean splitHeldAndTradingReturns = false; // Boolean | When true, P&L is split into separate Held and Trading returns: Held returns capture   market movement on the starting position, and Trading returns capture profit from buy/sell decisions made during the period.   When false (the default), the standard combined A2B report is returned. Cannot currently be combined with the timeline   parameters (timelineScope, timelineCode, closedPeriodId).
+        String timelineScope = "timelineScope_example"; // String | The scope of the timeline to use for loading data per closed period.
+        String timelineCode = "timelineCode_example"; // String | The code of the timeline to use for loading data per closed period.
+        String closedPeriodId = "closedPeriodId_example"; // String | The closed period ID. If specified, both timelineScope and timelineCode must also be specified.   When provided, the timeline A2B is filtered to only the matching closed period. The fromEffectiveAt and toEffectiveAt   parameters still define the overall query window; the closedPeriodId restricts which closed period's data is returned within that window.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute(opts);
+            // VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, splitHeldAndTradingReturns, timelineScope, timelineCode, closedPeriodId).execute(opts);
 
-            VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute();
+            VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, splitHeldAndTradingReturns, timelineScope, timelineCode, closedPeriodId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getA2BMovements");
@@ -2012,6 +2016,10 @@ public class TransactionPortfoliosApiExample {
 | **recipeIdCode** | **String**| The code of the given recipeId | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional] |
 | **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **splitHeldAndTradingReturns** | **Boolean**| When true, P&amp;L is split into separate Held and Trading returns: Held returns capture   market movement on the starting position, and Trading returns capture profit from buy/sell decisions made during the period.   When false (the default), the standard combined A2B report is returned. Cannot currently be combined with the timeline   parameters (timelineScope, timelineCode, closedPeriodId). | [optional] [default to false] |
+| **timelineScope** | **String**| The scope of the timeline to use for loading data per closed period. | [optional] |
+| **timelineCode** | **String**| The code of the timeline to use for loading data per closed period. | [optional] |
+| **closedPeriodId** | **String**| The closed period ID. If specified, both timelineScope and timelineCode must also be specified.   When provided, the timeline A2B is filtered to only the matching closed period. The fromEffectiveAt and toEffectiveAt   parameters still define the overall query window; the closedPeriodId restricts which closed period&#39;s data is returned within that window. | [optional] |
 
 ### Return type
 
@@ -2039,7 +2047,7 @@ public class TransactionPortfoliosApiExample {
 
 [EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&amp;L split between holding and trading returns.
 
-Get an A2B report at the movement level for the given portfolio. Each transaction in the period is treated as a  synthetic holding rather than a flow, allowing P&amp;L to be attributed to holding returns (market movement on  the starting position) versus trading returns (profit from buy/sell decisions).
+Get an A2B report at the movement level for the given portfolio. Each transaction in the period is treated as a synthetic holding rather than a flow, allowing P&amp;L to be attributed to holding returns (market movement on the starting position) versus trading returns (profit from buy/sell decisions).    Prefer the standard GetA2BMovements endpoint with splitHeldAndTradingReturns&#x3D;true, which offers the same capability (not currently combinable with the timeline parameters).
 
 ### Example
 

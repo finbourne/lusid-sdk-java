@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.ConsentEvent
-Consent Event (CONS) — a voluntary corporate action where an issuer seeks approval  from security holders to amend the terms of an outstanding instrument.
+A consent solicitation (CONS) or a bondholder meeting's fee (BMET): voluntary when holders respond to it, mandatory when it pays a fee to every eligible holder without an instruction.
 
 ## Properties
 
@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | The entitlement determination date. | [optional] [default to OffsetDateTime]
 **responseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The last date to submit instructions. | [optional] [default to OffsetDateTime]
 **marketDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The issuer-set outer deadline. Must be greater than or equal to ResponseDeadline. | [optional] [default to OffsetDateTime]
-**earlyResponseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | Deadline for early consent. Required when a CONY-early CashOfferElection is offered.  Must be earlier than ResponseDeadline. | [optional] [default to OffsetDateTime]
-**paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the consent fee is paid. Required when any CashOfferElection is offered. | [optional] [default to OffsetDateTime]
-**cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible cash offer elections for this event. Each tier (CONY-standard, CONY-early)  is modelled as a separate entry; the election carries the per-unit fee rate and currency. | [optional] [default to List<CashOfferElection>]
+**earlyResponseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | Deadline for instructions that qualify for an early fee. Optional. When set, must be earlier than ResponseDeadline. Must be null on a Mandatory event. | [optional] [default to OffsetDateTime]
+**paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date on which the fee is paid. Required when a CashOfferElection or a fee-bearing ConsentGrantedElection is offered; otherwise must be null. | [optional] [default to OffsetDateTime]
+**cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | Options that pay a cash fee to the holder who chooses them, whatever the vote: for example a fee for voting against, for a split vote or for an ineligible-holder confirmation. Keys are free-form and unique across all election lists. The price is quoted per 1,000 of face for bonds (the current notional at the record date: amortised face for a ComplexBond, inflation-adjusted face for an InflationLinkedBond) and per unit for equities and simple instruments. On a Mandatory event, exactly one, both default and chosen. | [optional] [default to List<CashOfferElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible lapse elections for this event (NOAC). | [optional] [default to List<LapseElection>]
 **consentGrantedElections** | [**List&lt;ConsentGrantedElection&gt;**](ConsentGrantedElection.md) | List of possible consent-granted elections for this event (CONY), each optionally carrying a consent fee. | [optional] [default to List<ConsentGrantedElection>]
 **consentDeniedElections** | [**List&lt;ConsentDeniedElection&gt;**](ConsentDeniedElection.md) | List of possible consent-denied elections for this event (CONN). | [optional] [default to List<ConsentDeniedElection>]

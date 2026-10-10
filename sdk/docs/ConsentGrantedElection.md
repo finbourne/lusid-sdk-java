@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **electionKey** | **String** | Unique key associated to this election. | [default to String]
 **isDefault** | **Boolean** | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. | [optional] [default to Boolean]
 **isChosen** | **Boolean** | Is this the election that has been explicitly chosen from multiple options. | [optional] [default to Boolean]
-**consentFeePrice** | **java.math.BigDecimal** | Optional. The consent fee paid per unit for granting consent. | [optional] [default to java.math.BigDecimal]
+**consentFeePrice** | **java.math.BigDecimal** | The consent fee, quoted per 1,000 of face for bonds (the current notional at the record date for amortising and inflation-linked bonds) and per unit otherwise. | [optional] [default to java.math.BigDecimal]
 **consentFeeCurrency** | **String** | Optional. Currency of the consent fee. Required if a consent fee price is provided. | [optional] [default to String]
 
 ```java

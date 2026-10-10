@@ -116,6 +116,48 @@ public class ToleranceBase extends AbstractOpenApiSchema {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+                    // use discriminator value for faster oneOf lookup
+                    ToleranceBase newToleranceBase = new ToleranceBase();
+                    if (jsonObject.get("toleranceType") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for ToleranceBase as `toleranceType` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `toleranceType`
+                        switch (jsonObject.get("toleranceType").getAsString()) {
+                            case "AggregateNumericTolerance":
+                                deserialized = adapterAggregateNumericTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreAttributeOptionality":
+                                deserialized = adapterCoreAttributeOptionalityTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreAttributeOptionalityTolerance":
+                                deserialized = adapterCoreAttributeOptionalityTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreDateTolerance":
+                                deserialized = adapterCoreDateTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreStringCross":
+                                deserialized = adapterCoreStringCrossTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreStringCrossTolerance":
+                                deserialized = adapterCoreStringCrossTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "Numeric":
+                                deserialized = adapterAggregateNumericTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            default:
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ToleranceBase. Possible values: AggregateNumericTolerance CoreAttributeOptionality CoreAttributeOptionalityTolerance CoreDateTolerance CoreStringCross CoreStringCrossTolerance Numeric", jsonObject.get("toleranceType").getAsString()));
+                        }
+                    }
+
                     int match = 0;
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **shareClassBreakdown** | [**ShareClassBreakdown**](ShareClassBreakdown.md) |  | [default to ShareClassBreakdown]
 **shareClassDetails** | [**ShareClassDetails**](ShareClassDetails.md) |  | [optional] [default to ShareClassDetails]
+**pricingMethodology** | [**PricingMethodologyResult**](PricingMethodologyResult.md) |  | [optional] [default to PricingMethodologyResult]
 
 ```java
 import com.finbourne.lusid.model.ShareClassData;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 ShareClassBreakdown ShareClassBreakdown = new ShareClassBreakdown();
 ShareClassDetails ShareClassDetails = new ShareClassDetails();
+PricingMethodologyResult PricingMethodology = new PricingMethodologyResult();
 
 
 ShareClassData shareClassDataInstance = new ShareClassData()
     .ShareClassBreakdown(ShareClassBreakdown)
-    .ShareClassDetails(ShareClassDetails);
+    .ShareClassDetails(ShareClassDetails)
+    .PricingMethodology(PricingMethodology);
 ```
 
 

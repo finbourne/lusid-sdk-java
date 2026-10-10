@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PricingMethodologyOverrideRequest;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -76,6 +77,10 @@ public class UpdateValuationPointRequest {
   public static final String SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS = "updateInclusionDateNavAdjustments";
   @SerializedName(SERIALIZED_NAME_UPDATE_INCLUSION_DATE_NAV_ADJUSTMENTS)
   private Boolean updateInclusionDateNavAdjustments;
+
+  public static final String SERIALIZED_NAME_PRICING_METHODOLOGY_OVERRIDE = "pricingMethodologyOverride";
+  @SerializedName(SERIALIZED_NAME_PRICING_METHODOLOGY_OVERRIDE)
+  private PricingMethodologyOverrideRequest pricingMethodologyOverride;
 
   public UpdateValuationPointRequest() {
   }
@@ -214,6 +219,27 @@ public class UpdateValuationPointRequest {
   }
 
 
+  public UpdateValuationPointRequest pricingMethodologyOverride(PricingMethodologyOverrideRequest pricingMethodologyOverride) {
+    
+    this.pricingMethodologyOverride = pricingMethodologyOverride;
+    return this;
+  }
+
+   /**
+   * Get pricingMethodologyOverride
+   * @return pricingMethodologyOverride
+  **/
+  @jakarta.annotation.Nullable
+  public PricingMethodologyOverrideRequest getPricingMethodologyOverride() {
+    return pricingMethodologyOverride;
+  }
+
+
+  public void setPricingMethodologyOverride(PricingMethodologyOverrideRequest pricingMethodologyOverride) {
+    this.pricingMethodologyOverride = pricingMethodologyOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -229,7 +255,8 @@ public class UpdateValuationPointRequest {
         Objects.equals(this.name, updateValuationPointRequest.name) &&
         Objects.equals(this.properties, updateValuationPointRequest.properties) &&
         Objects.equals(this.applyClearDown, updateValuationPointRequest.applyClearDown) &&
-        Objects.equals(this.updateInclusionDateNavAdjustments, updateValuationPointRequest.updateInclusionDateNavAdjustments);
+        Objects.equals(this.updateInclusionDateNavAdjustments, updateValuationPointRequest.updateInclusionDateNavAdjustments) &&
+        Objects.equals(this.pricingMethodologyOverride, updateValuationPointRequest.pricingMethodologyOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -238,7 +265,7 @@ public class UpdateValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(valuationPointCode, variant, name, properties, applyClearDown, updateInclusionDateNavAdjustments);
+    return Objects.hash(valuationPointCode, variant, name, properties, applyClearDown, updateInclusionDateNavAdjustments, pricingMethodologyOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -258,6 +285,7 @@ public class UpdateValuationPointRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    updateInclusionDateNavAdjustments: ").append(toIndentedString(updateInclusionDateNavAdjustments)).append("\n");
+    sb.append("    pricingMethodologyOverride: ").append(toIndentedString(pricingMethodologyOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -286,6 +314,7 @@ public class UpdateValuationPointRequest {
     openapiFields.add("properties");
     openapiFields.add("applyClearDown");
     openapiFields.add("updateInclusionDateNavAdjustments");
+    openapiFields.add("pricingMethodologyOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -320,6 +349,10 @@ public class UpdateValuationPointRequest {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `pricingMethodologyOverride`
+      if (jsonObj.get("pricingMethodologyOverride") != null && !jsonObj.get("pricingMethodologyOverride").isJsonNull()) {
+        PricingMethodologyOverrideRequest.validateJsonElement(jsonObj.get("pricingMethodologyOverride"));
       }
   }
 

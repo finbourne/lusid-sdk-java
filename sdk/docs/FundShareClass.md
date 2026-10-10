@@ -5,7 +5,7 @@ LUSID representation of a FundShareClass.  A ShareClass represents a pool of sha
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shortCode** | **String** | A short identifier, unique across a single fund, usually made up of the ShareClass components. Eg \&quot;A Accumulation Euro Hedged Class\&quot; could become \&quot;A Acc H EUR\&quot;. | [default to String]
+**shortCode** | **String** | A short identifier, unique across a single fund, usually made up of the ShareClass components. Eg \&quot;A Accumulation Euro Hedged Class\&quot; could become \&quot;A Acc H EUR\&quot;. | [optional] [default to String]
 **fundShareClassType** | **String** | The type of distribution that the ShareClass will calculate. Can be either &#39;Income&#39; or &#39;Accumulation&#39; - Income classes will pay out and Accumulation classes will retain their ShareClass attributable income. Available values: Income, Accumulation. | [optional] [default to String]
 **distributionPaymentType** | **String** | The tax treatment applied to any distributions calculated within the ShareClass. Can be either &#39;Net&#39; (Distribution Calculated net of tax) or &#39;Gross&#39; (Distribution calculated gross of tax). Available values: Invalid, Gross, Net. | [optional] [default to String]
 **distributionType** | **String** | The type of distribution calculated for the ShareClass. Can be either &#39;Income&#39; or &#39;Accumulation&#39;. Available values: Income, Accumulation. | [optional] [default to String]
@@ -22,7 +22,7 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-String ShortCode = "example ShortCode";
+@jakarta.annotation.Nullable String ShortCode = "example ShortCode";
 @jakarta.annotation.Nullable String FundShareClassType = "example FundShareClassType";
 @jakarta.annotation.Nullable String DistributionPaymentType = "example DistributionPaymentType";
 @jakarta.annotation.Nullable String DistributionType = "example DistributionType";

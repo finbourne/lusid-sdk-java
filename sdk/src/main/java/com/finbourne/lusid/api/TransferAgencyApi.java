@@ -35,6 +35,8 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.TransferAgencyOrdersResponse;
 import com.finbourne.lusid.model.UpsertTransferAgencyOrderRequest;
+import com.finbourne.lusid.model.UpsertTransferAgencyTransactionFromOrderRequest;
+import com.finbourne.lusid.model.UpsertTransferAgencyTransactionsFromOrdersResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1005,7 +1007,7 @@ public class TransferAgencyApi {
 
     /**
      * [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders
-     * Creates a transaction and updates the relevant order for each order supplied.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+     * Creates a cash transaction and updates the relevant order for each order supplied. An order must be in  &#39;Pending&#39; or &#39;New&#39;. An order that already has a cash transaction has that transaction amended  to the order&#39;s current amount rather than a second one created.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
      * @param requestBody The transfer agency orders to upsert, keyed by a unique request identifier. (required)
      * @return APIupsertTransferAgencyOrdersRequest
      * @http.response.details
@@ -1018,5 +1020,255 @@ public class TransferAgencyApi {
      */
     public APIupsertTransferAgencyOrdersRequest upsertTransferAgencyOrders(Map<String, UpsertTransferAgencyOrderRequest> requestBody) {
         return new APIupsertTransferAgencyOrdersRequest(requestBody);
+    }
+    private okhttp3.Call upsertTransferAgencyTransactionsFromOrdersCall(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return upsertTransferAgencyTransactionsFromOrdersCall(requestBody, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTransferAgencyTransactionsFromOrdersCall(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transferagency/transactions/$fromOrders";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertTransferAgencyTransactionsFromOrdersValidateBeforeCall(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertTransferAgencyTransactionsFromOrders(Async)");
+        }
+
+        return upsertTransferAgencyTransactionsFromOrdersCall(requestBody, successMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransferAgencyTransactionsFromOrdersValidateBeforeCall(requestBody, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTransferAgencyTransactionsFromOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransferAgencyTransactionsFromOrdersValidateBeforeCall(requestBody, successMode, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertTransferAgencyTransactionsFromOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertTransferAgencyTransactionsFromOrdersAsync(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, final ApiCallback<UpsertTransferAgencyTransactionsFromOrdersResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransferAgencyTransactionsFromOrdersValidateBeforeCall(requestBody, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTransferAgencyTransactionsFromOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTransferAgencyTransactionsFromOrdersAsync(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, String successMode, final ApiCallback<UpsertTransferAgencyTransactionsFromOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransferAgencyTransactionsFromOrdersValidateBeforeCall(requestBody, successMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertTransferAgencyTransactionsFromOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertTransferAgencyTransactionsFromOrdersRequest {
+        private final Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody;
+        private String successMode;
+
+        private APIupsertTransferAgencyTransactionsFromOrdersRequest(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (optional, default to Partial)
+         * @return APIupsertTransferAgencyTransactionsFromOrdersRequest
+         */
+        public APIupsertTransferAgencyTransactionsFromOrdersRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for upsertTransferAgencyTransactionsFromOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTransferAgencyTransactionsFromOrdersCall(requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request
+         * @return UpsertTransferAgencyTransactionsFromOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTransferAgencyTransactionsFromOrdersResponse execute() throws ApiException {
+            ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> localVarResp = upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(requestBody, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertTransferAgencyTransactionsFromOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTransferAgencyTransactionsFromOrdersResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> localVarResp = upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(requestBody, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request with HTTP info returned
+         * @return ApiResponse&lt;UpsertTransferAgencyTransactionsFromOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> executeWithHttpInfo() throws ApiException {
+            return upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(requestBody, successMode);
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertTransferAgencyTransactionsFromOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTransferAgencyTransactionsFromOrdersWithHttpInfo(requestBody, successMode, opts);
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTransferAgencyTransactionsFromOrdersResponse> _callback) throws ApiException {
+            return upsertTransferAgencyTransactionsFromOrdersAsync(requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute upsertTransferAgencyTransactionsFromOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTransferAgencyTransactionsFromOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTransferAgencyTransactionsFromOrdersAsync(requestBody, successMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertTransferAgencyTransactionsFromOrders: Upsert transfer agency transactions from transfer agency orders
+     * This endpoint derives transactions from existing transfer agency orders. It does not upsert  caller-supplied ones.  Prices each order supplied, booking the security transaction into the investor&#39;s portfolio, amending the  paired cash transaction to the final settlement amount, and moving the order to &#39;Priced&#39;. Only an order in  &#39;New&#39; can be priced, and the supplied price date must match the price date calculated when the order was  created.  The response contains both successfully priced orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+     * @param requestBody The transfer agency orders to price, keyed by a unique request identifier. (required)
+     * @return APIupsertTransferAgencyTransactionsFromOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully priced orders and any failures. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertTransferAgencyTransactionsFromOrdersRequest upsertTransferAgencyTransactionsFromOrders(Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody) {
+        return new APIupsertTransferAgencyTransactionsFromOrdersRequest(requestBody);
     }
 }

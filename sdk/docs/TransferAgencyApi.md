@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteTransferAgencyOrders**](TransferAgencyApi.md#deleteTransferAgencyOrders) | **POST** /api/transferagency/orders/$delete | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
 | [**estimateTransferAgencyOrders**](TransferAgencyApi.md#estimateTransferAgencyOrders) | **POST** /api/transferagency/orders/$estimate | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders |
 | [**upsertTransferAgencyOrders**](TransferAgencyApi.md#upsertTransferAgencyOrders) | **POST** /api/transferagency/orders | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
+| [**upsertTransferAgencyTransactionsFromOrders**](TransferAgencyApi.md#upsertTransferAgencyTransactionsFromOrders) | **POST** /api/transferagency/transactions/$fromOrders | [EXPERIMENTAL] UpsertTransferAgencyTransactionsFromOrders: Upsert transfer agency transactions from transfer agency orders |
 
 
 
@@ -290,7 +291,7 @@ public class TransferAgencyApiExample {
 
 [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders
 
-Creates a transaction and updates the relevant order for each order supplied.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+Creates a cash transaction and updates the relevant order for each order supplied. An order must be in  &#39;Pending&#39; or &#39;New&#39;. An order that already has a cash transaction has that transaction amended  to the order&#39;s current amount rather than a second one created.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
 
 ### Example
 
@@ -369,6 +370,99 @@ public class TransferAgencyApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully processed orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertTransferAgencyTransactionsFromOrders
+
+> UpsertTransferAgencyTransactionsFromOrdersResponse upsertTransferAgencyTransactionsFromOrders(requestBody, successMode)
+
+[EXPERIMENTAL] UpsertTransferAgencyTransactionsFromOrders: Upsert transfer agency transactions from transfer agency orders
+
+This endpoint derives transactions from existing transfer agency orders. It does not upsert  caller-supplied ones.  Prices each order supplied, booking the security transaction into the investor&#39;s portfolio, amending the  paired cash transaction to the final settlement amount, and moving the order to &#39;Priced&#39;. Only an order in  &#39;New&#39; can be priced, and the supplied price date must match the price date calculated when the order was  created.  The response contains both successfully priced orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransferAgencyApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransferAgencyApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransferAgencyApi apiInstance = apiFactory.build(TransferAgencyApi.class);
+
+        TransferAgencyApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransferAgencyApi.class);
+        Map<String, UpsertTransferAgencyTransactionFromOrderRequest> requestBody = new HashMap(); // Map<String, UpsertTransferAgencyTransactionFromOrderRequest> | The transfer agency orders to price, keyed by a unique request identifier.
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
+        try {
+            // uncomment the below to set overrides at the request level
+            // UpsertTransferAgencyTransactionsFromOrdersResponse result = apiInstance.upsertTransferAgencyTransactionsFromOrders(requestBody, successMode).execute(opts);
+
+            UpsertTransferAgencyTransactionsFromOrdersResponse result = apiInstance.upsertTransferAgencyTransactionsFromOrders(requestBody, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransferAgencyApi#upsertTransferAgencyTransactionsFromOrders");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **requestBody** | [**Map&lt;String, UpsertTransferAgencyTransactionFromOrderRequest&gt;**](UpsertTransferAgencyTransactionFromOrderRequest.md)| The transfer agency orders to price, keyed by a unique request identifier. | |
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | [optional] [default to Partial] |
+
+### Return type
+
+[**UpsertTransferAgencyTransactionsFromOrdersResponse**](UpsertTransferAgencyTransactionsFromOrdersResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully priced orders and any failures. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

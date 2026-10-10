@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **timelineId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **addressKeys** | **List&lt;String&gt;** | The set of addresses the subscriber wishes to receive. | [optional] [default to List<String>]
 **byTaxLots** | **Boolean** |  | [optional] [default to Boolean]
-**subscriptionType** | **String** | The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions. | [optional] [default to String]
+**subscriptionType** | **String** | Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions. | [default to String]
 **startEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **endEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping. | [optional] [default to OffsetDateTime]
 **effectiveForwardDays** | **Integer** | How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes. | [optional] [default to Integer]
@@ -31,7 +31,7 @@ ResourceId PortfolioId = new ResourceId();
 ResourceId TimelineId = new ResourceId();
 @jakarta.annotation.Nullable List<String> AddressKeys = new List<String>();
 Boolean ByTaxLots = true;
-@jakarta.annotation.Nullable String SubscriptionType = "example SubscriptionType";
+String SubscriptionType = "example SubscriptionType";
 @jakarta.annotation.Nullable OffsetDateTime StartEffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EndEffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer EffectiveForwardDays = new Integer("100.00");

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. | [optional] [default to Map<String, Property>]
 **applyClearDown** | **Boolean** | Defaults to null. Set to true if you want the closed period to have the clear down applied. | [optional] [default to Boolean]
 **updateInclusionDateNavAdjustments** | **Boolean** | Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. | [optional] [default to Boolean]
+**pricingMethodologyOverride** | [**PricingMethodologyOverrideRequest**](PricingMethodologyOverrideRequest.md) |  | [optional] [default to PricingMethodologyOverrideRequest]
 
 ```java
 import com.finbourne.lusid.model.UpdateValuationPointRequest;
@@ -24,6 +25,7 @@ String ValuationPointCode = "example ValuationPointCode";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable Boolean ApplyClearDown = true;
 @jakarta.annotation.Nullable Boolean UpdateInclusionDateNavAdjustments = true;
+PricingMethodologyOverrideRequest PricingMethodologyOverride = new PricingMethodologyOverrideRequest();
 
 
 UpdateValuationPointRequest updateValuationPointRequestInstance = new UpdateValuationPointRequest()
@@ -32,7 +34,8 @@ UpdateValuationPointRequest updateValuationPointRequestInstance = new UpdateValu
     .Name(Name)
     .Properties(Properties)
     .ApplyClearDown(ApplyClearDown)
-    .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments);
+    .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments)
+    .PricingMethodologyOverride(PricingMethodologyOverride);
 ```
 
 
