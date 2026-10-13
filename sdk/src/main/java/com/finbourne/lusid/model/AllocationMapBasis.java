@@ -80,7 +80,7 @@ public class AllocationMapBasis {
   }
 
    /**
-   * How the event is weighted between the participants. ValueWeighted apportions pro rata to each participant&#39;s value; PropertyWeighted apportions pro rata to the property named in &#39;property&#39;; FixedPercentage apportions by the factors in fixedFactors. Available values: ValueWeighted, PropertyWeighted, FixedPercentage.
+   * How the event is weighted between the participants. ValueWeighted apportions pro rata to each participant&#39;s value; PropertyWeighted apportions pro rata to the property named in &#39;property&#39;; FixedPercentage apportions by the factors in fixedFactors; FixedAmount takes the supplied basis values as the shares themselves. Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable and FeeWeightedCommitment apportion pro rata to the corresponding balance on each participant&#39;s register line at the event date. Available values: ValueWeighted, PropertyWeighted, FixedPercentage, Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable, FeeWeightedCommitment, FixedAmount.
    * @return kind
   **/
   @jakarta.annotation.Nullable

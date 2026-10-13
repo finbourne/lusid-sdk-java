@@ -11,6 +11,11 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AllocationEventComponent;
+import com.finbourne.lusid.model.AllocationEventDealFunding;
+import com.finbourne.lusid.model.AllocationEventEqualisation;
+import com.finbourne.lusid.model.AllocationEventTransfer;
+import com.finbourne.lusid.model.AllocationEventUseOfProceeds;
 import com.finbourne.lusid.model.AllocationMapBasisValue;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -87,9 +92,45 @@ public class AllocationEventRequest {
   @SerializedName(SERIALIZED_NAME_BASIS_VALUES)
   private List<AllocationMapBasisValue> basisValues;
 
+  public static final String SERIALIZED_NAME_COMPONENTS = "components";
+  @SerializedName(SERIALIZED_NAME_COMPONENTS)
+  private List<AllocationEventComponent> components;
+
+  public static final String SERIALIZED_NAME_TRANSFERS = "transfers";
+  @SerializedName(SERIALIZED_NAME_TRANSFERS)
+  private List<AllocationEventTransfer> transfers;
+
+  public static final String SERIALIZED_NAME_EQUALISATION = "equalisation";
+  @SerializedName(SERIALIZED_NAME_EQUALISATION)
+  private AllocationEventEqualisation equalisation;
+
+  public static final String SERIALIZED_NAME_USE_OF_PROCEEDS = "useOfProceeds";
+  @SerializedName(SERIALIZED_NAME_USE_OF_PROCEEDS)
+  private List<AllocationEventUseOfProceeds> useOfProceeds;
+
+  public static final String SERIALIZED_NAME_DEAL_FUNDING = "dealFunding";
+  @SerializedName(SERIALIZED_NAME_DEAL_FUNDING)
+  private AllocationEventDealFunding dealFunding;
+
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private OffsetDateTime effectiveAt;
+
+  public static final String SERIALIZED_NAME_REPLACES = "replaces";
+  @SerializedName(SERIALIZED_NAME_REPLACES)
+  private ResourceId replaces;
+
+  public static final String SERIALIZED_NAME_NOTICE_DATE = "noticeDate";
+  @SerializedName(SERIALIZED_NAME_NOTICE_DATE)
+  private OffsetDateTime noticeDate;
+
+  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
+  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  private OffsetDateTime dueDate;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_DATE = "settlementDate";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_DATE)
+  private OffsetDateTime settlementDate;
 
   public AllocationEventRequest() {
   }
@@ -143,7 +184,7 @@ public class AllocationEventRequest {
   }
 
    /**
-   * The type of the event: CapitalCall, Distribution, FeeExpense or ValuationMove. Selects the basis rule from the map. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
+   * The type of the event: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Selects the basis rule from the map. A recall is a CapitalCall with a Recall component. A Commitment event is not shared from a basis: its basis values are the signed commitment amounts per commitment line, and they must sum to the amount. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
    * @return eventType
   **/
   @jakarta.annotation.Nonnull
@@ -270,6 +311,135 @@ public class AllocationEventRequest {
   }
 
 
+  public AllocationEventRequest components(List<AllocationEventComponent> components) {
+    
+    this.components = components;
+    return this;
+  }
+
+  public AllocationEventRequest addComponentsItem(AllocationEventComponent componentsItem) {
+    if (this.components == null) {
+      this.components = new ArrayList<>();
+    }
+    this.components.add(componentsItem);
+    return this;
+  }
+
+   /**
+   * The parts the amount splits into, each shared on its own basis and booked to its own slot. The component amounts must sum to the event amount. Absent means the whole amount is one component: Investment for a CapitalCall, ROC for a Distribution.
+   * @return components
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventComponent> getComponents() {
+    return components;
+  }
+
+
+  public void setComponents(List<AllocationEventComponent> components) {
+    this.components = components;
+  }
+
+
+  public AllocationEventRequest transfers(List<AllocationEventTransfer> transfers) {
+    
+    this.transfers = transfers;
+    return this;
+  }
+
+  public AllocationEventRequest addTransfersItem(AllocationEventTransfer transfersItem) {
+    if (this.transfers == null) {
+      this.transfers = new ArrayList<>();
+    }
+    this.transfers.add(transfersItem);
+    return this;
+  }
+
+   /**
+   * For a Transfer event, the legs to book: each moves a fraction of one capital interest line to another. Required for a Transfer event and not allowed on any other type. The fractions out of one line must sum to at most one; the amount of a Transfer event is zero.
+   * @return transfers
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventTransfer> getTransfers() {
+    return transfers;
+  }
+
+
+  public void setTransfers(List<AllocationEventTransfer> transfers) {
+    this.transfers = transfers;
+  }
+
+
+  public AllocationEventRequest equalisation(AllocationEventEqualisation equalisation) {
+    
+    this.equalisation = equalisation;
+    return this;
+  }
+
+   /**
+   * Get equalisation
+   * @return equalisation
+  **/
+  @jakarta.annotation.Nullable
+  public AllocationEventEqualisation getEqualisation() {
+    return equalisation;
+  }
+
+
+  public void setEqualisation(AllocationEventEqualisation equalisation) {
+    this.equalisation = equalisation;
+  }
+
+
+  public AllocationEventRequest useOfProceeds(List<AllocationEventUseOfProceeds> useOfProceeds) {
+    
+    this.useOfProceeds = useOfProceeds;
+    return this;
+  }
+
+  public AllocationEventRequest addUseOfProceedsItem(AllocationEventUseOfProceeds useOfProceedsItem) {
+    if (this.useOfProceeds == null) {
+      this.useOfProceeds = new ArrayList<>();
+    }
+    this.useOfProceeds.add(useOfProceedsItem);
+    return this;
+  }
+
+   /**
+   * For a CapitalCall, what the call pays for: rows of purpose, deal and amount that sum to the call amount. An Investment row names a deal the vehicle has funded and is shared under that deal&#39;s participation, with each investor&#39;s share recorded as paid in for that deal; when the deal was funded from a facility the row repays the draw. Not allowed with components or on any other event type.
+   * @return useOfProceeds
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventUseOfProceeds> getUseOfProceeds() {
+    return useOfProceeds;
+  }
+
+
+  public void setUseOfProceeds(List<AllocationEventUseOfProceeds> useOfProceeds) {
+    this.useOfProceeds = useOfProceeds;
+  }
+
+
+  public AllocationEventRequest dealFunding(AllocationEventDealFunding dealFunding) {
+    
+    this.dealFunding = dealFunding;
+    return this;
+  }
+
+   /**
+   * Get dealFunding
+   * @return dealFunding
+  **/
+  @jakarta.annotation.Nullable
+  public AllocationEventDealFunding getDealFunding() {
+    return dealFunding;
+  }
+
+
+  public void setDealFunding(AllocationEventDealFunding dealFunding) {
+    this.dealFunding = dealFunding;
+  }
+
+
   public AllocationEventRequest effectiveAt(OffsetDateTime effectiveAt) {
     
     this.effectiveAt = effectiveAt;
@@ -291,6 +461,90 @@ public class AllocationEventRequest {
   }
 
 
+  public AllocationEventRequest replaces(ResourceId replaces) {
+    
+    this.replaces = replaces;
+    return this;
+  }
+
+   /**
+   * Get replaces
+   * @return replaces
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getReplaces() {
+    return replaces;
+  }
+
+
+  public void setReplaces(ResourceId replaces) {
+    this.replaces = replaces;
+  }
+
+
+  public AllocationEventRequest noticeDate(OffsetDateTime noticeDate) {
+    
+    this.noticeDate = noticeDate;
+    return this;
+  }
+
+   /**
+   * The date the notice went to investors.
+   * @return noticeDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getNoticeDate() {
+    return noticeDate;
+  }
+
+
+  public void setNoticeDate(OffsetDateTime noticeDate) {
+    this.noticeDate = noticeDate;
+  }
+
+
+  public AllocationEventRequest dueDate(OffsetDateTime dueDate) {
+    
+    this.dueDate = dueDate;
+    return this;
+  }
+
+   /**
+   * The date the investors&#39; cash is due.
+   * @return dueDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDueDate() {
+    return dueDate;
+  }
+
+
+  public void setDueDate(OffsetDateTime dueDate) {
+    this.dueDate = dueDate;
+  }
+
+
+  public AllocationEventRequest settlementDate(OffsetDateTime settlementDate) {
+    
+    this.settlementDate = settlementDate;
+    return this;
+  }
+
+   /**
+   * The date the postings settle. Defaults to the event date.
+   * @return settlementDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getSettlementDate() {
+    return settlementDate;
+  }
+
+
+  public void setSettlementDate(OffsetDateTime settlementDate) {
+    this.settlementDate = settlementDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -309,7 +563,16 @@ public class AllocationEventRequest {
         Objects.equals(this.eventDate, allocationEventRequest.eventDate) &&
         Objects.equals(this.description, allocationEventRequest.description) &&
         Objects.equals(this.basisValues, allocationEventRequest.basisValues) &&
-        Objects.equals(this.effectiveAt, allocationEventRequest.effectiveAt);
+        Objects.equals(this.components, allocationEventRequest.components) &&
+        Objects.equals(this.transfers, allocationEventRequest.transfers) &&
+        Objects.equals(this.equalisation, allocationEventRequest.equalisation) &&
+        Objects.equals(this.useOfProceeds, allocationEventRequest.useOfProceeds) &&
+        Objects.equals(this.dealFunding, allocationEventRequest.dealFunding) &&
+        Objects.equals(this.effectiveAt, allocationEventRequest.effectiveAt) &&
+        Objects.equals(this.replaces, allocationEventRequest.replaces) &&
+        Objects.equals(this.noticeDate, allocationEventRequest.noticeDate) &&
+        Objects.equals(this.dueDate, allocationEventRequest.dueDate) &&
+        Objects.equals(this.settlementDate, allocationEventRequest.settlementDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -318,7 +581,7 @@ public class AllocationEventRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, allocationMapId, eventType, amount, currency, eventDate, description, basisValues, effectiveAt);
+    return Objects.hash(code, allocationMapId, eventType, amount, currency, eventDate, description, basisValues, components, transfers, equalisation, useOfProceeds, dealFunding, effectiveAt, replaces, noticeDate, dueDate, settlementDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -340,7 +603,16 @@ public class AllocationEventRequest {
     sb.append("    eventDate: ").append(toIndentedString(eventDate)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    basisValues: ").append(toIndentedString(basisValues)).append("\n");
+    sb.append("    components: ").append(toIndentedString(components)).append("\n");
+    sb.append("    transfers: ").append(toIndentedString(transfers)).append("\n");
+    sb.append("    equalisation: ").append(toIndentedString(equalisation)).append("\n");
+    sb.append("    useOfProceeds: ").append(toIndentedString(useOfProceeds)).append("\n");
+    sb.append("    dealFunding: ").append(toIndentedString(dealFunding)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    replaces: ").append(toIndentedString(replaces)).append("\n");
+    sb.append("    noticeDate: ").append(toIndentedString(noticeDate)).append("\n");
+    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
+    sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -371,7 +643,16 @@ public class AllocationEventRequest {
     openapiFields.add("eventDate");
     openapiFields.add("description");
     openapiFields.add("basisValues");
+    openapiFields.add("components");
+    openapiFields.add("transfers");
+    openapiFields.add("equalisation");
+    openapiFields.add("useOfProceeds");
+    openapiFields.add("dealFunding");
     openapiFields.add("effectiveAt");
+    openapiFields.add("replaces");
+    openapiFields.add("noticeDate");
+    openapiFields.add("dueDate");
+    openapiFields.add("settlementDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -430,6 +711,60 @@ public class AllocationEventRequest {
             AllocationMapBasisValue.validateJsonElement(jsonArraybasisValues.get(i));
           };
         }
+      }
+      if (jsonObj.get("components") != null && !jsonObj.get("components").isJsonNull()) {
+        JsonArray jsonArraycomponents = jsonObj.getAsJsonArray("components");
+        if (jsonArraycomponents != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("components").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `components` to be an array in the JSON string but got `%s`", jsonObj.get("components").toString()));
+          }
+
+          // validate the optional field `components` (array)
+          for (int i = 0; i < jsonArraycomponents.size(); i++) {
+            AllocationEventComponent.validateJsonElement(jsonArraycomponents.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("transfers") != null && !jsonObj.get("transfers").isJsonNull()) {
+        JsonArray jsonArraytransfers = jsonObj.getAsJsonArray("transfers");
+        if (jsonArraytransfers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transfers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transfers` to be an array in the JSON string but got `%s`", jsonObj.get("transfers").toString()));
+          }
+
+          // validate the optional field `transfers` (array)
+          for (int i = 0; i < jsonArraytransfers.size(); i++) {
+            AllocationEventTransfer.validateJsonElement(jsonArraytransfers.get(i));
+          };
+        }
+      }
+      // validate the optional field `equalisation`
+      if (jsonObj.get("equalisation") != null && !jsonObj.get("equalisation").isJsonNull()) {
+        AllocationEventEqualisation.validateJsonElement(jsonObj.get("equalisation"));
+      }
+      if (jsonObj.get("useOfProceeds") != null && !jsonObj.get("useOfProceeds").isJsonNull()) {
+        JsonArray jsonArrayuseOfProceeds = jsonObj.getAsJsonArray("useOfProceeds");
+        if (jsonArrayuseOfProceeds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("useOfProceeds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `useOfProceeds` to be an array in the JSON string but got `%s`", jsonObj.get("useOfProceeds").toString()));
+          }
+
+          // validate the optional field `useOfProceeds` (array)
+          for (int i = 0; i < jsonArrayuseOfProceeds.size(); i++) {
+            AllocationEventUseOfProceeds.validateJsonElement(jsonArrayuseOfProceeds.get(i));
+          };
+        }
+      }
+      // validate the optional field `dealFunding`
+      if (jsonObj.get("dealFunding") != null && !jsonObj.get("dealFunding").isJsonNull()) {
+        AllocationEventDealFunding.validateJsonElement(jsonObj.get("dealFunding"));
+      }
+      // validate the optional field `replaces`
+      if (jsonObj.get("replaces") != null && !jsonObj.get("replaces").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("replaces"));
       }
   }
 

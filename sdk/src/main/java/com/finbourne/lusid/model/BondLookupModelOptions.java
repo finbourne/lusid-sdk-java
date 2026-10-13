@@ -67,6 +67,10 @@ public class BondLookupModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_SPREAD_TERM_STRUCTURE)
   private Boolean spreadTermStructure;
 
+  public static final String SERIALIZED_NAME_WORKOUT = "workout";
+  @SerializedName(SERIALIZED_NAME_WORKOUT)
+  private String workout;
+
   public BondLookupModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -155,6 +159,27 @@ public class BondLookupModelOptions extends ModelOptions {
   }
 
 
+  public BondLookupModelOptions workout(String workout) {
+    
+    this.workout = workout;
+    return this;
+  }
+
+   /**
+   * The redemption date a callable ComplexBond is struck to.     Supported string (enumeration) values are: [Maturity, NextCall].  Defaults to Maturity - the bond&#39;s flows to final maturity - when not supplied.     NextCall: the spread-anchored valuation (and so every Risk/Rates and Risk/Credit bump of it), the  anchor solved from the price, and the z-spread family (Analytic/ZSpread, SpreadDuration, CS01,  CS01/Central) discount the flows the bond pays if redeemed at its next call: no flow after the call,  the principal outstanding on the call date repaid at the call strike. The looked-up PV is unchanged,  and Valuation/Diagnostics/Model/PricingHorizon reports the call date. A bond with no live call is  struck to maturity; a shape the workout truncation refuses fails by name.
+   * @return workout
+  **/
+  @jakarta.annotation.Nullable
+  public String getWorkout() {
+    return workout;
+  }
+
+
+  public void setWorkout(String workout) {
+    this.workout = workout;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -169,6 +194,7 @@ public class BondLookupModelOptions extends ModelOptions {
         (this.cs01BumpWidth.compareTo(bondLookupModelOptions.getCs01BumpWidth()) == 0) &&
         Objects.equals(this.spreadAnchorSource, bondLookupModelOptions.spreadAnchorSource) &&
         Objects.equals(this.spreadTermStructure, bondLookupModelOptions.spreadTermStructure) &&
+        Objects.equals(this.workout, bondLookupModelOptions.workout) &&
         super.equals(o);
   }
 
@@ -178,7 +204,7 @@ public class BondLookupModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(spreadAnchoredRisk, cs01BumpWidth, spreadAnchorSource, spreadTermStructure, super.hashCode());
+    return Objects.hash(spreadAnchoredRisk, cs01BumpWidth, spreadAnchorSource, spreadTermStructure, workout, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,6 +223,7 @@ public class BondLookupModelOptions extends ModelOptions {
     sb.append("    cs01BumpWidth: ").append(toIndentedString(cs01BumpWidth)).append("\n");
     sb.append("    spreadAnchorSource: ").append(toIndentedString(spreadAnchorSource)).append("\n");
     sb.append("    spreadTermStructure: ").append(toIndentedString(spreadTermStructure)).append("\n");
+    sb.append("    workout: ").append(toIndentedString(workout)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -224,6 +251,7 @@ public class BondLookupModelOptions extends ModelOptions {
     openapiFields.add("cs01BumpWidth");
     openapiFields.add("spreadAnchorSource");
     openapiFields.add("spreadTermStructure");
+    openapiFields.add("workout");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

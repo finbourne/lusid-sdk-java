@@ -107,6 +107,10 @@ public class HullWhiteModelOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_PRICE_AT_QUOTE_IMPLIED_OAS)
   private Boolean priceAtQuoteImpliedOas;
 
+  public static final String SERIALIZED_NAME_IGNORE_OPTIONALITY = "ignoreOptionality";
+  @SerializedName(SERIALIZED_NAME_IGNORE_OPTIONALITY)
+  private Boolean ignoreOptionality;
+
   public HullWhiteModelOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -408,6 +412,27 @@ public class HullWhiteModelOptions extends ModelOptions {
   }
 
 
+  public HullWhiteModelOptions ignoreOptionality(Boolean ignoreOptionality) {
+    
+    this.ignoreOptionality = ignoreOptionality;
+    return this;
+  }
+
+   /**
+   * Value the instrument with its OptionalitySchedule ignored, so the lattice rolls back the  contractual cashflows with no exercise and the present value is the option-free (bullet) value.  Every measure struck from that value is then the option-stripped figure: the generic curve bumps  behind Risk/Rates/Pv01 and Risk/Rates/Delta, and the effective durations. The spread is resolved  exactly as it would be with the schedule in force: zero by default, and under  PriceAtQuoteImpliedOas the OAS anchor served for the instrument when there is one. Pair it with an  anchor solved on the exercise-aware valuation to measure the bullet at the callable&#39;s own spread, and  without an anchor the OAS is re-solved so the bullet reprices the quote. Defaults to false.
+   * @return ignoreOptionality
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIgnoreOptionality() {
+    return ignoreOptionality;
+  }
+
+
+  public void setIgnoreOptionality(Boolean ignoreOptionality) {
+    this.ignoreOptionality = ignoreOptionality;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -431,6 +456,7 @@ public class HullWhiteModelOptions extends ModelOptions {
         Objects.equals(this.latticeStepsPerYear, hullWhiteModelOptions.latticeStepsPerYear) &&
         Objects.equals(this.maxLatticeNodes, hullWhiteModelOptions.maxLatticeNodes) &&
         Objects.equals(this.priceAtQuoteImpliedOas, hullWhiteModelOptions.priceAtQuoteImpliedOas) &&
+        Objects.equals(this.ignoreOptionality, hullWhiteModelOptions.ignoreOptionality) &&
         super.equals(o);
   }
 
@@ -440,7 +466,7 @@ public class HullWhiteModelOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, maxLatticeNodes, priceAtQuoteImpliedOas, super.hashCode());
+    return Objects.hash(meanReversion, volatility, latticeSteps, effectiveRateBumpSize, meanReversionByCurrency, volatilityByCurrency, volatilityMultiplier, effectiveCs01BumpWidth, effectiveKeyRateBuckets, priceToFirstReset, latticeStepsPerYear, maxLatticeNodes, priceAtQuoteImpliedOas, ignoreOptionality, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -468,6 +494,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     sb.append("    latticeStepsPerYear: ").append(toIndentedString(latticeStepsPerYear)).append("\n");
     sb.append("    maxLatticeNodes: ").append(toIndentedString(maxLatticeNodes)).append("\n");
     sb.append("    priceAtQuoteImpliedOas: ").append(toIndentedString(priceAtQuoteImpliedOas)).append("\n");
+    sb.append("    ignoreOptionality: ").append(toIndentedString(ignoreOptionality)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -504,6 +531,7 @@ public class HullWhiteModelOptions extends ModelOptions {
     openapiFields.add("latticeStepsPerYear");
     openapiFields.add("maxLatticeNodes");
     openapiFields.add("priceAtQuoteImpliedOas");
+    openapiFields.add("ignoreOptionality");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -15,6 +15,9 @@ import com.finbourne.lusid.model.ApportionmentMethodProperty;
 import com.finbourne.lusid.model.BucketSetDefinition;
 import com.finbourne.lusid.model.ComponentFilter;
 import com.finbourne.lusid.model.ExternalFeeComponentFilter;
+import com.finbourne.lusid.model.FundClosing;
+import com.finbourne.lusid.model.FundTerms;
+import com.finbourne.lusid.model.PartnershipAccountingConfiguration;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -102,6 +105,18 @@ public class FundConfigurationRequest {
   public static final String SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY = "apportionmentMethodProperty";
   @SerializedName(SERIALIZED_NAME_APPORTIONMENT_METHOD_PROPERTY)
   private ApportionmentMethodProperty apportionmentMethodProperty;
+
+  public static final String SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING = "partnershipAccounting";
+  @SerializedName(SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING)
+  private PartnershipAccountingConfiguration partnershipAccounting;
+
+  public static final String SERIALIZED_NAME_FUND_TERMS = "fundTerms";
+  @SerializedName(SERIALIZED_NAME_FUND_TERMS)
+  private FundTerms fundTerms;
+
+  public static final String SERIALIZED_NAME_CLOSINGS = "closings";
+  @SerializedName(SERIALIZED_NAME_CLOSINGS)
+  private List<FundClosing> closings;
 
   public FundConfigurationRequest() {
   }
@@ -385,6 +400,77 @@ public class FundConfigurationRequest {
   }
 
 
+  public FundConfigurationRequest partnershipAccounting(PartnershipAccountingConfiguration partnershipAccounting) {
+    
+    this.partnershipAccounting = partnershipAccounting;
+    return this;
+  }
+
+   /**
+   * Get partnershipAccounting
+   * @return partnershipAccounting
+  **/
+  @jakarta.annotation.Nullable
+  public PartnershipAccountingConfiguration getPartnershipAccounting() {
+    return partnershipAccounting;
+  }
+
+
+  public void setPartnershipAccounting(PartnershipAccountingConfiguration partnershipAccounting) {
+    this.partnershipAccounting = partnershipAccounting;
+  }
+
+
+  public FundConfigurationRequest fundTerms(FundTerms fundTerms) {
+    
+    this.fundTerms = fundTerms;
+    return this;
+  }
+
+   /**
+   * Get fundTerms
+   * @return fundTerms
+  **/
+  @jakarta.annotation.Nullable
+  public FundTerms getFundTerms() {
+    return fundTerms;
+  }
+
+
+  public void setFundTerms(FundTerms fundTerms) {
+    this.fundTerms = fundTerms;
+  }
+
+
+  public FundConfigurationRequest closings(List<FundClosing> closings) {
+    
+    this.closings = closings;
+    return this;
+  }
+
+  public FundConfigurationRequest addClosingsItem(FundClosing closingsItem) {
+    if (this.closings == null) {
+      this.closings = new ArrayList<>();
+    }
+    this.closings.add(closingsItem);
+    return this;
+  }
+
+   /**
+   * The register of fund closings (first close, subsequent closes, final close) for partnership funds using this configuration.
+   * @return closings
+  **/
+  @jakarta.annotation.Nullable
+  public List<FundClosing> getClosings() {
+    return closings;
+  }
+
+
+  public void setClosings(List<FundClosing> closings) {
+    this.closings = closings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -405,7 +491,10 @@ public class FundConfigurationRequest {
         Objects.equals(this.bucketSets, fundConfigurationRequest.bucketSets) &&
         Objects.equals(this.properties, fundConfigurationRequest.properties) &&
         Objects.equals(this.apportionmentBucketSet, fundConfigurationRequest.apportionmentBucketSet) &&
-        Objects.equals(this.apportionmentMethodProperty, fundConfigurationRequest.apportionmentMethodProperty);
+        Objects.equals(this.apportionmentMethodProperty, fundConfigurationRequest.apportionmentMethodProperty) &&
+        Objects.equals(this.partnershipAccounting, fundConfigurationRequest.partnershipAccounting) &&
+        Objects.equals(this.fundTerms, fundConfigurationRequest.fundTerms) &&
+        Objects.equals(this.closings, fundConfigurationRequest.closings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -414,7 +503,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, bucketSets, properties, apportionmentBucketSet, apportionmentMethodProperty);
+    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, bucketSets, properties, apportionmentBucketSet, apportionmentMethodProperty, partnershipAccounting, fundTerms, closings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -439,6 +528,9 @@ public class FundConfigurationRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    apportionmentBucketSet: ").append(toIndentedString(apportionmentBucketSet)).append("\n");
     sb.append("    apportionmentMethodProperty: ").append(toIndentedString(apportionmentMethodProperty)).append("\n");
+    sb.append("    partnershipAccounting: ").append(toIndentedString(partnershipAccounting)).append("\n");
+    sb.append("    fundTerms: ").append(toIndentedString(fundTerms)).append("\n");
+    sb.append("    closings: ").append(toIndentedString(closings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -472,6 +564,9 @@ public class FundConfigurationRequest {
     openapiFields.add("properties");
     openapiFields.add("apportionmentBucketSet");
     openapiFields.add("apportionmentMethodProperty");
+    openapiFields.add("partnershipAccounting");
+    openapiFields.add("fundTerms");
+    openapiFields.add("closings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -583,6 +678,28 @@ public class FundConfigurationRequest {
       // validate the optional field `apportionmentMethodProperty`
       if (jsonObj.get("apportionmentMethodProperty") != null && !jsonObj.get("apportionmentMethodProperty").isJsonNull()) {
         ApportionmentMethodProperty.validateJsonElement(jsonObj.get("apportionmentMethodProperty"));
+      }
+      // validate the optional field `partnershipAccounting`
+      if (jsonObj.get("partnershipAccounting") != null && !jsonObj.get("partnershipAccounting").isJsonNull()) {
+        PartnershipAccountingConfiguration.validateJsonElement(jsonObj.get("partnershipAccounting"));
+      }
+      // validate the optional field `fundTerms`
+      if (jsonObj.get("fundTerms") != null && !jsonObj.get("fundTerms").isJsonNull()) {
+        FundTerms.validateJsonElement(jsonObj.get("fundTerms"));
+      }
+      if (jsonObj.get("closings") != null && !jsonObj.get("closings").isJsonNull()) {
+        JsonArray jsonArrayclosings = jsonObj.getAsJsonArray("closings");
+        if (jsonArrayclosings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("closings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `closings` to be an array in the JSON string but got `%s`", jsonObj.get("closings").toString()));
+          }
+
+          // validate the optional field `closings` (array)
+          for (int i = 0; i < jsonArrayclosings.size(); i++) {
+            FundClosing.validateJsonElement(jsonArrayclosings.get(i));
+          };
+        }
       }
   }
 

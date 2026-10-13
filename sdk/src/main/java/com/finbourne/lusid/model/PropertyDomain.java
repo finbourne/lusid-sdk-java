@@ -215,7 +215,9 @@ public enum PropertyDomain {
   
   RECRESULT("RecResult"),
   
-  JOURNALENTRY("JournalEntry");
+  JOURNALENTRY("JournalEntry"),
+  
+  ELIGIBLECOLLATERALSCHEDULE("EligibleCollateralSchedule");
 
   private String value;
 

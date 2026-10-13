@@ -5,10 +5,10 @@ The result of resolving an Allocation Map for one event: how much each investor 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**eventType** | **String** | The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove. | [optional] [default to String]
+**eventType** | **String** | The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding. | [optional] [default to String]
 **amount** | **java.math.BigDecimal** | The amount that was shared. | [optional] [default to java.math.BigDecimal]
 **currency** | **String** | The currency of the amount. | [optional] [default to String]
-**basisRule** | **String** | The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage. | [optional] [default to String]
+**basisRule** | **String** | The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage, Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable, FeeWeightedCommitment, FixedAmount. | [optional] [default to String]
 **basisPool** | **java.math.BigDecimal** | The sum of the basis values over the participants that share the remainder pro rata. | [optional] [default to java.math.BigDecimal]
 **fixedTotal** | **java.math.BigDecimal** | The total taken off the top by FixedPercentage exceptions before the remainder is shared. | [optional] [default to java.math.BigDecimal]
 **participantCount** | **Integer** | The number of investor records that receive a share, whether fixed or pro rata. | [optional] [default to Integer]

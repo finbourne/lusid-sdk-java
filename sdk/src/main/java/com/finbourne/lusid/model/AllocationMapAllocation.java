@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +70,22 @@ public class AllocationMapAllocation {
   public static final String SERIALIZED_NAME_TREATMENT = "treatment";
   @SerializedName(SERIALIZED_NAME_TREATMENT)
   private String treatment;
+
+  public static final String SERIALIZED_NAME_COMMITMENT_LINE_ID = "commitmentLineId";
+  @SerializedName(SERIALIZED_NAME_COMMITMENT_LINE_ID)
+  private String commitmentLineId;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private ResourceId portfolioId;
+
+  public static final String SERIALIZED_NAME_COMPONENT = "component";
+  @SerializedName(SERIALIZED_NAME_COMPONENT)
+  private String component;
+
+  public static final String SERIALIZED_NAME_ORIGIN_MEMBER_SHORT_CODE = "originMemberShortCode";
+  @SerializedName(SERIALIZED_NAME_ORIGIN_MEMBER_SHORT_CODE)
+  private String originMemberShortCode;
 
   public AllocationMapAllocation() {
   }
@@ -178,6 +195,90 @@ public class AllocationMapAllocation {
   }
 
 
+  public AllocationMapAllocation commitmentLineId(String commitmentLineId) {
+    
+    this.commitmentLineId = commitmentLineId;
+    return this;
+  }
+
+   /**
+   * For a Commitment event, the commitment line the share is recorded against. Absent for other event types.
+   * @return commitmentLineId
+  **/
+  @jakarta.annotation.Nullable
+  public String getCommitmentLineId() {
+    return commitmentLineId;
+  }
+
+
+  public void setCommitmentLineId(String commitmentLineId) {
+    this.commitmentLineId = commitmentLineId;
+  }
+
+
+  public AllocationMapAllocation portfolioId(ResourceId portfolioId) {
+    
+    this.portfolioId = portfolioId;
+    return this;
+  }
+
+   /**
+   * Get portfolioId
+   * @return portfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPortfolioId() {
+    return portfolioId;
+  }
+
+
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+
+  public AllocationMapAllocation component(String component) {
+    
+    this.component = component;
+    return this;
+  }
+
+   /**
+   * The component of the event the share belongs to. Absent when the event was resolved whole.
+   * @return component
+  **/
+  @jakarta.annotation.Nullable
+  public String getComponent() {
+    return component;
+  }
+
+
+  public void setComponent(String component) {
+    this.component = component;
+  }
+
+
+  public AllocationMapAllocation originMemberShortCode(String originMemberShortCode) {
+    
+    this.originMemberShortCode = originMemberShortCode;
+    return this;
+  }
+
+   /**
+   * The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies.
+   * @return originMemberShortCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getOriginMemberShortCode() {
+    return originMemberShortCode;
+  }
+
+
+  public void setOriginMemberShortCode(String originMemberShortCode) {
+    this.originMemberShortCode = originMemberShortCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +293,11 @@ public class AllocationMapAllocation {
         (this.basisValue.compareTo(allocationMapAllocation.getBasisValue()) == 0) &&
         (this.weight.compareTo(allocationMapAllocation.getWeight()) == 0) &&
         (this.amount.compareTo(allocationMapAllocation.getAmount()) == 0) &&
-        Objects.equals(this.treatment, allocationMapAllocation.treatment);
+        Objects.equals(this.treatment, allocationMapAllocation.treatment) &&
+        Objects.equals(this.commitmentLineId, allocationMapAllocation.commitmentLineId) &&
+        Objects.equals(this.portfolioId, allocationMapAllocation.portfolioId) &&
+        Objects.equals(this.component, allocationMapAllocation.component) &&
+        Objects.equals(this.originMemberShortCode, allocationMapAllocation.originMemberShortCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +306,7 @@ public class AllocationMapAllocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, basisValue, weight, amount, treatment);
+    return Objects.hash(investorRecordId, basisValue, weight, amount, treatment, commitmentLineId, portfolioId, component, originMemberShortCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +325,10 @@ public class AllocationMapAllocation {
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    treatment: ").append(toIndentedString(treatment)).append("\n");
+    sb.append("    commitmentLineId: ").append(toIndentedString(commitmentLineId)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    component: ").append(toIndentedString(component)).append("\n");
+    sb.append("    originMemberShortCode: ").append(toIndentedString(originMemberShortCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +356,10 @@ public class AllocationMapAllocation {
     openapiFields.add("weight");
     openapiFields.add("amount");
     openapiFields.add("treatment");
+    openapiFields.add("commitmentLineId");
+    openapiFields.add("portfolioId");
+    openapiFields.add("component");
+    openapiFields.add("originMemberShortCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -270,6 +383,19 @@ public class AllocationMapAllocation {
       }
       if ((jsonObj.get("treatment") != null && !jsonObj.get("treatment").isJsonNull()) && !jsonObj.get("treatment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `treatment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("treatment").toString()));
+      }
+      if ((jsonObj.get("commitmentLineId") != null && !jsonObj.get("commitmentLineId").isJsonNull()) && !jsonObj.get("commitmentLineId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `commitmentLineId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("commitmentLineId").toString()));
+      }
+      // validate the optional field `portfolioId`
+      if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      }
+      if ((jsonObj.get("component") != null && !jsonObj.get("component").isJsonNull()) && !jsonObj.get("component").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `component` to be a primitive type in the JSON string but got `%s`", jsonObj.get("component").toString()));
+      }
+      if ((jsonObj.get("originMemberShortCode") != null && !jsonObj.get("originMemberShortCode").isJsonNull()) && !jsonObj.get("originMemberShortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `originMemberShortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("originMemberShortCode").toString()));
       }
   }
 

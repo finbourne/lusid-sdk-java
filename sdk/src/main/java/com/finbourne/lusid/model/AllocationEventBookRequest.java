@@ -45,13 +45,17 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The request used to book a computed Allocation Event: the reference under which its shares were posted.
+ * The request used to book a computed Allocation Event: the reference under which its shares are posted, and  whether to only show what would be posted.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllocationEventBookRequest {
   public static final String SERIALIZED_NAME_BOOKING_REFERENCE = "bookingReference";
   @SerializedName(SERIALIZED_NAME_BOOKING_REFERENCE)
   private String bookingReference;
+
+  public static final String SERIALIZED_NAME_DRY_RUN = "dryRun";
+  @SerializedName(SERIALIZED_NAME_DRY_RUN)
+  private Boolean dryRun;
 
   public AllocationEventBookRequest() {
   }
@@ -77,6 +81,27 @@ public class AllocationEventBookRequest {
   }
 
 
+  public AllocationEventBookRequest dryRun(Boolean dryRun) {
+    
+    this.dryRun = dryRun;
+    return this;
+  }
+
+   /**
+   * Whether to only build and return the posting plan without writing anything. Defaults to false.
+   * @return dryRun
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDryRun() {
+    return dryRun;
+  }
+
+
+  public void setDryRun(Boolean dryRun) {
+    this.dryRun = dryRun;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,12 +112,13 @@ public class AllocationEventBookRequest {
       return false;
     }
     AllocationEventBookRequest allocationEventBookRequest = (AllocationEventBookRequest) o;
-    return Objects.equals(this.bookingReference, allocationEventBookRequest.bookingReference);
+    return Objects.equals(this.bookingReference, allocationEventBookRequest.bookingReference) &&
+        Objects.equals(this.dryRun, allocationEventBookRequest.dryRun);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bookingReference);
+    return Objects.hash(bookingReference, dryRun);
   }
 
   @Override
@@ -100,6 +126,7 @@ public class AllocationEventBookRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class AllocationEventBookRequest {\n");
     sb.append("    bookingReference: ").append(toIndentedString(bookingReference)).append("\n");
+    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,6 +150,7 @@ public class AllocationEventBookRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("bookingReference");
+    openapiFields.add("dryRun");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,6 +62,14 @@ public class AllocationMapBasisValue {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+  public static final String SERIALIZED_NAME_COMMITMENT_LINE_ID = "commitmentLineId";
+  @SerializedName(SERIALIZED_NAME_COMMITMENT_LINE_ID)
+  private String commitmentLineId;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private ResourceId portfolioId;
 
   public AllocationMapBasisValue() {
   }
@@ -128,6 +137,48 @@ public class AllocationMapBasisValue {
   }
 
 
+  public AllocationMapBasisValue commitmentLineId(String commitmentLineId) {
+    
+    this.commitmentLineId = commitmentLineId;
+    return this;
+  }
+
+   /**
+   * For a Commitment event, the commitment line the amount is recorded against. The basis value is then the signed commitment amount itself: positive commits, negative releases. Not used for other event types.
+   * @return commitmentLineId
+  **/
+  @jakarta.annotation.Nullable
+  public String getCommitmentLineId() {
+    return commitmentLineId;
+  }
+
+
+  public void setCommitmentLineId(String commitmentLineId) {
+    this.commitmentLineId = commitmentLineId;
+  }
+
+
+  public AllocationMapBasisValue portfolioId(ResourceId portfolioId) {
+    
+    this.portfolioId = portfolioId;
+    return this;
+  }
+
+   /**
+   * Get portfolioId
+   * @return portfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPortfolioId() {
+    return portfolioId;
+  }
+
+
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +191,9 @@ public class AllocationMapBasisValue {
     AllocationMapBasisValue allocationMapBasisValue = (AllocationMapBasisValue) o;
     return Objects.equals(this.investorRecordId, allocationMapBasisValue.investorRecordId) &&
         (this.basisValue.compareTo(allocationMapBasisValue.getBasisValue()) == 0) &&
-        Objects.equals(this.currency, allocationMapBasisValue.currency);
+        Objects.equals(this.currency, allocationMapBasisValue.currency) &&
+        Objects.equals(this.commitmentLineId, allocationMapBasisValue.commitmentLineId) &&
+        Objects.equals(this.portfolioId, allocationMapBasisValue.portfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +202,7 @@ public class AllocationMapBasisValue {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, basisValue, currency);
+    return Objects.hash(investorRecordId, basisValue, currency, commitmentLineId, portfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +219,8 @@ public class AllocationMapBasisValue {
     sb.append("    investorRecordId: ").append(toIndentedString(investorRecordId)).append("\n");
     sb.append("    basisValue: ").append(toIndentedString(basisValue)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    commitmentLineId: ").append(toIndentedString(commitmentLineId)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +246,8 @@ public class AllocationMapBasisValue {
     openapiFields.add("investorRecordId");
     openapiFields.add("basisValue");
     openapiFields.add("currency");
+    openapiFields.add("commitmentLineId");
+    openapiFields.add("portfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -223,6 +280,13 @@ public class AllocationMapBasisValue {
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      if ((jsonObj.get("commitmentLineId") != null && !jsonObj.get("commitmentLineId").isJsonNull()) && !jsonObj.get("commitmentLineId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `commitmentLineId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("commitmentLineId").toString()));
+      }
+      // validate the optional field `portfolioId`
+      if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       }
   }
 

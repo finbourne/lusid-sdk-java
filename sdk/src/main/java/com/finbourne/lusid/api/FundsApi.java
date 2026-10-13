@@ -30,12 +30,15 @@ import com.finbourne.lusid.model.AllocationGroupDefinition;
 import com.finbourne.lusid.model.CreateValuationPointRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
+import com.finbourne.lusid.model.Facility;
+import com.finbourne.lusid.model.FacilityRequest;
 import com.finbourne.lusid.model.Fee;
 import com.finbourne.lusid.model.FeeProperties;
 import com.finbourne.lusid.model.FeeRequest;
 import com.finbourne.lusid.model.Fund;
 import com.finbourne.lusid.model.FundCalendarEntry;
 import com.finbourne.lusid.model.FundDefinitionRequest;
+import com.finbourne.lusid.model.FundPartnerUnfundedReconciliation;
 import com.finbourne.lusid.model.FundProperties;
 import com.finbourne.lusid.model.FundRequest;
 import com.finbourne.lusid.model.FundValuationRequest;
@@ -46,10 +49,12 @@ import com.finbourne.lusid.model.NavActivityAdjustment;
 import com.finbourne.lusid.model.NavActivityAdjustmentResponse;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
+import com.finbourne.lusid.model.PagedResourceListOfFacility;
 import com.finbourne.lusid.model.PagedResourceListOfFee;
 import com.finbourne.lusid.model.PagedResourceListOfFund;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntries;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
+import com.finbourne.lusid.model.PagedResourceListOfFundPartner;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointInstrument;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
@@ -897,6 +902,259 @@ public class FundsApi {
      */
     public APIaddSeriesRequest addSeries(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) {
         return new APIaddSeriesRequest(scope, code, seriesDefinitionRequest);
+    }
+    private okhttp3.Call createFacilityCall(String scope, String code, FacilityRequest facilityRequest, final ApiCallback _callback) throws ApiException {
+        return createFacilityCall(scope, code, facilityRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFacilityCall(String scope, String code, FacilityRequest facilityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = facilityRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createFacilityValidateBeforeCall(String scope, String code, FacilityRequest facilityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createFacility(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling createFacility(Async)");
+        }
+
+        // verify the required parameter 'facilityRequest' is set
+        if (facilityRequest == null) {
+            throw new ApiException("Missing the required parameter 'facilityRequest' when calling createFacility(Async)");
+        }
+
+        return createFacilityCall(scope, code, facilityRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Facility> createFacilityWithHttpInfo(String scope, String code, FacilityRequest facilityRequest) throws ApiException {
+        okhttp3.Call localVarCall = createFacilityValidateBeforeCall(scope, code, facilityRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Facility> createFacilityWithHttpInfo(String scope, String code, FacilityRequest facilityRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFacilityValidateBeforeCall(scope, code, facilityRequest, null, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createFacilityAsync(String scope, String code, FacilityRequest facilityRequest, final ApiCallback<Facility> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createFacilityValidateBeforeCall(scope, code, facilityRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFacilityAsync(String scope, String code, FacilityRequest facilityRequest, final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFacilityValidateBeforeCall(scope, code, facilityRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateFacilityRequest {
+        private final String scope;
+        private final String code;
+        private final FacilityRequest facilityRequest;
+
+        private APIcreateFacilityRequest(String scope, String code, FacilityRequest facilityRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.facilityRequest = facilityRequest;
+        }
+
+        /**
+         * Build call for createFacility
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createFacilityCall(scope, code, facilityRequest, _callback);
+        }
+
+        /**
+         * Execute createFacility request
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute() throws ApiException {
+            ApiResponse<Facility> localVarResp = createFacilityWithHttpInfo(scope, code, facilityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createFacility request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Facility> localVarResp = createFacilityWithHttpInfo(scope, code, facilityRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createFacility request with HTTP info returned
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo() throws ApiException {
+            return createFacilityWithHttpInfo(scope, code, facilityRequest);
+        }
+
+        /**
+         * Execute createFacility request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFacilityWithHttpInfo(scope, code, facilityRequest, opts);
+        }
+
+        /**
+         * Execute createFacility request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback) throws ApiException {
+            return createFacilityAsync(scope, code, facilityRequest, _callback);
+        }
+
+        /**
+         * Execute createFacility request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFacilityAsync(scope, code, facilityRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
+     * Create the given Facility against a Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param facilityRequest The Facility to create. (required)
+     * @return APIcreateFacilityRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created Facility. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateFacilityRequest createFacility(String scope, String code, FacilityRequest facilityRequest) {
+        return new APIcreateFacilityRequest(scope, code, facilityRequest);
     }
     private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return createFeeCall(scope, code, feeRequest, navTypeCode,  _callback, new ConfigurationOptions());
@@ -2454,6 +2712,256 @@ public class FundsApi {
      */
     public APIdeleteBookmarkRequest deleteBookmark(String scope, String code, String bookmarkCode) {
         return new APIdeleteBookmarkRequest(scope, code, bookmarkCode);
+    }
+    private okhttp3.Call deleteFacilityCall(String scope, String code, String facilityCode, final ApiCallback _callback) throws ApiException {
+        return deleteFacilityCall(scope, code, facilityCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFacilityCall(String scope, String code, String facilityCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities/{facilityCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "facilityCode" + "}", localVarApiClient.escapeString(facilityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteFacilityValidateBeforeCall(String scope, String code, String facilityCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteFacility(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteFacility(Async)");
+        }
+
+        // verify the required parameter 'facilityCode' is set
+        if (facilityCode == null) {
+            throw new ApiException("Missing the required parameter 'facilityCode' when calling deleteFacility(Async)");
+        }
+
+        return deleteFacilityCall(scope, code, facilityCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteFacilityWithHttpInfo(String scope, String code, String facilityCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteFacilityValidateBeforeCall(scope, code, facilityCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFacilityWithHttpInfo(String scope, String code, String facilityCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFacilityValidateBeforeCall(scope, code, facilityCode, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteFacilityAsync(String scope, String code, String facilityCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFacilityValidateBeforeCall(scope, code, facilityCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFacilityAsync(String scope, String code, String facilityCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFacilityValidateBeforeCall(scope, code, facilityCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteFacilityRequest {
+        private final String scope;
+        private final String code;
+        private final String facilityCode;
+
+        private APIdeleteFacilityRequest(String scope, String code, String facilityCode) {
+            this.scope = scope;
+            this.code = code;
+            this.facilityCode = facilityCode;
+        }
+
+        /**
+         * Build call for deleteFacility
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteFacilityCall(scope, code, facilityCode, _callback);
+        }
+
+        /**
+         * Execute deleteFacility request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFacilityWithHttpInfo(scope, code, facilityCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteFacility request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFacilityWithHttpInfo(scope, code, facilityCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteFacility request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteFacilityWithHttpInfo(scope, code, facilityCode);
+        }
+
+        /**
+         * Execute deleteFacility request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFacilityWithHttpInfo(scope, code, facilityCode, opts);
+        }
+
+        /**
+         * Execute deleteFacility request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteFacilityAsync(scope, code, facilityCode, _callback);
+        }
+
+        /**
+         * Execute deleteFacility request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFacilityAsync(scope, code, facilityCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility.
+     * Delete the given Facility.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param facilityCode The code of the Facility to be deleted. (required)
+     * @return APIdeleteFacilityRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Facility was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteFacilityRequest deleteFacility(String scope, String code, String facilityCode) {
+        return new APIdeleteFacilityRequest(scope, code, facilityCode);
     }
     private okhttp3.Call deleteFeeCall(String scope, String code, String feeCode, final ApiCallback _callback) throws ApiException {
         return deleteFeeCall(scope, code, feeCode,  _callback, new ConfigurationOptions());
@@ -4415,6 +4923,286 @@ public class FundsApi {
     public APIgetA2BMovementsForFundRequest getA2BMovementsForFund(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetA2BMovementsForFundRequest(scope, code, valuationPointDataQueryParameters);
     }
+    private okhttp3.Call getFacilityCall(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getFacilityCall(scope, code, facilityCode, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFacilityCall(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities/{facilityCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "facilityCode" + "}", localVarApiClient.escapeString(facilityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFacilityValidateBeforeCall(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getFacility(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getFacility(Async)");
+        }
+
+        // verify the required parameter 'facilityCode' is set
+        if (facilityCode == null) {
+            throw new ApiException("Missing the required parameter 'facilityCode' when calling getFacility(Async)");
+        }
+
+        return getFacilityCall(scope, code, facilityCode, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Facility> getFacilityWithHttpInfo(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getFacilityValidateBeforeCall(scope, code, facilityCode, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Facility> getFacilityWithHttpInfo(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFacilityValidateBeforeCall(scope, code, facilityCode, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getFacilityAsync(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Facility> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFacilityValidateBeforeCall(scope, code, facilityCode, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFacilityAsync(String scope, String code, String facilityCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFacilityValidateBeforeCall(scope, code, facilityCode, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetFacilityRequest {
+        private final String scope;
+        private final String code;
+        private final String facilityCode;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetFacilityRequest(String scope, String code, String facilityCode) {
+            this.scope = scope;
+            this.code = code;
+            this.facilityCode = facilityCode;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Facility. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetFacilityRequest
+         */
+        public APIgetFacilityRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Facility. Defaults to returning the latest version of the Facility if not specified. (optional)
+         * @return APIgetFacilityRequest
+         */
+        public APIgetFacilityRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getFacility
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getFacilityCall(scope, code, facilityCode, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getFacility request
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute() throws ApiException {
+            ApiResponse<Facility> localVarResp = getFacilityWithHttpInfo(scope, code, facilityCode, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFacility request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Facility> localVarResp = getFacilityWithHttpInfo(scope, code, facilityCode, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFacility request with HTTP info returned
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo() throws ApiException {
+            return getFacilityWithHttpInfo(scope, code, facilityCode, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getFacility request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFacilityWithHttpInfo(scope, code, facilityCode, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getFacility request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback) throws ApiException {
+            return getFacilityAsync(scope, code, facilityCode, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getFacility request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFacilityAsync(scope, code, facilityCode, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund.
+     * Retrieve a Facility for a specified Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param facilityCode The code of the Facility. (required)
+     * @return APIgetFacilityRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Facility definition. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetFacilityRequest getFacility(String scope, String code, String facilityCode) {
+        return new APIgetFacilityRequest(scope, code, facilityCode);
+    }
     private okhttp3.Call getFeeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return getFeeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
     }
@@ -6256,6 +7044,614 @@ public class FundsApi {
      */
     public APIgetHoldingsForFundRequest getHoldingsForFund(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
         return new APIgetHoldingsForFundRequest(scope, code, singleValuationPointQueryParameters);
+    }
+    private okhttp3.Call getPartnerUnfundedReconciliationCall(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPartnerUnfundedReconciliationCall(scope, code, investorRecordId, from, to, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPartnerUnfundedReconciliationCall(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/partners/{investorRecordId}/unfundedreconciliation"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "investorRecordId" + "}", localVarApiClient.escapeString(investorRecordId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (from != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from", from));
+        }
+
+        if (to != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPartnerUnfundedReconciliationValidateBeforeCall(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getPartnerUnfundedReconciliation(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getPartnerUnfundedReconciliation(Async)");
+        }
+
+        // verify the required parameter 'investorRecordId' is set
+        if (investorRecordId == null) {
+            throw new ApiException("Missing the required parameter 'investorRecordId' when calling getPartnerUnfundedReconciliation(Async)");
+        }
+
+        // verify the required parameter 'from' is set
+        if (from == null) {
+            throw new ApiException("Missing the required parameter 'from' when calling getPartnerUnfundedReconciliation(Async)");
+        }
+
+        return getPartnerUnfundedReconciliationCall(scope, code, investorRecordId, from, to, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundPartnerUnfundedReconciliation> getPartnerUnfundedReconciliationWithHttpInfo(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerUnfundedReconciliationValidateBeforeCall(scope, code, investorRecordId, from, to, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundPartnerUnfundedReconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundPartnerUnfundedReconciliation> getPartnerUnfundedReconciliationWithHttpInfo(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPartnerUnfundedReconciliationValidateBeforeCall(scope, code, investorRecordId, from, to, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<FundPartnerUnfundedReconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPartnerUnfundedReconciliationAsync(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, final ApiCallback<FundPartnerUnfundedReconciliation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPartnerUnfundedReconciliationValidateBeforeCall(scope, code, investorRecordId, from, to, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundPartnerUnfundedReconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPartnerUnfundedReconciliationAsync(String scope, String code, String investorRecordId, String from, String to, OffsetDateTime asAt, final ApiCallback<FundPartnerUnfundedReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPartnerUnfundedReconciliationValidateBeforeCall(scope, code, investorRecordId, from, to, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundPartnerUnfundedReconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPartnerUnfundedReconciliationRequest {
+        private final String scope;
+        private final String code;
+        private final String investorRecordId;
+        private final String from;
+        private String to;
+        private OffsetDateTime asAt;
+
+        private APIgetPartnerUnfundedReconciliationRequest(String scope, String code, String investorRecordId, String from) {
+            this.scope = scope;
+            this.code = code;
+            this.investorRecordId = investorRecordId;
+            this.from = from;
+        }
+
+        /**
+         * Set to
+         * @param to The effective datetime or cut label the statement closes at. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPartnerUnfundedReconciliationRequest
+         */
+        public APIgetPartnerUnfundedReconciliationRequest to(String to) {
+            this.to = to;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the register and the booked events. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetPartnerUnfundedReconciliationRequest
+         */
+        public APIgetPartnerUnfundedReconciliationRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getPartnerUnfundedReconciliation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPartnerUnfundedReconciliationCall(scope, code, investorRecordId, from, to, asAt, _callback);
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request
+         * @return FundPartnerUnfundedReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundPartnerUnfundedReconciliation execute() throws ApiException {
+            ApiResponse<FundPartnerUnfundedReconciliation> localVarResp = getPartnerUnfundedReconciliationWithHttpInfo(scope, code, investorRecordId, from, to, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundPartnerUnfundedReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundPartnerUnfundedReconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundPartnerUnfundedReconciliation> localVarResp = getPartnerUnfundedReconciliationWithHttpInfo(scope, code, investorRecordId, from, to, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request with HTTP info returned
+         * @return ApiResponse&lt;FundPartnerUnfundedReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundPartnerUnfundedReconciliation> executeWithHttpInfo() throws ApiException {
+            return getPartnerUnfundedReconciliationWithHttpInfo(scope, code, investorRecordId, from, to, asAt);
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundPartnerUnfundedReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundPartnerUnfundedReconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPartnerUnfundedReconciliationWithHttpInfo(scope, code, investorRecordId, from, to, asAt, opts);
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundPartnerUnfundedReconciliation> _callback) throws ApiException {
+            return getPartnerUnfundedReconciliationAsync(scope, code, investorRecordId, from, to, asAt, _callback);
+        }
+
+        /**
+         * Execute getPartnerUnfundedReconciliation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundPartnerUnfundedReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPartnerUnfundedReconciliationAsync(scope, code, investorRecordId, from, to, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner&#39;s unfunded commitment statement.
+     * Reconciles one partner&#39;s unfunded commitment over a period: the register&#39;s opening unfunded, less capital  called inside the commitment, plus recallable distributions, less recallable distributions that expired,  plus or minus commitment changes and transfers, gives the closing unfunded, which is checked against the  register&#39;s unfunded at the close. Every booked allocation to the partner in the period is listed with the  ILPA transaction type it is reported under.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param investorRecordId The investor record of the partner. (required)
+     * @param from The effective datetime or cut label the statement opens at. (required)
+     * @return APIgetPartnerUnfundedReconciliationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The partner&#39;s unfunded commitment statement over the period. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPartnerUnfundedReconciliationRequest getPartnerUnfundedReconciliation(String scope, String code, String investorRecordId, String from) {
+        return new APIgetPartnerUnfundedReconciliationRequest(scope, code, investorRecordId, from);
+    }
+    private okhttp3.Call getPartnersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPartnersCall(scope, code, effectiveAt, asAt, includeClosed, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPartnersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/partners"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (includeClosed != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeClosed", includeClosed));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPartnersValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getPartners(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getPartners(Async)");
+        }
+
+        return getPartnersCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<PagedResourceListOfFundPartner> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<PagedResourceListOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetPartnersRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private Boolean includeClosed;
+        private String page;
+        private Integer limit;
+
+        private APIgetPartnersRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to read the register. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetPartnersRequest
+         */
+        public APIgetPartnersRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the register. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetPartnersRequest
+         */
+        public APIgetPartnersRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set includeClosed
+         * @param includeClosed Whether to include register lines with no remaining commitment or funded capital. Defaults to false. (optional)
+         * @return APIgetPartnersRequest
+         */
+        public APIgetPartnersRequest includeClosed(Boolean includeClosed) {
+            this.includeClosed = includeClosed;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing partners; this value is returned from the previous call.   If a pagination token is provided, the effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @return APIgetPartnersRequest
+         */
+        public APIgetPartnersRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIgetPartnersRequest
+         */
+        public APIgetPartnersRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for getPartners
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getPartnersCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPartners request
+         * @return PagedResourceListOfFundPartner
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFundPartner execute() throws ApiException {
+            ApiResponse<PagedResourceListOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPartners request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFundPartner
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFundPartner execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getPartners request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfFundPartner&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFundPartner> executeWithHttpInfo() throws ApiException {
+            return getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
+        }
+
+        /**
+         * Execute getPartners request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFundPartner&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFundPartner> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit, opts);
+        }
+
+        /**
+         * Execute getPartners request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundPartner> _callback) throws ApiException {
+            return getPartnersAsync(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPartners request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPartnersAsync(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
+     * Lists the register lines of a partnership-accounting fund with each partner&#39;s capital balances at the  requested effective date, together with totals across the whole register.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIgetPartnersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The partners of the requested Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetPartnersRequest getPartners(String scope, String code) {
+        return new APIgetPartnersRequest(scope, code);
     }
     private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback) throws ApiException {
         return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest,  _callback, new ConfigurationOptions());
@@ -8973,6 +10369,337 @@ public class FundsApi {
      */
     public APIgetValuationPointUnsettledTransactionsRequest getValuationPointUnsettledTransactions(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
         return new APIgetValuationPointUnsettledTransactionsRequest(scope, code, singleValuationPointQueryParameters);
+    }
+    private okhttp3.Call listFacilitiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listFacilitiesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFacilitiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listFacilitiesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listFacilities(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listFacilities(Async)");
+        }
+
+        return listFacilitiesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfFacility> listFacilitiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listFacilitiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFacility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFacility> listFacilitiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFacilitiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFacility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listFacilitiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFacility> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listFacilitiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFacility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFacilitiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFacility> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFacilitiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFacility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistFacilitiesRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistFacilitiesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the Facilities. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Facilities. Defaults to returning the latest version of each Facility if not specified. (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing facilities; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the lender, specify \&quot;lender eq &#39;Bank&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistFacilitiesRequest
+         */
+        public APIlistFacilitiesRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listFacilities
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listFacilitiesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listFacilities request
+         * @return PagedResourceListOfFacility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFacility execute() throws ApiException {
+            ApiResponse<PagedResourceListOfFacility> localVarResp = listFacilitiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listFacilities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFacility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFacility execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFacility> localVarResp = listFacilitiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listFacilities request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfFacility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFacility> executeWithHttpInfo() throws ApiException {
+            return listFacilitiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listFacilities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFacility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFacility> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFacilitiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, opts);
+        }
+
+        /**
+         * Execute listFacilities request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFacility> _callback) throws ApiException {
+            return listFacilitiesAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listFacilities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFacility> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFacilitiesAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund.
+     * List all the Facilities matching a particular criteria.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIlistFacilitiesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Facilities. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistFacilitiesRequest listFacilities(String scope, String code) {
+        return new APIlistFacilitiesRequest(scope, code);
     }
     private okhttp3.Call listFeesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());

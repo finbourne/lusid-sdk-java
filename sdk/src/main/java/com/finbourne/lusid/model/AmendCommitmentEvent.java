@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,6 +59,10 @@ public class AmendCommitmentEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private java.math.BigDecimal amount;
+
+  public static final String SERIALIZED_NAME_COMPONENT = "component";
+  @SerializedName(SERIALIZED_NAME_COMPONENT)
+  private String component;
 
   public AmendCommitmentEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -105,6 +110,27 @@ public class AmendCommitmentEvent extends InstrumentEvent {
   }
 
 
+  public AmendCommitmentEvent component(String component) {
+    
+    this.component = component;
+    return this;
+  }
+
+   /**
+   * The component of the commitment the amendment is recorded under: &#39;Commitment&#39; for a commitment made  or upsized, &#39;Release&#39; for committed capital released. Optional; when absent the sign of the amount  decides.
+   * @return component
+  **/
+  @jakarta.annotation.Nullable
+  public String getComponent() {
+    return component;
+  }
+
+
+  public void setComponent(String component) {
+    this.component = component;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,12 +143,24 @@ public class AmendCommitmentEvent extends InstrumentEvent {
     AmendCommitmentEvent amendCommitmentEvent = (AmendCommitmentEvent) o;
     return Objects.equals(this.date, amendCommitmentEvent.date) &&
         (this.amount.compareTo(amendCommitmentEvent.getAmount()) == 0) &&
+        Objects.equals(this.component, amendCommitmentEvent.component) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, amount, super.hashCode());
+    return Objects.hash(date, amount, component, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -132,6 +170,7 @@ public class AmendCommitmentEvent extends InstrumentEvent {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    component: ").append(toIndentedString(component)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -157,6 +196,7 @@ public class AmendCommitmentEvent extends InstrumentEvent {
     openapiFields.add("instrumentEventType");
     openapiFields.add("date");
     openapiFields.add("amount");
+    openapiFields.add("component");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

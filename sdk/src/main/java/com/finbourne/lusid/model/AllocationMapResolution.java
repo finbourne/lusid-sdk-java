@@ -103,7 +103,7 @@ public class AllocationMapResolution {
   }
 
    /**
-   * The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
+   * The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
    * @return eventType
   **/
   @jakarta.annotation.Nullable
@@ -166,7 +166,7 @@ public class AllocationMapResolution {
   }
 
    /**
-   * The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage.
+   * The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage, Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable, FeeWeightedCommitment, FixedAmount.
    * @return basisRule
   **/
   @jakarta.annotation.Nullable

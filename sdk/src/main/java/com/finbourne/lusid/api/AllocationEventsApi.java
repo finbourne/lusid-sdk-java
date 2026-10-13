@@ -28,7 +28,12 @@ import java.io.IOException;
 import com.finbourne.lusid.model.AllocationEvent;
 import com.finbourne.lusid.model.AllocationEventBookRequest;
 import com.finbourne.lusid.model.AllocationEventReallocateRequest;
+import com.finbourne.lusid.model.AllocationEventReceiptRequest;
 import com.finbourne.lusid.model.AllocationEventRequest;
+import com.finbourne.lusid.model.AllocationEventReverseRequest;
+import com.finbourne.lusid.model.AllocationEventUnbookRequest;
+import com.finbourne.lusid.model.AllocationPostingPlan;
+import com.finbourne.lusid.model.AllocationReceivablesAgeing;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -1117,6 +1122,277 @@ public class AllocationEventsApi {
     public APIgetAllocationEventRequest getAllocationEvent(String scope, String code) {
         return new APIgetAllocationEventRequest(scope, code);
     }
+    private okhttp3.Call getAllocationEventReceivablesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAllocationEventReceivablesCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllocationEventReceivablesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/receivables"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllocationEventReceivablesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getAllocationEventReceivables(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getAllocationEventReceivables(Async)");
+        }
+
+        return getAllocationEventReceivablesCall(scope, code, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationReceivablesAgeing> getAllocationEventReceivablesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getAllocationEventReceivablesValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationReceivablesAgeing>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationReceivablesAgeing> getAllocationEventReceivablesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllocationEventReceivablesValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationReceivablesAgeing>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getAllocationEventReceivablesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<AllocationReceivablesAgeing> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllocationEventReceivablesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationReceivablesAgeing>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllocationEventReceivablesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<AllocationReceivablesAgeing> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllocationEventReceivablesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationReceivablesAgeing>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetAllocationEventReceivablesRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetAllocationEventReceivablesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label as of which to age the receivables. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetAllocationEventReceivablesRequest
+         */
+        public APIgetAllocationEventReceivablesRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Allocation Event. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetAllocationEventReceivablesRequest
+         */
+        public APIgetAllocationEventReceivablesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getAllocationEventReceivables
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getAllocationEventReceivablesCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request
+         * @return AllocationReceivablesAgeing
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationReceivablesAgeing execute() throws ApiException {
+            ApiResponse<AllocationReceivablesAgeing> localVarResp = getAllocationEventReceivablesWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationReceivablesAgeing
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationReceivablesAgeing execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationReceivablesAgeing> localVarResp = getAllocationEventReceivablesWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request with HTTP info returned
+         * @return ApiResponse&lt;AllocationReceivablesAgeing&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationReceivablesAgeing> executeWithHttpInfo() throws ApiException {
+            return getAllocationEventReceivablesWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationReceivablesAgeing&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationReceivablesAgeing> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllocationEventReceivablesWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationReceivablesAgeing> _callback) throws ApiException {
+            return getAllocationEventReceivablesAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllocationEventReceivables request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationReceivablesAgeing> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllocationEventReceivablesAsync(scope, code, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+     * What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @return APIgetAllocationEventReceivablesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The aged receivables of the Allocation Event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetAllocationEventReceivablesRequest getAllocationEventReceivables(String scope, String code) {
+        return new APIgetAllocationEventReceivablesRequest(scope, code);
+    }
     private okhttp3.Call listAllocationEventsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         return listAllocationEventsCall(effectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
     }
@@ -1430,6 +1706,274 @@ public class AllocationEventsApi {
     public APIlistAllocationEventsRequest listAllocationEvents() {
         return new APIlistAllocationEventsRequest();
     }
+    private okhttp3.Call planAllocationEventBookingCall(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return planAllocationEventBookingCall(scope, code, allocationEventBookRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call planAllocationEventBookingCall(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationEventBookRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/plan"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call planAllocationEventBookingValidateBeforeCall(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling planAllocationEventBooking(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling planAllocationEventBooking(Async)");
+        }
+
+        // verify the required parameter 'allocationEventBookRequest' is set
+        if (allocationEventBookRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationEventBookRequest' when calling planAllocationEventBooking(Async)");
+        }
+
+        return planAllocationEventBookingCall(scope, code, allocationEventBookRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationPostingPlan> planAllocationEventBookingWithHttpInfo(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = planAllocationEventBookingValidateBeforeCall(scope, code, allocationEventBookRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationPostingPlan>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationPostingPlan> planAllocationEventBookingWithHttpInfo(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = planAllocationEventBookingValidateBeforeCall(scope, code, allocationEventBookRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationPostingPlan>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call planAllocationEventBookingAsync(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback<AllocationPostingPlan> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = planAllocationEventBookingValidateBeforeCall(scope, code, allocationEventBookRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationPostingPlan>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call planAllocationEventBookingAsync(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback<AllocationPostingPlan> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = planAllocationEventBookingValidateBeforeCall(scope, code, allocationEventBookRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationPostingPlan>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIplanAllocationEventBookingRequest {
+        private final String scope;
+        private final String code;
+        private final AllocationEventBookRequest allocationEventBookRequest;
+        private String effectiveAt;
+
+        private APIplanAllocationEventBookingRequest(String scope, String code, AllocationEventBookRequest allocationEventBookRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationEventBookRequest = allocationEventBookRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to plan the booking. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIplanAllocationEventBookingRequest
+         */
+        public APIplanAllocationEventBookingRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for planAllocationEventBooking
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return planAllocationEventBookingCall(scope, code, allocationEventBookRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute planAllocationEventBooking request
+         * @return AllocationPostingPlan
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationPostingPlan execute() throws ApiException {
+            ApiResponse<AllocationPostingPlan> localVarResp = planAllocationEventBookingWithHttpInfo(scope, code, allocationEventBookRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute planAllocationEventBooking request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationPostingPlan
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationPostingPlan execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationPostingPlan> localVarResp = planAllocationEventBookingWithHttpInfo(scope, code, allocationEventBookRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute planAllocationEventBooking request with HTTP info returned
+         * @return ApiResponse&lt;AllocationPostingPlan&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationPostingPlan> executeWithHttpInfo() throws ApiException {
+            return planAllocationEventBookingWithHttpInfo(scope, code, allocationEventBookRequest, effectiveAt);
+        }
+
+        /**
+         * Execute planAllocationEventBooking request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationPostingPlan&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationPostingPlan> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return planAllocationEventBookingWithHttpInfo(scope, code, allocationEventBookRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute planAllocationEventBooking request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationPostingPlan> _callback) throws ApiException {
+            return planAllocationEventBookingAsync(scope, code, allocationEventBookRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute planAllocationEventBooking request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationPostingPlan> _callback, ConfigurationOptions opts) throws ApiException {
+            return planAllocationEventBookingAsync(scope, code, allocationEventBookRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+     * Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @param allocationEventBookRequest The booking reference the plan is drawn up under. (required)
+     * @return APIplanAllocationEventBookingRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The postings the booking would write. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIplanAllocationEventBookingRequest planAllocationEventBooking(String scope, String code, AllocationEventBookRequest allocationEventBookRequest) {
+        return new APIplanAllocationEventBookingRequest(scope, code, allocationEventBookRequest);
+    }
     private okhttp3.Call reallocateAllocationEventCall(String scope, String code, AllocationEventReallocateRequest allocationEventReallocateRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         return reallocateAllocationEventCall(scope, code, allocationEventReallocateRequest, effectiveAt,  _callback, new ConfigurationOptions());
     }
@@ -1697,6 +2241,810 @@ public class AllocationEventsApi {
      */
     public APIreallocateAllocationEventRequest reallocateAllocationEvent(String scope, String code, AllocationEventReallocateRequest allocationEventReallocateRequest) {
         return new APIreallocateAllocationEventRequest(scope, code, allocationEventReallocateRequest);
+    }
+    private okhttp3.Call receiveAllocationEventCall(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return receiveAllocationEventCall(scope, code, allocationEventReceiptRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call receiveAllocationEventCall(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationEventReceiptRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/receipts"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call receiveAllocationEventValidateBeforeCall(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling receiveAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling receiveAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'allocationEventReceiptRequest' is set
+        if (allocationEventReceiptRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationEventReceiptRequest' when calling receiveAllocationEvent(Async)");
+        }
+
+        return receiveAllocationEventCall(scope, code, allocationEventReceiptRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationEvent> receiveAllocationEventWithHttpInfo(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = receiveAllocationEventValidateBeforeCall(scope, code, allocationEventReceiptRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationEvent> receiveAllocationEventWithHttpInfo(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = receiveAllocationEventValidateBeforeCall(scope, code, allocationEventReceiptRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call receiveAllocationEventAsync(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = receiveAllocationEventValidateBeforeCall(scope, code, allocationEventReceiptRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call receiveAllocationEventAsync(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = receiveAllocationEventValidateBeforeCall(scope, code, allocationEventReceiptRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIreceiveAllocationEventRequest {
+        private final String scope;
+        private final String code;
+        private final AllocationEventReceiptRequest allocationEventReceiptRequest;
+        private String effectiveAt;
+
+        private APIreceiveAllocationEventRequest(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationEventReceiptRequest = allocationEventReceiptRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIreceiveAllocationEventRequest
+         */
+        public APIreceiveAllocationEventRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for receiveAllocationEvent
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return receiveAllocationEventCall(scope, code, allocationEventReceiptRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute receiveAllocationEvent request
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute() throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = receiveAllocationEventWithHttpInfo(scope, code, allocationEventReceiptRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute receiveAllocationEvent request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = receiveAllocationEventWithHttpInfo(scope, code, allocationEventReceiptRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute receiveAllocationEvent request with HTTP info returned
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo() throws ApiException {
+            return receiveAllocationEventWithHttpInfo(scope, code, allocationEventReceiptRequest, effectiveAt);
+        }
+
+        /**
+         * Execute receiveAllocationEvent request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return receiveAllocationEventWithHttpInfo(scope, code, allocationEventReceiptRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute receiveAllocationEvent request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback) throws ApiException {
+            return receiveAllocationEventAsync(scope, code, allocationEventReceiptRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute receiveAllocationEvent request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+            return receiveAllocationEventAsync(scope, code, allocationEventReceiptRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+     * Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @param allocationEventReceiptRequest The investor, amount and date of the receipt. (required)
+     * @return APIreceiveAllocationEventRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Allocation Event with the receipt recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIreceiveAllocationEventRequest receiveAllocationEvent(String scope, String code, AllocationEventReceiptRequest allocationEventReceiptRequest) {
+        return new APIreceiveAllocationEventRequest(scope, code, allocationEventReceiptRequest);
+    }
+    private okhttp3.Call reverseAllocationEventCall(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return reverseAllocationEventCall(scope, code, allocationEventReverseRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reverseAllocationEventCall(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationEventReverseRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/reverse"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call reverseAllocationEventValidateBeforeCall(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling reverseAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling reverseAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'allocationEventReverseRequest' is set
+        if (allocationEventReverseRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationEventReverseRequest' when calling reverseAllocationEvent(Async)");
+        }
+
+        return reverseAllocationEventCall(scope, code, allocationEventReverseRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationEvent> reverseAllocationEventWithHttpInfo(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = reverseAllocationEventValidateBeforeCall(scope, code, allocationEventReverseRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationEvent> reverseAllocationEventWithHttpInfo(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reverseAllocationEventValidateBeforeCall(scope, code, allocationEventReverseRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call reverseAllocationEventAsync(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = reverseAllocationEventValidateBeforeCall(scope, code, allocationEventReverseRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reverseAllocationEventAsync(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reverseAllocationEventValidateBeforeCall(scope, code, allocationEventReverseRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIreverseAllocationEventRequest {
+        private final String scope;
+        private final String code;
+        private final AllocationEventReverseRequest allocationEventReverseRequest;
+        private String effectiveAt;
+
+        private APIreverseAllocationEventRequest(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationEventReverseRequest = allocationEventReverseRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIreverseAllocationEventRequest
+         */
+        public APIreverseAllocationEventRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for reverseAllocationEvent
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reverseAllocationEventCall(scope, code, allocationEventReverseRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute reverseAllocationEvent request
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute() throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = reverseAllocationEventWithHttpInfo(scope, code, allocationEventReverseRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reverseAllocationEvent request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = reverseAllocationEventWithHttpInfo(scope, code, allocationEventReverseRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reverseAllocationEvent request with HTTP info returned
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo() throws ApiException {
+            return reverseAllocationEventWithHttpInfo(scope, code, allocationEventReverseRequest, effectiveAt);
+        }
+
+        /**
+         * Execute reverseAllocationEvent request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reverseAllocationEventWithHttpInfo(scope, code, allocationEventReverseRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute reverseAllocationEvent request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback) throws ApiException {
+            return reverseAllocationEventAsync(scope, code, allocationEventReverseRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute reverseAllocationEvent request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+            return reverseAllocationEventAsync(scope, code, allocationEventReverseRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+     * Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @param allocationEventReverseRequest The reason for the reversal and, optionally, when it should take effect. (required)
+     * @return APIreverseAllocationEventRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The reversed Allocation Event. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIreverseAllocationEventRequest reverseAllocationEvent(String scope, String code, AllocationEventReverseRequest allocationEventReverseRequest) {
+        return new APIreverseAllocationEventRequest(scope, code, allocationEventReverseRequest);
+    }
+    private okhttp3.Call unbookAllocationEventCall(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return unbookAllocationEventCall(scope, code, allocationEventUnbookRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call unbookAllocationEventCall(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationEventUnbookRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/unbook"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call unbookAllocationEventValidateBeforeCall(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling unbookAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling unbookAllocationEvent(Async)");
+        }
+
+        // verify the required parameter 'allocationEventUnbookRequest' is set
+        if (allocationEventUnbookRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationEventUnbookRequest' when calling unbookAllocationEvent(Async)");
+        }
+
+        return unbookAllocationEventCall(scope, code, allocationEventUnbookRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationEvent> unbookAllocationEventWithHttpInfo(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = unbookAllocationEventValidateBeforeCall(scope, code, allocationEventUnbookRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationEvent> unbookAllocationEventWithHttpInfo(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = unbookAllocationEventValidateBeforeCall(scope, code, allocationEventUnbookRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call unbookAllocationEventAsync(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = unbookAllocationEventValidateBeforeCall(scope, code, allocationEventUnbookRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call unbookAllocationEventAsync(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = unbookAllocationEventValidateBeforeCall(scope, code, allocationEventUnbookRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIunbookAllocationEventRequest {
+        private final String scope;
+        private final String code;
+        private final AllocationEventUnbookRequest allocationEventUnbookRequest;
+        private String effectiveAt;
+
+        private APIunbookAllocationEventRequest(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationEventUnbookRequest = allocationEventUnbookRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIunbookAllocationEventRequest
+         */
+        public APIunbookAllocationEventRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for unbookAllocationEvent
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return unbookAllocationEventCall(scope, code, allocationEventUnbookRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute unbookAllocationEvent request
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute() throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = unbookAllocationEventWithHttpInfo(scope, code, allocationEventUnbookRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute unbookAllocationEvent request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = unbookAllocationEventWithHttpInfo(scope, code, allocationEventUnbookRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute unbookAllocationEvent request with HTTP info returned
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo() throws ApiException {
+            return unbookAllocationEventWithHttpInfo(scope, code, allocationEventUnbookRequest, effectiveAt);
+        }
+
+        /**
+         * Execute unbookAllocationEvent request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return unbookAllocationEventWithHttpInfo(scope, code, allocationEventUnbookRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute unbookAllocationEvent request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback) throws ApiException {
+            return unbookAllocationEventAsync(scope, code, allocationEventUnbookRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute unbookAllocationEvent request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+            return unbookAllocationEventAsync(scope, code, allocationEventUnbookRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+     * Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @param allocationEventUnbookRequest The reason the booking is being taken back. (required)
+     * @return APIunbookAllocationEventRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Allocation Event, back at Computed. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIunbookAllocationEventRequest unbookAllocationEvent(String scope, String code, AllocationEventUnbookRequest allocationEventUnbookRequest) {
+        return new APIunbookAllocationEventRequest(scope, code, allocationEventUnbookRequest);
     }
     private okhttp3.Call upsertAllocationEventCall(String scope, String code, AllocationEventRequest allocationEventRequest, final ApiCallback _callback) throws ApiException {
         return upsertAllocationEventCall(scope, code, allocationEventRequest,  _callback, new ConfigurationOptions());

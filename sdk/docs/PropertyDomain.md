@@ -110,6 +110,7 @@ PropertyDomain method = PropertyDomain.CURRENCYGROUP;
 PropertyDomain method = PropertyDomain.RECDEFINITION;
 PropertyDomain method = PropertyDomain.RECRESULT;
 PropertyDomain method = PropertyDomain.JOURNALENTRY;
+PropertyDomain method = PropertyDomain.ELIGIBLECOLLATERALSCHEDULE;
 ```
 
 

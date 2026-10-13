@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. | [optional] [default to Map<String, Property>]
 **apportionmentBucketSet** | **String** | The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection. | [optional] [default to String]
 **apportionmentMethodProperty** | [**ApportionmentMethodProperty**](ApportionmentMethodProperty.md) |  | [optional] [default to ApportionmentMethodProperty]
+**partnershipAccounting** | [**PartnershipAccountingConfiguration**](PartnershipAccountingConfiguration.md) |  | [optional] [default to PartnershipAccountingConfiguration]
+**fundTerms** | [**FundTerms**](FundTerms.md) |  | [optional] [default to FundTerms]
+**closings** | [**List&lt;FundClosing&gt;**](FundClosing.md) | The register of fund closings (first close, subsequent closes, final close) for partnership funds using this configuration. | [optional] [default to List<FundClosing>]
 
 ```java
 import com.finbourne.lusid.model.FundConfigurationRequest;
@@ -33,6 +36,9 @@ String Code = "example Code";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable String ApportionmentBucketSet = "example ApportionmentBucketSet";
 ApportionmentMethodProperty ApportionmentMethodProperty = new ApportionmentMethodProperty();
+PartnershipAccountingConfiguration PartnershipAccounting = new PartnershipAccountingConfiguration();
+FundTerms FundTerms = new FundTerms();
+@jakarta.annotation.Nullable List<FundClosing> Closings = new List<FundClosing>();
 
 
 FundConfigurationRequest fundConfigurationRequestInstance = new FundConfigurationRequest()
@@ -46,7 +52,10 @@ FundConfigurationRequest fundConfigurationRequestInstance = new FundConfiguratio
     .BucketSets(BucketSets)
     .Properties(Properties)
     .ApportionmentBucketSet(ApportionmentBucketSet)
-    .ApportionmentMethodProperty(ApportionmentMethodProperty);
+    .ApportionmentMethodProperty(ApportionmentMethodProperty)
+    .PartnershipAccounting(PartnershipAccounting)
+    .FundTerms(FundTerms)
+    .Closings(Closings);
 ```
 
 

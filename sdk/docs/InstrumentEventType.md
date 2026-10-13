@@ -128,6 +128,13 @@ InstrumentEventType method = InstrumentEventType.LOANINTERESTCAPITALISATIONEVENT
 InstrumentEventType method = InstrumentEventType.TOTALRETURNSWAPCASHFLOWEVENT;
 InstrumentEventType method = InstrumentEventType.GLOBALLOANFACILITYREINITIALISATIONEVENT;
 InstrumentEventType method = InstrumentEventType.INVESTORLOANFACILITYREINITIALISATIONEVENT;
+InstrumentEventType method = InstrumentEventType.CAPITALCALLRECEIPTEVENT;
+InstrumentEventType method = InstrumentEventType.RECALLABLECAPITALEXPIRYEVENT;
+InstrumentEventType method = InstrumentEventType.CAPITALINTERESTTRANSFEREVENT;
+InstrumentEventType method = InstrumentEventType.FACILITYDRAWEVENT;
+InstrumentEventType method = InstrumentEventType.FACILITYREPAYMENTEVENT;
+InstrumentEventType method = InstrumentEventType.FACILITYINTERESTEVENT;
+InstrumentEventType method = InstrumentEventType.FACILITYCOMMITMENTFEEEVENT;
 ```
 
 

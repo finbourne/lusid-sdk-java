@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.MarketDataOverrides;
 import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.PropertyFilter;
 import com.finbourne.lusid.model.ResourceId;
@@ -108,6 +109,10 @@ public class ReverseStressRequest {
   public static final String SERIALIZED_NAME_MAX_ITERATIONS = "maxIterations";
   @SerializedName(SERIALIZED_NAME_MAX_ITERATIONS)
   private Integer maxIterations;
+
+  public static final String SERIALIZED_NAME_MARKET_DATA_OVERRIDES = "marketDataOverrides";
+  @SerializedName(SERIALIZED_NAME_MARKET_DATA_OVERRIDES)
+  private MarketDataOverrides marketDataOverrides;
 
   public ReverseStressRequest() {
   }
@@ -408,6 +413,27 @@ public class ReverseStressRequest {
   }
 
 
+  public ReverseStressRequest marketDataOverrides(MarketDataOverrides marketDataOverrides) {
+    
+    this.marketDataOverrides = marketDataOverrides;
+    return this;
+  }
+
+   /**
+   * Get marketDataOverrides
+   * @return marketDataOverrides
+  **/
+  @jakarta.annotation.Nullable
+  public MarketDataOverrides getMarketDataOverrides() {
+    return marketDataOverrides;
+  }
+
+
+  public void setMarketDataOverrides(MarketDataOverrides marketDataOverrides) {
+    this.marketDataOverrides = marketDataOverrides;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -430,7 +456,8 @@ public class ReverseStressRequest {
         (this.maxScale.compareTo(reverseStressRequest.getMaxScale()) == 0) &&
         Objects.equals(this.ladderPoints, reverseStressRequest.ladderPoints) &&
         (this.tolerance.compareTo(reverseStressRequest.getTolerance()) == 0) &&
-        Objects.equals(this.maxIterations, reverseStressRequest.maxIterations);
+        Objects.equals(this.maxIterations, reverseStressRequest.maxIterations) &&
+        Objects.equals(this.marketDataOverrides, reverseStressRequest.marketDataOverrides);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -439,7 +466,7 @@ public class ReverseStressRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, portfolioEntityIds, effectiveAt, asAt, scenario, targetPnl, metric, reportCurrency, filters, maxScale, ladderPoints, tolerance, maxIterations);
+    return Objects.hash(recipeId, portfolioEntityIds, effectiveAt, asAt, scenario, targetPnl, metric, reportCurrency, filters, maxScale, ladderPoints, tolerance, maxIterations, marketDataOverrides);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -466,6 +493,7 @@ public class ReverseStressRequest {
     sb.append("    ladderPoints: ").append(toIndentedString(ladderPoints)).append("\n");
     sb.append("    tolerance: ").append(toIndentedString(tolerance)).append("\n");
     sb.append("    maxIterations: ").append(toIndentedString(maxIterations)).append("\n");
+    sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -501,6 +529,7 @@ public class ReverseStressRequest {
     openapiFields.add("ladderPoints");
     openapiFields.add("tolerance");
     openapiFields.add("maxIterations");
+    openapiFields.add("marketDataOverrides");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -564,6 +593,10 @@ public class ReverseStressRequest {
             PropertyFilter.validateJsonElement(jsonArrayfilters.get(i));
           };
         }
+      }
+      // validate the optional field `marketDataOverrides`
+      if (jsonObj.get("marketDataOverrides") != null && !jsonObj.get("marketDataOverrides").isJsonNull()) {
+        MarketDataOverrides.validateJsonElement(jsonObj.get("marketDataOverrides"));
       }
   }
 

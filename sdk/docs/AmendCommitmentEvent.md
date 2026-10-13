@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | [**OffsetDateTime**](OffsetDateTime.md) | The date the commitment amendment takes effect. | [optional] [default to OffsetDateTime]
 **amount** | **java.math.BigDecimal** | The signed change to the total commitment. Positive implies an increase, and negative implies a  decrease. | [default to java.math.BigDecimal]
+**component** | **String** | The component of the commitment the amendment is recorded under: &#39;Commitment&#39; for a commitment made  or upsized, &#39;Release&#39; for committed capital released. Optional; when absent the sign of the amount  decides. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.AmendCommitmentEvent;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 OffsetDateTime Date = OffsetDateTime.now();
 java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String Component = "example Component";
 
 
 AmendCommitmentEvent amendCommitmentEventInstance = new AmendCommitmentEvent()
     .Date(Date)
-    .Amount(Amount);
+    .Amount(Amount)
+    .Component(Component);
 ```
 
 

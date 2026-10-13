@@ -8,8 +8,13 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createAllocationEvent**](AllocationEventsApi.md#createAllocationEvent) | **POST** /api/allocationevents/{scope} | [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. |
 | [**deleteAllocationEvent**](AllocationEventsApi.md#deleteAllocationEvent) | **DELETE** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. |
 | [**getAllocationEvent**](AllocationEventsApi.md#getAllocationEvent) | **GET** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. |
+| [**getAllocationEventReceivables**](AllocationEventsApi.md#getAllocationEventReceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
 | [**listAllocationEvents**](AllocationEventsApi.md#listAllocationEvents) | **GET** /api/allocationevents | [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. |
+| [**planAllocationEventBooking**](AllocationEventsApi.md#planAllocationEventBooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
 | [**reallocateAllocationEvent**](AllocationEventsApi.md#reallocateAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. |
+| [**receiveAllocationEvent**](AllocationEventsApi.md#receiveAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/receipts | [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
+| [**reverseAllocationEvent**](AllocationEventsApi.md#reverseAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reverse | [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. |
+| [**unbookAllocationEvent**](AllocationEventsApi.md#unbookAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/unbook | [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. |
 | [**upsertAllocationEvent**](AllocationEventsApi.md#upsertAllocationEvent) | **PUT** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. |
 
 
@@ -396,6 +401,103 @@ public class AllocationEventsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getAllocationEventReceivables
+
+> AllocationReceivablesAgeing getAllocationEventReceivables(scope, code, effectiveAt, asAt)
+
+[EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+
+What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label as of which to age the receivables. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the Allocation Event. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationReceivablesAgeing result = apiInstance.getAllocationEventReceivables(scope, code, effectiveAt, asAt).execute(opts);
+
+            AllocationReceivablesAgeing result = apiInstance.getAllocationEventReceivables(scope, code, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#getAllocationEventReceivables");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **effectiveAt** | **String**| The effective datetime or cut label as of which to age the receivables. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the Allocation Event. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**AllocationReceivablesAgeing**](AllocationReceivablesAgeing.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The aged receivables of the Allocation Event. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## listAllocationEvents
 
 > PagedResourceListOfAllocationEvent listAllocationEvents(effectiveAt, asAt, page, limit, filter, sortBy)
@@ -497,6 +599,103 @@ public class AllocationEventsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## planAllocationEventBooking
+
+> AllocationPostingPlan planAllocationEventBooking(scope, code, allocationEventBookRequest, effectiveAt)
+
+[EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+
+Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        AllocationEventBookRequest allocationEventBookRequest = new AllocationEventBookRequest(); // AllocationEventBookRequest | The booking reference the plan is drawn up under.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to plan the booking. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationPostingPlan result = apiInstance.planAllocationEventBooking(scope, code, allocationEventBookRequest, effectiveAt).execute(opts);
+
+            AllocationPostingPlan result = apiInstance.planAllocationEventBooking(scope, code, allocationEventBookRequest, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#planAllocationEventBooking");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **allocationEventBookRequest** | [**AllocationEventBookRequest**](AllocationEventBookRequest.md)| The booking reference the plan is drawn up under. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to plan the booking. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**AllocationPostingPlan**](AllocationPostingPlan.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The postings the booking would write. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## reallocateAllocationEvent
 
 > AllocationEvent reallocateAllocationEvent(scope, code, allocationEventReallocateRequest, effectiveAt)
@@ -588,6 +787,297 @@ public class AllocationEventsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The reallocated Allocation Event. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## receiveAllocationEvent
+
+> AllocationEvent receiveAllocationEvent(scope, code, allocationEventReceiptRequest, effectiveAt)
+
+[EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+
+Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        AllocationEventReceiptRequest allocationEventReceiptRequest = new AllocationEventReceiptRequest(); // AllocationEventReceiptRequest | The investor, amount and date of the receipt.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationEvent result = apiInstance.receiveAllocationEvent(scope, code, allocationEventReceiptRequest, effectiveAt).execute(opts);
+
+            AllocationEvent result = apiInstance.receiveAllocationEvent(scope, code, allocationEventReceiptRequest, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#receiveAllocationEvent");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **allocationEventReceiptRequest** | [**AllocationEventReceiptRequest**](AllocationEventReceiptRequest.md)| The investor, amount and date of the receipt. | |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**AllocationEvent**](AllocationEvent.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Allocation Event with the receipt recorded. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## reverseAllocationEvent
+
+> AllocationEvent reverseAllocationEvent(scope, code, allocationEventReverseRequest, effectiveAt)
+
+[EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+
+Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        AllocationEventReverseRequest allocationEventReverseRequest = new AllocationEventReverseRequest(); // AllocationEventReverseRequest | The reason for the reversal and, optionally, when it should take effect.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationEvent result = apiInstance.reverseAllocationEvent(scope, code, allocationEventReverseRequest, effectiveAt).execute(opts);
+
+            AllocationEvent result = apiInstance.reverseAllocationEvent(scope, code, allocationEventReverseRequest, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#reverseAllocationEvent");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **allocationEventReverseRequest** | [**AllocationEventReverseRequest**](AllocationEventReverseRequest.md)| The reason for the reversal and, optionally, when it should take effect. | |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**AllocationEvent**](AllocationEvent.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The reversed Allocation Event. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## unbookAllocationEvent
+
+> AllocationEvent unbookAllocationEvent(scope, code, allocationEventUnbookRequest, effectiveAt)
+
+[EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+
+Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        AllocationEventUnbookRequest allocationEventUnbookRequest = new AllocationEventUnbookRequest(); // AllocationEventUnbookRequest | The reason the booking is being taken back.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationEvent result = apiInstance.unbookAllocationEvent(scope, code, allocationEventUnbookRequest, effectiveAt).execute(opts);
+
+            AllocationEvent result = apiInstance.unbookAllocationEvent(scope, code, allocationEventUnbookRequest, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#unbookAllocationEvent");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **allocationEventUnbookRequest** | [**AllocationEventUnbookRequest**](AllocationEventUnbookRequest.md)| The reason the booking is being taken back. | |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**AllocationEvent**](AllocationEvent.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Allocation Event, back at Computed. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

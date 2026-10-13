@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,6 +59,10 @@ public class AllocationMapEventBasis {
   @SerializedName(SERIALIZED_NAME_BASIS)
   private AllocationMapBasis basis;
 
+  public static final String SERIALIZED_NAME_COMPONENT = "component";
+  @SerializedName(SERIALIZED_NAME_COMPONENT)
+  private String component;
+
   public AllocationMapEventBasis() {
   }
 
@@ -68,7 +73,7 @@ public class AllocationMapEventBasis {
   }
 
    /**
-   * The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
+   * The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
    * @return eventType
   **/
   @jakarta.annotation.Nonnull
@@ -103,6 +108,27 @@ public class AllocationMapEventBasis {
   }
 
 
+  public AllocationMapEventBasis component(String component) {
+    
+    this.component = component;
+    return this;
+  }
+
+   /**
+   * The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own.
+   * @return component
+  **/
+  @jakarta.annotation.Nullable
+  public String getComponent() {
+    return component;
+  }
+
+
+  public void setComponent(String component) {
+    this.component = component;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +140,24 @@ public class AllocationMapEventBasis {
     }
     AllocationMapEventBasis allocationMapEventBasis = (AllocationMapEventBasis) o;
     return Objects.equals(this.eventType, allocationMapEventBasis.eventType) &&
-        Objects.equals(this.basis, allocationMapEventBasis.basis);
+        Objects.equals(this.basis, allocationMapEventBasis.basis) &&
+        Objects.equals(this.component, allocationMapEventBasis.component);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, basis);
+    return Objects.hash(eventType, basis, component);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -128,6 +166,7 @@ public class AllocationMapEventBasis {
     sb.append("class AllocationMapEventBasis {\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    basis: ").append(toIndentedString(basis)).append("\n");
+    sb.append("    component: ").append(toIndentedString(component)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +191,7 @@ public class AllocationMapEventBasis {
     openapiFields = new HashSet<String>();
     openapiFields.add("eventType");
     openapiFields.add("basis");
+    openapiFields.add("component");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -184,6 +224,9 @@ public class AllocationMapEventBasis {
       }
       // validate the required field `basis`
       AllocationMapBasis.validateJsonElement(jsonObj.get("basis"));
+      if ((jsonObj.get("component") != null && !jsonObj.get("component").isJsonNull()) && !jsonObj.get("component").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `component` to be a primitive type in the JSON string but got `%s`", jsonObj.get("component").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
